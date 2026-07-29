@@ -14,17 +14,18 @@
 
 ---
 
-## Final 36 hours — OPERATION ARKANSAS
+## Final 36 hours — OPERATION ARKANSAS + Evidence Engine
 
-**Doctrine:** [`OPERATION_ARKANSAS.md`](./OPERATION_ARKANSAS.md)  
-**Tracks:** [`FINAL_36_HOUR_LAUNCH_TRACKS.md`](./FINAL_36_HOUR_LAUNCH_TRACKS.md)  
-**Presence:** [`ARKANSAS_PRESENCE_MATRIX.md`](./ARKANSAS_PRESENCE_MATRIX.md)
+**Doctrine:** [`OPERATION_ARKANSAS.md`](./OPERATION_ARKANSAS.md) · [`EVIDENCE_ENGINE.md`](./EVIDENCE_ENGINE.md)  
+**Density:** [`EVIDENCE_DENSITY.md`](./EVIDENCE_DENSITY.md)  
+**Tracks:** [`FINAL_36_HOUR_LAUNCH_TRACKS.md`](./FINAL_36_HOUR_LAUNCH_TRACKS.md)
 
-**Daily question:** What evidence can we publish today that didn't exist yesterday?
+**Governing sentence:** The campaign doesn't exist to produce website content. The website exists to document the campaign.
 
-**Limiter:** campaign evidence, not engineering risk.  
-**Campaign:** county/media confirmation sprint.  
-**Burt:** presentation, tiers, rotation, Journey rhythm.  
+**Daily / evening:** Publish new evidence · backlog of unpublished evidence must stay non-identical.
+
+**Protected Journey sequence:** Listened · Learned · Visited · Spoke · Engaged  
+
 **Sacred:** Regnat Populus — Final Action only.
 
 ---

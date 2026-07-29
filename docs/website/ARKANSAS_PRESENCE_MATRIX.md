@@ -5,7 +5,7 @@
 **Pass origin:** Steve + forensic follow-on (2026-07-29)  
 **Living doc:** Update when Steve confirms metadata or new media ships.
 
-**Related:** [`COUNTY_MEDIA_COVERAGE_LEDGER.md`](./COUNTY_MEDIA_COVERAGE_LEDGER.md) · [`FINAL_36_HOUR_LAUNCH_TRACKS.md`](./FINAL_36_HOUR_LAUNCH_TRACKS.md)
+**Related:** [`COUNTY_MEDIA_COVERAGE_LEDGER.md`](./COUNTY_MEDIA_COVERAGE_LEDGER.md) · [`EVIDENCE_DENSITY.md`](./EVIDENCE_DENSITY.md) · [`EVIDENCE_ENGINE.md`](./EVIDENCE_ENGINE.md)
 
 ---
 

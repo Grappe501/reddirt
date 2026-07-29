@@ -1,8 +1,15 @@
 # OPERATION ARKANSAS
 
 **Status:** LOCKED operating doctrine — 2026-07-29  
-**Phase:** Final pre-launch + post-launch evidence cadence  
+**Phase:** Campaign publishing (not website development)  
 **Lane:** RedDirt public website  
+**Evidence pipeline:** [`EVIDENCE_ENGINE.md`](./EVIDENCE_ENGINE.md)
+
+---
+
+## Governing sentence
+
+> **The campaign doesn't exist to produce website content. The website exists to document the campaign.**
 
 ---
 
@@ -10,7 +17,7 @@
 
 > **The people rule.**
 
-Everything published on the public site is supporting evidence for that idea: communities visited, conversations held, videos of Kelly speaking, confirmed endorsements, events, and volunteer invitations.
+The public site is designed around **evidence of Kelly’s work**, not around Kelly as a marketing product. Photos, videos, endorsements, events, and volunteer invitations are supporting evidence for that idea.
 
 ---
 
@@ -22,14 +29,21 @@ Not new features.
 Not new pages.  
 **New evidence.**
 
+### Evening questions (required)
+
+1. **What evidence did we publish today?**  
+2. **What evidence did we create today that is not yet published?**  
+
+Those answers should never be identical — backlog is healthy.
+
 ---
 
 ## Parallel roles
 
 | Role | Mandate |
 | --- | --- |
-| **Campaign** | Confirm media metadata; approve public use; supply dates/sources for endorsements |
-| **Burt (presentation)** | Sequence, caption discipline, Journey/homepage rhythm, tiers, Presence Matrix updates when confirms land |
+| **Campaign** | Create and confirm evidence; approve public use; supply dates/sources |
+| **Burt (presentation)** | Classify Gold/Silver/Archive; publish to homepage/Journey/gallery; protect Journey sequence; update density + matrix |
 | **Ops** | Netlify parity, live verification, volunteer env |
 
 ---
@@ -38,94 +52,70 @@ Not new pages.
 
 ### 1 — County Confirmation Sprint (highest campaign value)
 
-For each photograph/video, campaign supplies:
+Ask first: **What does this prove?** (Arkansas Evidence Standard — see Evidence Engine)
 
-```
-County
-City
-Venue
-Date (approximate if necessary)
-Event
-Photographer (if known)
-People shown (if appropriate)
-Approved for public use
-```
+Then campaign supplies place/time/credit fields. Template: [`COUNTY_CONFIRMATION_TEMPLATE.md`](./COUNTY_CONFIRMATION_TEMPLATE.md)
 
-Then Burt:
+Burt:
 
 1. Updates registry (Unknown → confirmed)  
-2. Updates [`ARKANSAS_PRESENCE_MATRIX.md`](./ARKANSAS_PRESENCE_MATRIX.md)  
-3. Makes eligible for Gold/Silver curation  
-4. Rotates onto homepage / Journey / gallery when FEATURE-worthy  
-
-Template: [`COUNTY_CONFIRMATION_TEMPLATE.md`](./COUNTY_CONFIRMATION_TEMPLATE.md)
+2. Updates [`ARKANSAS_PRESENCE_MATRIX.md`](./ARKANSAS_PRESENCE_MATRIX.md) + [`EVIDENCE_DENSITY.md`](./EVIDENCE_DENSITY.md)  
+3. Classifies Gold / Silver / Archive  
+4. Publishes to homepage / Journey / gallery when FEATURE-worthy  
 
 ### 2 — Homepage rotation
 
-Do not overload. Evolve:
-
-- FEATURE trail stills rotate from Gold tier  
-- Across Arkansas confirmed communities expand naturally  
-- Videos rotate by campaign priority  
-
-Returning visitors should notice an **active** campaign.
+Do not overload. Evolve FEATURE stills, Across Arkansas communities, and videos so returning visitors notice an active campaign.
 
 Cadence: [`HOMEPAGE_ROTATION_CADENCE.md`](./HOMEPAGE_ROTATION_CADENCE.md)  
 Tiers: [`LAUNCH_PHOTOGRAPHY_TIERS.md`](./LAUNCH_PHOTOGRAPHY_TIERS.md)
 
 ### 3 — Campaign Journey (`/about/journey`)
 
-Not a timeline. Evidence that Kelly is meeting Arkansas where Arkansas lives:
+**Protected sequence:** Listened · Learned · Visited · Spoke · Engaged  
 
-**listened · learned · visited · spoke · engaged**
-
-Photos and video carry the narrative; copy stays spare.
+Listen first → learn → show up → share ideas → invite participation.  
+Not a timeline. Not a county scoreboard.
 
 ### 4 — Regnat Populus (sacred)
 
-**One memorable placement:** homepage Final Action close.
+**One memorable placement:** homepage Final Action close. Do not wallpaper.
 
-Do **not** repeat as page wallpaper (header, every section, Journey close).  
-Photo captions may describe shirts/fans factually; that is documentation, not motto placement.
+### 5 — Visual rhythm
 
-### 5 — Visual rhythm pass
-
-Scroll every public page slowly. Breathe, invite next section, cut repetition, prefer a photograph over another paragraph when evidence exists.
+Prefer another photograph of proof over another paragraph of abstraction.
 
 ### 6 — Launch photography tiers
 
-| Tier | Role |
-| --- | --- |
-| **Gold** | 10–15 defining images (homepage / Journey first) |
-| **Silver** | Strong supporting (gallery, Journey depth) |
-| **Archive** | Keep; not automatic homepage |
+Gold → homepage/Journey first · Silver → supporting · Archive → keep, don’t auto-FEATURE.
 
 ---
 
-## Post-launch cadence (do not freeze the homepage)
+## Metric
 
-Small steady updates beat large redesigns:
+Stop measuring pages. Measure **evidence density**: [`EVIDENCE_DENSITY.md`](./EVIDENCE_DENSITY.md)
 
-- New county confirmation  
-- New campaign photo  
-- New event  
-- New video  
-- New endorsement (when applicable)  
+---
+
+## Post-launch cadence
+
+Small steady updates: county confirms, photos, events, videos, endorsements — not redesigns.
 
 ---
 
 ## Hard rules
 
 - No invented geography, dates, quotes, or endorsements  
-- No “50+ counties” claim until the Presence Matrix supports it  
-- No new architecture in the evidence window  
-- Gold brand accent stays restrained (signature, not redesign)  
-- One public calendar: `/events`
+- No “50+ counties” until Presence Matrix / density supports it  
+- No new architecture as the default answer  
+- Gold accent restrained  
+- One public calendar: `/events`  
+- Website documents the campaign; campaign does not exist to feed the website  
 
 ---
 
 ## Related
 
+- [`EVIDENCE_ENGINE.md`](./EVIDENCE_ENGINE.md)  
 - [`FINAL_36_HOUR_LAUNCH_TRACKS.md`](./FINAL_36_HOUR_LAUNCH_TRACKS.md)  
-- [`ARKANSAS_PRESENCE_MATRIX.md`](./ARKANSAS_PRESENCE_MATRIX.md)  
 - [`PUBLIC_SITE_EDITORIAL_DOCTRINE.md`](./PUBLIC_SITE_EDITORIAL_DOCTRINE.md)

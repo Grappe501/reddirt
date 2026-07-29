@@ -18,6 +18,10 @@
 
 **Final launch mindset:** remove what would make a careful voter hesitate — do not enlarge the site to fill space.
 
+**Campaign publishing (locked):** [`OPERATION_ARKANSAS.md`](./OPERATION_ARKANSAS.md) · [`EVIDENCE_ENGINE.md`](./EVIDENCE_ENGINE.md)
+
+> The campaign doesn't exist to produce website content. The website exists to document the campaign.
+
 ---
 
 ## Product frame

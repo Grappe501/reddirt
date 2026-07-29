@@ -72,6 +72,13 @@ assert.ok(aboutFull >= 700 && aboutFull <= 1100, `about full words=${aboutFull}`
 
 const journeyIntro = wordCount(acrossArkansasJourneyCopy.intro);
 assert.ok(journeyIntro >= 75 && journeyIntro <= 130, `journey intro words=${journeyIntro}`);
+assert.deepEqual(
+  [...acrossArkansasJourneyCopy.evidenceVerbs],
+  ["Listened", "Learned", "Visited", "Spoke", "Engaged"],
+  "Journey evidence sequence is protected",
+);
+assert.ok(fs.existsSync(path.join(root, "docs/website/EVIDENCE_ENGINE.md")));
+assert.ok(fs.existsSync(path.join(root, "docs/website/OPERATION_ARKANSAS.md")));
 
 const registry = read("src/content/media/campaign-photo-registry.ts");
 const aflcioBlock = registry.slice(
