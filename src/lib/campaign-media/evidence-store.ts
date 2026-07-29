@@ -5,9 +5,11 @@ import path from "node:path";
 import {
   CALENDAR_PRESENCE_REL,
   PHOTO_EVIDENCE_REL,
+  PHOTO_INGEST_DRAFTS_REL,
   SPEECH_EVIDENCE_REL,
   type CalendarPresenceStore,
   type PhotoEvidenceStore,
+  type PhotoIngestDraftStore,
   type SpeechEvidenceStore,
 } from "@/lib/campaign-media/evidence-types";
 
@@ -61,6 +63,16 @@ export function emptySpeechStore(): SpeechEvidenceStore {
   };
 }
 
+export function emptyPhotoIngestDraftStore(): PhotoIngestDraftStore {
+  return {
+    version: 1,
+    updatedAt: new Date().toISOString(),
+    purpose:
+      "Local ingest drafts — stills promoted from public/media before they land in campaign-photo-registry.ts.",
+    photos: [],
+  };
+}
+
 export function loadCalendarPresenceStore(): CalendarPresenceStore {
   return readJsonFile<CalendarPresenceStore>(CALENDAR_PRESENCE_REL) ?? emptyCalendarStore();
 }
@@ -71,6 +83,10 @@ export function loadPhotoEvidenceStore(): PhotoEvidenceStore {
 
 export function loadSpeechEvidenceStore(): SpeechEvidenceStore {
   return readJsonFile<SpeechEvidenceStore>(SPEECH_EVIDENCE_REL) ?? emptySpeechStore();
+}
+
+export function loadPhotoIngestDrafts(): PhotoIngestDraftStore {
+  return readJsonFile<PhotoIngestDraftStore>(PHOTO_INGEST_DRAFTS_REL) ?? emptyPhotoIngestDraftStore();
 }
 
 export function saveCalendarPresenceStore(store: CalendarPresenceStore): void {
@@ -91,6 +107,14 @@ export function savePhotoEvidenceStore(store: PhotoEvidenceStore): void {
 
 export function saveSpeechEvidenceStore(store: SpeechEvidenceStore): void {
   writeJsonAtomic(SPEECH_EVIDENCE_REL, {
+    ...store,
+    version: 1,
+    updatedAt: new Date().toISOString(),
+  });
+}
+
+export function savePhotoIngestDrafts(store: PhotoIngestDraftStore): void {
+  writeJsonAtomic(PHOTO_INGEST_DRAFTS_REL, {
     ...store,
     version: 1,
     updatedAt: new Date().toISOString(),

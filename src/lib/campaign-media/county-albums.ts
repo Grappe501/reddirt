@@ -4,7 +4,6 @@
  */
 
 import type { CampaignPhotoRecord } from "@/content/media/campaign-photo-types";
-import { listCampaignPhotos } from "@/content/media/campaign-photo-registry";
 import { resolveRegistryCountyFromLabel } from "@/lib/county/resolve-county-label";
 
 export type CountyAlbumEvent = {
@@ -40,18 +39,25 @@ function isConfirmedGeo(photo: CampaignPhotoRecord): boolean {
   return Boolean(county && county !== "Unknown");
 }
 
-/** Photos approved for public album surfaces (or FEATURE homepage candidates). */
-function isAlbumEligible(photo: CampaignPhotoRecord): boolean {
+/**
+ * Public album gate:
+ * - Explicit approvedForPublic === false always blocks
+ * - APPROVED / PUBLISHED or approvedForPublic === true always allow
+ * - Legacy launch stills: confirmed geo + FEATURE/HERO (or homepage/featured) with no explicit deny
+ *   Workbench-labeled DRAFTs should check Approved for public to stay intentional.
+ */
+export function isAlbumEligible(photo: CampaignPhotoRecord): boolean {
   if (!isConfirmedGeo(photo)) return false;
   if (photo.publicationStatus === "ARCHIVED") return false;
-  // Prefer explicit public approval from overlay/registry; allow FEATURE homepage candidates too
+  if (photo.campaign.approvedForPublic === false) return false;
   if (photo.publicationStatus === "PUBLISHED" || photo.publicationStatus === "APPROVED") return true;
-  if (photo.campaign.homepageCandidate || photo.campaign.featuredPhoto) return true;
+  if (photo.campaign.approvedForPublic === true) return true;
   if (photo.heroLevel === "FEATURE" || photo.heroLevel === "HERO") return true;
+  if (photo.campaign.homepageCandidate || photo.campaign.featuredPhoto) return true;
   return false;
 }
 
-export function buildCountyAlbums(photos: CampaignPhotoRecord[] = listCampaignPhotos()): CountyAlbum[] {
+export function buildCountyAlbums(photos: CampaignPhotoRecord[]): CountyAlbum[] {
   const byCounty = new Map<
     string,
     {
@@ -126,10 +132,13 @@ export function buildCountyAlbums(photos: CampaignPhotoRecord[] = listCampaignPh
   return albums.sort((a, b) => b.photoCount - a.photoCount || a.shortName.localeCompare(b.shortName));
 }
 
-export function getCountyAlbumBySlug(countySlug: string): CountyAlbum | null {
+export function getCountyAlbumBySlug(
+  countySlug: string,
+  photos: CampaignPhotoRecord[],
+): CountyAlbum | null {
   const raw = countySlug.trim().toLowerCase().replace(/\/$/, "");
   const variants = [raw, raw.replace(/-county$/, ""), `${raw.replace(/-county$/, "")}-county`];
-  const albums = buildCountyAlbums();
+  const albums = buildCountyAlbums(photos);
   for (const v of variants) {
     const hit = albums.find((a) => a.countySlug === v);
     if (hit) return hit;
@@ -137,8 +146,8 @@ export function getCountyAlbumBySlug(countySlug: string): CountyAlbum | null {
   return null;
 }
 
-export function listCountyAlbumSlugs(): string[] {
-  return buildCountyAlbums().map((a) => a.countySlug);
+export function listCountyAlbumSlugs(photos: CampaignPhotoRecord[]): string[] {
+  return buildCountyAlbums(photos).map((a) => a.countySlug);
 }
 
 /** Relative folder path for materializing county/event albums on disk. */

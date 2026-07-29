@@ -25,6 +25,7 @@ export function EvidenceCalendarPanel({ initialRows, counties, sourceNote }: Pro
   const [filter, setFilter] = useState<Filter>("Needs confirm");
   const [message, setMessage] = useState("");
   const [pending, start] = useTransition();
+  const [icsPath, setIcsPath] = useState("");
 
   const filtered = useMemo(() => {
     return rows.filter((r) => {
@@ -79,7 +80,13 @@ export function EvidenceCalendarPanel({ initialRows, counties, sourceNote }: Pro
     start(async () => {
       const fd = new FormData();
       fd.set("source", source);
-      if (source === "ics") fd.set("icsPath", "C:\\Users\\User\\Desktop\\basic.ics");
+      if (source === "ics") {
+        if (!icsPath.trim()) {
+          setMessage("Enter a local ICS file path first.");
+          return;
+        }
+        fd.set("icsPath", icsPath.trim());
+      }
       const res = await importCalendarSeedAction(null, fd);
       setMessage(res.message);
       if (res.ok) window.location.reload();
@@ -87,13 +94,13 @@ export function EvidenceCalendarPanel({ initialRows, counties, sourceNote }: Pro
   }
 
   return (
-    <div className="space-y-4">
-      <p className="font-body text-sm text-kelly-text/70">{sourceNote}</p>
+    <div className="space-y-4 text-[#12124a]">
+      <p className="font-body text-sm text-[#364272]">{sourceNote}</p>
       <div className="flex flex-wrap gap-2 font-body text-xs">
-        <span className="rounded bg-kelly-navy/8 px-2 py-1">Needs: {counts.needs}</span>
-        <span className="rounded bg-kelly-navy/8 px-2 py-1">Confirmed: {counts.confirmed}</span>
-        <span className="rounded bg-kelly-navy/8 px-2 py-1">Exclude: {counts.exclude}</span>
-        <span className="rounded bg-kelly-navy/8 px-2 py-1">Physical LOCATION: {counts.physical}</span>
+        <span className="rounded bg-[#000066]/10 px-2 py-1 text-[#12124a]">Needs: {counts.needs}</span>
+        <span className="rounded bg-[#000066]/10 px-2 py-1 text-[#12124a]">Confirmed: {counts.confirmed}</span>
+        <span className="rounded bg-[#000066]/10 px-2 py-1 text-[#12124a]">Exclude: {counts.exclude}</span>
+        <span className="rounded bg-[#000066]/10 px-2 py-1 text-[#12124a]">Physical LOCATION: {counts.physical}</span>
       </div>
 
       <div className="flex flex-wrap gap-2">
@@ -112,7 +119,9 @@ export function EvidenceCalendarPanel({ initialRows, counties, sourceNote }: Pro
             type="button"
             onClick={() => setFilter(k)}
             className={`rounded-md border px-3 py-1.5 font-body text-xs font-semibold ${
-              filter === k ? "border-kelly-navy bg-kelly-navy text-white" : "border-kelly-text/15 bg-white"
+              filter === k
+                ? "border-[#000066] bg-[#000066] text-white"
+                : "border-[#8eb6dc] bg-white text-[#12124a]"
             }`}
           >
             {label}
@@ -120,12 +129,12 @@ export function EvidenceCalendarPanel({ initialRows, counties, sourceNote }: Pro
         ))}
       </div>
 
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap items-end gap-2">
         <button
           type="button"
           disabled={pending}
           onClick={saveVisible}
-          className="rounded-md bg-kelly-navy px-3 py-2 font-body text-sm font-bold text-white disabled:opacity-50"
+          className="rounded-md bg-[#000066] px-3 py-2 font-body text-sm font-bold text-white disabled:opacity-50"
         >
           Save visible
         </button>
@@ -133,7 +142,7 @@ export function EvidenceCalendarPanel({ initialRows, counties, sourceNote }: Pro
           type="button"
           disabled={pending}
           onClick={saveAll}
-          className="rounded-md border border-kelly-navy px-3 py-2 font-body text-sm font-bold text-kelly-navy disabled:opacity-50"
+          className="rounded-md border-2 border-[#000066] bg-white px-3 py-2 font-body text-sm font-bold text-[#000066] disabled:opacity-50"
         >
           Save all
         </button>
@@ -141,7 +150,7 @@ export function EvidenceCalendarPanel({ initialRows, counties, sourceNote }: Pro
           type="button"
           disabled={pending}
           onClick={exportMatrix}
-          className="rounded-md border border-kelly-text/20 px-3 py-2 font-body text-sm font-semibold disabled:opacity-50"
+          className="rounded-md border-2 border-[#8eb6dc] bg-white px-3 py-2 font-body text-sm font-semibold text-[#12124a] disabled:opacity-50"
         >
           Export confirmed → Presence Matrix
         </button>
@@ -149,17 +158,26 @@ export function EvidenceCalendarPanel({ initialRows, counties, sourceNote }: Pro
           type="button"
           disabled={pending}
           onClick={() => importSource("csv")}
-          className="rounded-md border border-kelly-text/20 px-3 py-2 font-body text-xs disabled:opacity-50"
+          className="rounded-md border-2 border-[#8eb6dc] bg-white px-3 py-2 font-body text-xs font-semibold text-[#12124a] disabled:opacity-50"
         >
           Re-seed from CSV
         </button>
+        <label className="min-w-[16rem] flex-1 font-body text-xs font-semibold text-[#12124a]">
+          ICS path
+          <input
+            className={EVIDENCE_FIELD_COMPACT_CLASS + " mt-1 w-full px-2 py-1.5 text-sm"}
+            value={icsPath}
+            onChange={(e) => setIcsPath(e.target.value)}
+            placeholder="H:\path\to\calendar.ics"
+          />
+        </label>
         <button
           type="button"
           disabled={pending}
           onClick={() => importSource("ics")}
-          className="rounded-md border border-kelly-text/20 px-3 py-2 font-body text-xs disabled:opacity-50"
+          className="rounded-md border-2 border-[#8eb6dc] bg-white px-3 py-2 font-body text-xs font-semibold text-[#12124a] disabled:opacity-50"
         >
-          Import Desktop basic.ics
+          Import ICS
         </button>
       </div>
 

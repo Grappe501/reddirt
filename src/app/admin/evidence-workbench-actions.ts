@@ -7,6 +7,7 @@ import { assertAdminApi } from "@/lib/admin/require-admin";
 import {
   loadCalendarPresenceStore,
   loadPhotoEvidenceStore,
+  loadPhotoIngestDrafts,
   loadSpeechEvidenceStore,
   saveCalendarPresenceStore,
   savePhotoEvidenceStore,
@@ -14,6 +15,18 @@ import {
 } from "@/lib/campaign-media/evidence-store";
 import { assertLocalEvidenceWritesAllowed } from "@/lib/campaign-media/evidence-local-writes";
 import { exportConfirmedCalendarToPresenceMatrix } from "@/lib/campaign-media/export-calendar-to-matrix";
+import {
+  normalizeCountyList,
+  parseHeroLevel,
+  parsePublicationStatus,
+  parseTierIntent,
+} from "@/lib/campaign-media/evidence-validation";
+import { listCampaignPhotosLive } from "@/lib/campaign-media/list-campaign-photos-live";
+import { publicPublishBlockedByConsent } from "@/lib/campaign-media/photo-consent-hold";
+import {
+  listDiskPhotoIngestCandidates,
+  promoteDiskPhotoToDraft,
+} from "@/lib/campaign-media/photo-ingest";
 import type {
   CalendarPresenceRow,
   CalendarPresenceStatus,
@@ -38,6 +51,16 @@ function bool(form: FormData, key: string): boolean {
   return v === "on" || v === "true" || v === "1";
 }
 
+function revalidateEvidenceSurfaces(): void {
+  revalidatePath("/admin/evidence-workbench");
+  revalidatePath("/campaign-photos");
+  revalidatePath("/from-the-road");
+  revalidatePath("/about/journey");
+  revalidatePath("/about");
+  revalidatePath("/");
+  revalidatePath("/kelly-speaks");
+}
+
 export async function saveCalendarRowsAction(
   _prev: { ok: boolean; message: string } | null,
   formData: FormData,
@@ -56,22 +79,31 @@ export async function saveCalendarRowsAction(
 
   const store = loadCalendarPresenceStore();
   const byId = new Map(store.rows.map((r) => [r.id, r]));
+  let applied = 0;
+  let skipped = 0;
   for (const patch of rows) {
     const cur = byId.get(patch.id);
-    if (!cur) continue;
+    if (!cur) {
+      skipped += 1;
+      continue;
+    }
     byId.set(patch.id, {
       ...cur,
       city: patch.city ?? cur.city,
       county: patch.county ?? cur.county,
       status: patch.status ?? cur.status,
     });
+    applied += 1;
   }
   store.rows = Array.from(byId.values()).sort(
     (a, b) => a.date.localeCompare(b.date) || a.summary.localeCompare(b.summary),
   );
   saveCalendarPresenceStore(store);
   revalidatePath("/admin/evidence-workbench");
-  return { ok: true, message: `Saved ${rows.length} calendar row(s).` };
+  return {
+    ok: true,
+    message: `Saved ${applied} calendar row(s)${skipped ? ` (${skipped} unknown id(s) skipped)` : ""}.`,
+  };
 }
 
 export async function savePhotoEvidenceAction(
@@ -83,6 +115,15 @@ export async function savePhotoEvidenceAction(
 
   const photoId = str(formData, "photoId");
   if (!photoId) return { ok: false, message: "Missing photo id." };
+
+  const heroLevel = parseHeroLevel(str(formData, "heroLevel"));
+  const publicationStatus = parsePublicationStatus(str(formData, "publicationStatus"));
+  if (str(formData, "heroLevel") && !heroLevel) {
+    return { ok: false, message: "Invalid hero level." };
+  }
+  if (str(formData, "publicationStatus") && !publicationStatus) {
+    return { ok: false, message: "Invalid publication status." };
+  }
 
   const peopleRaw = str(formData, "peopleVisible");
   const overlay: PhotoEvidenceOverlay = {
@@ -99,28 +140,46 @@ export async function savePhotoEvidenceAction(
     approvedForPublic: bool(formData, "approvedForPublic"),
     homepageCandidate: bool(formData, "homepageCandidate"),
     featuredPhoto: bool(formData, "featuredPhoto"),
-    heroLevel: (str(formData, "heroLevel") as PhotoEvidenceOverlay["heroLevel"]) || undefined,
-    tierIntent: (str(formData, "tierIntent") as PhotoEvidenceOverlay["tierIntent"]) || "",
-    publicationStatus:
-      (str(formData, "publicationStatus") as PhotoEvidenceOverlay["publicationStatus"]) || undefined,
+    heroLevel,
+    tierIntent: parseTierIntent(str(formData, "tierIntent")),
+    publicationStatus,
     updatedAt: new Date().toISOString(),
   };
+
+  const { CAMPAIGN_PHOTO_REGISTRY } = await import("@/content/media/campaign-photo-registry");
+  const base =
+    CAMPAIGN_PHOTO_REGISTRY.find((p) => p.id === photoId) ??
+    loadPhotoIngestDrafts().photos.find((p) => p.id === photoId);
+  if (!base) return { ok: false, message: `Unknown photo id: ${photoId}` };
+
+  const consentBlock = publicPublishBlockedByConsent({
+    photoId,
+    notes: base.notes,
+    approvedForPublic: Boolean(overlay.approvedForPublic),
+    homepageCandidate: Boolean(overlay.homepageCandidate),
+    publicationStatus: overlay.publicationStatus,
+    consentConfirmed: bool(formData, "consentConfirmed"),
+  });
+  if (consentBlock) return { ok: false, message: consentBlock };
 
   const store = loadPhotoEvidenceStore();
   store.photos[photoId] = overlay;
   savePhotoEvidenceStore(store);
 
+  let albumNote = "";
   try {
     const { refreshCountyAlbumIndex } = await import("@/lib/campaign-media/refresh-county-albums");
-    refreshCountyAlbumIndex({ materializeFolders: true });
+    const livePhotos = listCampaignPhotosLive(store);
+    const result = refreshCountyAlbumIndex({ materializeFolders: true, photos: livePhotos, photoStore: store });
+    albumNote = ` Albums: ${result.countyCount} counties / ${result.photoCount} photos` +
+      (result.missingSources ? ` (${result.missingSources} missing source file(s))` : "") +
+      ".";
   } catch {
-    // Album index is best-effort; do not fail the save.
+    albumNote = " (album refresh skipped)";
   }
 
   if (overlay.county !== "Unknown" && overlay.city !== "Unknown") {
     const { rememberConfirmedEvidenceExample } = await import("@/lib/campaign-media/evidence-ai-memory");
-    const { CAMPAIGN_PHOTO_REGISTRY } = await import("@/content/media/campaign-photo-registry");
-    const base = CAMPAIGN_PHOTO_REGISTRY.find((p) => p.id === photoId);
     rememberConfirmedEvidenceExample({
       assetKind: "photo",
       assetId: photoId,
@@ -130,15 +189,13 @@ export async function savePhotoEvidenceAction(
       eventName: overlay.eventName,
       peopleVisible: overlay.peopleVisible,
       whatThisProves: overlay.whatThisProves,
-      captionOrTitle: base?.accessibility.caption,
+      captionOrTitle: base.accessibility.caption,
       updatedAt: new Date().toISOString(),
     });
   }
 
-  revalidatePath("/admin/evidence-workbench");
-  revalidatePath("/campaign-photos");
-  revalidatePath("/");
-  return { ok: true, message: `Saved photo evidence for ${photoId}.` };
+  revalidateEvidenceSurfaces();
+  return { ok: true, message: `Saved photo evidence for ${photoId}.${albumNote}` };
 }
 
 export async function saveSpeechEvidenceAction(
@@ -151,14 +208,21 @@ export async function saveSpeechEvidenceAction(
   const speechId = str(formData, "speechId");
   if (!speechId) return { ok: false, message: "Missing speech id." };
 
-  const countiesRaw = str(formData, "counties");
+  const publicationStatus = parsePublicationStatus(str(formData, "publicationStatus"));
+  if (str(formData, "publicationStatus") && !publicationStatus) {
+    return { ok: false, message: "Invalid publication status." };
+  }
+
   const overlay: SpeechEvidenceOverlay = {
-    counties: countiesRaw
-      ? countiesRaw.split(",").map((c) => c.trim()).filter(Boolean)
-      : [],
+    counties: normalizeCountyList(str(formData, "counties")),
     city: str(formData, "city"),
+    venue: str(formData, "venue"),
+    eventDate: str(formData, "eventDate"),
+    eventName: str(formData, "eventName"),
     whatThisProves: str(formData, "whatThisProves"),
     approvedForPublic: bool(formData, "approvedForPublic"),
+    homepageCandidate: bool(formData, "homepageCandidate"),
+    publicationStatus,
     updatedAt: new Date().toISOString(),
   };
 
@@ -176,14 +240,15 @@ export async function saveSpeechEvidenceAction(
       assetId: speechId,
       county: primaryCounty,
       city: overlay.city,
+      venue: overlay.venue,
+      eventName: overlay.eventName,
       whatThisProves: overlay.whatThisProves,
       captionOrTitle: base?.title,
       updatedAt: new Date().toISOString(),
     });
   }
 
-  revalidatePath("/admin/evidence-workbench");
-  revalidatePath("/kelly-speaks");
+  revalidateEvidenceSurfaces();
   return { ok: true, message: `Saved speech evidence for ${speechId}.` };
 }
 
@@ -200,7 +265,7 @@ export async function exportCalendarMatrixAction(): Promise<{ ok: boolean; messa
   };
 }
 
-/** Re-seed calendar from local CSV or Desktop basic.ics path (local disk only). */
+/** Re-seed calendar from local CSV or ICS path (local disk only). */
 export async function importCalendarSeedAction(
   _prev: { ok: boolean; message: string } | null,
   formData: FormData,
@@ -225,11 +290,13 @@ export async function importCalendarSeedAction(
   }
 
   if (source === "ics") {
-    const icsPath = str(formData, "icsPath") || "C:\\Users\\User\\Desktop\\basic.ics";
+    const icsPath = str(formData, "icsPath");
+    if (!icsPath) {
+      return { ok: false, message: "Provide an ICS path (local file)." };
+    }
     if (!existsSync(icsPath)) {
       return { ok: false, message: `ICS not found: ${icsPath}` };
     }
-    // Convert ICS → CSV in .local/temp then run seed
     const csvPath = path.join(process.cwd(), "..", ".local", "temp", "kelly-calendar-extract.csv");
     try {
       writeIcsToCsv(icsPath, csvPath);
@@ -288,8 +355,7 @@ export async function suggestPhotoEvidenceAiAction(
 ): Promise<{ ok: boolean; message: string; suggestion?: import("@/lib/campaign-media/evidence-ai-types").EvidenceAiSuggestion }> {
   const g = await gate();
   if (!g.ok) return { ok: false, message: g.error };
-  const { CAMPAIGN_PHOTO_REGISTRY } = await import("@/content/media/campaign-photo-registry");
-  const photo = CAMPAIGN_PHOTO_REGISTRY.find((p) => p.id === photoId);
+  const photo = listCampaignPhotosLive().find((p) => p.id === photoId);
   if (!photo) return { ok: false, message: `Photo not found: ${photoId}` };
   const overlay = loadPhotoEvidenceStore().photos[photoId] ?? null;
   const { suggestPhotoEvidenceWithAi } = await import("@/lib/campaign-media/evidence-ai-suggest");
@@ -327,8 +393,7 @@ export async function buildPhotoMetadataPacketAction(
 ): Promise<{ ok: boolean; message: string; relativePath?: string }> {
   const g = await gate();
   if (!g.ok) return { ok: false, message: g.error };
-  const { CAMPAIGN_PHOTO_REGISTRY } = await import("@/content/media/campaign-photo-registry");
-  const photo = CAMPAIGN_PHOTO_REGISTRY.find((p) => p.id === photoId);
+  const photo = listCampaignPhotosLive().find((p) => p.id === photoId);
   if (!photo) return { ok: false, message: `Photo not found: ${photoId}` };
   const overlay = loadPhotoEvidenceStore().photos[photoId] ?? null;
   const { buildPhotoOutgoingMetadataPacket } = await import("@/lib/campaign-media/evidence-ai-packets");
@@ -368,17 +433,54 @@ export async function refreshCountyAlbumsAction(
   if (!g.ok) return { ok: false, message: g.error };
   try {
     const { refreshCountyAlbumIndex } = await import("@/lib/campaign-media/refresh-county-albums");
-    const result = refreshCountyAlbumIndex({ materializeFolders });
-    revalidatePath("/campaign-photos");
-    revalidatePath("/admin/evidence-workbench");
+    const store = loadPhotoEvidenceStore();
+    const result = refreshCountyAlbumIndex({
+      materializeFolders,
+      photos: listCampaignPhotosLive(store),
+      photoStore: store,
+    });
+    revalidateEvidenceSurfaces();
     return {
       ok: true,
-      message: `County albums refreshed: ${result.countyCount} counties, ${result.photoCount} photos` +
-        (materializeFolders ? `, ${result.foldersWritten} files copied into public/media/county-albums/` : ""),
+      message:
+        `County albums refreshed: ${result.countyCount} counties, ${result.photoCount} photos` +
+        (materializeFolders ? `, ${result.foldersWritten} files copied` : "") +
+        (result.missingSources ? `, ${result.missingSources} missing source(s)` : ""),
     };
   } catch (e) {
     return { ok: false, message: e instanceof Error ? e.message : "Album refresh failed." };
   }
+}
+
+export async function listPhotoIngestCandidatesAction(): Promise<{
+  ok: boolean;
+  message: string;
+  candidates?: ReturnType<typeof listDiskPhotoIngestCandidates>;
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const candidates = listDiskPhotoIngestCandidates();
+  const fresh = candidates.filter((c) => !c.alreadyInRegistry && !c.alreadyInDrafts);
+  return {
+    ok: true,
+    message: `${fresh.length} new file(s) ready to promote (${candidates.length} total in folder).`,
+    candidates,
+  };
+}
+
+export async function promotePhotoIngestAction(
+  filename: string,
+): Promise<{ ok: boolean; message: string; photoId?: string }> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const result = promoteDiskPhotoToDraft(filename);
+  if (!result.ok) return { ok: false, message: result.error };
+  revalidatePath("/admin/evidence-workbench");
+  return {
+    ok: true,
+    message: `Promoted ${filename} → draft ${result.photo.id}. Open Photos tab to label.`,
+    photoId: result.photo.id,
+  };
 }
 
 export type { CalendarPresenceStatus };

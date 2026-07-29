@@ -7,7 +7,7 @@ import { FullBleedSection } from "@/components/layout/FullBleedSection";
 import { Button } from "@/components/ui/Button";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { homepagePhotoObjectPositionClass } from "@/content/media/homepage-campaign-photo-display";
-import { buildCountyAlbums } from "@/lib/campaign-media/county-albums";
+import { listCountyAlbumsLive } from "@/lib/campaign-media/county-albums-live";
 import { pageMeta } from "@/lib/seo/metadata";
 import { cn } from "@/lib/utils";
 
@@ -20,7 +20,7 @@ export const metadata: Metadata = pageMeta({
 });
 
 export default function CampaignPhotosPage() {
-  const albums = buildCountyAlbums();
+  const albums = listCountyAlbumsLive();
 
   return (
     <>

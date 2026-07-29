@@ -8,12 +8,16 @@ import {
 } from "@/app/admin/evidence-workbench-actions";
 import type { PhotoEvidenceOverlay } from "@/lib/campaign-media/evidence-types";
 import { EVIDENCE_FIELD_CLASS } from "@/components/admin/evidence-workbench/field-styles";
+import { isEditableKeyboardTarget } from "@/components/admin/evidence-workbench/keyboard";
 
 export type PhotoWorkbenchItem = {
   id: string;
   src: string;
   caption: string;
   alt: string;
+  notes?: string;
+  requiresConsentHold?: boolean;
+  placementPreview: string[];
   base: {
     county: string;
     city: string;
@@ -26,6 +30,7 @@ export type PhotoWorkbenchItem = {
     featuredPhoto: boolean;
     heroLevel: string;
     publicationStatus: string;
+    approvedForPublic?: boolean;
   };
   overlay: PhotoEvidenceOverlay | null;
 };
@@ -35,8 +40,10 @@ type CountyOpt = { slug: string; displayName: string; shortName: string };
 type Props = {
   photos: PhotoWorkbenchItem[];
   counties: CountyOpt[];
-  initialIndex?: number;
+  initialPhotoId?: string;
 };
+
+type Filter = "all" | "unknown" | "needsApproval" | "draft" | "approved" | "homepage";
 
 function field(overlay: PhotoEvidenceOverlay | null, base: string, key: keyof PhotoEvidenceOverlay): string {
   const o = overlay?.[key];
@@ -44,11 +51,58 @@ function field(overlay: PhotoEvidenceOverlay | null, base: string, key: keyof Ph
   return base === "Unknown" ? "" : base;
 }
 
-export function EvidencePhotosPanel({ photos, counties, initialIndex = 0 }: Props) {
-  const [index, setIndex] = useState(Math.min(Math.max(0, initialIndex), Math.max(0, photos.length - 1)));
+function effectiveCounty(item: PhotoWorkbenchItem): string {
+  return (item.overlay?.county ?? item.base.county || "Unknown").trim() || "Unknown";
+}
+
+function effectiveApproved(item: PhotoWorkbenchItem): boolean {
+  if (item.overlay?.approvedForPublic !== undefined) return item.overlay.approvedForPublic;
+  return Boolean(item.base.approvedForPublic);
+}
+
+function effectivePub(item: PhotoWorkbenchItem): string {
+  return item.overlay?.publicationStatus ?? item.base.publicationStatus;
+}
+
+export function EvidencePhotosPanel({ photos, counties, initialPhotoId }: Props) {
+  const initialIndex = Math.max(
+    0,
+    initialPhotoId ? photos.findIndex((p) => p.id === initialPhotoId) : 0,
+  );
+  const [filter, setFilter] = useState<Filter>("unknown");
+  const [query, setQuery] = useState("");
+  const [index, setIndex] = useState(initialIndex >= 0 ? initialIndex : 0);
   const [message, setMessage] = useState("");
   const [pending, start] = useTransition();
-  const photo = photos[index];
+  const [dirty, setDirty] = useState(false);
+
+  const filtered = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    return photos.filter((p) => {
+      const county = effectiveCounty(p);
+      const approved = effectiveApproved(p);
+      const pub = effectivePub(p);
+      if (filter === "unknown" && county !== "Unknown") return false;
+      if (filter === "needsApproval" && (approved || pub === "APPROVED" || pub === "PUBLISHED")) return false;
+      if (filter === "draft" && !(pub === "DRAFT" || pub === "IN_REVIEW")) return false;
+      if (filter === "approved" && !(approved || pub === "APPROVED" || pub === "PUBLISHED")) return false;
+      if (filter === "homepage" && !(p.overlay?.homepageCandidate ?? p.base.homepageCandidate)) return false;
+      if (!q) return true;
+      return (
+        p.id.toLowerCase().includes(q) ||
+        p.caption.toLowerCase().includes(q) ||
+        county.toLowerCase().includes(q) ||
+        (p.overlay?.eventName ?? p.base.eventName).toLowerCase().includes(q)
+      );
+    });
+  }, [photos, filter, query]);
+
+  useEffect(() => {
+    if (filtered.length === 0) return;
+    if (!filtered[index]) setIndex(0);
+  }, [filtered, index]);
+
+  const photo = filtered[Math.min(index, Math.max(0, filtered.length - 1))];
 
   const initialForm = useMemo(() => {
     if (!photo) return null;
@@ -62,12 +116,13 @@ export function EvidencePhotosPanel({ photos, counties, initialIndex = 0 }: Prop
       photographer: field(o, photo.base.photographer, "photographer"),
       peopleVisible: (o?.peopleVisible?.length ? o.peopleVisible : photo.base.peopleVisible).join(", "),
       whatThisProves: o?.whatThisProves ?? "",
-      approvedForPublic: o?.approvedForPublic ?? false,
+      approvedForPublic: o?.approvedForPublic ?? photo.base.approvedForPublic ?? false,
       homepageCandidate: o?.homepageCandidate ?? photo.base.homepageCandidate,
       featuredPhoto: o?.featuredPhoto ?? photo.base.featuredPhoto,
       heroLevel: o?.heroLevel ?? photo.base.heroLevel,
       tierIntent: o?.tierIntent ?? "",
       publicationStatus: o?.publicationStatus ?? photo.base.publicationStatus,
+      consentConfirmed: false,
     };
   }, [photo]);
 
@@ -75,23 +130,57 @@ export function EvidencePhotosPanel({ photos, counties, initialIndex = 0 }: Prop
 
   useEffect(() => {
     setForm(initialForm);
+    setDirty(false);
   }, [initialForm]);
+
+  function go(next: number) {
+    if (dirty && !window.confirm("Discard unsaved photo edits?")) return;
+    setIndex(next);
+  }
 
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
-      if (e.key === "ArrowLeft") setIndex((i) => Math.max(0, i - 1));
-      if (e.key === "ArrowRight") setIndex((i) => Math.min(photos.length - 1, i + 1));
+      if (isEditableKeyboardTarget(e.target)) return;
+      if (e.key === "ArrowLeft" || e.key === "j") {
+        e.preventDefault();
+        setIndex((i) => {
+          if (dirty && !window.confirm("Discard unsaved photo edits?")) return i;
+          return Math.max(0, i - 1);
+        });
+      }
+      if (e.key === "ArrowRight" || e.key === "k") {
+        e.preventDefault();
+        setIndex((i) => {
+          if (dirty && !window.confirm("Discard unsaved photo edits?")) return i;
+          return Math.min(filtered.length - 1, i + 1);
+        });
+      }
+      if (e.key === "s" && (e.metaKey || e.ctrlKey)) {
+        e.preventDefault();
+        save();
+      }
     }
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [photos.length]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- save closes over latest form
+  }, [filtered.length, dirty, form, photo]);
 
   if (!photo || !form) {
-    return <p className="font-body text-sm text-kelly-slate">No campaign photos in registry.</p>;
+    return (
+      <div className="space-y-3">
+        <FilterBar filter={filter} setFilter={setFilter} query={query} setQuery={setQuery} counts={photos.length} />
+        <p className="font-body text-sm text-[#364272]">No photos match this filter.</p>
+      </div>
+    );
+  }
+
+  function patchForm<K extends keyof NonNullable<typeof form>>(key: K, value: NonNullable<typeof form>[K]) {
+    setForm((prev) => (prev ? { ...prev, [key]: value } : prev));
+    setDirty(true);
   }
 
   function save() {
-    if (!form) return;
+    if (!form || !photo) return;
     const photoId = photo.id;
     const snapshot = form;
     start(async () => {
@@ -108,11 +197,13 @@ export function EvidencePhotosPanel({ photos, counties, initialIndex = 0 }: Prop
       if (snapshot.approvedForPublic) fd.set("approvedForPublic", "on");
       if (snapshot.homepageCandidate) fd.set("homepageCandidate", "on");
       if (snapshot.featuredPhoto) fd.set("featuredPhoto", "on");
+      if (snapshot.consentConfirmed) fd.set("consentConfirmed", "on");
       fd.set("heroLevel", snapshot.heroLevel);
       fd.set("tierIntent", snapshot.tierIntent);
       fd.set("publicationStatus", snapshot.publicationStatus);
       const res = await savePhotoEvidenceAction(null, fd);
       setMessage(res.message);
+      if (res.ok) setDirty(false);
     });
   }
 
@@ -137,216 +228,308 @@ export function EvidencePhotosPanel({ photos, counties, initialIndex = 0 }: Prop
           whatThisProves: s.whatThisProves || prev.whatThisProves,
         };
       });
-      if (s.warnings.length) {
-        setMessage(`${res.message}\nWarnings: ${s.warnings.join("; ")}`);
-      }
+      setDirty(true);
+      if (s.warnings.length) setMessage(`${res.message}\nWarnings: ${s.warnings.join("; ")}`);
     });
   }
 
   function buildPacket() {
     const photoId = photo.id;
-    const confirmed =
-      Boolean(form?.county && form.county !== "Unknown" && form.city && form.city !== "Unknown");
+    const confirmed = Boolean(
+      form.county?.trim() &&
+        form.county !== "Unknown" &&
+        form.city?.trim() &&
+        form.city !== "Unknown",
+    );
     start(async () => {
       const res = await buildPhotoMetadataPacketAction(photoId, confirmed);
       setMessage(res.message);
     });
   }
 
+  const FILTERS: { id: Filter; label: string }[] = [
+    { id: "unknown", label: "Unknown county" },
+    { id: "needsApproval", label: "Needs approval" },
+    { id: "draft", label: "Draft" },
+    { id: "approved", label: "Approved" },
+    { id: "homepage", label: "Homepage" },
+    { id: "all", label: "All" },
+  ];
+
   return (
-    <div className="grid gap-6 lg:grid-cols-2">
-      <div>
-        <div className="flex items-center justify-between gap-2">
+    <div className="space-y-4">
+      <FilterBar filter={filter} setFilter={setFilter} query={query} setQuery={setQuery} counts={filtered.length} />
+      <div className="flex flex-wrap gap-2">
+        {FILTERS.map((f) => (
           <button
+            key={f.id}
             type="button"
-            className="rounded border border-kelly-text/15 px-3 py-1.5 font-body text-sm"
-            disabled={index <= 0}
-            onClick={() => setIndex((i) => i - 1)}
+            onClick={() => {
+              setFilter(f.id);
+              setIndex(0);
+            }}
+            className={`rounded-md border px-3 py-1.5 font-body text-xs font-semibold ${
+              filter === f.id
+                ? "border-[#000066] bg-[#000066] text-white"
+                : "border-[#8eb6dc] bg-white text-[#12124a]"
+            }`}
           >
-            ← Prev
+            {f.label}
           </button>
-          <p className="font-body text-xs text-kelly-slate">
-            {index + 1} / {photos.length} · ← → keys
-          </p>
-          <button
-            type="button"
-            className="rounded border border-kelly-text/15 px-3 py-1.5 font-body text-sm"
-            disabled={index >= photos.length - 1}
-            onClick={() => setIndex((i) => i + 1)}
-          >
-            Next →
-          </button>
-        </div>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={photo.src}
-          alt={photo.alt}
-          className="mt-3 max-h-[28rem] w-full rounded-lg border border-kelly-text/10 object-contain bg-kelly-fog/40"
-        />
-        <p className="mt-2 font-mono text-xs text-kelly-slate">{photo.id}</p>
-        <p className="mt-1 font-body text-sm text-kelly-text/80">{photo.caption}</p>
+        ))}
       </div>
 
-      <div className="space-y-3 rounded-lg border border-kelly-text/10 bg-white p-4">
-        <h3 className="font-heading text-lg font-bold">Evidence fields</h3>
-        <p className="font-body text-xs text-kelly-slate">Leave blank / Unknown — never invent geography.</p>
-
-        <label className="block font-body text-xs font-semibold">
-          County
-          <select
-            className={EVIDENCE_FIELD_CLASS}
-            value={form.county}
-            onChange={(e) => setForm({ ...form, county: e.target.value })}
-          >
-            <option value="">Unknown</option>
-            {counties.map((c) => (
-              <option key={c.slug} value={c.shortName}>
-                {c.displayName}
-              </option>
-            ))}
-          </select>
-        </label>
-
-        {(
-          [
-            ["city", "City"],
-            ["venue", "Venue"],
-            ["eventDate", "Event date"],
-            ["eventName", "Event name"],
-            ["photographer", "Photographer"],
-            ["peopleVisible", "People (comma-separated)"],
-          ] as const
-        ).map(([key, label]) => (
-          <label key={key} className="block font-body text-xs font-semibold">
-            {label}
-            <input
-              className={EVIDENCE_FIELD_CLASS}
-              value={form[key]}
-              onChange={(e) => setForm({ ...form, [key]: e.target.value })}
-            />
-          </label>
-        ))}
-
-        <label className="block font-body text-xs font-semibold">
-          What this proves
-          <textarea
-            className={EVIDENCE_FIELD_CLASS}
-            rows={3}
-            value={form.whatThisProves}
-            onChange={(e) => setForm({ ...form, whatThisProves: e.target.value })}
+      <div className="grid gap-6 lg:grid-cols-2">
+        <div>
+          <div className="flex items-center justify-between gap-2">
+            <button
+              type="button"
+              className="rounded border-2 border-[#8eb6dc] bg-white px-3 py-1.5 font-body text-sm text-[#12124a]"
+              disabled={index <= 0}
+              onClick={() => go(index - 1)}
+            >
+              ← Prev
+            </button>
+            <p className="font-body text-xs text-[#364272]">
+              {index + 1} / {filtered.length} · ← → or j/k · Ctrl+S save
+            </p>
+            <button
+              type="button"
+              className="rounded border-2 border-[#8eb6dc] bg-white px-3 py-1.5 font-body text-sm text-[#12124a]"
+              disabled={index >= filtered.length - 1}
+              onClick={() => go(index + 1)}
+            >
+              Next →
+            </button>
+          </div>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={photo.src}
+            alt={photo.alt}
+            className="mt-3 max-h-[28rem] w-full rounded-lg border border-[#8eb6dc]/40 object-contain bg-[#f4f7fc]"
           />
-        </label>
+          <p className="mt-2 font-mono text-xs text-[#364272]">{photo.id}</p>
+          <p className="mt-1 font-body text-sm text-[#12124a]">{photo.caption}</p>
+          <div className="mt-3 rounded-lg border-2 border-[#000066]/15 bg-white p-3">
+            <p className="font-heading text-xs font-bold uppercase tracking-wide text-[#000066]">
+              Placement preview
+            </p>
+            <ul className="mt-2 list-disc space-y-1 pl-4 font-body text-xs text-[#364272]">
+              {photo.placementPreview.map((s) => (
+                <li key={s}>{s}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
 
-        <div className="flex flex-wrap gap-4 font-body text-sm">
+        <div className="space-y-3 rounded-lg border-2 border-[#000066]/15 bg-white p-4 text-[#12124a]">
+          <h3 className="font-heading text-lg font-bold text-[#000066]">Evidence fields</h3>
+          <p className="font-body text-xs text-[#364272]">
+            Leave blank / Unknown — never invent geography. Approved for public is required for county albums.
+          </p>
+
+          <label className="block font-body text-xs font-semibold text-[#12124a]">
+            County
+            <select
+              className={EVIDENCE_FIELD_CLASS}
+              value={form.county}
+              onChange={(e) => patchForm("county", e.target.value)}
+            >
+              <option value="">Unknown</option>
+              {counties.map((c) => (
+                <option key={c.slug} value={c.shortName}>
+                  {c.displayName}
+                </option>
+              ))}
+            </select>
+          </label>
+
           {(
             [
-              ["approvedForPublic", "Approved for public"],
-              ["homepageCandidate", "Homepage candidate"],
-              ["featuredPhoto", "Lead / featured"],
+              ["city", "City"],
+              ["venue", "Venue"],
+              ["eventDate", "Event date"],
+              ["eventName", "Event name"],
+              ["photographer", "Photographer"],
+              ["peopleVisible", "People (comma-separated)"],
             ] as const
           ).map(([key, label]) => (
-            <label key={key} className="inline-flex items-center gap-2">
-              <input
-                type="checkbox"
-                checked={form[key]}
-                onChange={(e) => setForm({ ...form, [key]: e.target.checked })}
-              />
+            <label key={key} className="block font-body text-xs font-semibold text-[#12124a]">
               {label}
+              <input
+                className={EVIDENCE_FIELD_CLASS}
+                value={form[key]}
+                onChange={(e) => patchForm(key, e.target.value)}
+              />
             </label>
           ))}
-        </div>
 
-        <div className="grid gap-3 sm:grid-cols-3">
-          <label className="block font-body text-xs font-semibold">
-            Hero level
-            <select
+          <label className="block font-body text-xs font-semibold text-[#12124a]">
+            What this proves
+            <textarea
               className={EVIDENCE_FIELD_CLASS}
-              value={form.heroLevel}
-              onChange={(e) => setForm({ ...form, heroLevel: e.target.value })}
-            >
-              {["UNREVIEWED", "SUPPORTING", "FEATURE", "HERO"].map((v) => (
-                <option key={v} value={v}>
-                  {v}
-                </option>
-              ))}
-            </select>
+              rows={3}
+              value={form.whatThisProves}
+              onChange={(e) => patchForm("whatThisProves", e.target.value)}
+            />
           </label>
-          <label className="block font-body text-xs font-semibold">
-            Tier intent
-            <select
-              className={EVIDENCE_FIELD_CLASS}
-              value={form.tierIntent}
-              onChange={(e) =>
-                setForm({
-                  ...form,
-                  tierIntent: e.target.value as "" | "Gold" | "Silver" | "Archive",
-                })
-              }
-            >
-              <option value="">—</option>
-              <option value="Gold">Gold</option>
-              <option value="Silver">Silver</option>
-              <option value="Archive">Archive</option>
-            </select>
-          </label>
-          <label className="block font-body text-xs font-semibold">
-            Publication
-            <select
-              className={EVIDENCE_FIELD_CLASS}
-              value={form.publicationStatus}
-              onChange={(e) => setForm({ ...form, publicationStatus: e.target.value })}
-            >
-              {["DRAFT", "IN_REVIEW", "APPROVED", "PUBLISHED", "ARCHIVED"].map((v) => (
-                <option key={v} value={v}>
-                  {v}
-                </option>
-              ))}
-            </select>
-          </label>
-        </div>
 
-        <div className="flex flex-wrap gap-2">
-          <button
-            type="button"
-            disabled={pending}
-            onClick={suggestAi}
-            className="rounded-md border border-kelly-navy px-4 py-2 font-body text-sm font-bold text-kelly-navy disabled:opacity-50"
-          >
-            Suggest with AI
-          </button>
-          <button
-            type="button"
-            disabled={pending}
-            onClick={save}
-            className="rounded-md bg-kelly-navy px-4 py-2 font-body text-sm font-bold text-white disabled:opacity-50"
-          >
-            Save photo evidence
-          </button>
-          <button
-            type="button"
-            disabled={pending}
-            onClick={buildPacket}
-            className="rounded-md border border-kelly-text/20 px-4 py-2 font-body text-sm font-semibold disabled:opacity-50"
-          >
-            Build outgoing metadata packet
-          </button>
-          <button
-            type="button"
-            disabled={pending}
-            onClick={() => {
-              start(async () => {
-                const { refreshCountyAlbumsAction } = await import("@/app/admin/evidence-workbench-actions");
-                const res = await refreshCountyAlbumsAction(true);
-                setMessage(res.message);
-              });
-            }}
-            className="rounded-md border border-kelly-text/20 px-4 py-2 font-body text-sm font-semibold disabled:opacity-50"
-          >
-            Rebuild county folders
-          </button>
+          <div className="flex flex-wrap gap-4 font-body text-sm text-[#12124a]">
+            {(
+              [
+                ["approvedForPublic", "Approved for public"],
+                ["homepageCandidate", "Homepage candidate"],
+                ["featuredPhoto", "Lead / featured"],
+              ] as const
+            ).map(([key, label]) => (
+              <label key={key} className="inline-flex items-center gap-2">
+                <input
+                  type="checkbox"
+                  checked={form[key]}
+                  onChange={(e) => patchForm(key, e.target.checked)}
+                />
+                {label}
+              </label>
+            ))}
+          </div>
+
+          {photo.requiresConsentHold ? (
+            <label className="flex items-start gap-2 rounded border-2 border-[#ca913d] bg-[#fff8ef] px-3 py-2 font-body text-sm text-[#12124a]">
+              <input
+                type="checkbox"
+                className="mt-1"
+                checked={form.consentConfirmed}
+                onChange={(e) => patchForm("consentConfirmed", e.target.checked)}
+              />
+              <span>
+                Consent hold — confirm Steve/family approval before public or homepage flags.
+              </span>
+            </label>
+          ) : null}
+
+          <div className="grid gap-3 sm:grid-cols-3">
+            <label className="block font-body text-xs font-semibold">
+              Hero level
+              <select
+                className={EVIDENCE_FIELD_CLASS}
+                value={form.heroLevel}
+                onChange={(e) => patchForm("heroLevel", e.target.value)}
+              >
+                {["UNREVIEWED", "SUPPORTING", "FEATURE", "HERO"].map((v) => (
+                  <option key={v} value={v}>
+                    {v}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <label className="block font-body text-xs font-semibold">
+              Tier intent
+              <select
+                className={EVIDENCE_FIELD_CLASS}
+                value={form.tierIntent}
+                onChange={(e) =>
+                  patchForm("tierIntent", e.target.value as "" | "Gold" | "Silver" | "Archive")
+                }
+              >
+                <option value="">—</option>
+                <option value="Gold">Gold</option>
+                <option value="Silver">Silver</option>
+                <option value="Archive">Archive</option>
+              </select>
+            </label>
+            <label className="block font-body text-xs font-semibold">
+              Publication
+              <select
+                className={EVIDENCE_FIELD_CLASS}
+                value={form.publicationStatus}
+                onChange={(e) => patchForm("publicationStatus", e.target.value)}
+              >
+                {["DRAFT", "IN_REVIEW", "APPROVED", "PUBLISHED", "ARCHIVED"].map((v) => (
+                  <option key={v} value={v}>
+                    {v}
+                  </option>
+                ))}
+              </select>
+            </label>
+          </div>
+
+          <div className="flex flex-wrap gap-2">
+            <button
+              type="button"
+              disabled={pending}
+              onClick={suggestAi}
+              className="rounded-md border-2 border-[#000066] bg-white px-4 py-2 font-body text-sm font-bold text-[#000066] disabled:opacity-50"
+            >
+              Suggest with AI
+            </button>
+            <button
+              type="button"
+              disabled={pending}
+              onClick={save}
+              className="rounded-md bg-[#000066] px-4 py-2 font-body text-sm font-bold text-white disabled:opacity-50"
+            >
+              Save photo evidence
+            </button>
+            <button
+              type="button"
+              disabled={pending}
+              onClick={buildPacket}
+              className="rounded-md border-2 border-[#8eb6dc] bg-white px-4 py-2 font-body text-sm font-semibold text-[#12124a] disabled:opacity-50"
+            >
+              Build outgoing metadata packet
+            </button>
+            <button
+              type="button"
+              disabled={pending}
+              onClick={() => {
+                start(async () => {
+                  const { refreshCountyAlbumsAction } = await import("@/app/admin/evidence-workbench-actions");
+                  const res = await refreshCountyAlbumsAction(true);
+                  setMessage(res.message);
+                });
+              }}
+              className="rounded-md border-2 border-[#8eb6dc] bg-white px-4 py-2 font-body text-sm font-semibold text-[#12124a] disabled:opacity-50"
+            >
+              Rebuild county folders
+            </button>
+          </div>
+          {message ? (
+            <p className="whitespace-pre-wrap font-body text-sm text-[#364272]">{message}</p>
+          ) : null}
         </div>
-        {message ? <p className="font-body text-sm text-kelly-slate whitespace-pre-wrap">{message}</p> : null}
       </div>
+    </div>
+  );
+}
+
+function FilterBar({
+  filter,
+  setFilter,
+  query,
+  setQuery,
+  counts,
+}: {
+  filter: Filter;
+  setFilter: (f: Filter) => void;
+  query: string;
+  setQuery: (q: string) => void;
+  counts: number;
+}) {
+  return (
+    <div className="flex flex-wrap items-center gap-3">
+      <label className="min-w-[12rem] flex-1 font-body text-xs font-semibold text-[#12124a]">
+        Search
+        <input
+          className={EVIDENCE_FIELD_CLASS}
+          value={query}
+          onChange={(e) => {
+            setQuery(e.target.value);
+            setFilter(filter);
+          }}
+          placeholder="id, caption, county, event"
+        />
+      </label>
+      <p className="font-body text-xs text-[#364272]">{counts} in view</p>
     </div>
   );
 }

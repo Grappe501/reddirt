@@ -88,8 +88,10 @@ Operator UI (localhost): **`/admin/evidence-workbench`**
 **County albums (public delivery):**
 
 - Confirmed county photos group into **county → event** albums on `/campaign-photos` and `/campaign-photos/{county-slug}`  
-- Saving photo evidence refreshes `data/campaign-media/county-album-index.json` and copies stills into `public/media/county-albums/{county}/{event}/`  
-- Public CTAs use album URLs — not `/counties/...` command pages  
+- Saving photo evidence refreshes albums from **disk** (not stale webpack JSON) via `listCampaignPhotosLive` / `refreshCountyAlbumIndex({ photos })`  
+- Uncheck **Approved for public** to hold a still off albums; legacy FEATURE stills with confirmed geo remain until explicitly denied  
+- Ingest tab promotes files from `public/media/campaign-photos/` into `photo-ingest-drafts.json` for labeling  
+- Local admin on loopback skips passphrase in development; `x-forwarded-host` is not trusted  
 
 ---
 

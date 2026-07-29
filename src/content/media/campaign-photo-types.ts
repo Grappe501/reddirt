@@ -44,6 +44,8 @@ export type CampaignPhotoCampaignMetadata = {
   relatedPagePaths: string[];
   homepageCandidate: boolean;
   featuredPhoto: boolean;
+  /** Explicit public gate from Evidence Workbench (optional on legacy rows). */
+  approvedForPublic?: boolean;
 };
 
 export type CampaignPhotoAccessibility = {

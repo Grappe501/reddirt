@@ -1,16 +1,18 @@
 /**
  * File-backed homepage campaign photo curation (Slice 2).
  * Curated IDs stay first; Evidence Workbench homepage candidates append after Save.
- * @see docs/website/HOMEPAGE_PHOTOS_SLICE_2_ERNIE_BRIEF.md
- * @see content/media/strategic-photo-placements.ts
+ * Uses live disk overlays on the server (not stale webpack JSON).
  */
 
 import type { CampaignPhotoRecord } from "@/content/media/campaign-photo-types";
-import { getCampaignPhotoById, listCampaignPhotos } from "@/content/media/campaign-photo-registry";
 import {
-  listEvidenceAcrossArkansasPhotos,
-  listEvidenceHomepageCandidates,
+  listEvidenceAcrossArkansasPhotosFrom,
+  listEvidenceHomepageCandidatesFrom,
 } from "@/content/media/strategic-photo-placements";
+import {
+  getCampaignPhotoByIdLive,
+  listCampaignPhotosLive,
+} from "@/lib/campaign-media/list-campaign-photos-live";
 
 /** Ordered curated set for Latest Campaign Photos (6–10 FEATURE stills). */
 export const HOMEPAGE_CAMPAIGN_PHOTO_IDS = [
@@ -47,14 +49,18 @@ export const HOMEPAGE_HERO_PHOTO_ID: HomepageCampaignPhotoId | null = null;
 const HOMEPAGE_GALLERY_MAX = 12;
 const ACROSS_ARKANSAS_MAX = 8;
 
-function selectHomepagePhotos(ids: readonly string[]): CampaignPhotoRecord[] {
-  const byId = new Map(listCampaignPhotos().map((p) => [p.id, p]));
+function selectHomepagePhotos(
+  ids: readonly string[],
+  photos: CampaignPhotoRecord[],
+): CampaignPhotoRecord[] {
+  const byId = new Map(photos.map((p) => [p.id, p]));
   const out: CampaignPhotoRecord[] = [];
   for (const id of ids) {
     const photo = byId.get(id);
     if (!photo) continue;
     if (photo.heroLevel !== "FEATURE" && photo.heroLevel !== "HERO") continue;
     if (!photo.campaign.homepageCandidate) continue;
+    if (photo.campaign.approvedForPublic === false) continue;
     out.push(photo);
   }
   return out;
@@ -77,17 +83,19 @@ function mergeUnique(
 }
 
 export function listHomepageCampaignPhotos(): CampaignPhotoRecord[] {
+  const photos = listCampaignPhotosLive();
   return mergeUnique(
-    selectHomepagePhotos(HOMEPAGE_CAMPAIGN_PHOTO_IDS),
-    listEvidenceHomepageCandidates(HOMEPAGE_GALLERY_MAX),
+    selectHomepagePhotos(HOMEPAGE_CAMPAIGN_PHOTO_IDS, photos),
+    listEvidenceHomepageCandidatesFrom(photos, HOMEPAGE_GALLERY_MAX),
     HOMEPAGE_GALLERY_MAX,
   );
 }
 
 export function listHomepageAcrossArkansasPhotos(): CampaignPhotoRecord[] {
+  const photos = listCampaignPhotosLive();
   return mergeUnique(
-    selectHomepagePhotos(HOMEPAGE_ACROSS_ARKANSAS_PHOTO_IDS),
-    listEvidenceAcrossArkansasPhotos(ACROSS_ARKANSAS_MAX),
+    selectHomepagePhotos(HOMEPAGE_ACROSS_ARKANSAS_PHOTO_IDS, photos),
+    listEvidenceAcrossArkansasPhotosFrom(photos, ACROSS_ARKANSAS_MAX),
     ACROSS_ARKANSAS_MAX,
   );
 }
@@ -132,18 +140,19 @@ export function listAcrossArkansasPresencePlaces(): AcrossArkansasPresencePlace[
 }
 
 export function getHomepageMeetKellyPhoto(): CampaignPhotoRecord | null {
-  const photo = getCampaignPhotoById(HOMEPAGE_MEET_KELLY_PHOTO_ID);
+  const photo = getCampaignPhotoByIdLive(HOMEPAGE_MEET_KELLY_PHOTO_ID);
   if (!photo?.campaign.homepageCandidate) return null;
+  if (photo.campaign.approvedForPublic === false) return null;
   return photo;
 }
 
 export function getHomepageHeroPhoto(): CampaignPhotoRecord | null {
   if (!HOMEPAGE_HERO_PHOTO_ID) return null;
-  const photo = getCampaignPhotoById(HOMEPAGE_HERO_PHOTO_ID);
+  const photo = getCampaignPhotoByIdLive(HOMEPAGE_HERO_PHOTO_ID);
   if (!photo?.campaign.homepageCandidate) return null;
+  if (photo.campaign.approvedForPublic === false) return null;
   return photo;
 }
 
 /** County pages may link only when county is confirmed (not Unknown). */
 export { homepagePhotoCountyHref, homepagePhotoObjectPositionClass } from "@/content/media/homepage-campaign-photo-display";
-

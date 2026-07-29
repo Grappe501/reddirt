@@ -1,6 +1,64 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-29T18:00:00.000Z",
+  "updatedAt": "2026-07-29T19:05:37.656Z",
   "purpose": "Local Evidence Workbench photo confirmations (overlay on campaign-photo-registry).",
-  "photos": {}
+  "photos": {
+    "afl-cio-pre-event-networking-20260629": {
+      "county": "Pulaski",
+      "city": "Unknown",
+      "venue": "Unknown",
+      "eventDate": "Unknown",
+      "eventName": "AFL-CIO Meeting",
+      "photographer": "Unknown",
+      "peopleVisible": [
+        "Kelly Grappe"
+      ],
+      "whatThisProves": "This was when Kelly spoke to the AFL-CIO union members and they decided after we left to endorse Kelly in the Secretary of State race",
+      "approvedForPublic": false,
+      "homepageCandidate": true,
+      "featuredPhoto": true,
+      "heroLevel": "FEATURE",
+      "tierIntent": "",
+      "publicationStatus": "DRAFT",
+      "updatedAt": "2026-07-29T19:00:14.225Z"
+    },
+    "people-over-politics-supporter-selfie-20260725": {
+      "county": "Sharp",
+      "city": "Cave City",
+      "venue": "Outdoor parking lot (community venue)",
+      "eventDate": "Unknown",
+      "eventName": "Cave City Watermelon Festival 2026",
+      "photographer": "Steve Grappe",
+      "peopleVisible": [
+        "Kelly Grappe"
+      ],
+      "whatThisProves": "Volunteers pulling together - volunteers brought the truck and trailer and helped decorate - then we passed out watermelon fans and gave away candy in the parade",
+      "approvedForPublic": false,
+      "homepageCandidate": false,
+      "featuredPhoto": true,
+      "heroLevel": "FEATURE",
+      "tierIntent": "",
+      "publicationStatus": "DRAFT",
+      "updatedAt": "2026-07-29T19:04:12.179Z"
+    },
+    "vfw-hall-voter-conversation-20260725": {
+      "county": "Unknown",
+      "city": "Cave City",
+      "venue": "VFW / gymnasium-style hall",
+      "eventDate": "Unknown",
+      "eventName": "Cave City Watermelon Festival 26",
+      "photographer": "Steve Grappe",
+      "peopleVisible": [
+        "Kelly Grappe"
+      ],
+      "whatThisProves": "Her great+ grandfather started the town and she has recentloy taken over th library and brought new life to the community.",
+      "approvedForPublic": false,
+      "homepageCandidate": false,
+      "featuredPhoto": true,
+      "heroLevel": "FEATURE",
+      "tierIntent": "",
+      "publicationStatus": "DRAFT",
+      "updatedAt": "2026-07-29T19:05:37.655Z"
+    }
+  }
 }

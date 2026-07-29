@@ -24,7 +24,8 @@ import { brandMediaFromLegacySite } from "@/config/brand-media";
 import { TrailPhotosShowcase } from "@/components/campaign-trail/TrailPhotosShowcase";
 import { StrategicCountyPhotoStrip } from "@/components/from-the-road/StrategicCountyPhotoStrip";
 import { trailPhotosForSlot } from "@/content/media/campaign-trail-assignments";
-import { listCountyAlbumCoverPhotos } from "@/content/media/strategic-photo-placements";
+import { listCountyAlbumCoverPhotosFrom } from "@/content/media/strategic-photo-placements";
+import { listCampaignPhotosLive } from "@/lib/campaign-media/list-campaign-photos-live";
 import { onTheRoadPageMeta } from "@/content/road/on-the-road";
 import { cn } from "@/lib/utils";
 
@@ -44,7 +45,7 @@ export default async function FromTheRoadPage() {
     listUpcomingPublicCampaignEventsForHomepage(4),
   ]);
   const trailGallery = trailPhotosForSlot("fromTheRoad", { fromTheRoadMax: 96 });
-  const countyAlbumCovers = listCountyAlbumCoverPhotos(12);
+  const countyAlbumCovers = listCountyAlbumCoverPhotosFrom(listCampaignPhotosLive(), 12);
   const hasEmbeds = fromTheRoadHasLiveEmbeds(embedsConfig);
   const hasFieldSocial = social.length > 0;
   const hasNotebook = posts.length > 0;

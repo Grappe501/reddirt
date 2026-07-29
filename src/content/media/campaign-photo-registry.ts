@@ -3283,7 +3283,7 @@ export function listCampaignPhotosByCounty(county: string): CampaignPhotoRecord[
 }
 
 export function listFeatureCandidates(): CampaignPhotoRecord[] {
-  return CAMPAIGN_PHOTO_REGISTRY.filter(
+  return listCampaignPhotos().filter(
     (p) =>
       p.heroLevel === "FEATURE" &&
       (p.publicationStatus === "DRAFT" ||
@@ -3294,7 +3294,7 @@ export function listFeatureCandidates(): CampaignPhotoRecord[] {
 }
 
 export function listHeroCandidates(): CampaignPhotoRecord[] {
-  return CAMPAIGN_PHOTO_REGISTRY.filter(
+  return listCampaignPhotos().filter(
     (p) => p.heroLevel === "HERO" && (p.publicationStatus === "APPROVED" || p.publicationStatus === "PUBLISHED"),
   );
 }

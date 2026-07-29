@@ -1,35 +1,43 @@
 import Link from "next/link";
-import { CAMPAIGN_PHOTO_REGISTRY } from "@/content/media/campaign-photo-registry";
 import { CAMPAIGN_MEDIA_REGISTRY } from "@/content/media/campaign-media-registry";
 import { EvidenceCalendarPanel } from "@/components/admin/evidence-workbench/EvidenceCalendarPanel";
+import { EvidenceIngestPanel } from "@/components/admin/evidence-workbench/EvidenceIngestPanel";
 import { EvidencePhotosPanel } from "@/components/admin/evidence-workbench/EvidencePhotosPanel";
 import { EvidenceSpeechesPanel } from "@/components/admin/evidence-workbench/EvidenceSpeechesPanel";
+import { strategicPlacementNotes } from "@/content/media/strategic-photo-placements";
+import { photoPublicSurfacesPreview } from "@/lib/campaign-media/county-albums-live";
 import {
   loadCalendarPresenceStore,
   loadPhotoEvidenceStore,
   loadSpeechEvidenceStore,
 } from "@/lib/campaign-media/evidence-store";
+import { listCampaignPhotosLive } from "@/lib/campaign-media/list-campaign-photos-live";
+import { listDiskPhotoIngestCandidates } from "@/lib/campaign-media/photo-ingest";
+import { photoRequiresConsentHold } from "@/lib/campaign-media/photo-consent-hold";
 import { ARKANSAS_COUNTY_REGISTRY } from "@/lib/county/arkansas-county-registry";
-import { strategicPlacementNotes } from "@/content/media/strategic-photo-placements";
 import { cn } from "@/lib/utils";
 
 type Props = {
-  searchParams: Promise<{ tab?: string }>;
+  searchParams: Promise<{ tab?: string; id?: string }>;
 };
 
 const TABS = [
   { id: "calendar", label: "Calendar" },
   { id: "photos", label: "Photos" },
-  { id: "speeches", label: "Speeches" },
+  { id: "speeches", label: "Videos" },
+  { id: "ingest", label: "Ingest" },
 ] as const;
 
 export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
   const sp = await searchParams;
-  const tab = TABS.some((t) => t.id === sp.tab) ? (sp.tab as (typeof TABS)[number]["id"]) : "calendar";
+  const tab = TABS.some((t) => t.id === sp.tab) ? (sp.tab as (typeof TABS)[number]["id"]) : "photos";
+  const focusId = sp.id?.trim() || undefined;
 
   const calendar = loadCalendarPresenceStore();
   const photoStore = loadPhotoEvidenceStore();
   const speechStore = loadSpeechEvidenceStore();
+  const livePhotos = listCampaignPhotosLive(photoStore);
+  const ingestCandidates = listDiskPhotoIngestCandidates();
 
   const counties = ARKANSAS_COUNTY_REGISTRY.map((c) => ({
     slug: c.slug,
@@ -37,11 +45,23 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
     shortName: c.displayName.replace(/\s+County$/i, ""),
   }));
 
-  const photos = CAMPAIGN_PHOTO_REGISTRY.map((p) => ({
+  const unknownCounty = livePhotos.filter((p) => !p.campaign.county || p.campaign.county === "Unknown").length;
+  const needsApproval = livePhotos.filter((p) => {
+    const approved =
+      p.campaign.approvedForPublic === true ||
+      p.publicationStatus === "APPROVED" ||
+      p.publicationStatus === "PUBLISHED";
+    return p.campaign.county && p.campaign.county !== "Unknown" && !approved;
+  }).length;
+
+  const photos = livePhotos.map((p) => ({
     id: p.id,
     src: p.src,
     caption: p.accessibility.caption,
     alt: p.accessibility.altText,
+    notes: p.notes,
+    requiresConsentHold: photoRequiresConsentHold(p.id, p.notes),
+    placementPreview: photoPublicSurfacesPreview(p),
     base: {
       county: p.campaign.county,
       city: p.campaign.city,
@@ -54,9 +74,14 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
       featuredPhoto: p.campaign.featuredPhoto,
       heroLevel: p.heroLevel,
       publicationStatus: p.publicationStatus,
+      approvedForPublic: p.campaign.approvedForPublic,
     },
+    // Overlay still shown for form defaults: prefer raw store so operator sees last save
     overlay: photoStore.photos[p.id] ?? null,
   }));
+
+  // For form defaults, base should be registry-without-overlay for county field helper —
+  // currently live already merged. Reset base from overlay-aware live is OK; field() prefers overlay.
 
   const speeches = CAMPAIGN_MEDIA_REGISTRY.map((m) => ({
     id: m.id,
@@ -65,27 +90,55 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
     youtubeVideoId: m.youtubeVideoId,
     thumbnailUrl: m.thumbnailUrl,
     baseCounties: m.counties ?? [],
+    basePublicationStatus: m.publicationStatus,
     overlay: speechStore.speeches[m.id] ?? null,
   }));
 
+  const speechNeeds = speeches.filter((s) => !(s.overlay?.counties?.length || s.baseCounties.length)).length;
+
   return (
-    <div className="mx-auto max-w-6xl">
-      <h1 className="font-heading text-3xl font-bold text-kelly-text">Evidence Workbench</h1>
-      <p className="mt-2 max-w-3xl font-body text-sm text-kelly-text/75">
-        Local-first confirmations for calendar presence, campaign photos, and speeches. Saves JSON under{" "}
-        <code className="rounded bg-kelly-text/5 px-1">data/campaign-media/</code> on this machine — use{" "}
-        <code className="rounded bg-kelly-text/5 px-1">http://127.0.0.1</code> (writes blocked on remote hosts).
-        Unknown stays Unknown. Photos/Speeches: <strong>Suggest with AI</strong> (uses{" "}
-        <code className="rounded bg-kelly-text/5 px-1">OPENAI_API_KEY</code>), then Save, then{" "}
-        <strong>Build outgoing metadata packet</strong> for intelligence reuse. Saving photos rebuilds{" "}
-        <Link href="/campaign-photos" className="font-semibold text-kelly-blue underline">
-          county albums
-        </Link>{" "}
-        (county → event folders under <code className="rounded bg-kelly-text/5 px-1">public/media/county-albums/</code>
-        ).
+    <div className="mx-auto max-w-6xl text-[#12124a]">
+      <h1 className="font-heading text-3xl font-bold text-[#000066]">Evidence Workbench</h1>
+      <p className="mt-2 max-w-3xl font-body text-sm text-[#364272]">
+        Local-first photo / video / calendar confirmation. Saves under{" "}
+        <code className="rounded bg-[#f4f7fc] px-1">data/campaign-media/</code> on this machine — commit that folder
+        to publish overlays. Use <code className="rounded bg-[#f4f7fc] px-1">http://127.0.0.1</code>. Unknown stays
+        Unknown. Uncheck <strong>Approved for public</strong> to hold a still off county albums; check it (or set
+        APPROVED/PUBLISHED) when ready.
       </p>
 
-      <div className="mt-4 rounded-lg border-2 border-[#000066]/20 bg-white p-4 text-[#12124a]">
+      <div className="mt-4 grid gap-3 sm:grid-cols-3">
+        <div className="rounded-lg border-2 border-[#000066]/15 bg-white px-3 py-2">
+          <p className="font-heading text-xs font-bold uppercase text-[#000066]">Photos</p>
+          <p className="font-body text-sm">
+            {livePhotos.length} total · {unknownCounty} unknown county · {needsApproval} need approval
+          </p>
+        </div>
+        <div className="rounded-lg border-2 border-[#000066]/15 bg-white px-3 py-2">
+          <p className="font-heading text-xs font-bold uppercase text-[#000066]">Videos</p>
+          <p className="font-body text-sm">
+            {speeches.length} speeches · {speechNeeds} missing counties
+          </p>
+        </div>
+        <div className="rounded-lg border-2 border-[#000066]/15 bg-white px-3 py-2">
+          <p className="font-heading text-xs font-bold uppercase text-[#000066]">Media command</p>
+          <p className="font-body text-sm">
+            <Link href="/admin/owned-media" className="font-semibold text-[#000066] underline">
+              Owned Media
+            </Link>
+            {" · "}
+            <Link href="/admin/media/youtube" className="font-semibold text-[#000066] underline">
+              YouTube
+            </Link>
+            {" · "}
+            <Link href="/campaign-photos" className="font-semibold text-[#000066] underline">
+              Public albums
+            </Link>
+          </p>
+        </div>
+      </div>
+
+      <div className="mt-4 rounded-lg border-2 border-[#000066]/20 bg-white p-4">
         <p className="font-heading text-sm font-bold text-[#000066]">Where photos go on the site</p>
         <ul className="mt-2 list-disc space-y-1 pl-5 font-body text-xs text-[#364272]">
           {strategicPlacementNotes().map((n) => (
@@ -104,8 +157,8 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
             className={cn(
               "rounded-md border px-3 py-1.5 font-body text-sm font-semibold",
               tab === t.id
-                ? "border-kelly-navy bg-kelly-navy text-white"
-                : "border-kelly-text/15 bg-white text-kelly-ink hover:border-kelly-navy/40",
+                ? "border-[#000066] bg-[#000066] text-white"
+                : "border-[#8eb6dc] bg-white text-[#12124a] hover:border-[#000066]/40",
             )}
           >
             {t.label}
@@ -121,8 +174,13 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
             sourceNote={calendar.sourceNote}
           />
         ) : null}
-        {tab === "photos" ? <EvidencePhotosPanel photos={photos} counties={counties} /> : null}
-        {tab === "speeches" ? <EvidenceSpeechesPanel speeches={speeches} /> : null}
+        {tab === "photos" ? (
+          <EvidencePhotosPanel photos={photos} counties={counties} initialPhotoId={focusId} />
+        ) : null}
+        {tab === "speeches" ? (
+          <EvidenceSpeechesPanel speeches={speeches} initialSpeechId={focusId} />
+        ) : null}
+        {tab === "ingest" ? <EvidenceIngestPanel initialCandidates={ingestCandidates} /> : null}
       </div>
     </div>
   );

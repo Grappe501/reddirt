@@ -8,19 +8,19 @@ import { FullBleedSection } from "@/components/layout/FullBleedSection";
 import { Button } from "@/components/ui/Button";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { homepagePhotoObjectPositionClass } from "@/content/media/homepage-campaign-photo-display";
-import { getCountyAlbumBySlug, listCountyAlbumSlugs } from "@/lib/campaign-media/county-albums";
+import { getCountyAlbumBySlugLive, listCountyAlbumSlugsLive } from "@/lib/campaign-media/county-albums-live";
 import { pageMeta } from "@/lib/seo/metadata";
 import { cn } from "@/lib/utils";
 
 type Props = { params: Promise<{ countySlug: string }> };
 
 export function generateStaticParams() {
-  return listCountyAlbumSlugs().map((countySlug) => ({ countySlug }));
+  return listCountyAlbumSlugsLive().map((countySlug) => ({ countySlug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { countySlug } = await params;
-  const album = getCountyAlbumBySlug(countySlug);
+  const album = getCountyAlbumBySlugLive(countySlug);
   if (!album) {
     return pageMeta({
       title: "County album",
@@ -38,7 +38,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function CountyCampaignPhotosPage({ params }: Props) {
   const { countySlug } = await params;
-  const album = getCountyAlbumBySlug(countySlug);
+  const album = getCountyAlbumBySlugLive(countySlug);
   if (!album) notFound();
 
   return (

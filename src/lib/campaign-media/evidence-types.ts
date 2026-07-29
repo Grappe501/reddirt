@@ -53,8 +53,13 @@ export type PhotoEvidenceStore = {
 export type SpeechEvidenceOverlay = {
   counties?: string[];
   city?: string;
+  venue?: string;
+  eventDate?: string;
+  eventName?: string;
   whatThisProves?: string;
   approvedForPublic?: boolean;
+  homepageCandidate?: boolean;
+  publicationStatus?: "DRAFT" | "IN_REVIEW" | "APPROVED" | "PUBLISHED" | "ARCHIVED";
   updatedAt?: string;
 };
 
@@ -68,6 +73,14 @@ export type SpeechEvidenceStore = {
 export const CALENDAR_PRESENCE_REL = "data/campaign-media/calendar-presence.json";
 export const PHOTO_EVIDENCE_REL = "data/campaign-media/photo-evidence.json";
 export const SPEECH_EVIDENCE_REL = "data/campaign-media/speech-evidence.json";
+export const PHOTO_INGEST_DRAFTS_REL = "data/campaign-media/photo-ingest-drafts.json";
+
+export type PhotoIngestDraftStore = {
+  version: 1;
+  updatedAt: string;
+  purpose: string;
+  photos: import("@/content/media/campaign-photo-types").CampaignPhotoRecord[];
+};
 
 export const CALENDAR_STATUSES: CalendarPresenceStatus[] = [
   "Needs confirm",
