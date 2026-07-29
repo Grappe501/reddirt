@@ -71,6 +71,11 @@ export const EVIDENCE_AI_TOOL_CATALOG: Array<{
     summary: "Create non-destructive web/thumb/hero/square derivatives for many photo ids.",
   },
   {
+    name: "promote_photo_derivative",
+    audience: "photo",
+    summary: "Promote a derivative as public src override and/or homepage/hero placement flags.",
+  },
+  {
     name: "get_county_album_summary",
     audience: "photo",
     summary: "Summarize existing county → event album chapters for a confirmed county.",
@@ -321,6 +326,29 @@ export function evidenceAiToolsFor(kind: "photo" | "video"): ChatCompletionTool[
             kinds: { type: "array", items: { type: "string" } },
           },
           required: ["photoIds", "kinds"],
+        },
+      },
+    },
+    {
+      type: "function",
+      function: {
+        name: "promote_photo_derivative",
+        description:
+          "Promote an existing derivative into public delivery: set publicSrcOverride and optional homepageCandidate / featuredPhoto / heroLevel / approvedForPublic. Does not delete originals. Prefer operator confirmation.",
+        parameters: {
+          type: "object",
+          properties: {
+            photoId: { type: "string" },
+            derivativeId: { type: "string" },
+            publicSrc: { type: "string" },
+            setAsPublicSrc: { type: "boolean" },
+            homepageCandidate: { type: "boolean" },
+            featuredPhoto: { type: "boolean" },
+            heroLevel: { type: "string" },
+            approvedForPublic: { type: "boolean" },
+            consentConfirmed: { type: "boolean" },
+          },
+          required: ["photoId"],
         },
       },
     },

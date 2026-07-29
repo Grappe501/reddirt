@@ -27,8 +27,8 @@
 | --- | --- | --- |
 | **1** | **Batch metadata** | Multi-select photos · field-level apply · shared event fields · one album refresh · AI tool `batch_apply_photo_evidence` |
 | **2** | **Batch AI assist** | “Suggest for selection” · shared-event clustering · apply-proposal review before write |
-| **3** | **Batch derivatives** *(this pass)* | Apply web/thumb/hero/square to N selected · progress + ledger |
-| **4** | Derivative → placement | Promote a derivative as public `src` override or homepage/hero candidate with preview |
+| **3** | **Batch derivatives** | Apply web/thumb/hero/square to N selected · progress + ledger |
+| **4** | **Derivative → placement** *(this pass)* | Promote a derivative as public `src` override or homepage/hero candidate with preview |
 | **5** | Attention / face-aware crops | Manual focus point + attention crop kinds · AI cropAdvice → derivative |
 | **6** | ffmpeg foundation | Install/detect local ffmpeg under `.local` · poster frames · clip probe |
 | **7** | Video clip encode | Export timed excerpts from plans · store under campaign-derivatives |
@@ -64,6 +64,15 @@
 - [x] Batch run recorded in `media-derivatives.json` ledger (`batchRuns`)
 - [x] AI tool `batch_create_photo_derivatives` (gated; originals untouched)
 
+## Pass 4 acceptance
+
+- [x] Promote a derivative as `publicSrcOverride` (path-scoped to photo id)
+- [x] Optional homepage / featured / hero / approved flags on promote
+- [x] Placement preview before/after promote
+- [x] Clear override restores registry original src
+- [x] Live photo merge applies override for public surfaces
+- [x] AI tool `promote_photo_derivative`
+
 ---
 
 ## Tracking
@@ -75,4 +84,5 @@ Update this table when each pass lands (commit hash + one-line note).
 | 1 | `2098c843` | Batch metadata: multi-select + field-level apply + AI tool |
 | 2 | `5de3a7fe` | Batch AI assist: cluster + suggest-for-selection + proposal review |
 | 3 | `efe09c10` | Batch derivatives: kinds × selection + progress + ledger runs |
-| 4–10 | — | — |
+| 4 | shipped | Derivative → placement: publicSrcOverride + homepage/hero promote |
+| 5–10 | — | — |

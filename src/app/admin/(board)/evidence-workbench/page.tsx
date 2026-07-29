@@ -68,9 +68,12 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
 
   const photos = rawPhotos.map((p) => {
     const live = liveById.get(p.id) ?? p;
+    const overlay = photoStore.photos[p.id] ?? null;
     return {
       id: p.id,
-      src: p.src,
+      /** Public delivery src (may be a promoted derivative). */
+      src: live.src,
+      registrySrc: p.src,
       caption: p.accessibility.caption,
       alt: p.accessibility.altText,
       notes: p.notes,
@@ -90,7 +93,7 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
         publicationStatus: p.publicationStatus,
         approvedForPublic: p.campaign.approvedForPublic,
       },
-      overlay: photoStore.photos[p.id] ?? null,
+      overlay,
     };
   });
 

@@ -695,6 +695,80 @@ export async function batchCreatePhotoDerivativesAction(input: {
   };
 }
 
+export async function promotePhotoDerivativeAction(input: {
+  photoId: string;
+  derivativeId?: string;
+  publicSrc?: string;
+  setAsPublicSrc?: boolean;
+  homepageCandidate?: boolean;
+  featuredPhoto?: boolean;
+  heroLevel?: string;
+  approvedForPublic?: boolean;
+  consentConfirmed?: boolean;
+}): Promise<{
+  ok: boolean;
+  message: string;
+  placementPreview?: string[];
+  publicSrc?: string;
+  registrySrc?: string;
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { promotePhotoDerivative } = await import("@/lib/campaign-media/promote-photo-derivative");
+  const result = promotePhotoDerivative(input);
+  if (result.ok) revalidateEvidenceSurfaces();
+  return {
+    ok: result.ok,
+    message: result.message,
+    placementPreview: result.placementPreview,
+    publicSrc: result.publicSrc,
+    registrySrc: result.registrySrc,
+  };
+}
+
+export async function clearPhotoPublicSrcOverrideAction(photoId: string): Promise<{
+  ok: boolean;
+  message: string;
+  placementPreview?: string[];
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { clearPhotoPublicSrcOverride } = await import("@/lib/campaign-media/promote-photo-derivative");
+  const result = clearPhotoPublicSrcOverride(photoId);
+  if (result.ok) revalidateEvidenceSurfaces();
+  return {
+    ok: result.ok,
+    message: result.message,
+    placementPreview: result.placementPreview,
+  };
+}
+
+export async function previewPromotePlacementAction(input: {
+  photoId: string;
+  homepageCandidate?: boolean;
+  featuredPhoto?: boolean;
+  heroLevel?: string;
+  approvedForPublic?: boolean;
+  publicSrcOverride?: string;
+}): Promise<{
+  ok: boolean;
+  message: string;
+  placementPreview?: string[];
+  hypotheticalSrc?: string;
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { previewPromotePlacement } = await import("@/lib/campaign-media/promote-photo-derivative");
+  const result = previewPromotePlacement(input);
+  if (!result.ok) return { ok: false, message: result.error };
+  return {
+    ok: true,
+    message: `Placement preview · src ${result.hypotheticalSrc}`,
+    placementPreview: result.placementPreview,
+    hypotheticalSrc: result.hypotheticalSrc,
+  };
+}
+
 export async function listPhotoDerivativesAction(photoId: string): Promise<{
   ok: boolean;
   message: string;

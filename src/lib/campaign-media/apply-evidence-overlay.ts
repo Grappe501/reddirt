@@ -7,6 +7,15 @@ import { UNKNOWN } from "@/content/media/campaign-photo-types";
 import type { CampaignMediaRecord } from "@/content/media/campaign-media-types";
 import type { PhotoEvidenceOverlay, SpeechEvidenceOverlay } from "@/lib/campaign-media/evidence-types";
 
+function safePublicSrcOverride(photoId: string, override: string | undefined): string | null {
+  const s = String(override ?? "").trim();
+  if (!s) return null;
+  const prefix = `/media/campaign-derivatives/${photoId}/`;
+  if (!s.startsWith(prefix)) return null;
+  if (s.includes("..") || s.includes("//")) return null;
+  return s;
+}
+
 export function applyPhotoEvidenceOverlay(
   base: CampaignPhotoRecord,
   overlay: PhotoEvidenceOverlay | undefined,
@@ -28,8 +37,11 @@ export function applyPhotoEvidenceOverlay(
     ? [base.notes, `Proof: ${overlay.whatThisProves.trim()}`].filter(Boolean).join("\n")
     : base.notes;
 
+  const srcOverride = safePublicSrcOverride(base.id, overlay.publicSrcOverride);
+
   return {
     ...base,
+    src: srcOverride ?? base.src,
     heroLevel: overlay.heroLevel ?? base.heroLevel,
     publicationStatus: overlay.publicationStatus ?? base.publicationStatus,
     campaign: {

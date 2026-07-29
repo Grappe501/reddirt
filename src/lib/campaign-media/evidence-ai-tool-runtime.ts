@@ -359,6 +359,35 @@ export async function executeEvidenceAiTool(
         };
       }
 
+      case "promote_photo_derivative": {
+        const photoId = asString(args.photoId);
+        if (!photoId) return { ok: false, error: "photoId required." };
+        const { promotePhotoDerivative } = await import("@/lib/campaign-media/promote-photo-derivative");
+        const result = promotePhotoDerivative({
+          photoId,
+          derivativeId: asString(args.derivativeId) || undefined,
+          publicSrc: asString(args.publicSrc) || undefined,
+          setAsPublicSrc: args.setAsPublicSrc === undefined ? true : Boolean(args.setAsPublicSrc),
+          homepageCandidate:
+            args.homepageCandidate === undefined ? undefined : Boolean(args.homepageCandidate),
+          featuredPhoto: args.featuredPhoto === undefined ? undefined : Boolean(args.featuredPhoto),
+          heroLevel: asString(args.heroLevel) || undefined,
+          approvedForPublic:
+            args.approvedForPublic === undefined ? undefined : Boolean(args.approvedForPublic),
+          consentConfirmed: Boolean(args.consentConfirmed),
+        });
+        if (!result.ok) return { ok: false, error: result.message };
+        return {
+          ok: true,
+          result: {
+            message: result.message,
+            publicSrc: result.publicSrc,
+            registrySrc: result.registrySrc,
+            placementPreview: result.placementPreview,
+          },
+        };
+      }
+
       case "get_county_album_summary": {
         const county = asString(args.county);
         const reg = resolveRegistryCountyFromLabel(county);

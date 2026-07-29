@@ -5,10 +5,13 @@ import {
   batchCreatePhotoDerivativesAction,
   batchSavePhotoEvidenceAction,
   buildPhotoMetadataPacketAction,
+  clearPhotoPublicSrcOverrideAction,
   clusterPhotoSelectionAction,
   createPhotoDerivativeAction,
   inspectPhotoPixelsAction,
   listPhotoDerivativesAction,
+  previewPromotePlacementAction,
+  promotePhotoDerivativeAction,
   savePhotoEvidenceAction,
   suggestBatchPhotoEvidenceAiAction,
   suggestCropPlanAction,
@@ -60,6 +63,8 @@ const DEFAULT_BATCH_DERIV = new Set(["web_max", "thumb"]);
 export type PhotoWorkbenchItem = {
   id: string;
   src: string;
+  /** Registry original under campaign-photos (unchanged by promote). */
+  registrySrc?: string;
   caption: string;
   alt: string;
   notes?: string;
@@ -168,6 +173,11 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId }: Props)
     () => new Set(DEFAULT_BATCH_DERIV),
   );
   const [derivProgress, setDerivProgress] = useState("");
+  const [promoteHomepage, setPromoteHomepage] = useState(true);
+  const [promoteFeatured, setPromoteFeatured] = useState(false);
+  const [promoteHero, setPromoteHero] = useState<"FEATURE" | "HERO" | "">("FEATURE");
+  const [promoteApproved, setPromoteApproved] = useState(false);
+  const [promotePreview, setPromotePreview] = useState<string[]>([]);
   const [form, setForm] = useState<PhotoFormState | null>(() => {
     const first = photos.find((p) => p.id === (initialPhotoId || photos[0]?.id));
     return first ? buildForm(first) : null;
@@ -215,6 +225,7 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId }: Props)
     setForm(buildForm(item));
     setDirty(false);
     setMessage("");
+    setPromotePreview([]);
     // eslint-disable-next-line react-hooks/exhaustive-deps -- navigate-only reload; photos refresh handled below
   }, [activeId]);
 
@@ -400,6 +411,79 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId }: Props)
     start(async () => {
       const res = await suggestCropPlanAction(photoId);
       setMessage(res.message);
+    });
+  }
+
+  function promoteDerivative(d: PhotoDerivativeRecord) {
+    if (!photo || !form) return;
+    const photoId = photo.id;
+    const snapshot = form;
+    start(async () => {
+      const preview = await previewPromotePlacementAction({
+        photoId,
+        publicSrcOverride: d.publicSrc,
+        homepageCandidate: promoteHomepage,
+        featuredPhoto: promoteFeatured,
+        heroLevel: promoteHero || undefined,
+        approvedForPublic: promoteApproved ? true : undefined,
+      });
+      if (preview.ok && preview.placementPreview) {
+        setPromotePreview(preview.placementPreview);
+      }
+      const confirmLines = [
+        `Promote ${d.kind} as public src for ${photoId}?`,
+        `→ ${d.publicSrc}`,
+        promoteHomepage ? "· homepage candidate" : null,
+        promoteFeatured ? "· featured" : null,
+        promoteHero ? `· hero ${promoteHero}` : null,
+        promoteApproved ? "· approved for public" : null,
+        preview.placementPreview?.length
+          ? `Surfaces: ${preview.placementPreview.join("; ")}`
+          : null,
+      ]
+        .filter(Boolean)
+        .join("\n");
+      if (!window.confirm(confirmLines)) return;
+
+      const res = await promotePhotoDerivativeAction({
+        photoId,
+        derivativeId: d.id,
+        publicSrc: d.publicSrc,
+        setAsPublicSrc: true,
+        homepageCandidate: promoteHomepage,
+        featuredPhoto: promoteFeatured,
+        heroLevel: promoteHero || undefined,
+        approvedForPublic: promoteApproved ? true : undefined,
+        consentConfirmed: snapshot.consentConfirmed,
+      });
+      setMessage(res.message);
+      if (res.placementPreview) setPromotePreview(res.placementPreview);
+      if (res.ok) {
+        setForm((prev) =>
+          prev
+            ? {
+                ...prev,
+                homepageCandidate: promoteHomepage ? true : prev.homepageCandidate,
+                featuredPhoto: promoteFeatured ? true : prev.featuredPhoto,
+                heroLevel: promoteHero || prev.heroLevel,
+                approvedForPublic: promoteApproved ? true : prev.approvedForPublic,
+              }
+            : prev,
+        );
+      }
+    });
+  }
+
+  function clearPublicOverride() {
+    if (!photo) return;
+    const photoId = photo.id;
+    if (!window.confirm(`Clear public src override for ${photoId} and restore registry original?`)) {
+      return;
+    }
+    start(async () => {
+      const res = await clearPhotoPublicSrcOverrideAction(photoId);
+      setMessage(res.message);
+      if (res.placementPreview) setPromotePreview(res.placementPreview);
     });
   }
 
@@ -864,13 +948,36 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId }: Props)
           />
           <p className="mt-2 font-mono text-xs text-[#364272]">{photo.id}</p>
           <p className="break-all font-mono text-[10px] text-[#364272]">{photo.src}</p>
+          {photo.overlay?.publicSrcOverride ? (
+            <div className="mt-2 rounded border-2 border-[#ca913d]/50 bg-[#fff8ef] px-2 py-1.5">
+              <p className="font-body text-[11px] font-semibold text-[#12124a]">
+                Public src promoted from derivative
+              </p>
+              <p className="break-all font-mono text-[10px] text-[#364272]">
+                {photo.overlay.publicSrcOverride}
+              </p>
+              {photo.registrySrc && photo.registrySrc !== photo.src ? (
+                <p className="mt-1 break-all font-mono text-[10px] text-[#364272]">
+                  Registry original: {photo.registrySrc}
+                </p>
+              ) : null}
+              <button
+                type="button"
+                disabled={pending}
+                onClick={clearPublicOverride}
+                className="mt-1 rounded border border-[#8eb6dc] bg-white px-2 py-0.5 font-body text-[10px] font-semibold text-[#12124a] disabled:opacity-50"
+              >
+                Clear override
+              </button>
+            </div>
+          ) : null}
           <p className="mt-1 font-body text-sm text-[#12124a]">{photo.caption}</p>
           <div className="mt-3 rounded-lg border-2 border-[#000066]/15 bg-white p-3">
             <p className="font-heading text-xs font-bold uppercase tracking-wide text-[#000066]">
               Placement preview
             </p>
             <ul className="mt-2 list-disc space-y-1 pl-4 font-body text-xs text-[#364272]">
-              {photo.placementPreview.map((s) => (
+              {(promotePreview.length ? promotePreview : photo.placementPreview).map((s) => (
                 <li key={`${photo.id}-${s}`}>{s}</li>
               ))}
             </ul>
@@ -880,7 +987,8 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId }: Props)
               Photo derivatives (non-destructive)
             </p>
             <p className="mt-1 font-body text-[11px] text-[#364272]">
-              Writes under /media/campaign-derivatives — originals stay untouched.
+              Writes under /media/campaign-derivatives — originals stay untouched. Promote sets public src +
+              optional homepage/hero flags.
             </p>
             <div className="mt-2 flex flex-wrap gap-2">
               {(
@@ -906,24 +1014,85 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId }: Props)
                 </button>
               ))}
             </div>
+            <div className="mt-3 rounded border border-[#ca913d]/40 bg-[#fff8ef] p-2">
+              <p className="font-heading text-[10px] font-bold uppercase tracking-wide text-[#000066]">
+                Promote options
+              </p>
+              <div className="mt-1 flex flex-wrap gap-x-3 gap-y-1 font-body text-[11px] text-[#12124a]">
+                <label className="inline-flex items-center gap-1.5">
+                  <input
+                    type="checkbox"
+                    checked={promoteHomepage}
+                    onChange={(e) => setPromoteHomepage(e.target.checked)}
+                  />
+                  Homepage candidate
+                </label>
+                <label className="inline-flex items-center gap-1.5">
+                  <input
+                    type="checkbox"
+                    checked={promoteFeatured}
+                    onChange={(e) => setPromoteFeatured(e.target.checked)}
+                  />
+                  Featured
+                </label>
+                <label className="inline-flex items-center gap-1.5">
+                  <input
+                    type="checkbox"
+                    checked={promoteApproved}
+                    onChange={(e) => setPromoteApproved(e.target.checked)}
+                  />
+                  Approved for public
+                </label>
+                <label className="inline-flex items-center gap-1.5">
+                  Hero
+                  <select
+                    className="rounded border border-[#8eb6dc] bg-white px-1 py-0.5"
+                    value={promoteHero}
+                    onChange={(e) =>
+                      setPromoteHero(e.target.value as "FEATURE" | "HERO" | "")
+                    }
+                  >
+                    <option value="">—</option>
+                    <option value="FEATURE">FEATURE</option>
+                    <option value="HERO">HERO</option>
+                  </select>
+                </label>
+              </div>
+            </div>
             {derivatives.length ? (
               <ul className="mt-3 space-y-2">
-                {derivatives.map((d) => (
-                  <li key={d.id} className="flex items-center gap-3">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={d.publicSrc}
-                      alt=""
-                      className="h-14 w-14 rounded border border-[#8eb6dc]/40 object-cover"
-                    />
-                    <div className="min-w-0">
-                      <p className="font-mono text-[11px] font-bold text-[#000066]">{d.kind}</p>
-                      <p className="truncate font-mono text-[10px] text-[#364272]">
-                        {d.width}×{d.height} · {d.publicSrc}
-                      </p>
-                    </div>
-                  </li>
-                ))}
+                {derivatives.map((d) => {
+                  const isPromoted =
+                    photo.overlay?.publicSrcOverride === d.publicSrc ||
+                    photo.overlay?.promotedDerivativeId === d.id;
+                  return (
+                    <li key={d.id} className="flex items-center gap-3">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={d.publicSrc}
+                        alt=""
+                        className="h-14 w-14 rounded border border-[#8eb6dc]/40 object-cover"
+                      />
+                      <div className="min-w-0 flex-1">
+                        <p className="font-mono text-[11px] font-bold text-[#000066]">
+                          {d.kind}
+                          {isPromoted ? " · promoted" : ""}
+                        </p>
+                        <p className="truncate font-mono text-[10px] text-[#364272]">
+                          {d.width}×{d.height} · {d.publicSrc}
+                        </p>
+                      </div>
+                      <button
+                        type="button"
+                        disabled={pending}
+                        onClick={() => promoteDerivative(d)}
+                        className="shrink-0 rounded border-2 border-[#000066] bg-white px-2 py-1 font-body text-[11px] font-bold text-[#000066] disabled:opacity-50"
+                      >
+                        Promote
+                      </button>
+                    </li>
+                  );
+                })}
               </ul>
             ) : (
               <p className="mt-2 font-body text-[11px] text-[#364272]">No derivatives yet for this still.</p>
