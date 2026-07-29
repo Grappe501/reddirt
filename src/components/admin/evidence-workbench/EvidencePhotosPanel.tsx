@@ -1,7 +1,11 @@
 "use client";
 
 import { useEffect, useMemo, useState, useTransition } from "react";
-import { savePhotoEvidenceAction } from "@/app/admin/evidence-workbench-actions";
+import {
+  buildPhotoMetadataPacketAction,
+  savePhotoEvidenceAction,
+  suggestPhotoEvidenceAiAction,
+} from "@/app/admin/evidence-workbench-actions";
 import type { PhotoEvidenceOverlay } from "@/lib/campaign-media/evidence-types";
 
 export type PhotoWorkbenchItem = {
@@ -107,6 +111,43 @@ export function EvidencePhotosPanel({ photos, counties, initialIndex = 0 }: Prop
       fd.set("tierIntent", snapshot.tierIntent);
       fd.set("publicationStatus", snapshot.publicationStatus);
       const res = await savePhotoEvidenceAction(null, fd);
+      setMessage(res.message);
+    });
+  }
+
+  function suggestAi() {
+    const photoId = photo.id;
+    start(async () => {
+      const res = await suggestPhotoEvidenceAiAction(photoId);
+      setMessage(res.message);
+      if (!res.ok || !res.suggestion) return;
+      const s = res.suggestion;
+      setForm((prev) => {
+        if (!prev) return prev;
+        return {
+          ...prev,
+          county: s.county === "Unknown" ? prev.county : s.county,
+          city: s.city === "Unknown" ? prev.city : s.city,
+          venue: s.venue === "Unknown" ? prev.venue : s.venue,
+          eventDate: s.eventDate === "Unknown" ? prev.eventDate : s.eventDate,
+          eventName: s.eventName === "Unknown" ? prev.eventName : s.eventName,
+          photographer: s.photographer === "Unknown" ? prev.photographer : s.photographer,
+          peopleVisible: s.peopleVisible.length ? s.peopleVisible.join(", ") : prev.peopleVisible,
+          whatThisProves: s.whatThisProves || prev.whatThisProves,
+        };
+      });
+      if (s.warnings.length) {
+        setMessage(`${res.message}\nWarnings: ${s.warnings.join("; ")}`);
+      }
+    });
+  }
+
+  function buildPacket() {
+    const photoId = photo.id;
+    const confirmed =
+      Boolean(form?.county && form.county !== "Unknown" && form.city && form.city !== "Unknown");
+    start(async () => {
+      const res = await buildPhotoMetadataPacketAction(photoId, confirmed);
       setMessage(res.message);
     });
   }
@@ -263,15 +304,33 @@ export function EvidencePhotosPanel({ photos, counties, initialIndex = 0 }: Prop
           </label>
         </div>
 
-        <button
-          type="button"
-          disabled={pending}
-          onClick={save}
-          className="rounded-md bg-kelly-navy px-4 py-2 font-body text-sm font-bold text-white disabled:opacity-50"
-        >
-          Save photo evidence
-        </button>
-        {message ? <p className="font-body text-sm text-kelly-slate">{message}</p> : null}
+        <div className="flex flex-wrap gap-2">
+          <button
+            type="button"
+            disabled={pending}
+            onClick={suggestAi}
+            className="rounded-md border border-kelly-navy px-4 py-2 font-body text-sm font-bold text-kelly-navy disabled:opacity-50"
+          >
+            Suggest with AI
+          </button>
+          <button
+            type="button"
+            disabled={pending}
+            onClick={save}
+            className="rounded-md bg-kelly-navy px-4 py-2 font-body text-sm font-bold text-white disabled:opacity-50"
+          >
+            Save photo evidence
+          </button>
+          <button
+            type="button"
+            disabled={pending}
+            onClick={buildPacket}
+            className="rounded-md border border-kelly-text/20 px-4 py-2 font-body text-sm font-semibold disabled:opacity-50"
+          >
+            Build outgoing metadata packet
+          </button>
+        </div>
+        {message ? <p className="font-body text-sm text-kelly-slate whitespace-pre-wrap">{message}</p> : null}
       </div>
     </div>
   );

@@ -109,6 +109,25 @@ export async function savePhotoEvidenceAction(
   const store = loadPhotoEvidenceStore();
   store.photos[photoId] = overlay;
   savePhotoEvidenceStore(store);
+
+  if (overlay.county !== "Unknown" && overlay.city !== "Unknown") {
+    const { rememberConfirmedEvidenceExample } = await import("@/lib/campaign-media/evidence-ai-memory");
+    const { CAMPAIGN_PHOTO_REGISTRY } = await import("@/content/media/campaign-photo-registry");
+    const base = CAMPAIGN_PHOTO_REGISTRY.find((p) => p.id === photoId);
+    rememberConfirmedEvidenceExample({
+      assetKind: "photo",
+      assetId: photoId,
+      county: overlay.county ?? "Unknown",
+      city: overlay.city ?? "Unknown",
+      venue: overlay.venue,
+      eventName: overlay.eventName,
+      peopleVisible: overlay.peopleVisible,
+      whatThisProves: overlay.whatThisProves,
+      captionOrTitle: base?.accessibility.caption,
+      updatedAt: new Date().toISOString(),
+    });
+  }
+
   revalidatePath("/admin/evidence-workbench");
   revalidatePath("/campaign-photos");
   revalidatePath("/");
@@ -139,6 +158,23 @@ export async function saveSpeechEvidenceAction(
   const store = loadSpeechEvidenceStore();
   store.speeches[speechId] = overlay;
   saveSpeechEvidenceStore(store);
+
+  const primaryCounty = overlay.counties?.[0]?.trim() || "";
+  if (primaryCounty && primaryCounty !== "Unknown" && overlay.city && overlay.city !== "Unknown") {
+    const { rememberConfirmedEvidenceExample } = await import("@/lib/campaign-media/evidence-ai-memory");
+    const { CAMPAIGN_MEDIA_REGISTRY } = await import("@/content/media/campaign-media-registry");
+    const base = CAMPAIGN_MEDIA_REGISTRY.find((m) => m.id === speechId);
+    rememberConfirmedEvidenceExample({
+      assetKind: "speech",
+      assetId: speechId,
+      county: primaryCounty,
+      city: overlay.city,
+      whatThisProves: overlay.whatThisProves,
+      captionOrTitle: base?.title,
+      updatedAt: new Date().toISOString(),
+    });
+  }
+
   revalidatePath("/admin/evidence-workbench");
   revalidatePath("/kelly-speaks");
   return { ok: true, message: `Saved speech evidence for ${speechId}.` };
@@ -238,6 +274,84 @@ function writeIcsToCsv(icsPath: string, csvPath: string): void {
   const esc = (s: string) => `"${String(s).replace(/"/g, '""')}"`;
   const lines = ["Date,Summary,Location,Status", ...rows.map((r) => [r.Date, r.Summary, r.Location, r.Status].map(esc).join(","))];
   writeFileSync(csvPath, `${lines.join("\n")}\n`, "utf8");
+}
+
+export async function suggestPhotoEvidenceAiAction(
+  photoId: string,
+): Promise<{ ok: boolean; message: string; suggestion?: import("@/lib/campaign-media/evidence-ai-types").EvidenceAiSuggestion }> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { CAMPAIGN_PHOTO_REGISTRY } = await import("@/content/media/campaign-photo-registry");
+  const photo = CAMPAIGN_PHOTO_REGISTRY.find((p) => p.id === photoId);
+  if (!photo) return { ok: false, message: `Photo not found: ${photoId}` };
+  const overlay = loadPhotoEvidenceStore().photos[photoId] ?? null;
+  const { suggestPhotoEvidenceWithAi } = await import("@/lib/campaign-media/evidence-ai-suggest");
+  const result = await suggestPhotoEvidenceWithAi({ photo, overlay });
+  if (!result.ok) return { ok: false, message: result.error };
+  return {
+    ok: true,
+    message: `AI suggestion (${result.suggestion.confidence}): ${result.suggestion.rationale || "review fields"}`,
+    suggestion: result.suggestion,
+  };
+}
+
+export async function suggestSpeechEvidenceAiAction(
+  speechId: string,
+): Promise<{ ok: boolean; message: string; suggestion?: import("@/lib/campaign-media/evidence-ai-types").EvidenceAiSuggestion }> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { CAMPAIGN_MEDIA_REGISTRY } = await import("@/content/media/campaign-media-registry");
+  const media = CAMPAIGN_MEDIA_REGISTRY.find((m) => m.id === speechId);
+  if (!media) return { ok: false, message: `Speech not found: ${speechId}` };
+  const overlay = loadSpeechEvidenceStore().speeches[speechId] ?? null;
+  const { suggestSpeechEvidenceWithAi } = await import("@/lib/campaign-media/evidence-ai-suggest");
+  const result = await suggestSpeechEvidenceWithAi({ media, overlay });
+  if (!result.ok) return { ok: false, message: result.error };
+  return {
+    ok: true,
+    message: `AI suggestion (${result.suggestion.confidence}): ${result.suggestion.rationale || "review fields"}`,
+    suggestion: result.suggestion,
+  };
+}
+
+export async function buildPhotoMetadataPacketAction(
+  photoId: string,
+  operatorConfirmedGeography: boolean,
+): Promise<{ ok: boolean; message: string; relativePath?: string }> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { CAMPAIGN_PHOTO_REGISTRY } = await import("@/content/media/campaign-photo-registry");
+  const photo = CAMPAIGN_PHOTO_REGISTRY.find((p) => p.id === photoId);
+  if (!photo) return { ok: false, message: `Photo not found: ${photoId}` };
+  const overlay = loadPhotoEvidenceStore().photos[photoId] ?? null;
+  const { buildPhotoOutgoingMetadataPacket } = await import("@/lib/campaign-media/evidence-ai-packets");
+  const result = await buildPhotoOutgoingMetadataPacket({ photo, overlay, operatorConfirmedGeography });
+  if (!result.ok) return { ok: false, message: result.error };
+  return {
+    ok: true,
+    message: `Wrote intelligence packet ${result.packet.packetId} → ${result.relativePath}`,
+    relativePath: result.relativePath,
+  };
+}
+
+export async function buildSpeechMetadataPacketAction(
+  speechId: string,
+  operatorConfirmedGeography: boolean,
+): Promise<{ ok: boolean; message: string; relativePath?: string }> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { CAMPAIGN_MEDIA_REGISTRY } = await import("@/content/media/campaign-media-registry");
+  const media = CAMPAIGN_MEDIA_REGISTRY.find((m) => m.id === speechId);
+  if (!media) return { ok: false, message: `Speech not found: ${speechId}` };
+  const overlay = loadSpeechEvidenceStore().speeches[speechId] ?? null;
+  const { buildSpeechOutgoingMetadataPacket } = await import("@/lib/campaign-media/evidence-ai-packets");
+  const result = await buildSpeechOutgoingMetadataPacket({ media, overlay, operatorConfirmedGeography });
+  if (!result.ok) return { ok: false, message: result.error };
+  return {
+    ok: true,
+    message: `Wrote intelligence packet ${result.packet.packetId} → ${result.relativePath}`,
+    relativePath: result.relativePath,
+  };
 }
 
 export type { CalendarPresenceStatus };

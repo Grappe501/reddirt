@@ -79,6 +79,12 @@ Operator UI (localhost): **`/admin/evidence-workbench`**
 - Photo/speech overlays merge into public registry reads  
 - Remote/Netlify hosts cannot write (local Host gate)
 
+**AI assist (OPENAI_API_KEY):**
+
+1. **Suggest with AI** — vision/text suggestions into the form (never auto-confirmed; Unknown preferred)  
+2. **Save** — stores overlay + feeds confirmed geography into `evidence-ai-memory.json` for future suggestions  
+3. **Build outgoing metadata packet** — extensive JSON under `data/campaign-media/intelligence-packets/` (press/social/journey captions, entities, do-not-claim). Best-effort attach to `OwnedMediaAsset.enrichmentMetadata` when a filename match exists.
+
 ---
 
 ## Measure evidence density (not page count)

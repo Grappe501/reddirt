@@ -1,0 +1,6 @@
+{
+  "version": 1,
+  "updatedAt": "2026-07-29T18:15:00.000Z",
+  "purpose": "Confirmed Evidence Workbench examples used as few-shot context for AI suggestions. Never treat Unconfirmed guesses as memory.",
+  "examples": []
+}

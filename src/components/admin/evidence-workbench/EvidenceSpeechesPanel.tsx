@@ -1,7 +1,11 @@
 "use client";
 
 import { useEffect, useMemo, useState, useTransition } from "react";
-import { saveSpeechEvidenceAction } from "@/app/admin/evidence-workbench-actions";
+import {
+  buildSpeechMetadataPacketAction,
+  saveSpeechEvidenceAction,
+  suggestSpeechEvidenceAiAction,
+} from "@/app/admin/evidence-workbench-actions";
 import type { SpeechEvidenceOverlay } from "@/lib/campaign-media/evidence-types";
 
 export type SpeechWorkbenchItem = {
@@ -63,6 +67,40 @@ export function EvidenceSpeechesPanel({ speeches }: Props) {
       fd.set("whatThisProves", snapshot.whatThisProves);
       if (snapshot.approvedForPublic) fd.set("approvedForPublic", "on");
       const res = await saveSpeechEvidenceAction(null, fd);
+      setMessage(res.message);
+    });
+  }
+
+  function suggestAi() {
+    const speechId = speech.id;
+    start(async () => {
+      const res = await suggestSpeechEvidenceAiAction(speechId);
+      setMessage(res.message);
+      if (!res.ok || !res.suggestion) return;
+      const s = res.suggestion;
+      setForm((prev) => {
+        if (!prev) return prev;
+        return {
+          ...prev,
+          counties: s.county !== "Unknown" ? s.county : prev.counties,
+          city: s.city === "Unknown" ? prev.city : s.city,
+          whatThisProves: s.whatThisProves || prev.whatThisProves,
+        };
+      });
+      if (s.warnings.length) setMessage(`${res.message}\nWarnings: ${s.warnings.join("; ")}`);
+    });
+  }
+
+  function buildPacket() {
+    const speechId = speech.id;
+    const confirmed = Boolean(
+      form?.counties?.trim() &&
+        form.counties.toLowerCase() !== "unknown" &&
+        form.city?.trim() &&
+        form.city !== "Unknown",
+    );
+    start(async () => {
+      const res = await buildSpeechMetadataPacketAction(speechId, confirmed);
       setMessage(res.message);
     });
   }
@@ -145,15 +183,33 @@ export function EvidenceSpeechesPanel({ speeches }: Props) {
           />
           Approved for public
         </label>
-        <button
-          type="button"
-          disabled={pending}
-          onClick={save}
-          className="block rounded-md bg-kelly-navy px-4 py-2 font-body text-sm font-bold text-white disabled:opacity-50"
-        >
-          Save speech evidence
-        </button>
-        {message ? <p className="font-body text-sm text-kelly-slate">{message}</p> : null}
+        <div className="flex flex-wrap gap-2">
+          <button
+            type="button"
+            disabled={pending}
+            onClick={suggestAi}
+            className="rounded-md border border-kelly-navy px-4 py-2 font-body text-sm font-bold text-kelly-navy disabled:opacity-50"
+          >
+            Suggest with AI
+          </button>
+          <button
+            type="button"
+            disabled={pending}
+            onClick={save}
+            className="rounded-md bg-kelly-navy px-4 py-2 font-body text-sm font-bold text-white disabled:opacity-50"
+          >
+            Save speech evidence
+          </button>
+          <button
+            type="button"
+            disabled={pending}
+            onClick={buildPacket}
+            className="rounded-md border border-kelly-text/20 px-4 py-2 font-body text-sm font-semibold disabled:opacity-50"
+          >
+            Build outgoing metadata packet
+          </button>
+        </div>
+        {message ? <p className="font-body text-sm text-kelly-slate whitespace-pre-wrap">{message}</p> : null}
       </div>
     </div>
   );

@@ -74,7 +74,9 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
         Local-first confirmations for calendar presence, campaign photos, and speeches. Saves JSON under{" "}
         <code className="rounded bg-kelly-text/5 px-1">data/campaign-media/</code> on this machine — use{" "}
         <code className="rounded bg-kelly-text/5 px-1">http://127.0.0.1</code> (writes blocked on remote hosts).
-        Unknown stays Unknown.
+        Unknown stays Unknown. Photos/Speeches: <strong>Suggest with AI</strong> (uses{" "}
+        <code className="rounded bg-kelly-text/5 px-1">OPENAI_API_KEY</code>), then Save, then{" "}
+        <strong>Build outgoing metadata packet</strong> for intelligence reuse.
       </p>
 
       <nav className="mt-6 flex flex-wrap gap-2" aria-label="Evidence workbench tabs">
