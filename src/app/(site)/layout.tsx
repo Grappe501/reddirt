@@ -13,7 +13,7 @@ export default function SiteLayout({ children }: { children: ReactNode }) {
     <>
       <a
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-btn focus:bg-kelly-gold focus:px-4 focus:py-3 focus:text-kelly-navy focus:shadow-lg"
+        className="sr-only focus-visible:not-sr-only focus-visible:absolute focus-visible:left-4 focus-visible:top-4 focus-visible:z-[100] focus-visible:rounded-btn focus-visible:bg-kelly-gold focus-visible:px-4 focus-visible:py-3 focus-visible:text-kelly-navy focus-visible:shadow-lg"
       >
         Skip to main content
       </a>

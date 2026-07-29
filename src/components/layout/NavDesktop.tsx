@@ -57,11 +57,11 @@ function NavMenu({ group, pathname, theme = "light" }: NavMenuProps) {
    * Fixed tokens below keep contrast stable regardless of global dark toggle.
    */
   const labelClass = cn(
-    "rounded-md px-2 py-2 font-body text-xs font-semibold tracking-wide transition focus-visible:outline-none focus-visible:ring-2 xl:px-2.5 xl:text-sm",
+    "rounded-md px-2 py-2 font-body text-xs font-semibold tracking-wide transition min-h-11 inline-flex items-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 xl:px-2.5 xl:text-sm",
     dark
-      ? "focus-visible:ring-kelly-gold/50 " +
+      ? "focus-visible:outline-kelly-gold " +
           (labelActive ? "!text-kelly-gold" : "!text-white/90 hover:!text-kelly-gold")
-      : "focus-visible:ring-kelly-navy/40 uppercase tracking-wider " +
+      : "focus-visible:outline-kelly-navy uppercase tracking-wider " +
           (labelActive ? "text-kelly-navy" : "text-kelly-text/80 hover:text-kelly-navy"),
   );
 
@@ -80,10 +80,10 @@ function NavMenu({ group, pathname, theme = "light" }: NavMenuProps) {
           <button
             type="button"
             className={cn(
-              "flex items-center rounded-r-md px-1.5 font-body text-[10px] opacity-90 transition focus-visible:outline-none focus-visible:ring-2 xl:px-2",
+              "flex min-h-11 items-center rounded-r-md px-1.5 font-body text-[10px] opacity-90 transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 xl:px-2",
               dark
-                ? "border-l border-white/15 !text-white/85 hover:!text-kelly-gold hover:bg-white/10 focus-visible:ring-kelly-gold/50"
-                : "border-l border-kelly-text/15 text-kelly-text hover:bg-kelly-text/[0.06] focus-visible:ring-kelly-navy/40",
+                ? "border-l border-white/15 !text-white/85 hover:!text-kelly-gold hover:bg-white/10 focus-visible:outline-kelly-gold"
+                : "border-l border-kelly-text/15 text-kelly-text hover:bg-kelly-text/[0.06] focus-visible:outline-kelly-navy",
             )}
             aria-expanded={open}
             aria-haspopup="true"

@@ -69,9 +69,9 @@ export function CampaignVideoFeature({
                   className="underline decoration-kelly-navy/25 underline-offset-4 transition hover:decoration-kelly-navy focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-kelly-navy"
                 >
                   {href === "/about"
-                    ? "Read Kelly’s Story"
+                    ? "Read About Kelly’s Experience"
                     : href === "/priorities"
-                      ? "Explore Her Priorities"
+                      ? "Explore Kelly’s Priorities"
                       : href === "/about/journey"
                         ? "See Kelly Across Arkansas"
                         : href === "/get-involved" || href === "/volunteer"

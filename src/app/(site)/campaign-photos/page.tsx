@@ -7,9 +7,12 @@ import { FullBleedSection } from "@/components/layout/FullBleedSection";
 import { Button } from "@/components/ui/Button";
 import {
   homepagePhotoCountyHref,
+  homepagePhotoObjectPositionClass,
   listHomepageCampaignPhotos,
 } from "@/content/media/homepage-campaign-photos";
 import { pageMeta } from "@/lib/seo/metadata";
+import { trustFunnelCardClass } from "@/components/home/trust-funnel/trustFunnelChrome";
+import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = pageMeta({
   title: "Campaign Photos",
@@ -52,28 +55,28 @@ export default function CampaignPhotosPage() {
                   photo.campaign.county !== "Unknown" ? `${photo.campaign.county} County` : null,
                 ].filter(Boolean);
                 return (
-                  <li key={photo.id} className="flex flex-col overflow-hidden rounded-card border border-kelly-ink/10 bg-white shadow-sm">
+                  <li key={photo.id} className={cn(trustFunnelCardClass, "flex flex-col")}>
                     <div className="relative aspect-[4/5] bg-kelly-fog">
                       <Image
                         src={photo.src}
                         alt={photo.accessibility.altText}
                         width={photo.basic.width ?? 768}
                         height={photo.basic.height ?? 1024}
-                        className="h-full w-full object-cover"
+                        className={cn("h-full w-full object-cover", homepagePhotoObjectPositionClass(photo))}
                         sizes="(max-width: 640px) 100vw, 33vw"
                       />
                     </div>
-                    <div className="flex flex-1 flex-col p-4">
+                    <div className="flex flex-1 flex-col gap-2 p-4 md:p-5">
                       <p className="font-body text-[11px] font-bold uppercase tracking-wide text-kelly-gold">
                         {placeBits.length > 0 ? placeBits.join(" · ") : "Location pending confirmation"}
                       </p>
-                      <p className="mt-2 font-body text-sm leading-relaxed text-kelly-slate">
+                      <p className="font-body text-sm leading-relaxed text-kelly-slate">
                         {photo.accessibility.caption}
                       </p>
                       {href ? (
                         <Link
                           href={href}
-                          className="mt-auto pt-3 text-sm font-bold text-kelly-blue underline decoration-kelly-blue/25 underline-offset-4 hover:decoration-kelly-blue"
+                          className="mt-auto pt-3 text-sm font-bold text-kelly-blue underline decoration-kelly-blue/25 underline-offset-4 hover:decoration-kelly-blue focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-kelly-navy"
                         >
                           {photo.campaign.county} County →
                         </Link>

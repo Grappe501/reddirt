@@ -86,3 +86,13 @@ export function homepagePhotoCountyHref(photo: CampaignPhotoRecord): string | nu
   if (!slug) return null;
   return `/counties/${slug}`;
 }
+
+/**
+ * Intentional crop for homepage / gallery cards.
+ * Portraits bias slightly toward the upper third (faces / conversation).
+ */
+export function homepagePhotoObjectPositionClass(photo: CampaignPhotoRecord): string {
+  if (photo.basic.orientation === "PORTRAIT") return "object-[50%_20%]";
+  if (photo.id.includes("stadium") || photo.id.includes("concourse")) return "object-[50%_35%]";
+  return "object-center";
+}

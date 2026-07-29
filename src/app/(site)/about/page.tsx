@@ -8,10 +8,11 @@ import { Button } from "@/components/ui/Button";
 import { MeetKellySubnav } from "@/components/about/MeetKellySubnav";
 import { MeetKellyTrustIndicators } from "@/components/about/MeetKellyTrustIndicators";
 import { aboutLaunchCopy } from "@/content/about/about-launch";
-import { getHomepageMeetKellyPhoto, homepagePhotoCountyHref } from "@/content/media/homepage-campaign-photos";
+import { getHomepageMeetKellyPhoto, homepagePhotoCountyHref, homepagePhotoObjectPositionClass } from "@/content/media/homepage-campaign-photos";
 import { listHomepageAcrossArkansasPhotos } from "@/content/media/homepage-campaign-photos";
 import { getVolunteerSignupHref } from "@/config/external-campaign";
 import { pageMeta } from "@/lib/seo/metadata";
+import { cn } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
 
@@ -73,12 +74,12 @@ export default function AboutPage() {
                     alt={meetPhoto.accessibility.altText}
                     width={meetPhoto.basic.width ?? 768}
                     height={meetPhoto.basic.height ?? 1024}
-                    className="h-full w-full object-cover"
+                    className={cn("h-full w-full object-cover", homepagePhotoObjectPositionClass(meetPhoto))}
                     sizes="(max-width: 1024px) 100vw, 50vw"
                     priority
                   />
                 </div>
-                <figcaption className="border-t border-kelly-ink/10 px-4 py-3 font-body text-sm text-kelly-slate">
+                <figcaption className="border-t border-kelly-ink/10 px-4 py-3.5 font-body text-sm leading-relaxed text-kelly-slate">
                   {meetPhoto.accessibility.caption}
                   {countyHref ? (
                     <>
@@ -179,13 +180,13 @@ export default function AboutPage() {
                         alt={photo.accessibility.altText}
                         width={photo.basic.width ?? 768}
                         height={photo.basic.height ?? 1024}
-                        className="h-full w-full object-cover"
+                        className={cn("h-full w-full object-cover", homepagePhotoObjectPositionClass(photo))}
                         sizes="(max-width: 640px) 100vw, 25vw"
                       />
                     </div>
-                    <div className="p-3">
+                    <div className="flex flex-1 flex-col gap-2 p-3">
                       <p className="font-body text-[11px] font-bold uppercase tracking-wide text-kelly-gold">{place}</p>
-                      <p className="mt-1 font-body text-xs text-kelly-slate">{photo.accessibility.caption}</p>
+                      <p className="font-body text-xs leading-relaxed text-kelly-slate">{photo.accessibility.caption}</p>
                       {href ? (
                         <Link href={href} className="mt-2 inline-flex text-xs font-bold text-kelly-blue underline-offset-2 hover:underline">
                           {photo.campaign.county} County →

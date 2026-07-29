@@ -25,7 +25,7 @@ export function SiteFooter() {
               href={volunteerHref}
               target={volunteerExternal ? "_blank" : undefined}
               rel={volunteerExternal ? "noopener noreferrer" : undefined}
-              className="mt-6 inline-flex rounded-btn border border-kelly-page/25 bg-kelly-page/10 px-4 py-2.5 font-body text-sm font-semibold text-kelly-page transition hover:border-kelly-gold/50 hover:bg-kelly-page/15 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-kelly-gold"
+              className="mt-6 inline-flex min-h-[48px] items-center rounded-btn border border-kelly-page/25 bg-kelly-page/10 px-5 py-3 font-body text-sm font-semibold text-kelly-page transition hover:border-kelly-gold/50 hover:bg-kelly-page/15 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-kelly-gold"
             >
               Volunteer with Kelly →
             </Link>
@@ -50,7 +50,7 @@ export function SiteFooter() {
                           href={href}
                           target={ext ? "_blank" : undefined}
                           rel={ext ? "noopener noreferrer" : undefined}
-                          className="font-body text-sm text-kelly-page/85 transition hover:text-kelly-gold focus-visible:outline-none focus-visible:underline"
+                          className="inline-flex min-h-[44px] items-center font-body text-sm text-kelly-page/85 transition hover:text-kelly-gold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-kelly-gold"
                         >
                           {item.label}
                         </Link>

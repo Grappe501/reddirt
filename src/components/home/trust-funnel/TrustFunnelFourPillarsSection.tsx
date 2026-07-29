@@ -2,6 +2,8 @@ import Link from "next/link";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { trustFunnelHomeCopy } from "@/content/home/trust-funnel-home";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
+import { trustFunnelCardMutedClass } from "@/components/home/trust-funnel/trustFunnelChrome";
+import { cn } from "@/lib/utils";
 
 const copy = trustFunnelHomeCopy.governmentThatWorks;
 
@@ -14,21 +16,24 @@ export function TrustFunnelFourPillarsSection() {
       aria-labelledby="government-that-works-heading"
     >
       <ContentContainer>
-        <ScrollReveal yOffset={10} className="mx-auto max-w-3xl text-center">
-          <h2 id="government-that-works-heading" className="font-heading text-2xl font-bold text-kelly-ink md:text-3xl">
+        <ScrollReveal yOffset={6} className="mx-auto max-w-2xl text-center">
+          <h2
+            id="government-that-works-heading"
+            className="font-heading text-2xl font-bold tracking-tight text-kelly-ink md:text-3xl"
+          >
             {copy.title}
           </h2>
-          <p className="mt-4 font-body text-lg leading-relaxed text-kelly-slate">{copy.intro}</p>
+          <p className="mt-4 font-body text-base leading-relaxed text-kelly-slate md:text-lg">{copy.intro}</p>
         </ScrollReveal>
 
-        <ul className="mt-12 grid list-none gap-6 lg:grid-cols-2">
+        <ul className="mt-10 grid list-none gap-5 md:mt-12 md:gap-6 lg:grid-cols-2">
           {copy.pillars.map((pillar, i) => (
-            <ScrollReveal key={pillar.id} delay={70 + i * 55} yOffset={14}>
-              <li className="flex h-full min-h-0 flex-col rounded-card border border-kelly-ink/10 bg-kelly-fog/40 p-6 shadow-sm md:p-7">
+            <ScrollReveal key={pillar.id} delay={50 + i * 40} yOffset={6}>
+              <li className={cn(trustFunnelCardMutedClass, "flex h-full min-h-0 flex-col p-5 md:p-7")}>
                 <h3 className="font-heading text-xl font-bold text-kelly-navy">
                   <Link
                     href={pillar.href}
-                    className="underline-offset-4 transition hover:text-kelly-blue hover:underline focus-visible:outline focus-visible:ring-2 focus-visible:ring-kelly-gold/50"
+                    className="underline-offset-4 transition hover:text-kelly-blue hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-kelly-gold"
                   >
                     {pillar.title}
                   </Link>
@@ -46,7 +51,7 @@ export function TrustFunnelFourPillarsSection() {
                 </ul>
                 <Link
                   href={pillar.href}
-                  className="mt-6 inline-flex text-sm font-bold text-kelly-blue underline decoration-kelly-blue/25 underline-offset-4 hover:decoration-kelly-blue focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-kelly-navy"
+                  className="mt-6 inline-flex min-h-[48px] items-center text-sm font-bold text-kelly-blue underline decoration-kelly-blue/25 underline-offset-4 hover:decoration-kelly-blue focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-kelly-navy"
                 >
                   Explore {pillar.title.toLowerCase()} →
                 </Link>

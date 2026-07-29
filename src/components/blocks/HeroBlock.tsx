@@ -52,7 +52,7 @@ export function HeroBlock({
           size === "home" &&
             "max-w-[22ch] text-[clamp(2.5rem,6vw,4.75rem)] leading-[1.05] lg:max-w-[18ch]",
           size === "page" &&
-            "max-w-3xl text-[clamp(1.7rem,5.2vw,3.35rem)] leading-[1.12] sm:leading-[1.1]",
+            "max-w-3xl text-[clamp(1.55rem,4.8vw,3.1rem)] leading-[1.12] sm:leading-[1.1]",
         )}
       >
         {title}

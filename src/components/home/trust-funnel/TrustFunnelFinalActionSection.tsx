@@ -4,6 +4,11 @@ import { getVolunteerSignupHref } from "@/config/external-campaign";
 import { siteConfig } from "@/config/site";
 import { trustFunnelHomeCopy } from "@/content/home/trust-funnel-home";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
+import {
+  trustFunnelCtaOutline,
+  trustFunnelCtaPrimary,
+} from "@/components/home/trust-funnel/trustFunnelChrome";
+import { cn } from "@/lib/utils";
 
 const copy = trustFunnelHomeCopy.finalAction;
 
@@ -13,9 +18,9 @@ export function TrustFunnelFinalActionSection() {
 
   const actions = [
     { label: copy.ctas.join, href: volunteerHref, variant: "primary" as const },
-    { label: copy.ctas.volunteer, href: "/get-involved#volunteer", variant: "secondary" as const },
-    { label: copy.ctas.priorities, href: "/priorities", variant: "secondary" as const },
-    { label: copy.ctas.donate, href: siteConfig.donateHref, variant: "secondary" as const, external: true },
+    { label: copy.ctas.volunteer, href: "/get-involved#volunteer", variant: "outline" as const },
+    { label: copy.ctas.priorities, href: "/priorities", variant: "outline" as const },
+    { label: copy.ctas.donate, href: siteConfig.donateHref, variant: "outline" as const, external: true },
   ];
 
   return (
@@ -25,17 +30,14 @@ export function TrustFunnelFinalActionSection() {
       aria-labelledby="final-action-heading"
     >
       <ContentContainer>
-        <ScrollReveal className="mx-auto max-w-2xl text-center">
-          <h2 id="final-action-heading" className="font-heading text-2xl font-bold text-kelly-ink md:text-3xl">
+        <ScrollReveal className="mx-auto max-w-2xl text-center" yOffset={6}>
+          <h2 id="final-action-heading" className="font-heading text-2xl font-bold tracking-tight text-kelly-ink md:text-3xl">
             {copy.title}
           </h2>
-          <p className="mt-4 font-body text-lg text-kelly-slate">{copy.body}</p>
+          <p className="mt-4 font-body text-lg leading-relaxed text-kelly-slate">{copy.body}</p>
           <div className="mt-10 flex flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap sm:justify-center">
             {actions.map((cta) => {
-              const className =
-                cta.variant === "primary"
-                  ? "inline-flex min-h-[48px] items-center justify-center rounded-btn bg-kelly-gold px-6 py-3 text-sm font-bold uppercase tracking-wider text-kelly-navy transition hover:bg-kelly-gold-soft focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-kelly-navy"
-                  : "inline-flex min-h-[48px] items-center justify-center rounded-btn border-2 border-kelly-navy/20 bg-white px-6 py-3 text-sm font-bold uppercase tracking-wider text-kelly-navy transition hover:border-kelly-gold hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-kelly-navy";
+              const className = cn(cta.variant === "primary" ? trustFunnelCtaPrimary : trustFunnelCtaOutline);
 
               if (cta.external) {
                 return (

@@ -2,6 +2,7 @@ import { ContentContainer } from "@/components/layout/ContentContainer";
 import { trustFunnelHomeCopy } from "@/content/home/trust-funnel-home";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import Link from "next/link";
+import { trustFunnelCtaOutlineOnDark } from "@/components/home/trust-funnel/trustFunnelChrome";
 
 const copy = trustFunnelHomeCopy.endorsements;
 
@@ -61,12 +62,9 @@ export function TrustFunnelEndorsementsSection({
             ))}
           </ul>
         ) : (
-          <ScrollReveal delay={40} className="mx-auto mt-10 max-w-2xl rounded-card border border-dashed border-white/25 bg-white/5 px-6 py-8 text-center">
+          <ScrollReveal delay={40} yOffset={6} className="mx-auto mt-10 max-w-2xl rounded-card border border-dashed border-white/25 bg-white/5 px-6 py-8 text-center">
             <p className="font-body text-base leading-relaxed text-white/85">{copy.emptyState}</p>
-            <Link
-              href="/endorsements"
-              className="mt-6 inline-flex min-h-[48px] items-center justify-center rounded-btn border border-white/30 px-6 py-3 text-sm font-bold uppercase tracking-wider text-white transition hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-kelly-gold"
-            >
+            <Link href="/endorsements" className={`mt-6 ${trustFunnelCtaOutlineOnDark}`}>
               Endorsement policy →
             </Link>
           </ScrollReveal>

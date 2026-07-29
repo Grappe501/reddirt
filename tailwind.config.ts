@@ -53,6 +53,10 @@ const config: Config = {
         btn: "8px",
         card: "12px",
       },
+      boxShadow: {
+        soft: "var(--shadow-soft)",
+        card: "var(--shadow-card)",
+      },
       screens: {
         xs: "400px",
         "3xl": "1800px",
