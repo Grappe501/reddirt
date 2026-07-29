@@ -9,7 +9,8 @@ export function resolveRegistryCountyFromLabel(label: string | null | undefined)
   if (!label?.trim()) return null;
   const raw = label.trim();
   const lower = raw.toLowerCase();
-  const bySlug = getRegistryCountyBySlug(lower.replace(/\s+county$/i, "").replace(/\s+/g, "-"));
+  const short = lower.replace(/\s+county$/i, "").replace(/\s+/g, "-");
+  const bySlug = getRegistryCountyBySlug(short) ?? getRegistryCountyBySlug(`${short}-county`);
   if (bySlug) return bySlug;
   const direct = getRegistryCountyBySlug(lower);
   if (direct) return direct;

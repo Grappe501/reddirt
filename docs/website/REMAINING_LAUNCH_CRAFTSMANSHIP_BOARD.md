@@ -16,24 +16,20 @@
 
 ## Priority order (next passes)
 
-### 1. Production confidence — HIGHEST
+### 1. Production confidence — DONE (local binary) / Netlify still open
 
-Goal: deployed experience matches polished local experience.
+Pass completed: `KELLY-PUBLIC-PRODUCTION-CONFIDENCE-1.0` → see [`PRODUCTION_CONFIDENCE_REPORT.md`](./PRODUCTION_CONFIDENCE_REPORT.md).
 
-Final launch report must answer:
-
-| Question | Target |
+| Question | Result |
 | --- | --- |
-| Is the production build clean? | Yes |
-| Does every public route render correctly? | Yes |
-| Are all forms functional? | Yes |
-| Are all media assets loading properly? | Yes |
-| Any hydration, console, or runtime errors? | No |
-| Does Netlify behave differently than local? | Documented; no silent mismatch |
+| Is the production build clean? | **Yes** (quiet `next build`) |
+| Does every public route render correctly? | **Yes** on local `next start` |
+| Are all forms functional? | Routes 200; dedicated POST smoke optional |
+| Are all media assets loading properly? | **Yes** (FEATURE set) |
+| Any hydration, console, or runtime errors? | County 500 fixed; primary surfaces clean |
+| Does Netlify behave differently than local? | **Yes — documented** (live URL still old) |
 
-Until all are “yes” (or Netlify platform gap is explicitly separated), launch confidence stays **below 100%**.
-
-Suggested pass name when authorized: `KELLY-PUBLIC-PRODUCTION-CONFIDENCE-1.0`
+**Recommendation:** `READY AFTER MINOR REMEDIATION` = successful Netlify (or alternate) publish of this binary, then live URL re-smoke.
 
 ### Parallel track (not ahead of #1 without authorization)
 

@@ -6,6 +6,7 @@
 
 import type { CampaignPhotoRecord } from "@/content/media/campaign-photo-types";
 import { getCampaignPhotoById, listCampaignPhotos } from "@/content/media/campaign-photo-registry";
+import { resolveRegistryCountyFromLabel } from "@/lib/county/resolve-county-label";
 
 /** Ordered curated set for Latest Campaign Photos (6–10 FEATURE stills). */
 export const HOMEPAGE_CAMPAIGN_PHOTO_IDS = [
@@ -77,14 +78,9 @@ export function getHomepageHeroPhoto(): CampaignPhotoRecord | null {
 export function homepagePhotoCountyHref(photo: CampaignPhotoRecord): string | null {
   const county = photo.campaign.county;
   if (!county || county === "Unknown") return null;
-  const slug = county
-    .trim()
-    .toLowerCase()
-    .replace(/\s+county$/i, "")
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-|-$/g, "");
-  if (!slug) return null;
-  return `/counties/${slug}`;
+  const reg = resolveRegistryCountyFromLabel(county);
+  if (!reg?.slug) return null;
+  return `/counties/${reg.slug}`;
 }
 
 /**

@@ -12,6 +12,8 @@ import {
   regionMetaForId,
   type ArkansasRegistryCounty,
 } from "@/lib/county/arkansas-county-registry";
+import { resolveRegistryCountyFromLabel } from "@/lib/county/resolve-county-label";
+import { isPrismaLiveDataUnavailable, logPrismaDatabaseUnavailable } from "@/lib/prisma-connectivity";
 
 const countyWithRelations = Prisma.validator<Prisma.CountyDefaultArgs>()({
   include: {
@@ -55,17 +57,35 @@ function buildRegistryStubCountyCommandRecord(reg: ArkansasRegistryCounty): Coun
  * Resolves a public command row: live DB (must be `published`) or stub from the 75-county master registry.
  */
 export async function resolveCountyCommandBySlug(slug: string): Promise<CountyCommandRecord | null> {
-  const inDb = await prisma.county.findFirst({
-    where: { slug },
-    include: countyWithRelations.include,
-  });
-  if (inDb) {
-    if (!inDb.published) return null;
-    return inDb;
+  const candidates = [slug];
+  // Homepage photo CTAs historically used short slugs (`polk`); registry routes use `polk-county`.
+  if (slug && !slug.endsWith("-county")) {
+    candidates.push(`${slug}-county`);
   }
-  const reg = getRegistryCountyBySlug(slug);
-  if (!reg) return null;
-  return buildRegistryStubCountyCommandRecord(reg);
+
+  for (const candidate of candidates) {
+    try {
+      const inDb = await prisma.county.findFirst({
+        where: { slug: candidate },
+        include: countyWithRelations.include,
+      });
+      if (inDb) {
+        if (!inDb.published) return null;
+        return inDb;
+      }
+    } catch (err) {
+      // Local/prod schema lag must not 500 public county CTAs from the homepage photo grid.
+      if (!isPrismaLiveDataUnavailable(err)) throw err;
+      logPrismaDatabaseUnavailable(`resolveCountyCommandBySlug:${candidate}`, err);
+    }
+
+    const reg = getRegistryCountyBySlug(candidate);
+    if (reg) return buildRegistryStubCountyCommandRecord(reg);
+  }
+
+  const fromLabel = resolveRegistryCountyFromLabel(slug);
+  if (fromLabel) return buildRegistryStubCountyCommandRecord(fromLabel);
+  return null;
 }
 
 export type CountyRosterListItem = {
@@ -232,24 +252,47 @@ export async function getCountyPageSnapshot(slug: string): Promise<CountyPageSna
   const county = await resolveCountyCommandBySlug(slug);
   if (!county) return null;
 
-  const [{ visit, story }, mediaGallery, latestVoterMetrics, vaultPublicCount] = await Promise.all([
-    loadStoryAndVisitPosts(slug),
-    loadCountyOwnedMediaPreview(slug),
-    getLatestCountyVoterMetrics(county.id),
-    countCountyVaultPublic(slug),
-  ]);
+  let latestVisitPost: RoadPostCard | null = null;
+  let latestStoryPost: RoadPostCard | null = null;
+  let mediaGallery: Awaited<ReturnType<typeof loadCountyOwnedMediaPreview>> = [];
+  let latestVoterMetrics: CountyVoterMetricsWithSnapshot | null = null;
+  let vaultPublicCount = 0;
+  let upcomingPublicCampaignEvents: PublicCampaignEvent[] = [];
 
-  const publicEv = await listUpcomingPublicCampaignEventsForCountySlug(slug, 20);
-  const nextPublicCampaignEvent = publicEv[0] ?? null;
+  try {
+    const [{ visit, story }, gallery, metrics, vaultCount] = await Promise.all([
+      loadStoryAndVisitPosts(slug),
+      loadCountyOwnedMediaPreview(slug),
+      county.id.startsWith("registry:")
+        ? Promise.resolve(null)
+        : getLatestCountyVoterMetrics(county.id),
+      countCountyVaultPublic(slug),
+    ]);
+    latestVisitPost = visit;
+    latestStoryPost = story;
+    mediaGallery = gallery;
+    latestVoterMetrics = metrics;
+    vaultPublicCount = vaultCount;
+  } catch (err) {
+    if (!isPrismaLiveDataUnavailable(err)) throw err;
+    logPrismaDatabaseUnavailable(`getCountyPageSnapshot:secondary:${slug}`, err);
+  }
+
+  try {
+    upcomingPublicCampaignEvents = await listUpcomingPublicCampaignEventsForCountySlug(slug, 20);
+  } catch (err) {
+    if (!isPrismaLiveDataUnavailable(err)) throw err;
+    logPrismaDatabaseUnavailable(`getCountyPageSnapshot:events:${slug}`, err);
+  }
 
   return {
     county,
     latestVoterMetrics,
-    latestVisitPost: visit,
-    latestStoryPost: story,
+    latestVisitPost,
+    latestStoryPost,
     mediaGallery,
     vaultPublicCount,
-    upcomingPublicCampaignEvents: publicEv,
-    nextPublicCampaignEvent,
+    upcomingPublicCampaignEvents,
+    nextPublicCampaignEvent: upcomingPublicCampaignEvents[0] ?? null,
   };
 }
