@@ -76,6 +76,16 @@ export const EVIDENCE_AI_TOOL_CATALOG: Array<{
     summary: "List recent batch publish + derivative operations (history).",
   },
   {
+    name: "get_photo_intake_status",
+    audience: "photo",
+    summary: "Read intake pipeline status: new on disk, queue size, next step.",
+  },
+  {
+    name: "intake_all_photos",
+    audience: "photo",
+    summary: "Flatten nested campaign-photos copies and queue all new stills into drafts (operator-intent).",
+  },
+  {
     name: "cluster_photo_selection",
     audience: "photo",
     summary: "Cluster selected photo ids by shared event/date/county cues (read-only).",
@@ -391,6 +401,36 @@ export function evidenceAiToolsFor(kind: "photo" | "video"): ChatCompletionTool[
           properties: {
             limit: { type: "number" },
           },
+        },
+      },
+    },
+    {
+      type: "function",
+      function: {
+        name: "get_photo_intake_status",
+        description:
+          "Read photo intake status: new files on disk, labeling queue size, unknown-county count, recommended next step.",
+        parameters: {
+          type: "object",
+          properties: {},
+        },
+      },
+    },
+    {
+      type: "function",
+      function: {
+        name: "intake_all_photos",
+        description:
+          "Operator-intent only. Flatten nested images under public/media/campaign-photos (copy, never delete) and queue all new stills into photo-ingest-drafts for labeling.",
+        parameters: {
+          type: "object",
+          properties: {
+            confirm: {
+              type: "boolean",
+              description: "Must be true — operator explicitly asked to intake.",
+            },
+          },
+          required: ["confirm"],
         },
       },
     },

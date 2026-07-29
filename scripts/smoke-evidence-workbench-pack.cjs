@@ -12,6 +12,7 @@ const wrapper = path.join(root, "scripts", "run-with-h-drive-env.cjs");
 const tsx = path.join(root, "node_modules", "tsx", "dist", "cli.mjs");
 
 const SMOKES = [
+  "scripts/smoke-photo-intake.ts",
   "scripts/smoke-batch-photo-evidence.ts",
   "scripts/smoke-cluster-photo-selection.ts",
   "scripts/smoke-batch-photo-derivatives.ts",

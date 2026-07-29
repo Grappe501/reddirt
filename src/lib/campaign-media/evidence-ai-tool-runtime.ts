@@ -359,6 +359,22 @@ export async function executeEvidenceAiTool(
         return { ok: true, result: { operations: listEvidenceBatchOperations(limit) } };
       }
 
+      case "get_photo_intake_status": {
+        const { getPhotoIntakeStatus } = await import("@/lib/campaign-media/photo-ingest");
+        return { ok: true, result: getPhotoIntakeStatus() };
+      }
+
+      case "intake_all_photos": {
+        if (args.confirm !== true) {
+          return { ok: false, error: "confirm:true required — operator must explicitly ask to intake." };
+        }
+        const { intakeAllNewCampaignPhotos, getPhotoIntakeStatus } = await import(
+          "@/lib/campaign-media/photo-ingest"
+        );
+        const result = intakeAllNewCampaignPhotos();
+        return { ok: result.ok, result: { ...result, status: getPhotoIntakeStatus() } };
+      }
+
       case "cluster_photo_selection": {
         const photoIds = Array.isArray(args.photoIds)
           ? args.photoIds.map((id) => String(id).trim()).filter(Boolean)

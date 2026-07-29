@@ -21,20 +21,21 @@ import { ARKANSAS_COUNTY_REGISTRY } from "@/lib/county/arkansas-county-registry"
 import { cn } from "@/lib/utils";
 
 type Props = {
-  searchParams: Promise<{ tab?: string; id?: string }>;
+  searchParams: Promise<{ tab?: string; id?: string; filter?: string }>;
 };
 
 const TABS = [
   { id: "calendar", label: "Calendar" },
   { id: "photos", label: "Photos" },
   { id: "speeches", label: "Videos" },
-  { id: "ingest", label: "Ingest" },
+  { id: "ingest", label: "Intake" },
 ] as const;
 
 export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
   const sp = await searchParams;
   const tab = TABS.some((t) => t.id === sp.tab) ? (sp.tab as (typeof TABS)[number]["id"]) : "photos";
   const focusId = sp.id?.trim() || undefined;
+  const photoFilter = sp.filter?.trim() || undefined;
 
   const calendar = loadCalendarPresenceStore();
   const photoStore = loadPhotoEvidenceStore();
@@ -43,6 +44,8 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
   const livePhotos = listCampaignPhotosLive(photoStore);
   const liveById = new Map(livePhotos.map((p) => [p.id, p]));
   const ingestCandidates = listDiskPhotoIngestCandidates();
+  const { getPhotoIntakeStatus } = await import("@/lib/campaign-media/photo-ingest");
+  const intakeStatus = getPhotoIntakeStatus();
 
   const counties = ARKANSAS_COUNTY_REGISTRY.map((c) => ({
     slug: c.slug,
@@ -121,11 +124,17 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
         APPROVED/PUBLISHED) when ready.
       </p>
 
-      <div className="mt-4 grid gap-3 sm:grid-cols-3">
+      <div className="mt-4 grid gap-3 sm:grid-cols-4">
         <div className="rounded-lg border-2 border-[#000066]/15 bg-white px-3 py-2">
           <p className="font-heading text-xs font-bold uppercase text-[#000066]">Photos</p>
           <p className="font-body text-sm">
             {livePhotos.length} total · {unknownCounty} unknown county · {needsApproval} need approval
+          </p>
+        </div>
+        <div className="rounded-lg border-2 border-[#000066]/15 bg-white px-3 py-2">
+          <p className="font-heading text-xs font-bold uppercase text-[#000066]">Intake</p>
+          <p className="font-body text-sm">
+            {intakeStatus.newOnDisk} new on disk · {intakeStatus.queueCount} in queue
           </p>
         </div>
         <div className="rounded-lg border-2 border-[#000066]/15 bg-white px-3 py-2">
@@ -207,12 +216,19 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
           />
         ) : null}
         {tab === "photos" ? (
-          <EvidencePhotosPanel photos={photos} counties={counties} initialPhotoId={focusId} />
+          <EvidencePhotosPanel
+            photos={photos}
+            counties={counties}
+            initialPhotoId={focusId}
+            initialFilter={photoFilter}
+          />
         ) : null}
         {tab === "speeches" ? (
           <EvidenceSpeechesPanel speeches={speeches} initialSpeechId={focusId} />
         ) : null}
-        {tab === "ingest" ? <EvidenceIngestPanel initialCandidates={ingestCandidates} /> : null}
+        {tab === "ingest" ? (
+          <EvidenceIngestPanel initialCandidates={ingestCandidates} initialStatus={intakeStatus} />
+        ) : null}
       </div>
     </div>
   );

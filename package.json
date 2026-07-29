@@ -370,6 +370,7 @@
     "test:openai-key": "node scripts/test-openai-key.mjs",
     "set:google-calendar-env": "node scripts/set-google-calendar-env.cjs",
     "photos:sync": "tsx scripts/sync-website-photos.ts",
+    "evidence:intake": "node scripts/run-with-h-drive-env.cjs node ./node_modules/tsx/dist/cli.mjs scripts/batch-ingest-campaign-photos.ts",
     "ingest:interactive": "node scripts/ingest-prompt-key.cjs",
     "ingest:watch": "tsx scripts/campaign-media-ingest-watcher.ts",
     "voter-file:import": "tsx scripts/voter-file-import.ts",

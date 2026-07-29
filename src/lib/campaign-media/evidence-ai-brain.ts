@@ -29,6 +29,7 @@ Hard rules:
 - Only call batch_apply_photo_evidence when the operator explicitly asks to write the same fields to multiple named photo ids.
 - Only call batch_publish_photo_flags when the operator explicitly asks to approve/hold/homepage/featured a named selection.
 - Only call undo_batch_publish when the operator explicitly asks to undo a publish batch.
+- Only call intake_all_photos when the operator explicitly asks to intake/queue new stills from disk.
 - Only call batch_create_photo_derivatives when the operator explicitly asks to generate derivatives for named photo ids.
 - Only call promote_photo_derivative when the operator explicitly asks to promote a derivative into public placement.
 - After tools, return ONE final JSON object (no markdown) with:

@@ -23,10 +23,7 @@ import {
 } from "@/lib/campaign-media/evidence-validation";
 import { listCampaignPhotosLive } from "@/lib/campaign-media/list-campaign-photos-live";
 import { publicPublishBlockedByConsent } from "@/lib/campaign-media/photo-consent-hold";
-import {
-  listDiskPhotoIngestCandidates,
-  promoteDiskPhotoToDraft,
-} from "@/lib/campaign-media/photo-ingest";
+import { listDiskPhotoIngestCandidates } from "@/lib/campaign-media/photo-ingest";
 import type {
   CalendarPresenceRow,
   CalendarPresenceStatus,
@@ -677,50 +674,73 @@ export async function listPhotoIngestCandidatesAction(): Promise<{
   ok: boolean;
   message: string;
   candidates?: ReturnType<typeof listDiskPhotoIngestCandidates>;
+  status?: import("@/lib/campaign-media/photo-ingest").PhotoIntakeStatus;
 }> {
   const g = await gate();
   if (!g.ok) return { ok: false, message: g.error };
+  const { getPhotoIntakeStatus } = await import("@/lib/campaign-media/photo-ingest");
   const candidates = listDiskPhotoIngestCandidates();
+  const status = getPhotoIntakeStatus();
   const fresh = candidates.filter((c) => !c.alreadyInRegistry && !c.alreadyInDrafts);
   return {
     ok: true,
-    message: `${fresh.length} new file(s) ready to promote (${candidates.length} total scanned, recursive).`,
+    message: status.nextStepLabel || `${fresh.length} new on disk · ${status.queueCount} in queue.`,
     candidates,
+    status,
   };
 }
 
+export async function intakeAllPhotosAction(): Promise<{
+  ok: boolean;
+  message: string;
+  ids?: string[];
+  flattened?: number;
+  queued?: number;
+  status?: import("@/lib/campaign-media/photo-ingest").PhotoIntakeStatus;
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { intakeAllNewCampaignPhotos, getPhotoIntakeStatus } = await import(
+    "@/lib/campaign-media/photo-ingest"
+  );
+  const result = intakeAllNewCampaignPhotos();
+  revalidatePath("/admin/evidence-workbench");
+  revalidatePath("/campaign-photos");
+  return {
+    ok: result.ok,
+    message: result.message,
+    ids: result.ids,
+    flattened: result.flattened,
+    queued: result.queued,
+    status: getPhotoIntakeStatus(),
+  };
+}
+
+/** Alias — intake one path (nested OK: flatten + queue). */
 export async function promotePhotoIngestAction(
   filename: string,
 ): Promise<{ ok: boolean; message: string; photoId?: string }> {
   const g = await gate();
   if (!g.ok) return { ok: false, message: g.error };
-  const result = promoteDiskPhotoToDraft(filename);
+  const { intakeOneCampaignPhoto } = await import("@/lib/campaign-media/photo-ingest");
+  const result = intakeOneCampaignPhoto(filename);
   if (!result.ok) return { ok: false, message: result.error };
   revalidatePath("/admin/evidence-workbench");
   return {
     ok: true,
-    message: `Promoted ${filename} → draft ${result.photo.id}. Open Photos tab to label.`,
+    message: `Queued ${result.photo.id}` + (result.flattened ? " (flattened nested copy)" : "") + ". Open Photos to label.",
     photoId: result.photo.id,
   };
 }
 
+/** Alias for intakeAllPhotosAction (legacy name). */
 export async function promoteAllPhotoIngestAction(): Promise<{
   ok: boolean;
   message: string;
   ids?: string[];
 }> {
-  const g = await gate();
-  if (!g.ok) return { ok: false, message: g.error };
-  const { promoteAllNewDiskPhotosToDrafts } = await import("@/lib/campaign-media/photo-ingest");
-  const result = promoteAllNewDiskPhotosToDrafts();
-  revalidatePath("/admin/evidence-workbench");
-  return {
-    ok: true,
-    message: `Promoted ${result.promoted} new still(s) to drafts` +
-      (result.skipped ? ` (${result.skipped} skipped)` : "") +
-      ". Open Photos tab — filter All / Unknown county.",
-    ids: result.ids,
-  };
+  const res = await intakeAllPhotosAction();
+  return { ok: res.ok, message: res.message, ids: res.ids };
 }
 
 export async function inspectPhotoPixelsAction(photoId: string): Promise<{

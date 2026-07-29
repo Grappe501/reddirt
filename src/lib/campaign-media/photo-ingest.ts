@@ -1,11 +1,19 @@
-import "server-only";
+/**
+ * Evidence Workbench photo intake — one path:
+ *   drop under public/media/campaign-photos/ (flat or nested)
+ *     → intakeAllNewCampaignPhotos() flattens + queues drafts
+ *     → Photos tab labels / approves
+ *
+ * Never deletes nested originals. Never overwrites existing flat files.
+ */
 
-import { existsSync, readdirSync, statSync } from "node:fs";
+import { copyFileSync, existsSync, mkdirSync, readdirSync, statSync } from "node:fs";
 import path from "node:path";
 import { CAMPAIGN_PHOTO_REGISTRY } from "@/content/media/campaign-photo-registry";
 import type { CampaignPhotoRecord } from "@/content/media/campaign-photo-types";
 import { emptyCampaignPhotoCampaignMetadata, UNKNOWN } from "@/content/media/campaign-photo-types";
 import {
+  loadPhotoEvidenceStore,
   loadPhotoIngestDrafts,
   savePhotoIngestDrafts,
 } from "@/lib/campaign-media/evidence-store";
@@ -13,7 +21,11 @@ import {
 const IMAGE_EXT = new Set([".jpg", ".jpeg", ".png", ".webp", ".gif"]);
 const PHOTOS_DIR_REL = "public/media/campaign-photos";
 
-function slugFromFilename(filename: string): string {
+function photosDirAbs(): string {
+  return path.join(process.cwd(), PHOTOS_DIR_REL);
+}
+
+export function slugFromFilename(filename: string): string {
   const base = filename.replace(/\.[^.]+$/, "");
   return (
     base
@@ -35,6 +47,31 @@ export type DiskPhotoCandidate = {
   nested: boolean;
 };
 
+export type PhotoIntakeResult = {
+  ok: boolean;
+  scanned: number;
+  flattened: number;
+  queued: number;
+  skippedRegistry: number;
+  skippedDrafts: number;
+  skippedErrors: number;
+  ids: string[];
+  message: string;
+};
+
+export type PhotoIntakeStatus = {
+  scannedOnDisk: number;
+  newOnDisk: number;
+  nestedNew: number;
+  flatNew: number;
+  queueCount: number;
+  queueUnknownCounty: number;
+  registryCount: number;
+  liveUnknownCounty: number;
+  nextStep: "drop" | "intake" | "label" | "approve" | "clear";
+  nextStepLabel: string;
+};
+
 function walkRelativeImages(dirAbs: string, prefix = ""): string[] {
   if (!existsSync(dirAbs)) return [];
   const out: string[] = [];
@@ -52,9 +89,45 @@ function walkRelativeImages(dirAbs: string, prefix = ""): string[] {
   return out;
 }
 
+function scaffoldDraft(opts: {
+  id: string;
+  src: string;
+  originalFilename: string;
+  note?: string;
+}): CampaignPhotoRecord {
+  const now = new Date().toISOString();
+  const ext = path.extname(opts.originalFilename).slice(1).toUpperCase() || "Unknown";
+  return {
+    id: opts.id,
+    src: opts.src,
+    heroLevel: "UNREVIEWED",
+    publicationStatus: "DRAFT",
+    basic: {
+      originalFilename: opts.originalFilename,
+      orientation: "Unknown",
+      fileType: ext,
+      captureDateIso: UNKNOWN,
+      cameraDevice: UNKNOWN,
+    },
+    campaign: {
+      ...emptyCampaignPhotoCampaignMetadata(),
+      approvedForPublic: false,
+    },
+    accessibility: {
+      altText: "Campaign trail photograph — geography pending confirmation.",
+      caption: `Intake queue: ${opts.originalFilename}`,
+    },
+    notes:
+      opts.note ??
+      "Intake queue from Evidence Workbench — confirm geography before public approval.",
+    createdAt: now,
+    updatedAt: now,
+  };
+}
+
 /** Scan public/media/campaign-photos (recursive) for files not yet in registry or drafts. */
 export function listDiskPhotoIngestCandidates(): DiskPhotoCandidate[] {
-  const dir = path.join(process.cwd(), PHOTOS_DIR_REL);
+  const dir = photosDirAbs();
   if (!existsSync(dir)) return [];
   const registryIds = new Set(CAMPAIGN_PHOTO_REGISTRY.map((p) => p.id));
   const registrySrc = new Set(CAMPAIGN_PHOTO_REGISTRY.map((p) => p.src));
@@ -65,94 +138,343 @@ export function listDiskPhotoIngestCandidates(): DiskPhotoCandidate[] {
   const out: DiskPhotoCandidate[] = [];
   for (const relativePath of walkRelativeImages(dir)) {
     const filename = path.basename(relativePath);
-    const ext = path.extname(filename).toLowerCase();
-    if (!IMAGE_EXT.has(ext)) continue;
     const nested = relativePath.includes("/");
-    // Prefer flat public URL when already flattened; nested keeps encoded path for preview.
     const src = `/media/campaign-photos/${relativePath.split("/").map(encodeURIComponent).join("/")}`;
     const id = slugFromFilename(filename);
+    const flatSrc = `/media/campaign-photos/${filename}`;
     out.push({
       filename,
       relativePath,
       src,
       id,
-      alreadyInRegistry: registryIds.has(id) || registrySrc.has(src) || registrySrc.has(`/media/campaign-photos/${filename}`),
-      alreadyInDrafts: draftIds.has(id) || draftSrc.has(src) || draftSrc.has(`/media/campaign-photos/${filename}`),
+      alreadyInRegistry:
+        registryIds.has(id) || registrySrc.has(src) || registrySrc.has(flatSrc),
+      alreadyInDrafts: draftIds.has(id) || draftSrc.has(src) || draftSrc.has(flatSrc),
       nested,
     });
   }
   return out.sort((a, b) => a.relativePath.localeCompare(b.relativePath));
 }
 
-export function promoteDiskPhotoToDraft(filenameOrRel: string): {
+/**
+ * Copy one nested image into the flat campaign-photos root (never deletes source).
+ * Reuses preferred slug filename when present; skips inventing -2/-3 when basename already queued/registered.
+ */
+export function flattenOneNestedPhoto(relativePath: string): {
   ok: true;
-  photo: CampaignPhotoRecord;
+  flatFilename: string;
+  copied: boolean;
 } | { ok: false; error: string } {
-  const rel = filenameOrRel.replace(/\\/g, "/").replace(/^\/+/, "");
-  if (!rel || rel.includes("..")) {
-    return { ok: false, error: "Invalid path." };
+  const rel = relativePath.replace(/\\/g, "/").replace(/^\/+/, "");
+  if (!rel || rel.includes("..") || !rel.includes("/")) {
+    return { ok: false, error: "Expected a nested relative path under campaign-photos." };
+  }
+  const root = photosDirAbs();
+  const srcAbs = path.join(root, ...rel.split("/"));
+  if (!existsSync(srcAbs)) return { ok: false, error: `Missing file: ${rel}` };
+
+  const originalFilename = path.basename(rel);
+  const ext = path.extname(originalFilename).toLowerCase();
+  if (!IMAGE_EXT.has(ext)) return { ok: false, error: "Not an image." };
+
+  const baseId = slugFromFilename(originalFilename);
+  const preferred = `${baseId}${ext}`;
+  const preferredSrc = `/media/campaign-photos/${preferred}`;
+  const registryIds = new Set(CAMPAIGN_PHOTO_REGISTRY.map((p) => p.id));
+  const registrySrc = new Set(CAMPAIGN_PHOTO_REGISTRY.map((p) => p.src));
+  const drafts = loadPhotoIngestDrafts();
+  if (
+    registryIds.has(baseId) ||
+    registrySrc.has(preferredSrc) ||
+    drafts.photos.some((p) => p.id === baseId || p.src === preferredSrc)
+  ) {
+    // Already known — point at preferred flat path if present, else error for operator.
+    const destAbs = path.join(root, preferred);
+    if (existsSync(destAbs)) return { ok: true, flatFilename: preferred, copied: false };
+    return {
+      ok: false,
+      error: "Basename already in registry/queue — nested copy not needed.",
+    };
   }
 
-  const candidates = listDiskPhotoIngestCandidates();
-  const hit =
-    candidates.find((c) => c.relativePath === rel || c.filename === path.basename(rel)) ?? null;
-  if (!hit) return { ok: false, error: "Not a campaign-photos image." };
-  if (hit.alreadyInRegistry) return { ok: false, error: "Already in campaign-photo-registry." };
-  if (hit.alreadyInDrafts) return { ok: false, error: "Already in ingest drafts." };
+  const destAbs = path.join(root, preferred);
+  let copied = false;
+  if (!existsSync(destAbs)) {
+    mkdirSync(root, { recursive: true });
+    copyFileSync(srcAbs, destAbs);
+    copied = true;
+  }
+  return { ok: true, flatFilename: preferred, copied };
+}
 
-  // Flat public src for workbench/site serving after batch flatten, or nested if still nested.
-  const flatSrc = `/media/campaign-photos/${hit.filename}`;
-  const src = existsSync(path.join(process.cwd(), PHOTOS_DIR_REL, hit.filename))
-    ? flatSrc
-    : `/media/campaign-photos/${hit.relativePath}`;
+function queueFlatFile(flatFilename: string): {
+  ok: true;
+  photo: CampaignPhotoRecord;
+  already?: "registry" | "drafts";
+} | { ok: false; error: string } {
+  const name = path.basename(flatFilename);
+  if (!name || name.includes("..") || name.includes("/") || name.includes("\\")) {
+    return { ok: false, error: "Invalid flat filename." };
+  }
+  const root = photosDirAbs();
+  const abs = path.join(root, name);
+  if (!existsSync(abs)) return { ok: false, error: `Flat file missing: ${name}` };
 
-  const now = new Date().toISOString();
-  const photo: CampaignPhotoRecord = {
-    id: hit.id,
-    src,
-    heroLevel: "UNREVIEWED",
-    publicationStatus: "DRAFT",
-    basic: {
-      originalFilename: hit.filename,
-      orientation: "Unknown",
-      fileType: path.extname(hit.filename).slice(1).toUpperCase() || "Unknown",
-      captureDateIso: UNKNOWN,
-      cameraDevice: UNKNOWN,
-    },
-    campaign: {
-      ...emptyCampaignPhotoCampaignMetadata(),
-      approvedForPublic: false,
-    },
-    accessibility: {
-      altText: "Campaign trail photograph — geography pending confirmation.",
-      caption: `Ingest draft: ${hit.filename}`,
-    },
-    notes: "Ingest draft from Evidence Workbench — confirm geography before public approval.",
-    createdAt: now,
-    updatedAt: now,
-  };
+  const src = `/media/campaign-photos/${name}`;
+  const id = slugFromFilename(name);
+  const registryIds = new Set(CAMPAIGN_PHOTO_REGISTRY.map((p) => p.id));
+  const registrySrc = new Set(CAMPAIGN_PHOTO_REGISTRY.map((p) => p.src));
+  if (registryIds.has(id) || registrySrc.has(src)) {
+    return { ok: false, error: "Already in campaign-photo-registry." };
+  }
 
   const store = loadPhotoIngestDrafts();
+  if (store.photos.some((p) => p.id === id || p.src === src)) {
+    return { ok: false, error: "Already in intake queue (drafts)." };
+  }
+
+  const photo = scaffoldDraft({ id, src, originalFilename: name });
   store.photos.push(photo);
   savePhotoIngestDrafts(store);
   return { ok: true, photo };
 }
 
-/** Promote every new disk candidate into drafts (nested files should be flattened first via batch script). */
+/**
+ * Intake one disk path: flatten if nested, then queue into drafts.
+ * Prefer intakeAllNewCampaignPhotos for dumps.
+ */
+export function intakeOneCampaignPhoto(filenameOrRel: string): {
+  ok: true;
+  photo: CampaignPhotoRecord;
+  flattened: boolean;
+} | { ok: false; error: string } {
+  const rel = filenameOrRel.replace(/\\/g, "/").replace(/^\/+/, "");
+  if (!rel || rel.includes("..")) return { ok: false, error: "Invalid path." };
+
+  let flatName = path.basename(rel);
+  let flattened = false;
+
+  if (rel.includes("/")) {
+    const flat = flattenOneNestedPhoto(rel);
+    if (!flat.ok) return flat;
+    flatName = flat.flatFilename;
+    flattened = flat.copied;
+  }
+
+  const queued = queueFlatFile(flatName);
+  if (!queued.ok) return queued;
+  return { ok: true, photo: queued.photo, flattened };
+}
+
+/**
+ * One-button intake: flatten every nested new image, queue every new flat file into drafts.
+ * Nested originals are copied, never deleted.
+ */
+export function intakeAllNewCampaignPhotos(): PhotoIntakeResult {
+  const root = photosDirAbs();
+  if (!existsSync(root)) {
+    return {
+      ok: true,
+      scanned: 0,
+      flattened: 0,
+      queued: 0,
+      skippedRegistry: 0,
+      skippedDrafts: 0,
+      skippedErrors: 0,
+      ids: [],
+      message: "campaign-photos folder missing — create it and drop stills there.",
+    };
+  }
+
+  const registryIds = new Set(CAMPAIGN_PHOTO_REGISTRY.map((p) => p.id));
+  const registrySrc = new Set(CAMPAIGN_PHOTO_REGISTRY.map((p) => p.src));
+  const drafts = loadPhotoIngestDrafts();
+  const draftIds = new Set(drafts.photos.map((p) => p.id));
+  const draftSrc = new Set(drafts.photos.map((p) => p.src));
+
+  let flattened = 0;
+  let skippedRegistry = 0;
+  let skippedDrafts = 0;
+  let skippedErrors = 0;
+  const ids: string[] = [];
+  const allRel = walkRelativeImages(root);
+
+  // Pass 1 — flatten nested into preferred flat names (copy only; reuse if already flat).
+  // Never invent -2/-3 when the basename slug is already in registry/drafts.
+  const flatTargets: string[] = [];
+  for (const relativePath of allRel.sort()) {
+    const nested = relativePath.includes("/");
+    const originalFilename = path.basename(relativePath);
+    const ext = path.extname(originalFilename).toLowerCase();
+    if (!IMAGE_EXT.has(ext)) continue;
+
+    const baseId = slugFromFilename(originalFilename);
+    const preferred = `${baseId}${ext}`;
+    const preferredSrc = `/media/campaign-photos/${preferred}`;
+
+    if (!nested) {
+      flatTargets.push(originalFilename);
+      continue;
+    }
+
+    // Nested dump whose basename already lives in registry/drafts → skip (no duplicate flat).
+    if (
+      registryIds.has(baseId) ||
+      draftIds.has(baseId) ||
+      registrySrc.has(preferredSrc) ||
+      draftSrc.has(preferredSrc)
+    ) {
+      if (registryIds.has(baseId) || registrySrc.has(preferredSrc)) skippedRegistry += 1;
+      else skippedDrafts += 1;
+      continue;
+    }
+
+    const destAbs = path.join(root, preferred);
+    const srcAbs = path.join(root, ...relativePath.split("/"));
+    try {
+      if (!existsSync(destAbs)) {
+        copyFileSync(srcAbs, destAbs);
+        flattened += 1;
+      }
+      flatTargets.push(preferred);
+    } catch {
+      skippedErrors += 1;
+    }
+  }
+
+  // Pass 2 — queue unique flat files not already in registry/drafts.
+  const seenFlat = new Set<string>();
+  for (const flatName of flatTargets) {
+    const key = flatName.toLowerCase();
+    if (seenFlat.has(key)) continue;
+    seenFlat.add(key);
+
+    const src = `/media/campaign-photos/${flatName}`;
+    const id = slugFromFilename(flatName);
+    if (registryIds.has(id) || registrySrc.has(src)) {
+      skippedRegistry += 1;
+      continue;
+    }
+    if (draftIds.has(id) || draftSrc.has(src)) {
+      skippedDrafts += 1;
+      continue;
+    }
+    if (!existsSync(path.join(root, flatName))) {
+      skippedErrors += 1;
+      continue;
+    }
+
+    const photo = scaffoldDraft({
+      id,
+      src,
+      originalFilename: flatName,
+      note: "Intake queue from Evidence Workbench (flatten + draft). Confirm geography before public approval.",
+    });
+    drafts.photos.push(photo);
+    draftIds.add(id);
+    draftSrc.add(src);
+    ids.push(id);
+  }
+
+  if (ids.length) savePhotoIngestDrafts(drafts);
+
+  const queued = ids.length;
+  const ok = skippedErrors === 0 || queued > 0;
+  const parts = [
+    queued ? `Queued ${queued} still(s) for labeling` : "No new stills to queue",
+    flattened ? `flattened ${flattened} nested copy(ies)` : null,
+    skippedDrafts ? `${skippedDrafts} already queued` : null,
+    skippedRegistry ? `${skippedRegistry} already in registry` : null,
+    skippedErrors ? `${skippedErrors} error(s)` : null,
+  ].filter(Boolean);
+
+  return {
+    ok,
+    scanned: allRel.length,
+    flattened,
+    queued,
+    skippedRegistry,
+    skippedDrafts,
+    skippedErrors,
+    ids,
+    message: `${parts.join(" · ")}. Next: Photos tab → Draft / Unknown county → Save → Approve.`,
+  };
+}
+
+/** Operator pipeline status for the Ingest tab. */
+export function getPhotoIntakeStatus(): PhotoIntakeStatus {
+  const candidates = listDiskPhotoIngestCandidates();
+  const fresh = candidates.filter((c) => !c.alreadyInRegistry && !c.alreadyInDrafts);
+  const nestedNew = fresh.filter((c) => c.nested).length;
+  const flatNew = fresh.filter((c) => !c.nested).length;
+  const drafts = loadPhotoIngestDrafts();
+  const evidence = loadPhotoEvidenceStore();
+
+  let queueUnknownCounty = 0;
+  for (const d of drafts.photos) {
+    const overlay = evidence.photos[d.id];
+    const county = (overlay?.county ?? d.campaign.county ?? "Unknown").trim() || "Unknown";
+    if (county === "Unknown") queueUnknownCounty += 1;
+  }
+
+  const registryCount = CAMPAIGN_PHOTO_REGISTRY.length;
+  let liveUnknownCounty = queueUnknownCounty;
+  for (const p of CAMPAIGN_PHOTO_REGISTRY) {
+    const overlay = evidence.photos[p.id];
+    const county = (overlay?.county ?? p.campaign.county ?? "Unknown").trim() || "Unknown";
+    if (county === "Unknown") liveUnknownCounty += 1;
+  }
+
+  let nextStep: PhotoIntakeStatus["nextStep"] = "clear";
+  let nextStepLabel = "Queue clear — label remaining Unknown on Photos, then Approve.";
+  if (fresh.length > 0) {
+    nextStep = "intake";
+    nextStepLabel = `Intake ${fresh.length} new file(s) on disk (nested OK — one click).`;
+  } else if (queueUnknownCounty > 0) {
+    nextStep = "label";
+    nextStepLabel = `Label ${queueUnknownCounty} queued still(s) missing county on Photos.`;
+  } else if (drafts.photos.length > 0) {
+    nextStep = "approve";
+    nextStepLabel = "Geography set — Approve / Homepage on Photos when ready for albums.";
+  } else if (candidates.length === 0) {
+    nextStep = "drop";
+    nextStepLabel = "Drop stills into public/media/campaign-photos/ (folders OK), then Intake.";
+  }
+
+  return {
+    scannedOnDisk: candidates.length,
+    newOnDisk: fresh.length,
+    nestedNew,
+    flatNew,
+    queueCount: drafts.photos.length,
+    queueUnknownCounty,
+    registryCount,
+    liveUnknownCounty,
+    nextStep,
+    nextStepLabel,
+  };
+}
+
+/** @deprecated Prefer intakeOneCampaignPhoto — kept for action aliases. */
+export function promoteDiskPhotoToDraft(filenameOrRel: string): {
+  ok: true;
+  photo: CampaignPhotoRecord;
+} | { ok: false; error: string } {
+  const res = intakeOneCampaignPhoto(filenameOrRel);
+  if (!res.ok) return res;
+  return { ok: true, photo: res.photo };
+}
+
+/** @deprecated Prefer intakeAllNewCampaignPhotos. Flat-only legacy path. */
 export function promoteAllNewDiskPhotosToDrafts(): {
   promoted: number;
   skipped: number;
   ids: string[];
 } {
-  const candidates = listDiskPhotoIngestCandidates().filter(
-    (c) => !c.alreadyInRegistry && !c.alreadyInDrafts && !c.nested,
-  );
-  const ids: string[] = [];
-  let skipped = 0;
-  for (const c of candidates) {
-    const res = promoteDiskPhotoToDraft(c.relativePath);
-    if (res.ok) ids.push(res.photo.id);
-    else skipped += 1;
-  }
-  return { promoted: ids.length, skipped, ids };
+  const result = intakeAllNewCampaignPhotos();
+  return {
+    promoted: result.queued,
+    skipped: result.skippedRegistry + result.skippedDrafts + result.skippedErrors,
+    ids: result.ids,
+  };
 }

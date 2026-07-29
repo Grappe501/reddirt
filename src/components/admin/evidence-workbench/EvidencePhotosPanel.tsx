@@ -113,13 +113,21 @@ export type PhotoWorkbenchItem = {
 
 type CountyOpt = { slug: string; displayName: string; shortName: string };
 
+type Filter = "all" | "unknown" | "needsApproval" | "draft" | "approved" | "homepage";
+
+const FILTER_IDS: Filter[] = ["all", "unknown", "needsApproval", "draft", "approved", "homepage"];
+
+function parseFilter(raw?: string): Filter {
+  const v = String(raw ?? "").trim() as Filter;
+  return FILTER_IDS.includes(v) ? v : "all";
+}
+
 type Props = {
   photos: PhotoWorkbenchItem[];
   counties: CountyOpt[];
   initialPhotoId?: string;
+  initialFilter?: string;
 };
-
-type Filter = "all" | "unknown" | "needsApproval" | "draft" | "approved" | "homepage";
 
 type PhotoFormState = {
   county: string;
@@ -179,8 +187,8 @@ function buildForm(photo: PhotoWorkbenchItem): PhotoFormState {
   };
 }
 
-export function EvidencePhotosPanel({ photos, counties, initialPhotoId }: Props) {
-  const [filter, setFilter] = useState<Filter>("all");
+export function EvidencePhotosPanel({ photos, counties, initialPhotoId, initialFilter }: Props) {
+  const [filter, setFilter] = useState<Filter>(() => parseFilter(initialFilter));
   const [query, setQuery] = useState("");
   const [activeId, setActiveId] = useState<string>(
     () => initialPhotoId || photos[0]?.id || "",

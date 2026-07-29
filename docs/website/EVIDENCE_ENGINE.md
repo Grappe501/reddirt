@@ -100,6 +100,7 @@ Operator UI (localhost): **`/admin/evidence-workbench`**
 - **Transcript intelligence:** local chapters/quotes/claims + do-not-claim; Speeches Analyze → Apply; AI tool `analyze_transcript_intelligence`  
 - **Batch publish:** Approve / Hold / Homepage / Featured on selection (consent-aware; albums refresh once); AI tool `batch_publish_photo_flags`  
 - **Ops polish:** Undo last publish · batch op history · keyboard multi-select · smoke pack `scripts/smoke-evidence-workbench-pack.cjs`  
+- **Simple intake:** Drop into `public/media/campaign-photos/` (nested OK) → **Intake all new** (flatten copies + queue drafts) → Photos label → Approve. CLI: `npm run evidence:intake`. Board: [`EVIDENCE_WORKBENCH_INTAKE_UPGRADE.md`](./EVIDENCE_WORKBENCH_INTAKE_UPGRADE.md)  
 - Drop local masters in `public/media/campaign-video-masters/` or `.local/video-masters/`  
 - 10-pass upgrade map (locked complete): [`EVIDENCE_WORKBENCH_10_PASS_UPGRADE.md`](./EVIDENCE_WORKBENCH_10_PASS_UPGRADE.md)  
 - Video: `plan_video_excerpt` builds timed clip candidates from local transcript workspace; encode/poster needs local `ffmpeg` (optional)  
@@ -110,7 +111,7 @@ Operator UI (localhost): **`/admin/evidence-workbench`**
 - Confirmed county photos group into **county → event** albums on `/campaign-photos` and `/campaign-photos/{county-slug}`  
 - Saving photo evidence refreshes albums from **disk** (not stale webpack JSON) via `listCampaignPhotosLive` / `refreshCountyAlbumIndex({ photos })`  
 - Uncheck **Approved for public** to hold a still off albums; legacy FEATURE stills with confirmed geo remain until explicitly denied  
-- Ingest tab promotes files from `public/media/campaign-photos/` into `photo-ingest-drafts.json` for labeling  
+- **Intake** tab queues files from `public/media/campaign-photos/` into `photo-ingest-drafts.json` (flatten nested automatically)  
 - Local admin on loopback skips passphrase in development; `x-forwarded-host` is not trusted  
 
 ---
