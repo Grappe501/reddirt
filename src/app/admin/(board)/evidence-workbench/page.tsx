@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { CAMPAIGN_MEDIA_REGISTRY } from "@/content/media/campaign-media-registry";
+import { CAMPAIGN_PHOTO_REGISTRY } from "@/content/media/campaign-photo-registry";
 import { EvidenceCalendarPanel } from "@/components/admin/evidence-workbench/EvidenceCalendarPanel";
 import { EvidenceIngestPanel } from "@/components/admin/evidence-workbench/EvidenceIngestPanel";
 import { EvidencePhotosPanel } from "@/components/admin/evidence-workbench/EvidencePhotosPanel";
@@ -10,6 +11,7 @@ import { photoPublicSurfacesPreview } from "@/lib/campaign-media/county-albums-l
 import {
   loadCalendarPresenceStore,
   loadPhotoEvidenceStore,
+  loadPhotoIngestDrafts,
   loadSpeechEvidenceStore,
 } from "@/lib/campaign-media/evidence-store";
 import { listCampaignPhotosLive } from "@/lib/campaign-media/list-campaign-photos-live";
@@ -37,7 +39,9 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
   const calendar = loadCalendarPresenceStore();
   const photoStore = loadPhotoEvidenceStore();
   const speechStore = loadSpeechEvidenceStore();
+  const ingestDrafts = loadPhotoIngestDrafts();
   const livePhotos = listCampaignPhotosLive(photoStore);
+  const liveById = new Map(livePhotos.map((p) => [p.id, p]));
   const ingestCandidates = listDiskPhotoIngestCandidates();
 
   const counties = ARKANSAS_COUNTY_REGISTRY.map((c) => ({
@@ -55,34 +59,40 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
     return p.campaign.county && p.campaign.county !== "Unknown" && !approved;
   }).length;
 
-  const photos = livePhotos.map((p) => ({
-    id: p.id,
-    src: p.src,
-    caption: p.accessibility.caption,
-    alt: p.accessibility.altText,
-    notes: p.notes,
-    requiresConsentHold: photoRequiresConsentHold(p.id, p.notes),
-    placementPreview: photoPublicSurfacesPreview(p),
-    base: {
-      county: p.campaign.county,
-      city: p.campaign.city,
-      venue: p.campaign.venue,
-      eventDate: p.campaign.eventDate,
-      eventName: p.campaign.eventName,
-      photographer: p.campaign.photographer,
-      peopleVisible: p.campaign.peopleVisible,
-      homepageCandidate: p.campaign.homepageCandidate,
-      featuredPhoto: p.campaign.featuredPhoto,
-      heroLevel: p.heroLevel,
-      publicationStatus: p.publicationStatus,
-      approvedForPublic: p.campaign.approvedForPublic,
-    },
-    // Overlay still shown for form defaults: prefer raw store so operator sees last save
-    overlay: photoStore.photos[p.id] ?? null,
-  }));
+  // Raw registry/drafts for src + base (unmerged). Overlay stays separate so Next advances image + fields together.
+  const registryIds = new Set(CAMPAIGN_PHOTO_REGISTRY.map((p) => p.id));
+  const rawPhotos = [
+    ...CAMPAIGN_PHOTO_REGISTRY,
+    ...ingestDrafts.photos.filter((d) => !registryIds.has(d.id)),
+  ];
 
-  // For form defaults, base should be registry-without-overlay for county field helper —
-  // currently live already merged. Reset base from overlay-aware live is OK; field() prefers overlay.
+  const photos = rawPhotos.map((p) => {
+    const live = liveById.get(p.id) ?? p;
+    return {
+      id: p.id,
+      src: p.src,
+      caption: p.accessibility.caption,
+      alt: p.accessibility.altText,
+      notes: p.notes,
+      requiresConsentHold: photoRequiresConsentHold(p.id, p.notes),
+      placementPreview: photoPublicSurfacesPreview(live),
+      base: {
+        county: p.campaign.county,
+        city: p.campaign.city,
+        venue: p.campaign.venue,
+        eventDate: p.campaign.eventDate,
+        eventName: p.campaign.eventName,
+        photographer: p.campaign.photographer,
+        peopleVisible: p.campaign.peopleVisible,
+        homepageCandidate: p.campaign.homepageCandidate,
+        featuredPhoto: p.campaign.featuredPhoto,
+        heroLevel: p.heroLevel,
+        publicationStatus: p.publicationStatus,
+        approvedForPublic: p.campaign.approvedForPublic,
+      },
+      overlay: photoStore.photos[p.id] ?? null,
+    };
+  });
 
   const speeches = CAMPAIGN_MEDIA_REGISTRY.map((m) => ({
     id: m.id,

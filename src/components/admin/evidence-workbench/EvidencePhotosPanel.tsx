@@ -45,6 +45,24 @@ type Props = {
 
 type Filter = "all" | "unknown" | "needsApproval" | "draft" | "approved" | "homepage";
 
+type PhotoFormState = {
+  county: string;
+  city: string;
+  venue: string;
+  eventDate: string;
+  eventName: string;
+  photographer: string;
+  peopleVisible: string;
+  whatThisProves: string;
+  approvedForPublic: boolean;
+  homepageCandidate: boolean;
+  featuredPhoto: boolean;
+  heroLevel: string;
+  tierIntent: "" | "Gold" | "Silver" | "Archive";
+  publicationStatus: string;
+  consentConfirmed: boolean;
+};
+
 function field(overlay: PhotoEvidenceOverlay | null, base: string, key: keyof PhotoEvidenceOverlay): string {
   const o = overlay?.[key];
   if (typeof o === "string" && o.trim()) return o;
@@ -64,17 +82,40 @@ function effectivePub(item: PhotoWorkbenchItem): string {
   return item.overlay?.publicationStatus ?? item.base.publicationStatus;
 }
 
+function buildForm(photo: PhotoWorkbenchItem): PhotoFormState {
+  const o = photo.overlay;
+  return {
+    county: field(o, photo.base.county, "county"),
+    city: field(o, photo.base.city, "city"),
+    venue: field(o, photo.base.venue, "venue"),
+    eventDate: field(o, photo.base.eventDate, "eventDate"),
+    eventName: field(o, photo.base.eventName, "eventName"),
+    photographer: field(o, photo.base.photographer, "photographer"),
+    peopleVisible: (o?.peopleVisible?.length ? o.peopleVisible : photo.base.peopleVisible).join(", "),
+    whatThisProves: o?.whatThisProves ?? "",
+    approvedForPublic: o?.approvedForPublic ?? photo.base.approvedForPublic ?? false,
+    homepageCandidate: o?.homepageCandidate ?? photo.base.homepageCandidate,
+    featuredPhoto: o?.featuredPhoto ?? photo.base.featuredPhoto,
+    heroLevel: o?.heroLevel ?? photo.base.heroLevel,
+    tierIntent: (o?.tierIntent as PhotoFormState["tierIntent"]) ?? "",
+    publicationStatus: o?.publicationStatus ?? photo.base.publicationStatus,
+    consentConfirmed: false,
+  };
+}
+
 export function EvidencePhotosPanel({ photos, counties, initialPhotoId }: Props) {
-  const initialIndex = Math.max(
-    0,
-    initialPhotoId ? photos.findIndex((p) => p.id === initialPhotoId) : 0,
-  );
-  const [filter, setFilter] = useState<Filter>("unknown");
+  const [filter, setFilter] = useState<Filter>("all");
   const [query, setQuery] = useState("");
-  const [index, setIndex] = useState(initialIndex >= 0 ? initialIndex : 0);
+  const [activeId, setActiveId] = useState<string>(
+    () => initialPhotoId || photos[0]?.id || "",
+  );
   const [message, setMessage] = useState("");
   const [pending, start] = useTransition();
   const [dirty, setDirty] = useState(false);
+  const [form, setForm] = useState<PhotoFormState | null>(() => {
+    const first = photos.find((p) => p.id === (initialPhotoId || photos[0]?.id));
+    return first ? buildForm(first) : null;
+  });
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -91,51 +132,58 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId }: Props)
       return (
         p.id.toLowerCase().includes(q) ||
         p.caption.toLowerCase().includes(q) ||
+        p.src.toLowerCase().includes(q) ||
         county.toLowerCase().includes(q) ||
         (p.overlay?.eventName ?? p.base.eventName).toLowerCase().includes(q)
       );
     });
   }, [photos, filter, query]);
 
+  const filteredIds = useMemo(() => filtered.map((p) => p.id), [filtered]);
+
+  // If the active photo falls out of the filter, jump to the first visible id.
   useEffect(() => {
-    if (filtered.length === 0) return;
-    if (!filtered[index]) setIndex(0);
-  }, [filtered, index]);
+    if (filteredIds.length === 0) {
+      setForm(null);
+      return;
+    }
+    if (!filteredIds.includes(activeId)) {
+      setActiveId(filteredIds[0]);
+    }
+  }, [filteredIds, activeId]);
 
-  const photo = filtered[Math.min(index, Math.max(0, filtered.length - 1))];
-
-  const initialForm = useMemo(() => {
-    if (!photo) return null;
-    const o = photo.overlay;
-    return {
-      county: field(o, photo.base.county, "county"),
-      city: field(o, photo.base.city, "city"),
-      venue: field(o, photo.base.venue, "venue"),
-      eventDate: field(o, photo.base.eventDate, "eventDate"),
-      eventName: field(o, photo.base.eventName, "eventName"),
-      photographer: field(o, photo.base.photographer, "photographer"),
-      peopleVisible: (o?.peopleVisible?.length ? o.peopleVisible : photo.base.peopleVisible).join(", "),
-      whatThisProves: o?.whatThisProves ?? "",
-      approvedForPublic: o?.approvedForPublic ?? photo.base.approvedForPublic ?? false,
-      homepageCandidate: o?.homepageCandidate ?? photo.base.homepageCandidate,
-      featuredPhoto: o?.featuredPhoto ?? photo.base.featuredPhoto,
-      heroLevel: o?.heroLevel ?? photo.base.heroLevel,
-      tierIntent: o?.tierIntent ?? "",
-      publicationStatus: o?.publicationStatus ?? photo.base.publicationStatus,
-      consentConfirmed: false,
-    };
-  }, [photo]);
-
-  const [form, setForm] = useState(initialForm);
-
+  // Load form + clear dirty only when the active photo id changes (Prev/Next).
   useEffect(() => {
-    setForm(initialForm);
+    const item = photos.find((p) => p.id === activeId) ?? filtered.find((p) => p.id === activeId);
+    if (!item) return;
+    setForm(buildForm(item));
     setDirty(false);
-  }, [initialForm]);
+    setMessage("");
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- navigate-only reload; photos refresh handled below
+  }, [activeId]);
 
-  function go(next: number) {
+  // Soft-refresh form from server props when overlays update and the operator is not mid-edit.
+  useEffect(() => {
+    if (dirty) return;
+    const item = photos.find((p) => p.id === activeId);
+    if (!item) return;
+    setForm(buildForm(item));
+  }, [photos, activeId, dirty]);
+
+  const photo = filtered.find((p) => p.id === activeId) ?? photos.find((p) => p.id === activeId) ?? null;
+  const index = photo ? filteredIds.indexOf(photo.id) : -1;
+
+  function selectPhoto(nextId: string) {
+    if (nextId === activeId) return;
     if (dirty && !window.confirm("Discard unsaved photo edits?")) return;
-    setIndex(next);
+    setActiveId(nextId);
+  }
+
+  function go(delta: number) {
+    if (index < 0) return;
+    const next = filteredIds[index + delta];
+    if (!next) return;
+    selectPhoto(next);
   }
 
   useEffect(() => {
@@ -143,17 +191,11 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId }: Props)
       if (isEditableKeyboardTarget(e.target)) return;
       if (e.key === "ArrowLeft" || e.key === "j") {
         e.preventDefault();
-        setIndex((i) => {
-          if (dirty && !window.confirm("Discard unsaved photo edits?")) return i;
-          return Math.max(0, i - 1);
-        });
+        go(-1);
       }
       if (e.key === "ArrowRight" || e.key === "k") {
         e.preventDefault();
-        setIndex((i) => {
-          if (dirty && !window.confirm("Discard unsaved photo edits?")) return i;
-          return Math.min(filtered.length - 1, i + 1);
-        });
+        go(1);
       }
       if (e.key === "s" && (e.metaKey || e.ctrlKey)) {
         e.preventDefault();
@@ -162,19 +204,19 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId }: Props)
     }
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-    // eslint-disable-next-line react-hooks/exhaustive-deps -- save closes over latest form
-  }, [filtered.length, dirty, form, photo]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filteredIds, activeId, dirty, form, photo]);
 
   if (!photo || !form) {
     return (
       <div className="space-y-3">
-        <FilterBar filter={filter} setFilter={setFilter} query={query} setQuery={setQuery} counts={photos.length} />
+        <FilterBar query={query} setQuery={setQuery} counts={filtered.length} />
         <p className="font-body text-sm text-[#364272]">No photos match this filter.</p>
       </div>
     );
   }
 
-  function patchForm<K extends keyof NonNullable<typeof form>>(key: K, value: NonNullable<typeof form>[K]) {
+  function patchForm<K extends keyof PhotoFormState>(key: K, value: PhotoFormState[K]) {
     setForm((prev) => (prev ? { ...prev, [key]: value } : prev));
     setDirty(true);
   }
@@ -208,6 +250,7 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId }: Props)
   }
 
   function suggestAi() {
+    if (!photo) return;
     const photoId = photo.id;
     start(async () => {
       const res = await suggestPhotoEvidenceAiAction(photoId);
@@ -256,17 +299,19 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId }: Props)
   }
 
   const FILTERS: { id: Filter; label: string }[] = [
+    { id: "all", label: "All" },
     { id: "unknown", label: "Unknown county" },
     { id: "needsApproval", label: "Needs approval" },
     { id: "draft", label: "Draft" },
     { id: "approved", label: "Approved" },
     { id: "homepage", label: "Homepage" },
-    { id: "all", label: "All" },
   ];
+
+  const imageSrc = `${photo.src}${photo.src.includes("?") ? "&" : "?"}wb=${encodeURIComponent(photo.id)}`;
 
   return (
     <div className="space-y-4">
-      <FilterBar filter={filter} setFilter={setFilter} query={query} setQuery={setQuery} counts={filtered.length} />
+      <FilterBar query={query} setQuery={setQuery} counts={filtered.length} />
       <div className="flex flex-wrap gap-2">
         {FILTERS.map((f) => (
           <button
@@ -274,7 +319,6 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId }: Props)
             type="button"
             onClick={() => {
               setFilter(f.id);
-              setIndex(0);
             }}
             className={`rounded-md border px-3 py-1.5 font-body text-xs font-semibold ${
               filter === f.id
@@ -294,7 +338,7 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId }: Props)
               type="button"
               className="rounded border-2 border-[#8eb6dc] bg-white px-3 py-1.5 font-body text-sm text-[#12124a]"
               disabled={index <= 0}
-              onClick={() => go(index - 1)}
+              onClick={() => go(-1)}
             >
               ← Prev
             </button>
@@ -304,19 +348,22 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId }: Props)
             <button
               type="button"
               className="rounded border-2 border-[#8eb6dc] bg-white px-3 py-1.5 font-body text-sm text-[#12124a]"
-              disabled={index >= filtered.length - 1}
-              onClick={() => go(index + 1)}
+              disabled={index < 0 || index >= filtered.length - 1}
+              onClick={() => go(1)}
             >
               Next →
             </button>
           </div>
+          {/* key forces remount so the browser cannot keep a stale frame when advancing */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src={photo.src}
+            key={photo.id}
+            src={imageSrc}
             alt={photo.alt}
             className="mt-3 max-h-[28rem] w-full rounded-lg border border-[#8eb6dc]/40 object-contain bg-[#f4f7fc]"
           />
           <p className="mt-2 font-mono text-xs text-[#364272]">{photo.id}</p>
+          <p className="break-all font-mono text-[10px] text-[#364272]">{photo.src}</p>
           <p className="mt-1 font-body text-sm text-[#12124a]">{photo.caption}</p>
           <div className="mt-3 rounded-lg border-2 border-[#000066]/15 bg-white p-3">
             <p className="font-heading text-xs font-bold uppercase tracking-wide text-[#000066]">
@@ -324,7 +371,7 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId }: Props)
             </p>
             <ul className="mt-2 list-disc space-y-1 pl-4 font-body text-xs text-[#364272]">
               {photo.placementPreview.map((s) => (
-                <li key={s}>{s}</li>
+                <li key={`${photo.id}-${s}`}>{s}</li>
               ))}
             </ul>
           </div>
@@ -333,7 +380,8 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId }: Props)
         <div className="space-y-3 rounded-lg border-2 border-[#000066]/15 bg-white p-4 text-[#12124a]">
           <h3 className="font-heading text-lg font-bold text-[#000066]">Evidence fields</h3>
           <p className="font-body text-xs text-[#364272]">
-            Leave blank / Unknown — never invent geography. Approved for public is required for county albums.
+            Editing <span className="font-mono font-semibold">{photo.id}</span>
+            {dirty ? " · unsaved" : ""}
           </p>
 
           <label className="block font-body text-xs font-semibold text-[#12124a]">
@@ -436,7 +484,7 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId }: Props)
                 className={EVIDENCE_FIELD_CLASS}
                 value={form.tierIntent}
                 onChange={(e) =>
-                  patchForm("tierIntent", e.target.value as "" | "Gold" | "Silver" | "Archive")
+                  patchForm("tierIntent", e.target.value as PhotoFormState["tierIntent"])
                 }
               >
                 <option value="">—</option>
@@ -468,8 +516,8 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId }: Props)
               onClick={suggestAi}
               className="rounded-md border-2 border-[#000066] bg-white px-4 py-2 font-body text-sm font-bold text-[#000066] disabled:opacity-50"
             >
-            Suggest with AI (tools)
-          </button>
+              Suggest with AI (tools)
+            </button>
             <button
               type="button"
               disabled={pending}
@@ -511,14 +559,10 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId }: Props)
 }
 
 function FilterBar({
-  filter,
-  setFilter,
   query,
   setQuery,
   counts,
 }: {
-  filter: Filter;
-  setFilter: (f: Filter) => void;
   query: string;
   setQuery: (q: string) => void;
   counts: number;
@@ -530,10 +574,7 @@ function FilterBar({
         <input
           className={EVIDENCE_FIELD_CLASS}
           value={query}
-          onChange={(e) => {
-            setQuery(e.target.value);
-            setFilter(filter);
-          }}
+          onChange={(e) => setQuery(e.target.value)}
           placeholder="id, caption, county, event"
         />
       </label>
