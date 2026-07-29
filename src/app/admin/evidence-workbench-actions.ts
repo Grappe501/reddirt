@@ -250,6 +250,8 @@ export async function saveSpeechEvidenceAction(
     return { ok: false, message: "Invalid publication status." };
   }
 
+  const store = loadSpeechEvidenceStore();
+  const prev = store.speeches[speechId] ?? {};
   const overlay: SpeechEvidenceOverlay = {
     counties: normalizeCountyList(str(formData, "counties")),
     city: str(formData, "city"),
@@ -260,10 +262,16 @@ export async function saveSpeechEvidenceAction(
     approvedForPublic: bool(formData, "approvedForPublic"),
     homepageCandidate: bool(formData, "homepageCandidate"),
     publicationStatus,
+    // Preserve Pass 8 intel fields unless apply action rewrites them.
+    speakerNotes: prev.speakerNotes,
+    keyQuotes: prev.keyQuotes,
+    doNotClaim: prev.doNotClaim,
+    transcriptChapters: prev.transcriptChapters,
+    transcriptIntelAt: prev.transcriptIntelAt,
+    transcriptIntelPlanId: prev.transcriptIntelPlanId,
     updatedAt: new Date().toISOString(),
   };
 
-  const store = loadSpeechEvidenceStore();
   store.speeches[speechId] = overlay;
   saveSpeechEvidenceStore(store);
 
@@ -1054,6 +1062,75 @@ export async function encodeVideoExcerptAction(input: {
     ok: batch.ok,
     message: batch.message + (batch.errors[0] ? `\n${batch.errors[0].error}` : ""),
     clips: batch.created,
+  };
+}
+
+export async function analyzeTranscriptIntelAction(input: {
+  speechId: string;
+  youtubeVideoId: string;
+}): Promise<{
+  ok: boolean;
+  message: string;
+  proposal?: import("@/lib/campaign-media/transcript-intelligence").TranscriptIntelProposal;
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const speechId = String(input.speechId ?? "").trim();
+  const youtubeVideoId = String(input.youtubeVideoId ?? "").trim();
+  if (!youtubeVideoId) return { ok: false, message: "youtubeVideoId required." };
+
+  const overlay = speechId ? loadSpeechEvidenceStore().speeches[speechId] ?? null : null;
+  const { analyzeTranscriptIntelligence } = await import(
+    "@/lib/campaign-media/transcript-intelligence"
+  );
+  const result = analyzeTranscriptIntelligence({
+    youtubeVideoId,
+    speechId: speechId || undefined,
+    overlay,
+  });
+  if (!result.ok) return { ok: false, message: result.error };
+  const p = result.proposal;
+  return {
+    ok: true,
+    message: `Transcript intel: ${p.chapters.length} chapters · ${p.quotes.length} quotes · ${p.claimCandidates.length} claims · ${p.doNotClaim.length} do-not-claim`,
+    proposal: p,
+  };
+}
+
+export async function applyTranscriptIntelAction(input: {
+  speechId: string;
+  proposalId: string;
+  applyFields: string[];
+  claimIndex?: number;
+}): Promise<{ ok: boolean; message: string }> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const speechId = String(input.speechId ?? "").trim();
+  if (!speechId) return { ok: false, message: "speechId required." };
+  const applyFields = (input.applyFields ?? []).map(String).filter(Boolean);
+  if (!applyFields.length) return { ok: false, message: "Select at least one field to apply." };
+
+  const {
+    loadTranscriptIntelStore,
+    applyTranscriptIntelToOverlay,
+  } = await import("@/lib/campaign-media/transcript-intelligence");
+  const proposal =
+    loadTranscriptIntelStore().proposals.find((p) => p.id === input.proposalId) ?? null;
+  if (!proposal) return { ok: false, message: "Proposal not found — run Analyze transcript again." };
+
+  const store = loadSpeechEvidenceStore();
+  const prev = store.speeches[speechId] ?? {};
+  store.speeches[speechId] = applyTranscriptIntelToOverlay({
+    overlay: prev,
+    proposal,
+    applyFields: applyFields as import("@/lib/campaign-media/transcript-intelligence").TranscriptIntelApplyFields[],
+    claimIndex: input.claimIndex,
+  });
+  saveSpeechEvidenceStore(store);
+  revalidatePath("/admin/evidence-workbench");
+  return {
+    ok: true,
+    message: `Applied transcript intel fields (${applyFields.join(", ")}) to ${speechId}.`,
   };
 }
 

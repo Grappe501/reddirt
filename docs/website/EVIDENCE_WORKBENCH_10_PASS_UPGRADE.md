@@ -31,8 +31,8 @@
 | **4** | **Derivative → placement** | Promote a derivative as public `src` override or homepage/hero candidate with preview |
 | **5** | **Attention / focus-point crops** | Manual focus point + focus crop kinds · AI cropAdvice → derivative |
 | **6** | **ffmpeg foundation** | Install/detect local ffmpeg under `.local` · poster frames · clip probe |
-| **7** | **Video clip encode** *(this pass)* | Export timed excerpts from plans · store under campaign-derivatives |
-| **8** | Transcript intelligence | Chapter/quote tools · claim extraction tied to evidence fields · do-not-claim |
+| **7** | **Video clip encode** | Export timed excerpts from plans · store under campaign-derivatives |
+| **8** | **Transcript intelligence** *(this pass)* | Chapter/quote tools · claim extraction tied to evidence fields · do-not-claim |
 | **9** | Batch publish controls | Multi approve / hold / homepage flags · consent-aware · county album bulk refresh |
 | **10** | Ops polish | Batch undo · operation history UI · keyboard multi-select · smoke pack · docs lock |
 
@@ -101,6 +101,16 @@
 - [x] AI tool `encode_video_excerpt`
 - [x] Smoke: `scripts/smoke-encode-video-excerpt.ts`
 
+## Pass 8 acceptance
+
+- [x] Local chapters from workspace chapters or timed heuristic
+- [x] Verbatim quote candidates from transcript segments
+- [x] Claim candidates mapped to `whatThisProves` / `speakerNotes`
+- [x] Do-not-claim guardrails (auto-captions, unverified counties, figures, opponent framing)
+- [x] Speeches panel: Analyze → review → Apply selected fields
+- [x] AI tool `analyze_transcript_intelligence`
+- [x] Smoke: `scripts/smoke-transcript-intelligence.ts`
+
 ---
 
 ## Tracking
@@ -116,4 +126,5 @@ Update this table when each pass lands (commit hash + one-line note).
 | 5 | `2268ffe3` | Focus-point crops + cropAdvice → derivative |
 | 6 | `71c9c0a7` | ffmpeg .local detect + poster + clip probe |
 | 7 | `e5939337` | Encode timed excerpts from plans into campaign-derivatives |
-| 8–10 | — | — |
+| 8 | *(pending commit)* | Transcript chapters/quotes/claims + do-not-claim |
+| 9–10 | — | — |

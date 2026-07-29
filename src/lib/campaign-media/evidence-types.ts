@@ -72,6 +72,13 @@ export type SpeechEvidenceOverlay = {
   approvedForPublic?: boolean;
   homepageCandidate?: boolean;
   publicationStatus?: "DRAFT" | "IN_REVIEW" | "APPROVED" | "PUBLISHED" | "ARCHIVED";
+  /** Pass 8 — operator-applied transcript notes / quotes / guardrails. */
+  speakerNotes?: string;
+  keyQuotes?: string[];
+  doNotClaim?: string[];
+  transcriptChapters?: Array<{ title: string; startSeconds: number }>;
+  transcriptIntelAt?: string;
+  transcriptIntelPlanId?: string;
   updatedAt?: string;
 };
 

@@ -131,6 +131,11 @@ export const EVIDENCE_AI_TOOL_CATALOG: Array<{
     summary: "Encode a timed clip from a local master (from plan index or start/end seconds).",
   },
   {
+    name: "analyze_transcript_intelligence",
+    audience: "video",
+    summary: "Local chapters/quotes/claims/do-not-claim from transcript workspace (no inventing).",
+  },
+  {
     name: "plan_video_excerpt",
     audience: "video",
     summary: "Build timed clip candidates from the local transcript workspace (no encode yet).",
@@ -569,6 +574,22 @@ export function evidenceAiToolsFor(kind: "photo" | "video"): ChatCompletionTool[
             localPublicSrc: { type: "string" },
           },
           required: ["outId"],
+        },
+      },
+    },
+    {
+      type: "function",
+      function: {
+        name: "analyze_transcript_intelligence",
+        description:
+          "Analyze local transcript workspace into chapters, verbatim quotes, claim candidates tied to evidence fields, and do-not-claim guardrails. Does not invent geography or spoken lines.",
+        parameters: {
+          type: "object",
+          properties: {
+            youtubeVideoId: { type: "string" },
+            speechId: { type: "string" },
+          },
+          required: ["youtubeVideoId"],
         },
       },
     },

@@ -7,9 +7,8 @@ import { CAMPAIGN_PHOTO_REGISTRY } from "@/content/media/campaign-photo-registry
 import type { CampaignPhotoRecord } from "@/content/media/campaign-photo-types";
 import { buildCountyAlbums } from "@/lib/campaign-media/county-albums";
 import { loadEvidenceAiMemory } from "@/lib/campaign-media/evidence-ai-memory";
-import { loadCalendarPresenceStore } from "@/lib/campaign-media/evidence-store";
+import { loadCalendarPresenceStore, loadPhotoEvidenceStore, loadSpeechEvidenceStore } from "@/lib/campaign-media/evidence-store";
 import { applyPhotoEvidenceOverlay } from "@/lib/campaign-media/apply-evidence-overlay";
-import { loadPhotoEvidenceStore } from "@/lib/campaign-media/evidence-store";
 import { photoPublicSurfacesPreview } from "@/lib/campaign-media/county-albums-live";
 import {
   createPhotoDerivative,
@@ -26,6 +25,7 @@ import {
 } from "@/lib/campaign-media/media-derivatives";
 import { resolveRegistryCountyFromLabel } from "@/lib/county/resolve-county-label";
 import { loadWorkspaceRecord } from "@/lib/media/youtube-transcripts/workspace-store";
+import { analyzeTranscriptIntelligence } from "@/lib/campaign-media/transcript-intelligence";
 
 function asString(v: unknown): string {
   return String(v ?? "").trim();
@@ -649,6 +649,22 @@ export async function executeEvidenceAiTool(
         });
         if (!batch.ok) return { ok: false, error: batch.message };
         return { ok: true, result: batch };
+      }
+
+      case "analyze_transcript_intelligence": {
+        const youtubeVideoId = asString(args.youtubeVideoId);
+        if (!youtubeVideoId) return { ok: false, error: "youtubeVideoId required." };
+        const speechId = asString(args.speechId) || undefined;
+        const overlay = speechId
+          ? loadSpeechEvidenceStore().speeches[speechId] ?? null
+          : null;
+        const result = analyzeTranscriptIntelligence({
+          youtubeVideoId,
+          speechId,
+          overlay,
+        });
+        if (!result.ok) return { ok: false, error: result.error };
+        return { ok: true, result: result.proposal };
       }
 
       case "plan_video_excerpt": {

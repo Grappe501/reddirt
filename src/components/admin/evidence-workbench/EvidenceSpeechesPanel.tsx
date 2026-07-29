@@ -3,6 +3,8 @@
 import { useEffect, useMemo, useState, useTransition } from "react";
 import Link from "next/link";
 import {
+  analyzeTranscriptIntelAction,
+  applyTranscriptIntelAction,
   buildSpeechMetadataPacketAction,
   encodeVideoExcerptAction,
   extractVideoPosterAction,
@@ -19,9 +21,18 @@ import type {
   VideoClipRecord,
   VideoExcerptPlan,
 } from "@/lib/campaign-media/media-derivatives-types";
+import type { TranscriptIntelProposal } from "@/lib/campaign-media/transcript-intelligence";
 import { mergeAiCountyIntoList } from "@/lib/campaign-media/evidence-validation";
 import { EVIDENCE_FIELD_CLASS } from "@/components/admin/evidence-workbench/field-styles";
 import { isEditableKeyboardTarget } from "@/components/admin/evidence-workbench/keyboard";
+
+const INTEL_FIELD_OPTIONS: Array<{ key: string; label: string }> = [
+  { key: "whatThisProves", label: "What this proves" },
+  { key: "speakerNotes", label: "Speaker notes" },
+  { key: "keyQuotes", label: "Key quotes" },
+  { key: "doNotClaim", label: "Do-not-claim" },
+  { key: "transcriptChapters", label: "Chapters" },
+];
 
 export type SpeechWorkbenchItem = {
   id: string;
@@ -55,6 +66,10 @@ export function EvidenceSpeechesPanel({ speeches, initialSpeechId }: Props) {
   const [excerptPlan, setExcerptPlan] = useState<VideoExcerptPlan | null>(null);
   const [encodedClips, setEncodedClips] = useState<VideoClipRecord[]>([]);
   const [encodeProgress, setEncodeProgress] = useState("");
+  const [intelProposal, setIntelProposal] = useState<TranscriptIntelProposal | null>(null);
+  const [intelFields, setIntelFields] = useState<Set<string>>(
+    () => new Set(["whatThisProves", "keyQuotes", "doNotClaim", "transcriptChapters"]),
+  );
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -100,6 +115,7 @@ export function EvidenceSpeechesPanel({ speeches, initialSpeechId }: Props) {
     setExcerptPlan(null);
     setEncodedClips([]);
     setEncodeProgress("");
+    setIntelProposal(null);
     void probeVideoToolingAction().then((res) => {
       setFfmpegNote(res.message);
     });
@@ -252,6 +268,43 @@ export function EvidenceSpeechesPanel({ speeches, initialSpeechId }: Props) {
       setMessage(res.message);
       const listed = await listVideoClipsAction(speechId);
       setEncodedClips(listed.clips ?? []);
+    });
+  }
+
+  function analyzeTranscript() {
+    const speechId = speech.id;
+    const youtubeVideoId = speech.youtubeVideoId;
+    start(async () => {
+      const res = await analyzeTranscriptIntelAction({ speechId, youtubeVideoId });
+      setMessage(res.message);
+      if (res.ok && res.proposal) setIntelProposal(res.proposal);
+    });
+  }
+
+  function applyTranscriptIntel() {
+    if (!intelProposal) {
+      setMessage("Analyze transcript first.");
+      return;
+    }
+    const fields = [...intelFields];
+    if (!fields.length) {
+      setMessage("Select at least one intel field to apply.");
+      return;
+    }
+    const speechId = speech.id;
+    start(async () => {
+      const res = await applyTranscriptIntelAction({
+        speechId,
+        proposalId: intelProposal.id,
+        applyFields: fields,
+      });
+      setMessage(res.message);
+      if (res.ok && form && fields.includes("whatThisProves") && intelProposal.claimCandidates[0]) {
+        setForm({
+          ...form,
+          whatThisProves: intelProposal.claimCandidates[0].text.slice(0, 500),
+        });
+      }
     });
   }
 
@@ -597,7 +650,111 @@ export function EvidenceSpeechesPanel({ speeches, initialSpeechId }: Props) {
             >
               Plan video excerpts
             </button>
+            <button
+              type="button"
+              disabled={pending}
+              onClick={analyzeTranscript}
+              className="rounded-md border-2 border-[#ca913d] bg-white px-4 py-2 font-body text-sm font-semibold text-[#12124a] disabled:opacity-50"
+            >
+              Analyze transcript (Pass 8)
+            </button>
           </div>
+
+          {intelProposal ? (
+            <div className="rounded-lg border-2 border-[#ca913d]/40 bg-[#fff8ef] p-3">
+              <p className="font-heading text-xs font-bold uppercase tracking-wide text-[#000066]">
+                Transcript intelligence · review then apply
+              </p>
+              <p className="mt-1 font-body text-[11px] text-[#364272]">
+                {intelProposal.grounding.segmentCount} segments · {intelProposal.grounding.status} ·{" "}
+                {intelProposal.grounding.charCount} chars
+                {intelProposal.warnings.length ? ` · ${intelProposal.warnings.join("; ")}` : ""}
+              </p>
+              <div className="mt-2 flex flex-wrap gap-x-3 gap-y-1 font-body text-[11px] text-[#12124a]">
+                {INTEL_FIELD_OPTIONS.map((f) => (
+                  <label key={f.key} className="inline-flex items-center gap-1.5">
+                    <input
+                      type="checkbox"
+                      checked={intelFields.has(f.key)}
+                      onChange={(e) => {
+                        setIntelFields((prev) => {
+                          const next = new Set(prev);
+                          if (e.target.checked) next.add(f.key);
+                          else next.delete(f.key);
+                          return next;
+                        });
+                      }}
+                    />
+                    {f.label}
+                  </label>
+                ))}
+              </div>
+              <button
+                type="button"
+                disabled={pending}
+                onClick={applyTranscriptIntel}
+                className="mt-2 rounded border-2 border-[#000066] bg-[#000066] px-3 py-1 font-body text-xs font-semibold text-white disabled:opacity-50"
+              >
+                Apply selected to speech evidence
+              </button>
+              {intelProposal.chapters.length ? (
+                <div className="mt-2">
+                  <p className="font-heading text-[10px] font-bold uppercase text-[#000066]">Chapters</p>
+                  <ul className="mt-1 list-disc space-y-0.5 pl-4 font-body text-[11px] text-[#364272]">
+                    {intelProposal.chapters.slice(0, 6).map((c) => (
+                      <li key={c.id}>
+                        {c.startSeconds}s — {c.title}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ) : null}
+              {intelProposal.quotes.length ? (
+                <div className="mt-2">
+                  <p className="font-heading text-[10px] font-bold uppercase text-[#000066]">Quotes</p>
+                  <ul className="mt-1 space-y-1 font-body text-[11px] text-[#364272]">
+                    {intelProposal.quotes.slice(0, 4).map((q, i) => (
+                      <li key={`${q.startSeconds}-${i}`} className="rounded border border-[#8eb6dc]/30 bg-white px-2 py-1">
+                        “{q.text}”
+                        <span className="block font-mono text-[10px]">
+                          {q.startSeconds}s–{q.endSeconds}s
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ) : null}
+              {intelProposal.doNotClaim.length ? (
+                <div className="mt-2">
+                  <p className="font-heading text-[10px] font-bold uppercase text-[#000066]">Do not claim</p>
+                  <ul className="mt-1 list-disc space-y-0.5 pl-4 font-body text-[11px] text-[#364272]">
+                    {intelProposal.doNotClaim.map((d) => (
+                      <li key={d}>{d}</li>
+                    ))}
+                  </ul>
+                </div>
+              ) : null}
+            </div>
+          ) : null}
+
+          {speech.overlay?.doNotClaim?.length || speech.overlay?.keyQuotes?.length ? (
+            <div className="rounded border border-[#8eb6dc]/40 bg-[#f4f7fc] p-2 font-body text-[11px] text-[#364272]">
+              {speech.overlay.keyQuotes?.length ? (
+                <p>
+                  <span className="font-semibold text-[#12124a]">Saved quotes:</span>{" "}
+                  {speech.overlay.keyQuotes.length}
+                </p>
+              ) : null}
+              {speech.overlay.doNotClaim?.length ? (
+                <ul className="mt-1 list-disc pl-4">
+                  {speech.overlay.doNotClaim.slice(0, 4).map((d) => (
+                    <li key={d}>{d}</li>
+                  ))}
+                </ul>
+              ) : null}
+            </div>
+          ) : null}
+
           {message ? (
             <p className="whitespace-pre-wrap font-body text-sm text-[#364272]">{message}</p>
           ) : null}
