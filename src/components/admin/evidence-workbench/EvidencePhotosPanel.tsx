@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useRef, useState, useTransition, type MouseEvent } from "react";
 import {
   batchCreatePhotoDerivativesAction,
+  batchPublishPhotosAction,
   batchSavePhotoEvidenceAction,
   buildPhotoMetadataPacketAction,
   clearPhotoPublicSrcOverrideAction,
@@ -850,6 +851,57 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId }: Props)
     });
   }
 
+  function runBatchPublish(action: string) {
+    if (selectedIds.length === 0) {
+      setMessage("Select photos for batch publish.");
+      return;
+    }
+    const needsConsent = selectedIds.some((id) => {
+      const item = photos.find((p) => p.id === id);
+      return item?.requiresConsentHold;
+    });
+    if (
+      needsConsent &&
+      !form?.consentConfirmed &&
+      (action === "approve" || action === "homepage_on" || action === "featured_on")
+    ) {
+      setMessage(
+        "Consent hold stills in selection — check “Consent confirmed by Steve/family” before approve/homepage/featured.",
+      );
+      return;
+    }
+    const labels: Record<string, string> = {
+      approve: "Approve for public",
+      hold: "Hold off albums (clear homepage/featured)",
+      homepage_on: "Mark homepage candidate",
+      homepage_off: "Clear homepage candidate",
+      featured_on: "Mark featured",
+      featured_off: "Clear featured",
+    };
+    if (
+      !window.confirm(
+        `${labels[action] ?? action} for ${selectedIds.length} selected photo(s)?\n\nUnknown-county stills are skipped for public-raising actions. Albums refresh once.`,
+      )
+    ) {
+      return;
+    }
+    start(async () => {
+      const res = await batchPublishPhotosAction({
+        photoIds: selectedIds,
+        action,
+        consentConfirmed: Boolean(form?.consentConfirmed),
+      });
+      let msg = res.message;
+      if (res.errors?.length) {
+        msg += `\n${res.errors
+          .slice(0, 5)
+          .map((e) => `${e.photoId}: ${e.error}`)
+          .join("\n")}`;
+      }
+      setMessage(msg);
+    });
+  }
+
   const FILTERS: { id: Filter; label: string }[] = [
     { id: "all", label: "All" },
     { id: "unknown", label: "Unknown county" },
@@ -969,6 +1021,39 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId }: Props)
             {derivProgress ? (
               <p className="mt-2 font-body text-[11px] font-semibold text-[#000066]">{derivProgress}</p>
             ) : null}
+          </div>
+        ) : null}
+        {selectedIds.length > 0 ? (
+          <div className="mt-3 rounded border border-[#ca913d]/50 bg-[#fff8ef] p-2.5">
+            <p className="font-heading text-[11px] font-bold uppercase tracking-wide text-[#000066]">
+              Batch publish (Pass 9)
+            </p>
+            <p className="mt-1 font-body text-[11px] text-[#364272]">
+              Approve / hold / homepage / featured for selection. Consent-aware. Unknown county skipped on
+              public-raising actions. County albums refresh once.
+            </p>
+            <div className="mt-2 flex flex-wrap gap-2">
+              {(
+                [
+                  ["approve", "Approve"],
+                  ["hold", "Hold off albums"],
+                  ["homepage_on", "Homepage on"],
+                  ["homepage_off", "Homepage off"],
+                  ["featured_on", "Featured on"],
+                  ["featured_off", "Featured off"],
+                ] as const
+              ).map(([action, label]) => (
+                <button
+                  key={action}
+                  type="button"
+                  disabled={pending}
+                  onClick={() => runBatchPublish(action)}
+                  className="rounded border-2 border-[#000066] bg-white px-2.5 py-1 font-body text-[11px] font-semibold text-[#12124a] disabled:opacity-50"
+                >
+                  {label}
+                </button>
+              ))}
+            </div>
           </div>
         ) : null}
         <div className="mt-2 flex gap-2 overflow-x-auto pb-1">

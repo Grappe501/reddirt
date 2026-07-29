@@ -1,0 +1,63 @@
+{
+  "version": 1,
+  "updatedAt": "2026-07-29T22:53:39.134Z",
+  "purpose": "Evidence Workbench batch publish/hold runs (Pass 9). Originals never deleted.",
+  "runs": [
+    {
+      "id": "bpub-approve-ms6olccd",
+      "createdAt": "2026-07-29T22:53:39.134Z",
+      "action": "approve",
+      "photoIds": [
+        "mena-polk-meet-greet-20260411"
+      ],
+      "appliedIds": [
+        "mena-polk-meet-greet-20260411"
+      ],
+      "skippedConsent": 0,
+      "skippedUnknownCounty": 0,
+      "errorCount": 0
+    },
+    {
+      "id": "bpub-hold-ms6olcc9",
+      "createdAt": "2026-07-29T22:53:39.130Z",
+      "action": "hold",
+      "photoIds": [
+        "mena-polk-meet-greet-20260411"
+      ],
+      "appliedIds": [
+        "mena-polk-meet-greet-20260411"
+      ],
+      "skippedConsent": 0,
+      "skippedUnknownCounty": 0,
+      "errorCount": 0
+    },
+    {
+      "id": "bpub-approve-ms6ok6io",
+      "createdAt": "2026-07-29T22:52:44.928Z",
+      "action": "approve",
+      "photoIds": [
+        "mena-polk-meet-greet-20260411"
+      ],
+      "appliedIds": [
+        "mena-polk-meet-greet-20260411"
+      ],
+      "skippedConsent": 0,
+      "skippedUnknownCounty": 0,
+      "errorCount": 0
+    },
+    {
+      "id": "bpub-hold-ms6ok6dl",
+      "createdAt": "2026-07-29T22:52:44.745Z",
+      "action": "hold",
+      "photoIds": [
+        "mena-polk-meet-greet-20260411"
+      ],
+      "appliedIds": [
+        "mena-polk-meet-greet-20260411"
+      ],
+      "skippedConsent": 0,
+      "skippedUnknownCounty": 0,
+      "errorCount": 0
+    }
+  ]
+}

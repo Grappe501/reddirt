@@ -235,6 +235,75 @@ export async function batchSavePhotoEvidenceAction(input: {
   };
 }
 
+export async function batchPublishPhotosAction(input: {
+  photoIds: string[];
+  action: string;
+  consentConfirmed?: boolean;
+  allowUnknownCounty?: boolean;
+}): Promise<{
+  ok: boolean;
+  message: string;
+  applied?: number;
+  skipped?: number;
+  skippedConsent?: number;
+  skippedUnknownCounty?: number;
+  runId?: string | null;
+  errors?: Array<{ photoId: string; error: string }>;
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { applyPhotoPublishBatch } = await import("@/lib/campaign-media/batch-photo-publish");
+  const result = applyPhotoPublishBatch({
+    photoIds: input.photoIds,
+    action: input.action,
+    consentConfirmed: Boolean(input.consentConfirmed),
+    allowUnknownCounty: Boolean(input.allowUnknownCounty),
+    refreshAlbums: true,
+  });
+  if (result.applied > 0) revalidateEvidenceSurfaces();
+  return {
+    ok: result.ok,
+    message: result.message,
+    applied: result.applied,
+    skipped: result.skipped,
+    skippedConsent: result.skippedConsent,
+    skippedUnknownCounty: result.skippedUnknownCounty,
+    runId: result.runId,
+    errors: result.errors.slice(0, 12),
+  };
+}
+
+export async function previewBatchPublishPhotosAction(input: {
+  photoIds: string[];
+  action: string;
+}): Promise<{
+  ok: boolean;
+  message: string;
+  actionable?: number;
+  needsConsent?: number;
+  unknownCounty?: number;
+  missing?: number;
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { previewBatchPublish, BATCH_PUBLISH_ACTIONS } = await import(
+    "@/lib/campaign-media/batch-photo-publish"
+  );
+  const action = String(input.action ?? "").trim();
+  if (!(BATCH_PUBLISH_ACTIONS as readonly string[]).includes(action)) {
+    return { ok: false, message: "Unsupported publish action." };
+  }
+  const preview = previewBatchPublish({
+    photoIds: input.photoIds,
+    action: action as (typeof BATCH_PUBLISH_ACTIONS)[number],
+  });
+  return {
+    ok: true,
+    message: `${preview.actionable} actionable · ${preview.needsConsent} need consent · ${preview.unknownCounty} unknown county · ${preview.missing} missing`,
+    ...preview,
+  };
+}
+
 export async function saveSpeechEvidenceAction(
   _prev: { ok: boolean; message: string } | null,
   formData: FormData,

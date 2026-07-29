@@ -98,6 +98,7 @@ Operator UI (localhost): **`/admin/evidence-workbench`**
 - **ffmpeg foundation:** prefers `H:/SOSWebsite/.local/ffmpeg/bin`; Speeches tab can probe masters + extract poster frames; AI tools `probe_local_video` / `extract_video_poster`  
 - **Video clip encode:** Plan excerpts → Encode clip/all into `/media/campaign-derivatives/_video/`; AI tool `encode_video_excerpt`  
 - **Transcript intelligence:** local chapters/quotes/claims + do-not-claim; Speeches Analyze → Apply; AI tool `analyze_transcript_intelligence`  
+- **Batch publish:** Approve / Hold / Homepage / Featured on selection (consent-aware; albums refresh once); AI tool `batch_publish_photo_flags`  
 - Drop local masters in `public/media/campaign-video-masters/` or `.local/video-masters/`  
 - 10-pass upgrade map: [`EVIDENCE_WORKBENCH_10_PASS_UPGRADE.md`](./EVIDENCE_WORKBENCH_10_PASS_UPGRADE.md)  
 - Video: `plan_video_excerpt` builds timed clip candidates from local transcript workspace; encode/poster needs local `ffmpeg` (optional)  

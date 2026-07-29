@@ -308,6 +308,39 @@ export async function executeEvidenceAiTool(
         };
       }
 
+      case "batch_publish_photo_flags": {
+        const photoIds = Array.isArray(args.photoIds)
+          ? args.photoIds.map((id) => String(id).trim()).filter(Boolean)
+          : [];
+        const action = asString(args.action);
+        if (!photoIds.length || !action) {
+          return { ok: false, error: "photoIds and action required." };
+        }
+        const { applyPhotoPublishBatch } = await import("@/lib/campaign-media/batch-photo-publish");
+        const result = applyPhotoPublishBatch({
+          photoIds,
+          action,
+          consentConfirmed: Boolean(args.consentConfirmed),
+          allowUnknownCounty: Boolean(args.allowUnknownCounty),
+          refreshAlbums: true,
+        });
+        if (!result.ok) return { ok: false, error: result.message };
+        return {
+          ok: true,
+          result: {
+            action: result.action,
+            applied: result.applied,
+            skipped: result.skipped,
+            skippedConsent: result.skippedConsent,
+            skippedUnknownCounty: result.skippedUnknownCounty,
+            runId: result.runId,
+            appliedIds: result.appliedIds,
+            errors: result.errors.slice(0, 12),
+            message: result.message,
+          },
+        };
+      }
+
       case "cluster_photo_selection": {
         const photoIds = Array.isArray(args.photoIds)
           ? args.photoIds.map((id) => String(id).trim()).filter(Boolean)

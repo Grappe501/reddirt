@@ -61,6 +61,11 @@ export const EVIDENCE_AI_TOOL_CATALOG: Array<{
     summary: "Apply selected evidence fields to many photo ids at once (local write).",
   },
   {
+    name: "batch_publish_photo_flags",
+    audience: "photo",
+    summary: "Batch approve/hold/homepage/featured flags (consent-aware; refreshes albums once).",
+  },
+  {
     name: "cluster_photo_selection",
     audience: "photo",
     summary: "Cluster selected photo ids by shared event/date/county cues (read-only).",
@@ -328,6 +333,27 @@ export function evidenceAiToolsFor(kind: "photo" | "video"): ChatCompletionTool[
             },
           },
           required: ["photoIds", "applyFields", "patch"],
+        },
+      },
+    },
+    {
+      type: "function",
+      function: {
+        name: "batch_publish_photo_flags",
+        description:
+          "Batch approve, hold (off albums), or toggle homepage/featured flags for many photo ids. Skips Unknown county for public-raising actions unless allowUnknownCounty. Consent hold stills need consentConfirmed. Refreshes county albums once.",
+        parameters: {
+          type: "object",
+          properties: {
+            photoIds: { type: "array", items: { type: "string" } },
+            action: {
+              type: "string",
+              enum: ["approve", "hold", "homepage_on", "homepage_off", "featured_on", "featured_off"],
+            },
+            consentConfirmed: { type: "boolean" },
+            allowUnknownCounty: { type: "boolean" },
+          },
+          required: ["photoIds", "action"],
         },
       },
     },

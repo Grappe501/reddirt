@@ -32,8 +32,8 @@
 | **5** | **Attention / focus-point crops** | Manual focus point + focus crop kinds · AI cropAdvice → derivative |
 | **6** | **ffmpeg foundation** | Install/detect local ffmpeg under `.local` · poster frames · clip probe |
 | **7** | **Video clip encode** | Export timed excerpts from plans · store under campaign-derivatives |
-| **8** | **Transcript intelligence** *(this pass)* | Chapter/quote tools · claim extraction tied to evidence fields · do-not-claim |
-| **9** | Batch publish controls | Multi approve / hold / homepage flags · consent-aware · county album bulk refresh |
+| **8** | **Transcript intelligence** | Chapter/quote tools · claim extraction tied to evidence fields · do-not-claim |
+| **9** | **Batch publish controls** *(this pass)* | Multi approve / hold / homepage flags · consent-aware · county album bulk refresh |
 | **10** | Ops polish | Batch undo · operation history UI · keyboard multi-select · smoke pack · docs lock |
 
 ---
@@ -111,6 +111,16 @@
 - [x] AI tool `analyze_transcript_intelligence`
 - [x] Smoke: `scripts/smoke-transcript-intelligence.ts`
 
+## Pass 9 acceptance
+
+- [x] Multi-select Approve / Hold / Homepage on·off / Featured on·off
+- [x] Consent hold stills blocked without confirmation on public-raising actions
+- [x] Unknown-county stills skipped for approve/homepage/featured (unless force flag)
+- [x] County albums refresh once after successful batch
+- [x] Publish runs ledger `data/campaign-media/batch-publish-runs.json`
+- [x] AI tool `batch_publish_photo_flags`
+- [x] Smoke: `scripts/smoke-batch-photo-publish.ts`
+
 ---
 
 ## Tracking
@@ -127,4 +137,5 @@ Update this table when each pass lands (commit hash + one-line note).
 | 6 | `71c9c0a7` | ffmpeg .local detect + poster + clip probe |
 | 7 | `e5939337` | Encode timed excerpts from plans into campaign-derivatives |
 | 8 | `c580c5e8` | Transcript chapters/quotes/claims + do-not-claim |
-| 9–10 | — | — |
+| 9 | *(pending commit)* | Batch approve/hold/homepage/featured + album refresh |
+| 10 | — | — |
