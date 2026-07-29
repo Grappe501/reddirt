@@ -105,5 +105,5 @@ Update this table when each pass lands (commit hash + one-line note).
 | 3 | `efe09c10` | Batch derivatives: kinds × selection + progress + ledger runs |
 | 4 | `9099b7fd` | Derivative → placement: publicSrcOverride + homepage/hero promote |
 | 5 | `2268ffe3` | Focus-point crops + cropAdvice → derivative |
-| 6 | *(pending commit)* | ffmpeg .local detect + poster + clip probe |
+| 6 | `71c9c0a7` | ffmpeg .local detect + poster + clip probe |
 | 7–10 | — | — |
