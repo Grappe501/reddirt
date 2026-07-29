@@ -65,5 +65,5 @@ Update this table when each pass lands (commit hash + one-line note).
 | Pass | Commit | Note |
 | --- | ---: | --- |
 | 1 | `2098c843` | Batch metadata: multi-select + field-level apply + AI tool |
-| 2 | shipped | Batch AI assist: cluster + suggest-for-selection + proposal review |
+| 2 | `5de3a7fe` | Batch AI assist: cluster + suggest-for-selection + proposal review |
 | 3–10 | — | — |
