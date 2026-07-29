@@ -88,14 +88,19 @@ This early failure is a **different** class from `kgrappe`’s long-build → La
 
 ## Remaining launch effort (locked)
 
-Editorial doctrine: [`PUBLIC_SITE_EDITORIAL_DOCTRINE.md`](./PUBLIC_SITE_EDITORIAL_DOCTRINE.md)
+**Phase:** Campaign craftsmanship  
+**Board:** [`REMAINING_LAUNCH_CRAFTSMANSHIP_BOARD.md`](./REMAINING_LAUNCH_CRAFTSMANSHIP_BOARD.md)  
+**Editorial doctrine:** [`PUBLIC_SITE_EDITORIAL_DOCTRINE.md`](./PUBLIC_SITE_EDITORIAL_DOCTRINE.md)
 
 Priority order — **no major new sections / no large copy rewrites** unless a factual issue is found:
 
-1. Visual polish (spacing, crops, CTA consistency, typography, mobile)
-2. Technical QA (production build, a11y, crawl, forms)
-3. Media quality (captions, alt, selection, video presentation)
-4. Content accuracy (endorsements, transcripts, office claims)
+1. **Production confidence** (clean build, routes, forms, media load, runtime errors, Netlify vs local)  
+2. Media audit (keep-or-remove ledger)  
+3. Reporter pass (transparency gaps without promo volume)  
+4. Consistency audit  
+5. Hesitation hunt (every CER: 3 removed / 3 remaining)
+
+Launch confidence stays below 100% until production confidence questions are answered yes (or Netlify platform gap is explicitly separated).
 
 ---
 
