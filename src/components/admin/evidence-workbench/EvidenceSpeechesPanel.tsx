@@ -4,8 +4,10 @@ import { useEffect, useMemo, useState, useTransition } from "react";
 import Link from "next/link";
 import {
   buildSpeechMetadataPacketAction,
+  encodeVideoExcerptAction,
   extractVideoPosterAction,
   listLocalVideoMastersAction,
+  listVideoClipsAction,
   planVideoExcerptAction,
   probeLocalVideoAction,
   probeVideoToolingAction,
@@ -13,6 +15,10 @@ import {
   suggestSpeechEvidenceAiAction,
 } from "@/app/admin/evidence-workbench-actions";
 import type { SpeechEvidenceOverlay } from "@/lib/campaign-media/evidence-types";
+import type {
+  VideoClipRecord,
+  VideoExcerptPlan,
+} from "@/lib/campaign-media/media-derivatives-types";
 import { mergeAiCountyIntoList } from "@/lib/campaign-media/evidence-validation";
 import { EVIDENCE_FIELD_CLASS } from "@/components/admin/evidence-workbench/field-styles";
 import { isEditableKeyboardTarget } from "@/components/admin/evidence-workbench/keyboard";
@@ -46,6 +52,9 @@ export function EvidenceSpeechesPanel({ speeches, initialSpeechId }: Props) {
   const [posterAt, setPosterAt] = useState("1");
   const [posterSrc, setPosterSrc] = useState<string | null>(null);
   const [masterNote, setMasterNote] = useState("");
+  const [excerptPlan, setExcerptPlan] = useState<VideoExcerptPlan | null>(null);
+  const [encodedClips, setEncodedClips] = useState<VideoClipRecord[]>([]);
+  const [encodeProgress, setEncodeProgress] = useState("");
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -88,6 +97,9 @@ export function EvidenceSpeechesPanel({ speeches, initialSpeechId }: Props) {
   useEffect(() => {
     setPosterSrc(null);
     setMasterNote("");
+    setExcerptPlan(null);
+    setEncodedClips([]);
+    setEncodeProgress("");
     void probeVideoToolingAction().then((res) => {
       setFfmpegNote(res.message);
     });
@@ -101,6 +113,9 @@ export function EvidenceSpeechesPanel({ speeches, initialSpeechId }: Props) {
           m.filename.toLowerCase().includes(youtubeVideoId.toLowerCase()),
       );
       setMasterNote(hit ? `Master: ${hit.filename} (${hit.root})` : res.message);
+    });
+    void listVideoClipsAction(speechId).then((res) => {
+      setEncodedClips(res.clips ?? []);
     });
   }, [speech?.id, speech?.youtubeVideoId]);
 
@@ -186,6 +201,57 @@ export function EvidenceSpeechesPanel({ speeches, initialSpeechId }: Props) {
     start(async () => {
       const res = await planVideoExcerptAction(youtubeVideoId);
       setMessage(res.message);
+      if (res.ok && res.plan) setExcerptPlan(res.plan);
+    });
+  }
+
+  function encodeClip(clipIndex: number) {
+    if (!excerptPlan) {
+      setMessage("Plan video excerpts first, then encode.");
+      return;
+    }
+    const speechId = speech.id;
+    const youtubeVideoId = speech.youtubeVideoId;
+    const clip = excerptPlan.clips[clipIndex];
+    setEncodeProgress(`Encoding clip ${clipIndex + 1}…`);
+    start(async () => {
+      const res = await encodeVideoExcerptAction({
+        speechId,
+        youtubeVideoId,
+        planId: excerptPlan.id,
+        clipIndex,
+        startSeconds: clip?.startSeconds,
+        endSeconds: clip?.endSeconds,
+        title: clip?.title,
+      });
+      setEncodeProgress("");
+      setMessage(res.message);
+      if (res.ok) {
+        const listed = await listVideoClipsAction(speechId);
+        setEncodedClips(listed.clips ?? []);
+      }
+    });
+  }
+
+  function encodeAllPlanned() {
+    if (!excerptPlan?.clips.length) {
+      setMessage("Plan video excerpts first, then encode.");
+      return;
+    }
+    const speechId = speech.id;
+    const youtubeVideoId = speech.youtubeVideoId;
+    const planId = excerptPlan.id;
+    setEncodeProgress(`Encoding up to ${Math.min(excerptPlan.clips.length, 4)} clips…`);
+    start(async () => {
+      const res = await encodeVideoExcerptAction({
+        speechId,
+        youtubeVideoId,
+        planId,
+      });
+      setEncodeProgress("");
+      setMessage(res.message);
+      const listed = await listVideoClipsAction(speechId);
+      setEncodedClips(listed.clips ?? []);
     });
   }
 
@@ -310,7 +376,7 @@ export function EvidenceSpeechesPanel({ speeches, initialSpeechId }: Props) {
           </div>
           <div className="mt-4 rounded-lg border-2 border-[#000066]/15 bg-white p-3">
             <p className="font-heading text-xs font-bold uppercase tracking-wide text-[#000066]">
-              ffmpeg / local masters (Pass 6)
+              ffmpeg / local masters + encode (Pass 6–7)
             </p>
             <p className="mt-1 whitespace-pre-wrap font-body text-[11px] text-[#364272]">
               {ffmpegNote || "Checking ffmpeg…"}
@@ -358,9 +424,75 @@ export function EvidenceSpeechesPanel({ speeches, initialSpeechId }: Props) {
                 className="mt-2 max-h-48 w-full rounded border border-[#8eb6dc]/40 object-contain bg-[#f4f7fc]"
               />
             ) : null}
+
+            {excerptPlan ? (
+              <div className="mt-3 rounded border border-[#8eb6dc]/40 bg-[#f4f7fc] p-2">
+                <div className="flex flex-wrap items-center justify-between gap-2">
+                  <p className="font-heading text-[10px] font-bold uppercase tracking-wide text-[#000066]">
+                    Excerpt plan · {excerptPlan.clips.length} clips
+                  </p>
+                  <button
+                    type="button"
+                    disabled={pending}
+                    onClick={encodeAllPlanned}
+                    className="rounded border-2 border-[#000066] bg-[#000066] px-2 py-0.5 font-body text-[10px] font-semibold text-white disabled:opacity-50"
+                  >
+                    Encode all (max 4)
+                  </button>
+                </div>
+                {encodeProgress ? (
+                  <p className="mt-1 font-body text-[11px] text-[#364272]">{encodeProgress}</p>
+                ) : null}
+                <ul className="mt-2 space-y-2">
+                  {excerptPlan.clips.map((c, i) => (
+                    <li
+                      key={`${excerptPlan.id}-${i}`}
+                      className="rounded border border-[#8eb6dc]/30 bg-white px-2 py-1.5"
+                    >
+                      <p className="font-body text-[11px] font-semibold text-[#12124a]">
+                        {c.startSeconds}s–{c.endSeconds}s · {c.title}
+                      </p>
+                      <p className="font-body text-[10px] text-[#364272]">{c.reason}</p>
+                      <button
+                        type="button"
+                        disabled={pending}
+                        onClick={() => encodeClip(i)}
+                        className="mt-1 rounded border border-[#ca913d] bg-white px-2 py-0.5 font-body text-[10px] font-semibold text-[#12124a] disabled:opacity-50"
+                      >
+                        Encode clip
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
+
+            {encodedClips.length ? (
+              <div className="mt-3 space-y-2">
+                <p className="font-heading text-[10px] font-bold uppercase tracking-wide text-[#000066]">
+                  Encoded clips
+                </p>
+                {encodedClips.map((c) => (
+                  <div key={c.id} className="rounded border border-[#8eb6dc]/40 bg-white p-2">
+                    <p className="font-body text-[11px] text-[#12124a]">
+                      {c.startSeconds}s–{c.endSeconds}s
+                      {c.title ? ` · ${c.title}` : ""}
+                    </p>
+                    <p className="break-all font-mono text-[10px] text-[#364272]">{c.publicSrc}</p>
+                    <video
+                      className="mt-1 max-h-40 w-full rounded bg-black"
+                      controls
+                      preload="metadata"
+                      src={c.publicSrc}
+                    />
+                  </div>
+                ))}
+              </div>
+            ) : null}
+
             <p className="mt-2 font-body text-[10px] text-[#364272]">
               Drop masters in public/media/campaign-video-masters/ or H:/SOSWebsite/.local/video-masters/
-              (name includes speech id or YouTube id). Encode clips is Pass 7.
+              (name includes speech id or YouTube id). Use Plan video excerpts → Encode.
             </p>
           </div>
         </div>

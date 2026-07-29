@@ -70,6 +70,30 @@ export type VideoPosterRecord = {
   note?: string;
 };
 
+/** Pass 7 — encoded timed excerpt under campaign-derivatives. */
+export type VideoClipRecord = {
+  id: string;
+  outId: string;
+  planId?: string;
+  clipIndex: number;
+  youtubeVideoId?: string;
+  speechId?: string;
+  startSeconds: number;
+  endSeconds: number;
+  title?: string;
+  quote?: string;
+  publicSrc: string;
+  relativePath: string;
+  sourcePath: string;
+  sourcePublicSrc?: string | null;
+  bytes?: number | null;
+  durationSeconds?: number | null;
+  width?: number | null;
+  height?: number | null;
+  createdAt: string;
+  note?: string;
+};
+
 export type LocalVideoProbeResult = {
   ok: boolean;
   absPath: string | null;
@@ -96,6 +120,8 @@ export type MediaDerivativesLedger = {
   batchRuns?: PhotoDerivativeBatchRun[];
   /** Pass 6 — poster frames extracted from local video masters. */
   videoPosters?: VideoPosterRecord[];
+  /** Pass 7 — encoded timed excerpts from plans / manual windows. */
+  videoClips?: VideoClipRecord[];
 };
 
 export type PhotoDerivativeBatchRun = {

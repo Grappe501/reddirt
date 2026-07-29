@@ -126,6 +126,11 @@ export const EVIDENCE_AI_TOOL_CATALOG: Array<{
     summary: "Extract a poster still from a local video master via ffmpeg (non-destructive).",
   },
   {
+    name: "encode_video_excerpt",
+    audience: "video",
+    summary: "Encode a timed clip from a local master (from plan index or start/end seconds).",
+  },
+  {
     name: "plan_video_excerpt",
     audience: "video",
     summary: "Build timed clip candidates from the local transcript workspace (no encode yet).",
@@ -540,6 +545,28 @@ export function evidenceAiToolsFor(kind: "photo" | "video"): ChatCompletionTool[
             youtubeVideoId: { type: "string" },
             localPublicSrc: { type: "string" },
             atSeconds: { type: "number" },
+          },
+          required: ["outId"],
+        },
+      },
+    },
+    {
+      type: "function",
+      function: {
+        name: "encode_video_excerpt",
+        description:
+          "Encode a timed MP4 excerpt from a local master into campaign-derivatives. Prefer planId+clipIndex from plan_video_excerpt, or pass startSeconds/endSeconds. Max 120s per clip.",
+        parameters: {
+          type: "object",
+          properties: {
+            outId: { type: "string", description: "Usually speechId" },
+            speechId: { type: "string" },
+            youtubeVideoId: { type: "string" },
+            planId: { type: "string" },
+            clipIndex: { type: "number" },
+            startSeconds: { type: "number" },
+            endSeconds: { type: "number" },
+            localPublicSrc: { type: "string" },
           },
           required: ["outId"],
         },

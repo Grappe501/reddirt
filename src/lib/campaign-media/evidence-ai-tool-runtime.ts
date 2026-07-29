@@ -13,6 +13,8 @@ import { loadPhotoEvidenceStore } from "@/lib/campaign-media/evidence-store";
 import { photoPublicSurfacesPreview } from "@/lib/campaign-media/county-albums-live";
 import {
   createPhotoDerivative,
+  encodeVideoExcerptClip,
+  encodeVideoExcerptPlan,
   extractLocalVideoPoster,
   inspectPhotoPixels,
   listPhotoDerivatives,
@@ -616,6 +618,37 @@ export async function executeEvidenceAiTool(
         });
         if (!result.ok) return { ok: false, error: result.error };
         return { ok: true, result: result.record };
+      }
+
+      case "encode_video_excerpt": {
+        const outId = asString(args.outId);
+        if (!outId) return { ok: false, error: "outId required." };
+        const startSeconds = typeof args.startSeconds === "number" ? args.startSeconds : undefined;
+        const endSeconds = typeof args.endSeconds === "number" ? args.endSeconds : undefined;
+        if (typeof startSeconds === "number" && typeof endSeconds === "number") {
+          const result = encodeVideoExcerptClip({
+            outId,
+            speechId: asString(args.speechId) || outId,
+            youtubeVideoId: asString(args.youtubeVideoId) || undefined,
+            planId: asString(args.planId) || undefined,
+            clipIndex: typeof args.clipIndex === "number" ? args.clipIndex : 0,
+            startSeconds,
+            endSeconds,
+            localPublicSrc: asString(args.localPublicSrc) || undefined,
+          });
+          if (!result.ok) return { ok: false, error: result.error };
+          return { ok: true, result: result.record };
+        }
+        const batch = encodeVideoExcerptPlan({
+          outId,
+          speechId: asString(args.speechId) || outId,
+          youtubeVideoId: asString(args.youtubeVideoId) || undefined,
+          planId: asString(args.planId) || undefined,
+          clipIndexes: typeof args.clipIndex === "number" ? [args.clipIndex] : undefined,
+          localPublicSrc: asString(args.localPublicSrc) || undefined,
+        });
+        if (!batch.ok) return { ok: false, error: batch.message };
+        return { ok: true, result: batch };
       }
 
       case "plan_video_excerpt": {

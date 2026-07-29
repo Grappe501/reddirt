@@ -980,4 +980,81 @@ export async function listLocalVideoMastersAction(): Promise<{
   };
 }
 
+export async function listVideoClipsAction(outId: string): Promise<{
+  ok: boolean;
+  message: string;
+  clips?: import("@/lib/campaign-media/media-derivatives-types").VideoClipRecord[];
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { listVideoClips } = await import("@/lib/campaign-media/media-derivatives");
+  const clips = listVideoClips(outId);
+  return {
+    ok: true,
+    message: clips.length ? `${clips.length} encoded clip(s)` : "No encoded clips yet for this speech.",
+    clips,
+  };
+}
+
+export async function encodeVideoExcerptAction(input: {
+  speechId: string;
+  youtubeVideoId?: string;
+  planId?: string;
+  clipIndex?: number;
+  startSeconds?: number;
+  endSeconds?: number;
+  title?: string;
+  localPublicSrc?: string;
+}): Promise<{
+  ok: boolean;
+  message: string;
+  clips?: import("@/lib/campaign-media/media-derivatives-types").VideoClipRecord[];
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const speechId = String(input.speechId ?? "").trim();
+  if (!speechId) return { ok: false, message: "speechId required." };
+
+  const {
+    encodeVideoExcerptClip,
+    encodeVideoExcerptPlan,
+  } = await import("@/lib/campaign-media/media-derivatives");
+
+  if (typeof input.startSeconds === "number" && typeof input.endSeconds === "number") {
+    const result = encodeVideoExcerptClip({
+      outId: speechId,
+      speechId,
+      youtubeVideoId: input.youtubeVideoId,
+      startSeconds: input.startSeconds,
+      endSeconds: input.endSeconds,
+      planId: input.planId,
+      clipIndex: input.clipIndex ?? 0,
+      title: input.title,
+      localPublicSrc: input.localPublicSrc,
+    });
+    if (!result.ok) return { ok: false, message: result.error };
+    revalidatePath("/admin/evidence-workbench");
+    return {
+      ok: true,
+      message: `Encoded clip ${result.record.startSeconds}s–${result.record.endSeconds}s → ${result.publicSrc}`,
+      clips: [result.record],
+    };
+  }
+
+  const batch = encodeVideoExcerptPlan({
+    outId: speechId,
+    speechId,
+    youtubeVideoId: input.youtubeVideoId,
+    planId: input.planId,
+    clipIndexes: typeof input.clipIndex === "number" ? [input.clipIndex] : undefined,
+    localPublicSrc: input.localPublicSrc,
+  });
+  revalidatePath("/admin/evidence-workbench");
+  return {
+    ok: batch.ok,
+    message: batch.message + (batch.errors[0] ? `\n${batch.errors[0].error}` : ""),
+    clips: batch.created,
+  };
+}
+
 export type { CalendarPresenceStatus };

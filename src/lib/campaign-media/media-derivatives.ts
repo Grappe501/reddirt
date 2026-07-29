@@ -17,6 +17,7 @@ import type {
   PhotoDerivativeRecord,
   PhotoPixelInspect,
   LocalVideoProbeResult,
+  VideoClipRecord,
   VideoExcerptClip,
   VideoExcerptPlan,
   VideoPosterRecord,
@@ -35,6 +36,7 @@ export type {
   PhotoDerivativeRecord,
   PhotoPixelInspect,
   LocalVideoProbeResult,
+  VideoClipRecord,
   VideoExcerptClip,
   VideoExcerptPlan,
   VideoPosterRecord,
@@ -46,6 +48,9 @@ export {
   listLocalVideoMasters,
   resolveAllowedVideoPath,
 } from "@/lib/campaign-media/local-video-masters";
+
+export const MAX_ENCODE_CLIP_SECONDS = 120;
+export const MAX_ENCODE_CLIPS_PER_RUN = 4;
 
 /**
  * Local media ops (sharp / optional ffmpeg). Prefer calling only from server actions / CLI.
@@ -87,6 +92,7 @@ function emptyLedger(): MediaDerivativesLedger {
     videoPlans: [],
     batchRuns: [],
     videoPosters: [],
+    videoClips: [],
   };
 }
 
@@ -103,6 +109,7 @@ export function loadMediaDerivativesLedger(): MediaDerivativesLedger {
       videoPlans: Array.isArray(raw.videoPlans) ? raw.videoPlans : [],
       batchRuns: Array.isArray(raw.batchRuns) ? raw.batchRuns : [],
       videoPosters: Array.isArray(raw.videoPosters) ? raw.videoPosters : [],
+      videoClips: Array.isArray(raw.videoClips) ? raw.videoClips : [],
     };
   } catch {
     return emptyLedger();
@@ -962,4 +969,274 @@ function posterFrameMeta(fileAbs: string): { width: number | null; height: numbe
   if (!probed.ok) return { width: null, height: null };
   const meta = parseFfprobe(probed.data);
   return { width: meta.width, height: meta.height };
+}
+
+export function listVideoExcerptPlans(youtubeVideoId?: string): VideoExcerptPlan[] {
+  const ledger = loadMediaDerivativesLedger();
+  const id = String(youtubeVideoId ?? "").trim();
+  if (!id) return ledger.videoPlans;
+  return ledger.videoPlans.filter((p) => p.youtubeVideoId === id);
+}
+
+export function getVideoExcerptPlan(planId: string): VideoExcerptPlan | null {
+  const id = String(planId ?? "").trim();
+  if (!id) return null;
+  return loadMediaDerivativesLedger().videoPlans.find((p) => p.id === id) ?? null;
+}
+
+export function listVideoClips(outId?: string): VideoClipRecord[] {
+  const ledger = loadMediaDerivativesLedger();
+  const rows = outId
+    ? (ledger.videoClips ?? []).filter((c) => c.outId === outId || c.speechId === outId)
+    : ledger.videoClips ?? [];
+  return rows.filter((r) => existsSync(abs(r.relativePath)));
+}
+
+function resolveMasterForEncode(input: {
+  localPublicSrc?: string;
+  absPath?: string;
+  speechId?: string;
+  youtubeVideoId?: string;
+  outId?: string;
+}): { ok: true; absPath: string; publicSrc: string | null } | { ok: false; error: string } {
+  let resolved =
+    input.localPublicSrc || input.absPath
+      ? resolveAllowedVideoPath({
+          localPublicSrc: input.localPublicSrc,
+          absPath: input.absPath,
+        })
+      : null;
+
+  if ((!resolved || !resolved.ok) && (input.speechId || input.youtubeVideoId || input.outId)) {
+    const hit = findLocalVideoMaster({
+      speechId: input.speechId ?? input.outId,
+      youtubeVideoId: input.youtubeVideoId,
+    });
+    if (hit) resolved = { ok: true, absPath: hit.absPath, publicSrc: hit.publicSrc };
+  }
+
+  if (!resolved || !resolved.ok) {
+    return {
+      ok: false,
+      error:
+        resolved && !resolved.ok
+          ? resolved.error
+          : "Local video master required to encode — drop an .mp4 under public/media/campaign-video-masters/ or .local/video-masters/.",
+    };
+  }
+  return resolved;
+}
+
+/**
+ * Encode one timed excerpt from a local master into campaign-derivatives/_video/{outId}/.
+ * Does not modify the source master.
+ */
+export function encodeVideoExcerptClip(input: {
+  startSeconds: number;
+  endSeconds: number;
+  outId: string;
+  planId?: string;
+  clipIndex?: number;
+  title?: string;
+  quote?: string;
+  speechId?: string;
+  youtubeVideoId?: string;
+  localPublicSrc?: string;
+  absPath?: string;
+}):
+  | { ok: true; publicSrc: string; relativePath: string; record: VideoClipRecord }
+  | { ok: false; error: string } {
+  const tooling = probeFfmpegTooling();
+  if (!tooling.ffmpegAvailable) return { ok: false, error: tooling.note };
+
+  const outId = String(input.outId ?? "").trim();
+  if (!outId) return { ok: false, error: "outId required." };
+
+  const start = Math.max(0, Number(input.startSeconds) || 0);
+  let end = Math.max(start, Number(input.endSeconds) || start);
+  if (end - start < 0.4) {
+    return { ok: false, error: "Clip window too short (need ≥ 0.4s)." };
+  }
+  if (end - start > MAX_ENCODE_CLIP_SECONDS) {
+    end = start + MAX_ENCODE_CLIP_SECONDS;
+  }
+
+  const master = resolveMasterForEncode({
+    localPublicSrc: input.localPublicSrc,
+    absPath: input.absPath,
+    speechId: input.speechId,
+    youtubeVideoId: input.youtubeVideoId,
+    outId,
+  });
+  if (!master.ok) return master;
+
+  const probe = probeLocalVideo({
+    absPath: master.absPath,
+    startSeconds: start,
+    endSeconds: end,
+  });
+  if (probe.ok && probe.clipWindow && !probe.clipWindow.inBounds) {
+    return {
+      ok: false,
+      error: `Clip ${start}s–${end}s is outside master duration (${probe.durationSeconds?.toFixed(1) ?? "?"}s).`,
+    };
+  }
+
+  const stamp = new Date().toISOString().slice(0, 16).replace(/[-:T]/g, "");
+  const clipIndex = Number.isFinite(input.clipIndex) ? Math.max(0, Number(input.clipIndex)) : 0;
+  const outDirRel = path.join(MEDIA_DERIVATIVES_PUBLIC_REL, "_video", outId);
+  const outDirAbs = abs(outDirRel);
+  mkdirSync(outDirAbs, { recursive: true });
+  const filename = `clip-${clipIndex}-${Math.round(start)}s-${Math.round(end)}s-${stamp}.mp4`;
+  const outAbs = path.join(outDirAbs, filename);
+
+  const run = runFfmpeg([
+    "-y",
+    "-i",
+    master.absPath,
+    "-ss",
+    String(start),
+    "-to",
+    String(end),
+    "-c:v",
+    "libx264",
+    "-preset",
+    "veryfast",
+    "-crf",
+    "23",
+    "-c:a",
+    "aac",
+    "-b:a",
+    "128k",
+    "-movflags",
+    "+faststart",
+    outAbs,
+  ]);
+  if (!run.ok) return { ok: false, error: run.error };
+  if (!existsSync(outAbs)) return { ok: false, error: "ffmpeg did not write clip." };
+
+  const relativePath = path.join(outDirRel, filename).split(path.sep).join("/");
+  const publicSrc = `/media/campaign-derivatives/_video/${outId}/${filename}`;
+  let bytes: number | null = null;
+  try {
+    bytes = statSync(outAbs).size;
+  } catch {
+    /* optional */
+  }
+  const frame = posterFrameMeta(outAbs);
+  const outProbe = runFfprobeJson(outAbs);
+  const outMeta = outProbe.ok ? parseFfprobe(outProbe.data) : null;
+
+  const record: VideoClipRecord = {
+    id: `${outId}--clip-${clipIndex}--${stamp}`,
+    outId,
+    planId: input.planId,
+    clipIndex,
+    youtubeVideoId: input.youtubeVideoId,
+    speechId: input.speechId ?? outId,
+    startSeconds: start,
+    endSeconds: end,
+    title: input.title,
+    quote: input.quote,
+    publicSrc,
+    relativePath,
+    sourcePath: master.absPath,
+    sourcePublicSrc: master.publicSrc,
+    bytes,
+    durationSeconds: outMeta?.durationSeconds ?? end - start,
+    width: frame.width ?? outMeta?.width,
+    height: frame.height ?? outMeta?.height,
+    createdAt: new Date().toISOString(),
+  };
+  const ledger = loadMediaDerivativesLedger();
+  ledger.videoClips = [record, ...(ledger.videoClips ?? [])].slice(0, 200);
+  saveLedger(ledger);
+  return { ok: true, publicSrc, relativePath, record };
+}
+
+/**
+ * Encode up to MAX_ENCODE_CLIPS_PER_RUN clips from a stored plan (or inline clips).
+ */
+export function encodeVideoExcerptPlan(input: {
+  planId?: string;
+  clips?: VideoExcerptClip[];
+  outId: string;
+  speechId?: string;
+  youtubeVideoId?: string;
+  localPublicSrc?: string;
+  absPath?: string;
+  clipIndexes?: number[];
+}): {
+  ok: boolean;
+  created: VideoClipRecord[];
+  errors: Array<{ clipIndex: number; error: string }>;
+  message: string;
+} {
+  const outId = String(input.outId ?? "").trim();
+  if (!outId) {
+    return { ok: false, created: [], errors: [{ clipIndex: -1, error: "outId required." }], message: "outId required." };
+  }
+
+  let planId = String(input.planId ?? "").trim() || undefined;
+  let clips = input.clips;
+  let youtubeVideoId = input.youtubeVideoId;
+  if ((!clips || !clips.length) && planId) {
+    const plan = getVideoExcerptPlan(planId);
+    if (!plan) {
+      return {
+        ok: false,
+        created: [],
+        errors: [{ clipIndex: -1, error: `Plan not found: ${planId}` }],
+        message: `Plan not found: ${planId}`,
+      };
+    }
+    clips = plan.clips;
+    youtubeVideoId = youtubeVideoId ?? plan.youtubeVideoId;
+  }
+  if (!clips?.length) {
+    return {
+      ok: false,
+      created: [],
+      errors: [{ clipIndex: -1, error: "No clips to encode — run Plan video excerpts first." }],
+      message: "No clips to encode — run Plan video excerpts first.",
+    };
+  }
+
+  const indexes =
+    input.clipIndexes?.length
+      ? input.clipIndexes.filter((i) => i >= 0 && i < clips!.length)
+      : clips.map((_, i) => i);
+  const limited = indexes.slice(0, MAX_ENCODE_CLIPS_PER_RUN);
+  const created: VideoClipRecord[] = [];
+  const errors: Array<{ clipIndex: number; error: string }> = [];
+
+  for (const clipIndex of limited) {
+    const clip = clips[clipIndex];
+    const result = encodeVideoExcerptClip({
+      startSeconds: clip.startSeconds,
+      endSeconds: clip.endSeconds,
+      outId,
+      planId,
+      clipIndex,
+      title: clip.title,
+      quote: clip.quote,
+      speechId: input.speechId ?? outId,
+      youtubeVideoId,
+      localPublicSrc: input.localPublicSrc,
+      absPath: input.absPath,
+    });
+    if (result.ok) created.push(result.record);
+    else errors.push({ clipIndex, error: result.error });
+  }
+
+  const ok = created.length > 0;
+  return {
+    ok,
+    created,
+    errors,
+    message: ok
+      ? `Encoded ${created.length}/${limited.length} clip(s)` +
+        (errors.length ? ` (${errors.length} failed)` : "")
+      : `Encode failed — ${errors[0]?.error ?? "nothing written."}`,
+  };
 }

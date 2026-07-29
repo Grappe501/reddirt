@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-29T21:56:14.991Z",
+  "updatedAt": "2026-07-29T22:03:05.724Z",
   "purpose": "Non-destructive photo/video derivatives and edit plans. Originals under campaign-photos are never overwritten.",
   "photos": [
     {
@@ -148,6 +148,26 @@
       "height": 360,
       "bytes": 1604,
       "createdAt": "2026-07-29T21:56:14.990Z"
+    }
+  ],
+  "videoClips": [
+    {
+      "id": "smoke-pass7--clip-0--202607292203",
+      "outId": "smoke-pass7",
+      "clipIndex": 0,
+      "speechId": "smoke-pass7",
+      "startSeconds": 0.5,
+      "endSeconds": 1.8,
+      "title": "smoke clip",
+      "publicSrc": "/media/campaign-derivatives/_video/smoke-pass7/clip-0-1s-2s-202607292203.mp4",
+      "relativePath": "public/media/campaign-derivatives/_video/smoke-pass7/clip-0-1s-2s-202607292203.mp4",
+      "sourcePath": "H:\\SOSWebsite\\.local\\temp\\ffmpeg-smoke\\smoke-pass7.mp4",
+      "sourcePublicSrc": null,
+      "bytes": 23477,
+      "durationSeconds": 1.32,
+      "width": 640,
+      "height": 360,
+      "createdAt": "2026-07-29T22:03:05.724Z"
     }
   ]
 }

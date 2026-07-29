@@ -91,7 +91,7 @@ export async function suggestSpeechEvidenceWithAi(input: {
 
   const userText = `Suggest evidence fields for this campaign SPEECH/VIDEO using tools when helpful.
 Call get_video_transcript_excerpt for youtubeVideoId=${input.media.youtubeVideoId} when useful.
-Call plan_video_excerpt / probe_video_tooling when proposing short-clip speakerNotes.
+Call plan_video_excerpt / probe_video_tooling / encode_video_excerpt when proposing short-clip speakerNotes (encode only when a local master exists).
 Call lookup_arkansas_county before asserting counties.
 Call search_calendar_presence / search_confirmed_memory / search_campaign_speeches for grounding.
 Do not invent geography or spoken claims not supported by transcript/tools.
