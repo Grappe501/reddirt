@@ -195,7 +195,7 @@ export const trustFunnelHomeCopy = {
     eyebrow: "Trust",
     title: "Endorsements",
     intro:
-      "A broad coalition — working people, educators, community leaders, and civic advocates — confirming support for Kelly’s campaign.",
+      "Kelly is earning support from organizations and leaders who serve different parts of Arkansas. Categories below show the breadth of that coalition—not a ranking of names.",
     emptyState:
       "As organizations and community leaders formally announce their support, you will find them here—with the organization name and source on record. Until then, this space stays empty on purpose.",
     viewAll: "View All Endorsements",

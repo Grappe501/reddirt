@@ -11,6 +11,10 @@
 
 > Every pass must make the site easier to trust, easier to understand, and easier to use—without making it bigger.
 
+**Final launch mindset:** remove what would make a careful voter hesitate — do not enlarge the site to fill space.
+
+**Polish reporting:** [`CAMPAIGN_EXPERIENCE_REVIEW_DOCTRINE.md`](./CAMPAIGN_EXPERIENCE_REVIEW_DOCTRINE.md) — voter-trust narrative reviews, proof chains, Trust Ledger
+
 ---
 
 ## Product frame

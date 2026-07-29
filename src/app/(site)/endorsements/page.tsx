@@ -23,7 +23,7 @@ export default function EndorsementsPage() {
       <PageHero
         eyebrow="Trust"
         title="Endorsements"
-        subtitle="Support from working people, educators, community leaders, and civic advocates — published only when confirmed. Breadth of coalition, not a wall of logos."
+        subtitle="Kelly is earning support from organizations and leaders who serve different parts of Arkansas. Only formal, campaign-confirmed endorsements appear here."
       >
         <Button href="/about" variant="outline">
           Read About Kelly’s Experience
@@ -99,10 +99,14 @@ export default function EndorsementsPage() {
             </ul>
           )}
 
-          <p className="mx-auto mt-12 max-w-2xl text-center font-body text-sm leading-relaxed text-kelly-muted">
-            Attendance at an event, a photograph, or a private conversation is not listed as an endorsement. Additional
-            confirmed support will be published here as the campaign record is updated.
-          </p>
+          <aside className="mx-auto mt-12 max-w-2xl rounded-card border border-kelly-ink/10 bg-kelly-fog/50 px-6 py-7 text-left md:px-8">
+            <h2 className="font-heading text-lg font-bold tracking-tight text-kelly-ink">Campaign endorsement policy</h2>
+            <p className="mt-3 font-body text-sm leading-relaxed text-kelly-slate">
+              Only organizations and individuals that have formally endorsed Kelly Grappe are listed here. Attendance at
+              an event, a photograph, or a private conversation is not listed as an endorsement. Additional endorsements
+              will be added after campaign confirmation.
+            </p>
+          </aside>
         </ContentContainer>
       </FullBleedSection>
     </>

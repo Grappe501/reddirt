@@ -44,8 +44,8 @@ assert.ok(confirmed.includes("Working People") && confirmed.includes("Educators"
 assert.ok(confirmed.includes("relatedPhotoNote"), "AFL-CIO photo distinguished from endorsement moment");
 
 const endorsementsPage = read("src/app/(site)/endorsements/page.tsx");
-assert.ok(endorsementsPage.includes("listConfirmedEndorsements"));
-assert.ok(endorsementsPage.includes("AFL-CIO") || endorsementsPage.includes("listConfirmedEndorsements"));
+assert.ok(endorsementsPage.includes("Campaign endorsement policy"), "endorsement standards note present");
+assert.ok(endorsementsPage.includes("formally endorsed") || endorsementsPage.includes("Campaign endorsement policy"));
 assert.ok(!endorsementsPage.includes("No endorsements are listed yet"));
 
 const hero = read("src/components/home/trust-funnel/TrustFunnelHero.tsx");
