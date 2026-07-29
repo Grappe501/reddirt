@@ -57,4 +57,4 @@ Approve / Homepage / Featured   (batch publish; undoable)
 
 | Pass | Commit | Note |
 | --- | ---: | --- |
-| Intake | *(pending)* | Unified flatten+queue intake; basename reuse (no -2/-3 dupes) |
+| Intake | `8a223647` | Unified flatten+queue intake; basename reuse (no -2/-3 dupes) |
