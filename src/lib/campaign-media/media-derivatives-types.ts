@@ -7,7 +7,11 @@ export type PhotoDerivativeKind =
   | "hero_16x9"
   | "portrait_4x5"
   | "square_1x1"
-  | "auto_orient";
+  | "auto_orient"
+  /** Pass 5 — cover crops that honor an explicit focus point (or attention if none). */
+  | "focus_hero_16x9"
+  | "focus_portrait_4x5"
+  | "focus_square_1x1";
 
 export type PhotoDerivativeRecord = {
   id: string;
@@ -22,6 +26,9 @@ export type PhotoDerivativeRecord = {
   format: string;
   createdAt: string;
   note?: string;
+  /** Normalized focus used for this crop (0–1), when applicable. */
+  focusX?: number;
+  focusY?: number;
 };
 
 export type VideoExcerptClip = {

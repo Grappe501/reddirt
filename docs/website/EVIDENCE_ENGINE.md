@@ -87,13 +87,14 @@ Operator UI (localhost): **`/admin/evidence-workbench`**
 
 **Media manipulation (local, non-destructive):**
 
-- Photo derivatives via `sharp` → `public/media/campaign-derivatives/{photoId}/` (web / thumb / hero 16:9 / portrait 4:5 / square / auto-orient)  
+- Photo derivatives via `sharp` → `public/media/campaign-derivatives/{photoId}/` (web / thumb / hero 16:9 / portrait 4:5 / square / auto-orient / **focus_* attention crops**)  
 - Ledger: `data/campaign-media/media-derivatives.json`  
-- Workbench Photos tab: Inspect, Crop plan, and one-click derivative buttons  
+- Workbench Photos tab: Inspect, Crop plan, one-click derivative buttons, **click-to-set focus + focus crops + Apply cropAdvice**  
 - **Batch metadata:** multi-select filmstrip + field-level “Apply to N selected” (max 80)  
 - **Batch AI assist:** Cluster selection + Suggest for selection → proposal review → operator apply  
 - **Batch derivatives:** create web/thumb/hero/square/… for up to 40 selected stills (chunked progress + ledger `batchRuns`)  
 - **Promote to placement:** set `publicSrcOverride` from a derivative + optional homepage/hero flags; clear restores registry original  
+- **Focus / attention crops:** overlay stores `focusX`/`focusY`; AI tools `create_focus_crop` + `create_derivative_from_crop_advice`  
 - 10-pass upgrade map: [`EVIDENCE_WORKBENCH_10_PASS_UPGRADE.md`](./EVIDENCE_WORKBENCH_10_PASS_UPGRADE.md)  
 - Video: `plan_video_excerpt` builds timed clip candidates from local transcript workspace; encode/poster needs local `ffmpeg` (optional)  
 - Originals under `public/media/campaign-photos/` are never overwritten

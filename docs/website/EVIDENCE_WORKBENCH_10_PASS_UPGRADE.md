@@ -28,8 +28,8 @@
 | **1** | **Batch metadata** | Multi-select photos · field-level apply · shared event fields · one album refresh · AI tool `batch_apply_photo_evidence` |
 | **2** | **Batch AI assist** | “Suggest for selection” · shared-event clustering · apply-proposal review before write |
 | **3** | **Batch derivatives** | Apply web/thumb/hero/square to N selected · progress + ledger |
-| **4** | **Derivative → placement** *(this pass)* | Promote a derivative as public `src` override or homepage/hero candidate with preview |
-| **5** | Attention / face-aware crops | Manual focus point + attention crop kinds · AI cropAdvice → derivative |
+| **4** | **Derivative → placement** | Promote a derivative as public `src` override or homepage/hero candidate with preview |
+| **5** | **Attention / focus-point crops** *(this pass)* | Manual focus point + focus crop kinds · AI cropAdvice → derivative |
 | **6** | ffmpeg foundation | Install/detect local ffmpeg under `.local` · poster frames · clip probe |
 | **7** | Video clip encode | Export timed excerpts from plans · store under campaign-derivatives |
 | **8** | Transcript intelligence | Chapter/quote tools · claim extraction tied to evidence fields · do-not-claim |
@@ -73,6 +73,15 @@
 - [x] Live photo merge applies override for public surfaces
 - [x] AI tool `promote_photo_derivative`
 
+## Pass 5 acceptance
+
+- [x] Click photo to set normalized focus point (object-contain aware)
+- [x] Persist `focusX` / `focusY` (+ optional cropAdviceNote) on overlay
+- [x] Create `focus_hero_16x9` / `focus_portrait_4x5` / `focus_square_1x1` from focus
+- [x] Map AI `cropAdvice` → focus crop kind and write derivative
+- [x] AI tools `create_focus_crop` + `create_derivative_from_crop_advice`
+- [x] Smoke: `scripts/smoke-focus-crop.ts`
+
 ---
 
 ## Tracking
@@ -85,4 +94,5 @@ Update this table when each pass lands (commit hash + one-line note).
 | 2 | `5de3a7fe` | Batch AI assist: cluster + suggest-for-selection + proposal review |
 | 3 | `efe09c10` | Batch derivatives: kinds × selection + progress + ledger runs |
 | 4 | `9099b7fd` | Derivative → placement: publicSrcOverride + homepage/hero promote |
-| 5–10 | — | — |
+| 5 | *(pending commit)* | Focus-point crops + cropAdvice → derivative |
+| 6–10 | — | — |

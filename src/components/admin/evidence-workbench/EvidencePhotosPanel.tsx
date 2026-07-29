@@ -1,27 +1,47 @@
 "use client";
 
-import { useEffect, useMemo, useState, useTransition } from "react";
+import { useEffect, useMemo, useRef, useState, useTransition, type MouseEvent } from "react";
 import {
   batchCreatePhotoDerivativesAction,
   batchSavePhotoEvidenceAction,
   buildPhotoMetadataPacketAction,
   clearPhotoPublicSrcOverrideAction,
   clusterPhotoSelectionAction,
+  createDerivativeFromCropAdviceAction,
   createPhotoDerivativeAction,
   inspectPhotoPixelsAction,
   listPhotoDerivativesAction,
   previewPromotePlacementAction,
   promotePhotoDerivativeAction,
   savePhotoEvidenceAction,
+  savePhotoFocusAction,
   suggestBatchPhotoEvidenceAiAction,
   suggestCropPlanAction,
   suggestPhotoEvidenceAiAction,
 } from "@/app/admin/evidence-workbench-actions";
 import type { BatchPhotoAiProposal } from "@/lib/campaign-media/evidence-ai-types";
 import type { PhotoEvidenceOverlay } from "@/lib/campaign-media/evidence-types";
+import { clickToFocusPoint, type FocusPoint } from "@/lib/campaign-media/focus-crop";
 import type { PhotoDerivativeRecord } from "@/lib/campaign-media/media-derivatives-types";
 import { EVIDENCE_FIELD_CLASS } from "@/components/admin/evidence-workbench/field-styles";
 import { isEditableKeyboardTarget } from "@/components/admin/evidence-workbench/keyboard";
+
+function focusPointToMarker(
+  img: HTMLImageElement,
+  point: FocusPoint,
+): { left: number; top: number } | null {
+  const ew = img.clientWidth;
+  const eh = img.clientHeight;
+  const nw = img.naturalWidth;
+  const nh = img.naturalHeight;
+  if (nw <= 0 || nh <= 0 || ew <= 0 || eh <= 0) return null;
+  const scale = Math.min(ew / nw, eh / nh);
+  const dispW = nw * scale;
+  const dispH = nh * scale;
+  const ox = (ew - dispW) / 2;
+  const oy = (eh - dispH) / 2;
+  return { left: ox + point.x * dispW, top: oy + point.y * dispH };
+}
 
 const BATCH_FIELD_OPTIONS: Array<{ key: string; label: string }> = [
   { key: "county", label: "County" },
@@ -178,6 +198,10 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId }: Props)
   const [promoteHero, setPromoteHero] = useState<"FEATURE" | "HERO" | "">("FEATURE");
   const [promoteApproved, setPromoteApproved] = useState(false);
   const [promotePreview, setPromotePreview] = useState<string[]>([]);
+  const [focus, setFocus] = useState<FocusPoint | null>(null);
+  const [focusMarker, setFocusMarker] = useState<{ left: number; top: number } | null>(null);
+  const [cropAdvice, setCropAdvice] = useState("");
+  const previewImgRef = useRef<HTMLImageElement | null>(null);
   const [form, setForm] = useState<PhotoFormState | null>(() => {
     const first = photos.find((p) => p.id === (initialPhotoId || photos[0]?.id));
     return first ? buildForm(first) : null;
@@ -226,6 +250,16 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId }: Props)
     setDirty(false);
     setMessage("");
     setPromotePreview([]);
+    setCropAdvice(item.overlay?.cropAdviceNote ?? "");
+    setFocusMarker(null);
+    if (
+      typeof item.overlay?.focusX === "number" &&
+      typeof item.overlay?.focusY === "number"
+    ) {
+      setFocus({ x: item.overlay.focusX, y: item.overlay.focusY });
+    } else {
+      setFocus(null);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps -- navigate-only reload; photos refresh handled below
   }, [activeId]);
 
@@ -288,6 +322,15 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId }: Props)
     return () => window.removeEventListener("keydown", onKey);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filteredIds, activeId, dirty, form, photo]);
+
+  useEffect(() => {
+    const img = previewImgRef.current;
+    if (!img || !focus) {
+      setFocusMarker(null);
+      return;
+    }
+    setFocusMarker(focusPointToMarker(img, focus));
+  }, [focus, activeId, photo?.src]);
 
   if (!photo || !form) {
     return (
@@ -358,7 +401,10 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId }: Props)
       if (s.toolsUsed?.length) extras.push(`Tools: ${s.toolsUsed.join(", ")}`);
       if (s.sceneTags?.length) extras.push(`Scene: ${s.sceneTags.join(", ")}`);
       if (s.altTextDraft) extras.push(`Alt draft: ${s.altTextDraft}`);
-      if (s.cropAdvice) extras.push(`Crop: ${s.cropAdvice}`);
+      if (s.cropAdvice) {
+        extras.push(`Crop: ${s.cropAdvice}`);
+        setCropAdvice(s.cropAdvice);
+      }
       if (s.warnings.length) extras.push(`Warnings: ${s.warnings.join("; ")}`);
       if (extras.length) setMessage(`${res.message}\n${extras.join("\n")}`);
     });
@@ -390,7 +436,66 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId }: Props)
     if (!photo) return;
     const photoId = photo.id;
     start(async () => {
-      const res = await createPhotoDerivativeAction(photoId, kind);
+      const res = await createPhotoDerivativeAction(photoId, kind, {
+        focusX: focus?.x,
+        focusY: focus?.y,
+      });
+      setMessage(res.message);
+      if (res.ok) refreshDerivatives(photoId);
+    });
+  }
+
+  function onPreviewClick(e: MouseEvent<HTMLImageElement>) {
+    const el = e.currentTarget;
+    const rect = el.getBoundingClientRect();
+    const point = clickToFocusPoint({
+      clientX: e.clientX,
+      clientY: e.clientY,
+      elementLeft: rect.left,
+      elementTop: rect.top,
+      elementWidth: rect.width,
+      elementHeight: rect.height,
+      naturalWidth: el.naturalWidth,
+      naturalHeight: el.naturalHeight,
+    });
+    if (!point || !photo) return;
+    setFocus(point);
+    setFocusMarker(focusPointToMarker(el, point));
+    start(async () => {
+      const res = await savePhotoFocusAction({
+        photoId: photo.id,
+        focusX: point.x,
+        focusY: point.y,
+        cropAdviceNote: cropAdvice || undefined,
+      });
+      setMessage(res.message);
+    });
+  }
+
+  function runFocusCrop(kind: string) {
+    if (!photo) return;
+    if (!focus) {
+      setMessage("Click the photo to set a focus point first.");
+      return;
+    }
+    runDerivative(kind);
+  }
+
+  function applyCropAdvice() {
+    if (!photo) return;
+    const advice = cropAdvice.trim();
+    if (!advice) {
+      setMessage("No cropAdvice yet — run Suggest with AI first, or type advice.");
+      return;
+    }
+    const photoId = photo.id;
+    start(async () => {
+      const res = await createDerivativeFromCropAdviceAction({
+        photoId,
+        cropAdvice: advice,
+        focusX: focus?.x,
+        focusY: focus?.y,
+      });
       setMessage(res.message);
       if (res.ok) refreshDerivatives(photoId);
     });
@@ -939,14 +1044,40 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId }: Props)
             </button>
           </div>
           {/* key forces remount so the browser cannot keep a stale frame when advancing */}
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            key={photo.id}
-            src={imageSrc}
-            alt={photo.alt}
-            className="mt-3 max-h-[28rem] w-full rounded-lg border border-[#8eb6dc]/40 object-contain bg-[#f4f7fc]"
-          />
-          <p className="mt-2 font-mono text-xs text-[#364272]">{photo.id}</p>
+          <div className="relative mt-3">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              key={photo.id}
+              ref={previewImgRef}
+              src={imageSrc}
+              alt={photo.alt}
+              onClick={onPreviewClick}
+              onLoad={() => {
+                const img = previewImgRef.current;
+                if (!img || !focus) {
+                  setFocusMarker(null);
+                  return;
+                }
+                setFocusMarker(focusPointToMarker(img, focus));
+              }}
+              title="Click to set focus point for attention crops"
+              className="max-h-[28rem] w-full cursor-crosshair rounded-lg border border-[#8eb6dc]/40 object-contain bg-[#f4f7fc]"
+            />
+            {focusMarker ? (
+              <span
+                className="pointer-events-none absolute h-5 w-5 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-[#ca913d] bg-[#ca913d]/35 shadow"
+                style={{ left: focusMarker.left, top: focusMarker.top }}
+                aria-hidden
+              />
+            ) : null}
+          </div>
+          <p className="mt-2 font-body text-[11px] text-[#364272]">
+            Focus:{" "}
+            {focus
+              ? `${Math.round(focus.x * 100)}% × ${Math.round(focus.y * 100)}% (click photo to move)`
+              : "click photo to set attention point"}
+          </p>
+          <p className="mt-1 font-mono text-xs text-[#364272]">{photo.id}</p>
           <p className="break-all font-mono text-[10px] text-[#364272]">{photo.src}</p>
           {photo.overlay?.publicSrcOverride ? (
             <div className="mt-2 rounded border-2 border-[#ca913d]/50 bg-[#fff8ef] px-2 py-1.5">
@@ -1013,6 +1144,50 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId }: Props)
                   {label}
                 </button>
               ))}
+            </div>
+            <div className="mt-3 rounded border border-[#8eb6dc]/40 bg-[#f4f7fc] p-2">
+              <p className="font-heading text-[10px] font-bold uppercase tracking-wide text-[#000066]">
+                Focus crops (attention)
+              </p>
+              <p className="mt-1 font-body text-[11px] text-[#364272]">
+                Click the photo to set focus, then create a crop that keeps that point in frame.
+              </p>
+              <div className="mt-2 flex flex-wrap gap-2">
+                {(
+                  [
+                    ["Focus hero 16:9", "focus_hero_16x9"],
+                    ["Focus portrait 4:5", "focus_portrait_4x5"],
+                    ["Focus square", "focus_square_1x1"],
+                  ] as const
+                ).map(([label, kind]) => (
+                  <button
+                    key={kind}
+                    type="button"
+                    disabled={pending}
+                    onClick={() => runFocusCrop(kind)}
+                    className="rounded border-2 border-[#ca913d] bg-white px-2.5 py-1 font-body text-xs font-semibold text-[#12124a] disabled:opacity-50"
+                  >
+                    {label}
+                  </button>
+                ))}
+              </div>
+              <label className="mt-2 block font-body text-[11px] text-[#12124a]">
+                cropAdvice
+                <textarea
+                  className={`${EVIDENCE_FIELD_CLASS} mt-1 min-h-[3rem] w-full`}
+                  value={cropAdvice}
+                  onChange={(e) => setCropAdvice(e.target.value)}
+                  placeholder="From Suggest with AI, or type framing advice"
+                />
+              </label>
+              <button
+                type="button"
+                disabled={pending}
+                onClick={applyCropAdvice}
+                className="mt-2 rounded border-2 border-[#000066] bg-[#000066] px-2.5 py-1 font-body text-xs font-semibold text-white disabled:opacity-50"
+              >
+                Apply cropAdvice → derivative
+              </button>
             </div>
             <div className="mt-3 rounded border border-[#ca913d]/40 bg-[#fff8ef] p-2">
               <p className="font-heading text-[10px] font-bold uppercase tracking-wide text-[#000066]">

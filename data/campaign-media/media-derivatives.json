@@ -1,8 +1,39 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-29T21:23:38.807Z",
+  "updatedAt": "2026-07-29T21:43:00.663Z",
   "purpose": "Non-destructive photo/video derivatives and edit plans. Originals under campaign-photos are never overwritten.",
   "photos": [
+    {
+      "id": "afl-cio-pre-event-networking-20260629--focus_square_1x1--2026-07-29T2143",
+      "sourcePhotoId": "afl-cio-pre-event-networking-20260629",
+      "sourceSrc": "/media/campaign-photos/afl-cio-pre-event-networking-20260629.png",
+      "kind": "focus_square_1x1",
+      "publicSrc": "/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/focus_square_1x1-f35x42-2026-07-29T2143.jpg",
+      "relativePath": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/focus_square_1x1-f35x42-2026-07-29T2143.jpg",
+      "width": 1200,
+      "height": 1200,
+      "bytes": 163969,
+      "format": "jpeg",
+      "createdAt": "2026-07-29T21:43:00.662Z",
+      "note": "cropAdvice: square avatar crop",
+      "focusX": 0.35,
+      "focusY": 0.42
+    },
+    {
+      "id": "afl-cio-pre-event-networking-20260629--focus_hero_16x9--2026-07-29T2143",
+      "sourcePhotoId": "afl-cio-pre-event-networking-20260629",
+      "sourceSrc": "/media/campaign-photos/afl-cio-pre-event-networking-20260629.png",
+      "kind": "focus_hero_16x9",
+      "publicSrc": "/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/focus_hero_16x9-f35x42-2026-07-29T2143.jpg",
+      "relativePath": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/focus_hero_16x9-f35x42-2026-07-29T2143.jpg",
+      "width": 960,
+      "height": 540,
+      "bytes": 83843,
+      "format": "jpeg",
+      "createdAt": "2026-07-29T21:43:00.449Z",
+      "focusX": 0.35,
+      "focusY": 0.42
+    },
     {
       "id": "mena-polk-meet-greet-20260411--web_max--2026-07-29T2123",
       "sourcePhotoId": "mena-polk-meet-greet-20260411",

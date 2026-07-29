@@ -2,6 +2,14 @@ import { execFileSync } from "node:child_process";
 import { existsSync, mkdirSync, readFileSync, renameSync, statSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import sharp from "sharp";
+import { CAMPAIGN_PHOTO_REGISTRY } from "@/content/media/campaign-photo-registry";
+import { loadPhotoIngestDrafts } from "@/lib/campaign-media/evidence-store";
+import {
+  coverCropRect,
+  normalizeFocus,
+  parseCropAdviceToKind,
+  type FocusPoint,
+} from "@/lib/campaign-media/focus-crop";
 import { listCampaignPhotosLive } from "@/lib/campaign-media/list-campaign-photos-live";
 import type {
   MediaDerivativesLedger,
@@ -39,6 +47,9 @@ export const BATCH_DERIVATIVE_KINDS = [
   "portrait_4x5",
   "square_1x1",
   "auto_orient",
+  "focus_hero_16x9",
+  "focus_portrait_4x5",
+  "focus_square_1x1",
 ] as const;
 
 export type BatchDerivativeKind = (typeof BATCH_DERIVATIVE_KINDS)[number];
@@ -221,6 +232,11 @@ export async function suggestCropPlan(photoId: string): Promise<
       targetAspect: "16:9",
     });
     recommended.push({
+      kind: "focus_hero_16x9",
+      why: "Set a focus point, then crop 16:9 around the subject.",
+      targetAspect: "16:9",
+    });
+    recommended.push({
       kind: "square_1x1",
       why: "Center square for social / avatar-style placements.",
       targetAspect: "1:1",
@@ -232,6 +248,11 @@ export async function suggestCropPlan(photoId: string): Promise<
       targetAspect: "4:5",
     });
     recommended.push({
+      kind: "focus_portrait_4x5",
+      why: "Set a focus point, then crop 4:5 around the subject.",
+      targetAspect: "4:5",
+    });
+    recommended.push({
       kind: "square_1x1",
       why: "Center square from portrait for grids.",
       targetAspect: "1:1",
@@ -240,6 +261,11 @@ export async function suggestCropPlan(photoId: string): Promise<
     recommended.push({
       kind: "square_1x1",
       why: "Near-square source — keep 1:1 for consistency.",
+      targetAspect: "1:1",
+    });
+    recommended.push({
+      kind: "focus_square_1x1",
+      why: "Set a focus point for a tighter square crop.",
       targetAspect: "1:1",
     });
   }
@@ -268,6 +294,9 @@ type CreateInput = {
   maxEdge?: number;
   quality?: number;
   note?: string;
+  /** Normalized focus (0–1). Used by focus_* kinds and optional override for cover kinds. */
+  focusX?: number;
+  focusY?: number;
 };
 
 function kindDefaults(kind: CreateInput["kind"]): { maxEdge: number; quality: number; ext: "jpg" | "webp" } {
@@ -278,6 +307,10 @@ function kindDefaults(kind: CreateInput["kind"]): { maxEdge: number; quality: nu
       return { maxEdge: 1600, quality: 82, ext: "jpg" };
     case "auto_orient":
       return { maxEdge: 4000, quality: 90, ext: "jpg" };
+    case "focus_hero_16x9":
+    case "focus_portrait_4x5":
+    case "focus_square_1x1":
+      return { maxEdge: 1600, quality: 85, ext: "jpg" };
     default:
       return { maxEdge: 1600, quality: 85, ext: "jpg" };
   }
@@ -287,8 +320,36 @@ async function applyKind(
   pipeline: sharp.Sharp,
   kind: CreateInput["kind"],
   maxEdge: number,
+  focus: FocusPoint | null,
+  meta: { width?: number; height?: number },
 ): Promise<sharp.Sharp> {
   const oriented = pipeline.rotate(); // honor EXIF
+  const srcW = meta.width ?? 0;
+  const srcH = meta.height ?? 0;
+
+  const focusCover = async (
+    outW: number,
+    outH: number,
+    aspect: number,
+    preferFocus: boolean,
+  ): Promise<sharp.Sharp> => {
+    if (preferFocus && focus && srcW > 0 && srcH > 0) {
+      const rect = coverCropRect({
+        srcWidth: srcW,
+        srcHeight: srcH,
+        targetAspect: aspect,
+        focus,
+      });
+      return oriented.extract(rect).resize({ width: outW, height: outH, fit: "fill" });
+    }
+    return oriented.resize({
+      width: outW,
+      height: outH,
+      fit: "cover",
+      position: "attention",
+    });
+  };
+
   switch (kind) {
     case "auto_orient":
       return oriented.resize({
@@ -305,30 +366,29 @@ async function applyKind(
         fit: "inside",
         withoutEnlargement: true,
       });
-    case "hero_16x9":
-      return oriented.resize({
-        width: Math.min(maxEdge, 1920),
-        height: Math.round((Math.min(maxEdge, 1920) * 9) / 16),
-        fit: "cover",
-        position: "attention",
-      });
+    case "hero_16x9": {
+      const w = Math.min(maxEdge, 1920);
+      return focusCover(w, Math.round((w * 9) / 16), 16 / 9, Boolean(focus));
+    }
+    case "focus_hero_16x9": {
+      const w = Math.min(maxEdge, 1920);
+      return focusCover(w, Math.round((w * 9) / 16), 16 / 9, true);
+    }
     case "portrait_4x5": {
       const w = Math.min(maxEdge, 1080);
-      return oriented.resize({
-        width: w,
-        height: Math.round((w * 5) / 4),
-        fit: "cover",
-        position: "attention",
-      });
+      return focusCover(w, Math.round((w * 5) / 4), 4 / 5, Boolean(focus));
+    }
+    case "focus_portrait_4x5": {
+      const w = Math.min(maxEdge, 1080);
+      return focusCover(w, Math.round((w * 5) / 4), 4 / 5, true);
     }
     case "square_1x1": {
       const edge = Math.min(maxEdge, 1200);
-      return oriented.resize({
-        width: edge,
-        height: edge,
-        fit: "cover",
-        position: "attention",
-      });
+      return focusCover(edge, edge, 1, Boolean(focus));
+    }
+    case "focus_square_1x1": {
+      const edge = Math.min(maxEdge, 1200);
+      return focusCover(edge, edge, 1, true);
     }
     default: {
       const _exhaustive: never = kind;
@@ -342,12 +402,26 @@ export async function createPhotoDerivative(
 ): Promise<{ ok: true; record: PhotoDerivativeRecord } | { ok: false; error: string }> {
   const photo = livePhotoById(input.photoId);
   if (!photo) return { ok: false, error: `Photo not found: ${input.photoId}` };
-  const sourceAbs = decodePublicSrcToAbs(photo.src);
-  if (!sourceAbs) return { ok: false, error: `Source file missing for ${photo.src}` };
 
-  // Never write into campaign-photos — derivatives only.
+  const registryBase =
+    CAMPAIGN_PHOTO_REGISTRY.find((p) => p.id === input.photoId) ??
+    loadPhotoIngestDrafts().photos.find((p) => p.id === input.photoId) ??
+    null;
+  const registrySrc = registryBase?.src ?? photo.src;
+  const sourceAbs = decodePublicSrcToAbs(registrySrc);
+  if (!sourceAbs) return { ok: false, error: `Source file missing for ${registrySrc}` };
+
   if (sourceAbs.includes(`${path.sep}campaign-derivatives${path.sep}`)) {
     return { ok: false, error: "Refusing to use a derivative as a new source." };
+  }
+
+  const focus = normalizeFocus({ x: input.focusX, y: input.focusY });
+  const requiresFocus = input.kind.startsWith("focus_");
+  if (requiresFocus && !focus) {
+    return {
+      ok: false,
+      error: "Focus point required for focus_* crops — click the photo or pass focusX/focusY.",
+    };
   }
 
   const defaults = kindDefaults(input.kind);
@@ -359,42 +433,76 @@ export async function createPhotoDerivative(
   mkdirSync(outDirAbs, { recursive: true });
 
   const stamp = new Date().toISOString().replace(/[:.]/g, "").slice(0, 15);
-  const filename = `${input.kind}-${stamp}.${defaults.ext}`;
+  const focusTag = focus ? `-f${Math.round(focus.x * 100)}x${Math.round(focus.y * 100)}` : "";
+  const filename = `${input.kind}${focusTag}-${stamp}.${defaults.ext}`;
   const outAbs = path.join(outDirAbs, filename);
   const tmpAbs = `${outAbs}.${process.pid}.tmp`;
 
   try {
+    const meta = await sharp(sourceAbs, { failOn: "none" }).rotate().metadata();
     let pipeline = sharp(sourceAbs, { failOn: "none" });
-    pipeline = await applyKind(pipeline, input.kind, maxEdge);
+    pipeline = await applyKind(pipeline, input.kind, maxEdge, focus, {
+      width: meta.width,
+      height: meta.height,
+    });
     await pipeline.jpeg({ quality, mozjpeg: true }).toFile(tmpAbs);
     renameSync(tmpAbs, outAbs);
   } catch (err) {
     return { ok: false, error: err instanceof Error ? err.message : "Derivative write failed." };
   }
 
-  const meta = await sharp(outAbs).metadata();
+  const outMeta = await sharp(outAbs).metadata();
   const st = statSync(outAbs);
   const relativePath = path.join(outDirRel, filename).split(path.sep).join("/");
   const publicSrc = `/media/campaign-derivatives/${input.photoId}/${filename}`;
   const record: PhotoDerivativeRecord = {
     id: `${input.photoId}--${input.kind}--${stamp}`,
     sourcePhotoId: input.photoId,
-    sourceSrc: photo.src,
+    sourceSrc: registrySrc,
     kind: input.kind,
     publicSrc,
     relativePath,
-    width: meta.width ?? 0,
-    height: meta.height ?? 0,
+    width: outMeta.width ?? 0,
+    height: outMeta.height ?? 0,
     bytes: st.size,
-    format: meta.format ?? defaults.ext,
+    format: outMeta.format ?? defaults.ext,
     createdAt: new Date().toISOString(),
     note: input.note,
+    focusX: focus?.x,
+    focusY: focus?.y,
   };
 
   const ledger = loadMediaDerivativesLedger();
   ledger.photos = [record, ...ledger.photos.filter((r) => r.id !== record.id)].slice(0, 500);
   saveLedger(ledger);
   return { ok: true, record };
+}
+
+/**
+ * Create a focus crop from AI/operator cropAdvice text + optional focus point.
+ */
+export async function createDerivativeFromCropAdvice(input: {
+  photoId: string;
+  cropAdvice: string;
+  focusX?: number;
+  focusY?: number;
+  note?: string;
+}): Promise<
+  | { ok: true; record: PhotoDerivativeRecord; mappedKind: string; reason: string }
+  | { ok: false; error: string }
+> {
+  const advice = String(input.cropAdvice ?? "").trim();
+  if (!advice) return { ok: false, error: "cropAdvice required." };
+  const mapped = parseCropAdviceToKind(advice);
+  const result = await createPhotoDerivative({
+    photoId: input.photoId,
+    kind: mapped.kind,
+    focusX: input.focusX,
+    focusY: input.focusY,
+    note: input.note ?? `cropAdvice: ${advice.slice(0, 120)}`,
+  });
+  if (!result.ok) return result;
+  return { ok: true, record: result.record, mappedKind: mapped.kind, reason: mapped.reason };
 }
 
 export type BatchCreatePhotoDerivativesResult = {

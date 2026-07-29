@@ -629,6 +629,7 @@ export async function inspectPhotoPixelsAction(photoId: string): Promise<{
 export async function createPhotoDerivativeAction(
   photoId: string,
   kind: string,
+  opts?: { focusX?: number; focusY?: number },
 ): Promise<{
   ok: boolean;
   message: string;
@@ -636,30 +637,84 @@ export async function createPhotoDerivativeAction(
 }> {
   const g = await gate();
   if (!g.ok) return { ok: false, message: g.error };
-  const { createPhotoDerivative } = await import("@/lib/campaign-media/media-derivatives");
-  const allowed = new Set([
-    "web_max",
-    "thumb",
-    "hero_16x9",
-    "portrait_4x5",
-    "square_1x1",
-    "auto_orient",
-  ]);
+  const { createPhotoDerivative, BATCH_DERIVATIVE_KINDS } = await import(
+    "@/lib/campaign-media/media-derivatives"
+  );
+  const allowed = new Set<string>(BATCH_DERIVATIVE_KINDS);
   if (!allowed.has(kind)) return { ok: false, message: `Unsupported kind: ${kind}` };
   const result = await createPhotoDerivative({
     photoId,
-    kind: kind as
-      | "web_max"
-      | "thumb"
-      | "hero_16x9"
-      | "portrait_4x5"
-      | "square_1x1"
-      | "auto_orient",
+    kind: kind as (typeof BATCH_DERIVATIVE_KINDS)[number],
+    focusX: opts?.focusX,
+    focusY: opts?.focusY,
   });
   if (!result.ok) return { ok: false, message: result.error };
   return {
     ok: true,
     message: `Wrote ${result.record.kind} → ${result.record.publicSrc} (${result.record.width}×${result.record.height})`,
+    publicSrc: result.record.publicSrc,
+  };
+}
+
+export async function savePhotoFocusAction(input: {
+  photoId: string;
+  focusX: number;
+  focusY: number;
+  cropAdviceNote?: string;
+}): Promise<{ ok: boolean; message: string }> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const photoId = String(input.photoId ?? "").trim();
+  if (!photoId) return { ok: false, message: "photoId required." };
+  const { normalizeFocus } = await import("@/lib/campaign-media/focus-crop");
+  const focus = normalizeFocus({ x: input.focusX, y: input.focusY });
+  if (!focus) return { ok: false, message: "Invalid focus point." };
+
+  const store = loadPhotoEvidenceStore();
+  const prev = store.photos[photoId] ?? {};
+  store.photos[photoId] = {
+    ...prev,
+    focusX: focus.x,
+    focusY: focus.y,
+    cropAdviceNote: input.cropAdviceNote?.trim() || prev.cropAdviceNote,
+    updatedAt: new Date().toISOString(),
+  };
+  savePhotoEvidenceStore(store);
+  revalidatePath("/admin/evidence-workbench");
+  return {
+    ok: true,
+    message: `Saved focus ${Math.round(focus.x * 100)}%, ${Math.round(focus.y * 100)}% for ${photoId}.`,
+  };
+}
+
+export async function createDerivativeFromCropAdviceAction(input: {
+  photoId: string;
+  cropAdvice: string;
+  focusX?: number;
+  focusY?: number;
+}): Promise<{ ok: boolean; message: string; publicSrc?: string }> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { createDerivativeFromCropAdvice } = await import("@/lib/campaign-media/media-derivatives");
+  const result = await createDerivativeFromCropAdvice(input);
+  if (!result.ok) return { ok: false, message: result.error };
+
+  // Persist crop advice + focus on overlay for reuse.
+  const store = loadPhotoEvidenceStore();
+  const prev = store.photos[input.photoId] ?? {};
+  store.photos[input.photoId] = {
+    ...prev,
+    cropAdviceNote: input.cropAdvice.trim(),
+    focusX: result.record.focusX ?? prev.focusX,
+    focusY: result.record.focusY ?? prev.focusY,
+    updatedAt: new Date().toISOString(),
+  };
+  savePhotoEvidenceStore(store);
+  revalidatePath("/admin/evidence-workbench");
+
+  return {
+    ok: true,
+    message: `${result.reason} → ${result.mappedKind} → ${result.record.publicSrc}`,
     publicSrc: result.record.publicSrc,
   };
 }

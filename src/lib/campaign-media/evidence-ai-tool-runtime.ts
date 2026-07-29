@@ -45,6 +45,9 @@ const DERIVATIVE_KINDS = new Set<string>([
   "portrait_4x5",
   "square_1x1",
   "auto_orient",
+  "focus_hero_16x9",
+  "focus_portrait_4x5",
+  "focus_square_1x1",
 ]);
 
 /** Async-capable executor — brain awaits this. */
@@ -253,6 +256,8 @@ export async function executeEvidenceAiTool(
           maxEdge: typeof args.maxEdge === "number" ? args.maxEdge : undefined,
           quality: typeof args.quality === "number" ? args.quality : undefined,
           note: asString(args.note) || undefined,
+          focusX: typeof args.focusX === "number" ? args.focusX : undefined,
+          focusY: typeof args.focusY === "number" ? args.focusY : undefined,
         });
         if (!result.ok) return { ok: false, error: result.error };
         return { ok: true, result: result.record };
@@ -384,6 +389,45 @@ export async function executeEvidenceAiTool(
             publicSrc: result.publicSrc,
             registrySrc: result.registrySrc,
             placementPreview: result.placementPreview,
+          },
+        };
+      }
+
+      case "create_focus_crop": {
+        const photoId = asString(args.photoId);
+        const kind = asString(args.kind);
+        if (!photoId || !kind) return { ok: false, error: "photoId and kind required." };
+        if (!kind.startsWith("focus_")) {
+          return { ok: false, error: "kind must be focus_hero_16x9 | focus_portrait_4x5 | focus_square_1x1" };
+        }
+        const result = await createPhotoDerivative({
+          photoId,
+          kind: kind as Exclude<PhotoDerivativeKind, "inspect_only">,
+          focusX: typeof args.focusX === "number" ? args.focusX : undefined,
+          focusY: typeof args.focusY === "number" ? args.focusY : undefined,
+        });
+        if (!result.ok) return { ok: false, error: result.error };
+        return { ok: true, result: result.record };
+      }
+
+      case "create_derivative_from_crop_advice": {
+        const photoId = asString(args.photoId);
+        const cropAdvice = asString(args.cropAdvice);
+        if (!photoId || !cropAdvice) return { ok: false, error: "photoId and cropAdvice required." };
+        const { createDerivativeFromCropAdvice } = await import("@/lib/campaign-media/media-derivatives");
+        const result = await createDerivativeFromCropAdvice({
+          photoId,
+          cropAdvice,
+          focusX: typeof args.focusX === "number" ? args.focusX : undefined,
+          focusY: typeof args.focusY === "number" ? args.focusY : undefined,
+        });
+        if (!result.ok) return { ok: false, error: result.error };
+        return {
+          ok: true,
+          result: {
+            mappedKind: result.mappedKind,
+            reason: result.reason,
+            record: result.record,
           },
         };
       }

@@ -47,6 +47,11 @@ export type PhotoEvidenceOverlay = {
   publicSrcOverride?: string;
   promotedDerivativeId?: string;
   promotedAt?: string;
+  /** Pass 5 — normalized focus point for attention crops (0–1). */
+  focusX?: number;
+  focusY?: number;
+  /** Last operator-reviewed crop advice note (from AI or manual). */
+  cropAdviceNote?: string;
   updatedAt?: string;
 };
 

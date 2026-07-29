@@ -76,6 +76,16 @@ export const EVIDENCE_AI_TOOL_CATALOG: Array<{
     summary: "Promote a derivative as public src override and/or homepage/hero placement flags.",
   },
   {
+    name: "create_focus_crop",
+    audience: "photo",
+    summary: "Create a focus-point crop (hero/portrait/square) using normalized focusX/focusY.",
+  },
+  {
+    name: "create_derivative_from_crop_advice",
+    audience: "photo",
+    summary: "Map cropAdvice text to a focus crop kind and write a derivative.",
+  },
+  {
     name: "get_county_album_summary",
     audience: "photo",
     summary: "Summarize existing county → event album chapters for a confirmed county.",
@@ -245,11 +255,14 @@ export function evidenceAiToolsFor(kind: "photo" | "video"): ChatCompletionTool[
             photoId: { type: "string" },
             kind: {
               type: "string",
-              description: "web_max | thumb | hero_16x9 | portrait_4x5 | square_1x1 | auto_orient",
+              description:
+                "web_max | thumb | hero_16x9 | portrait_4x5 | square_1x1 | auto_orient | focus_hero_16x9 | focus_portrait_4x5 | focus_square_1x1",
             },
             maxEdge: { type: "number" },
             quality: { type: "number" },
             note: { type: "string" },
+            focusX: { type: "number", description: "Normalized 0–1 focus X for cover/focus crops" },
+            focusY: { type: "number", description: "Normalized 0–1 focus Y for cover/focus crops" },
           },
           required: ["photoId", "kind"],
         },
@@ -349,6 +362,42 @@ export function evidenceAiToolsFor(kind: "photo" | "video"): ChatCompletionTool[
             consentConfirmed: { type: "boolean" },
           },
           required: ["photoId"],
+        },
+      },
+    },
+    {
+      type: "function",
+      function: {
+        name: "create_focus_crop",
+        description:
+          "Create a focus-point cover crop. Kinds: focus_hero_16x9, focus_portrait_4x5, focus_square_1x1. Requires focusX/focusY in 0–1.",
+        parameters: {
+          type: "object",
+          properties: {
+            photoId: { type: "string" },
+            kind: { type: "string" },
+            focusX: { type: "number" },
+            focusY: { type: "number" },
+          },
+          required: ["photoId", "kind", "focusX", "focusY"],
+        },
+      },
+    },
+    {
+      type: "function",
+      function: {
+        name: "create_derivative_from_crop_advice",
+        description:
+          "Parse cropAdvice text into a focus crop kind and write a derivative. Pass focusX/focusY when known.",
+        parameters: {
+          type: "object",
+          properties: {
+            photoId: { type: "string" },
+            cropAdvice: { type: "string" },
+            focusX: { type: "number" },
+            focusY: { type: "number" },
+          },
+          required: ["photoId", "cropAdvice"],
         },
       },
     },
