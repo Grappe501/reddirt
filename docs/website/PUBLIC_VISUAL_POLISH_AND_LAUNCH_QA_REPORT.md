@@ -100,4 +100,7 @@ After this pass: **stop editing** unless a factual, technical, or usability issu
 
 ### Git
 
-Filled at commit time.
+- Branch: `feature/kelly-schedule-settlement-dashboard`
+- Commit: `b4875fae`
+- Push: pushed to origin
+- Starting commit: `fc1c822f`
