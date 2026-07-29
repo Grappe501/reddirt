@@ -5,6 +5,7 @@ import sharp from "sharp";
 import { listCampaignPhotosLive } from "@/lib/campaign-media/list-campaign-photos-live";
 import type {
   MediaDerivativesLedger,
+  PhotoDerivativeBatchRun,
   PhotoDerivativeKind,
   PhotoDerivativeRecord,
   PhotoPixelInspect,
@@ -15,6 +16,7 @@ import { loadWorkspaceRecord } from "@/lib/media/youtube-transcripts/workspace-s
 
 export type {
   MediaDerivativesLedger,
+  PhotoDerivativeBatchRun,
   PhotoDerivativeKind,
   PhotoDerivativeRecord,
   PhotoPixelInspect,
@@ -29,6 +31,17 @@ export type {
 
 export const MEDIA_DERIVATIVES_LEDGER_REL = "data/campaign-media/media-derivatives.json";
 export const MEDIA_DERIVATIVES_PUBLIC_REL = "public/media/campaign-derivatives";
+
+export const BATCH_DERIVATIVE_KINDS = [
+  "web_max",
+  "thumb",
+  "hero_16x9",
+  "portrait_4x5",
+  "square_1x1",
+  "auto_orient",
+] as const;
+
+export type BatchDerivativeKind = (typeof BATCH_DERIVATIVE_KINDS)[number];
 
 function repoRoot(): string {
   return process.cwd();
@@ -46,6 +59,7 @@ function emptyLedger(): MediaDerivativesLedger {
       "Non-destructive photo/video derivatives and edit plans. Originals under campaign-photos are never overwritten.",
     photos: [],
     videoPlans: [],
+    batchRuns: [],
   };
 }
 
@@ -60,6 +74,7 @@ export function loadMediaDerivativesLedger(): MediaDerivativesLedger {
       version: 1,
       photos: Array.isArray(raw.photos) ? raw.photos : [],
       videoPlans: Array.isArray(raw.videoPlans) ? raw.videoPlans : [],
+      batchRuns: Array.isArray(raw.batchRuns) ? raw.batchRuns : [],
     };
   } catch {
     return emptyLedger();
@@ -380,6 +395,121 @@ export async function createPhotoDerivative(
   ledger.photos = [record, ...ledger.photos.filter((r) => r.id !== record.id)].slice(0, 500);
   saveLedger(ledger);
   return { ok: true, record };
+}
+
+export type BatchCreatePhotoDerivativesResult = {
+  ok: boolean;
+  batchRunId: string;
+  created: PhotoDerivativeRecord[];
+  errors: Array<{ photoId: string; kind: string; error: string }>;
+  createdCount: number;
+  errorCount: number;
+  totalOps: number;
+  completedOps: number;
+  message: string;
+};
+
+/**
+ * Create non-destructive derivatives for many photos × kinds.
+ * Caps: 40 photos, 4 kinds (160 ops max). Originals never overwritten.
+ */
+export async function batchCreatePhotoDerivatives(input: {
+  photoIds: string[];
+  kinds: string[];
+  maxEdge?: number;
+  quality?: number;
+  note?: string;
+  /** Optional progress callback (photo index / total photos). */
+  onProgress?: (progress: {
+    photoIndex: number;
+    photoTotal: number;
+    photoId: string;
+    kind: string;
+    completedOps: number;
+    totalOps: number;
+  }) => void;
+}): Promise<BatchCreatePhotoDerivativesResult> {
+  const allowed = new Set<string>(BATCH_DERIVATIVE_KINDS);
+  const kinds = [...new Set(input.kinds.map((k) => String(k).trim()).filter((k) => allowed.has(k)))]
+    .slice(0, 4) as BatchDerivativeKind[];
+  const photoIds = [...new Set(input.photoIds.map((id) => String(id).trim()).filter(Boolean))].slice(
+    0,
+    40,
+  );
+
+  const batchRunId = `batch-deriv-${Date.now()}`;
+  if (!kinds.length || !photoIds.length) {
+    return {
+      ok: false,
+      batchRunId,
+      created: [],
+      errors: [],
+      createdCount: 0,
+      errorCount: 0,
+      totalOps: 0,
+      completedOps: 0,
+      message: "Select at least one photo and one derivative kind.",
+    };
+  }
+
+  const totalOps = photoIds.length * kinds.length;
+  const created: PhotoDerivativeRecord[] = [];
+  const errors: Array<{ photoId: string; kind: string; error: string }> = [];
+  let completedOps = 0;
+
+  for (let i = 0; i < photoIds.length; i++) {
+    const photoId = photoIds[i]!;
+    for (const kind of kinds) {
+      input.onProgress?.({
+        photoIndex: i + 1,
+        photoTotal: photoIds.length,
+        photoId,
+        kind,
+        completedOps,
+        totalOps,
+      });
+      const result = await createPhotoDerivative({
+        photoId,
+        kind,
+        maxEdge: input.maxEdge,
+        quality: input.quality,
+        note: input.note ?? `batch:${batchRunId}`,
+      });
+      completedOps += 1;
+      if (result.ok) created.push(result.record);
+      else errors.push({ photoId, kind, error: result.error });
+    }
+  }
+
+  const run: PhotoDerivativeBatchRun = {
+    id: batchRunId,
+    createdAt: new Date().toISOString(),
+    photoIds,
+    kinds,
+    createdCount: created.length,
+    errorCount: errors.length,
+    note: input.note,
+  };
+  const ledger = loadMediaDerivativesLedger();
+  ledger.batchRuns = [run, ...(ledger.batchRuns ?? [])].slice(0, 50);
+  saveLedger(ledger);
+
+  const ok = created.length > 0;
+  return {
+    ok,
+    batchRunId,
+    created,
+    errors,
+    createdCount: created.length,
+    errorCount: errors.length,
+    totalOps,
+    completedOps,
+    message: ok
+      ? `Batch derivatives: created ${created.length}/${totalOps}` +
+        (errors.length ? ` (${errors.length} failed)` : "") +
+        ` · run ${batchRunId}`
+      : `Batch derivatives failed — ${errors[0]?.error ?? "nothing created."}`,
+  };
 }
 
 export function listPhotoDerivatives(photoId?: string): PhotoDerivativeRecord[] {

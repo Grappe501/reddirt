@@ -47,6 +47,18 @@ export type MediaDerivativesLedger = {
   purpose: string;
   photos: PhotoDerivativeRecord[];
   videoPlans: VideoExcerptPlan[];
+  /** Pass 3 — batch derivative job history (local). */
+  batchRuns?: PhotoDerivativeBatchRun[];
+};
+
+export type PhotoDerivativeBatchRun = {
+  id: string;
+  createdAt: string;
+  photoIds: string[];
+  kinds: Array<Exclude<PhotoDerivativeKind, "inspect_only">>;
+  createdCount: number;
+  errorCount: number;
+  note?: string;
 };
 
 export type PhotoPixelInspect = {

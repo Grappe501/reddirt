@@ -1,8 +1,64 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-29T20:34:57.826Z",
+  "updatedAt": "2026-07-29T21:23:38.807Z",
   "purpose": "Non-destructive photo/video derivatives and edit plans. Originals under campaign-photos are never overwritten.",
   "photos": [
+    {
+      "id": "mena-polk-meet-greet-20260411--web_max--2026-07-29T2123",
+      "sourcePhotoId": "mena-polk-meet-greet-20260411",
+      "sourceSrc": "/media/campaign-photos/mena-polk-meet-greet-20260411.png",
+      "kind": "web_max",
+      "publicSrc": "/media/campaign-derivatives/mena-polk-meet-greet-20260411/web_max-2026-07-29T2123.jpg",
+      "relativePath": "public/media/campaign-derivatives/mena-polk-meet-greet-20260411/web_max-2026-07-29T2123.jpg",
+      "width": 768,
+      "height": 1024,
+      "bytes": 184842,
+      "format": "jpeg",
+      "createdAt": "2026-07-29T21:23:38.805Z",
+      "note": "smoke-batch-derivatives"
+    },
+    {
+      "id": "mena-polk-meet-greet-20260411--thumb--2026-07-29T2123",
+      "sourcePhotoId": "mena-polk-meet-greet-20260411",
+      "sourceSrc": "/media/campaign-photos/mena-polk-meet-greet-20260411.png",
+      "kind": "thumb",
+      "publicSrc": "/media/campaign-derivatives/mena-polk-meet-greet-20260411/thumb-2026-07-29T2123.jpg",
+      "relativePath": "public/media/campaign-derivatives/mena-polk-meet-greet-20260411/thumb-2026-07-29T2123.jpg",
+      "width": 360,
+      "height": 480,
+      "bytes": 37523,
+      "format": "jpeg",
+      "createdAt": "2026-07-29T21:23:38.595Z",
+      "note": "smoke-batch-derivatives"
+    },
+    {
+      "id": "afl-cio-pre-event-networking-20260629--web_max--2026-07-29T2123",
+      "sourcePhotoId": "afl-cio-pre-event-networking-20260629",
+      "sourceSrc": "/media/campaign-photos/afl-cio-pre-event-networking-20260629.png",
+      "kind": "web_max",
+      "publicSrc": "/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/web_max-2026-07-29T2123.jpg",
+      "relativePath": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/web_max-2026-07-29T2123.jpg",
+      "width": 768,
+      "height": 1024,
+      "bytes": 104186,
+      "format": "jpeg",
+      "createdAt": "2026-07-29T21:23:38.491Z",
+      "note": "smoke-batch-derivatives"
+    },
+    {
+      "id": "afl-cio-pre-event-networking-20260629--thumb--2026-07-29T2123",
+      "sourcePhotoId": "afl-cio-pre-event-networking-20260629",
+      "sourceSrc": "/media/campaign-photos/afl-cio-pre-event-networking-20260629.png",
+      "kind": "thumb",
+      "publicSrc": "/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/thumb-2026-07-29T2123.jpg",
+      "relativePath": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/thumb-2026-07-29T2123.jpg",
+      "width": 360,
+      "height": 480,
+      "bytes": 26783,
+      "format": "jpeg",
+      "createdAt": "2026-07-29T21:23:38.369Z",
+      "note": "smoke-batch-derivatives"
+    },
     {
       "id": "afl-cio-pre-event-networking-20260629--thumb--2026-07-29T2034",
       "sourcePhotoId": "afl-cio-pre-event-networking-20260629",
@@ -30,5 +86,22 @@
       "createdAt": "2026-07-29T20:34:57.705Z"
     }
   ],
-  "videoPlans": []
+  "videoPlans": [],
+  "batchRuns": [
+    {
+      "id": "batch-deriv-1785360218183",
+      "createdAt": "2026-07-29T21:23:38.807Z",
+      "photoIds": [
+        "afl-cio-pre-event-networking-20260629",
+        "mena-polk-meet-greet-20260411"
+      ],
+      "kinds": [
+        "thumb",
+        "web_max"
+      ],
+      "createdCount": 4,
+      "errorCount": 0,
+      "note": "smoke-batch-derivatives"
+    }
+  ]
 }

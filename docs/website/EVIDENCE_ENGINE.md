@@ -92,6 +92,7 @@ Operator UI (localhost): **`/admin/evidence-workbench`**
 - Workbench Photos tab: Inspect, Crop plan, and one-click derivative buttons  
 - **Batch metadata:** multi-select filmstrip + field-level “Apply to N selected” (max 80)  
 - **Batch AI assist:** Cluster selection + Suggest for selection → proposal review → operator apply  
+- **Batch derivatives:** create web/thumb/hero/square/… for up to 40 selected stills (chunked progress + ledger `batchRuns`)  
 - 10-pass upgrade map: [`EVIDENCE_WORKBENCH_10_PASS_UPGRADE.md`](./EVIDENCE_WORKBENCH_10_PASS_UPGRADE.md)  
 - Video: `plan_video_excerpt` builds timed clip candidates from local transcript workspace; encode/poster needs local `ffmpeg` (optional)  
 - Originals under `public/media/campaign-photos/` are never overwritten

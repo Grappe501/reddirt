@@ -66,6 +66,11 @@ export const EVIDENCE_AI_TOOL_CATALOG: Array<{
     summary: "Cluster selected photo ids by shared event/date/county cues (read-only).",
   },
   {
+    name: "batch_create_photo_derivatives",
+    audience: "photo",
+    summary: "Create non-destructive web/thumb/hero/square derivatives for many photo ids.",
+  },
+  {
     name: "get_county_album_summary",
     audience: "photo",
     summary: "Summarize existing county → event album chapters for a confirmed county.",
@@ -300,6 +305,22 @@ export function evidenceAiToolsFor(kind: "photo" | "video"): ChatCompletionTool[
             photoIds: { type: "array", items: { type: "string" } },
           },
           required: ["photoIds"],
+        },
+      },
+    },
+    {
+      type: "function",
+      function: {
+        name: "batch_create_photo_derivatives",
+        description:
+          "Create non-destructive derivatives for many photo ids. Kinds: web_max, thumb, hero_16x9, portrait_4x5, square_1x1, auto_orient. Max 40 photos × 4 kinds. Never overwrites originals. Prefer operator confirmation for large batches.",
+        parameters: {
+          type: "object",
+          properties: {
+            photoIds: { type: "array", items: { type: "string" } },
+            kinds: { type: "array", items: { type: "string" } },
+          },
+          required: ["photoIds", "kinds"],
         },
       },
     },

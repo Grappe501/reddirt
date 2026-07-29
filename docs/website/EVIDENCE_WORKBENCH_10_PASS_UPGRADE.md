@@ -26,8 +26,8 @@
 | Pass | Theme | Ships |
 | --- | --- | --- |
 | **1** | **Batch metadata** | Multi-select photos · field-level apply · shared event fields · one album refresh · AI tool `batch_apply_photo_evidence` |
-| **2** | **Batch AI assist** *(this pass)* | “Suggest for selection” · shared-event clustering · apply-proposal review before write |
-| **3** | Batch derivatives | Apply web/thumb/hero/square to N selected · progress + ledger |
+| **2** | **Batch AI assist** | “Suggest for selection” · shared-event clustering · apply-proposal review before write |
+| **3** | **Batch derivatives** *(this pass)* | Apply web/thumb/hero/square to N selected · progress + ledger |
 | **4** | Derivative → placement | Promote a derivative as public `src` override or homepage/hero candidate with preview |
 | **5** | Attention / face-aware crops | Manual focus point + attention crop kinds · AI cropAdvice → derivative |
 | **6** | ffmpeg foundation | Install/detect local ffmpeg under `.local` · poster frames · clip probe |
@@ -56,6 +56,14 @@
 - [x] Mixed-geography selections withhold county/city from default apply list
 - [x] AI tool `cluster_photo_selection` (read-only)
 
+## Pass 3 acceptance
+
+- [x] Select derivative kinds (web/thumb/hero/square/…) for the current selection
+- [x] Create derivatives for up to 40 photos × 4 kinds
+- [x] Chunked progress feedback in the workbench
+- [x] Batch run recorded in `media-derivatives.json` ledger (`batchRuns`)
+- [x] AI tool `batch_create_photo_derivatives` (gated; originals untouched)
+
 ---
 
 ## Tracking
@@ -66,4 +74,5 @@ Update this table when each pass lands (commit hash + one-line note).
 | --- | ---: | --- |
 | 1 | `2098c843` | Batch metadata: multi-select + field-level apply + AI tool |
 | 2 | `5de3a7fe` | Batch AI assist: cluster + suggest-for-selection + proposal review |
-| 3–10 | — | — |
+| 3 | shipped | Batch derivatives: kinds × selection + progress + ledger runs |
+| 4–10 | — | — |

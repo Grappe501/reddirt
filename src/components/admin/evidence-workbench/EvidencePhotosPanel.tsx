@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState, useTransition } from "react";
 import {
+  batchCreatePhotoDerivativesAction,
   batchSavePhotoEvidenceAction,
   buildPhotoMetadataPacketAction,
   clusterPhotoSelectionAction,
@@ -44,6 +45,17 @@ const DEFAULT_BATCH_FIELDS = new Set([
   "eventName",
   "photographer",
 ]);
+
+const BATCH_DERIV_OPTIONS: Array<{ key: string; label: string }> = [
+  { key: "web_max", label: "Web" },
+  { key: "thumb", label: "Thumb" },
+  { key: "hero_16x9", label: "Hero 16:9" },
+  { key: "square_1x1", label: "Square" },
+  { key: "portrait_4x5", label: "Portrait 4:5" },
+  { key: "auto_orient", label: "Auto-orient" },
+];
+
+const DEFAULT_BATCH_DERIV = new Set(["web_max", "thumb"]);
 
 export type PhotoWorkbenchItem = {
   id: string;
@@ -152,6 +164,10 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId }: Props)
   const [batchFields, setBatchFields] = useState<Set<string>>(() => new Set(DEFAULT_BATCH_FIELDS));
   const [proposal, setProposal] = useState<BatchPhotoAiProposal | null>(null);
   const [clusterNote, setClusterNote] = useState("");
+  const [batchDerivKinds, setBatchDerivKinds] = useState<Set<string>>(
+    () => new Set(DEFAULT_BATCH_DERIV),
+  );
+  const [derivProgress, setDerivProgress] = useState("");
   const [form, setForm] = useState<PhotoFormState | null>(() => {
     const first = photos.find((p) => p.id === (initialPhotoId || photos[0]?.id));
     return first ? buildForm(first) : null;
@@ -578,6 +594,73 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId }: Props)
     });
   }
 
+  function toggleBatchDerivKind(key: string) {
+    setBatchDerivKinds((prev) => {
+      const next = new Set(prev);
+      if (next.has(key)) next.delete(key);
+      else {
+        if (next.size >= 4) return prev;
+        next.add(key);
+      }
+      return next;
+    });
+  }
+
+  function runBatchDerivatives() {
+    if (selectedIds.length === 0) {
+      setMessage("Select photos for batch derivatives.");
+      return;
+    }
+    const kinds = [...batchDerivKinds].slice(0, 4);
+    if (!kinds.length) {
+      setMessage("Pick at least one derivative kind (max 4).");
+      return;
+    }
+    const ids = selectedIds.slice(0, 40);
+    const totalOps = ids.length * kinds.length;
+    if (
+      !window.confirm(
+        `Create ${kinds.join(", ")} for ${ids.length} photo(s)?\n\nUp to ${totalOps} derivative file(s). Originals stay untouched.`,
+      )
+    ) {
+      return;
+    }
+
+    start(async () => {
+      const chunkSize = 5;
+      let created = 0;
+      let failed = 0;
+      const errorLines: string[] = [];
+      const runIds: string[] = [];
+
+      for (let i = 0; i < ids.length; i += chunkSize) {
+        const chunk = ids.slice(i, i + chunkSize);
+        const from = i + 1;
+        const to = Math.min(i + chunkSize, ids.length);
+        setDerivProgress(`Creating derivatives · photos ${from}–${to} of ${ids.length}…`);
+        const res = await batchCreatePhotoDerivativesAction({
+          photoIds: chunk,
+          kinds,
+        });
+        created += res.createdCount ?? 0;
+        failed += res.errorCount ?? 0;
+        if (res.batchRunId) runIds.push(res.batchRunId);
+        if (res.errors?.length) {
+          for (const e of res.errors.slice(0, 4)) {
+            errorLines.push(`${e.photoId}/${e.kind}: ${e.error}`);
+          }
+        }
+      }
+
+      setDerivProgress("");
+      let msg = `Batch derivatives done: created ${created}/${totalOps}` + (failed ? ` (${failed} failed)` : "");
+      if (runIds.length) msg += `\nRuns: ${runIds.join(", ")}`;
+      if (errorLines.length) msg += `\n${errorLines.slice(0, 6).join("\n")}`;
+      setMessage(msg);
+      if (photo) refreshDerivatives(photo.id);
+    });
+  }
+
   const FILTERS: { id: Filter; label: string }[] = [
     { id: "all", label: "All" },
     { id: "unknown", label: "Unknown county" },
@@ -662,6 +745,42 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId }: Props)
         </div>
         {clusterNote ? (
           <p className="mt-2 whitespace-pre-wrap font-body text-[11px] text-[#364272]">{clusterNote}</p>
+        ) : null}
+        {selectedIds.length > 0 ? (
+          <div className="mt-3 rounded border border-[#8eb6dc]/60 bg-[#f4f7fc] p-2.5">
+            <p className="font-heading text-[11px] font-bold uppercase tracking-wide text-[#000066]">
+              Batch derivatives (non-destructive)
+            </p>
+            <p className="mt-1 font-body text-[11px] text-[#364272]">
+              Max 40 photos · max 4 kinds · originals never overwritten.
+            </p>
+            <div className="mt-2 flex flex-wrap gap-x-3 gap-y-1">
+              {BATCH_DERIV_OPTIONS.map((f) => (
+                <label
+                  key={f.key}
+                  className="inline-flex items-center gap-1.5 font-body text-[11px] text-[#12124a]"
+                >
+                  <input
+                    type="checkbox"
+                    checked={batchDerivKinds.has(f.key)}
+                    onChange={() => toggleBatchDerivKind(f.key)}
+                  />
+                  {f.label}
+                </label>
+              ))}
+            </div>
+            <button
+              type="button"
+              disabled={pending || selectedIds.length === 0 || batchDerivKinds.size === 0}
+              onClick={runBatchDerivatives}
+              className="mt-2 rounded-md border-2 border-[#000066] bg-white px-3 py-1.5 font-body text-xs font-bold text-[#000066] disabled:opacity-50"
+            >
+              Create derivatives for {Math.min(selectedIds.length, 40)} selected
+            </button>
+            {derivProgress ? (
+              <p className="mt-2 font-body text-[11px] font-semibold text-[#000066]">{derivProgress}</p>
+            ) : null}
+          </div>
         ) : null}
         <div className="mt-2 flex gap-2 overflow-x-auto pb-1">
           {filtered.slice(0, 80).map((p) => {

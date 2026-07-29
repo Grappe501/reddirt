@@ -324,6 +324,41 @@ export async function executeEvidenceAiTool(
         return { ok: true, result: clusterPhotoSelection(inputs) };
       }
 
+      case "batch_create_photo_derivatives": {
+        const photoIds = Array.isArray(args.photoIds)
+          ? args.photoIds.map((id) => String(id).trim()).filter(Boolean)
+          : [];
+        const kinds = Array.isArray(args.kinds)
+          ? args.kinds.map((k) => String(k).trim()).filter(Boolean)
+          : [];
+        if (!photoIds.length || !kinds.length) {
+          return { ok: false, error: "photoIds and kinds required." };
+        }
+        const { batchCreatePhotoDerivatives } = await import("@/lib/campaign-media/media-derivatives");
+        const result = await batchCreatePhotoDerivatives({
+          photoIds,
+          kinds,
+          note: "ai-tool-batch",
+        });
+        if (!result.ok) return { ok: false, error: result.message };
+        return {
+          ok: true,
+          result: {
+            batchRunId: result.batchRunId,
+            createdCount: result.createdCount,
+            errorCount: result.errorCount,
+            totalOps: result.totalOps,
+            errors: result.errors.slice(0, 12),
+            message: result.message,
+            samples: result.created.slice(0, 6).map((r) => ({
+              photoId: r.sourcePhotoId,
+              kind: r.kind,
+              publicSrc: r.publicSrc,
+            })),
+          },
+        };
+      }
+
       case "get_county_album_summary": {
         const county = asString(args.county);
         const reg = resolveRegistryCountyFromLabel(county);

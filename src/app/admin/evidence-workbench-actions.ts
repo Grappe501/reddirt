@@ -664,6 +664,37 @@ export async function createPhotoDerivativeAction(
   };
 }
 
+export async function batchCreatePhotoDerivativesAction(input: {
+  photoIds: string[];
+  kinds: string[];
+}): Promise<{
+  ok: boolean;
+  message: string;
+  createdCount?: number;
+  errorCount?: number;
+  totalOps?: number;
+  batchRunId?: string;
+  errors?: Array<{ photoId: string; kind: string; error: string }>;
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { batchCreatePhotoDerivatives } = await import("@/lib/campaign-media/media-derivatives");
+  const result = await batchCreatePhotoDerivatives({
+    photoIds: input.photoIds,
+    kinds: input.kinds,
+    note: "evidence-workbench-batch",
+  });
+  return {
+    ok: result.ok,
+    message: result.message,
+    createdCount: result.createdCount,
+    errorCount: result.errorCount,
+    totalOps: result.totalOps,
+    batchRunId: result.batchRunId,
+    errors: result.errors.slice(0, 12),
+  };
+}
+
 export async function listPhotoDerivativesAction(photoId: string): Promise<{
   ok: boolean;
   message: string;

@@ -26,6 +26,7 @@ Hard rules:
 - Photo derivatives never overwrite originals; prefer suggest_crop_plan before create_photo_derivative.
 - For videos, plan_video_excerpt uses local transcripts only — do not invent timestamps.
 - Only call batch_apply_photo_evidence when the operator explicitly asks to write the same fields to multiple named photo ids.
+- Only call batch_create_photo_derivatives when the operator explicitly asks to generate derivatives for named photo ids.
 - After tools, return ONE final JSON object (no markdown) with:
   county, city, venue, eventDate, eventName, photographer, peopleVisible[],
   whatThisProves, confidence (high|medium|low), warnings[], rationale,
