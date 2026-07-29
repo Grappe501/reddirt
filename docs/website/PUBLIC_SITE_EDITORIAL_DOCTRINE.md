@@ -4,7 +4,8 @@
 **Lane:** RedDirt public website  
 **Supersedes for tone:** memoir-first / feature-first copy expansion  
 **Aligned pass:** `KELLY-PUBLIC-MESSAGE-PSYCHOLOGY-REMEDIATION-1.0`  
-**Next effort:** visual polish + technical QA — **not** more copy volume
+**Next effort:** visual polish + technical QA — **not** more copy volume  
+**Polish reporting:** [`CAMPAIGN_EXPERIENCE_REVIEW_DOCTRINE.md`](./CAMPAIGN_EXPERIENCE_REVIEW_DOCTRINE.md) — voter-trust narrative reviews, not PASS-FAIL-only build returns
 
 ---
 

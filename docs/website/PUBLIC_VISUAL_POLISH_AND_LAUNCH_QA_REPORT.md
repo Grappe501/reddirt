@@ -1,4 +1,7 @@
-# Visual polish + launch QA — BUILD RETURN
+# Visual polish + launch QA — technical companion
+
+**Narrative review (primary):** [`CAMPAIGN_EXPERIENCE_REVIEW_VISUAL_POLISH_1.0.md`](./CAMPAIGN_EXPERIENCE_REVIEW_VISUAL_POLISH_1.0.md)  
+**Reporting doctrine:** [`CAMPAIGN_EXPERIENCE_REVIEW_DOCTRINE.md`](./CAMPAIGN_EXPERIENCE_REVIEW_DOCTRINE.md)
 
 **Pass:** `KELLY-PUBLIC-VISUAL-POLISH-AND-LAUNCH-QA-1.0`  
 **Status:** PARTIAL  
@@ -8,6 +11,8 @@
 **Date:** 2026-07-28
 
 Architecture, messaging doctrine, and homepage narrative remain **frozen**. This pass only cleaned chrome, tap targets, focus, graceful degradation, and QA gates.
+
+> Polish phases lead with **CAMPAIGN EXPERIENCE REVIEW**. This file keeps the scoreboard and gate log as appendix evidence.
 
 ---
 
