@@ -130,7 +130,12 @@ export function EvidenceSpeechesPanel({ speeches, initialSpeechId }: Props) {
           whatThisProves: s.whatThisProves || prev.whatThisProves,
         };
       });
-      if (s.warnings.length) setMessage(`${res.message}\nWarnings: ${s.warnings.join("; ")}`);
+      const extras: string[] = [];
+      if (s.toolsUsed?.length) extras.push(`Tools: ${s.toolsUsed.join(", ")}`);
+      if (s.speakerNotes) extras.push(`Speaker notes: ${s.speakerNotes}`);
+      if (s.sceneTags?.length) extras.push(`Tags: ${s.sceneTags.join(", ")}`);
+      if (s.warnings.length) extras.push(`Warnings: ${s.warnings.join("; ")}`);
+      if (extras.length) setMessage(`${res.message}\n${extras.join("\n")}`);
     });
   }
 
@@ -311,8 +316,8 @@ export function EvidenceSpeechesPanel({ speeches, initialSpeechId }: Props) {
               onClick={suggestAi}
               className="rounded-md border-2 border-[#000066] bg-white px-4 py-2 font-body text-sm font-bold text-[#000066] disabled:opacity-50"
             >
-              Suggest with AI
-            </button>
+            Suggest with AI (tools)
+          </button>
             <button
               type="button"
               disabled={pending}

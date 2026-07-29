@@ -229,7 +229,13 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId }: Props)
         };
       });
       setDirty(true);
-      if (s.warnings.length) setMessage(`${res.message}\nWarnings: ${s.warnings.join("; ")}`);
+      const extras: string[] = [];
+      if (s.toolsUsed?.length) extras.push(`Tools: ${s.toolsUsed.join(", ")}`);
+      if (s.sceneTags?.length) extras.push(`Scene: ${s.sceneTags.join(", ")}`);
+      if (s.altTextDraft) extras.push(`Alt draft: ${s.altTextDraft}`);
+      if (s.cropAdvice) extras.push(`Crop: ${s.cropAdvice}`);
+      if (s.warnings.length) extras.push(`Warnings: ${s.warnings.join("; ")}`);
+      if (extras.length) setMessage(`${res.message}\n${extras.join("\n")}`);
     });
   }
 
@@ -462,8 +468,8 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId }: Props)
               onClick={suggestAi}
               className="rounded-md border-2 border-[#000066] bg-white px-4 py-2 font-body text-sm font-bold text-[#000066] disabled:opacity-50"
             >
-              Suggest with AI
-            </button>
+            Suggest with AI (tools)
+          </button>
             <button
               type="button"
               disabled={pending}

@@ -16,6 +16,16 @@ export type EvidenceAiSuggestion = {
   warnings: string[];
   /** Short model rationale (operator-facing). */
   rationale: string;
+  /** Optional scene / composition tags from tool-assisted vision pass. */
+  sceneTags?: string[];
+  /** Optional accessibility draft (operator must review). */
+  altTextDraft?: string;
+  /** Optional crop / framing note for galleries. */
+  cropAdvice?: string;
+  /** Optional video/speaker notes grounded in transcript tools. */
+  speakerNotes?: string;
+  /** Tool names invoked during the suggestion (operator transparency). */
+  toolsUsed?: string[];
 };
 
 export type EvidenceAiMemoryExample = {

@@ -4,53 +4,12 @@ import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
 import type { CampaignPhotoRecord } from "@/content/media/campaign-photo-types";
 import type { CampaignMediaRecord } from "@/content/media/campaign-media-types";
+import { runEvidenceAiBrain } from "@/lib/campaign-media/evidence-ai-brain";
 import { formatMemoryForPrompt } from "@/lib/campaign-media/evidence-ai-memory";
 import type { EvidenceAiSuggestion } from "@/lib/campaign-media/evidence-ai-types";
 import type { PhotoEvidenceOverlay, SpeechEvidenceOverlay } from "@/lib/campaign-media/evidence-types";
-import {
-  formatOpenAIErrorForClient,
-  getOpenAIClient,
-  getOpenAIConfigFromEnv,
-  isOpenAIConfigured,
-} from "@/lib/openai/client";
 
-const SUGGEST_SYSTEM = `You help a political campaign operator confirm evidence metadata for Arkansas campaign photos and videos.
-Hard rules:
-- Prefer "Unknown" over inventing county, city, venue, people, or dates.
-- Never invent geography from clothing, guesswork, or vibes.
-- Use confirmed past examples only as soft priors — if the current image does not clearly match, return Unknown.
-- whatThisProves must be concrete campaign evidence language (listened/learned/visited/spoke/engaged), not marketing fluff.
-- Return JSON only.`;
-
-function parseSuggestion(raw: string): EvidenceAiSuggestion {
-  const parsed = JSON.parse(raw) as Partial<EvidenceAiSuggestion>;
-  const unk = (v: unknown) => {
-    const s = String(v ?? "").trim();
-    return s || "Unknown";
-  };
-  const people = Array.isArray(parsed.peopleVisible)
-    ? parsed.peopleVisible.map((p) => String(p).trim()).filter(Boolean)
-    : [];
-  const confidence =
-    parsed.confidence === "high" || parsed.confidence === "medium" || parsed.confidence === "low"
-      ? parsed.confidence
-      : "low";
-  return {
-    county: unk(parsed.county),
-    city: unk(parsed.city),
-    venue: unk(parsed.venue),
-    eventDate: unk(parsed.eventDate),
-    eventName: unk(parsed.eventName),
-    photographer: unk(parsed.photographer),
-    peopleVisible: people,
-    whatThisProves: String(parsed.whatThisProves ?? "").trim(),
-    confidence,
-    warnings: Array.isArray(parsed.warnings) ? parsed.warnings.map(String) : [],
-    rationale: String(parsed.rationale ?? "").trim(),
-  };
-}
-
-function readPublicImageAsDataUrl(src: string): { dataUrl: string; mimeType: string } | null {
+function readPublicImageAsDataUrl(src: string): string | null {
   if (!src.startsWith("/")) return null;
   const rel = src.replace(/^\//, "");
   const abs = path.join(process.cwd(), "public", rel);
@@ -65,45 +24,27 @@ function readPublicImageAsDataUrl(src: string): { dataUrl: string; mimeType: str
         : ext === ".gif"
           ? "image/gif"
           : "image/jpeg";
-  // Cap roughly ~4MB base64 payload
-  if (buf.length > 3_500_000) {
-    return null;
-  }
-  return { dataUrl: `data:${mimeType};base64,${buf.toString("base64")}`, mimeType };
+  if (buf.length > 3_500_000) return null;
+  return `data:${mimeType};base64,${buf.toString("base64")}`;
 }
 
 export async function suggestPhotoEvidenceWithAi(input: {
   photo: CampaignPhotoRecord;
   overlay: PhotoEvidenceOverlay | null;
 }): Promise<{ ok: true; suggestion: EvidenceAiSuggestion } | { ok: false; error: string }> {
-  if (!isOpenAIConfigured()) {
-    return { ok: false, error: "OPENAI_API_KEY not configured in RedDirt .env / .env.local." };
-  }
-
   const memory = formatMemoryForPrompt(12);
-  const image = readPublicImageAsDataUrl(input.photo.src);
-  const client = getOpenAIClient();
-  const { model } = getOpenAIConfigFromEnv();
+  const imageDataUrl = readPublicImageAsDataUrl(input.photo.src);
 
-  const userText = `Suggest evidence fields for this campaign photo.
-Return JSON:
-{
-  "county": "short Arkansas county name or Unknown",
-  "city": "city or Unknown",
-  "venue": "venue or Unknown",
-  "eventDate": "YYYY-MM-DD or Unknown",
-  "eventName": "event name or Unknown",
-  "photographer": "name or Unknown",
-  "peopleVisible": ["names if clearly known"],
-  "whatThisProves": "one concrete proof sentence",
-  "confidence": "high|medium|low",
-  "warnings": ["..."],
-  "rationale": "short"
-}
+  const userText = `Suggest evidence fields for this campaign PHOTO using tools when helpful.
+Call lookup_arkansas_county before asserting a county.
+Call search_calendar_presence / search_confirmed_memory / find_similar_campaign_photos when cues exist.
+Call get_photo_file_basics and preview_placement_rules when useful.
+Do not invent geography.
 
 Registry baseline (may be Unknown):
 id=${input.photo.id}
 filename=${input.photo.basic.originalFilename}
+src=${input.photo.src}
 caption=${input.photo.accessibility.caption}
 alt=${input.photo.accessibility.altText}
 eventName=${input.photo.campaign.eventName}
@@ -112,87 +53,71 @@ city=${input.photo.campaign.city}
 venue=${input.photo.campaign.venue}
 people=${input.photo.campaign.peopleVisible.join(", ")}
 overlay=${JSON.stringify(input.overlay ?? {})}
+imageAttached=${Boolean(imageDataUrl)}
 
 Confirmed past examples (soft priors only):
 ${memory}`;
 
-  try {
-    const content: Array<
-      { type: "text"; text: string } | { type: "image_url"; image_url: { url: string } }
-    > = [{ type: "text", text: userText }];
-    if (image) {
-      content.push({ type: "image_url", image_url: { url: image.dataUrl } });
-    } else {
-      content.push({
-        type: "text",
-        text: "IMAGE UNAVAILABLE locally — suggest only from text metadata; prefer Unknown for geography.",
-      });
-    }
+  const result = await runEvidenceAiBrain({
+    kind: "photo",
+    userText,
+    imageDataUrl,
+  });
+  if (!result.ok) return result;
 
-    const res = await client.chat.completions.create({
-      model,
-      temperature: 0.2,
-      response_format: { type: "json_object" },
-      messages: [
-        { role: "system", content: SUGGEST_SYSTEM },
-        { role: "user", content },
-      ],
-    });
-    const raw = res.choices[0]?.message?.content?.trim() ?? "";
-    if (!raw) return { ok: false, error: "OpenAI returned empty suggestion." };
-    const suggestion = parseSuggestion(raw);
-    if (!image) {
-      suggestion.warnings = [
-        ...suggestion.warnings,
-        "Local image bytes unavailable — geography should stay Unknown unless text already confirms it.",
-      ];
-      if (suggestion.confidence === "high") suggestion.confidence = "medium";
-    }
-    return { ok: true, suggestion };
-  } catch (err) {
-    return { ok: false, error: formatOpenAIErrorForClient(err) };
+  const suggestion = result.suggestion;
+  if (!imageDataUrl) {
+    suggestion.warnings = [
+      ...suggestion.warnings,
+      "Local image bytes unavailable — geography should stay Unknown unless text/tools already confirm it.",
+    ];
+    if (suggestion.confidence === "high") suggestion.confidence = "medium";
   }
+  if (result.toolsUsed.length) {
+    suggestion.warnings = [
+      ...suggestion.warnings,
+      `Tools used: ${result.toolsUsed.join(", ")}`,
+    ];
+  }
+  return { ok: true, suggestion };
 }
 
 export async function suggestSpeechEvidenceWithAi(input: {
   media: CampaignMediaRecord;
   overlay: SpeechEvidenceOverlay | null;
 }): Promise<{ ok: true; suggestion: EvidenceAiSuggestion } | { ok: false; error: string }> {
-  if (!isOpenAIConfigured()) {
-    return { ok: false, error: "OPENAI_API_KEY not configured in RedDirt .env / .env.local." };
-  }
-
   const memory = formatMemoryForPrompt(12);
-  const client = getOpenAIClient();
-  const { model } = getOpenAIConfigFromEnv();
-  const userText = `Suggest evidence fields for this campaign speech/video (no invented geography).
-Return JSON with county, city, venue, eventDate, eventName, photographer, peopleVisible, whatThisProves, confidence, warnings, rationale.
-For speeches, county may be a short name; peopleVisible can include Kelly Grappe when she is the speaker.
+
+  const userText = `Suggest evidence fields for this campaign SPEECH/VIDEO using tools when helpful.
+Call get_video_transcript_excerpt for youtubeVideoId=${input.media.youtubeVideoId} when useful.
+Call lookup_arkansas_county before asserting counties.
+Call search_calendar_presence / search_confirmed_memory / search_campaign_speeches for grounding.
+Do not invent geography or spoken claims not supported by transcript/tools.
 
 Title: ${input.media.title}
 Description: ${input.media.description}
 Summary: ${input.media.summary ?? ""}
 Topics: ${input.media.topics.join(", ")}
 Existing counties: ${(input.media.counties ?? []).join(", ") || "none"}
+youtubeVideoId=${input.media.youtubeVideoId}
+speechId=${input.media.id}
 Overlay: ${JSON.stringify(input.overlay ?? {})}
 
 Confirmed past examples:
 ${memory}`;
 
-  try {
-    const res = await client.chat.completions.create({
-      model,
-      temperature: 0.2,
-      response_format: { type: "json_object" },
-      messages: [
-        { role: "system", content: SUGGEST_SYSTEM },
-        { role: "user", content: userText },
-      ],
-    });
-    const raw = res.choices[0]?.message?.content?.trim() ?? "";
-    if (!raw) return { ok: false, error: "OpenAI returned empty suggestion." };
-    return { ok: true, suggestion: parseSuggestion(raw) };
-  } catch (err) {
-    return { ok: false, error: formatOpenAIErrorForClient(err) };
+  const result = await runEvidenceAiBrain({
+    kind: "video",
+    userText,
+  });
+  if (!result.ok) return result;
+
+  const suggestion = result.suggestion;
+  if (result.toolsUsed.length) {
+    suggestion.warnings = [
+      ...suggestion.warnings,
+      `Tools used: ${result.toolsUsed.join(", ")}`,
+    ];
   }
+  return { ok: true, suggestion };
 }

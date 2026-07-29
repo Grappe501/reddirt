@@ -5,6 +5,7 @@ import { EvidenceIngestPanel } from "@/components/admin/evidence-workbench/Evide
 import { EvidencePhotosPanel } from "@/components/admin/evidence-workbench/EvidencePhotosPanel";
 import { EvidenceSpeechesPanel } from "@/components/admin/evidence-workbench/EvidenceSpeechesPanel";
 import { strategicPlacementNotes } from "@/content/media/strategic-photo-placements";
+import { EVIDENCE_AI_TOOL_CATALOG } from "@/lib/campaign-media/evidence-ai-tool-defs";
 import { photoPublicSurfacesPreview } from "@/lib/campaign-media/county-albums-live";
 import {
   loadCalendarPresenceStore,
@@ -144,6 +145,24 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
           {strategicPlacementNotes().map((n) => (
             <li key={n.surface}>
               <span className="font-semibold text-[#12124a]">{n.surface}:</span> {n.how}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div className="mt-4 rounded-lg border-2 border-[#000066]/20 bg-white p-4">
+        <p className="font-heading text-sm font-bold text-[#000066]">
+          OpenAI evidence brain — tools (OPENAI_API_KEY)
+        </p>
+        <p className="mt-1 font-body text-xs text-[#364272]">
+          Suggest with AI can call these local tools before proposing fields. Tools never auto-confirm geography.
+        </p>
+        <ul className="mt-3 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+          {EVIDENCE_AI_TOOL_CATALOG.map((t) => (
+            <li key={t.name} className="rounded border border-[#8eb6dc]/50 bg-[#f4f7fc] px-3 py-2">
+              <p className="font-mono text-[11px] font-bold text-[#000066]">{t.name}</p>
+              <p className="mt-0.5 font-body text-[11px] uppercase tracking-wide text-[#364272]">{t.audience}</p>
+              <p className="mt-1 font-body text-xs text-[#12124a]">{t.summary}</p>
             </li>
           ))}
         </ul>
