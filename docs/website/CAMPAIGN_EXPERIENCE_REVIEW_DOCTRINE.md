@@ -1,9 +1,17 @@
 # Campaign Experience Review — reporting doctrine (locked)
 
-**Status:** LOCKED — 2026-07-28 (final-phase amendments: proof chains, Trust Ledger, hesitation mindset)  
+**Status:** LOCKED — 2026-07-28 (craftsmanship phase)  
 **Applies to:** Public polish / launch-confidence phases (after architecture and message doctrine are frozen)  
 **Does not replace:** Scoreboards, crawl logs, or typecheck evidence — those remain in an appendix  
 **Supersedes for polish reports:** Short `BUILD RETURN` / PASS-FAIL-only summaries as the primary deliverable
+
+---
+
+## Launch Principle (put at the top of every remaining review)
+
+> **When faced with a choice between saying more and proving more, prove more.**
+
+The site should convince through competence, transparency, and authenticity — not volume.
 
 ---
 
@@ -29,6 +37,17 @@ Hunt and remove hesitations one by one: missing dates, generic wording, awkward 
 
 ---
 
+## Hesitation hunt (required every remaining pass)
+
+Every Campaign Experience Review must list:
+
+### Top three hesitations removed
+### Top three hesitations remaining
+
+Create a visible trend toward launch readiness. Do not hide remaining risk behind a green status.
+
+---
+
 ## Guiding question
 
 > Would an undecided Arkansas voter trust it?
@@ -37,7 +56,7 @@ Hunt and remove hesitations one by one: missing dates, generic wording, awkward 
 
 ## Who Burt is when reporting
 
-Report as Creative Director, UX Lead, QA Lead, and Release Manager — with Campaign Manager, Editorial, Accessibility, and Arkansas Voter lenses as needed.
+Report as Creative Director, UX Lead, QA Lead, and Release Manager — with Campaign Manager, Editorial, Accessibility, and Arkansas Voter lenses as needed. During craftsmanship phase, also apply a **Reporter** lens (see below).
 
 ---
 
@@ -79,33 +98,57 @@ Every major campaign claim needs a supporting chain:
 
 **Claim → Proof (media / routes / records) → Outcome (what the visitor should believe)**
 
-Examples:
-
-| Claim | Proof | Outcome |
-| --- | --- | --- |
-| Kelly listens to Arkansans | Mena photo · Hot Springs Village video · `/about/journey` | Visitor believes the listening claim |
-| Kelly has earned broad support | AFL-CIO · AEA · Progressive Arkansas Women PAC · Josh Irby | Visitor understands the coalition |
-| Kelly understands the office | Government That Works · `/priorities` · authority limits | Visitor believes competence |
-
 If a claim lacks a proof chain, question it or remove it.
+
+---
+
+## Media ledger (when media is reviewed)
+
+For each image/video under review, ask:
+
+> If I could only keep this media or remove it, which choice would produce the stronger site?
+
+| Asset | Purpose | Keep | Replace Later |
+| --- | --- | --- | --- |
+| (id / route) | (core message reinforced) | ✅ / ⚠️ / ❌ | notes |
+
+Nothing stays merely because it is available.
+
+---
+
+## Reporter pass (when transparency is reviewed)
+
+Ask:
+
+> If a reporter visited tonight to write an article, what questions would still require an email or phone call?
+
+Those gaps are opportunities for transparency without promotional content (e.g. announcement dates, press contact, media kit, approved downloadable photos).
 
 ---
 
 ## Required narrative sections
 
-### 1. Executive Summary  
+### 1. Launch Principle + Executive Summary  
 ### 2. Visitor Journey Review  
 ### 3. Psychological Review  
-### 4. Media Review (large) — include “does every asset earn its place?”  
+### 4. Media Review (large) — include “does every asset earn its place?” and media ledger when applicable  
 ### 5. Copy Review  
-### 6. Visual Review  
+### 6. Visual Review / Consistency audit notes  
 ### 7. Candidate Presence Review  
 ### 8. Arkansas Review  
-### 9. Things that still bother me  
-### 10. The Three Hardest Decisions  
-### 11. If we had four more hours…  
-### 12. Campaign Manager Eye  
-### 13. Trust Ledger (standing)
+### 9. Hesitation hunt — top 3 removed / top 3 remaining  
+### 10. Things that still bother me  
+### 11. The Three Hardest Decisions  
+### 12. If we had four more hours…  
+### 13. Campaign Manager Eye  
+### 14. Trust Ledger  
+### 15. Kelly first-look (required closer)
+
+> If I were introducing this website to Kelly for the first time tonight, what three things would I be proud of, and what three things would I still want to improve before launch?
+
+---
+
+## Trust Ledger (standing)
 
 | Item | Status |
 | --- | --- |
@@ -118,10 +161,6 @@ If a claim lacks a proof chain, question it or remove it.
 | Testimonial accuracy (no invented praise) | |
 | Remaining verification needed | (list) |
 
-### 14. Kelly first-look (required closer)
-
-> If I were introducing this website to Kelly for the first time tonight, what three things would I be proud of, and what three things would I still want to improve before launch?
-
 ---
 
 ## Appendix (keep short)
@@ -133,6 +172,7 @@ Branch / commits / push · scoreboard · typecheck / tests / crawl / screenshots
 ## Related locks
 
 - [`PUBLIC_SITE_EDITORIAL_DOCTRINE.md`](./PUBLIC_SITE_EDITORIAL_DOCTRINE.md)  
+- [`REMAINING_LAUNCH_CRAFTSMANSHIP_BOARD.md`](./REMAINING_LAUNCH_CRAFTSMANSHIP_BOARD.md)  
 - [`PUBLIC_MESSAGE_PRECISION_AUDIT.md`](./PUBLIC_MESSAGE_PRECISION_AUDIT.md)  
 - [`PUBLIC_CORE_MESSAGE_MAP.md`](./PUBLIC_CORE_MESSAGE_MAP.md)  
 - [`confirmed-endorsements.ts`](../../src/content/website/confirmed-endorsements.ts)  
