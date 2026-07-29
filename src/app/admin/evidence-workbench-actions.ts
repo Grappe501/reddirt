@@ -5,7 +5,6 @@ import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { assertAdminApi } from "@/lib/admin/require-admin";
 import {
-  assertLocalEvidenceWritesAllowed,
   loadCalendarPresenceStore,
   loadPhotoEvidenceStore,
   loadSpeechEvidenceStore,
@@ -13,6 +12,7 @@ import {
   savePhotoEvidenceStore,
   saveSpeechEvidenceStore,
 } from "@/lib/campaign-media/evidence-store";
+import { assertLocalEvidenceWritesAllowed } from "@/lib/campaign-media/evidence-local-writes";
 import { exportConfirmedCalendarToPresenceMatrix } from "@/lib/campaign-media/export-calendar-to-matrix";
 import type {
   CalendarPresenceRow,

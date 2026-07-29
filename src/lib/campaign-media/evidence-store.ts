@@ -1,6 +1,5 @@
 import { existsSync, mkdirSync, readFileSync, renameSync, writeFileSync } from "node:fs";
 import path from "node:path";
-import { headers } from "next/headers";
 import {
   CALENDAR_PRESENCE_REL,
   PHOTO_EVIDENCE_REL,
@@ -94,25 +93,6 @@ export function saveSpeechEvidenceStore(store: SpeechEvidenceStore): void {
     version: 1,
     updatedAt: new Date().toISOString(),
   });
-}
-
-/**
- * Local-first write gate: Host must be localhost/127.0.0.1, or ADMIN_LOCAL_WRITES=1.
- */
-export async function assertLocalEvidenceWritesAllowed(): Promise<{ ok: true } | { ok: false; error: string }> {
-  if (process.env.ADMIN_LOCAL_WRITES === "1" || process.env.ADMIN_LOCAL_WRITES === "true") {
-    return { ok: true };
-  }
-  const h = await headers();
-  const host = (h.get("x-forwarded-host") ?? h.get("host") ?? "").toLowerCase().split(":")[0];
-  if (host === "localhost" || host === "127.0.0.1" || host === "::1") {
-    return { ok: true };
-  }
-  return {
-    ok: false,
-    error:
-      "Evidence Workbench writes are local-only. Run on http://127.0.0.1 (or set ADMIN_LOCAL_WRITES=1).",
-  };
 }
 
 export function calendarRowId(date: string, summary: string): string {
