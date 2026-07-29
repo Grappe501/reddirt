@@ -8,7 +8,7 @@ import type { CampaignPhotoRecord } from "@/content/media/campaign-photo-types";
 import {
   homepagePhotoCountyHref,
   homepagePhotoObjectPositionClass,
-} from "@/content/media/homepage-campaign-photos";
+} from "@/content/media/homepage-campaign-photo-display";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { trustFunnelCardClass, trustFunnelCtaNavy } from "@/components/home/trust-funnel/trustFunnelChrome";
 import { cn } from "@/lib/utils";

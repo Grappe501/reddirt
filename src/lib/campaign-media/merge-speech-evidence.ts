@@ -1,6 +1,13 @@
 import type { CampaignMediaRecord } from "@/content/media/campaign-media-types";
-import { loadSpeechEvidenceStore } from "@/lib/campaign-media/evidence-store";
-import type { SpeechEvidenceOverlay } from "@/lib/campaign-media/evidence-types";
+import type { SpeechEvidenceOverlay, SpeechEvidenceStore } from "@/lib/campaign-media/evidence-types";
+import speechEvidenceJson from "../../../data/campaign-media/speech-evidence.json";
+
+/**
+ * Client-safe read: static JSON import (no node:fs).
+ */
+function speechStore(): SpeechEvidenceStore {
+  return speechEvidenceJson as SpeechEvidenceStore;
+}
 
 function applyOverlay(base: CampaignMediaRecord, overlay: SpeechEvidenceOverlay | undefined): CampaignMediaRecord {
   if (!overlay) return base;
@@ -19,6 +26,5 @@ function applyOverlay(base: CampaignMediaRecord, overlay: SpeechEvidenceOverlay 
 
 /** Merge speech-evidence.json onto a media record (after publish overlay). */
 export function mergeCampaignMediaWithSpeechEvidence(media: CampaignMediaRecord): CampaignMediaRecord {
-  const store = loadSpeechEvidenceStore();
-  return applyOverlay(media, store.speeches[media.id]);
+  return applyOverlay(media, speechStore().speeches?.[media.id]);
 }

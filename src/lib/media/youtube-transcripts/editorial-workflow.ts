@@ -5,7 +5,7 @@
 
 import type { TranscriptSegment, TranscriptStatus } from "@/content/media/campaign-media-types";
 import { appendNotification } from "./notifications";
-import { publishWorkspaceTranscript } from "./publish-overlay";
+import { publishWorkspaceTranscript } from "./publish-overlay-fs";
 import {
   loadWorkspaceRecord,
   saveWorkspaceRecord,

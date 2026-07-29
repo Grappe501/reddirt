@@ -1,7 +1,15 @@
 import type { CampaignPhotoRecord } from "@/content/media/campaign-photo-types";
 import { UNKNOWN } from "@/content/media/campaign-photo-types";
-import { loadPhotoEvidenceStore } from "@/lib/campaign-media/evidence-store";
-import type { PhotoEvidenceOverlay } from "@/lib/campaign-media/evidence-types";
+import type { PhotoEvidenceOverlay, PhotoEvidenceStore } from "@/lib/campaign-media/evidence-types";
+import photoEvidenceJson from "../../../data/campaign-media/photo-evidence.json";
+
+/**
+ * Client-safe read: static JSON import (no node:fs).
+ * Admin writes still go through evidence-store (server-only).
+ */
+function photoStore(): PhotoEvidenceStore {
+  return photoEvidenceJson as PhotoEvidenceStore;
+}
 
 function applyOverlay(base: CampaignPhotoRecord, overlay: PhotoEvidenceOverlay | undefined): CampaignPhotoRecord {
   if (!overlay) return base;
@@ -17,10 +25,9 @@ function applyOverlay(base: CampaignPhotoRecord, overlay: PhotoEvidenceOverlay |
       ? overlay.peopleVisible.filter((p) => p.trim())
       : base.campaign.peopleVisible;
 
-  const notes =
-    overlay.whatThisProves?.trim()
-      ? [base.notes, `Proof: ${overlay.whatThisProves.trim()}`].filter(Boolean).join("\n")
-      : base.notes;
+  const notes = overlay.whatThisProves?.trim()
+    ? [base.notes, `Proof: ${overlay.whatThisProves.trim()}`].filter(Boolean).join("\n")
+    : base.notes;
 
   return {
     ...base,
@@ -45,11 +52,10 @@ function applyOverlay(base: CampaignPhotoRecord, overlay: PhotoEvidenceOverlay |
 
 /** Merge photo-evidence.json overlay onto a registry record. */
 export function mergeCampaignPhotoWithEvidence(photo: CampaignPhotoRecord): CampaignPhotoRecord {
-  const store = loadPhotoEvidenceStore();
-  return applyOverlay(photo, store.photos[photo.id]);
+  return applyOverlay(photo, photoStore().photos?.[photo.id]);
 }
 
 export function mergeCampaignPhotosWithEvidence(photos: CampaignPhotoRecord[]): CampaignPhotoRecord[] {
-  const store = loadPhotoEvidenceStore();
-  return photos.map((p) => applyOverlay(p, store.photos[p.id]));
+  const store = photoStore();
+  return photos.map((p) => applyOverlay(p, store.photos?.[p.id]));
 }

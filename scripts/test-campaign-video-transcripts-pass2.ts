@@ -19,7 +19,7 @@ import {
   loadWorkspaceRecord,
   restoreRevision,
 } from "../src/lib/media/youtube-transcripts/workspace-store";
-import { publishWorkspaceTranscript } from "../src/lib/media/youtube-transcripts/publish-overlay";
+import { publishWorkspaceTranscript } from "../src/lib/media/youtube-transcripts/publish-overlay-fs";
 import { buildTranscriptSearchIndex, searchTranscriptIndex } from "../src/lib/media/youtube-transcripts/search-index";
 import { sealYouTubeTokenPayload, openYouTubeTokenPayload } from "../src/lib/media/youtube-transcripts/token-crypto";
 import { pickPreferredCaptionTrack } from "../src/lib/media/youtube-transcripts/captions-api";
