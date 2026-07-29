@@ -70,8 +70,9 @@ const acrossPhotos = listHomepageAcrossArkansasPhotos();
 assert.equal(acrossPhotos.length, HOMEPAGE_ACROSS_ARKANSAS_PHOTO_IDS.length);
 
 const endorsements = read("src/components/home/trust-funnel/TrustFunnelEndorsementsSection.tsx");
-assert.ok(endorsements.includes("emptyState") || endorsements.includes("No endorsements"));
-assert.ok(!endorsements.toLowerCase().includes("afl-cio"), "AFL-CIO not hardcoded without confirmation");
+assert.ok(endorsements.includes("listHomepageEndorsements") || endorsements.includes("emptyState"));
+assert.ok(endorsements.includes("View All Endorsements") || endorsements.includes("emptyState"));
+assert.ok(!endorsements.toLowerCase().includes("afl-cio"), "homepage section must not hardcode AFL-CIO string; use content canon");
 
 console.log("48h launch sprint homepage checks passed.");
 console.log("  primary=", primary!.youtubeVideoId);

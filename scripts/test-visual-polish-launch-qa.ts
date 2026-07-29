@@ -32,8 +32,21 @@ assert.ok(meet.includes("copy.beats") || meet.includes("beats.map"), "Meet Kelly
 assert.ok(meet.includes("principle") || meet.includes("copy.principle"), "Meet Kelly principle line");
 
 const endorsements = read("src/components/home/trust-funnel/TrustFunnelEndorsementsSection.tsx");
-assert.ok(endorsements.includes("Earned through listening"), "endorsements empty state intentional framing");
-assert.ok(!/No endorsements are listed yet/i.test(trustFunnelHomeCopy.endorsements.emptyState));
+assert.ok(endorsements.includes("listHomepageEndorsements"), "homepage pulls confirmed endorsement canon");
+assert.ok(endorsements.includes("View All Endorsements"), "homepage links to full endorsements page");
+
+const confirmed = read("src/content/website/confirmed-endorsements.ts");
+assert.ok(confirmed.includes("arkansas-afl-cio"));
+assert.ok(confirmed.includes("arkansas-education-association"));
+assert.ok(confirmed.includes("josh-irby"));
+assert.ok(confirmed.includes("progressive-arkansas-women-pac"));
+assert.ok(confirmed.includes("Working People") && confirmed.includes("Educators"));
+assert.ok(confirmed.includes("relatedPhotoNote"), "AFL-CIO photo distinguished from endorsement moment");
+
+const endorsementsPage = read("src/app/(site)/endorsements/page.tsx");
+assert.ok(endorsementsPage.includes("listConfirmedEndorsements"));
+assert.ok(endorsementsPage.includes("AFL-CIO") || endorsementsPage.includes("listConfirmedEndorsements"));
+assert.ok(!endorsementsPage.includes("No endorsements are listed yet"));
 
 const hero = read("src/components/home/trust-funnel/TrustFunnelHero.tsx");
 assert.ok(hero.includes("trustFunnelCtaPrimary"), "hero uses shared primary CTA");

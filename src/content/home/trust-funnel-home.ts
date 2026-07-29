@@ -195,9 +195,10 @@ export const trustFunnelHomeCopy = {
     eyebrow: "Trust",
     title: "Endorsements",
     intro:
-      "Kelly believes endorsements should be earned through listening, service, and trust—not assumed from a meeting or a photograph.",
+      "A broad coalition — working people, educators, community leaders, and civic advocates — confirming support for Kelly’s campaign.",
     emptyState:
       "As organizations and community leaders formally announce their support, you will find them here—with the organization name and source on record. Until then, this space stays empty on purpose.",
+    viewAll: "View All Endorsements",
   },
 
   newsUpdates: {

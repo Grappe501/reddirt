@@ -56,7 +56,7 @@ export const CAMPAIGN_PHOTO_REGISTRY: CampaignPhotoRecord[] = [
         "Kelly Grappe meets with attendees before an Arkansas AFL-CIO meeting.",
     },
     notes:
-      "Candid pre-event networking; Feature photo. County/city Unknown — do not attach to county workbench. Homepage candidate (Latest Campaign Photos). Do not claim endorsement on public surfaces until listed on /endorsements with confirmed source. Story tags: Leadership, Listening, Coalition Building, Labor.",
+      "Candid pre-event networking; Feature photo. County/city Unknown — do not attach to county workbench. Homepage candidate (Latest Campaign Photos). On /endorsements, pair with Arkansas AFL-CIO confirmation and note that the photo is pre-address networking, not the endorsement announcement itself.",
     createdAt: "2026-07-28T05:33:00.000Z",
     updatedAt: "2026-07-28T14:30:00.000Z",
   },

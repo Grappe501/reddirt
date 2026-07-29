@@ -42,8 +42,9 @@ assert.ok(footer.includes("getVolunteerSignupHref"), "footer volunteer aligned")
 assert.ok(!footer.includes("getJoinCampaignHref"), "footer must not default volunteer to mailto join");
 
 const endorsements = read("src/app/(site)/endorsements/page.tsx");
-assert.ok(endorsements.includes("CONFIRMED_ENDORSEMENTS"), "endorsement gate present");
-assert.ok(!/AFL-CIO/.test(endorsements), "no AFL-CIO without confirmation");
+assert.ok(endorsements.includes("listConfirmedEndorsements"), "endorsement canon wired");
+assert.ok(endorsements.includes("AFL-CIO") || read("src/content/website/confirmed-endorsements.ts").includes("afl-cio"), "AFL-CIO confirmed in canon");
+assert.ok(!/invent logos/i.test(endorsements) || endorsements.includes("Attendance at an event"), "honest policy footer");
 
 const primary = getHomepagePrimaryMessageVideo();
 const across = getHomepageAcrossArkansasVideo();
