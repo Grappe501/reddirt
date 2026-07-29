@@ -16,6 +16,15 @@
 
 ## Priority order (next passes)
 
+### 0. Forensic launch review — DONE (audit) + Critical CTA restore
+
+Pass: `KELLY-PUBLIC-FORENSIC-LAUNCH-REVIEW-1.0`  
+→ [`CAMPAIGN_EXPERIENCE_REVIEW_FORENSIC_LAUNCH_1.0.md`](./CAMPAIGN_EXPERIENCE_REVIEW_FORENSIC_LAUNCH_1.0.md)  
+→ [`PUBLIC_SITE_MASTER_MAP.md`](./PUBLIC_SITE_MASTER_MAP.md)  
+→ [`COUNTY_MEDIA_COVERAGE_LEDGER.md`](./COUNTY_MEDIA_COVERAGE_LEDGER.md)
+
+**Critical fix shipped:** removed soft redirects that sent `/get-involved`, `/host-a-gathering`, and `/start-a-local-team` to `/about`.
+
 ### 1. Production confidence — DONE (local binary) / Netlify still open
 
 Pass completed: `KELLY-PUBLIC-PRODUCTION-CONFIDENCE-1.0` → see [`PRODUCTION_CONFIDENCE_REPORT.md`](./PRODUCTION_CONFIDENCE_REPORT.md).
@@ -31,21 +40,21 @@ Pass completed: `KELLY-PUBLIC-PRODUCTION-CONFIDENCE-1.0` → see [`PRODUCTION_CO
 
 **Recommendation:** `READY AFTER MINOR REMEDIATION` = successful Netlify (or alternate) publish of this binary, then live URL re-smoke.
 
-### Parallel track (not ahead of #1 without authorization)
+### Parallel track (not ahead of publish without authorization)
 
 **Campaign Operating Calendar** — promote calendar into RedDirt OS (one event, many outputs; Public / Internal / Kelly-only). Doctrine: [`../calendar/CAMPAIGN_OPERATING_CALENDAR_ARCHITECTURE.md`](../calendar/CAMPAIGN_OPERATING_CALENDAR_ARCHITECTURE.md). Do **not** embed Kelly-calendar as a separate app in the marketing site.
 
-### 2. Media audit
+### 2. High craftsmanship from forensic register (remaining ~1.5 days)
 
-Keep-or-remove force for every homepage / feature image and video. Produce a media ledger. Nothing stays only because it exists.
+Prefer: nav cleanup (`/updates`), footer `/contact`, one Regnat lockup, restrained gold accents, campaign geography confirms — see forensic CER register H1–H8.
 
-### 3. Reporter pass
+### 3. Media audit (ongoing with county ledger)
 
-Identify questions that still require email/phone (dates, press contact, media kit, downloadable photos if appropriate). Prefer transparency over promotional volume.
+Keep-or-remove force for every homepage / feature image and video. Ledger: [`COUNTY_MEDIA_COVERAGE_LEDGER.md`](./COUNTY_MEDIA_COVERAGE_LEDGER.md).
 
-### 4. Consistency audit
+### 4. Reporter pass
 
-Buttons, intro tone, card chrome, video framing, caption voice — subconscious professionalism.
+Identify questions that still require email/phone (dates, press contact, media kit). Prefer transparency over promotional volume.
 
 ### 5. Final hesitation hunt (ongoing in every CER)
 
@@ -56,19 +65,19 @@ Every remaining pass lists:
 
 ---
 
-## Current hesitation snapshot (baseline for next pass)
+## Current hesitation snapshot
 
-### Removed (recent)
+### Removed (forensic)
 
-1. Endorsements no longer feel unfinished — confirmed coalition published.  
-2. Meet Kelly reads more conversationally (rhythm, not more biography).  
-3. CTA / chrome language more consistent across the homepage spine.
+1. Get Involved / host / team CTAs soft-redirected to About.  
+2. Confusion that archive size equals on-site county representation.  
+3. Assumption forensic work must enlarge the homepage.
 
 ### Remaining
 
-1. Production deployment proof pending (quiet `next build` + HTTP + Netlify separation).  
-2. Endorsement announcement dates / public source URLs pending when available.  
-3. Equal-card endorsement layout may evolve only if additional confirmations arrive — not for decoration.
+1. Production deployment proof on live URL (Netlify).  
+2. Endorsement announcement dates / public source URLs.  
+3. Confirmed geography still thin (5 photo counties + Garland video).
 
 ---
 
@@ -77,7 +86,9 @@ Every remaining pass lists:
 - Add major sections or features  
 - Invent dates, quotes, endorsements, or geography  
 - Enlarge copy to fill empty feelings  
+- Redesign the site around gold  
 - Treat Netlify platform failure as a homepage code bug without evidence  
+- Claim “50+ counties” on-site without confirmed metadata
 
 ---
 
@@ -85,3 +96,4 @@ Every remaining pass lists:
 
 - [`PUBLIC_SITE_LAUNCH_STATUS.md`](./PUBLIC_SITE_LAUNCH_STATUS.md) — Netlify operator status  
 - [`CAMPAIGN_EXPERIENCE_REVIEW_ENDORSEMENT_FRAMING.md`](./CAMPAIGN_EXPERIENCE_REVIEW_ENDORSEMENT_FRAMING.md)  
+- [`PRODUCTION_CONFIDENCE_REPORT.md`](./PRODUCTION_CONFIDENCE_REPORT.md)

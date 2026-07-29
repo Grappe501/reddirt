@@ -143,17 +143,12 @@ const nextConfig: NextConfig = {
         destination: "/about",
         permanent: false,
       },
-      /** Marketing site is discovery-only — volunteer / organizing hubs redirect to public entry points. */
-      {
-        source: "/get-involved",
-        destination: "/about",
-        permanent: false,
-      },
-      {
-        source: "/get-involved/:path*",
-        destination: "/about",
-        permanent: false,
-      },
+      /**
+       * Forensic launch review (KELLY-PUBLIC-FORENSIC-LAUNCH-REVIEW-1.0):
+       * Do not redirect public participation hubs (`/get-involved`, host/team pages) to `/about`.
+       * Those pages hold real CTAs/forms; soft-redirects created dead ends from nav and homepage Final Action.
+       * Internal OS surfaces may still redirect away from unfinished public exposure.
+       */
       {
         source: "/onboarding/power-of-5",
         destination: "/about",
@@ -176,16 +171,6 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/local-organizing/:path*",
-        destination: "/about",
-        permanent: false,
-      },
-      {
-        source: "/host-a-gathering",
-        destination: "/about",
-        permanent: false,
-      },
-      {
-        source: "/start-a-local-team",
         destination: "/about",
         permanent: false,
       },
