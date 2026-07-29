@@ -38,7 +38,8 @@ export async function suggestPhotoEvidenceWithAi(input: {
   const userText = `Suggest evidence fields for this campaign PHOTO using tools when helpful.
 Call lookup_arkansas_county before asserting a county.
 Call search_calendar_presence / search_confirmed_memory / find_similar_campaign_photos when cues exist.
-Call get_photo_file_basics and preview_placement_rules when useful.
+Call get_photo_file_basics / inspect_photo_pixels / suggest_crop_plan when useful for cropAdvice.
+Prefer Unknown geography. Do not auto-create derivatives unless cropAdvice clearly needs a written file.
 Do not invent geography.
 
 Registry baseline (may be Unknown):
@@ -90,6 +91,7 @@ export async function suggestSpeechEvidenceWithAi(input: {
 
   const userText = `Suggest evidence fields for this campaign SPEECH/VIDEO using tools when helpful.
 Call get_video_transcript_excerpt for youtubeVideoId=${input.media.youtubeVideoId} when useful.
+Call plan_video_excerpt / probe_video_tooling when proposing short-clip speakerNotes.
 Call lookup_arkansas_county before asserting counties.
 Call search_calendar_presence / search_confirmed_memory / search_campaign_speeches for grounding.
 Do not invent geography or spoken claims not supported by transcript/tools.

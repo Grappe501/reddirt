@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState, useTransition } from "react";
 import Link from "next/link";
 import {
   buildSpeechMetadataPacketAction,
+  planVideoExcerptAction,
   saveSpeechEvidenceAction,
   suggestSpeechEvidenceAiAction,
 } from "@/app/admin/evidence-workbench-actions";
@@ -149,6 +150,14 @@ export function EvidenceSpeechesPanel({ speeches, initialSpeechId }: Props) {
     );
     start(async () => {
       const res = await buildSpeechMetadataPacketAction(speechId, confirmed);
+      setMessage(res.message);
+    });
+  }
+
+  function planExcerpt() {
+    const youtubeVideoId = speech.youtubeVideoId;
+    start(async () => {
+      const res = await planVideoExcerptAction(youtubeVideoId);
       setMessage(res.message);
     });
   }
@@ -333,6 +342,14 @@ export function EvidenceSpeechesPanel({ speeches, initialSpeechId }: Props) {
               className="rounded-md border-2 border-[#8eb6dc] bg-white px-4 py-2 font-body text-sm font-semibold text-[#12124a] disabled:opacity-50"
             >
               Build outgoing metadata packet
+            </button>
+            <button
+              type="button"
+              disabled={pending}
+              onClick={planExcerpt}
+              className="rounded-md border-2 border-[#8eb6dc] bg-white px-4 py-2 font-body text-sm font-semibold text-[#12124a] disabled:opacity-50"
+            >
+              Plan video excerpts
             </button>
           </div>
           {message ? (

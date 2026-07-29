@@ -3,10 +3,15 @@
 import { useEffect, useMemo, useState, useTransition } from "react";
 import {
   buildPhotoMetadataPacketAction,
+  createPhotoDerivativeAction,
+  inspectPhotoPixelsAction,
+  listPhotoDerivativesAction,
   savePhotoEvidenceAction,
+  suggestCropPlanAction,
   suggestPhotoEvidenceAiAction,
 } from "@/app/admin/evidence-workbench-actions";
 import type { PhotoEvidenceOverlay } from "@/lib/campaign-media/evidence-types";
+import type { PhotoDerivativeRecord } from "@/lib/campaign-media/media-derivatives-types";
 import { EVIDENCE_FIELD_CLASS } from "@/components/admin/evidence-workbench/field-styles";
 import { isEditableKeyboardTarget } from "@/components/admin/evidence-workbench/keyboard";
 
@@ -112,6 +117,7 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId }: Props)
   const [message, setMessage] = useState("");
   const [pending, start] = useTransition();
   const [dirty, setDirty] = useState(false);
+  const [derivatives, setDerivatives] = useState<PhotoDerivativeRecord[]>([]);
   const [form, setForm] = useState<PhotoFormState | null>(() => {
     const first = photos.find((p) => p.id === (initialPhotoId || photos[0]?.id));
     return first ? buildForm(first) : null;
@@ -169,6 +175,21 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId }: Props)
     if (!item) return;
     setForm(buildForm(item));
   }, [photos, activeId, dirty]);
+
+  useEffect(() => {
+    if (!activeId) {
+      setDerivatives([]);
+      return;
+    }
+    let cancelled = false;
+    void listPhotoDerivativesAction(activeId).then((res) => {
+      if (cancelled) return;
+      setDerivatives(res.derivatives ?? []);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [activeId]);
 
   const photo = filtered.find((p) => p.id === activeId) ?? photos.find((p) => p.id === activeId) ?? null;
   const index = photo ? filteredIds.indexOf(photo.id) : -1;
@@ -298,6 +319,40 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId }: Props)
     });
   }
 
+  function refreshDerivatives(photoId: string) {
+    void listPhotoDerivativesAction(photoId).then((res) => {
+      setDerivatives(res.derivatives ?? []);
+    });
+  }
+
+  function runDerivative(kind: string) {
+    if (!photo) return;
+    const photoId = photo.id;
+    start(async () => {
+      const res = await createPhotoDerivativeAction(photoId, kind);
+      setMessage(res.message);
+      if (res.ok) refreshDerivatives(photoId);
+    });
+  }
+
+  function runInspect() {
+    if (!photo) return;
+    const photoId = photo.id;
+    start(async () => {
+      const res = await inspectPhotoPixelsAction(photoId);
+      setMessage(res.message);
+    });
+  }
+
+  function runCropPlan() {
+    if (!photo) return;
+    const photoId = photo.id;
+    start(async () => {
+      const res = await suggestCropPlanAction(photoId);
+      setMessage(res.message);
+    });
+  }
+
   const FILTERS: { id: Filter; label: string }[] = [
     { id: "all", label: "All" },
     { id: "unknown", label: "Unknown county" },
@@ -374,6 +429,60 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId }: Props)
                 <li key={`${photo.id}-${s}`}>{s}</li>
               ))}
             </ul>
+          </div>
+          <div className="mt-3 rounded-lg border-2 border-[#000066]/15 bg-white p-3">
+            <p className="font-heading text-xs font-bold uppercase tracking-wide text-[#000066]">
+              Photo derivatives (non-destructive)
+            </p>
+            <p className="mt-1 font-body text-[11px] text-[#364272]">
+              Writes under /media/campaign-derivatives — originals stay untouched.
+            </p>
+            <div className="mt-2 flex flex-wrap gap-2">
+              {(
+                [
+                  ["Inspect", runInspect],
+                  ["Crop plan", runCropPlan],
+                  ["Web", () => runDerivative("web_max")],
+                  ["Thumb", () => runDerivative("thumb")],
+                  ["Hero 16:9", () => runDerivative("hero_16x9")],
+                  ["Portrait 4:5", () => runDerivative("portrait_4x5")],
+                  ["Square", () => runDerivative("square_1x1")],
+                  ["Auto-orient", () => runDerivative("auto_orient")],
+                ] as const
+              ).map(([label, onClick]) => (
+                <button
+                  key={label}
+                  type="button"
+                  disabled={pending}
+                  onClick={onClick}
+                  className="rounded border-2 border-[#8eb6dc] bg-[#f4f7fc] px-2.5 py-1 font-body text-xs font-semibold text-[#12124a] disabled:opacity-50"
+                >
+                  {label}
+                </button>
+              ))}
+            </div>
+            {derivatives.length ? (
+              <ul className="mt-3 space-y-2">
+                {derivatives.map((d) => (
+                  <li key={d.id} className="flex items-center gap-3">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={d.publicSrc}
+                      alt=""
+                      className="h-14 w-14 rounded border border-[#8eb6dc]/40 object-cover"
+                    />
+                    <div className="min-w-0">
+                      <p className="font-mono text-[11px] font-bold text-[#000066]">{d.kind}</p>
+                      <p className="truncate font-mono text-[10px] text-[#364272]">
+                        {d.width}×{d.height} · {d.publicSrc}
+                      </p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p className="mt-2 font-body text-[11px] text-[#364272]">No derivatives yet for this still.</p>
+            )}
           </div>
         </div>
 

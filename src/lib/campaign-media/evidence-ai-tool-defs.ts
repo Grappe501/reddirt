@@ -36,6 +36,26 @@ export const EVIDENCE_AI_TOOL_CATALOG: Array<{
     summary: "Read local file basics (exists, size, dimensions, orientation) for the current still.",
   },
   {
+    name: "inspect_photo_pixels",
+    audience: "photo",
+    summary: "Sharp pixel inspect: real width/height, format, EXIF orientation, aspect class.",
+  },
+  {
+    name: "suggest_crop_plan",
+    audience: "photo",
+    summary: "Recommend non-destructive crop/derivative kinds from source aspect ratio.",
+  },
+  {
+    name: "create_photo_derivative",
+    audience: "photo",
+    summary: "Write a non-destructive derivative (web/thumb/hero/portrait/square/auto-orient).",
+  },
+  {
+    name: "list_photo_derivatives",
+    audience: "photo",
+    summary: "List existing local derivatives for a photo id.",
+  },
+  {
     name: "get_county_album_summary",
     audience: "photo",
     summary: "Summarize existing county → event album chapters for a confirmed county.",
@@ -59,6 +79,16 @@ export const EVIDENCE_AI_TOOL_CATALOG: Array<{
     name: "get_speech_registry_record",
     audience: "video",
     summary: "Load one speech registry row (title, counties, topics, transcript status).",
+  },
+  {
+    name: "probe_video_tooling",
+    audience: "video",
+    summary: "Report whether local ffmpeg/ffprobe are available for encode/poster ops.",
+  },
+  {
+    name: "plan_video_excerpt",
+    audience: "video",
+    summary: "Build timed clip candidates from the local transcript workspace (no encode yet).",
   },
 ];
 
@@ -156,6 +186,72 @@ export function evidenceAiToolsFor(kind: "photo" | "video"): ChatCompletionTool[
     {
       type: "function",
       function: {
+        name: "inspect_photo_pixels",
+        description:
+          "Read real pixel metadata via sharp (dimensions, format, EXIF orientation, aspect). Does not modify files.",
+        parameters: {
+          type: "object",
+          properties: {
+            photoId: { type: "string" },
+            src: { type: "string" },
+          },
+        },
+      },
+    },
+    {
+      type: "function",
+      function: {
+        name: "suggest_crop_plan",
+        description:
+          "Recommend non-destructive derivative kinds (web_max, thumb, hero_16x9, portrait_4x5, square_1x1, auto_orient) for a photo id.",
+        parameters: {
+          type: "object",
+          properties: {
+            photoId: { type: "string" },
+          },
+          required: ["photoId"],
+        },
+      },
+    },
+    {
+      type: "function",
+      function: {
+        name: "create_photo_derivative",
+        description:
+          "Create a non-destructive derivative under public/media/campaign-derivatives/. Never overwrites campaign-photos originals.",
+        parameters: {
+          type: "object",
+          properties: {
+            photoId: { type: "string" },
+            kind: {
+              type: "string",
+              description: "web_max | thumb | hero_16x9 | portrait_4x5 | square_1x1 | auto_orient",
+            },
+            maxEdge: { type: "number" },
+            quality: { type: "number" },
+            note: { type: "string" },
+          },
+          required: ["photoId", "kind"],
+        },
+      },
+    },
+    {
+      type: "function",
+      function: {
+        name: "list_photo_derivatives",
+        description: "List existing on-disk derivatives for a photo id (from the local ledger).",
+        parameters: {
+          type: "object",
+          properties: {
+            photoId: { type: "string" },
+          },
+          required: ["photoId"],
+        },
+      },
+    },
+    {
+      type: "function",
+      function: {
         name: "get_county_album_summary",
         description: "Summarize existing public county album chapters for a county short name or slug.",
         parameters: {
@@ -235,6 +331,34 @@ export function evidenceAiToolsFor(kind: "photo" | "video"): ChatCompletionTool[
             speechId: { type: "string" },
             youtubeVideoId: { type: "string" },
           },
+        },
+      },
+    },
+    {
+      type: "function",
+      function: {
+        name: "probe_video_tooling",
+        description: "Check whether ffmpeg/ffprobe are installed for local video encode / poster extraction.",
+        parameters: {
+          type: "object",
+          properties: {},
+        },
+      },
+    },
+    {
+      type: "function",
+      function: {
+        name: "plan_video_excerpt",
+        description:
+          "Build timed clip candidates from the local YouTube transcript workspace. Does not encode; use when proposing short cuts.",
+        parameters: {
+          type: "object",
+          properties: {
+            youtubeVideoId: { type: "string" },
+            query: { type: "string" },
+            maxClips: { type: "number" },
+          },
+          required: ["youtubeVideoId"],
         },
       },
     },

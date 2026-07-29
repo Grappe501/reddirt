@@ -157,6 +157,10 @@ data/campaign-media/transcript-pipeline/**
 public/media/county-albums/**
 !public/media/county-albums/.gitkeep
 
+# Non-destructive photo/video derivatives (ledger JSON may be committed; binaries stay local)
+public/media/campaign-derivatives/**
+!public/media/campaign-derivatives/.gitkeep
+
 # Nested phone/camera dumps — batch-ingest flattens copies into campaign-photos/; keep originals local-only
 public/media/campaign-photos/Website pics and speeches/**
 

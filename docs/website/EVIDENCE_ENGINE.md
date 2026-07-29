@@ -81,9 +81,17 @@ Operator UI (localhost): **`/admin/evidence-workbench`**
 
 **AI assist (OPENAI_API_KEY):**
 
-1. **Suggest with AI (tools)** — tool-calling brain can look up counties, calendar presence, confirmed memory, similar photos, album chapters, placement rules, speech registry, and local transcript excerpts before proposing fields (never auto-confirmed; Unknown preferred)  
+1. **Suggest with AI (tools)** — tool-calling brain can look up counties, calendar presence, confirmed memory, similar photos, album chapters, placement rules, speech registry, local transcript excerpts, **pixel inspect / crop plans / photo derivatives**, and **video excerpt plans** before proposing fields (never auto-confirmed; Unknown preferred)  
 2. **Save** — stores overlay + feeds confirmed geography into `evidence-ai-memory.json` for future suggestions  
 3. **Build outgoing metadata packet** — extensive JSON under `data/campaign-media/intelligence-packets/` (press/social/journey captions, entities, do-not-claim). Best-effort attach to `OwnedMediaAsset.enrichmentMetadata` when a filename match exists.
+
+**Media manipulation (local, non-destructive):**
+
+- Photo derivatives via `sharp` → `public/media/campaign-derivatives/{photoId}/` (web / thumb / hero 16:9 / portrait 4:5 / square / auto-orient)  
+- Ledger: `data/campaign-media/media-derivatives.json`  
+- Workbench Photos tab: Inspect, Crop plan, and one-click derivative buttons  
+- Video: `plan_video_excerpt` builds timed clip candidates from local transcript workspace; encode/poster needs local `ffmpeg` (optional)  
+- Originals under `public/media/campaign-photos/` are never overwritten
 
 **County albums (public delivery):**
 

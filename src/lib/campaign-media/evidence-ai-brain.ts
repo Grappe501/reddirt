@@ -15,13 +15,16 @@ import {
 } from "@/lib/openai/client";
 
 const SYSTEM = `You are the Evidence Workbench brain for Kelly Grappe's Arkansas Secretary of State campaign.
-You may call tools to ground suggestions in local campaign data (counties, calendar, memory, albums, transcripts).
+You may call tools to ground suggestions in local campaign data (counties, calendar, memory, albums, transcripts)
+and to inspect or create non-destructive photo derivatives / video excerpt plans.
 Hard rules:
 - Prefer "Unknown" over inventing county, city, venue, people, or dates.
 - Never invent geography from clothing, vibes, or incomplete tool results.
 - Confirmed memory and calendar Confirmed rows are soft priors — only reuse when the current asset clearly matches.
 - Needs confirm / empty calendar geography is NOT proof.
 - whatThisProves must use concrete evidence language (listened/learned/visited/spoke/engaged).
+- Photo derivatives never overwrite originals; prefer suggest_crop_plan before create_photo_derivative.
+- For videos, plan_video_excerpt uses local transcripts only — do not invent timestamps.
 - After tools, return ONE final JSON object (no markdown) with:
   county, city, venue, eventDate, eventName, photographer, peopleVisible[],
   whatThisProves, confidence (high|medium|low), warnings[], rationale,
@@ -111,7 +114,7 @@ export async function runEvidenceAiBrain(input: {
           if (call.type !== "function") continue;
           const name = call.function.name;
           toolsUsed.push(name);
-          const executed = executeEvidenceAiTool(name, call.function.arguments ?? "{}");
+          const executed = await executeEvidenceAiTool(name, call.function.arguments ?? "{}");
           messages.push({
             role: "tool",
             tool_call_id: call.id,

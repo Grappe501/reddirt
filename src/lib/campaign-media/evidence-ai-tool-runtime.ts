@@ -11,6 +11,15 @@ import { loadCalendarPresenceStore } from "@/lib/campaign-media/evidence-store";
 import { applyPhotoEvidenceOverlay } from "@/lib/campaign-media/apply-evidence-overlay";
 import { loadPhotoEvidenceStore } from "@/lib/campaign-media/evidence-store";
 import { photoPublicSurfacesPreview } from "@/lib/campaign-media/county-albums-live";
+import {
+  createPhotoDerivative,
+  inspectPhotoPixels,
+  listPhotoDerivatives,
+  planVideoExcerpt,
+  probeVideoTooling,
+  suggestCropPlan,
+  type PhotoDerivativeKind,
+} from "@/lib/campaign-media/media-derivatives";
 import { resolveRegistryCountyFromLabel } from "@/lib/county/resolve-county-label";
 import { loadWorkspaceRecord } from "@/lib/media/youtube-transcripts/workspace-store";
 
@@ -29,10 +38,20 @@ function livePhotos(): CampaignPhotoRecord[] {
   return CAMPAIGN_PHOTO_REGISTRY.map((p) => applyPhotoEvidenceOverlay(p, store.photos?.[p.id]));
 }
 
-export function executeEvidenceAiTool(
+const DERIVATIVE_KINDS = new Set<string>([
+  "web_max",
+  "thumb",
+  "hero_16x9",
+  "portrait_4x5",
+  "square_1x1",
+  "auto_orient",
+]);
+
+/** Async-capable executor — brain awaits this. */
+export async function executeEvidenceAiTool(
   name: string,
   argsJson: string,
-): { ok: true; result: unknown } | { ok: false; error: string } {
+): Promise<{ ok: true; result: unknown } | { ok: false; error: string }> {
   let args: Record<string, unknown> = {};
   try {
     args = argsJson ? (JSON.parse(argsJson) as Record<string, unknown>) : {};
@@ -181,11 +200,12 @@ export function executeEvidenceAiTool(
         if (!src?.startsWith("/")) {
           return { ok: true, result: { found: false, reason: "No local public src." } };
         }
-        const abs = path.join(process.cwd(), "public", src.replace(/^\//, ""));
-        if (!existsSync(abs)) {
+        const absPath = path.join(process.cwd(), "public", src.replace(/^\//, ""));
+        if (!existsSync(absPath)) {
           return { ok: true, result: { found: false, src, reason: "File missing on disk." } };
         }
-        const st = statSync(abs);
+        const st = statSync(absPath);
+        const pixels = await inspectPhotoPixels({ photoId: photo?.id, src });
         return {
           ok: true,
           result: {
@@ -193,13 +213,55 @@ export function executeEvidenceAiTool(
             photoId: photo?.id ?? null,
             src,
             bytes: st.size,
-            width: photo?.basic.width ?? null,
-            height: photo?.basic.height ?? null,
-            orientation: photo?.basic.orientation ?? null,
-            originalFilename: photo?.basic.originalFilename ?? path.basename(abs),
+            width: pixels.width ?? photo?.basic.width ?? null,
+            height: pixels.height ?? photo?.basic.height ?? null,
+            orientation: pixels.orientation ?? photo?.basic.orientation ?? null,
+            format: pixels.format,
+            aspectRatio: pixels.aspectRatio,
+            originalFilename: photo?.basic.originalFilename ?? path.basename(absPath),
             captureDateIso: photo?.basic.captureDateIso ?? "Unknown",
           },
         };
+      }
+
+      case "inspect_photo_pixels": {
+        const result = await inspectPhotoPixels({
+          photoId: asString(args.photoId) || undefined,
+          src: asString(args.src) || undefined,
+        });
+        return { ok: true, result };
+      }
+
+      case "suggest_crop_plan": {
+        const photoId = asString(args.photoId);
+        if (!photoId) return { ok: false, error: "photoId required." };
+        const result = await suggestCropPlan(photoId);
+        if (!result.ok) return { ok: false, error: result.error };
+        return { ok: true, result: result.plan };
+      }
+
+      case "create_photo_derivative": {
+        const photoId = asString(args.photoId);
+        const kind = asString(args.kind);
+        if (!photoId) return { ok: false, error: "photoId required." };
+        if (!DERIVATIVE_KINDS.has(kind)) {
+          return { ok: false, error: `Unsupported kind: ${kind}` };
+        }
+        const result = await createPhotoDerivative({
+          photoId,
+          kind: kind as Exclude<PhotoDerivativeKind, "inspect_only">,
+          maxEdge: typeof args.maxEdge === "number" ? args.maxEdge : undefined,
+          quality: typeof args.quality === "number" ? args.quality : undefined,
+          note: asString(args.note) || undefined,
+        });
+        if (!result.ok) return { ok: false, error: result.error };
+        return { ok: true, result: result.record };
+      }
+
+      case "list_photo_derivatives": {
+        const photoId = asString(args.photoId);
+        if (!photoId) return { ok: false, error: "photoId required." };
+        return { ok: true, result: { photoId, derivatives: listPhotoDerivatives(photoId) } };
       }
 
       case "get_county_album_summary": {
@@ -354,6 +416,22 @@ export function executeEvidenceAiTool(
             description: m.description.slice(0, 800),
           },
         };
+      }
+
+      case "probe_video_tooling": {
+        return { ok: true, result: probeVideoTooling() };
+      }
+
+      case "plan_video_excerpt": {
+        const youtubeVideoId = asString(args.youtubeVideoId);
+        if (!youtubeVideoId) return { ok: false, error: "youtubeVideoId required." };
+        const result = planVideoExcerpt({
+          youtubeVideoId,
+          query: asString(args.query) || undefined,
+          maxClips: typeof args.maxClips === "number" ? args.maxClips : undefined,
+        });
+        if (!result.ok) return { ok: false, error: result.error };
+        return { ok: true, result: result.plan };
       }
 
       default:

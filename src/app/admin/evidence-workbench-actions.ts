@@ -502,4 +502,115 @@ export async function promoteAllPhotoIngestAction(): Promise<{
   };
 }
 
+export async function inspectPhotoPixelsAction(photoId: string): Promise<{
+  ok: boolean;
+  message: string;
+  inspect?: import("@/lib/campaign-media/media-derivatives").PhotoPixelInspect;
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { inspectPhotoPixels } = await import("@/lib/campaign-media/media-derivatives");
+  const inspect = await inspectPhotoPixels({ photoId });
+  if (!inspect.found) return { ok: false, message: inspect.reason ?? "Inspect failed." };
+  return {
+    ok: true,
+    message: `${inspect.width}×${inspect.height} ${inspect.format} · ${inspect.bytes} bytes · orient ${inspect.orientation ?? "n/a"}`,
+    inspect,
+  };
+}
+
+export async function createPhotoDerivativeAction(
+  photoId: string,
+  kind: string,
+): Promise<{
+  ok: boolean;
+  message: string;
+  publicSrc?: string;
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { createPhotoDerivative } = await import("@/lib/campaign-media/media-derivatives");
+  const allowed = new Set([
+    "web_max",
+    "thumb",
+    "hero_16x9",
+    "portrait_4x5",
+    "square_1x1",
+    "auto_orient",
+  ]);
+  if (!allowed.has(kind)) return { ok: false, message: `Unsupported kind: ${kind}` };
+  const result = await createPhotoDerivative({
+    photoId,
+    kind: kind as
+      | "web_max"
+      | "thumb"
+      | "hero_16x9"
+      | "portrait_4x5"
+      | "square_1x1"
+      | "auto_orient",
+  });
+  if (!result.ok) return { ok: false, message: result.error };
+  return {
+    ok: true,
+    message: `Wrote ${result.record.kind} → ${result.record.publicSrc} (${result.record.width}×${result.record.height})`,
+    publicSrc: result.record.publicSrc,
+  };
+}
+
+export async function listPhotoDerivativesAction(photoId: string): Promise<{
+  ok: boolean;
+  message: string;
+  derivatives?: import("@/lib/campaign-media/media-derivatives").PhotoDerivativeRecord[];
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { listPhotoDerivatives } = await import("@/lib/campaign-media/media-derivatives");
+  const derivatives = listPhotoDerivatives(photoId);
+  return {
+    ok: true,
+    message: `${derivatives.length} derivative(s) on disk`,
+    derivatives,
+  };
+}
+
+export async function suggestCropPlanAction(photoId: string): Promise<{
+  ok: boolean;
+  message: string;
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { suggestCropPlan } = await import("@/lib/campaign-media/media-derivatives");
+  const result = await suggestCropPlan(photoId);
+  if (!result.ok) return { ok: false, message: result.error };
+  const lines = result.plan.recommended.map((r) => `• ${r.kind}: ${r.why}`);
+  return {
+    ok: true,
+    message: `Crop plan ${result.plan.width}×${result.plan.height}\n${lines.join("\n")}`,
+  };
+}
+
+export async function planVideoExcerptAction(
+  youtubeVideoId: string,
+  query?: string,
+): Promise<{
+  ok: boolean;
+  message: string;
+  plan?: import("@/lib/campaign-media/media-derivatives").VideoExcerptPlan;
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { planVideoExcerpt } = await import("@/lib/campaign-media/media-derivatives");
+  const result = planVideoExcerpt({ youtubeVideoId, query: query?.trim() || undefined, maxClips: 4 });
+  if (!result.ok) return { ok: false, message: result.error };
+  const lines = result.plan.clips.map(
+    (c, i) =>
+      `${i + 1}. ${c.startSeconds}s–${c.endSeconds}s — ${c.title}\n   ${c.reason}`,
+  );
+  return {
+    ok: true,
+    message: `Excerpt plan (${result.plan.clips.length} clips)\n${lines.join("\n")}\n${result.plan.tooling.note}`,
+    plan: result.plan,
+  };
+}
+
 export type { CalendarPresenceStatus };

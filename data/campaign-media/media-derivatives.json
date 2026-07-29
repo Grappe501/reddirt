@@ -1,0 +1,34 @@
+{
+  "version": 1,
+  "updatedAt": "2026-07-29T20:34:57.826Z",
+  "purpose": "Non-destructive photo/video derivatives and edit plans. Originals under campaign-photos are never overwritten.",
+  "photos": [
+    {
+      "id": "afl-cio-pre-event-networking-20260629--thumb--2026-07-29T2034",
+      "sourcePhotoId": "afl-cio-pre-event-networking-20260629",
+      "sourceSrc": "/media/campaign-photos/afl-cio-pre-event-networking-20260629.png",
+      "kind": "thumb",
+      "publicSrc": "/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/thumb-2026-07-29T2034.jpg",
+      "relativePath": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/thumb-2026-07-29T2034.jpg",
+      "width": 360,
+      "height": 480,
+      "bytes": 26783,
+      "format": "jpeg",
+      "createdAt": "2026-07-29T20:34:57.825Z"
+    },
+    {
+      "id": "afl-cio-pre-event-networking-20260629--web_max--2026-07-29T2034",
+      "sourcePhotoId": "afl-cio-pre-event-networking-20260629",
+      "sourceSrc": "/media/campaign-photos/afl-cio-pre-event-networking-20260629.png",
+      "kind": "web_max",
+      "publicSrc": "/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/web_max-2026-07-29T2034.jpg",
+      "relativePath": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/web_max-2026-07-29T2034.jpg",
+      "width": 600,
+      "height": 800,
+      "bytes": 68836,
+      "format": "jpeg",
+      "createdAt": "2026-07-29T20:34:57.705Z"
+    }
+  ],
+  "videoPlans": []
+}
