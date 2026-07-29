@@ -1,4 +1,3 @@
-import { execFileSync } from "node:child_process";
 import { existsSync, mkdirSync, readFileSync, renameSync, statSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import sharp from "sharp";
@@ -17,10 +16,17 @@ import type {
   PhotoDerivativeKind,
   PhotoDerivativeRecord,
   PhotoPixelInspect,
+  LocalVideoProbeResult,
   VideoExcerptClip,
   VideoExcerptPlan,
+  VideoPosterRecord,
 } from "@/lib/campaign-media/media-derivatives-types";
 import { loadWorkspaceRecord } from "@/lib/media/youtube-transcripts/workspace-store";
+import { probeVideoTooling as probeFfmpegTooling, runFfmpeg, runFfprobeJson } from "@/lib/campaign-media/ffmpeg-tooling";
+import {
+  findLocalVideoMaster,
+  resolveAllowedVideoPath,
+} from "@/lib/campaign-media/local-video-masters";
 
 export type {
   MediaDerivativesLedger,
@@ -28,9 +34,18 @@ export type {
   PhotoDerivativeKind,
   PhotoDerivativeRecord,
   PhotoPixelInspect,
+  LocalVideoProbeResult,
   VideoExcerptClip,
   VideoExcerptPlan,
+  VideoPosterRecord,
 } from "@/lib/campaign-media/media-derivatives-types";
+
+export { probeVideoTooling, resolveFfmpegBinaries } from "@/lib/campaign-media/ffmpeg-tooling";
+export {
+  findLocalVideoMaster,
+  listLocalVideoMasters,
+  resolveAllowedVideoPath,
+} from "@/lib/campaign-media/local-video-masters";
 
 /**
  * Local media ops (sharp / optional ffmpeg). Prefer calling only from server actions / CLI.
@@ -71,6 +86,7 @@ function emptyLedger(): MediaDerivativesLedger {
     photos: [],
     videoPlans: [],
     batchRuns: [],
+    videoPosters: [],
   };
 }
 
@@ -86,6 +102,7 @@ export function loadMediaDerivativesLedger(): MediaDerivativesLedger {
       photos: Array.isArray(raw.photos) ? raw.photos : [],
       videoPlans: Array.isArray(raw.videoPlans) ? raw.videoPlans : [],
       batchRuns: Array.isArray(raw.batchRuns) ? raw.batchRuns : [],
+      videoPosters: Array.isArray(raw.videoPosters) ? raw.videoPosters : [],
     };
   } catch {
     return emptyLedger();
@@ -626,37 +643,132 @@ export function listPhotoDerivatives(photoId?: string): PhotoDerivativeRecord[] 
   return rows.filter((r) => existsSync(abs(r.relativePath)));
 }
 
-export function probeVideoTooling(): {
-  ffmpegAvailable: boolean;
-  ffprobeAvailable: boolean;
-  ffmpegPath: string | null;
-  ffprobePath: string | null;
-  note: string;
-} {
-  const find = (bin: string): string | null => {
-    try {
-      const out = execFileSync(process.platform === "win32" ? "where.exe" : "which", [bin], {
-        encoding: "utf8",
-        stdio: ["ignore", "pipe", "ignore"],
-      })
-        .split(/\r?\n/)
-        .map((s) => s.trim())
-        .filter(Boolean)[0];
-      return out || null;
-    } catch {
-      return null;
-    }
-  };
-  const ffmpegPath = find("ffmpeg");
-  const ffprobePath = find("ffprobe");
+export function listVideoPosters(outId?: string): VideoPosterRecord[] {
+  const ledger = loadMediaDerivativesLedger();
+  const rows = outId
+    ? (ledger.videoPosters ?? []).filter((p) => p.outId === outId)
+    : ledger.videoPosters ?? [];
+  return rows.filter((r) => existsSync(abs(r.relativePath)));
+}
+
+function parseFfprobe(data: unknown): Omit<LocalVideoProbeResult, "ok" | "absPath" | "publicSrc" | "error" | "clipWindow"> {
+  const root = data && typeof data === "object" ? (data as Record<string, unknown>) : {};
+  const format = root.format && typeof root.format === "object" ? (root.format as Record<string, unknown>) : {};
+  const streams = Array.isArray(root.streams) ? root.streams : [];
+  const v =
+    streams.find((s) => s && typeof s === "object" && (s as { codec_type?: string }).codec_type === "video") ??
+    null;
+  const a =
+    streams.find((s) => s && typeof s === "object" && (s as { codec_type?: string }).codec_type === "audio") ??
+    null;
+  const vs = v && typeof v === "object" ? (v as Record<string, unknown>) : {};
+  const as = a && typeof a === "object" ? (a as Record<string, unknown>) : {};
+  const durationRaw = format.duration ?? vs.duration;
+  const durationSeconds =
+    durationRaw != null && Number.isFinite(Number(durationRaw)) ? Number(durationRaw) : null;
+  const width = vs.width != null && Number.isFinite(Number(vs.width)) ? Number(vs.width) : null;
+  const height = vs.height != null && Number.isFinite(Number(vs.height)) ? Number(vs.height) : null;
+  const sizeBytes =
+    format.size != null && Number.isFinite(Number(format.size)) ? Number(format.size) : null;
+  const bitRate =
+    format.bit_rate != null && Number.isFinite(Number(format.bit_rate))
+      ? Number(format.bit_rate)
+      : null;
   return {
-    ffmpegAvailable: Boolean(ffmpegPath),
-    ffprobeAvailable: Boolean(ffprobePath),
-    ffmpegPath,
-    ffprobePath,
-    note: ffmpegPath
-      ? "ffmpeg is available for local frame extraction when a local video file exists."
-      : "ffmpeg not on PATH. Photo derivatives work now; video encode/poster extract needs ffmpeg installed locally.",
+    durationSeconds,
+    width,
+    height,
+    videoCodec: typeof vs.codec_name === "string" ? vs.codec_name : null,
+    audioCodec: typeof as.codec_name === "string" ? as.codec_name : null,
+    formatName: typeof format.format_name === "string" ? format.format_name : null,
+    sizeBytes,
+    bitRate,
+  };
+}
+
+export function probeLocalVideo(input: {
+  localPublicSrc?: string;
+  absPath?: string;
+  speechId?: string;
+  youtubeVideoId?: string;
+  startSeconds?: number;
+  endSeconds?: number;
+}): LocalVideoProbeResult {
+  let resolved =
+    input.localPublicSrc || input.absPath
+      ? resolveAllowedVideoPath({
+          localPublicSrc: input.localPublicSrc,
+          absPath: input.absPath,
+        })
+      : null;
+
+  if ((!resolved || !resolved.ok) && (input.speechId || input.youtubeVideoId)) {
+    const hit = findLocalVideoMaster({
+      speechId: input.speechId,
+      youtubeVideoId: input.youtubeVideoId,
+    });
+    if (hit) {
+      resolved = { ok: true, absPath: hit.absPath, publicSrc: hit.publicSrc };
+    }
+  }
+
+  if (!resolved || !resolved.ok) {
+    return {
+      ok: false,
+      absPath: null,
+      publicSrc: null,
+      durationSeconds: null,
+      width: null,
+      height: null,
+      videoCodec: null,
+      audioCodec: null,
+      formatName: null,
+      sizeBytes: null,
+      bitRate: null,
+      error:
+        resolved && !resolved.ok
+          ? resolved.error
+          : "No local video master found. Drop an .mp4 under public/media/campaign-video-masters/ or .local/video-masters/.",
+    };
+  }
+
+  const probed = runFfprobeJson(resolved.absPath);
+  if (!probed.ok) {
+    return {
+      ok: false,
+      absPath: resolved.absPath,
+      publicSrc: resolved.publicSrc,
+      durationSeconds: null,
+      width: null,
+      height: null,
+      videoCodec: null,
+      audioCodec: null,
+      formatName: null,
+      sizeBytes: null,
+      bitRate: null,
+      error: probed.error,
+    };
+  }
+
+  const meta = parseFfprobe(probed.data);
+  let clipWindow: LocalVideoProbeResult["clipWindow"] = null;
+  if (typeof input.startSeconds === "number" || typeof input.endSeconds === "number") {
+    const start = Math.max(0, Number(input.startSeconds) || 0);
+    const end =
+      typeof input.endSeconds === "number" && Number.isFinite(input.endSeconds)
+        ? Math.max(start, input.endSeconds)
+        : start + 8;
+    const dur = meta.durationSeconds;
+    const inBounds = dur == null ? true : start < dur && end <= dur + 0.05;
+    clipWindow = { startSeconds: start, endSeconds: end, inBounds };
+  }
+
+  return {
+    ok: true,
+    absPath: resolved.absPath,
+    publicSrc: resolved.publicSrc,
+    ...meta,
+    clipWindow,
   };
 }
 
@@ -676,7 +788,7 @@ export function planVideoExcerpt(input: {
   }
   const query = String(input.query ?? "").trim().toLowerCase();
   const maxClips = Math.min(Math.max(Number(input.maxClips) || 3, 1), 8);
-  const tooling = probeVideoTooling();
+  const tooling = probeFfmpegTooling();
 
   type Cand = { start: number; end: number; text: string; score: number };
   const cands: Cand[] = [];
@@ -693,7 +805,6 @@ export function planVideoExcerpt(input: {
       if (!text.toLowerCase().includes(query)) continue;
       score += 2;
     }
-    // Prefer mid-length quotable lines
     if (text.length > 60 && text.length < 220) score += 0.5;
     cands.push({ start, end, text, score });
   }
@@ -731,6 +842,8 @@ export function planVideoExcerpt(input: {
     clips,
     tooling: {
       ffmpegAvailable: tooling.ffmpegAvailable,
+      ffprobeAvailable: tooling.ffprobeAvailable,
+      source: tooling.source,
       note: tooling.note,
     },
   };
@@ -741,37 +854,112 @@ export function planVideoExcerpt(input: {
 }
 
 /**
- * Extract a still from a *local* video file (not YouTube URL). Requires ffmpeg.
- * Speeches are mostly YouTube — use planVideoExcerpt until local masters exist.
+ * Extract a still from a *local* video master. Requires ffmpeg under .local or PATH.
+ * Does not touch YouTube downloads — masters must be dropped under allowed roots.
  */
 export function extractLocalVideoPoster(input: {
-  localPublicSrc: string;
+  localPublicSrc?: string;
+  absPath?: string;
   atSeconds?: number;
   outId: string;
-}): { ok: true; publicSrc: string; relativePath: string } | { ok: false; error: string } {
-  const tooling = probeVideoTooling();
-  if (!tooling.ffmpegAvailable || !tooling.ffmpegPath) {
+  speechId?: string;
+  youtubeVideoId?: string;
+}):
+  | { ok: true; publicSrc: string; relativePath: string; record: VideoPosterRecord }
+  | { ok: false; error: string } {
+  const tooling = probeFfmpegTooling();
+  if (!tooling.ffmpegAvailable) {
     return { ok: false, error: tooling.note };
   }
-  const srcAbs = decodePublicSrcToAbs(input.localPublicSrc);
-  if (!srcAbs) return { ok: false, error: "Local video file not found under public/." };
+
+  let resolved =
+    input.localPublicSrc || input.absPath
+      ? resolveAllowedVideoPath({
+          localPublicSrc: input.localPublicSrc,
+          absPath: input.absPath,
+        })
+      : null;
+
+  if ((!resolved || !resolved.ok) && (input.speechId || input.youtubeVideoId || input.outId)) {
+    const hit = findLocalVideoMaster({
+      speechId: input.speechId ?? input.outId,
+      youtubeVideoId: input.youtubeVideoId,
+    });
+    if (hit) resolved = { ok: true, absPath: hit.absPath, publicSrc: hit.publicSrc };
+  }
+
+  if (!resolved || !resolved.ok) {
+    return {
+      ok: false,
+      error:
+        resolved && !resolved.ok
+          ? resolved.error
+          : "Local video master not found for poster extract.",
+    };
+  }
+
   const at = Number.isFinite(input.atSeconds) ? Math.max(0, Number(input.atSeconds)) : 1;
-  const outDirRel = path.join(MEDIA_DERIVATIVES_PUBLIC_REL, "_video", input.outId);
+  const outId = String(input.outId ?? "").trim() || "video";
+  const outDirRel = path.join(MEDIA_DERIVATIVES_PUBLIC_REL, "_video", outId);
   const outDirAbs = abs(outDirRel);
   mkdirSync(outDirAbs, { recursive: true });
-  const filename = `poster-${Math.round(at)}s.jpg`;
+  const stamp = new Date().toISOString().slice(0, 16).replace(/[-:T]/g, "");
+  const filename = `poster-${Math.round(at)}s-${stamp}.jpg`;
   const outAbs = path.join(outDirAbs, filename);
-  try {
-    execFileSync(
-      tooling.ffmpegPath,
-      ["-y", "-ss", String(at), "-i", srcAbs, "-frames:v", "1", "-q:v", "2", outAbs],
-      { stdio: ["ignore", "pipe", "pipe"] },
-    );
-  } catch (err) {
-    return { ok: false, error: err instanceof Error ? err.message : "ffmpeg poster extract failed." };
-  }
+
+  const run = runFfmpeg([
+    "-y",
+    "-ss",
+    String(at),
+    "-i",
+    resolved.absPath,
+    "-frames:v",
+    "1",
+    "-q:v",
+    "2",
+    outAbs,
+  ]);
+  if (!run.ok) return { ok: false, error: run.error };
   if (!existsSync(outAbs)) return { ok: false, error: "ffmpeg did not write poster." };
+
   const relativePath = path.join(outDirRel, filename).split(path.sep).join("/");
-  const publicSrc = `/media/campaign-derivatives/_video/${input.outId}/${filename}`;
-  return { ok: true, publicSrc, relativePath };
+  const publicSrc = `/media/campaign-derivatives/_video/${outId}/${filename}`;
+  let width: number | null = null;
+  let height: number | null = null;
+  let bytes: number | null = null;
+  try {
+    bytes = statSync(outAbs).size;
+  } catch {
+    /* optional */
+  }
+  const frameMeta = posterFrameMeta(outAbs);
+  width = frameMeta.width;
+  height = frameMeta.height;
+
+  const record: VideoPosterRecord = {
+    id: `${outId}--poster--${stamp}`,
+    outId,
+    sourcePath: resolved.absPath,
+    sourcePublicSrc: resolved.publicSrc,
+    atSeconds: at,
+    publicSrc,
+    relativePath,
+    width,
+    height,
+    bytes,
+    createdAt: new Date().toISOString(),
+    speechId: input.speechId,
+    youtubeVideoId: input.youtubeVideoId,
+  };
+  const ledger = loadMediaDerivativesLedger();
+  ledger.videoPosters = [record, ...(ledger.videoPosters ?? [])].slice(0, 200);
+  saveLedger(ledger);
+  return { ok: true, publicSrc, relativePath, record };
+}
+
+function posterFrameMeta(fileAbs: string): { width: number | null; height: number | null } {
+  const probed = runFfprobeJson(fileAbs);
+  if (!probed.ok) return { width: null, height: null };
+  const meta = parseFfprobe(probed.data);
+  return { width: meta.width, height: meta.height };
 }

@@ -116,6 +116,16 @@ export const EVIDENCE_AI_TOOL_CATALOG: Array<{
     summary: "Report whether local ffmpeg/ffprobe are available for encode/poster ops.",
   },
   {
+    name: "probe_local_video",
+    audience: "video",
+    summary: "ffprobe a local video master (duration/codecs) and optional clip window bounds.",
+  },
+  {
+    name: "extract_video_poster",
+    audience: "video",
+    summary: "Extract a poster still from a local video master via ffmpeg (non-destructive).",
+  },
+  {
     name: "plan_video_excerpt",
     audience: "video",
     summary: "Build timed clip candidates from the local transcript workspace (no encode yet).",
@@ -490,10 +500,48 @@ export function evidenceAiToolsFor(kind: "photo" | "video"): ChatCompletionTool[
       type: "function",
       function: {
         name: "probe_video_tooling",
-        description: "Check whether ffmpeg/ffprobe are installed for local video encode / poster extraction.",
+        description:
+          "Check whether ffmpeg/ffprobe are available (prefers H:/SOSWebsite/.local/ffmpeg/bin).",
         parameters: {
           type: "object",
           properties: {},
+        },
+      },
+    },
+    {
+      type: "function",
+      function: {
+        name: "probe_local_video",
+        description:
+          "ffprobe a local master under public/media/campaign-video-masters or .local/video-masters. Optional start/end checks clip bounds.",
+        parameters: {
+          type: "object",
+          properties: {
+            speechId: { type: "string" },
+            youtubeVideoId: { type: "string" },
+            localPublicSrc: { type: "string" },
+            startSeconds: { type: "number" },
+            endSeconds: { type: "number" },
+          },
+        },
+      },
+    },
+    {
+      type: "function",
+      function: {
+        name: "extract_video_poster",
+        description:
+          "Extract one poster JPEG from a local video master at atSeconds. Writes under /media/campaign-derivatives/_video/.",
+        parameters: {
+          type: "object",
+          properties: {
+            outId: { type: "string", description: "Usually speechId" },
+            speechId: { type: "string" },
+            youtubeVideoId: { type: "string" },
+            localPublicSrc: { type: "string" },
+            atSeconds: { type: "number" },
+          },
+          required: ["outId"],
         },
       },
     },

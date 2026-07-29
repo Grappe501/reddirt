@@ -13,9 +13,11 @@ import { loadPhotoEvidenceStore } from "@/lib/campaign-media/evidence-store";
 import { photoPublicSurfacesPreview } from "@/lib/campaign-media/county-albums-live";
 import {
   createPhotoDerivative,
+  extractLocalVideoPoster,
   inspectPhotoPixels,
   listPhotoDerivatives,
   planVideoExcerpt,
+  probeLocalVideo,
   probeVideoTooling,
   suggestCropPlan,
   type PhotoDerivativeKind,
@@ -588,6 +590,32 @@ export async function executeEvidenceAiTool(
 
       case "probe_video_tooling": {
         return { ok: true, result: probeVideoTooling() };
+      }
+
+      case "probe_local_video": {
+        const result = probeLocalVideo({
+          speechId: asString(args.speechId) || undefined,
+          youtubeVideoId: asString(args.youtubeVideoId) || undefined,
+          localPublicSrc: asString(args.localPublicSrc) || undefined,
+          startSeconds: typeof args.startSeconds === "number" ? args.startSeconds : undefined,
+          endSeconds: typeof args.endSeconds === "number" ? args.endSeconds : undefined,
+        });
+        if (!result.ok) return { ok: false, error: result.error ?? "probe failed" };
+        return { ok: true, result };
+      }
+
+      case "extract_video_poster": {
+        const outId = asString(args.outId);
+        if (!outId) return { ok: false, error: "outId required." };
+        const result = extractLocalVideoPoster({
+          outId,
+          speechId: asString(args.speechId) || undefined,
+          youtubeVideoId: asString(args.youtubeVideoId) || undefined,
+          localPublicSrc: asString(args.localPublicSrc) || undefined,
+          atSeconds: typeof args.atSeconds === "number" ? args.atSeconds : undefined,
+        });
+        if (!result.ok) return { ok: false, error: result.error };
+        return { ok: true, result: result.record };
       }
 
       case "plan_video_excerpt": {

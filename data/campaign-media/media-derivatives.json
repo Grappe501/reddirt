@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-29T21:43:00.663Z",
+  "updatedAt": "2026-07-29T21:56:14.991Z",
   "purpose": "Non-destructive photo/video derivatives and edit plans. Originals under campaign-photos are never overwritten.",
   "photos": [
     {
@@ -133,6 +133,21 @@
       "createdCount": 4,
       "errorCount": 0,
       "note": "smoke-batch-derivatives"
+    }
+  ],
+  "videoPosters": [
+    {
+      "id": "smoke-pass6--poster--202607292156",
+      "outId": "smoke-pass6",
+      "sourcePath": "H:\\SOSWebsite\\.local\\temp\\ffmpeg-smoke\\smoke-pass6.mp4",
+      "sourcePublicSrc": null,
+      "atSeconds": 1,
+      "publicSrc": "/media/campaign-derivatives/_video/smoke-pass6/poster-1s-202607292156.jpg",
+      "relativePath": "public/media/campaign-derivatives/_video/smoke-pass6/poster-1s-202607292156.jpg",
+      "width": 640,
+      "height": 360,
+      "bytes": 1604,
+      "createdAt": "2026-07-29T21:56:14.990Z"
     }
   ]
 }

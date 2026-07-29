@@ -95,6 +95,8 @@ Operator UI (localhost): **`/admin/evidence-workbench`**
 - **Batch derivatives:** create web/thumb/hero/square/… for up to 40 selected stills (chunked progress + ledger `batchRuns`)  
 - **Promote to placement:** set `publicSrcOverride` from a derivative + optional homepage/hero flags; clear restores registry original  
 - **Focus / attention crops:** overlay stores `focusX`/`focusY`; AI tools `create_focus_crop` + `create_derivative_from_crop_advice`  
+- **ffmpeg foundation:** prefers `H:/SOSWebsite/.local/ffmpeg/bin`; Speeches tab can probe masters + extract poster frames; AI tools `probe_local_video` / `extract_video_poster`  
+- Drop local masters in `public/media/campaign-video-masters/` or `.local/video-masters/` (Pass 7 encodes clips)  
 - 10-pass upgrade map: [`EVIDENCE_WORKBENCH_10_PASS_UPGRADE.md`](./EVIDENCE_WORKBENCH_10_PASS_UPGRADE.md)  
 - Video: `plan_video_excerpt` builds timed clip candidates from local transcript workspace; encode/poster needs local `ffmpeg` (optional)  
 - Originals under `public/media/campaign-photos/` are never overwritten

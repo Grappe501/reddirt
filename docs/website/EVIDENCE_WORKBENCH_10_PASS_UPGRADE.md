@@ -29,8 +29,8 @@
 | **2** | **Batch AI assist** | “Suggest for selection” · shared-event clustering · apply-proposal review before write |
 | **3** | **Batch derivatives** | Apply web/thumb/hero/square to N selected · progress + ledger |
 | **4** | **Derivative → placement** | Promote a derivative as public `src` override or homepage/hero candidate with preview |
-| **5** | **Attention / focus-point crops** *(this pass)* | Manual focus point + focus crop kinds · AI cropAdvice → derivative |
-| **6** | ffmpeg foundation | Install/detect local ffmpeg under `.local` · poster frames · clip probe |
+| **5** | **Attention / focus-point crops** | Manual focus point + focus crop kinds · AI cropAdvice → derivative |
+| **6** | **ffmpeg foundation** *(this pass)* | Install/detect local ffmpeg under `.local` · poster frames · clip probe |
 | **7** | Video clip encode | Export timed excerpts from plans · store under campaign-derivatives |
 | **8** | Transcript intelligence | Chapter/quote tools · claim extraction tied to evidence fields · do-not-claim |
 | **9** | Batch publish controls | Multi approve / hold / homepage flags · consent-aware · county album bulk refresh |
@@ -82,6 +82,16 @@
 - [x] AI tools `create_focus_crop` + `create_derivative_from_crop_advice`
 - [x] Smoke: `scripts/smoke-focus-crop.ts`
 
+## Pass 6 acceptance
+
+- [x] Prefer `H:/SOSWebsite/.local/ffmpeg/bin` (then env / PATH)
+- [x] `ensure-local-ffmpeg.cjs` verifies or extracts essentials zip into `.local`
+- [x] ffprobe local masters (duration / codecs / optional clip window bounds)
+- [x] Extract poster JPEG into `/media/campaign-derivatives/_video/` + ledger `videoPosters`
+- [x] Speeches panel: Probe ffmpeg / Probe local video / Extract poster
+- [x] AI tools `probe_local_video` + `extract_video_poster`
+- [x] Smoke: `scripts/smoke-ffmpeg-foundation.ts`
+
 ---
 
 ## Tracking
@@ -95,4 +105,5 @@ Update this table when each pass lands (commit hash + one-line note).
 | 3 | `efe09c10` | Batch derivatives: kinds × selection + progress + ledger runs |
 | 4 | `9099b7fd` | Derivative → placement: publicSrcOverride + homepage/hero promote |
 | 5 | `2268ffe3` | Focus-point crops + cropAdvice → derivative |
-| 6–10 | — | — |
+| 6 | *(pending commit)* | ffmpeg .local detect + poster + clip probe |
+| 7–10 | — | — |

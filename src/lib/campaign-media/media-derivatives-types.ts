@@ -45,7 +45,45 @@ export type VideoExcerptPlan = {
   createdAt: string;
   query: string;
   clips: VideoExcerptClip[];
-  tooling: { ffmpegAvailable: boolean; note: string };
+  tooling: {
+    ffmpegAvailable: boolean;
+    note: string;
+    source?: string;
+    ffprobeAvailable?: boolean;
+  };
+};
+
+export type VideoPosterRecord = {
+  id: string;
+  outId: string;
+  sourcePath: string;
+  sourcePublicSrc?: string | null;
+  atSeconds: number;
+  publicSrc: string;
+  relativePath: string;
+  width?: number | null;
+  height?: number | null;
+  bytes?: number | null;
+  createdAt: string;
+  speechId?: string;
+  youtubeVideoId?: string;
+  note?: string;
+};
+
+export type LocalVideoProbeResult = {
+  ok: boolean;
+  absPath: string | null;
+  publicSrc: string | null;
+  durationSeconds: number | null;
+  width: number | null;
+  height: number | null;
+  videoCodec: string | null;
+  audioCodec: string | null;
+  formatName: string | null;
+  sizeBytes: number | null;
+  bitRate: number | null;
+  clipWindow?: { startSeconds: number; endSeconds: number; inBounds: boolean } | null;
+  error?: string;
 };
 
 export type MediaDerivativesLedger = {
@@ -56,6 +94,8 @@ export type MediaDerivativesLedger = {
   videoPlans: VideoExcerptPlan[];
   /** Pass 3 — batch derivative job history (local). */
   batchRuns?: PhotoDerivativeBatchRun[];
+  /** Pass 6 — poster frames extracted from local video masters. */
+  videoPosters?: VideoPosterRecord[];
 };
 
 export type PhotoDerivativeBatchRun = {

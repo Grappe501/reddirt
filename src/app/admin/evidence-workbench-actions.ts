@@ -880,4 +880,104 @@ export async function planVideoExcerptAction(
   };
 }
 
+export async function probeVideoToolingAction(): Promise<{
+  ok: boolean;
+  message: string;
+  tooling?: import("@/lib/campaign-media/ffmpeg-tooling").FfmpegToolingReport;
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { probeVideoTooling } = await import("@/lib/campaign-media/ffmpeg-tooling");
+  const tooling = probeVideoTooling();
+  return {
+    ok: tooling.ffmpegAvailable,
+    message: `${tooling.note}${tooling.ffmpegVersion ? `\n${tooling.ffmpegVersion}` : ""}`,
+    tooling,
+  };
+}
+
+export async function probeLocalVideoAction(input: {
+  speechId?: string;
+  youtubeVideoId?: string;
+  localPublicSrc?: string;
+  startSeconds?: number;
+  endSeconds?: number;
+}): Promise<{
+  ok: boolean;
+  message: string;
+  probe?: import("@/lib/campaign-media/media-derivatives-types").LocalVideoProbeResult;
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { probeLocalVideo } = await import("@/lib/campaign-media/media-derivatives");
+  const probe = probeLocalVideo(input);
+  if (!probe.ok) return { ok: false, message: probe.error ?? "Probe failed.", probe };
+  const clip = probe.clipWindow
+    ? `\nClip ${probe.clipWindow.startSeconds}s–${probe.clipWindow.endSeconds}s ${
+        probe.clipWindow.inBounds ? "in bounds" : "OUT OF BOUNDS"
+      }`
+    : "";
+  return {
+    ok: true,
+    message: `Probe OK · ${probe.width ?? "?"}×${probe.height ?? "?"} · ${
+      probe.durationSeconds != null ? `${probe.durationSeconds.toFixed(1)}s` : "?"
+    } · ${probe.videoCodec ?? "?"} / ${probe.audioCodec ?? "?"}${clip}`,
+    probe,
+  };
+}
+
+export async function extractVideoPosterAction(input: {
+  speechId: string;
+  youtubeVideoId?: string;
+  localPublicSrc?: string;
+  atSeconds?: number;
+}): Promise<{
+  ok: boolean;
+  message: string;
+  publicSrc?: string;
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const speechId = String(input.speechId ?? "").trim();
+  if (!speechId) return { ok: false, message: "speechId required." };
+  const { extractLocalVideoPoster } = await import("@/lib/campaign-media/media-derivatives");
+  const result = extractLocalVideoPoster({
+    outId: speechId,
+    speechId,
+    youtubeVideoId: input.youtubeVideoId,
+    localPublicSrc: input.localPublicSrc,
+    atSeconds: input.atSeconds,
+  });
+  if (!result.ok) return { ok: false, message: result.error };
+  revalidatePath("/admin/evidence-workbench");
+  return {
+    ok: true,
+    message: `Poster @ ${result.record.atSeconds}s → ${result.publicSrc}`,
+    publicSrc: result.publicSrc,
+  };
+}
+
+export async function listLocalVideoMastersAction(): Promise<{
+  ok: boolean;
+  message: string;
+  masters?: Array<{ filename: string; root: string; publicSrc: string | null; bytes: number }>;
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { listLocalVideoMasters } = await import("@/lib/campaign-media/local-video-masters");
+  const masters = listLocalVideoMasters().map((m) => ({
+    filename: m.filename,
+    root: m.root,
+    publicSrc: m.publicSrc,
+    bytes: m.bytes,
+  }));
+  return {
+    ok: true,
+    message: masters.length
+      ? `${masters.length} local master(s) found`
+      : "No local masters yet — drop .mp4 under public/media/campaign-video-masters/ or .local/video-masters/",
+    masters,
+  };
+}
+
 export type { CalendarPresenceStatus };
