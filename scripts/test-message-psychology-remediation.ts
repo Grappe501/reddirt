@@ -43,6 +43,9 @@ assert.ok(trustFunnelHomeCopy.finalAction.ctas.join);
 assert.ok(trustFunnelHomeCopy.finalAction.ctas.volunteer);
 assert.ok(trustFunnelHomeCopy.finalAction.ctas.priorities);
 assert.ok(!("about" in trustFunnelHomeCopy.finalAction.ctas));
+assert.equal(trustFunnelHomeCopy.finalAction.mottoLatin, "Regnat Populus");
+assert.equal(trustFunnelHomeCopy.finalAction.mottoEnglish, "The People Rule.");
+assert.ok(trustFunnelHomeCopy.acrossArkansas.presenceLabel);
 
 const aboutPage = read("src/app/(site)/about/page.tsx");
 assert.ok(aboutPage.includes("c.experience"), "about uses experience section");

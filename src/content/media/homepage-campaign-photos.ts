@@ -61,6 +61,45 @@ export function listHomepageAcrossArkansasPhotos(): CampaignPhotoRecord[] {
   return selectHomepagePhotos(HOMEPAGE_ACROSS_ARKANSAS_PHOTO_IDS);
 }
 
+export type AcrossArkansasPresencePlace = {
+  /** Short community label for the quiet presence line */
+  label: string;
+  county: string;
+  kind: "photo" | "video";
+};
+
+/**
+ * Confirmed places represented on the homepage Across Arkansas band.
+ * Photo counties from curated stills; Hot Springs Village from the published trail video.
+ * Do not invent places — Unknown stills are omitted.
+ */
+export function listAcrossArkansasPresencePlaces(): AcrossArkansasPresencePlace[] {
+  const places: AcrossArkansasPresencePlace[] = [];
+  const seen = new Set<string>();
+
+  for (const photo of listHomepageAcrossArkansasPhotos()) {
+    const county = photo.campaign.county;
+    if (!county || county === "Unknown") continue;
+    const city = photo.campaign.city !== "Unknown" ? photo.campaign.city : null;
+    const label = city ? `${city} · ${county} County` : `${county} County`;
+    const key = county.toLowerCase();
+    if (seen.has(key)) continue;
+    seen.add(key);
+    places.push({ label, county, kind: "photo" });
+  }
+
+  // Garland — published Across Arkansas video (no confirmed photo yet)
+  if (!seen.has("garland")) {
+    places.push({
+      label: "Hot Springs Village · Garland County",
+      county: "Garland",
+      kind: "video",
+    });
+  }
+
+  return places;
+}
+
 export function getHomepageMeetKellyPhoto(): CampaignPhotoRecord | null {
   const photo = getCampaignPhotoById(HOMEPAGE_MEET_KELLY_PHOTO_ID);
   if (!photo?.campaign.homepageCandidate) return null;

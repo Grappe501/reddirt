@@ -179,6 +179,20 @@ const nextConfig: NextConfig = {
         destination: "/about",
         permanent: false,
       },
+      /**
+       * Canonical public calendar is `/events` (nav “Campaign Calendar”).
+       * Twin `/campaign-calendar` UI redirects so visitors never choose between two calendars.
+       */
+      {
+        source: "/campaign-calendar",
+        destination: "/events",
+        permanent: false,
+      },
+      {
+        source: "/campaign-calendar/:path*",
+        destination: "/events",
+        permanent: false,
+      },
     ];
   },
   /**

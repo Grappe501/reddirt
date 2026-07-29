@@ -12,7 +12,10 @@ import { cn } from "@/lib/utils";
 
 const copy = trustFunnelHomeCopy.finalAction;
 
-/** Closing ask after trust journey — Join → Volunteer → Priorities; donate available, not interruptive. */
+/**
+ * Closing ask after trust journey — Regnat Populus as governing philosophy,
+ * then Join → Volunteer → Priorities; donate available, not interruptive.
+ */
 export function TrustFunnelFinalActionSection() {
   const volunteerHref = getVolunteerSignupHref();
 
@@ -26,12 +29,15 @@ export function TrustFunnelFinalActionSection() {
   return (
     <section
       id="take-action"
-      className="border-t border-kelly-ink/10 bg-kelly-wash/80 py-section-y lg:py-section-y-lg"
+      className="border-t border-kelly-gold/25 bg-kelly-wash/80 py-section-y lg:py-section-y-lg"
       aria-labelledby="final-action-heading"
     >
       <ContentContainer>
         <ScrollReveal className="mx-auto max-w-2xl text-center" yOffset={6}>
-          <h2 id="final-action-heading" className="font-heading text-2xl font-bold tracking-tight text-kelly-ink md:text-3xl">
+          <p className="font-body text-[11px] font-bold uppercase tracking-[0.28em] text-kelly-gold">{copy.mottoLatin}</p>
+          <p className="mt-3 font-heading text-3xl font-bold tracking-tight text-kelly-ink md:text-4xl">{copy.mottoEnglish}</p>
+          <div className="mx-auto mt-5 h-px w-16 bg-kelly-gold/50" aria-hidden />
+          <h2 id="final-action-heading" className="mt-8 font-heading text-xl font-bold tracking-tight text-kelly-ink md:text-2xl">
             {copy.title}
           </h2>
           <p className="mt-4 font-body text-lg leading-relaxed text-kelly-slate">{copy.body}</p>

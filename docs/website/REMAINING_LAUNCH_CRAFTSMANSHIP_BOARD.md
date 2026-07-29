@@ -14,6 +14,14 @@
 
 ---
 
+## Final 36 hours
+
+See [`FINAL_36_HOUR_LAUNCH_TRACKS.md`](./FINAL_36_HOUR_LAUNCH_TRACKS.md) and [`ARKANSAS_PRESENCE_MATRIX.md`](./ARKANSAS_PRESENCE_MATRIX.md).
+
+**Limiter:** campaign evidence, not engineering risk. Track A = blockers (publish, calendar done, reporter dates). Track B = confirmed counties, captions, Regnat (done), emotional polish.
+
+---
+
 ## Priority order (next passes)
 
 ### 0. Forensic launch review — DONE (audit) + Critical CTA restore

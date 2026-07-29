@@ -179,6 +179,8 @@ export const trustFunnelHomeCopy = {
     /** Target: 35–75 words — method, not romance */
     intro:
       "Kelly travels to confirmed stops, listens, asks questions, and learns what is working and what is not. Photography and video here are evidence of that method—not claims of coverage everywhere.",
+    /** Quiet presence line — only named places with confirmed geography on this band */
+    presenceLabel: "Confirmed communities in this band",
     videoIntroduction:
       "A trail story from Hot Springs Village: neighbors gathering, conversations starting, and the work of showing up.",
     cta: "See Kelly Across Arkansas",
@@ -213,6 +215,9 @@ export const trustFunnelHomeCopy = {
   },
 
   finalAction: {
+    /** One memorable motto placement — governing philosophy, then the ask */
+    mottoLatin: "Regnat Populus",
+    mottoEnglish: "The People Rule.",
     title: "The next step is yours",
     /** Target: 15–40 words */
     body:

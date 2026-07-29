@@ -24,6 +24,7 @@ assert.ok(trustFunnelCtaOutlineOnDark.includes("text-white"));
 const finalAction = read("src/components/home/trust-funnel/TrustFunnelFinalActionSection.tsx");
 assert.ok(finalAction.includes("trustFunnelCtaPrimary"));
 assert.ok(finalAction.includes("trustFunnelCtaOutline"));
+assert.ok(finalAction.includes("mottoLatin") || finalAction.includes("Regnat Populus"));
 
 const meet = read("src/components/home/trust-funnel/TrustFunnelMeetKellySection.tsx");
 assert.ok(meet.includes("homepagePhotoObjectPositionClass"));

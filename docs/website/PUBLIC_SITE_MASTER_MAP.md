@@ -35,7 +35,7 @@
 | Office explainer | `/understand` → `/office/[slug]` |
 | Direct democracy | `/direct-democracy` |
 | News / trail notes | `/from-the-road` (not `/updates`) |
-| Events calendar | `/events` (not `/campaign-calendar`) |
+| Events calendar | `/events` (not `/campaign-calendar` — redirected) |
 | Invite Kelly | `/events/request` |
 | Vote | `/voter-registration` |
 | Donate | external GoodChange (page `/donate` explains) |

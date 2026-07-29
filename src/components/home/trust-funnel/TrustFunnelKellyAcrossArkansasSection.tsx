@@ -6,6 +6,7 @@ import { trustFunnelHomeCopy } from "@/content/home/trust-funnel-home";
 import {
   homepagePhotoCountyHref,
   homepagePhotoObjectPositionClass,
+  listAcrossArkansasPresencePlaces,
   listHomepageAcrossArkansasPhotos,
 } from "@/content/media/homepage-campaign-photos";
 import { getHomepageAcrossArkansasVideo } from "@/content/media/homepage-campaign-videos";
@@ -24,6 +25,7 @@ const copy = trustFunnelHomeCopy.acrossArkansas;
 export function TrustFunnelKellyAcrossArkansasSection() {
   const media = getHomepageAcrossArkansasVideo();
   const photos = listHomepageAcrossArkansasPhotos();
+  const presence = listAcrossArkansasPresencePlaces();
   if (!media && photos.length === 0) return null;
 
   return (
@@ -39,6 +41,12 @@ export function TrustFunnelKellyAcrossArkansasSection() {
             {copy.title}
           </h2>
           <p className="mt-4 font-body text-base leading-relaxed text-kelly-slate md:text-lg">{copy.intro}</p>
+          {presence.length > 0 ? (
+            <p className="mt-6 font-body text-sm leading-relaxed text-kelly-slate">
+              <span className="font-semibold text-kelly-ink">{copy.presenceLabel}: </span>
+              {presence.map((p) => p.label).join(" · ")}
+            </p>
+          ) : null}
         </ScrollReveal>
 
         {media ? (
