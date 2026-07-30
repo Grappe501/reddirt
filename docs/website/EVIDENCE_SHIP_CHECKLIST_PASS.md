@@ -55,4 +55,4 @@ Close the integrity loop: operators can see **exactly what still needs to be com
 
 | Pass | Commit | Note |
 | --- | ---: | --- |
-| Ship Checklist | _(this pass)_ | Ship tab + dirty path report + graduation stub |
+| Ship Checklist | `cd7c1deb` | Ship tab + dirty path report + graduation stub |
