@@ -12,6 +12,9 @@ import {
   listVideoClipsAction,
   planVideoExcerptAction,
   prepSpeechVideoPackageAction,
+  proposeVideoEditProjectAction,
+  listVideoEditProjectsAction,
+  renderVideoEditProjectAction,
   probeLocalVideoAction,
   probeVideoToolingAction,
   saveSpeechEvidenceAction,
@@ -22,6 +25,10 @@ import type {
   VideoClipRecord,
   VideoExcerptPlan,
 } from "@/lib/campaign-media/media-derivatives-types";
+import type {
+  VideoAssemblyRecord,
+  VideoEditProject,
+} from "@/lib/campaign-media/video-edit-types";
 import type { TranscriptIntelProposal } from "@/lib/campaign-media/transcript-intelligence";
 import { mergeAiCountyIntoList } from "@/lib/campaign-media/evidence-validation";
 import { EVIDENCE_FIELD_CLASS } from "@/components/admin/evidence-workbench/field-styles";
@@ -83,6 +90,12 @@ export function EvidenceSpeechesPanel({ speeches, initialSpeechId }: Props) {
   const [prepAlsoEncode, setPrepAlsoEncode] = useState(false);
   const [prepAlsoPoster, setPrepAlsoPoster] = useState(false);
   const [prepPacket, setPrepPacket] = useState<PrepPacketView | null>(null);
+  const [editProject, setEditProject] = useState<VideoEditProject | null>(null);
+  const [assemblies, setAssemblies] = useState<VideoAssemblyRecord[]>([]);
+  const [proLook, setProLook] = useState<"neutral" | "warm" | "cool" | "contrast">("neutral");
+  const [proTransition, setProTransition] = useState<"none" | "crossfade">("crossfade");
+  const [proCaptions, setProCaptions] = useState<"none" | "sidecar" | "burn_in">("sidecar");
+  const [proRenderNote, setProRenderNote] = useState("");
   const [intelProposal, setIntelProposal] = useState<TranscriptIntelProposal | null>(null);
   const [intelFields, setIntelFields] = useState<Set<string>>(
     () => new Set(["whatThisProves", "keyQuotes", "doNotClaim", "transcriptChapters"]),
@@ -135,6 +148,9 @@ export function EvidenceSpeechesPanel({ speeches, initialSpeechId }: Props) {
     setIntelProposal(null);
     setPrepPacket(null);
     setPlanQuery("");
+    setEditProject(null);
+    setAssemblies([]);
+    setProRenderNote("");
     void probeVideoToolingAction().then((res) => {
       setFfmpegNote(res.message);
     });
@@ -151,6 +167,10 @@ export function EvidenceSpeechesPanel({ speeches, initialSpeechId }: Props) {
     });
     void listVideoClipsAction(speechId).then((res) => {
       setEncodedClips(res.clips ?? []);
+    });
+    void listVideoEditProjectsAction(speechId).then((res) => {
+      setEditProject(res.projects?.[0] ?? null);
+      setAssemblies(res.assemblies ?? []);
     });
   }, [speech?.id, speech?.youtubeVideoId]);
 
@@ -379,6 +399,52 @@ export function EvidenceSpeechesPanel({ speeches, initialSpeechId }: Props) {
       setMessage(res.message);
       const listed = await listVideoClipsAction(speechId);
       setEncodedClips(listed.clips ?? []);
+    });
+  }
+
+  function proposeProEdit() {
+    const speechId = speech.id;
+    const youtubeVideoId = speech.youtubeVideoId;
+    start(async () => {
+      const res = await proposeVideoEditProjectAction({
+        speechId,
+        youtubeVideoId,
+        planId: excerptPlan?.id,
+        maxClips: 3,
+        transition: proTransition,
+        look: proLook,
+        captionMode: proCaptions,
+        exportAspects: ["source", "vertical_9x16", "square_1x1"],
+        loudnorm: true,
+      });
+      setMessage(res.message);
+      if (res.packet?.project) setEditProject(res.packet.project);
+      if (res.packet?.warnings?.length) {
+        setProRenderNote(res.packet.warnings.concat(res.packet.nextActions).join(" · "));
+      } else if (res.packet?.nextActions?.length) {
+        setProRenderNote(res.packet.nextActions.join(" · "));
+      }
+    });
+  }
+
+  function confirmProRender() {
+    if (!editProject) {
+      setMessage("Propose a Pro Edit project first.");
+      return;
+    }
+    const projectId = editProject.id;
+    const speechId = speech.id;
+    setProRenderNote("Rendering assembly pack…");
+    start(async () => {
+      const res = await renderVideoEditProjectAction({ projectId, confirmRender: true });
+      setMessage(res.message);
+      setProRenderNote(
+        [res.message, ...(res.warnings ?? [])].filter(Boolean).join(" · "),
+      );
+      if (res.assemblies?.length) setAssemblies(res.assemblies);
+      const listed = await listVideoEditProjectsAction(speechId);
+      setAssemblies(listed.assemblies ?? res.assemblies ?? []);
+      setEditProject(listed.projects?.find((p) => p.id === projectId) ?? editProject);
     });
   }
 
@@ -795,6 +861,143 @@ export function EvidenceSpeechesPanel({ speeches, initialSpeechId }: Props) {
               Drop masters in public/media/campaign-video-masters/ or H:/SOSWebsite/.local/video-masters/
               (name includes speech id or YouTube id). Prep package = plan + intel review; encode only when you
               check the boxes or click Encode.
+            </p>
+          </div>
+
+          <div className="mt-4 rounded-lg border-2 border-[#000066]/15 bg-white p-3">
+            <p className="font-heading text-xs font-bold uppercase tracking-wide text-[#000066]">
+              Pro Edit (AI director → confirm render)
+            </p>
+            <p className="mt-1 font-body text-[11px] text-[#364272]">
+              Multi-clip assembly: looks, optional crossfade, loudnorm, captions (SRT / burn-in), multi-aspect
+              export pack. Propose first — render only on Confirm.
+            </p>
+
+            <div className="mt-2 flex flex-wrap gap-3 font-body text-[11px] text-[#12124a]">
+              <label className="inline-flex flex-col gap-0.5">
+                Look
+                <select
+                  className={EVIDENCE_FIELD_CLASS}
+                  value={proLook}
+                  onChange={(e) =>
+                    setProLook(e.target.value as "neutral" | "warm" | "cool" | "contrast")
+                  }
+                >
+                  <option value="neutral">Neutral</option>
+                  <option value="warm">Warm</option>
+                  <option value="cool">Cool</option>
+                  <option value="contrast">Contrast</option>
+                </select>
+              </label>
+              <label className="inline-flex flex-col gap-0.5">
+                Transition
+                <select
+                  className={EVIDENCE_FIELD_CLASS}
+                  value={proTransition}
+                  onChange={(e) => setProTransition(e.target.value as "none" | "crossfade")}
+                >
+                  <option value="crossfade">Crossfade (2 clips)</option>
+                  <option value="none">Hard cut</option>
+                </select>
+              </label>
+              <label className="inline-flex flex-col gap-0.5">
+                Captions
+                <select
+                  className={EVIDENCE_FIELD_CLASS}
+                  value={proCaptions}
+                  onChange={(e) =>
+                    setProCaptions(e.target.value as "none" | "sidecar" | "burn_in")
+                  }
+                >
+                  <option value="sidecar">Sidecar SRT</option>
+                  <option value="burn_in">Burn-in</option>
+                  <option value="none">None</option>
+                </select>
+              </label>
+            </div>
+
+            <div className="mt-2 flex flex-wrap gap-2">
+              <button
+                type="button"
+                disabled={pending}
+                onClick={proposeProEdit}
+                className="rounded border-2 border-[#000066] bg-[#000066] px-2.5 py-1 font-body text-xs font-bold text-white disabled:opacity-50"
+              >
+                Propose Pro Edit
+              </button>
+              <button
+                type="button"
+                disabled={pending || !editProject}
+                onClick={confirmProRender}
+                className="rounded border-2 border-[#ca913d] bg-white px-2.5 py-1 font-body text-xs font-semibold text-[#12124a] disabled:opacity-50"
+              >
+                Confirm render
+              </button>
+            </div>
+
+            {proRenderNote ? (
+              <p className="mt-2 font-body text-[11px] text-[#364272]">{proRenderNote}</p>
+            ) : null}
+
+            {editProject ? (
+              <div className="mt-3 rounded border border-[#8eb6dc]/40 bg-[#f4f7fc] p-2">
+                <p className="font-heading text-[10px] font-bold uppercase tracking-wide text-[#000066]">
+                  Edit project · {editProject.clips.length} clips · {editProject.title}
+                </p>
+                <p className="mt-1 font-body text-[11px] text-[#12124a]">
+                  {editProject.look} · {editProject.transition} · captions {editProject.captionMode}
+                  {editProject.loudnorm ? " · loudnorm" : ""} · aspects{" "}
+                  {editProject.exportAspects.join(", ")}
+                </p>
+                {editProject.directorRationale ? (
+                  <p className="mt-1 font-body text-[10px] text-[#364272]">{editProject.directorRationale}</p>
+                ) : null}
+                <ul className="mt-2 space-y-1.5">
+                  {editProject.clips.map((clip, i) => (
+                    <li
+                      key={clip.id || `${editProject.id}-clip-${i}`}
+                      className="rounded border border-[#8eb6dc]/30 bg-white px-2 py-1.5"
+                    >
+                      <p className="font-body text-[11px] font-semibold text-[#12124a]">
+                        {clip.startSeconds}s–{clip.endSeconds}s
+                        {clip.title ? ` · ${clip.title}` : ""}
+                      </p>
+                      {clip.quote ? (
+                        <p className="font-body text-[10px] text-[#364272]">{clip.quote.slice(0, 160)}</p>
+                      ) : null}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
+
+            {assemblies.length ? (
+              <div className="mt-3 space-y-2">
+                <p className="font-heading text-[10px] font-bold uppercase tracking-wide text-[#000066]">
+                  Assemblies
+                </p>
+                {assemblies.map((a) => (
+                  <div key={a.id} className="rounded border border-[#8eb6dc]/40 bg-white p-2">
+                    <p className="font-body text-[11px] text-[#12124a]">
+                      {a.aspect}
+                      {a.look ? ` · ${a.look}` : ""}
+                      {a.captionMode && a.captionMode !== "none" ? ` · ${a.captionMode}` : ""}
+                    </p>
+                    <p className="break-all font-mono text-[10px] text-[#364272]">{a.publicSrc}</p>
+                    <video
+                      className="mt-1 max-h-40 w-full rounded bg-black"
+                      controls
+                      preload="metadata"
+                      src={a.publicSrc}
+                    />
+                  </div>
+                ))}
+              </div>
+            ) : null}
+
+            <p className="mt-2 font-body text-[10px] text-[#364272]">
+              Requires encoded clips (or a plan + master). Crossfade applies to 2-clip packs; 3+ use hard cuts.
+              Captions are verbatim from workspace transcript windows only.
             </p>
           </div>
         </div>

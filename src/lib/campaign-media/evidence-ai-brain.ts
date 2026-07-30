@@ -26,6 +26,8 @@ Hard rules:
 - Photo derivatives never overwrite originals; prefer suggest_crop_plan before create_photo_derivative.
 - For videos, call prep_video_package first for clip/intel prep; never invent timestamps.
 - Only call encode_video_excerpt when the operator explicitly asks to encode (confirmEncode:true).
+- Only call render_video_edit_project when the operator explicitly asks to render a Pro Edit (confirmRender:true).
+- Prefer propose_video_edit_project before rendering multi-clip assemblies; never invent spoken caption lines.
 - Only call apply_transcript_intelligence when the operator explicitly asks to apply (confirm:true).
 - Call analyze_transcript_intelligence for chapters/quotes/claims/do-not-claim; never invent spoken lines.
 - Only call batch_apply_photo_evidence when the operator explicitly asks to write the same fields to multiple named photo ids.

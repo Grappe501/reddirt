@@ -1318,6 +1318,92 @@ export async function prepSpeechVideoPackageAction(input: {
   return { ok: packet.ok, message: packet.message, packet };
 }
 
+export async function proposeVideoEditProjectAction(input: {
+  speechId: string;
+  youtubeVideoId: string;
+  planId?: string;
+  maxClips?: number;
+  transition?: "none" | "crossfade";
+  look?: "neutral" | "warm" | "cool" | "contrast";
+  captionMode?: "none" | "sidecar" | "burn_in";
+  exportAspects?: Array<"source" | "vertical_9x16" | "square_1x1" | "landscape_16x9">;
+  loudnorm?: boolean;
+}): Promise<{
+  ok: boolean;
+  message: string;
+  packet?: import("@/lib/campaign-media/video-edit-types").VideoEditDirectorPacket;
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { proposeVideoEditProject } = await import("@/lib/campaign-media/video-edit-director");
+  const packet = proposeVideoEditProject({
+    speechId: String(input.speechId ?? "").trim(),
+    youtubeVideoId: String(input.youtubeVideoId ?? "").trim(),
+    planId: input.planId,
+    maxClips: input.maxClips,
+    transition: input.transition,
+    look: input.look,
+    captionMode: input.captionMode,
+    exportAspects: input.exportAspects,
+    loudnorm: input.loudnorm,
+    persist: true,
+  });
+  revalidatePath("/admin/evidence-workbench");
+  return { ok: packet.ok, message: packet.message, packet };
+}
+
+export async function listVideoEditProjectsAction(speechId: string): Promise<{
+  ok: boolean;
+  message: string;
+  projects?: import("@/lib/campaign-media/video-edit-types").VideoEditProject[];
+  assemblies?: import("@/lib/campaign-media/video-edit-types").VideoAssemblyRecord[];
+  captions?: import("@/lib/campaign-media/video-edit-types").VideoCaptionRecord[];
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const {
+    listVideoEditProjects,
+    listVideoAssemblies,
+    listVideoCaptions,
+  } = await import("@/lib/campaign-media/video-edit-store");
+  const id = String(speechId ?? "").trim();
+  const projects = listVideoEditProjects(id);
+  return {
+    ok: true,
+    message: `${projects.length} edit project(s)`,
+    projects,
+    assemblies: listVideoAssemblies(id),
+    captions: listVideoCaptions(id),
+  };
+}
+
+export async function renderVideoEditProjectAction(input: {
+  projectId: string;
+  confirmRender: boolean;
+}): Promise<{
+  ok: boolean;
+  message: string;
+  assemblies?: import("@/lib/campaign-media/video-edit-types").VideoAssemblyRecord[];
+  warnings?: string[];
+  captionPublicSrc?: string | null;
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  if (!input.confirmRender) {
+    return { ok: false, message: "confirmRender:true required — refuse silent pro render." };
+  }
+  const { renderVideoEditProject } = await import("@/lib/campaign-media/video-pro-render");
+  const result = renderVideoEditProject({ projectId: String(input.projectId ?? "").trim() });
+  revalidatePath("/admin/evidence-workbench");
+  return {
+    ok: result.ok,
+    message: result.message,
+    assemblies: result.assemblies,
+    warnings: result.warnings,
+    captionPublicSrc: result.captionPublicSrc,
+  };
+}
+
 export async function analyzeTranscriptIntelAction(input: {
   speechId: string;
   youtubeVideoId: string;

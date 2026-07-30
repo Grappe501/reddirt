@@ -200,6 +200,21 @@ export const EVIDENCE_AI_TOOL_CATALOG: Array<{
     audience: "photo",
     summary: "Apply turbo identify and/or fit flags to overlay (confirm required; never silent Approve).",
   },
+  {
+    name: "propose_video_edit_project",
+    audience: "video",
+    summary: "AI/deterministic Edit Director: ordered cut list + look/transition/captions/export pack (no silent render).",
+  },
+  {
+    name: "render_video_edit_project",
+    audience: "video",
+    summary: "Confirm-render a Pro Edit project: concat, look, loudnorm, captions, multi-aspect pack.",
+  },
+  {
+    name: "list_video_assemblies",
+    audience: "video",
+    summary: "List rendered Pro Edit assemblies and caption sidecars for a speech/outId.",
+  },
 ];
 
 export function evidenceAiToolsFor(kind: "photo" | "video"): ChatCompletionTool[] {
@@ -886,6 +901,65 @@ export function evidenceAiToolsFor(kind: "photo" | "video"): ChatCompletionTool[
             confirm: { type: "boolean" },
           },
           required: ["speechId", "proposalId", "applyFields", "confirm"],
+        },
+      },
+    },
+    {
+      type: "function",
+      function: {
+        name: "propose_video_edit_project",
+        description:
+          "Propose a Pro Edit project (ordered clips from plan/intel, look, transition, caption mode, export aspects). Does not render — operator must confirm render separately.",
+        parameters: {
+          type: "object",
+          properties: {
+            speechId: { type: "string" },
+            youtubeVideoId: { type: "string" },
+            planId: { type: "string" },
+            maxClips: { type: "number" },
+            transition: { type: "string", enum: ["none", "crossfade"] },
+            look: { type: "string", enum: ["neutral", "warm", "cool", "contrast"] },
+            captionMode: { type: "string", enum: ["none", "sidecar", "burn_in"] },
+            exportAspects: {
+              type: "array",
+              items: {
+                type: "string",
+                enum: ["source", "vertical_9x16", "square_1x1", "landscape_16x9"],
+              },
+            },
+            loudnorm: { type: "boolean" },
+          },
+          required: ["speechId", "youtubeVideoId"],
+        },
+      },
+    },
+    {
+      type: "function",
+      function: {
+        name: "render_video_edit_project",
+        description:
+          "Render a Pro Edit project into assembly MP4s (concat/crossfade + look + loudnorm + aspect pack + optional captions). Requires confirmRender:true.",
+        parameters: {
+          type: "object",
+          properties: {
+            projectId: { type: "string" },
+            confirmRender: { type: "boolean" },
+          },
+          required: ["projectId", "confirmRender"],
+        },
+      },
+    },
+    {
+      type: "function",
+      function: {
+        name: "list_video_assemblies",
+        description: "List Pro Edit assemblies and caption sidecars for a speech/outId.",
+        parameters: {
+          type: "object",
+          properties: {
+            outId: { type: "string" },
+          },
+          required: ["outId"],
         },
       },
     },

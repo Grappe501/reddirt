@@ -372,7 +372,8 @@ export async function executeEvidenceAiTool(
           "@/lib/campaign-media/photo-ingest"
         );
         const result = intakeAllNewCampaignPhotos();
-        return { ok: result.ok, result: { ...result, status: getPhotoIntakeStatus() } };
+        if (!result.ok) return { ok: false, error: result.message };
+        return { ok: true, result: { ...result, status: getPhotoIntakeStatus() } };
       }
 
       case "cluster_photo_selection": {
@@ -772,7 +773,8 @@ export async function executeEvidenceAiTool(
           confirmPoster: args.confirmPoster === true,
           aspect: args.aspect === "vertical_9x16" ? "vertical_9x16" : "source",
         });
-        return { ok: packet.ok, result: packet };
+        if (!packet.ok) return { ok: false, error: packet.message };
+        return { ok: true, result: packet };
       }
 
       case "list_video_derivatives": {
@@ -870,7 +872,8 @@ export async function executeEvidenceAiTool(
           maxPhotos: typeof args.maxPhotos === "number" ? args.maxPhotos : undefined,
           photoIds,
         });
-        return { ok: result.ok, result };
+        if (!result.ok) return { ok: false, error: result.message };
+        return { ok: true, result };
       }
 
       case "apply_turbo_proposal": {
@@ -888,6 +891,71 @@ export async function executeEvidenceAiTool(
         });
         if (!result.ok) return { ok: false, error: result.message };
         return { ok: true, result };
+      }
+
+      case "propose_video_edit_project": {
+        const speechId = asString(args.speechId);
+        const youtubeVideoId = asString(args.youtubeVideoId);
+        if (!speechId || !youtubeVideoId) {
+          return { ok: false, error: "speechId and youtubeVideoId required." };
+        }
+        const { proposeVideoEditProject } = await import("@/lib/campaign-media/video-edit-director");
+        const aspects = Array.isArray(args.exportAspects)
+          ? args.exportAspects.map((a) => String(a))
+          : undefined;
+        const packet = proposeVideoEditProject({
+          speechId,
+          youtubeVideoId,
+          planId: asString(args.planId) || undefined,
+          maxClips: typeof args.maxClips === "number" ? args.maxClips : undefined,
+          transition: args.transition === "crossfade" ? "crossfade" : "none",
+          look:
+            args.look === "warm" || args.look === "cool" || args.look === "contrast"
+              ? args.look
+              : "neutral",
+          captionMode:
+            args.captionMode === "burn_in" || args.captionMode === "none"
+              ? args.captionMode
+              : "sidecar",
+          exportAspects: aspects as
+            | Array<"source" | "vertical_9x16" | "square_1x1" | "landscape_16x9">
+            | undefined,
+          loudnorm: args.loudnorm !== false,
+          persist: true,
+        });
+        if (!packet.ok) return { ok: false, error: packet.message };
+        return { ok: true, result: packet };
+      }
+
+      case "render_video_edit_project": {
+        if (args.confirmRender !== true) {
+          return {
+            ok: false,
+            error: "confirmRender:true required — operator must explicitly ask to render.",
+          };
+        }
+        const projectId = asString(args.projectId);
+        if (!projectId) return { ok: false, error: "projectId required." };
+        const { renderVideoEditProject } = await import("@/lib/campaign-media/video-pro-render");
+        const result = renderVideoEditProject({ projectId });
+        if (!result.ok) return { ok: false, error: result.message };
+        return { ok: true, result };
+      }
+
+      case "list_video_assemblies": {
+        const outId = asString(args.outId);
+        if (!outId) return { ok: false, error: "outId required." };
+        const { listVideoAssemblies, listVideoCaptions, listVideoEditProjects } = await import(
+          "@/lib/campaign-media/video-edit-store"
+        );
+        return {
+          ok: true,
+          result: {
+            assemblies: listVideoAssemblies(outId),
+            captions: listVideoCaptions(outId),
+            projects: listVideoEditProjects(outId),
+          },
+        };
       }
 
       default:
