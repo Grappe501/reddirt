@@ -65,4 +65,4 @@ Video Prep / Pro Edit were ahead of confirmation. Speech overlays were empty; Ap
 
 | Pass | Commit | Note |
 | --- | ---: | --- |
-| Speech Confirm/Publish | _(this pass)_ | Overlay parity + batch + readiness + placement |
+| Speech Confirm/Publish | `bc1268e5` | Overlay parity + batch + readiness + placement |
