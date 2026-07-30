@@ -65,13 +65,16 @@ export function buildFolderToWebsiteProgress(input: {
   let nextLabel = "Drop stills or masters into the folders below (or use the drop zone).";
   let nextHref = "/admin/evidence-workbench?tab=ingest";
 
-  if (newOnDisk > 0 || unmatchedMasters > 0) {
+  if (newOnDisk > 0) {
     nextStep = "bring";
-    nextLabel =
-      newOnDisk > 0
-        ? `Bring ${newOnDisk} still(s) into the system${unmatchedMasters ? ` · attach ${unmatchedMasters} master(s)` : ""}, then Identify.`
-        : `Attach ${unmatchedMasters} unmatched master(s), then continue.`;
+    nextLabel = unmatchedMasters
+      ? `Bring ${newOnDisk} still(s) into the system, then attach ${unmatchedMasters} unmatched master(s).`
+      : `Bring ${newOnDisk} still(s) into the system, then Identify.`;
     nextHref = "/admin/evidence-workbench?tab=ingest";
+  } else if (unmatchedMasters > 0) {
+    nextStep = "bring";
+    nextLabel = `Attach ${unmatchedMasters} unmatched master(s) below — Prefer Unknown; we never invent a speech match.`;
+    nextHref = "#ew-arrival-masters";
   } else if (queuedUnknown > 0) {
     nextStep = "identify";
     nextLabel = `Identify ${queuedUnknown} still(s) missing county — Save → Route.`;

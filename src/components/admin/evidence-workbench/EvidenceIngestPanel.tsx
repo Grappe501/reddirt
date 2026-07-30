@@ -184,13 +184,13 @@ export function EvidenceIngestPanel({
   const [attachPick, setAttachPick] = useState<Record<string, string>>({});
   const [message, setMessage] = useState("");
   const [lastQueued, setLastQueued] = useState(0);
-  const [ownedMediaMatch, setOwnedMediaMatch] = useState<{ linked: number; unlinked: number } | null>(
-    null,
-  );
   const [dropHover, setDropHover] = useState(false);
   const [showTurbo, setShowTurbo] = useState(false);
   const [showBridges, setShowBridges] = useState(false);
-  const [showPreviewDetails, setShowPreviewDetails] = useState(false);
+  const [showAdvanced, setShowAdvanced] = useState(false);
+  const [showStills, setShowStills] = useState(false);
+  const [showMasters, setShowMasters] = useState(false);
+  const [showMatchedMasters, setShowMatchedMasters] = useState(false);
   const [turbo, setTurbo] = useState<TurboDash | null>(null);
   const [turboUseAi, setTurboUseAi] = useState(true);
   const [softWatchOn, setSoftWatchOn] = useState(true);
@@ -299,17 +299,22 @@ export function EvidenceIngestPanel({
   }, [softWatchOn]);
 
   const fresh = candidates.filter((c) => !c.alreadyInRegistry && !c.alreadyInDrafts);
-  const readyForIdentify = status.queueCount;
-  const identifyBadge =
-    lastQueued > 0
-      ? ` (+${lastQueued})`
-      : status.queueUnknownCounty > 0
-        ? ` (${status.queueUnknownCounty} need county)`
-        : readyForIdentify > 0
-          ? ` (${readyForIdentify})`
-          : "";
-  const nestedPreviewRows = preview.rows.filter((r) => r.nested);
-  const warningRows = preview.rows.filter((r) => r.warning);
+  const unmatchedMasterRows = videoSummary.rows.filter(
+    (r) => r.matchStatus === "unmatched" || r.matchStatus === "held",
+  );
+  const matchedMasterRows = videoSummary.rows.filter(
+    (r) => r.matchStatus === "auto" || r.matchStatus === "attached",
+  );
+  const stillsExpanded = showStills;
+  const mastersExpanded = showMasters;
+
+  useEffect(() => {
+    if (preview.warnCount > 0 || (fresh.length > 0 && fresh.length <= 3)) setShowStills(true);
+  }, [preview.warnCount, fresh.length]);
+
+  useEffect(() => {
+    if (unmatchedMasterRows.length > 0) setShowMasters(true);
+  }, [unmatchedMasterRows.length]);
 
   function loadBridges() {
     start(async () => {
@@ -326,10 +331,18 @@ export function EvidenceIngestPanel({
     });
   }
 
-  function openBridges() {
-    const next = !showBridges;
-    setShowBridges(next);
-    if (next) loadBridges();
+  function openAdvanced() {
+    const next = !showAdvanced;
+    setShowAdvanced(next);
+    if (next && !showBridges) {
+      setShowBridges(true);
+      loadBridges();
+    }
+  }
+
+  function scrollToMasters() {
+    setShowMasters(true);
+    document.getElementById("ew-arrival-masters")?.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
   function importOwned(ownedMediaId: string) {
@@ -386,12 +399,13 @@ export function EvidenceIngestPanel({
   function bringIntoSystem(options?: { goIdentify?: boolean }) {
     start(async () => {
       const res = await bringArrivalIntoSystemAction();
-      setMessage(res.message);
       setLastQueued(res.ids?.length ?? 0);
       setSoftWatchToast(null);
-      if (typeof res.ownedMediaLinked === "number" && typeof res.ownedMediaUnlinked === "number") {
-        setOwnedMediaMatch({ linked: res.ownedMediaLinked, unlinked: res.ownedMediaUnlinked });
-      }
+      const ownedNote =
+        typeof res.ownedMediaLinked === "number" && typeof res.ownedMediaUnlinked === "number"
+          ? `Owned Media: ${res.ownedMediaLinked} linked · ${res.ownedMediaUnlinked} not linked`
+          : null;
+      setMessage([res.message, ownedNote].filter(Boolean).join(" · "));
       if (res.photoStatus) setStatus(res.photoStatus);
       if (res.videoSummary) setVideoSummary(res.videoSummary);
       await refreshAll();
@@ -503,8 +517,111 @@ export function EvidenceIngestPanel({
     approvedPublic,
   });
 
+  function renderMasterRow(row: VideoRow) {
+    return (
+      <li key={row.key} className="space-y-2 px-3 py-3">
+        <div className="flex flex-wrap items-start justify-between gap-2">
+          <div className="min-w-0">
+            <p className="font-body text-sm font-semibold text-[#12124a]">{row.filename}</p>
+            <p className="font-mono text-[10px] text-[#364272]">
+              {row.root} · {formatBytes(row.bytes)}
+              {row.publicSrc ? ` · ${row.publicSrc}` : " · local-only"}
+            </p>
+          </div>
+          <span
+            className={`rounded border px-2 py-0.5 font-body text-[10px] font-bold uppercase ${
+              row.matchStatus === "unmatched"
+                ? "border-[#ca913d] bg-[#fff8ef] text-[#12124a]"
+                : row.matchStatus === "held"
+                  ? "border-[#8eb6dc] bg-[#f4f7fc] text-[#364272]"
+                  : "border-[#000066]/30 bg-[#eef2fb] text-[#000066]"
+            }`}
+          >
+            {row.matchStatus}
+            {row.matchConfidence ? ` · ${row.matchConfidence}` : ""}
+            {row.matchedSpeechTitle ? ` · ${row.matchedSpeechTitle}` : ""}
+          </span>
+        </div>
+
+        {row.matchStatus === "unmatched" || row.matchStatus === "held" ? (
+          <div className="flex flex-wrap items-center gap-2">
+            <select
+              className="max-w-xs rounded border-2 border-[#8eb6dc] bg-[#f4f7fc] px-2 py-1.5 font-body text-xs text-[#12124a]"
+              value={attachPick[row.key] ?? row.suggestions[0]?.id ?? ""}
+              onChange={(e) =>
+                setAttachPick((prev) => ({ ...prev, [row.key]: e.target.value }))
+              }
+            >
+              <option value="">Select speech…</option>
+              {(row.suggestions.length
+                ? [
+                    ...row.suggestions,
+                    ...speeches.filter((s) => !row.suggestions.some((x) => x.id === s.id)),
+                  ]
+                : speeches
+              ).map((s) => (
+                <option key={s.id} value={s.id}>
+                  {"reason" in s && s.reason ? `[${s.reason}] ` : ""}
+                  {s.title} ({s.id})
+                </option>
+              ))}
+            </select>
+            <button
+              type="button"
+              disabled={pending}
+              onClick={() => attachMaster(row)}
+              className="rounded-md bg-[#000066] px-3 py-1.5 font-body text-xs font-bold text-white disabled:opacity-50"
+            >
+              Attach
+            </button>
+            {row.matchStatus === "unmatched" ? (
+              <button
+                type="button"
+                disabled={pending}
+                onClick={() => holdMaster(row)}
+                className="rounded-md border-2 border-[#8eb6dc] bg-white px-3 py-1.5 font-body text-xs font-semibold text-[#12124a] disabled:opacity-50"
+              >
+                Mark unmatched
+              </button>
+            ) : (
+              <button
+                type="button"
+                disabled={pending}
+                onClick={() => clearOverride(row)}
+                className="rounded-md border-2 border-[#8eb6dc] bg-white px-3 py-1.5 font-body text-xs font-semibold text-[#12124a] disabled:opacity-50"
+              >
+                Clear hold
+              </button>
+            )}
+          </div>
+        ) : (
+          <div className="flex flex-wrap gap-2">
+            {row.matchedSpeechId ? (
+              <Link
+                href={`/admin/evidence-workbench?tab=identify&id=${encodeURIComponent(row.matchedSpeechId)}`}
+                className="rounded-md border-2 border-[#000066] bg-white px-3 py-1.5 font-body text-xs font-bold text-[#000066]"
+              >
+                Open speech in Identify
+              </Link>
+            ) : null}
+            {row.matchStatus === "attached" ? (
+              <button
+                type="button"
+                disabled={pending}
+                onClick={() => clearOverride(row)}
+                className="rounded-md border-2 border-[#8eb6dc] bg-white px-3 py-1.5 font-body text-xs font-semibold text-[#12124a] disabled:opacity-50"
+              >
+                Clear attach
+              </button>
+            ) : null}
+          </div>
+        )}
+      </li>
+    );
+  }
+
   return (
-    <div className="space-y-4 text-[#12124a]">
+    <div className="space-y-3 text-[#12124a]">
       <EvidenceFolderToWebsiteHero
         progress={workflowProgress}
         softWatchOn={softWatchOn}
@@ -512,6 +629,7 @@ export function EvidenceIngestPanel({
         softWatchToast={softWatchToast}
         pending={pending}
         dropHover={dropHover}
+        statusMessage={message || null}
         onDropHover={setDropHover}
         onDropFiles={dropFiles}
         onBringAndIdentify={() => bringIntoSystem({ goIdentify: true })}
@@ -519,474 +637,322 @@ export function EvidenceIngestPanel({
         onRescan={refresh}
         onToggleSoftWatch={() => setSoftWatchOn((v) => !v)}
         onDismissToast={() => setSoftWatchToast(null)}
+        onDismissStatus={() => setMessage("")}
+        onScrollToMasters={scrollToMasters}
       />
 
-      {(preview.willCopyNested > 0 || preview.warnCount > 0 || preview.willSkip > 0) &&
-      preview.rows.length > 0 ? (
-        <div className="rounded-lg border-2 border-[#000066]/15 bg-[#f4f7fc] p-4">
-          <div className="flex flex-wrap items-baseline justify-between gap-2">
-            <p className="font-heading text-xs font-bold uppercase tracking-wide text-[#000066]">
-              Before you bring in
-            </p>
-            <p className="font-body text-[11px] text-[#364272]">
-              Queue {preview.willQueue} · copy nested {preview.willCopyNested} · skip {preview.willSkip}
-              {preview.warnCount ? ` · ${preview.warnCount} warning(s)` : ""}
-            </p>
-          </div>
-          {warningRows.length > 0 ? (
-            <ul className="mt-2 space-y-1">
-              {warningRows.slice(0, 6).map((row) => (
-                <li key={`warn-${row.relativePath}`} className="font-body text-xs text-[#12124a]">
-                  <span className="font-semibold text-[#ca913d]">{planLabel(row.plan)}</span>
-                  {" · "}
-                  <span className="font-mono text-[10px] text-[#364272]">{row.relativePath}</span>
-                  {row.warning ? ` — ${row.warning}` : null}
-                </li>
-              ))}
-              {warningRows.length > 6 ? (
-                <li className="font-body text-[11px] text-[#364272]">
-                  +{warningRows.length - 6} more warning(s)
-                </li>
-              ) : null}
-            </ul>
-          ) : nestedPreviewRows.length > 0 ? (
-            <p className="mt-2 font-body text-xs text-[#364272]">
-              {nestedPreviewRows.length} nested file(s) will copy flat (originals kept).
-            </p>
-          ) : null}
-          <button
-            type="button"
-            onClick={() => setShowPreviewDetails((v) => !v)}
-            className="mt-2 font-body text-[11px] font-semibold text-[#000066] underline"
-          >
-            {showPreviewDetails ? "Hide full plan" : "Show full nested → flat plan"}
-          </button>
-          {showPreviewDetails ? (
-            <ul className="mt-2 max-h-56 space-y-1 overflow-y-auto rounded border border-[#8eb6dc]/40 bg-white p-2">
-              {preview.rows.map((row) => (
-                <li key={row.relativePath} className="font-body text-[11px] text-[#12124a]">
-                  <span className="font-semibold">{planLabel(row.plan)}</span>
-                  {row.nested ? (
-                    <>
-                      {" "}
-                      <span className="font-mono text-[10px] text-[#364272]">{row.relativePath}</span>
-                      {" → "}
-                      <span className="font-mono text-[10px]">{row.flatTarget}</span>
-                    </>
-                  ) : (
-                    <>
-                      {" "}
-                      <span className="font-mono text-[10px]">{row.flatTarget}</span>
-                    </>
-                  )}
-                  {row.warning ? <span className="block text-[#364272]">{row.warning}</span> : null}
-                </li>
-              ))}
-            </ul>
-          ) : null}
-        </div>
-      ) : null}
-
-      <div className="flex flex-wrap items-center gap-2">
-        <Link
-          href="/admin/evidence-workbench?tab=identify&filter=draft"
-          className="rounded-md border-2 border-[#ca913d] bg-white px-3 py-1.5 font-body text-xs font-bold text-[#12124a]"
-        >
-          Identify queue{identifyBadge}
-        </Link>
+      <div className="rounded-lg border-2 border-[#000066]/15 bg-white">
         <button
           type="button"
-          onClick={openBridges}
-          className="rounded-md border border-[#8eb6dc] bg-white px-3 py-1.5 font-body text-xs font-semibold text-[#12124a]"
+          onClick={() => setShowStills((v) => !v)}
+          className="flex w-full flex-wrap items-center justify-between gap-2 px-4 py-3 text-left"
         >
-          {showBridges ? "Hide bridges" : "Bridges"}
-        </button>
-        <button
-          type="button"
-          onClick={() => setShowTurbo((v) => !v)}
-          className="rounded-md border border-[#8eb6dc] bg-white px-3 py-1.5 font-body text-xs font-semibold text-[#12124a]"
-        >
-          {showTurbo ? "Hide Turbo" : "Turbo"}
-        </button>
-      </div>
-
-      {ownedMediaMatch ? (
-        <p className="font-body text-xs text-[#364272]">
-          Owned Media after intake:{" "}
-          <strong className="text-[#12124a]">{ownedMediaMatch.linked} linked</strong>
-          {" · "}
-          <strong className="text-[#12124a]">{ownedMediaMatch.unlinked} not linked</strong>
-        </p>
-      ) : null}
-
-      {message ? <p className="font-body text-sm text-[#364272]">{message}</p> : null}
-
-      <div className="rounded-lg border-2 border-[#000066]/15 bg-white p-4">
-        <div className="flex flex-wrap items-baseline justify-between gap-2">
           <p className="font-heading text-sm font-bold uppercase tracking-wide text-[#000066]">
-            New stills on disk
+            New stills
+            <span className="ml-2 font-body text-xs font-semibold normal-case text-[#364272]">
+              {fresh.length} waiting
+              {preview.warnCount ? ` · ${preview.warnCount} warning(s)` : ""}
+            </span>
           </p>
-          <p className="font-body text-[11px] text-[#364272]">
-            CLI: <code className="rounded bg-[#f4f7fc] px-1">npm run evidence:intake</code>
-          </p>
-        </div>
-        {fresh.length === 0 ? (
-          <p className="mt-2 font-body text-sm text-[#364272]">
-            No new stills waiting ({status.scannedOnDisk} scanned). Drop images, Rescan if needed, then
-            Bring into system.
-          </p>
-        ) : (
-          <ul className="mt-3 divide-y divide-[#8eb6dc]/40 rounded-lg border border-[#000066]/10">
-          {fresh.map((c) => {
-              const pathKey = c.relativePath ?? c.filename;
-              const previewRow = preview.rows.find((r) => r.relativePath === pathKey);
-              return (
-            <li key={pathKey} className="flex flex-wrap items-center gap-4 px-3 py-3">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={c.src} alt="" className="h-16 w-20 rounded object-cover" />
-              <div className="min-w-0 flex-1">
-                <p className="font-mono text-xs text-[#364272]">{c.id}</p>
-                <p className="font-body text-sm">{pathKey}</p>
-                {c.nested ? (
-                  <p className="font-body text-xs text-[#ca913d]">
-                    Nested — will copy flat
-                    {previewRow ? ` → ${previewRow.flatTarget}` : " (source kept)"}
-                  </p>
-                ) : null}
-                {previewRow?.warning ? (
-                  <p className="font-body text-xs text-[#364272]">{previewRow.warning}</p>
-                ) : null}
-              </div>
-              <button
-                type="button"
-                disabled={pending}
-                onClick={() => intakeOne(pathKey)}
-                className="rounded-md bg-[#000066] px-3 py-2 font-body text-sm font-bold text-white disabled:opacity-50"
-              >
-                Add to queue
-              </button>
-            </li>
-              );
-            })}
-          </ul>
-        )}
-      </div>
-
-      <div className="rounded-lg border-2 border-[#000066]/15 bg-white p-4">
-        <p className="font-heading text-sm font-bold uppercase tracking-wide text-[#000066]">
-          Video masters
-        </p>
-        <p className="mt-1 font-body text-xs text-[#364272]">
-          Auto-match by speech id / YouTube id in the filename. Attach manually when the name does not
-          match. Held = intentionally unmatched.
-        </p>
-        {videoSummary.rows.length === 0 ? (
-          <p className="mt-2 font-body text-sm text-[#364272]">
-            No masters on disk. Drop .mp4 into campaign-video-masters/ or .local/video-masters/.
-          </p>
-        ) : (
-          <ul className="mt-3 divide-y divide-[#8eb6dc]/40 rounded-lg border border-[#000066]/10">
-            {videoSummary.rows.map((row) => (
-              <li key={row.key} className="space-y-2 px-3 py-3">
-                <div className="flex flex-wrap items-start justify-between gap-2">
-                  <div className="min-w-0">
-                    <p className="font-body text-sm font-semibold text-[#12124a]">{row.filename}</p>
-                    <p className="font-mono text-[10px] text-[#364272]">
-                      {row.root} · {formatBytes(row.bytes)}
-                      {row.publicSrc ? ` · ${row.publicSrc}` : " · local-only"}
-                    </p>
-                  </div>
-                  <span
-                    className={`rounded border px-2 py-0.5 font-body text-[10px] font-bold uppercase ${
-                      row.matchStatus === "unmatched"
-                        ? "border-[#ca913d] bg-[#fff8ef] text-[#12124a]"
-                        : row.matchStatus === "held"
-                          ? "border-[#8eb6dc] bg-[#f4f7fc] text-[#364272]"
-                          : "border-[#000066]/30 bg-[#eef2fb] text-[#000066]"
-                    }`}
-                  >
-                    {row.matchStatus}
-                    {row.matchConfidence ? ` · ${row.matchConfidence}` : ""}
-                    {row.matchedSpeechTitle ? ` · ${row.matchedSpeechTitle}` : ""}
-                  </span>
-                </div>
-
-                {row.matchStatus === "unmatched" || row.matchStatus === "held" ? (
-                  <div className="flex flex-wrap items-center gap-2">
-                    <select
-                      className="max-w-xs rounded border-2 border-[#8eb6dc] bg-[#f4f7fc] px-2 py-1.5 font-body text-xs text-[#12124a]"
-                      value={attachPick[row.key] ?? row.suggestions[0]?.id ?? ""}
-                      onChange={(e) =>
-                        setAttachPick((prev) => ({ ...prev, [row.key]: e.target.value }))
-                      }
-                    >
-                      <option value="">Select speech…</option>
-                      {(row.suggestions.length
-                        ? [
-                            ...row.suggestions,
-                            ...speeches.filter((s) => !row.suggestions.some((x) => x.id === s.id)),
-                          ]
-                        : speeches
-                      ).map((s) => (
-                        <option key={s.id} value={s.id}>
-                          {"reason" in s && s.reason ? `[${s.reason}] ` : ""}
-                          {s.title} ({s.id})
-                        </option>
-                      ))}
-                    </select>
-                    <button
-                      type="button"
-                      disabled={pending}
-                      onClick={() => attachMaster(row)}
-                      className="rounded-md bg-[#000066] px-3 py-1.5 font-body text-xs font-bold text-white disabled:opacity-50"
-                    >
-                      Attach
-                    </button>
-                    {row.matchStatus === "unmatched" ? (
-                      <button
-                        type="button"
-                        disabled={pending}
-                        onClick={() => holdMaster(row)}
-                        className="rounded-md border-2 border-[#8eb6dc] bg-white px-3 py-1.5 font-body text-xs font-semibold text-[#12124a] disabled:opacity-50"
-                      >
-                        Mark unmatched
-                      </button>
-                    ) : (
-                      <button
-                        type="button"
-                        disabled={pending}
-                        onClick={() => clearOverride(row)}
-                        className="rounded-md border-2 border-[#8eb6dc] bg-white px-3 py-1.5 font-body text-xs font-semibold text-[#12124a] disabled:opacity-50"
-                      >
-                        Clear hold
-                      </button>
-                    )}
-                    {row.matchedSpeechId ? (
-                      <Link
-                        href={`/admin/evidence-workbench?tab=identify&id=${encodeURIComponent(row.matchedSpeechId)}`}
-                        className="font-body text-xs font-semibold text-[#000066] underline"
-                      >
-                        Open in Identify
-                      </Link>
-                    ) : null}
-                  </div>
-                ) : (
-                  <div className="flex flex-wrap gap-2">
-                    {row.matchedSpeechId ? (
-                      <Link
-                        href={`/admin/evidence-workbench?tab=identify&id=${encodeURIComponent(row.matchedSpeechId)}`}
-                        className="rounded-md border-2 border-[#000066] bg-white px-3 py-1.5 font-body text-xs font-bold text-[#000066]"
-                      >
-                        Open speech in Identify
-                      </Link>
-                    ) : null}
-                    {row.matchStatus === "attached" ? (
-                      <button
-                        type="button"
-                        disabled={pending}
-                        onClick={() => clearOverride(row)}
-                        className="rounded-md border-2 border-[#8eb6dc] bg-white px-3 py-1.5 font-body text-xs font-semibold text-[#12124a] disabled:opacity-50"
-                      >
-                        Clear attach
-                      </button>
-                    ) : null}
-                    <Link
-                      href="/admin/evidence-workbench?tab=edit"
-                      className="rounded-md border-2 border-[#8eb6dc] bg-white px-3 py-1.5 font-body text-xs font-semibold text-[#12124a]"
-                    >
-                      Edit / Prep
-                    </Link>
-                  </div>
-                )}
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
-
-      {showBridges ? (
-        <div className="space-y-4 rounded-lg border-2 border-[#000066]/20 bg-white p-4">
-          <div className="flex flex-wrap items-baseline justify-between gap-2">
-            <p className="font-heading text-sm font-bold uppercase tracking-wide text-[#000066]">
-              Bridges · Phase 4
-            </p>
-            <button
-              type="button"
-              disabled={pending}
-              onClick={loadBridges}
-              className="font-body text-[11px] font-semibold text-[#000066] underline disabled:opacity-50"
-            >
-              Refresh
-            </button>
-          </div>
-          <p className="font-body text-xs text-[#364272]">
-            Confirm-only bridges. Prefer Unknown. Never silent Approve or registry rewrite.
-          </p>
-
-          <div className="rounded-lg border border-[#8eb6dc]/50 bg-[#f4f7fc] p-3">
-            <p className="font-heading text-xs font-bold uppercase text-[#000066]">
-              Owned Media → Evidence draft
-            </p>
-            <p className="mt-1 font-body text-[11px] text-[#364272]">
-              {ownedBridgeMessage || "Open to load candidates."} LOCAL_DISK images only — copies into
-              campaign-photos + draft queue.
-            </p>
-            {ownedBridgeRows.length === 0 ? (
-              <p className="mt-2 font-body text-xs text-[#364272]">No unbridged candidates.</p>
+          <span className="font-body text-xs font-semibold text-[#000066]">
+            {stillsExpanded ? "Hide" : "Review"}
+          </span>
+        </button>
+        {stillsExpanded ? (
+          <div className="border-t border-[#000066]/10 px-4 pb-4">
+            {fresh.length === 0 ? (
+              <p className="mt-3 font-body text-sm text-[#364272]">
+                No new stills ({status.scannedOnDisk} scanned). Drop files above, then Bring in.
+              </p>
             ) : (
-              <ul className="mt-2 max-h-56 space-y-2 overflow-y-auto">
-                {ownedBridgeRows.map((row) => (
-                  <li
-                    key={row.ownedMediaId}
-                    className="flex flex-wrap items-center justify-between gap-2 rounded border border-[#8eb6dc]/40 bg-white px-2 py-2"
-                  >
-                    <div className="min-w-0">
-                      <p className="font-body text-xs font-semibold text-[#12124a]">{row.title}</p>
-                      <p className="font-mono text-[10px] text-[#364272]">
-                        {row.fileName} · {row.reviewStatus} → {row.suggestedPhotoId}
-                      </p>
-                      <p className="font-body text-[10px] text-[#364272]">{row.reason}</p>
-                    </div>
-                    <button
-                      type="button"
-                      disabled={pending || !row.canImport}
-                      onClick={() => importOwned(row.ownedMediaId)}
-                      className="rounded-md bg-[#000066] px-3 py-1.5 font-body text-xs font-bold text-white disabled:opacity-50"
-                    >
-                      Import draft
-                    </button>
-                  </li>
-                ))}
+              <ul className="mt-3 divide-y divide-[#8eb6dc]/40 rounded-lg border border-[#000066]/10">
+                {fresh.map((c) => {
+                  const pathKey = c.relativePath ?? c.filename;
+                  const previewRow = preview.rows.find((r) => r.relativePath === pathKey);
+                  return (
+                    <li key={pathKey} className="flex flex-wrap items-center gap-4 px-3 py-3">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={c.src} alt="" className="h-14 w-20 rounded object-cover" />
+                      <div className="min-w-0 flex-1">
+                        <p className="font-mono text-xs text-[#364272]">{c.id}</p>
+                        <p className="font-body text-sm">{pathKey}</p>
+                        {c.nested ? (
+                          <p className="font-body text-xs text-[#ca913d]">
+                            Nested — will copy flat
+                            {previewRow ? ` → ${previewRow.flatTarget}` : ""}
+                          </p>
+                        ) : null}
+                        {previewRow?.warning ? (
+                          <p className="font-body text-xs text-[#364272]">{previewRow.warning}</p>
+                        ) : null}
+                        {previewRow ? (
+                          <p className="font-body text-[10px] text-[#364272]">
+                            {planLabel(previewRow.plan)}
+                          </p>
+                        ) : null}
+                      </div>
+                      <button
+                        type="button"
+                        disabled={pending}
+                        onClick={() => intakeOne(pathKey)}
+                        className="rounded-md border-2 border-[#000066] bg-white px-3 py-2 font-body text-xs font-bold text-[#000066] disabled:opacity-50"
+                      >
+                        Add one
+                      </button>
+                    </li>
+                  );
+                })}
               </ul>
             )}
-            <Link
-              href="/admin/owned-media"
-              className="mt-2 inline-block font-body text-[11px] font-semibold text-[#000066] underline"
-            >
-              Open Owned Media →
-            </Link>
           </div>
+        ) : null}
+      </div>
 
-          <div className="rounded-lg border border-[#ca913d]/40 bg-[#fff8ef] p-3">
-            <p className="font-heading text-xs font-bold uppercase text-[#000066]">
-              Draft → registry graduation
+      <div id="ew-arrival-masters" className="rounded-lg border-2 border-[#000066]/15 bg-white">
+        <button
+          type="button"
+          onClick={() => setShowMasters((v) => !v)}
+          className="flex w-full flex-wrap items-center justify-between gap-2 px-4 py-3 text-left"
+        >
+          <p className="font-heading text-sm font-bold uppercase tracking-wide text-[#000066]">
+            Video masters
+            <span className="ml-2 font-body text-xs font-semibold normal-case text-[#364272]">
+              {videoSummary.rows.length} on disk
+              {unmatchedMasterRows.length
+                ? ` · ${unmatchedMasterRows.length} need attach`
+                : matchedMasterRows.length
+                  ? " · all matched"
+                  : ""}
+            </span>
+          </p>
+          <span className="font-body text-xs font-semibold text-[#000066]">
+            {mastersExpanded ? "Hide" : "Review"}
+          </span>
+        </button>
+        {mastersExpanded ? (
+          <div className="border-t border-[#000066]/10 px-4 pb-4">
+            <p className="mt-3 font-body text-xs text-[#364272]">
+              Auto-match by speech id / YouTube id in the filename. Attach manually when unmatched —
+              Prefer Unknown, no invented matches.
             </p>
-            <p className="mt-1 font-body text-[11px] text-[#364272]">
-              {gradReadyCount != null
-                ? `${gradReadyCount} ready / ${gradTotal ?? 0} candidates — clipboard TS only; paste after review.`
-                : "Load bridges to see graduation counts."}
-            </p>
-            <div className="mt-2 flex flex-wrap gap-2">
+            {videoSummary.rows.length === 0 ? (
+              <p className="mt-2 font-body text-sm text-[#364272]">
+                No masters yet. Drop .mp4 into campaign-video-masters/ or use Explorer paths above.
+              </p>
+            ) : (
+              <>
+                {unmatchedMasterRows.length > 0 ? (
+                  <ul className="mt-3 divide-y divide-[#8eb6dc]/40 rounded-lg border border-[#000066]/10">
+                    {unmatchedMasterRows.map((row) => renderMasterRow(row))}
+                  </ul>
+                ) : (
+                  <p className="mt-2 font-body text-sm text-[#364272]">No unmatched masters.</p>
+                )}
+                {matchedMasterRows.length > 0 ? (
+                  <div className="mt-3">
+                    <button
+                      type="button"
+                      onClick={() => setShowMatchedMasters((v) => !v)}
+                      className="font-body text-[11px] font-semibold text-[#000066] underline"
+                    >
+                      {showMatchedMasters
+                        ? "Hide matched masters"
+                        : `Show ${matchedMasterRows.length} matched master(s)`}
+                    </button>
+                    {showMatchedMasters ? (
+                      <ul className="mt-2 divide-y divide-[#8eb6dc]/40 rounded-lg border border-[#000066]/10">
+                        {matchedMasterRows.map((row) => renderMasterRow(row))}
+                      </ul>
+                    ) : null}
+                  </div>
+                ) : null}
+              </>
+            )}
+          </div>
+        ) : null}
+      </div>
+
+      <div className="rounded-lg border border-[#000066]/15 bg-[#fafbfd]">
+        <button
+          type="button"
+          onClick={openAdvanced}
+          className="flex w-full items-center justify-between px-4 py-2.5 text-left"
+        >
+          <p className="font-heading text-xs font-bold uppercase tracking-wide text-[#364272]">
+            Advanced · Bridges & Turbo
+          </p>
+          <span className="font-body text-[11px] font-semibold text-[#000066]">
+            {showAdvanced ? "Hide" : "Show"}
+          </span>
+        </button>
+        {showAdvanced ? (
+          <div className="space-y-4 border-t border-[#000066]/10 px-4 pb-4 pt-3">
+            <div className="flex flex-wrap gap-2">
               <button
                 type="button"
-                disabled={pending || !gradReadyCount}
-                onClick={copyGraduation}
-                className="rounded-md border-2 border-[#000066] bg-[#000066] px-3 py-1.5 font-body text-xs font-bold text-white disabled:opacity-50"
+                onClick={() => {
+                  setShowBridges(true);
+                  loadBridges();
+                }}
+                className="rounded-md border border-[#8eb6dc] bg-white px-3 py-1.5 font-body text-xs font-semibold"
               >
-                Copy ready TS blocks
+                Refresh bridges
               </button>
-              <Link
-                href="/admin/evidence-workbench?tab=publish#ew-ship-last-mile"
-                className="rounded-md border-2 border-[#000066] bg-white px-3 py-1.5 font-body text-xs font-bold text-[#000066]"
+              <button
+                type="button"
+                onClick={() => setShowTurbo((v) => !v)}
+                className="rounded-md border border-[#8eb6dc] bg-white px-3 py-1.5 font-body text-xs font-semibold"
               >
-                Open Ship graduation →
-              </Link>
-            </div>
-          </div>
-        </div>
-      ) : null}
-
-      {showTurbo ? (
-        <div className="rounded-lg border-2 border-[#ca913d]/60 bg-[#fff8ef] p-4">
-          <p className="font-heading text-sm font-bold uppercase tracking-wide text-[#000066]">
-            Advanced · Turbo ingest (stills only)
-          </p>
-          <p className="mt-1 font-body text-sm text-[#364272]">
-            Proposals only: heuristic/AI geography + website-fit rankings. Operator confirms before
-            Approve.
-          </p>
-          <label className="mt-2 inline-flex items-center gap-2 font-body text-xs text-[#12124a]">
-            <input
-              type="checkbox"
-              checked={turboUseAi}
-              onChange={(e) => setTurboUseAi(e.target.checked)}
-            />
-            Use OpenAI when configured (else heuristic-only)
-          </label>
-          <div className="mt-3 flex flex-wrap gap-2">
-            <button
-              type="button"
-              disabled={pending}
-              onClick={() => runTurbo(true)}
-              className="rounded-md bg-[#000066] px-4 py-2.5 font-body text-sm font-bold text-white disabled:opacity-50"
-            >
-              Turbo: Intake + Identify + Fit
-            </button>
-            <button
-              type="button"
-              disabled={pending}
-              onClick={() => runTurbo(false)}
-              className="rounded-md border-2 border-[#000066] bg-white px-4 py-2.5 font-body text-sm font-bold text-[#000066] disabled:opacity-50"
-            >
-              Turbo: Identify + Fit only
-            </button>
-          </div>
-          {turbo ? (
-            <div className="mt-3 grid gap-2 sm:grid-cols-3">
-              <div className="rounded border border-[#ca913d]/40 bg-white px-2 py-1.5">
-                <p className="font-heading text-[10px] font-bold uppercase text-[#000066]">
-                  Pending proposals
-                </p>
-                <p className="font-body text-lg font-bold">{turbo.pending}</p>
-              </div>
-              <div className="rounded border border-[#ca913d]/40 bg-white px-2 py-1.5">
-                <p className="font-heading text-[10px] font-bold uppercase text-[#000066]">
-                  Live inventory
-                </p>
-                <p className="font-body text-[11px] text-[#364272]">
-                  {turbo.inventory.homepageGalleryLive} homepage ·{" "}
-                  {turbo.inventory.acrossArkansasLive} across AR · {turbo.inventory.countyAlbumCount}{" "}
-                  albums
-                </p>
-              </div>
-              <div className="rounded border border-[#ca913d]/40 bg-white px-2 py-1.5">
-                <p className="font-heading text-[10px] font-bold uppercase text-[#000066]">Last run</p>
-                <p className="font-body text-[11px] text-[#364272]">
-                  {turbo.lastRunMessage ?? "Not run yet"}
-                </p>
-              </div>
-            </div>
-          ) : null}
-          {turbo?.top?.length ? (
-            <ul className="mt-3 max-h-48 space-y-1 overflow-y-auto">
-              {turbo.top.map((row) => (
-                <li
-                  key={row.photoId}
-                  className="flex flex-wrap items-center justify-between gap-2 rounded border border-[#8eb6dc]/40 bg-white px-2 py-1.5"
+                {showTurbo ? "Hide Turbo" : "Show Turbo"}
+              </button>
+              {status.queueCount > 0 ? (
+                <Link
+                  href="/admin/evidence-workbench?tab=identify&filter=draft"
+                  className="rounded-md border border-[#ca913d] bg-white px-3 py-1.5 font-body text-xs font-semibold"
                 >
-                  <div className="min-w-0">
-                    <p className="font-mono text-[11px] text-[#12124a]">{row.photoId}</p>
-                    <p className="font-body text-[10px] text-[#364272]">
-                      {row.county} · {row.identifySource} · best {row.bestSurface ?? "—"} (
-                      {row.bestScore})
-                    </p>
-                  </div>
-                  <Link
-                    href={`/admin/evidence-workbench?tab=identify&id=${encodeURIComponent(row.photoId)}`}
-                    className="shrink-0 font-body text-[11px] font-semibold text-[#000066] underline"
-                  >
-                    Review
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          ) : null}
-        </div>
-      ) : null}
+                  Identify queue ({status.queueCount}
+                  {lastQueued > 0 ? ` · +${lastQueued}` : ""})
+                </Link>
+              ) : null}
+            </div>
 
-      <p className="font-body text-xs text-[#364272]">
-        Owned Media / YouTube admin remain separate libraries — they do not replace this Arrival queue.
-      </p>
+            {showBridges ? (
+              <div className="space-y-3 rounded-lg border border-[#000066]/15 bg-white p-3">
+                <p className="font-heading text-xs font-bold uppercase text-[#000066]">
+                  Bridges · confirm only
+                </p>
+                <div className="rounded border border-[#8eb6dc]/50 bg-[#f4f7fc] p-3">
+                  <p className="font-heading text-xs font-bold uppercase text-[#000066]">
+                    Owned Media → Evidence draft
+                  </p>
+                  <p className="mt-1 font-body text-[11px] text-[#364272]">
+                    {ownedBridgeMessage || "Loading…"} LOCAL_DISK images only.
+                  </p>
+                  {ownedBridgeRows.length === 0 ? (
+                    <p className="mt-2 font-body text-xs text-[#364272]">No unbridged candidates.</p>
+                  ) : (
+                    <ul className="mt-2 max-h-56 space-y-2 overflow-y-auto">
+                      {ownedBridgeRows.map((row) => (
+                        <li
+                          key={row.ownedMediaId}
+                          className="flex flex-wrap items-center justify-between gap-2 rounded border border-[#8eb6dc]/40 bg-white px-2 py-2"
+                        >
+                          <div className="min-w-0">
+                            <p className="font-body text-xs font-semibold text-[#12124a]">
+                              {row.title}
+                            </p>
+                            <p className="font-mono text-[10px] text-[#364272]">
+                              {row.fileName} · {row.reviewStatus} → {row.suggestedPhotoId}
+                            </p>
+                          </div>
+                          <button
+                            type="button"
+                            disabled={pending || !row.canImport}
+                            onClick={() => importOwned(row.ownedMediaId)}
+                            className="rounded-md bg-[#000066] px-3 py-1.5 font-body text-xs font-bold text-white disabled:opacity-50"
+                          >
+                            Import draft
+                          </button>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                  <Link
+                    href="/admin/owned-media"
+                    className="mt-2 inline-block font-body text-[11px] font-semibold text-[#000066] underline"
+                  >
+                    Open Owned Media →
+                  </Link>
+                </div>
+
+                <div className="rounded border border-[#ca913d]/40 bg-[#fff8ef] p-3">
+                  <p className="font-heading text-xs font-bold uppercase text-[#000066]">
+                    Draft → registry graduation
+                  </p>
+                  <p className="mt-1 font-body text-[11px] text-[#364272]">
+                    {gradReadyCount != null
+                      ? `${gradReadyCount} ready / ${gradTotal ?? 0} — clipboard TS only.`
+                      : "Refresh bridges for counts."}
+                  </p>
+                  <div className="mt-2 flex flex-wrap gap-2">
+                    <button
+                      type="button"
+                      disabled={pending || !gradReadyCount}
+                      onClick={copyGraduation}
+                      className="rounded-md bg-[#000066] px-3 py-1.5 font-body text-xs font-bold text-white disabled:opacity-50"
+                    >
+                      Copy ready TS blocks
+                    </button>
+                    <Link
+                      href="/admin/evidence-workbench?tab=publish#ew-ship-last-mile"
+                      className="rounded-md border-2 border-[#000066] bg-white px-3 py-1.5 font-body text-xs font-bold text-[#000066]"
+                    >
+                      Open Ship →
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            ) : null}
+
+            {showTurbo ? (
+              <div className="rounded-lg border border-[#ca913d]/50 bg-[#fff8ef] p-3">
+                <p className="font-heading text-xs font-bold uppercase text-[#000066]">
+                  Turbo ingest (stills · proposals only)
+                </p>
+                <label className="mt-2 inline-flex items-center gap-2 font-body text-xs">
+                  <input
+                    type="checkbox"
+                    checked={turboUseAi}
+                    onChange={(e) => setTurboUseAi(e.target.checked)}
+                  />
+                  Use OpenAI when configured
+                </label>
+                <div className="mt-2 flex flex-wrap gap-2">
+                  <button
+                    type="button"
+                    disabled={pending}
+                    onClick={() => runTurbo(true)}
+                    className="rounded-md bg-[#000066] px-3 py-2 font-body text-xs font-bold text-white disabled:opacity-50"
+                  >
+                    Turbo: Intake + Identify + Fit
+                  </button>
+                  <button
+                    type="button"
+                    disabled={pending}
+                    onClick={() => runTurbo(false)}
+                    className="rounded-md border-2 border-[#000066] bg-white px-3 py-2 font-body text-xs font-bold text-[#000066] disabled:opacity-50"
+                  >
+                    Turbo: Identify + Fit only
+                  </button>
+                </div>
+                {turbo ? (
+                  <p className="mt-2 font-body text-[11px] text-[#364272]">
+                    Pending {turbo.pending} · {turbo.lastRunMessage ?? "Not run yet"}
+                  </p>
+                ) : null}
+                {turbo?.top?.length ? (
+                  <ul className="mt-2 max-h-40 space-y-1 overflow-y-auto">
+                    {turbo.top.map((row) => (
+                      <li
+                        key={row.photoId}
+                        className="flex justify-between gap-2 rounded border border-[#8eb6dc]/40 bg-white px-2 py-1.5"
+                      >
+                        <span className="font-mono text-[11px]">{row.photoId}</span>
+                        <Link
+                          href={`/admin/evidence-workbench?tab=identify&id=${encodeURIComponent(row.photoId)}`}
+                          className="font-body text-[11px] font-semibold text-[#000066] underline"
+                        >
+                          Review
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                ) : null}
+              </div>
+            ) : null}
+          </div>
+        ) : null}
+      </div>
     </div>
   );
 }

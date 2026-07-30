@@ -285,16 +285,6 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
 
       <div className="ew-panel mt-5">
         {tab === "ingest" ? (
-          <>
-            <div className="mb-4 rounded-lg border-2 border-[#000066]/15 bg-[#f4f7fc] p-3">
-              <p className="font-heading text-xs font-bold uppercase text-[#000066]">
-                Arrival · Folder → Website
-              </p>
-              <p className="mt-1 font-body text-xs text-[#364272]">
-                Drop → Bring in → Identify → Approve → Ship. Soft-watch detects new files. Prefer
-                Unknown — never auto-Approve.
-              </p>
-            </div>
             <EvidenceIngestPanel
               initialCandidates={ingestCandidates}
               initialStatus={intakeStatus}
@@ -304,7 +294,6 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
               needsApproval={needsApproval}
               approvedPublic={publishQueue.totals.approvedPublic}
             />
-          </>
         ) : null}
 
         {tab === "identify" ? (
