@@ -2,7 +2,14 @@
 
 import Link from "next/link";
 import { useState, useTransition } from "react";
-import { runEvidenceAiCommandAction } from "@/app/admin/evidence-workbench-actions";
+import {
+  buildEvidenceShipReportAction,
+  getFitRankedBacklogAction,
+  rankEvidenceNextActionsAction,
+  runEventNightLoopAction,
+  runEvidenceAiCommandAction,
+  runPublishQueueTurboAction,
+} from "@/app/admin/evidence-workbench-actions";
 import type { EvidenceCommandResult } from "@/lib/campaign-media/evidence-ai-command";
 import { ewBtnPrimaryClass } from "@/components/admin/evidence-workbench/evidenceWorkbenchChrome";
 
@@ -12,10 +19,21 @@ const STARTERS = [
   "Where are Unknown-county stills blocking Approve?",
   "Build a ship checklist — what still needs commit?",
   "Which speeches need county confirm before publish?",
+  "Rank Unknown stills by website fit without inventing geography.",
+];
+
+type MacroId = "next" | "event-night" | "queue-turbo-ship" | "fit-backlog" | "ship";
+
+const MACROS: Array<{ id: MacroId; label: string; hint: string }> = [
+  { id: "next", label: "Macro · Next actions", hint: "Rank deterministic next clicks" },
+  { id: "event-night", label: "Macro · Event night", hint: "Pack + turbo + ship (confirm)" },
+  { id: "queue-turbo-ship", label: "Macro · Queue turbo→ship", hint: "Unknown turbo then ship" },
+  { id: "fit-backlog", label: "Macro · Fit backlog", hint: "Score Unknown/needs-approval" },
+  { id: "ship", label: "Macro · Ship report", hint: "Refresh ship checklist" },
 ];
 
 /**
- * Magical freeform command bar — Fortune-50 console surface.
+ * Magical freeform command bar — Fortune-50 console surface + confirm-gated macros.
  */
 export function EvidenceAiCommandCenter() {
   const [prompt, setPrompt] = useState("");
@@ -36,6 +54,126 @@ export function EvidenceAiCommandCenter() {
     });
   }
 
+  function runMacro(id: MacroId) {
+    start(async () => {
+      setResult(null);
+      if (id === "next") {
+        const res = await rankEvidenceNextActionsAction(6);
+        setMessage(res.message);
+        const actions = res.result?.actions ?? [];
+        if (actions.length) {
+          setResult({
+            headline: "Next actions (deterministic)",
+            plan: actions.map((a) => `${a.title} — ${a.why}`),
+            nextClicks: actions.map((a) => ({ label: a.title, href: a.href })),
+            toolsSummary: "rank_evidence_next_actions",
+            toolsUsed: ["rank_evidence_next_actions"],
+            warnings: [],
+            confidence: "high",
+            model: "local",
+          });
+        }
+        return;
+      }
+      if (id === "event-night") {
+        const res = await runEventNightLoopAction({
+          confirmTurbo: true,
+          useAi: true,
+          maxPhotos: 16,
+        });
+        setMessage(res.message);
+        setResult({
+          headline: "Event-night loop finished (proposals only)",
+          plan: [
+            res.pack
+              ? `Pack ${res.pack.date} · ${res.pack.photos.length} photos · ${res.pack.speeches.length} speeches`
+              : "No pack",
+            res.turboMessage ?? "Turbo skipped",
+            res.ship
+              ? `Ship · overlays dirty ${res.ship.totals.overlayJsonDirty} · promoted missing ${res.ship.totals.promotedOverrideMissing}`
+              : "No ship report",
+            "Open Publish Queue to Approve — never silent.",
+          ],
+          nextClicks: [
+            { label: "Publish Queue", href: "/admin/evidence-workbench?tab=queue" },
+            { label: "Ship", href: "/admin/evidence-workbench?tab=ship" },
+            { label: "Calendar", href: "/admin/evidence-workbench?tab=calendar" },
+          ],
+          toolsSummary: "run_event_night_loop",
+          toolsUsed: ["propose_event_night_pack", "turbo_ingest_photos", "build_evidence_ship_report"],
+          warnings: res.pack?.warnings ?? [],
+          confidence: "medium",
+          model: "local",
+        });
+        return;
+      }
+      if (id === "queue-turbo-ship") {
+        const turbo = await runPublishQueueTurboAction({ confirm: true, useAi: true, maxPhotos: 24 });
+        const ship = await buildEvidenceShipReportAction({
+          persist: true,
+          includeDerivativeScan: true,
+        });
+        setMessage([turbo.message, ship.message].join(" · "));
+        setResult({
+          headline: "Queue turbo → ship",
+          plan: [
+            turbo.message,
+            ship.message,
+            "Review Apply → Save → Batch Approve on Publish Queue.",
+          ],
+          nextClicks: [
+            { label: "Publish Queue", href: "/admin/evidence-workbench?tab=queue" },
+            { label: "Ship", href: "/admin/evidence-workbench?tab=ship" },
+          ],
+          toolsSummary: "run_publish_queue_turbo + build_evidence_ship_report",
+          toolsUsed: ["run_publish_queue_turbo", "build_evidence_ship_report"],
+          warnings: ship.report?.warnings?.slice(0, 4) ?? [],
+          confidence: "medium",
+          model: "local",
+        });
+        return;
+      }
+      if (id === "fit-backlog") {
+        const res = await getFitRankedBacklogAction({ limit: 12 });
+        setMessage(res.message);
+        setResult({
+          headline: "Fit-ranked backlog",
+          plan: (res.backlog?.rows ?? []).map(
+            (r) =>
+              `${r.photoId} · ${r.bestSurface ?? "—"} (${r.bestScore}) · ${r.county}${
+                r.unknown ? " · Unknown" : ""
+              }`,
+          ),
+          nextClicks: (res.backlog?.rows ?? []).slice(0, 6).map((r) => ({
+            label: r.photoId,
+            href: r.href,
+          })),
+          toolsSummary: "score_photo_website_fit backlog",
+          toolsUsed: ["score_photo_website_fit"],
+          warnings: ["Scores propose placement affinity — Prefer Unknown; confirm before Approve."],
+          confidence: "medium",
+          model: "local",
+        });
+        return;
+      }
+      const ship = await buildEvidenceShipReportAction({
+        persist: true,
+        includeDerivativeScan: true,
+      });
+      setMessage(ship.message);
+      setResult({
+        headline: "Ship report",
+        plan: ship.report?.nextActions ?? [ship.message],
+        nextClicks: [{ label: "Open Ship tab", href: "/admin/evidence-workbench?tab=ship" }],
+        toolsSummary: "build_evidence_ship_report",
+        toolsUsed: ["build_evidence_ship_report"],
+        warnings: ship.report?.warnings?.slice(0, 4) ?? [],
+        confidence: "high",
+        model: "local",
+      });
+    });
+  }
+
   return (
     <div className="ew-command mt-5">
       <div className="relative z-[1]">
@@ -47,7 +185,7 @@ export function EvidenceAiCommandCenter() {
         </p>
         <p className="mt-2 max-w-2xl font-body text-sm text-white/75">
           Calendar · photos · videos · intake · placement · ship. Prefer Unknown. Never silent Approve /
-          Confirm / encode / curate.
+          Confirm / encode / curate. Macros are confirm-gated shortcuts (no silent Approve).
         </p>
 
         <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-stretch">
@@ -69,6 +207,22 @@ export function EvidenceAiCommandCenter() {
         </div>
 
         <ul className="mt-3 flex flex-wrap gap-2">
+          {MACROS.map((m) => (
+            <li key={m.id}>
+              <button
+                type="button"
+                disabled={pending}
+                title={m.hint}
+                onClick={() => runMacro(m.id)}
+                className="rounded-full border border-kelly-gold/45 bg-kelly-gold/15 px-3 py-1.5 font-body text-[11px] font-semibold text-kelly-gold-soft transition hover:bg-kelly-gold/25 disabled:opacity-50"
+              >
+                {m.label}
+              </button>
+            </li>
+          ))}
+        </ul>
+
+        <ul className="mt-2 flex flex-wrap gap-2">
           {STARTERS.map((s) => (
             <li key={s}>
               <button

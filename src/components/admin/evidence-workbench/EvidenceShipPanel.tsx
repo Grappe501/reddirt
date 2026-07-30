@@ -22,10 +22,12 @@ function formatBytes(n: number | null | undefined): string {
 export function EvidenceShipPanel({ initialReport }: Props) {
   const [report, setReport] = useState(initialReport);
   const [message, setMessage] = useState("");
+  const [prBody, setPrBody] = useState(initialReport.graduationPrBody ?? "");
   const [pending, start] = useTransition();
 
   useEffect(() => {
     setReport(initialReport);
+    setPrBody(initialReport.graduationPrBody ?? "");
   }, [initialReport]);
 
   function refresh(includeDerivatives = true) {
@@ -35,7 +37,10 @@ export function EvidenceShipPanel({ initialReport }: Props) {
         includeDerivativeScan: includeDerivatives,
       });
       setMessage(res.message);
-      if (res.report) setReport(res.report);
+      if (res.report) {
+        setReport(res.report);
+        setPrBody(res.report.graduationPrBody ?? "");
+      }
     });
   }
 
@@ -43,7 +48,24 @@ export function EvidenceShipPanel({ initialReport }: Props) {
     start(async () => {
       const res = await writeRegistryGraduationStubAction({ onlyReady: true });
       setMessage(res.message);
+      if (res.prBody) setPrBody(res.prBody);
       refresh(true);
+    });
+  }
+
+  function copyPrBody() {
+    const text = prBody || report.graduationPrBody || "";
+    if (!text) {
+      setMessage("No graduation PR body yet — write stub first.");
+      return;
+    }
+    start(async () => {
+      try {
+        await navigator.clipboard.writeText(text);
+        setMessage("Copied graduation PR body to clipboard.");
+      } catch {
+        setMessage("Clipboard blocked — select the PR body text manually.");
+      }
     });
   }
 
@@ -70,8 +92,8 @@ export function EvidenceShipPanel({ initialReport }: Props) {
           [
             ["Dirty paths", t.dirtyCount],
             ["Overlay JSON dirty", t.overlayJsonDirty],
-            ["Photo binaries dirty", t.photoBinaryDirty],
-            ["Derivatives local-only", t.derivativeLocalOnly],
+            ["Promoted overrides", t.promotedOverrideCount],
+            ["Promoted missing", t.promotedOverrideMissing],
           ] as const
         ).map(([label, n]) => (
           <div key={label} className="rounded-lg border-2 border-[#000066]/15 bg-white px-3 py-2">
@@ -124,6 +146,14 @@ export function EvidenceShipPanel({ initialReport }: Props) {
         >
           Write registry graduation stub
         </button>
+        <button
+          type="button"
+          disabled={pending}
+          onClick={copyPrBody}
+          className="rounded border-2 border-[#8eb6dc] bg-[#f4f7fc] px-2.5 py-1 font-body text-xs font-semibold disabled:opacity-50"
+        >
+          Copy graduation PR body
+        </button>
         <Link
           href="/admin/evidence-workbench?tab=queue"
           className="rounded border-2 border-[#8eb6dc] bg-white px-2.5 py-1 font-body text-xs font-semibold text-[#12124a]"
@@ -131,6 +161,35 @@ export function EvidenceShipPanel({ initialReport }: Props) {
           Publish Queue
         </Link>
       </div>
+
+      {message ? <p className="font-body text-xs text-[#364272]">{message}</p> : null}
+
+      {prBody ? (
+        <div className="rounded-lg border-2 border-[#000066]/15 bg-white p-3">
+          <p className="font-heading text-xs font-bold uppercase tracking-wide text-[#000066]">
+            Graduation PR body (stub-only — never auto-applies)
+          </p>
+          <pre className="mt-2 max-h-48 overflow-auto whitespace-pre-wrap rounded border border-[#8eb6dc]/40 bg-[#f4f7fc] p-2 font-mono text-[10px] text-[#12124a]">
+            {prBody}
+          </pre>
+        </div>
+      ) : null}
+
+      {report.promotedOverrides?.length ? (
+        <div className="rounded-lg border-2 border-[#ca913d]/40 bg-white p-3">
+          <p className="font-heading text-xs font-bold uppercase tracking-wide text-[#000066]">
+            Promoted publicSrcOverride paths
+          </p>
+          <ul className="mt-2 max-h-40 space-y-1 overflow-auto font-mono text-[10px] text-[#364272]">
+            {report.promotedOverrides.map((p) => (
+              <li key={`${p.photoId}-${p.publicSrc}`}>
+                {p.fileExists ? "OK" : "MISSING"} · {p.gitignoredDerivative ? "gitignored · " : ""}
+                {p.photoId} → {p.publicSrc}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
 
       {report.warnings.length ? (
         <div className="rounded border border-[#ca913d]/50 bg-white p-3">

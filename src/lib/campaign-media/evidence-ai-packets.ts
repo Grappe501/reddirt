@@ -32,7 +32,15 @@ export async function buildPhotoOutgoingMetadataPacket(input: {
   photo: CampaignPhotoRecord;
   overlay: PhotoEvidenceOverlay | null;
   operatorConfirmedGeography: boolean;
-}): Promise<{ ok: true; packet: EvidenceOutgoingMetadataPacket; relativePath: string } | { ok: false; error: string }> {
+}): Promise<
+  | {
+      ok: true;
+      packet: EvidenceOutgoingMetadataPacket;
+      relativePath: string;
+      ownedMedia: { attached: boolean; reason: string };
+    }
+  | { ok: false; error: string }
+> {
   if (!isOpenAIConfigured()) {
     return { ok: false, error: "OPENAI_API_KEY not configured." };
   }
@@ -160,8 +168,8 @@ operatorConfirmedGeography=${input.operatorConfirmedGeography}`;
     });
 
     const relativePath = writeEvidencePacketFile(packetId, packet);
-    await persistPacketToOwnedMediaIfPossible(packet);
-    return { ok: true, packet, relativePath };
+    const ownedMedia = await persistPacketToOwnedMediaIfPossible(packet);
+    return { ok: true, packet, relativePath, ownedMedia };
   } catch (err) {
     return { ok: false, error: formatOpenAIErrorForClient(err) };
   }
@@ -171,7 +179,15 @@ export async function buildSpeechOutgoingMetadataPacket(input: {
   media: CampaignMediaRecord;
   overlay: SpeechEvidenceOverlay | null;
   operatorConfirmedGeography: boolean;
-}): Promise<{ ok: true; packet: EvidenceOutgoingMetadataPacket; relativePath: string } | { ok: false; error: string }> {
+}): Promise<
+  | {
+      ok: true;
+      packet: EvidenceOutgoingMetadataPacket;
+      relativePath: string;
+      ownedMedia: { attached: boolean; reason: string };
+    }
+  | { ok: false; error: string }
+> {
   if (!isOpenAIConfigured()) {
     return { ok: false, error: "OPENAI_API_KEY not configured." };
   }
@@ -273,25 +289,34 @@ operatorConfirmedGeography=${input.operatorConfirmedGeography}`;
     });
 
     const relativePath = writeEvidencePacketFile(packetId, packet);
-    await persistPacketToOwnedMediaIfPossible(packet);
-    return { ok: true, packet, relativePath };
+    const ownedMedia = await persistPacketToOwnedMediaIfPossible(packet);
+    return { ok: true, packet, relativePath, ownedMedia };
   } catch (err) {
     return { ok: false, error: formatOpenAIErrorForClient(err) };
   }
 }
 
 /** Best-effort: attach packet onto OwnedMediaAsset.enrichmentMetadata when a filename match exists. */
-async function persistPacketToOwnedMediaIfPossible(packet: EvidenceOutgoingMetadataPacket): Promise<void> {
+async function persistPacketToOwnedMediaIfPossible(
+  packet: EvidenceOutgoingMetadataPacket,
+): Promise<{ attached: boolean; reason: string }> {
   try {
     const filename = packet.identity.originalFilename?.trim();
-    if (!filename) return;
+    if (!filename) {
+      return { attached: false, reason: "No originalFilename on packet — file packet only." };
+    }
     const asset = await prisma.ownedMediaAsset.findFirst({
       where: {
         OR: [{ originalFileName: filename }, { fileName: filename }, { canonicalFileName: filename }],
       },
       select: { id: true, enrichmentMetadata: true },
     });
-    if (!asset) return;
+    if (!asset) {
+      return {
+        attached: false,
+        reason: `No OwnedMediaAsset match for ${filename} — file packet is source of truth.`,
+      };
+    }
     const prev =
       asset.enrichmentMetadata && typeof asset.enrichmentMetadata === "object"
         ? (asset.enrichmentMetadata as Record<string, unknown>)
@@ -309,7 +334,12 @@ async function persistPacketToOwnedMediaIfPossible(packet: EvidenceOutgoingMetad
         staffReviewNotes: packet.proof.whatThisProves || undefined,
       },
     });
-  } catch {
-    // DB optional for local workbench loop — file packet is source of truth when Prisma unavailable.
+    return { attached: true, reason: `Attached to OwnedMediaAsset ${asset.id}.` };
+  } catch (err) {
+    const msg = err instanceof Error ? err.message : String(err);
+    return {
+      attached: false,
+      reason: `Owned Media DB unavailable (${msg.slice(0, 120)}) — file packet remains source of truth.`,
+    };
   }
 }

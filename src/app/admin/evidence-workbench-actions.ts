@@ -952,7 +952,12 @@ export async function suggestCalendarPresenceAiAction(rowId: string): Promise<{
 export async function buildPhotoMetadataPacketAction(
   photoId: string,
   operatorConfirmedGeography: boolean,
-): Promise<{ ok: boolean; message: string; relativePath?: string }> {
+): Promise<{
+  ok: boolean;
+  message: string;
+  relativePath?: string;
+  ownedMediaAttached?: boolean;
+}> {
   const g = await gate();
   if (!g.ok) return { ok: false, message: g.error };
   const photo = listCampaignPhotosLive().find((p) => p.id === photoId);
@@ -963,15 +968,21 @@ export async function buildPhotoMetadataPacketAction(
   if (!result.ok) return { ok: false, message: result.error };
   return {
     ok: true,
-    message: `Wrote intelligence packet ${result.packet.packetId} → ${result.relativePath}`,
+    message: `Wrote intelligence packet ${result.packet.packetId} → ${result.relativePath} · Owned Media: ${result.ownedMedia.reason}`,
     relativePath: result.relativePath,
+    ownedMediaAttached: result.ownedMedia.attached,
   };
 }
 
 export async function buildSpeechMetadataPacketAction(
   speechId: string,
   operatorConfirmedGeography: boolean,
-): Promise<{ ok: boolean; message: string; relativePath?: string }> {
+): Promise<{
+  ok: boolean;
+  message: string;
+  relativePath?: string;
+  ownedMediaAttached?: boolean;
+}> {
   const g = await gate();
   if (!g.ok) return { ok: false, message: g.error };
   const { CAMPAIGN_MEDIA_REGISTRY } = await import("@/content/media/campaign-media-registry");
@@ -983,8 +994,9 @@ export async function buildSpeechMetadataPacketAction(
   if (!result.ok) return { ok: false, message: result.error };
   return {
     ok: true,
-    message: `Wrote intelligence packet ${result.packet.packetId} → ${result.relativePath}`,
+    message: `Wrote intelligence packet ${result.packet.packetId} → ${result.relativePath} · Owned Media: ${result.ownedMedia.reason}`,
     relativePath: result.relativePath,
+    ownedMediaAttached: result.ownedMedia.attached,
   };
 }
 
@@ -1174,6 +1186,7 @@ export async function writeRegistryGraduationStubAction(input?: {
   message: string;
   relativePath?: string;
   candidateCount?: number;
+  prBody?: string;
 }> {
   const g = await gate();
   if (!g.ok) return { ok: false, message: g.error };
@@ -2359,6 +2372,131 @@ export async function applyTranscriptIntelAction(input: {
   return {
     ok: true,
     message: `Applied transcript intel fields (${applyFields.join(", ")}) to ${speechId}.`,
+  };
+}
+
+export async function getEvidenceToolingReadinessAction(): Promise<{
+  ok: boolean;
+  message: string;
+  readiness?: import("@/lib/campaign-media/evidence-tooling-readiness").EvidenceToolingReadiness;
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { getEvidenceToolingReadiness } = await import(
+    "@/lib/campaign-media/evidence-tooling-readiness"
+  );
+  const readiness = getEvidenceToolingReadiness();
+  return {
+    ok: readiness.ok,
+    message: readiness.ok
+      ? "OpenAI + ffmpeg ready."
+      : readiness.blockers.join(" · ") || "Tooling blockers present.",
+    readiness,
+  };
+}
+
+export async function promoteReadyPhotoAssembliesAction(input: {
+  confirmPromote: boolean;
+  photoIds?: string[];
+  limit?: number;
+}): Promise<{
+  ok: boolean;
+  message: string;
+  promoted?: string[];
+  skipped?: Array<{ photoId: string; reason: string }>;
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { promoteReadyPhotoAssemblies } = await import(
+    "@/lib/campaign-media/promote-ready-assemblies"
+  );
+  const result = promoteReadyPhotoAssemblies(input);
+  if (result.promoted.length) {
+    revalidatePath("/admin/evidence-workbench");
+    revalidatePath("/campaign-photos");
+  }
+  return result;
+}
+
+export async function getFitRankedBacklogAction(input?: {
+  limit?: number;
+}): Promise<{
+  ok: boolean;
+  message: string;
+  backlog?: import("@/lib/campaign-media/evidence-fit-backlog").FitRankedBacklog;
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { buildFitRankedBacklog } = await import("@/lib/campaign-media/evidence-fit-backlog");
+  const backlog = buildFitRankedBacklog({ limit: input?.limit });
+  return {
+    ok: true,
+    message: `Fit-ranked backlog · ${backlog.total} candidate(s) · showing ${backlog.rows.length}`,
+    backlog,
+  };
+}
+
+export async function runEventNightLoopAction(input: {
+  calendarRowId?: string;
+  confirmTurbo: boolean;
+  useAi?: boolean;
+  maxPhotos?: number;
+}): Promise<{
+  ok: boolean;
+  message: string;
+  pack?: import("@/lib/campaign-media/evidence-event-night-pack").EventNightPack;
+  turboMessage?: string;
+  ship?: import("@/lib/campaign-media/evidence-ship-report").EvidenceShipReport;
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  if (!input.confirmTurbo) {
+    return { ok: false, message: "confirmTurbo:true required — refuse silent event-night turbo." };
+  }
+
+  const { loadCalendarPresenceStore } = await import("@/lib/campaign-media/evidence-store");
+  const { proposeEventNightPack } = await import("@/lib/campaign-media/evidence-event-night-pack");
+  const { runTurboIngest } = await import("@/lib/campaign-media/turbo-ingest");
+  const { buildEvidenceShipReport } = await import("@/lib/campaign-media/evidence-ship-report");
+
+  const rows = loadCalendarPresenceStore().rows;
+  const calendarRowId =
+    String(input.calendarRowId ?? "").trim() ||
+    rows.find((r) => r.status === "Confirmed")?.id ||
+    rows[0]?.id ||
+    "";
+  if (!calendarRowId) {
+    return { ok: false, message: "No calendar row available for event-night loop." };
+  }
+
+  const pack = proposeEventNightPack({ calendarRowId, photoLimit: 16, speechLimit: 8 });
+  if ("ok" in pack && pack.ok === false) {
+    return { ok: false, message: pack.error };
+  }
+
+  const photoIds = (pack as import("@/lib/campaign-media/evidence-event-night-pack").EventNightPack).photos.map(
+    (p) => p.id,
+  );
+  let turboMessage = "No pack photos — skipped turbo.";
+  if (photoIds.length) {
+    const turbo = await runTurboIngest({
+      photoIds,
+      useAi: input.useAi !== false,
+      maxPhotos: input.maxPhotos ?? 16,
+      intakeFirst: false,
+    });
+    turboMessage = turbo.message;
+  }
+
+  const ship = buildEvidenceShipReport({ persist: true, includeDerivativeScan: true });
+  revalidatePath("/admin/evidence-workbench");
+
+  return {
+    ok: true,
+    message: `Event-night loop · row ${calendarRowId} · pack photos ${photoIds.length} · ${turboMessage} · ship overlays dirty ${ship.totals.overlayJsonDirty}`,
+    pack: pack as import("@/lib/campaign-media/evidence-event-night-pack").EventNightPack,
+    turboMessage,
+    ship,
   };
 }
 

@@ -68,11 +68,22 @@ export type EvidenceShipReport = {
     photoBinaryDirty: number;
     derivativeLocalOnly: number;
     dirtyBytes: number;
+    promotedOverrideCount: number;
+    promotedOverrideMissing: number;
+    promotedOverrideGitignored: number;
   };
   checklist: ShipChecklistItem[];
   checklistReady: boolean;
   commitMessageTemplate: string;
   graduationCandidates: RegistryGraduationCandidate[];
+  /** Ready-to-paste PR body for registry graduation (stub-only — never auto-applies). */
+  graduationPrBody: string;
+  promotedOverrides: Array<{
+    photoId: string;
+    publicSrc: string;
+    fileExists: boolean;
+    gitignoredDerivative: boolean;
+  }>;
   warnings: string[];
   nextActions: string[];
 };
@@ -336,6 +347,30 @@ function formatRegistryStubEntry(photo: CampaignPhotoRecord): string {
   ].join("\n");
 }
 
+export function buildGraduationPrBody(input?: {
+  onlyReady?: boolean;
+  candidateCount?: number;
+  relativePath?: string;
+}): string {
+  const count = input?.candidateCount ?? 0;
+  const stub = input?.relativePath ?? REGISTRY_GRADUATION_STUB_REL;
+  return [
+    "## Registry graduation (manual paste — never auto-apply)",
+    "",
+    `- Stub file: \`${stub}\``,
+    `- Candidates in stub: ${count}`,
+    "- Review each entry; Prefer Unknown geography must stay Unknown until confirmed.",
+    "- Paste approved blocks into `src/content/media/campaign-photo-registry.ts`.",
+    "- Commit overlays under `data/campaign-media/` separately from registry TS when ready.",
+    "",
+    "### Checklist",
+    "- [ ] Stub reviewed (no invented counties/cities)",
+    "- [ ] Binaries exist under `public/media/campaign-photos/`",
+    "- [ ] Overlays saved for graduated ids",
+    "- [ ] Ship report refreshed after paste",
+  ].join("\n");
+}
+
 export function writeRegistryGraduationStub(input?: {
   onlyReady?: boolean;
 }): {
@@ -343,6 +378,7 @@ export function writeRegistryGraduationStub(input?: {
   message: string;
   relativePath: string;
   candidateCount: number;
+  prBody: string;
 } {
   const onlyReady = input?.onlyReady !== false;
   const candidates = buildGraduationCandidates().filter((c) =>
@@ -377,11 +413,18 @@ export function writeRegistryGraduationStub(input?: {
   mkdirSync(path.dirname(target), { recursive: true });
   writeFileSync(target, `${blocks.join("\n")}\n`, "utf8");
 
+  const prBody = buildGraduationPrBody({
+    onlyReady,
+    candidateCount: candidates.length,
+    relativePath: REGISTRY_GRADUATION_STUB_REL,
+  });
+
   return {
     ok: true,
     message: `Wrote ${candidates.length} graduation stub entr(y/ies) → ${REGISTRY_GRADUATION_STUB_REL}`,
     relativePath: REGISTRY_GRADUATION_STUB_REL,
     candidateCount: candidates.length,
+    prBody,
   };
 }
 
@@ -503,6 +546,29 @@ export function buildEvidenceShipReport(input?: {
     (c) => c.county !== "Unknown" && c.hasOverlay && c.binaryExists,
   );
 
+  const photoStore = loadPhotoEvidenceStore();
+  const promotedOverrides: EvidenceShipReport["promotedOverrides"] = [];
+  for (const [photoId, overlay] of Object.entries(photoStore.photos ?? {})) {
+    const src = String(overlay?.publicSrcOverride ?? "").trim();
+    if (!src) continue;
+    const fileExists = Boolean(decodePublicSrcToAbs(src));
+    const gitignoredDerivative = src.startsWith("/media/campaign-derivatives/");
+    promotedOverrides.push({ photoId, publicSrc: src, fileExists, gitignoredDerivative });
+  }
+  const promotedOverrideMissing = promotedOverrides.filter((p) => !p.fileExists).length;
+  const promotedOverrideGitignored = promotedOverrides.filter((p) => p.gitignoredDerivative).length;
+
+  if (promotedOverrideMissing > 0) {
+    warnings.push(
+      `${promotedOverrideMissing} publicSrcOverride path(s) missing on disk — public site will 404 until files exist.`,
+    );
+  }
+  if (promotedOverrideGitignored > 0) {
+    warnings.push(
+      `${promotedOverrideGitignored} promoted override(s) point at gitignored campaign-derivatives — commit overlays alone will not ship those binaries.`,
+    );
+  }
+
   const checklist: ShipChecklistItem[] = [
     {
       id: "overlays",
@@ -550,25 +616,44 @@ export function buildEvidenceShipReport(input?: {
     {
       id: "git_overlays",
       label: "Overlay JSON commit state",
-      ok: true,
+      ok: overlayJsonDirty === 0,
       detail:
         overlayJsonDirty > 0
           ? `${overlayJsonDirty} dirty data/campaign-media path(s) — commit these to ship overlays to Netlify.`
           : "No dirty overlay JSON in watch paths (already committed or unchanged).",
     },
     {
+      id: "promoted_files",
+      label: "Promoted derivative files on disk",
+      ok: promotedOverrideMissing === 0,
+      detail:
+        promotedOverrides.length === 0
+          ? "No publicSrcOverride overlays — nothing to verify."
+          : promotedOverrideMissing === 0
+            ? `${promotedOverrides.length} override(s) resolve on disk.`
+            : `${promotedOverrideMissing}/${promotedOverrides.length} override(s) missing on disk — fix or clear override before ship.`,
+    },
+    {
       id: "derivatives_warning",
       label: "Derivative ship path understood",
-      ok: true,
+      ok: promotedOverrideGitignored === 0 && derivativeLocalOnly === 0,
       detail:
-        derivativeLocalOnly > 0
-          ? `${derivativeLocalOnly} local derivative file(s) gitignored — not shipped by git alone.`
-          : "No local derivative scan hits (or scan empty).",
+        promotedOverrideGitignored > 0
+          ? `${promotedOverrideGitignored} live override(s) use gitignored derivatives — need alternate binary deploy or clear override.`
+          : derivativeLocalOnly > 0
+            ? `${derivativeLocalOnly} local derivative file(s) gitignored — not shipped by git alone.`
+            : "No promoted gitignored overrides / no local derivative scan hits.",
     },
   ];
 
   const checklistReady = checklist
-    .filter((c) => c.id === "overlays" || c.id === "albums" || c.id === "binaries")
+    .filter(
+      (c) =>
+        c.id === "overlays" ||
+        c.id === "albums" ||
+        c.id === "binaries" ||
+        c.id === "promoted_files",
+    )
     .every((c) => c.ok);
 
   const commitMessageTemplate = [
@@ -593,7 +678,16 @@ export function buildEvidenceShipReport(input?: {
   if (photoBinaryDirty > 0) {
     nextActions.push(`Commit ${photoBinaryDirty} new/changed campaign-photos binary path(s).`);
   }
-  if (derivativeLocalOnly > 0) {
+  if (promotedOverrideMissing > 0) {
+    nextActions.push(
+      `Fix or clear ${promotedOverrideMissing} missing publicSrcOverride file(s) before claiming production.`,
+    );
+  }
+  if (promotedOverrideGitignored > 0) {
+    nextActions.push(
+      "Promoted derivatives are gitignored — deploy binaries from this machine or avoid override until ship path exists.",
+    );
+  } else if (derivativeLocalOnly > 0) {
     nextActions.push(
       "Remember: campaign-derivatives/** is gitignored — Pro Edit packs stay local unless you have another deploy path.",
     );
@@ -608,6 +702,10 @@ export function buildEvidenceShipReport(input?: {
   const cappedPaths = [...gitDirty.slice(0, 80), ...derivDirty.slice(0, 40)];
 
   const trackedDirty = gitDirty.length;
+  const graduationPrBody = buildGraduationPrBody({
+    candidateCount: readyGrad.length,
+    relativePath: REGISTRY_GRADUATION_STUB_REL,
+  });
   const report: EvidenceShipReport = {
     id: `ship-${Date.now().toString(36)}`,
     generatedAt: new Date().toISOString(),
@@ -625,11 +723,16 @@ export function buildEvidenceShipReport(input?: {
       photoBinaryDirty,
       derivativeLocalOnly,
       dirtyBytes,
+      promotedOverrideCount: promotedOverrides.length,
+      promotedOverrideMissing,
+      promotedOverrideGitignored,
     },
     checklist,
     checklistReady,
     commitMessageTemplate,
     graduationCandidates: graduationCandidates.slice(0, 24),
+    graduationPrBody,
+    promotedOverrides: promotedOverrides.slice(0, 40),
     warnings,
     nextActions,
   };

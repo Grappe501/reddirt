@@ -3,18 +3,24 @@ import { CAMPAIGN_MEDIA_REGISTRY } from "@/content/media/campaign-media-registry
 import { CAMPAIGN_PHOTO_REGISTRY } from "@/content/media/campaign-photo-registry";
 import { EvidenceAiCommandCenter } from "@/components/admin/evidence-workbench/EvidenceAiCommandCenter";
 import { EvidenceCalendarPanel } from "@/components/admin/evidence-workbench/EvidenceCalendarPanel";
+import { EvidenceEventNightLoopPanel } from "@/components/admin/evidence-workbench/EvidenceEventNightLoopPanel";
+import { EvidenceFitBacklogPanel } from "@/components/admin/evidence-workbench/EvidenceFitBacklogPanel";
 import { EvidenceIngestPanel } from "@/components/admin/evidence-workbench/EvidenceIngestPanel";
 import { EvidenceNextActionsStrip } from "@/components/admin/evidence-workbench/EvidenceNextActionsStrip";
+import { EvidencePhotoReadinessPanel } from "@/components/admin/evidence-workbench/EvidencePhotoReadinessPanel";
 import { EvidencePlacementPanel } from "@/components/admin/evidence-workbench/EvidencePlacementPanel";
 import { EvidencePhotosPanel } from "@/components/admin/evidence-workbench/EvidencePhotosPanel";
 import { EvidencePublishQueuePanel } from "@/components/admin/evidence-workbench/EvidencePublishQueuePanel";
 import { EvidenceShipPanel } from "@/components/admin/evidence-workbench/EvidenceShipPanel";
 import { EvidenceSpeechConfirmPanel } from "@/components/admin/evidence-workbench/EvidenceSpeechConfirmPanel";
 import { EvidenceSpeechesPanel } from "@/components/admin/evidence-workbench/EvidenceSpeechesPanel";
+import { EvidenceToolingBanner } from "@/components/admin/evidence-workbench/EvidenceToolingBanner";
 import { strategicPlacementNotes } from "@/content/media/strategic-photo-placements";
 import { EVIDENCE_AI_TOOL_CATALOG } from "@/lib/campaign-media/evidence-ai-tool-defs";
 import { listEvidenceAiModesForUi } from "@/lib/campaign-media/evidence-ai-modes";
+import { buildFitRankedBacklog } from "@/lib/campaign-media/evidence-fit-backlog";
 import { rankEvidenceNextActions } from "@/lib/campaign-media/evidence-next-actions";
+import { getEvidenceToolingReadiness } from "@/lib/campaign-media/evidence-tooling-readiness";
 import { photoPublicSurfacesPreview } from "@/lib/campaign-media/county-albums-live";
 import {
   loadCalendarPresenceStore,
@@ -32,6 +38,7 @@ import {
   loadSpeechPlacementStore,
 } from "@/lib/campaign-media/speech-placement";
 import { buildSpeechReadinessMatrix } from "@/lib/campaign-media/speech-readiness";
+import { getPhotoReadinessMatrix } from "@/lib/campaign-media/photo-readiness";
 import { listCampaignPhotosLive } from "@/lib/campaign-media/list-campaign-photos-live";
 import { listDiskPhotoIngestCandidates } from "@/lib/campaign-media/photo-ingest";
 import { photoRequiresConsentHold } from "@/lib/campaign-media/photo-consent-hold";
@@ -70,6 +77,9 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
   const publishQueue = buildEvidencePublishQueue();
   const shipReport = buildEvidenceShipReport({ persist: false, includeDerivativeScan: true });
   const nextActions = rankEvidenceNextActions(6);
+  const tooling = getEvidenceToolingReadiness();
+  const photoReadiness = getPhotoReadinessMatrix({ limit: 80 });
+  const fitBacklog = buildFitRankedBacklog({ limit: 24 });
   const placementCurrent = getCurrentCuratedPlacementSnapshot();
   const placementProposal = listPendingCuratedPlacementProposals()[0] ?? null;
   const speechConfirmQueue = buildSpeechConfirmQueue();
@@ -148,6 +158,8 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
           on this machine. Prefer Unknown. Never invent geography.
         </p>
       </header>
+
+      <EvidenceToolingBanner initial={tooling} />
 
       <EvidenceAiCommandCenter />
 
@@ -256,30 +268,46 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
 
       <div className="ew-panel mt-5">
         {tab === "queue" ? (
-          <EvidencePublishQueuePanel
-            initialQueue={publishQueue}
-            initialSpeechQueue={speechConfirmQueue}
-          />
+          <>
+            <EvidenceFitBacklogPanel initialBacklog={fitBacklog} />
+            <EvidencePublishQueuePanel
+              initialQueue={publishQueue}
+              initialSpeechQueue={speechConfirmQueue}
+            />
+          </>
         ) : null}
         {tab === "ship" ? <EvidenceShipPanel initialReport={shipReport} /> : null}
         {tab === "placement" ? (
           <EvidencePlacementPanel initialProposal={placementProposal} current={placementCurrent} />
         ) : null}
         {tab === "calendar" ? (
-          <EvidenceCalendarPanel
-            initialRows={calendar.rows}
-            counties={counties}
-            sourceNote={calendar.sourceNote}
-            sinceDate={calendar.sinceDate}
-          />
+          <>
+            <EvidenceEventNightLoopPanel
+              calendarRows={calendar.rows.map((r) => ({
+                id: r.id,
+                date: r.date,
+                summary: r.summary,
+                status: r.status,
+              }))}
+            />
+            <EvidenceCalendarPanel
+              initialRows={calendar.rows}
+              counties={counties}
+              sourceNote={calendar.sourceNote}
+              sinceDate={calendar.sinceDate}
+            />
+          </>
         ) : null}
         {tab === "photos" ? (
-          <EvidencePhotosPanel
-            photos={photos}
-            counties={counties}
-            initialPhotoId={focusId}
-            initialFilter={photoFilter}
-          />
+          <>
+            <EvidencePhotoReadinessPanel initialMatrix={photoReadiness} />
+            <EvidencePhotosPanel
+              photos={photos}
+              counties={counties}
+              initialPhotoId={focusId}
+              initialFilter={photoFilter}
+            />
+          </>
         ) : null}
         {tab === "speeches" ? (
           <>

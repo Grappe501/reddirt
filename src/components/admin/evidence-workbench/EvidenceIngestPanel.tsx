@@ -4,8 +4,8 @@ import { useEffect, useState, useTransition } from "react";
 import Link from "next/link";
 import {
   getTurboIngestDashboardAction,
-  intakeAllPhotosAction,
   listPhotoIngestCandidatesAction,
+  promoteAllPhotoIngestAction,
   promotePhotoIngestAction,
   runTurboIngestAction,
 } from "@/app/admin/evidence-workbench-actions";
@@ -93,10 +93,9 @@ export function EvidenceIngestPanel({ initialCandidates, initialStatus }: Props)
 
   function intakeAll() {
     start(async () => {
-      const res = await intakeAllPhotosAction();
+      const res = await promoteAllPhotoIngestAction();
       setMessage(res.message);
-      setLastQueued(res.queued ?? 0);
-      if (res.status) setStatus(res.status);
+      setLastQueued(res.ids?.length ?? 0);
       const again = await listPhotoIngestCandidatesAction();
       if (again.candidates) setCandidates(again.candidates);
       if (again.status) setStatus(again.status);
@@ -188,7 +187,7 @@ export function EvidenceIngestPanel({ initialCandidates, initialStatus }: Props)
           onClick={intakeAll}
           className="rounded-md bg-[#000066] px-4 py-2.5 font-body text-sm font-bold text-white disabled:opacity-50"
         >
-          Intake all new ({status.newOnDisk})
+          Intake / promote all new ({status.newOnDisk})
         </button>
         <button
           type="button"

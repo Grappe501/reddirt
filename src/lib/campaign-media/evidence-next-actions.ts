@@ -1,12 +1,14 @@
 /**
  * Evidence Workbench — ranked Next Actions (deterministic, Prefer Unknown).
- * Read-only operator guidance from queue + speech + ship + intake signals.
+ * Read-only operator guidance from queue + speech + ship + intake + tooling signals.
  */
 import "server-only";
 
 import { buildEvidencePublishQueue } from "@/lib/campaign-media/evidence-publish-queue";
 import { buildEvidenceShipReport } from "@/lib/campaign-media/evidence-ship-report";
+import { getEvidenceToolingReadiness } from "@/lib/campaign-media/evidence-tooling-readiness";
 import { getPhotoIntakeStatus } from "@/lib/campaign-media/photo-ingest";
+import { getPhotoReadinessMatrix } from "@/lib/campaign-media/photo-readiness";
 import { buildSpeechConfirmQueue } from "@/lib/campaign-media/speech-confirm-queue";
 import { buildSpeechReadinessMatrix } from "@/lib/campaign-media/speech-readiness";
 import { listPendingCuratedPlacementProposals } from "@/lib/campaign-media/curated-placement-store";
@@ -29,12 +31,15 @@ export function rankEvidenceNextActions(limit = 5): {
   const queue = buildEvidencePublishQueue();
   const speechQ = buildSpeechConfirmQueue();
   const readiness = buildSpeechReadinessMatrix();
+  const photoReady = getPhotoReadinessMatrix({ limit: 80 });
   const ship = buildEvidenceShipReport({ persist: false, includeDerivativeScan: true });
   const intake = getPhotoIntakeStatus();
+  const tooling = getEvidenceToolingReadiness();
   const calendar = loadCalendarPresenceStore();
   const pendingCurate = listPendingCuratedPlacementProposals().length;
   const needsConfirmCal = calendar.rows.filter((r) => r.status === "Needs confirm").length;
   const unknownCal = calendar.rows.filter((r) => r.status === "Unknown").length;
+  const confirmedCal = calendar.rows.filter((r) => r.status === "Confirmed").length;
 
   const prepReady = readiness.rows.filter(
     (r) =>
@@ -44,6 +49,27 @@ export function rankEvidenceNextActions(limit = 5): {
   const speechConfirmReady = speechQ.totals.noCounty;
 
   const candidates: EvidenceNextAction[] = [];
+
+  if (!tooling.openaiConfigured) {
+    candidates.push({
+      id: "tooling-openai",
+      priority: 110,
+      title: "Configure OPENAI_API_KEY for Evidence AI",
+      why: "Suggest / Command / turbo AI / metadata packets need a local key in RedDirt .env (never commit secrets).",
+      href: "/admin/evidence-workbench",
+      modeHint: "command",
+    });
+  }
+  if (!tooling.ffmpeg.ffmpegAvailable) {
+    candidates.push({
+      id: "tooling-ffmpeg",
+      priority: 108,
+      title: "Install local ffmpeg for video tooling",
+      why: tooling.ffmpeg.note || tooling.ffmpeg.installHint,
+      href: "/admin/evidence-workbench?tab=speeches",
+      modeHint: "video_prep",
+    });
+  }
 
   if (queue.totals.unknownCounty > 0) {
     candidates.push({
@@ -65,6 +91,16 @@ export function rankEvidenceNextActions(limit = 5): {
       modeHint: "identify",
     });
   }
+  if (ship.totals.promotedOverrideMissing > 0) {
+    candidates.push({
+      id: "ship-override-missing",
+      priority: 94,
+      title: `Fix ${ship.totals.promotedOverrideMissing} missing promoted file(s)`,
+      why: "publicSrcOverride points at files not on disk — public pages will 404.",
+      href: "/admin/evidence-workbench?tab=ship",
+      modeHint: "publish",
+    });
+  }
   if (queue.totals.needsApproval > 0) {
     candidates.push({
       id: "photos-approve",
@@ -75,6 +111,16 @@ export function rankEvidenceNextActions(limit = 5): {
       modeHint: "publish",
     });
   }
+  if (photoReady.needsPromote > 0) {
+    candidates.push({
+      id: "photo-promote",
+      priority: 87,
+      title: `Promote ${photoReady.needsPromote} ready Pro Edit assembl(y/ies)`,
+      why: "Assemblies rendered but not yet set as publicSrcOverride — confirm promote.",
+      href: "/admin/evidence-workbench?tab=photos",
+      modeHint: "photo_prep",
+    });
+  }
   if (speechConfirmReady > 0) {
     candidates.push({
       id: "speech-county",
@@ -83,6 +129,16 @@ export function rankEvidenceNextActions(limit = 5): {
       why: "Empty county blocks honest publish / homepage video placement.",
       href: "/admin/evidence-workbench?tab=speeches",
       modeHint: "identify",
+    });
+  }
+  if (confirmedCal > 0 && queue.totals.unknownCounty + intake.newOnDisk > 0) {
+    candidates.push({
+      id: "event-night",
+      priority: 84,
+      title: "Run event-night loop (calendar → turbo → approve → ship)",
+      why: `${confirmedCal} Confirmed calendar row(s) ready to drive tonight's media path.`,
+      href: "/admin/evidence-workbench?tab=calendar",
+      modeHint: "command",
     });
   }
   if (needsConfirmCal + unknownCal > 0) {
@@ -125,7 +181,16 @@ export function rankEvidenceNextActions(limit = 5): {
       modeHint: "publish",
     });
   }
-  if (ship.totals.derivativeLocalOnly > 0) {
+  if (ship.totals.promotedOverrideGitignored > 0) {
+    candidates.push({
+      id: "ship-promoted-gitignore",
+      priority: 68,
+      title: `${ship.totals.promotedOverrideGitignored} promoted deriv(s) are gitignored`,
+      why: "Overrides live locally only until you have a binary deploy path.",
+      href: "/admin/evidence-workbench?tab=ship",
+      modeHint: "photo_prep",
+    });
+  } else if (ship.totals.derivativeLocalOnly > 0) {
     candidates.push({
       id: "ship-deriv",
       priority: 55,
@@ -161,6 +226,10 @@ export function rankEvidenceNextActions(limit = 5): {
       calendarNeedsConfirm: needsConfirmCal + unknownCal,
       overlayDirty: ship.totals.overlayJsonDirty,
       pendingCurate,
+      openaiOk: tooling.openaiConfigured ? 1 : 0,
+      ffmpegOk: tooling.ffmpeg.ffmpegAvailable ? 1 : 0,
+      photoNeedsPromote: photoReady.needsPromote,
+      promotedMissing: ship.totals.promotedOverrideMissing,
     },
   };
 }
