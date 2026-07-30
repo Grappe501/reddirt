@@ -4,10 +4,13 @@ import { useEffect, useState, useTransition } from "react";
 import Link from "next/link";
 import {
   buildEvidenceShipReportAction,
+  copyReadyGraduationBlocksAction,
+  getGraduationAssistMatrixAction,
   shipPromotedDerivativesAction,
   writeRegistryGraduationStubAction,
 } from "@/app/admin/evidence-workbench-actions";
 import type { EvidenceShipReport } from "@/lib/campaign-media/evidence-ship-report";
+import type { GraduationAssistMatrix } from "@/lib/campaign-media/registry-graduation-clipboard";
 
 type Props = {
   initialReport: EvidenceShipReport;
@@ -24,12 +27,20 @@ export function EvidenceShipPanel({ initialReport }: Props) {
   const [report, setReport] = useState(initialReport);
   const [message, setMessage] = useState("");
   const [prBody, setPrBody] = useState(initialReport.graduationPrBody ?? "");
+  const [gradMatrix, setGradMatrix] = useState<GraduationAssistMatrix | null>(null);
+  const [gradSelected, setGradSelected] = useState<Set<string>>(() => new Set());
   const [pending, start] = useTransition();
 
   useEffect(() => {
     setReport(initialReport);
     setPrBody(initialReport.graduationPrBody ?? "");
   }, [initialReport]);
+
+  useEffect(() => {
+    void getGraduationAssistMatrixAction().then((res) => {
+      if (res.matrix) setGradMatrix(res.matrix);
+    });
+  }, []);
 
   function refresh(includeDerivatives = true) {
     start(async () => {
@@ -81,6 +92,41 @@ export function EvidenceShipPanel({ initialReport }: Props) {
         setMessage("Copied graduation PR body to clipboard.");
       } catch {
         setMessage("Clipboard blocked — select the PR body text manually.");
+      }
+    });
+  }
+
+  function refreshGrad() {
+    start(async () => {
+      const res = await getGraduationAssistMatrixAction();
+      setMessage(res.message);
+      if (res.matrix) setGradMatrix(res.matrix);
+    });
+  }
+
+  function toggleGrad(id: string) {
+    setGradSelected((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      return next;
+    });
+  }
+
+  function copyReadyTsBlocks() {
+    const ids = [...gradSelected];
+    start(async () => {
+      const res = await copyReadyGraduationBlocksAction(
+        ids.length ? { ids, onlyReady: false } : { onlyReady: true },
+      );
+      setMessage(res.message);
+      if (res.ok && res.tsBlocks) {
+        try {
+          await navigator.clipboard.writeText(res.tsBlocks);
+          setMessage(`${res.message} (clipboard)`);
+        } catch {
+          setMessage(`${res.message} — clipboard blocked; blocks in response only.`);
+        }
       }
     });
   }
@@ -275,28 +321,99 @@ export function EvidenceShipPanel({ initialReport }: Props) {
 
       <div className="rounded-lg border-2 border-[#000066]/15 bg-white p-3">
         <p className="font-heading text-xs font-bold uppercase tracking-wide text-[#000066]">
-          Draft → registry candidates (stub only)
+          Draft → registry graduation assist (stub / clipboard only)
         </p>
         <p className="mt-1 font-body text-[11px] text-[#364272]">
           Never auto-mutates <code className="rounded bg-[#f4f7fc] px-1">campaign-photo-registry.ts</code>.
-          Stub path:{" "}
-          <code className="rounded bg-[#f4f7fc] px-1">data/campaign-media/registry-graduation-stub.md</code>
+          Ready = known county + overlay + binary on disk. Copy TS blocks after Steve review.
         </p>
-        {report.graduationCandidates.length ? (
-          <ul className="mt-2 max-h-48 space-y-1 overflow-y-auto">
-            {report.graduationCandidates.map((c) => (
-              <li key={c.id} className="rounded border border-[#8eb6dc]/30 bg-[#f4f7fc] px-2 py-1">
-                <Link
-                  href={`/admin/evidence-workbench?tab=photos&id=${encodeURIComponent(c.id)}`}
-                  className="font-mono text-[10px] font-semibold text-[#000066] underline"
-                >
-                  {c.id}
-                </Link>
-                <p className="font-body text-[10px] text-[#364272]">
-                  {c.county} · {c.city} · {c.reason}
-                </p>
+        <div className="mt-2 flex flex-wrap gap-2">
+          <button
+            type="button"
+            disabled={pending}
+            onClick={refreshGrad}
+            className="rounded border-2 border-[#8eb6dc] bg-[#f4f7fc] px-2.5 py-1 font-body text-xs font-semibold disabled:opacity-50"
+          >
+            Refresh assist
+            {gradMatrix ? ` (${gradMatrix.readyCount}/${gradMatrix.total})` : ""}
+          </button>
+          <button
+            type="button"
+            disabled={pending}
+            onClick={() => {
+              const ready = (gradMatrix?.rows ?? []).filter((r) => r.ready).map((r) => r.id);
+              setGradSelected(new Set(ready));
+            }}
+            className="rounded border-2 border-[#8eb6dc] bg-white px-2.5 py-1 font-body text-xs font-semibold disabled:opacity-50"
+          >
+            Select ready
+          </button>
+          <button
+            type="button"
+            disabled={pending}
+            onClick={copyReadyTsBlocks}
+            className="rounded border-2 border-[#000066] bg-[#000066] px-2.5 py-1 font-body text-xs font-bold text-white disabled:opacity-50"
+          >
+            Copy N TS blocks
+            {gradSelected.size ? ` (${gradSelected.size})` : " (ready)"}
+          </button>
+        </div>
+        {(gradMatrix?.rows.length ? gradMatrix.rows : report.graduationCandidates).length ? (
+          <ul className="mt-2 max-h-56 space-y-1 overflow-y-auto">
+            {(gradMatrix?.rows ?? []).map((c) => (
+              <li
+                key={c.id}
+                className="flex flex-wrap items-start gap-2 rounded border border-[#8eb6dc]/30 bg-[#f4f7fc] px-2 py-1"
+              >
+                <input
+                  type="checkbox"
+                  checked={gradSelected.has(c.id)}
+                  onChange={() => toggleGrad(c.id)}
+                  aria-label={`Select ${c.id}`}
+                  className="mt-0.5"
+                />
+                <div className="min-w-0 flex-1">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <Link
+                      href={`/admin/evidence-workbench?tab=photos&id=${encodeURIComponent(c.id)}`}
+                      className="font-mono text-[10px] font-semibold text-[#000066] underline"
+                    >
+                      {c.id}
+                    </Link>
+                    <span
+                      className={`rounded px-1.5 py-0.5 font-body text-[9px] font-bold uppercase ${
+                        c.ready
+                          ? "bg-[#000066] text-white"
+                          : "bg-white text-[#364272] border border-[#8eb6dc]/50"
+                      }`}
+                    >
+                      {c.ready ? "Ready" : "Not ready"}
+                    </span>
+                  </div>
+                  <p className="font-body text-[10px] text-[#364272]">
+                    {c.county} · {c.city} · bin={c.binaryExists ? "yes" : "no"} · overlay=
+                    {c.hasOverlay ? "yes" : "no"}
+                  </p>
+                  <p className="font-body text-[10px] text-[#364272]">{c.caption}</p>
+                  <p className="font-body text-[10px] text-[#364272]">{c.reason}</p>
+                </div>
               </li>
             ))}
+            {!gradMatrix
+              ? report.graduationCandidates.map((c) => (
+                  <li key={c.id} className="rounded border border-[#8eb6dc]/30 bg-[#f4f7fc] px-2 py-1">
+                    <Link
+                      href={`/admin/evidence-workbench?tab=photos&id=${encodeURIComponent(c.id)}`}
+                      className="font-mono text-[10px] font-semibold text-[#000066] underline"
+                    >
+                      {c.id}
+                    </Link>
+                    <p className="font-body text-[10px] text-[#364272]">
+                      {c.county} · {c.city} · {c.reason}
+                    </p>
+                  </li>
+                ))
+              : null}
           </ul>
         ) : (
           <p className="mt-2 font-body text-[11px] text-[#364272]">

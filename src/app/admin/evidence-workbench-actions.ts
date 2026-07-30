@@ -1053,6 +1053,8 @@ export async function intakeAllPhotosAction(): Promise<{
   flattened?: number;
   queued?: number;
   status?: import("@/lib/campaign-media/photo-ingest").PhotoIntakeStatus;
+  ownedMediaLinked?: number;
+  ownedMediaUnlinked?: number;
 }> {
   const g = await gate();
   if (!g.ok) return { ok: false, message: g.error };
@@ -1060,15 +1062,33 @@ export async function intakeAllPhotosAction(): Promise<{
     "@/lib/campaign-media/photo-ingest"
   );
   const result = intakeAllNewCampaignPhotos();
+  let ownedMediaLinked = 0;
+  let ownedMediaUnlinked = 0;
+  let ownedNote = "";
+  if (result.ids?.length) {
+    try {
+      const { matchOwnedMediaForPhotoIds } = await import(
+        "@/lib/campaign-media/owned-media-evidence-link"
+      );
+      const match = await matchOwnedMediaForPhotoIds(result.ids);
+      ownedMediaLinked = match.linked;
+      ownedMediaUnlinked = match.unlinked;
+      ownedNote = ` · Owned Media match ${match.linked} linked / ${match.unlinked} not linked`;
+    } catch {
+      ownedNote = " · Owned Media match skipped (DB unavailable)";
+    }
+  }
   revalidatePath("/admin/evidence-workbench");
   revalidatePath("/campaign-photos");
   return {
     ok: result.ok,
-    message: result.message,
+    message: `${result.message}${ownedNote}`,
     ids: result.ids,
     flattened: result.flattened,
     queued: result.queued,
     status: getPhotoIntakeStatus(),
+    ownedMediaLinked,
+    ownedMediaUnlinked,
   };
 }
 
@@ -1416,9 +1436,17 @@ export async function promoteAllPhotoIngestAction(): Promise<{
   ok: boolean;
   message: string;
   ids?: string[];
+  ownedMediaLinked?: number;
+  ownedMediaUnlinked?: number;
 }> {
   const res = await intakeAllPhotosAction();
-  return { ok: res.ok, message: res.message, ids: res.ids };
+  return {
+    ok: res.ok,
+    message: res.message,
+    ids: res.ids,
+    ownedMediaLinked: res.ownedMediaLinked,
+    ownedMediaUnlinked: res.ownedMediaUnlinked,
+  };
 }
 
 export async function inspectPhotoPixelsAction(photoId: string): Promise<{
@@ -2583,6 +2611,84 @@ export async function runVisionIdentifyBatchAction(input: {
     ok: result.ok,
     message: `Vision Identify (clamped Prefer Unknown) · ${result.message}`,
     proposalIds: result.proposalIds,
+  };
+}
+
+export async function proposeSpeechCutsFromIntelAction(input: {
+  speechId: string;
+  youtubeVideoId?: string;
+  maxClips?: number;
+}): Promise<{
+  ok: boolean;
+  message: string;
+  projectId?: string;
+  quoteCount?: number;
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { proposeSpeechCutsFromIntel } = await import(
+    "@/lib/campaign-media/speech-quote-edit-proposals"
+  );
+  const result = proposeSpeechCutsFromIntel(input);
+  if (result.ok) revalidatePath("/admin/evidence-workbench");
+  return {
+    ok: result.ok,
+    message: result.message,
+    projectId: result.packet?.project?.id,
+    quoteCount: result.quoteCount,
+  };
+}
+
+export async function getGraduationAssistMatrixAction(): Promise<{
+  ok: boolean;
+  message: string;
+  matrix?: import("@/lib/campaign-media/registry-graduation-clipboard").GraduationAssistMatrix;
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { buildGraduationAssistMatrix } = await import(
+    "@/lib/campaign-media/registry-graduation-clipboard"
+  );
+  const matrix = buildGraduationAssistMatrix();
+  return {
+    ok: true,
+    message: `Graduation assist · ${matrix.readyCount} ready / ${matrix.total} candidates`,
+    matrix,
+  };
+}
+
+export async function copyReadyGraduationBlocksAction(input?: {
+  ids?: string[];
+  onlyReady?: boolean;
+}): Promise<{
+  ok: boolean;
+  message: string;
+  tsBlocks?: string;
+  count?: number;
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { formatReadyGraduationClipboardBlocks } = await import(
+    "@/lib/campaign-media/registry-graduation-clipboard"
+  );
+  return formatReadyGraduationClipboardBlocks(input);
+}
+
+export async function lookupOwnedMediaForPhotoAction(photoId: string): Promise<{
+  ok: boolean;
+  message: string;
+  link?: import("@/lib/campaign-media/owned-media-evidence-link").OwnedMediaEvidenceLink;
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { lookupOwnedMediaForPhoto } = await import(
+    "@/lib/campaign-media/owned-media-evidence-link"
+  );
+  const link = await lookupOwnedMediaForPhoto(photoId);
+  return {
+    ok: true,
+    message: link.reason,
+    link,
   };
 }
 

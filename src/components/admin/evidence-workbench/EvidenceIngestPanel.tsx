@@ -63,6 +63,9 @@ export function EvidenceIngestPanel({ initialCandidates, initialStatus }: Props)
   const [status, setStatus] = useState(initialStatus);
   const [message, setMessage] = useState("");
   const [lastQueued, setLastQueued] = useState(0);
+  const [ownedMediaMatch, setOwnedMediaMatch] = useState<{ linked: number; unlinked: number } | null>(
+    null,
+  );
   const [turbo, setTurbo] = useState<TurboDash | null>(null);
   const [turboUseAi, setTurboUseAi] = useState(true);
   const [pending, start] = useTransition();
@@ -96,6 +99,9 @@ export function EvidenceIngestPanel({ initialCandidates, initialStatus }: Props)
       const res = await promoteAllPhotoIngestAction();
       setMessage(res.message);
       setLastQueued(res.ids?.length ?? 0);
+      if (typeof res.ownedMediaLinked === "number" && typeof res.ownedMediaUnlinked === "number") {
+        setOwnedMediaMatch({ linked: res.ownedMediaLinked, unlinked: res.ownedMediaUnlinked });
+      }
       const again = await listPhotoIngestCandidatesAction();
       if (again.candidates) setCandidates(again.candidates);
       if (again.status) setStatus(again.status);
@@ -205,6 +211,16 @@ export function EvidenceIngestPanel({ initialCandidates, initialStatus }: Props)
           {lastQueued > 0 ? ` (+${lastQueued})` : status.queueUnknownCounty ? ` (${status.queueUnknownCounty} unknown)` : ""}
         </Link>
       </div>
+
+      {ownedMediaMatch ? (
+        <p className="font-body text-xs text-[#364272]">
+          Owned Media DAM after intake:{" "}
+          <strong className="text-[#12124a]">{ownedMediaMatch.linked} linked</strong>
+          {" · "}
+          <strong className="text-[#12124a]">{ownedMediaMatch.unlinked} not linked</strong>
+          {" "}(filename match — open Photos for Linked / Not linked chip)
+        </p>
+      ) : null}
 
       <div className="rounded-lg border-2 border-[#ca913d]/60 bg-[#fff8ef] p-4">
         <p className="font-heading text-sm font-bold uppercase tracking-wide text-[#000066]">

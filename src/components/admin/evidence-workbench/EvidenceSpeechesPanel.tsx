@@ -14,6 +14,7 @@ import {
   prepSpeechVideoPackageAction,
   proposeVideoEditProjectAction,
   listVideoEditProjectsAction,
+  proposeSpeechCutsFromIntelAction,
   renderVideoEditProjectAction,
   updateVideoEditCutListAction,
   previewVideoEditCaptionsAction,
@@ -451,6 +452,29 @@ export function EvidenceSpeechesPanel({ speeches, initialSpeechId }: Props) {
         setProRenderNote(res.packet.warnings.concat(res.packet.nextActions).join(" · "));
       } else if (res.packet?.nextActions?.length) {
         setProRenderNote(res.packet.nextActions.join(" · "));
+      }
+    });
+  }
+
+  function proposeQuoteCutsSocial() {
+    const speechId = speech.id;
+    const youtubeVideoId = speech.youtubeVideoId;
+    start(async () => {
+      const res = await proposeSpeechCutsFromIntelAction({
+        speechId,
+        youtubeVideoId,
+        maxClips: proMaxClips,
+      });
+      setMessage(res.message);
+      setCaptionPreview(null);
+      if (res.projectId) {
+        const listed = await listVideoEditProjectsAction(speechId);
+        const project = listed.projects?.find((p) => p.id === res.projectId) ?? listed.projects?.[0];
+        if (project) setEditProject(project);
+        setProAspects(["landscape_16x9", "vertical_9x16"]);
+        setProRenderNote(
+          "Quote→Pro Edit proposed (16:9 + 9:16). Review cut list, then Confirm render — never auto-encodes.",
+        );
       }
     });
   }
@@ -927,8 +951,18 @@ export function EvidenceSpeechesPanel({ speeches, initialSpeechId }: Props) {
             {intelProposal?.quotes?.length ? (
               <div className="mt-3 rounded border border-[#8eb6dc]/40 bg-white p-2">
                 <p className="font-heading text-[10px] font-bold uppercase tracking-wide text-[#000066]">
-                  Quote → encode
+                  Quote → encode / Pro Edit
                 </p>
+                <div className="mt-1 flex flex-wrap gap-2">
+                  <button
+                    type="button"
+                    disabled={pending}
+                    onClick={proposeQuoteCutsSocial}
+                    className="rounded border-2 border-[#000066] bg-[#000066] px-2 py-1 font-body text-[10px] font-bold text-white disabled:opacity-50"
+                  >
+                    Propose Pro Edit (16:9 + 9:16)
+                  </button>
+                </div>
                 <ul className="mt-1 space-y-1.5">
                   {intelProposal.quotes.slice(0, 4).map((q, i) => (
                     <li key={`q-${i}`} className="flex flex-wrap items-start justify-between gap-2">

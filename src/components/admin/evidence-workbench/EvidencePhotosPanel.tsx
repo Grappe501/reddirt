@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useMemo, useRef, useState, useTransition, type MouseEvent } from "react";
 import {
   batchCreatePhotoDerivativesAction,
@@ -16,6 +17,7 @@ import {
   listEvidenceBatchOpsAction,
   listPhotoDerivativesAction,
   listPhotoEditProjectsAction,
+  lookupOwnedMediaForPhotoAction,
   previewPromotePlacementAction,
   previewPhotoEditPackAction,
   promotePhotoDerivativeAction,
@@ -30,6 +32,7 @@ import {
   suggestPhotoEvidenceAiAction,
   undoBatchPublishAction,
 } from "@/app/admin/evidence-workbench-actions";
+import type { OwnedMediaEvidenceLink } from "@/lib/campaign-media/owned-media-evidence-link";
 import type { BatchPhotoAiProposal } from "@/lib/campaign-media/evidence-ai-types";
 import type { EvidenceBatchOperation } from "@/lib/campaign-media/evidence-batch-ops";
 import type { PhotoEvidenceOverlay } from "@/lib/campaign-media/evidence-types";
@@ -255,6 +258,7 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId, initialF
   const [focus, setFocus] = useState<FocusPoint | null>(null);
   const [focusMarker, setFocusMarker] = useState<{ left: number; top: number } | null>(null);
   const [cropAdvice, setCropAdvice] = useState("");
+  const [ownedMediaLink, setOwnedMediaLink] = useState<OwnedMediaEvidenceLink | null>(null);
   const previewImgRef = useRef<HTMLImageElement | null>(null);
   const [form, setForm] = useState<PhotoFormState | null>(() => {
     const first = photos.find((p) => p.id === (initialPhotoId || photos[0]?.id));
@@ -332,6 +336,21 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId, initialF
     void getTurboProposalAction(activeId).then((res) => {
       if (cancelled) return;
       setTurboProposal(res.proposal ?? null);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [activeId]);
+
+  useEffect(() => {
+    if (!activeId) {
+      setOwnedMediaLink(null);
+      return;
+    }
+    let cancelled = false;
+    void lookupOwnedMediaForPhotoAction(activeId).then((res) => {
+      if (cancelled) return;
+      setOwnedMediaLink(res.link ?? null);
     });
     return () => {
       cancelled = true;
@@ -519,6 +538,8 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId, initialF
     start(async () => {
       const res = await buildPhotoMetadataPacketAction(photoId, confirmed);
       setMessage(res.message);
+      const linkRes = await lookupOwnedMediaForPhotoAction(photoId);
+      if (linkRes.link) setOwnedMediaLink(linkRes.link);
     });
   }
 
@@ -1639,6 +1660,26 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId, initialF
               : "click photo to set attention point"}
           </p>
           <p className="mt-1 font-mono text-xs text-[#364272]">{photo.id}</p>
+          <div className="mt-1 flex flex-wrap items-center gap-2">
+            {ownedMediaLink?.linked && ownedMediaLink.ownedMediaId ? (
+              <Link
+                href={`/admin/owned-media/${ownedMediaLink.ownedMediaId}`}
+                className="rounded border border-[#000066] bg-[#000066] px-2 py-0.5 font-body text-[10px] font-bold uppercase text-white"
+              >
+                Owned Media linked
+              </Link>
+            ) : (
+              <span className="rounded border border-[#8eb6dc]/60 bg-[#f4f7fc] px-2 py-0.5 font-body text-[10px] font-semibold uppercase text-[#364272]">
+                Owned Media not linked
+              </span>
+            )}
+            {ownedMediaLink?.filename ? (
+              <span className="font-mono text-[10px] text-[#364272]">{ownedMediaLink.filename}</span>
+            ) : null}
+          </div>
+          {ownedMediaLink && !ownedMediaLink.linked ? (
+            <p className="mt-0.5 font-body text-[10px] text-[#364272]">{ownedMediaLink.reason}</p>
+          ) : null}
           <p className="break-all font-mono text-[10px] text-[#364272]">{photo.src}</p>
           {photo.overlay?.publicSrcOverride ? (
             <div className="mt-2 rounded border-2 border-[#ca913d]/50 bg-[#fff8ef] px-2 py-1.5">

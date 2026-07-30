@@ -306,7 +306,7 @@ export function buildGraduationCandidates(): RegistryGraduationCandidate[] {
     .slice(0, 40);
 }
 
-function formatRegistryStubEntry(photo: CampaignPhotoRecord): string {
+export function formatRegistryStubEntry(photo: CampaignPhotoRecord): string {
   const j = (v: unknown) => JSON.stringify(v);
   return [
     "  {",
