@@ -6,6 +6,7 @@ import { FullBleedSection } from "@/components/layout/FullBleedSection";
 import { Button } from "@/components/ui/Button";
 import { listConfirmedEndorsements } from "@/content/website/confirmed-endorsements";
 import { getCampaignPhotoById } from "@/content/media/campaign-photo-registry";
+import { getJoinCampaignHref } from "@/config/external-campaign";
 import { pageMeta } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = pageMeta({
@@ -17,6 +18,7 @@ export const metadata: Metadata = pageMeta({
 
 export default async function EndorsementsPage() {
   const endorsements = listConfirmedEndorsements();
+  const joinHref = getJoinCampaignHref();
 
   return (
     <>
@@ -26,30 +28,40 @@ export default async function EndorsementsPage() {
         preferLabeledEmpty
         eyebrow="Trust"
         title="Endorsements"
-        subtitle="Kelly is earning support from organizations and leaders who serve different parts of Arkansas. Only formal, campaign-confirmed endorsements appear here."
+        subtitle="Only formal, campaign-confirmed endorsements appear here. A photograph or conversation is never listed as support."
       >
         <Button href="/about" variant="outlineOnDark">
           Read About Kelly’s Experience
         </Button>
-        <Button href="/get-involved" variant="primary">
-          Join the Campaign
+        <Button href={joinHref} variant="primary">
+          Stay connected
         </Button>
       </MediaPageHero>
 
       <FullBleedSection padY>
         <ContentContainer className="max-w-4xl">
+          <aside className="mx-auto max-w-2xl rounded-card border border-kelly-ink/10 bg-kelly-fog/50 px-6 py-5 text-left md:px-7">
+            <h2 className="font-heading text-base font-bold tracking-tight text-kelly-ink">
+              Published when confirmed — empty until then
+            </h2>
+            <p className="mt-2 font-body text-sm leading-relaxed text-kelly-slate">
+              Attendance at an event, a photograph, or a private conversation is not an endorsement. Names are added only
+              after campaign confirmation, with source on record.
+            </p>
+          </aside>
+
           {endorsements.length === 0 ? (
-            <div className="rounded-card border border-kelly-ink/15 bg-kelly-fog/40 px-6 py-10 text-center md:px-10">
+            <div className="mt-10 rounded-card border border-kelly-ink/15 bg-kelly-fog/40 px-6 py-10 text-center md:px-10">
               <h2 className="font-heading text-2xl font-bold tracking-tight text-kelly-ink">
                 Earned support, published when confirmed
               </h2>
               <p className="mt-4 font-body text-base leading-relaxed text-kelly-slate">
-                As organizations and community leaders formally announce their support, you will find them here—with the
-                exact organization name, approved wording, and source on record.
+                This page stays intentionally quiet until organizations and community leaders formally announce support.
+                When they do, you will see the exact organization name, approved wording, and source here.
               </p>
             </div>
           ) : (
-            <ul className="space-y-8">
+            <ul className="mt-10 space-y-8">
               {endorsements.map((item) => {
                 const photo = item.relatedPhotoId ? getCampaignPhotoById(item.relatedPhotoId) : null;
                 return (
@@ -66,7 +78,7 @@ export default async function EndorsementsPage() {
                               alt={photo.accessibility.altText}
                               width={photo.basic.width ?? 768}
                               height={photo.basic.height ?? 1024}
-                              className="h-full w-full object-cover object-[50%_20%]"
+                              className="h-full w-full object-cover object-[50%_18%]"
                               sizes="(max-width: 1024px) 100vw, 40vw"
                             />
                           </div>
@@ -101,15 +113,6 @@ export default async function EndorsementsPage() {
               })}
             </ul>
           )}
-
-          <aside className="mx-auto mt-12 max-w-2xl rounded-card border border-kelly-ink/10 bg-kelly-fog/50 px-6 py-7 text-left md:px-8">
-            <h2 className="font-heading text-lg font-bold tracking-tight text-kelly-ink">Campaign endorsement policy</h2>
-            <p className="mt-3 font-body text-sm leading-relaxed text-kelly-slate">
-              Only organizations and individuals that have formally endorsed Kelly Grappe are listed here. Attendance at
-              an event, a photograph, or a private conversation is not listed as an endorsement. Additional endorsements
-              will be added after campaign confirmation.
-            </p>
-          </aside>
         </ContentContainer>
       </FullBleedSection>
     </>

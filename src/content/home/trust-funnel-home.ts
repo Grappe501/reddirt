@@ -29,6 +29,7 @@ export const trustFunnelHomeCopy = {
         id: "elections",
         title: "Secure, accessible elections",
         href: "/office/elections",
+        exploreLabel: "See how elections work",
         body:
           "Voters deserve confidence that rules are clear, applied evenly, and explained in plain language. County clerks—who run Election Day in all 75 counties—need a partner in Little Rock, not another layer of confusion.",
         commitments: [
@@ -42,6 +43,7 @@ export const trustFunnelHomeCopy = {
         id: "business",
         title: "Business and nonprofit filings that work",
         href: "/office/business",
+        exploreLabel: "See how filings work",
         body:
           "Owners, treasurers, and volunteer boards should not fight the filing system to stay legal. Predictable online services and real help when something breaks keep Main Street working.",
         commitments: [
@@ -55,6 +57,7 @@ export const trustFunnelHomeCopy = {
         id: "records",
         title: "Transparent records and digital access",
         href: "/office/records",
+        exploreLabel: "See how records access works",
         body:
           "Public information should be findable without a specialist. When people understand how to get records and track filings, accountability stops being a slogan.",
         commitments: [
@@ -68,6 +71,7 @@ export const trustFunnelHomeCopy = {
         id: "capitol",
         title: "Capitol stewardship and public service",
         href: "/office/capitol",
+        exploreLabel: "See how Capitol stewardship works",
         body:
           "The people’s house should feel professionally managed—safe, respectful, and focused on service. Civic education and steady operations belong in the same office that keeps the lights on.",
         commitments: [
@@ -197,9 +201,9 @@ export const trustFunnelHomeCopy = {
     eyebrow: "Trust",
     title: "Endorsements",
     intro:
-      "Kelly is earning support from organizations and leaders who serve different parts of Arkansas. Categories below show the breadth of that coalition—not a ranking of names.",
+      "Only formal, campaign-confirmed endorsements appear here. Categories show coalition breadth—not a ranking of names.",
     emptyState:
-      "As organizations and community leaders formally announce their support, you will find them here—with the organization name and source on record. Until then, this space stays empty on purpose.",
+      "This space stays empty on purpose until organizations and community leaders formally announce support—with the organization name and source on record.",
     viewAll: "View All Endorsements",
   },
 

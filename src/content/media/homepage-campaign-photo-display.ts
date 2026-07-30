@@ -15,7 +15,8 @@ export function homepagePhotoCountyHref(photo: CampaignPhotoRecord): string | nu
  * Portraits bias slightly toward the upper third (faces / conversation).
  */
 export function homepagePhotoObjectPositionClass(photo: CampaignPhotoRecord): string {
-  if (photo.basic.orientation === "PORTRAIT") return "object-[50%_20%]";
+  // Slightly warmer upper bias for conversation faces (Meet Kelly band).
+  if (photo.basic.orientation === "PORTRAIT") return "object-[50%_18%]";
   if (photo.id.includes("stadium") || photo.id.includes("concourse")) return "object-[50%_35%]";
   return "object-center";
 }

@@ -32,8 +32,8 @@ export function TrustFunnelMeetKellySection({ photo }: { photo?: CampaignPhotoRe
       <ContentContainer>
         <div className={photo ? "grid items-start gap-12 lg:grid-cols-12 lg:gap-14" : undefined}>
           {photo ? (
-            <ScrollReveal className="order-2 lg:order-1 lg:col-span-5 lg:sticky lg:top-28" yOffset={6}>
-              <figure className={cn(trustFunnelCardClass, "bg-kelly-fog")}>
+            <ScrollReveal className="order-2 lg:order-1 lg:col-span-5 lg:sticky lg:top-32" yOffset={4}>
+              <figure className={cn(trustFunnelCardClass, "overflow-hidden bg-kelly-fog/80 shadow-none")}>
                 <div className="relative aspect-[4/5] w-full">
                   <Image
                     src={photo.src}
@@ -45,7 +45,7 @@ export function TrustFunnelMeetKellySection({ photo }: { photo?: CampaignPhotoRe
                     priority={false}
                   />
                 </div>
-                <figcaption className="border-t border-kelly-ink/10 px-4 py-3.5 font-body text-sm leading-relaxed text-kelly-slate">
+                <figcaption className="border-t border-kelly-ink/8 px-4 py-3 font-body text-sm leading-relaxed text-kelly-slate">
                   {homepagePhotoCaption(photo)}
                   {countyHref ? (
                     <>
@@ -86,16 +86,16 @@ export function TrustFunnelMeetKellySection({ photo }: { photo?: CampaignPhotoRe
               {copy.principle}
             </blockquote>
 
-            <ul className="mt-8 space-y-5" role="list">
+            <ul className="mt-8 space-y-4" role="list">
               {copy.beats.map((beat) => (
                 <li
                   key={beat.label}
-                  className="rounded-card border border-kelly-ink/10 bg-kelly-fog/35 px-5 py-5 shadow-[var(--shadow-soft)] md:px-6 md:py-6"
+                  className="border-l-2 border-kelly-gold/70 bg-transparent py-1 pl-4 md:pl-5"
                 >
                   <p className="font-body text-[11px] font-bold uppercase tracking-[0.18em] text-kelly-gold">
                     {beat.label}
                   </p>
-                  <p className="mt-2.5 font-body text-base leading-relaxed text-kelly-slate md:text-[1.05rem]">
+                  <p className="mt-2 font-body text-base leading-relaxed text-kelly-slate md:text-[1.05rem]">
                     {beat.body}
                   </p>
                 </li>

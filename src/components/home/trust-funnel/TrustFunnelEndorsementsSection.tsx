@@ -62,7 +62,7 @@ export function TrustFunnelEndorsementsSection() {
             className="mx-auto mt-10 max-w-2xl rounded-card border border-white/20 bg-white/[0.06] px-6 py-9 text-center md:px-10"
           >
             <p className="font-heading text-xl font-semibold leading-snug text-white md:text-2xl">
-              Earned through listening, service, and trust.
+              Empty on purpose until confirmed.
             </p>
             <p className="mt-4 font-body text-base leading-relaxed text-white/85">{copy.emptyState}</p>
             <Link href="/endorsements" className={`mt-7 ${trustFunnelCtaOutlineOnDark}`}>

@@ -29,6 +29,15 @@ export function SiteFooter() {
             >
               Volunteer with Kelly →
             </Link>
+            <p className="mt-4 font-body text-sm text-kelly-page/70">
+              Questions?{" "}
+              <Link
+                href="/contact"
+                className="font-semibold text-kelly-page underline decoration-kelly-page/30 underline-offset-4 transition hover:text-kelly-gold hover:decoration-kelly-gold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-kelly-gold"
+              >
+                Contact the campaign
+              </Link>
+            </p>
             <p className="mt-8 font-body text-xs font-bold uppercase tracking-[0.2em] text-kelly-page/50">
               Follow the campaign
             </p>

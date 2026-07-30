@@ -32,7 +32,7 @@ export type HomeTrustFunnelWireframeProps = {
 function MeetKellyMediaBridge() {
   return (
     <div
-      className="relative isolate h-[min(42vw,18rem)] w-full overflow-hidden border-y border-kelly-ink/10 sm:h-[min(36vw,20rem)]"
+      className="relative isolate h-[min(38vw,16rem)] w-full overflow-hidden border-y border-kelly-ink/8 sm:h-[min(32vw,18rem)]"
       aria-hidden
     >
       <PublicMediaSlotFrame
@@ -42,7 +42,7 @@ function MeetKellyMediaBridge() {
         warmOverlay
       />
       <div
-        className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/25 via-transparent to-white/70"
+        className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/45 via-white/15 to-white"
         aria-hidden
       />
     </div>

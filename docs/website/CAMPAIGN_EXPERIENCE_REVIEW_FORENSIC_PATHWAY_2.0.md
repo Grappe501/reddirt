@@ -151,7 +151,7 @@ These passes are ordered for leverage. Each pass must leave the site **smaller i
 
 ---
 
-### Pass E — `KELLY-PUBLIC-TRUST-TEMPERATURE-1.0`
+### Pass E — `KELLY-PUBLIC-TRUST-TEMPERATURE-1.0` ✅ shipped
 
 **Job:** Warm trust without inventing endorsements or geography.
 
@@ -163,6 +163,8 @@ These passes are ordered for leverage. Each pass must leave the site **smaller i
 - Optional quiet footer contact prominence check (already in Legal)
 
 **Exit thought:** “I trust her because the site refuses to fake it — and still feels human.”
+
+**CER:** [`CAMPAIGN_EXPERIENCE_REVIEW_TRUST_TEMPERATURE_1.0.md`](./CAMPAIGN_EXPERIENCE_REVIEW_TRUST_TEMPERATURE_1.0.md)
 
 ---
 

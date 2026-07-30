@@ -53,7 +53,7 @@ export function TrustFunnelFourPillarsSection() {
                   href={pillar.href}
                   className="mt-6 inline-flex min-h-[48px] items-center text-sm font-bold text-kelly-blue underline decoration-kelly-blue/25 underline-offset-4 hover:decoration-kelly-blue focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-kelly-navy"
                 >
-                  Explore {pillar.title.toLowerCase()} →
+                  {pillar.exploreLabel} →
                 </Link>
               </li>
             </ScrollReveal>
