@@ -17,9 +17,12 @@ import {
   listPhotoDerivativesAction,
   listPhotoEditProjectsAction,
   previewPromotePlacementAction,
+  previewPhotoEditPackAction,
   promotePhotoDerivativeAction,
   proposePhotoEditProjectAction,
   renderPhotoEditProjectAction,
+  updatePhotoEditProjectAction,
+  softArchivePhotoAssembliesAction,
   savePhotoEvidenceAction,
   savePhotoFocusAction,
   suggestBatchPhotoEvidenceAiAction,
@@ -37,7 +40,13 @@ import type {
   PhotoAssemblyRecord,
   PhotoEditProject,
 } from "@/lib/campaign-media/photo-edit-types";
+import type { PhotoExportSlot, PhotoLookPreset } from "@/lib/campaign-media/photo-look-presets";
 import { EVIDENCE_FIELD_CLASS } from "@/components/admin/evidence-workbench/field-styles";
+import {
+  ewChipClass,
+  ewPanelClass,
+  ewPanelTitleClass,
+} from "@/components/admin/evidence-workbench/evidenceWorkbenchChrome";
 import { EvidenceAiModePanel } from "@/components/admin/evidence-workbench/EvidenceAiModePanel";
 import type { EvidenceAiMode } from "@/lib/campaign-media/evidence-ai-modes";
 import { isEditableKeyboardTarget } from "@/components/admin/evidence-workbench/keyboard";
@@ -212,12 +221,21 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId, initialF
   const [derivatives, setDerivatives] = useState<PhotoDerivativeRecord[]>([]);
   const [editProject, setEditProject] = useState<PhotoEditProject | null>(null);
   const [assemblies, setAssemblies] = useState<PhotoAssemblyRecord[]>([]);
-  const [proLook, setProLook] = useState<
-    "neutral" | "warm" | "cool" | "contrast" | "soft" | "punch" | "mono"
-  >("warm");
+  const [proLook, setProLook] = useState<PhotoLookPreset>("warm");
   const [proSharpen, setProSharpen] = useState(false);
   const [proUseFocus, setProUseFocus] = useState(true);
+  const [proSlots, setProSlots] = useState<PhotoExportSlot[]>([
+    "grade_full",
+    "hero_16x9",
+    "portrait_4x5",
+    "square_1x1",
+    "story_9x16",
+    "web_max",
+    "thumb",
+  ]);
   const [proRenderNote, setProRenderNote] = useState("");
+  const [proPreviewSrc, setProPreviewSrc] = useState<string | null>(null);
+  const [proPreviewNote, setProPreviewNote] = useState("");
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
   const [selectionAnchorId, setSelectionAnchorId] = useState<string | null>(null);
   const [batchOps, setBatchOps] = useState<EvidenceBatchOperation[]>([]);
@@ -600,6 +618,7 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId, initialF
   function proposeProEdit() {
     if (!photo) return;
     const photoId = photo.id;
+    const slots = proSlots.length ? proSlots : (["web_max"] as PhotoExportSlot[]);
     start(async () => {
       const res = await proposePhotoEditProjectAction({
         photoId,
@@ -608,18 +627,14 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId, initialF
         focusX: focus?.x,
         focusY: focus?.y,
         sharpen: proSharpen,
-        exportSlots: [
-          "grade_full",
-          "hero_16x9",
-          "portrait_4x5",
-          "square_1x1",
-          "story_9x16",
-          "web_max",
-          "thumb",
-        ],
+        exportSlots: slots,
       });
       setMessage(res.message);
-      if (res.packet?.project) setEditProject(res.packet.project);
+      setProPreviewSrc(null);
+      if (res.packet?.project) {
+        setEditProject(res.packet.project);
+        setProSlots(res.packet.project.exportSlots);
+      }
       const notes = [
         ...(res.packet?.warnings ?? []),
         ...(res.packet?.nextActions ?? []),
@@ -628,9 +643,77 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId, initialF
     });
   }
 
+  function toggleProSlot(slot: PhotoExportSlot) {
+    setProSlots((prev) => {
+      if (prev.includes(slot)) {
+        const next = prev.filter((s) => s !== slot);
+        return next.length ? next : (["web_max"] as PhotoExportSlot[]);
+      }
+      return [...prev, slot];
+    });
+  }
+
+  function applyProMeta() {
+    if (!editProject) return;
+    const projectId = editProject.id;
+    start(async () => {
+      const res = await updatePhotoEditProjectAction({
+        projectId,
+        updates: [
+          {
+            op: "set_meta",
+            look: proLook,
+            sharpen: proSharpen,
+            useFocus: proUseFocus,
+            focusX: focus?.x,
+            focusY: focus?.y,
+            exportSlots: proSlots.length ? proSlots : ["web_max"],
+          },
+        ],
+      });
+      setMessage(res.message);
+      if (res.warnings?.length) setProRenderNote(res.warnings.join(" · "));
+      if (res.ok && res.project) {
+        setEditProject(res.project);
+        setProSlots(res.project.exportSlots);
+        setProPreviewSrc(null);
+      }
+    });
+  }
+
+  function previewProPack() {
+    if (!editProject) {
+      setMessage("Propose a Photo Pro Edit project first.");
+      return;
+    }
+    const projectId = editProject.id;
+    start(async () => {
+      const res = await previewPhotoEditPackAction({
+        projectId,
+        slot: editProject.promoteSuggestion ?? undefined,
+      });
+      setMessage(res.message);
+      if (res.ok && res.publicSrc) {
+        setProPreviewSrc(res.publicSrc);
+        setProPreviewNote(res.previewNote ?? "");
+      } else {
+        setProPreviewSrc(null);
+        setProPreviewNote(res.message);
+      }
+    });
+  }
+
   function confirmProRender() {
     if (!editProject) {
       setMessage("Propose a Photo Pro Edit project first.");
+      return;
+    }
+    if (
+      typeof window !== "undefined" &&
+      !window.confirm(
+        `Confirm render ${editProject.exportSlots.length} slot(s) · look ${editProject.look}? Originals stay untouched.`,
+      )
+    ) {
       return;
     }
     const projectId = editProject.id;
@@ -652,6 +735,51 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId, initialF
       const listed = await listPhotoEditProjectsAction(photoId);
       setAssemblies(listed.assemblies ?? res.assemblies ?? []);
       setEditProject(listed.projects?.find((p) => p.id === projectId) ?? editProject);
+      refreshDerivatives(photoId);
+    });
+  }
+
+  function softArchiveProAssemblies() {
+    if (!photo && !editProject) return;
+    start(async () => {
+      const res = await softArchivePhotoAssembliesAction({
+        projectId: editProject?.id,
+        photoId: photo?.id,
+        confirmArchive: true,
+      });
+      setMessage(res.message);
+      setProRenderNote(res.message);
+      if (photo?.id) {
+        const listed = await listPhotoEditProjectsAction(photo.id);
+        setAssemblies(listed.assemblies ?? []);
+      }
+    });
+  }
+
+  function promoteAssembly(a: PhotoAssemblyRecord) {
+    if (!photo) return;
+    const photoId = photo.id;
+    if (
+      typeof window !== "undefined" &&
+      !window.confirm(
+        `Promote ${a.slot} assembly to public src?\n${a.publicSrc}\nOriginals stay untouched.`,
+      )
+    ) {
+      return;
+    }
+    start(async () => {
+      const res = await promotePhotoDerivativeAction({
+        photoId,
+        publicSrc: a.publicSrc,
+        setAsPublicSrc: true,
+        homepageCandidate: promoteHomepage,
+        featuredPhoto: promoteFeatured,
+        heroLevel: promoteHero || undefined,
+        approvedForPublic: promoteApproved,
+        consentConfirmed: Boolean(form?.consentConfirmed),
+      });
+      setMessage(res.message);
+      if (res.placementPreview) setPromotePreview(res.placementPreview);
       refreshDerivatives(photoId);
     });
   }
@@ -1546,13 +1674,12 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId, initialF
               ))}
             </ul>
           </div>
-          <div className="mt-3 rounded-lg border-2 border-[#000066]/15 bg-white p-3">
-            <p className="font-heading text-xs font-bold uppercase tracking-wide text-[#000066]">
-              Pro Edit (AI director → confirm render)
-            </p>
+          <div className={`mt-3 ${ewPanelClass} !border-[#000066]/25`}>
+            <p className={ewPanelTitleClass}>Pro Edit suite</p>
             <p className="mt-1 font-body text-[11px] text-[#364272]">
-              Graded multi-aspect pack: full-frame look, hero 16:9, portrait 4:5, square, story 9:16, web,
-              thumb. Focus-aware when set. Never overwrites originals; never auto-promotes.
+              Industry-grade look → focus-aware multi-aspect pack → preview → confirm render → promote.
+              Film / bright / editorial looks; slot chips; ledger-bridged assemblies. Never overwrites
+              originals; never auto-promotes.
             </p>
             <div className="mt-2 flex flex-wrap gap-3 font-body text-[11px] text-[#12124a]">
               <label className="inline-flex flex-col gap-0.5">
@@ -1560,18 +1687,7 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId, initialF
                 <select
                   className={EVIDENCE_FIELD_CLASS}
                   value={proLook}
-                  onChange={(e) =>
-                    setProLook(
-                      e.target.value as
-                        | "neutral"
-                        | "warm"
-                        | "cool"
-                        | "contrast"
-                        | "soft"
-                        | "punch"
-                        | "mono",
-                    )
-                  }
+                  onChange={(e) => setProLook(e.target.value as PhotoLookPreset)}
                 >
                   <option value="warm">Warm</option>
                   <option value="cool">Cool</option>
@@ -1579,6 +1695,9 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId, initialF
                   <option value="soft">Soft</option>
                   <option value="punch">Punch</option>
                   <option value="mono">Mono</option>
+                  <option value="film">Film</option>
+                  <option value="bright">Bright</option>
+                  <option value="editorial">Editorial</option>
                   <option value="neutral">Neutral</option>
                 </select>
               </label>
@@ -1599,14 +1718,54 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId, initialF
                 Extra sharpen
               </label>
             </div>
-            <div className="mt-2 flex flex-wrap gap-2">
+            <div className="mt-2 flex flex-wrap gap-1.5">
+              {(
+                [
+                  ["grade_full", "Full"],
+                  ["hero_16x9", "16:9"],
+                  ["portrait_4x5", "4:5"],
+                  ["square_1x1", "1:1"],
+                  ["story_9x16", "9:16"],
+                  ["web_max", "Web"],
+                  ["thumb", "Thumb"],
+                ] as const
+              ).map(([id, label]) => (
+                <button
+                  key={id}
+                  type="button"
+                  onClick={() => toggleProSlot(id)}
+                  className={`${ewChipClass} cursor-pointer ${
+                    proSlots.includes(id) ? "!border-[#000066] !bg-[#000066]/10 font-semibold" : ""
+                  }`}
+                >
+                  {label}
+                </button>
+              ))}
+            </div>
+            <div className="mt-3 flex flex-wrap gap-2">
               <button
                 type="button"
                 disabled={pending}
                 onClick={proposeProEdit}
                 className="rounded border-2 border-[#000066] bg-[#000066] px-2.5 py-1 font-body text-xs font-bold text-white disabled:opacity-50"
               >
-                Propose Pro Edit
+                Propose cut pack
+              </button>
+              <button
+                type="button"
+                disabled={pending || !editProject}
+                onClick={applyProMeta}
+                className="rounded border border-[#8eb6dc] bg-white px-2.5 py-1 font-body text-xs font-semibold text-[#12124a] disabled:opacity-50"
+              >
+                Apply look / slots
+              </button>
+              <button
+                type="button"
+                disabled={pending || !editProject}
+                onClick={previewProPack}
+                className="rounded border border-[#8eb6dc] bg-white px-2.5 py-1 font-body text-xs font-semibold text-[#12124a] disabled:opacity-50"
+              >
+                Preview look
               </button>
               <button
                 type="button"
@@ -1616,9 +1775,35 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId, initialF
               >
                 Confirm render
               </button>
+              <button
+                type="button"
+                disabled={pending || !assemblies.length}
+                onClick={softArchiveProAssemblies}
+                className="rounded border border-[#8eb6dc]/60 bg-[#f4f7fc] px-2.5 py-1 font-body text-xs text-[#364272] disabled:opacity-50"
+              >
+                Soft-archive
+              </button>
             </div>
             {proRenderNote ? (
               <p className="mt-2 font-body text-[11px] text-[#364272]">{proRenderNote}</p>
+            ) : null}
+            {proPreviewSrc || proPreviewNote ? (
+              <div className="mt-3 rounded border border-[#8eb6dc]/40 bg-white p-2">
+                <p className="font-heading text-[10px] font-bold uppercase tracking-wide text-[#000066]">
+                  Look preview
+                </p>
+                {proPreviewNote ? (
+                  <p className="mt-1 font-body text-[10px] text-[#364272]">{proPreviewNote}</p>
+                ) : null}
+                {proPreviewSrc ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={proPreviewSrc}
+                    alt=""
+                    className="mt-1 max-h-48 w-full rounded border border-[#8eb6dc]/30 object-contain bg-[#f4f7fc]"
+                  />
+                ) : null}
+              </div>
             ) : null}
             {editProject ? (
               <div className="mt-3 rounded border border-[#8eb6dc]/40 bg-[#f4f7fc] p-2">
@@ -1647,22 +1832,41 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId, initialF
                 <p className="font-heading text-[10px] font-bold uppercase tracking-wide text-[#000066]">
                   Assemblies
                 </p>
-                {assemblies.slice(0, 8).map((a) => (
+                {assemblies.slice(0, 12).map((a) => (
                   <div key={a.id} className="rounded border border-[#8eb6dc]/40 bg-white p-2">
-                    <p className="font-body text-[11px] text-[#12124a]">
-                      {a.slot} · {a.look} · {a.width}×{a.height}
-                    </p>
+                    <div className="flex flex-wrap items-center justify-between gap-2">
+                      <p className="font-body text-[11px] text-[#12124a]">
+                        {a.slot} · {a.look} · {a.width}×{a.height}
+                        {a.note?.includes("[archived") ? " · archived" : ""}
+                      </p>
+                      {!a.note?.includes("[archived") ? (
+                        <button
+                          type="button"
+                          disabled={pending}
+                          onClick={() => promoteAssembly(a)}
+                          className="rounded border border-[#000066] px-2 py-0.5 font-body text-[10px] font-semibold text-[#000066] disabled:opacity-50"
+                        >
+                          Promote
+                        </button>
+                      ) : null}
+                    </div>
                     <p className="break-all font-mono text-[10px] text-[#364272]">{a.publicSrc}</p>
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={a.publicSrc}
-                      alt=""
-                      className="mt-1 max-h-36 w-full rounded border border-[#8eb6dc]/30 object-contain bg-[#f4f7fc]"
-                    />
+                    {!a.note?.includes("[archived") ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        src={a.publicSrc}
+                        alt=""
+                        className="mt-1 max-h-36 w-full rounded border border-[#8eb6dc]/30 object-contain bg-[#f4f7fc]"
+                      />
+                    ) : null}
                   </div>
                 ))}
               </div>
             ) : null}
+            <p className="mt-2 font-body text-[10px] text-[#364272]">
+              Confirm render writes the full pack and registers slots in the derivative ledger so Promote
+              works. Soft-archive never deletes files.
+            </p>
           </div>
           <div className="mt-3 rounded-lg border-2 border-[#000066]/15 bg-white p-3">
             <p className="font-heading text-xs font-bold uppercase tracking-wide text-[#000066]">

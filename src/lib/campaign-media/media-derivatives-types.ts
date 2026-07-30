@@ -11,7 +11,10 @@ export type PhotoDerivativeKind =
   /** Pass 5 — cover crops that honor an explicit focus point (or attention if none). */
   | "focus_hero_16x9"
   | "focus_portrait_4x5"
-  | "focus_square_1x1";
+  | "focus_square_1x1"
+  /** Pro Edit pack slots registered for promote bridge. */
+  | "grade_full"
+  | "story_9x16";
 
 export type PhotoDerivativeRecord = {
   id: string;

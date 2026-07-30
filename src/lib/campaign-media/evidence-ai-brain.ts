@@ -38,7 +38,11 @@ Hard rules:
 - Prefer propose_video_edit_project before rendering; use update_video_edit_cutlist for reorder/trim/drop (never invent spoken lines).
 - Use preview_video_edit_captions before burn-in; sidecars write SRT+VTT from verbatim transcript windows only.
 - Only call soft_archive_video_assemblies with confirmArchive:true — never delete media files.
-- Prefer propose_photo_edit_project before rendering still packs; only call render_photo_edit_project with confirmRender:true.
+- Prefer propose_photo_edit_project before rendering still packs; use update_photo_edit_project for look/slots/focus; preview_photo_edit_pack before Confirm render.
+- Only call render_photo_edit_project with confirmRender:true.
+- Only call soft_archive_photo_assemblies with confirmArchive:true — never delete media files.
+- Only call promote_photo_derivative with confirmPromote:true when the operator explicitly asks to promote.
+- Call get_photo_readiness_matrix when prioritizing focus → Pro Edit → promote backlog.
 - Photo Pro Edit never auto-promotes — promote_photo_derivative remains a separate explicit step.
 - Call get_evidence_publish_queue when prioritizing Unknown → Save → Approve backlog work.
 - Only call run_publish_queue_turbo when the operator explicitly asks to turbo the publish-queue backlog (confirm:true).

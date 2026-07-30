@@ -96,6 +96,27 @@ function findDerivative(photoId: string, input: PromotePhotoDerivativeInput): Ph
   if (input.publicSrc) {
     const bySrc = rows.find((r) => r.publicSrc === input.publicSrc);
     if (bySrc) return bySrc;
+    // Pro Edit assemblies: allow promote by path when file exists under allowed override root.
+    const src = String(input.publicSrc).trim();
+    if (isAllowedPublicSrcOverride(photoId, src)) {
+      const absPath = path.join(process.cwd(), "public", src.replace(/^\//, ""));
+      if (existsSync(absPath)) {
+        return {
+          id: `${photoId}--promote-path--${Date.now().toString(36)}`,
+          sourcePhotoId: photoId,
+          sourceSrc: src,
+          kind: "web_max",
+          publicSrc: src,
+          relativePath: path.join("public", src.replace(/^\//, "")).split(path.sep).join("/"),
+          width: 0,
+          height: 0,
+          bytes: 0,
+          format: "jpeg",
+          createdAt: new Date().toISOString(),
+          note: "Promoted via allowed Pro/assembly publicSrc path.",
+        };
+      }
+    }
   }
   return null;
 }

@@ -11,7 +11,8 @@ import { CAMPAIGN_PHOTO_REGISTRY } from "@/content/media/campaign-photo-registry
 import { loadPhotoEvidenceStore, loadPhotoIngestDrafts } from "@/lib/campaign-media/evidence-store";
 import { coverCropRect, normalizeFocus } from "@/lib/campaign-media/focus-crop";
 import { listCampaignPhotosLive } from "@/lib/campaign-media/list-campaign-photos-live";
-import { MEDIA_DERIVATIVES_PUBLIC_REL } from "@/lib/campaign-media/media-derivatives";
+import { MEDIA_DERIVATIVES_PUBLIC_REL, pushPhotoDerivativeRecord } from "@/lib/campaign-media/media-derivatives";
+import type { PhotoDerivativeKind } from "@/lib/campaign-media/media-derivatives-types";
 import {
   getPhotoEditProject,
   pushPhotoAssembly,
@@ -26,6 +27,29 @@ import {
 
 function abs(rel: string): string {
   return path.join(process.cwd(), rel);
+}
+
+function slotToDerivativeKind(slot: PhotoExportSlot): Exclude<PhotoDerivativeKind, "inspect_only"> {
+  switch (slot) {
+    case "grade_full":
+      return "grade_full";
+    case "hero_16x9":
+      return "hero_16x9";
+    case "portrait_4x5":
+      return "portrait_4x5";
+    case "square_1x1":
+      return "square_1x1";
+    case "story_9x16":
+      return "story_9x16";
+    case "web_max":
+      return "web_max";
+    case "thumb":
+      return "thumb";
+    default: {
+      const _exhaustive: never = slot;
+      return _exhaustive;
+    }
+  }
 }
 
 function decodePublicSrcToAbs(src: string): string | null {
@@ -212,6 +236,22 @@ export async function renderPhotoEditProject(input: {
       note: warnings.length ? warnings.slice(0, 2).join(" · ") : undefined,
     };
     pushPhotoAssembly(record);
+    pushPhotoDerivativeRecord({
+      id: record.id,
+      sourcePhotoId: project.photoId,
+      sourceSrc: source.sourceSrc,
+      kind: slotToDerivativeKind(slot),
+      publicSrc: record.publicSrc,
+      relativePath: record.relativePath,
+      width: record.width,
+      height: record.height,
+      bytes: record.bytes,
+      format: record.format,
+      createdAt: record.createdAt,
+      note: `Pro Edit assembly · look ${project.look}${record.note ? ` · ${record.note}` : ""}`,
+      focusX: record.focusX,
+      focusY: record.focusY,
+    });
     assemblies.push(record);
   }
 

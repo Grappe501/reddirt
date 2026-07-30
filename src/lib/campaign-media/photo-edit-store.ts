@@ -83,3 +83,47 @@ export function pushPhotoAssembly(record: PhotoAssemblyRecord): void {
   store.assemblies = [record, ...store.assemblies].slice(0, 400);
   savePhotoProEditsStore(store);
 }
+
+/**
+ * Soft-archive assemblies — tags notes and sinks archived rows.
+ * Files are never deleted (doctrine).
+ */
+export function softArchivePhotoAssemblies(input: {
+  projectId?: string;
+  photoId?: string;
+  confirmArchive: boolean;
+}): { ok: true; archived: number; message: string } | { ok: false; error: string } {
+  if (input.confirmArchive !== true) {
+    return { ok: false, error: "confirmArchive:true required." };
+  }
+  const projectId = String(input.projectId ?? "").trim();
+  const photoId = String(input.photoId ?? "").trim();
+  if (!projectId && !photoId) return { ok: false, error: "projectId or photoId required." };
+
+  const store = loadPhotoProEditsStore();
+  const stamp = new Date().toISOString();
+  let archived = 0;
+  store.assemblies = store.assemblies.map((a) => {
+    const hit =
+      (projectId && a.projectId === projectId) || (photoId && a.photoId === photoId);
+    if (!hit) return a;
+    if (a.note?.includes("[archived")) return a;
+    archived += 1;
+    return {
+      ...a,
+      note: [`[archived ${stamp}]`, a.note].filter(Boolean).join(" · "),
+    };
+  });
+  store.assemblies = [
+    ...store.assemblies.filter((a) => !a.note?.includes("[archived")),
+    ...store.assemblies.filter((a) => a.note?.includes("[archived")),
+  ].slice(0, 400);
+  savePhotoProEditsStore(store);
+  return {
+    ok: true,
+    archived,
+    message: archived
+      ? `Soft-archived ${archived} photo assembly record(s) — files kept on disk.`
+      : "No matching assemblies to archive.",
+  };
+}

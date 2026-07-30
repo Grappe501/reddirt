@@ -225,9 +225,29 @@ export const EVIDENCE_AI_TOOL_CATALOG: Array<{
     summary: "Photo Edit Director: look + focus-aware multi-aspect export pack (no silent render).",
   },
   {
+    name: "update_photo_edit_project",
+    audience: "photo",
+    summary: "Mutate Pro Edit look / slots / focus after propose (never silent-renders).",
+  },
+  {
+    name: "preview_photo_edit_pack",
+    audience: "photo",
+    summary: "Cheap graded single-slot preview JPEG before Confirm render (never promotes).",
+  },
+  {
+    name: "soft_archive_photo_assemblies",
+    audience: "photo",
+    summary: "Soft-archive Pro Edit assemblies (confirmArchive) — files never deleted.",
+  },
+  {
+    name: "get_photo_readiness_matrix",
+    audience: "photo",
+    summary: "Rank stills by focus / Pro Edit / promote readiness (Prefer Unknown).",
+  },
+  {
     name: "render_photo_edit_project",
     audience: "photo",
-    summary: "Confirm-render a Photo Pro Edit project: graded multi-aspect assembly pack.",
+    summary: "Confirm-render a Photo Pro Edit project: graded multi-aspect assembly pack + ledger bridge.",
   },
   {
     name: "list_photo_assemblies",
@@ -715,7 +735,7 @@ export function evidenceAiToolsFor(
       function: {
         name: "promote_photo_derivative",
         description:
-          "Promote an existing derivative into public delivery: set publicSrcOverride and optional homepageCandidate / featuredPhoto / heroLevel / approvedForPublic. Does not delete originals. Prefer operator confirmation.",
+          "Promote an existing derivative or Pro Edit assembly into public delivery: set publicSrcOverride and optional homepageCandidate / featuredPhoto / heroLevel / approvedForPublic. Requires confirmPromote:true. Does not delete originals.",
         parameters: {
           type: "object",
           properties: {
@@ -728,8 +748,9 @@ export function evidenceAiToolsFor(
             heroLevel: { type: "string" },
             approvedForPublic: { type: "boolean" },
             consentConfirmed: { type: "boolean" },
+            confirmPromote: { type: "boolean" },
           },
-          required: ["photoId"],
+          required: ["photoId", "confirmPromote"],
         },
       },
     },
@@ -869,14 +890,25 @@ export function evidenceAiToolsFor(
       function: {
         name: "propose_photo_edit_project",
         description:
-          "Propose a Photo Pro Edit project (look, focus-aware multi-aspect export pack including story 9:16). Does not render — operator must confirm render separately. Never auto-promotes.",
+          "Propose a Photo Pro Edit project (look, focus-aware multi-aspect export pack including story 9:16 + film/bright/editorial looks). Does not render — operator must confirm render separately. Never auto-promotes.",
         parameters: {
           type: "object",
           properties: {
             photoId: { type: "string" },
             look: {
               type: "string",
-              enum: ["neutral", "warm", "cool", "contrast", "soft", "punch", "mono"],
+              enum: [
+                "neutral",
+                "warm",
+                "cool",
+                "contrast",
+                "soft",
+                "punch",
+                "mono",
+                "film",
+                "bright",
+                "editorial",
+              ],
             },
             exportSlots: {
               type: "array",
@@ -905,9 +937,89 @@ export function evidenceAiToolsFor(
     {
       type: "function",
       function: {
+        name: "update_photo_edit_project",
+        description:
+          "Update a Photo Pro Edit project: set_meta (look/sharpen/focus/slots/promoteSuggestion), set_slots, or toggle_slot. Never silent-renders.",
+        parameters: {
+          type: "object",
+          properties: {
+            projectId: { type: "string" },
+            updates: {
+              type: "array",
+              description:
+                "Ops: set_meta{look,sharpen,useFocus,focusX,focusY,exportSlots,promoteSuggestion}, set_slots{exportSlots}, toggle_slot{slot,enabled}",
+              items: { type: "object" },
+            },
+          },
+          required: ["projectId", "updates"],
+        },
+      },
+    },
+    {
+      type: "function",
+      function: {
+        name: "preview_photo_edit_pack",
+        description:
+          "Render a cheap graded preview JPEG for one slot of a Photo Pro Edit project. Never promotes. Prefer before Confirm render.",
+        parameters: {
+          type: "object",
+          properties: {
+            projectId: { type: "string" },
+            slot: {
+              type: "string",
+              enum: [
+                "grade_full",
+                "hero_16x9",
+                "portrait_4x5",
+                "square_1x1",
+                "story_9x16",
+                "web_max",
+                "thumb",
+              ],
+            },
+          },
+          required: ["projectId"],
+        },
+      },
+    },
+    {
+      type: "function",
+      function: {
+        name: "soft_archive_photo_assemblies",
+        description:
+          "Soft-archive Photo Pro Edit assembly records. Requires confirmArchive:true. Never deletes files.",
+        parameters: {
+          type: "object",
+          properties: {
+            projectId: { type: "string" },
+            photoId: { type: "string" },
+            confirmArchive: { type: "boolean" },
+          },
+          required: ["confirmArchive"],
+        },
+      },
+    },
+    {
+      type: "function",
+      function: {
+        name: "get_photo_readiness_matrix",
+        description:
+          "Rank stills by focus / Pro Edit / promote readiness. Prefer Unknown — never invents geography.",
+        parameters: {
+          type: "object",
+          properties: {
+            limit: { type: "number" },
+            photoIds: { type: "array", items: { type: "string" } },
+          },
+        },
+      },
+    },
+    {
+      type: "function",
+      function: {
         name: "render_photo_edit_project",
         description:
-          "Render a Photo Pro Edit project into graded multi-aspect JPEGs. Requires confirmRender:true. Originals never overwritten; promote remains a separate operator step.",
+          "Render a Photo Pro Edit project into graded multi-aspect JPEGs and register them in the derivative ledger for Promote. Requires confirmRender:true. Originals never overwritten; promote remains a separate operator step.",
         parameters: {
           type: "object",
           properties: {

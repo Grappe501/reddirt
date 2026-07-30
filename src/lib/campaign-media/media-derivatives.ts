@@ -329,8 +329,12 @@ function kindDefaults(kind: CreateInput["kind"]): { maxEdge: number; quality: nu
       return { maxEdge: 480, quality: 78, ext: "jpg" };
     case "web_max":
       return { maxEdge: 1600, quality: 82, ext: "jpg" };
+    case "grade_full":
+      return { maxEdge: 1920, quality: 88, ext: "jpg" };
     case "auto_orient":
       return { maxEdge: 4000, quality: 90, ext: "jpg" };
+    case "story_9x16":
+      return { maxEdge: 1080, quality: 86, ext: "jpg" };
     case "focus_hero_16x9":
     case "focus_portrait_4x5":
     case "focus_square_1x1":
@@ -384,6 +388,7 @@ async function applyKind(
       });
     case "web_max":
     case "thumb":
+    case "grade_full":
       return oriented.resize({
         width: maxEdge,
         height: maxEdge,
@@ -413,6 +418,10 @@ async function applyKind(
     case "focus_square_1x1": {
       const edge = Math.min(maxEdge, 1200);
       return focusCover(edge, edge, 1, true);
+    }
+    case "story_9x16": {
+      const w = Math.min(maxEdge, 1080);
+      return focusCover(w, Math.round((w * 16) / 9), 9 / 16, Boolean(focus));
     }
     default: {
       const _exhaustive: never = kind;
@@ -648,6 +657,13 @@ export function listPhotoDerivatives(photoId?: string): PhotoDerivativeRecord[] 
   const ledger = loadMediaDerivativesLedger();
   const rows = photoId ? ledger.photos.filter((p) => p.sourcePhotoId === photoId) : ledger.photos;
   return rows.filter((r) => existsSync(abs(r.relativePath)));
+}
+
+/** Register an already-written file into the derivative ledger (Pro Edit promote bridge). */
+export function pushPhotoDerivativeRecord(record: PhotoDerivativeRecord): void {
+  const ledger = loadMediaDerivativesLedger();
+  ledger.photos = [record, ...ledger.photos.filter((r) => r.id !== record.id)].slice(0, 500);
+  saveLedger(ledger);
 }
 
 export function listVideoPosters(outId?: string): VideoPosterRecord[] {

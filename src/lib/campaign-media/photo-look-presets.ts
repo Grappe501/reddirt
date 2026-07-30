@@ -12,6 +12,9 @@ export const PHOTO_LOOK_PRESETS = [
   "soft",
   "punch",
   "mono",
+  "film",
+  "bright",
+  "editorial",
 ] as const;
 export type PhotoLookPreset = (typeof PHOTO_LOOK_PRESETS)[number];
 
@@ -71,7 +74,7 @@ export const DEFAULT_PHOTO_EXPORT_SLOTS: PhotoExportSlot[] = [
 
 /**
  * Apply a named look onto an existing sharp pipeline (after crop/resize).
- * Uses modulate / linear / grayscale / mild sharpen — not a LUT marketplace.
+ * Industry-grade modulate / linear / tint / mild sharpen — not a LUT marketplace.
  */
 export function applyPhotoLook(
   pipeline: Sharp,
@@ -80,23 +83,40 @@ export function applyPhotoLook(
   switch (look) {
     case "warm":
       return pipeline
-        .modulate({ brightness: 1.02, saturation: 1.1 })
-        .tint({ r: 255, g: 232, b: 208 });
+        .modulate({ brightness: 1.03, saturation: 1.12 })
+        .tint({ r: 255, g: 228, b: 200 })
+        .linear(1.04, -(128 * 0.04));
     case "cool":
       return pipeline
-        .modulate({ brightness: 1.0, saturation: 1.06 })
-        .tint({ r: 208, g: 224, b: 255 });
+        .modulate({ brightness: 1.01, saturation: 1.08 })
+        .tint({ r: 200, g: 220, b: 255 })
+        .linear(1.05, -(128 * 0.05));
     case "contrast":
-      return pipeline.linear(1.18, -(128 * 0.18)).modulate({ saturation: 1.08 });
+      return pipeline.linear(1.22, -(128 * 0.22)).modulate({ saturation: 1.1 });
     case "soft":
-      return pipeline.modulate({ brightness: 1.03, saturation: 0.92 }).blur(0.35);
+      return pipeline.modulate({ brightness: 1.04, saturation: 0.9 }).blur(0.4);
     case "punch":
       return pipeline
-        .modulate({ brightness: 1.03, saturation: 1.22 })
-        .sharpen({ sigma: 0.8 })
-        .linear(1.08, -(128 * 0.08));
+        .modulate({ brightness: 1.04, saturation: 1.28 })
+        .sharpen({ sigma: 0.85 })
+        .linear(1.1, -(128 * 0.1));
     case "mono":
-      return pipeline.grayscale().modulate({ brightness: 1.02 }).linear(1.1, -(128 * 0.1));
+      return pipeline.grayscale().modulate({ brightness: 1.03 }).linear(1.12, -(128 * 0.12));
+    case "film":
+      return pipeline
+        .modulate({ brightness: 1.0, saturation: 0.88 })
+        .tint({ r: 245, g: 235, b: 220 })
+        .linear(1.08, -(128 * 0.06))
+        .sharpen({ sigma: 0.45 });
+    case "bright":
+      return pipeline
+        .modulate({ brightness: 1.1, saturation: 1.05 })
+        .linear(1.06, -(128 * 0.02));
+    case "editorial":
+      return pipeline
+        .modulate({ brightness: 1.02, saturation: 0.95 })
+        .linear(1.14, -(128 * 0.12))
+        .sharpen({ sigma: 0.55 });
     case "neutral":
     default:
       return pipeline;

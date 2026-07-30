@@ -21,7 +21,11 @@ function pickLook(input?: PhotoLookPreset): PhotoLookPreset {
     input === "contrast" ||
     input === "soft" ||
     input === "punch" ||
-    input === "mono"
+    input === "mono" ||
+    input === "film" ||
+    input === "bright" ||
+    input === "editorial" ||
+    input === "neutral"
   ) {
     return input;
   }

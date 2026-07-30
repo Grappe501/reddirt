@@ -1932,7 +1932,7 @@ export async function proposeVideoEditProjectAction(input: {
 
 export async function proposePhotoEditProjectAction(input: {
   photoId: string;
-  look?: "neutral" | "warm" | "cool" | "contrast" | "soft" | "punch" | "mono";
+  look?: "neutral" | "warm" | "cool" | "contrast" | "soft" | "punch" | "mono" | "film" | "bright" | "editorial";
   exportSlots?: Array<
     "grade_full" | "hero_16x9" | "portrait_4x5" | "square_1x1" | "story_9x16" | "web_max" | "thumb"
   >;
@@ -2007,6 +2007,144 @@ export async function renderPhotoEditProjectAction(input: {
     assemblies: result.assemblies,
     warnings: result.warnings,
     promoteSuggestion: result.promoteSuggestion ?? null,
+  };
+}
+
+export async function updatePhotoEditProjectAction(input: {
+  projectId: string;
+  updates: Array<
+    | {
+        op: "set_meta";
+        look?:
+          | "neutral"
+          | "warm"
+          | "cool"
+          | "contrast"
+          | "soft"
+          | "punch"
+          | "mono"
+          | "film"
+          | "bright"
+          | "editorial";
+        sharpen?: boolean;
+        useFocus?: boolean;
+        focusX?: number;
+        focusY?: number;
+        exportSlots?: Array<
+          "grade_full" | "hero_16x9" | "portrait_4x5" | "square_1x1" | "story_9x16" | "web_max" | "thumb"
+        >;
+        promoteSuggestion?:
+          | "grade_full"
+          | "hero_16x9"
+          | "portrait_4x5"
+          | "square_1x1"
+          | "story_9x16"
+          | "web_max"
+          | "thumb"
+          | null;
+      }
+    | {
+        op: "set_slots";
+        exportSlots: Array<
+          "grade_full" | "hero_16x9" | "portrait_4x5" | "square_1x1" | "story_9x16" | "web_max" | "thumb"
+        >;
+      }
+    | {
+        op: "toggle_slot";
+        slot: "grade_full" | "hero_16x9" | "portrait_4x5" | "square_1x1" | "story_9x16" | "web_max" | "thumb";
+        enabled?: boolean;
+      }
+  >;
+}): Promise<{
+  ok: boolean;
+  message: string;
+  project?: import("@/lib/campaign-media/photo-edit-types").PhotoEditProject;
+  warnings?: string[];
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { updatePhotoEditProject } = await import("@/lib/campaign-media/photo-edit-plan");
+  const result = updatePhotoEditProject({
+    projectId: String(input.projectId ?? "").trim(),
+    updates: input.updates ?? [],
+  });
+  if (!result.ok) return { ok: false, message: result.error };
+  revalidatePath("/admin/evidence-workbench");
+  return {
+    ok: true,
+    message: result.message,
+    project: result.project,
+    warnings: result.warnings,
+  };
+}
+
+export async function previewPhotoEditPackAction(input: {
+  projectId: string;
+  slot?: "grade_full" | "hero_16x9" | "portrait_4x5" | "square_1x1" | "story_9x16" | "web_max" | "thumb";
+}): Promise<{
+  ok: boolean;
+  message: string;
+  publicSrc?: string;
+  slot?: string;
+  previewNote?: string;
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { previewPhotoEditPack } = await import("@/lib/campaign-media/photo-edit-preview");
+  const result = await previewPhotoEditPack({
+    projectId: String(input.projectId ?? "").trim(),
+    slot: input.slot,
+  });
+  if (!result.ok) return { ok: false, message: result.error };
+  return {
+    ok: true,
+    message: result.message,
+    publicSrc: result.publicSrc,
+    slot: result.slot,
+    previewNote: result.previewNote,
+  };
+}
+
+export async function softArchivePhotoAssembliesAction(input: {
+  projectId?: string;
+  photoId?: string;
+  confirmArchive: boolean;
+}): Promise<{ ok: boolean; message: string; archived?: number }> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  if (!input.confirmArchive) {
+    return { ok: false, message: "confirmArchive:true required — refuse silent archive." };
+  }
+  const { softArchivePhotoAssemblies } = await import("@/lib/campaign-media/photo-edit-store");
+  const result = softArchivePhotoAssemblies({
+    projectId: input.projectId ? String(input.projectId).trim() : undefined,
+    photoId: input.photoId ? String(input.photoId).trim() : undefined,
+    confirmArchive: true,
+  });
+  if (!result.ok) return { ok: false, message: result.error };
+  revalidatePath("/admin/evidence-workbench");
+  return { ok: true, message: result.message, archived: result.archived };
+}
+
+export async function getPhotoReadinessMatrixAction(input?: {
+  limit?: number;
+  photoIds?: string[];
+}): Promise<{
+  ok: boolean;
+  message: string;
+  matrix?: import("@/lib/campaign-media/photo-readiness").PhotoReadinessMatrix;
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { getPhotoReadinessMatrix } = await import("@/lib/campaign-media/photo-readiness");
+  const matrix = getPhotoReadinessMatrix({
+    limit: input?.limit,
+    photoIds: input?.photoIds,
+  });
+  return {
+    ok: true,
+    message: `${matrix.total} still(s) · focus gap ${matrix.needsFocus} · Pro Edit gap ${matrix.needsProEdit} · promote gap ${matrix.needsPromote}`,
+    matrix,
   };
 }
 

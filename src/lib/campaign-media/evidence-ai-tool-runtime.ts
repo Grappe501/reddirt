@@ -464,6 +464,12 @@ export async function executeEvidenceAiTool(
       }
 
       case "promote_photo_derivative": {
+        if (args.confirmPromote !== true) {
+          return {
+            ok: false,
+            error: "confirmPromote:true required — operator must explicitly ask to promote.",
+          };
+        }
         const photoId = asString(args.photoId);
         if (!photoId) return { ok: false, error: "photoId required." };
         const { promotePhotoDerivative } = await import("@/lib/campaign-media/promote-photo-derivative");
@@ -1043,7 +1049,18 @@ export async function executeEvidenceAiTool(
         const photoId = asString(args.photoId);
         if (!photoId) return { ok: false, error: "photoId required." };
         const { proposePhotoEditProject } = await import("@/lib/campaign-media/photo-edit-director");
-        const looks = ["neutral", "warm", "cool", "contrast", "soft", "punch", "mono"] as const;
+        const looks = [
+          "neutral",
+          "warm",
+          "cool",
+          "contrast",
+          "soft",
+          "punch",
+          "mono",
+          "film",
+          "bright",
+          "editorial",
+        ] as const;
         const look = looks.includes(args.look as (typeof looks)[number])
           ? (args.look as (typeof looks)[number])
           : "warm";
@@ -1070,6 +1087,57 @@ export async function executeEvidenceAiTool(
         });
         if (!packet.ok) return { ok: false, error: packet.message };
         return { ok: true, result: packet };
+      }
+
+      case "update_photo_edit_project": {
+        const projectId = asString(args.projectId);
+        if (!projectId) return { ok: false, error: "projectId required." };
+        const updates = Array.isArray(args.updates) ? args.updates : [];
+        const { updatePhotoEditProject } = await import("@/lib/campaign-media/photo-edit-plan");
+        const result = updatePhotoEditProject({
+          projectId,
+          updates: updates as never,
+        });
+        if (!result.ok) return { ok: false, error: result.error };
+        return { ok: true, result };
+      }
+
+      case "preview_photo_edit_pack": {
+        const projectId = asString(args.projectId);
+        if (!projectId) return { ok: false, error: "projectId required." };
+        const { previewPhotoEditPack } = await import("@/lib/campaign-media/photo-edit-preview");
+        const slot = asString(args.slot) || undefined;
+        const result = await previewPhotoEditPack({
+          projectId,
+          slot: slot as never,
+        });
+        if (!result.ok) return { ok: false, error: result.error };
+        return { ok: true, result };
+      }
+
+      case "soft_archive_photo_assemblies": {
+        const { softArchivePhotoAssemblies } = await import("@/lib/campaign-media/photo-edit-store");
+        const result = softArchivePhotoAssemblies({
+          projectId: asString(args.projectId) || undefined,
+          photoId: asString(args.photoId) || undefined,
+          confirmArchive: args.confirmArchive === true,
+        });
+        if (!result.ok) return { ok: false, error: result.error };
+        return { ok: true, result };
+      }
+
+      case "get_photo_readiness_matrix": {
+        const { getPhotoReadinessMatrix } = await import("@/lib/campaign-media/photo-readiness");
+        const photoIds = Array.isArray(args.photoIds)
+          ? args.photoIds.map((id) => String(id)).filter(Boolean)
+          : undefined;
+        return {
+          ok: true,
+          result: getPhotoReadinessMatrix({
+            limit: asLimit(args.limit, 40, 120),
+            photoIds,
+          }),
+        };
       }
 
       case "render_photo_edit_project": {

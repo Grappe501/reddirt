@@ -120,8 +120,12 @@ const PHOTO_PREP = [
   "create_focus_crop",
   "create_derivative_from_crop_advice",
   "propose_photo_edit_project",
+  "update_photo_edit_project",
+  "preview_photo_edit_pack",
   "render_photo_edit_project",
   "list_photo_assemblies",
+  "soft_archive_photo_assemblies",
+  "get_photo_readiness_matrix",
   "search_confirmed_memory",
 ] as const;
 
@@ -257,7 +261,7 @@ export function systemExtraForMode(mode: EvidenceAiMode): string {
     case "fit":
       return `MODE fit: Rank website surfaces / placement only. Prefer score_photo_website_fit or speech readiness/placement tools. Do not invent geography. Do not Approve/Publish or encode/render. Propose curated placement only when asked; never apply without confirm.`;
     case "photo_prep":
-      return `MODE photo_prep: Crops and non-destructive derivatives / Pro Edit only. Prefer suggest_crop_plan before create_photo_derivative. Never promote or Approve. Only render_photo_edit_project with confirmRender:true when operator asks.`;
+      return `MODE photo_prep: Crops, non-destructive derivatives, and Photo Pro Edit suite. Prefer suggest_crop_plan / propose_photo_edit_project / update_photo_edit_project / preview_photo_edit_pack. Call get_photo_readiness_matrix for backlog. Never invent geography. Never promote or Approve here. Only render_photo_edit_project with confirmRender:true; soft_archive with confirmArchive:true.`;
     case "video_prep":
       return `MODE video_prep: Prep package, excerpts, transcript intel, Pro Edit suite. Prefer prep_video_package / plan_video_excerpt / propose_video_edit_project. Cut-list via update_video_edit_cutlist (times/order only). Preview captions before burn-in. Never invent spoken lines. Only encode/poster/render/archive with confirmEncode/confirmPoster/confirmRender/confirmArchive.`;
     case "publish":
