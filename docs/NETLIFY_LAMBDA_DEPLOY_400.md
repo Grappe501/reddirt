@@ -53,8 +53,8 @@ Paste the **failed deploy ID** from the Netlify UI into that message before send
 
 ## What this usually is
 
-1. **Netlify platform / feature-flag rollout** — same generic message on Next.js OpenNext sites where staff must **exclude the site from a backend rollout**. Build OK; only function creation fails.
-2. **Unzipped function > ~250 MB** — sometimes the API returns a clearer “Unzipped size must be smaller…” message; RedDirt already runs `prune-server-handler` + `included_files` exclusions in `netlify.toml`.
+1. **Unzipped function > ~250 MB** — message includes “The function exceeds the maximum size of 250 MB”. Fix: tighten `netlify.toml` `included_files` + `scripts/prune-netlify-server-handler.cjs` (drop Sharp, wipe `data/**`, whitelist admin boards on Netlify). Redeploy `main`.
+2. **Netlify platform / feature-flag rollout** — generic “Invalid AWS Lambda parameters” with **no** size detail. Staff must exclude the site from a backend rollout (forum topics below).
 3. **Lambda env / invalid params** — `AWS_*` env vars, oversized Functions-scoped secrets, or UI-pinned duplicate `@netlify/plugin-nextjs`. Guarded by `lambda-env-guard` and `npm run netlify:env:scopes:launch-minimal`.
 
 The pasted logs do **not** show an unzipped-size detail → prioritize (1). Env scopes already verified clean → (3) is ruled out for site-managed vars.

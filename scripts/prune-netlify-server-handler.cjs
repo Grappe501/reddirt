@@ -16,12 +16,20 @@ const KELLY_SOS_LAUNCH = "kelly_sos";
 const TOP_LEVEL_DIR_PRUNE = [
   ".git",
   ".next/cache",
+  ".next/static",
+  ".next/diagnostics",
+  ".next/types",
   ".tmp-heic-preview",
   "data/calendar-command-center",
   "data/owned-campaign-media",
   "public",
   ".netlify",
   "docs",
+  "src",
+  "prisma",
+  "scripts",
+  "canvases",
+  "campaign-system-manual",
 ];
 
 /** Drop large non-launch data trees (opposition JSON stays). */
@@ -45,6 +53,31 @@ const LAUNCH_DATA_DIR_PRUNE = [
 
 const LAUNCH_ADMIN_TOP_KEEP = new Set(["login", "(board)", "opposition"]);
 const LAUNCH_BOARD_KEEP = new Set(["intelligence"]);
+/**
+ * kelly_sos_ops on Netlify — whitelist only boards needed for live ops.
+ * Everything else under admin/(board) is dropped so ___netlify-server-handler stays under 250 MB.
+ */
+const KELLY_OPS_NETLIFY_BOARD_KEEP = new Set([
+  "intelligence",
+  "evidence-workbench",
+  "campaign-calendar",
+  "campaign-events",
+  "workbench",
+  "election-plan",
+  "settings",
+  "counties",
+  "content",
+  "homepage",
+  "media",
+  "pages",
+  "stories",
+  "volunteers",
+  "asks",
+  "my-work",
+  "daily-brief",
+  "mission-brief",
+  "events",
+]);
 const LAUNCH_API_ADMIN_KEEP = new Set(["intelligence", "opposition"]);
 /** Kelly SOS production — keep public site + election-plan portal (force-dynamic). */
 const LAUNCH_APP_TOP_KEEP = new Set([
@@ -70,6 +103,9 @@ const LAUNCH_HANDLER_ROOT_KEEP = new Set([
 const MANIFEST_INCLUDED_EXCLUSIONS = [
   "!.git/**",
   "!.next/cache/**",
+  "!.next/static/**",
+  "!.next/diagnostics/**",
+  "!.next/types/**",
   "!node_modules/@googleapis/**",
   "!node_modules/googleapis/**",
   "!node_modules/google-auth-library/**",
@@ -80,23 +116,10 @@ const MANIFEST_INCLUDED_EXCLUSIONS = [
   "!node_modules/typescript/**",
   "!node_modules/webpack/**",
   "!node_modules/next/**",
-  "!data/calendar-command-center/**",
-  "!data/campaign-events/**",
-  "!data/compliance/**",
-  "!data/county-workbench/**",
-  "!data/election/**",
-  "!data/simulations/**",
-  "!data/intelligence/briefs/**",
-  "!data/intelligence/backups/**",
-  "!data/campaign-brain/city-intelligence-profiles.json",
-  "!data/campaign-brain/kelly-voter-audience-models.json",
-  "!data/campaign-brain/media-outreach/**",
-  "!data/campaign-brain/fairs-festivals/**",
-  "!data/campaign-brain/calendar-settlement/**",
-  "!data/campaign-brain/county-coverage/**",
-  "!data/campaign-brain/executive-book/**",
-  "!data/campaign-brain/operations-lock/**",
-  "!data/owned-campaign-media/**",
+  "!node_modules/@img/**",
+  "!node_modules/sharp/**",
+  "!data/**",
+  "!docs/**",
   "!.env",
   "!.env.*",
   "!**/.env",
@@ -106,6 +129,8 @@ const MANIFEST_INCLUDED_EXCLUSIONS = [
   "!campaign-system-manual/**",
   "!src/**",
   "!prisma/**",
+  "!scripts/**",
+  "!canvases/**",
   "!.local/**",
   "!**/npm-cache/**",
   "!**/_cacache/**",
@@ -122,6 +147,14 @@ const LAUNCH_PUBLIC_SERVER_DIRS = [
   ".next/server/app/(site)/about",
   ".next/server/app/(site)/office",
   ".next/server/app/(site)/dashboard",
+  ".next/server/app/(site)/counties",
+  ".next/server/app/(site)/volunteer",
+  ".next/server/app/(site)/from-the-road",
+  ".next/server/app/(site)/messages",
+  ".next/server/app/(site)/endorsements",
+  ".next/server/app/(site)/priorities",
+  ".next/server/app/(site)/understand",
+  ".next/server/app/(site)/listening-sessions",
 ];
 
 const LAUNCH_NODE_MODULES_DIRS = [
@@ -309,7 +342,7 @@ function removeOutboundSymlinks(handlerRoot) {
   return removed;
 }
 
-function pruneLaunchAdminServer(treeRoot) {
+function pruneLaunchAdminServer(treeRoot, boardKeep = LAUNCH_BOARD_KEEP) {
   const removed = [];
   const adminRoot = path.join(treeRoot, ".next/server/app/admin");
   if (exists(adminRoot)) {
@@ -325,7 +358,7 @@ function pruneLaunchAdminServer(treeRoot) {
   if (exists(boardRoot)) {
     for (const ent of fs.readdirSync(boardRoot, { withFileTypes: true })) {
       if (!ent.isDirectory()) continue;
-      if (LAUNCH_BOARD_KEEP.has(ent.name)) continue;
+      if (boardKeep.has(ent.name)) continue;
       const rel = path.join(".next/server/app/admin/(board)", ent.name);
       if (rmrf(path.join(treeRoot, rel))) removed.push(rel);
     }
@@ -348,6 +381,16 @@ function pruneLaunchData(treeRoot) {
   const removed = [];
   for (const rel of LAUNCH_DATA_DIR_PRUNE) {
     if (rmrf(path.join(treeRoot, rel))) removed.push(rel);
+  }
+  // Netlify: drop remaining data trees (public SSR must not rely on multi‑GB disk payloads).
+  if (isNetlifyBuild()) {
+    const dataRoot = path.join(treeRoot, "data");
+    if (exists(dataRoot)) {
+      for (const ent of fs.readdirSync(dataRoot, { withFileTypes: true })) {
+        const rel = path.join("data", ent.name);
+        if (rmrf(path.join(treeRoot, rel))) removed.push(rel);
+      }
+    }
   }
   return removed;
 }
@@ -409,7 +452,7 @@ function pruneLaunchHandlerRoot(handlerRoot) {
   return removed;
 }
 
-function pruneLaunchAppAndApi(handlerRoot, opts = { stripAdminBoards: true }) {
+function pruneLaunchAppAndApi(handlerRoot, opts = { stripAdminBoards: true, boardKeep: LAUNCH_BOARD_KEEP }) {
   const removed = [];
   const appRoot = path.join(handlerRoot, ".next/server/app");
   if (!exists(appRoot)) return removed;
@@ -418,7 +461,7 @@ function pruneLaunchAppAndApi(handlerRoot, opts = { stripAdminBoards: true }) {
     if (!ent.isDirectory()) continue;
     if (LAUNCH_APP_TOP_KEEP.has(ent.name)) {
       if (ent.name === "admin" && opts.stripAdminBoards) {
-        removed.push(...pruneLaunchAdminServer(handlerRoot));
+        removed.push(...pruneLaunchAdminServer(handlerRoot, opts.boardKeep ?? LAUNCH_BOARD_KEEP));
       }
       continue;
     }
@@ -471,9 +514,14 @@ function materializeMinimalNodeModules(handlerRoot, repoRoot) {
   if (exists(destNm)) rmrf(destNm);
   fs.mkdirSync(destNm, { recursive: true });
 
-  const minimalList = isOppositionDebateLaunch()
-    ? MINIMAL_NODE_MODULES.filter((rel) => !rel.includes("sharp") && !rel.startsWith("@img/"))
-    : MINIMAL_NODE_MODULES;
+  const minimalList = (() => {
+    let list = MINIMAL_NODE_MODULES;
+    // Netlify Image CDN covers /_next/image — sharp + libvips blow the 250 MB unzipped cap.
+    if (isNetlifyBuild() || isOppositionDebateLaunch()) {
+      list = list.filter((rel) => !rel.includes("sharp") && !rel.startsWith("@img/"));
+    }
+    return list;
+  })();
 
   for (const rel of minimalList) {
     const src = path.join(srcNm, ...rel.split("/"));
@@ -603,9 +651,16 @@ function pruneHandler(handlerRoot, repoRoot) {
   if (shouldRunAggressiveLaunchPrune()) {
     removed.push(...deleteAllSymlinks(handlerRoot));
     removed.push(...pruneLaunchHandlerRoot(handlerRoot));
+    const boardKeep = isOppositionDebateLaunch()
+      ? LAUNCH_BOARD_KEEP
+      : isNetlifyBuild()
+        ? KELLY_OPS_NETLIFY_BOARD_KEEP
+        : null;
     removed.push(
       ...pruneLaunchAppAndApi(handlerRoot, {
-        stripAdminBoards: isOppositionDebateLaunch(),
+        // On Netlify always whitelist admin boards — full ops tree exceeds 250 MB.
+        stripAdminBoards: Boolean(boardKeep),
+        boardKeep: boardKeep ?? LAUNCH_BOARD_KEEP,
       }),
     );
     for (const rel of LAUNCH_PUBLIC_SERVER_DIRS) {
