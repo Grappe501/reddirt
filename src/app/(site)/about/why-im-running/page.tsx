@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
-import { PageHero } from "@/components/blocks/PageHero";
+import { MediaPageHero } from "@/components/blocks/MediaPageHero";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { FullBleedSection } from "@/components/layout/FullBleedSection";
 import { Button } from "@/components/ui/Button";
 import { MeetKellySubnav } from "@/components/about/MeetKellySubnav";
-import { ContentPendingBadge } from "@/components/content/ContentPendingBadge";
 import { whyKellyPageCopy } from "@/content/about/why-kelly-page";
 import { pageMeta } from "@/lib/seo/metadata";
 
@@ -20,32 +19,30 @@ export const metadata: Metadata = pageMeta({
   imageSrc: "/media/placeholders/texture-porch-glow.svg",
 });
 
-export default function WhyImRunningPage() {
+export default async function WhyImRunningPage() {
   return (
     <>
-      <PageHero eyebrow="Meet Kelly" title="Why I'm running" subtitle={c.hero.subtitle}>
-        <Button href="/about" variant="outline">
+      <MediaPageHero
+        slotKey="why.hero"
+        layout="split"
+        eyebrow="Meet Kelly"
+        title="Why I'm running"
+        subtitle={c.hero.subtitle}
+      >
+        <Button href="/about" variant="outlineOnDark">
           Meet Kelly overview
         </Button>
-        <Button href="/about/why-secretary-of-state" variant="outline">
+        <Button href="/about/why-secretary-of-state" variant="outlineOnDark">
           Why this office
         </Button>
-        <Button href="/understand" variant="outline">
+        <Button href="/understand" variant="outlineOnDark">
           Understand the office
         </Button>
-      </PageHero>
+      </MediaPageHero>
 
       <FullBleedSection variant="subtle" className="!py-6">
         <ContentContainer className="max-w-3xl">
           <MeetKellySubnav current="/about/why-im-running" />
-          <div className="mt-6">
-            <ContentPendingBadge variant="pending" />
-            <p className="mt-3 font-body text-sm text-kelly-muted">
-              Election-administration and voter-list claims on this page need Kelly approval and primary-source
-              verification before paid or high-reach use. See{" "}
-              <code className="text-xs">docs/website/KELLY_BIOGRAPHY_VERIFICATION_MATRIX.md</code>.
-            </p>
-          </div>
         </ContentContainer>
       </FullBleedSection>
 

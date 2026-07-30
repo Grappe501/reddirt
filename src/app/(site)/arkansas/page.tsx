@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { PageHero } from "@/components/blocks/PageHero";
+import { MediaPageHero } from "@/components/blocks/MediaPageHero";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { FullBleedSection } from "@/components/layout/FullBleedSection";
 import { Button } from "@/components/ui/Button";
@@ -28,17 +28,23 @@ export default async function ArkansasPresencePage() {
 
   return (
     <>
-      <PageHero eyebrow={copy.hero.eyebrow} title={copy.hero.title} subtitle={copy.hero.subtitle}>
+      <MediaPageHero
+        slotKey="arkansas.hero"
+        layout="split"
+        eyebrow={copy.hero.eyebrow}
+        title={copy.hero.title}
+        subtitle={copy.hero.subtitle}
+      >
         <Button href="/events/request" variant="primary">
           Invite Kelly
         </Button>
-        <Button href="/arkansas/counties" variant="outline">
+        <Button href="/arkansas/counties" variant="outlineOnDark">
           All 75 counties
         </Button>
-        <Button href="/events" variant="outline">
+        <Button href="/events" variant="outlineOnDark">
           Campaign calendar
         </Button>
-      </PageHero>
+      </MediaPageHero>
 
       <FullBleedSection padY>
         <ContentContainer wide>
@@ -64,7 +70,7 @@ export default async function ArkansasPresencePage() {
             <Link href="/events" className="font-semibold text-kelly-navy underline-offset-2 hover:underline">
               /events
             </Link>{" "}
-            include published campaign events and approved public listings—never internal Victory OS data.
+            include published campaign events and approved public listings.
           </p>
         </ContentContainer>
       </FullBleedSection>

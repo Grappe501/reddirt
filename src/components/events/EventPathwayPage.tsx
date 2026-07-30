@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
-import { PageHero } from "@/components/blocks/PageHero";
+import { MediaPageHero } from "@/components/blocks/MediaPageHero";
 import { FullBleedSection } from "@/components/layout/FullBleedSection";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { Button } from "@/components/ui/Button";
@@ -16,7 +16,7 @@ type EventPathwayPageProps = {
   nextStep?: { label: string; href: string };
 };
 
-export function EventPathwayPage({ layer, eyebrow, title, subtitle, children, nextStep }: EventPathwayPageProps) {
+export async function EventPathwayPage({ layer, eyebrow, title, subtitle, children, nextStep }: EventPathwayPageProps) {
   return (
     <div className="min-h-screen bg-gradient-to-b from-kelly-fog/90 via-white to-kelly-fog/50 pb-16">
       <FullBleedSection variant="subtle" padY={false} className="border-b border-kelly-text/10">
@@ -60,7 +60,13 @@ export function EventPathwayPage({ layer, eyebrow, title, subtitle, children, ne
         </ContentContainer>
       </FullBleedSection>
 
-      <PageHero tone="plan" eyebrow={eyebrow} title={title} subtitle={subtitle} />
+      <MediaPageHero
+        slotKey="events.request.hero"
+        layout="split"
+        eyebrow={eyebrow}
+        title={title}
+        subtitle={subtitle}
+      />
 
       <FullBleedSection padY>
         <ContentContainer className="max-w-3xl">{children}</ContentContainer>

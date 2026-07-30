@@ -77,7 +77,7 @@ export function SocialFooterIcons({
               rel={isMailto ? undefined : "noopener noreferrer"}
               aria-label={item.label}
               className={cn(
-                "flex h-9 w-9 items-center justify-center rounded-full border transition sm:h-10 sm:w-10",
+                "flex h-11 w-11 items-center justify-center rounded-full border transition sm:h-12 sm:w-12",
                 "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-kelly-gold",
                 isLight
                   ? "border-kelly-navy/15 bg-white text-kelly-navy hover:border-kelly-gold/60 hover:bg-kelly-fog/50"

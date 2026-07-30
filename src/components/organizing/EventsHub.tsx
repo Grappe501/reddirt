@@ -42,13 +42,12 @@ export function EventsHub({ events, types, regions, audienceTags, initialFilters
     status: initialFilters?.status ?? "all",
     audience: initialFilters?.audience ?? "all",
     schedule: initialFilters?.schedule ?? "all",
-    includeCalendar: initialFilters?.includeCalendar ?? true,
   });
   const [selectedSlug, setSelectedSlug] = useState<string | null>(null);
 
   const filtered = useMemo(() => {
     return events.filter((e) => {
-      if (!filters.includeCalendar && e.eventSource === "calendar") return false;
+      // Published calendar rows are always part of the hub merge (Phase 1–2).
       if (filters.type !== "all" && e.type !== filters.type) return false;
       if (filters.region !== "all" && e.region !== filters.region) return false;
       if (filters.status !== "all" && e.status !== filters.status) return false;
@@ -122,7 +121,6 @@ export function EventsHub({ events, types, regions, audienceTags, initialFilters
                       status: "all",
                       audience: "all",
                       schedule: "all",
-                      includeCalendar: true,
                     })
                   }
                 >
@@ -150,7 +148,7 @@ export function EventsHub({ events, types, regions, audienceTags, initialFilters
 
         <div className="order-2 xl:order-1">
           <div className="mb-2">
-            <h3 className="font-heading text-lg font-bold text-kelly-text">Field map</h3>
+            <h3 className="font-heading text-lg font-bold text-kelly-text">Event map</h3>
             <p className="mt-1 font-body text-sm text-kelly-text/70">
               Click a pin or card to sync the view. Filters apply to both.
             </p>

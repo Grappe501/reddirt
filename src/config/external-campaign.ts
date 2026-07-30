@@ -3,8 +3,6 @@
  * Override with NEXT_PUBLIC_* in .env when URLs change.
  */
 
-import { isNativeVolunteerFormEnabled } from "@/config/volunteer-signup";
-
 const LEGACY_SITE = "https://www.kellygrappe.com";
 /** GoodChange — donate CTA used on the public Squarespace site */
 const DONATE_GOODCHANGE = "https://goodchange.app/donate/commi-h8";
@@ -17,35 +15,41 @@ export function getLegacyPublicSiteUrl(): string {
 /** On-site “stay connected” form (`JoinMovementForm` on get-involved). */
 export const STAY_CONNECTED_HREF = "/get-involved#join" as const;
 
-/** On-site volunteer intake (`VolunteerForm` on get-involved). */
+/** On-site volunteer intake (`VolunteerForm` on get-involved) — public marketing canon. */
 export const VOLUNTEER_SIGNUP_HREF = "/get-involved#volunteer" as const;
 
+/**
+ * Field Team onboarding UI (`/volunteer`) — linked only when we mean that product,
+ * not the header/Final Action “Volunteer” CTA.
+ */
+export const FIELD_TEAM_ONBOARDING_HREF = "/volunteer" as const;
+
+/**
+ * Public “Volunteer” CTA — always the get-involved volunteer form unless an external
+ * signup URL is set. Field Team onboarding stays at `/volunteer` (explicit links only).
+ */
 export function getVolunteerSignupHref(): string {
-  if (isNativeVolunteerFormEnabled()) return "/volunteer#signup";
   const o = process.env.NEXT_PUBLIC_VOLUNTEER_SIGNUP_URL?.trim();
   if (o) return o;
   return VOLUNTEER_SIGNUP_HREF;
 }
 
 /**
- * “Join the campaign” / primary volunteer CTA.
- * Defaults to the on-site volunteer form; set `NEXT_PUBLIC_JOIN_CAMPAIGN_URL` to use an external page instead.
+ * “Join the campaign” / Stay connected — lightest step on the participation ladder.
+ * Override with `NEXT_PUBLIC_JOIN_CAMPAIGN_URL` only for a true external join page.
  */
 export function getJoinCampaignHref(): string {
   const o = process.env.NEXT_PUBLIC_JOIN_CAMPAIGN_URL?.trim().replace(/\/$/, "");
   if (o) return o;
-  return getContactMailto();
+  return STAY_CONNECTED_HREF;
 }
 
 /**
- * “Join the campaign” on content hub cards: same `NEXT_PUBLIC_JOIN_CAMPAIGN_URL` override as
- * `getJoinCampaignHref`, but defaults to `#join` (contact) so it does not duplicate the volunteer card’s
- * `#volunteer` target.
+ * Content-hub “Join” cards: same override as `getJoinCampaignHref`, defaults to Stay connected
+ * so they do not duplicate the volunteer `#volunteer` target.
  */
 export function getContentHubJoinHref(): string {
-  const o = process.env.NEXT_PUBLIC_JOIN_CAMPAIGN_URL?.trim().replace(/\/$/, "");
-  if (o) return o;
-  return getContactMailto();
+  return getJoinCampaignHref();
 }
 
 /** Use `target="_blank"` + rel only for off-site (or `mailto:`) links — not same-site app routes. */

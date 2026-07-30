@@ -41,7 +41,14 @@ const RAW_INGEST_RE = /^ingestion_|_raw$|_raw_/i;
 const CURATED_MAP_PROPOSALS = [
   { modelName: "County", recommendedTable: "counties", confidence: "high", rationale: "Plural snake public table matches Prisma County semantics." },
   { modelName: "EventRequest", recommendedTable: "event_requests", confidence: "high", rationale: "Live event_requests aligns with Prisma EventRequest." },
-  { modelName: "Submission", recommendedTable: "submissions", confidence: "high", rationale: "Common plural mapping." },
+  {
+    modelName: "Submission",
+    recommendedTable: null,
+    confidence: "none",
+    rationale:
+      "Do not @@map to lowercase submissions — that physical table is legacy (module_id/raw_data) on the shared DB. RedDirt owns PascalCase \"Submission\" (Phase 1C).",
+    doNotAutoMap: true,
+  },
   { modelName: "MediaAsset", recommendedTable: "media_assets", confidence: "high", rationale: "Plural snake table present in audit." },
   {
     modelName: "WorkflowIntake",

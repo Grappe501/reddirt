@@ -63,8 +63,8 @@ export const pathwayCards = [
   {
     title: "Help locally",
     description: "Host, knock doors, or support neighbors stepping up in your county.",
-    href: "/local-organizing",
-    ctaLabel: "Organize nearby",
+    href: "/start-a-local-team",
+    ctaLabel: "Start a local team",
   },
   {
     title: "Office priorities",

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { PageHero } from "@/components/blocks/PageHero";
+import { MediaPageHero } from "@/components/blocks/MediaPageHero";
 import { FullBleedSection } from "@/components/layout/FullBleedSection";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { Button } from "@/components/ui/Button";
@@ -12,10 +12,12 @@ export const metadata: Metadata = {
     "Invite Kelly to your county or share a local fair, festival, civic club, church, chamber, or community gathering. Staff review every request—nothing is confirmed from this form alone.",
 };
 
-export default function ScheduleCampaignEventPage() {
+export default async function ScheduleCampaignEventPage() {
   return (
     <>
-      <PageHero
+      <MediaPageHero
+        slotKey="schedule.hero"
+        layout="split"
         eyebrow="Schedule / invite"
         title="Invite Kelly · Share local events"
         subtitle="Help us find fairs, festivals, civic clubs, churches, chambers, and community gatherings. Tell us what you are hoping to host or convene—we route every request through staff review. Tentative only; never a public confirmation of Kelly’s private calendar."
@@ -23,10 +25,10 @@ export default function ScheduleCampaignEventPage() {
         <Button href="#schedule-form" variant="primary">
           Share an opportunity
         </Button>
-        <Button href="/events/request" variant="outline">
+        <Button href="/events/request" variant="outlineOnDark">
           Invite Kelly pathway
         </Button>
-      </PageHero>
+      </MediaPageHero>
 
       <FullBleedSection padY aria-labelledby="schedule-copy-heading">
         <ContentContainer wide className="max-w-3xl">

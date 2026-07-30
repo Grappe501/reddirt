@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { PageHero } from "@/components/blocks/PageHero";
+import { MediaPageHero } from "@/components/blocks/MediaPageHero";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { FullBleedSection } from "@/components/layout/FullBleedSection";
 import { Button } from "@/components/ui/Button";
@@ -17,25 +17,31 @@ const c = meetKellyCommunityCopy;
 export const metadata: Metadata = pageMeta({
   title: "Community & civic leadership",
   description:
-    "Kelly Grappe's community leadership—Stand Up Arkansas, grassroots petition work, and Forevermost Farms. Verified links only; initiative claims await campaign approval.",
+    "Kelly Grappe's community leadership—Stand Up Arkansas, grassroots petition work, and Forevermost Farms.",
   path: "/about/community",
   imageSrc: "/media/placeholders/texture-porch-glow.svg",
 });
 
-export default function AboutCommunityPage() {
+export default async function AboutCommunityPage() {
   return (
     <>
-      <PageHero eyebrow={c.hero.eyebrow} title={c.hero.title} subtitle={c.hero.subtitle}>
+      <MediaPageHero
+        slotKey="community.hero"
+        layout="split"
+        eyebrow={c.hero.eyebrow}
+        title={c.hero.title}
+        subtitle={c.hero.subtitle}
+      >
         <Button href={directDemocracyHubHref} variant="primary">
           Direct democracy hub
         </Button>
-        <Button href="/about" variant="outline">
+        <Button href="/about" variant="outlineOnDark">
           Meet Kelly overview
         </Button>
-        <Button href="/about/journey" variant="outline">
+        <Button href="/about/journey" variant="outlineOnDark">
           Her journey
         </Button>
-      </PageHero>
+      </MediaPageHero>
 
       <FullBleedSection variant="subtle" padY>
         <ContentContainer className="max-w-3xl">

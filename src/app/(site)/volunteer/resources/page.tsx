@@ -7,7 +7,7 @@ import { VolunteerResourceLibrary } from "@/components/volunteer/VolunteerResour
 export const metadata: Metadata = {
   title: "Volunteer Resource Library",
   description:
-    "Guides, worksheets, and training materials for building your local team. Downloads are released only after campaign review.",
+    "Guides, worksheets, and training materials for building your local team.",
 };
 
 export default function VolunteerResourcesPage() {
@@ -16,7 +16,7 @@ export default function VolunteerResourcesPage() {
       <PageHero
         eyebrow="Volunteers"
         title="Volunteer Resource Library"
-        subtitle="Orientation tools, lane guides, and printables — with clear status on every item. PDFs stay non-downloadable until Published, Ernie polish, campaign approval, and an uploaded file; web pages can update anytime."
+        subtitle="Orientation tools, lane guides, and printables for building your local team."
       >
         <Button href="/volunteer/resources/glossary" variant="outline">
           Glossary

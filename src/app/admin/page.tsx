@@ -1,5 +1,6 @@
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+import { isLocalAdminHost } from "@/lib/admin/local-admin-host";
 import { ADMIN_SESSION_COOKIE, getAdminSecret, verifyAdminSessionToken } from "@/lib/admin/session";
 
 export const dynamic = "force-dynamic";
@@ -13,8 +14,11 @@ function adminHomeAfterLogin(): string {
 
 /** `/admin` — login first if needed, then intelligence hub (debate launch) or content board. */
 export default async function AdminRootPage() {
-  const secret = getAdminSecret();
   const destination = adminHomeAfterLogin();
+  if (await isLocalAdminHost()) {
+    redirect(destination);
+  }
+  const secret = getAdminSecret();
   if (!secret) {
     redirect("/admin/login?error=config");
   }

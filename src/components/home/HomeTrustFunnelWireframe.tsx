@@ -1,127 +1,85 @@
-import Link from "next/link";
-import { ContentContainer } from "@/components/layout/ContentContainer";
-import { getCampaignBlogUrl, getVolunteerSignupHref } from "@/config/external-campaign";
-import { siteConfig } from "@/config/site";
-import type { RoadPostCard } from "@/lib/content/content-hub-queries";
-import type { PublicCampaignEvent } from "@/lib/calendar/public-event-types";
-import { TrustFunnelDirectDemocracySection } from "@/components/home/trust-funnel/TrustFunnelDirectDemocracySection";
-import { directDemocracyHubHref } from "@/config/direct-democracy-links";
-import { trustFunnelHomeCopy } from "@/content/home/trust-funnel-home";
+/**
+ * Homepage section orchestrator — LIVE CANON shell for `/`
+ * (KELLY-PUBLIC-WEBSITE-48H-LAUNCH-SPRINT-1.0 narrative order).
+ * @see docs/website/HOMEPAGE_48H_LAUNCH_SPRINT_MAP.md
+ *
+ * Upper stack stays on `/`: hero → Government That Works → primary message →
+ * personality still bridge → closing ask.
+ *
+ * Do not remount menu homes below the bridge:
+ * Meet Kelly story → /about · Journey / Across Arkansas → /about/journey ·
+ * Photos → /campaign-photos · News → /from-the-road · Events → /events ·
+ * Endorsements → /endorsements · Videos library → /kelly-speaks
+ */
+/**
+ * Homepage section orchestrator — LIVE CANON shell for `/`
+ * (KELLY-PUBLIC-WEBSITE-48H-LAUNCH-SPRINT-1.0 narrative order).
+ * @see docs/website/HOMEPAGE_48H_LAUNCH_SPRINT_MAP.md
+ *
+ * Upper stack stays on `/`: hero → Government That Works → primary message →
+ * personality still bridge → closing ask.
+ *
+ * Do not remount menu homes below the bridge:
+ * Meet Kelly story → /about · Journey / Across Arkansas → /about/journey ·
+ * Photos → /campaign-photos · News → /from-the-road · Events → /events ·
+ * Endorsements → /endorsements · Videos library → /kelly-speaks
+ */
+import { TrustFunnelFourPillarsSection } from "@/components/home/trust-funnel/TrustFunnelFourPillarsSection";
 import { TrustFunnelHero } from "@/components/home/trust-funnel/TrustFunnelHero";
-import { TrustFunnelMeetKellySection } from "@/components/home/trust-funnel/TrustFunnelMeetKellySection";
-import { TrustFunnelOfficeExplainerSection } from "@/components/home/trust-funnel/TrustFunnelOfficeExplainerSection";
-import { TrustFunnelInviteKellySection } from "@/components/home/trust-funnel/TrustFunnelInviteKellySection";
-import { TrustFunnelListeningSection } from "@/components/home/trust-funnel/TrustFunnelListeningSection";
-import { TrustFunnelRolesSection } from "@/components/home/trust-funnel/TrustFunnelRolesSection";
-import { TrustFunnelOnTheRoad } from "@/components/home/trust-funnel/TrustFunnelOnTheRoad";
-import { ScrollReveal } from "@/components/ui/ScrollReveal";
+import { TrustFunnelPrimaryMessageSection } from "@/components/home/trust-funnel/TrustFunnelPrimaryMessageSection";
+import { TrustFunnelFinalActionSection } from "@/components/home/trust-funnel/TrustFunnelFinalActionSection";
+import { PublicMediaSlotFrame } from "@/components/media/PublicMediaSlotFrame";
+import { trustFunnelHomeCopy } from "@/content/home/trust-funnel-home";
+import { resolveSiteCopy } from "@/lib/site-edit/copy-overrides";
+import { isSiteEditMode } from "@/lib/site-edit/edit-mode";
 
-export type HomeTrustFunnelWireframeProps = {
-  roadPreviewPosts: RoadPostCard[];
-  upcomingPublicEvents: PublicCampaignEvent[];
-};
+/**
+ * Soft visual bridge after the primary message —
+ * typed public personality still (not a Meet Kelly remount / not memoir).
+ */
+function HomePersonalityMediaBridge() {
+  return (
+    <div
+      className="relative isolate h-[min(38vw,16rem)] w-full overflow-hidden border-y border-kelly-ink/8 sm:h-[min(32vw,18rem)]"
+      aria-hidden
+    >
+      <PublicMediaSlotFrame
+        slotKey="home.personality.primary"
+        className="absolute inset-0 h-full w-full"
+        sizes="100vw"
+        warmOverlay
+      />
+      <div
+        className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/45 via-white/15 to-white"
+        aria-hidden
+      />
+    </div>
+  );
+}
 
-const meetBand = trustFunnelHomeCopy.meetKellyBand;
-const final = trustFunnelHomeCopy.finalCta;
-
-export function HomeTrustFunnelWireframe({ roadPreviewPosts, upcomingPublicEvents }: HomeTrustFunnelWireframeProps) {
-  const volunteerHref = getVolunteerSignupHref();
+export async function HomeTrustFunnelWireframe() {
+  const editing = await isSiteEditMode();
+  const h = trustFunnelHomeCopy.hero;
+  const copy = {
+    brand: resolveSiteCopy("home.hero.brand", h.brand),
+    office: resolveSiteCopy("home.hero.office", h.office),
+    promise: resolveSiteCopy("home.hero.promise", h.promise),
+    body: resolveSiteCopy("home.hero.body", h.body),
+    ctaPrimary: resolveSiteCopy("home.hero.ctaPrimary", h.ctas[0].label),
+    ctaSecondary: resolveSiteCopy("home.hero.ctaSecondary", h.ctas[1].label),
+  };
 
   return (
     <div className="bg-white">
-      <TrustFunnelHero />
+      <TrustFunnelHero editing={editing} copy={copy} />
 
-      <TrustFunnelOfficeExplainerSection />
+      <TrustFunnelFourPillarsSection />
 
-      <TrustFunnelDirectDemocracySection />
+      <TrustFunnelPrimaryMessageSection />
 
-      <TrustFunnelMeetKellySection />
+      <HomePersonalityMediaBridge />
 
-      {/* Experience band — links to Meet Kelly; no unsourced résumé bullets on homepage */}
-      <section className="border-t border-kelly-ink/10 bg-kelly-wash/60 py-section-y lg:py-section-y-lg" aria-labelledby="experience-heading">
-        <ContentContainer>
-          <ScrollReveal className="mx-auto max-w-3xl text-center">
-            <h2 id="experience-heading" className="font-heading text-2xl font-bold text-kelly-ink md:text-3xl">
-              {meetBand.title}
-            </h2>
-            <p className="mt-4 font-body text-lg text-kelly-slate">{meetBand.intro}</p>
-          </ScrollReveal>
-          <ScrollReveal delay={60} className="mt-8 flex justify-center">
-            <Link
-              href={meetBand.ctaHref}
-              className="inline-flex min-h-[48px] items-center justify-center rounded-btn border-2 border-kelly-navy/20 bg-white px-6 py-3 text-sm font-bold uppercase tracking-wider text-kelly-navy transition hover:border-kelly-gold/50"
-            >
-              {meetBand.cta}
-            </Link>
-          </ScrollReveal>
-        </ContentContainer>
-      </section>
-
-      <TrustFunnelInviteKellySection />
-
-      <section id="get-involved">
-        <TrustFunnelRolesSection
-          volunteerHref={volunteerHref}
-          donateHref={siteConfig.donateHref}
-          stayHref="/get-involved#join"
-          blogUrl={getCampaignBlogUrl()}
-        />
-      </section>
-
-      <TrustFunnelListeningSection />
-
-      {/* Trust band */}
-      <section className="border-t border-kelly-gold/25 bg-kelly-navy py-10 text-white" aria-label="Campaign trust principles">
-        <ContentContainer>
-          <ScrollReveal yOffset={6}>
-            <ul className="flex flex-wrap justify-center gap-x-8 gap-y-3 text-center font-body text-sm font-semibold text-white/95">
-              {trustFunnelHomeCopy.trustBand.map((line) => (
-                <li key={line}>{line}</li>
-              ))}
-            </ul>
-          </ScrollReveal>
-        </ContentContainer>
-      </section>
-
-      <TrustFunnelOnTheRoad roadPreviewPosts={roadPreviewPosts} upcomingPublicEvents={upcomingPublicEvents} />
-
-      {/* Final CTA */}
-      <section className="border-t border-kelly-ink/10 bg-kelly-wash/80 py-section-y lg:py-section-y-lg" aria-labelledby="final-cta-heading">
-        <ContentContainer>
-          <ScrollReveal className="mx-auto max-w-2xl text-center">
-            <h2 id="final-cta-heading" className="font-heading text-2xl font-bold text-kelly-ink md:text-3xl">
-              {final.title}
-            </h2>
-            <p className="mt-4 font-body text-lg text-kelly-slate">{final.body}</p>
-            <div className="mt-10 flex flex-col items-stretch gap-3 sm:flex-row sm:justify-center">
-              <Link
-                href="/about"
-                className="inline-flex min-h-[48px] items-center justify-center rounded-btn border-2 border-kelly-navy/20 bg-white px-6 py-3 text-sm font-bold uppercase tracking-wider text-kelly-navy transition hover:border-kelly-gold hover:shadow-md"
-              >
-                {final.ctas.meetKelly}
-              </Link>
-              <Link
-                href={directDemocracyHubHref}
-                className="inline-flex min-h-[48px] items-center justify-center rounded-btn border-2 border-kelly-gold/50 bg-kelly-gold/15 px-6 py-3 text-sm font-bold uppercase tracking-wider text-kelly-navy transition hover:bg-kelly-gold/25"
-              >
-                {final.ctas.directDemocracy}
-              </Link>
-              <Link
-                href="/events/request"
-                className="inline-flex min-h-[48px] items-center justify-center rounded-btn bg-kelly-navy px-6 py-3 text-sm font-bold uppercase tracking-wider text-white transition hover:bg-kelly-blue"
-              >
-                {final.ctas.inviteKelly}
-              </Link>
-              <Link
-                href="/get-involved"
-                className="inline-flex min-h-[48px] items-center justify-center rounded-btn bg-kelly-gold px-6 py-3 text-sm font-bold uppercase tracking-wider text-kelly-navy transition hover:bg-kelly-gold-soft"
-              >
-                {final.ctas.volunteer}
-              </Link>
-            </div>
-          </ScrollReveal>
-        </ContentContainer>
-      </section>
+      <TrustFunnelFinalActionSection />
     </div>
   );
 }

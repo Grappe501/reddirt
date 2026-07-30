@@ -3,6 +3,8 @@ import { cn } from "@/lib/utils";
 const variants = {
   /** Default page wash */
   default: "bg-kelly-page text-kelly-text",
+  /** Transparent shell for media heroes (caller paints background). */
+  plain: "bg-transparent text-kelly-text",
   /** Dark text color as background band (footer-style blocks) */
   "ink-band": "bg-kelly-text text-kelly-page",
   /** Muted slate band */

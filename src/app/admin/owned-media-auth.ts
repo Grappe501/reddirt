@@ -1,8 +1,10 @@
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+import { isLocalAdminHost } from "@/lib/admin/local-admin-host";
 import { ADMIN_SESSION_COOKIE, getAdminSecret, verifyAdminSessionToken } from "@/lib/admin/session";
 
 export async function requireAdminAction() {
+  if (await isLocalAdminHost()) return;
   const secret = getAdminSecret();
   if (!secret) redirect("/admin/login?error=config");
   const token = (await cookies()).get(ADMIN_SESSION_COOKIE)?.value;

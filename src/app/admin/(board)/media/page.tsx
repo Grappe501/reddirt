@@ -27,6 +27,9 @@ export default async function AdminMediaPage({ searchParams }: Props) {
       </p>
 
       <div className="mt-6 flex flex-wrap gap-2 font-body text-xs">
+        <Link href="/admin/media/youtube" className="rounded-full border border-kelly-text/20 px-3 py-1 font-semibold text-kelly-blue">
+          YouTube transcripts
+        </Link>
         <span className="self-center font-semibold text-kelly-muted">Filter:</span>
         <Link
           href="/admin/media"

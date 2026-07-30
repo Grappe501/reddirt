@@ -47,13 +47,7 @@ export const DEMO_FUNDRAISING_LEADS: FundraisingLead[] = [
   },
 ];
 
-export type FundraisingReviewStage =
-  | "Draft"
-  | "Internal review"
-  | "Ernie review"
-  | "Design preview"
-  | "Approved"
-  | "Published";
+export type FundraisingReviewStage = "Coming soon" | "Available";
 
 export type FundraisingResourceItem = {
   title: string;
@@ -61,17 +55,17 @@ export type FundraisingResourceItem = {
   note: string;
 };
 
-/** Review-gated library — no downloadable “final” assets on this surface. */
+/** Fundraising assets listed for teams — downloads appear when ready. */
 export const FUNDRAISING_RESOURCE_LIBRARY: FundraisingResourceItem[] = [
-  { title: "Fundraising Lead Guide", stage: "Draft", note: "Awaiting internal review." },
-  { title: "Adult Fundraising Playbook", stage: "Draft", note: "Awaiting internal review." },
-  { title: "College Fundraising Playbook", stage: "Draft", note: "Awaiting internal review." },
-  { title: "Small-Dollar Fundraising Guide", stage: "Draft", note: "Awaiting internal review." },
-  { title: "QR Code Fundraising Guide", stage: "Draft", note: "Awaiting internal review." },
-  { title: "Fundraising Event Ideas", stage: "Draft", note: "Consolidated from this dashboard; Ernie review pending." },
-  { title: "Host Circle Guide", stage: "Draft", note: "Awaiting internal review." },
-  { title: "County Fundraising Party Checklist", stage: "Draft", note: "Awaiting internal review." },
-  { title: "Compliance Review Notes", stage: "Internal review", note: "Not for public distribution until Approved." },
+  { title: "Fundraising Lead Guide", stage: "Coming soon", note: "Download coming soon." },
+  { title: "Adult Fundraising Playbook", stage: "Coming soon", note: "Download coming soon." },
+  { title: "College Fundraising Playbook", stage: "Coming soon", note: "Download coming soon." },
+  { title: "Small-Dollar Fundraising Guide", stage: "Coming soon", note: "Download coming soon." },
+  { title: "QR Code Fundraising Guide", stage: "Coming soon", note: "Download coming soon." },
+  { title: "Fundraising Event Ideas", stage: "Coming soon", note: "Download coming soon." },
+  { title: "Host Circle Guide", stage: "Coming soon", note: "Download coming soon." },
+  { title: "County Fundraising Party Checklist", stage: "Coming soon", note: "Download coming soon." },
+  { title: "Compliance Review Notes", stage: "Coming soon", note: "Download coming soon." },
 ];
 
 export const FUN_FUNDRAISING_IDEAS: string[] = [

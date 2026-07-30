@@ -16,6 +16,11 @@ const cards = [
     title: "Compliance Command Center",
     body: "Import fundraising and bank files, reconcile deposits, prepare filing-ready compliance records.",
   },
+  {
+    href: "/admin/evidence-workbench",
+    title: "Evidence Workbench (local)",
+    body: "Confirm calendar presence, photo geography, and speech counties on localhost — saves JSON on H: without Netlify.",
+  },
   { href: "/admin/homepage", title: "Homepage", body: "Hero, sections, quotes, featured rails." },
   { href: "/admin/pages", title: "Page copy", body: "Hero text for belief, movement, and pillar pages." },
   { href: "/admin/blog", title: "Blog / Substack", body: "Sync RSS, feature posts, teasers, placement." },

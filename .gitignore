@@ -147,6 +147,31 @@ campaign-media/phone-import/
 # Legislative video processing artifacts (local cache — do not commit raw media)
 data/legislature/audio/
 data/legislature/audio/**
+
+# Campaign YouTube transcript pipeline (OAuth tokens + workspace drafts)
+data/integrations/youtube-oauth.sealed.json
+data/campaign-media/transcript-pipeline/**
+!data/campaign-media/transcript-pipeline/.gitkeep
+
+# Homepage curation apply backups (local undo only)
+data/campaign-media/homepage-curation-backups/**
+!data/campaign-media/homepage-curation-backups/.gitkeep
+
+# Homepage video curation apply backups (local undo only)
+data/campaign-media/homepage-video-curation-backups/**
+!data/campaign-media/homepage-video-curation-backups/.gitkeep
+
+# Materialized county album file copies (rebuild via Evidence Workbench / scripts/refresh-county-albums.ts)
+public/media/county-albums/**
+!public/media/county-albums/.gitkeep
+
+# Non-destructive photo/video derivatives (ledger JSON may be committed; binaries stay local)
+public/media/campaign-derivatives/**
+!public/media/campaign-derivatives/.gitkeep
+
+# Nested phone/camera dumps — batch-ingest flattens copies into campaign-photos/; keep originals local-only
+public/media/campaign-photos/Website pics and speeches/**
+
 *.mp3
 !public/**/*.mp3
 

@@ -25,7 +25,7 @@ export default function CountyDemocratsHubPage() {
   return (
     <>
       <PageHero
-        eyebrow="Volunteer OS · County parties"
+        eyebrow="County parties"
         title="County Democratic Party organizing"
         subtitle="A ready-made rhythm: monthly county meetings, Power of 5 turnout networks, voter registration, events, communications, and precinct team launches — interoperable with statewide volunteer workspaces."
       >
@@ -68,8 +68,8 @@ export default function CountyDemocratsHubPage() {
             </ul>
           </div>
           <p className="font-body text-xs text-kelly-text/60">
-            Automation: scheduling a monthly meeting (with database connected) creates campaign calendar events and workbench tasks;
-            email invitations and reminders link through Email Command Center / Message Studio in a later operator pass.
+            Scheduling a monthly meeting (when connected) adds it to the campaign calendar so chairs and volunteers can
+            stay aligned.
           </p>
         </ContentContainer>
       </FullBleedSection>

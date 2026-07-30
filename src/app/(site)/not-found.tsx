@@ -18,8 +18,8 @@ export default function NotFound() {
           <Button href="/" variant="primary">
             Home
           </Button>
-          <Button href="/local-organizing" variant="outline">
-            Local organizing
+          <Button href="/start-a-local-team" variant="outline">
+            Start a local team
           </Button>
           <Button href="/stories" variant="subtle">
             Stories

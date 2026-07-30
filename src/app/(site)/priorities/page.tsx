@@ -1,116 +1,118 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { PageHero } from "@/components/blocks/PageHero";
-import { SectionHeading } from "@/components/blocks/SectionHeading";
+import { MediaPageHero } from "@/components/blocks/MediaPageHero";
 import { FullBleedSection } from "@/components/layout/FullBleedSection";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { Button } from "@/components/ui/Button";
-import { CTASection } from "@/components/blocks/CTASection";
-import { ContentPendingBadge } from "@/components/content/ContentPendingBadge";
+import { prioritiesLaunchCopy } from "@/content/website/priorities-launch";
 import { pageMeta } from "@/lib/seo/metadata";
-import { OFFICE_PRIORITY_FRAMEWORK } from "@/content/website/content-integrity";
-import { getHostOrVisitRequestHref } from "@/lib/county/official-links";
 
 export const metadata: Metadata = pageMeta({
-  title: "Office priorities",
+  title: "Kelly’s Priorities",
   description:
-    "Framework for Secretary of State priorities—elections, business services, transparency, and civic participation. Detailed positions pending campaign approval.",
+    "What the Arkansas Secretary of State can deliver — elections, business filings, transparency, and Capitol stewardship — with clear limits of the office.",
   path: "/priorities",
   imageSrc: "/media/placeholders/texture-porch-glow.svg",
 });
 
-export default function PrioritiesPage() {
+const c = prioritiesLaunchCopy;
+
+export default async function PrioritiesPage() {
   return (
     <>
-      <PageHero
-        tone="plan"
-        eyebrow="Issues / office priorities"
-        title="What this office should deliver for Arkansas"
-        subtitle="The Secretary of State administers elections, business filings, public records, and Capitol stewardship—not broad legislative platforms. Detailed policy copy on this page stays in framework form until campaign leadership approves final language."
+      <MediaPageHero
+        slotKey="priorities.hero"
+        layout="split"
+        eyebrow={c.hero.eyebrow}
+        title={c.hero.title}
+        subtitle={c.hero.subtitle}
       >
         <Button href="/understand" variant="primary">
           Understand the office
         </Button>
-        <Button href="/about/why-kelly" variant="outlineOnDark">
-          Why Kelly
+        <Button href="/about" variant="outlineOnDark">
+          Read Kelly’s Story
         </Button>
-      </PageHero>
+      </MediaPageHero>
 
-      <FullBleedSection variant="subtle" padY aria-labelledby="framework-heading">
-        <ContentContainer>
-          <SectionHeading
-            id="framework-heading"
-            eyebrow="Framework"
-            title="Office priority areas"
-            subtitle="Each section below is a structure only—no invented positions. Campaign-approved detail will replace placeholders."
-          />
-          <ul className="mt-10 grid list-none gap-5 p-0 md:grid-cols-2">
-            {OFFICE_PRIORITY_FRAMEWORK.map((pillar) => (
-              <li
-                key={pillar.id}
-                className="rounded-card border border-kelly-text/10 bg-white p-6 shadow-[var(--shadow-soft)]"
-              >
-                <div className="flex flex-wrap items-start justify-between gap-2">
-                  <h3 className="font-heading text-lg font-bold text-kelly-text">{pillar.title}</h3>
-                  <ContentPendingBadge />
-                </div>
-                <p className="mt-3 font-body text-sm leading-relaxed text-kelly-text/80">{pillar.body}</p>
-                <p className="mt-3 font-body text-xs text-kelly-muted">{pillar.status}</p>
-              </li>
-            ))}
-          </ul>
-          <p className="mt-8 max-w-3xl font-body text-sm text-kelly-muted">
-            For neutral explainers of what the office already does today, see{" "}
-            <Link href="/office/elections" className="font-semibold text-kelly-navy underline">
-              Elections
-            </Link>
-            ,{" "}
-            <Link href="/office/business" className="font-semibold text-kelly-navy underline">
-              Business
-            </Link>
-            ,{" "}
-            <Link href="/office/records" className="font-semibold text-kelly-navy underline">
-              Records
-            </Link>
-            , and{" "}
-            <Link href="/office/capitol" className="font-semibold text-kelly-navy underline">
-              Capitol
-            </Link>
-            .
+      <FullBleedSection variant="subtle" padY>
+        <ContentContainer className="max-w-3xl">
+          <p className="rounded-card border border-kelly-gold/30 bg-kelly-gold/10 px-5 py-4 font-body text-sm leading-relaxed text-kelly-navy">
+            <strong className="font-semibold">Authority note.</strong> {c.authorityNote}
           </p>
         </ContentContainer>
       </FullBleedSection>
 
-      <FullBleedSection padY aria-labelledby="not-heading">
-        <ContentContainer className="max-w-3xl">
-          <SectionHeading
-            id="not-heading"
-            align="left"
-            eyebrow="Clarity"
-            title="What you will not find here"
-            subtitle="Healthcare, K–12 policy, and broad economic platforms belong in races where those decisions are made—not in a constitutional office site."
-          />
-          <ul className="mt-8 space-y-3 font-body text-base leading-relaxed text-kelly-text/80">
-            <li>No pretend authority over issues outside the Secretary of State’s statutory role.</li>
-            <li>No unsourced statistics, endorsements, or opponent claims on this page.</li>
-            <li>No county visit counts unless tied to verified campaign data with source-aware language.</li>
-          </ul>
+      {c.pillars.map((pillar, index) => (
+        <FullBleedSection key={pillar.id} variant={index % 2 === 0 ? "default" : "subtle"} padY>
+          <ContentContainer className="max-w-3xl">
+            <h2 className="font-heading text-2xl font-bold text-kelly-ink md:text-3xl">{pillar.title}</h2>
+
+            <h3 className="mt-8 font-heading text-lg font-bold text-kelly-navy">What the issue is</h3>
+            <p className="mt-2 font-body text-base leading-relaxed text-kelly-slate">{pillar.issue}</p>
+
+            <h3 className="mt-6 font-heading text-lg font-bold text-kelly-navy">Why Arkansans should care</h3>
+            <p className="mt-2 font-body text-base leading-relaxed text-kelly-slate">{pillar.whyCare}</p>
+
+            <h3 className="mt-6 font-heading text-lg font-bold text-kelly-navy">
+              What the Secretary of State can actually influence
+            </h3>
+            <p className="mt-2 font-body text-base leading-relaxed text-kelly-slate">{pillar.officeRole}</p>
+
+            <h3 className="mt-6 font-heading text-lg font-bold text-kelly-navy">Kelly’s position</h3>
+            <p className="mt-2 font-body text-base leading-relaxed text-kelly-slate">{pillar.position}</p>
+
+            <h3 className="mt-6 font-heading text-lg font-bold text-kelly-navy">What Kelly would do</h3>
+            <ul className="mt-3 list-none space-y-2">
+              {pillar.wouldDo.map((item) => (
+                <li
+                  key={item}
+                  className="relative pl-4 font-body text-sm leading-relaxed text-kelly-slate before:absolute before:left-0 before:top-[0.55em] before:h-1.5 before:w-1.5 before:rounded-full before:bg-kelly-gold"
+                >
+                  {item}
+                </li>
+              ))}
+            </ul>
+
+            <h3 className="mt-6 font-heading text-lg font-bold text-kelly-navy">Limits of the office</h3>
+            <p className="mt-2 font-body text-base leading-relaxed text-kelly-slate">{pillar.limits}</p>
+
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <Button href={pillar.relatedOfficeHref} variant="outline">
+                {pillar.relatedOfficeLabel}
+              </Button>
+              <Button href={pillar.nextAction.href} variant="primary">
+                {pillar.nextAction.label}
+              </Button>
+            </div>
+          </ContentContainer>
+        </FullBleedSection>
+      ))}
+
+      <FullBleedSection variant="primary-band" padY>
+        <ContentContainer className="max-w-3xl text-center text-white">
+          <h2 className="font-heading text-2xl font-bold md:text-3xl">{c.closing.title}</h2>
+          <p className="mt-4 font-body text-lg text-white/90">{c.closing.body}</p>
+          <div className="mt-8 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:flex-wrap">
+            {c.closing.ctas.map((cta) => (
+              <Button
+                key={cta.href}
+                href={cta.href}
+                variant="outline"
+                className="border-white/40 text-white hover:bg-white/10"
+              >
+                {cta.label}
+              </Button>
+            ))}
+          </div>
+          <p className="mt-8 font-body text-sm text-white/70">
+            Related campaign statement:{" "}
+            <Link href="/#primary-message" className="font-semibold text-kelly-gold underline-offset-2 hover:underline">
+              Watch Kelly’s Message
+            </Link>
+          </p>
         </ContentContainer>
       </FullBleedSection>
-
-      <CTASection
-        eyebrow="Next step"
-        title="Invite Kelly or get involved"
-        description="Request a visit, volunteer, or stay connected—real actions only."
-        variant="primary-band"
-      >
-        <Button href={getHostOrVisitRequestHref()} variant="secondary">
-          Invite Kelly
-        </Button>
-        <Button href="/get-involved" variant="outline" className="border-kelly-page/50 text-kelly-page hover:bg-kelly-page/10">
-          Get involved
-        </Button>
-      </CTASection>
     </>
   );
 }

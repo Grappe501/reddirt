@@ -159,7 +159,7 @@ const explainers: ExplainerEntry[] = [
       },
     ],
     relatedLinks: [
-      { label: "Local organizing hub", href: "/local-organizing" },
+      { label: "Start a local team", href: "/start-a-local-team" },
       { label: "Editorial: local power", href: "/editorial/how-local-power-works" },
     ],
     relatedSlugs: ["what-happens-after-you-sign", "how-ballot-initiatives-work"],

@@ -11,7 +11,7 @@
 
 | Layer | Route(s) | Purpose |
 |-------|----------|---------|
-| **Trust** | `/` | Homepage trust funnel |
+| **Trust** | `/` | Homepage trust funnel — LIVE CANON; as-built inventory in [`HOMEPAGE_CURRENT_STATE_ASSESSMENT.md`](./HOMEPAGE_CURRENT_STATE_ASSESSMENT.md); forward plan [`HOMEPAGE_FORWARD_PLAN.md`](./HOMEPAGE_FORWARD_PLAN.md) |
 | **Trust** | `/about`, `/about/journey`, `/about/community`, `/about/why-im-running` | Meet Kelly |
 | **Competence** | `/understand`, `/office/*` | Secretary of State explainer (3 levels) |
 | **Visibility** | `/arkansas`, `/arkansas/counties` | County presence — verified visits only |

@@ -1,0 +1,100 @@
+{
+  "version": 1,
+  "updatedAt": "2026-07-30T00:10:56.927Z",
+  "purpose": "Evidence Video Pro Edit — edit projects, caption sidecars, and rendered assemblies. Masters never overwritten.",
+  "projects": [
+    {
+      "id": "vedit-smoke-video-pro-edit-smoke",
+      "speechId": "smoke-video-pro-edit",
+      "youtubeVideoId": "smoke-yt-pro-edit-missing",
+      "createdAt": "2026-07-30T00:10:46.865Z",
+      "updatedAt": "2026-07-30T00:10:56.926Z",
+      "title": "Smoke Pro Edit",
+      "clips": [
+        {
+          "id": "clip-1",
+          "startSeconds": 0.3,
+          "endSeconds": 1.6,
+          "title": "open"
+        },
+        {
+          "id": "clip-2",
+          "startSeconds": 2,
+          "endSeconds": 3.5,
+          "title": "close"
+        }
+      ],
+      "transition": "crossfade",
+      "look": "warm",
+      "captionMode": "none",
+      "exportAspects": [
+        "source",
+        "vertical_9x16",
+        "square_1x1"
+      ],
+      "loudnorm": true,
+      "directorRationale": "Smoke cut list.",
+      "notes": "smoke"
+    }
+  ],
+  "captions": [],
+  "assemblies": [
+    {
+      "id": "smoke-video-pro-edit--asm-square_1x1--202607300010",
+      "projectId": "vedit-smoke-video-pro-edit-smoke",
+      "outId": "smoke-video-pro-edit",
+      "speechId": "smoke-video-pro-edit",
+      "aspect": "square_1x1",
+      "look": "warm",
+      "transition": "crossfade",
+      "captionMode": "none",
+      "publicSrc": "/media/campaign-derivatives/_video/smoke-video-pro-edit/assembly-square_1x1-warm-202607300010.mp4",
+      "relativePath": "public/media/campaign-derivatives/_video/smoke-video-pro-edit/assembly-square_1x1-warm-202607300010.mp4",
+      "sourcePath": "H:\\SOSWebsite\\.local\\temp\\ffmpeg-smoke\\smoke-video-pro-edit.mp4",
+      "bytes": 46954,
+      "durationSeconds": 2.48,
+      "width": 1080,
+      "height": 1080,
+      "captionPublicSrc": null,
+      "createdAt": "2026-07-30T00:10:56.925Z"
+    },
+    {
+      "id": "smoke-video-pro-edit--asm-vertical_9x16--202607300010",
+      "projectId": "vedit-smoke-video-pro-edit-smoke",
+      "outId": "smoke-video-pro-edit",
+      "speechId": "smoke-video-pro-edit",
+      "aspect": "vertical_9x16",
+      "look": "warm",
+      "transition": "crossfade",
+      "captionMode": "none",
+      "publicSrc": "/media/campaign-derivatives/_video/smoke-video-pro-edit/assembly-vertical_9x16-warm-202607300010.mp4",
+      "relativePath": "public/media/campaign-derivatives/_video/smoke-video-pro-edit/assembly-vertical_9x16-warm-202607300010.mp4",
+      "sourcePath": "H:\\SOSWebsite\\.local\\temp\\ffmpeg-smoke\\smoke-video-pro-edit.mp4",
+      "bytes": 48561,
+      "durationSeconds": 2.48,
+      "width": 1080,
+      "height": 1920,
+      "captionPublicSrc": null,
+      "createdAt": "2026-07-30T00:10:55.297Z"
+    },
+    {
+      "id": "smoke-video-pro-edit--asm-source--202607300010",
+      "projectId": "vedit-smoke-video-pro-edit-smoke",
+      "outId": "smoke-video-pro-edit",
+      "speechId": "smoke-video-pro-edit",
+      "aspect": "source",
+      "look": "warm",
+      "transition": "crossfade",
+      "captionMode": "none",
+      "publicSrc": "/media/campaign-derivatives/_video/smoke-video-pro-edit/assembly-source-warm-202607300010.mp4",
+      "relativePath": "public/media/campaign-derivatives/_video/smoke-video-pro-edit/assembly-source-warm-202607300010.mp4",
+      "sourcePath": "H:\\SOSWebsite\\.local\\temp\\ffmpeg-smoke\\smoke-video-pro-edit.mp4",
+      "bytes": 46483,
+      "durationSeconds": 2.48,
+      "width": 1280,
+      "height": 720,
+      "captionPublicSrc": null,
+      "createdAt": "2026-07-30T00:10:52.784Z"
+    }
+  ]
+}

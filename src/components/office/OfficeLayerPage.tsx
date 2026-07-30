@@ -1,4 +1,4 @@
-import { PageHero } from "@/components/blocks/PageHero";
+import { MediaPageHero } from "@/components/blocks/MediaPageHero";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { FullBleedSection } from "@/components/layout/FullBleedSection";
 import { Button } from "@/components/ui/Button";
@@ -123,7 +123,7 @@ function LayerSections({
   );
 }
 
-export function OfficeLayerPage({ area, layer }: OfficeLayerPageProps) {
+export async function OfficeLayerPage({ area, layer }: OfficeLayerPageProps) {
   const layer1Copy = area.layerOne;
   const layer1Path = officeLayerPath(area.slug, 1);
 
@@ -136,11 +136,17 @@ export function OfficeLayerPage({ area, layer }: OfficeLayerPageProps) {
           </ContentContainer>
         </FullBleedSection>
 
-        <PageHero eyebrow={layer1Copy.eyebrow} title={layer1Copy.title} subtitle={layer1Copy.intro}>
-          <Button href="/understand" variant="outline" className="min-h-[48px]">
+        <MediaPageHero
+          slotKey="office.hero"
+          layout="split"
+          eyebrow={layer1Copy.eyebrow}
+          title={layer1Copy.title}
+          subtitle={layer1Copy.intro}
+        >
+          <Button href="/understand" variant="outlineOnDark" className="min-h-[48px]">
             Back to The Office
           </Button>
-        </PageHero>
+        </MediaPageHero>
 
         <LayerSections area={area} copy={layer1Copy} sectionKeyPrefix={`l1-${area.slug}`} />
 
@@ -170,14 +176,20 @@ export function OfficeLayerPage({ area, layer }: OfficeLayerPageProps) {
         </ContentContainer>
       </FullBleedSection>
 
-      <PageHero eyebrow={layer2Copy.eyebrow} title={layer2Copy.title} subtitle={layer2Copy.intro}>
-        <Button href="/understand" variant="outline" className="min-h-[48px]">
+      <MediaPageHero
+        slotKey="office.hero"
+        layout="split"
+        eyebrow={layer2Copy.eyebrow}
+        title={layer2Copy.title}
+        subtitle={layer2Copy.intro}
+      >
+        <Button href="/understand" variant="outlineOnDark" className="min-h-[48px]">
           Back to The Office
         </Button>
-        <Button href={layer1Path} variant="outline" className="min-h-[48px]">
+        <Button href={layer1Path} variant="outlineOnDark" className="min-h-[48px]">
           {`Overview · ${area.shortTitle}`}
         </Button>
-      </PageHero>
+      </MediaPageHero>
 
       <LayerSections area={area} copy={layer2Copy} sectionKeyPrefix={`l2-${area.slug}`} />
 

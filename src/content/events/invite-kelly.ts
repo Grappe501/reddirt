@@ -46,7 +46,7 @@ export const inviteKellyContent = {
     subtitle: "Bring Kelly into your community, your table, or your backyard.",
     leadParagraphs: [
       "Invite Kelly to your county. Share local events. Help us find fairs, festivals, civic clubs, churches, chambers, and community gatherings.",
-      "Every request goes through staff review—nothing is confirmed from a form alone. Mixed political crowds are welcome when the conversation stays civil.",
+      "Every request is reviewed by the campaign—nothing is confirmed from a form alone. Mixed political crowds are welcome when the conversation stays civil.",
     ] as const,
     sections: [
       {
@@ -100,7 +100,7 @@ export const inviteKellyContent = {
       },
       {
         title: "Calendar review",
-        body: "Requests may go into a pending approval queue internally. Approved public events can appear on the campaign calendar later. Private or invitation-only gatherings may stay off the public calendar.",
+        body: "Requests go through a review step. Confirmed public events can appear on the campaign calendar later. Private or invitation-only gatherings may stay off the public calendar.",
       },
       {
         title: "Respectful ground rules",
@@ -171,7 +171,7 @@ export const inviteKellyContent = {
       "When the form goes live, it will live here — same review standards as other campaign touchpoints. Until then, email with your county, timing range, venue type, expected headcount, and any accessibility notes.",
     primaryCtaLabel: "Start a request",
     secondaryLinks: [
-      { label: "Campaign Calendar", href: "/events" },
+      { label: "Events", href: "/events" },
       { label: "From the Road", href: "/from-the-road" },
     ] as const,
   },

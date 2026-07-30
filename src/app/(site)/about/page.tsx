@@ -1,93 +1,200 @@
 import type { Metadata } from "next";
-import { PageHero } from "@/components/blocks/PageHero";
+import Image from "next/image";
+import Link from "next/link";
+import { MediaPageHero } from "@/components/blocks/MediaPageHero";
 import { FullBleedSection } from "@/components/layout/FullBleedSection";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { Button } from "@/components/ui/Button";
-import { CTASection } from "@/components/blocks/CTASection";
-import { QuoteBand } from "@/components/blocks/QuoteBand";
-import { pageMeta } from "@/lib/seo/metadata";
-import { getFeaturedYoutubeForHub } from "@/lib/content/content-hub-queries";
-import { getMergedHomepageConfig } from "@/lib/content/homepage-merge";
-import { TalkBusinessKellySection } from "@/components/about/TalkBusinessKellySection";
 import { MeetKellySubnav } from "@/components/about/MeetKellySubnav";
-import { MeetKellySixQuestions } from "@/components/about/MeetKellySixQuestions";
-import { MeetKellyChapterIndex } from "@/components/about/MeetKellyChapterIndex";
 import { MeetKellyTrustIndicators } from "@/components/about/MeetKellyTrustIndicators";
-import { MeetKellyDirectDemocracyCallout } from "@/components/about/MeetKellyDirectDemocracyCallout";
-import { directDemocracyHubHref } from "@/config/direct-democracy-links";
-import { meetKellyExecutiveSummary } from "@/content/about/meet-kelly-hub";
+import { aboutLaunchCopy } from "@/content/about/about-launch";
+import {
+  getHomepageMeetKellyPhoto,
+  homepagePhotoCountyHref,
+  homepagePhotoObjectPositionClass,
+} from "@/content/media/homepage-campaign-photos";
+import { getJoinCampaignHref, getVolunteerSignupHref } from "@/config/external-campaign";
+import { pageMeta } from "@/lib/seo/metadata";
+import { cn } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
 
+const c = aboutLaunchCopy;
+
 export const metadata: Metadata = pageMeta({
-  title: "Meet Kelly",
+  title: "Meet Kelly Grappe",
   description:
-    "Kelly Grappe for Arkansas Secretary of State — who she is, what she has done, why she is running, and trust indicators you can verify. Six questions, not a chronological résumé.",
+    "Kelly Grappe for Arkansas Secretary of State — relevant experience, leadership in practice, and why she seeks this office.",
   path: "/about",
   imageSrc: "/media/placeholders/texture-porch-glow.svg",
 });
 
 export default async function AboutPage() {
-  const homepage = await getMergedHomepageConfig();
-  const featuredYoutube = await getFeaturedYoutubeForHub(homepage.featuredHomepageVideoInboundId);
-  const summary = meetKellyExecutiveSummary;
+  const meetPhoto = getHomepageMeetKellyPhoto();
+  const joinHref = getJoinCampaignHref();
+  const volunteerHref = getVolunteerSignupHref();
+  const countyHref = meetPhoto ? homepagePhotoCountyHref(meetPhoto) : null;
 
   return (
     <>
-      <PageHero eyebrow={summary.eyebrow} title={summary.title} subtitle={summary.subtitle}>
-        <Button href={directDemocracyHubHref} variant="primary">
-          Direct democracy
+      <MediaPageHero
+        slotKey="about.hero"
+        layout="split"
+        eyebrow={c.hero.eyebrow}
+        title={c.hero.title}
+        subtitle={c.hero.subtitle}
+      >
+        <Button href="/priorities" variant="primary">
+          Explore Kelly’s Priorities
         </Button>
-        <Button href="/about/why-im-running" variant="outline">
-          Why I&apos;m running
+        <Button href="/about/journey" variant="outlineOnDark">
+          See Kelly Across Arkansas
         </Button>
-        <Button href="/about/journey" variant="outline">
-          Her journey
+        <Button href={joinHref} variant="outlineOnDark">
+          Stay connected
         </Button>
-        <Button href="/get-involved" variant="outline">
-          Get involved
+        <Button href={volunteerHref} variant="outlineOnDark">
+          Volunteer
         </Button>
-        <Button href="/understand" variant="outline">
-          Understand the office
-        </Button>
-      </PageHero>
+      </MediaPageHero>
 
       <FullBleedSection variant="subtle" className="!py-6">
         <ContentContainer className="max-w-3xl">
           <MeetKellySubnav current="/about" />
-          <p className="mt-6 font-body text-base leading-relaxed text-kelly-text/85">{summary.lead}</p>
         </ContentContainer>
       </FullBleedSection>
 
       <FullBleedSection padY>
-        <ContentContainer wide>
-          <div className="mx-auto max-w-4xl">
-            <MeetKellyDirectDemocracyCallout />
+        <ContentContainer className="max-w-3xl">
+          <h2 className="font-heading text-2xl font-bold text-kelly-ink md:text-3xl">{c.opening.title}</h2>
+          {c.opening.body.map((para) => (
+            <p key={para.slice(0, 48)} className="mt-4 font-body text-lg leading-relaxed text-kelly-slate">
+              {para}
+            </p>
+          ))}
+        </ContentContainer>
+      </FullBleedSection>
+
+      <FullBleedSection variant="subtle" padY>
+        <ContentContainer>
+          <div className="grid items-start gap-10 lg:grid-cols-2 lg:gap-12">
+            {meetPhoto ? (
+              <figure className="overflow-hidden rounded-card border border-kelly-ink/10 bg-white shadow-sm">
+                <div className="relative aspect-[4/5] w-full">
+                  <Image
+                    src={meetPhoto.src}
+                    alt={meetPhoto.accessibility.altText}
+                    width={meetPhoto.basic.width ?? 768}
+                    height={meetPhoto.basic.height ?? 1024}
+                    className={cn("h-full w-full object-cover", homepagePhotoObjectPositionClass(meetPhoto))}
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    priority
+                  />
+                </div>
+                <figcaption className="border-t border-kelly-ink/10 px-4 py-3.5 font-body text-sm leading-relaxed text-kelly-slate">
+                  {meetPhoto.accessibility.caption}
+                  {countyHref ? (
+                    <>
+                      {" "}
+                      <Link href={countyHref} className="font-bold text-kelly-blue underline-offset-4 hover:underline">
+                        {meetPhoto.campaign.county} County
+                      </Link>
+                    </>
+                  ) : null}
+                </figcaption>
+              </figure>
+            ) : null}
+
+            <div>
+              <h2 className="font-heading text-2xl font-bold text-kelly-ink md:text-3xl">{c.experience.title}</h2>
+              <p className="mt-4 font-body text-base leading-relaxed text-kelly-slate">{c.experience.intro}</p>
+              <div className="mt-8 space-y-8">
+                {c.experience.items.map((section) => (
+                  <article key={section.title}>
+                    <h3 className="font-heading text-xl font-bold text-kelly-navy">{section.title}</h3>
+                    <p className="mt-3 font-body text-base leading-relaxed text-kelly-slate">{section.body}</p>
+                    <ul className="mt-3 flex flex-wrap gap-x-4 gap-y-2">
+                      {section.links.map((link) => (
+                        <li key={link.href}>
+                          <Link
+                            href={link.href}
+                            className="font-body text-sm font-semibold text-kelly-blue underline decoration-kelly-blue/25 underline-offset-4 hover:decoration-kelly-blue"
+                          >
+                            {link.label} →
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </article>
+                ))}
+              </div>
+            </div>
           </div>
         </ContentContainer>
       </FullBleedSection>
 
       <FullBleedSection padY>
-        <ContentContainer wide>
-          <div className="mx-auto max-w-4xl">
-            <MeetKellySixQuestions />
+        <ContentContainer className="max-w-3xl">
+          <h2 className="font-heading text-2xl font-bold text-kelly-ink md:text-3xl">{c.whySos.title}</h2>
+          {c.whySos.body.map((para) => (
+            <p key={para.slice(0, 40)} className="mt-4 font-body text-lg leading-relaxed text-kelly-slate">
+              {para}
+            </p>
+          ))}
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <Button href={c.whySos.cta.href} variant="primary">
+              {c.whySos.cta.label}
+            </Button>
+            <Button href={c.whySos.officeCta.href} variant="outline">
+              {c.whySos.officeCta.label}
+            </Button>
           </div>
         </ContentContainer>
       </FullBleedSection>
 
       <FullBleedSection variant="subtle" padY>
-        <ContentContainer wide>
-          <div className="mx-auto max-w-4xl">
-            <MeetKellyChapterIndex />
+        <ContentContainer>
+          <h2 className="mx-auto max-w-3xl text-center font-heading text-2xl font-bold text-kelly-ink md:text-3xl">
+            {c.leadership.title}
+          </h2>
+          <ul className="mx-auto mt-10 grid max-w-5xl list-none gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {c.leadership.items.map((item) => (
+              <li key={item.title} className="rounded-card border border-kelly-ink/10 bg-white p-6 shadow-sm">
+                <h3 className="font-heading text-lg font-bold text-kelly-navy">{item.title}</h3>
+                <p className="mt-3 font-body text-sm leading-relaxed text-kelly-slate">{item.body}</p>
+              </li>
+            ))}
+          </ul>
+        </ContentContainer>
+      </FullBleedSection>
+
+      {/* Journey / photos live on their own routes — CTA only, no remounted trail grid. */}
+      <FullBleedSection padY>
+        <ContentContainer className="max-w-3xl text-center">
+          <h2 className="font-heading text-2xl font-bold text-kelly-ink md:text-3xl">{c.acrossArkansas.title}</h2>
+          <p className="mt-4 font-body text-lg text-kelly-slate">{c.acrossArkansas.intro}</p>
+          <div className="mt-8 flex flex-wrap justify-center gap-3">
+            <Button href={c.acrossArkansas.cta.href} variant="primary">
+              {c.acrossArkansas.cta.label}
+            </Button>
+            <Button href={c.acrossArkansas.photosCta.href} variant="outline">
+              {c.acrossArkansas.photosCta.label}
+            </Button>
           </div>
         </ContentContainer>
       </FullBleedSection>
 
       <FullBleedSection variant="subtle" padY>
-        <ContentContainer wide>
-          <div className="mx-auto max-w-3xl">
-            <TalkBusinessKellySection fallbackYoutubeVideoId={featuredYoutube?.videoId ?? null} />
-          </div>
+        <ContentContainer className="max-w-3xl">
+          <h2 className="font-heading text-2xl font-bold text-kelly-ink md:text-3xl">{c.bringToOffice.title}</h2>
+          <ul className="mt-8 space-y-6">
+            {c.bringToOffice.items.map((item) => (
+              <li key={item.title}>
+                <h3 className="font-heading text-xl font-bold text-kelly-navy">{item.title}</h3>
+                <p className="mt-2 font-body text-base leading-relaxed text-kelly-slate">{item.body}</p>
+              </li>
+            ))}
+          </ul>
         </ContentContainer>
       </FullBleedSection>
 
@@ -99,29 +206,28 @@ export default async function AboutPage() {
         </ContentContainer>
       </FullBleedSection>
 
-      <QuoteBand
-        quote="If you don't like the road you're walking on, start paving another one."
-        attribution="Dolly Parton — a line posted at Forevermost Farms, because stubborn hope is a farm value too"
-        variant="elevated"
-      />
-
-      <CTASection
-        eyebrow="Next step"
-        title="You know the person. Now bring someone into the work."
-        description="When you're ready, we'll connect you with concrete ways to help—starting in your county, on your timeline."
-        variant="ink-band"
-      >
-        <Button href="/get-involved" variant="primary" className="bg-kelly-page text-kelly-text hover:bg-kelly-page/90">
-          Get involved
-        </Button>
-        <Button
-          href="mailto:kelly@kellygrappe.com"
-          variant="outline"
-          className="border-kelly-page/40 text-kelly-page hover:bg-kelly-page/10"
-        >
-          Email Kelly
-        </Button>
-      </CTASection>
+      <FullBleedSection variant="primary-band" padY>
+        <ContentContainer className="max-w-3xl text-center text-white">
+          <h2 className="font-heading text-2xl font-bold md:text-3xl">{c.closing.title}</h2>
+          <p className="mt-4 font-body text-lg text-white/90">{c.closing.body}</p>
+          <div className="mt-8 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:flex-wrap">
+            {c.closing.ctas.map((cta) => (
+              <Button
+                key={cta.href}
+                href={cta.href === "/get-involved" ? joinHref : cta.href}
+                variant={cta.href === "/get-involved" || cta.href === "/priorities" ? "primary" : "outline"}
+                className={
+                  cta.href === "/get-involved" || cta.href === "/priorities"
+                    ? "bg-kelly-gold text-kelly-navy hover:bg-kelly-gold-soft"
+                    : "border-white/40 text-white hover:bg-white/10"
+                }
+              >
+                {cta.label}
+              </Button>
+            ))}
+          </div>
+        </ContentContainer>
+      </FullBleedSection>
     </>
   );
 }

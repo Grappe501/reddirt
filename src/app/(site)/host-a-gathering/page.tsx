@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { PageHero } from "@/components/blocks/PageHero";
+import { MediaPageHero } from "@/components/blocks/MediaPageHero";
 import { SectionHeading } from "@/components/blocks/SectionHeading";
 import { FullBleedSection } from "@/components/layout/FullBleedSection";
 import { ContentContainer } from "@/components/layout/ContentContainer";
@@ -17,10 +17,12 @@ export const metadata: Metadata = {
     "Host a porch, living room, coffee circle, postcard party, or phone bank about the Secretary of State’s office—with mentor support and a neighbor-led tone.",
 };
 
-export default function HostAGatheringPage() {
+export default async function HostAGatheringPage() {
   return (
     <>
-      <PageHero
+      <MediaPageHero
+        slotKey="host-gathering.hero"
+        layout="split"
         eyebrow="Open the circle"
         title="Host a gathering"
         subtitle="You don’t need a podium or a perfect speech. Most civic moments start when someone says: “Come sit—let’s talk like neighbors again.”"
@@ -28,13 +30,13 @@ export default function HostAGatheringPage() {
         <Button href="#host-form" variant="primary">
           Jump to host form
         </Button>
-        <Button href="/events" variant="outline">
+        <Button href="/events" variant="outlineOnDark">
           See what’s scheduled
         </Button>
-        <Button href={representLocalEventVolunteerHref} variant="outline">
+        <Button href={representLocalEventVolunteerHref} variant="outlineOnDark">
           Represent at a public event
         </Button>
-      </PageHero>
+      </MediaPageHero>
 
       <FullBleedSection padY aria-labelledby="why-small-heading">
         <ContentContainer wide>
@@ -212,8 +214,8 @@ export default function HostAGatheringPage() {
         <Button href="#host-form" variant="primary">
           Open the host form
         </Button>
-        <Button href="/local-organizing" variant="outline">
-          Explore local hubs
+        <Button href="/start-a-local-team" variant="outline">
+          Start a local team
         </Button>
         <Button href={representLocalEventVolunteerHref} variant="outline">
           Represent locally

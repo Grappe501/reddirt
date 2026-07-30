@@ -102,7 +102,7 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/watch",
-        destination: "/from-the-road",
+        destination: "/kelly-speaks",
         permanent: false,
       },
       /** Legacy debate prep bookmarks (missing `/intelligence` segment). */
@@ -140,23 +140,17 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/volunteerPage",
-        destination: "/about",
+        destination: "/get-involved#volunteer",
         permanent: false,
       },
-      /** Marketing site is discovery-only — volunteer / organizing hubs redirect to public entry points. */
-      {
-        source: "/get-involved",
-        destination: "/about",
-        permanent: false,
-      },
-      {
-        source: "/get-involved/:path*",
-        destination: "/about",
-        permanent: false,
-      },
+      /**
+       * Pathway Honesty (KELLY-PUBLIC-PATHWAY-HONESTY-1.0):
+       * Do not bait public CTAs into `/about`. Participation bookmarks must land on real participation paths.
+       * Unfinished OS hubs soft-redirect to get-involved / start-a-local-team — never Meet Kelly.
+       */
       {
         source: "/onboarding/power-of-5",
-        destination: "/about",
+        destination: "/get-involved/bring-5",
         permanent: false,
       },
       {
@@ -171,27 +165,71 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/local-organizing",
-        destination: "/about",
+        destination: "/start-a-local-team",
         permanent: false,
       },
       {
         source: "/local-organizing/:path*",
-        destination: "/about",
-        permanent: false,
-      },
-      {
-        source: "/host-a-gathering",
-        destination: "/about",
-        permanent: false,
-      },
-      {
-        source: "/start-a-local-team",
-        destination: "/about",
+        destination: "/start-a-local-team",
         permanent: false,
       },
       {
         source: "/dashboard",
         destination: "/about",
+        permanent: false,
+      },
+      /**
+       * County command index is organizing OS — soft-gate marketing visitors to presence map.
+       * `/counties/:slug` stays reachable (noindex) for field deep links.
+       */
+      {
+        source: "/counties",
+        destination: "/arkansas",
+        permanent: false,
+      },
+      /** Operator intel tools are not marketing surfaces. */
+      {
+        source: "/counties/tools/campaign-brain",
+        destination: "/arkansas",
+        permanent: false,
+      },
+      {
+        source: "/counties/tools/campaign-brain/:path*",
+        destination: "/arkansas",
+        permanent: false,
+      },
+      {
+        source: "/counties/tools/public-narrative",
+        destination: "/arkansas",
+        permanent: false,
+      },
+      {
+        source: "/counties/tools/public-narrative/:path*",
+        destination: "/arkansas",
+        permanent: false,
+      },
+      {
+        source: "/counties/:slug/intelligence",
+        destination: "/arkansas",
+        permanent: false,
+      },
+      {
+        source: "/counties/:slug/intelligence/:path*",
+        destination: "/arkansas",
+        permanent: false,
+      },
+      /**
+       * Canonical public calendar is `/events`.
+       * Preserve event slugs so detail bookmarks do not collapse to the index.
+       */
+      {
+        source: "/campaign-calendar",
+        destination: "/events",
+        permanent: false,
+      },
+      {
+        source: "/campaign-calendar/:slug",
+        destination: "/events/:slug",
         permanent: false,
       },
     ];

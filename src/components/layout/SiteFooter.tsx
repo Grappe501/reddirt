@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { CampaignPaidForBar } from "@/components/layout/CampaignPaidForBar";
 import { SocialFooterIcons } from "@/components/layout/SocialFooterIcons";
-import { getJoinCampaignHref } from "@/config/external-campaign";
+import { getVolunteerSignupHref } from "@/config/external-campaign";
 import { footerNavGroups } from "@/config/navigation";
 import { siteConfig } from "@/config/site";
 import { ContentContainer } from "@/components/layout/ContentContainer";
@@ -9,26 +9,35 @@ import { isExternalHref } from "@/lib/href";
 
 export function SiteFooter() {
   const year = new Date().getFullYear();
-  const joinHref = getJoinCampaignHref();
-  const joinExternal = isExternalHref(joinHref);
+  const volunteerHref = getVolunteerSignupHref();
+  const volunteerExternal = isExternalHref(volunteerHref);
 
   return (
-    <footer className="w-full border-t border-kelly-gold/20 bg-kelly-navy text-kelly-page">
+    <footer className="w-full border-t border-kelly-gold/25 bg-gradient-to-b from-kelly-navy to-kelly-deep text-kelly-page">
       <ContentContainer className="py-section-y lg:py-section-y-lg">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-10 xl:gap-14">
           <div className="lg:col-span-4">
-            <p className="font-heading text-2xl font-bold tracking-tight">{siteConfig.name}</p>
+            <p className="font-heading text-2xl font-bold tracking-tight md:text-3xl">{siteConfig.name}</p>
             <p className="mt-4 max-w-md font-body text-base leading-relaxed text-kelly-page/75">
               {siteConfig.description}
             </p>
             <Link
-              href={joinHref}
-              target={joinExternal ? "_blank" : undefined}
-              rel={joinExternal ? "noopener noreferrer" : undefined}
-              className="mt-6 inline-flex rounded-btn border border-kelly-page/25 bg-kelly-page/10 px-4 py-2.5 font-body text-sm font-semibold text-kelly-page transition hover:border-kelly-gold/50 hover:bg-kelly-page/15 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-kelly-gold"
+              href={volunteerHref}
+              target={volunteerExternal ? "_blank" : undefined}
+              rel={volunteerExternal ? "noopener noreferrer" : undefined}
+              className="mt-6 inline-flex min-h-[48px] items-center rounded-btn bg-gradient-to-b from-kelly-gold to-[#b8872f] px-5 py-3 font-body text-sm font-bold text-kelly-navy shadow-[var(--shadow-gold-cta)] transition hover:brightness-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-kelly-gold"
             >
-              Volunteer sign-up →
+              Volunteer with Kelly →
             </Link>
+            <p className="mt-4 font-body text-sm text-kelly-page/70">
+              Questions?{" "}
+              <Link
+                href="/contact"
+                className="font-semibold text-kelly-page underline decoration-kelly-page/30 underline-offset-4 transition hover:text-kelly-gold hover:decoration-kelly-gold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-kelly-gold"
+              >
+                Contact the campaign
+              </Link>
+            </p>
             <p className="mt-8 font-body text-xs font-bold uppercase tracking-[0.2em] text-kelly-page/50">
               Follow the campaign
             </p>
@@ -50,7 +59,7 @@ export function SiteFooter() {
                           href={href}
                           target={ext ? "_blank" : undefined}
                           rel={ext ? "noopener noreferrer" : undefined}
-                          className="font-body text-sm text-kelly-page/85 transition hover:text-kelly-gold focus-visible:outline-none focus-visible:underline"
+                          className="inline-flex min-h-[44px] items-center font-body text-sm text-kelly-page/85 transition hover:text-kelly-gold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-kelly-gold"
                         >
                           {item.label}
                         </Link>

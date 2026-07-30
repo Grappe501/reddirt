@@ -11,7 +11,7 @@ import {
 
 export const metadata: Metadata = {
   title: "Muslim Community Region · Overview",
-  description: "Community region dashboard — leadership model and cross-lane coordination; partner review where noted.",
+  description: "Community region dashboard — leadership model and cross-lane coordination.",
 };
 
 export default function MuslimCommunityOverviewPage() {

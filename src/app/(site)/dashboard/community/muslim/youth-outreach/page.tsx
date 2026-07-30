@@ -6,7 +6,7 @@ import { MUSLIM_YOUTH_OUTREACH_LANE } from "@/lib/campaign-ops/muslim-community-
 
 export const metadata: Metadata = {
   title: "Muslim Community Region · Youth Outreach",
-  description: "Youth and young adult civic engagement — draft pending community review.",
+  description: "Youth and young adult civic engagement for the Muslim Community Region.",
 };
 
 export default function MuslimCommunityYouthPage() {

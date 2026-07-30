@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "updatedAt": "2026-07-29T19:04:12.223Z",
+  "purpose": "Confirmed Evidence Workbench examples used as few-shot context for AI suggestions. Never treat Unconfirmed guesses as memory.",
+  "examples": [
+    {
+      "assetKind": "photo",
+      "assetId": "people-over-politics-supporter-selfie-20260725",
+      "county": "Sharp",
+      "city": "Cave City",
+      "venue": "Outdoor parking lot (community venue)",
+      "eventName": "Cave City Watermelon Festival 2026",
+      "peopleVisible": [
+        "Kelly Grappe"
+      ],
+      "whatThisProves": "Volunteers pulling together - volunteers brought the truck and trailer and helped decorate - then we passed out watermelon fans and gave away candy in the parade",
+      "captionOrTitle": "Kelly Grappe joins supporters in People Over Politics campaign shirts for a group photo at a community event stop.",
+      "updatedAt": "2026-07-29T19:04:12.223Z"
+    }
+  ]
+}

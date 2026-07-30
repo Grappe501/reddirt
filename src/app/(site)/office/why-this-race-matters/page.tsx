@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { PageHero } from "@/components/blocks/PageHero";
+import { MediaPageHero } from "@/components/blocks/MediaPageHero";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { FullBleedSection } from "@/components/layout/FullBleedSection";
 import { Button } from "@/components/ui/Button";
@@ -14,10 +14,12 @@ export const metadata: Metadata = pageMeta({
   imageSrc: "/media/placeholders/texture-porch-glow.svg",
 });
 
-export default function WhyThisRaceMattersPage() {
+export default async function WhyThisRaceMattersPage() {
   return (
     <>
-      <PageHero
+      <MediaPageHero
+        slotKey="office.hero"
+        layout="split"
         eyebrow="The Office"
         title="Why this race matters"
         subtitle="This job isn’t abstract—it runs systems families and employers rely on. Here’s the high-level case, with room to go deeper on each part of the office when you’re ready."
@@ -25,10 +27,10 @@ export default function WhyThisRaceMattersPage() {
         <Button href="/about/why-kelly" variant="primary">
           Why Kelly
         </Button>
-        <Button href="/understand" variant="outline">
+        <Button href="/understand" variant="outlineOnDark">
           Understand the Office
         </Button>
-      </PageHero>
+      </MediaPageHero>
 
       <FullBleedSection variant="subtle" padY aria-labelledby="race-matters-scope">
         <ContentContainer className="max-w-3xl">

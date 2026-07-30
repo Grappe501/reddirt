@@ -72,8 +72,8 @@ export default function FieldDirectorPage() {
             Fundraising lane · Week 4 maturity
           </h3>
           <p className="mt-2 max-w-3xl font-body text-sm leading-relaxed text-kelly-text/80">
-            Fundraising is modeled under the Events lane until dedicated finance teams spin out. Teams see the full workspace once
-            Volunteer OS maturity reaches Expand / Lead levels — start small, stay local, and keep compliance in the loop.
+            Fundraising sits with the Events lane until dedicated finance teams grow. Start small, stay local, and keep
+            compliance in the loop.
           </p>
           <p className="mt-4">
             <Link

@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { ContentPendingBadge } from "@/components/content/ContentPendingBadge";
 import { MEET_KELLY_QUESTIONS } from "@/content/about/meet-kelly-hub";
 
 export function MeetKellySixQuestions() {
@@ -26,11 +25,6 @@ export function MeetKellySixQuestions() {
             </p>
             <h3 className="mt-2 font-heading text-xl font-bold text-kelly-text">{q.title}</h3>
             <p className="mt-3 font-body text-sm leading-relaxed text-kelly-text/82">{q.summary}</p>
-            {q.approvalGate === "office" ? (
-              <div className="mt-4">
-                <ContentPendingBadge variant="pending" />
-              </div>
-            ) : null}
             <Link
               href={q.href}
               className="mt-4 inline-block font-body text-sm font-semibold text-kelly-navy underline decoration-kelly-navy/30 underline-offset-2 hover:decoration-kelly-navy"

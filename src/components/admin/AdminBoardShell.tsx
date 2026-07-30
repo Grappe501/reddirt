@@ -23,6 +23,7 @@ import { showDevTenancyUi } from "@/lib/campaign-tenancy/single-campaign-mode";
 
 const siteLinks: { href: string; label: string }[] = [
   { href: "/admin/content", label: "Overview" },
+  { href: "/edit", label: "Website edit mode" },
   { href: "/admin/homepage", label: "Homepage" },
   { href: "/admin/pages", label: "Page copy" },
   { href: "/admin/stories", label: "Stories" },

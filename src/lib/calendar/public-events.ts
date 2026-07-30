@@ -61,7 +61,7 @@ function snapshotToPublicDto(
   row: NonNullable<SnapshotFile["events"]>[number],
   joinHref: string
 ): PublicCampaignEvent {
-  const detailHref = `/campaign-calendar/${row.slug}`;
+  const detailHref = `/events/${row.slug}`;
   const startAt = new Date(row.startAt);
   const endAt = new Date(row.endAt);
   const venueMode = inferPublicVenueMode({
@@ -132,7 +132,7 @@ function toPublicDto(
   },
   joinHref: string
 ): PublicCampaignEvent {
-  const detailHref = `/campaign-calendar/${row.slug}`;
+  const detailHref = `/events/${row.slug}`;
   const venueMode = inferPublicVenueMode({
     eventType: row.eventType,
     locationName: row.locationName,

@@ -10,14 +10,14 @@ import { MUSLIM_COMMUNITY_DASHBOARD_BASE } from "@/lib/campaign-ops/muslim-commu
 
 export const metadata: Metadata = {
   title: "Community regions · Dashboard hub",
-  description: "Community-native organizing dashboards — Muslim Community Region first; Spanish and Marshallese hubs in partner review.",
+  description: "Community-native organizing dashboards — Muslim Community Region first; Spanish and Marshallese hubs expanding.",
 };
 
 const cards = [
   {
     href: MUSLIM_COMMUNITY_DASHBOARD_BASE,
     title: "Muslim Community Region",
-    body: "Overview, lanes, mosque polling readiness, resources, and rollup — partner review continues on a few labels before we call the hub final.",
+    body: "Overview, lanes, mosque polling readiness, resources, and rollup — materials expand as they are ready to share.",
     status: "Active",
   },
   {
@@ -29,7 +29,7 @@ const cards = [
   {
     href: "/dashboard/community/conversational-spanish",
     title: "Conversational Spanish",
-    body: "Reserved for Spanish-first civic organizing with the same triad discipline. Lane modules expand after campaign and community review.",
+    body: "Reserved for Spanish-first civic organizing with the same triad discipline. Lane modules expand as partner materials are ready.",
     status: "In review",
   },
   {
@@ -44,7 +44,7 @@ export default function CommunityRegionsHubPage() {
   return (
     <>
       <PageHero
-        eyebrow="Volunteer OS · Community regions"
+        eyebrow="Community regions"
         title="Community region dashboards"
         subtitle="Geographic triads use team workspaces; identity- and community-native regions use the same lane discipline with partner-shaped leadership and resources."
       >

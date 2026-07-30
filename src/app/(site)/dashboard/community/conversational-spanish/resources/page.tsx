@@ -11,7 +11,7 @@ export default function ConversationalSpanishResourcesPage() {
     <div className="space-y-4 rounded-2xl border border-kelly-text/10 bg-white p-5 shadow-[var(--shadow-soft)]">
       <p className="font-heading text-lg font-bold text-kelly-navy">Resources (scaffold)</p>
       <p className="font-body text-sm text-kelly-text/85">
-        Spanish-first worksheets, talking points, and lane guides will live here after Ernie review and community partner sign-off.
+        Spanish-first worksheets, talking points, and lane guides will live here as partner materials are ready.
         Until then, use the public resource library structure.
       </p>
       <p className="font-body text-sm text-kelly-text/75">

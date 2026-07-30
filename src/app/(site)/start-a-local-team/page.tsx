@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { PageHero } from "@/components/blocks/PageHero";
+import { MediaPageHero } from "@/components/blocks/MediaPageHero";
 import { SectionHeading } from "@/components/blocks/SectionHeading";
 import { FullBleedSection } from "@/components/layout/FullBleedSection";
 import { ContentContainer } from "@/components/layout/ContentContainer";
@@ -50,10 +50,12 @@ const crossLinks: { label: string; href: string }[] = [
   { label: "From the Road", href: "/from-the-road" },
 ];
 
-export default function StartALocalTeamPage() {
+export default async function StartALocalTeamPage() {
   return (
     <>
-      <PageHero
+      <MediaPageHero
+        slotKey="local-team.hero"
+        layout="split"
         eyebrow="County organizing"
         title="Start a local team"
         subtitle="Build county-level structure—neighbors who show up, host, and carry trust where statewide ads never will."
@@ -61,13 +63,13 @@ export default function StartALocalTeamPage() {
         <Button href="#start-team-form" variant="primary">
           Start a local team
         </Button>
-        <Button href="/get-involved/bring-5" variant="outline">
+        <Button href="/get-involved/bring-5" variant="outlineOnDark">
           Bring 5 Friends
         </Button>
-        <Button href="/events/request" variant="outline">
+        <Button href="/events/request" variant="outlineOnDark">
           Invite Kelly
         </Button>
-      </PageHero>
+      </MediaPageHero>
 
       <FullBleedSection padY aria-labelledby="why-heading">
         <ContentContainer className="max-w-3xl">

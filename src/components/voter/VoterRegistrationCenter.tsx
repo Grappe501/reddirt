@@ -36,7 +36,7 @@ type Props = {
   trailPhoto?: CampaignTrailPhoto | null;
 };
 
-export function VoterRegistrationCenter({
+export async function VoterRegistrationCenter({
   counties,
   focusCounty,
   latestSnapshot,
@@ -50,9 +50,10 @@ export function VoterRegistrationCenter({
   return (
     <>
       <PageHero
+        tone="plan"
         eyebrow="Voter access"
         title="Voter registration center"
-        subtitle="Kelly’s team built this hub so Arkansans aren’t alone in a maze of forms and deadlines. We’ll show you how we count new registrations, where your county stands, and how to reach a real person when you need paper-and-ink help—because Arkansas still doesn’t offer full online registration. Official confirmation stays with the state; we make the path human."
+        subtitle="Official confirmation stays with the state. We help neighbors find the path—and a real person when paper help is needed."
       >
         {liveMetricsUnavailableMessage ? (
           <p className="max-w-2xl rounded-xl border border-amber-300/80 bg-amber-50 px-4 py-3 text-sm leading-relaxed text-amber-950/90">
@@ -60,26 +61,19 @@ export function VoterRegistrationCenter({
           </p>
         ) : null}
         {focusCounty ? (
-          <p className="max-w-2xl rounded-xl border border-kelly-navy/20 bg-kelly-navy/5 px-4 py-3 text-sm text-kelly-text/90">
-            <span className="font-bold text-kelly-navy">Local focus: {focusCounty.displayName}</span>
-            {focusCounty.regionLabel ? <span className="text-kelly-text/70"> · {focusCounty.regionLabel}</span> : null}
+          <p className="max-w-2xl rounded-xl border border-white/25 bg-white/10 px-4 py-3 text-sm text-white/90">
+            <span className="font-bold text-white">Local focus: {focusCounty.displayName}</span>
+            {focusCounty.regionLabel ? <span className="text-white/70"> · {focusCounty.regionLabel}</span> : null}
             {focusCounty.leadName ? (
               <span className="mt-1 block">County lead: {focusCounty.leadName}{focusCounty.leadTitle ? ` — ${focusCounty.leadTitle}` : ""}</span>
             ) : null}
-            <span className="mt-1 block text-xs text-kelly-text/65">
-              County progress: see{" "}
-              <Link className="font-semibold text-kelly-navy underline-offset-2 hover:underline" href={`/counties/${focusCounty.slug}`}>
-                county command
-              </Link>{" "}
-              for field metrics.
-            </span>
           </p>
         ) : null}
         <div className="flex w-full max-w-3xl flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center" id="as-of">
           <Button href={officialUrl} variant="primary" className="w-full min-[400px]:w-auto">
             Open VoterView (new tab)
           </Button>
-          <Button href="#asof-explain" variant="outline" className="w-full min-[400px]:w-auto">
+          <Button href="#asof-explain" variant="outlineOnDark" className="w-full min-[400px]:w-auto">
             How we count new registrations
           </Button>
         </div>

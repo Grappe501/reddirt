@@ -4,13 +4,13 @@ import { isExternalHref } from "@/lib/href";
 import { cn } from "@/lib/utils";
 
 const base =
-  "inline-flex items-center justify-center gap-2 rounded-btn px-5 py-3 text-sm font-semibold tracking-wide transition duration-normal focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50";
+  "inline-flex min-h-[48px] items-center justify-center gap-2 rounded-btn px-5 py-3 text-sm font-semibold tracking-wide transition duration-normal focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50";
 
 const variants = {
   primary:
-    "bg-gradient-to-b from-kelly-gold to-[#b8872f] text-kelly-navy shadow-[0_6px_20px_rgba(202,145,61,0.45)] ring-1 ring-kelly-gold/40 ring-inset hover:-translate-y-0.5 hover:brightness-105 hover:shadow-[0_8px_28px_rgba(202,145,61,0.5)] focus-visible:outline-kelly-navy active:translate-y-0",
+    "bg-gradient-to-b from-kelly-gold to-[#b8872f] text-kelly-navy shadow-[var(--shadow-gold-cta)] ring-1 ring-kelly-gold/40 ring-inset hover:brightness-105 hover:shadow-[0_10px_32px_rgba(202,145,61,0.45)] focus-visible:outline-kelly-navy",
   secondary:
-    "bg-kelly-navy text-kelly-white shadow-soft hover:-translate-y-0.5 hover:brightness-110 focus-visible:outline-kelly-gold",
+    "bg-kelly-navy text-kelly-white shadow-[var(--shadow-soft)] hover:brightness-110 focus-visible:outline-kelly-gold",
   outline:
     "border-2 border-kelly-navy/25 bg-transparent text-kelly-text hover:border-kelly-navy/45 hover:bg-kelly-navy/[0.06] focus-visible:outline-kelly-navy",
   ghost:

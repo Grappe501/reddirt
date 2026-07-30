@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kelly Grappe · Team Kickoff · June 28, 2026</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <style>
+    :root {
+      --navy: #0a1628;
+      --navy-soft: #152238;
+      --gold: #c9a227;
+      --gold-dim: rgba(201, 162, 39, 0.2);
+      --blue: #1a56db;
+      --text: #f4f6fa;
+      --muted: rgba(255, 255, 255, 0.72);
+      --card: rgba(255, 255, 255, 0.06);
+      --border: rgba(255, 255, 255, 0.12);
+      --radius: 12px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      background:
+        radial-gradient(ellipse 100% 60% at 50% -10%, rgba(26, 86, 219, 0.15) 0%, transparent 55%),
+        radial-gradient(ellipse 80% 50% at 100% 100%, rgba(184, 134, 46, 0.12) 0%, transparent 50%),
+        linear-gradient(180deg, var(--navy) 0%, #0d1f38 45%, var(--navy-soft) 100%);
+      color: var(--text);
+      line-height: 1.5;
+    }
+    .top-bar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10, 22, 40, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0.75rem 1rem;
+    }
+    .top-inner {
+      max-width: 56rem;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem 1.25rem;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .top-title {
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .top-title span { color: var(--gold); }
+    .clocks {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1rem;
+      font-size: 0.8125rem;
+    }
+    .clock-pill {
+      padding: 0.35rem 0.65rem;
+      border-radius: 999px;
+      background: var(--card);
+      border: 1px solid var(--border);
+    }
+    .clock-pill strong { color: var(--gold); }
+    .wrap {
+      max-width: 56rem;
+      margin: 0 auto;
+      padding: 1.25rem 1rem 4rem;
+    }
+    .hero {
+      margin-bottom: 2rem;
+    }
+    .hero h1 {
+      font-size: clamp(1.5rem, 4vw, 2.25rem);
+      line-height: 1.2;
+      margin: 0 0 0.5rem;
+      letter-spacing: -0.03em;
+    }
+    .hero .sub {
+      color: var(--muted);
+      font-size: 1.05rem;
+      margin: 0 0 1rem;
+    }
+    .promise {
+      padding: 1rem 1.15rem;
+      border-radius: var(--radius);
+      background: var(--gold-dim);
+      border: 1px solid rgba(201, 162, 39, 0.35);
+      font-size: 0.95rem;
+    }
+    .grid-2 {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 768px) {
+      .grid-2 { grid-template-columns: 1fr 1fr; }
+      .video-sticky { position: sticky; top: 4.5rem; }
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.15rem 1.25rem;
+      margin-bottom: 1rem;
+    }
+    .card h2 {
+      font-size: 1.1rem;
+      margin: 0 0 0.65rem;
+      color: var(--gold);
+    }
+    .card h3 {
+      font-size: 0.95rem;
+      margin: 1rem 0 0.4rem;
+    }
+    .card p, .card li { font-size: 0.9375rem; color: var(--muted); }
+    .card ul { margin: 0.4rem 0; padding-left: 1.2rem; }
+    .card li { margin: 0.35rem 0; }
+    .time-badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.2rem 0.5rem;
+      border-radius: 6px;
+      background: rgba(26, 86, 219, 0.25);
+      color: #93c5fd;
+      margin-bottom: 0.5rem;
+    }
+    .chapter {
+      scroll-margin-top: 5rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .chapter:last-child { border-bottom: none; }
+    .chapter h2 {
+      font-size: 1.25rem;
+      margin: 0 0 0.35rem;
+    }
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 0.65rem;
+      margin: 0.75rem 0;
+    }
+    .metric {
+      padding: 0.65rem;
+      border-radius: 8px;
+      background: rgba(0, 0, 0, 0.25);
+      border: 1px solid var(--border);
+      text-align: center;
+    }
+    .metric .val {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--gold);
+    }
+    .metric .lbl {
+      font-size: 0.7rem;
+      color: var(--muted);
+      line-height: 1.3;
+    }
+    .golden {
+      display: grid;
+      gap: 0.5rem;
+    }
+    .golden div {
+      padding: 0.65rem 0.85rem;
+      border-radius: 8px;
+      background: rgba(0, 0, 0, 0.2);
+      font-size: 0.9rem;
+    }
+    .golden strong { color: #fff; }
+    pre.chat {
+      white-space: pre-wrap;
+      font-family: inherit;
+      font-size: 0.85rem;
+      line-height: 1.45;
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.85rem;
+      color: #e2e8f0;
+      margin: 0.5rem 0;
+    }
+    .video-wrap {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: var(--radius);
+      background: #000;
+      border: 1px solid var(--border);
+    }
+    .video-wrap iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: 0;
+    }
+    .video-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.65rem;
+    }
+    .video-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: var(--gold);
+      color: #0a1628;
+      border: none;
+      padding: 0.55rem 0.9rem;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.875rem;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .video-btn.secondary {
+      background: transparent;
+      color: var(--gold);
+      border: 1px solid rgba(201, 162, 39, 0.45);
+    }
+    .video-play-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      background: rgba(0, 0, 0, 0.55);
+      cursor: pointer;
+      z-index: 2;
+      padding: 1rem;
+      text-align: center;
+    }
+    .video-play-overlay.hidden { display: none; }
+    .video-play-overlay span {
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+    .video-play-overlay small {
+      font-size: 0.75rem;
+      color: var(--muted);
+      max-width: 16rem;
+    }
+    .poll {
+      margin: 0.5rem 0 1rem;
+    }
+    .poll .q { font-weight: 600; color: #fff; margin-bottom: 0.35rem; }
+    .poll .opts { font-size: 0.875rem; color: var(--muted); }
+    .links a {
+      color: var(--gold);
+      word-break: break-all;
+    }
+    .now-banner {
+      text-align: center;
+      padding: 0.65rem;
+      margin-bottom: 1rem;
+      border-radius: var(--radius);
+      background: rgba(26, 86, 219, 0.2);
+      border: 1px solid rgba(26, 86, 219, 0.4);
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+    .cue {
+      font-style: italic;
+      color: #93c5fd;
+      font-size: 0.875rem;
+      margin-top: 0.5rem;
+    }
+    .closing {
+      font-size: 1.15rem;
+      font-weight: 700;
+      text-align: center;
+      color: var(--gold);
+      padding: 1.5rem;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.45);
+      padding: 2rem 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="top-bar">
+    <div class="top-inner">
+      <div class="top-title">Kelly Grappe <span>Team Kickoff</span></div>
+      <div class="clocks">
+        <div class="clock-pill">Central <strong id="clock-now">—</strong></div>
+        <div class="clock-pill">Program <strong id="count-program">—</strong></div>
+        <div class="clock-pill">Election Day <strong id="count-election">—</strong></div>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <h1>Building the campaign.<br>Building the infrastructure.<br>Building the future.</h1>
+      <p class="sub">June 28, 2026 · 5:59–6:59 PM Central · Zoom + this screen</p>
+      <p class="promise">This is not a normal campaign meeting. This is the first rollout of a statewide organizing system.</p>
+    </section>
+
+    <div id="now-banner" class="now-banner" hidden></div>
+
+    <div class="grid-2">
+      <div>
+        <section class="card" id="roll-call">
+          <h2>🎤 Roll Call Roulette (5:59–6:10)</h2>
+          <p><strong>Zoom = audio room.</strong> This page = your guide. At <strong>6:00 PM</strong> the opening reel plays (video on the right).</p>
+          <ul>
+            <li>Shrink Zoom self-view to a tiny corner — CPOS / this page is center stage.</li>
+            <li>One roll-call message in Zoom chat (copy template below).</li>
+            <li>Name · city/county · email/phone if comfortable · social handles.</li>
+          </ul>
+          <pre class="chat" id="chat-template">🎤 ROLL CALL — let's actually meet each other!
+
+One message in Zoom chat, please:
+• Name
+• City / County where you live
+• Email & phone (if you're comfortable)
+  → Prefer private? DM the host so we have your correct contact info
+• Social handles: Facebook, Instagram, YouTube, TikTok
+  → Let's be network friends AND campaign connections
+
+This is a networking moment. Be real. Be fun. 🌾</pre>
+          <button type="button" onclick="navigator.clipboard.writeText(document.getElementById('chat-template').textContent).then(()=>alert('Copied — paste into Zoom chat'))" style="background:var(--gold);color:#0a1628;border:none;padding:0.5rem 1rem;border-radius:8px;font-weight:600;cursor:pointer">Copy roll-call text for Zoom</button>
+        </section>
+
+        <section class="card links">
+          <h2>Live system (when ready)</h2>
+          <p>If CPOS loads, use the full experience:</p>
+          <ul>
+            <li><a href="https://kgrappe.netlify.app/election-plan/login?next=/election-plan/team-kickoff">Audience — team kickoff</a></li>
+            <li><a href="https://kgrappe.netlify.app/election-plan/login?next=/election-plan/team-kickoff/presenter">Presenter console</a></li>
+            <li><a href="https://kgrappe.netlify.app/election-plan/counties?presentation=true&cpos=1">County playbooks demo</a></li>
+          </ul>
+          <p style="font-size:0.8rem;margin-top:0.75rem">Fallback: keep scrolling this page — same run-of-show.</p>
+        </section>
+      </div>
+
+      <div class="video-sticky">
+        <section class="card">
+          <h2>Opening reel · 6:00 PM</h2>
+          <div class="video-wrap" id="video-wrap">
+            <div class="video-play-overlay" id="video-overlay" role="button" tabindex="0" aria-label="Play opening reel">
+              <span>▶ Play opening reel</span>
+              <small>Local file? Use “Open in YouTube” — most reliable for Zoom share.</small>
+            </div>
+            <iframe
+              id="video-iframe"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <div class="video-actions">
+            <button type="button" class="video-btn" id="btn-embed-play">▶ Play embedded</button>
+            <a class="video-btn secondary" id="btn-youtube" href="https://youtu.be/tCwIruQ7OKg?si=9Kya5tANa-i2p9Vt" target="_blank" rel="noopener noreferrer">Open in YouTube</a>
+          </div>
+          <p style="font-size:0.8rem;margin-top:0.5rem">Lower volume here when Kelly speaks live on Zoom.</p>
+        </section>
+      </div>
+    </div>
+
+    <section class="card">
+      <h2>On the road since November</h2>
+      <div class="metrics">
+        <div class="metric"><div class="val">5+</div><div class="lbl">Days on the road / week</div></div>
+        <div class="metric"><div class="val">47</div><div class="lbl">Campaign-stop counties</div></div>
+        <div class="metric"><div class="val">76</div><div class="lbl">Cities</div></div>
+        <div class="metric"><div class="val">220</div><div class="lbl">Campaign stops</div></div>
+        <div class="metric"><div class="val">20k+</div><div class="lbl">Miles</div></div>
+        <div class="metric"><div class="val">15k</div><div class="lbl">Face-to-face conversations (est.)</div></div>
+        <div class="metric"><div class="val">50k</div><div class="lbl">Voter registration goal</div></div>
+      </div>
+    </section>
+
+    <section id="agenda">
+      <h2 style="color:var(--gold);margin:2rem 0 1rem;font-size:1.35rem">Run of show</h2>
+
+      <article class="chapter" id="ch01" data-start="18:10" data-end="18:13">
+        <span class="time-badge">6:10 – 6:13 PM</span>
+        <h2>Welcome / Ground Rules</h2>
+        <p>Guided mode tonight — follow the meeting. Explore freely after we close.</p>
+        <p class="cue">Program starts at <strong>6:13 PM Central sharp</strong>.</p>
+      </article>
+
+      <article class="chapter" id="ch02" data-start="18:13" data-end="18:18">
+        <span class="time-badge">6:13 – 6:18 PM</span>
+        <h2>Why We Are Here</h2>
+        <p>We are not just building a Kelly campaign. We are building Arkansas grassroots infrastructure.</p>
+        <p class="cue">Every battle is won before it is fought.</p>
+      </article>
+
+      <article class="chapter" id="ch03" data-start="18:18" data-end="18:23">
+        <span class="time-badge">6:18 – 6:23 PM</span>
+        <h2>The Road Since November</h2>
+        <p>The trust pass: eyeball-to-eyeball with Kelly → transferable trust.</p>
+        <p class="cue">Trust moves person to person. This will not be won by social media alone.</p>
+      </article>
+
+      <article class="chapter" id="ch04" data-start="18:23" data-end="18:28">
+        <span class="time-badge">6:23 – 6:28 PM</span>
+        <h2>Golden Circle</h2>
+        <div class="golden">
+          <div><strong>WHY</strong> — Trust, community, infrastructure.</div>
+          <div><strong>HOW</strong> — Relationships, Power of 5, immersion, training, dashboards, coordination.</div>
+          <div><strong>WHAT</strong> — Canvassing, phones, house parties, events, social, voter registration, candidate support.</div>
+        </div>
+      </article>
+
+      <article class="chapter" id="ch05" data-start="18:28" data-end="18:34">
+        <span class="time-badge">6:28 – 6:34 PM</span>
+        <h2>Bigger Than One Campaign</h2>
+        <p>Partner with every state and local campaign possible — House, Senate, school board, city council, mayor, county judge, JP, county offices, community races. One system for canvasses, phones, meetings, town halls, house parties, trips, calendars, volunteer networks.</p>
+        <p class="cue">We are building a bigger table. Every campaign should be stronger because this exists.</p>
+      </article>
+
+      <article class="chapter" id="ch06" data-start="18:34" data-end="18:40">
+        <span class="time-badge">6:34 – 6:40 PM</span>
+        <h2>Immersion + House Party Plan</h2>
+        <p>We do not parachute into communities. We return. We build trust. We host house parties. We grow local teams. We help communities organize themselves.</p>
+      </article>
+
+      <article class="chapter" id="ch07" data-start="18:40" data-end="18:45">
+        <span class="time-badge">6:40 – 6:45 PM</span>
+        <h2>Power of 5</h2>
+        <p>Every person becomes a team leader. Each person starts with five people. Each five can become five more. Small trusted networks compound.</p>
+        <p class="cue">Co-leads make this sustainable. A few hours a week matters.</p>
+      </article>
+
+      <article class="chapter" id="ch08" data-start="18:45" data-end="18:49">
+        <span class="time-badge">6:45 – 6:49 PM</span>
+        <h2>Voter Registration Goal</h2>
+        <p><strong>50,000</strong> registrations statewide. Every county, city, and campus should eventually have its own goal and progress tracker.</p>
+      </article>
+
+      <article class="chapter" id="ch09" data-start="18:49" data-end="18:53">
+        <span class="time-badge">6:49 – 6:53 PM</span>
+        <h2>Social Media Push</h2>
+        <p>Thank Leann for organic social work. Facebook, TikTok, YouTube, Instagram — like, comment, share daily. Tag the campaign. Selfie videos. 15-second clips when you see campaign shirts or events.</p>
+        <p><strong>#VoteGrappeSOS26</strong></p>
+        <p class="cue">People trust people they know. Devalue national politics. Revalue local trust. Do not attack Trump.</p>
+      </article>
+
+      <article class="chapter" id="ch10" data-start="18:53" data-end="18:57">
+        <span class="time-badge">6:53 – 6:57 PM</span>
+        <h2>Dashboard Tour</h2>
+        <p>Live demo: <a href="https://kgrappe.netlify.app/election-plan/counties?presentation=true&cpos=1" style="color:var(--gold)">County playbooks</a> · Election Plan command · Immersion missions · Campaign calendar · Power of 5 · Comms</p>
+        <p style="font-size:0.85rem">Most Election Plan links are active; a few pages still refining — stay with the flow tonight.</p>
+      </article>
+
+      <article class="chapter" id="ch11" data-start="18:57" data-end="18:59">
+        <span class="time-badge">6:57 – 6:59 PM</span>
+        <h2>Choose Your Lane</h2>
+        <p>Answer in Zoom chat (or raise hand):</p>
+        <div class="poll">
+          <div class="q">Where do you want to help?</div>
+          <div class="opts">My city · My county · Regional cluster · Statewide · Campus/youth · Not sure yet</div>
+        </div>
+        <div class="poll">
+          <div class="q">What lane feels natural?</div>
+          <div class="opts">Events · House parties · Volunteer mgmt · Social media · Graphics/video · Youth/campus · Canvassing/phones · Voter registration · Candidate coord · Fundraising · Data/admin · Training · Not sure</div>
+        </div>
+        <div class="poll">
+          <div class="q">Power of 5 — where are you tonight?</div>
+          <div class="opts">I can name my first five · Start with two or three · Need help with my list · Want to co-lead</div>
+        </div>
+        <p class="closing">The campaign is temporary. The network is permanent.</p>
+      </article>
+    </section>
+  </main>
+
+  <footer>Kelly Grappe for Secretary of State · Fallback run-of-show · June 28, 2026</footer>
+
+  <script>
+    const TZ = "America/Chicago";
+    const PROGRAM_START = new Date("2026-06-28T18:13:00-05:00");
+    const ELECTION_DAY = new Date("2026-11-03T00:00:00-05:00");
+
+    const chapters = [
+      { id: "roll-call", start: "17:59", end: "18:10", label: "Roll Call Roulette" },
+      { id: "ch01", start: "18:10", end: "18:13", label: "Welcome / Ground Rules" },
+      { id: "ch02", start: "18:13", end: "18:18", label: "Why We Are Here" },
+      { id: "ch03", start: "18:18", end: "18:23", label: "The Road Since November" },
+      { id: "ch04", start: "18:23", end: "18:28", label: "Golden Circle" },
+      { id: "ch05", start: "18:28", end: "18:34", label: "Bigger Than One Campaign" },
+      { id: "ch06", start: "18:34", end: "18:40", label: "Immersion + House Parties" },
+      { id: "ch07", start: "18:40", end: "18:45", label: "Power of 5" },
+      { id: "ch08", start: "18:45", end: "18:49", label: "Voter Registration" },
+      { id: "ch09", start: "18:49", end: "18:53", label: "Social Media" },
+      { id: "ch10", start: "18:53", end: "18:57", label: "Dashboard Tour" },
+      { id: "ch11", start: "18:57", end: "18:59", label: "Choose Your Lane" },
+    ];
+
+    function centralNow() {
+      const parts = new Intl.DateTimeFormat("en-US", {
+        timeZone: TZ,
+        hour: "2-digit", minute: "2-digit", second: "2-digit",
+        hour12: true,
+      }).formatToParts(new Date());
+      const get = (t) => parts.find((p) => p.type === t)?.value ?? "";
+      return `${get("hour")}:${get("minute")}:${get("second")} ${get("dayPeriod")}`;
+    }
+
+    function centralMinutesSinceMidnight() {
+      const parts = new Intl.DateTimeFormat("en-US", {
+        timeZone: TZ,
+        hour: "numeric", minute: "numeric", hour12: false,
+      }).formatToParts(new Date());
+      const h = parseInt(parts.find((p) => p.type === "hour")?.value ?? "0", 10);
+      const m = parseInt(parts.find((p) => p.type === "minute")?.value ?? "0", 10);
+      return h * 60 + m;
+    }
+
+    function parseHM(hm) {
+      const [h, m] = hm.split(":").map(Number);
+      return h * 60 + m;
+    }
+
+    function formatCountdown(ms) {
+      if (ms <= 0) return "started";
+      const s = Math.floor(ms / 1000);
+      const h = Math.floor(s / 3600);
+      const m = Math.floor((s % 3600) / 60);
+      const sec = s % 60;
+      if (h > 0) return `${h}h ${m}m`;
+      if (m > 0) return `${m}m ${sec}s`;
+      return `${sec}s`;
+    }
+
+    function tick() {
+      document.getElementById("clock-now").textContent = centralNow();
+
+      const nowMs = Date.now();
+      document.getElementById("count-program").textContent = formatCountdown(PROGRAM_START - nowMs);
+      document.getElementById("count-election").textContent = formatCountdown(ELECTION_DAY - nowMs);
+
+      const mins = centralMinutesSinceMidnight();
+      let current = null;
+      for (const ch of chapters) {
+        if (mins >= parseHM(ch.start) && mins < parseHM(ch.end)) {
+          current = ch;
+          break;
+        }
+      }
+      const banner = document.getElementById("now-banner");
+      if (current) {
+        banner.hidden = false;
+        banner.textContent = "▶ NOW: " + current.label;
+        const el = document.getElementById(current.id);
+        if (el) el.style.outline = "2px solid var(--gold)";
+      } else {
+        banner.hidden = true;
+        chapters.forEach((ch) => {
+          const el = document.getElementById(ch.id);
+          if (el) el.style.outline = "";
+        });
+      }
+    }
+
+    tick();
+    setInterval(tick, 1000);
+
+    const YT_ID = "tCwIruQ7OKg";
+    const YT_WATCH = "https://youtu.be/tCwIruQ7OKg?si=9Kya5tANa-i2p9Vt";
+    const embedSrc = () => {
+      const origin = window.location.protocol === "file:"
+        ? "https://kgrappe.netlify.app"
+        : window.location.origin;
+      return `https://www.youtube.com/embed/${YT_ID}?si=k1qEjED2Yb4_vG_4&autoplay=1&rel=0&playsinline=1&origin=${encodeURIComponent(origin)}`;
+    };
+
+    function playEmbedded() {
+      const iframe = document.getElementById("video-iframe");
+      const overlay = document.getElementById("video-overlay");
+      if (!iframe.src) iframe.src = embedSrc();
+      overlay.classList.add("hidden");
+    }
+
+    document.getElementById("video-overlay").addEventListener("click", playEmbedded);
+    document.getElementById("video-overlay").addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        playEmbedded();
+      }
+    });
+    document.getElementById("btn-embed-play").addEventListener("click", playEmbedded);
+
+    // file:// — YouTube embed often blocked; nudge presenter to YouTube tab
+    if (window.location.protocol === "file:") {
+      document.getElementById("btn-youtube").textContent = "▶ Open in YouTube (recommended)";
+    }
+  </script>
+</body>
+</html>

@@ -25,7 +25,7 @@
 
 | Route | File path | Purpose | Launch status | CTA? | Form? | SEO | Notes |
 |-------|-----------|---------|---------------|------|-------|-----|-------|
-| `/` | `src/app/(site)/page.tsx` | Home | needs polish | Y | N | layout + merge | DB merges homepage config |
+| `/` | `src/app/(site)/page.tsx` | Home (trust-funnel) | needs polish | Y | N | page metadata | LIVE CANON: trust-funnel + `trust-funnel-home.ts`; On the Road from DB when rows exist. Does **not** use `getMergedHomepageConfig`. See [`docs/website/HOMEPAGE_CURRENT_STATE_ASSESSMENT.md`](./website/HOMEPAGE_CURRENT_STATE_ASSESSMENT.md). |
 | `/about` | `src/app/(site)/about/page.tsx` | About hub | needs polish | Y | N | page metadata | Kelly story |
 | `/about/[slug]` | `src/app/(site)/about/[slug]/page.tsx` | About chapters | needs polish | Y | N | dynamic | SSG paths |
 | `/priorities` | `src/app/(site)/priorities/page.tsx` | Issue priorities | needs polish | Y | N | page metadata | SOS-focused |

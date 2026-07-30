@@ -17,7 +17,7 @@ type ScrollRevealProps = {
 /**
  * Viewport-triggered fade + subtle rise. SSR-safe: no hiding until mounted + prefs known.
  */
-export function ScrollReveal({ as: Comp = "div", children, delay = 0, className, yOffset = 12 }: ScrollRevealProps) {
+export function ScrollReveal({ as: Comp = "div", children, delay = 0, className, yOffset = 8 }: ScrollRevealProps) {
   const ref = useRef<HTMLDivElement | HTMLLIElement | null>(null);
   const [mounted, setMounted] = useState(false);
   const [reduceMotion, setReduceMotion] = useState(false);
@@ -72,7 +72,7 @@ export function ScrollReveal({ as: Comp = "div", children, delay = 0, className,
           ? {
               opacity: show ? 1 : 0,
               transform: show ? "translateY(0)" : `translateY(${yOffset}px)`,
-              transition: "opacity 450ms ease-out, transform 450ms ease-out",
+              transition: "opacity 350ms ease-out, transform 350ms ease-out",
             }
           : undefined
       }

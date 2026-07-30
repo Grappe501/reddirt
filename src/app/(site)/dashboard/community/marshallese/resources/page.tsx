@@ -11,7 +11,7 @@ export default function MarshalleseResourcesPage() {
     <div className="space-y-4 rounded-2xl border border-kelly-text/10 bg-white p-5 shadow-[var(--shadow-soft)]">
       <p className="font-heading text-lg font-bold text-kelly-navy">Resources (scaffold)</p>
       <p className="font-body text-sm text-kelly-text/85">
-        Marshallese-community-shaped toolkits and lane guides will publish here after Ernie review and leadership alignment.
+        Marshallese-community-shaped toolkits and lane guides will publish here as partner materials are ready.
       </p>
       <p className="font-body text-sm text-kelly-text/75">
         <Link href="/volunteer/resources" className="font-semibold text-kelly-blue underline">

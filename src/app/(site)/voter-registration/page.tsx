@@ -4,7 +4,7 @@ import { VoterRegistrationCenter } from "@/components/voter/VoterRegistrationCen
 import { listPublishedCounties } from "@/lib/county/get-county-command-data";
 import { getLatestVoterFileSnapshot, getStatewideVoterRollupFromLatestSnapshot } from "@/lib/voter-file/queries";
 import { prisma } from "@/lib/db";
-import { isPrismaDatabaseUnavailable, logPrismaDatabaseUnavailable } from "@/lib/prisma-connectivity";
+import { isPrismaLiveDataUnavailable, logPrismaDatabaseUnavailable } from "@/lib/prisma-connectivity";
 
 type FocusCounty = Pick<County, "slug" | "displayName" | "regionLabel" | "leadName" | "leadTitle">;
 
@@ -45,7 +45,7 @@ export default async function VoterRegistrationPage({ searchParams }: Props) {
     statewide = tuple[2];
     focusCounty = tuple[3];
   } catch (err) {
-    if (!isPrismaDatabaseUnavailable(err)) throw err;
+    if (!isPrismaLiveDataUnavailable(err)) throw err;
     logPrismaDatabaseUnavailable("voter-registration", err);
     liveMetricsUnavailableMessage =
       "Live registration metrics could not be loaded right now. Official VoterView, paper registration guidance, and the rest of this page still work.";

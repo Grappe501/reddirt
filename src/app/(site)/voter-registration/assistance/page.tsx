@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/Button";
 import { getArVoterRegistrationLookupUrl } from "@/lib/county/official-links";
 
 export const metadata: Metadata = {
-  title: "Campaign assistance lookup",
+  title: "Voter registration help",
   robots: { index: false, follow: true },
 };
 
@@ -16,30 +16,22 @@ export default function VoterAssistancePreviewPage() {
   return (
     <>
       <PageHero
-        eyebrow="Preview"
-        title="Campaign assistance lookup"
-        subtitle="This route reserves space for a volunteer-facing or voter-facing flow that uses the campaign’s copy of the voter file. It is not the Secretary of State’s live system and will ship with compliance copy and rate limits."
+        eyebrow="Voters"
+        title="Voter registration help"
+        subtitle="For official registration status, use Arkansas VoterView. The campaign can also connect you with a volunteer when you need a hand."
       />
       <FullBleedSection padY>
         <ContentContainer className="max-w-2xl">
-          <div className="rounded-2xl border border-amber-700/30 bg-amber-50/90 p-6 text-sm text-kelly-text/90">
-            <p className="font-bold text-amber-950">Not built yet</p>
-            <p className="mt-2 leading-relaxed">
-              When ready, this page will host a structured search (e.g. name + date of birth + county) against our
-              warehouse tables, with every result labeled as <strong>campaign assistance data</strong> and a mandatory
-              link to{" "}
-              <a className="font-semibold text-kelly-navy underline" href={official} target="_blank" rel="noreferrer">
-                Arkansas VoterView
-              </a>{" "}
-              for official confirmation.
-            </p>
-          </div>
-          <p className="mt-6 text-sm text-kelly-text/75">
-            For now, use the{" "}
+          <p className="font-body text-sm leading-relaxed text-kelly-text/85">
+            Check your registration on{" "}
+            <a className="font-semibold text-kelly-navy underline" href={official} target="_blank" rel="noreferrer">
+              Arkansas VoterView
+            </a>
+            , or start from our{" "}
             <Link className="font-semibold text-kelly-navy underline-offset-2 hover:underline" href="/voter-registration">
               voter registration center
-            </Link>{" "}
-            and request a human through{" "}
+            </Link>
+            . To request a human follow-up, use{" "}
             <Link className="font-semibold text-kelly-navy underline-offset-2 hover:underline" href="/get-involved#join">
               get involved
             </Link>

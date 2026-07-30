@@ -94,6 +94,13 @@
     "!data/campaign-brain/executive-book/**",
     "!data/campaign-brain/operations-lock/**",
     "!data/owned-campaign-media/**",
+    "!data/campaign-media/**",
+    # Evidence overlays must still reach SSR so holds / Approve state match local.
+    "data/campaign-media/photo-evidence.json",
+    "data/campaign-media/speech-evidence.json",
+    "data/campaign-media/county-album-index.json",
+    "data/campaign-media/photo-ingest-drafts.json",
+    "!data/integrations/**",
     "!.env",
     "!.env.*",
     "!**/.env",

@@ -28,8 +28,8 @@ export const representLocalEventVolunteerHref = "/get-involved?lane=event_repres
 /** Volunteer signup with “leadership / captain” interest pre-checked (client-side default only; same `/api/forms` payload shape). */
 export const getInvolvedVolunteerCaptainHref = "/get-involved?leadership=1#volunteer";
 
-/** Public Power of 5 onboarding (trust-first relational path). */
-export const powerOf5OnboardingHref = "/onboarding/power-of-5";
+/** Public Power of 5 / Bring 5 path (trust-first relational — not a soft redirect to About). */
+export const powerOf5OnboardingHref = "/get-involved/bring-5";
 
 /** Voter registration center (citizenship CTA in header + trust-funnel homepage). */
 export const voterRegistrationHref = "/voter-registration";
@@ -47,7 +47,11 @@ export const primaryNavMobileDrawerGroupOrder = [
   "involved",
 ] as const;
 
-/** Top nav: substance-first mega groups + utility actions (Vote, Volunteer, Donate) in SiteHeader */
+/**
+ * Top nav — one home per destination (Pathway Nav Simplify).
+ * Campaign Videos live under Meet Kelly only. Invite Kelly lives under Events only.
+ * News reading set: From the Road + Press (+ Substack in footer).
+ */
 export const primaryNavGroups: NavGroup[] = [
   {
     id: "meet",
@@ -55,10 +59,14 @@ export const primaryNavGroups: NavGroup[] = [
     groupLandingHref: "/about",
     items: [
       { label: "Meet Kelly", href: "/about" },
-      { label: "Her Journey", href: "/about/journey" },
+      { label: "Kelly Across Arkansas", href: "/about/journey" },
       { label: "Community & Civic Work", href: "/about/community" },
       { label: "Why I'm Running", href: "/about/why-im-running" },
       { label: "Initiatives & petitions", href: kellyInitiativesChapterHref },
+      { label: "Campaign Videos", href: "/kelly-speaks" },
+      { label: "Campaign Photos", href: "/campaign-photos" },
+      { label: "Endorsements", href: "/endorsements" },
+      { label: "Priorities", href: "/priorities" },
     ],
   },
   {
@@ -75,6 +83,7 @@ export const primaryNavGroups: NavGroup[] = [
   {
     id: "office",
     label: "The Office",
+    groupLandingHref: "/understand",
     items: [
       { label: "Understand the Office", href: "/understand" },
       { label: "Elections", href: "/office/elections" },
@@ -83,17 +92,16 @@ export const primaryNavGroups: NavGroup[] = [
       { label: "Transparency & Records", href: "/office/records" },
       { label: "Capitol & Public Safety", href: "/office/capitol" },
       { label: "Why This Race Matters", href: "/office/why-this-race-matters" },
+      { label: "Explainers", href: "/explainers" },
     ],
   },
   {
     id: "news",
     label: "News",
+    groupLandingHref: "/from-the-road",
     items: [
       { label: "From the Road", href: "/from-the-road" },
       { label: "Press Coverage", href: "/press-coverage" },
-      { label: "Campaign Updates", href: "/updates" },
-      { label: "Editorial", href: "/editorial" },
-      { label: "Explainers", href: "/explainers" },
     ],
   },
   {
@@ -101,10 +109,10 @@ export const primaryNavGroups: NavGroup[] = [
     label: "Events",
     groupLandingHref: "/events",
     items: [
-      { label: "Campaign Calendar", href: "/events" },
+      { label: "Events", href: "/events" },
       { label: "Arkansas Presence", href: "/arkansas" },
       { label: "Invite Kelly", href: "/events/request" },
-      { label: "Share an event", href: "/schedule" },
+      { label: "Suggest a public event", href: "/events#suggest" },
       { label: "Election Integrity Tour", href: "/events/community-election-integrity-tour" },
       { label: "County Fairs", href: "/events/county-fairs" },
       { label: "County Party Meetings", href: "/events/county-party-meetings" },
@@ -116,11 +124,10 @@ export const primaryNavGroups: NavGroup[] = [
     label: "Get Involved",
     groupLandingHref: "/get-involved",
     items: [
-      { label: "Volunteer", href: "/get-involved" },
+      { label: "Stay connected", href: "/get-involved#join" },
+      { label: "Volunteer", href: "/get-involved#volunteer" },
       { label: "Bring 5 Friends", href: "/get-involved/bring-5" },
       { label: "Start a Local Team", href: "/start-a-local-team" },
-      { label: "Invite Kelly", href: "/events/request" },
-      { label: "Share an event", href: "/schedule" },
       { label: "Donate", href: "/donate" },
     ],
   },
@@ -141,30 +148,37 @@ export const footerNavGroups: { title: string; items: NavItem[] }[] = [
   },
   {
     title: "The Office",
+    items: [...(navGroupById("office")?.items ?? [])],
+  },
+  {
+    title: "News & events",
     items: [
-      ...(navGroupById("office")?.items ?? []),
-      { label: "Explainers", href: "/explainers" },
+      { label: "From the Road", href: "/from-the-road" },
+      { label: "Press Coverage", href: "/press-coverage" },
+      { label: "Kelly’s Substack", href: getCampaignBlogUrl() },
+      { label: "Events", href: "/events" },
+      { label: "Invite Kelly", href: "/events/request" },
+      { label: "Host a gathering", href: "/host-a-gathering" },
+      { label: "Listening sessions", href: "/listening-sessions" },
     ],
   },
   {
-    title: "News & action",
+    title: "Get involved",
     items: [
-      ...(navGroupById("news")?.items ?? []),
-      { label: "Stories", href: "/stories" },
-      { label: "Kelly’s Substack", href: getCampaignBlogUrl() },
-      { label: "Events", href: "/events" },
+      { label: "Stay connected", href: "/get-involved#join" },
+      { label: "Volunteer", href: "/get-involved#volunteer" },
+      { label: "Bring 5 Friends", href: "/get-involved/bring-5" },
+      { label: "Start a Local Team", href: "/start-a-local-team" },
       { label: "Represent at local events", href: representLocalEventVolunteerHref },
-      { label: "Host a gathering", href: "/host-a-gathering" },
-      { label: "Suggest a public event", href: "/events#suggest" },
-      { label: "Election listening sessions", href: "/listening-sessions" },
-      { label: "Get involved", href: "/get-involved" },
       { label: "Donate", href: "/donate" },
     ],
   },
   {
     title: "Legal",
     items: [
+      { label: "Contact", href: "/contact" },
       { label: "Privacy", href: "/privacy" },
+      { label: "Accessibility", href: "/accessibility" },
       { label: "Terms of use", href: "/terms" },
       { label: "Disclaimer", href: "/disclaimer" },
     ],

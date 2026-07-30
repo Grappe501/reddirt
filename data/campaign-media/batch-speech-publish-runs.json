@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "updatedAt": "2026-07-30T02:21:43.329Z",
+  "purpose": "Evidence Workbench batch speech publish/hold runs (audit #4). Never silent Approve; Unknown not invented.",
+  "runs": [
+    {
+      "id": "spub-ms6w0x7g",
+      "createdAt": "2026-07-30T02:21:43.325Z",
+      "action": "publish",
+      "speechIds": [
+        "leadership-speech-kz33isxz0zq"
+      ],
+      "appliedIds": [
+        "leadership-speech-kz33isxz0zq"
+      ],
+      "skippedEmptyCounty": 0,
+      "errorCount": 0,
+      "beforeById": {
+        "leadership-speech-kz33isxz0zq": {
+          "counties": [
+            "Pulaski"
+          ],
+          "whatThisProves": "Spoke with county clerks about election access.",
+          "doNotClaim": [
+            "Do not invent turnout numbers."
+          ],
+          "updatedAt": "2026-07-30T02:21:43.318Z"
+        }
+      },
+      "undoneAt": "2026-07-30T02:21:43.329Z"
+    }
+  ]
+}

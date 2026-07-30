@@ -1,0 +1,92 @@
+{
+  "slice": "KELLY-PUBLIC-EXPERIENCE-FOUNDATION-1.0",
+  "phase": "1C",
+  "generatedFrom": "prisma/schema.prisma + migration history (diagnostic only; not a second source of truth)",
+  "generatedAt": "2026-07-28",
+  "databaseIdentity": "B_shared_multi_application",
+  "models": {
+    "User": {
+      "expectedTable": "User",
+      "schema": "public",
+      "exclusiveRedDirtOwned": true,
+      "keyColumns": [
+        { "name": "id", "type": "TEXT", "nullable": false, "pk": true },
+        { "name": "email", "type": "TEXT", "nullable": false, "unique": true },
+        { "name": "name", "type": "TEXT", "nullable": true },
+        { "name": "phone", "type": "TEXT", "nullable": true },
+        { "name": "zip", "type": "TEXT", "nullable": true },
+        { "name": "county", "type": "TEXT", "nullable": true },
+        { "name": "interests", "type": "TEXT[]", "nullable": true, "default": "ARRAY[]::TEXT[]" },
+        { "name": "createdAt", "type": "TIMESTAMP(3)", "nullable": false },
+        { "name": "updatedAt", "type": "TIMESTAMP(3)", "nullable": false },
+        {
+          "name": "linkedVoterRecordId",
+          "type": "TEXT",
+          "nullable": true,
+          "introducedBy": "20260421221514_volunteer_signup_sheet_intake",
+          "parityNote": "Additive; FK to VoterRecord deferred when VoterRecord table absent"
+        }
+      ],
+      "relations": ["Submission", "WorkflowIntake via forms", "ContactPreference", "VoterRecord optional"]
+    },
+    "Submission": {
+      "expectedTable": "Submission",
+      "schema": "public",
+      "exclusiveRedDirtOwned": true,
+      "doNotMapTo": "public.submissions",
+      "introducedBy": "20260421120000_init",
+      "keyColumns": [
+        { "name": "id", "type": "TEXT", "nullable": false, "pk": true },
+        { "name": "userId", "type": "TEXT", "nullable": true, "fk": "User.id" },
+        { "name": "type", "type": "TEXT", "nullable": false },
+        { "name": "content", "type": "TEXT", "nullable": false },
+        { "name": "structuredData", "type": "JSONB", "nullable": true },
+        { "name": "createdAt", "type": "TIMESTAMP(3)", "nullable": false }
+      ],
+      "legacyCollision": {
+        "table": "public.submissions",
+        "ownership": "SUBMISSION-C",
+        "shape": ["id uuid", "module_id", "raw_data", "source", "processed", "created_at"]
+      }
+    },
+    "WorkflowIntake": {
+      "expectedTable": "WorkflowIntake",
+      "schema": "public",
+      "exclusiveRedDirtOwned": true,
+      "introducedBy": "20260425130000_campaignos_phase1_workflow_intake",
+      "keyColumns": [
+        { "name": "id", "type": "TEXT", "pk": true },
+        { "name": "submissionId", "type": "TEXT", "nullable": true, "unique": true, "fk": "Submission.id" }
+      ]
+    },
+    "WorkflowAction": {
+      "expectedTable": "WorkflowAction",
+      "schema": "public",
+      "exclusiveRedDirtOwned": true
+    },
+    "ContactPreference": {
+      "expectedTable": "ContactPreference",
+      "schema": "public",
+      "exclusiveRedDirtOwned": true
+    },
+    "OwnedMediaAsset": {
+      "expectedTable": "OwnedMediaAsset",
+      "schema": "public",
+      "exclusiveRedDirtOwned": true
+    },
+    "PublicMediaPlacement": {
+      "expectedTable": "PublicMediaPlacement",
+      "schema": "public",
+      "exclusiveRedDirtOwned": true,
+      "introducedBy": "20260727200000_public_experience_foundation_phase1"
+    },
+    "VoterRecord": {
+      "expectedTable": "VoterRecord",
+      "schema": "public",
+      "exclusiveRedDirtOwned": true,
+      "presentOnLinkedDbAsOfPhase1C": false,
+      "doNotAutoMapToLegacy": ["voters", "ar02_voters", "voter_registry"]
+    }
+  },
+  "phase1cMigration": "20260728010000_phase1c_reddirt_submission_user_parity"
+}

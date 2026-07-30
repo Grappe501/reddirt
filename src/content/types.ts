@@ -64,15 +64,14 @@ export type EventItem = {
   /** How precise the pin is — calendar fallbacks often use region centroids. */
   mapPinQuality?: "exact" | "region";
   /**
-   * Fairs & festivals only. Card + map: default white (`unscheduled`), coverage optimizer → orange (`suggested`),
-   * staff intent → blue (`tentative`) or green (`confirmed`). Non-festivals may omit.
+   * Fairs & festivals research / coverage path only (operator). Not used on the public map/cards (Phase 2).
    */
   fieldAttendance?: FieldAttendance;
-  /** Default `/events/{slug}`. Calendar rows use `/campaign-calendar/{slug}`. */
+  /** Default `/events/{slug}`. */
   detailHref?: string;
   /** `calendar` when merged from CampaignOS public query; omit for static movement content. */
   eventSource?: "movement" | "calendar";
-  /** Field / editorial flags for ops transparency on public cards. */
+  /** Prefer Unknown flags — public cards may show Location TBA when coords/county are missing. */
   opsFlags?: {
     missingPublicSummary?: boolean;
     missingCounty?: boolean;

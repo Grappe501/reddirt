@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { PageHero } from "@/components/blocks/PageHero";
+import { MediaPageHero } from "@/components/blocks/MediaPageHero";
 import { SectionHeading } from "@/components/blocks/SectionHeading";
 import { FullBleedSection } from "@/components/layout/FullBleedSection";
 import { ContentContainer } from "@/components/layout/ContentContainer";
@@ -19,13 +19,15 @@ export const metadata: Metadata = pageMeta({
 
 const howFunds: string[] = ["Travel", "Materials", "Voter education", "Organizing", "Digital tools"];
 
-export default function DonatePage() {
+export default async function DonatePage() {
   const donate = siteConfig.donateHref;
   const isProcessor = /^https?:\/\//i.test(donate);
 
   return (
     <>
-      <PageHero
+      <MediaPageHero
+        slotKey="donate.hero"
+        layout="split"
         eyebrow="Support the campaign"
         title="Donate"
         subtitle="A clear, honest ask: running statewide requires real resources. If giving fits your budget, it helps the practical work—alongside neighbors who volunteer and bring five."
@@ -40,18 +42,18 @@ export default function DonatePage() {
           </Button>
         )}
         {isProcessor ? (
-          <Button href="/get-involved#volunteer" variant="outline">
+          <Button href="/get-involved#volunteer" variant="outlineOnDark">
             Volunteer
           </Button>
         ) : (
-          <Button href="/get-involved" variant="outline">
+          <Button href="/get-involved" variant="outlineOnDark">
             Get Involved
           </Button>
         )}
-        <Button href="/get-involved/bring-5" variant="outline">
+        <Button href="/get-involved/bring-5" variant="outlineOnDark">
           Bring 5
         </Button>
-      </PageHero>
+      </MediaPageHero>
 
       <FullBleedSection padY aria-labelledby="why-donate-heading">
         <ContentContainer className="max-w-3xl">

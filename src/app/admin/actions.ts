@@ -17,12 +17,14 @@ import {
   getAdminSecret,
   verifyAdminSessionToken,
 } from "@/lib/admin/session";
+import { isLocalAdminHost } from "@/lib/admin/local-admin-host";
 import { prisma } from "@/lib/db";
 import { HOMEPAGE_SECTION_IDS } from "@/lib/content/homepage-merge";
 import { invalidateContentOverridesCache } from "@/lib/content/public-overrides";
 import { parsePageKey, type HeroBlockPayload } from "@/lib/content/page-blocks";
 import { syncSubstackPosts } from "@/lib/integrations/substack/sync";
 async function requireAdminAction() {
+  if (await isLocalAdminHost()) return;
   const secret = getAdminSecret();
   if (!secret) redirect("/admin/login?error=config");
   const token = (await cookies()).get(ADMIN_SESSION_COOKIE)?.value;

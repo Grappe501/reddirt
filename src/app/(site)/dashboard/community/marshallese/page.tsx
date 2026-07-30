@@ -20,7 +20,7 @@ export default function MarshalleseOverviewPage() {
       <div className="space-y-3 rounded-2xl border border-kelly-text/10 bg-white p-5 shadow-[var(--shadow-soft)]">
         <p className="font-body text-sm text-kelly-text/85">
           Reserved for Northwest Arkansas and statewide Marshallese civic partners. Same Volunteer Operating System lane discipline;
-          stories, nomenclature, and KPIs stay in community review until leadership signs off on the full experience.
+          stories, nomenclature, and KPIs expand as partner materials are ready.
         </p>
         <p className="font-body text-sm text-kelly-text/75">
           <Link href="/dashboard/field" className="font-semibold text-kelly-blue underline">

@@ -70,7 +70,7 @@ export function NarrativeMemberHubView({ model }: Props) {
                 — this page is the fast field layer (still demo/seed until approvals connect).
               </p>
               <div className="flex flex-wrap gap-2" aria-label="Quick links">
-                <QuickLinkPill href="/onboarding/power-of-5">Power of 5 onboarding</QuickLinkPill>
+                <QuickLinkPill href="/get-involved/bring-5">Bring 5</QuickLinkPill>
                 <QuickLinkPill href="/stories">Stories</QuickLinkPill>
                 <QuickLinkPill href="/blog">Blog</QuickLinkPill>
                 <QuickLinkPill href="/listening-sessions">Listening sessions</QuickLinkPill>
