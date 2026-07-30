@@ -4,7 +4,7 @@
  */
 
 export const EVIDENCE_DESK_TABS = [
-  { id: "ingest", label: "Intake" },
+  { id: "ingest", label: "Arrival" },
   { id: "identify", label: "Identify" },
   { id: "county", label: "County" },
   { id: "edit", label: "Edit" },

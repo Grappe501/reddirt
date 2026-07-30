@@ -288,18 +288,12 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
           <>
             <div className="mb-4 rounded-lg border-2 border-[#000066]/15 bg-[#f4f7fc] p-3">
               <p className="font-heading text-xs font-bold uppercase text-[#000066]">
-                Arrival · stills + video masters
+                Arrival · Folder → Website
               </p>
               <p className="mt-1 font-body text-xs text-[#364272]">
-                Soft-watch + intake preview. Primary: Bring into system → Identify. Bridges (Owned Media
-                import, graduation clipboard) under Phase 4. Never auto-Approve.
+                Drop → Bring in → Identify → Approve → Ship. Soft-watch detects new files. Prefer
+                Unknown — never auto-Approve.
               </p>
-              <Link
-                href="/admin/evidence-workbench?tab=identify&filter=draft"
-                className="mt-2 inline-flex rounded-md border-2 border-[#000066] bg-[#000066] px-3 py-1.5 font-body text-xs font-bold text-white"
-              >
-                Send queue to Identify →
-              </Link>
             </div>
             <EvidenceIngestPanel
               initialCandidates={ingestCandidates}
@@ -307,6 +301,8 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
               initialVideoSummary={videoArrival}
               initialSpeeches={arrivalSpeeches}
               initialPreview={arrivalPreview}
+              needsApproval={needsApproval}
+              approvedPublic={publishQueue.totals.approvedPublic}
             />
           </>
         ) : null}

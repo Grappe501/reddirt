@@ -1,6 +1,7 @@
 /**
  * Browser drop → write under public/media/campaign-photos/.
- * Disk stays source of truth. Never Approves. Never deletes/overwrites.
+ * Prefer Unknown: never invent -2/-3; skip if basename already on disk.
+ * Never Approves. Never deletes/overwrites.
  */
 import "server-only";
 
@@ -36,23 +37,7 @@ function sanitizeBasename(name: string): string | null {
   return base.slice(0, 180);
 }
 
-function uniqueAbs(dir: string, basename: string): { abs: string; filename: string } {
-  const ext = path.extname(basename);
-  const stem = basename.slice(0, basename.length - ext.length) || "drop";
-  let candidate = basename;
-  let n = 2;
-  while (existsSync(path.join(dir, candidate))) {
-    candidate = `${stem}-${n}${ext}`;
-    n += 1;
-    if (n > 200) {
-      candidate = `${stem}-${Date.now()}${ext}`;
-      break;
-    }
-  }
-  return { abs: path.join(dir, candidate), filename: candidate };
-}
-
-/** Write image bytes into campaign-photos (flat). Never overwrites; never intakes/Approves. */
+/** Write image bytes into campaign-photos (flat). Skip collisions — Prefer Unknown. */
 export function dropCampaignPhotosToDisk(files: DropCampaignPhotoInput[]): DropCampaignPhotosResult {
   const dir = photosDirAbs();
   mkdirSync(dir, { recursive: true });
@@ -75,9 +60,13 @@ export function dropCampaignPhotosToDisk(files: DropCampaignPhotoInput[]): DropC
       skipped.push(`${safe} (over ${MAX_BYTES} bytes)`);
       continue;
     }
-    const target = uniqueAbs(dir, safe);
-    writeFileSync(target.abs, file.bytes);
-    written.push(`${PHOTOS_DIR_REL}/${target.filename}`);
+    const abs = path.join(dir, safe);
+    if (existsSync(abs)) {
+      skipped.push(`${safe} (already on disk — Prefer Unknown, no -2/-3 rename)`);
+      continue;
+    }
+    writeFileSync(abs, file.bytes);
+    written.push(`${PHOTOS_DIR_REL}/${safe}`);
   }
 
   if (files.length > MAX_FILES) {
@@ -99,7 +88,7 @@ export function dropCampaignPhotosToDisk(files: DropCampaignPhotoInput[]): DropC
     ok: true,
     message: `Wrote ${written.length} file(s) to ${PHOTOS_DIR_REL}${
       skipped.length ? ` · skipped ${skipped.length}` : ""
-    }. Disk is source of truth — Rescan / Intake next. Never auto-Approve.`,
+    }. Soft-watch will list them — Bring into system next. Never auto-Approve.`,
     written,
     skipped,
   };

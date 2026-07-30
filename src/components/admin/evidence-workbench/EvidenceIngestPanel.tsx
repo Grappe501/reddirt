@@ -21,10 +21,11 @@ import {
   promotePhotoIngestAction,
   runTurboIngestAction,
 } from "@/app/admin/evidence-workbench-actions";
+import { EvidenceFolderToWebsiteHero } from "@/components/admin/evidence-workbench/EvidenceFolderToWebsiteHero";
+import { buildFolderToWebsiteProgress } from "@/lib/campaign-media/folder-to-website-workflow";
 
 /** Soft-watch poll while Arrival is open — detect only, never auto-Intake/Approve. */
-const SOFT_WATCH_INTERVAL_MS = 8000;
-const EVENT_NIGHT_STORAGE_KEY = "ew-arrival-event-night";
+const SOFT_WATCH_INTERVAL_MS = 5000;
 
 type Candidate = {
   filename: string;
@@ -56,7 +57,7 @@ type VideoRow = {
   bytes: number;
   publicSrc: string | null;
   matchStatus: "auto" | "attached" | "unmatched" | "held";
-  matchConfidence?: "youtube-id" | "speech-id" | "attached" | "fuzzy" | null;
+  matchConfidence: "youtube-id" | "speech-id" | "attached" | "fuzzy" | null;
   matchedSpeechId: string | null;
   matchedSpeechTitle: string | null;
   suggestions: Array<{ id: string; title: string; reason?: string }>;
@@ -120,6 +121,8 @@ type Props = {
   initialVideoSummary: VideoSummary;
   initialSpeeches: SpeechOption[];
   initialPreview: IntakePreview;
+  needsApproval?: number;
+  approvedPublic?: number;
 };
 
 function formatBytes(n: number): string {
@@ -169,6 +172,8 @@ export function EvidenceIngestPanel({
   initialVideoSummary,
   initialSpeeches,
   initialPreview,
+  needsApproval = 0,
+  approvedPublic = 0,
 }: Props) {
   const router = useRouter();
   const [candidates, setCandidates] = useState(initialCandidates);
@@ -185,12 +190,10 @@ export function EvidenceIngestPanel({
   const [dropHover, setDropHover] = useState(false);
   const [showTurbo, setShowTurbo] = useState(false);
   const [showBridges, setShowBridges] = useState(false);
-  const [showHowTo, setShowHowTo] = useState(false);
   const [showPreviewDetails, setShowPreviewDetails] = useState(false);
   const [turbo, setTurbo] = useState<TurboDash | null>(null);
   const [turboUseAi, setTurboUseAi] = useState(true);
   const [softWatchOn, setSoftWatchOn] = useState(true);
-  const [eventNight, setEventNight] = useState(false);
   const [softWatchToast, setSoftWatchToast] = useState<SoftWatchToast | null>(null);
   const [lastSoftScanLabel, setLastSoftScanLabel] = useState<string | null>(null);
   const [ownedBridgeRows, setOwnedBridgeRows] = useState<
@@ -219,14 +222,6 @@ export function EvidenceIngestPanel({
       masterKeys: masterKeysFromSummary(nextVideo),
     };
   }
-
-  useEffect(() => {
-    try {
-      setEventNight(window.localStorage.getItem(EVENT_NIGHT_STORAGE_KEY) === "1");
-    } catch {
-      /* ignore */
-    }
-  }, []);
 
   useEffect(() => {
     setCandidates(initialCandidates);
@@ -313,23 +308,8 @@ export function EvidenceIngestPanel({
         : readyForIdentify > 0
           ? ` (${readyForIdentify})`
           : "";
-  const unmatchedMasters = videoSummary.unmatched;
   const nestedPreviewRows = preview.rows.filter((r) => r.nested);
   const warningRows = preview.rows.filter((r) => r.warning);
-
-  function setEventNightMode(on: boolean) {
-    setEventNight(on);
-    if (on) {
-      setShowTurbo(false);
-      setShowBridges(false);
-      setShowHowTo(false);
-    }
-    try {
-      window.localStorage.setItem(EVENT_NIGHT_STORAGE_KEY, on ? "1" : "0");
-    } catch {
-      /* ignore */
-    }
-  }
 
   function loadBridges() {
     start(async () => {
@@ -515,159 +495,38 @@ export function EvidenceIngestPanel({
     });
   }
 
+  const workflowProgress = buildFolderToWebsiteProgress({
+    status,
+    video: videoSummary,
+    preview,
+    needsApproval,
+    approvedPublic,
+  });
+
   return (
     <div className="space-y-4 text-[#12124a]">
-      <div className="rounded-lg border-2 border-[#000066]/20 bg-white p-4">
-        <div className="flex flex-wrap items-start justify-between gap-2">
-          <div>
-            <p className="font-heading text-sm font-bold uppercase tracking-wide text-[#000066]">
-              Arrival · stills + video masters
-            </p>
-            <p className="mt-1 max-w-2xl font-body text-sm text-[#364272]">
-              {eventNight
-                ? "Event-night focus: Bring into system → Identify. Soft-watch detects drops. Never auto-Approve."
-                : "Drop files, review the intake preview, Bring into system, then Identify. Prefer Unknown."}
-            </p>
-          </div>
-          <button
-            type="button"
-            onClick={() => setEventNightMode(!eventNight)}
-            className={`rounded-md border-2 px-3 py-1.5 font-body text-xs font-bold ${
-              eventNight
-                ? "border-[#ca913d] bg-[#fff8ef] text-[#12124a]"
-                : "border-[#8eb6dc] bg-white text-[#12124a]"
-            }`}
-          >
-            Event night {eventNight ? "on" : "off"}
-          </button>
-        </div>
-        {!eventNight || showHowTo ? (
-          <div className="mt-3">
-            {(showHowTo || !eventNight) && (
-              <>
-                {!eventNight ? (
-                  <button
-                    type="button"
-                    onClick={() => setShowHowTo((v) => !v)}
-                    className="font-body text-[11px] font-semibold text-[#000066] underline"
-                  >
-                    {showHowTo ? "Hide how-to" : "How Arrival works"}
-                  </button>
-                ) : null}
-                {showHowTo || eventNight ? (
-                  <ol className="mt-2 list-decimal space-y-1 pl-5 font-body text-sm text-[#364272]">
-                    <li>
-                      Drop stills into{" "}
-                      <code className="rounded bg-[#f4f7fc] px-1">campaign-photos/</code> and masters into{" "}
-                      <code className="rounded bg-[#f4f7fc] px-1">campaign-video-masters/</code>.
-                    </li>
-                    <li>
-                      Soft-watch lists new files (never auto-intakes). Check nested→flat preview + dedupe
-                      warnings.
-                    </li>
-                    <li>
-                      <strong className="text-[#12124a]">Bring into system</strong>, attach unmatched
-                      masters, then <strong className="text-[#12124a]">Identify</strong>.
-                    </li>
-                  </ol>
-                ) : null}
-              </>
-            )}
-          </div>
-        ) : (
-          <button
-            type="button"
-            onClick={() => setShowHowTo(true)}
-            className="mt-2 font-body text-[11px] font-semibold text-[#000066] underline"
-          >
-            Show how-to
-          </button>
-        )}
-        <p className="mt-3 font-body text-xs text-[#364272]">
-          <strong className="text-[#12124a]">Intake</strong> ≠{" "}
-          <strong className="text-[#12124a]">Save</strong> ≠{" "}
-          <strong className="text-[#12124a]">Approve</strong> ≠ Attach. No -2/-3 renames on collisions.
-        </p>
-      </div>
-
-      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-        <div className="rounded-lg border-2 border-[#000066]/15 bg-[#f4f7fc] px-3 py-2">
-          <p className="font-heading text-[11px] font-bold uppercase text-[#000066]">New stills</p>
-          <p className="font-body text-lg font-bold text-[#12124a]">{status.newOnDisk}</p>
-          <p className="font-body text-[11px] text-[#364272]">
-            {status.nestedNew} nested · {status.flatNew} flat
-          </p>
-        </div>
-        <div className="rounded-lg border-2 border-[#000066]/15 bg-[#f4f7fc] px-3 py-2">
-          <p className="font-heading text-[11px] font-bold uppercase text-[#000066]">Stills in queue</p>
-          <p className="font-body text-lg font-bold text-[#12124a]">{status.queueCount}</p>
-          <p className="font-body text-[11px] text-[#364272]">
-            {status.queueUnknownCounty} need county
-          </p>
-        </div>
-        <div className="rounded-lg border-2 border-[#000066]/15 bg-[#f4f7fc] px-3 py-2">
-          <p className="font-heading text-[11px] font-bold uppercase text-[#000066]">Video masters</p>
-          <p className="font-body text-lg font-bold text-[#12124a]">{videoSummary.total}</p>
-          <p className="font-body text-[11px] text-[#364272]">
-            {videoSummary.matched} matched · {unmatchedMasters} unmatched
-            {videoSummary.held ? ` · ${videoSummary.held} held` : ""}
-          </p>
-        </div>
-        <div className="rounded-lg border-2 border-[#ca913d]/50 bg-[#fff8ef] px-3 py-2">
-          <p className="font-heading text-[11px] font-bold uppercase text-[#000066]">
-            Ready for Identify
-          </p>
-          <p className="font-body text-lg font-bold text-[#12124a]">{readyForIdentify}</p>
-          <p className="font-body text-[11px] text-[#364272]">{status.nextStepLabel}</p>
-        </div>
-      </div>
-
-      {softWatchToast ? (
-        <div className="flex flex-wrap items-center justify-between gap-3 rounded-lg border-2 border-[#ca913d] bg-[#fff8ef] px-4 py-3">
-          <div>
-            <p className="font-heading text-xs font-bold uppercase text-[#000066]">
-              Soft-watch · new files detected
-            </p>
-            <p className="mt-1 font-body text-sm text-[#12124a]">
-              {softWatchToast.stillsAdded > 0
-                ? `${softWatchToast.stillsAdded} new still(s)`
-                : null}
-              {softWatchToast.stillsAdded > 0 && softWatchToast.mastersAdded > 0 ? " · " : null}
-              {softWatchToast.mastersAdded > 0
-                ? `${softWatchToast.mastersAdded} new master(s)`
-                : null}
-              {" — not auto-intaken."}
-            </p>
-            <p className="mt-0.5 font-body text-[10px] text-[#364272]">
-              Detected at {softWatchToast.atLabel}
-            </p>
-          </div>
-          <div className="flex flex-wrap gap-2">
-            <button
-              type="button"
-              disabled={pending || status.newOnDisk === 0}
-              onClick={() => bringIntoSystem({ goIdentify: eventNight })}
-              className="rounded-md bg-[#000066] px-3 py-2 font-body text-xs font-bold text-white disabled:opacity-50"
-            >
-              {eventNight ? "Bring → Identify" : "Bring into system"}
-            </button>
-            <button
-              type="button"
-              onClick={() => setSoftWatchToast(null)}
-              className="rounded-md border-2 border-[#8eb6dc] bg-white px-3 py-2 font-body text-xs font-semibold text-[#12124a]"
-            >
-              Dismiss
-            </button>
-          </div>
-        </div>
-      ) : null}
+      <EvidenceFolderToWebsiteHero
+        progress={workflowProgress}
+        softWatchOn={softWatchOn}
+        lastSoftScanLabel={lastSoftScanLabel}
+        softWatchToast={softWatchToast}
+        pending={pending}
+        dropHover={dropHover}
+        onDropHover={setDropHover}
+        onDropFiles={dropFiles}
+        onBringAndIdentify={() => bringIntoSystem({ goIdentify: true })}
+        onBringOnly={() => bringIntoSystem()}
+        onRescan={refresh}
+        onToggleSoftWatch={() => setSoftWatchOn((v) => !v)}
+        onDismissToast={() => setSoftWatchToast(null)}
+      />
 
       {(preview.willCopyNested > 0 || preview.warnCount > 0 || preview.willSkip > 0) &&
       preview.rows.length > 0 ? (
         <div className="rounded-lg border-2 border-[#000066]/15 bg-[#f4f7fc] p-4">
           <div className="flex flex-wrap items-baseline justify-between gap-2">
             <p className="font-heading text-xs font-bold uppercase tracking-wide text-[#000066]">
-              Intake preview
+              Before you bring in
             </p>
             <p className="font-body text-[11px] text-[#364272]">
               Queue {preview.willQueue} · copy nested {preview.willCopyNested} · skip {preview.willSkip}
@@ -676,7 +535,7 @@ export function EvidenceIngestPanel({
           </div>
           {warningRows.length > 0 ? (
             <ul className="mt-2 space-y-1">
-              {warningRows.slice(0, eventNight ? 3 : 8).map((row) => (
+              {warningRows.slice(0, 6).map((row) => (
                 <li key={`warn-${row.relativePath}`} className="font-body text-xs text-[#12124a]">
                   <span className="font-semibold text-[#ca913d]">{planLabel(row.plan)}</span>
                   {" · "}
@@ -684,16 +543,15 @@ export function EvidenceIngestPanel({
                   {row.warning ? ` — ${row.warning}` : null}
                 </li>
               ))}
-              {warningRows.length > (eventNight ? 3 : 8) ? (
+              {warningRows.length > 6 ? (
                 <li className="font-body text-[11px] text-[#364272]">
-                  +{warningRows.length - (eventNight ? 3 : 8)} more warning(s)
+                  +{warningRows.length - 6} more warning(s)
                 </li>
               ) : null}
             </ul>
           ) : nestedPreviewRows.length > 0 ? (
             <p className="mt-2 font-body text-xs text-[#364272]">
-              {nestedPreviewRows.length} nested file(s) will copy flat (originals kept). No collisions
-              detected.
+              {nestedPreviewRows.length} nested file(s) will copy flat (originals kept).
             </p>
           ) : null}
           <button
@@ -701,7 +559,7 @@ export function EvidenceIngestPanel({
             onClick={() => setShowPreviewDetails((v) => !v)}
             className="mt-2 font-body text-[11px] font-semibold text-[#000066] underline"
           >
-            {showPreviewDetails ? "Hide full preview" : "Show full nested → flat plan"}
+            {showPreviewDetails ? "Hide full plan" : "Show full nested → flat plan"}
           </button>
           {showPreviewDetails ? (
             <ul className="mt-2 max-h-56 space-y-1 overflow-y-auto rounded border border-[#8eb6dc]/40 bg-white p-2">
@@ -721,9 +579,7 @@ export function EvidenceIngestPanel({
                       <span className="font-mono text-[10px]">{row.flatTarget}</span>
                     </>
                   )}
-                  {row.warning ? (
-                    <span className="block text-[#364272]">{row.warning}</span>
-                  ) : null}
+                  {row.warning ? <span className="block text-[#364272]">{row.warning}</span> : null}
                 </li>
               ))}
             </ul>
@@ -731,148 +587,35 @@ export function EvidenceIngestPanel({
         </div>
       ) : null}
 
-      <div
-        onDragEnter={(e) => {
-          e.preventDefault();
-          setDropHover(true);
-        }}
-        onDragOver={(e) => {
-          e.preventDefault();
-          setDropHover(true);
-        }}
-        onDragLeave={(e) => {
-          e.preventDefault();
-          setDropHover(false);
-        }}
-        onDrop={(e) => {
-          e.preventDefault();
-          setDropHover(false);
-          if (e.dataTransfer.files?.length) dropFiles(e.dataTransfer.files);
-        }}
-        className={`rounded-lg border-2 border-dashed p-4 text-center ${
-          dropHover ? "border-[#000066] bg-[#eef2fb]" : "border-[#000066]/30 bg-white"
-        }`}
-      >
-        <p className="font-heading text-xs font-bold uppercase text-[#000066]">Drop zone</p>
-        <p className="mt-1 font-body text-xs text-[#364272]">
-          Images → <code className="rounded bg-[#f4f7fc] px-1">campaign-photos/</code> · Videos →{" "}
-          <code className="rounded bg-[#f4f7fc] px-1">campaign-video-masters/</code>. Soft-watch
-          detects Explorer drops while this desk is open — never auto-intakes or Approves.
-        </p>
-        <label className="mt-3 inline-flex cursor-pointer items-center gap-2 rounded-md border-2 border-[#000066] bg-white px-3 py-2 font-body text-xs font-bold text-[#000066]">
-          Choose images / videos
-          <input
-            type="file"
-            accept="image/jpeg,image/png,image/webp,image/gif,.jpg,.jpeg,.png,.webp,.gif,video/mp4,video/quicktime,video/webm,.mp4,.mov,.webm,.mkv,.m4v"
-            multiple
-            className="hidden"
-            disabled={pending}
-            onChange={(e) => {
-              if (e.target.files?.length) dropFiles(e.target.files);
-              e.target.value = "";
-            }}
-          />
-        </label>
-      </div>
-
-      <div className="rounded-lg border-2 border-[#000066] bg-[#000066] p-3">
-        <p className="font-heading text-[10px] font-bold uppercase tracking-wide text-white/80">
-          Primary
-        </p>
-        <div className="mt-2 flex flex-wrap gap-2">
-          {eventNight ? (
-            <button
-              type="button"
-              disabled={pending || (status.newOnDisk === 0 && videoSummary.total === 0)}
-              onClick={() => bringIntoSystem({ goIdentify: true })}
-              className="rounded-md border-2 border-[#ca913d] bg-[#ca913d] px-4 py-2.5 font-body text-sm font-bold text-[#12124a] disabled:opacity-50"
-            >
-              Event night · Bring → Identify
-              {status.newOnDisk > 0 ? ` (${status.newOnDisk})` : ""}
-            </button>
-          ) : (
-            <button
-              type="button"
-              disabled={pending || (status.newOnDisk === 0 && videoSummary.total === 0)}
-              onClick={() => bringIntoSystem()}
-              className="rounded-md border-2 border-white bg-white px-4 py-2.5 font-body text-sm font-bold text-[#000066] disabled:opacity-50"
-            >
-              Bring into system
-              {status.newOnDisk > 0 ? ` (${status.newOnDisk} stills)` : ""}
-            </button>
-          )}
-          <Link
-            href="/admin/evidence-workbench?tab=identify&filter=draft"
-            className="rounded-md border-2 border-white/70 bg-transparent px-4 py-2.5 font-body text-sm font-bold text-white"
-          >
-            Send to Identify
-            {identifyBadge}
-          </Link>
-        </div>
-      </div>
-
       <div className="flex flex-wrap items-center gap-2">
-        <span className="font-heading text-[10px] font-bold uppercase tracking-wide text-[#364272]">
-          Secondary
-        </span>
+        <Link
+          href="/admin/evidence-workbench?tab=identify&filter=draft"
+          className="rounded-md border-2 border-[#ca913d] bg-white px-3 py-1.5 font-body text-xs font-bold text-[#12124a]"
+        >
+          Identify queue{identifyBadge}
+        </Link>
         <button
           type="button"
-          disabled={pending}
-          onClick={refresh}
-          className="rounded-md border border-[#8eb6dc] bg-white px-3 py-1.5 font-body text-xs font-semibold text-[#12124a] disabled:opacity-50"
+          onClick={openBridges}
+          className="rounded-md border border-[#8eb6dc] bg-white px-3 py-1.5 font-body text-xs font-semibold text-[#12124a]"
         >
-          Rescan
+          {showBridges ? "Hide bridges" : "Bridges"}
         </button>
         <button
           type="button"
-          onClick={() => setSoftWatchOn((v) => !v)}
-          className={`rounded-md border px-3 py-1.5 font-body text-xs font-semibold ${
-            softWatchOn
-              ? "border-[#000066]/40 bg-[#eef2fb] text-[#000066]"
-              : "border-[#8eb6dc] bg-white text-[#12124a]"
-          }`}
-          title="Poll folders while Arrival is open — detect only"
+          onClick={() => setShowTurbo((v) => !v)}
+          className="rounded-md border border-[#8eb6dc] bg-white px-3 py-1.5 font-body text-xs font-semibold text-[#12124a]"
         >
-          Soft-watch {softWatchOn ? "on" : "off"}
+          {showTurbo ? "Hide Turbo" : "Turbo"}
         </button>
-        {!eventNight ? (
-          <>
-            <button
-              type="button"
-              onClick={openBridges}
-              className="rounded-md border border-[#8eb6dc] bg-white px-3 py-1.5 font-body text-xs font-semibold text-[#12124a]"
-            >
-              {showBridges ? "Hide bridges" : "Bridges · Phase 4"}
-            </button>
-            <button
-              type="button"
-              onClick={() => setShowTurbo((v) => !v)}
-              className="rounded-md border border-[#8eb6dc] bg-white px-3 py-1.5 font-body text-xs font-semibold text-[#12124a]"
-            >
-              {showTurbo ? "Hide Turbo" : "Advanced · Turbo"}
-            </button>
-          </>
-        ) : null}
       </div>
-
-      {softWatchOn ? (
-        <p className="font-body text-[11px] text-[#364272]">
-          Soft-watch every {SOFT_WATCH_INTERVAL_MS / 1000}s
-          {lastSoftScanLabel ? ` · last scan ${lastSoftScanLabel}` : ""}. Never auto-Intake / Approve.
-        </p>
-      ) : (
-        <p className="font-body text-[11px] text-[#364272]">
-          Soft-watch paused — use Rescan after Explorer drops.
-        </p>
-      )}
 
       {ownedMediaMatch ? (
         <p className="font-body text-xs text-[#364272]">
-          Owned Media DAM after intake:{" "}
+          Owned Media after intake:{" "}
           <strong className="text-[#12124a]">{ownedMediaMatch.linked} linked</strong>
           {" · "}
           <strong className="text-[#12124a]">{ownedMediaMatch.unlinked} not linked</strong>
-          {" "}(filename match)
         </p>
       ) : null}
 

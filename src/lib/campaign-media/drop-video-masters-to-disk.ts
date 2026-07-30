@@ -1,6 +1,7 @@
 /**
  * Browser drop → write video masters under public/media/campaign-video-masters/.
- * Disk stays source of truth. Never Approves. Never deletes/overwrites.
+ * Prefer Unknown: never invent -2/-3; skip if basename already on disk.
+ * Never Approves. Never deletes/overwrites. Masters must be flat (no nested folders).
  */
 
 import "server-only";
@@ -37,22 +38,6 @@ function sanitizeBasename(name: string): string | null {
   return base.slice(0, 180);
 }
 
-function uniqueAbs(dir: string, basename: string): { abs: string; filename: string } {
-  const ext = path.extname(basename);
-  const stem = basename.slice(0, basename.length - ext.length) || "master";
-  let candidate = basename;
-  let n = 2;
-  while (existsSync(path.join(dir, candidate))) {
-    candidate = `${stem}-${n}${ext}`;
-    n += 1;
-    if (n > 200) {
-      candidate = `${stem}-${Date.now()}${ext}`;
-      break;
-    }
-  }
-  return { abs: path.join(dir, candidate), filename: candidate };
-}
-
 export function dropVideoMastersToDisk(files: DropVideoMasterInput[]): DropVideoMastersResult {
   const dir = mastersDirAbs();
   mkdirSync(dir, { recursive: true });
@@ -75,9 +60,13 @@ export function dropVideoMastersToDisk(files: DropVideoMasterInput[]): DropVideo
       skipped.push(`${safe} (over max bytes)`);
       continue;
     }
-    const target = uniqueAbs(dir, safe);
-    writeFileSync(target.abs, file.bytes);
-    written.push(`${MASTERS_DIR_REL}/${target.filename}`);
+    const abs = path.join(dir, safe);
+    if (existsSync(abs)) {
+      skipped.push(`${safe} (already on disk — Prefer Unknown, no -2/-3 rename)`);
+      continue;
+    }
+    writeFileSync(abs, file.bytes);
+    written.push(`${MASTERS_DIR_REL}/${safe}`);
   }
 
   if (!written.length && !skipped.length) {
@@ -86,7 +75,9 @@ export function dropVideoMastersToDisk(files: DropVideoMasterInput[]): DropVideo
   return {
     ok: written.length > 0,
     message: written.length
-      ? `Wrote ${written.length} master(s) to campaign-video-masters/. Rescan Arrival — attach if unmatched.`
+      ? `Wrote ${written.length} master(s) to ${MASTERS_DIR_REL}${
+          skipped.length ? ` · skipped ${skipped.length}` : ""
+        }. Name files with speech id or YouTube id when possible.`
       : `No masters written. Skipped: ${skipped.slice(0, 5).join("; ")}`,
     written,
     skipped,
