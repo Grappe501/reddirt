@@ -1,8 +1,31 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-30T00:26:54.425Z",
+  "updatedAt": "2026-07-30T16:07:56.552Z",
   "purpose": "Evidence Photo Pro Edit — edit projects and rendered assembly packs. Originals never overwritten.",
   "projects": [
+    {
+      "id": "pedit-regnat-populus-tent-conversation-20260501-ms7pjg2q",
+      "photoId": "regnat-populus-tent-conversation-20260501",
+      "createdAt": "2026-07-30T16:07:56.450Z",
+      "updatedAt": "2026-07-30T16:07:56.450Z",
+      "title": "Pro edit · regnat-populus-tent-conversation-20260501",
+      "look": "punch",
+      "exportSlots": [
+        "grade_full",
+        "hero_16x9",
+        "portrait_4x5",
+        "story_9x16",
+        "web_max",
+        "thumb"
+      ],
+      "useFocus": true,
+      "focusX": 0.3089633580705009,
+      "focusY": 0.4409400123685838,
+      "sharpen": false,
+      "promoteSuggestion": "hero_16x9",
+      "directorRationale": "Aspect landscape; look punch; 6 slots; focus on.",
+      "notes": "Review slots/look, then Confirm render. Promote is separate — never auto-promotes."
+    },
     {
       "id": "pedit-afl-cio-pre-event-networking-20260629-ms6rx8mc",
       "photoId": "afl-cio-pre-event-networking-20260629",

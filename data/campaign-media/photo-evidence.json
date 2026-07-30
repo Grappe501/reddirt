@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-29T23:37:33.274Z",
+  "updatedAt": "2026-07-30T16:05:44.884Z",
   "purpose": "Local Evidence Workbench photo confirmations (overlay on campaign-photo-registry).",
   "photos": {
     "afl-cio-pre-event-networking-20260629": {
@@ -59,6 +59,11 @@
       "tierIntent": "",
       "publicationStatus": "DRAFT",
       "updatedAt": "2026-07-29T19:05:37.655Z"
+    },
+    "regnat-populus-tent-conversation-20260501": {
+      "focusX": 0.3089633580705009,
+      "focusY": 0.4409400123685838,
+      "updatedAt": "2026-07-30T16:05:44.884Z"
     }
   }
 }
