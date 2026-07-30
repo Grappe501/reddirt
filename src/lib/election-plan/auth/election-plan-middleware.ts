@@ -4,7 +4,7 @@ import { ELECTION_PLAN_SESSION_COOKIE } from "@/lib/election-plan/auth/constants
 import {
   isLeaderWorkbenchPath,
   isLeaderWorkbenchSignInPath,
-} from "@/lib/election-plan/auth/portal-access";
+} from "@/lib/election-plan/auth/portal-paths";
 import { VOLUNTEER_SESSION_COOKIE } from "@/lib/volunteers/auth/constants";
 
 /**

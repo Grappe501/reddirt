@@ -47,5 +47,53 @@
     },
     "id": "uxo_mpoxwfkc",
     "at": "2026-05-28T03:34:57.228Z"
+  },
+  {
+    "event": "page_viewed",
+    "actor": "admin",
+    "role": "operator",
+    "pathname": "/admin",
+    "recordId": null,
+    "meta": {
+      "month": "2026-03"
+    },
+    "id": "uxo_ms6g0801",
+    "at": "2026-07-29T18:53:16.801Z"
+  },
+  {
+    "event": "page_viewed",
+    "actor": "admin",
+    "role": "operator",
+    "pathname": "/admin",
+    "recordId": null,
+    "meta": {
+      "month": "2026-03"
+    },
+    "id": "uxo_ms6isbty",
+    "at": "2026-07-29T20:11:07.366Z"
+  },
+  {
+    "event": "page_viewed",
+    "actor": "admin",
+    "role": "operator",
+    "pathname": "/admin",
+    "recordId": null,
+    "meta": {
+      "month": "2026-03"
+    },
+    "id": "uxo_ms6n1wnq",
+    "at": "2026-07-29T22:10:32.726Z"
+  },
+  {
+    "event": "page_viewed",
+    "actor": "admin",
+    "role": "operator",
+    "pathname": "/admin",
+    "recordId": null,
+    "meta": {
+      "month": "2026-03"
+    },
+    "id": "uxo_ms6ncxlx",
+    "at": "2026-07-29T22:19:07.173Z"
   }
 ]

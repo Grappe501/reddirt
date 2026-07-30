@@ -23,6 +23,7 @@ const API = "https://api.netlify.com/api/v1";
 const dryRun = process.argv.includes("--dry-run");
 const triggerDeploy = process.argv.includes("--deploy");
 const deployOnly = process.argv.includes("--deploy-only");
+const forceDeploy = process.argv.includes("--force-deploy");
 const launchMinimal = process.argv.includes("--launch-minimal");
 
 function readJson(filePath) {
@@ -114,7 +115,33 @@ function scopesEqual(a, b) {
   return sa === sb;
 }
 
-async function triggerClearCacheDeploy(token, siteId) {
+async function triggerClearCacheDeploy(token, siteId, { force = false } = {}) {
+  if (!force) {
+    const recent = await api(token, `/sites/${siteId}/deploys?per_page=3`);
+    if (Array.isArray(recent)) {
+      const inFlight = recent.find(
+        (d) =>
+          d.state === "building" ||
+          d.state === "uploading" ||
+          d.state === "processing" ||
+          d.state === "preparing",
+      );
+      const published = recent.find((d) => d.state === "ready" && d.published_at);
+      if (inFlight) {
+        console.log(
+          `Skip clear-cache trigger — deploy already in progress: ${inFlight.id} (${inFlight.state})`,
+        );
+        return inFlight;
+      }
+      if (published && Date.now() - Date.parse(published.published_at) < 15 * 60 * 1000) {
+        console.log(
+          `Skip clear-cache trigger — production already published recently: ${published.id} at ${published.published_at}`,
+        );
+        return published;
+      }
+    }
+  }
+
   const build = await api(token, `/sites/${siteId}/builds?clear_cache=true`, {
     method: "POST",
     body: JSON.stringify({}),
@@ -128,8 +155,8 @@ async function main() {
   const siteId = resolveSiteId();
 
   if (deployOnly) {
-    console.log(`Site: ${siteId} — clear-cache production deploy`);
-    await triggerClearCacheDeploy(token, siteId);
+    console.log(`Site: ${siteId} — clear-cache production deploy${forceDeploy ? " (forced)" : ""}`);
+    await triggerClearCacheDeploy(token, siteId, { force: forceDeploy });
     return;
   }
 
@@ -206,7 +233,7 @@ async function main() {
   if (triggerDeploy && !dryRun) {
     console.log("");
     console.log(">>> Triggering clear-cache production deploy");
-    await triggerClearCacheDeploy(token, siteId);
+    await triggerClearCacheDeploy(token, siteId, { force: triggerDeploy && process.argv.includes("--force-deploy") });
   } else if (triggerDeploy && dryRun) {
     console.log("[dry-run] Would trigger clear-cache deploy after scoping.");
   }
