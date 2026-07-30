@@ -110,6 +110,28 @@ export const CALENDAR_PRESENCE_REL = "data/campaign-media/calendar-presence.json
 export const PHOTO_EVIDENCE_REL = "data/campaign-media/photo-evidence.json";
 export const SPEECH_EVIDENCE_REL = "data/campaign-media/speech-evidence.json";
 export const PHOTO_INGEST_DRAFTS_REL = "data/campaign-media/photo-ingest-drafts.json";
+export const VIDEO_MASTER_ATTACHMENTS_REL = "data/campaign-media/video-master-attachments.json";
+
+export type VideoMasterAttachmentEntry = {
+  speechId: string;
+  attachedAt: string;
+};
+
+export type VideoMasterUnmatchedHold = {
+  heldAt: string;
+  note?: string;
+};
+
+/** Operator attachments + unmatched holds for Arrival desk (Phase 1). */
+export type VideoMasterAttachmentsStore = {
+  version: 1;
+  updatedAt: string;
+  purpose: string;
+  /** key = `${root}::${filename}` → speechId */
+  attachments: Record<string, VideoMasterAttachmentEntry>;
+  /** Intentionally unmatched / hold — still on disk, not nagged as needs-match */
+  unmatchedHolds: Record<string, VideoMasterUnmatchedHold>;
+};
 
 export type PhotoIngestDraftStore = {
   version: 1;

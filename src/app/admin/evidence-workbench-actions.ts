@@ -2739,6 +2739,142 @@ export async function dropCampaignPhotosToDiskAction(formData: FormData): Promis
   return result;
 }
 
+/** Browser drop → write video masters under public/media/campaign-video-masters. */
+export async function dropVideoMastersToDiskAction(formData: FormData): Promise<{
+  ok: boolean;
+  message: string;
+  written?: string[];
+  skipped?: string[];
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const files: Array<{ name: string; bytes: Buffer }> = [];
+  for (const [key, value] of formData.entries()) {
+    if (key !== "files" && key !== "file") continue;
+    if (!(value instanceof File)) continue;
+    const bytes = Buffer.from(await value.arrayBuffer());
+    files.push({ name: value.name, bytes });
+  }
+  const { dropVideoMastersToDisk } = await import(
+    "@/lib/campaign-media/drop-video-masters-to-disk"
+  );
+  const result = dropVideoMastersToDisk(files);
+  if (result.ok) {
+    revalidatePath("/admin/evidence-workbench");
+  }
+  return result;
+}
+
+export async function listVideoMasterArrivalAction(): Promise<{
+  ok: boolean;
+  message: string;
+  summary?: import("@/lib/campaign-media/video-master-arrival").VideoMasterArrivalSummary;
+  speeches?: Array<{ id: string; title: string; youtubeVideoId: string }>;
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { listVideoMasterArrival, listSpeechOptionsForArrival } = await import(
+    "@/lib/campaign-media/video-master-arrival"
+  );
+  const summary = listVideoMasterArrival();
+  return {
+    ok: true,
+    message: summary.total
+      ? `${summary.total} master(s) · ${summary.matched} matched · ${summary.unmatched} unmatched`
+      : "No local masters yet — drop into campaign-video-masters/ or .local/video-masters/",
+    summary,
+    speeches: listSpeechOptionsForArrival(),
+  };
+}
+
+export async function attachVideoMasterAction(input: {
+  root: "public-masters" | "local-masters";
+  filename: string;
+  speechId: string;
+}): Promise<{
+  ok: boolean;
+  message: string;
+  summary?: import("@/lib/campaign-media/video-master-arrival").VideoMasterArrivalSummary;
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { attachVideoMasterToSpeech, listVideoMasterArrival } = await import(
+    "@/lib/campaign-media/video-master-arrival"
+  );
+  const result = attachVideoMasterToSpeech(input);
+  if (result.ok) revalidatePath("/admin/evidence-workbench");
+  return { ...result, summary: listVideoMasterArrival() };
+}
+
+export async function markVideoMasterUnmatchedAction(input: {
+  root: "public-masters" | "local-masters";
+  filename: string;
+  note?: string;
+}): Promise<{
+  ok: boolean;
+  message: string;
+  summary?: import("@/lib/campaign-media/video-master-arrival").VideoMasterArrivalSummary;
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { markVideoMasterUnmatched, listVideoMasterArrival } = await import(
+    "@/lib/campaign-media/video-master-arrival"
+  );
+  const result = markVideoMasterUnmatched(input);
+  if (result.ok) revalidatePath("/admin/evidence-workbench");
+  return { ...result, summary: listVideoMasterArrival() };
+}
+
+export async function clearVideoMasterOverrideAction(input: {
+  root: "public-masters" | "local-masters";
+  filename: string;
+}): Promise<{
+  ok: boolean;
+  message: string;
+  summary?: import("@/lib/campaign-media/video-master-arrival").VideoMasterArrivalSummary;
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { clearVideoMasterHold, listVideoMasterArrival } = await import(
+    "@/lib/campaign-media/video-master-arrival"
+  );
+  const result = clearVideoMasterHold(input);
+  if (result.ok) revalidatePath("/admin/evidence-workbench");
+  return { ...result, summary: listVideoMasterArrival() };
+}
+
+/** Arrival primary CTA — intake new stills; report video master match status. */
+export async function bringArrivalIntoSystemAction(): Promise<{
+  ok: boolean;
+  message: string;
+  ids?: string[];
+  photoStatus?: import("@/lib/campaign-media/photo-ingest").PhotoIntakeStatus;
+  videoSummary?: import("@/lib/campaign-media/video-master-arrival").VideoMasterArrivalSummary;
+  ownedMediaLinked?: number;
+  ownedMediaUnlinked?: number;
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const photoRes = await intakeAllPhotosAction();
+  const { listVideoMasterArrival } = await import("@/lib/campaign-media/video-master-arrival");
+  const videoSummary = listVideoMasterArrival();
+  const videoNote =
+    videoSummary.unmatched > 0
+      ? ` · ${videoSummary.unmatched} unmatched master(s) — attach or mark unmatched below`
+      : videoSummary.matched > 0
+        ? ` · ${videoSummary.matched} video master(s) matched`
+        : "";
+  return {
+    ok: photoRes.ok || videoSummary.total > 0,
+    message: `${photoRes.message}${videoNote}`,
+    ids: photoRes.ids,
+    photoStatus: photoRes.status,
+    videoSummary,
+    ownedMediaLinked: photoRes.ownedMediaLinked,
+    ownedMediaUnlinked: photoRes.ownedMediaUnlinked,
+  };
+}
+
 export async function proposeEventReelAction(input: {
   calendarRowId: string;
   photoLimit?: number;

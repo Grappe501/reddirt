@@ -3,11 +3,12 @@
  * Allowed roots only — never read arbitrary disk paths.
  */
 
-import { existsSync, readdirSync, statSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import path from "node:path";
 import { localVideoMastersDir } from "@/lib/campaign-media/ffmpeg-tooling";
 
 const VIDEO_EXT = new Set([".mp4", ".mov", ".webm", ".mkv", ".m4v"]);
+const ATTACHMENTS_REL = "data/campaign-media/video-master-attachments.json";
 
 export type LocalVideoMasterHit = {
   idHint: string;
@@ -77,12 +78,44 @@ export function listLocalVideoMasters(): LocalVideoMasterHit[] {
   ];
 }
 
+function masterKey(root: LocalVideoMasterHit["root"], filename: string): string {
+  return `${root}::${filename}`;
+}
+
+function findAttachedMasterFromDisk(speechId: string): LocalVideoMasterHit | null {
+  const id = speechId.trim();
+  if (!id) return null;
+  const p = path.join(repoRoot(), ATTACHMENTS_REL);
+  if (!existsSync(p)) return null;
+  try {
+    const raw = JSON.parse(readFileSync(p, "utf8")) as {
+      attachments?: Record<string, { speechId?: string }>;
+    };
+    const attachments = raw.attachments && typeof raw.attachments === "object" ? raw.attachments : {};
+    const all = listLocalVideoMasters();
+    for (const [key, att] of Object.entries(attachments)) {
+      if (att?.speechId !== id) continue;
+      const hit = all.find((m) => masterKey(m.root, m.filename) === key);
+      if (hit) return hit;
+    }
+  } catch {
+    return null;
+  }
+  return null;
+}
+
 /** Match speechId / youtubeVideoId / filename stem (case-insensitive substring or exact). */
 export function findLocalVideoMaster(input: {
   speechId?: string;
   youtubeVideoId?: string;
   filenameHint?: string;
 }): LocalVideoMasterHit | null {
+  const speechId = String(input.speechId ?? "").trim();
+  if (speechId) {
+    const attached = findAttachedMasterFromDisk(speechId);
+    if (attached) return attached;
+  }
+
   const needles = [input.speechId, input.youtubeVideoId, input.filenameHint]
     .map((s) => String(s ?? "").trim().toLowerCase())
     .filter(Boolean);

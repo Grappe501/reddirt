@@ -52,6 +52,10 @@ import { buildSpeechReadinessMatrix } from "@/lib/campaign-media/speech-readines
 import { getPhotoReadinessMatrix } from "@/lib/campaign-media/photo-readiness";
 import { listCampaignPhotosLive } from "@/lib/campaign-media/list-campaign-photos-live";
 import { listDiskPhotoIngestCandidates } from "@/lib/campaign-media/photo-ingest";
+import {
+  listSpeechOptionsForArrival,
+  listVideoMasterArrival,
+} from "@/lib/campaign-media/video-master-arrival";
 import { photoRequiresConsentHold } from "@/lib/campaign-media/photo-consent-hold";
 import { ARKANSAS_COUNTY_REGISTRY } from "@/lib/county/arkansas-county-registry";
 import { cn } from "@/lib/utils";
@@ -77,6 +81,8 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
   const ingestCandidates = listDiskPhotoIngestCandidates();
   const { getPhotoIntakeStatus } = await import("@/lib/campaign-media/photo-ingest");
   const intakeStatus = getPhotoIntakeStatus();
+  const videoArrival = listVideoMasterArrival();
+  const arrivalSpeeches = listSpeechOptionsForArrival();
   const publishQueue = buildEvidencePublishQueue();
   const coverageHeat = buildCountyPhotoCoverageHeat();
   const shipReport = buildEvidenceShipReport({ persist: false, includeDerivativeScan: true });
@@ -281,12 +287,12 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
           <>
             <div className="mb-4 rounded-lg border-2 border-[#000066]/15 bg-[#f4f7fc] p-3">
               <p className="font-heading text-xs font-bold uppercase text-[#000066]">
-                Intake · drop + queue
+                Arrival · stills + video masters
               </p>
               <p className="mt-1 font-body text-xs text-[#364272]">
-                Drop zone or Explorer into{" "}
-                <code className="rounded bg-white px-1">campaign-photos/</code>. No background watcher —
-                Rescan after Explorer drops, then Intake all new. Labeling happens on Identify, not here.
+                Drop zone routes images and videos. Rescan after Explorer drops (no auto-watch yet).
+                Bring into system intakes stills; attach unmatched masters to speeches. Labeling stays
+                on Identify.
               </p>
               <Link
                 href="/admin/evidence-workbench?tab=identify&filter=draft"
@@ -295,7 +301,12 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
                 Send queue to Identify →
               </Link>
             </div>
-            <EvidenceIngestPanel initialCandidates={ingestCandidates} initialStatus={intakeStatus} />
+            <EvidenceIngestPanel
+              initialCandidates={ingestCandidates}
+              initialStatus={intakeStatus}
+              initialVideoSummary={videoArrival}
+              initialSpeeches={arrivalSpeeches}
+            />
           </>
         ) : null}
 
