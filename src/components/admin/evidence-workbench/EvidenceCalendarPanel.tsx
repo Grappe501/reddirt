@@ -4,16 +4,21 @@ import { useEffect, useMemo, useState, useTransition } from "react";
 import {
   exportCalendarMatrixAction,
   importCalendarSeedAction,
+  proposeEventNightPackAction,
   saveCalendarRowsAction,
+  suggestCalendarPresenceAiAction,
 } from "@/app/admin/evidence-workbench-actions";
 import type {
   CalendarPresencePlace,
   CalendarPresenceRow,
   CalendarPresenceStatus,
 } from "@/lib/campaign-media/evidence-types";
+import type { CalendarPresenceSuggestion } from "@/lib/campaign-media/evidence-calendar-ai";
+import type { EventNightPack } from "@/lib/campaign-media/evidence-event-night-pack";
 import { CALENDAR_STATUSES } from "@/lib/campaign-media/evidence-types";
 import { EVIDENCE_FIELD_COMPACT_CLASS } from "@/components/admin/evidence-workbench/field-styles";
 import { isEditableKeyboardTarget } from "@/components/admin/evidence-workbench/keyboard";
+import Link from "next/link";
 
 type CountyOpt = { slug: string; displayName: string; shortName: string };
 
@@ -60,6 +65,8 @@ export function EvidenceCalendarPanel({ initialRows, counties, sourceNote, since
   );
   const [queueIndex, setQueueIndex] = useState(0);
   const [view, setView] = useState<"queue" | "table">("queue");
+  const [aiSuggestion, setAiSuggestion] = useState<CalendarPresenceSuggestion | null>(null);
+  const [eventPack, setEventPack] = useState<EventNightPack | null>(null);
 
   useEffect(() => {
     setRows(initialRows);
@@ -482,6 +489,36 @@ export function EvidenceCalendarPanel({ initialRows, counties, sourceNote, since
                 <button
                   type="button"
                   disabled={pending}
+                  onClick={() => {
+                    start(async () => {
+                      setAiSuggestion(null);
+                      const res = await suggestCalendarPresenceAiAction(active.id);
+                      setMessage(res.message);
+                      if (res.ok && res.suggestion) setAiSuggestion(res.suggestion);
+                    });
+                  }}
+                  className="rounded-md border-2 border-[#c9a227] bg-[#fff8e6] px-3 py-2 font-body text-sm font-bold text-[#000066] disabled:opacity-50"
+                >
+                  Suggest places (AI)
+                </button>
+                <button
+                  type="button"
+                  disabled={pending}
+                  onClick={() => {
+                    start(async () => {
+                      setEventPack(null);
+                      const res = await proposeEventNightPackAction(active.id);
+                      setMessage(res.message);
+                      if (res.ok && res.pack) setEventPack(res.pack);
+                    });
+                  }}
+                  className="rounded-md border-2 border-[#8eb6dc] bg-white px-3 py-2 font-body text-sm font-semibold text-[#000066] disabled:opacity-50"
+                >
+                  Event-night pack
+                </button>
+                <button
+                  type="button"
+                  disabled={pending}
                   onClick={confirmAndNext}
                   className="rounded-md bg-[#000066] px-3 py-2 font-body text-sm font-bold text-white disabled:opacity-50"
                 >
@@ -496,6 +533,104 @@ export function EvidenceCalendarPanel({ initialRows, counties, sourceNote, since
                   Exclude → next
                 </button>
               </div>
+
+              {aiSuggestion ? (
+                <div className="rounded-md border border-[#c9a227]/40 bg-[#fff8e6] p-3 font-body text-xs text-[#12124a]">
+                  <p className="font-heading text-xs font-bold text-[#000066]">
+                    AI place proposal ({aiSuggestion.confidence}) — review before Confirm
+                  </p>
+                  <p className="mt-1">{aiSuggestion.rationale}</p>
+                  {aiSuggestion.places.length ? (
+                    <ul className="mt-2 list-disc pl-4">
+                      {aiSuggestion.places.map((p, i) => (
+                        <li key={`${p.city}-${p.county}-${i}`}>
+                          {p.city || "Unknown city"} · {p.county || "Unknown county"}
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <p className="mt-2">No places inferred — leave Unknown.</p>
+                  )}
+                  {aiSuggestion.warnings.length ? (
+                    <ul className="mt-2 list-disc pl-4 text-[#364272]">
+                      {aiSuggestion.warnings.map((w) => (
+                        <li key={w}>{w}</li>
+                      ))}
+                    </ul>
+                  ) : null}
+                  <div className="mt-2 flex flex-wrap gap-2">
+                    <button
+                      type="button"
+                      disabled={pending || !aiSuggestion.places.length}
+                      onClick={() => {
+                        if (!aiSuggestion.places.length) return;
+                        const nextPlaces = aiSuggestion.places;
+                        patchPlaces(active.id, nextPlaces);
+                        patch(active.id, {
+                          status: aiSuggestion.proposedStatus ?? "Needs confirm",
+                          hasPhysicalLocation:
+                            aiSuggestion.hasPhysicalLocation ??
+                            nextPlaces.some((p) => Boolean(p.city)),
+                          notes: [active.notes, aiSuggestion.notesAppend].filter(Boolean).join("\n"),
+                        });
+                        setMessage("Applied AI proposal into the form — Save or Confirm when ready.");
+                      }}
+                      className="rounded border border-[#000066] bg-white px-2.5 py-1 font-semibold text-[#000066] disabled:opacity-50"
+                    >
+                      Apply to form (not Confirm)
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setAiSuggestion(null)}
+                      className="rounded border border-[#8eb6dc] px-2.5 py-1"
+                    >
+                      Dismiss
+                    </button>
+                  </div>
+                </div>
+              ) : null}
+
+              {eventPack ? (
+                <div className="rounded-md border border-[#8eb6dc]/60 bg-[#f4f7fc] p-3 font-body text-xs text-[#12124a]">
+                  <p className="font-heading text-xs font-bold text-[#000066]">
+                    Event-night pack · {eventPack.matchQuality} · {eventPack.date}
+                  </p>
+                  <p className="mt-1">
+                    {eventPack.photos.length} photo cue(s) · {eventPack.speeches.length} speech cue(s)
+                  </p>
+                  {eventPack.warnings.length ? (
+                    <ul className="mt-2 list-disc pl-4 text-[#364272]">
+                      {eventPack.warnings.map((w) => (
+                        <li key={w}>{w}</li>
+                      ))}
+                    </ul>
+                  ) : null}
+                  {eventPack.photos.slice(0, 5).map((p) => (
+                    <p key={p.id} className="mt-1 font-mono text-[10px]">
+                      photo {p.id} · score {p.score} · {p.why.slice(0, 2).join("; ")}
+                    </p>
+                  ))}
+                  {eventPack.speeches.slice(0, 4).map((s) => (
+                    <p key={s.id} className="mt-1 font-mono text-[10px]">
+                      speech {s.id} · score {s.score}
+                    </p>
+                  ))}
+                  <div className="mt-2 flex flex-wrap gap-2">
+                    {eventPack.recommendedClicks.map((c) => (
+                      <Link
+                        key={c.href}
+                        href={c.href}
+                        className="font-semibold text-[#000066] underline"
+                      >
+                        {c.label}
+                      </Link>
+                    ))}
+                    <button type="button" onClick={() => setEventPack(null)} className="underline">
+                      Dismiss
+                    </button>
+                  </div>
+                </div>
+              ) : null}
             </div>
           )}
         </div>

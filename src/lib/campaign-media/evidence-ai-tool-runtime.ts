@@ -159,6 +159,33 @@ export async function executeEvidenceAiTool(
         };
       }
 
+      case "rank_evidence_next_actions": {
+        const { rankEvidenceNextActions } = await import("@/lib/campaign-media/evidence-next-actions");
+        return { ok: true, result: rankEvidenceNextActions(asLimit(args.limit, 5, 8)) };
+      }
+
+      case "propose_event_night_pack": {
+        const calendarRowId = asString(args.calendarRowId);
+        if (!calendarRowId) return { ok: false, error: "calendarRowId required." };
+        const { proposeEventNightPack } = await import("@/lib/campaign-media/evidence-event-night-pack");
+        const pack = proposeEventNightPack({
+          calendarRowId,
+          photoLimit: asLimit(args.photoLimit, 12, 24),
+          speechLimit: asLimit(args.speechLimit, 8, 16),
+        });
+        if ("ok" in pack && pack.ok === false) return { ok: false, error: pack.error };
+        return { ok: true, result: pack };
+      }
+
+      case "suggest_calendar_presence_fields": {
+        const calendarRowId = asString(args.calendarRowId);
+        if (!calendarRowId) return { ok: false, error: "calendarRowId required." };
+        const { suggestCalendarPresenceFields } = await import("@/lib/campaign-media/evidence-calendar-ai");
+        const suggestion = suggestCalendarPresenceFields(calendarRowId);
+        if ("ok" in suggestion && suggestion.ok === false) return { ok: false, error: suggestion.error };
+        return { ok: true, result: suggestion };
+      }
+
       case "find_similar_campaign_photos": {
         const county = asString(args.county).toLowerCase();
         const city = asString(args.city).toLowerCase();

@@ -58,6 +58,9 @@ Hard rules:
 - Only call turbo_ingest_photos when the operator explicitly asks to run turbo identify+fit (confirm required).
 - Only call apply_turbo_proposal when the operator explicitly asks to apply a turbo proposal.
 - Call get_website_surface_inventory / score_photo_website_fit when suggesting where a still fits on the site.
+- Call rank_evidence_next_actions when the operator asks what to do next across the workbench.
+- Call propose_event_night_pack to link a calendar night to cue-aligned photos/speeches (never invent matches).
+- Call suggest_calendar_presence_fields to propose calendar geography — never auto-Confirm; Prefer Unknown.
 - Only call batch_create_photo_derivatives when the operator explicitly asks to generate derivatives for named photo ids.
 - Only call promote_photo_derivative when the operator explicitly asks to promote a derivative into public placement.
 - After tools, return ONE final JSON object (no markdown) with:

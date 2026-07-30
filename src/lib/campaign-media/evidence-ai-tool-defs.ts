@@ -30,6 +30,21 @@ export const EVIDENCE_AI_TOOL_CATALOG: Array<{
     summary: "Find calendar presence rows by county, city, date fragment, or event text.",
   },
   {
+    name: "rank_evidence_next_actions",
+    audience: "both",
+    summary: "Rank the next operator clicks from publish queue, speeches, calendar, ship, intake.",
+  },
+  {
+    name: "propose_event_night_pack",
+    audience: "both",
+    summary: "Link a calendar row to cue-aligned photos + speeches — never invent matches.",
+  },
+  {
+    name: "suggest_calendar_presence_fields",
+    audience: "both",
+    summary: "Propose calendar city/county/status from ICS text (Needs confirm only — Prefer Unknown).",
+  },
+  {
     name: "find_similar_campaign_photos",
     audience: "photo",
     summary: "Find registry photos with similar county, event, filename, or caption cues.",
@@ -377,6 +392,52 @@ export function evidenceAiToolsFor(
             },
             limit: { type: "number" },
           },
+        },
+      },
+    },
+    {
+      type: "function",
+      function: {
+        name: "rank_evidence_next_actions",
+        description:
+          "Rank the next operator actions from publish queue, speech confirm, calendar Needs confirm, intake, ship dirty, placement pending. Read-only.",
+        parameters: {
+          type: "object",
+          properties: {
+            limit: { type: "number", description: "Max actions (default 5, max 8)" },
+          },
+        },
+      },
+    },
+    {
+      type: "function",
+      function: {
+        name: "propose_event_night_pack",
+        description:
+          "Propose cue-aligned photos and speeches for one calendar presence row. Never invents geography matches. Soft when row is not Confirmed.",
+        parameters: {
+          type: "object",
+          properties: {
+            calendarRowId: { type: "string" },
+            photoLimit: { type: "number" },
+            speechLimit: { type: "number" },
+          },
+          required: ["calendarRowId"],
+        },
+      },
+    },
+    {
+      type: "function",
+      function: {
+        name: "suggest_calendar_presence_fields",
+        description:
+          "Propose city/county/status for a calendar row from ICS summary/location text. Prefer Unknown; never auto-Confirm — propose Needs confirm at most.",
+        parameters: {
+          type: "object",
+          properties: {
+            calendarRowId: { type: "string" },
+          },
+          required: ["calendarRowId"],
         },
       },
     },
@@ -1395,7 +1456,12 @@ export function evidenceAiToolsFor(
     },
   ];
 
-  const all = kind === "photo" ? [...both, ...photo] : [...both, ...video];
+  const all =
+    mode === "command"
+      ? [...both, ...photo, ...video]
+      : kind === "photo"
+        ? [...both, ...photo]
+        : [...both, ...video];
   const allow = toolNamesForMode(kind, mode);
   if (!allow) return all;
   return all.filter((t) => t.type === "function" && allow.has(t.function.name));

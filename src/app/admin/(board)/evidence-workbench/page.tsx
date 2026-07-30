@@ -1,8 +1,10 @@
 import Link from "next/link";
 import { CAMPAIGN_MEDIA_REGISTRY } from "@/content/media/campaign-media-registry";
 import { CAMPAIGN_PHOTO_REGISTRY } from "@/content/media/campaign-photo-registry";
+import { EvidenceAiCommandCenter } from "@/components/admin/evidence-workbench/EvidenceAiCommandCenter";
 import { EvidenceCalendarPanel } from "@/components/admin/evidence-workbench/EvidenceCalendarPanel";
 import { EvidenceIngestPanel } from "@/components/admin/evidence-workbench/EvidenceIngestPanel";
+import { EvidenceNextActionsStrip } from "@/components/admin/evidence-workbench/EvidenceNextActionsStrip";
 import { EvidencePlacementPanel } from "@/components/admin/evidence-workbench/EvidencePlacementPanel";
 import { EvidencePhotosPanel } from "@/components/admin/evidence-workbench/EvidencePhotosPanel";
 import { EvidencePublishQueuePanel } from "@/components/admin/evidence-workbench/EvidencePublishQueuePanel";
@@ -12,6 +14,7 @@ import { EvidenceSpeechesPanel } from "@/components/admin/evidence-workbench/Evi
 import { strategicPlacementNotes } from "@/content/media/strategic-photo-placements";
 import { EVIDENCE_AI_TOOL_CATALOG } from "@/lib/campaign-media/evidence-ai-tool-defs";
 import { listEvidenceAiModesForUi } from "@/lib/campaign-media/evidence-ai-modes";
+import { rankEvidenceNextActions } from "@/lib/campaign-media/evidence-next-actions";
 import { photoPublicSurfacesPreview } from "@/lib/campaign-media/county-albums-live";
 import {
   loadCalendarPresenceStore,
@@ -66,6 +69,7 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
   const intakeStatus = getPhotoIntakeStatus();
   const publishQueue = buildEvidencePublishQueue();
   const shipReport = buildEvidenceShipReport({ persist: false, includeDerivativeScan: true });
+  const nextActions = rankEvidenceNextActions(6);
   const placementCurrent = getCurrentCuratedPlacementSnapshot();
   const placementProposal = listPendingCuratedPlacementProposals()[0] ?? null;
   const speechConfirmQueue = buildSpeechConfirmQueue();
@@ -144,6 +148,10 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
         APPROVED/PUBLISHED) when ready.
       </p>
 
+      <EvidenceAiCommandCenter />
+
+      <EvidenceNextActionsStrip actions={nextActions.actions} generatedAt={nextActions.generatedAt} />
+
       <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
         <div className="rounded-lg border-2 border-[#000066]/15 bg-white px-3 py-2">
           <p className="font-heading text-xs font-bold uppercase text-[#000066]">Publish queue</p>
@@ -207,8 +215,9 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
           OpenAI evidence brain — tools (OPENAI_API_KEY)
         </p>
         <p className="mt-1 font-body text-xs text-[#364272]">
-          Suggest with AI is mode-routed (Identify · Fit · Photo/Video prep · Publish · General). Each
-          mode exposes a tool subset — never auto-confirm geography. Full catalog below.
+          Suggest with AI is mode-routed (Identify · Fit · Photo/Video prep · Publish · Command · General).
+          Command is freeform across the whole workbench. Prefer Unknown — never auto-confirm geography. Full
+          catalog below.
         </p>
         <ul className="mt-3 flex flex-wrap gap-2 font-body text-[11px] text-[#364272]">
           {(["photo", "video"] as const).flatMap((kind) =>

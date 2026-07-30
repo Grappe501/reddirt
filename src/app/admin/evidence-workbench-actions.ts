@@ -879,6 +879,76 @@ export async function suggestSpeechEvidenceAiAction(
   };
 }
 
+/** Magical Command Center — freeform cross-surface plan (Prefer Unknown). */
+export async function runEvidenceAiCommandAction(prompt: string): Promise<{
+  ok: boolean;
+  message: string;
+  result?: import("@/lib/campaign-media/evidence-ai-command").EvidenceCommandResult;
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { runEvidenceAiCommand } = await import("@/lib/campaign-media/evidence-ai-command");
+  const out = await runEvidenceAiCommand({ prompt });
+  if (!out.ok) return { ok: false, message: out.error };
+  return {
+    ok: true,
+    message: out.result.headline,
+    result: out.result,
+  };
+}
+
+export async function rankEvidenceNextActionsAction(limit?: number): Promise<{
+  ok: boolean;
+  message: string;
+  result?: ReturnType<typeof import("@/lib/campaign-media/evidence-next-actions").rankEvidenceNextActions>;
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { rankEvidenceNextActions } = await import("@/lib/campaign-media/evidence-next-actions");
+  const result = rankEvidenceNextActions(limit ?? 5);
+  return {
+    ok: true,
+    message: `Next ${result.actions.length} action(s) ranked.`,
+    result,
+  };
+}
+
+export async function proposeEventNightPackAction(calendarRowId: string): Promise<{
+  ok: boolean;
+  message: string;
+  pack?: import("@/lib/campaign-media/evidence-event-night-pack").EventNightPack;
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { proposeEventNightPack } = await import("@/lib/campaign-media/evidence-event-night-pack");
+  const pack = proposeEventNightPack({ calendarRowId });
+  if ("ok" in pack && pack.ok === false) return { ok: false, message: pack.error };
+  const p = pack as import("@/lib/campaign-media/evidence-event-night-pack").EventNightPack;
+  return {
+    ok: true,
+    message: `Event-night pack (${p.matchQuality}): ${p.photos.length} photo(s), ${p.speeches.length} speech(es).`,
+    pack: p,
+  };
+}
+
+export async function suggestCalendarPresenceAiAction(rowId: string): Promise<{
+  ok: boolean;
+  message: string;
+  suggestion?: import("@/lib/campaign-media/evidence-calendar-ai").CalendarPresenceSuggestion;
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { suggestCalendarPresenceFields } = await import("@/lib/campaign-media/evidence-calendar-ai");
+  const suggestion = suggestCalendarPresenceFields(rowId);
+  if ("ok" in suggestion && suggestion.ok === false) return { ok: false, message: suggestion.error };
+  const s = suggestion as import("@/lib/campaign-media/evidence-calendar-ai").CalendarPresenceSuggestion;
+  return {
+    ok: true,
+    message: `Calendar AI (${s.confidence}): ${s.rationale}`,
+    suggestion: s,
+  };
+}
+
 export async function buildPhotoMetadataPacketAction(
   photoId: string,
   operatorConfirmedGeography: boolean,

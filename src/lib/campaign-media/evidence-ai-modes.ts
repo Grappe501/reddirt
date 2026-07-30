@@ -9,6 +9,7 @@ export const EVIDENCE_AI_MODES = [
   "photo_prep",
   "video_prep",
   "publish",
+  "command",
   "general",
 ] as const;
 
@@ -60,6 +61,13 @@ export const EVIDENCE_AI_MODE_META: EvidenceAiModeMeta[] = [
     maxToolRounds: 4,
   },
   {
+    id: "command",
+    label: "Command",
+    kind: "both",
+    summary: "Freeform workbench command — full cross-surface tools (confirm gates still apply).",
+    maxToolRounds: 6,
+  },
+  {
     id: "general",
     label: "General",
     kind: "both",
@@ -72,6 +80,9 @@ const GROUNDING = [
   "lookup_arkansas_county",
   "search_confirmed_memory",
   "search_calendar_presence",
+  "rank_evidence_next_actions",
+  "propose_event_night_pack",
+  "suggest_calendar_presence_fields",
 ] as const;
 
 const PHOTO_IDENTIFY = [
@@ -203,7 +214,7 @@ export function toolNamesForMode(
   kind: "photo" | "video",
   mode: EvidenceAiMode,
 ): ReadonlySet<string> | null {
-  if (mode === "general") return null;
+  if (mode === "general" || mode === "command") return null;
   if (kind === "photo") {
     switch (mode) {
       case "identify":
@@ -248,6 +259,8 @@ export function systemExtraForMode(mode: EvidenceAiMode): string {
       return `MODE video_prep: Prep package, excerpts, transcript intel, Pro Edit only. Prefer prep_video_package / plan_video_excerpt. Never invent spoken lines. Only encode/render with explicit confirmEncode/confirmRender.`;
     case "publish":
       return `MODE publish: Queue, batch flags, ship, curated placement. Never invent geography. Never silent Approve — only batch_publish_* when operator explicitly asks. confirmCurate required for placement apply. Prefer get_evidence_publish_queue / get_speech_confirm_queue first.`;
+    case "command":
+      return `MODE command: Cross-surface freeform. Prefer rank_evidence_next_actions, propose_event_night_pack, suggest_calendar_presence_fields, ship/queue tools. Still Prefer Unknown; honor all confirm* gates.`;
     case "general":
       return `MODE general: Full tool surface for this asset kind. Still Prefer Unknown; still honor all confirm* gates.`;
     default:
@@ -301,6 +314,12 @@ export function modeNextSteps(
         { label: "Publish Queue", href: "/admin/evidence-workbench?tab=queue" },
         { label: "Ship checklist", href: "/admin/evidence-workbench?tab=ship" },
         { label: "Batch Approve/Publish only when operator confirms" },
+      ];
+    case "command":
+      return [
+        { label: "Ask Command: what should I do next?", href: "/admin/evidence-workbench?tab=queue" },
+        { label: "Event-night pack from a Confirmed calendar row" },
+        { label: "All confirm* gates still apply — Prefer Unknown" },
       ];
     case "general":
       return [
