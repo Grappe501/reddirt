@@ -57,7 +57,7 @@ const movementEventsCore: EventItem[] = [
       "democratic-party-fischer-shackelford-dinner-2026",
       "listening-session-little-rock",
     ],
-    relatedResourceHrefs: [{ label: "Local organizing", href: "/local-organizing" }],
+    relatedResourceHrefs: [{ label: "Start a local team", href: "/start-a-local-team" }],
     mapCoordinates: { lat: 34.756, lng: -92.267 },
   },
   {
@@ -179,7 +179,7 @@ const movementEventsCore: EventItem[] = [
     rsvpHref: "https://meet.google.com/fgb-atpu-rfq",
     audienceTags: ["Heber Springs", "Cleburne County", "Music", "Community"],
     relatedEventSlugs: ["naacp-jacksonville-inspiring-women-keynote-2026", "brunch-with-teresa-2026"],
-    relatedResourceHrefs: [{ label: "Local organizing", href: "/local-organizing" }],
+    relatedResourceHrefs: [{ label: "Start a local team", href: "/start-a-local-team" }],
     mapCoordinates: { lat: 35.491, lng: -92.031 },
   },
   {

@@ -81,7 +81,7 @@ export function publicCampaignEventToEventItem(ev: PublicCampaignEvent): EventIt
     organizerNote: "Campaign operations calendar (published + public on site).",
     relatedEventSlugs: [],
     relatedResourceHrefs: [
-      { label: "Campaign calendar", href: "/campaign-calendar" },
+      { label: "Campaign calendar", href: "/events" },
       { label: "Volunteer", href: ev.joinCampaignHref },
     ],
     mapCoordinates: { lat: pin.lat, lng: pin.lng },

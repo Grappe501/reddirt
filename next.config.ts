@@ -102,7 +102,7 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/watch",
-        destination: "/from-the-road",
+        destination: "/kelly-speaks",
         permanent: false,
       },
       /** Legacy debate prep bookmarks (missing `/intelligence` segment). */
@@ -140,18 +140,17 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/volunteerPage",
-        destination: "/about",
+        destination: "/get-involved#volunteer",
         permanent: false,
       },
       /**
-       * Forensic launch review (KELLY-PUBLIC-FORENSIC-LAUNCH-REVIEW-1.0):
-       * Do not redirect public participation hubs (`/get-involved`, host/team pages) to `/about`.
-       * Those pages hold real CTAs/forms; soft-redirects created dead ends from nav and homepage Final Action.
-       * Internal OS surfaces may still redirect away from unfinished public exposure.
+       * Pathway Honesty (KELLY-PUBLIC-PATHWAY-HONESTY-1.0):
+       * Do not bait public CTAs into `/about`. Participation bookmarks must land on real participation paths.
+       * Unfinished OS hubs soft-redirect to get-involved / start-a-local-team — never Meet Kelly.
        */
       {
         source: "/onboarding/power-of-5",
-        destination: "/about",
+        destination: "/get-involved/bring-5",
         permanent: false,
       },
       {
@@ -166,12 +165,12 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/local-organizing",
-        destination: "/about",
+        destination: "/start-a-local-team",
         permanent: false,
       },
       {
         source: "/local-organizing/:path*",
-        destination: "/about",
+        destination: "/start-a-local-team",
         permanent: false,
       },
       {
@@ -180,8 +179,8 @@ const nextConfig: NextConfig = {
         permanent: false,
       },
       /**
-       * Canonical public calendar is `/events` (nav “Campaign Calendar”).
-       * Twin `/campaign-calendar` UI redirects so visitors never choose between two calendars.
+       * Canonical public calendar is `/events`.
+       * Preserve event slugs so detail bookmarks do not collapse to the index.
        */
       {
         source: "/campaign-calendar",
@@ -189,8 +188,8 @@ const nextConfig: NextConfig = {
         permanent: false,
       },
       {
-        source: "/campaign-calendar/:path*",
-        destination: "/events",
+        source: "/campaign-calendar/:slug",
+        destination: "/events/:slug",
         permanent: false,
       },
     ];

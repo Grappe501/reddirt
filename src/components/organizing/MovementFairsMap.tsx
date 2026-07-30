@@ -308,7 +308,7 @@ export function MovementFairsMap({ events, selectedSlug = null, onSelectSlug }: 
           Pins without coordinates stay in the list only until staff add a point or county.
         </p>
         <Link
-          href="/campaign-calendar"
+          href="/events"
           className="shrink-0 font-body text-xs font-bold uppercase tracking-wider text-kelly-navy underline-offset-2 hover:underline"
         >
           Full HQ calendar →

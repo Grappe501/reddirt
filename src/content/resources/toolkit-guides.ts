@@ -107,7 +107,7 @@ const guides: ToolkitGuide[] = [
       },
     ],
     goDeeper: [
-      { label: "Campaign calendar (where we are on the road)", href: "/campaign-calendar" },
+      { label: "Campaign calendar (where we are on the road)", href: "/events" },
       { label: "Host a gathering (tell us your date & place)", href: "/host-a-gathering" },
       { label: "Talking about Kelly (what to say in the room)", href: "/resources/talking-about-kelly" },
       { label: "Direct democracy & what can be on the ballot", href: "/direct-democracy" },

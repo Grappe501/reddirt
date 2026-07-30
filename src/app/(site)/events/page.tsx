@@ -113,8 +113,8 @@ export default async function EventsPage({
         <Button href="/listening-sessions" variant="outlineOnDark">
           Listening sessions
         </Button>
-        <Button href="/local-organizing" variant="outlineOnDark">
-          Local organizing hub
+        <Button href="/start-a-local-team" variant="outlineOnDark">
+          Start a local team
         </Button>
       </MediaPageHero>
 

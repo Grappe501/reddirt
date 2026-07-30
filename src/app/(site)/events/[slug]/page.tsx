@@ -119,10 +119,10 @@ export default async function EventDetailPage({ params }: Props) {
               </Button>
               {county ? (
                 <Link
-                  href={`/local-organizing/${county.slug}`}
+                  href="/start-a-local-team"
                   className="block rounded-card border border-kelly-text/10 bg-kelly-text/[0.03] p-5 font-body text-sm font-semibold text-kelly-navy underline-offset-4 hover:underline"
                 >
-                  View {county.name} organizing hub →
+                  Start a local team in {county.name} →
                 </Link>
               ) : null}
             </aside>

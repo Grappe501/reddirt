@@ -214,8 +214,8 @@ export default async function HostAGatheringPage() {
         <Button href="#host-form" variant="primary">
           Open the host form
         </Button>
-        <Button href="/local-organizing" variant="outline">
-          Explore local hubs
+        <Button href="/start-a-local-team" variant="outline">
+          Start a local team
         </Button>
         <Button href={representLocalEventVolunteerHref} variant="outline">
           Represent locally

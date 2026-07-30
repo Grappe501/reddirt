@@ -10,7 +10,7 @@ import { VolunteerForm } from "@/components/forms/VolunteerForm";
 import { EditorialCampaignPhoto, EditorialPhotoPair } from "@/components/about/EditorialCampaignPhoto";
 import { trailPhotosForSlot } from "@/content/media/campaign-trail-assignments";
 import { RepresentLocalEventPanel } from "@/components/organizing/RepresentLocalEventPanel";
-import { powerOf5OnboardingHref, representLocalEventVolunteerHref } from "@/config/navigation";
+import { representLocalEventVolunteerHref } from "@/config/navigation";
 import { isValidResourceVolunteerSlug } from "@/content/resources/toolkit";
 
 export const metadata: Metadata = {
@@ -232,8 +232,8 @@ export default async function GetInvolvedPage({
               Listening sessions
             </Link>
             {" · "}
-            <Link className="font-semibold text-kelly-navy underline" href="/local-organizing">
-              Local organizing
+            <Link className="font-semibold text-kelly-navy underline" href="/start-a-local-team">
+              Start a local team
             </Link>
           </p>
         </ContentContainer>
@@ -278,18 +278,20 @@ export default async function GetInvolvedPage({
             title="Not sure where you fit?"
             subtitle="Tell us what you enjoy."
           />
-          <div className="mt-8 rounded-card border border-dashed border-kelly-navy/25 bg-kelly-page px-6 py-8 md:px-8">
-            <p className="font-body text-base font-medium text-kelly-text/90">Volunteer form coming soon.</p>
+          <div className="mt-8 rounded-card border border-kelly-navy/20 bg-kelly-page px-6 py-8 md:px-8">
+            <p className="font-body text-base font-medium text-kelly-text/90">
+              Start with Stay connected, or raise your hand on the volunteer form below.
+            </p>
             <p className="mt-3 font-body text-sm leading-relaxed text-kelly-text/75">
-              Until one simple intake is live, drop a note below with what you like doing, your county, and roughly how
-              much time you have—we will match you without a quiz.
+              Tell us what you like doing, your county, and roughly how much time you have—we will match you without a
+              quiz.
             </p>
-            <p className="mt-3 font-body text-xs text-kelly-text/55">
-              A single volunteer form is on the way; until then we read every note below.
-            </p>
-            <div className="mt-6">
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <Button href="#join" variant="outline" className="min-h-[48px]">
                 Stay connected
+              </Button>
+              <Button href="#volunteer" variant="primary" className="min-h-[48px]">
+                Volunteer signup
               </Button>
             </div>
           </div>
@@ -365,8 +367,8 @@ export default async function GetInvolvedPage({
             <Button href="/get-involved/bring-5" variant="primary" className="min-h-[48px]">
               Bring 5 Friends
             </Button>
-            <Button href={powerOf5OnboardingHref} variant="outline" className="min-h-[48px]">
-              Walkthrough (demo)
+            <Button href="/get-involved/bring-5" variant="outline" className="min-h-[48px]">
+              How Bring 5 works
             </Button>
           </div>
         </ContentContainer>

@@ -50,7 +50,7 @@ export const getInvolvedPathways: GetInvolvedPathwayDefinition[] = [
       "Captains stabilize geography: they pair new volunteers with real tasks and keep relational work from collapsing when one person gets busy.",
     timeRequired: "15–20 minutes for the form; training cadence is coordinated after intake (not on this page).",
     primaryAction: { label: "Open volunteer signup (leadership tagged)", href: getInvolvedVolunteerCaptainHref },
-    secondaryAction: { label: "Read local organizing context", href: "/local-organizing" },
+    secondaryAction: { label: "Start a local team", href: "/start-a-local-team" },
   },
   {
     id: "conversations-stories",

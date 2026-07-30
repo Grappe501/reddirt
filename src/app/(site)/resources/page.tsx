@@ -40,8 +40,8 @@ export default async function ResourcesPage() {
         <Button href="/explainers" variant="primary">
           Plain-language explainers
         </Button>
-        <Button href="/local-organizing" variant="outline">
-          Organizing hub
+        <Button href="/start-a-local-team" variant="outline">
+          Start a local team
         </Button>
       </PageHero>
 

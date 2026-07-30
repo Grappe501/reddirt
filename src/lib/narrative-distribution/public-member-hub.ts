@@ -232,7 +232,7 @@ const LISTENING_PROMPTS: PublicMemberHubListeningPrompt[] = [
 const BRING_FIVE: PublicMemberHubBringFiveCta = {
   title: "Bring this to your five — start with onboarding",
   body: "Walk the Power of 5 flow to name your circle, practice scripts, and see the same prompts in context. Then come back here for the weekly line and county packets. Demo/seed until your region is published.",
-  primaryHref: "/onboarding/power-of-5",
+  primaryHref: "/get-involved/bring-5",
   primaryLabel: "Power of 5 onboarding",
   secondaryHref: "/start-a-local-team",
   secondaryLabel: "Start a local team",

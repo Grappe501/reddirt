@@ -275,7 +275,7 @@ export function CountyCommandExperience({ data }: { data: CountyPageSnapshot }) 
                   {upcomingPublicCampaignEvents.length > 1 ? (
                     <p className="mt-2 text-sm text-kelly-text/70">
                       {upcomingPublicCampaignEvents.length - 1} more on the{" "}
-                      <Link className="font-semibold text-kelly-navy hover:underline" href="/campaign-calendar">
+                      <Link className="font-semibold text-kelly-navy hover:underline" href="/events">
                         campaign calendar
                       </Link>
                       .
@@ -286,7 +286,7 @@ export function CountyCommandExperience({ data }: { data: CountyPageSnapshot }) 
                 <div className={card}>
                   <p className="text-sm text-kelly-text/80">
                     No published public events in this county yet. Browse the full{" "}
-                    <Link className="font-semibold text-kelly-navy underline-offset-2 hover:underline" href="/campaign-calendar">
+                    <Link className="font-semibold text-kelly-navy underline-offset-2 hover:underline" href="/events">
                       campaign calendar
                     </Link>{" "}
                     for statewide stops, or ask field staff to publish when a date is set.

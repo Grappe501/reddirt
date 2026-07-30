@@ -265,8 +265,8 @@ export default async function LocalRegionPage({ params }: Props) {
         <Button href={region.cta.primary.href} variant="primary">
           {region.cta.primary.label}
         </Button>
-        <Button href="/local-organizing" variant="outline">
-          Back to organizing hub
+        <Button href="/start-a-local-team" variant="outline">
+          Start a local team
         </Button>
       </CTASection>
     </>

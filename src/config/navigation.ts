@@ -28,8 +28,8 @@ export const representLocalEventVolunteerHref = "/get-involved?lane=event_repres
 /** Volunteer signup with “leadership / captain” interest pre-checked (client-side default only; same `/api/forms` payload shape). */
 export const getInvolvedVolunteerCaptainHref = "/get-involved?leadership=1#volunteer";
 
-/** Public Power of 5 onboarding (trust-first relational path). */
-export const powerOf5OnboardingHref = "/onboarding/power-of-5";
+/** Public Power of 5 / Bring 5 path (trust-first relational — not a soft redirect to About). */
+export const powerOf5OnboardingHref = "/get-involved/bring-5";
 
 /** Voter registration center (citizenship CTA in header + trust-funnel homepage). */
 export const voterRegistrationHref = "/voter-registration";

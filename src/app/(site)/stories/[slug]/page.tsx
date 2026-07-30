@@ -143,8 +143,8 @@ export default async function StoryDetailPage({ params }: Props) {
         <Button href="/stories#share" variant="secondary">
           Share a story
         </Button>
-        <Button href="/local-organizing" variant="outline" className="border-kelly-page/50 text-kelly-page hover:bg-kelly-page/10">
-          Organize locally
+        <Button href="/start-a-local-team" variant="outline" className="border-kelly-page/50 text-kelly-page hover:bg-kelly-page/10">
+          Start a local team
         </Button>
       </CTASection>
     </>
