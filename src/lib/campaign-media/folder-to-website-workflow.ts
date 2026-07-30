@@ -1,11 +1,7 @@
 /**
  * Folder → Website workflow — path constants + progress for Arrival desk.
- * Client-safe (no node:). Prefer Unknown. Detect ≠ Intake ≠ Save ≠ Approve ≠ Ship.
+ * Client-safe (no node: / no server module imports). Prefer Unknown.
  */
-
-import type { PhotoIntakeStatus } from "@/lib/campaign-media/photo-ingest";
-import type { ArrivalIntakePreview } from "@/lib/campaign-media/photo-ingest";
-import type { VideoMasterArrivalSummary } from "@/lib/campaign-media/video-master-arrival";
 
 export const FOLDER_TO_WEBSITE_PHOTOS_REL = "public/media/campaign-photos";
 export const FOLDER_TO_WEBSITE_MASTERS_REL = "public/media/campaign-video-masters";
@@ -36,10 +32,23 @@ export type FolderToWebsiteProgress = {
   nextHref: string;
 };
 
+/** Structural inputs — keep this module free of photo-ingest / video-master server imports. */
 export function buildFolderToWebsiteProgress(input: {
-  status: PhotoIntakeStatus;
-  video: VideoMasterArrivalSummary;
-  preview?: ArrivalIntakePreview | null;
+  status: {
+    newOnDisk: number;
+    nestedNew: number;
+    queueUnknownCounty: number;
+    queueCount: number;
+    scannedOnDisk: number;
+  };
+  video: {
+    unmatched: number;
+    total: number;
+  };
+  preview?: {
+    warnCount: number;
+    willQueue: number;
+  } | null;
   needsApproval: number;
   approvedPublic: number;
 }): FolderToWebsiteProgress {
