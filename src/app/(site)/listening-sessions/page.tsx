@@ -353,7 +353,7 @@ export default async function ListeningSessionsPage() {
               </li>
               <li>
                 <Link href="/events" className="font-semibold text-kelly-navy underline-offset-2 hover:underline">
-                  Campaign Calendar
+                  Events
                 </Link>{" "}
                 <span className="text-kelly-text/70">— approved public events as staff publish them.</span>
               </li>
@@ -375,7 +375,7 @@ export default async function ListeningSessionsPage() {
             Get involved
           </Button>
           <Button href="/events" variant="outline">
-            Campaign Calendar
+            Events
           </Button>
           <Button href={representLocalEventVolunteerHref} variant="outline">
             Represent at local events

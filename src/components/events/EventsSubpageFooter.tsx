@@ -11,7 +11,7 @@ export function EventsSubpageFooter() {
         <p className="text-center font-body text-sm font-semibold text-kelly-text/70">Campaign operations</p>
         <div className="mt-5 flex flex-col items-center justify-center gap-3 sm:flex-row sm:flex-wrap">
           <Button href="/events" variant="outline" className="min-h-[48px] w-full min-w-[12rem] motion-reduce:transition-none sm:w-auto">
-            Campaign Calendar
+            Events
           </Button>
           <Button href="/events/request" variant="outline" className="min-h-[48px] w-full min-w-[12rem] motion-reduce:transition-none sm:w-auto">
             Invite Kelly

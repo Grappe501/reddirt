@@ -249,13 +249,7 @@ export default async function AboutPage() {
             {c.closing.ctas.map((cta) => (
               <Button
                 key={cta.href}
-                href={
-                  cta.href === "/get-involved"
-                    ? joinHref
-                    : cta.href === "/get-involved#volunteer"
-                      ? volunteerHref
-                      : cta.href
-                }
+                href={cta.href === "/get-involved" ? joinHref : cta.href}
                 variant={cta.href === "/get-involved" || cta.href === "/priorities" ? "primary" : "outline"}
                 className={
                   cta.href === "/get-involved" || cta.href === "/priorities"

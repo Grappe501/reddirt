@@ -66,7 +66,7 @@ export default function IntegrityTourCountiesPage() {
             </li>
             <li>
               <Link href="/events" className="font-semibold text-kelly-navy underline-offset-2 hover:underline">
-                Campaign Calendar
+                Events
               </Link>
             </li>
             <li>

@@ -179,6 +179,15 @@ const nextConfig: NextConfig = {
         permanent: false,
       },
       /**
+       * County command index is organizing OS — soft-gate marketing visitors to presence map.
+       * `/counties/:slug` stays reachable (noindex) for field deep links.
+       */
+      {
+        source: "/counties",
+        destination: "/arkansas",
+        permanent: false,
+      },
+      /**
        * Canonical public calendar is `/events`.
        * Preserve event slugs so detail bookmarks do not collapse to the index.
        */

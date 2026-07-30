@@ -133,7 +133,7 @@ These passes are ordered for leverage. Each pass must leave the site **smaller i
 
 ---
 
-### Pass D — `KELLY-PUBLIC-NAV-SIMPLIFY-1.0`
+### Pass D — `KELLY-PUBLIC-NAV-SIMPLIFY-1.0` ✅ shipped
 
 **Job:** Fewer doors, stronger landings.
 
@@ -146,6 +146,8 @@ These passes are ordered for leverage. Each pass must leave the site **smaller i
 - Soft-gate or noindex `/counties` + `/dashboard/**` for anonymous marketing visitors
 
 **Exit thought:** “I always know which menu item owns this topic.”
+
+**CER:** [`CAMPAIGN_EXPERIENCE_REVIEW_NAV_SIMPLIFY_1.0.md`](./CAMPAIGN_EXPERIENCE_REVIEW_NAV_SIMPLIFY_1.0.md)
 
 ---
 

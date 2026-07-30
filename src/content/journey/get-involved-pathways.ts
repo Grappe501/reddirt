@@ -39,7 +39,7 @@ export const getInvolvedPathways: GetInvolvedPathwayDefinition[] = [
       "County teams turn statewide energy into repeatable local action: clear hosts, clear turf, and coordinators who know who raised their hand.",
     timeRequired: "10–15 minutes to submit; follow-up timing depends on volunteer capacity in your area.",
     primaryAction: { label: "Start or join a local team", href: "/start-a-local-team" },
-    secondaryAction: { label: "Browse county workbench", href: "/counties" },
+    secondaryAction: { label: "Browse Arkansas presence", href: "/arkansas" },
   },
   {
     id: "captain",

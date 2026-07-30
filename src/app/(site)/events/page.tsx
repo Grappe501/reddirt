@@ -26,7 +26,7 @@ import { pageMeta } from "@/lib/seo/metadata";
 import { brandMediaFromLegacySite } from "@/config/brand-media";
 
 export const metadata: Metadata = pageMeta({
-  title: "Campaign Calendar",
+  title: "Events",
   description:
     "See where Kelly will be next, where the campaign is showing up, and how Arkansans can join the work — trainings, gatherings, and public calendar items as they are approved.",
   path: "/events",
@@ -97,8 +97,8 @@ export default async function EventsPage({
       <MediaPageHero
         slotKey="events.hero"
         layout="split"
-        eyebrow="Campaign calendar"
-        title="Campaign Calendar"
+        eyebrow="Events"
+        title="Events"
         subtitle="See where Kelly will be next, where the campaign is showing up, and how Arkansans can join the work."
       >
         <Button href="/events/request" variant="primary">

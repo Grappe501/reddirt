@@ -11,8 +11,8 @@
 | Relevant experience (ops + organizing + rural filings) | Meet Kelly paras; `/about` Experience | `/` Meet Kelly | Trust indicators | `/about` (+ optional chapters) | Read About Kelly’s Experience |
 | She listens and shows up | Across Arkansas video/stills | `/` Across Arkansas | Photo band captions | `/about/journey`, `/from-the-road`, `/campaign-photos` | See Kelly Across Arkansas |
 | Confirmed third-party support | Endorsement statements with source | `/` endorsements (when live) | News only if sourced | `/endorsements` | None until confirmed |
-| Campaign is active now | News/updates + events | `/` news | From the Road teaser | `/updates`, `/from-the-road`, `/events` | From the Road / Events |
-| Participation is the next step | Final action hierarchy | `/` final action | Footer volunteer | `/get-involved` | Join → Volunteer → Priorities |
+| Campaign is active now | From the Road + events | `/` news | From the Road teaser | `/from-the-road`, `/events` | From the Road / Events |
+| Participation is the next step | Final action hierarchy | `/` final action | Footer volunteer | `/get-involved` | Stay connected → Volunteer → Priorities |
 
 ## Anti-repetition rules
 

@@ -171,7 +171,7 @@ export const inviteKellyContent = {
       "When the form goes live, it will live here — same review standards as other campaign touchpoints. Until then, email with your county, timing range, venue type, expected headcount, and any accessibility notes.",
     primaryCtaLabel: "Start a request",
     secondaryLinks: [
-      { label: "Campaign Calendar", href: "/events" },
+      { label: "Events", href: "/events" },
       { label: "From the Road", href: "/from-the-road" },
     ] as const,
   },

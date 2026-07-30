@@ -84,8 +84,7 @@ export function TrustFunnelHero() {
           </motion.p>
           <div className="mt-7 flex flex-col gap-2.5 sm:mt-8 sm:flex-row sm:flex-wrap sm:gap-3" role="group" aria-label="Primary actions">
             {copy.ctas.map((cta, i) => {
-              const href =
-                cta.href === "__volunteer__" || cta.href === "__join__" ? joinHref : cta.href;
+              const href = cta.href === "__join__" ? joinHref : cta.href;
               const isPrimary = cta.variant === "primary";
               return (
                 <motion.div

@@ -47,7 +47,11 @@ export const primaryNavMobileDrawerGroupOrder = [
   "involved",
 ] as const;
 
-/** Top nav: substance-first mega groups + utility actions (Vote, Volunteer, Donate) in SiteHeader */
+/**
+ * Top nav — one home per destination (Pathway Nav Simplify).
+ * Campaign Videos live under Meet Kelly only. Invite Kelly lives under Events only.
+ * News reading set: From the Road + Press (+ Substack in footer).
+ */
 export const primaryNavGroups: NavGroup[] = [
   {
     id: "meet",
@@ -79,6 +83,7 @@ export const primaryNavGroups: NavGroup[] = [
   {
     id: "office",
     label: "The Office",
+    groupLandingHref: "/understand",
     items: [
       { label: "Understand the Office", href: "/understand" },
       { label: "Elections", href: "/office/elections" },
@@ -87,17 +92,16 @@ export const primaryNavGroups: NavGroup[] = [
       { label: "Transparency & Records", href: "/office/records" },
       { label: "Capitol & Public Safety", href: "/office/capitol" },
       { label: "Why This Race Matters", href: "/office/why-this-race-matters" },
+      { label: "Explainers", href: "/explainers" },
     ],
   },
   {
     id: "news",
     label: "News",
+    groupLandingHref: "/from-the-road",
     items: [
       { label: "From the Road", href: "/from-the-road" },
       { label: "Press Coverage", href: "/press-coverage" },
-      { label: "Campaign Videos", href: "/kelly-speaks" },
-      { label: "Editorial", href: "/editorial" },
-      { label: "Explainers", href: "/explainers" },
     ],
   },
   {
@@ -124,7 +128,6 @@ export const primaryNavGroups: NavGroup[] = [
       { label: "Volunteer", href: "/get-involved#volunteer" },
       { label: "Bring 5 Friends", href: "/get-involved/bring-5" },
       { label: "Start a Local Team", href: "/start-a-local-team" },
-      { label: "Invite Kelly", href: "/events/request" },
       { label: "Donate", href: "/donate" },
     ],
   },
@@ -145,25 +148,28 @@ export const footerNavGroups: { title: string; items: NavItem[] }[] = [
   },
   {
     title: "The Office",
+    items: [...(navGroupById("office")?.items ?? [])],
+  },
+  {
+    title: "News & events",
     items: [
-      ...(navGroupById("office")?.items ?? []),
-      { label: "Explainers", href: "/explainers" },
+      { label: "From the Road", href: "/from-the-road" },
+      { label: "Press Coverage", href: "/press-coverage" },
+      { label: "Kelly’s Substack", href: getCampaignBlogUrl() },
+      { label: "Events", href: "/events" },
+      { label: "Invite Kelly", href: "/events/request" },
+      { label: "Host a gathering", href: "/host-a-gathering" },
+      { label: "Listening sessions", href: "/listening-sessions" },
     ],
   },
   {
-    title: "News & action",
+    title: "Get involved",
     items: [
-      ...(navGroupById("news")?.items ?? []),
-      { label: "Stories", href: "/stories" },
-      { label: "Kelly’s Substack", href: getCampaignBlogUrl() },
-      { label: "Events", href: "/events" },
-      { label: "Represent at local events", href: representLocalEventVolunteerHref },
-      { label: "Host a gathering", href: "/host-a-gathering" },
-      { label: "Suggest a public event", href: "/events#suggest" },
-      { label: "Election listening sessions", href: "/listening-sessions" },
       { label: "Stay connected", href: "/get-involved#join" },
       { label: "Volunteer", href: "/get-involved#volunteer" },
-      { label: "Get involved hub", href: "/get-involved" },
+      { label: "Bring 5 Friends", href: "/get-involved/bring-5" },
+      { label: "Start a Local Team", href: "/start-a-local-team" },
+      { label: "Represent at local events", href: representLocalEventVolunteerHref },
       { label: "Donate", href: "/donate" },
     ],
   },
