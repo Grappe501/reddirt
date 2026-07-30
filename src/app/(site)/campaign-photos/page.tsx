@@ -27,15 +27,15 @@ export default async function CampaignPhotosPage() {
       <MediaPageHero
         slotKey="campaign-photos.intro"
         layout="bleed"
-        eyebrow="Across Arkansas"
+        eyebrow="Campaign photos"
         title="County albums"
         subtitle="Open a county. Step through the stops. Every still is confirmed geography — not a dump of every file."
       >
         <Button href="/about/journey" variant="primary">
-          See the journey
+          Kelly Across Arkansas
         </Button>
         <Button href="/from-the-road" variant="outlineOnDark">
-          From the road
+          From the Road
         </Button>
       </MediaPageHero>
 

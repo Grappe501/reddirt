@@ -8,8 +8,11 @@ import { Button } from "@/components/ui/Button";
 import { MeetKellySubnav } from "@/components/about/MeetKellySubnav";
 import { MeetKellyTrustIndicators } from "@/components/about/MeetKellyTrustIndicators";
 import { aboutLaunchCopy } from "@/content/about/about-launch";
-import { getHomepageMeetKellyPhoto, homepagePhotoCountyHref, homepagePhotoObjectPositionClass } from "@/content/media/homepage-campaign-photos";
-import { listHomepageAcrossArkansasPhotos } from "@/content/media/homepage-campaign-photos";
+import {
+  getHomepageMeetKellyPhoto,
+  homepagePhotoCountyHref,
+  homepagePhotoObjectPositionClass,
+} from "@/content/media/homepage-campaign-photos";
 import { getJoinCampaignHref, getVolunteerSignupHref } from "@/config/external-campaign";
 import { pageMeta } from "@/lib/seo/metadata";
 import { cn } from "@/lib/utils";
@@ -28,7 +31,6 @@ export const metadata: Metadata = pageMeta({
 
 export default async function AboutPage() {
   const meetPhoto = getHomepageMeetKellyPhoto();
-  const trailPhotos = listHomepageAcrossArkansasPhotos().slice(0, 4);
   const joinHref = getJoinCampaignHref();
   const volunteerHref = getVolunteerSignupHref();
   const countyHref = meetPhoto ? homepagePhotoCountyHref(meetPhoto) : null;
@@ -166,49 +168,12 @@ export default async function AboutPage() {
         </ContentContainer>
       </FullBleedSection>
 
+      {/* Journey / photos live on their own routes — CTA only, no remounted trail grid. */}
       <FullBleedSection padY>
-        <ContentContainer>
-          <div className="mx-auto max-w-3xl text-center">
-            <h2 className="font-heading text-2xl font-bold text-kelly-ink md:text-3xl">{c.acrossArkansas.title}</h2>
-            <p className="mt-4 font-body text-lg text-kelly-slate">{c.acrossArkansas.intro}</p>
-          </div>
-          {trailPhotos.length > 0 ? (
-            <ul className="mt-10 grid list-none gap-5 sm:grid-cols-2 lg:grid-cols-4">
-              {trailPhotos.map((photo) => {
-                const href = homepagePhotoCountyHref(photo);
-                const place =
-                  photo.campaign.city !== "Unknown"
-                    ? `${photo.campaign.city}${photo.campaign.county !== "Unknown" ? ` · ${photo.campaign.county} County` : ""}`
-                    : photo.campaign.county !== "Unknown"
-                      ? `${photo.campaign.county} County`
-                      : "Location pending confirmation";
-                return (
-                  <li key={photo.id} className="overflow-hidden rounded-card border border-kelly-ink/10 bg-white shadow-sm">
-                    <div className="relative aspect-[4/5]">
-                      <Image
-                        src={photo.src}
-                        alt={photo.accessibility.altText}
-                        width={photo.basic.width ?? 768}
-                        height={photo.basic.height ?? 1024}
-                        className={cn("h-full w-full object-cover", homepagePhotoObjectPositionClass(photo))}
-                        sizes="(max-width: 640px) 100vw, 25vw"
-                      />
-                    </div>
-                    <div className="flex flex-1 flex-col gap-2 p-3">
-                      <p className="font-body text-[11px] font-bold uppercase tracking-wide text-kelly-gold">{place}</p>
-                      <p className="font-body text-xs leading-relaxed text-kelly-slate">{photo.accessibility.caption}</p>
-                      {href ? (
-                        <Link href={href} className="mt-2 inline-flex text-xs font-bold text-kelly-blue underline-offset-2 hover:underline">
-                          {photo.campaign.county} County →
-                        </Link>
-                      ) : null}
-                    </div>
-                  </li>
-                );
-              })}
-            </ul>
-          ) : null}
-          <div className="mt-10 flex flex-wrap justify-center gap-3">
+        <ContentContainer className="max-w-3xl text-center">
+          <h2 className="font-heading text-2xl font-bold text-kelly-ink md:text-3xl">{c.acrossArkansas.title}</h2>
+          <p className="mt-4 font-body text-lg text-kelly-slate">{c.acrossArkansas.intro}</p>
+          <div className="mt-8 flex flex-wrap justify-center gap-3">
             <Button href={c.acrossArkansas.cta.href} variant="primary">
               {c.acrossArkansas.cta.label}
             </Button>

@@ -1,8 +1,7 @@
 /**
- * Public homepage `/` — LIVE CANON: trust-funnel shell (HYBRID per HOMEPAGE_FORWARD_PLAN).
- * Do not remount HomeExperience, Track C personality, or getMergedHomepageConfig here.
- * Stills-only photo upgrades and CTA polish follow locked slices in the forward plan.
- * @see docs/website/HOMEPAGE_CURRENT_STATE_ASSESSMENT.md
+ * Public homepage `/` — LIVE CANON: lean trust-funnel shell.
+ * Hero + closing ask only. Trail, photos, news, office pillars, and bio remounts
+ * live on their own menu routes — not on `/`.
  * @see docs/website/HOMEPAGE_FORWARD_PLAN.md
  */
 import type { Metadata } from "next";
@@ -11,8 +10,6 @@ import { HomeTrustFunnelWireframe } from "@/components/home/HomeTrustFunnelWiref
 import { siteConfig } from "@/config/site";
 import { pageMeta } from "@/lib/seo/metadata";
 import { brandMediaFromLegacySite } from "@/config/brand-media";
-import { listRoadPreviewPosts } from "@/lib/content/content-hub-queries";
-import { listUpcomingPublicCampaignEventsForHomepage } from "@/lib/calendar/public-events";
 
 export const metadata: Metadata = pageMeta({
   title: "Home",
@@ -26,16 +23,11 @@ function isHomeDonateFloatingGateEnabled(): boolean {
   return process.env.NEXT_PUBLIC_HOME_DONATE_FLOATING_GATE === "true";
 }
 
-export default async function HomePage() {
-  const [roadPreviewPosts, upcomingPublicEvents] = await Promise.all([
-    listRoadPreviewPosts(6),
-    listUpcomingPublicCampaignEventsForHomepage(6),
-  ]);
-
+export default function HomePage() {
   return (
     <>
       {isHomeDonateFloatingGateEnabled() ? <HomeDonateFloatingGate /> : null}
-      <HomeTrustFunnelWireframe roadPreviewPosts={roadPreviewPosts} upcomingPublicEvents={upcomingPublicEvents} />
+      <HomeTrustFunnelWireframe />
     </>
   );
 }

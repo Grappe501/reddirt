@@ -23,10 +23,7 @@ import { listUpcomingPublicCampaignEventsForHomepage } from "@/lib/calendar/publ
 import { pageMeta } from "@/lib/seo/metadata";
 import { brandMediaFromLegacySite } from "@/config/brand-media";
 import { TrailPhotosShowcase } from "@/components/campaign-trail/TrailPhotosShowcase";
-import { StrategicCountyPhotoStrip } from "@/components/from-the-road/StrategicCountyPhotoStrip";
 import { trailPhotosForSlot } from "@/content/media/campaign-trail-assignments";
-import { listCountyAlbumCoverPhotosFrom } from "@/content/media/strategic-photo-placements";
-import { listCampaignPhotosLive } from "@/lib/campaign-media/list-campaign-photos-live";
 import { onTheRoadPageMeta, onTheRoadProofCopy } from "@/content/road/on-the-road";
 import { cn } from "@/lib/utils";
 
@@ -46,13 +43,11 @@ export default async function FromTheRoadPage() {
     listUpcomingPublicCampaignEventsForHomepage(4),
   ]);
   const trailGallery = trailPhotosForSlot("fromTheRoad", { fromTheRoadMax: 96 });
-  const countyAlbumCovers = listCountyAlbumCoverPhotosFrom(listCampaignPhotosLive(), 12);
   const hasEmbeds = fromTheRoadHasLiveEmbeds(embedsConfig);
   const hasFieldSocial = social.length > 0;
   const hasNotebook = posts.length > 0;
   const hasYoutube = youtube.length > 0;
   const hasTrailPhotos = trailGallery.length > 0;
-  const hasCountyAlbums = countyAlbumCovers.length > 0;
 
   const roadHero = onTheRoadProofCopy.hero;
 
@@ -79,14 +74,6 @@ export default async function FromTheRoadPage() {
 
         <FromTheRoadSocialHub />
 
-        {hasCountyAlbums ? (
-          <StrategicCountyPhotoStrip
-            photos={countyAlbumCovers}
-            title="Confirmed counties — photo albums"
-            intro="Evidence-confirmed stills placed by county as you label them in the workbench. Open an album for event chapters."
-          />
-        ) : null}
-
         {hasTrailPhotos ? (
           <TrailPhotosShowcase
             sectionId="trail-photos"
@@ -94,7 +81,7 @@ export default async function FromTheRoadPage() {
             className="!border-t border-kelly-ink/10 !border-b-0 !pt-14 md:!pt-20"
             photos={trailGallery}
             title="Trail photos — Arkansas, in the room"
-            intro="Moments from counties and gatherings across Arkansas—real rooms and real neighbors."
+            intro="Moments from counties and gatherings across Arkansas—real rooms and real neighbors. County albums live on Campaign Photos."
           />
         ) : null}
 

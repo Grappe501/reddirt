@@ -26,7 +26,7 @@ export default async function ArkansasCountiesPage() {
 
   return (
     <>
-      <PageHero eyebrow="Across Arkansas" title={listCopy.title} subtitle={listCopy.subtitle}>
+      <PageHero eyebrow="Arkansas counties" title={listCopy.title} subtitle={listCopy.subtitle}>
         <Button href="/arkansas" variant="outline">
           County presence map
         </Button>
