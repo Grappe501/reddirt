@@ -40,11 +40,12 @@ function isConfirmedGeo(photo: CampaignPhotoRecord): boolean {
 }
 
 /**
- * Public album gate:
+ * Public album gate (Prefer Unknown):
+ * - Confirmed county required (Unknown never albums)
  * - Explicit approvedForPublic === false always blocks
  * - APPROVED / PUBLISHED or approvedForPublic === true always allow
- * - Legacy launch stills: confirmed geo + FEATURE/HERO (or homepage/featured) with no explicit deny
- *   Workbench-labeled DRAFTs should check Approved for public to stay intentional.
+ * - Legacy registry FEATURE/HERO with confirmed geo still allow (launch catalog)
+ * - homepageCandidate / featuredPhoto alone do NOT grant albums (Turbo Fit must not leak)
  */
 export function isAlbumEligible(photo: CampaignPhotoRecord): boolean {
   if (!isConfirmedGeo(photo)) return false;
@@ -53,7 +54,6 @@ export function isAlbumEligible(photo: CampaignPhotoRecord): boolean {
   if (photo.publicationStatus === "PUBLISHED" || photo.publicationStatus === "APPROVED") return true;
   if (photo.campaign.approvedForPublic === true) return true;
   if (photo.heroLevel === "FEATURE" || photo.heroLevel === "HERO") return true;
-  if (photo.campaign.homepageCandidate || photo.campaign.featuredPhoto) return true;
   return false;
 }
 

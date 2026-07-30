@@ -43,7 +43,7 @@ function placementPreviewFor(photo: CampaignPhotoRecord): string[] {
   }
   if (surfaces.length === 0) {
     surfaces.push(
-      "Not on public surfaces yet — confirm county; FEATURE stills with geo appear on albums unless held",
+      "Not on public surfaces yet — confirm county, then Approve (or registry FEATURE/HERO) before albums",
     );
   }
   return surfaces;
@@ -163,6 +163,18 @@ export function promotePhotoDerivative(input: PromotePhotoDerivativeInput): Prom
     next.heroLevel = h;
   }
   next.updatedAt = new Date().toISOString();
+
+  const mergedCounty = (next.county ?? base.campaign.county ?? "Unknown").trim() || "Unknown";
+  const raisingPublic =
+    Boolean(next.approvedForPublic) ||
+    next.publicationStatus === "APPROVED" ||
+    next.publicationStatus === "PUBLISHED";
+  if (raisingPublic && mergedCounty === "Unknown") {
+    return {
+      ok: false,
+      message: "County is Unknown — confirm geography before Approve / public promote (Prefer Unknown).",
+    };
+  }
 
   const consentBlock = publicPublishBlockedByConsent({
     photoId,

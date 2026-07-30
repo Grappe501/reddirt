@@ -66,7 +66,7 @@ export function photoPublicSurfacesPreview(photo: CampaignPhotoRecord): string[]
   }
   if (surfaces.length === 0) {
     surfaces.push(
-      "Not on public surfaces yet — confirm county; FEATURE stills with geo appear on albums unless held",
+      "Not on public surfaces yet — confirm county, then Approve (or registry FEATURE/HERO) before albums",
     );
   }
   return surfaces;

@@ -593,9 +593,12 @@ export function buildEvidenceShipReport(input?: {
     },
     {
       id: "unknown_backlog",
-      label: "Unknown backlog acknowledged",
-      ok: true,
-      detail: `${queue.totals.unknownCounty} Unknown-county still(s) — they must not inflate shipped proof.`,
+      label: "Unknown-county backlog clear",
+      ok: queue.totals.unknownCounty === 0,
+      detail:
+        queue.totals.unknownCounty === 0
+          ? "No Unknown-county stills in the proof queue."
+          : `${queue.totals.unknownCounty} Unknown-county still(s) — Hold or Identify before claiming shipped proof.`,
     },
     {
       id: "needs_approval",
@@ -654,7 +657,9 @@ export function buildEvidenceShipReport(input?: {
         c.id === "overlays" ||
         c.id === "albums" ||
         c.id === "binaries" ||
-        c.id === "promoted_files",
+        c.id === "promoted_files" ||
+        c.id === "needs_approval" ||
+        c.id === "unknown_backlog",
     )
     .every((c) => c.ok);
 

@@ -172,6 +172,20 @@ export async function savePhotoEvidenceAction(
   });
   if (consentBlock) return { ok: false, message: consentBlock };
 
+  const raisingPublic =
+    Boolean(overlay.approvedForPublic) ||
+    overlay.publicationStatus === "APPROVED" ||
+    overlay.publicationStatus === "PUBLISHED" ||
+    Boolean(overlay.homepageCandidate) ||
+    Boolean(overlay.featuredPhoto);
+  if (raisingPublic && (overlay.county ?? "Unknown") === "Unknown") {
+    return {
+      ok: false,
+      message:
+        "County is Unknown — Prefer Unknown blocks Approve / homepage / featured until geography is confirmed.",
+    };
+  }
+
   const store = loadPhotoEvidenceStore();
   store.photos[photoId] = overlay;
   savePhotoEvidenceStore(store);

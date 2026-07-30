@@ -333,11 +333,14 @@ export function applyTurboProposal(input: {
 
   if (input.applyFitFlags) {
     const f = proposal.recommendedFlags;
-    // Placement intent only — never silent Approve/publish from turbo apply.
+    // Placement intent only — never silent Approve; never elevate FEATURE/HERO
+    // (album eligibility still honors legacy FEATURE/HERO on registry stills).
     if (f.homepageCandidate !== undefined) next.homepageCandidate = f.homepageCandidate;
     if (f.featuredPhoto !== undefined) next.featuredPhoto = f.featuredPhoto;
-    if (f.heroLevel) next.heroLevel = f.heroLevel;
     if (f.tierIntent !== undefined) next.tierIntent = f.tierIntent;
+    if (f.heroLevel === "SUPPORTING" || f.heroLevel === "UNREVIEWED") {
+      next.heroLevel = f.heroLevel;
+    }
   }
 
   store.photos[photoId] = next;
