@@ -15,7 +15,7 @@ export const trustFunnelHomeCopy = {
       "Elections people can trust, clearer business filings, open public records, and a Capitol that serves Arkansans — government that stays accessible, transparent, secure, and responsive.",
     ctas: [
       { label: "Meet Kelly", href: "/about", variant: "primary" },
-      { label: "Join the Campaign", href: "__volunteer__", variant: "secondary" },
+      { label: "Join the Campaign", href: "__join__", variant: "secondary" },
     ] as const,
   },
 
@@ -221,10 +221,10 @@ export const trustFunnelHomeCopy = {
     title: "The next step is yours",
     /** Target: 15–40 words */
     body:
-      "You know who Kelly is, why the office matters, and how she works. Join the campaign, volunteer, or explore her priorities.",
+      "You know who Kelly is, why the office matters, and how she works. Stay connected, volunteer, or explore her priorities—donate when you are ready.",
     ctas: {
-      join: "Join the Campaign",
-      volunteer: "Volunteer with Kelly",
+      join: "Stay connected",
+      volunteer: "Volunteer",
       priorities: "Explore Kelly’s Priorities",
       donate: "Donate",
     },

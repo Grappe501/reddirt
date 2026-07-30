@@ -20,9 +20,8 @@ export const metadata: Metadata = {
 };
 
 const sectionLinks: { label: string; href: string }[] = [
-  { label: "Volunteer lanes", href: "#volunteer-ways" },
-  { label: "Not sure?", href: "#not-sure" },
-  { label: "Sign up", href: "#volunteer-team" },
+  { label: "Stay connected", href: "#join" },
+  { label: "Volunteer", href: "#volunteer" },
   { label: "Bring 5", href: "#bring-5" },
   { label: "Start a Local Team", href: "#local-team" },
   { label: "Invite Kelly", href: "#invite-kelly" },
@@ -130,20 +129,72 @@ export default async function GetInvolvedPage({
       <MediaPageHero
         slotKey="get-involved.hero"
         layout="split"
-        eyebrow="Join in"
+        eyebrow="Participation ladder"
         title="Get Involved"
-        subtitle="Pick a lane that fits your week. This page converts trust into concrete participation—not pressure."
+        subtitle="Stay connected first. Volunteer when you are ready. Bring friends. Build a local team. Donate last—never first."
       >
-        <Button href="#volunteer-ways" variant="primary">
+        <Button href="#join" variant="primary">
+          Stay connected
+        </Button>
+        <Button href="#volunteer" variant="outlineOnDark">
           Volunteer
         </Button>
         <Button href="/get-involved/bring-5" variant="outlineOnDark">
           Bring 5
         </Button>
-        <Button href="/events/request" variant="outlineOnDark">
-          Invite Kelly
-        </Button>
       </MediaPageHero>
+
+      <FullBleedSection variant="subtle" className="!py-8" aria-labelledby="participation-ladder-heading">
+        <ContentContainer className="max-w-3xl">
+          <h2 id="participation-ladder-heading" className="font-heading text-xl font-bold text-kelly-ink">
+            One ladder — pick your step
+          </h2>
+          <ol className="mt-4 list-decimal space-y-3 pl-5 font-body text-sm leading-relaxed text-kelly-slate">
+            <li>
+              <strong className="text-kelly-navy">Stay connected</strong> —{" "}
+              <a href="#join" className="font-semibold text-kelly-blue underline-offset-2 hover:underline">
+                updates and a hello
+              </a>
+              . Not a shift assignment.
+            </li>
+            <li>
+              <strong className="text-kelly-navy">Volunteer</strong> —{" "}
+              <a href="#volunteer" className="font-semibold text-kelly-blue underline-offset-2 hover:underline">
+                tell us how you can help
+              </a>
+              . Events, calls, doors, hosting, logistics.
+            </li>
+            <li>
+              <strong className="text-kelly-navy">Bring 5</strong> —{" "}
+              <a href="#bring-5" className="font-semibold text-kelly-blue underline-offset-2 hover:underline">
+                five people you already know
+              </a>
+              .
+            </li>
+            <li>
+              <strong className="text-kelly-navy">Local team</strong> —{" "}
+              <a href="#local-team" className="font-semibold text-kelly-blue underline-offset-2 hover:underline">
+                start or join neighbors in your county
+              </a>
+              .
+            </li>
+            <li>
+              <strong className="text-kelly-navy">Donate</strong> —{" "}
+              <a href="#donate-section" className="font-semibold text-kelly-blue underline-offset-2 hover:underline">
+                when you are ready
+              </a>
+              . Never required to participate.
+            </li>
+          </ol>
+          <p className="mt-4 font-body text-xs text-kelly-muted">
+            Field Team onboarding for captains lives at{" "}
+            <Link href="/volunteer" className="font-semibold text-kelly-navy underline">
+              /volunteer
+            </Link>
+            — only if you want that track.
+          </p>
+        </ContentContainer>
+      </FullBleedSection>
 
       <FullBleedSection variant="subtle" className="!py-8" aria-labelledby="participation-clarity-heading">
         <ContentContainer className="max-w-3xl">

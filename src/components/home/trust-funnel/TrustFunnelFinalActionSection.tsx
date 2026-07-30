@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ContentContainer } from "@/components/layout/ContentContainer";
-import { getVolunteerSignupHref } from "@/config/external-campaign";
+import { getJoinCampaignHref, getVolunteerSignupHref } from "@/config/external-campaign";
 import { siteConfig } from "@/config/site";
 import { trustFunnelHomeCopy } from "@/content/home/trust-funnel-home";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
@@ -14,14 +14,15 @@ const copy = trustFunnelHomeCopy.finalAction;
 
 /**
  * Closing ask after trust journey — Regnat Populus as governing philosophy,
- * then Join → Volunteer → Priorities; donate available, not interruptive.
+ * then Stay connected → Volunteer → Priorities; donate available, not interruptive.
  */
 export function TrustFunnelFinalActionSection() {
+  const joinHref = getJoinCampaignHref();
   const volunteerHref = getVolunteerSignupHref();
 
   const actions = [
-    { label: copy.ctas.join, href: volunteerHref, variant: "primary" as const },
-    { label: copy.ctas.volunteer, href: "/get-involved#volunteer", variant: "outline" as const },
+    { label: copy.ctas.join, href: joinHref, variant: "primary" as const },
+    { label: copy.ctas.volunteer, href: volunteerHref, variant: "outline" as const },
     { label: copy.ctas.priorities, href: "/priorities", variant: "outline" as const },
     { label: copy.ctas.donate, href: siteConfig.donateHref, variant: "outline" as const, external: true },
   ];

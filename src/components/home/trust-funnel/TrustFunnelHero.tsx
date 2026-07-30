@@ -6,7 +6,7 @@ import { ContentContainer } from "@/components/layout/ContentContainer";
 import { ContentImage } from "@/components/media/ContentImage";
 import { media } from "@/content/media/registry";
 import { trustFunnelHomeCopy } from "@/content/home/trust-funnel-home";
-import { getVolunteerSignupHref } from "@/config/external-campaign";
+import { getJoinCampaignHref } from "@/config/external-campaign";
 import {
   trustFunnelCtaOutlineOnDark,
   trustFunnelCtaPrimary,
@@ -24,7 +24,7 @@ export function TrustFunnelHero() {
   const y = reduceMotion ? 0 : 12;
   const dur = reduceMotion ? 0.01 : 0.42;
   const ease = [0.22, 1, 0.36, 1] as const;
-  const volunteerHref = getVolunteerSignupHref();
+  const joinHref = getJoinCampaignHref();
 
   return (
     <section
@@ -84,7 +84,8 @@ export function TrustFunnelHero() {
           </motion.p>
           <div className="mt-7 flex flex-col gap-2.5 sm:mt-8 sm:flex-row sm:flex-wrap sm:gap-3" role="group" aria-label="Primary actions">
             {copy.ctas.map((cta, i) => {
-              const href = cta.href === "__volunteer__" ? volunteerHref : cta.href;
+              const href =
+                cta.href === "__volunteer__" || cta.href === "__join__" ? joinHref : cta.href;
               const isPrimary = cta.variant === "primary";
               return (
                 <motion.div

@@ -10,7 +10,7 @@ import { MeetKellyTrustIndicators } from "@/components/about/MeetKellyTrustIndic
 import { aboutLaunchCopy } from "@/content/about/about-launch";
 import { getHomepageMeetKellyPhoto, homepagePhotoCountyHref, homepagePhotoObjectPositionClass } from "@/content/media/homepage-campaign-photos";
 import { listHomepageAcrossArkansasPhotos } from "@/content/media/homepage-campaign-photos";
-import { getVolunteerSignupHref } from "@/config/external-campaign";
+import { getJoinCampaignHref, getVolunteerSignupHref } from "@/config/external-campaign";
 import { pageMeta } from "@/lib/seo/metadata";
 import { cn } from "@/lib/utils";
 
@@ -29,7 +29,8 @@ export const metadata: Metadata = pageMeta({
 export default async function AboutPage() {
   const meetPhoto = getHomepageMeetKellyPhoto();
   const trailPhotos = listHomepageAcrossArkansasPhotos().slice(0, 4);
-  const joinHref = getVolunteerSignupHref();
+  const joinHref = getJoinCampaignHref();
+  const volunteerHref = getVolunteerSignupHref();
   const countyHref = meetPhoto ? homepagePhotoCountyHref(meetPhoto) : null;
 
   return (
@@ -48,7 +49,10 @@ export default async function AboutPage() {
           See Kelly Across Arkansas
         </Button>
         <Button href={joinHref} variant="outlineOnDark">
-          Join the Campaign
+          Stay connected
+        </Button>
+        <Button href={volunteerHref} variant="outlineOnDark">
+          Volunteer
         </Button>
       </MediaPageHero>
 
@@ -245,7 +249,13 @@ export default async function AboutPage() {
             {c.closing.ctas.map((cta) => (
               <Button
                 key={cta.href}
-                href={cta.href === "/get-involved" ? joinHref : cta.href}
+                href={
+                  cta.href === "/get-involved"
+                    ? joinHref
+                    : cta.href === "/get-involved#volunteer"
+                      ? volunteerHref
+                      : cta.href
+                }
                 variant={cta.href === "/get-involved" || cta.href === "/priorities" ? "primary" : "outline"}
                 className={
                   cta.href === "/get-involved" || cta.href === "/priorities"

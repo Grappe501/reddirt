@@ -1,4 +1,4 @@
-import { getJoinCampaignHref } from "@/config/external-campaign";
+import { getVolunteerSignupHref } from "@/config/external-campaign";
 import { voterRegistrationHref } from "@/config/navigation";
 import type { OfficeLayerThreeCopy } from "@/content/office/office-types";
 
@@ -7,5 +7,5 @@ export const STANDARD_OFFICE_LAYER_THREE_SOFT_CTAS: OfficeLayerThreeCopy["softCt
   { label: "Meet Kelly", href: "/about" },
   { label: "Why I'm running", href: "/about/why-im-running" },
   { label: "Vote / Register", href: voterRegistrationHref },
-  { label: "Volunteer", href: getJoinCampaignHref() },
+  { label: "Volunteer", href: getVolunteerSignupHref() },
 ];
