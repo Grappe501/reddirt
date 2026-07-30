@@ -38,11 +38,16 @@ function regionLabelForPublicEvent(ev: PublicCampaignEvent): string {
   return STATEWIDE_EVENT_REGION;
 }
 
+/**
+ * Prefer Unknown: only place a map pin when we have a county (region centroid).
+ * No county → list-only; never invent a fake statewide pin.
+ */
 function mapPinForPublicEvent(ev: PublicCampaignEvent): {
   lat: number;
   lng: number;
   quality: NonNullable<EventItem["mapPinQuality"]>;
-} {
+} | null {
+  if (!ev.county?.slug) return null;
   const region = regionLabelForPublicEvent(ev);
   const c = centroidForMovementRegionLabel(region);
   return { lat: c.lat, lng: c.lng, quality: "region" };
@@ -58,9 +63,8 @@ export function publicCampaignEventToEventItem(ev: PublicCampaignEvent): EventIt
   const pin = mapPinForPublicEvent(ev);
   const hasSummary = Boolean(ev.publicSummary?.trim());
   const mappedType = campaignEventTypeToMovementEventType(ev.eventType);
-  const summary =
-    ev.publicSummary?.trim() ||
-    `${ev.eventTypeLabel} — ${ev.locationName || ev.address || "Details on the campaign calendar."}`.slice(0, 280);
+  const venue = ev.locationName?.trim() || ev.address?.trim() || "";
+  const summary = (ev.publicSummary?.trim() || ev.title).slice(0, 280);
 
   const item: EventItem = {
     slug: ev.slug,
@@ -72,7 +76,7 @@ export function publicCampaignEventToEventItem(ev: PublicCampaignEvent): EventIt
     startsAt: ev.startAt.toISOString(),
     endsAt: ev.endAt.toISOString(),
     timezone: ev.timezone,
-    locationLabel: ev.locationName || ev.address || "Location TBA",
+    locationLabel: venue || "Unknown",
     addressLine: ev.address ?? undefined,
     summary,
     description: ev.publicSummary?.trim() || ev.title,
@@ -84,15 +88,15 @@ export function publicCampaignEventToEventItem(ev: PublicCampaignEvent): EventIt
       { label: "Campaign calendar", href: "/events" },
       { label: "Volunteer", href: ev.joinCampaignHref },
     ],
-    mapCoordinates: { lat: pin.lat, lng: pin.lng },
-    mapPinQuality: pin.quality,
+    mapCoordinates: pin ? { lat: pin.lat, lng: pin.lng } : undefined,
+    mapPinQuality: pin?.quality,
     fieldAttendance: ev.eventType === "FESTIVAL" ? "unscheduled" : undefined,
     detailHref: ev.detailHref,
     eventSource: "calendar",
     opsFlags: {
       missingPublicSummary: !hasSummary,
       missingCounty: !ev.county,
-      missingCoordinates: false,
+      missingCoordinates: !pin,
     },
   };
   return item;

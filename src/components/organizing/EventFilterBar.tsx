@@ -12,7 +12,7 @@ export type EventFiltersState = {
   audience: string | "all";
   /** Central Time windows for field scheduling */
   schedule: EventSchedulePreset;
-  /** Merge published CampaignOS events onto the movement map (same gating as /campaign-calendar). */
+  /** Always include published CampaignOS events (Phase 1 — single public schedule). */
   includeCalendar: boolean;
 };
 
@@ -91,18 +91,6 @@ export function EventFilterBar({
           ]}
         />
       ) : null}
-      <label className="flex min-w-[14rem] cursor-pointer items-center gap-2 rounded-btn border border-kelly-text/15 bg-kelly-page px-3 py-2.5 font-body text-sm text-kelly-text shadow-sm">
-        <input
-          type="checkbox"
-          className="h-4 w-4 rounded border-kelly-text/30 text-kelly-navy focus:ring-kelly-navy/30"
-          checked={value.includeCalendar}
-          onChange={(e) => onChange({ ...value, includeCalendar: e.target.checked })}
-        />
-        <span>
-          <span className="font-bold">Campaign calendar</span>
-          <span className="block text-xs text-kelly-text/65">Include published campaign stops</span>
-        </span>
-      </label>
       <div className="lg:ml-auto">
         <button
           type="button"

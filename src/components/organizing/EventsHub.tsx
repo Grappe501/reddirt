@@ -48,7 +48,7 @@ export function EventsHub({ events, types, regions, audienceTags, initialFilters
 
   const filtered = useMemo(() => {
     return events.filter((e) => {
-      if (!filters.includeCalendar && e.eventSource === "calendar") return false;
+      // Phase 1: single public schedule — published calendar rows always included
       if (filters.type !== "all" && e.type !== filters.type) return false;
       if (filters.region !== "all" && e.region !== filters.region) return false;
       if (filters.status !== "all" && e.status !== filters.status) return false;

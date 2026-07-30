@@ -217,51 +217,63 @@ export function MovementFairsMap({ events, selectedSlug = null, onSelectSlug }: 
     return m;
   }, [pins]);
 
+  const hasFairPins = pins.some((p) => p.type === "Fairs and Festivals");
+  const hasCommunity = pins.some((p) => p.eventSource !== "calendar");
+  const hasCalendar = pins.some((p) => p.eventSource === "calendar");
+
   const legend = (
     <div className="flex flex-col gap-2 text-sm text-kelly-text/85 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-4 sm:gap-y-2">
       <span className="font-body font-semibold">Legend</span>
-      <span className="inline-flex items-center gap-2">
-        <span
-          className="inline-block h-3 w-3 shrink-0 rounded-full border border-kelly-text/20 shadow-sm"
-          style={{ background: MOVEMENT_EVENT_PIN }}
-        />
-        <span className="font-body">Community events</span>
-      </span>
-      <span className="inline-flex items-center gap-2">
-        <span
-          className="inline-block h-3 w-3 shrink-0 rounded-full border border-kelly-text/20 shadow-sm"
-          style={{ background: CALENDAR_OPS_PIN }}
-        />
-        <span className="font-body">Campaign calendar</span>
-      </span>
-      <span className="inline-flex items-center gap-2">
-        <span
-          className="inline-block h-3 w-3 shrink-0 rounded-full border border-kelly-text/20 shadow-sm"
-          style={{ background: FIELD_PIN.unscheduled }}
-        />
-        <span className="font-body">Fair / festival · listed</span>
-      </span>
-      <span className="inline-flex items-center gap-2">
-        <span
-          className="inline-block h-3 w-3 shrink-0 rounded-full border border-kelly-text/15 shadow-sm"
-          style={{ background: FIELD_PIN.suggested }}
-        />
-        <span className="font-body">Fair · suggested</span>
-      </span>
-      <span className="inline-flex items-center gap-2">
-        <span
-          className="inline-block h-3 w-3 shrink-0 rounded-full border border-kelly-text/15 shadow-sm"
-          style={{ background: FIELD_PIN.tentative }}
-        />
-        <span className="font-body">Fair · tentative</span>
-      </span>
-      <span className="inline-flex items-center gap-2">
-        <span
-          className="inline-block h-3 w-3 shrink-0 rounded-full border border-kelly-text/15 shadow-sm"
-          style={{ background: FIELD_PIN.confirmed }}
-        />
-        <span className="font-body">Fair · confirmed</span>
-      </span>
+      {hasCommunity ? (
+        <span className="inline-flex items-center gap-2">
+          <span
+            className="inline-block h-3 w-3 shrink-0 rounded-full border border-kelly-text/20 shadow-sm"
+            style={{ background: MOVEMENT_EVENT_PIN }}
+          />
+          <span className="font-body">Community events</span>
+        </span>
+      ) : null}
+      {hasCalendar ? (
+        <span className="inline-flex items-center gap-2">
+          <span
+            className="inline-block h-3 w-3 shrink-0 rounded-full border border-kelly-text/20 shadow-sm"
+            style={{ background: CALENDAR_OPS_PIN }}
+          />
+          <span className="font-body">Campaign calendar</span>
+        </span>
+      ) : null}
+      {hasFairPins ? (
+        <>
+          <span className="inline-flex items-center gap-2">
+            <span
+              className="inline-block h-3 w-3 shrink-0 rounded-full border border-kelly-text/20 shadow-sm"
+              style={{ background: FIELD_PIN.unscheduled }}
+            />
+            <span className="font-body">Fair / festival · listed</span>
+          </span>
+          <span className="inline-flex items-center gap-2">
+            <span
+              className="inline-block h-3 w-3 shrink-0 rounded-full border border-kelly-text/15 shadow-sm"
+              style={{ background: FIELD_PIN.suggested }}
+            />
+            <span className="font-body">Fair · suggested</span>
+          </span>
+          <span className="inline-flex items-center gap-2">
+            <span
+              className="inline-block h-3 w-3 shrink-0 rounded-full border border-kelly-text/15 shadow-sm"
+              style={{ background: FIELD_PIN.tentative }}
+            />
+            <span className="font-body">Fair · tentative</span>
+          </span>
+          <span className="inline-flex items-center gap-2">
+            <span
+              className="inline-block h-3 w-3 shrink-0 rounded-full border border-kelly-text/15 shadow-sm"
+              style={{ background: FIELD_PIN.confirmed }}
+            />
+            <span className="font-body">Fair · confirmed</span>
+          </span>
+        </>
+      ) : null}
     </div>
   );
 

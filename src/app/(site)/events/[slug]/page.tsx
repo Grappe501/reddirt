@@ -10,8 +10,17 @@ import { EventMeta } from "@/components/organizing/EventMeta";
 import { EventCard } from "@/components/organizing/EventCard";
 import { RelatedLinksSection } from "@/components/organizing/RelatedLinksSection";
 import { getEventBySlug, listEventSlugs } from "@/content/events";
+import type { EventItem } from "@/content/types";
 import { getRegionBySlug } from "@/content/local/regions";
 import { skipPublicStaticGenerationForNetlifyLaunch } from "@/lib/intelligence/intelligenceLaunchMode";
+import {
+  resolvePublicEventPageBySlug,
+  resolvePublicEventTitleForMetadata,
+} from "@/lib/calendar/public-events";
+import { publicCampaignEventToEventItem } from "@/lib/events/calendar-to-movement-event";
+import { getJoinCampaignHref } from "@/config/external-campaign";
+import { isPrismaDatabaseUnavailable, logPrismaDatabaseUnavailable } from "@/lib/prisma-connectivity";
+import { pageMeta } from "@/lib/seo/metadata";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -22,19 +31,29 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const event = getEventBySlug(slug);
-  if (!event) return { title: "Event" };
-  return {
-    title: event.title,
-    description: event.summary,
-  };
+  const curated = getEventBySlug(slug);
+  if (curated) {
+    return pageMeta({
+      title: curated.title,
+      description: curated.summary,
+      path: `/events/${slug}`,
+    });
+  }
+  try {
+    const t = await resolvePublicEventTitleForMetadata(slug);
+    if (!t) return { title: "Event" };
+    return pageMeta({
+      title: t,
+      description: `Campaign calendar event — ${t}.`,
+      path: `/events/${slug}`,
+    });
+  } catch (e) {
+    if (isPrismaDatabaseUnavailable(e)) return { title: "Event" };
+    throw e;
+  }
 }
 
-export default async function EventDetailPage({ params }: Props) {
-  const { slug } = await params;
-  const event = getEventBySlug(slug);
-  if (!event) notFound();
-
+function CuratedOrCalendarEventView({ event }: { event: EventItem }) {
   const county = event.countySlug ? getRegionBySlug(event.countySlug) : undefined;
   const related = event.relatedEventSlugs
     .map((s) => getEventBySlug(s))
@@ -97,7 +116,9 @@ export default async function EventDetailPage({ params }: Props) {
                     </li>
                   ))
                 ) : (
-                  <li className="font-body text-kelly-text/70">Details were captured outside the public template for this archive.</li>
+                  <li className="font-body text-kelly-text/70">
+                    More detail will appear here when the host publishes it.
+                  </li>
                 )}
               </ul>
 
@@ -108,9 +129,7 @@ export default async function EventDetailPage({ params }: Props) {
             <aside className="space-y-6 lg:sticky lg:top-28">
               <div className="rounded-card border border-kelly-text/10 bg-[var(--color-surface-elevated)] p-6 shadow-[var(--shadow-soft)]">
                 <h2 className="font-heading text-lg font-bold text-kelly-text">Join this stop</h2>
-                <p className="mt-3 font-body text-sm leading-relaxed text-kelly-text/75">
-                  {event.locationLabel}
-                </p>
+                <p className="mt-3 font-body text-sm leading-relaxed text-kelly-text/75">{event.locationLabel}</p>
                 {event.addressLine ? (
                   <p className="mt-2 font-body text-sm text-kelly-text/65">{event.addressLine}</p>
                 ) : null}
@@ -147,7 +166,11 @@ export default async function EventDetailPage({ params }: Props) {
             align="left"
             eyebrow="Nearby weave"
             title="Related events"
-            subtitle={related.length ? "Keep the momentum—pair trainings with listening, and listening with action." : "More dates are loading as hosts step forward."}
+            subtitle={
+              related.length
+                ? "Keep the momentum—pair trainings with listening, and listening with action."
+                : "More dates are loading as hosts step forward."
+            }
           />
           {related.length ? (
             <ul className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2">
@@ -172,4 +195,77 @@ export default async function EventDetailPage({ params }: Props) {
       </FullBleedSection>
     </>
   );
+}
+
+function CanceledEventTombstone({ title }: { title: string }) {
+  const join = getJoinCampaignHref();
+  return (
+    <>
+      <FullBleedSection variant="band-blue" padY className="border-b border-kelly-gold/20">
+        <ContentContainer>
+          <Link href="/events" className="text-xs font-semibold text-kelly-mist/80 hover:text-kelly-gold">
+            ← All events
+          </Link>
+          <h1 className="mt-3 font-heading text-2xl font-bold text-kelly-mist">Event no longer on the schedule</h1>
+          <p className="mt-2 text-sm text-kelly-mist/90">
+            {title} was removed from the public schedule. Check the current calendar for what&rsquo;s on next.
+          </p>
+        </ContentContainer>
+      </FullBleedSection>
+      <FullBleedSection padY>
+        <ContentContainer>
+          <p className="text-sm text-kelly-text/75">
+            Need something else?{" "}
+            <Link href={join} className="font-semibold text-kelly-navy hover:underline">
+              Get involved with the campaign
+            </Link>{" "}
+            or return to the{" "}
+            <Link href="/events" className="font-semibold text-kelly-navy hover:underline">
+              full public calendar
+            </Link>
+            .
+          </p>
+        </ContentContainer>
+      </FullBleedSection>
+    </>
+  );
+}
+
+export default async function EventDetailPage({ params }: Props) {
+  const { slug } = await params;
+
+  const curated = getEventBySlug(slug);
+  if (curated) {
+    return <CuratedOrCalendarEventView event={curated} />;
+  }
+
+  let resolved: Awaited<ReturnType<typeof resolvePublicEventPageBySlug>>;
+  try {
+    resolved = await resolvePublicEventPageBySlug(slug);
+  } catch (e) {
+    if (!isPrismaDatabaseUnavailable(e)) throw e;
+    logPrismaDatabaseUnavailable("events/[slug]/resolvePublicEventPageBySlug", e);
+    return (
+      <FullBleedSection padY>
+        <ContentContainer className="max-w-2xl">
+          <h1 className="font-heading text-2xl font-bold text-kelly-text">Calendar temporarily unavailable</h1>
+          <p className="mt-2 font-body text-kelly-text/80">
+            This event can&apos;t load right now—please try again in a moment.
+          </p>
+          <Link href="/events" className="mt-6 inline-block font-semibold text-kelly-navy underline">
+            ← Back to events
+          </Link>
+        </ContentContainer>
+      </FullBleedSection>
+    );
+  }
+
+  if (!resolved) notFound();
+
+  if (resolved.kind === "canceled") {
+    return <CanceledEventTombstone title={resolved.title} />;
+  }
+
+  const event = publicCampaignEventToEventItem(resolved.event);
+  return <CuratedOrCalendarEventView event={event} />;
 }

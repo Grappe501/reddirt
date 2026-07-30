@@ -41,7 +41,8 @@ function pickParam(sp: Record<string, string | string[] | undefined>, key: strin
 }
 
 /**
- * Campaign calendar hub: static movement events + Prisma-backed public events when the DB is available.
+ * Campaign calendar hub: curated public movement events + published CampaignOS events.
+ * Fair research (~80 festivals) is not merged here (Phase 1).
  * TODO: Approved Google Calendar public feed (read-only) after integration design.
  * TODO: Pending-approval calendar / admin queue remains internal — never show unconfirmed stops as public fact.
  * TODO: Optional map + county completion visualization (later; no placeholder map pins).
@@ -87,7 +88,7 @@ export default async function EventsPage({
         : scheduleParam === "ahead"
           ? "upcoming"
           : "all";
-  const includeCalendar = pickParam(sp, "cal") !== "0";
+  const includeCalendar = true;
 
   const filterKey = JSON.stringify({ type, region, status, audience, schedule, includeCalendar });
   const calendarMoment = trailPhotosForSlot("events")[0];
