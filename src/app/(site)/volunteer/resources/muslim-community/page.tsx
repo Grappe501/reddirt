@@ -9,25 +9,24 @@ import {
   MUSLIM_COMMUNITY_DASHBOARD_TABS,
   MUSLIM_COMMUNITY_RESOURCE_STUBS,
   MUSLIM_CROSS_LANE_COORDINATION,
-  MUSLIM_DASHBOARD_DRAFT_NOTICE,
   MUSLIM_REGION_LEADERSHIP_MODEL,
   MUSLIM_WOMENS_OUTREACH_LANE,
   MUSLIM_YOUTH_OUTREACH_LANE,
 } from "@/lib/campaign-ops/muslim-community-dashboard-plan";
 
 export const metadata: Metadata = {
-  title: "Muslim Community Civic Organizing · Dashboard plan (draft)",
+  title: "Muslim Community Civic Organizing",
   description:
-    "Draft plan: Muslim Community Region dashboard with Youth Outreach and Women’s Outreach as first-class lanes — pending community leadership review.",
+    "Muslim Community Region organizing with Youth Outreach and Women’s Outreach as first-class lanes.",
 };
 
 export default function MuslimCommunityDashboardPlanPage() {
   return (
     <>
       <PageHero
-        eyebrow="Community organizing · draft"
-        title="Muslim Community Civic Organizing Dashboard"
-        subtitle="Youth Outreach and Women’s Outreach are first-class lanes — they mirror real community structure and trusted relationship networks. This page is a living plan, not final copy."
+        eyebrow="Community organizing"
+        title="Muslim Community Civic Organizing"
+        subtitle="Youth Outreach and Women’s Outreach are first-class lanes — they mirror real community structure and trusted relationship networks."
       >
         <Button href="/dashboard/community/muslim" variant="primary">
           Open community dashboard
@@ -35,16 +34,16 @@ export default function MuslimCommunityDashboardPlanPage() {
         <Button href="/volunteer/resources" variant="outline">
           Volunteer resources
         </Button>
-        <Button href="/admin/campaign-ops/community-equity" variant="outline">
-          Staff community equity hub
-        </Button>
       </PageHero>
 
       <FullBleedSection padY variant="subtle">
         <ContentContainer className="max-w-4xl space-y-10">
-          <div className="rounded-2xl border-2 border-kelly-gold/50 bg-kelly-gold/10 p-5 md:p-6">
-            <p className="font-heading text-sm font-bold text-kelly-navy">Community review required</p>
-            <p className="mt-2 font-body text-sm leading-relaxed text-kelly-text/90">{MUSLIM_DASHBOARD_DRAFT_NOTICE}</p>
+          <div className="rounded-2xl border border-kelly-navy/15 bg-kelly-fog/60 p-5 md:p-6">
+            <p className="font-heading text-sm font-bold text-kelly-navy">Built with community leaders</p>
+            <p className="mt-2 font-body text-sm leading-relaxed text-kelly-text/90">
+              Materials and priorities grow with trusted Muslim women leaders, youth leaders, family leaders, and
+              mosque/community leadership.
+            </p>
           </div>
 
           <nav
@@ -65,16 +64,12 @@ export default function MuslimCommunityDashboardPlanPage() {
           <section id="overview" className="scroll-mt-32 space-y-4">
             <h2 className="font-heading text-xl font-bold text-kelly-navy">Overview</h2>
             <p className="font-body text-sm text-kelly-text/85">
-              The Muslim Community Region uses a dedicated civic organizing dashboard. Tabs below match the intended product
-              surface; narrative and KPIs stay aligned with{" "}
+              The Muslim Community Region uses a dedicated civic organizing dashboard. Tabs below match the intended
+              product surface; narrative and KPIs stay aligned with{" "}
               <Link className="font-semibold text-kelly-blue underline" href="/field-playbook">
                 field playbook
               </Link>{" "}
-              discipline and the{" "}
-              <Link className="font-semibold text-kelly-blue underline" href="/admin/campaign-ops/community-equity">
-                community equity
-              </Link>{" "}
-              hub (staff).
+              discipline.
             </p>
             <div className="rounded-xl border border-kelly-text/10 bg-white p-4 font-mono text-xs leading-relaxed text-kelly-deep">
               <p className="mb-2 font-body text-[10px] font-bold uppercase text-kelly-text/50">

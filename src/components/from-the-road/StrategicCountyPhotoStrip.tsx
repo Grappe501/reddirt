@@ -19,7 +19,7 @@ type Props = {
 export function StrategicCountyPhotoStrip({
   photos,
   title = "Confirmed counties — photo albums",
-  intro = "Evidence-confirmed stills placed by county. Open an album for the event chapters.",
+  intro = "Photos from confirmed county stops. Open an album to see the trail chapters.",
   className,
 }: Props) {
   if (photos.length === 0) return null;

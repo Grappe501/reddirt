@@ -44,7 +44,7 @@ export default function CommunityRegionsHubPage() {
   return (
     <>
       <PageHero
-        eyebrow="Volunteer OS · Community regions"
+        eyebrow="Community regions"
         title="Community region dashboards"
         subtitle="Geographic triads use team workspaces; identity- and community-native regions use the same lane discipline with partner-shaped leadership and resources."
       >

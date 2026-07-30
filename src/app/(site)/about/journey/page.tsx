@@ -99,7 +99,7 @@ export default async function AboutJourneyPage() {
                   </div>
                   <div className="flex flex-1 flex-col p-4">
                     <p className="font-body text-[11px] font-bold uppercase tracking-wide text-kelly-gold">
-                      {placeBits.length > 0 ? placeBits.join(" · ") : "Location pending confirmation"}
+                      {placeBits.length > 0 ? placeBits.join(" · ") : "From the trail"}
                     </p>
                     <p className="mt-2 font-body text-sm text-kelly-slate">{photo.accessibility.caption}</p>
                     {href ? (

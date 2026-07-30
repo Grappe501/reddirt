@@ -18,6 +18,28 @@ export type CampaignVideoFeatureProps = {
   preferShortTitle?: boolean;
 };
 
+function relatedLinkLabel(href: string): string {
+  if (href === "/about") return "Read About Kelly’s Experience";
+  if (href === "/priorities") return "Explore Kelly’s Priorities";
+  if (href === "/about/journey") return "See Kelly Across Arkansas";
+  if (href === "/get-involved" || href === "/volunteer") return "Join the Campaign";
+  return href;
+}
+
+/** One label once — /get-involved + /volunteer both map to Join the Campaign. */
+function dedupeRelatedLinks(paths: string[]): Array<{ href: string; label: string }> {
+  const seen = new Set<string>();
+  const out: Array<{ href: string; label: string }> = [];
+  for (const href of paths.slice(0, 6)) {
+    const label = relatedLinkLabel(href);
+    if (seen.has(label)) continue;
+    seen.add(label);
+    out.push({ href, label });
+    if (out.length >= 3) break;
+  }
+  return out;
+}
+
 /**
  * Featured campaign statement video — privacy-enhanced, click-to-play, not a raw iframe.
  * Use for homepage primary message and Kelly Across Arkansas placements.
@@ -62,21 +84,13 @@ export function CampaignVideoFeature({
         <p className="mt-4 max-w-3xl font-body text-base leading-relaxed text-kelly-slate md:text-lg">{introduction}</p>
         {media.relatedPagePaths.length > 0 ? (
           <ul className="mt-5 flex flex-wrap gap-x-5 gap-y-2 font-body text-sm font-semibold text-kelly-navy">
-            {media.relatedPagePaths.slice(0, 3).map((href) => (
+            {dedupeRelatedLinks(media.relatedPagePaths).map(({ href, label }) => (
               <li key={href}>
                 <Link
                   href={href}
                   className="underline decoration-kelly-navy/25 underline-offset-4 transition hover:decoration-kelly-navy focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-kelly-navy"
                 >
-                  {href === "/about"
-                    ? "Read About Kelly’s Experience"
-                    : href === "/priorities"
-                      ? "Explore Kelly’s Priorities"
-                      : href === "/about/journey"
-                        ? "See Kelly Across Arkansas"
-                        : href === "/get-involved" || href === "/volunteer"
-                          ? "Join the Campaign"
-                          : href}
+                  {label}
                 </Link>
               </li>
             ))}
@@ -85,11 +99,7 @@ export function CampaignVideoFeature({
         {publicTranscript ? <CampaignTranscriptDisclosure media={media} tools={tools} /> : null}
         {!publicTranscript ? (
           <p className="mt-5 font-body text-sm text-kelly-slate">
-            Transcript status:{" "}
-            <span className="font-semibold text-kelly-navy">
-              {media.transcript.status === "NOT_REQUESTED" ? "Pending — transcript-ready when published" : media.transcript.status}
-            </span>
-            . Captions remain available on YouTube after you press play.
+            Captions are available on YouTube after you press play.
           </p>
         ) : null}
       </div>

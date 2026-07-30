@@ -275,7 +275,7 @@ export function buildPublicMemberHubModel(): PublicMemberHubModel {
 
   return {
     demoNotice:
-      "Everything on this page uses demo or seed content for layout and training. It is not a substitute for counsel-reviewed sends, blog posts, or workbench drafts.",
+      "This page uses sample content for layout and training. Live packets appear when your region’s materials are ready.",
     messageOfWeek: STATIC_MESSAGE_OF_WEEK,
     narrativePriorities: NARRATIVE_PRIORITIES,
     whatToSayToYourFive: WHAT_TO_SAY_TO_YOUR_FIVE,

@@ -70,7 +70,7 @@ export default async function ArkansasPresencePage() {
             <Link href="/events" className="font-semibold text-kelly-navy underline-offset-2 hover:underline">
               /events
             </Link>{" "}
-            include published campaign events and approved public listings—never internal Victory OS data.
+            include published campaign events and approved public listings.
           </p>
         </ContentContainer>
       </FullBleedSection>

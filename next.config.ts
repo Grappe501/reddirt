@@ -187,6 +187,37 @@ const nextConfig: NextConfig = {
         destination: "/arkansas",
         permanent: false,
       },
+      /** Operator intel tools are not marketing surfaces. */
+      {
+        source: "/counties/tools/campaign-brain",
+        destination: "/arkansas",
+        permanent: false,
+      },
+      {
+        source: "/counties/tools/campaign-brain/:path*",
+        destination: "/arkansas",
+        permanent: false,
+      },
+      {
+        source: "/counties/tools/public-narrative",
+        destination: "/arkansas",
+        permanent: false,
+      },
+      {
+        source: "/counties/tools/public-narrative/:path*",
+        destination: "/arkansas",
+        permanent: false,
+      },
+      {
+        source: "/counties/:slug/intelligence",
+        destination: "/arkansas",
+        permanent: false,
+      },
+      {
+        source: "/counties/:slug/intelligence/:path*",
+        destination: "/arkansas",
+        permanent: false,
+      },
       /**
        * Canonical public calendar is `/events`.
        * Preserve event slugs so detail bookmarks do not collapse to the index.

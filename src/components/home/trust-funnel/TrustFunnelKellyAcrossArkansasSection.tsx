@@ -89,11 +89,7 @@ export function TrustFunnelKellyAcrossArkansasSection() {
                         <p className="font-body text-[11px] font-bold uppercase tracking-[0.14em] text-kelly-gold">
                           {placeLabel}
                         </p>
-                      ) : (
-                        <p className="font-body text-[11px] font-semibold uppercase tracking-[0.14em] text-kelly-muted">
-                          Location pending confirmation
-                        </p>
-                      )}
+                      ) : null}
                       <p className="font-body text-sm leading-relaxed text-kelly-slate">{homepagePhotoCaption(photo)}</p>
                       {countyHref ? (
                         <Link

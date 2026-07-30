@@ -79,7 +79,7 @@ export const aboutLaunchCopy = {
   acrossArkansas: {
     title: "Across Arkansas",
     intro:
-      "Selected trail photography and a featured journey video show how Kelly travels, listens, asks questions, and carries concerns into plans for the office. Geography appears only when confirmed in the campaign record. This section is shorter than the dedicated journey page on purpose.",
+      "Selected trail photography and a featured journey video show how Kelly travels, listens, asks questions, and carries concerns into plans for the office. This section is shorter than the dedicated journey page on purpose.",
     cta: { href: "/about/journey", label: "See Kelly Across Arkansas" },
     photosCta: { href: "/campaign-photos", label: "View Campaign Photos" },
   },

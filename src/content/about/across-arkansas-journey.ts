@@ -14,12 +14,12 @@ export const acrossArkansasJourneyCopy = {
   evidenceVerbs: ["Listened", "Learned", "Visited", "Spoke", "Engaged"] as const,
   /** Target: 75–130 words */
   intro:
-    "This page is trail evidence, not a travelogue. Kelly shows up at confirmed stops to listen and learn what is working and what is not—then visits, speaks, and engages so the office stays grounded in real communities. Featured video and curated stills prove that method. We do not invent county coverage to fill a map. Invite Kelly through staff review; nothing is confirmed until the campaign says so. For qualifications and governing commitments, use Meet Kelly and Priorities.",
+    "Kelly shows up at confirmed stops to listen and learn what is working and what is not—then visits, speaks, and engages so the office stays grounded in real communities. Featured video and curated stills show that method. We do not invent county coverage to fill a map. Invite Kelly through the campaign; confirmed events appear when they are ready. For qualifications and governing commitments, use Meet Kelly and Priorities.",
   videoIntroduction:
     "A trail story from Hot Springs Village: neighbors gathering, conversations starting, and the work of showing up.",
   photographyHeading: "Trail evidence",
   photographyIntro:
-    "Selected FEATURE stills. City and county appear only when confirmed. Each frame should answer: listened, learned, visited, spoke, or engaged.",
+    "Photos from stops across Arkansas — listening, visiting, speaking, and engaging with neighbors.",
   invite: {
     title: "Invite Kelly",
     body: "Invite Kelly to your county, club, church, chamber, fair, or community gathering. Every request goes through staff review before anything is confirmed.",

@@ -16,7 +16,7 @@ export default function PrivacyPage() {
   return (
     <>
       <PageHero
-        eyebrow="Legal · draft"
+        eyebrow="Legal"
         title="Privacy"
         subtitle="This page is a public-facing structure for campaign counsel to finalize. Do not treat it as legal advice."
         contentClassName="!pt-6 !pb-8 sm:!pt-8 sm:!pb-10"

@@ -16,7 +16,7 @@ const listCopy = arkansasPresenceCopy.countiesPage;
 export const metadata: Metadata = pageMeta({
   title: "Arkansas counties — visit status",
   description:
-    "Search all 75 Arkansas counties: verified visits from published campaign events and upcoming public stop counts. No workbench, no campaign intelligence.",
+    "Search all 75 Arkansas counties: verified visits from published campaign events and upcoming public stop counts.",
   path: "/arkansas/counties",
   imageSrc: "/media/placeholders/hero-arkansas-warm.svg",
 });

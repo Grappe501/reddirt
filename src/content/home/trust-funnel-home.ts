@@ -194,7 +194,7 @@ export const trustFunnelHomeCopy = {
   campaignPhotos: {
     title: "Latest Campaign Photos",
     intro:
-      "Curated trail stills—listening, speaking, working, and community stops. Geography appears only when confirmed.",
+      "Curated trail stills—listening, speaking, working, and community stops across Arkansas.",
   },
 
   endorsements: {

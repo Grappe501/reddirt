@@ -4,7 +4,6 @@ import { ContentContainer } from "@/components/layout/ContentContainer";
 import { FullBleedSection } from "@/components/layout/FullBleedSection";
 import { Button } from "@/components/ui/Button";
 import { MeetKellySubnav } from "@/components/about/MeetKellySubnav";
-import { ContentPendingBadge } from "@/components/content/ContentPendingBadge";
 import { whyKellyPageCopy } from "@/content/about/why-kelly-page";
 import { pageMeta } from "@/lib/seo/metadata";
 
@@ -44,14 +43,6 @@ export default async function WhyImRunningPage() {
       <FullBleedSection variant="subtle" className="!py-6">
         <ContentContainer className="max-w-3xl">
           <MeetKellySubnav current="/about/why-im-running" />
-          <div className="mt-6">
-            <ContentPendingBadge variant="pending" />
-            <p className="mt-3 font-body text-sm text-kelly-muted">
-              Election-administration and voter-list claims on this page need Kelly approval and primary-source
-              verification before paid or high-reach use. See{" "}
-              <code className="text-xs">docs/website/KELLY_BIOGRAPHY_VERIFICATION_MATRIX.md</code>.
-            </p>
-          </div>
         </ContentContainer>
       </FullBleedSection>
 

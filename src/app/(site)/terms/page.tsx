@@ -16,7 +16,7 @@ export default function TermsPage() {
   return (
     <>
       <PageHero
-        eyebrow="Legal · draft"
+        eyebrow="Legal"
         title="Terms of use"
         subtitle="A placeholder structure for how visitors may use this site. Counsel review is required before relying on this text."
         contentClassName="!pt-6 !pb-8 sm:!pt-8 sm:!pb-10"

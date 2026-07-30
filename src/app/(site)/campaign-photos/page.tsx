@@ -43,7 +43,7 @@ export default async function CampaignPhotosPage() {
         <ContentContainer>
           {albums.length === 0 ? (
             <p className="mx-auto max-w-xl text-center font-body text-kelly-slate">
-              County albums appear here as photos are confirmed with real counties in the Evidence Workbench.
+              County albums appear here as confirmed trail photos are published.
             </p>
           ) : (
             <>

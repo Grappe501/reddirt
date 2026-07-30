@@ -33,7 +33,7 @@ export default async function KellySpeaksSearchPage({ searchParams }: Props) {
           Search transcripts
         </h1>
         <p className="mt-3 max-w-2xl font-body text-kelly-slate">
-          Only published, editor-approved transcripts are searchable. Draft and AI drafts never appear here.
+          Search published campaign video transcripts.
         </p>
 
         <form className="mt-8 grid max-w-2xl gap-3 md:grid-cols-[1fr_auto]" method="get">
@@ -66,7 +66,7 @@ export default async function KellySpeaksSearchPage({ searchParams }: Props) {
           <p className="mt-10 font-body text-kelly-slate">
             {listPublishedWithTranscript().length
               ? "No matches for that query."
-              : "No published transcripts yet. Check back after editorial review."}
+              : "No published transcripts yet. Check back soon."}
           </p>
         ) : null}
 

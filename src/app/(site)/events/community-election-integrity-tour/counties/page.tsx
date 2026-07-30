@@ -28,8 +28,7 @@ export default function IntegrityTourCountiesPage() {
       */}
       <div className="space-y-12 font-body text-kelly-text/88">
         <p className="text-sm font-medium text-kelly-text/75">
-          Stops 1–26 are capacity only. Status stays on Research until a host, venue, and date are confirmed and approved
-          for public listing.
+          Early stops are capacity planning only. Public listings appear when a host, venue, and date are confirmed.
         </p>
 
         <IntegrityTourStopTable rows={INTEGRITY_TOUR_PLACEHOLDER_ROWS} />

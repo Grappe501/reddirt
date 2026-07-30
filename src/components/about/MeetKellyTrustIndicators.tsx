@@ -1,7 +1,5 @@
-import { ContentPendingBadge } from "@/components/content/ContentPendingBadge";
 import {
   MEET_KELLY_TRUST_INDICATORS,
-  MEET_KELLY_TRUST_PENDING,
 } from "@/content/about/meet-kelly-trust-indicators";
 
 const kindLabel: Record<(typeof MEET_KELLY_TRUST_INDICATORS)[number]["kind"], string> = {
@@ -46,24 +44,6 @@ export function MeetKellyTrustIndicators() {
           </li>
         ))}
       </ul>
-
-      <div className="mt-10 rounded-card border border-kelly-text/10 bg-kelly-text/[0.03] p-6">
-        <h3 className="font-heading text-lg font-bold text-kelly-text">Pending verification</h3>
-        <p className="mt-2 font-body text-sm text-kelly-text/75">
-          These will appear only after campaign approval and sourced documentation—not as marketing placeholders.
-        </p>
-        <ul className="mt-4 space-y-3">
-          {MEET_KELLY_TRUST_PENDING.map((item) => (
-            <li key={item.label} className="flex flex-col gap-2 sm:flex-row sm:items-start sm:gap-4">
-              <span className="font-body text-sm font-semibold text-kelly-text">{item.label}</span>
-              <ContentPendingBadge variant="source" className="shrink-0" />
-              <span className="font-body text-xs text-kelly-muted sm:ml-auto sm:max-w-xs sm:text-right">
-                {item.reason}
-              </span>
-            </li>
-          ))}
-        </ul>
-      </div>
     </section>
   );
 }
