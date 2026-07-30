@@ -98,7 +98,7 @@ function toEvent(r: FestRow): EventItem {
     r.s.m === end.m && r.s.d === end.d
       ? `${r.s.m}/${r.s.d}/${y}`
       : `${r.s.m}/${r.s.d}–${end.m}/${end.d}/${y}`;
-  const baseSum = `Festival in ${r.city} (${whenLabel}) — a community draw worth knowing for field planning and local visibility.`;
+  const baseSum = `Festival in ${r.city} (${whenLabel}) — a community festival worth knowing about.`;
   const defaultVerify =
     "Sourced from public festival roundups; verify hours, fees, and road closures on the official site or chamber feed.";
   const noteBlock = r.note
@@ -125,7 +125,7 @@ function toEvent(r: FestRow): EventItem {
       "Good neighbor etiquette: don’t repurpose private vendor photos without permission",
     ],
     whoItsFor: "Arkansans, volunteers scouting culture calendars, and visitors planning honest county-by-county time.",
-    organizerNote: "Not hosted by the campaign. Field teams: double-check the official event page or city before listing travel on public schedules.",
+    organizerNote: "Not hosted by the campaign. Confirm details on the official event page before you go.",
     audienceTags: ["Families", "Youth", "All ages"],
     relatedEventSlugs: [],
     relatedResourceHrefs: [

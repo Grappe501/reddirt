@@ -13,12 +13,12 @@ const movementEventsCore: EventItem[] = [
     startsAt: "2026-04-25T09:00:00",
     endsAt: "2026-04-25T12:00:00",
     timezone: "America/Chicago",
-    locationLabel: "Jacksonville, Arkansas (meetup point on invite or city volunteer thread)",
-    addressLine: "Jacksonville, AR (exact staging area—confirm on calendar)",
+    locationLabel: "Jacksonville, Arkansas (meeting spot shared with volunteers)",
+    addressLine: "Jacksonville, AR (exact staging area TBA)",
     summary:
       "Hands-on community clean-up: a Saturday morning service window before other events the same day. Great for volunteers who want to show up with gloves, bags, and neighbor-to-neighbor care.",
     description:
-      "This mirrors a personal calendar item titled “Jacksonville clean up” with Kelly Grappe as organizer. A Google Meet is on the original invite, often for coordination; **confirm the physical meeting spot and any waivers** with the host or city. Public listing is for awareness—the campaign is not the permit-holder unless the host says otherwise.",
+      "This lists a community calendar item titled “Jacksonville clean up” with Kelly Grappe as organizer. A Google Meet is on the original invite, often for coordination; **confirm the physical meeting spot and any waivers** with the host or city. Public listing is for awareness—the campaign is not the permit-holder unless the host says otherwise.",
     whatToExpect: [
       "9:00 a.m.–12:00 p.m. Central (per calendar)",
       "Outdoor or corridor work—watch for host instructions on tools and PPE",
@@ -41,12 +41,12 @@ const movementEventsCore: EventItem[] = [
     startsAt: "2026-04-25T14:00:00",
     endsAt: "2026-04-25T15:00:00",
     timezone: "America/Chicago",
-    locationLabel: "Argenta / North Little Rock area (see Meet for details from invite)",
+    locationLabel: "Argenta / North Little Rock area (venue TBA)",
     addressLine: "Argenta Arts District, North Little Rock, AR",
     summary:
-      "Low-key weekend community time in Argenta around a Brooks band outing—join the thread on the original calendar invite if you need the Meet line for coordination.",
+      "Low-key weekend community time in Argenta around a Brooks band outing—confirm details with the host if you need coordination.",
     description:
-      "Place and exact venue follow the Google Calendar thread (public site lists the time block and neighborhood). The Meet link on the invite is for coordination as needed; confirm in person with the organizer if you’re unsure of the exact spot.",
+      "Public site lists the time block and neighborhood. Confirm the exact spot with the organizer if you are unsure.",
     whatToExpect: ["Short window (2:00–3:00 p.m. Central per calendar)", "Neighborhood energy in Argenta", "Optional Meet for folks connecting remotely first"],
     whoItsFor: "Central Arkansas neighbors who want to show up in community without a formal program.",
     organizerNote: "Calendar title: “Argenta to see Brooks band.” Organizer: Kelly Grappe (per invite).",
@@ -71,7 +71,7 @@ const movementEventsCore: EventItem[] = [
     endsAt: "2026-04-25T20:00:00",
     timezone: "America/Chicago",
     locationLabel: "Central Arkansas (venue and ticket—confirm on invite or party channels)",
-    addressLine: "TBA (see calendar thread)",
+    addressLine: "Venue TBA",
     summary:
       "An Arkansas Democratic Party–associated evening event on the same day as the Argenta outing. Verify ticket, address, and host details before travel.",
     description:
@@ -106,7 +106,7 @@ const movementEventsCore: EventItem[] = [
     summary:
       "Community fundraiser evening: beans-and-cornbread style program at the Elks. Event coordinator Tina Stauffer confirmed Kelly is expected; welcome table, tickets, and parking follow the host committee’s plan.",
     description:
-      "Sourced from a coordinator email (Tina Stauffer) inviting Kelly to the **Beans and Cornbread** fundraiser on **April 29** at the **Elks Club**. **Time on the public site is a typical evening placeholder (6:00–9:00 p.m. Central)** until the host publishes a schedule. **City** is placed in **Hot Springs / Garland County** to match related local community context in your calendar thread—if your chapter is elsewhere, update the county and map in content. This is a **third-party community benefit** unless the campaign is named on the invitation.",
+      "Sourced from a coordinator email (Tina Stauffer) inviting Kelly to the **Beans and Cornbread** fundraiser on **April 29** at the **Elks Club**. **Time on the public site is a typical evening placeholder (6:00–9:00 p.m. Central)** until the host publishes a schedule. **City** is placed in **Hot Springs / Garland County** If your chapter is elsewhere, confirm county details with the host. This is a **third-party community benefit** unless the campaign is named on the invitation.",
     whatToExpect: [
       "Evening food, program, and fundraising flow set by the host committee",
       "Confirm ticket price, dress, and Elks address before sharing widely",
@@ -168,7 +168,7 @@ const movementEventsCore: EventItem[] = [
     summary:
       "A Sunday afternoon **community music / program** in **Heber Springs** with **Carol Hutto** and **Edensong**—the invite notes a **show at 2:00 p.m.** within a **1:00–4:00 p.m. Central** window. Great for local culture calendars and neighbor-to-neighbor visibility.",
     description:
-      "This reflects a personal calendar item **“Edensong in Heber with carol Hutto. Show at 2”** with Kelly Grappe as organizer. The site does **not** have the final venue; use the **Google Meet** for coordination, carpool, or remote touch-in as needed, and **confirm the performance location** in town before you publish a pin. **Not** a campaign event unless the host lists the campaign; third-party community listing for field awareness only.",
+      "This lists a community calendar item **“Edensong in Heber with carol Hutto. Show at 2”** with Kelly Grappe as organizer. The site does **not** have the final venue; use the **Google Meet** for coordination, carpool, or remote touch-in as needed, and **confirm the performance location** in town before you publish a pin. **Not** a campaign event unless the host lists the campaign; community listing — confirm venue with the host.",
     whatToExpect: [
       "Typical small-town community performance energy—arrive a little early if seating is open",
       "If “show at 2” is the main set, the rest of the block may be pre-show or social time",
@@ -191,12 +191,12 @@ const movementEventsCore: EventItem[] = [
     startsAt: "2026-05-09T11:00:00",
     endsAt: "2026-05-09T14:00:00",
     timezone: "America/Chicago",
-    locationLabel: "Host venue or hybrid — confirm on calendar thread (Meet on invite for coordination)",
+    locationLabel: "Host venue or hybrid — confirm with host",
     addressLine: "Arkansas (street address from host when available)",
     summary:
-      "Saturday **brunch / lunch block** with host Teresa—social time to connect before the late-spring field push. Use the original calendar thread for the **in-person** spot; the Meet link is there for coordination if needed.",
+      "Saturday **brunch / lunch block** with host Teresa—social time to connect. Confirm the **in-person** spot with the host.",
     description:
-      "Mirrors a Google Calendar item **“Brunch with Teresa”** with Kelly Grappe as organizer. **11:00 a.m.–2:00 p.m. Central** per the invite. No public address was in the paste—**ask Teresa or check the thread** before sharing a map pin. Not a campaign-hosted meal unless the campaign is named on the invitation.",
+      "Mirrors a Google Calendar item **“Brunch with Teresa”** with Kelly Grappe as organizer. **11:00 a.m.–2:00 p.m. Central** per the invite. No public address was in the paste—**ask Teresa or the host** before sharing a map pin. Not a campaign-hosted meal unless the campaign is named on the invitation.",
     whatToExpect: [
       "Midday meal window (brunch/lunch)",
       "Friendly check-in—good for relationship building and schedule alignment",
@@ -223,17 +223,17 @@ const movementEventsCore: EventItem[] = [
     startsAt: "2026-05-09T11:00:00",
     endsAt: "2026-05-09T18:00:00",
     timezone: "America/Chicago",
-    locationLabel: "Little Rock (venue TBA — confirm with host or on calendar thread)",
+    locationLabel: "Little Rock (venue TBA — confirm with host)",
     addressLine: "Little Rock, AR (festival site and parking to be confirmed with organizers)",
     summary:
-      "**501 fest** in the Little Rock / 501 area: a **11:00 a.m.–6:00 p.m. Central** block on **Saturday, May 9, 2026** from the campaign calendar. Use the **Google Meet** on the original invite to coordinate; confirm the in-person site before publishing a map pin for the public.",
+      "**501 fest** in the Little Rock / 501 area: **11:00 a.m.–6:00 p.m. Central** on **Saturday, May 9, 2026**. Confirm the in-person site before you go.",
     description:
-      "Sourced from the Google Calendar item **“501 fest Little Rock”** with **Kelly Grappe** as organizer. The invite includes **Join with Google Meet** at **https://meet.google.com/air-qbnc-zdc** and the phone bridge **(US) +1 570-399-3896, PIN 525034250** (as on the thread). **Guests** on the copy included **kelly@kellygrappe.com** and **grappe4arkansas@gmail.com**. This is a **third-party or community festival context** for field planning unless the host names the campaign on signage; the site lists it so volunteers see the same **all-day** window as the internal calendar. **Note:** the same day also shows **“Brunch with Teresa” 11:00 a.m.–2:00 p.m. Central** on the personal calendar—resolve coverage and in-person plan with the team; they are **separate** events.",
+      "Community festival context in the Little Rock / 501 area on **Saturday, May 9, 2026**. Confirm the in-person site with the host before you go. This listing is for public awareness—not a campaign-hosted festival unless the host names the campaign.",
     whatToExpect: [
       "Festival-style day—booths, food, and crowd flow per host rules once the venue is public",
-      "Meet link often used for staff/Volunteer coordination before and during the day",
+      "Volunteer coordination details shared by the host when available",
     ],
-    whoItsFor: "501 / Little Rock area neighbors, volunteers, and field teams tracking public gatherings and candidate time.",
+    whoItsFor: "501 / Little Rock area neighbors and volunteers interested in public gatherings.",
     organizerNote:
       "Calendar title: “501 fest Little Rock.” May 9, 2026, 11:00 a.m.–6:00 p.m. Central. Organizer: Kelly Grappe. Conflicts: overlaps same calendar date with “Brunch with Teresa” (11:00 a.m.–2:00 p.m.) per user’s schedule note.",
     rsvpHref: "https://meet.google.com/air-qbnc-zdc",
@@ -257,19 +257,19 @@ const movementEventsCore: EventItem[] = [
     endsAt: "2026-05-21T21:00:00",
     timezone: "America/Chicago",
     locationLabel: "Virtual — Google Meet (Arkansas Times / Little Rock area context)",
-    addressLine: "Little Rock, AR (organizer; confirm in-person components on the original thread if any)",
+    addressLine: "Little Rock, AR (confirm in-person details with host)",
     summary:
-      "**Google Meet** on the calendar thread for **5:00–9:00 p.m. Central,** same evening as **Arkansas Times** Tacos and Tequilas—use for host/partner coordination; not a campaign-run street festival unless the program names the campaign.",
+      "**Arkansas Times** Tacos and Tequilas evening window **5:00–9:00 p.m. Central**—confirm details with the host; not a campaign-run event unless the program names the campaign.",
     description:
-      "Updated Google Calendar invite: **“Arkansas times tacos and tequilas,”** **Thursday, May 21, 2026,** was extended to **5:00–9:00 p.m. Central** (previously 8:00–9:00 p.m. on an earlier version). Kelly Grappe is organizer. Phone bridge (US) **+1 813-370-0618,** PIN **213915799**; Meet: **https://meet.google.com/bvj-zyzi-xmy.**",
+      "Arkansas Times–associated evening gathering on **Thursday, May 21, 2026,** **5:00–9:00 p.m. Central**. Confirm venue or join details with the host. Not a campaign-run event unless the program names the campaign.",
     whatToExpect: [
-      "Longer evening window on the calendar—join times may be flexible; confirm on the host thread",
+      "Evening window—join times may be flexible; confirm with the host",
       "If Arkansas Times has an in-person ticketed block the same name/date, use their public listing for the physical venue",
     ],
     whoItsFor:
-      "Little Rock / Pulaski County neighbors tracking culture calendars, volunteers, and anyone invited on the host thread.",
+      "Little Rock / Pulaski County neighbors tracking culture calendars and public gatherings.",
     organizerNote:
-      "Update notice (Apr 21, 2026): time changed to 5:00–9:00 p.m. CDT. kelly@kellygrappe.com; grappe4arkansas@gmail.com. Meet: bvj-zyzi-xmy.",
+      "Update notice (Apr 21, 2026): time changed to 5:00–9:00 p.m. CDT.",
     rsvpHref: "https://meet.google.com/bvj-zyzi-xmy",
     audienceTags: ["Little Rock", "Pulaski County", "Central Arkansas", "Arkansas Times"],
     relatedEventSlugs: ["501-fest-little-rock-2026", "ar-times-spring-margarita-2026"],
@@ -289,12 +289,12 @@ const movementEventsCore: EventItem[] = [
     startsAt: "2026-05-16T08:00:00",
     endsAt: "2026-05-18T20:00:00",
     timezone: "America/Chicago",
-    locationLabel: "Magnolia, Columbia County (multi-day — stays + venues coordinated on thread)",
+    locationLabel: "Magnolia, Columbia County (multi-day — venues TBA with host)",
     addressLine: "Magnolia, AR and Columbia County (confirm lodging and public stops with the team)",
     summary:
       "**Immersion** = more than a drive-through: at least one overnight, structured days in town (e.g. library work time, county clerk or lunch with a local), and evenings to plan. Great window to **invite Kelly to church**, **host a dinner or small get-together**, or **grab coffee**—this calendar block ties to **Magnolia Blossom** weekend in town.",
     description:
-      "Google Calendar: **“Magnolia fest and immersion weekend,”** **Saturday, May 16 – Monday, May 18, 2026,** with Kelly as organizer. Public times on this site are a **reasonable multi-day block** in Central time (start of Saturday through early Monday evening) so the map and list match field reality—refine with the internal invite if your calendar uses different all-day flags. The **Magnolia Blossom Festival** is already on the public fair feed for the area; this entry is the **field immersion** layer: who shows up, where Kelly posts up, and how neighbors can **open their table** during the stay.",
+      "Google Calendar: **“Magnolia fest and immersion weekend,”** **Saturday, May 16 – Monday, May 18, 2026,** with Kelly as organizer. Public times on this site are a **reasonable multi-day block** in Central time (start of Saturday through early Monday evening) so the map and list match the published window—confirm with the host if times differ. The **Magnolia Blossom Festival** is already on the public fair feed for the area; this entry covers the immersion weekend: who shows up, where Kelly posts up, and how neighbors can **open their table** during the stay.",
     whatToExpect: [
       "A multi-day stay—not a single speech stop",
       "Room for work at the library, civic and relationship meetings by day, debriefs and planning in the evening",
@@ -302,7 +302,7 @@ const movementEventsCore: EventItem[] = [
     whoItsFor:
       "Southwest Arkansas neighbors, hosts, and faith and civic friends who can offer a real welcome—worship, a meal, or a small circle in Magnolia and Columbia County.",
     organizerNote:
-      "Internal calendar title: “Magnolia fest and immersion weekend.” May 16–18, 2026. Organizer: kelly@kellygrappe.com; guest line on the thread can include grappe4arkansas@gmail.com. **Immersion** is the movement term for this trip style.",
+      "Internal calendar title: “Magnolia fest and immersion weekend.” May 16–18, 2026. Organizer listed on the campaign invite. **Immersion** is the movement term for this trip style.",
     rsvpHref: undefined,
     audienceTags: ["Immersion", "Columbia County", "Magnolia", "Southwest Arkansas", "Faith", "Hospitality"],
     relatedEventSlugs: ["magnolia-blossom-2026", "501-fest-little-rock-2026"],
@@ -327,7 +327,7 @@ const movementEventsCore: EventItem[] = [
     summary:
       "A Sunday afternoon **faith visit** in Cross County: worship, conversation, or program time with the **Tabernacle of Faith** community in **Wynne**—arrive in a spirit of respect and follow the congregation’s house norms for visitors.",
     description:
-      "From the Google Calendar invite: **“Tabernacle of faith,”** **May 17, 2026, 3:00–6:00 p.m. Central,** with location **Wynne, AR 72396** and Kelly Grappe as organizer. A **Google Meet** is on the thread—often for carpool, backup, or hybrid planning; **confirm the physical campus or sanctuary** with the church. This listing is for **field awareness**; it is not a campaign-organized service unless the campaign is named in the program.",
+      "**Tabernacle of Faith** visit in **Wynne, AR** on **May 17, 2026, 3:00–6:00 p.m. Central**. Confirm the physical campus or sanctuary with the church. This listing is for public awareness; it is not a campaign-organized service unless the campaign is named in the program.",
     whatToExpect: [
       "Afternoon three-hour block on the host calendar (may include travel or fellowship—confirm)",
       "Dress and media rules follow the congregation’s culture",
@@ -405,14 +405,14 @@ const movementEventsCore: EventItem[] = [
     summary:
       "“Elections: Fair and Secure?” / Hot Springs Election Conversation — 5:00–9:00 p.m. Central, with local partners (VCK). (Program may start after doors open; follow host’s day-of flow.)",
     description:
-      "In-person at The Jewish Center. A Google Meet line is on the original invite (meet.google.com) for those who need remote access; phone dial-in is also on the calendar invite. Details were coordinated by community organizers, including Kelly Grappe. Contact 501-620-0427 with questions (per host outreach).",
+      "In-person at The Jewish Center. Confirm day-of flow with the host. Details were coordinated by community organizers, including Kelly Grappe.",
     whatToExpect: [
-      "Calendar block 5:00–9:00 p.m. Central (matches Google Calendar invite from kelly@kellygrappe.com)",
+      "Calendar block 5:00–9:00 p.m. Central (matches the host invite)",
       "Space for discussion on elections, integrity, and what fair process looks like locally",
     ],
     whoItsFor: "Garland County and Hot Springs area neighbors, including partners promoting the program.",
     organizerNote:
-      "Google Calendar: “Hot Springs Election Conversation,” Tue May 26, 2026, 5:00–9:00 p.m. CDT. Organizer: Kelly Grappe (kelly@kellygrappe.com / calendar grappe4arkansas@gmail.com). Titles on invites may list “Hot Springs Election Conversation.”",
+      "Google Calendar: “Hot Springs Election Conversation,” Tue May 26, 2026, 5:00–9:00 p.m. CDT.",
     rsvpHref: "https://meet.google.com/utc-cnjr-fwh",
     audienceTags: ["Garland County", "Hot Springs"],
     relatedEventSlugs: [
@@ -436,7 +436,7 @@ const movementEventsCore: EventItem[] = [
     summary:
       "The annual **Arkansas Extension Homemakers** (EH) state gathering—workshops, business sessions, and fellowship for club members from across counties. Calendar hold: **Wednesday–Friday**, multi-day, **daily** schedule.",
     description:
-      "This mirrors a Google Calendar item **“Ext homemakers club convention”** (June 3–5, 2026) with Kelly Grappe as organizer. The **Arkansas Extension Homemakers** network works through local clubs (including activities like the Petit Jean EH club’s public events). **Start/end times** on the public site are a **placeholder window**—real session blocks follow the official program. **Not** a campaign event unless the host lists the campaign; list for field awareness and travel planning. **Note:** you may have other local commitments the same week (e.g. community conversations)—check the map.",
+      "This lists a public calendar item **“Ext homemakers club convention”** (June 3–5, 2026) with Kelly Grappe as organizer. The **Arkansas Extension Homemakers** network works through local clubs (including activities like the Petit Jean EH club’s public events). **Start/end times** on the public site are a **placeholder window**—real session blocks follow the official program. **Not** a campaign event unless the host lists the campaign; listed so neighbors can plan travel. **Note:** you may have other local commitments the same week (e.g. community conversations)—check the map.",
     whatToExpect: [
       "Multi-day, daytime-heavy programming typical of state home-extension assemblies",
       "Opportunities to connect with county and state volunteer leaders in community programs",
@@ -486,7 +486,7 @@ const movementEventsCore: EventItem[] = [
     summary:
       "Panel-style community conversation on **election concerns**, part of a monthly first-Sunday series (2:00–4:00 p.m.). Co-presented by **Braver Angels Arkansas** and **Garland County Library**; facilitated by Cathi Kindt. Typical attendance ~20; format emphasizes listening across difference.",
     description:
-      "This follows email correspondence (Cathi Kindt, April 2026): the **June 7** session is offered on the topic of **election process concerns** for Garland County residents. **Ground rules from the series:** it is **not** promoted as a candidate campaign rally—participants with public roles join as **citizens** in a structured conversation, not to pitch an organization or platform. A **separate, candidacy-focused listening session** at another time remains an option Cathi offered to discuss. The campaign lists this for **field awareness and integrity of host expectations**; RSVP and room details should match the library’s or Braver Angels’ public post when available.",
+      "This follows email correspondence (Cathi Kindt, April 2026): the **June 7** session is offered on the topic of **election process concerns** for Garland County residents. **Ground rules from the series:** it is **not** promoted as a candidate campaign rally—participants with public roles join as **citizens** in a structured conversation, not to pitch an organization or platform. A **separate, candidacy-focused listening session** at another time remains an option Cathi offered to discuss. The campaign lists this so neighbors understand host expectations; RSVP and room details should match the library’s or Braver Angels’ public post when available.",
     whatToExpect: [
       "Two-hour facilitated block (2:00–4:00 p.m. Central per series pattern)",
       "Small-group norms: curiosity, civil disagreement, and local election-process concerns—not stump speeches",
@@ -542,7 +542,7 @@ const movementEventsCore: EventItem[] = [
     startsAt: "2026-09-15T10:00:00",
     endsAt: "2026-09-15T16:00:00",
     timezone: "America/Chicago",
-    locationLabel: "Russellville — “Mary Ella” site or program (table/staging TBA on calendar thread)",
+    locationLabel: "Russellville — Mary Ella site or program (table/staging TBA)",
     addressLine: "Russellville, AR (exact address with host; confirm whether Mary Ella is a school, site, or partner name)",
     summary:
       "Neighborhood-style voter registration help in Russellville, tied in the calendar to “Mary Ella.” Bring ID rules handouts, clipboards, and a plan for who covers lunch if it’s a long table day.",
@@ -554,7 +554,7 @@ const movementEventsCore: EventItem[] = [
     ],
     whoItsFor: "River Valley residents who need to register, update, or get questions answered before election deadlines.",
     organizerNote:
-      "User category: community event. Calendar title: “Russellville Mary Ella voter reg.” Organizer: Kelly Grappe (per invite). All-day on calendar; times here are a placeholder for field planning.",
+      "User category: community event. Calendar title: “Russellville Mary Ella voter reg.” Organizer: Kelly Grappe (per invite). All-day on calendar; times here are a placeholder until the host publishes a schedule.",
     rsvpHref: undefined,
     audienceTags: ["Russellville", "Pope County", "Voter registration", "Community"],
     relatedEventSlugs: ["river-valley-food-truck-russellville-2026"],

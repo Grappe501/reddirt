@@ -204,7 +204,7 @@ export default async function EventsPage({
             Browse by type or region
           </h2>
           <p className="mt-2 max-w-3xl font-body text-kelly-text/75">
-            Every county sits in one of nine geographic regions (aligned to how field teams and tourism maps talk about
+            Every county sits in one of nine geographic regions (aligned to how Arkansans and tourism maps talk about
             the state) plus a <strong>Statewide</strong> label for online or multi-area programs. Tap a tag to jump the
             filters—keyboard-friendly selects are below.
           </p>
@@ -243,8 +243,7 @@ export default async function EventsPage({
 
           <h3 className="mt-10 font-heading text-lg font-bold text-kelly-text">Regions at a glance</h3>
           <p className="mt-2 max-w-3xl font-body text-sm text-kelly-text/70">
-            Same buckets used in the campaign research directory so county pages, calendars, and field planning stay
-            consistent.
+            Same region buckets used across county pages and calendars so navigation stays consistent.
           </p>
           <ul className="mt-4 grid list-none grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-3">
             {listMovementRegionInfo().map((info) => (
@@ -281,8 +280,7 @@ export default async function EventsPage({
               className="mt-4 max-w-3xl rounded-card border border-dashed border-kelly-text/20 bg-kelly-wash/60 px-4 py-4 font-body text-sm leading-relaxed text-kelly-text/80"
               role="status"
             >
-              No live database calendar rows loaded here yet (or the campaign database is unavailable in this
-              environment). You can still browse curated movement events in the grid — and trail moments always live on{" "}
+              Live calendar updates aren’t available here yet. You can still browse listed events — and trail moments always live on{" "}
               <Link href="/from-the-road" className="font-semibold text-kelly-navy underline-offset-2 hover:underline">
                 From the Road
               </Link>
@@ -313,8 +311,8 @@ export default async function EventsPage({
             Invite Kelly
           </h2>
           <p className="mt-3 max-w-2xl font-body text-kelly-text/75">
-            Want Kelly in your town, fair, county meeting, or civic room? Start with the invite pathway — staff will review, follow
-            up, and confirm logistics before anything is treated as public schedule.
+            Want Kelly in your town, fair, county meeting, or civic room? Start with the invite pathway — the campaign will
+            review, follow up, and confirm logistics before anything is treated as public schedule.
           </p>
           <Button href="/events/request" variant="primary" className="mt-6 min-h-[48px]">
             Invite Kelly — why, how, and what
@@ -365,8 +363,7 @@ export default async function EventsPage({
               Community calendar highlights
             </h2>
             <p className="mt-2 max-w-2xl font-body text-sm text-kelly-text/75">
-              Fairs, festivals, and public gatherings the team has approved for the site-wide feed. Full list and field map
-              on the{" "}
+              Fairs, festivals, and public gatherings listed for the site-wide feed. Full list and map on the{" "}
               <Link href="/from-the-road" className="font-semibold text-kelly-navy underline">
                 From the Road
               </Link>
@@ -417,8 +414,8 @@ export default async function EventsPage({
             Suggest a fair, festival, or public event
           </h2>
           <p className="mt-2 max-w-2xl font-body text-sm text-kelly-text/75">
-            Know a neighborhood gathering that should be on the map? Send it in—staff review it on the event calendar
-            before it shows up here and on the campaign trail.
+            Know a neighborhood gathering that should be on the map? Send it in—the campaign reviews it before it appears
+            here and on the trail.
           </p>
           {suggestOk === "suggest" ? (
             <p className="mt-3 rounded-md border border-kelly-success/30 bg-kelly-success/10 px-3 py-2 font-body text-sm text-kelly-text" role="status">
@@ -427,8 +424,8 @@ export default async function EventsPage({
           ) : null}
           {counties.length === 0 ? (
             <p className="mt-3 rounded-md border border-amber-200/80 bg-amber-50/90 px-3 py-2 font-body text-sm text-amber-950/90" role="status">
-              County pick-list is temporarily unavailable. You can still describe the location in your message—staff will match
-              it manually.
+              County pick-list is temporarily unavailable. You can still describe the location in your message—we’ll match
+              it to a county.
             </p>
           ) : null}
           <SuggestCommunityEventForm counties={counties} idPrefix="suggest" />

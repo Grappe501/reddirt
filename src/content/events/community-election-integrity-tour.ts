@@ -80,7 +80,7 @@ export const communityElectionIntegrityTourContent = {
         "Build local point teams for ongoing, factual follow-up",
       ] as const,
       closing:
-        "What you see on this site is planning and principles. Counties and dates are added only after staff verify details — nothing here is a public announcement until the campaign lists it on the calendar.",
+        "What you see on this site is planning and principles. Counties and dates are added only after the campaign verifies details — nothing here is a public announcement until it is listed on the calendar.",
     },
     what: {
       heading: "What each stop should do",
@@ -133,7 +133,7 @@ export const communityElectionIntegrityTourContent = {
       href: "/events/request",
     },
     formTitle: "Host request form coming soon",
-    formBody: "Email the campaign with the details above — staff will follow up the same way they do for other host requests.",
+    formBody: "Email the campaign with the details above — the campaign will follow up the same way it does for other host requests.",
   },
 
   counties: {

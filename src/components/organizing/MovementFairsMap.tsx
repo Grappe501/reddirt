@@ -174,7 +174,7 @@ function MapPinMarker({
             <p className="mt-1 text-[11px] text-amber-900/90">Approximate region pin — confirm address on the detail page.</p>
           ) : null}
           {pin.eventSource === "calendar" ? (
-            <p className="mt-1 text-[11px] text-kelly-blue">Campaign HQ calendar — staff-published only.</p>
+            <p className="mt-1 text-[11px] text-kelly-blue">On the campaign calendar.</p>
           ) : null}
           <p className="mt-2 line-clamp-4 text-xs leading-relaxed text-kelly-text/80">{pin.summary}</p>
           <a
@@ -225,14 +225,14 @@ export function MovementFairsMap({ events, selectedSlug = null, onSelectSlug }: 
           className="inline-block h-3 w-3 shrink-0 rounded-full border border-kelly-text/20 shadow-sm"
           style={{ background: MOVEMENT_EVENT_PIN }}
         />
-        <span className="font-body">Movement site events</span>
+        <span className="font-body">Community events</span>
       </span>
       <span className="inline-flex items-center gap-2">
         <span
           className="inline-block h-3 w-3 shrink-0 rounded-full border border-kelly-text/20 shadow-sm"
           style={{ background: CALENDAR_OPS_PIN }}
         />
-        <span className="font-body">HQ calendar (published)</span>
+        <span className="font-body">Campaign calendar</span>
       </span>
       <span className="inline-flex items-center gap-2">
         <span
@@ -304,14 +304,13 @@ export function MovementFairsMap({ events, selectedSlug = null, onSelectSlug }: 
       </div>
       <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
         <p className="font-body text-xs text-kelly-text/60">
-          OpenStreetMap + Leaflet — operational field view. Use the map’s +/− buttons to zoom (scroll moves the page).
-          Pins without coordinates stay in the list only until staff add a point or county.
+          Use the map’s +/− buttons to zoom (scroll moves the page). Some stops are list-only until a location is set.
         </p>
         <Link
           href="/events"
           className="shrink-0 font-body text-xs font-bold uppercase tracking-wider text-kelly-navy underline-offset-2 hover:underline"
         >
-          Full HQ calendar →
+          All events →
         </Link>
       </div>
     </div>

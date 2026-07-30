@@ -78,7 +78,7 @@ export function publicCampaignEventToEventItem(ev: PublicCampaignEvent): EventIt
     description: ev.publicSummary?.trim() || ev.title,
     whatToExpect: [],
     whoItsFor: "Published on the campaign calendar for supporters and the public.",
-    organizerNote: "Campaign operations calendar (published + public on site).",
+    organizerNote: "Published on the campaign calendar.",
     relatedEventSlugs: [],
     relatedResourceHrefs: [
       { label: "Campaign calendar", href: "/events" },

@@ -68,21 +68,15 @@ export function EventCard({ event, className, highlighted, onActivate }: EventCa
           ) : null}
           {event.eventSource === "calendar" ? (
             <span className="rounded-full border border-kelly-blue/35 bg-kelly-blue/10 px-2.5 py-0.5 font-body text-[11px] font-bold uppercase tracking-wider text-kelly-text">
-              HQ calendar
+              Campaign calendar
             </span>
           ) : null}
-          {event.mapPinQuality === "region" ? (
+          {event.mapPinQuality === "region" || (ops?.missingCounty) ? (
             <span className="rounded-full border border-kelly-text/20 bg-kelly-text/[0.06] px-2.5 py-0.5 font-body text-[11px] font-bold uppercase tracking-wider text-kelly-text/80">
-              Region pin
+              Location TBA
             </span>
           ) : null}
         </div>
-        {ops && (ops.missingPublicSummary || ops.missingCounty) ? (
-          <p className="mt-3 rounded-md border border-amber-200/80 bg-amber-50/90 px-2.5 py-1.5 font-body text-[11px] leading-snug text-amber-950/90">
-            {ops.missingCounty ? "County TBA — pin uses region centroid. " : null}
-            {ops.missingPublicSummary ? "Public summary not set — showing a short auto line." : null}
-          </p>
-        ) : null}
         <h3 className="mt-4 font-heading text-xl font-bold text-kelly-text lg:text-2xl">
           <Link href={detailHref} className="hover:text-kelly-navy focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-kelly-navy/40">
             {event.title}

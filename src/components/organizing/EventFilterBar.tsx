@@ -100,7 +100,7 @@ export function EventFilterBar({
         />
         <span>
           <span className="font-bold">Campaign calendar</span>
-          <span className="block text-xs text-kelly-text/65">Published HQ events on the same map</span>
+          <span className="block text-xs text-kelly-text/65">Include published campaign stops</span>
         </span>
       </label>
       <div className="lg:ml-auto">

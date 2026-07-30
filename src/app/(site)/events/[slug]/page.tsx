@@ -107,12 +107,13 @@ export default async function EventDetailPage({ params }: Props) {
 
             <aside className="space-y-6 lg:sticky lg:top-28">
               <div className="rounded-card border border-kelly-text/10 bg-[var(--color-surface-elevated)] p-6 shadow-[var(--shadow-soft)]">
-                <h2 className="font-heading text-lg font-bold text-kelly-text">Organizer note</h2>
-                <p className="mt-3 font-body text-sm leading-relaxed text-kelly-text/75">{event.organizerNote}</p>
-                <p className="mt-4 font-body text-xs text-kelly-text/55">
-                  {/* Future: named host + verified contact when event sync is available */}
-                  Public organizer bios and verified contacts land in the next integration pass.
+                <h2 className="font-heading text-lg font-bold text-kelly-text">Join this stop</h2>
+                <p className="mt-3 font-body text-sm leading-relaxed text-kelly-text/75">
+                  {event.locationLabel}
                 </p>
+                {event.addressLine ? (
+                  <p className="mt-2 font-body text-sm text-kelly-text/65">{event.addressLine}</p>
+                ) : null}
               </div>
               <Button href={rsvpHref} variant="primary" className="w-full justify-center">
                 RSVP or raise your hand

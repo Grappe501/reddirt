@@ -150,7 +150,7 @@ export function EventsHub({ events, types, regions, audienceTags, initialFilters
 
         <div className="order-2 xl:order-1">
           <div className="mb-2">
-            <h3 className="font-heading text-lg font-bold text-kelly-text">Field map</h3>
+            <h3 className="font-heading text-lg font-bold text-kelly-text">Event map</h3>
             <p className="mt-1 font-body text-sm text-kelly-text/70">
               Click a pin or card to sync the view. Filters apply to both.
             </p>
