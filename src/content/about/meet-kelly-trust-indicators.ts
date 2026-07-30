@@ -40,8 +40,8 @@ export const MEET_KELLY_TRUST_INDICATORS: readonly TrustIndicator[] = [
   {
     kind: "media",
     label: "Talk Business & Politics",
-    detail: "Arkansas business and politics coverage — candidate interview and 2026 election list.",
-    href: "https://talkbusiness.net/2026-election-candidates/",
+    detail: "Capitol View interview with Roby Brock — why she’s running and the skills she brings to the office.",
+    href: "https://www.kark.com/capitol-view/capitol-view-barack-obamas-arkansas-visit-arkansas-sec-of-state-candidate-kelly-grappe/",
     verification: "VERIFIED",
   },
 ] as const;

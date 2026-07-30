@@ -117,7 +117,7 @@
 
 | Claim | Source(s) | Status | Notes / verification path |
 |-------|-----------|--------|---------------------------|
-| Talk Business & Politics interview | F, campaign-partners | VERIFIED | https://talkbusiness.net/2026-election-candidates/ |
+| Talk Business & Politics interview | F, meet-kelly-trust-indicators | VERIFIED | https://www.kark.com/capitol-view/capitol-view-barack-obamas-arkansas-visit-arkansas-sec-of-state-candidate-kelly-grappe/ (Roby Brock / Capitol View) |
 | Interview summary copy (operations → SOS) | F | NEEDS SOURCE | Replace with transcript-accurate wording |
 | YouTube embed for Talk Business | talk-business-media.ts | VERIFIED | When env/DB video id configured |
 
