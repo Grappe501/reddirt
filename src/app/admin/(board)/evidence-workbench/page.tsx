@@ -193,7 +193,7 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
         <p className="ew-eyebrow">Campaign OS · Media evidence</p>
         <h1 className="ew-title">Evidence Workbench</h1>
         <p className="ew-lede">
-          Phase 1 desks: Intake → Identify → County <em>or</em> Edit → Publish. Prefer Unknown. Never
+          Phase 2 Identify Board: AI-first → Save → Route (locked until Hold). Prefer Unknown. Never
           invent geography. Saves under{" "}
           <code className="rounded bg-kelly-fog px-1.5 py-0.5 font-mono text-[12px]">
             data/campaign-media/
@@ -295,8 +295,8 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
                 Identify Board · Board A
               </p>
               <p className="mt-1 font-body text-xs text-[#364272]">
-                One asset at a time. Heavy AI for names, county, event, people. Save opens Route —
-                County album <em>or</em> Creative Edit. Prefer Unknown. No Pro Edit on this desk.
+                One asset at a time. AI-first Suggest / Vision → review → Save → Route (required
+                before Prev/Next). Prefer Unknown. No Pro Edit on this desk.
               </p>
             </div>
             <EvidenceFitBacklogPanel initialBacklog={fitBacklog} />
@@ -310,9 +310,6 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
               deskMode="identify"
             />
             <div className="mt-6 border-t-2 border-[#000066]/10 pt-4">
-              <p className="mb-3 font-heading text-xs font-bold uppercase text-[#000066]">
-                Videos · identify / confirm
-              </p>
               <EvidenceSpeechConfirmPanel
                 speeches={speeches}
                 initialQueue={speechConfirmQueue}
@@ -320,6 +317,7 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
                 initialPlacement={speechPlacementProposal}
                 placementCurrent={speechPlacementCurrent}
                 hidePlacement
+                identifyDesk
               />
             </div>
           </>

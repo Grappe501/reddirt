@@ -18,6 +18,7 @@ import type { SpeechConfirmQueue } from "@/lib/campaign-media/speech-confirm-que
 import type { SpeechPlacementProposal } from "@/lib/campaign-media/speech-placement";
 import type { SpeechReadinessRow } from "@/lib/campaign-media/speech-readiness";
 import { EVIDENCE_FIELD_CLASS } from "@/components/admin/evidence-workbench/field-styles";
+import { EvidenceRouteGate } from "@/components/admin/evidence-workbench/EvidenceRouteGate";
 
 type SpeechLite = {
   id: string;
@@ -32,6 +33,8 @@ type Props = {
   placementCurrent: { primaryId: string; acrossId: string };
   /** When true, omit homepage video placement (hosted on Public Surface Desk / Place stage). */
   hidePlacement?: boolean;
+  /** Phase 2 Identify Board — Route gate after batch Save; lock selection until Route/Hold. */
+  identifyDesk?: boolean;
 };
 
 export function EvidenceSpeechConfirmPanel({
@@ -41,6 +44,7 @@ export function EvidenceSpeechConfirmPanel({
   initialPlacement,
   placementCurrent,
   hidePlacement = false,
+  identifyDesk = false,
 }: Props) {
   const [queue, setQueue] = useState(initialQueue);
   const [rows, setRows] = useState(initialRows);
@@ -54,6 +58,9 @@ export function EvidenceSpeechConfirmPanel({
   const [showMatrix, setShowMatrix] = useState(
     () => initialQueue.totals.noCounty + initialQueue.totals.needsPublish > 0,
   );
+  const [routeGateOpen, setRouteGateOpen] = useState(false);
+  const [routeAssetId, setRouteAssetId] = useState<string>("");
+  const routeLocked = identifyDesk && routeGateOpen;
 
   useEffect(() => {
     setQueue(initialQueue);
@@ -64,6 +71,10 @@ export function EvidenceSpeechConfirmPanel({
   const selectedIds = useMemo(() => [...selected], [selected]);
 
   function toggle(id: string) {
+    if (routeLocked) {
+      setMessage("Route or Hold this speech before changing selection.");
+      return;
+    }
     setSelected((prev) => {
       const next = new Set(prev);
       if (next.has(id)) next.delete(id);
@@ -73,6 +84,10 @@ export function EvidenceSpeechConfirmPanel({
   }
 
   function selectBucket(ids: string[]) {
+    if (routeLocked) {
+      setMessage("Route or Hold this speech before changing selection.");
+      return;
+    }
     setSelected(new Set(ids));
   }
 
@@ -120,6 +135,10 @@ export function EvidenceSpeechConfirmPanel({
         patch,
       });
       setMessage(res.message);
+      if (identifyDesk && res.ok) {
+        setRouteAssetId(selectedIds[0] ?? "");
+        setRouteGateOpen(true);
+      }
       refresh();
     });
   }
@@ -195,13 +214,24 @@ export function EvidenceSpeechConfirmPanel({
 
   return (
     <div className="mb-6 space-y-4 text-[#12124a]">
+      {identifyDesk && routeGateOpen && routeAssetId ? (
+        <EvidenceRouteGate
+          assetId={routeAssetId}
+          kind="speech"
+          open={routeGateOpen}
+          locked={routeLocked}
+          onDismiss={() => setRouteGateOpen(false)}
+        />
+      ) : null}
       <div className="rounded-lg border-2 border-[#000066]/20 bg-white p-4">
         <p className="font-heading text-sm font-bold text-[#000066]">
-          Speech confirm / publish parity
+          {identifyDesk ? "Videos · Identify / confirm" : "Speech confirm / publish parity"}
         </p>
         <p className="mt-1 font-body text-xs text-[#364272]">
-          Batch county / status / do-not-claim · readiness matrix · homepage video placement propose.
-          Approve/Publish never silent; empty-county skipped on public-raising actions.
+          {identifyDesk
+            ? "Batch Save counties/proof → Route (County / Speaks / Cuts). Prefer Unknown. Placement lives on Publish."
+            : "Batch county / status / do-not-claim · readiness matrix · homepage video placement propose. Approve/Publish never silent; empty-county skipped on public-raising actions."}
+          {routeLocked ? " Selection locked until Route or Hold." : ""}
         </p>
         <div className="mt-3 grid gap-2 sm:grid-cols-3 lg:grid-cols-6">
           <Stat label="No county" value={queue.totals.noCounty} />
@@ -222,7 +252,7 @@ export function EvidenceSpeechConfirmPanel({
           </button>
           <button
             type="button"
-            disabled={pending}
+            disabled={pending || routeLocked}
             onClick={() => selectBucket(queue.buckets.noCounty.map((i) => i.id))}
             className="rounded border-2 border-[#8eb6dc] bg-white px-2.5 py-1 font-body text-xs font-semibold disabled:opacity-50"
           >
@@ -230,7 +260,7 @@ export function EvidenceSpeechConfirmPanel({
           </button>
           <button
             type="button"
-            disabled={pending}
+            disabled={pending || routeLocked}
             onClick={() => selectBucket(queue.buckets.needsPublish.map((i) => i.id))}
             className="rounded border-2 border-[#8eb6dc] bg-white px-2.5 py-1 font-body text-xs font-semibold disabled:opacity-50"
           >
@@ -238,7 +268,7 @@ export function EvidenceSpeechConfirmPanel({
           </button>
           <button
             type="button"
-            disabled={pending}
+            disabled={pending || routeLocked}
             onClick={() => setSelected(new Set())}
             className="rounded border-2 border-[#8eb6dc] bg-white px-2.5 py-1 font-body text-xs font-semibold disabled:opacity-50"
           >
@@ -248,7 +278,7 @@ export function EvidenceSpeechConfirmPanel({
             href="/admin/evidence-workbench?tab=county"
             className="rounded border-2 border-[#8eb6dc] bg-white px-2.5 py-1 font-body text-xs font-semibold"
           >
-            Publish Queue
+            County desk
           </Link>
         </div>
       </div>
@@ -291,7 +321,7 @@ export function EvidenceSpeechConfirmPanel({
             onClick={batchFields}
             className="rounded border-2 border-[#000066] bg-[#000066] px-2.5 py-1 font-body text-xs font-bold text-white disabled:opacity-50"
           >
-            Batch Save fields
+            {identifyDesk ? "Batch Save → Route" : "Batch Save fields"}
           </button>
           <button
             type="button"

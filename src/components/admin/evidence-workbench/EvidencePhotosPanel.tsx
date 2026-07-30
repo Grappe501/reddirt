@@ -31,6 +31,7 @@ import {
   suggestCropPlanAction,
   suggestPhotoEvidenceAiAction,
   undoBatchPublishAction,
+  runVisionIdentifyBatchAction,
 } from "@/app/admin/evidence-workbench-actions";
 import type { OwnedMediaEvidenceLink } from "@/lib/campaign-media/owned-media-evidence-link";
 import { parsePhotosUrlFilter } from "@/lib/campaign-media/evidence-workbench-deep-links";
@@ -340,6 +341,7 @@ export function EvidencePhotosPanel({
 
   // If the active photo falls out of the filter, jump to the first visible id.
   useEffect(() => {
+    if (deskMode === "identify" && routeGateOpen) return;
     if (filteredIds.length === 0) {
       setForm(null);
       return;
@@ -347,7 +349,7 @@ export function EvidencePhotosPanel({
     if (!filteredIds.includes(activeId)) {
       setActiveId(filteredIds[0]);
     }
-  }, [filteredIds, activeId]);
+  }, [filteredIds, activeId, deskMode, routeGateOpen]);
 
   // Load form + clear dirty only when the active photo id changes (Prev/Next).
   useEffect(() => {
@@ -443,15 +445,31 @@ export function EvidencePhotosPanel({
 
   function selectPhoto(nextId: string) {
     if (nextId === activeId) return;
+    if (deskMode === "identify" && routeGateOpen) {
+      setMessage("Route or Hold this still before leaving Identify.");
+      return;
+    }
     if (dirty && !window.confirm("Discard unsaved photo edits?")) return;
     setActiveId(nextId);
   }
 
   function go(delta: number) {
+    if (deskMode === "identify" && routeGateOpen) {
+      setMessage("Route or Hold this still before leaving Identify.");
+      return;
+    }
     if (index < 0) return;
     const next = filteredIds[index + delta];
     if (!next) return;
     selectPhoto(next);
+  }
+
+  function attemptSetFilter(next: Filter) {
+    if (deskMode === "identify" && routeGateOpen) {
+      setMessage("Route or Hold this still before changing the Identify queue.");
+      return;
+    }
+    setFilter(next);
   }
 
   useEffect(() => {
@@ -485,7 +503,7 @@ export function EvidencePhotosPanel({
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [filteredIds, activeId, dirty, form, photo, selectedIds]);
+  }, [filteredIds, activeId, dirty, form, photo, selectedIds, deskMode, routeGateOpen]);
 
   useEffect(() => {
     const img = previewImgRef.current;
@@ -575,6 +593,29 @@ export function EvidencePhotosPanel({
       }
       if (s.warnings.length) extras.push(`Warnings: ${s.warnings.join("; ")}`);
       if (extras.length) setMessage(`${res.message}\n${extras.join("\n")}`);
+    });
+  }
+
+  function visionIdentifyThis() {
+    if (!photo) return;
+    const photoId = photo.id;
+    if (
+      !window.confirm(
+        `Vision Identify for ${photoId}? Proposes only — Prefer Unknown. Still review and Save.`,
+      )
+    ) {
+      return;
+    }
+    start(async () => {
+      const res = await runVisionIdentifyBatchAction({
+        confirm: true,
+        photoIds: [photoId],
+        useAi: true,
+        maxPhotos: 1,
+      });
+      setMessage(res.message);
+      const turbo = await getTurboProposalAction(photoId);
+      setTurboProposal(turbo.proposal ?? null);
     });
   }
 
@@ -1441,31 +1482,42 @@ export function EvidencePhotosPanel({
       filter === "approved" ||
       filter === "homepage" ||
       filter === "all");
+  const routeLocked = deskMode === "identify" && routeGateOpen;
+  const identifyFocus = deskMode === "identify";
 
   return (
     <div className="space-y-4">
-      {deskMode === "identify" && routeGateOpen && photo ? (
+      {identifyFocus && routeGateOpen && photo ? (
         <EvidenceRouteGate
           assetId={photo.id}
           kind="photo"
           open={routeGateOpen}
+          locked={routeLocked}
           onDismiss={() => setRouteGateOpen(false)}
         />
       ) : null}
 
-      <FilterBar query={query} setQuery={setQuery} counts={filtered.length} />
+      {!identifyFocus ? (
+        <FilterBar query={query} setQuery={setQuery} counts={filtered.length} />
+      ) : (
+        <p className="font-body text-xs text-[#364272]">
+          Identify queue · <span className="font-semibold text-[#12124a]">{filtered.length}</span> in
+          view · one asset at a time
+          {routeLocked ? " · route locked" : ""}
+        </p>
+      )}
 
       <div className="rounded-lg border-2 border-[#000066]/15 bg-[#f4f7fc] p-3">
         <p className="font-heading text-[11px] font-bold uppercase tracking-wide text-[#000066]">
-          {deskMode === "identify"
+          {identifyFocus
             ? "Identify Board · photos"
             : deskMode === "edit"
               ? "Creative Edit · photos"
               : "Photos stage strip"}
         </p>
         <p className="mt-1 font-body text-[10px] text-[#364272]">
-          {deskMode === "identify"
-            ? "One job: identity + metadata. Save opens Route (County vs Edit). No Pro Edit here. Prefer Unknown."
+          {identifyFocus
+            ? "AI first → review fields → Save → Route. Prefer Unknown. No Pro Edit here."
             : deskMode === "edit"
               ? "Pro Edit / promote only. Route here after Identify when the asset needs special use."
               : "Progressive desk — Identify on Unknown; Pro Edit / Promote under Needs Promote. Prefer Unknown."}
@@ -1475,9 +1527,10 @@ export function EvidencePhotosPanel({
             <button
               key={s.id}
               type="button"
-              title={s.hint}
-              onClick={() => setFilter(s.id)}
-              className={`rounded-md border px-3 py-1.5 font-body text-xs font-bold ${
+              title={routeLocked ? "Route or Hold before changing queue" : s.hint}
+              disabled={routeLocked}
+              onClick={() => attemptSetFilter(s.id)}
+              className={`rounded-md border px-3 py-1.5 font-body text-xs font-bold disabled:opacity-50 ${
                 filter === s.id
                   ? "border-[#000066] bg-[#000066] text-white"
                   : "border-[#8eb6dc] bg-white text-[#12124a]"
@@ -1491,8 +1544,9 @@ export function EvidencePhotosPanel({
             <button
               key={f.id}
               type="button"
-              onClick={() => setFilter(f.id)}
-              className={`rounded-md border px-3 py-1.5 font-body text-xs font-semibold ${
+              disabled={routeLocked}
+              onClick={() => attemptSetFilter(f.id)}
+              className={`rounded-md border px-3 py-1.5 font-body text-xs font-semibold disabled:opacity-50 ${
                 filter === f.id
                   ? "border-[#000066] bg-[#000066] text-white"
                   : "border-[#8eb6dc]/60 bg-white text-[#364272]"
@@ -1501,7 +1555,7 @@ export function EvidencePhotosPanel({
               {f.label}
             </button>
           ))}
-          {deskMode === "identify" ? (
+          {identifyFocus ? (
             <Link
               href="/admin/evidence-workbench?tab=edit&filter=needsPromote"
               className="rounded-md border border-[#8eb6dc] bg-white px-3 py-1.5 font-body text-xs font-semibold text-[#12124a]"
@@ -1520,12 +1574,12 @@ export function EvidencePhotosPanel({
         </div>
         {!allowProEdit ? (
           <p className="mt-2 font-body text-[10px] text-[#364272]">
-            Pro Edit lives on the Edit desk. After Save, use Route → County album or Creative Edit.
+            After Save, Route is required before Prev/Next. Hold keeps Prefer Unknown on this board.
           </p>
         ) : null}
       </div>
 
-      {turboProposal && turboProposal.status === "pending" ? (
+      {!identifyFocus && turboProposal && turboProposal.status === "pending" ? (
         <div className="rounded-lg border-2 border-[#ca913d]/60 bg-[#fff8ef] p-3">
           <p className="font-heading text-xs font-bold uppercase tracking-wide text-[#000066]">
             Turbo website fit · {turboProposal.identifySource}
@@ -1583,6 +1637,7 @@ export function EvidencePhotosPanel({
         </div>
       ) : null}
 
+      {!identifyFocus ? (
       <div className="rounded-lg border-2 border-[#000066]/15 bg-white p-3">
         <div className="flex flex-wrap items-center justify-between gap-2">
             <p className="font-heading text-xs font-bold uppercase tracking-wide text-[#000066]">
@@ -1797,25 +1852,33 @@ export function EvidencePhotosPanel({
           })}
         </div>
       </div>
+      ) : null}
 
       <div className="grid gap-6 lg:grid-cols-2">
         <div>
           <div className="flex items-center justify-between gap-2">
             <button
               type="button"
-              className="rounded border-2 border-[#8eb6dc] bg-white px-3 py-1.5 font-body text-sm text-[#12124a]"
-              disabled={index <= 0}
+              className="rounded border-2 border-[#8eb6dc] bg-white px-3 py-1.5 font-body text-sm text-[#12124a] disabled:opacity-50"
+              disabled={index <= 0 || routeLocked}
+              title={routeLocked ? "Route or Hold before leaving" : undefined}
               onClick={() => go(-1)}
             >
               ← Prev
             </button>
             <p className="font-body text-xs text-[#364272]">
-              {index + 1} / {filtered.length} · ← → or j/k · Ctrl+S save · x select · a all
+              {index + 1} / {filtered.length}
+              {identifyFocus
+                ? routeLocked
+                  ? " · route locked"
+                  : " · ← → or j/k · Ctrl+S save"
+                : " · ← → or j/k · Ctrl+S save · x select · a all"}
             </p>
             <button
               type="button"
-              className="rounded border-2 border-[#8eb6dc] bg-white px-3 py-1.5 font-body text-sm text-[#12124a]"
-              disabled={index < 0 || index >= filtered.length - 1}
+              className="rounded border-2 border-[#8eb6dc] bg-white px-3 py-1.5 font-body text-sm text-[#12124a] disabled:opacity-50"
+              disabled={index < 0 || index >= filtered.length - 1 || routeLocked}
+              title={routeLocked ? "Route or Hold before leaving" : undefined}
               onClick={() => go(1)}
             >
               Next →
@@ -2295,7 +2358,77 @@ export function EvidencePhotosPanel({
         </div>
 
         <div className="space-y-3 rounded-lg border-2 border-[#000066]/15 bg-white p-4 text-[#12124a]">
-          <h3 className="font-heading text-lg font-bold text-[#000066]">Evidence fields</h3>
+          {identifyFocus ? (
+            <div className="rounded-lg border-2 border-[#ca913d]/50 bg-[#fff8ef] p-3">
+              <p className="font-heading text-xs font-bold uppercase tracking-wide text-[#000066]">
+                AI-first · Identify
+              </p>
+              <p className="mt-1 font-body text-[10px] text-[#364272]">
+                Suggest / Vision propose only. Prefer Unknown. Review fields below, then Save → Route.
+              </p>
+              <EvidenceAiModePanel kind="photo" mode={aiMode} onChange={setAiMode} />
+              <div className="mt-2 flex flex-wrap gap-2">
+                <button
+                  type="button"
+                  disabled={pending || routeLocked}
+                  onClick={suggestAi}
+                  className="rounded-md border-2 border-[#000066] bg-[#000066] px-4 py-2 font-body text-sm font-bold text-white disabled:opacity-50"
+                >
+                  Suggest with AI ({aiMode})
+                </button>
+                <button
+                  type="button"
+                  disabled={pending || routeLocked}
+                  onClick={visionIdentifyThis}
+                  className="rounded-md border-2 border-[#000066] bg-white px-4 py-2 font-body text-sm font-bold text-[#000066] disabled:opacity-50"
+                >
+                  Vision Identify this still
+                </button>
+                <button
+                  type="button"
+                  disabled={pending || routeLocked}
+                  onClick={save}
+                  className="rounded-md border-2 border-[#ca913d] bg-[#ca913d] px-4 py-2 font-body text-sm font-bold text-white disabled:opacity-50"
+                >
+                  Save → Route
+                </button>
+              </div>
+              {turboProposal && turboProposal.status === "pending" ? (
+                <div className="mt-3 rounded border border-[#8eb6dc]/50 bg-white p-2">
+                  <p className="font-heading text-[10px] font-bold uppercase text-[#000066]">
+                    Turbo proposal · {turboProposal.identifySource}
+                  </p>
+                  {turboProposal.identify ? (
+                    <p className="mt-1 font-body text-[11px] text-[#12124a]">
+                      {turboProposal.identify.county}/{turboProposal.identify.city} ·{" "}
+                      {turboProposal.identify.confidence} · {turboProposal.identify.rationale}
+                    </p>
+                  ) : null}
+                  <div className="mt-2 flex flex-wrap gap-2">
+                    <button
+                      type="button"
+                      disabled={pending || routeLocked}
+                      onClick={() => applyTurbo({ identify: true })}
+                      className="rounded border-2 border-[#000066] bg-white px-2.5 py-1 font-body text-[11px] font-bold text-[#000066] disabled:opacity-50"
+                    >
+                      Apply identify
+                    </button>
+                    <button
+                      type="button"
+                      disabled={pending || routeLocked}
+                      onClick={() => applyTurbo({ identify: true, fit: true })}
+                      className="rounded border-2 border-[#000066] bg-[#000066] px-2.5 py-1 font-body text-[11px] font-bold text-white disabled:opacity-50"
+                    >
+                      Apply identify + fit
+                    </button>
+                  </div>
+                </div>
+              ) : null}
+            </div>
+          ) : null}
+          <h3 className="font-heading text-lg font-bold text-[#000066]">
+            {identifyFocus ? "Review identity fields" : "Evidence fields"}
+          </h3>
           <p className="font-body text-xs text-[#364272]">
             Editing <span className="font-mono font-semibold">{photo.id}</span>
             {dirty ? " · unsaved" : ""}
@@ -2524,47 +2657,72 @@ export function EvidencePhotosPanel({
           </div>
 
           <div className="space-y-2">
-            <EvidenceAiModePanel kind="photo" mode={aiMode} onChange={setAiMode} />
-            <div className="flex flex-wrap gap-2">
-            <button
-              type="button"
-              disabled={pending}
-              onClick={suggestAi}
-              className="rounded-md border-2 border-[#000066] bg-white px-4 py-2 font-body text-sm font-bold text-[#000066] disabled:opacity-50"
-            >
-              Suggest with AI ({aiMode})
-            </button>
-            <button
-              type="button"
-              disabled={pending}
-              onClick={save}
-              className="rounded-md bg-[#000066] px-4 py-2 font-body text-sm font-bold text-white disabled:opacity-50"
-            >
-              Save photo evidence
-            </button>
-            <button
-              type="button"
-              disabled={pending}
-              onClick={buildPacket}
-              className="rounded-md border-2 border-[#8eb6dc] bg-white px-4 py-2 font-body text-sm font-semibold text-[#12124a] disabled:opacity-50"
-            >
-              Build outgoing metadata packet
-            </button>
-            <button
-              type="button"
-              disabled={pending}
-              onClick={() => {
-                start(async () => {
-                  const { refreshCountyAlbumsAction } = await import("@/app/admin/evidence-workbench-actions");
-                  const res = await refreshCountyAlbumsAction(true);
-                  setMessage(res.message);
-                });
-              }}
-              className="rounded-md border-2 border-[#8eb6dc] bg-white px-4 py-2 font-body text-sm font-semibold text-[#12124a] disabled:opacity-50"
-            >
-              Rebuild county folders
-            </button>
-            </div>
+            {!identifyFocus ? (
+              <>
+                <EvidenceAiModePanel kind="photo" mode={aiMode} onChange={setAiMode} />
+                <div className="flex flex-wrap gap-2">
+                  <button
+                    type="button"
+                    disabled={pending}
+                    onClick={suggestAi}
+                    className="rounded-md border-2 border-[#000066] bg-white px-4 py-2 font-body text-sm font-bold text-[#000066] disabled:opacity-50"
+                  >
+                    Suggest with AI ({aiMode})
+                  </button>
+                  <button
+                    type="button"
+                    disabled={pending}
+                    onClick={save}
+                    className="rounded-md bg-[#000066] px-4 py-2 font-body text-sm font-bold text-white disabled:opacity-50"
+                  >
+                    Save photo evidence
+                  </button>
+                  <button
+                    type="button"
+                    disabled={pending}
+                    onClick={buildPacket}
+                    className="rounded-md border-2 border-[#8eb6dc] bg-white px-4 py-2 font-body text-sm font-semibold text-[#12124a] disabled:opacity-50"
+                  >
+                    Build outgoing metadata packet
+                  </button>
+                  <button
+                    type="button"
+                    disabled={pending}
+                    onClick={() => {
+                      start(async () => {
+                        const { refreshCountyAlbumsAction } = await import(
+                          "@/app/admin/evidence-workbench-actions"
+                        );
+                        const res = await refreshCountyAlbumsAction(true);
+                        setMessage(res.message);
+                      });
+                    }}
+                    className="rounded-md border-2 border-[#8eb6dc] bg-white px-4 py-2 font-body text-sm font-semibold text-[#12124a] disabled:opacity-50"
+                  >
+                    Rebuild county folders
+                  </button>
+                </div>
+              </>
+            ) : (
+              <div className="flex flex-wrap gap-2">
+                <button
+                  type="button"
+                  disabled={pending || routeLocked}
+                  onClick={save}
+                  className="rounded-md bg-[#000066] px-4 py-2 font-body text-sm font-bold text-white disabled:opacity-50"
+                >
+                  Save → Route
+                </button>
+                <button
+                  type="button"
+                  disabled={pending}
+                  onClick={buildPacket}
+                  className="rounded-md border-2 border-[#8eb6dc] bg-white px-4 py-2 font-body text-sm font-semibold text-[#12124a] disabled:opacity-50"
+                >
+                  Build metadata packet
+                </button>
+              </div>
+            )}
           </div>
           {message ? (
             <p className="whitespace-pre-wrap font-body text-sm text-[#364272]">{message}</p>
