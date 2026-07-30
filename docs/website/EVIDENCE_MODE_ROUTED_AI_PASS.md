@@ -68,4 +68,4 @@
 
 | Pass | Commit | Note |
 | --- | ---: | --- |
-| Mode-routed AI | _(this pass)_ | Mode subsets + UI panel + smoke |
+| Mode-routed AI | `b6ce9086` | Mode subsets + UI panel + smoke |
