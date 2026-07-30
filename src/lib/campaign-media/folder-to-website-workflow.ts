@@ -1,9 +1,8 @@
 /**
  * Folder → Website workflow — path constants + progress for Arrival desk.
- * Prefer Unknown. Detect ≠ Intake ≠ Save ≠ Approve ≠ Ship.
+ * Client-safe (no node:). Prefer Unknown. Detect ≠ Intake ≠ Save ≠ Approve ≠ Ship.
  */
 
-import path from "node:path";
 import type { PhotoIntakeStatus } from "@/lib/campaign-media/photo-ingest";
 import type { ArrivalIntakePreview } from "@/lib/campaign-media/photo-ingest";
 import type { VideoMasterArrivalSummary } from "@/lib/campaign-media/video-master-arrival";
@@ -11,14 +10,6 @@ import type { VideoMasterArrivalSummary } from "@/lib/campaign-media/video-maste
 export const FOLDER_TO_WEBSITE_PHOTOS_REL = "public/media/campaign-photos";
 export const FOLDER_TO_WEBSITE_MASTERS_REL = "public/media/campaign-video-masters";
 export const FOLDER_TO_WEBSITE_LOCAL_MASTERS_HINT = "H:/SOSWebsite/.local/video-masters";
-
-export function folderToWebsitePhotosAbs(cwd = process.cwd()): string {
-  return path.join(cwd, ...FOLDER_TO_WEBSITE_PHOTOS_REL.split("/"));
-}
-
-export function folderToWebsiteMastersAbs(cwd = process.cwd()): string {
-  return path.join(cwd, ...FOLDER_TO_WEBSITE_MASTERS_REL.split("/"));
-}
 
 export type FolderToWebsiteStepId =
   | "drop"
