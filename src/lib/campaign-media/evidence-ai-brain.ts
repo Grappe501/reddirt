@@ -8,6 +8,12 @@ import { evidenceAiToolsFor } from "@/lib/campaign-media/evidence-ai-tool-defs";
 import { executeEvidenceAiTool } from "@/lib/campaign-media/evidence-ai-tool-runtime";
 import type { EvidenceAiSuggestion } from "@/lib/campaign-media/evidence-ai-types";
 import {
+  modeMeta,
+  parseEvidenceAiMode,
+  systemExtraForMode,
+  type EvidenceAiMode,
+} from "@/lib/campaign-media/evidence-ai-modes";
+import {
   formatOpenAIErrorForClient,
   getOpenAIClient,
   getOpenAIConfigFromEnv,
@@ -19,6 +25,7 @@ You may call tools to ground suggestions in local campaign data (counties, calen
 and to inspect or create non-destructive photo derivatives / video excerpt plans.
 Hard rules:
 - Prefer "Unknown" over inventing county, city, venue, people, or dates.
+- Active AI mode limits which tools are available — stay inside that subset.
 - Never invent geography from clothing, vibes, or incomplete tool results.
 - Confirmed memory and calendar Confirmed rows are soft priors — only reuse when the current asset clearly matches.
 - Needs confirm / empty calendar geography is NOT proof.
@@ -99,9 +106,19 @@ export async function runEvidenceAiBrain(input: {
   extraImageDataUrls?: string[];
   /** Appended to the system prompt for specialized modes (e.g. batch propose). */
   systemExtra?: string;
+  /** Audit #5 — mode-routed tool subset (default identify). */
+  mode?: EvidenceAiMode | string;
   maxToolRounds?: number;
 }): Promise<
-  | { ok: true; suggestion: EvidenceAiSuggestion; toolsUsed: string[]; model: string; rawContent?: string }
+  | {
+      ok: true;
+      suggestion: EvidenceAiSuggestion;
+      toolsUsed: string[];
+      model: string;
+      mode: EvidenceAiMode;
+      toolCount: number;
+      rawContent?: string;
+    }
   | { ok: false; error: string }
 > {
   if (!isOpenAIConfigured()) {
@@ -110,9 +127,12 @@ export async function runEvidenceAiBrain(input: {
 
   const client = getOpenAIClient();
   const { model } = getOpenAIConfigFromEnv();
-  const tools = evidenceAiToolsFor(input.kind);
+  const mode = parseEvidenceAiMode(input.mode ?? "identify");
+  const tools = evidenceAiToolsFor(input.kind, mode);
   const toolsUsed: string[] = [];
-  const maxRounds = input.maxToolRounds ?? 4;
+  const maxRounds = input.maxToolRounds ?? modeMeta(mode).maxToolRounds;
+  const modeExtra = systemExtraForMode(mode);
+  const systemExtra = [modeExtra, input.systemExtra].filter(Boolean).join("\n");
 
   const userContent: ChatCompletionContentPart[] = [{ type: "text", text: input.userText }];
   if (input.imageDataUrl) {
@@ -123,17 +143,34 @@ export async function runEvidenceAiBrain(input: {
   }
 
   const messages: ChatCompletionMessageParam[] = [
-    { role: "system", content: input.systemExtra ? `${SYSTEM}\n${input.systemExtra}` : SYSTEM },
+    { role: "system", content: systemExtra ? `${SYSTEM}\n${systemExtra}` : SYSTEM },
     { role: "user", content: userContent },
   ];
+
+  const finish = (suggestion: EvidenceAiSuggestion, rawContent?: string) => {
+    suggestion.toolsUsed = [...new Set(toolsUsed)];
+    suggestion.warnings = [
+      ...suggestion.warnings,
+      `AI mode: ${mode} (${tools.length} tools)`,
+    ];
+    return {
+      ok: true as const,
+      suggestion,
+      toolsUsed: suggestion.toolsUsed,
+      model,
+      mode,
+      toolCount: tools.length,
+      rawContent,
+    };
+  };
 
   try {
     for (let round = 0; round < maxRounds; round++) {
       const res = await client.chat.completions.create({
         model,
         temperature: 0.2,
-        tools,
-        tool_choice: "auto",
+        tools: tools.length ? tools : undefined,
+        tool_choice: tools.length ? "auto" : undefined,
         messages,
       });
       const msg = res.choices[0]?.message;
@@ -159,7 +196,6 @@ export async function runEvidenceAiBrain(input: {
         continue;
       }
 
-      // Force JSON final answer if the model replied in prose without tools.
       const content = msg.content?.trim() ?? "";
       if (!content) {
         messages.push({
@@ -175,16 +211,11 @@ export async function runEvidenceAiBrain(input: {
         });
         const raw = final.choices[0]?.message?.content?.trim() ?? "";
         if (!raw) return { ok: false, error: "OpenAI returned empty suggestion." };
-        const suggestion = parseSuggestion(raw);
-        suggestion.toolsUsed = [...new Set(toolsUsed)];
-        return { ok: true, suggestion, toolsUsed: suggestion.toolsUsed, model, rawContent: raw };
+        return finish(parseSuggestion(raw), raw);
       }
 
-      // Try parse direct JSON; otherwise ask for JSON-only follow-up once.
       try {
-        const suggestion = parseSuggestion(content);
-        suggestion.toolsUsed = [...new Set(toolsUsed)];
-        return { ok: true, suggestion, toolsUsed: suggestion.toolsUsed, model, rawContent: content };
+        return finish(parseSuggestion(content), content);
       } catch {
         messages.push({ role: "assistant", content });
         messages.push({
@@ -199,13 +230,14 @@ export async function runEvidenceAiBrain(input: {
         });
         const raw = final.choices[0]?.message?.content?.trim() ?? "";
         if (!raw) return { ok: false, error: "OpenAI returned empty suggestion." };
-        const suggestion = parseSuggestion(raw);
-        suggestion.toolsUsed = [...new Set(toolsUsed)];
-        return { ok: true, suggestion, toolsUsed: suggestion.toolsUsed, model, rawContent: raw };
+        return finish(parseSuggestion(raw), raw);
       }
     }
 
-    return { ok: false, error: "Evidence AI hit the tool-round limit without a final suggestion." };
+    return {
+      ok: false,
+      error: `Evidence AI hit the tool-round limit without a final suggestion (mode=${mode}).`,
+    };
   } catch (err) {
     return { ok: false, error: formatOpenAIErrorForClient(err) };
   }

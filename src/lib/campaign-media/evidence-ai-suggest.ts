@@ -31,15 +31,25 @@ function readPublicImageAsDataUrl(src: string): string | null {
 export async function suggestPhotoEvidenceWithAi(input: {
   photo: CampaignPhotoRecord;
   overlay: PhotoEvidenceOverlay | null;
-}): Promise<{ ok: true; suggestion: EvidenceAiSuggestion } | { ok: false; error: string }> {
+  mode?: import("@/lib/campaign-media/evidence-ai-modes").EvidenceAiMode | string;
+}): Promise<
+  | {
+      ok: true;
+      suggestion: EvidenceAiSuggestion;
+      mode: import("@/lib/campaign-media/evidence-ai-modes").EvidenceAiMode;
+      toolCount: number;
+    }
+  | { ok: false; error: string }
+> {
   const memory = formatMemoryForPrompt(12);
   const imageDataUrl = readPublicImageAsDataUrl(input.photo.src);
+  const { parseEvidenceAiMode } = await import("@/lib/campaign-media/evidence-ai-modes");
+  const mode = parseEvidenceAiMode(input.mode ?? "identify");
 
-  const userText = `Suggest evidence fields for this campaign PHOTO using tools when helpful.
+  const userText = `Suggest evidence fields for this campaign PHOTO using tools when helpful (mode=${mode}).
 Call lookup_arkansas_county before asserting a county.
 Call search_calendar_presence / search_confirmed_memory / find_similar_campaign_photos when cues exist.
-Call get_photo_file_basics / inspect_photo_pixels / suggest_crop_plan when useful for cropAdvice.
-Prefer Unknown geography. Do not auto-create derivatives unless cropAdvice clearly needs a written file.
+Stay inside the active mode tool subset. Prefer Unknown geography.
 Do not invent geography.
 
 Registry baseline (may be Unknown):
@@ -63,6 +73,7 @@ ${memory}`;
     kind: "photo",
     userText,
     imageDataUrl,
+    mode,
   });
   if (!result.ok) return result;
 
@@ -80,21 +91,30 @@ ${memory}`;
       `Tools used: ${result.toolsUsed.join(", ")}`,
     ];
   }
-  return { ok: true, suggestion };
+  return { ok: true, suggestion, mode: result.mode, toolCount: result.toolCount };
 }
 
 export async function suggestSpeechEvidenceWithAi(input: {
   media: CampaignMediaRecord;
   overlay: SpeechEvidenceOverlay | null;
-}): Promise<{ ok: true; suggestion: EvidenceAiSuggestion } | { ok: false; error: string }> {
+  mode?: import("@/lib/campaign-media/evidence-ai-modes").EvidenceAiMode | string;
+}): Promise<
+  | {
+      ok: true;
+      suggestion: EvidenceAiSuggestion;
+      mode: import("@/lib/campaign-media/evidence-ai-modes").EvidenceAiMode;
+      toolCount: number;
+    }
+  | { ok: false; error: string }
+> {
   const memory = formatMemoryForPrompt(12);
+  const { parseEvidenceAiMode } = await import("@/lib/campaign-media/evidence-ai-modes");
+  const mode = parseEvidenceAiMode(input.mode ?? "identify");
 
-  const userText = `Suggest evidence fields for this campaign SPEECH/VIDEO using tools when helpful.
-Call get_video_transcript_excerpt for youtubeVideoId=${input.media.youtubeVideoId} when useful.
-Call plan_video_excerpt / probe_video_tooling / encode_video_excerpt when proposing short-clip speakerNotes (encode only when a local master exists).
+  const userText = `Suggest evidence fields for this campaign SPEECH/VIDEO using tools when helpful (mode=${mode}).
+Stay inside the active mode tool subset.
 Call lookup_arkansas_county before asserting counties.
-Call search_calendar_presence / search_confirmed_memory / search_campaign_speeches for grounding.
-Do not invent geography or spoken claims not supported by transcript/tools.
+Prefer Unknown geography. Do not invent spoken claims not supported by transcript/tools.
 
 Title: ${input.media.title}
 Description: ${input.media.description}
@@ -111,6 +131,7 @@ ${memory}`;
   const result = await runEvidenceAiBrain({
     kind: "video",
     userText,
+    mode,
   });
   if (!result.ok) return result;
 
@@ -121,7 +142,7 @@ ${memory}`;
       `Tools used: ${result.toolsUsed.join(", ")}`,
     ];
   }
-  return { ok: true, suggestion };
+  return { ok: true, suggestion, mode: result.mode, toolCount: result.toolCount };
 }
 
 const BATCH_SHARED_FIELDS = [
@@ -192,8 +213,13 @@ export async function suggestBatchPhotoEvidenceWithAi(input: {
     photo: CampaignPhotoRecord;
     overlay: PhotoEvidenceOverlay | null;
   }>;
+  /** Prefer identify (default). Fit allowed; other modes coerce to identify for batch safety. */
+  mode?: import("@/lib/campaign-media/evidence-ai-modes").EvidenceAiMode | string;
 }): Promise<{ ok: true; proposal: BatchPhotoAiProposal } | { ok: false; error: string }> {
   const { clusterPhotoSelection } = await import("@/lib/campaign-media/cluster-photo-selection");
+  const { parseEvidenceAiMode } = await import("@/lib/campaign-media/evidence-ai-modes");
+  const requested = parseEvidenceAiMode(input.mode ?? "identify");
+  const mode = requested === "fit" ? "fit" : "identify";
   const capped = input.photos.slice(0, 24);
   if (capped.length < 2) {
     return { ok: false, error: "Select at least 2 photos for batch AI suggest." };
@@ -255,6 +281,7 @@ ${memory}`;
     userText,
     imageDataUrl: imageUrls[0] ?? null,
     extraImageDataUrls: imageUrls.slice(1),
+    mode,
     systemExtra:
       "BATCH MODE: Propose shared fields only. Never call batch_apply_photo_evidence. Include recommendedApplyFields and optional perPhotoNotes in the final JSON.",
     maxToolRounds: 5,

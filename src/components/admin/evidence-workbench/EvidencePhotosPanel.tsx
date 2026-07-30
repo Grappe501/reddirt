@@ -38,6 +38,8 @@ import type {
   PhotoEditProject,
 } from "@/lib/campaign-media/photo-edit-types";
 import { EVIDENCE_FIELD_CLASS } from "@/components/admin/evidence-workbench/field-styles";
+import { EvidenceAiModePanel } from "@/components/admin/evidence-workbench/EvidenceAiModePanel";
+import type { EvidenceAiMode } from "@/lib/campaign-media/evidence-ai-modes";
 import { isEditableKeyboardTarget } from "@/components/admin/evidence-workbench/keyboard";
 
 function focusPointToMarker(
@@ -205,6 +207,7 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId, initialF
   );
   const [message, setMessage] = useState("");
   const [pending, start] = useTransition();
+  const [aiMode, setAiMode] = useState<EvidenceAiMode>("identify");
   const [dirty, setDirty] = useState(false);
   const [derivatives, setDerivatives] = useState<PhotoDerivativeRecord[]>([]);
   const [editProject, setEditProject] = useState<PhotoEditProject | null>(null);
@@ -451,8 +454,9 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId, initialF
   function suggestAi() {
     if (!photo) return;
     const photoId = photo.id;
+    const mode = aiMode;
     start(async () => {
-      const res = await suggestPhotoEvidenceAiAction(photoId);
+      const res = await suggestPhotoEvidenceAiAction(photoId, mode);
       setMessage(res.message);
       if (!res.ok || !res.suggestion) return;
       const s = res.suggestion;
@@ -933,7 +937,7 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId, initialF
     }
     const ids = selectedIds.slice(0, 24);
     start(async () => {
-      const res = await suggestBatchPhotoEvidenceAiAction(ids);
+      const res = await suggestBatchPhotoEvidenceAiAction(ids, aiMode);
       setMessage(res.message);
       if (!res.ok || !res.proposal) return;
       setProposal(res.proposal);
@@ -2051,14 +2055,16 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId, initialF
             </label>
           </div>
 
-          <div className="flex flex-wrap gap-2">
+          <div className="space-y-2">
+            <EvidenceAiModePanel kind="photo" mode={aiMode} onChange={setAiMode} />
+            <div className="flex flex-wrap gap-2">
             <button
               type="button"
               disabled={pending}
               onClick={suggestAi}
               className="rounded-md border-2 border-[#000066] bg-white px-4 py-2 font-body text-sm font-bold text-[#000066] disabled:opacity-50"
             >
-              Suggest with AI (tools)
+              Suggest with AI ({aiMode})
             </button>
             <button
               type="button"
@@ -2090,6 +2096,7 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId, initialF
             >
               Rebuild county folders
             </button>
+            </div>
           </div>
           {message ? (
             <p className="whitespace-pre-wrap font-body text-sm text-[#364272]">{message}</p>

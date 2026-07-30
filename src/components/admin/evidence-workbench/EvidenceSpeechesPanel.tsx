@@ -32,7 +32,9 @@ import type {
 import type { TranscriptIntelProposal } from "@/lib/campaign-media/transcript-intelligence";
 import { mergeAiCountyIntoList } from "@/lib/campaign-media/evidence-validation";
 import { EVIDENCE_FIELD_CLASS } from "@/components/admin/evidence-workbench/field-styles";
+import { EvidenceAiModePanel } from "@/components/admin/evidence-workbench/EvidenceAiModePanel";
 import { isEditableKeyboardTarget } from "@/components/admin/evidence-workbench/keyboard";
+import type { EvidenceAiMode } from "@/lib/campaign-media/evidence-ai-modes";
 
 type PrepPacketView = {
   message: string;
@@ -76,6 +78,7 @@ export function EvidenceSpeechesPanel({ speeches, initialSpeechId }: Props) {
   const [index, setIndex] = useState(startIdx >= 0 ? startIdx : 0);
   const [message, setMessage] = useState("");
   const [pending, start] = useTransition();
+  const [aiMode, setAiMode] = useState<EvidenceAiMode>("identify");
   const [ffmpegNote, setFfmpegNote] = useState("");
   const [posterAt, setPosterAt] = useState("1");
   const [posterSrc, setPosterSrc] = useState<string | null>(null);
@@ -211,8 +214,9 @@ export function EvidenceSpeechesPanel({ speeches, initialSpeechId }: Props) {
 
   function suggestAi() {
     const speechId = speech.id;
+    const mode = aiMode;
     start(async () => {
-      const res = await suggestSpeechEvidenceAiAction(speechId);
+      const res = await suggestSpeechEvidenceAiAction(speechId, mode);
       setMessage(res.message);
       if (!res.ok || !res.suggestion) return;
       const s = res.suggestion;
@@ -1069,14 +1073,16 @@ export function EvidenceSpeechesPanel({ speeches, initialSpeechId }: Props) {
               ))}
             </select>
           </label>
-          <div className="flex flex-wrap gap-2">
+          <div className="space-y-2">
+            <EvidenceAiModePanel kind="video" mode={aiMode} onChange={setAiMode} />
+            <div className="flex flex-wrap gap-2">
             <button
               type="button"
               disabled={pending}
               onClick={suggestAi}
               className="rounded-md border-2 border-[#000066] bg-white px-4 py-2 font-body text-sm font-bold text-[#000066] disabled:opacity-50"
             >
-            Suggest with AI (tools)
+            Suggest with AI ({aiMode})
           </button>
             <button
               type="button"
@@ -1110,6 +1116,7 @@ export function EvidenceSpeechesPanel({ speeches, initialSpeechId }: Props) {
             >
               Analyze transcript (Pass 8)
             </button>
+            </div>
           </div>
 
           {intelProposal ? (

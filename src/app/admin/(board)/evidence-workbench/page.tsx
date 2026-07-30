@@ -11,6 +11,7 @@ import { EvidenceSpeechConfirmPanel } from "@/components/admin/evidence-workbenc
 import { EvidenceSpeechesPanel } from "@/components/admin/evidence-workbench/EvidenceSpeechesPanel";
 import { strategicPlacementNotes } from "@/content/media/strategic-photo-placements";
 import { EVIDENCE_AI_TOOL_CATALOG } from "@/lib/campaign-media/evidence-ai-tool-defs";
+import { listEvidenceAiModesForUi } from "@/lib/campaign-media/evidence-ai-modes";
 import { photoPublicSurfacesPreview } from "@/lib/campaign-media/county-albums-live";
 import {
   loadCalendarPresenceStore,
@@ -206,8 +207,25 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
           OpenAI evidence brain — tools (OPENAI_API_KEY)
         </p>
         <p className="mt-1 font-body text-xs text-[#364272]">
-          Suggest with AI can call these local tools before proposing fields. Tools never auto-confirm geography.
+          Suggest with AI is mode-routed (Identify · Fit · Photo/Video prep · Publish · General). Each
+          mode exposes a tool subset — never auto-confirm geography. Full catalog below.
         </p>
+        <ul className="mt-3 flex flex-wrap gap-2 font-body text-[11px] text-[#364272]">
+          {(["photo", "video"] as const).flatMap((kind) =>
+            listEvidenceAiModesForUi(kind).map((m) => (
+              <li
+                key={`${kind}-${m.id}`}
+                className="rounded border border-[#8eb6dc]/50 bg-[#f4f7fc] px-2 py-1"
+              >
+                <span className="font-semibold text-[#000066]">
+                  {kind}/{m.label}
+                </span>
+                {" · "}
+                {m.toolCount === "all" ? "all tools" : `${m.toolCount} tools`}
+              </li>
+            )),
+          )}
+        </ul>
         <ul className="mt-3 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
           {EVIDENCE_AI_TOOL_CATALOG.map((t) => (
             <li key={t.name} className="rounded border border-[#8eb6dc]/50 bg-[#f4f7fc] px-3 py-2">

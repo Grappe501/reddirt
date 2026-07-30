@@ -723,19 +723,28 @@ function writeIcsToCsv(icsPath: string, csvPath: string): void {
 
 export async function suggestPhotoEvidenceAiAction(
   photoId: string,
-): Promise<{ ok: boolean; message: string; suggestion?: import("@/lib/campaign-media/evidence-ai-types").EvidenceAiSuggestion }> {
+  mode?: string,
+): Promise<{
+  ok: boolean;
+  message: string;
+  suggestion?: import("@/lib/campaign-media/evidence-ai-types").EvidenceAiSuggestion;
+  mode?: import("@/lib/campaign-media/evidence-ai-modes").EvidenceAiMode;
+  toolCount?: number;
+}> {
   const g = await gate();
   if (!g.ok) return { ok: false, message: g.error };
   const photo = listCampaignPhotosLive().find((p) => p.id === photoId);
   if (!photo) return { ok: false, message: `Photo not found: ${photoId}` };
   const overlay = loadPhotoEvidenceStore().photos[photoId] ?? null;
   const { suggestPhotoEvidenceWithAi } = await import("@/lib/campaign-media/evidence-ai-suggest");
-  const result = await suggestPhotoEvidenceWithAi({ photo, overlay });
+  const result = await suggestPhotoEvidenceWithAi({ photo, overlay, mode });
   if (!result.ok) return { ok: false, message: result.error };
   return {
     ok: true,
-    message: `AI suggestion (${result.suggestion.confidence}): ${result.suggestion.rationale || "review fields"}`,
+    message: `AI suggestion [${result.mode} · ${result.toolCount} tools] (${result.suggestion.confidence}): ${result.suggestion.rationale || "review fields"}`,
     suggestion: result.suggestion,
+    mode: result.mode,
+    toolCount: result.toolCount,
   };
 }
 
@@ -771,7 +780,10 @@ export async function clusterPhotoSelectionAction(photoIds: string[]): Promise<{
   return { ok: true, message: result.summary, result };
 }
 
-export async function suggestBatchPhotoEvidenceAiAction(photoIds: string[]): Promise<{
+export async function suggestBatchPhotoEvidenceAiAction(
+  photoIds: string[],
+  mode?: string,
+): Promise<{
   ok: boolean;
   message: string;
   proposal?: import("@/lib/campaign-media/evidence-ai-types").BatchPhotoAiProposal;
@@ -799,6 +811,7 @@ export async function suggestBatchPhotoEvidenceAiAction(photoIds: string[]): Pro
       photo: (typeof live)[number];
       overlay: (typeof store.photos)[string] | null;
     }>,
+    mode,
   });
   if (!result.ok) return { ok: false, message: result.error };
   const p = result.proposal;
@@ -811,7 +824,14 @@ export async function suggestBatchPhotoEvidenceAiAction(photoIds: string[]): Pro
 
 export async function suggestSpeechEvidenceAiAction(
   speechId: string,
-): Promise<{ ok: boolean; message: string; suggestion?: import("@/lib/campaign-media/evidence-ai-types").EvidenceAiSuggestion }> {
+  mode?: string,
+): Promise<{
+  ok: boolean;
+  message: string;
+  suggestion?: import("@/lib/campaign-media/evidence-ai-types").EvidenceAiSuggestion;
+  mode?: import("@/lib/campaign-media/evidence-ai-modes").EvidenceAiMode;
+  toolCount?: number;
+}> {
   const g = await gate();
   if (!g.ok) return { ok: false, message: g.error };
   const { CAMPAIGN_MEDIA_REGISTRY } = await import("@/content/media/campaign-media-registry");
@@ -819,12 +839,14 @@ export async function suggestSpeechEvidenceAiAction(
   if (!media) return { ok: false, message: `Speech not found: ${speechId}` };
   const overlay = loadSpeechEvidenceStore().speeches[speechId] ?? null;
   const { suggestSpeechEvidenceWithAi } = await import("@/lib/campaign-media/evidence-ai-suggest");
-  const result = await suggestSpeechEvidenceWithAi({ media, overlay });
+  const result = await suggestSpeechEvidenceWithAi({ media, overlay, mode });
   if (!result.ok) return { ok: false, message: result.error };
   return {
     ok: true,
-    message: `AI suggestion (${result.suggestion.confidence}): ${result.suggestion.rationale || "review fields"}`,
+    message: `AI suggestion [${result.mode} · ${result.toolCount} tools] (${result.suggestion.confidence}): ${result.suggestion.rationale || "review fields"}`,
     suggestion: result.suggestion,
+    mode: result.mode,
+    toolCount: result.toolCount,
   };
 }
 

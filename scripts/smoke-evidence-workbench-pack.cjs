@@ -17,6 +17,7 @@ const SMOKES = [
   "scripts/smoke-evidence-ship-checklist.ts",
   "scripts/smoke-curated-placement.ts",
   "scripts/smoke-speech-confirm-publish.ts",
+  "scripts/smoke-evidence-ai-modes.ts",
   "scripts/smoke-turbo-ingest.ts",
   "scripts/smoke-batch-photo-evidence.ts",
   "scripts/smoke-cluster-photo-selection.ts",

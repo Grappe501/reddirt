@@ -4,6 +4,10 @@
  */
 
 import type { ChatCompletionTool } from "openai/resources/chat/completions";
+import {
+  type EvidenceAiMode,
+  toolNamesForMode,
+} from "@/lib/campaign-media/evidence-ai-modes";
 
 export const EVIDENCE_AI_TOOL_CATALOG: Array<{
   name: string;
@@ -317,7 +321,10 @@ export const EVIDENCE_AI_TOOL_CATALOG: Array<{
   },
 ];
 
-export function evidenceAiToolsFor(kind: "photo" | "video"): ChatCompletionTool[] {
+export function evidenceAiToolsFor(
+  kind: "photo" | "video",
+  mode: EvidenceAiMode = "general",
+): ChatCompletionTool[] {
   const both: ChatCompletionTool[] = [
     {
       type: "function",
@@ -1388,5 +1395,8 @@ export function evidenceAiToolsFor(kind: "photo" | "video"): ChatCompletionTool[
     },
   ];
 
-  return kind === "photo" ? [...both, ...photo] : [...both, ...video];
+  const all = kind === "photo" ? [...both, ...photo] : [...both, ...video];
+  const allow = toolNamesForMode(kind, mode);
+  if (!allow) return all;
+  return all.filter((t) => t.type === "function" && allow.has(t.function.name));
 }
