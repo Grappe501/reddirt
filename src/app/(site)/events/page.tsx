@@ -273,9 +273,8 @@ export default async function EventsPage({
             Upcoming events
           </h2>
           <p className="mt-3 max-w-3xl font-body text-kelly-text/75">
-            The filterable grid below merges curated movement events with{" "}
-            <strong className="text-kelly-text">approved</strong> public calendar items from the campaign database. New
-            stops are added only after review and confirmation.
+            The filterable grid below lists campaign and community events as they are published. New stops appear when
+            details are confirmed.
           </p>
           {calendarRows.length === 0 ? (
             <p

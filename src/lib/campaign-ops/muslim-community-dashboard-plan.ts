@@ -1,11 +1,10 @@
 /**
- * Muslim Community Civic Organizing Dashboard — plan constants (draft).
+ * Muslim Community Civic Organizing Dashboard — plan constants.
  * Used by `/volunteer/resources/muslim-community` and campaign-ops docs.
- * All copy is draft until Muslim community leadership review.
  */
 
 export const MUSLIM_DASHBOARD_DRAFT_NOTICE =
-  "Draft — pending Muslim community review. Do not publish or treat as final until reviewed by trusted Muslim women leaders, youth leaders, family leaders, and mosque/community leadership.";
+  "This hub is still growing with community partners. Materials and labels will expand as they are ready to share.";
 
 /** Authenticated-style dashboard shell (partner-facing). Resource hub remains the long-form draft. */
 export const MUSLIM_COMMUNITY_DASHBOARD_BASE = "/dashboard/community/muslim";

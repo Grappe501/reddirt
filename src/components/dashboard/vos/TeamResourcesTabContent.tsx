@@ -106,9 +106,9 @@ export function TeamResourcesTabContent({ teamSlug }: { teamSlug: string }) {
 
       <section id="fundraising-resources" className="rounded-2xl border border-kelly-gold/30 bg-kelly-gold/[0.06] p-6 md:p-8">
         <p className="font-body text-[10px] font-bold uppercase tracking-[0.22em] text-kelly-deep/60">Fundraising resources</p>
-        <h3 className="mt-2 font-heading text-lg font-bold text-kelly-navy">Review-gated library (no downloads yet)</h3>
+        <h3 className="mt-2 font-heading text-lg font-bold text-kelly-navy">Fundraising resource library</h3>
         <p className="mt-2 font-body text-sm text-kelly-text/80">
-          Assets move Draft → Internal review → Ernie review → Design preview → Approved → Published. Use the fundraising workspace for
+          Printable fundraising assets appear here when they are ready to download. Use the fundraising workspace for
           lane context; numbers here are planning figures until finance data connects.
         </p>
         <p className="mt-3">

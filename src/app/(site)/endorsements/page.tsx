@@ -45,8 +45,8 @@ export default async function EndorsementsPage() {
               Published when confirmed — empty until then
             </h2>
             <p className="mt-2 font-body text-sm leading-relaxed text-kelly-slate">
-              Attendance at an event, a photograph, or a private conversation is not an endorsement. Names are added only
-              after campaign confirmation, with source on record.
+              Attendance at an event, a photograph, or a private conversation is not an endorsement. Names appear when
+              organizations and community leaders formally announce support.
             </p>
           </aside>
 

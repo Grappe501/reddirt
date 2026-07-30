@@ -173,23 +173,18 @@ export function presentVolunteerResource(resource: VolunteerResource): Volunteer
 
   let reviewNote: string | null = null;
   if (downloadish && !allowDirectFileDownload) {
-    reviewNote =
-      "Download coming after campaign review — Ernie polish, campaign approval, and an uploaded file are required before this is a direct link.";
+    reviewNote = "Download coming soon.";
   } else if (resource.comingSoon && downloadish) {
-    reviewNote = "Not available for download yet — mockup and approval required before release.";
+    reviewNote = "Download coming soon.";
   } else if (resource.comingSoon && !downloadish) {
-    reviewNote =
-      "Campaign review — content may be draft; page may still be useful for structure and links.";
+    reviewNote = null;
   }
 
   let downloadNote: string | null = null;
   if (downloadish) {
-    downloadNote =
-      allowDirectFileDownload
-        ? "Campaign-approved download (Ernie + campaign gates cleared; file on server)."
-        : "Printable PDF — review pipeline and upload required before final download.";
+    downloadNote = allowDirectFileDownload ? "PDF download" : null;
   } else if (resource.fileType === "Web") {
-    downloadNote = "Read online — updates with the field playbook and site.";
+    downloadNote = "Read online";
   }
 
   return {

@@ -7,7 +7,7 @@ import { pageMeta } from "@/lib/seo/metadata";
 export const metadata: Metadata = pageMeta({
   title: "Privacy",
   description:
-    "How the Kelly Grappe for Arkansas Secretary of State campaign site handles information you share—draft for counsel review.",
+    "How the Kelly Grappe for Arkansas Secretary of State campaign site handles information you share.",
   path: "/privacy",
   imageSrc: "/media/placeholders/texture-porch-glow.svg",
 });
@@ -18,7 +18,7 @@ export default function PrivacyPage() {
       <PageHero
         eyebrow="Legal"
         title="Privacy"
-        subtitle="This page is a public-facing structure for campaign counsel to finalize. Do not treat it as legal advice."
+        subtitle="How we handle information you share through this site. This is not legal advice."
         contentClassName="!pt-6 !pb-8 sm:!pt-8 sm:!pb-10"
       />
       <FullBleedSection padY className="!py-10 sm:!py-14">
@@ -26,8 +26,7 @@ export default function PrivacyPage() {
           <p>
             <strong>Status.</strong> The campaign intends to describe what information may be collected through this
             website (for example, when you submit forms, sign up to volunteer, or contact us), how it is used, how long
-            it may be kept, and your choices. Exact language requires review and approval by{" "}
-            <strong>campaign counsel</strong> and the <strong>treasurer</strong>.
+            it may be kept, and your choices. A complete privacy policy will be posted here when it is ready.
           </p>
           <p>
             <strong>Forms.</strong> Intake is processed through our campaign systems. Do not include sensitive

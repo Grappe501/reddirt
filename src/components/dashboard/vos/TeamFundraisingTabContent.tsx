@@ -256,14 +256,9 @@ export function TeamFundraisingTabContent({ team, teamSlug }: { team: Team; team
           </section>
 
           <section id="fundraising-resources" className="rounded-2xl border border-kelly-text/10 bg-kelly-fog/40 p-6 md:p-8">
-            <h3 className="font-heading text-lg font-bold text-kelly-navy">Resource library (review workflow)</h3>
+            <h3 className="font-heading text-lg font-bold text-kelly-navy">Resource library</h3>
             <p className="mt-2 font-body text-sm text-kelly-text/80">
-              Downloadable versions move{" "}
-              <span className="font-semibold">
-                Draft → Internal review → Ernie review → Design preview → Approved → Published
-              </span>
-              .
-              Nothing here is a final public download yet.
+              Downloadable versions appear here when they are ready. Nothing here is a final public download yet.
             </p>
             <ul className="mt-4 space-y-3">
               {FUNDRAISING_RESOURCE_LIBRARY.map((r) => (

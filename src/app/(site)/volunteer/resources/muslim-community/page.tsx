@@ -9,6 +9,7 @@ import {
   MUSLIM_COMMUNITY_DASHBOARD_TABS,
   MUSLIM_COMMUNITY_RESOURCE_STUBS,
   MUSLIM_CROSS_LANE_COORDINATION,
+  MUSLIM_DASHBOARD_DRAFT_NOTICE,
   MUSLIM_REGION_LEADERSHIP_MODEL,
   MUSLIM_WOMENS_OUTREACH_LANE,
   MUSLIM_YOUTH_OUTREACH_LANE,
@@ -108,7 +109,7 @@ export default function MuslimCommunityDashboardPlanPage() {
           <section id="social" className="scroll-mt-32 space-y-2">
             <h2 className="font-heading text-xl font-bold text-kelly-navy">Social / Communications</h2>
             <p className="font-body text-sm text-kelly-text/80">
-              Community-approved messaging — coordinated with the campaign Social Media lead. Supports Youth and Women’s lanes
+              Messaging coordinated with the campaign Social Media lead. Supports Youth and Women’s lanes
               with appropriate tone, privacy, and guardian/family context where relevant.
             </p>
           </section>
@@ -185,16 +186,15 @@ export default function MuslimCommunityDashboardPlanPage() {
           <section id="mosque-polling" className="scroll-mt-32 space-y-2">
             <h2 className="font-heading text-xl font-bold text-kelly-navy">Mosque Polling Location Readiness</h2>
             <p className="font-body text-sm text-kelly-text/80">
-              Polling-site planning, stakeholder alignment, and neutral public language — use Calendar HQ workflow{" "}
-              <code className="rounded bg-kelly-text/10 px-1 text-xs">s4_event_faith_venue_polling_v1</code> and counsel review.
-              Coordinate with Youth and Women’s lanes for turnout education and family-friendly communication.
+              Polling-site planning, stakeholder alignment, and neutral public language for faith venues. Coordinate with
+              Youth and Women’s lanes for turnout education and family-friendly communication.
             </p>
           </section>
 
           <section id="resources" className="scroll-mt-32 space-y-6">
             <h2 className="font-heading text-xl font-bold text-kelly-navy">Resources</h2>
             <p className="font-body text-sm text-kelly-text/80">
-              Draft outlines below; full PDFs/web modules ship after community review. Also listed in the main{" "}
+              Draft outlines below; full PDFs and web modules ship as they are ready. Also listed in the main{" "}
               <Link href="/volunteer/resources" className="font-semibold text-kelly-blue underline">
                 volunteer resource library
               </Link>
@@ -207,7 +207,7 @@ export default function MuslimCommunityDashboardPlanPage() {
                   {MUSLIM_COMMUNITY_RESOURCE_STUBS.filter((r) => r.lane === "youth").map((r) => (
                     <li key={r.anchor} id={r.anchor} className="scroll-mt-32 rounded-xl border border-kelly-text/10 bg-white p-4">
                       <p className="font-heading text-base font-bold text-kelly-navy">{r.title}</p>
-                      <p className="mt-1 font-body text-xs font-semibold uppercase text-kelly-text/55">Draft · community review</p>
+                      <p className="mt-1 font-body text-xs font-semibold uppercase text-kelly-text/55">Coming soon</p>
                       <p className="mt-2 font-body text-sm text-kelly-text/85">{r.blurb}</p>
                     </li>
                   ))}
@@ -219,7 +219,7 @@ export default function MuslimCommunityDashboardPlanPage() {
                   {MUSLIM_COMMUNITY_RESOURCE_STUBS.filter((r) => r.lane === "womens").map((r) => (
                     <li key={r.anchor} id={r.anchor} className="scroll-mt-32 rounded-xl border border-kelly-text/10 bg-white p-4">
                       <p className="font-heading text-base font-bold text-kelly-navy">{r.title}</p>
-                      <p className="mt-1 font-body text-xs font-semibold uppercase text-kelly-text/55">Draft · community review</p>
+                      <p className="mt-1 font-body text-xs font-semibold uppercase text-kelly-text/55">Coming soon</p>
                       <p className="mt-2 font-body text-sm text-kelly-text/85">{r.blurb}</p>
                     </li>
                   ))}

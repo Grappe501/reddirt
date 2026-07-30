@@ -39,6 +39,6 @@ export const kellyBringsStewardshipCloser: OfficeSectionBlock = {
   heading: "Preparedness, not persuasion",
   paragraphs: [
     "Kelly enters this race with decades inside complex operations, small-business experience, and civic work in plain sight—not slogans invented for a brochure.",
-    "Voters can verify the organizations and professional record linked from Meet Kelly; detailed platform positions await campaign approval on Office priorities.",
+    "Voters can verify the organizations and professional record linked from Meet Kelly. Explore Office priorities for how Kelly approaches the work of this office.",
   ],
 };

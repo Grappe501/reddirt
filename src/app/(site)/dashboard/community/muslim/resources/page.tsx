@@ -6,7 +6,7 @@ import { MUSLIM_COMMUNITY_RESOURCE_STUBS } from "@/lib/campaign-ops/muslim-commu
 
 export const metadata: Metadata = {
   title: "Muslim Community Region · Resources",
-  description: "Lane resources and draft outlines — pending Muslim community leadership review.",
+  description: "Lane resources and draft outlines for Muslim Community Region partners.",
 };
 
 export default function MuslimCommunityResourcesPage() {
@@ -16,7 +16,7 @@ export default function MuslimCommunityResourcesPage() {
       <div>
         <h2 className="font-heading text-xl font-bold text-kelly-navy">Resource library</h2>
         <p className="mt-2 font-body text-sm text-kelly-text/85">
-          Draft outlines below ship as full modules after partner review. Canonical long-form page with anchors:{" "}
+          Draft outlines below ship as full modules when they are ready. Canonical long-form page with anchors:{" "}
           <Link href="/volunteer/resources/muslim-community#resources" className="font-semibold text-kelly-blue underline">
             Volunteer resource hub
           </Link>
@@ -29,7 +29,7 @@ export default function MuslimCommunityResourcesPage() {
               {MUSLIM_COMMUNITY_RESOURCE_STUBS.filter((r) => r.lane === "youth").map((r) => (
                 <li key={r.anchor} className="rounded-xl border border-kelly-text/10 bg-white p-4">
                   <p className="font-heading text-base font-bold text-kelly-navy">{r.title}</p>
-                  <p className="mt-1 font-body text-xs font-semibold uppercase text-kelly-text/55">Draft · community review</p>
+                  <p className="mt-1 font-body text-xs font-semibold uppercase text-kelly-text/55">Coming soon</p>
                   <p className="mt-2 font-body text-sm text-kelly-text/85">{r.blurb}</p>
                   <Link
                     href={`/volunteer/resources/muslim-community#${r.anchor}`}
@@ -47,7 +47,7 @@ export default function MuslimCommunityResourcesPage() {
               {MUSLIM_COMMUNITY_RESOURCE_STUBS.filter((r) => r.lane === "womens").map((r) => (
                 <li key={r.anchor} className="rounded-xl border border-kelly-text/10 bg-white p-4">
                   <p className="font-heading text-base font-bold text-kelly-navy">{r.title}</p>
-                  <p className="mt-1 font-body text-xs font-semibold uppercase text-kelly-text/55">Draft · community review</p>
+                  <p className="mt-1 font-body text-xs font-semibold uppercase text-kelly-text/55">Coming soon</p>
                   <p className="mt-2 font-body text-sm text-kelly-text/85">{r.blurb}</p>
                   <Link
                     href={`/volunteer/resources/muslim-community#${r.anchor}`}

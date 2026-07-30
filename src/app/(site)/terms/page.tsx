@@ -7,7 +7,7 @@ import { pageMeta } from "@/lib/seo/metadata";
 export const metadata: Metadata = pageMeta({
   title: "Terms of use",
   description:
-    "Terms for using the Kelly Grappe for Arkansas Secretary of State campaign website—draft for counsel review.",
+    "Terms for using the Kelly Grappe for Arkansas Secretary of State campaign website.",
   path: "/terms",
   imageSrc: "/media/placeholders/texture-porch-glow.svg",
 });
@@ -18,13 +18,13 @@ export default function TermsPage() {
       <PageHero
         eyebrow="Legal"
         title="Terms of use"
-        subtitle="A placeholder structure for how visitors may use this site. Counsel review is required before relying on this text."
+        subtitle="How visitors may use this site. This is not legal advice."
         contentClassName="!pt-6 !pb-8 sm:!pt-8 sm:!pb-10"
       />
       <FullBleedSection padY className="!py-10 sm:!py-14">
         <ContentContainer className="max-w-prose space-y-5 font-body text-base leading-relaxed text-kelly-text/85">
           <p>
-            <strong>Status.</strong> The campaign will publish full terms of use after review. In general, you agree
+            <strong>Status.</strong> Full terms of use will be posted here when they are ready. In general, you agree
             to use the site lawfully, not to attempt to disrupt it, and not to misrepresent your identity on forms or
             in messages.
           </p>

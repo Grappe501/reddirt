@@ -110,7 +110,7 @@ export const electionsAreaConfig: OfficeAreaConfig = {
         heading: "Stewardship under law",
         paragraphs: [
           "Kelly believes Arkansas elections should be administered under Arkansas law—with steadiness, transparent explanation, and careful handling of voter data as a public trust.",
-          "Detailed election-administration positions on this site await campaign approval; see Why I'm running for the personal case Kelly makes for entering the race.",
+          "Kelly believes Arkansas elections should be administered under Arkansas law—with steadiness, transparent explanation, and careful handling of voter data as a public trust. Read Why I'm running for the personal case Kelly makes for entering the race.",
         ],
       },
       kellyBringsStewardshipCloser,

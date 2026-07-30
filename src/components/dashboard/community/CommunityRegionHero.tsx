@@ -28,7 +28,7 @@ export function CommunityRegionHero({
   displayName,
   geography,
   dashboardBasePath,
-  reviewBadge = "Draft · community review",
+  reviewBadge = "Community region",
 }: {
   dashboardLabel: string;
   displayName: string;

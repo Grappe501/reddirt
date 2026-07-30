@@ -167,11 +167,11 @@ export type VolunteerResource = {
 };
 
 export const VOLUNTEER_RESOURCE_PUBLICATION_LABELS: Record<VolunteerResourcePublicationStatus, string> = {
-  draft: "Draft",
-  internal_review: "Internal review",
-  mockup_ready: "Design preview",
-  approved: "Approved",
-  published: "Published",
+  draft: "Coming soon",
+  internal_review: "Coming soon",
+  mockup_ready: "Coming soon",
+  approved: "Coming soon",
+  published: "Available",
 };
 
 export const VOLUNTEER_RESOURCES: VolunteerResource[] = [

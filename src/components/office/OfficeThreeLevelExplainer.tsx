@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { OFFICE_LAYER_EYEBROWS } from "@/content/office/office-layer-labels";
 
 const levels = [
@@ -41,13 +40,6 @@ export function OfficeThreeLevelExplainer() {
           </li>
         ))}
       </ol>
-      <p className="mx-auto mt-8 max-w-2xl text-center font-body text-sm text-kelly-muted">
-        Platform details on{" "}
-        <Link href="/priorities" className="font-semibold text-kelly-navy underline-offset-2 hover:underline">
-          Office priorities
-        </Link>{" "}
-        await campaign approval.
-      </p>
     </section>
   );
 }

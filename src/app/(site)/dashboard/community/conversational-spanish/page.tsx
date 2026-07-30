@@ -6,7 +6,7 @@ import { CountyRegistrationGoalCard } from "@/components/dashboard/vos/CountyReg
 
 export const metadata: Metadata = {
   title: "Conversational Spanish · Community region",
-  description: "Spanish-first civic organizing hub — expanding after campaign and community review.",
+  description: "Spanish-first civic organizing hub — expanding as partner materials are ready.",
 };
 
 export default function ConversationalSpanishOverviewPage() {
@@ -20,8 +20,7 @@ export default function ConversationalSpanishOverviewPage() {
       <div className="space-y-3 rounded-2xl border border-kelly-text/10 bg-white p-5 shadow-[var(--shadow-soft)]">
         <p className="font-body text-sm text-kelly-text/85">
           This region reserves space for Spanish-first civic organizing — same triad discipline as geographic teams (Events · Social ·
-          Power of 5 / VR). Lane modules and KPIs grow once the Muslim Community hub reaches partner-ready quality and this region
-          clears community review.
+          Power of 5 / VR). Lane modules and KPIs grow once partner materials for this region are ready.
         </p>
         <p className="font-body text-sm text-kelly-text/75">
           <Link href="/dashboard/field" className="font-semibold text-kelly-blue underline">

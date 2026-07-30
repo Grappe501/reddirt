@@ -20,8 +20,8 @@ export function HomeAcrossArkansasVoices() {
             Arkansas counties &amp; public briefings
           </h2>
           <p className="mt-5 font-body text-lg leading-relaxed text-kelly-slate md:text-xl">
-            Find your county and read public planning briefings as they roll out—written for voters, not insiders. Verified
-            neighbor stories appear on Stories only after campaign review.
+            Find your county and read public planning briefings as they roll out—written for voters, not insiders.
+            Verified neighbor stories appear on Stories when they’re ready to share.
           </p>
         </FadeInWhenVisible>
 

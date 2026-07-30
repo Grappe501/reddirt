@@ -7,7 +7,7 @@ import { pageMeta } from "@/lib/seo/metadata";
 export const metadata: Metadata = pageMeta({
   title: "Stories & voices — volunteer message hub",
   description:
-    "This week’s line, prompts for your five, county packets, share copy, and listening questions—built for relational organizing. Some items may show preview copy until approvals publish.",
+    "This week’s line, prompts for your five, county packets, share copy, and listening questions—built for relational organizing.",
   path: "/messages",
   imageSrc: "/media/placeholders/og-default.svg",
 });

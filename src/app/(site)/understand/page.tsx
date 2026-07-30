@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { PageHero } from "@/components/blocks/PageHero";
 import { Button } from "@/components/ui/Button";
 import { ContentContainer } from "@/components/layout/ContentContainer";
@@ -56,13 +55,6 @@ export default function UnderstandTheOfficePage() {
               Office priorities
             </Button>
           </div>
-          <p className="mt-6 font-body text-sm text-kelly-muted">
-            Platform details on{" "}
-            <Link href="/priorities" className="font-semibold text-kelly-navy underline-offset-2 hover:underline">
-              Office priorities
-            </Link>{" "}
-            await campaign approval.
-          </p>
         </ContentContainer>
       </FullBleedSection>
     </>

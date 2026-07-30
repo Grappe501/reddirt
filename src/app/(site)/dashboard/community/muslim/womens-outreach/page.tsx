@@ -6,7 +6,7 @@ import { MUSLIM_WOMENS_OUTREACH_LANE } from "@/lib/campaign-ops/muslim-community
 
 export const metadata: Metadata = {
   title: "Muslim Community Region · Women's Outreach",
-  description: "Women's networks and family-forward civic outreach — draft pending community review.",
+  description: "Women's networks and family-forward civic outreach for the Muslim Community Region.",
 };
 
 export default function MuslimCommunityWomensPage() {

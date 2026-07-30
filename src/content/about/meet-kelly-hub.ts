@@ -19,8 +19,6 @@ export type MeetKellyQuestion = {
   summary: string;
   href: string;
   hrefLabel: string;
-  /** If set, section shows approval gate on hub */
-  approvalGate?: "campaign" | "office";
 };
 
 export const MEET_KELLY_QUESTIONS: readonly MeetKellyQuestion[] = [
@@ -60,10 +58,9 @@ export const MEET_KELLY_QUESTIONS: readonly MeetKellyQuestion[] = [
     id: "office",
     title: "What does she believe this office should do?",
     summary:
-      "Office-focused expectations—fair elections, clear filings, open records, steady Capitol stewardship. Detailed platform positions await campaign approval.",
+      "Office-focused expectations—fair elections, clear filings, open records, and steady Capitol stewardship.",
     href: "/understand",
     hrefLabel: "Understand the office",
-    approvalGate: "office",
   },
   {
     id: "trust",
