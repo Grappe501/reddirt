@@ -19,10 +19,12 @@ type Props = {
   speechCurrent: { primaryId: string; acrossId: string };
   focusedPhoto?: { id: string; title?: string; surfaces: string[] } | null;
   focusedSpeech?: { id: string; title?: string; surfaces: string[] } | null;
+  /** Phase 4 — when true, Ship lives below on same desk (hash link, not self-nav). */
+  embedOnPublishDesk?: boolean;
 };
 
 /**
- * Round C Public Surface Desk — photo + speech placement + surface preview + Ship link.
+ * Public Surface Desk — photo + speech placement + surface preview.
  * Prefer Unknown. confirmCurate only. Never silent Approve / registry rewrite.
  */
 export function EvidencePublicSurfaceDesk({
@@ -32,25 +34,42 @@ export function EvidencePublicSurfaceDesk({
   speechCurrent,
   focusedPhoto = null,
   focusedSpeech = null,
+  embedOnPublishDesk = false,
 }: Props) {
   return (
     <div className="space-y-4 text-[#12124a]">
       <div className="rounded-lg border-2 border-[#ca913d]/50 bg-[#fff8ef] p-4">
         <p className="font-heading text-sm font-bold uppercase tracking-wide text-[#000066]">
-          Public Surface Desk
+          Public surfaces
         </p>
         <p className="mt-1 font-body text-xs text-[#364272]">
           After Approve: see where an asset will appear, curate homepage photo + video slots, then
-          finish on Ship (overlays → campaign-shipped → graduation → commit). Prefer Unknown. Never
-          silent Apply.
+          {embedOnPublishDesk ? (
+            <>
+              {" "}
+              finish <span className="font-semibold">Ship last mile below</span>
+            </>
+          ) : (
+            <> finish on Publish desk (Ship last mile)</>
+          )}
+          . Prefer Unknown. Never silent Apply.
         </p>
         <div className="mt-2 flex flex-wrap gap-2">
-          <Link
-            href="/admin/evidence-workbench?tab=publish"
-            className="rounded-md border-2 border-[#000066] bg-[#000066] px-3 py-1.5 font-body text-xs font-bold text-white"
-          >
-            Open Ship last mile →
-          </Link>
+          {embedOnPublishDesk ? (
+            <a
+              href="#ew-ship-last-mile"
+              className="rounded-md border-2 border-[#000066] bg-[#000066] px-3 py-1.5 font-body text-xs font-bold text-white"
+            >
+              Ship last mile ↓
+            </a>
+          ) : (
+            <Link
+              href="/admin/evidence-workbench?tab=publish#ew-ship-last-mile"
+              className="rounded-md border-2 border-[#000066] bg-[#000066] px-3 py-1.5 font-body text-xs font-bold text-white"
+            >
+              Open Publish / Ship →
+            </Link>
+          )}
           <Link
             href="/admin/evidence-workbench?tab=county"
             className="rounded-md border-2 border-[#000066] bg-white px-3 py-1.5 font-body text-xs font-bold text-[#000066]"
@@ -78,6 +97,7 @@ export function EvidencePublicSurfaceDesk({
           assetId={focusedPhoto.id}
           title={focusedPhoto.title}
           surfaces={focusedPhoto.surfaces}
+          shipHref={embedOnPublishDesk ? "#ew-ship-last-mile" : undefined}
         />
       ) : null}
       {focusedSpeech ? (
@@ -86,6 +106,7 @@ export function EvidencePublicSurfaceDesk({
           assetId={focusedSpeech.id}
           title={focusedSpeech.title}
           surfaces={focusedSpeech.surfaces}
+          shipHref={embedOnPublishDesk ? "#ew-ship-last-mile" : undefined}
         />
       ) : null}
       {!focusedPhoto && !focusedSpeech ? (

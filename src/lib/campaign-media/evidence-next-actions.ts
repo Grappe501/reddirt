@@ -135,7 +135,7 @@ export function rankEvidenceNextActions(limit = 5): {
     candidates.push({
       id: "event-night",
       priority: 84,
-      title: "Run event-night loop (calendar → turbo → approve → ship)",
+      title: "Run event-night loop (calendar → turbo → approve → Publish)",
       why: `${confirmedCal} Confirmed calendar row(s) ready to drive tonight's media path.`,
       href: "/admin/evidence-workbench?tab=county",
       modeHint: "command",

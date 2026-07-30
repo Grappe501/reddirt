@@ -186,8 +186,8 @@ export function EvidenceShipPanel({ initialReport }: Props) {
           Ship last mile — overlays → shipped → graduation → commit
         </p>
         <p className="mt-1 font-body text-xs text-[#364272]">
-          Approve writes JSON on this machine. Netlify only sees what you{" "}
-          <strong>commit and push</strong>. Prefer Unknown. Never silent Ship.
+          Sole Ship home on Publish desk. Approve writes JSON on this machine. Netlify only sees what
+          you <strong>commit and push</strong>. Prefer Unknown. Never silent Ship.
         </p>
         <p className="mt-2 font-body text-[11px] text-[#364272]">
           Branch: {report.branch ?? "—"} · {report.gitNote}
@@ -284,12 +284,12 @@ export function EvidenceShipPanel({ initialReport }: Props) {
         >
           {showDetails ? "Hide secondary details" : "Show secondary details"}
         </button>
-        <Link
-          href="/admin/evidence-workbench?tab=publish"
+        <a
+          href="#ew-public-surfaces"
           className="rounded border-2 border-[#8eb6dc] bg-white px-2.5 py-1 font-body text-xs font-semibold text-[#12124a]"
         >
-          Public Surface Desk
-        </Link>
+          Public surfaces ↑
+        </a>
         <Link
           href="/admin/evidence-workbench?tab=county"
           className="rounded border-2 border-[#8eb6dc] bg-white px-2.5 py-1 font-body text-xs font-semibold text-[#12124a]"

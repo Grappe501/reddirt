@@ -199,8 +199,8 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
         <p className="ew-eyebrow">Campaign OS · Media evidence</p>
         <h1 className="ew-title">Evidence Workbench</h1>
         <p className="ew-lede">
-          Phase 3 Creative Edit: intent lanes load Pro Edit presets + download pack / Promote →
-          Publish. Prefer Unknown. Never invent geography. Saves under{" "}
+          Phase 4 Publish & deliver: surfaces + Ship last mile only. Prefer Unknown. Never invent
+          geography. Saves under{" "}
           <code className="rounded bg-kelly-fog px-1.5 py-0.5 font-mono text-[12px]">
             data/campaign-media/
           </code>
@@ -350,7 +350,7 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
                   href="/admin/evidence-workbench?tab=publish"
                   className="rounded-md border-2 border-[#000066] bg-[#000066] px-3 py-1.5 font-body text-xs font-bold text-white"
                 >
-                  Publish / Ship →
+                  Publish desk →
                 </Link>
               </div>
             </div>
@@ -405,22 +405,40 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
           <>
             <div className="mb-4 rounded-lg border-2 border-[#000066]/15 bg-[#f4f7fc] p-3">
               <p className="font-heading text-xs font-bold uppercase text-[#000066]">
-                Publish & deliver
+                Publish & deliver · Phase 4
               </p>
               <p className="mt-1 font-body text-xs text-[#364272]">
-                Public surfaces (homepage / Meet Kelly / video slots) + Ship last mile. One Ship home —
-                overlays → campaign-shipped → graduation → commit.
+                One Ship home. Curate public surfaces above, then Ship last mile below (overlays →
+                campaign-shipped → graduation → commit). Tonight / Command no longer ship binaries —
+                they link here.
               </p>
+              <div className="mt-2 flex flex-wrap gap-2">
+                <a
+                  href="#ew-public-surfaces"
+                  className="rounded-md border-2 border-[#8eb6dc] bg-white px-3 py-1.5 font-body text-xs font-semibold text-[#12124a]"
+                >
+                  Public surfaces ↓
+                </a>
+                <a
+                  href="#ew-ship-last-mile"
+                  className="rounded-md border-2 border-[#000066] bg-[#000066] px-3 py-1.5 font-body text-xs font-bold text-white"
+                >
+                  Ship last mile ↓
+                </a>
+              </div>
             </div>
-            <EvidencePublicSurfaceDesk
-              photoProposal={placementProposal}
-              photoCurrent={placementCurrent}
-              speechProposal={speechPlacementProposal}
-              speechCurrent={speechPlacementCurrent}
-              focusedPhoto={focusedPhotoPreview}
-              focusedSpeech={focusedSpeechPreview}
-            />
-            <div className="mt-6 border-t-2 border-[#000066]/10 pt-4">
+            <div id="ew-public-surfaces">
+              <EvidencePublicSurfaceDesk
+                photoProposal={placementProposal}
+                photoCurrent={placementCurrent}
+                speechProposal={speechPlacementProposal}
+                speechCurrent={speechPlacementCurrent}
+                focusedPhoto={focusedPhotoPreview}
+                focusedSpeech={focusedSpeechPreview}
+                embedOnPublishDesk
+              />
+            </div>
+            <div id="ew-ship-last-mile" className="mt-6 border-t-2 border-[#000066]/10 pt-4">
               <EvidenceShipPanel initialReport={shipReport} />
             </div>
           </>

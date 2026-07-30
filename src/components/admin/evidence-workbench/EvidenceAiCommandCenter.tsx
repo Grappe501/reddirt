@@ -9,7 +9,6 @@ import {
   runEventNightLoopAction,
   runEvidenceAiCommandAction,
   runPublishQueueTurboAction,
-  shipPromotedDerivativesAction,
 } from "@/app/admin/evidence-workbench-actions";
 import type { EvidenceCommandResult } from "@/lib/campaign-media/evidence-ai-command";
 import { ewBtnPrimaryClass } from "@/components/admin/evidence-workbench/evidenceWorkbenchChrome";
@@ -18,20 +17,19 @@ const STARTERS = [
   "What should I do next on the Evidence Workbench?",
   "Propose an event-night pack for the most recent Confirmed calendar row.",
   "Where are Unknown-county stills blocking Approve?",
-  "Build a ship checklist — what still needs commit?",
+  "What still needs commit on the Publish desk?",
   "Which speeches need county confirm before publish?",
   "Rank Unknown stills by website fit without inventing geography.",
 ];
 
-type MacroId = "next" | "event-night" | "queue-turbo-ship" | "fit-backlog" | "ship" | "ship-binaries";
+type MacroId = "next" | "event-night" | "queue-turbo" | "fit-backlog" | "publish-status";
 
 const MACROS: Array<{ id: MacroId; label: string; hint: string }> = [
   { id: "next", label: "Next", hint: "Rank deterministic next clicks" },
-  { id: "event-night", label: "Event night", hint: "Pack + turbo + ship (confirm)" },
-  { id: "queue-turbo-ship", label: "Queue turbo", hint: "Unknown turbo then ship" },
+  { id: "event-night", label: "Event night", hint: "Pack + turbo (confirm) — Approve on County" },
+  { id: "queue-turbo", label: "Queue turbo", hint: "Unknown turbo → Identify / County" },
   { id: "fit-backlog", label: "Fit backlog", hint: "Score Unknown/needs-approval" },
-  { id: "ship", label: "Ship report", hint: "Refresh ship checklist" },
-  { id: "ship-binaries", label: "Ship binaries", hint: "Copy promotes → campaign-shipped" },
+  { id: "publish-status", label: "Publish status", hint: "Open Publish desk checklist" },
 ];
 
 /**
@@ -95,14 +93,14 @@ export function EvidenceAiCommandCenter() {
               : "No pack",
             res.turboMessage ?? "Turbo skipped",
             res.ship
-              ? `Ship · overlays dirty ${res.ship.totals.overlayJsonDirty} · promoted missing ${res.ship.totals.promotedOverrideMissing}`
-              : "No ship report",
-            "Open Publish Queue Tonight ritual to Approve — never silent.",
+              ? `Publish desk pending · overlays dirty ${res.ship.totals.overlayJsonDirty} · promoted missing ${res.ship.totals.promotedOverrideMissing}`
+              : "No publish status",
+            "Open County Tonight ritual to Approve — Ship last mile only on Publish desk.",
           ],
           nextClicks: [
-            { label: "Tonight ritual / Queue", href: "/admin/evidence-workbench?tab=county" },
-            { label: "Ship", href: "/admin/evidence-workbench?tab=publish" },
-            { label: "Photos Unknown", href: "/admin/evidence-workbench?tab=identify&filter=unknown" },
+            { label: "Tonight ritual / County", href: "/admin/evidence-workbench?tab=county" },
+            { label: "Publish desk", href: "/admin/evidence-workbench?tab=publish#ew-ship-last-mile" },
+            { label: "Identify Unknown", href: "/admin/evidence-workbench?tab=identify&filter=unknown" },
           ],
           toolsSummary: "run_event_night_loop",
           toolsUsed: ["propose_event_night_pack", "turbo_ingest_photos", "build_evidence_ship_report"],
@@ -112,31 +110,26 @@ export function EvidenceAiCommandCenter() {
         });
         return;
       }
-      if (id === "queue-turbo-ship") {
+      if (id === "queue-turbo") {
         const turbo = await runPublishQueueTurboAction({ confirm: true, useAi: true, maxPhotos: 24 });
-        const ship = await buildEvidenceShipReportAction({
-          persist: true,
-          includeDerivativeScan: true,
-        });
-        setMessage([turbo.message, ship.message].join(" · "));
+        setMessage(turbo.message);
         setResult({
-          headline: "Queue turbo → ship",
+          headline: "Queue turbo (proposals only)",
           plan: [
             turbo.message,
-            ship.message,
-            "Review Apply → Save → Batch Approve on Publish Queue.",
+            "Review Apply → Save on Identify, Approve on County, Ship on Publish.",
           ],
           nextClicks: [
-            { label: "Unknown on Photos", href: "/admin/evidence-workbench?tab=identify&filter=unknown" },
+            { label: "Unknown on Identify", href: "/admin/evidence-workbench?tab=identify&filter=unknown" },
             {
-              label: "Needs approval on Queue",
+              label: "Needs approval on County",
               href: "/admin/evidence-workbench?tab=county&filter=needsApproval",
             },
-            { label: "Ship", href: "/admin/evidence-workbench?tab=publish" },
+            { label: "Publish desk", href: "/admin/evidence-workbench?tab=publish#ew-ship-last-mile" },
           ],
-          toolsSummary: "run_publish_queue_turbo + build_evidence_ship_report",
-          toolsUsed: ["run_publish_queue_turbo", "build_evidence_ship_report"],
-          warnings: ship.report?.warnings?.slice(0, 4) ?? [],
+          toolsSummary: "run_publish_queue_turbo",
+          toolsUsed: ["run_publish_queue_turbo"],
+          warnings: [],
           confidence: "medium",
           model: "local",
         });
@@ -165,41 +158,22 @@ export function EvidenceAiCommandCenter() {
         });
         return;
       }
-      if (id === "ship-binaries") {
-        const res = await shipPromotedDerivativesAction({ confirmShip: true, limit: 40 });
-        const ship = await buildEvidenceShipReportAction({
-          persist: true,
-          includeDerivativeScan: true,
-        });
-        setMessage([res.message, ship.message].join(" · "));
-        setResult({
-          headline: "Ship promoted binaries",
-          plan: [
-            res.message,
-            ...(res.shipped ?? []).slice(0, 8).map((s) => `${s.photoId}: ${s.from} → ${s.to}`),
-            ship.message,
-          ],
-          nextClicks: [
-            { label: "Ship tab", href: "/admin/evidence-workbench?tab=publish" },
-            { label: "Publish Queue", href: "/admin/evidence-workbench?tab=county" },
-          ],
-          toolsSummary: "ship_promoted_derivatives",
-          toolsUsed: ["ship_promoted_derivatives", "build_evidence_ship_report"],
-          warnings: ship.report?.warnings?.slice(0, 4) ?? [],
-          confidence: "high",
-          model: "local",
-        });
-        return;
-      }
+      // publish-status — report only; binaries ship on Publish desk
       const ship = await buildEvidenceShipReportAction({
         persist: true,
         includeDerivativeScan: true,
       });
       setMessage(ship.message);
       setResult({
-        headline: "Ship report",
+        headline: "Publish desk status",
         plan: ship.report?.nextActions ?? [ship.message],
-        nextClicks: [{ label: "Open Ship tab", href: "/admin/evidence-workbench?tab=publish" }],
+        nextClicks: [
+          {
+            label: "Open Publish / Ship last mile",
+            href: "/admin/evidence-workbench?tab=publish#ew-ship-last-mile",
+          },
+          { label: "County desk", href: "/admin/evidence-workbench?tab=county" },
+        ],
         toolsSummary: "build_evidence_ship_report",
         toolsUsed: ["build_evidence_ship_report"],
         warnings: ship.report?.warnings?.slice(0, 4) ?? [],
@@ -253,7 +227,7 @@ export function EvidenceAiCommandCenter() {
                 value={prompt}
                 onChange={(e) => setPrompt(e.target.value)}
                 rows={2}
-                placeholder="Ask across calendar · photos · videos · intake · placement · ship"
+                placeholder="Ask across calendar · photos · videos · intake · placement · publish"
                 className="min-h-[64px] flex-1 rounded-xl border border-white/20 bg-white/10 px-3 py-2 font-body text-sm text-white placeholder:text-white/40 backdrop-blur-sm focus:border-kelly-gold/50 focus:outline-none focus:ring-2 focus:ring-kelly-gold/40"
               />
               <button

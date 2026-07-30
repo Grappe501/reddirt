@@ -413,10 +413,10 @@ export function EvidencePublishQueuePanel({
           Videos / speech confirm
         </Link>
         <Link
-          href="/admin/evidence-workbench?tab=publish"
+          href="/admin/evidence-workbench?tab=publish#ew-ship-last-mile"
           className="rounded border-2 border-[#8eb6dc] bg-white px-2.5 py-1 font-body text-xs font-semibold text-[#12124a]"
         >
-          Ship checklist
+          Publish desk
         </Link>
         <Link
           href="/admin/evidence-workbench?tab=ingest"

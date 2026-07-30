@@ -16,7 +16,7 @@ export function EvidencePublicSurfacePreview({
   assetId,
   title,
   surfaces,
-  shipHref = "/admin/evidence-workbench?tab=publish",
+  shipHref = "/admin/evidence-workbench?tab=publish#ew-ship-last-mile",
 }: Props) {
   return (
     <div className="rounded-lg border-2 border-[#000066]/20 bg-white p-3 text-[#12124a]">
