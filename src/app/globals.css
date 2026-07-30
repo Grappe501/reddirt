@@ -350,7 +350,10 @@ html.dark {
     @apply rounded-[1.5rem] border border-kelly-border bg-[var(--color-surface-elevated)] shadow-[var(--shadow-soft)] backdrop-blur-md;
   }
   .cal-event-row-hover {
-    @apply transition hover:bg-kelly-page/80;
+    @apply transition;
+  }
+  .cal-event-row-hover:hover {
+    background-color: color-mix(in srgb, var(--color-bg) 80%, transparent);
   }
 
   /* —— Public marketing — Fortune-50 frame —— */
@@ -417,7 +420,8 @@ html.dark {
     background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(244, 247, 252, 0.9));
   }
   .ew-stat-label {
-    @apply font-body text-[10px] font-bold uppercase tracking-[0.2em] text-kelly-navy/70;
+    @apply font-body text-[10px] font-bold uppercase tracking-[0.2em];
+    color: color-mix(in srgb, var(--kelly-official-navy) 70%, transparent);
   }
   .ew-panel {
     border-radius: var(--radius-premium);
@@ -430,17 +434,32 @@ html.dark {
     @apply inline-flex min-h-[44px] items-center rounded-full border px-4 py-2 font-body text-sm font-semibold transition;
   }
   .ew-tab-idle {
-    @apply border-kelly-sky/60 bg-white/80 text-kelly-text hover:border-kelly-navy/35 hover:bg-white;
+    @apply bg-white/80 text-kelly-text hover:bg-white;
+    border-color: color-mix(in srgb, var(--kelly-official-sky) 60%, transparent);
+  }
+  .ew-tab-idle:hover {
+    border-color: color-mix(in srgb, var(--kelly-official-navy) 35%, transparent);
   }
   .ew-tab-active {
     @apply border-kelly-navy bg-kelly-navy text-white shadow-[var(--shadow-soft)];
   }
   .ew-chip {
-    @apply inline-flex items-center rounded-full border border-kelly-sky/50 bg-kelly-fog/80 px-2.5 py-1 font-body text-[11px] font-semibold text-kelly-navy;
+    @apply inline-flex items-center rounded-full px-2.5 py-1 font-body text-[11px] font-semibold text-kelly-navy;
+    border: 1px solid color-mix(in srgb, var(--kelly-official-sky) 50%, transparent);
+    background-color: color-mix(in srgb, var(--kelly-fog) 80%, transparent);
   }
   .ew-tool-tile {
     border-radius: 0.85rem;
-    @apply border border-kelly-sky/40 bg-gradient-to-b from-white to-kelly-fog/70 px-3 py-2.5 transition hover:border-kelly-gold/45 hover:shadow-[var(--shadow-soft)];
+    @apply px-3 py-2.5 transition hover:shadow-[var(--shadow-soft)];
+    border: 1px solid color-mix(in srgb, var(--kelly-official-sky) 40%, transparent);
+    background-image: linear-gradient(
+      to bottom,
+      #ffffff,
+      color-mix(in srgb, var(--kelly-fog) 70%, transparent)
+    );
+  }
+  .ew-tool-tile:hover {
+    border-color: color-mix(in srgb, var(--kelly-official-gold) 45%, transparent);
   }
   .ew-command {
     border-radius: var(--radius-premium-lg);
@@ -451,10 +470,21 @@ html.dark {
     @apply relative overflow-hidden border border-white/10 p-5 text-white md:p-6;
   }
   .ew-field {
-    @apply w-full rounded-lg border border-kelly-sky/70 bg-white px-2.5 py-2 text-sm text-kelly-text caret-kelly-navy outline-none placeholder:text-kelly-slate/70 focus:border-kelly-gold focus:ring-2 focus:ring-kelly-gold/35;
+    @apply w-full rounded-lg bg-white px-2.5 py-2 text-sm text-kelly-text caret-kelly-navy outline-none focus:border-kelly-gold focus:ring-2;
+    border: 1px solid color-mix(in srgb, var(--kelly-official-sky) 70%, transparent);
+  }
+  .ew-field::placeholder {
+    color: color-mix(in srgb, var(--kelly-slate) 70%, transparent);
+  }
+  .ew-field:focus {
+    --tw-ring-color: color-mix(in srgb, var(--kelly-official-gold) 35%, transparent);
   }
   .ew-field-compact {
-    @apply rounded-md border border-kelly-sky/70 bg-white px-1.5 py-1 text-xs text-kelly-text caret-kelly-navy outline-none focus:border-kelly-gold focus:ring-2 focus:ring-kelly-gold/35;
+    @apply rounded-md bg-white px-1.5 py-1 text-xs text-kelly-text caret-kelly-navy outline-none focus:border-kelly-gold focus:ring-2;
+    border: 1px solid color-mix(in srgb, var(--kelly-official-sky) 70%, transparent);
+  }
+  .ew-field-compact:focus {
+    --tw-ring-color: color-mix(in srgb, var(--kelly-official-gold) 35%, transparent);
   }
 }
 
