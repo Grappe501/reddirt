@@ -7,6 +7,7 @@ import { EvidencePlacementPanel } from "@/components/admin/evidence-workbench/Ev
 import { EvidencePhotosPanel } from "@/components/admin/evidence-workbench/EvidencePhotosPanel";
 import { EvidencePublishQueuePanel } from "@/components/admin/evidence-workbench/EvidencePublishQueuePanel";
 import { EvidenceShipPanel } from "@/components/admin/evidence-workbench/EvidenceShipPanel";
+import { EvidenceSpeechConfirmPanel } from "@/components/admin/evidence-workbench/EvidenceSpeechConfirmPanel";
 import { EvidenceSpeechesPanel } from "@/components/admin/evidence-workbench/EvidenceSpeechesPanel";
 import { strategicPlacementNotes } from "@/content/media/strategic-photo-placements";
 import { EVIDENCE_AI_TOOL_CATALOG } from "@/lib/campaign-media/evidence-ai-tool-defs";
@@ -21,6 +22,12 @@ import { listPendingCuratedPlacementProposals } from "@/lib/campaign-media/curat
 import { getCurrentCuratedPlacementSnapshot } from "@/lib/campaign-media/curated-placement-propose";
 import { buildEvidencePublishQueue } from "@/lib/campaign-media/evidence-publish-queue";
 import { buildEvidenceShipReport } from "@/lib/campaign-media/evidence-ship-report";
+import { buildSpeechConfirmQueue } from "@/lib/campaign-media/speech-confirm-queue";
+import {
+  getCurrentSpeechPlacementSnapshot,
+  loadSpeechPlacementStore,
+} from "@/lib/campaign-media/speech-placement";
+import { buildSpeechReadinessMatrix } from "@/lib/campaign-media/speech-readiness";
 import { listCampaignPhotosLive } from "@/lib/campaign-media/list-campaign-photos-live";
 import { listDiskPhotoIngestCandidates } from "@/lib/campaign-media/photo-ingest";
 import { photoRequiresConsentHold } from "@/lib/campaign-media/photo-consent-hold";
@@ -60,6 +67,14 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
   const shipReport = buildEvidenceShipReport({ persist: false, includeDerivativeScan: true });
   const placementCurrent = getCurrentCuratedPlacementSnapshot();
   const placementProposal = listPendingCuratedPlacementProposals()[0] ?? null;
+  const speechConfirmQueue = buildSpeechConfirmQueue();
+  const speechReadiness = buildSpeechReadinessMatrix();
+  const speechPlacementCurrent = getCurrentSpeechPlacementSnapshot();
+  const speechPlacementStore = loadSpeechPlacementStore();
+  const speechPlacementProposal =
+    speechPlacementStore.proposals.find((p) => p.status === "pending") ??
+    speechPlacementStore.proposals[0] ??
+    null;
 
   const counties = ARKANSAS_COUNTY_REGISTRY.map((c) => ({
     slug: c.slug,
@@ -69,8 +84,6 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
 
   const unknownCounty = publishQueue.totals.unknownCounty;
   const needsApproval = publishQueue.totals.needsApproval;
-
-  // Raw registry/drafts for src + base (unmerged). Overlay stays separate so Next advances image + fields together.
   const registryIds = new Set(CAMPAIGN_PHOTO_REGISTRY.map((p) => p.id));
   const rawPhotos = [
     ...CAMPAIGN_PHOTO_REGISTRY,
@@ -119,8 +132,6 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
     overlay: speechStore.speeches[m.id] ?? null,
   }));
 
-  const speechNeeds = speeches.filter((s) => !(s.overlay?.counties?.length || s.baseCounties.length)).length;
-
   return (
     <div className="mx-auto max-w-6xl text-[#12124a]">
       <h1 className="font-heading text-3xl font-bold text-[#000066]">Evidence Workbench</h1>
@@ -156,7 +167,9 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
         <div className="rounded-lg border-2 border-[#000066]/15 bg-white px-3 py-2">
           <p className="font-heading text-xs font-bold uppercase text-[#000066]">Videos</p>
           <p className="font-body text-sm">
-            {speeches.length} speeches · {speechNeeds} missing counties
+            {speeches.length} speeches · {speechConfirmQueue.totals.noCounty} no county ·{" "}
+            {speechConfirmQueue.totals.needsPublish} needs publish ·{" "}
+            {speechConfirmQueue.totals.overlaysSaved} overlays
           </p>
         </div>
         <div className="rounded-lg border-2 border-[#000066]/15 bg-white px-3 py-2">
@@ -224,7 +237,12 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
       </nav>
 
       <div className="mt-8">
-        {tab === "queue" ? <EvidencePublishQueuePanel initialQueue={publishQueue} /> : null}
+        {tab === "queue" ? (
+          <EvidencePublishQueuePanel
+            initialQueue={publishQueue}
+            initialSpeechQueue={speechConfirmQueue}
+          />
+        ) : null}
         {tab === "ship" ? <EvidenceShipPanel initialReport={shipReport} /> : null}
         {tab === "placement" ? (
           <EvidencePlacementPanel initialProposal={placementProposal} current={placementCurrent} />
@@ -245,7 +263,16 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
           />
         ) : null}
         {tab === "speeches" ? (
-          <EvidenceSpeechesPanel speeches={speeches} initialSpeechId={focusId} />
+          <>
+            <EvidenceSpeechConfirmPanel
+              speeches={speeches}
+              initialQueue={speechConfirmQueue}
+              initialRows={speechReadiness.rows}
+              initialPlacement={speechPlacementProposal}
+              placementCurrent={speechPlacementCurrent}
+            />
+            <EvidenceSpeechesPanel speeches={speeches} initialSpeechId={focusId} />
+          </>
         ) : null}
         {tab === "ingest" ? (
           <EvidenceIngestPanel initialCandidates={ingestCandidates} initialStatus={intakeStatus} />

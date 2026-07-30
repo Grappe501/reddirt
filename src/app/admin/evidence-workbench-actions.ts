@@ -400,6 +400,229 @@ export async function saveSpeechEvidenceAction(
   return { ok: true, message: `Saved speech evidence for ${speechId}.` };
 }
 
+export async function batchSaveSpeechEvidenceAction(input: {
+  speechIds: string[];
+  applyFields: string[];
+  patch: Record<string, unknown>;
+}): Promise<{
+  ok: boolean;
+  message: string;
+  applied?: number;
+  skipped?: number;
+  errors?: Array<{ speechId: string; error: string }>;
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { applySpeechEvidenceBatch, buildSpeechBatchPatchFromLoose } = await import(
+    "@/lib/campaign-media/batch-speech-evidence"
+  );
+  const result = applySpeechEvidenceBatch({
+    speechIds: input.speechIds,
+    applyFields: input.applyFields,
+    patch: buildSpeechBatchPatchFromLoose(input.patch),
+  });
+  if (result.applied > 0) revalidateEvidenceSurfaces();
+  return {
+    ok: result.ok,
+    message: result.message,
+    applied: result.applied,
+    skipped: result.skipped,
+    errors: result.errors.slice(0, 12),
+  };
+}
+
+export async function batchPublishSpeechesAction(input: {
+  speechIds: string[];
+  action: string;
+  allowEmptyCounty?: boolean;
+}): Promise<{
+  ok: boolean;
+  message: string;
+  applied?: number;
+  skipped?: number;
+  skippedEmptyCounty?: number;
+  runId?: string | null;
+  errors?: Array<{ speechId: string; error: string }>;
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { applySpeechPublishBatch } = await import("@/lib/campaign-media/batch-speech-publish");
+  const result = applySpeechPublishBatch({
+    speechIds: input.speechIds,
+    action: input.action,
+    allowEmptyCounty: Boolean(input.allowEmptyCounty),
+  });
+  if (result.applied > 0) revalidateEvidenceSurfaces();
+  return {
+    ok: result.ok,
+    message: result.message,
+    applied: result.applied,
+    skipped: result.skipped,
+    skippedEmptyCounty: result.skippedEmptyCounty,
+    runId: result.runId,
+    errors: result.errors.slice(0, 12),
+  };
+}
+
+export async function undoBatchSpeechPublishAction(input?: {
+  runId?: string;
+}): Promise<{ ok: boolean; message: string; restored?: number; runId?: string | null }> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { undoBatchSpeechPublishRun, undoLastBatchSpeechPublish } = await import(
+    "@/lib/campaign-media/batch-speech-publish"
+  );
+  const runId = String(input?.runId ?? "").trim();
+  const result = runId ? undoBatchSpeechPublishRun(runId) : undoLastBatchSpeechPublish();
+  if (result.ok && (result.restored ?? 0) > 0) revalidateEvidenceSurfaces();
+  return result;
+}
+
+export async function getSpeechConfirmQueueAction(): Promise<{
+  ok: boolean;
+  message: string;
+  queue?: import("@/lib/campaign-media/speech-confirm-queue").SpeechConfirmQueue;
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { buildSpeechConfirmQueue } = await import("@/lib/campaign-media/speech-confirm-queue");
+  const queue = buildSpeechConfirmQueue();
+  return {
+    ok: true,
+    message: `Speech queue · no-county ${queue.totals.noCounty} · needs-publish ${queue.totals.needsPublish} · published ${queue.totals.published}`,
+    queue,
+  };
+}
+
+export async function getSpeechReadinessMatrixAction(input?: {
+  speechIds?: string[];
+}): Promise<{
+  ok: boolean;
+  message: string;
+  rows?: import("@/lib/campaign-media/speech-readiness").SpeechReadinessRow[];
+  totals?: {
+    speeches: number;
+    noCounty: number;
+    needsPublish: number;
+    published: number;
+    overlaysSaved: number;
+    prepReady: number;
+  };
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { buildSpeechReadinessMatrix } = await import("@/lib/campaign-media/speech-readiness");
+  const matrix = buildSpeechReadinessMatrix({ speechIds: input?.speechIds });
+  return {
+    ok: true,
+    message: `Readiness · ${matrix.totals.speeches} speeches · overlays ${matrix.totals.overlaysSaved}`,
+    rows: matrix.rows,
+    totals: matrix.totals,
+  };
+}
+
+export async function proposeSpeechPlacementAction(input?: {
+  persist?: boolean;
+}): Promise<{
+  ok: boolean;
+  message: string;
+  proposal?: import("@/lib/campaign-media/speech-placement").SpeechPlacementProposal;
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { proposeSpeechPlacement, writeSpeechPlacementStub } = await import(
+    "@/lib/campaign-media/speech-placement"
+  );
+  const proposal = proposeSpeechPlacement({ persist: input?.persist !== false });
+  writeSpeechPlacementStub(proposal);
+  revalidatePath("/admin/evidence-workbench");
+  return {
+    ok: true,
+    message: `Speech placement proposed ${proposal.id}`,
+    proposal,
+  };
+}
+
+export async function listSpeechPlacementProposalsAction(): Promise<{
+  ok: boolean;
+  message: string;
+  proposals?: import("@/lib/campaign-media/speech-placement").SpeechPlacementProposal[];
+  current?: ReturnType<
+    typeof import("@/lib/campaign-media/speech-placement").getCurrentSpeechPlacementSnapshot
+  >;
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { loadSpeechPlacementStore, getCurrentSpeechPlacementSnapshot } = await import(
+    "@/lib/campaign-media/speech-placement"
+  );
+  const proposals = loadSpeechPlacementStore().proposals;
+  return {
+    ok: true,
+    message: `${proposals.length} speech placement proposal(s)`,
+    proposals,
+    current: getCurrentSpeechPlacementSnapshot(),
+  };
+}
+
+export async function writeSpeechPlacementStubAction(input: {
+  proposalId: string;
+}): Promise<{ ok: boolean; message: string; relativePath?: string }> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { getSpeechPlacementProposal, writeSpeechPlacementStub } = await import(
+    "@/lib/campaign-media/speech-placement"
+  );
+  const proposal = getSpeechPlacementProposal(input.proposalId);
+  if (!proposal) return { ok: false, message: "Proposal not found." };
+  return writeSpeechPlacementStub(proposal);
+}
+
+export async function applySpeechPlacementAction(input: {
+  proposalId: string;
+  confirmCurate: boolean;
+}): Promise<{
+  ok: boolean;
+  message: string;
+  undoSnapshotId?: string;
+  warnings?: string[];
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  if (!input.confirmCurate) {
+    return { ok: false, message: "confirmCurate:true required — refuse silent HOMEPAGE_*_VIDEO_ID mutate." };
+  }
+  const { applySpeechPlacementProposal } = await import("@/lib/campaign-media/speech-placement");
+  const result = applySpeechPlacementProposal({
+    proposalId: String(input.proposalId ?? "").trim(),
+    confirmCurate: true,
+  });
+  revalidatePath("/admin/evidence-workbench");
+  revalidatePath("/");
+  revalidatePath("/kelly-speaks");
+  return result;
+}
+
+export async function undoSpeechPlacementAction(input: {
+  undoSnapshotId: string;
+  confirmCurate: boolean;
+}): Promise<{ ok: boolean; message: string }> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  if (!input.confirmCurate) {
+    return { ok: false, message: "confirmCurate:true required — refuse silent undo." };
+  }
+  const { undoSpeechPlacement } = await import("@/lib/campaign-media/speech-placement");
+  const result = undoSpeechPlacement({
+    undoSnapshotId: String(input.undoSnapshotId ?? "").trim(),
+    confirmCurate: true,
+  });
+  revalidatePath("/admin/evidence-workbench");
+  revalidatePath("/");
+  revalidatePath("/kelly-speaks");
+  return result;
+}
+
 export async function exportCalendarMatrixAction(): Promise<{ ok: boolean; message: string }> {
   const g = await gate();
   if (!g.ok) return { ok: false, message: g.error };

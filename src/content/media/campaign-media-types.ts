@@ -89,6 +89,12 @@ export type CampaignMediaRecord = {
   relatedPagePaths: string[];
   featured: boolean;
   homepageEligible: boolean;
+  /**
+   * Optional hold gate from speech-evidence overlay.
+   * Undefined = inherit registry (treat as allowed). Explicit false holds off public lists
+   * even when publicationStatus is PUBLISHED.
+   */
+  approvedForPublic?: boolean;
   publicationStatus: CampaignMediaPublicationStatus;
   transcript: CampaignTranscript;
 };

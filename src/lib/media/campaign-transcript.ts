@@ -10,6 +10,7 @@ export function isPublicTranscript(media: CampaignMediaRecord): boolean {
 }
 
 export function isPublicMedia(media: CampaignMediaRecord): boolean {
+  if (media.approvedForPublic === false) return false;
   return media.publicationStatus === "PUBLISHED";
 }
 

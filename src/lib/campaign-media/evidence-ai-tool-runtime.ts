@@ -1183,6 +1183,93 @@ export async function executeEvidenceAiTool(
         };
       }
 
+      case "get_speech_confirm_queue": {
+        const { buildSpeechConfirmQueue } = await import(
+          "@/lib/campaign-media/speech-confirm-queue"
+        );
+        return { ok: true, result: buildSpeechConfirmQueue() };
+      }
+
+      case "get_speech_readiness_matrix": {
+        const { buildSpeechReadinessMatrix } = await import(
+          "@/lib/campaign-media/speech-readiness"
+        );
+        const speechIds = Array.isArray(args.speechIds)
+          ? args.speechIds.map((id) => String(id).trim()).filter(Boolean)
+          : undefined;
+        return { ok: true, result: buildSpeechReadinessMatrix({ speechIds }) };
+      }
+
+      case "batch_save_speech_evidence": {
+        const speechIds = Array.isArray(args.speechIds)
+          ? args.speechIds.map((id) => String(id).trim()).filter(Boolean)
+          : [];
+        const applyFields = Array.isArray(args.applyFields)
+          ? args.applyFields.map((f) => String(f).trim()).filter(Boolean)
+          : [];
+        const { applySpeechEvidenceBatch, buildSpeechBatchPatchFromLoose } = await import(
+          "@/lib/campaign-media/batch-speech-evidence"
+        );
+        const result = applySpeechEvidenceBatch({
+          speechIds,
+          applyFields,
+          patch: buildSpeechBatchPatchFromLoose(args),
+        });
+        if (!result.ok) return { ok: false, error: result.message };
+        return { ok: true, result };
+      }
+
+      case "batch_publish_speech_flags": {
+        const speechIds = Array.isArray(args.speechIds)
+          ? args.speechIds.map((id) => String(id).trim()).filter(Boolean)
+          : [];
+        const { applySpeechPublishBatch } = await import(
+          "@/lib/campaign-media/batch-speech-publish"
+        );
+        const result = applySpeechPublishBatch({
+          speechIds,
+          action: asString(args.action) || "",
+        });
+        if (!result.ok) return { ok: false, error: result.message };
+        return { ok: true, result };
+      }
+
+      case "undo_batch_speech_publish": {
+        const { undoBatchSpeechPublishRun, undoLastBatchSpeechPublish } = await import(
+          "@/lib/campaign-media/batch-speech-publish"
+        );
+        const runId = asString(args.runId);
+        const result = runId ? undoBatchSpeechPublishRun(runId) : undoLastBatchSpeechPublish();
+        if (!result.ok) return { ok: false, error: result.message };
+        return { ok: true, result };
+      }
+
+      case "propose_speech_placement": {
+        const { proposeSpeechPlacement, writeSpeechPlacementStub } = await import(
+          "@/lib/campaign-media/speech-placement"
+        );
+        const proposal = proposeSpeechPlacement({ persist: true });
+        writeSpeechPlacementStub(proposal);
+        return { ok: true, result: proposal };
+      }
+
+      case "apply_speech_placement": {
+        if (args.confirmCurate !== true) {
+          return {
+            ok: false,
+            error: "confirmCurate:true required — refuse silent HOMEPAGE_*_VIDEO_ID mutate.",
+          };
+        }
+        const proposalId = asString(args.proposalId);
+        if (!proposalId) return { ok: false, error: "proposalId required." };
+        const { applySpeechPlacementProposal } = await import(
+          "@/lib/campaign-media/speech-placement"
+        );
+        const result = applySpeechPlacementProposal({ proposalId, confirmCurate: true });
+        if (!result.ok) return { ok: false, error: result.message };
+        return { ok: true, result };
+      }
+
       default:
         return { ok: false, error: `Unknown tool: ${name}` };
     }

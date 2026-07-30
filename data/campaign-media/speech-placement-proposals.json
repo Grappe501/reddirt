@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "updatedAt": "2026-07-30T02:21:43.514Z",
+  "purpose": "Homepage video placement proposals — apply only with confirmCurate; never silent HOMEPAGE_*_VIDEO_ID mutate.",
+  "proposals": [
+    {
+      "id": "splace-ms6w0xb0",
+      "createdAt": "2026-07-30T02:21:43.452Z",
+      "updatedAt": "2026-07-30T02:21:43.514Z",
+      "status": "applied",
+      "diffs": [
+        {
+          "slot": "primaryMessage",
+          "currentId": "office-belongs-to-the-people",
+          "proposedId": "ripples-hot-springs-village",
+          "rationale": "Propose ripples-hot-springs-village for primaryMessage (readiness + homepageCandidate + PUBLISHED).",
+          "changed": true
+        },
+        {
+          "slot": "acrossArkansas",
+          "currentId": "ripples-hot-springs-village",
+          "proposedId": "ripples-hot-springs-village",
+          "rationale": "Keep current acrossArkansas id (best readiness among PUBLISHED speeches).",
+          "changed": false
+        }
+      ],
+      "warnings": [
+        "Primary and Across propose the same id — Across kept current to avoid duplicate."
+      ],
+      "nextActions": [
+        "Review primary/across diffs on Videos → Placement strip.",
+        "Apply with confirmCurate:true rewrites homepage-campaign-videos.ts (+ undo).",
+        "Or copy speech-placement-stub.md manually — never silent mutate."
+      ],
+      "appliedAt": "2026-07-30T02:21:43.514Z",
+      "undoSnapshotId": "svundo-ms6w0xb3"
+    }
+  ],
+  "undoSnapshots": [
+    {
+      "id": "svundo-ms6w0xb3",
+      "createdAt": "2026-07-30T02:21:43.456Z",
+      "proposalId": "splace-ms6w0xb0",
+      "primaryId": "office-belongs-to-the-people",
+      "acrossId": "ripples-hot-springs-village",
+      "fileBackupRel": "data/campaign-media/homepage-video-curation-backups/svundo-ms6w0xb3.ts.bak"
+    }
+  ]
+}

@@ -157,6 +157,10 @@ data/campaign-media/transcript-pipeline/**
 data/campaign-media/homepage-curation-backups/**
 !data/campaign-media/homepage-curation-backups/.gitkeep
 
+# Homepage video curation apply backups (local undo only)
+data/campaign-media/homepage-video-curation-backups/**
+!data/campaign-media/homepage-video-curation-backups/.gitkeep
+
 # Materialized county album file copies (rebuild via Evidence Workbench / scripts/refresh-county-albums.ts)
 public/media/county-albums/**
 !public/media/county-albums/.gitkeep

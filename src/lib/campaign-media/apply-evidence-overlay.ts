@@ -82,5 +82,13 @@ export function applySpeechEvidenceOverlay(
     counties,
     description,
     publicationStatus: overlay.publicationStatus ?? base.publicationStatus,
+    homepageEligible:
+      overlay.homepageCandidate !== undefined
+        ? Boolean(overlay.homepageCandidate)
+        : base.homepageEligible,
+    approvedForPublic:
+      overlay.approvedForPublic !== undefined
+        ? Boolean(overlay.approvedForPublic)
+        : base.approvedForPublic,
   };
 }

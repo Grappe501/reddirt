@@ -266,6 +266,41 @@ export const EVIDENCE_AI_TOOL_CATALOG: Array<{
     summary: "Restore homepage-campaign-photos.ts from an undo snapshot (confirmCurate required).",
   },
   {
+    name: "get_speech_confirm_queue",
+    audience: "video",
+    summary: "Speech confirm queue: no-county / needs-publish / published / prep-ready totals.",
+  },
+  {
+    name: "get_speech_readiness_matrix",
+    audience: "video",
+    summary: "Per-speech readiness: overlay · county · transcript · intel · master · clips · assembly.",
+  },
+  {
+    name: "batch_save_speech_evidence",
+    audience: "video",
+    summary: "Field-level batch Save for speech overlays (counties/proof/status/do-not-claim).",
+  },
+  {
+    name: "batch_publish_speech_flags",
+    audience: "video",
+    summary: "Batch approve/hold/publish/homepage for named speeches (empty-county skipped).",
+  },
+  {
+    name: "undo_batch_speech_publish",
+    audience: "video",
+    summary: "Undo last speech publish batch from before-snapshot.",
+  },
+  {
+    name: "propose_speech_placement",
+    audience: "video",
+    summary: "Propose HOMEPAGE_*_VIDEO_ID diffs for kelly-speaks homepage slots (no silent apply).",
+  },
+  {
+    name: "apply_speech_placement",
+    audience: "video",
+    summary: "Apply speech placement proposal (confirmCurate required + undo).",
+  },
+  {
     name: "propose_video_edit_project",
     audience: "video",
     summary: "AI/deterministic Edit Director: ordered cut list + look/transition/captions/export pack (no silent render).",
@@ -1242,6 +1277,112 @@ export function evidenceAiToolsFor(kind: "photo" | "video"): ChatCompletionTool[
             outId: { type: "string" },
           },
           required: ["outId"],
+        },
+      },
+    },
+    {
+      type: "function",
+      function: {
+        name: "get_speech_confirm_queue",
+        description:
+          "Build speech confirm queue totals and sample buckets (no-county, needs-publish, published, prep-ready).",
+        parameters: { type: "object", properties: {} },
+      },
+    },
+    {
+      type: "function",
+      function: {
+        name: "get_speech_readiness_matrix",
+        description:
+          "Per-speech readiness matrix: overlay, county, transcript, intel, master, clips, assemblies, next action.",
+        parameters: {
+          type: "object",
+          properties: {
+            speechIds: { type: "array", items: { type: "string" } },
+          },
+        },
+      },
+    },
+    {
+      type: "function",
+      function: {
+        name: "batch_save_speech_evidence",
+        description:
+          "Apply named fields to multiple speech overlays. Never invents geography. Operator must supply values.",
+        parameters: {
+          type: "object",
+          properties: {
+            speechIds: { type: "array", items: { type: "string" } },
+            applyFields: { type: "array", items: { type: "string" } },
+            counties: { type: "string" },
+            city: { type: "string" },
+            venue: { type: "string" },
+            eventDate: { type: "string" },
+            eventName: { type: "string" },
+            whatThisProves: { type: "string" },
+            doNotClaim: { type: "string" },
+            publicationStatus: { type: "string" },
+            approvedForPublic: { type: "boolean" },
+            homepageCandidate: { type: "boolean" },
+          },
+          required: ["speechIds", "applyFields"],
+        },
+      },
+    },
+    {
+      type: "function",
+      function: {
+        name: "batch_publish_speech_flags",
+        description:
+          "Batch approve / hold / publish / homepage_on / homepage_off for named speech ids. Empty-county skipped on public-raising actions.",
+        parameters: {
+          type: "object",
+          properties: {
+            speechIds: { type: "array", items: { type: "string" } },
+            action: {
+              type: "string",
+              enum: ["approve", "hold", "publish", "homepage_on", "homepage_off"],
+            },
+          },
+          required: ["speechIds", "action"],
+        },
+      },
+    },
+    {
+      type: "function",
+      function: {
+        name: "undo_batch_speech_publish",
+        description: "Undo the last (or named) speech publish batch using before-snapshots.",
+        parameters: {
+          type: "object",
+          properties: {
+            runId: { type: "string" },
+          },
+        },
+      },
+    },
+    {
+      type: "function",
+      function: {
+        name: "propose_speech_placement",
+        description:
+          "Propose HOMEPAGE_PRIMARY_MESSAGE_VIDEO_ID / HOMEPAGE_ACROSS_ARKANSAS_VIDEO_ID diffs. Does not rewrite TS — use apply_speech_placement with confirmCurate.",
+        parameters: { type: "object", properties: {} },
+      },
+    },
+    {
+      type: "function",
+      function: {
+        name: "apply_speech_placement",
+        description:
+          "Apply a speech placement proposal to homepage-campaign-videos.ts. Requires confirmCurate:true.",
+        parameters: {
+          type: "object",
+          properties: {
+            proposalId: { type: "string" },
+            confirmCurate: { type: "boolean" },
+          },
+          required: ["proposalId", "confirmCurate"],
         },
       },
     },
