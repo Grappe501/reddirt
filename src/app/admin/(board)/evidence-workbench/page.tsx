@@ -290,9 +290,9 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
                 Arrival · stills + video masters
               </p>
               <p className="mt-1 font-body text-xs text-[#364272]">
-                Drop zone routes images and videos. Rescan after Explorer drops (no auto-watch yet).
-                Bring into system intakes stills; attach unmatched masters to speeches. Labeling stays
-                on Identify.
+                Drop zone routes images and videos. Soft-watch polls while Arrival is open (detect
+                only — never auto-Intake). Bring into system intakes stills; attach unmatched masters
+                to speeches. Labeling stays on Identify.
               </p>
               <Link
                 href="/admin/evidence-workbench?tab=identify&filter=draft"

@@ -2875,6 +2875,36 @@ export async function bringArrivalIntoSystemAction(): Promise<{
   };
 }
 
+/**
+ * Soft-watch poll (Phase 2) — detect new stills/masters only.
+ * Never intakes, never Approves. Speeches omitted to keep polls light.
+ */
+export async function listArrivalSoftWatchAction(): Promise<{
+  ok: boolean;
+  message: string;
+  candidates?: ReturnType<typeof listDiskPhotoIngestCandidates>;
+  status?: import("@/lib/campaign-media/photo-ingest").PhotoIntakeStatus;
+  summary?: import("@/lib/campaign-media/video-master-arrival").VideoMasterArrivalSummary;
+  polledAt?: string;
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { getPhotoIntakeStatus } = await import("@/lib/campaign-media/photo-ingest");
+  const { listVideoMasterArrival } = await import("@/lib/campaign-media/video-master-arrival");
+  const candidates = listDiskPhotoIngestCandidates();
+  const status = getPhotoIntakeStatus();
+  const summary = listVideoMasterArrival();
+  const fresh = candidates.filter((c) => !c.alreadyInRegistry && !c.alreadyInDrafts).length;
+  return {
+    ok: true,
+    message: `Soft-watch · ${fresh} new stills · ${summary.total} masters`,
+    candidates,
+    status,
+    summary,
+    polledAt: new Date().toISOString(),
+  };
+}
+
 export async function proposeEventReelAction(input: {
   calendarRowId: string;
   photoLimit?: number;

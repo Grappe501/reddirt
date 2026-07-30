@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useTransition } from "react";
+import { useEffect, useRef, useState, useTransition } from "react";
 import Link from "next/link";
 import {
   attachVideoMasterAction,
@@ -9,12 +9,16 @@ import {
   dropCampaignPhotosToDiskAction,
   dropVideoMastersToDiskAction,
   getTurboIngestDashboardAction,
+  listArrivalSoftWatchAction,
   listPhotoIngestCandidatesAction,
   listVideoMasterArrivalAction,
   markVideoMasterUnmatchedAction,
   promotePhotoIngestAction,
   runTurboIngestAction,
 } from "@/app/admin/evidence-workbench-actions";
+
+/** Soft-watch poll while Arrival is open — detect only, never auto-Intake/Approve. */
+const SOFT_WATCH_INTERVAL_MS = 8000;
 
 type Candidate = {
   filename: string;
@@ -93,6 +97,23 @@ function formatBytes(n: number): string {
   return `${(n / (1024 * 1024)).toFixed(1)} MB`;
 }
 
+function stillIdsFromCandidates(list: Candidate[]): string[] {
+  return list
+    .filter((c) => !c.alreadyInRegistry && !c.alreadyInDrafts)
+    .map((c) => c.relativePath ?? c.filename)
+    .sort();
+}
+
+function masterKeysFromSummary(summary: VideoSummary): string[] {
+  return summary.rows.map((r) => r.key).sort();
+}
+
+type SoftWatchToast = {
+  stillsAdded: number;
+  mastersAdded: number;
+  atLabel: string;
+};
+
 export function EvidenceIngestPanel({
   initialCandidates,
   initialStatus,
@@ -113,13 +134,28 @@ export function EvidenceIngestPanel({
   const [showTurbo, setShowTurbo] = useState(false);
   const [turbo, setTurbo] = useState<TurboDash | null>(null);
   const [turboUseAi, setTurboUseAi] = useState(true);
+  const [softWatchOn, setSoftWatchOn] = useState(true);
+  const [softWatchToast, setSoftWatchToast] = useState<SoftWatchToast | null>(null);
+  const [lastSoftScanLabel, setLastSoftScanLabel] = useState<string | null>(null);
   const [pending, start] = useTransition();
+  const pendingRef = useRef(pending);
+  const softBaselineRef = useRef<{ stillIds: string[]; masterKeys: string[] } | null>(null);
+
+  pendingRef.current = pending;
+
+  function rememberSoftBaseline(nextCandidates: Candidate[], nextVideo: VideoSummary) {
+    softBaselineRef.current = {
+      stillIds: stillIdsFromCandidates(nextCandidates),
+      masterKeys: masterKeysFromSummary(nextVideo),
+    };
+  }
 
   useEffect(() => {
     setCandidates(initialCandidates);
     setStatus(initialStatus);
     setVideoSummary(initialVideoSummary);
     setSpeeches(initialSpeeches);
+    rememberSoftBaseline(initialCandidates, initialVideoSummary);
   }, [initialCandidates, initialStatus, initialVideoSummary, initialSpeeches]);
 
   useEffect(() => {
@@ -127,6 +163,65 @@ export function EvidenceIngestPanel({
       if (res.dashboard) setTurbo(res.dashboard as TurboDash);
     });
   }, []);
+
+  useEffect(() => {
+    if (!softWatchOn) return;
+    let cancelled = false;
+
+    async function poll() {
+      if (cancelled || pendingRef.current) return;
+      if (typeof document !== "undefined" && document.visibilityState === "hidden") return;
+
+      const res = await listArrivalSoftWatchAction();
+      if (cancelled || !res.ok) return;
+
+      const nextCandidates = res.candidates ?? [];
+      const nextStatus = res.status;
+      const nextVideo = res.summary;
+      if (nextStatus) setStatus(nextStatus);
+      if (nextVideo) setVideoSummary(nextVideo);
+      setCandidates(nextCandidates);
+
+      const stillIds = stillIdsFromCandidates(nextCandidates);
+      const masterKeys = nextVideo ? masterKeysFromSummary(nextVideo) : [];
+      const baseline = softBaselineRef.current;
+
+      if (!baseline) {
+        softBaselineRef.current = { stillIds, masterKeys };
+      } else {
+        const stillsAdded = stillIds.filter((id) => !baseline.stillIds.includes(id)).length;
+        const mastersAdded = masterKeys.filter((k) => !baseline.masterKeys.includes(k)).length;
+        softBaselineRef.current = { stillIds, masterKeys };
+        if (stillsAdded > 0 || mastersAdded > 0) {
+          setSoftWatchToast({
+            stillsAdded,
+            mastersAdded,
+            atLabel: new Date().toLocaleTimeString(),
+          });
+        }
+      }
+
+      if (res.polledAt) {
+        setLastSoftScanLabel(new Date(res.polledAt).toLocaleTimeString());
+      }
+    }
+
+    void poll();
+    const timer = setInterval(() => {
+      void poll();
+    }, SOFT_WATCH_INTERVAL_MS);
+
+    function onVisibility() {
+      if (document.visibilityState === "visible") void poll();
+    }
+    document.addEventListener("visibilitychange", onVisibility);
+
+    return () => {
+      cancelled = true;
+      clearInterval(timer);
+      document.removeEventListener("visibilitychange", onVisibility);
+    };
+  }, [softWatchOn]);
 
   const fresh = candidates.filter((c) => !c.alreadyInRegistry && !c.alreadyInDrafts);
   const readyForIdentify = status.queueCount;
@@ -144,10 +239,13 @@ export function EvidenceIngestPanel({
       listPhotoIngestCandidatesAction(),
       listVideoMasterArrivalAction(),
     ]);
+    const nextCandidates = photos.candidates ?? candidates;
+    const nextVideo = videos.summary ?? videoSummary;
     if (photos.candidates) setCandidates(photos.candidates);
     if (photos.status) setStatus(photos.status);
     if (videos.summary) setVideoSummary(videos.summary);
     if (videos.speeches) setSpeeches(videos.speeches);
+    rememberSoftBaseline(nextCandidates, nextVideo);
     const dash = await getTurboIngestDashboardAction();
     if (dash.dashboard) setTurbo(dash.dashboard as TurboDash);
     return photos.message || videos.message;
@@ -165,6 +263,7 @@ export function EvidenceIngestPanel({
       const res = await bringArrivalIntoSystemAction();
       setMessage(res.message);
       setLastQueued(res.ids?.length ?? 0);
+      setSoftWatchToast(null);
       if (typeof res.ownedMediaLinked === "number" && typeof res.ownedMediaUnlinked === "number") {
         setOwnedMediaMatch({ linked: res.ownedMediaLinked, unlinked: res.ownedMediaUnlinked });
       }
@@ -283,9 +382,9 @@ export function EvidenceIngestPanel({
             zone.
           </li>
           <li>
-            <strong className="text-[#12124a]">Rescan</strong> after Explorer drops (no auto-watch yet).
-            Then <strong className="text-[#12124a]">Bring into system</strong> — intakes new stills;
-            matched masters are already usable.
+            Soft-watch polls while this desk is open and lists new files (never auto-intakes). Then{" "}
+            <strong className="text-[#12124a]">Bring into system</strong> — intakes new stills; matched
+            masters are already usable.
           </li>
           <li>
             Unmatched masters: attach to a speech or mark unmatched. Then{" "}
@@ -331,6 +430,46 @@ export function EvidenceIngestPanel({
         </div>
       </div>
 
+      {softWatchToast ? (
+        <div className="flex flex-wrap items-center justify-between gap-3 rounded-lg border-2 border-[#ca913d] bg-[#fff8ef] px-4 py-3">
+          <div>
+            <p className="font-heading text-xs font-bold uppercase text-[#000066]">
+              Soft-watch · new files detected
+            </p>
+            <p className="mt-1 font-body text-sm text-[#12124a]">
+              {softWatchToast.stillsAdded > 0
+                ? `${softWatchToast.stillsAdded} new still(s)`
+                : null}
+              {softWatchToast.stillsAdded > 0 && softWatchToast.mastersAdded > 0 ? " · " : null}
+              {softWatchToast.mastersAdded > 0
+                ? `${softWatchToast.mastersAdded} new master(s)`
+                : null}
+              {" — not auto-intaken. Bring into system when ready."}
+            </p>
+            <p className="mt-0.5 font-body text-[10px] text-[#364272]">
+              Detected at {softWatchToast.atLabel}
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            <button
+              type="button"
+              disabled={pending || status.newOnDisk === 0}
+              onClick={bringIntoSystem}
+              className="rounded-md bg-[#000066] px-3 py-2 font-body text-xs font-bold text-white disabled:opacity-50"
+            >
+              Bring into system
+            </button>
+            <button
+              type="button"
+              onClick={() => setSoftWatchToast(null)}
+              className="rounded-md border-2 border-[#8eb6dc] bg-white px-3 py-2 font-body text-xs font-semibold text-[#12124a]"
+            >
+              Dismiss
+            </button>
+          </div>
+        </div>
+      ) : null}
+
       <div
         onDragEnter={(e) => {
           e.preventDefault();
@@ -356,8 +495,8 @@ export function EvidenceIngestPanel({
         <p className="font-heading text-xs font-bold uppercase text-[#000066]">Drop zone</p>
         <p className="mt-1 font-body text-xs text-[#364272]">
           Images → <code className="rounded bg-[#f4f7fc] px-1">campaign-photos/</code> · Videos →{" "}
-          <code className="rounded bg-[#f4f7fc] px-1">campaign-video-masters/</code>. Not a background
-          watcher — after Explorer drops, Rescan. Never auto-Approve.
+          <code className="rounded bg-[#f4f7fc] px-1">campaign-video-masters/</code>. Soft-watch
+          detects Explorer drops while this desk is open — it never auto-intakes or Approves.
         </p>
         <label className="mt-3 inline-flex cursor-pointer items-center gap-2 rounded-md border-2 border-[#000066] bg-white px-3 py-2 font-body text-xs font-bold text-[#000066]">
           Choose images / videos
@@ -393,6 +532,18 @@ export function EvidenceIngestPanel({
         >
           Rescan folders
         </button>
+        <button
+          type="button"
+          onClick={() => setSoftWatchOn((v) => !v)}
+          className={`rounded-md border-2 px-4 py-2.5 font-body text-sm font-semibold ${
+            softWatchOn
+              ? "border-[#000066] bg-[#eef2fb] text-[#000066]"
+              : "border-[#8eb6dc] bg-white text-[#12124a]"
+          }`}
+          title="Poll folders while Arrival is open — detect only, never auto-Intake"
+        >
+          Soft-watch {softWatchOn ? "on" : "off"}
+        </button>
         <Link
           href="/admin/evidence-workbench?tab=identify&filter=draft"
           className="rounded-md border-2 border-[#ca913d] bg-white px-4 py-2.5 font-body text-sm font-bold text-[#12124a]"
@@ -408,6 +559,18 @@ export function EvidenceIngestPanel({
           {showTurbo ? "Hide advanced" : "Advanced · Turbo"}
         </button>
       </div>
+
+      {softWatchOn ? (
+        <p className="font-body text-[11px] text-[#364272]">
+          Soft-watch polling every {SOFT_WATCH_INTERVAL_MS / 1000}s while this desk is open
+          {lastSoftScanLabel ? ` · last scan ${lastSoftScanLabel}` : ""}. Pauses when the tab is
+          hidden or a save is running. Never auto-Intake / Approve.
+        </p>
+      ) : (
+        <p className="font-body text-[11px] text-[#364272]">
+          Soft-watch paused — use Rescan folders after Explorer drops.
+        </p>
+      )}
 
       {ownedMediaMatch ? (
         <p className="font-body text-xs text-[#364272]">
