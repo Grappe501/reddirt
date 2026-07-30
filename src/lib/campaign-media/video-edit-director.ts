@@ -58,7 +58,7 @@ export function proposeVideoEditProject(input: {
   const maxClips = Math.min(Math.max(Number(input.maxClips) || 3, 1), 6);
   const clips: VideoEditClip[] = [];
 
-  let plan =
+  const plan =
     (input.planId ? getVideoExcerptPlan(input.planId) : null) ??
     listVideoExcerptPlans(youtubeVideoId)[0] ??
     null;

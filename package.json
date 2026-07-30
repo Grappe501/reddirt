@@ -231,6 +231,7 @@
     "agents:test-message-psychology-remediation": "tsx scripts/test-message-psychology-remediation.ts",
     "agents:test-visual-polish-launch-qa": "tsx scripts/test-visual-polish-launch-qa.ts",
     "public:launch-route-crawl": "node scripts/public-launch-route-crawl.cjs",
+    "public:live-parity-qa": "node scripts/public-live-parity-qa.cjs",
     "public:launch-screenshots": "node scripts/public-launch-screenshot-pack.cjs",
     "media:youtube-transcript-sync": "node scripts/run-with-h-drive-env.cjs tsx scripts/youtube-transcript-sync.ts",
     "agents:test-arkansas-media-source-discovery": "tsx scripts/test-arkansas-media-source-discovery.ts",

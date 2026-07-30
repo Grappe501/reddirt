@@ -1,7 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { existsSync, readFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { assertAdminApi } from "@/lib/admin/require-admin";
 import {
@@ -720,7 +720,6 @@ export async function importCalendarSeedAction(
 }
 
 function writeIcsToCsv(icsPath: string, csvPath: string): void {
-  const { mkdirSync, writeFileSync } = require("node:fs") as typeof import("node:fs");
   let raw = readFileSync(icsPath, "utf8");
   raw = raw.replace(/\r?\n[ \t]/g, "");
   const blocks = raw.match(/BEGIN:VEVENT[\s\S]*?END:VEVENT/g) ?? [];

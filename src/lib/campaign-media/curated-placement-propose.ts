@@ -223,7 +223,7 @@ export function proposeCuratedPlacement(input?: {
   const meetRanked = meetCandidates
     .map((p) => ({ id: p.id, score: rankPhoto(p, "meetKelly", inventory, overlayTier) }))
     .sort((a, b) => b.score - a.score);
-  let meetKellyId =
+  const meetKellyId =
     meetRanked.find((r) => r.id === "mena-polk-meet-greet-20260411")?.id ??
     meetRanked[0]?.id ??
     current.meetKellyId;

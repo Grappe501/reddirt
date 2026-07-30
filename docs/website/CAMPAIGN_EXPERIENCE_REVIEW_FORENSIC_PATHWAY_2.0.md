@@ -168,7 +168,7 @@ These passes are ordered for leverage. Each pass must leave the site **smaller i
 
 ---
 
-### Pass F — `KELLY-PUBLIC-LIVE-PARITY-QA-1.0`
+### Pass F — `KELLY-PUBLIC-LIVE-PARITY-QA-1.0` ✅ shipped (local production)
 
 **Job:** What we sandboxed in code must match what voters see.
 
@@ -180,6 +180,9 @@ These passes are ordered for leverage. Each pass must leave the site **smaller i
 - Publish CER with remaining hesitations
 
 **Exit thought:** “Local and live tell the same story.”
+
+**CER:** [`CAMPAIGN_EXPERIENCE_REVIEW_LIVE_PARITY_QA_1.0.md`](./CAMPAIGN_EXPERIENCE_REVIEW_LIVE_PARITY_QA_1.0.md)  
+**Note:** Local production crawl **PASS**. Live Netlify publish remains operator step.
 
 ---
 

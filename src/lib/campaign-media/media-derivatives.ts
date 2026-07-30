@@ -1192,7 +1192,7 @@ export function encodeVideoExcerptPlan(input: {
     return { ok: false, created: [], errors: [{ clipIndex: -1, error: "outId required." }], message: "outId required." };
   }
 
-  let planId = String(input.planId ?? "").trim() || undefined;
+  const planId = String(input.planId ?? "").trim() || undefined;
   let clips = input.clips;
   let youtubeVideoId = input.youtubeVideoId;
   if ((!clips || !clips.length) && planId) {
