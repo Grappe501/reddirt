@@ -54,4 +54,4 @@ Inventory uses the same selectors RSC pages use (`listCampaignPhotosLive` + stra
 
 | Pass | Commit | Note |
 | --- | ---: | --- |
-| Turbo Ingest | *(pending)* | Identify + website-fit automation |
+| Turbo Ingest | `84a3de68` | Identify + website-fit automation |
