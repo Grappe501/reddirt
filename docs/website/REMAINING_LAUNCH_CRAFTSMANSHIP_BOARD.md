@@ -62,7 +62,9 @@ Pass completed: `KELLY-PUBLIC-PRODUCTION-CONFIDENCE-1.0` → see [`PRODUCTION_CO
 
 ### 2. High craftsmanship from forensic register (remaining ~1.5 days)
 
-Prefer: nav cleanup (`/updates`), footer `/contact`, one Regnat lockup, restrained gold accents, campaign geography confirms — see forensic CER register H1–H8.
+**Next:** six passes in [`CAMPAIGN_EXPERIENCE_REVIEW_FORENSIC_PATHWAY_2.0.md`](./CAMPAIGN_EXPERIENCE_REVIEW_FORENSIC_PATHWAY_2.0.md) — Pathway Honesty → Participation Ladder → Media Proof Discipline → Nav Simplify → Trust Temperature → Live Parity QA.
+
+Prefer first: stop bait-and-switch (`/local-organizing`, Power of 5 → `/about`), one volunteer canon, public empty-slot copy (no admin strings). Older H-items: nav cleanup, footer `/contact` (done), Regnat at Final Action (done), geography confirms.
 
 ### 3. Media audit (ongoing with county ledger)
 
