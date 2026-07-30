@@ -157,7 +157,7 @@ export function SiteHeader() {
             href={voterRegistrationHref}
             variant="outlineOnDark"
             title="Vote / Register"
-            className="hidden min-h-[48px] min-w-0 flex-shrink-0 border-2 border-white/60 bg-white/12 px-2.5 py-2.5 text-xs font-extrabold uppercase tracking-wide text-white shadow-md ring-1 ring-white/15 transition hover:border-white/75 hover:bg-white/18 lg:inline-flex lg:px-3.5 lg:text-sm"
+            className="hidden min-h-[48px] min-w-0 flex-shrink-0 border border-white/45 bg-transparent px-2.5 py-2.5 text-xs font-semibold uppercase tracking-wide text-white/95 transition hover:border-white/70 hover:bg-white/10 lg:inline-flex lg:px-3.5 lg:text-sm"
             aria-label="Vote / Register — voter registration center"
           >
             <span className="xl:hidden">Vote</span>
@@ -168,15 +168,15 @@ export function SiteHeader() {
             target={volunteerExternal ? "_blank" : undefined}
             rel={volunteerExternal ? "noopener noreferrer" : undefined}
             variant="outlineOnDark"
-            className="ml-0.5 hidden min-h-[48px] flex-shrink-0 border-2 border-kelly-gold/55 bg-kelly-navy/45 px-3 py-2.5 text-xs font-extrabold uppercase tracking-wide text-white shadow-sm ring-1 ring-kelly-gold/20 hover:border-kelly-gold/75 hover:bg-kelly-blue/35 lg:inline-flex lg:px-3.5 lg:text-sm"
+            className="ml-0.5 hidden min-h-[48px] flex-shrink-0 border-2 border-white/55 bg-white/10 px-3 py-2.5 text-xs font-bold uppercase tracking-wide text-white shadow-sm transition hover:border-white/75 hover:bg-white/16 lg:inline-flex lg:px-3.5 lg:text-sm"
             aria-label="Volunteer — sign up to help the campaign"
           >
             Volunteer
           </Button>
           <Button
             href={siteConfig.donateHref}
-            variant="outlineOnDark"
-            className="hidden min-h-[48px] min-w-0 flex-shrink-0 border border-kelly-gold/50 bg-kelly-gold/10 px-3 py-2.5 text-xs font-bold uppercase tracking-wide text-white/95 shadow-sm hover:border-kelly-gold/65 hover:bg-kelly-gold/16 lg:inline-flex lg:px-3.5 lg:text-sm"
+            variant="primary"
+            className="hidden min-h-[48px] min-w-0 flex-shrink-0 px-3.5 py-2.5 text-xs font-extrabold uppercase tracking-wide lg:inline-flex lg:px-4 lg:text-sm"
             aria-label="Donate to the campaign"
           >
             Donate
@@ -188,7 +188,7 @@ export function SiteHeader() {
             href={voterRegistrationHref}
             variant="outlineOnDark"
             title="Vote / Register"
-            className="order-first min-h-[48px] border-2 border-white/55 bg-white/12 px-2.5 py-2 text-[10px] font-extrabold uppercase tracking-wide text-white sm:px-3 sm:text-xs"
+            className="order-first min-h-[48px] border border-white/45 bg-transparent px-2.5 py-2 text-[10px] font-semibold uppercase tracking-wide text-white sm:px-3 sm:text-xs"
             aria-label="Vote / Register — voter registration center"
           >
             Vote
@@ -198,15 +198,15 @@ export function SiteHeader() {
             target={volunteerExternal ? "_blank" : undefined}
             rel={volunteerExternal ? "noopener noreferrer" : undefined}
             variant="outlineOnDark"
-            className="min-h-[48px] border border-kelly-gold/45 bg-kelly-navy/40 px-2.5 py-2 text-[10px] font-extrabold uppercase tracking-wide text-white sm:px-3.5 sm:text-xs"
+            className="min-h-[48px] border-2 border-white/50 bg-white/10 px-2.5 py-2 text-[10px] font-bold uppercase tracking-wide text-white sm:px-3.5 sm:text-xs"
             aria-label="Volunteer — sign up"
           >
             Volunteer
           </Button>
           <Button
             href={siteConfig.donateHref}
-            variant="outlineOnDark"
-            className="min-h-[48px] border border-kelly-gold/45 bg-kelly-gold/10 px-2.5 py-2 text-[10px] font-extrabold uppercase tracking-wide text-white sm:px-3.5 sm:text-xs"
+            variant="primary"
+            className="min-h-[48px] px-2.5 py-2 text-[10px] font-extrabold uppercase tracking-wide sm:px-3.5 sm:text-xs"
             aria-label="Donate"
           >
             Donate
@@ -305,7 +305,7 @@ export function SiteHeader() {
                 href={volunteerHref}
                 target={volunteerExternal ? "_blank" : undefined}
                 rel={volunteerExternal ? "noopener noreferrer" : undefined}
-                className="block min-h-[48px] rounded-btn border-2 border-kelly-gold/55 bg-kelly-navy/40 px-3 py-3 text-center font-body text-base font-bold text-white focus-visible:outline focus-visible:ring-2 focus-visible:ring-kelly-gold/45"
+                className="block min-h-[48px] rounded-btn border-2 border-white/50 bg-white/10 px-3 py-3 text-center font-body text-base font-bold text-white focus-visible:outline focus-visible:ring-2 focus-visible:ring-kelly-gold/45"
                 onClick={() => setOpen(false)}
               >
                 Volunteer
@@ -314,7 +314,7 @@ export function SiteHeader() {
                 href={siteConfig.donateHref}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block min-h-[48px] rounded-btn border border-kelly-gold/50 bg-kelly-gold/10 px-3 py-3 text-center font-body text-base font-semibold text-white focus-visible:outline focus-visible:ring-2 focus-visible:ring-kelly-gold/35"
+                className="block min-h-[48px] rounded-btn bg-gradient-to-b from-kelly-gold to-[#b8872f] px-3 py-3 text-center font-body text-base font-extrabold text-kelly-navy shadow-[var(--shadow-gold-cta)] focus-visible:outline focus-visible:ring-2 focus-visible:ring-kelly-gold/35"
                 onClick={() => setOpen(false)}
               >
                 Donate

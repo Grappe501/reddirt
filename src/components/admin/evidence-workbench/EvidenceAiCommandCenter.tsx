@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState, useTransition } from "react";
 import { runEvidenceAiCommandAction } from "@/app/admin/evidence-workbench-actions";
 import type { EvidenceCommandResult } from "@/lib/campaign-media/evidence-ai-command";
+import { ewBtnPrimaryClass } from "@/components/admin/evidence-workbench/evidenceWorkbenchChrome";
 
 const STARTERS = [
   "What should I do next on the Evidence Workbench?",
@@ -14,7 +15,7 @@ const STARTERS = [
 ];
 
 /**
- * Magical freeform command bar — full tool surface, Prefer Unknown, confirm gates.
+ * Magical freeform command bar — Fortune-50 console surface.
  */
 export function EvidenceAiCommandCenter() {
   const [prompt, setPrompt] = useState("");
@@ -36,91 +37,90 @@ export function EvidenceAiCommandCenter() {
   }
 
   return (
-    <div className="mt-4 rounded-lg border-2 border-[#c9a227]/50 bg-gradient-to-br from-[#000066] to-[#12124a] p-4 text-white shadow-sm">
-      <div className="flex flex-wrap items-end justify-between gap-2">
-        <div>
-          <p className="font-heading text-sm font-bold tracking-wide text-[#f0d78c]">
-            Evidence Command · magical AI
-          </p>
-          <p className="mt-1 max-w-2xl font-body text-xs text-white/75">
-            Ask across calendar, photos, videos, intake, placement, and ship. Prefer Unknown. Never silent
-            Approve / Confirm / encode / curate.
-          </p>
+    <div className="ew-command mt-5">
+      <div className="relative z-[1]">
+        <p className="font-body text-[11px] font-bold uppercase tracking-[0.28em] text-kelly-gold-soft">
+          Evidence Command
+        </p>
+        <p className="mt-2 max-w-2xl font-heading text-xl font-bold tracking-tight text-white md:text-2xl">
+          Ask the workbench anything
+        </p>
+        <p className="mt-2 max-w-2xl font-body text-sm text-white/75">
+          Calendar · photos · videos · intake · placement · ship. Prefer Unknown. Never silent Approve /
+          Confirm / encode / curate.
+        </p>
+
+        <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-stretch">
+          <textarea
+            value={prompt}
+            onChange={(e) => setPrompt(e.target.value)}
+            rows={2}
+            placeholder="e.g. Prep tonight’s Confirmed Benton stop — link stills and speeches without inventing geography"
+            className="min-h-[72px] flex-1 rounded-xl border border-white/20 bg-white/10 px-4 py-3 font-body text-sm text-white placeholder:text-white/40 backdrop-blur-sm focus:border-kelly-gold/50 focus:outline-none focus:ring-2 focus:ring-kelly-gold/40"
+          />
+          <button
+            type="button"
+            disabled={pending || !prompt.trim()}
+            onClick={() => run(prompt)}
+            className={`${ewBtnPrimaryClass} sm:self-stretch sm:px-6`}
+          >
+            {pending ? "Thinking…" : "Run command"}
+          </button>
         </div>
+
+        <ul className="mt-3 flex flex-wrap gap-2">
+          {STARTERS.map((s) => (
+            <li key={s}>
+              <button
+                type="button"
+                disabled={pending}
+                onClick={() => run(s)}
+                className="rounded-full border border-white/20 bg-white/5 px-3 py-1.5 font-body text-[11px] text-white/85 transition hover:border-kelly-gold/50 hover:bg-white/10 disabled:opacity-50"
+              >
+                {s}
+              </button>
+            </li>
+          ))}
+        </ul>
+
+        {message ? <p className="mt-4 font-body text-xs text-kelly-gold-soft">{message}</p> : null}
+
+        {result ? (
+          <div className="mt-4 space-y-3 rounded-xl border border-white/15 bg-black/25 p-4 backdrop-blur-sm">
+            <p className="font-heading text-lg font-bold text-white">{result.headline}</p>
+            {result.plan.length ? (
+              <ol className="list-decimal space-y-1.5 pl-5 font-body text-sm text-white/90">
+                {result.plan.map((step) => (
+                  <li key={step}>{step}</li>
+                ))}
+              </ol>
+            ) : null}
+            {result.nextClicks.length ? (
+              <div className="flex flex-wrap gap-2">
+                {result.nextClicks.map((c) => (
+                  <Link
+                    key={`${c.label}-${c.href}`}
+                    href={c.href}
+                    className="rounded-full border border-kelly-gold/40 bg-kelly-gold/15 px-3 py-1.5 font-body text-xs font-semibold text-kelly-gold-soft transition hover:bg-kelly-gold/25"
+                  >
+                    {c.label} →
+                  </Link>
+                ))}
+              </div>
+            ) : null}
+            {result.toolsSummary ? (
+              <p className="font-mono text-[10px] text-white/50">{result.toolsSummary}</p>
+            ) : null}
+            {result.warnings.length ? (
+              <ul className="list-disc space-y-0.5 pl-4 font-body text-[11px] text-white/60">
+                {result.warnings.map((w) => (
+                  <li key={w}>{w}</li>
+                ))}
+              </ul>
+            ) : null}
+          </div>
+        ) : null}
       </div>
-
-      <div className="mt-3 flex flex-col gap-2 sm:flex-row">
-        <textarea
-          value={prompt}
-          onChange={(e) => setPrompt(e.target.value)}
-          rows={2}
-          placeholder="e.g. Prep tonight’s Benton Confirmed stop — link stills and speeches without inventing geography"
-          className="min-h-[64px] flex-1 rounded-md border border-white/20 bg-white/10 px-3 py-2 font-body text-sm text-white placeholder:text-white/40 focus:outline focus:outline-2 focus:outline-[#f0d78c]"
-        />
-        <button
-          type="button"
-          disabled={pending || !prompt.trim()}
-          onClick={() => run(prompt)}
-          className="min-h-[48px] rounded-md bg-[#f0d78c] px-4 py-2 font-body text-sm font-bold text-[#000066] disabled:opacity-50"
-        >
-          {pending ? "Thinking…" : "Run command"}
-        </button>
-      </div>
-
-      <ul className="mt-2 flex flex-wrap gap-1.5">
-        {STARTERS.map((s) => (
-          <li key={s}>
-            <button
-              type="button"
-              disabled={pending}
-              onClick={() => run(s)}
-              className="rounded-full border border-white/25 bg-white/5 px-2.5 py-1 font-body text-[11px] text-white/90 hover:border-[#f0d78c]/60 hover:bg-white/10 disabled:opacity-50"
-            >
-              {s}
-            </button>
-          </li>
-        ))}
-      </ul>
-
-      {message ? (
-        <p className="mt-3 font-body text-xs text-[#f0d78c]/90">{message}</p>
-      ) : null}
-
-      {result ? (
-        <div className="mt-3 space-y-3 rounded-md border border-white/15 bg-black/20 p-3">
-          <p className="font-heading text-base font-bold text-white">{result.headline}</p>
-          {result.plan.length ? (
-            <ol className="list-decimal space-y-1 pl-5 font-body text-sm text-white/90">
-              {result.plan.map((step) => (
-                <li key={step}>{step}</li>
-              ))}
-            </ol>
-          ) : null}
-          {result.nextClicks.length ? (
-            <div className="flex flex-wrap gap-2">
-              {result.nextClicks.map((c) => (
-                <Link
-                  key={`${c.label}-${c.href}`}
-                  href={c.href}
-                  className="rounded-md border border-[#f0d78c]/40 bg-[#f0d78c]/15 px-3 py-1.5 font-body text-xs font-semibold text-[#f0d78c] hover:bg-[#f0d78c]/25"
-                >
-                  {c.label} →
-                </Link>
-              ))}
-            </div>
-          ) : null}
-          {result.toolsSummary ? (
-            <p className="font-mono text-[10px] text-white/55">{result.toolsSummary}</p>
-          ) : null}
-          {result.warnings.length ? (
-            <ul className="list-disc space-y-0.5 pl-4 font-body text-[11px] text-white/65">
-              {result.warnings.map((w) => (
-                <li key={w}>{w}</li>
-              ))}
-            </ul>
-          ) : null}
-        </div>
-      ) : null}
     </div>
   );
 }

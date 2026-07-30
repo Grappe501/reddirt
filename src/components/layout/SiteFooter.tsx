@@ -13,11 +13,11 @@ export function SiteFooter() {
   const volunteerExternal = isExternalHref(volunteerHref);
 
   return (
-    <footer className="w-full border-t border-kelly-gold/20 bg-kelly-navy text-kelly-page">
+    <footer className="w-full border-t border-kelly-gold/25 bg-gradient-to-b from-kelly-navy to-kelly-deep text-kelly-page">
       <ContentContainer className="py-section-y lg:py-section-y-lg">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-10 xl:gap-14">
           <div className="lg:col-span-4">
-            <p className="font-heading text-2xl font-bold tracking-tight">{siteConfig.name}</p>
+            <p className="font-heading text-2xl font-bold tracking-tight md:text-3xl">{siteConfig.name}</p>
             <p className="mt-4 max-w-md font-body text-base leading-relaxed text-kelly-page/75">
               {siteConfig.description}
             </p>
@@ -25,7 +25,7 @@ export function SiteFooter() {
               href={volunteerHref}
               target={volunteerExternal ? "_blank" : undefined}
               rel={volunteerExternal ? "noopener noreferrer" : undefined}
-              className="mt-6 inline-flex min-h-[48px] items-center rounded-btn border border-kelly-page/25 bg-kelly-page/10 px-5 py-3 font-body text-sm font-semibold text-kelly-page transition hover:border-kelly-gold/50 hover:bg-kelly-page/15 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-kelly-gold"
+              className="mt-6 inline-flex min-h-[48px] items-center rounded-btn bg-gradient-to-b from-kelly-gold to-[#b8872f] px-5 py-3 font-body text-sm font-bold text-kelly-navy shadow-[var(--shadow-gold-cta)] transition hover:brightness-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-kelly-gold"
             >
               Volunteer with Kelly →
             </Link>

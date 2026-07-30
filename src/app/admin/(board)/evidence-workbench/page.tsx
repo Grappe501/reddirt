@@ -138,95 +138,89 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
   }));
 
   return (
-    <div className="mx-auto max-w-6xl text-[#12124a]">
-      <h1 className="font-heading text-3xl font-bold text-[#000066]">Evidence Workbench</h1>
-      <p className="mt-2 max-w-3xl font-body text-sm text-[#364272]">
-        Local-first photo / video / calendar confirmation. Saves under{" "}
-        <code className="rounded bg-[#f4f7fc] px-1">data/campaign-media/</code> on this machine — commit that folder
-        to publish overlays. Use <code className="rounded bg-[#f4f7fc] px-1">http://127.0.0.1</code>. Unknown stays
-        Unknown. Uncheck <strong>Approved for public</strong> to hold a still off county albums; check it (or set
-        APPROVED/PUBLISHED) when ready.
-      </p>
+    <div className="ew-shell ew-display">
+      <header className="ew-hero">
+        <p className="ew-eyebrow">Campaign OS · Media evidence</p>
+        <h1 className="ew-title">Evidence Workbench</h1>
+        <p className="ew-lede">
+          Local-first photo, video, and calendar confirmation — Fortune-50 confirmation console.
+          Saves under <code className="rounded bg-kelly-fog px-1.5 py-0.5 font-mono text-[12px]">data/campaign-media/</code>{" "}
+          on this machine. Prefer Unknown. Never invent geography.
+        </p>
+      </header>
 
       <EvidenceAiCommandCenter />
 
       <EvidenceNextActionsStrip actions={nextActions.actions} generatedAt={nextActions.generatedAt} />
 
-      <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
-        <div className="rounded-lg border-2 border-[#000066]/15 bg-white px-3 py-2">
-          <p className="font-heading text-xs font-bold uppercase text-[#000066]">Publish queue</p>
-          <p className="font-body text-sm">
+      <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+        <div className="ew-stat">
+          <p className="ew-stat-label">Publish queue</p>
+          <p className="mt-1 font-body text-sm font-semibold text-kelly-text">
             {unknownCounty} unknown · {needsApproval} need approval · {publishQueue.totals.approvedPublic}{" "}
             approved
           </p>
         </div>
-        <div className="rounded-lg border-2 border-[#000066]/15 bg-white px-3 py-2">
-          <p className="font-heading text-xs font-bold uppercase text-[#000066]">Ship</p>
-          <p className="font-body text-sm">
+        <div className="ew-stat">
+          <p className="ew-stat-label">Ship</p>
+          <p className="mt-1 font-body text-sm font-semibold text-kelly-text">
             {shipReport.totals.overlayJsonDirty} overlay dirty · {shipReport.totals.derivativeLocalOnly}{" "}
             deriv local-only
           </p>
         </div>
-        <div className="rounded-lg border-2 border-[#000066]/15 bg-white px-3 py-2">
-          <p className="font-heading text-xs font-bold uppercase text-[#000066]">Intake</p>
-          <p className="font-body text-sm">
+        <div className="ew-stat">
+          <p className="ew-stat-label">Intake</p>
+          <p className="mt-1 font-body text-sm font-semibold text-kelly-text">
             {intakeStatus.newOnDisk} new on disk · {intakeStatus.queueCount} in queue
           </p>
         </div>
-        <div className="rounded-lg border-2 border-[#000066]/15 bg-white px-3 py-2">
-          <p className="font-heading text-xs font-bold uppercase text-[#000066]">Videos</p>
-          <p className="font-body text-sm">
+        <div className="ew-stat">
+          <p className="ew-stat-label">Videos</p>
+          <p className="mt-1 font-body text-sm font-semibold text-kelly-text">
             {speeches.length} speeches · {speechConfirmQueue.totals.noCounty} no county ·{" "}
-            {speechConfirmQueue.totals.needsPublish} needs publish ·{" "}
-            {speechConfirmQueue.totals.overlaysSaved} overlays
+            {speechConfirmQueue.totals.needsPublish} needs publish
           </p>
         </div>
-        <div className="rounded-lg border-2 border-[#000066]/15 bg-white px-3 py-2">
-          <p className="font-heading text-xs font-bold uppercase text-[#000066]">Media command</p>
-          <p className="font-body text-sm">
-            <Link href="/admin/owned-media" className="font-semibold text-[#000066] underline">
+        <div className="ew-stat">
+          <p className="ew-stat-label">Media command</p>
+          <p className="mt-1 font-body text-sm">
+            <Link href="/admin/owned-media" className="os-link">
               Owned Media
             </Link>
             {" · "}
-            <Link href="/admin/media/youtube" className="font-semibold text-[#000066] underline">
+            <Link href="/admin/media/youtube" className="os-link">
               YouTube
             </Link>
             {" · "}
-            <Link href="/campaign-photos" className="font-semibold text-[#000066] underline">
+            <Link href="/campaign-photos" className="os-link">
               Public albums
             </Link>
           </p>
         </div>
       </div>
 
-      <div className="mt-4 rounded-lg border-2 border-[#000066]/20 bg-white p-4">
-        <p className="font-heading text-sm font-bold text-[#000066]">Where photos go on the site</p>
-        <ul className="mt-2 list-disc space-y-1 pl-5 font-body text-xs text-[#364272]">
+      <div className="ew-panel mt-5">
+        <p className="ew-panel-title">Where photos go on the site</p>
+        <ul className="mt-3 list-disc space-y-1.5 pl-5 font-body text-sm text-kelly-slate">
           {strategicPlacementNotes().map((n) => (
             <li key={n.surface}>
-              <span className="font-semibold text-[#12124a]">{n.surface}:</span> {n.how}
+              <span className="font-semibold text-kelly-navy">{n.surface}:</span> {n.how}
             </li>
           ))}
         </ul>
       </div>
 
-      <div className="mt-4 rounded-lg border-2 border-[#000066]/20 bg-white p-4">
-        <p className="font-heading text-sm font-bold text-[#000066]">
-          OpenAI evidence brain — tools (OPENAI_API_KEY)
+      <div className="ew-panel mt-5">
+        <p className="ew-panel-title">OpenAI evidence brain</p>
+        <p className="mt-2 font-body text-sm text-kelly-slate">
+          Mode-routed Suggest (Identify · Fit · Prep · Publish · Command · General). Command is freeform
+          across the workbench. Prefer Unknown — never auto-confirm geography.
         </p>
-        <p className="mt-1 font-body text-xs text-[#364272]">
-          Suggest with AI is mode-routed (Identify · Fit · Photo/Video prep · Publish · Command · General).
-          Command is freeform across the whole workbench. Prefer Unknown — never auto-confirm geography. Full
-          catalog below.
-        </p>
-        <ul className="mt-3 flex flex-wrap gap-2 font-body text-[11px] text-[#364272]">
+        <ul className="mt-4 flex flex-wrap gap-2">
           {(["photo", "video"] as const).flatMap((kind) =>
             listEvidenceAiModesForUi(kind).map((m) => (
-              <li
-                key={`${kind}-${m.id}`}
-                className="rounded border border-[#8eb6dc]/50 bg-[#f4f7fc] px-2 py-1"
-              >
-                <span className="font-semibold text-[#000066]">
+              <li key={`${kind}-${m.id}`} className="ew-chip">
+                <span className="font-semibold">
                   {kind}/{m.label}
                 </span>
                 {" · "}
@@ -235,35 +229,32 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
             )),
           )}
         </ul>
-        <ul className="mt-3 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
           {EVIDENCE_AI_TOOL_CATALOG.map((t) => (
-            <li key={t.name} className="rounded border border-[#8eb6dc]/50 bg-[#f4f7fc] px-3 py-2">
-              <p className="font-mono text-[11px] font-bold text-[#000066]">{t.name}</p>
-              <p className="mt-0.5 font-body text-[11px] uppercase tracking-wide text-[#364272]">{t.audience}</p>
-              <p className="mt-1 font-body text-xs text-[#12124a]">{t.summary}</p>
+            <li key={t.name} className="ew-tool-tile">
+              <p className="font-mono text-[11px] font-bold text-kelly-navy">{t.name}</p>
+              <p className="mt-0.5 font-body text-[10px] font-semibold uppercase tracking-wide text-kelly-slate">
+                {t.audience}
+              </p>
+              <p className="mt-1 font-body text-xs leading-relaxed text-kelly-text">{t.summary}</p>
             </li>
           ))}
         </ul>
       </div>
 
-      <nav className="mt-6 flex flex-wrap gap-2" aria-label="Evidence workbench tabs">
+      <nav className="mt-7 flex flex-wrap gap-2" aria-label="Evidence workbench tabs">
         {TABS.map((t) => (
           <Link
             key={t.id}
             href={`/admin/evidence-workbench?tab=${t.id}`}
-            className={cn(
-              "rounded-md border px-3 py-1.5 font-body text-sm font-semibold",
-              tab === t.id
-                ? "border-[#000066] bg-[#000066] text-white"
-                : "border-[#8eb6dc] bg-white text-[#12124a] hover:border-[#000066]/40",
-            )}
+            className={cn("ew-tab", tab === t.id ? "ew-tab-active" : "ew-tab-idle")}
           >
             {t.label}
           </Link>
         ))}
       </nav>
 
-      <div className="mt-8">
+      <div className="ew-panel mt-5">
         {tab === "queue" ? (
           <EvidencePublishQueuePanel
             initialQueue={publishQueue}

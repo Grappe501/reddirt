@@ -8,7 +8,7 @@ const base =
 
 const variants = {
   primary:
-    "bg-gradient-to-b from-kelly-gold to-[#b8872f] text-kelly-navy shadow-[0_4px_16px_rgba(202,145,61,0.35)] ring-1 ring-kelly-gold/40 ring-inset hover:brightness-105 hover:shadow-[0_6px_20px_rgba(202,145,61,0.42)] focus-visible:outline-kelly-navy",
+    "bg-gradient-to-b from-kelly-gold to-[#b8872f] text-kelly-navy shadow-[var(--shadow-gold-cta)] ring-1 ring-kelly-gold/40 ring-inset hover:brightness-105 hover:shadow-[0_10px_32px_rgba(202,145,61,0.45)] focus-visible:outline-kelly-navy",
   secondary:
     "bg-kelly-navy text-kelly-white shadow-[var(--shadow-soft)] hover:brightness-110 focus-visible:outline-kelly-gold",
   outline:
