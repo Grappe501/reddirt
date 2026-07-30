@@ -1,7 +1,7 @@
 /**
- * Public homepage `/` — LIVE CANON: lean trust-funnel shell.
- * Hero + closing ask only. Trail, photos, news, office pillars, and bio remounts
- * live on their own menu routes — not on `/`.
+ * Public homepage `/` — LIVE CANON trust-funnel shell.
+ * Keeps opening stack through primary message + personality still;
+ * trail / Across Arkansas / photos / news remounts stay on their menu routes.
  * @see docs/website/HOMEPAGE_FORWARD_PLAN.md
  */
 import type { Metadata } from "next";
