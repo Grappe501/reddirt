@@ -3,7 +3,10 @@ import { HeroBlock } from "@/components/blocks/HeroBlock";
 import { FullBleedSection } from "@/components/layout/FullBleedSection";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { PublicMediaSlotFrame } from "@/components/media/PublicMediaSlotFrame";
+import { EditableCopy } from "@/components/site-edit/EditableCopy";
 import type { PublicMediaSlotKey } from "@/lib/public-media/slot-registry";
+import { resolveSiteCopy } from "@/lib/site-edit/copy-overrides";
+import { isSiteEditMode } from "@/lib/site-edit/edit-mode";
 import { cn } from "@/lib/utils";
 
 type MediaPageHeroProps = {
@@ -19,9 +22,31 @@ type MediaPageHeroProps = {
   preferLabeledEmpty?: boolean;
 };
 
+function resolveEditableString(
+  editing: boolean,
+  key: string,
+  value: string | undefined,
+  as: "p" | "h1" | "h2" | "h3" | "span",
+  multiline = false,
+): ReactNode | undefined {
+  if (value == null || value === "") return value;
+  const resolved = resolveSiteCopy(key, value);
+  if (!editing) return resolved;
+  return (
+    <EditableCopy
+      copyKey={key}
+      value={resolved}
+      editing={editing}
+      as={as}
+      multiline={multiline}
+    />
+  );
+}
+
 /**
  * Inner-page hero with full-bleed or split-edge media (no inset cards).
  * Brand/copy stays calm; media is proof per PUBLIC_SITE_EDITORIAL_DOCTRINE.
+ * Site edit mode: string eyebrow/title/subtitle become inline-editable; media via slot chrome.
  */
 export async function MediaPageHero({
   slotKey,
@@ -33,6 +58,20 @@ export async function MediaPageHero({
   layout = "split",
   preferLabeledEmpty = false,
 }: MediaPageHeroProps) {
+  const editing = await isSiteEditMode();
+  const eyebrowNode =
+    typeof eyebrow === "string"
+      ? resolveEditableString(editing, `${slotKey}.eyebrow`, eyebrow, "p")
+      : eyebrow;
+  const titleNode =
+    typeof title === "string"
+      ? resolveEditableString(editing, `${slotKey}.title`, title, "span")
+      : title;
+  const subtitleNode =
+    typeof subtitle === "string"
+      ? resolveEditableString(editing, `${slotKey}.subtitle`, subtitle, "p", true)
+      : subtitle;
+
   if (layout === "bleed") {
     return (
       <FullBleedSection variant="plain" padY={false} className={cn("relative isolate overflow-hidden", className)}>
@@ -50,7 +89,7 @@ export async function MediaPageHero({
           />
         </div>
         <ContentContainer className="relative py-10 sm:py-14 lg:py-16">
-          <HeroBlock eyebrow={eyebrow} title={title} subtitle={subtitle} size="page" variant="onDark">
+          <HeroBlock eyebrow={eyebrowNode} title={titleNode} subtitle={subtitleNode} size="page" variant="onDark">
             {children}
           </HeroBlock>
         </ContentContainer>
@@ -73,7 +112,7 @@ export async function MediaPageHero({
         <div className="flex flex-col justify-center border-t border-kelly-gold/25 bg-kelly-navy lg:border-l lg:border-t-0">
           <div className="border-l-4 border-kelly-gold/90 max-sm:border-l-[3px]">
             <ContentContainer className="py-8 sm:py-10 lg:py-12">
-              <HeroBlock eyebrow={eyebrow} title={title} subtitle={subtitle} size="page" variant="onDark">
+              <HeroBlock eyebrow={eyebrowNode} title={titleNode} subtitle={subtitleNode} size="page" variant="onDark">
                 {children}
               </HeroBlock>
             </ContentContainer>

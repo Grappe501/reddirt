@@ -77,6 +77,12 @@ export function EvidencePublicSurfaceDesk({
             County desk
           </Link>
           <Link
+            href="/edit"
+            className="rounded-md border-2 border-[#000066] bg-white px-3 py-1.5 font-body text-xs font-bold text-[#000066]"
+          >
+            Website edit mode
+          </Link>
+          <Link
             href="/campaign-photos"
             className="rounded-md border-2 border-[#8eb6dc] bg-white px-3 py-1.5 font-body text-xs font-semibold text-[#12124a]"
           >

@@ -4,6 +4,8 @@ import { motion, useReducedMotion } from "framer-motion";
 import Link from "next/link";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { ContentImage } from "@/components/media/ContentImage";
+import { EditableCopy } from "@/components/site-edit/EditableCopy";
+import { SiteEditMediaChrome } from "@/components/site-edit/SiteEditMediaChrome";
 import { media } from "@/content/media/registry";
 import { trustFunnelHomeCopy } from "@/content/home/trust-funnel-home";
 import { getJoinCampaignHref } from "@/config/external-campaign";
@@ -13,32 +15,57 @@ import {
 } from "@/components/home/trust-funnel/trustFunnelChrome";
 import { cn } from "@/lib/utils";
 
-const copy = trustFunnelHomeCopy.hero;
+const defaults = trustFunnelHomeCopy.hero;
+
+export type TrustFunnelHeroCopy = {
+  brand: string;
+  office: string;
+  promise: string;
+  body: string;
+  ctaPrimary: string;
+  ctaSecondary: string;
+};
+
+type Props = {
+  editing?: boolean;
+  copy?: TrustFunnelHeroCopy;
+};
 
 /**
  * Homepage opening impression — brand, office, promise, two CTAs.
  * Still only (no autoplay video). Prefer a HERO trail still only when curated.
+ * Edit mode: inline copy + Change media on background slot.
  */
-export function TrustFunnelHero() {
+export function TrustFunnelHero({ editing = false, copy }: Props) {
   const reduceMotion = useReducedMotion();
   const y = reduceMotion ? 0 : 12;
   const dur = reduceMotion ? 0.01 : 0.42;
   const ease = [0.22, 1, 0.36, 1] as const;
   const joinHref = getJoinCampaignHref();
+  const c: TrustFunnelHeroCopy = copy ?? {
+    brand: defaults.brand,
+    office: defaults.office,
+    promise: defaults.promise,
+    body: defaults.body,
+    ctaPrimary: defaults.ctas[0].label,
+    ctaSecondary: defaults.ctas[1].label,
+  };
 
   return (
     <section
       className="relative min-h-[min(92svh,740px)] overflow-hidden border-b border-kelly-gold/15 sm:min-h-[min(100svh,880px)]"
       aria-labelledby="trust-funnel-hero-heading"
     >
-      <div className="absolute inset-0" aria-hidden>
-        <ContentImage
-          media={media.heroHome}
-          priority
-          warmOverlay={false}
-          mediaClassName="min-h-full w-full object-cover object-[42%_28%] sm:object-[48%_center] md:object-[50%_center]"
-          className="block min-h-full"
-        />
+      <div className="absolute inset-0" aria-hidden={!editing}>
+        <SiteEditMediaChrome slotKey="home.hero.background" editing={editing}>
+          <ContentImage
+            media={media.heroHome}
+            priority
+            warmOverlay={false}
+            mediaClassName="min-h-full w-full object-cover object-[42%_28%] sm:object-[48%_center] md:object-[50%_center]"
+            className="block min-h-full"
+          />
+        </SiteEditMediaChrome>
         <div className="absolute inset-0 bg-gradient-to-b from-kelly-navy/93 via-kelly-deep/84 to-kelly-navy/88" />
         <div
           className="absolute inset-0 bg-gradient-to-l from-kelly-navy/93 from-0% via-kelly-navy/75 via-[50%] to-transparent to-[70%]"
@@ -56,39 +83,69 @@ export function TrustFunnelHero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: dur, delay: reduceMotion ? 0 : 0.04, ease }}
           >
-            {copy.brand}
+            <EditableCopy
+              copyKey="home.hero.brand"
+              value={c.brand}
+              editing={editing}
+              as="span"
+              className="font-heading text-[clamp(1.85rem,7.2vw,3.25rem)] font-bold leading-[1.08] tracking-tight text-white sm:text-[clamp(2rem,6vw,3.25rem)]"
+            />
           </motion.h1>
-          <motion.p
+          <motion.div
             className="mt-3 font-body text-sm font-bold uppercase tracking-[0.2em] text-kelly-gold md:text-base md:tracking-[0.18em]"
             initial={reduceMotion ? false : { opacity: 0, y }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: dur, delay: reduceMotion ? 0 : 0.1, ease }}
           >
-            {copy.office}
-          </motion.p>
-          <motion.p
+            <EditableCopy
+              copyKey="home.hero.office"
+              value={c.office}
+              editing={editing}
+              as="p"
+              className="font-body text-sm font-bold uppercase tracking-[0.2em] text-kelly-gold md:text-base md:tracking-[0.18em]"
+            />
+          </motion.div>
+          <motion.div
             className="mt-5 font-heading text-[clamp(1.35rem,3.5vw,1.95rem)] font-bold leading-snug tracking-tight text-white"
             initial={reduceMotion ? false : { opacity: 0, y }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: dur, delay: reduceMotion ? 0 : 0.16, ease }}
           >
-            {copy.promise}
-          </motion.p>
-          <motion.p
+            <EditableCopy
+              copyKey="home.hero.promise"
+              value={c.promise}
+              editing={editing}
+              as="p"
+              className="font-heading text-[clamp(1.35rem,3.5vw,1.95rem)] font-bold leading-snug tracking-tight text-white"
+            />
+          </motion.div>
+          <motion.div
             className="mt-4 max-w-xl font-body text-base leading-relaxed text-white/92 md:text-lg"
             initial={reduceMotion ? false : { opacity: 0, y }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: dur, delay: reduceMotion ? 0 : 0.22, ease }}
           >
-            {copy.body}
-          </motion.p>
+            <EditableCopy
+              copyKey="home.hero.body"
+              value={c.body}
+              editing={editing}
+              as="p"
+              multiline
+              className="max-w-xl font-body text-base leading-relaxed text-white/92 md:text-lg"
+            />
+          </motion.div>
           <div className="mt-7 flex flex-col gap-2.5 sm:mt-8 sm:flex-row sm:flex-wrap sm:gap-3" role="group" aria-label="Primary actions">
-            {copy.ctas.map((cta, i) => {
+            {(
+              [
+                { label: c.ctaPrimary, href: defaults.ctas[0].href, variant: "primary" as const, key: "home.hero.ctaPrimary" },
+                { label: c.ctaSecondary, href: defaults.ctas[1].href, variant: "secondary" as const, key: "home.hero.ctaSecondary" },
+              ] as const
+            ).map((cta, i) => {
               const href = cta.href === "__join__" ? joinHref : cta.href;
               const isPrimary = cta.variant === "primary";
               return (
                 <motion.div
-                  key={cta.label}
+                  key={cta.key}
                   className="sm:inline-flex"
                   initial={reduceMotion ? false : { opacity: 0, y }}
                   animate={{ opacity: 1, y: 0 }}
@@ -98,15 +155,36 @@ export function TrustFunnelHero() {
                     ease,
                   }}
                 >
-                  <Link
-                    href={href}
-                    className={cn(
-                      "w-full sm:w-auto",
-                      isPrimary ? trustFunnelCtaPrimary : trustFunnelCtaOutlineOnDark,
-                    )}
-                  >
-                    {cta.label}
-                  </Link>
+                  {editing ? (
+                    <div className="flex w-full flex-col gap-1 sm:w-auto">
+                      <EditableCopy
+                        copyKey={cta.key}
+                        value={cta.label}
+                        editing={editing}
+                        as="span"
+                        className="font-body text-sm text-white"
+                      />
+                      <Link
+                        href={href}
+                        className={cn(
+                          "w-full sm:w-auto",
+                          isPrimary ? trustFunnelCtaPrimary : trustFunnelCtaOutlineOnDark,
+                        )}
+                      >
+                        {cta.label}
+                      </Link>
+                    </div>
+                  ) : (
+                    <Link
+                      href={href}
+                      className={cn(
+                        "w-full sm:w-auto",
+                        isPrimary ? trustFunnelCtaPrimary : trustFunnelCtaOutlineOnDark,
+                      )}
+                    >
+                      {cta.label}
+                    </Link>
+                  )}
                 </motion.div>
               );
             })}

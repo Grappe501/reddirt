@@ -2,7 +2,7 @@ import { cn } from "@/lib/utils";
 import type { ReactNode } from "react";
 
 type HeroBlockProps = {
-  eyebrow?: string;
+  eyebrow?: ReactNode;
   title: ReactNode;
   subtitle?: ReactNode;
   children?: ReactNode;
@@ -34,14 +34,14 @@ export function HeroBlock({
       )}
     >
       {eyebrow ? (
-        <p
+        <div
           className={cn(
             "max-w-prose font-body text-xs font-bold uppercase tracking-[0.22em]",
             onDark ? "text-kelly-gold" : "text-kelly-navy",
           )}
         >
           {eyebrow}
-        </p>
+        </div>
       ) : null}
       <h1
         className={cn(

@@ -243,6 +243,10 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
         <div className="ew-stat">
           <p className="ew-stat-label">Media command</p>
           <p className="mt-1 font-body text-sm">
+            <Link href="/edit" className="os-link">
+              Website edit
+            </Link>
+            {" · "}
             <Link href="/admin/owned-media" className="os-link">
               Owned Media
             </Link>

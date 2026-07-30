@@ -1,5 +1,7 @@
 import Image from "next/image";
+import type { ReactNode } from "react";
 import { ContentImage } from "@/components/media/ContentImage";
+import { SiteEditMediaChrome } from "@/components/site-edit/SiteEditMediaChrome";
 import { media, type MediaRef } from "@/content/media/registry";
 import {
   resolvePublicMediaSlot,
@@ -9,6 +11,7 @@ import {
   getPublicMediaSlotDefinition,
   type PublicMediaSlotKey,
 } from "@/lib/public-media/slot-registry";
+import { isSiteEditMode } from "@/lib/site-edit/edit-mode";
 import { cn } from "@/lib/utils";
 
 export type PublicMediaSlotFrameProps = {
@@ -43,8 +46,21 @@ function EmptySlotLabel({ label, className }: { label: string; className?: strin
   );
 }
 
+function withEditChrome(
+  editing: boolean,
+  slotKey: PublicMediaSlotKey,
+  node: ReactNode,
+) {
+  return (
+    <SiteEditMediaChrome slotKey={slotKey} editing={editing}>
+      {node}
+    </SiteEditMediaChrome>
+  );
+}
+
 /**
  * Renders a typed public media slot: owned image/video, honest static still, or labeled empty frame.
+ * In public site edit mode, overlays Change media → owned placements admin.
  */
 export async function PublicMediaSlotFrame({
   slotKey,
@@ -56,6 +72,7 @@ export async function PublicMediaSlotFrame({
   preferLabeledEmpty = false,
   presentation,
 }: PublicMediaSlotFrameProps) {
+  const editing = await isSiteEditMode();
   const resolved = presentation ?? (await resolvePublicMediaSlot(slotKey));
   const def = getPublicMediaSlotDefinition(slotKey)!;
   const showEmpty =
@@ -64,15 +81,19 @@ export async function PublicMediaSlotFrame({
     (resolved.provenance === "static-content-image" && resolved.sourceUrl.includes("placeholder"));
 
   if (showEmpty && resolved.provenance !== "owned-media") {
-    return (
+    return withEditChrome(
+      editing,
+      slotKey,
       <span className={cn("relative block h-full w-full overflow-hidden", className)}>
         <EmptySlotLabel label={def.emptySlotLabel} />
-      </span>
+      </span>,
     );
   }
 
   if (resolved.mediaKind === "VIDEO" && resolved.provenance === "owned-media") {
-    return (
+    return withEditChrome(
+      editing,
+      slotKey,
       <span className={cn("relative block h-full w-full overflow-hidden bg-kelly-ink", className)}>
         <video
           className={cn("h-full w-full object-cover", mediaClassName)}
@@ -84,13 +105,15 @@ export async function PublicMediaSlotFrame({
         >
           <source src={resolved.sourceUrl} />
         </video>
-      </span>
+      </span>,
     );
   }
 
   if (resolved.provenance === "owned-media") {
     const unoptimized = resolved.sourceUrl.includes("/api/owned-campaign-media/");
-    return (
+    return withEditChrome(
+      editing,
+      slotKey,
       <span className={cn("relative block h-full w-full overflow-hidden", className)}>
         <Image
           src={resolved.sourceUrl}
@@ -112,12 +135,14 @@ export async function PublicMediaSlotFrame({
         {resolved.caption ? (
           <figcaption className="sr-only">{resolved.caption}</figcaption>
         ) : null}
-      </span>
+      </span>,
     );
   }
 
   const fallback: MediaRef = media[def.staticFallbackMediaKey];
-  return (
+  return withEditChrome(
+    editing,
+    slotKey,
     <ContentImage
       media={fallback}
       className={className}
@@ -126,6 +151,6 @@ export async function PublicMediaSlotFrame({
       sizes={sizes}
       warmOverlay={warmOverlay}
       objectPosition={resolved.objectPosition}
-    />
+    />,
   );
 }
