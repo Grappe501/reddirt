@@ -180,6 +180,26 @@ export const EVIDENCE_AI_TOOL_CATALOG: Array<{
     audience: "video",
     summary: "Apply a stored transcript-intel proposal to speech overlay fields (confirm required).",
   },
+  {
+    name: "get_website_surface_inventory",
+    audience: "both",
+    summary: "Live website surface inventory: homepage, albums, Across Arkansas, gaps.",
+  },
+  {
+    name: "score_photo_website_fit",
+    audience: "photo",
+    summary: "Rank where a photo would fit on the site (homepage, journey, albums, From the Road).",
+  },
+  {
+    name: "turbo_ingest_photos",
+    audience: "photo",
+    summary: "Intake (optional) + identify + website-fit proposals for draft/unknown stills (confirm required).",
+  },
+  {
+    name: "apply_turbo_proposal",
+    audience: "photo",
+    summary: "Apply turbo identify and/or fit flags to overlay (confirm required; never silent Approve).",
+  },
 ];
 
 export function evidenceAiToolsFor(kind: "photo" | "video"): ChatCompletionTool[] {
@@ -235,6 +255,18 @@ export function evidenceAiToolsFor(kind: "photo" | "video"): ChatCompletionTool[
             },
             limit: { type: "number" },
           },
+        },
+      },
+    },
+    {
+      type: "function",
+      function: {
+        name: "get_website_surface_inventory",
+        description:
+          "Read live website surface inventory from campaign photo selectors: homepage gallery, Across Arkansas, county albums, From the Road covers, thin counties, curated IDs.",
+        parameters: {
+          type: "object",
+          properties: {},
         },
       },
     },
@@ -573,6 +605,64 @@ export function evidenceAiToolsFor(kind: "photo" | "video"): ChatCompletionTool[
               enum: ["DRAFT", "IN_REVIEW", "APPROVED", "PUBLISHED", "ARCHIVED"],
             },
           },
+        },
+      },
+    },
+    {
+      type: "function",
+      function: {
+        name: "score_photo_website_fit",
+        description:
+          "Score where a photo fits on the live website (homepage, journey, county albums, From the Road, Meet Kelly). Uses proposed overlay fields when provided. Does not write.",
+        parameters: {
+          type: "object",
+          properties: {
+            photoId: { type: "string" },
+            county: { type: "string" },
+            city: { type: "string" },
+            whatThisProves: { type: "string" },
+            homepageCandidate: { type: "boolean" },
+            featuredPhoto: { type: "boolean" },
+            heroLevel: { type: "string" },
+          },
+          required: ["photoId"],
+        },
+      },
+    },
+    {
+      type: "function",
+      function: {
+        name: "turbo_ingest_photos",
+        description:
+          "Operator-intent only. Optional intake, then identify + website-fit proposals for draft/unknown stills. Writes turbo-ingest-proposals.json only — never auto-approves.",
+        parameters: {
+          type: "object",
+          properties: {
+            confirm: { type: "boolean" },
+            intakeFirst: { type: "boolean" },
+            useAi: { type: "boolean" },
+            maxPhotos: { type: "number" },
+            photoIds: { type: "array", items: { type: "string" } },
+          },
+          required: ["confirm"],
+        },
+      },
+    },
+    {
+      type: "function",
+      function: {
+        name: "apply_turbo_proposal",
+        description:
+          "Apply a turbo proposal's identify fields and/or fit flags (homepageCandidate/featured/hero/tier). Requires confirm:true. Does not silent-Approve.",
+        parameters: {
+          type: "object",
+          properties: {
+            photoId: { type: "string" },
+            applyIdentify: { type: "boolean" },
+            applyFitFlags: { type: "boolean" },
+            confirm: { type: "boolean" },
+          },
+          required: ["photoId", "confirm"],
         },
       },
     },

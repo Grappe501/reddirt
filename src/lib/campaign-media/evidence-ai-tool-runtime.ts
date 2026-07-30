@@ -820,6 +820,76 @@ export async function executeEvidenceAiTool(
         };
       }
 
+      case "get_website_surface_inventory": {
+        const { buildWebsiteSurfaceInventory } = await import(
+          "@/lib/campaign-media/website-surface-catalog"
+        );
+        return { ok: true, result: buildWebsiteSurfaceInventory(livePhotos()) };
+      }
+
+      case "score_photo_website_fit": {
+        const photoId = asString(args.photoId);
+        if (!photoId) return { ok: false, error: "photoId required." };
+        const photo = livePhotos().find((p) => p.id === photoId);
+        if (!photo) return { ok: false, error: `Unknown photo id: ${photoId}` };
+        const { buildWebsiteSurfaceInventory } = await import(
+          "@/lib/campaign-media/website-surface-catalog"
+        );
+        const { scorePhotoWebsiteFit } = await import("@/lib/campaign-media/website-fit-scorer");
+        const proposed = {
+          county: asString(args.county) || undefined,
+          city: asString(args.city) || undefined,
+          whatThisProves: asString(args.whatThisProves) || undefined,
+          homepageCandidate:
+            args.homepageCandidate === undefined ? undefined : Boolean(args.homepageCandidate),
+          featuredPhoto: args.featuredPhoto === undefined ? undefined : Boolean(args.featuredPhoto),
+          heroLevel: (asString(args.heroLevel) as import("@/lib/campaign-media/evidence-types").PhotoEvidenceOverlay["heroLevel"]) || undefined,
+        };
+        const inventory = buildWebsiteSurfaceInventory(livePhotos());
+        return {
+          ok: true,
+          result: scorePhotoWebsiteFit({
+            photo,
+            proposedOverlay: proposed,
+            inventory,
+          }),
+        };
+      }
+
+      case "turbo_ingest_photos": {
+        if (args.confirm !== true) {
+          return { ok: false, error: "confirm:true required — operator must explicitly ask for turbo ingest." };
+        }
+        const { runTurboIngest } = await import("@/lib/campaign-media/turbo-ingest");
+        const photoIds = Array.isArray(args.photoIds)
+          ? args.photoIds.map((id) => String(id).trim()).filter(Boolean)
+          : undefined;
+        const result = await runTurboIngest({
+          intakeFirst: args.intakeFirst === true,
+          useAi: args.useAi !== false,
+          maxPhotos: typeof args.maxPhotos === "number" ? args.maxPhotos : undefined,
+          photoIds,
+        });
+        return { ok: result.ok, result };
+      }
+
+      case "apply_turbo_proposal": {
+        if (args.confirm !== true) {
+          return { ok: false, error: "confirm:true required — operator must explicitly ask to apply." };
+        }
+        const photoId = asString(args.photoId);
+        if (!photoId) return { ok: false, error: "photoId required." };
+        const { applyTurboProposal } = await import("@/lib/campaign-media/turbo-ingest");
+        const result = applyTurboProposal({
+          photoId,
+          applyIdentify: args.applyIdentify !== false,
+          applyFitFlags: args.applyFitFlags === true,
+          markApplied: true,
+        });
+        if (!result.ok) return { ok: false, error: result.message };
+        return { ok: true, result };
+      }
+
       default:
         return { ok: false, error: `Unknown tool: ${name}` };
     }

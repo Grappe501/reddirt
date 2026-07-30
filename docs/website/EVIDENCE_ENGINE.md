@@ -102,6 +102,7 @@ Operator UI (localhost): **`/admin/evidence-workbench`**
 - **Ops polish:** Undo last publish · batch op history · keyboard multi-select · smoke pack `scripts/smoke-evidence-workbench-pack.cjs`  
 - **Simple intake:** Drop into `public/media/campaign-photos/` (nested OK) → **Intake all new** (flatten copies + queue drafts) → Photos label → Approve. CLI: `npm run evidence:intake`. Board: [`EVIDENCE_WORKBENCH_INTAKE_UPGRADE.md`](./EVIDENCE_WORKBENCH_INTAKE_UPGRADE.md)  
 - **Video Prep package:** Speeches tab **Prep package** (plan + transcript intel + optional encode/poster); manual windows; quote→encode; **9:16 social** reframes; AI tools `prep_video_package` / `list_video_derivatives` / `apply_transcript_intelligence` (encode gated). Board: [`EVIDENCE_VIDEO_PREP_PASS.md`](./EVIDENCE_VIDEO_PREP_PASS.md)  
+- **Turbo Ingest:** Intake → AI/heuristic identify + **website-fit rankings** (homepage / journey / albums / From the Road) → operator Apply. Tools `turbo_ingest_photos` / `score_photo_website_fit` / `get_website_surface_inventory`. Board: [`EVIDENCE_WORKBENCH_TURBO_INGEST.md`](./EVIDENCE_WORKBENCH_TURBO_INGEST.md)  
 - Drop local masters in `public/media/campaign-video-masters/` or `.local/video-masters/`  
 - 10-pass upgrade map (locked complete): [`EVIDENCE_WORKBENCH_10_PASS_UPGRADE.md`](./EVIDENCE_WORKBENCH_10_PASS_UPGRADE.md)  
 - Video: `plan_video_excerpt` builds timed clip candidates from local transcript workspace; encode/poster needs local `ffmpeg` (optional)  

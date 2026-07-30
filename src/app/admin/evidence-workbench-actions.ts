@@ -716,6 +716,93 @@ export async function intakeAllPhotosAction(): Promise<{
   };
 }
 
+export async function runTurboIngestAction(input?: {
+  intakeFirst?: boolean;
+  useAi?: boolean;
+  maxPhotos?: number;
+  photoIds?: string[];
+}): Promise<{
+  ok: boolean;
+  message: string;
+  proposalIds?: string[];
+  inventorySummary?: string;
+  dashboard?: ReturnType<
+    typeof import("@/lib/campaign-media/turbo-ingest").getTurboIngestDashboard
+  >;
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { runTurboIngest, getTurboIngestDashboard } = await import(
+    "@/lib/campaign-media/turbo-ingest"
+  );
+  const result = await runTurboIngest({
+    intakeFirst: Boolean(input?.intakeFirst),
+    useAi: input?.useAi !== false,
+    maxPhotos: input?.maxPhotos,
+    photoIds: input?.photoIds,
+  });
+  revalidatePath("/admin/evidence-workbench");
+  return {
+    ok: result.ok,
+    message: `${result.message} · ${result.inventorySummary}`,
+    proposalIds: result.proposalIds,
+    inventorySummary: result.inventorySummary,
+    dashboard: getTurboIngestDashboard(),
+  };
+}
+
+export async function getTurboIngestDashboardAction(): Promise<{
+  ok: boolean;
+  message: string;
+  dashboard?: ReturnType<
+    typeof import("@/lib/campaign-media/turbo-ingest").getTurboIngestDashboard
+  >;
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { getTurboIngestDashboard } = await import("@/lib/campaign-media/turbo-ingest");
+  const dashboard = getTurboIngestDashboard();
+  return {
+    ok: true,
+    message: `${dashboard.pending} pending turbo proposal(s)`,
+    dashboard,
+  };
+}
+
+export async function getTurboProposalAction(photoId: string): Promise<{
+  ok: boolean;
+  message: string;
+  proposal?: import("@/lib/campaign-media/turbo-ingest-types").TurboPhotoProposal | null;
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { getTurboProposal } = await import("@/lib/campaign-media/turbo-ingest-store");
+  const proposal = getTurboProposal(String(photoId ?? "").trim());
+  return {
+    ok: true,
+    message: proposal ? `Turbo proposal for ${photoId}` : `No turbo proposal for ${photoId}`,
+    proposal,
+  };
+}
+
+export async function applyTurboProposalAction(input: {
+  photoId: string;
+  applyIdentify?: boolean;
+  applyFitFlags?: boolean;
+}): Promise<{ ok: boolean; message: string }> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { applyTurboProposal } = await import("@/lib/campaign-media/turbo-ingest");
+  const result = applyTurboProposal({
+    photoId: input.photoId,
+    applyIdentify: Boolean(input.applyIdentify),
+    applyFitFlags: Boolean(input.applyFitFlags),
+    markApplied: true,
+  });
+  if (result.ok) revalidateEvidenceSurfaces();
+  return result;
+}
+
 /** Alias — intake one path (nested OK: flatten + queue). */
 export async function promotePhotoIngestAction(
   filename: string,

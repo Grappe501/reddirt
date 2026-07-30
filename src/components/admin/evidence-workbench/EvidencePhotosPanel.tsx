@@ -10,6 +10,8 @@ import {
   clusterPhotoSelectionAction,
   createDerivativeFromCropAdviceAction,
   createPhotoDerivativeAction,
+  applyTurboProposalAction,
+  getTurboProposalAction,
   inspectPhotoPixelsAction,
   listEvidenceBatchOpsAction,
   listPhotoDerivativesAction,
@@ -25,6 +27,7 @@ import {
 import type { BatchPhotoAiProposal } from "@/lib/campaign-media/evidence-ai-types";
 import type { EvidenceBatchOperation } from "@/lib/campaign-media/evidence-batch-ops";
 import type { PhotoEvidenceOverlay } from "@/lib/campaign-media/evidence-types";
+import type { TurboPhotoProposal } from "@/lib/campaign-media/turbo-ingest-types";
 import { clickToFocusPoint, type FocusPoint } from "@/lib/campaign-media/focus-crop";
 import type { PhotoDerivativeRecord } from "@/lib/campaign-media/media-derivatives-types";
 import { EVIDENCE_FIELD_CLASS } from "@/components/admin/evidence-workbench/field-styles";
@@ -200,6 +203,7 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId, initialF
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
   const [selectionAnchorId, setSelectionAnchorId] = useState<string | null>(null);
   const [batchOps, setBatchOps] = useState<EvidenceBatchOperation[]>([]);
+  const [turboProposal, setTurboProposal] = useState<TurboPhotoProposal | null>(null);
   const [batchFields, setBatchFields] = useState<Set<string>>(() => new Set(DEFAULT_BATCH_FIELDS));
   const [proposal, setProposal] = useState<BatchPhotoAiProposal | null>(null);
   const [clusterNote, setClusterNote] = useState("");
@@ -282,6 +286,21 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId, initialF
       setBatchOps(res.operations ?? []);
     });
   }, []);
+
+  useEffect(() => {
+    if (!activeId) {
+      setTurboProposal(null);
+      return;
+    }
+    let cancelled = false;
+    void getTurboProposalAction(activeId).then((res) => {
+      if (cancelled) return;
+      setTurboProposal(res.proposal ?? null);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [activeId]);
 
   // Soft-refresh form from server props when overlays update and the operator is not mid-edit.
   useEffect(() => {
@@ -681,6 +700,69 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId, initialF
     });
   }
 
+  function applyTurbo(opts: { identify?: boolean; fit?: boolean }) {
+    if (!photo || !turboProposal) return;
+    const photoId = photo.id;
+    const proposal = turboProposal;
+    start(async () => {
+      const res = await applyTurboProposalAction({
+        photoId,
+        applyIdentify: Boolean(opts.identify),
+        applyFitFlags: Boolean(opts.fit),
+      });
+      setMessage(res.message);
+      const again = await getTurboProposalAction(photoId);
+      setTurboProposal(again.proposal ?? null);
+      if (opts.identify && proposal.identify) {
+        const s = proposal.identify;
+        setForm((prev) => {
+          if (!prev) return prev;
+          return {
+            ...prev,
+            county: s.county !== "Unknown" ? s.county : prev.county,
+            city: s.city !== "Unknown" ? s.city : prev.city,
+            venue: s.venue !== "Unknown" ? s.venue : prev.venue,
+            eventDate: s.eventDate !== "Unknown" ? s.eventDate : prev.eventDate,
+            eventName: s.eventName !== "Unknown" ? s.eventName : prev.eventName,
+            photographer: s.photographer !== "Unknown" ? s.photographer : prev.photographer,
+            peopleVisible: s.peopleVisible?.length ? s.peopleVisible.join(", ") : prev.peopleVisible,
+            whatThisProves: s.whatThisProves || prev.whatThisProves,
+            homepageCandidate:
+              opts.fit && proposal.recommendedFlags.homepageCandidate !== undefined
+                ? Boolean(proposal.recommendedFlags.homepageCandidate)
+                : prev.homepageCandidate,
+            featuredPhoto:
+              opts.fit && proposal.recommendedFlags.featuredPhoto !== undefined
+                ? Boolean(proposal.recommendedFlags.featuredPhoto)
+                : prev.featuredPhoto,
+            heroLevel:
+              opts.fit && proposal.recommendedFlags.heroLevel
+                ? proposal.recommendedFlags.heroLevel
+                : prev.heroLevel,
+            tierIntent:
+              opts.fit && proposal.recommendedFlags.tierIntent !== undefined
+                ? (proposal.recommendedFlags.tierIntent as PhotoFormState["tierIntent"])
+                : prev.tierIntent,
+          };
+        });
+        setDirty(true);
+      } else if (opts.fit && proposal.recommendedFlags) {
+        const f = proposal.recommendedFlags;
+        setForm((prev) => {
+          if (!prev) return prev;
+          return {
+            ...prev,
+            homepageCandidate: f.homepageCandidate ?? prev.homepageCandidate,
+            featuredPhoto: f.featuredPhoto ?? prev.featuredPhoto,
+            heroLevel: f.heroLevel ?? prev.heroLevel,
+            tierIntent: (f.tierIntent as PhotoFormState["tierIntent"]) ?? prev.tierIntent,
+          };
+        });
+        setDirty(true);
+      }
+    });
+  }
+
   function toggleBatchField(key: string) {
     setBatchFields((prev) => {
       const next = new Set(prev);
@@ -1011,6 +1093,64 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId, initialF
           </button>
         ))}
       </div>
+
+      {turboProposal && turboProposal.status === "pending" ? (
+        <div className="rounded-lg border-2 border-[#ca913d]/60 bg-[#fff8ef] p-3">
+          <p className="font-heading text-xs font-bold uppercase tracking-wide text-[#000066]">
+            Turbo website fit · {turboProposal.identifySource}
+          </p>
+          <p className="mt-1 font-body text-[11px] text-[#364272]">
+            Best: {turboProposal.fit.bestSurface ?? "—"} ({turboProposal.fit.bestScore}/100) ·{" "}
+            {turboProposal.fit.inventoryNote}
+          </p>
+          {turboProposal.identify ? (
+            <p className="mt-1 font-body text-[11px] text-[#12124a]">
+              Identify: {turboProposal.identify.county}/{turboProposal.identify.city} ·{" "}
+              {turboProposal.identify.confidence} · {turboProposal.identify.rationale}
+            </p>
+          ) : null}
+          <ul className="mt-2 space-y-1">
+            {turboProposal.fit.rankings.slice(0, 5).map((r) => (
+              <li key={r.surface} className="font-body text-[10px] text-[#364272]">
+                <span className="font-semibold text-[#12124a]">
+                  {r.surface} {r.score}
+                </span>
+                {r.ready ? " · ready" : ""} — {r.rationale}
+                {r.blockers[0] ? ` · ${r.blockers[0]}` : ""}
+              </li>
+            ))}
+          </ul>
+          <div className="mt-2 flex flex-wrap gap-2">
+            <button
+              type="button"
+              disabled={pending}
+              onClick={() => applyTurbo({ identify: true })}
+              className="rounded border-2 border-[#000066] bg-white px-2.5 py-1 font-body text-[11px] font-bold text-[#000066] disabled:opacity-50"
+            >
+              Apply identify to form
+            </button>
+            <button
+              type="button"
+              disabled={pending}
+              onClick={() => applyTurbo({ fit: true })}
+              className="rounded border-2 border-[#ca913d] bg-white px-2.5 py-1 font-body text-[11px] font-bold text-[#12124a] disabled:opacity-50"
+            >
+              Apply fit flags to form
+            </button>
+            <button
+              type="button"
+              disabled={pending}
+              onClick={() => applyTurbo({ identify: true, fit: true })}
+              className="rounded border-2 border-[#000066] bg-[#000066] px-2.5 py-1 font-body text-[11px] font-bold text-white disabled:opacity-50"
+            >
+              Apply both
+            </button>
+          </div>
+          <p className="mt-1 font-body text-[10px] text-[#364272]">
+            Writes overlay on Apply; still Save/Approve separately. Never silent-publishes.
+          </p>
+        </div>
+      ) : null}
 
       <div className="rounded-lg border-2 border-[#000066]/15 bg-white p-3">
         <div className="flex flex-wrap items-center justify-between gap-2">
