@@ -716,6 +716,90 @@ export async function intakeAllPhotosAction(): Promise<{
   };
 }
 
+export async function getEvidencePublishQueueAction(): Promise<{
+  ok: boolean;
+  message: string;
+  queue?: import("@/lib/campaign-media/evidence-publish-queue").EvidencePublishQueue;
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { buildEvidencePublishQueue } = await import("@/lib/campaign-media/evidence-publish-queue");
+  const queue = buildEvidencePublishQueue();
+  return {
+    ok: true,
+    message: `Queue · ${queue.totals.unknownCounty} unknown · ${queue.totals.needsApproval} need approval · ${queue.totals.approvedPublic} approved`,
+    queue,
+  };
+}
+
+export async function refreshEvidenceDensitySnapshotAction(input?: {
+  updateDensityDoc?: boolean;
+  evening?: { publishedToday?: string; createdNotPublished?: string; note?: string };
+}): Promise<{
+  ok: boolean;
+  message: string;
+  snapshot?: import("@/lib/campaign-media/evidence-density-snapshot").EvidenceDensitySnapshot;
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { refreshEvidenceDensitySnapshot } = await import(
+    "@/lib/campaign-media/evidence-density-snapshot"
+  );
+  const snapshot = refreshEvidenceDensitySnapshot({
+    updateDensityDoc: input?.updateDensityDoc !== false,
+    evening: input?.evening,
+  });
+  revalidatePath("/admin/evidence-workbench");
+  return {
+    ok: true,
+    message: `Density snapshot · unknown ${snapshot.queue.totals.unknownCounty} · counties ${snapshot.queue.confirmedCounties.length} · ${snapshot.densityDocNote}`,
+    snapshot,
+  };
+}
+
+export async function runPublishQueueTurboAction(input: {
+  confirm: boolean;
+  useAi?: boolean;
+  maxPhotos?: number;
+}): Promise<{
+  ok: boolean;
+  message: string;
+  proposalIds?: string[];
+  queue?: import("@/lib/campaign-media/evidence-publish-queue").EvidencePublishQueue;
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  if (!input.confirm) {
+    return { ok: false, message: "confirm:true required — refuse silent publish-queue turbo." };
+  }
+  const { publishQueueTurboTargetIds, buildEvidencePublishQueue } = await import(
+    "@/lib/campaign-media/evidence-publish-queue"
+  );
+  const { runTurboIngest } = await import("@/lib/campaign-media/turbo-ingest");
+  const photoIds = publishQueueTurboTargetIds(input.maxPhotos ?? 24);
+  if (!photoIds.length) {
+    return {
+      ok: true,
+      message: "Publish queue turbo: no Unknown/draft targets.",
+      proposalIds: [],
+      queue: buildEvidencePublishQueue(),
+    };
+  }
+  const result = await runTurboIngest({
+    intakeFirst: false,
+    useAi: input.useAi !== false,
+    maxPhotos: photoIds.length,
+    photoIds,
+  });
+  revalidatePath("/admin/evidence-workbench");
+  return {
+    ok: result.ok,
+    message: `${result.message} · targets ${photoIds.length}`,
+    proposalIds: result.proposalIds,
+    queue: buildEvidencePublishQueue(),
+  };
+}
+
 export async function runTurboIngestAction(input?: {
   intakeFirst?: boolean;
   useAi?: boolean;

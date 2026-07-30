@@ -4,7 +4,7 @@
 **Living metric:** campaign maturity = proof published, not pages built.  
 **Rule:** Count only confirmed / published public evidence. Unknown geography does not inflate county counts.
 
-**Last updated:** 2026-07-29 (seed from Presence Matrix + endorsements + video registries)
+**Last updated:** 2026-07-30 (live snapshot from Evidence Publish Queue)
 
 ---
 
@@ -12,7 +12,7 @@
 
 | Category | Proven | Notes |
 | --- | ---: | --- |
-| Counties represented | **6** | Faulkner, Garland (video), Johnson, Polk, Pulaski, Sharp |
+| Counties represented | **5** | Faulkner, Johnson, Polk, Pulaski, Sharp — from approved/public stills only |
 | Communities represented | **6** | Conway, Hot Springs Village, Clarksville, Mena, Little Rock, Cave City (confirmed city labels) |
 | Campaign events documented | **TBD** | Fill from published `/events` + confirmed trail event names — do not invent |
 | Videos published (public surfaces) | **≥2** | Primary message + Hot Springs Village ripples (homepage); more on `/kelly-speaks` |
@@ -26,7 +26,7 @@
 
 | Item | Why |
 | --- | --- |
-| 59 Unknown-county registry photos | No confirmed geography |
+| 78 Unknown-county live stills | No confirmed geography |
 | Draft / unpublished videos | Not public proof yet |
 | Dashboard / OS page count | Wrong metric |
 

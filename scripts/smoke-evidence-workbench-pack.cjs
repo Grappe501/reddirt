@@ -13,6 +13,7 @@ const tsx = path.join(root, "node_modules", "tsx", "dist", "cli.mjs");
 
 const SMOKES = [
   "scripts/smoke-photo-intake.ts",
+  "scripts/smoke-evidence-publish-queue.ts",
   "scripts/smoke-turbo-ingest.ts",
   "scripts/smoke-batch-photo-evidence.ts",
   "scripts/smoke-cluster-photo-selection.ts",

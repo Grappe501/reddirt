@@ -216,6 +216,21 @@ export const EVIDENCE_AI_TOOL_CATALOG: Array<{
     summary: "List Photo Pro Edit assemblies for a photoId.",
   },
   {
+    name: "get_evidence_publish_queue",
+    audience: "photo",
+    summary: "Live Unknown/Draft/Needs-approval/Approved publish queue + next actions.",
+  },
+  {
+    name: "refresh_evidence_density_snapshot",
+    audience: "photo",
+    summary: "Write density snapshot JSON and update EVIDENCE_DENSITY live Unknown/counties.",
+  },
+  {
+    name: "run_publish_queue_turbo",
+    audience: "photo",
+    summary: "Turbo Identify+Fit on Unknown/draft backlog only (confirm required; never Approves).",
+  },
+  {
     name: "propose_video_edit_project",
     audience: "video",
     summary: "AI/deterministic Edit Director: ordered cut list + look/transition/captions/export pack (no silent render).",
@@ -761,6 +776,52 @@ export function evidenceAiToolsFor(kind: "photo" | "video"): ChatCompletionTool[
             photoId: { type: "string" },
           },
           required: ["photoId"],
+        },
+      },
+    },
+    {
+      type: "function",
+      function: {
+        name: "get_evidence_publish_queue",
+        description:
+          "Read the live Evidence Publish Queue: Unknown, drafts, turbo pending, needs approval, approved, consent holds, confirmed counties, and next operator actions. Never invents geography.",
+        parameters: {
+          type: "object",
+          properties: {},
+        },
+      },
+    },
+    {
+      type: "function",
+      function: {
+        name: "refresh_evidence_density_snapshot",
+        description:
+          "Write evidence-density-snapshot.json from the live queue and update EVIDENCE_DENSITY.md Unknown + approved-county counts. Optional evening log fields. Does not Approve photos.",
+        parameters: {
+          type: "object",
+          properties: {
+            updateDensityDoc: { type: "boolean" },
+            publishedToday: { type: "string" },
+            createdNotPublished: { type: "string" },
+            note: { type: "string" },
+          },
+        },
+      },
+    },
+    {
+      type: "function",
+      function: {
+        name: "run_publish_queue_turbo",
+        description:
+          "Run Turbo Identify+Fit on Unknown/draft publish-queue targets only. Requires confirm:true. Never auto-Approves.",
+        parameters: {
+          type: "object",
+          properties: {
+            confirm: { type: "boolean" },
+            useAi: { type: "boolean" },
+            maxPhotos: { type: "number" },
+          },
+          required: ["confirm"],
         },
       },
     },

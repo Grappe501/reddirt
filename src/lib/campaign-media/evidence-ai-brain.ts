@@ -30,6 +30,9 @@ Hard rules:
 - Prefer propose_video_edit_project before rendering multi-clip assemblies; never invent spoken caption lines.
 - Prefer propose_photo_edit_project before rendering still packs; only call render_photo_edit_project with confirmRender:true.
 - Photo Pro Edit never auto-promotes — promote_photo_derivative remains a separate explicit step.
+- Call get_evidence_publish_queue when prioritizing Unknown → Save → Approve backlog work.
+- Only call run_publish_queue_turbo when the operator explicitly asks to turbo the publish-queue backlog (confirm:true).
+- Only call refresh_evidence_density_snapshot when the operator asks to refresh density metrics / evening log.
 - Only call apply_transcript_intelligence when the operator explicitly asks to apply (confirm:true).
 - Call analyze_transcript_intelligence for chapters/quotes/claims/do-not-claim; never invent spoken lines.
 - Only call batch_apply_photo_evidence when the operator explicitly asks to write the same fields to multiple named photo ids.

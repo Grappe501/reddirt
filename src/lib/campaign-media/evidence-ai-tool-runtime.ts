@@ -1021,6 +1021,67 @@ export async function executeEvidenceAiTool(
         };
       }
 
+      case "get_evidence_publish_queue": {
+        const { buildEvidencePublishQueue } = await import(
+          "@/lib/campaign-media/evidence-publish-queue"
+        );
+        return { ok: true, result: buildEvidencePublishQueue() };
+      }
+
+      case "refresh_evidence_density_snapshot": {
+        const { refreshEvidenceDensitySnapshot } = await import(
+          "@/lib/campaign-media/evidence-density-snapshot"
+        );
+        const hasEvening =
+          Boolean(asString(args.publishedToday)) ||
+          Boolean(asString(args.createdNotPublished)) ||
+          Boolean(asString(args.note));
+        const snapshot = refreshEvidenceDensitySnapshot({
+          updateDensityDoc: args.updateDensityDoc !== false,
+          evening: hasEvening
+            ? {
+                publishedToday: asString(args.publishedToday),
+                createdNotPublished: asString(args.createdNotPublished),
+                note: asString(args.note) || undefined,
+              }
+            : undefined,
+        });
+        return { ok: true, result: snapshot };
+      }
+
+      case "run_publish_queue_turbo": {
+        if (args.confirm !== true) {
+          return {
+            ok: false,
+            error: "confirm:true required — operator must explicitly ask for publish-queue turbo.",
+          };
+        }
+        const { publishQueueTurboTargetIds, buildEvidencePublishQueue } = await import(
+          "@/lib/campaign-media/evidence-publish-queue"
+        );
+        const { runTurboIngest } = await import("@/lib/campaign-media/turbo-ingest");
+        const photoIds = publishQueueTurboTargetIds(
+          typeof args.maxPhotos === "number" ? args.maxPhotos : 24,
+        );
+        if (!photoIds.length) {
+          return {
+            ok: true,
+            result: { message: "No Unknown/draft targets.", proposalIds: [], queue: buildEvidencePublishQueue() },
+          };
+        }
+        const result = await runTurboIngest({
+          intakeFirst: false,
+          useAi: args.useAi !== false,
+          maxPhotos: photoIds.length,
+          photoIds,
+        });
+        if (!result.ok) return { ok: false, error: result.message };
+        return {
+          ok: true,
+          result: { ...result, queue: buildEvidencePublishQueue() },
+        };
+      }
+
       default:
         return { ok: false, error: `Unknown tool: ${name}` };
     }
