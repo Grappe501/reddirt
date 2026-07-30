@@ -2692,4 +2692,106 @@ export async function lookupOwnedMediaForPhotoAction(photoId: string): Promise<{
   };
 }
 
+/** Browser drop → write images under public/media/campaign-photos (disk source of truth). */
+export async function dropCampaignPhotosToDiskAction(formData: FormData): Promise<{
+  ok: boolean;
+  message: string;
+  written?: string[];
+  skipped?: string[];
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const files: Array<{ name: string; bytes: Buffer }> = [];
+  for (const [key, value] of formData.entries()) {
+    if (key !== "files" && key !== "file") continue;
+    if (!(value instanceof File)) continue;
+    const bytes = Buffer.from(await value.arrayBuffer());
+    files.push({ name: value.name, bytes });
+  }
+  const { dropCampaignPhotosToDisk } = await import(
+    "@/lib/campaign-media/drop-campaign-photos-to-disk"
+  );
+  const result = dropCampaignPhotosToDisk(files);
+  if (result.ok) {
+    revalidatePath("/admin/evidence-workbench");
+    revalidatePath("/campaign-photos");
+  }
+  return result;
+}
+
+export async function proposeEventReelAction(input: {
+  calendarRowId: string;
+  photoLimit?: number;
+  stillDurationSec?: number;
+}): Promise<{
+  ok: boolean;
+  message: string;
+  project?: import("@/lib/campaign-media/event-reel-types").EventReelProject | null;
+  warnings?: string[];
+  nextActions?: string[];
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { proposeEventReelFromCalendar } = await import(
+    "@/lib/campaign-media/event-reel-propose"
+  );
+  const result = proposeEventReelFromCalendar({
+    calendarRowId: input.calendarRowId,
+    photoLimit: input.photoLimit,
+    stillDurationSec: input.stillDurationSec,
+    persist: true,
+  });
+  if (result.ok) revalidatePath("/admin/evidence-workbench");
+  return {
+    ok: result.ok,
+    message: result.message,
+    project: result.project,
+    warnings: result.warnings,
+    nextActions: result.nextActions,
+  };
+}
+
+export async function renderEventReelAction(input: {
+  projectId: string;
+  confirmRender: boolean;
+}): Promise<{
+  ok: boolean;
+  message: string;
+  assemblies?: import("@/lib/campaign-media/event-reel-types").EventReelAssembly[];
+  warnings?: string[];
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  if (!input.confirmRender) {
+    return { ok: false, message: "confirmRender:true required — never auto-encodes." };
+  }
+  const { renderEventReelProject } = await import("@/lib/campaign-media/event-reel-render");
+  const result = renderEventReelProject({ projectId: input.projectId });
+  if (result.ok) revalidatePath("/admin/evidence-workbench");
+  return {
+    ok: result.ok,
+    message: result.message,
+    assemblies: result.assemblies,
+    warnings: result.warnings,
+  };
+}
+
+export async function getCountyCoverageHeatAction(): Promise<{
+  ok: boolean;
+  message: string;
+  heat?: import("@/lib/campaign-media/county-coverage-heat").CountyCoverageHeat;
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { buildCountyPhotoCoverageHeat } = await import(
+    "@/lib/campaign-media/county-coverage-heat"
+  );
+  const heat = buildCountyPhotoCoverageHeat();
+  return {
+    ok: true,
+    message: `Coverage heat · ${heat.totals.zero} zero · ${heat.totals.thin} thin · ${heat.totals.ok} ok`,
+    heat,
+  };
+}
+
 export type { CalendarPresenceStatus };

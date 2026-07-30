@@ -3,6 +3,7 @@
 import { useEffect, useState, useTransition } from "react";
 import Link from "next/link";
 import {
+  dropCampaignPhotosToDiskAction,
   getTurboIngestDashboardAction,
   listPhotoIngestCandidatesAction,
   promoteAllPhotoIngestAction,
@@ -66,6 +67,7 @@ export function EvidenceIngestPanel({ initialCandidates, initialStatus }: Props)
   const [ownedMediaMatch, setOwnedMediaMatch] = useState<{ linked: number; unlinked: number } | null>(
     null,
   );
+  const [dropHover, setDropHover] = useState(false);
   const [turbo, setTurbo] = useState<TurboDash | null>(null);
   const [turboUseAi, setTurboUseAi] = useState(true);
   const [pending, start] = useTransition();
@@ -136,6 +138,23 @@ export function EvidenceIngestPanel({ initialCandidates, initialStatus }: Props)
     });
   }
 
+  function dropFiles(fileList: FileList | File[]) {
+    const files = Array.from(fileList).filter((f) => f.type.startsWith("image/") || /\.(jpe?g|png|webp|gif)$/i.test(f.name));
+    if (!files.length) {
+      setMessage("Drop image files only (jpg/png/webp/gif).");
+      return;
+    }
+    start(async () => {
+      const fd = new FormData();
+      for (const f of files.slice(0, 40)) fd.append("files", f);
+      const res = await dropCampaignPhotosToDiskAction(fd);
+      setMessage(res.message);
+      const again = await listPhotoIngestCandidatesAction();
+      if (again.candidates) setCandidates(again.candidates);
+      if (again.status) setStatus(again.status);
+    });
+  }
+
   return (
     <div className="space-y-4 text-[#12124a]">
       <div className="rounded-lg border-2 border-[#000066]/20 bg-white p-4">
@@ -184,6 +203,54 @@ export function EvidenceIngestPanel({ initialCandidates, initialStatus }: Props)
           <p className="font-heading text-[11px] font-bold uppercase text-[#000066]">Next</p>
           <p className="font-body text-sm font-semibold text-[#12124a]">{status.nextStepLabel}</p>
         </div>
+      </div>
+
+      <div
+        onDragEnter={(e) => {
+          e.preventDefault();
+          setDropHover(true);
+        }}
+        onDragOver={(e) => {
+          e.preventDefault();
+          setDropHover(true);
+        }}
+        onDragLeave={(e) => {
+          e.preventDefault();
+          setDropHover(false);
+        }}
+        onDrop={(e) => {
+          e.preventDefault();
+          setDropHover(false);
+          if (e.dataTransfer.files?.length) dropFiles(e.dataTransfer.files);
+        }}
+        className={`rounded-lg border-2 border-dashed p-4 text-center ${
+          dropHover
+            ? "border-[#000066] bg-[#eef2fb]"
+            : "border-[#000066]/30 bg-white"
+        }`}
+      >
+        <p className="font-heading text-xs font-bold uppercase text-[#000066]">
+          Watch-folder / drag-drop
+        </p>
+        <p className="mt-1 font-body text-xs text-[#364272]">
+          Drop stills here to write into{" "}
+          <code className="rounded bg-[#f4f7fc] px-1">public/media/campaign-photos/</code>. Disk stays
+          source of truth — then Rescan / Intake. Never auto-Approve.
+        </p>
+        <label className="mt-3 inline-flex cursor-pointer items-center gap-2 rounded-md border-2 border-[#000066] bg-white px-3 py-2 font-body text-xs font-bold text-[#000066]">
+          Choose images
+          <input
+            type="file"
+            accept="image/jpeg,image/png,image/webp,image/gif,.jpg,.jpeg,.png,.webp,.gif"
+            multiple
+            className="hidden"
+            disabled={pending}
+            onChange={(e) => {
+              if (e.target.files?.length) dropFiles(e.target.files);
+              e.target.value = "";
+            }}
+          />
+        </label>
       </div>
 
       <div className="flex flex-wrap gap-2">

@@ -5,12 +5,15 @@ import Link from "next/link";
 import {
   buildEvidenceShipReportAction,
   proposeEventNightPackAction,
+  proposeEventReelAction,
+  renderEventReelAction,
   runEventNightLoopAction,
   runTonightPublishRitualAction,
   runVisionIdentifyBatchAction,
   shipPromotedDerivativesAction,
 } from "@/app/admin/evidence-workbench-actions";
 import type { EventNightPack } from "@/lib/campaign-media/evidence-event-night-pack";
+import type { EventReelProject } from "@/lib/campaign-media/event-reel-types";
 import type { EvidenceShipReport } from "@/lib/campaign-media/evidence-ship-report";
 
 type CalRow = { id: string; date: string; summary: string; status: string };
@@ -36,6 +39,7 @@ export function EvidenceEventNightLoopPanel({
   const [useAi, setUseAi] = useState(true);
   const [consentConfirmed, setConsentConfirmed] = useState(false);
   const [pack, setPack] = useState<EventNightPack | null>(null);
+  const [reel, setReel] = useState<EventReelProject | null>(null);
   const [ship, setShip] = useState<EvidenceShipReport | null>(null);
   const [needsApprovalIds, setNeedsApprovalIds] = useState(initialNeedsApprovalIds);
   const [commitTemplate, setCommitTemplate] = useState("");
@@ -52,6 +56,45 @@ export function EvidenceEventNightLoopPanel({
       const res = await proposeEventNightPackAction(rowId);
       setMessage(res.message);
       if (res.pack) setPack(res.pack);
+    });
+  }
+
+  function proposeReel() {
+    if (!rowId) {
+      setMessage("Pick a calendar row first.");
+      return;
+    }
+    start(async () => {
+      const res = await proposeEventReelAction({ calendarRowId: rowId, photoLimit: 10 });
+      setMessage(res.message);
+      if (res.project) setReel(res.project);
+    });
+  }
+
+  function confirmRenderReel() {
+    if (!reel?.id) {
+      setMessage("Propose an event reel first.");
+      return;
+    }
+    if (
+      !window.confirm(
+        `Confirm render event reel ${reel.stills.length} still(s) to 16:9 + 9:16? Never auto-encodes without this confirm.`,
+      )
+    ) {
+      return;
+    }
+    start(async () => {
+      const res = await renderEventReelAction({ projectId: reel.id, confirmRender: true });
+      setMessage(
+        [res.message, ...(res.warnings ?? [])].filter(Boolean).join(" · "),
+      );
+      if (res.ok && reel) {
+        setReel({
+          ...reel,
+          status: "rendered",
+          assemblies: res.assemblies ?? reel.assemblies,
+        });
+      }
     });
   }
 
@@ -219,6 +262,23 @@ export function EvidenceEventNightLoopPanel({
         <button
           type="button"
           disabled={pending || !rowId}
+          onClick={proposeReel}
+          className="rounded-md border-2 border-[#ca913d] bg-white px-3 py-2 font-body text-xs font-bold text-[#12124a] disabled:opacity-50"
+        >
+          1b · Propose event reel
+        </button>
+        <button
+          type="button"
+          disabled={pending || !reel?.id}
+          onClick={confirmRenderReel}
+          className="rounded-md border-2 border-[#ca913d] bg-[#000066] px-3 py-2 font-body text-xs font-bold text-white disabled:opacity-50"
+        >
+          1c · Confirm render reel
+          {reel?.stills.length ? ` (${reel.stills.length})` : ""}
+        </button>
+        <button
+          type="button"
+          disabled={pending || !rowId}
           onClick={runFullLoop}
           className="rounded-md border-2 border-[#000066] bg-white px-3 py-2 font-body text-xs font-bold text-[#000066] disabled:opacity-50"
         >
@@ -285,6 +345,32 @@ export function EvidenceEventNightLoopPanel({
             <ul className="mt-1 list-disc pl-4 text-[#364272]">
               {pack.warnings.map((w) => (
                 <li key={w}>{w}</li>
+              ))}
+            </ul>
+          ) : null}
+        </div>
+      ) : null}
+
+      {reel ? (
+        <div className="rounded border border-[#ca913d]/40 bg-white p-3 font-body text-xs">
+          <p className="font-heading text-xs font-bold text-[#000066]">
+            Event reel · {reel.status} · {reel.stills.length} stills · {reel.exportAspects.join(" + ")}
+          </p>
+          <p className="mt-1 font-mono text-[10px] text-[#364272]">{reel.id}</p>
+          <ul className="mt-1 max-h-28 list-disc overflow-auto pl-4 text-[#364272]">
+            {reel.stills.map((s) => (
+              <li key={s.photoId}>
+                {s.photoId} · {s.county}
+                {s.city && s.city !== "Unknown" ? ` · ${s.city}` : ""} · {s.durationSec}s
+              </li>
+            ))}
+          </ul>
+          {reel.assemblies?.length ? (
+            <ul className="mt-2 font-mono text-[10px] text-[#364272]">
+              {reel.assemblies.map((a) => (
+                <li key={a.id}>
+                  {a.aspect} · {a.publicSrc}
+                </li>
               ))}
             </ul>
           ) : null}

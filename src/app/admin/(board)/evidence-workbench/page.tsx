@@ -31,6 +31,7 @@ import {
 import { listPendingCuratedPlacementProposals } from "@/lib/campaign-media/curated-placement-store";
 import { getCurrentCuratedPlacementSnapshot } from "@/lib/campaign-media/curated-placement-propose";
 import { buildEvidencePublishQueue } from "@/lib/campaign-media/evidence-publish-queue";
+import { buildCountyPhotoCoverageHeat } from "@/lib/campaign-media/county-coverage-heat";
 import { buildEvidenceShipReport } from "@/lib/campaign-media/evidence-ship-report";
 import { buildSpeechConfirmQueue } from "@/lib/campaign-media/speech-confirm-queue";
 import {
@@ -75,6 +76,7 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
   const { getPhotoIntakeStatus } = await import("@/lib/campaign-media/photo-ingest");
   const intakeStatus = getPhotoIntakeStatus();
   const publishQueue = buildEvidencePublishQueue();
+  const coverageHeat = buildCountyPhotoCoverageHeat();
   const shipReport = buildEvidenceShipReport({ persist: false, includeDerivativeScan: true });
   const nextActions = rankEvidenceNextActions(6);
   const tooling = getEvidenceToolingReadiness();
@@ -282,6 +284,7 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
             <EvidencePublishQueuePanel
               initialQueue={publishQueue}
               initialSpeechQueue={speechConfirmQueue}
+              initialCoverageHeat={coverageHeat}
             />
           </>
         ) : null}

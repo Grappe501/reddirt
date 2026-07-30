@@ -1,21 +1,24 @@
 "use client";
 
-import { useEffect, useState, useTransition } from "react";
+import { useEffect, useMemo, useState, useTransition } from "react";
 import Link from "next/link";
 import {
   batchPublishPhotosAction,
+  getCountyCoverageHeatAction,
   getEvidencePublishQueueAction,
   getSpeechConfirmQueueAction,
   refreshEvidenceDensitySnapshotAction,
   runPublishQueueTurboAction,
 } from "@/app/admin/evidence-workbench-actions";
-import type { EvidencePublishQueue, PublishQueueBucketId } from "@/lib/campaign-media/evidence-publish-queue";
+import type { EvidencePublishQueue, PublishQueueBucketId, PublishQueueItem } from "@/lib/campaign-media/evidence-publish-queue";
+import type { CountyCoverageHeat } from "@/lib/campaign-media/county-coverage-heat";
 import type { SpeechConfirmQueue } from "@/lib/campaign-media/speech-confirm-queue";
 import { EVIDENCE_FIELD_CLASS } from "@/components/admin/evidence-workbench/field-styles";
 
 type Props = {
   initialQueue: EvidencePublishQueue;
   initialSpeechQueue?: SpeechConfirmQueue | null;
+  initialCoverageHeat?: CountyCoverageHeat | null;
 };
 
 const BUCKET_META: Array<{
@@ -59,9 +62,16 @@ const BUCKET_META: Array<{
   },
 ];
 
-export function EvidencePublishQueuePanel({ initialQueue, initialSpeechQueue = null }: Props) {
+export function EvidencePublishQueuePanel({
+  initialQueue,
+  initialSpeechQueue = null,
+  initialCoverageHeat = null,
+}: Props) {
   const [queue, setQueue] = useState(initialQueue);
   const [speechQueue, setSpeechQueue] = useState<SpeechConfirmQueue | null>(initialSpeechQueue);
+  const [heat, setHeat] = useState<CountyCoverageHeat | null>(initialCoverageHeat);
+  const [coverageFilter, setCoverageFilter] = useState<"all" | "thinOrZero">("all");
+  const [countySlugFilter, setCountySlugFilter] = useState<string | null>(null);
   const [message, setMessage] = useState("");
   const [publishedToday, setPublishedToday] = useState("");
   const [createdNotPublished, setCreatedNotPublished] = useState("");
@@ -70,13 +80,15 @@ export function EvidencePublishQueuePanel({ initialQueue, initialSpeechQueue = n
 
   function refreshQueue() {
     start(async () => {
-      const [res, speech] = await Promise.all([
+      const [res, speech, heatRes] = await Promise.all([
         getEvidencePublishQueueAction(),
         getSpeechConfirmQueueAction(),
+        getCountyCoverageHeatAction(),
       ]);
       if (res.queue) setQueue(res.queue);
       if (speech.queue) setSpeechQueue(speech.queue);
-      setMessage([res.message, speech.message].filter(Boolean).join(" · "));
+      if (heatRes.heat) setHeat(heatRes.heat);
+      setMessage([res.message, speech.message, heatRes.message].filter(Boolean).join(" · "));
     });
   }
 
@@ -87,6 +99,41 @@ export function EvidencePublishQueuePanel({ initialQueue, initialSpeechQueue = n
   useEffect(() => {
     setSpeechQueue(initialSpeechQueue);
   }, [initialSpeechQueue]);
+
+  useEffect(() => {
+    if (initialCoverageHeat) {
+      setHeat(initialCoverageHeat);
+      return;
+    }
+    void getCountyCoverageHeatAction().then((res) => {
+      if (res.heat) setHeat(res.heat);
+    });
+  }, [initialCoverageHeat]);
+
+  const thinSlugSet = useMemo(
+    () => new Set(heat?.thinOrZeroSlugs ?? []),
+    [heat],
+  );
+
+  function itemMatchesCoverage(item: PublishQueueItem): boolean {
+    if (coverageFilter === "all" && !countySlugFilter) return true;
+    const slug =
+      heat?.cells.find(
+        (c) =>
+          c.shortName.toLowerCase() === item.county.replace(/\s+county$/i, "").toLowerCase() ||
+          c.displayName.toLowerCase() === item.county.toLowerCase(),
+      )?.slug ?? null;
+    if (countySlugFilter) return slug === countySlugFilter;
+    if (coverageFilter === "thinOrZero") {
+      if (!slug) return item.county === "Unknown" || !item.county;
+      return thinSlugSet.has(slug);
+    }
+    return true;
+  }
+
+  function filterItems(items: PublishQueueItem[]): PublishQueueItem[] {
+    return items.filter(itemMatchesCoverage);
+  }
 
   function runTurboBacklog() {
     start(async () => {
@@ -196,6 +243,86 @@ export function EvidencePublishQueuePanel({ initialQueue, initialSpeechQueue = n
           ))}
         </ul>
       </div>
+
+      {heat ? (
+        <div className="rounded-lg border-2 border-[#ca913d]/50 bg-[#fff8ef] p-3">
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <div>
+              <p className="font-heading text-xs font-bold uppercase tracking-wide text-[#000066]">
+                County coverage heat
+              </p>
+              <p className="mt-1 font-body text-[11px] text-[#364272]">
+                Album-eligible stills · zero {heat.totals.zero} · thin (&lt;{heat.thinThreshold}){" "}
+                {heat.totals.thin} · ok {heat.totals.ok}. Click a county to filter queue buckets.
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              <button
+                type="button"
+                disabled={pending}
+                onClick={() => {
+                  setCoverageFilter("thinOrZero");
+                  setCountySlugFilter(null);
+                }}
+                className={`rounded border-2 px-2.5 py-1 font-body text-xs font-bold disabled:opacity-50 ${
+                  coverageFilter === "thinOrZero" && !countySlugFilter
+                    ? "border-[#000066] bg-[#000066] text-white"
+                    : "border-[#000066] bg-white text-[#000066]"
+                }`}
+              >
+                Thin / zero filter
+              </button>
+              <button
+                type="button"
+                disabled={pending}
+                onClick={() => {
+                  setCoverageFilter("all");
+                  setCountySlugFilter(null);
+                }}
+                className="rounded border-2 border-[#8eb6dc] bg-[#f4f7fc] px-2.5 py-1 font-body text-xs font-semibold disabled:opacity-50"
+              >
+                Clear coverage filter
+              </button>
+            </div>
+          </div>
+          {(coverageFilter !== "all" || countySlugFilter) && (
+            <p className="mt-2 font-body text-[11px] text-[#12124a]">
+              Active filter:{" "}
+              {countySlugFilter
+                ? heat.cells.find((c) => c.slug === countySlugFilter)?.shortName ?? countySlugFilter
+                : "thin / zero counties (+ Unknown)"}
+            </p>
+          )}
+          <div className="mt-3 grid max-h-56 grid-cols-3 gap-1 overflow-auto sm:grid-cols-5 lg:grid-cols-8">
+            {heat.cells.map((c) => {
+              const tone =
+                c.band === "zero"
+                  ? "border-[#9b1c1c]/40 bg-[#fde8e8] text-[#7f1d1d]"
+                  : c.band === "thin"
+                    ? "border-[#ca913d]/50 bg-white text-[#12124a]"
+                    : "border-[#000066]/15 bg-[#f4f7fc] text-[#364272]";
+              const active = countySlugFilter === c.slug;
+              return (
+                <button
+                  key={c.slug}
+                  type="button"
+                  title={`${c.displayName}: ${c.photoCount} album still(s)`}
+                  onClick={() => {
+                    setCountySlugFilter(c.slug);
+                    setCoverageFilter("all");
+                  }}
+                  className={`rounded border px-1.5 py-1 text-left font-body text-[10px] ${tone} ${
+                    active ? "ring-2 ring-[#000066]" : ""
+                  }`}
+                >
+                  <span className="block truncate font-semibold">{c.shortName}</span>
+                  <span className="font-mono">{c.photoCount}</span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      ) : null}
 
       <div className="flex flex-wrap gap-2">
         <button
@@ -366,7 +493,8 @@ export function EvidencePublishQueuePanel({ initialQueue, initialSpeechQueue = n
 
       <div className="grid gap-3 lg:grid-cols-2">
         {BUCKET_META.map((b) => {
-          const items = queue.buckets[b.id];
+          const rawItems = queue.buckets[b.id];
+          const items = filterItems(rawItems);
           const totalKey =
             b.id === "unknownCounty"
               ? t.unknownCounty
@@ -384,6 +512,7 @@ export function EvidencePublishQueuePanel({ initialQueue, initialSpeechQueue = n
               <div className="flex flex-wrap items-baseline justify-between gap-2">
                 <p className="font-heading text-xs font-bold uppercase tracking-wide text-[#000066]">
                   {b.label} · {totalKey}
+                  {items.length !== rawItems.length ? ` · showing ${items.length}` : ""}
                 </p>
                 {b.filter ? (
                   <Link
@@ -414,11 +543,13 @@ export function EvidencePublishQueuePanel({ initialQueue, initialSpeechQueue = n
                   ))}
                 </ul>
               ) : (
-                <p className="mt-2 font-body text-[11px] text-[#364272]">Empty.</p>
+                <p className="mt-2 font-body text-[11px] text-[#364272]">
+                  {rawItems.length ? "No items match coverage filter." : "Empty."}
+                </p>
               )}
-              {totalKey > items.length ? (
+              {totalKey > rawItems.length ? (
                 <p className="mt-1 font-body text-[10px] text-[#364272]">
-                  Showing {items.length} of {totalKey}
+                  Showing {rawItems.length} of {totalKey}
                 </p>
               ) : null}
             </div>
