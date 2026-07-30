@@ -57,7 +57,7 @@ function NavMenu({ group, pathname, theme = "light" }: NavMenuProps) {
    * Fixed tokens below keep contrast stable regardless of global dark toggle.
    */
   const labelClass = cn(
-    "rounded-md px-2 py-2 font-body text-xs font-semibold tracking-wide transition min-h-11 inline-flex items-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 xl:px-2.5 xl:text-sm",
+    "rounded-md px-1.5 py-2 font-body text-[11px] font-semibold tracking-wide transition min-h-11 inline-flex items-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 xl:px-2 xl:text-xs 2xl:px-2.5 2xl:text-sm",
     dark
       ? "focus-visible:outline-kelly-gold " +
           (labelActive ? "!text-kelly-gold" : "!text-white/90 hover:!text-kelly-gold")
@@ -163,7 +163,7 @@ export type NavDesktopProps = {
 
 export function NavDesktop({ groups, pathname, theme = "light" }: NavDesktopProps) {
   return (
-    <div className="flex flex-nowrap items-center justify-end gap-x-1.5 xl:gap-x-2">
+    <div className="flex flex-nowrap items-center justify-end gap-x-0.5 xl:gap-x-1 2xl:gap-x-2">
       {groups.map((g) => (
         <NavMenu key={g.id} group={g} pathname={pathname} theme={theme} />
       ))}
