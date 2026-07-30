@@ -2,10 +2,17 @@
 
 **Edit here:** local **Evidence Workbench** → [`/admin/evidence-workbench?tab=calendar`](/admin/evidence-workbench?tab=calendar) (saves `data/campaign-media/calendar-presence.json`). This markdown is a pointer / archive snapshot — do not treat it as the live operator loop.
 
-**Purpose:** Steve-confirmable inventory of geography-facing events from Kelly's public Google Calendar export — for Presence Matrix and From the Road metrics.
-**Source:** `basic.ics` export (`kelly@kellygrappe.com`, America/Chicago) · parsed 2026-07-29
-**Hard rules:** Unknown stays Unknown. Do not invent city/county from titles. Virtual/Zoom never counts as a visit. Do not commit raw ICS or Zoom/Meet secrets.
+**Purpose:** Steve-confirmable inventory of **every calendar event since 2025-11-01** so we can record everywhere Kelly has been (multi-stop trips supported).  
+**Source:** Google Calendar ICS export (`kelly@kellygrappe.com`) · full queue rebuild via `scripts/rebuild-calendar-presence-queue.cjs`  
+**Hard rules:** Unknown stays Unknown. Do not invent city/county from titles. Virtual/Zoom never counts as a visit. Do not commit raw ICS or Zoom/Meet secrets.  
 **Related:** [`ARKANSAS_PRESENCE_MATRIX.md`](./ARKANSAS_PRESENCE_MATRIX.md) · [`EVIDENCE_ENGINE.md`](./EVIDENCE_ENGINE.md)
+
+### Operator loop
+
+1. Open Calendar tab → **Review queue** (Needs / Unknown).
+2. For each event: set one or more Places (city + county); use **+ Add place** for multi-county days.
+3. **Confirm places → next** or **Exclude → next** (Zoom / personal).
+4. Export confirmed → Presence Matrix when ready.
 
 ---
 
@@ -13,10 +20,10 @@
 
 | Status | Meaning |
 | --- | --- |
-| **Needs confirm** | Default for geography-facing rows — fill City / County only when sure |
-| **Confirmed** | Steve verified place; safe for Presence Matrix Event column / future public counts |
+| **Needs confirm** | Default — fill City / County (or multiple places) only when sure |
+| **Confirmed** | Steve verified place(s); safe for Presence Matrix |
 | **Exclude** | Personal, virtual, admin, or not a public presence claim |
-| **Unknown** | Place unclear even after review — leave City/County blank |
+| **Unknown** | Place unclear even after review |
 
 Feed snapshot: **352** calendar events · **14** with physical LOCATION · **196** geography-facing rows needing confirm · **47** pre-tagged Exclude candidates.
 

@@ -84,11 +84,24 @@ export async function saveCalendarRowsAction(
       skipped += 1;
       continue;
     }
+    const places = Array.isArray(patch.places)
+      ? patch.places
+          .map((p) => ({
+            city: String(p?.city ?? "").trim(),
+            county: String(p?.county ?? "").trim(),
+            venue: p?.venue ? String(p.venue).trim() : undefined,
+            note: p?.note ? String(p.note).trim() : undefined,
+          }))
+          .filter((p) => p.city || p.county || p.venue)
+      : cur.places;
+    const primary = places?.[0];
     byId.set(patch.id, {
       ...cur,
-      city: patch.city ?? cur.city,
-      county: patch.county ?? cur.county,
+      city: primary?.city ?? patch.city ?? cur.city,
+      county: primary?.county ?? patch.county ?? cur.county,
       status: patch.status ?? cur.status,
+      places: places?.length ? places : undefined,
+      notes: patch.notes !== undefined ? String(patch.notes) : cur.notes,
     });
     applied += 1;
   }
@@ -667,6 +680,23 @@ export async function importCalendarSeedAction(
     }
     if (!existsSync(icsPath)) {
       return { ok: false, message: `ICS not found: ${icsPath}` };
+    }
+    const mode = str(formData, "mode") || "full";
+    if (mode === "full") {
+      const script = path.join(process.cwd(), "scripts/rebuild-calendar-presence-queue.cjs");
+      const run = spawnSync(
+        process.execPath,
+        [script, "--ics", icsPath, "--since", str(formData, "since") || "2025-11-01"],
+        { cwd: process.cwd(), encoding: "utf8" },
+      );
+      if (run.status !== 0) {
+        return { ok: false, message: run.stderr || run.stdout || "Full queue rebuild failed." };
+      }
+      revalidatePath("/admin/evidence-workbench");
+      return {
+        ok: true,
+        message: `Full location queue rebuilt since 2025-11-01.\n${(run.stdout || "").trim()}`,
+      };
     }
     const csvPath = path.join(process.cwd(), "..", ".local", "temp", "kelly-calendar-extract.csv");
     try {

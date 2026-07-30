@@ -18,20 +18,34 @@ export function exportConfirmedCalendarToPresenceMatrix(store: CalendarPresenceS
     return { ok: false, error: `Missing ${MATRIX_REL}` };
   }
   const confirmed = store.rows.filter((r) => r.status === "Confirmed");
-  const uniqueCounties = new Set(
-    confirmed.map((r) => r.county.trim()).filter((c) => c && c.toLowerCase() !== "unknown"),
-  );
-  const uniqueCities = new Set(
-    confirmed.map((r) => r.city.trim()).filter((c) => c && c.toLowerCase() !== "unknown"),
-  );
+  const uniqueCounties = new Set<string>();
+  const uniqueCities = new Set<string>();
+  for (const r of confirmed) {
+    const places =
+      Array.isArray(r.places) && r.places.length
+        ? r.places
+        : [{ city: r.city, county: r.county }];
+    for (const p of places) {
+      const county = String(p.county ?? "").trim();
+      const city = String(p.city ?? "").trim();
+      if (county && county.toLowerCase() !== "unknown") uniqueCounties.add(county);
+      if (city && city.toLowerCase() !== "unknown") uniqueCities.add(city);
+    }
+  }
 
   const tableRows = confirmed
     .slice()
     .sort((a, b) => a.date.localeCompare(b.date) || a.summary.localeCompare(b.summary))
-    .map(
-      (r) =>
-        `| ${r.date} | ${r.summary.replace(/\|/g, "/")} | ${r.city || "—"} | ${r.county || "—"} | Confirmed |`,
-    )
+    .flatMap((r) => {
+      const places =
+        Array.isArray(r.places) && r.places.length
+          ? r.places
+          : [{ city: r.city, county: r.county }];
+      return places.map(
+        (p) =>
+          `| ${r.date} | ${r.summary.replace(/\|/g, "/")} | ${p.city || "—"} | ${p.county || "—"} | Confirmed |`,
+      );
+    })
     .join("\n");
 
   const section = `${SECTION_START}

@@ -270,6 +270,7 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
             initialRows={calendar.rows}
             counties={counties}
             sourceNote={calendar.sourceNote}
+            sinceDate={calendar.sinceDate}
           />
         ) : null}
         {tab === "photos" ? (

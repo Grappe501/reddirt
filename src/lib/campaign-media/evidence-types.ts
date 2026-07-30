@@ -5,21 +5,38 @@
 
 export type CalendarPresenceStatus = "Needs confirm" | "Confirmed" | "Exclude" | "Unknown";
 
+/** One stop on a multi-place trip / immersion day. */
+export type CalendarPresencePlace = {
+  city: string;
+  county: string;
+  venue?: string;
+  note?: string;
+};
+
 export type CalendarPresenceRow = {
   id: string;
   date: string;
   summary: string;
   location: string;
+  /** Primary / first confirmed place (kept for matrix export + AI search). */
   city: string;
   county: string;
   status: CalendarPresenceStatus;
   hasPhysicalLocation: boolean;
+  /** Multi-stop trips — when set, city/county mirror places[0]. */
+  places?: CalendarPresencePlace[];
+  /** Operator free-text (e.g. who was with Kelly, route notes). */
+  notes?: string;
+  /** ICS STATUS when imported (TENTATIVE / CONFIRMED / …). */
+  icsStatus?: string;
 };
 
 export type CalendarPresenceStore = {
   version: 1;
   updatedAt: string;
   sourceNote: string;
+  /** Inclusive lower bound used for the last full-queue rebuild (ISO date). */
+  sinceDate?: string;
   rows: CalendarPresenceRow[];
 };
 
