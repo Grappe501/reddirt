@@ -15,8 +15,11 @@ import {
   inspectPhotoPixelsAction,
   listEvidenceBatchOpsAction,
   listPhotoDerivativesAction,
+  listPhotoEditProjectsAction,
   previewPromotePlacementAction,
   promotePhotoDerivativeAction,
+  proposePhotoEditProjectAction,
+  renderPhotoEditProjectAction,
   savePhotoEvidenceAction,
   savePhotoFocusAction,
   suggestBatchPhotoEvidenceAiAction,
@@ -30,6 +33,10 @@ import type { PhotoEvidenceOverlay } from "@/lib/campaign-media/evidence-types";
 import type { TurboPhotoProposal } from "@/lib/campaign-media/turbo-ingest-types";
 import { clickToFocusPoint, type FocusPoint } from "@/lib/campaign-media/focus-crop";
 import type { PhotoDerivativeRecord } from "@/lib/campaign-media/media-derivatives-types";
+import type {
+  PhotoAssemblyRecord,
+  PhotoEditProject,
+} from "@/lib/campaign-media/photo-edit-types";
 import { EVIDENCE_FIELD_CLASS } from "@/components/admin/evidence-workbench/field-styles";
 import { isEditableKeyboardTarget } from "@/components/admin/evidence-workbench/keyboard";
 
@@ -200,6 +207,14 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId, initialF
   const [pending, start] = useTransition();
   const [dirty, setDirty] = useState(false);
   const [derivatives, setDerivatives] = useState<PhotoDerivativeRecord[]>([]);
+  const [editProject, setEditProject] = useState<PhotoEditProject | null>(null);
+  const [assemblies, setAssemblies] = useState<PhotoAssemblyRecord[]>([]);
+  const [proLook, setProLook] = useState<
+    "neutral" | "warm" | "cool" | "contrast" | "soft" | "punch" | "mono"
+  >("warm");
+  const [proSharpen, setProSharpen] = useState(false);
+  const [proUseFocus, setProUseFocus] = useState(true);
+  const [proRenderNote, setProRenderNote] = useState("");
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
   const [selectionAnchorId, setSelectionAnchorId] = useState<string | null>(null);
   const [batchOps, setBatchOps] = useState<EvidenceBatchOperation[]>([]);
@@ -313,12 +328,20 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId, initialF
   useEffect(() => {
     if (!activeId) {
       setDerivatives([]);
+      setEditProject(null);
+      setAssemblies([]);
+      setProRenderNote("");
       return;
     }
     let cancelled = false;
     void listPhotoDerivativesAction(activeId).then((res) => {
       if (cancelled) return;
       setDerivatives(res.derivatives ?? []);
+    });
+    void listPhotoEditProjectsAction(activeId).then((res) => {
+      if (cancelled) return;
+      setEditProject(res.projects?.[0] ?? null);
+      setAssemblies(res.assemblies ?? []);
     });
     return () => {
       cancelled = true;
@@ -567,6 +590,65 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId, initialF
     start(async () => {
       const res = await suggestCropPlanAction(photoId);
       setMessage(res.message);
+    });
+  }
+
+  function proposeProEdit() {
+    if (!photo) return;
+    const photoId = photo.id;
+    start(async () => {
+      const res = await proposePhotoEditProjectAction({
+        photoId,
+        look: proLook,
+        useFocus: proUseFocus,
+        focusX: focus?.x,
+        focusY: focus?.y,
+        sharpen: proSharpen,
+        exportSlots: [
+          "grade_full",
+          "hero_16x9",
+          "portrait_4x5",
+          "square_1x1",
+          "story_9x16",
+          "web_max",
+          "thumb",
+        ],
+      });
+      setMessage(res.message);
+      if (res.packet?.project) setEditProject(res.packet.project);
+      const notes = [
+        ...(res.packet?.warnings ?? []),
+        ...(res.packet?.nextActions ?? []),
+      ].filter(Boolean);
+      setProRenderNote(notes.slice(0, 4).join(" · "));
+    });
+  }
+
+  function confirmProRender() {
+    if (!editProject) {
+      setMessage("Propose a Photo Pro Edit project first.");
+      return;
+    }
+    const projectId = editProject.id;
+    const photoId = editProject.photoId;
+    setProRenderNote("Rendering assembly pack…");
+    start(async () => {
+      const res = await renderPhotoEditProjectAction({ projectId, confirmRender: true });
+      setMessage(res.message);
+      setProRenderNote(
+        [
+          res.message,
+          ...(res.warnings ?? []),
+          res.promoteSuggestion ? `Promote suggestion: ${res.promoteSuggestion}` : "",
+        ]
+          .filter(Boolean)
+          .join(" · "),
+      );
+      if (res.assemblies?.length) setAssemblies(res.assemblies);
+      const listed = await listPhotoEditProjectsAction(photoId);
+      setAssemblies(listed.assemblies ?? res.assemblies ?? []);
+      setEditProject(listed.projects?.find((p) => p.id === projectId) ?? editProject);
+      refreshDerivatives(photoId);
     });
   }
 
@@ -1459,6 +1541,124 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId, initialF
                 <li key={`${photo.id}-${s}`}>{s}</li>
               ))}
             </ul>
+          </div>
+          <div className="mt-3 rounded-lg border-2 border-[#000066]/15 bg-white p-3">
+            <p className="font-heading text-xs font-bold uppercase tracking-wide text-[#000066]">
+              Pro Edit (AI director → confirm render)
+            </p>
+            <p className="mt-1 font-body text-[11px] text-[#364272]">
+              Graded multi-aspect pack: full-frame look, hero 16:9, portrait 4:5, square, story 9:16, web,
+              thumb. Focus-aware when set. Never overwrites originals; never auto-promotes.
+            </p>
+            <div className="mt-2 flex flex-wrap gap-3 font-body text-[11px] text-[#12124a]">
+              <label className="inline-flex flex-col gap-0.5">
+                Look
+                <select
+                  className={EVIDENCE_FIELD_CLASS}
+                  value={proLook}
+                  onChange={(e) =>
+                    setProLook(
+                      e.target.value as
+                        | "neutral"
+                        | "warm"
+                        | "cool"
+                        | "contrast"
+                        | "soft"
+                        | "punch"
+                        | "mono",
+                    )
+                  }
+                >
+                  <option value="warm">Warm</option>
+                  <option value="cool">Cool</option>
+                  <option value="contrast">Contrast</option>
+                  <option value="soft">Soft</option>
+                  <option value="punch">Punch</option>
+                  <option value="mono">Mono</option>
+                  <option value="neutral">Neutral</option>
+                </select>
+              </label>
+              <label className="inline-flex items-center gap-1.5 self-end">
+                <input
+                  type="checkbox"
+                  checked={proUseFocus}
+                  onChange={(e) => setProUseFocus(e.target.checked)}
+                />
+                Use focus
+              </label>
+              <label className="inline-flex items-center gap-1.5 self-end">
+                <input
+                  type="checkbox"
+                  checked={proSharpen}
+                  onChange={(e) => setProSharpen(e.target.checked)}
+                />
+                Extra sharpen
+              </label>
+            </div>
+            <div className="mt-2 flex flex-wrap gap-2">
+              <button
+                type="button"
+                disabled={pending}
+                onClick={proposeProEdit}
+                className="rounded border-2 border-[#000066] bg-[#000066] px-2.5 py-1 font-body text-xs font-bold text-white disabled:opacity-50"
+              >
+                Propose Pro Edit
+              </button>
+              <button
+                type="button"
+                disabled={pending || !editProject}
+                onClick={confirmProRender}
+                className="rounded border-2 border-[#ca913d] bg-white px-2.5 py-1 font-body text-xs font-semibold text-[#12124a] disabled:opacity-50"
+              >
+                Confirm render
+              </button>
+            </div>
+            {proRenderNote ? (
+              <p className="mt-2 font-body text-[11px] text-[#364272]">{proRenderNote}</p>
+            ) : null}
+            {editProject ? (
+              <div className="mt-3 rounded border border-[#8eb6dc]/40 bg-[#f4f7fc] p-2">
+                <p className="font-heading text-[10px] font-bold uppercase tracking-wide text-[#000066]">
+                  Edit project · {editProject.exportSlots.length} slots · {editProject.look}
+                </p>
+                <p className="mt-1 font-body text-[11px] text-[#12124a]">
+                  {editProject.useFocus ? "focus-aware" : "attention crops"}
+                  {editProject.sharpen ? " · sharpen" : ""}
+                  {editProject.promoteSuggestion
+                    ? ` · promote hint: ${editProject.promoteSuggestion}`
+                    : ""}
+                </p>
+                {editProject.directorRationale ? (
+                  <p className="mt-1 font-body text-[10px] text-[#364272]">
+                    {editProject.directorRationale}
+                  </p>
+                ) : null}
+                <p className="mt-1 font-mono text-[10px] text-[#364272]">
+                  {editProject.exportSlots.join(" · ")}
+                </p>
+              </div>
+            ) : null}
+            {assemblies.length ? (
+              <div className="mt-3 space-y-2">
+                <p className="font-heading text-[10px] font-bold uppercase tracking-wide text-[#000066]">
+                  Assemblies
+                </p>
+                {assemblies.slice(0, 8).map((a) => (
+                  <div key={a.id} className="rounded border border-[#8eb6dc]/40 bg-white p-2">
+                    <p className="font-body text-[11px] text-[#12124a]">
+                      {a.slot} · {a.look} · {a.width}×{a.height}
+                    </p>
+                    <p className="break-all font-mono text-[10px] text-[#364272]">{a.publicSrc}</p>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={a.publicSrc}
+                      alt=""
+                      className="mt-1 max-h-36 w-full rounded border border-[#8eb6dc]/30 object-contain bg-[#f4f7fc]"
+                    />
+                  </div>
+                ))}
+              </div>
+            ) : null}
           </div>
           <div className="mt-3 rounded-lg border-2 border-[#000066]/15 bg-white p-3">
             <p className="font-heading text-xs font-bold uppercase tracking-wide text-[#000066]">

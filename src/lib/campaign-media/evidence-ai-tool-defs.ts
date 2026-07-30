@@ -201,6 +201,21 @@ export const EVIDENCE_AI_TOOL_CATALOG: Array<{
     summary: "Apply turbo identify and/or fit flags to overlay (confirm required; never silent Approve).",
   },
   {
+    name: "propose_photo_edit_project",
+    audience: "photo",
+    summary: "Photo Edit Director: look + focus-aware multi-aspect export pack (no silent render).",
+  },
+  {
+    name: "render_photo_edit_project",
+    audience: "photo",
+    summary: "Confirm-render a Photo Pro Edit project: graded multi-aspect assembly pack.",
+  },
+  {
+    name: "list_photo_assemblies",
+    audience: "photo",
+    summary: "List Photo Pro Edit assemblies for a photoId.",
+  },
+  {
     name: "propose_video_edit_project",
     audience: "video",
     summary: "AI/deterministic Edit Director: ordered cut list + look/transition/captions/export pack (no silent render).",
@@ -678,6 +693,74 @@ export function evidenceAiToolsFor(kind: "photo" | "video"): ChatCompletionTool[
             confirm: { type: "boolean" },
           },
           required: ["photoId", "confirm"],
+        },
+      },
+    },
+    {
+      type: "function",
+      function: {
+        name: "propose_photo_edit_project",
+        description:
+          "Propose a Photo Pro Edit project (look, focus-aware multi-aspect export pack including story 9:16). Does not render — operator must confirm render separately. Never auto-promotes.",
+        parameters: {
+          type: "object",
+          properties: {
+            photoId: { type: "string" },
+            look: {
+              type: "string",
+              enum: ["neutral", "warm", "cool", "contrast", "soft", "punch", "mono"],
+            },
+            exportSlots: {
+              type: "array",
+              items: {
+                type: "string",
+                enum: [
+                  "grade_full",
+                  "hero_16x9",
+                  "portrait_4x5",
+                  "square_1x1",
+                  "story_9x16",
+                  "web_max",
+                  "thumb",
+                ],
+              },
+            },
+            useFocus: { type: "boolean" },
+            focusX: { type: "number" },
+            focusY: { type: "number" },
+            sharpen: { type: "boolean" },
+          },
+          required: ["photoId"],
+        },
+      },
+    },
+    {
+      type: "function",
+      function: {
+        name: "render_photo_edit_project",
+        description:
+          "Render a Photo Pro Edit project into graded multi-aspect JPEGs. Requires confirmRender:true. Originals never overwritten; promote remains a separate operator step.",
+        parameters: {
+          type: "object",
+          properties: {
+            projectId: { type: "string" },
+            confirmRender: { type: "boolean" },
+          },
+          required: ["projectId", "confirmRender"],
+        },
+      },
+    },
+    {
+      type: "function",
+      function: {
+        name: "list_photo_assemblies",
+        description: "List Photo Pro Edit assemblies and projects for a photoId.",
+        parameters: {
+          type: "object",
+          properties: {
+            photoId: { type: "string" },
+          },
+          required: ["photoId"],
         },
       },
     },

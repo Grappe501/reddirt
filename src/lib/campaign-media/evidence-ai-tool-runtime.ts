@@ -958,6 +958,69 @@ export async function executeEvidenceAiTool(
         };
       }
 
+      case "propose_photo_edit_project": {
+        const photoId = asString(args.photoId);
+        if (!photoId) return { ok: false, error: "photoId required." };
+        const { proposePhotoEditProject } = await import("@/lib/campaign-media/photo-edit-director");
+        const looks = ["neutral", "warm", "cool", "contrast", "soft", "punch", "mono"] as const;
+        const look = looks.includes(args.look as (typeof looks)[number])
+          ? (args.look as (typeof looks)[number])
+          : "warm";
+        const slots = Array.isArray(args.exportSlots)
+          ? (args.exportSlots.map((s) => String(s)) as Array<
+              | "grade_full"
+              | "hero_16x9"
+              | "portrait_4x5"
+              | "square_1x1"
+              | "story_9x16"
+              | "web_max"
+              | "thumb"
+            >)
+          : undefined;
+        const packet = await proposePhotoEditProject({
+          photoId,
+          look,
+          exportSlots: slots,
+          useFocus: args.useFocus !== false,
+          focusX: typeof args.focusX === "number" ? args.focusX : undefined,
+          focusY: typeof args.focusY === "number" ? args.focusY : undefined,
+          sharpen: args.sharpen === true,
+          persist: true,
+        });
+        if (!packet.ok) return { ok: false, error: packet.message };
+        return { ok: true, result: packet };
+      }
+
+      case "render_photo_edit_project": {
+        if (args.confirmRender !== true) {
+          return {
+            ok: false,
+            error: "confirmRender:true required — operator must explicitly ask to render.",
+          };
+        }
+        const projectId = asString(args.projectId);
+        if (!projectId) return { ok: false, error: "projectId required." };
+        const { renderPhotoEditProject } = await import("@/lib/campaign-media/photo-pro-render");
+        const result = await renderPhotoEditProject({ projectId });
+        if (!result.ok) return { ok: false, error: result.message };
+        return { ok: true, result };
+      }
+
+      case "list_photo_assemblies": {
+        const photoId = asString(args.photoId);
+        if (!photoId) return { ok: false, error: "photoId required." };
+        const { listPhotoAssemblies, listPhotoEditProjects } = await import(
+          "@/lib/campaign-media/photo-edit-store"
+        );
+        return {
+          ok: true,
+          result: {
+            assemblies: listPhotoAssemblies(photoId),
+            projects: listPhotoEditProjects(photoId),
+          },
+        };
+      }
+
       default:
         return { ok: false, error: `Unknown tool: ${name}` };
     }

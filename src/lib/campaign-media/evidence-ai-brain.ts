@@ -28,6 +28,8 @@ Hard rules:
 - Only call encode_video_excerpt when the operator explicitly asks to encode (confirmEncode:true).
 - Only call render_video_edit_project when the operator explicitly asks to render a Pro Edit (confirmRender:true).
 - Prefer propose_video_edit_project before rendering multi-clip assemblies; never invent spoken caption lines.
+- Prefer propose_photo_edit_project before rendering still packs; only call render_photo_edit_project with confirmRender:true.
+- Photo Pro Edit never auto-promotes — promote_photo_derivative remains a separate explicit step.
 - Only call apply_transcript_intelligence when the operator explicitly asks to apply (confirm:true).
 - Call analyze_transcript_intelligence for chapters/quotes/claims/do-not-claim; never invent spoken lines.
 - Only call batch_apply_photo_evidence when the operator explicitly asks to write the same fields to multiple named photo ids.

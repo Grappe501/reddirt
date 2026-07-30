@@ -19,6 +19,7 @@ const SMOKES = [
   "scripts/smoke-batch-photo-derivatives.ts",
   "scripts/smoke-promote-photo-derivative.ts",
   "scripts/smoke-focus-crop.ts",
+  "scripts/smoke-photo-pro-edit.ts",
   "scripts/smoke-ffmpeg-foundation.ts",
   "scripts/smoke-encode-video-excerpt.ts",
   "scripts/smoke-video-prep-package.ts",

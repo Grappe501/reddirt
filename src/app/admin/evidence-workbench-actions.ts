@@ -1352,6 +1352,86 @@ export async function proposeVideoEditProjectAction(input: {
   return { ok: packet.ok, message: packet.message, packet };
 }
 
+export async function proposePhotoEditProjectAction(input: {
+  photoId: string;
+  look?: "neutral" | "warm" | "cool" | "contrast" | "soft" | "punch" | "mono";
+  exportSlots?: Array<
+    "grade_full" | "hero_16x9" | "portrait_4x5" | "square_1x1" | "story_9x16" | "web_max" | "thumb"
+  >;
+  useFocus?: boolean;
+  focusX?: number;
+  focusY?: number;
+  sharpen?: boolean;
+}): Promise<{
+  ok: boolean;
+  message: string;
+  packet?: import("@/lib/campaign-media/photo-edit-types").PhotoEditDirectorPacket;
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { proposePhotoEditProject } = await import("@/lib/campaign-media/photo-edit-director");
+  const packet = await proposePhotoEditProject({
+    photoId: String(input.photoId ?? "").trim(),
+    look: input.look,
+    exportSlots: input.exportSlots,
+    useFocus: input.useFocus,
+    focusX: input.focusX,
+    focusY: input.focusY,
+    sharpen: input.sharpen,
+    persist: true,
+  });
+  revalidatePath("/admin/evidence-workbench");
+  return { ok: packet.ok, message: packet.message, packet };
+}
+
+export async function listPhotoEditProjectsAction(photoId: string): Promise<{
+  ok: boolean;
+  message: string;
+  projects?: import("@/lib/campaign-media/photo-edit-types").PhotoEditProject[];
+  assemblies?: import("@/lib/campaign-media/photo-edit-types").PhotoAssemblyRecord[];
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { listPhotoEditProjects, listPhotoAssemblies } = await import(
+    "@/lib/campaign-media/photo-edit-store"
+  );
+  const id = String(photoId ?? "").trim();
+  const projects = listPhotoEditProjects(id);
+  return {
+    ok: true,
+    message: `${projects.length} photo edit project(s)`,
+    projects,
+    assemblies: listPhotoAssemblies(id),
+  };
+}
+
+export async function renderPhotoEditProjectAction(input: {
+  projectId: string;
+  confirmRender: boolean;
+}): Promise<{
+  ok: boolean;
+  message: string;
+  assemblies?: import("@/lib/campaign-media/photo-edit-types").PhotoAssemblyRecord[];
+  warnings?: string[];
+  promoteSuggestion?: string | null;
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  if (!input.confirmRender) {
+    return { ok: false, message: "confirmRender:true required — refuse silent photo pro render." };
+  }
+  const { renderPhotoEditProject } = await import("@/lib/campaign-media/photo-pro-render");
+  const result = await renderPhotoEditProject({ projectId: String(input.projectId ?? "").trim() });
+  revalidatePath("/admin/evidence-workbench");
+  return {
+    ok: result.ok,
+    message: result.message,
+    assemblies: result.assemblies,
+    warnings: result.warnings,
+    promoteSuggestion: result.promoteSuggestion ?? null,
+  };
+}
+
 export async function listVideoEditProjectsAction(speechId: string): Promise<{
   ok: boolean;
   message: string;
