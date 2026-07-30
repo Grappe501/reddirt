@@ -325,9 +325,24 @@ export const EVIDENCE_AI_TOOL_CATALOG: Array<{
     summary: "AI/deterministic Edit Director: ordered cut list + look/transition/captions/export pack (no silent render).",
   },
   {
+    name: "update_video_edit_cutlist",
+    audience: "video",
+    summary: "Reorder / trim / drop Pro Edit clips (times/order only — never invent spoken lines).",
+  },
+  {
+    name: "preview_video_edit_captions",
+    audience: "video",
+    summary: "Preview verbatim caption cues overlapping edit windows before burn-in (SRT/VTT).",
+  },
+  {
+    name: "soft_archive_video_assemblies",
+    audience: "video",
+    summary: "Soft-archive assembly records (confirmArchive) — files never deleted.",
+  },
+  {
     name: "render_video_edit_project",
     audience: "video",
-    summary: "Confirm-render a Pro Edit project: concat, look, loudnorm, captions, multi-aspect pack.",
+    summary: "Confirm-render Pro Edit: N-clip crossfade chain, SRT+VTT, look, loudnorm, multi-aspect pack.",
   },
   {
     name: "list_video_assemblies",
@@ -1149,7 +1164,7 @@ export function evidenceAiToolsFor(
       function: {
         name: "extract_video_poster",
         description:
-          "Extract one poster JPEG from a local video master at atSeconds. Writes under /media/campaign-derivatives/_video/.",
+          "Extract one poster JPEG from a local video master at atSeconds. Writes under /media/campaign-derivatives/_video/. Requires confirmPoster:true.",
         parameters: {
           type: "object",
           properties: {
@@ -1158,8 +1173,9 @@ export function evidenceAiToolsFor(
             youtubeVideoId: { type: "string" },
             localPublicSrc: { type: "string" },
             atSeconds: { type: "number" },
+            confirmPoster: { type: "boolean" },
           },
-          required: ["outId"],
+          required: ["outId", "confirmPoster"],
         },
       },
     },
@@ -1321,9 +1337,62 @@ export function evidenceAiToolsFor(
     {
       type: "function",
       function: {
+        name: "update_video_edit_cutlist",
+        description:
+          "Update a Pro Edit cut list: reorder, remove, or trim clip times. Never invents quote/spoken text.",
+        parameters: {
+          type: "object",
+          properties: {
+            projectId: { type: "string" },
+            updates: {
+              type: "array",
+              description: "Ops: reorder{clipIds}, remove{clipId}, trim{clipId,startSeconds,endSeconds}, set_meta{look,transition,captionMode,exportAspects,loudnorm}",
+              items: { type: "object" },
+            },
+          },
+          required: ["projectId", "updates"],
+        },
+      },
+    },
+    {
+      type: "function",
+      function: {
+        name: "preview_video_edit_captions",
+        description:
+          "Preview verbatim caption cues for an edit project. Never invents spoken lines.",
+        parameters: {
+          type: "object",
+          properties: {
+            projectId: { type: "string" },
+            youtubeVideoId: { type: "string" },
+            limit: { type: "number" },
+          },
+        },
+      },
+    },
+    {
+      type: "function",
+      function: {
+        name: "soft_archive_video_assemblies",
+        description:
+          "Soft-archive assembly records. Requires confirmArchive:true. Never deletes files.",
+        parameters: {
+          type: "object",
+          properties: {
+            projectId: { type: "string" },
+            outId: { type: "string" },
+            confirmArchive: { type: "boolean" },
+          },
+          required: ["confirmArchive"],
+        },
+      },
+    },
+    {
+      type: "function",
+      function: {
         name: "render_video_edit_project",
         description:
-          "Render a Pro Edit project into assembly MP4s (concat/crossfade + look + loudnorm + aspect pack + optional captions). Requires confirmRender:true.",
+          "Render a Pro Edit project into assembly MP4s (N-clip crossfade chain or hard cut + look + loudnorm + aspect pack + SRT/VTT). Requires confirmRender:true.",
         parameters: {
           type: "object",
           properties: {

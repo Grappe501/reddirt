@@ -81,10 +81,12 @@ export function buildSpeechReadinessRow(base: CampaignMediaRecord): SpeechReadin
     nextAction = "Publish (publicationStatus=PUBLISHED) for kelly-speaks.";
   } else if (merged.approvedForPublic === false) {
     nextAction = "On hold — clear hold when ready for public.";
-  } else if (!hasTranscriptText) {
+  }   else if (!hasTranscriptText) {
     nextAction = "Attach / publish transcript when available.";
   } else if (!master && clipCount === 0) {
     nextAction = "Optional: drop local master for Prep / Pro Edit.";
+  } else if ((master || clipCount > 0) && assemblyCount === 0) {
+    nextAction = "Pro Edit: Propose cut list → Confirm render (world-class assembly pack).";
   } else {
     nextAction = "Ship speech-evidence.json when ready for production.";
   }

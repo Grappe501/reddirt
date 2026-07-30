@@ -702,6 +702,12 @@ export async function executeEvidenceAiTool(
       }
 
       case "extract_video_poster": {
+        if (args.confirmPoster !== true) {
+          return {
+            ok: false,
+            error: "confirmPoster:true required — operator must explicitly ask to extract a poster.",
+          };
+        }
         const outId = asString(args.outId);
         if (!outId) return { ok: false, error: "outId required." };
         const result = extractLocalVideoPoster({
@@ -966,6 +972,54 @@ export async function executeEvidenceAiTool(
         const { renderVideoEditProject } = await import("@/lib/campaign-media/video-pro-render");
         const result = renderVideoEditProject({ projectId });
         if (!result.ok) return { ok: false, error: result.message };
+        return { ok: true, result };
+      }
+
+      case "update_video_edit_cutlist": {
+        const projectId = asString(args.projectId);
+        if (!projectId) return { ok: false, error: "projectId required." };
+        const updates = Array.isArray(args.updates) ? args.updates : [];
+        const { updateVideoEditCutList } = await import("@/lib/campaign-media/video-edit-cutlist");
+        const result = updateVideoEditCutList({
+          projectId,
+          updates: updates as never,
+        });
+        if (!result.ok) return { ok: false, error: result.error };
+        return { ok: true, result };
+      }
+
+      case "preview_video_edit_captions": {
+        const projectId = asString(args.projectId);
+        let youtubeVideoId = asString(args.youtubeVideoId);
+        let clips: import("@/lib/campaign-media/video-edit-types").VideoEditClip[] = [];
+        if (projectId) {
+          const { getVideoEditProject } = await import("@/lib/campaign-media/video-edit-store");
+          const project = getVideoEditProject(projectId);
+          if (!project) return { ok: false, error: `Project not found: ${projectId}` };
+          youtubeVideoId = youtubeVideoId || project.youtubeVideoId || "";
+          clips = project.clips;
+        }
+        if (!youtubeVideoId || !clips.length) {
+          return { ok: false, error: "projectId (with clips) or youtubeVideoId + project clips required." };
+        }
+        const { previewEditCaptions } = await import("@/lib/campaign-media/video-caption-package");
+        const preview = previewEditCaptions({
+          youtubeVideoId,
+          clips,
+          limit: asLimit(args.limit, 24, 60),
+        });
+        if (!preview.ok) return { ok: false, error: preview.error };
+        return { ok: true, result: preview };
+      }
+
+      case "soft_archive_video_assemblies": {
+        const { softArchiveVideoAssemblies } = await import("@/lib/campaign-media/video-edit-store");
+        const result = softArchiveVideoAssemblies({
+          projectId: asString(args.projectId) || undefined,
+          outId: asString(args.outId) || undefined,
+          confirmArchive: args.confirmArchive === true,
+        });
+        if (!result.ok) return { ok: false, error: result.error };
         return { ok: true, result };
       }
 

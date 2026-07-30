@@ -99,3 +99,49 @@ export function pushCaption(record: VideoCaptionRecord): void {
   store.captions = [record, ...store.captions].slice(0, 200);
   saveVideoProEditsStore(store);
 }
+
+/**
+ * Soft-archive assemblies for a project/outId — moves records to the end of the list
+ * with an archived note. Files are never deleted (doctrine).
+ */
+export function softArchiveVideoAssemblies(input: {
+  projectId?: string;
+  outId?: string;
+  confirmArchive: boolean;
+}): { ok: true; archived: number; message: string } | { ok: false; error: string } {
+  if (input.confirmArchive !== true) {
+    return { ok: false, error: "confirmArchive:true required." };
+  }
+  const projectId = String(input.projectId ?? "").trim();
+  const outId = String(input.outId ?? "").trim();
+  if (!projectId && !outId) return { ok: false, error: "projectId or outId required." };
+
+  const store = loadVideoProEditsStore();
+  const stamp = new Date().toISOString();
+  let archived = 0;
+  store.assemblies = store.assemblies.map((a) => {
+    const hit =
+      (projectId && a.projectId === projectId) ||
+      (outId && (a.outId === outId || a.speechId === outId));
+    if (!hit) return a;
+    if (a.note?.includes("[archived")) return a;
+    archived += 1;
+    return {
+      ...a,
+      note: [`[archived ${stamp}]`, a.note].filter(Boolean).join(" · "),
+    };
+  });
+  // Stable: archived assemblies sink toward the end for fresher previews first.
+  store.assemblies = [
+    ...store.assemblies.filter((a) => !a.note?.includes("[archived")),
+    ...store.assemblies.filter((a) => a.note?.includes("[archived")),
+  ].slice(0, 200);
+  saveVideoProEditsStore(store);
+  return {
+    ok: true,
+    archived,
+    message: archived
+      ? `Soft-archived ${archived} assembly record(s) — files kept on disk.`
+      : "No matching assemblies to archive.",
+  };
+}

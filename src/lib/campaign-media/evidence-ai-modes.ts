@@ -176,8 +176,11 @@ const VIDEO_PREP = [
   "encode_video_excerpt",
   "list_video_derivatives",
   "propose_video_edit_project",
+  "update_video_edit_cutlist",
+  "preview_video_edit_captions",
   "render_video_edit_project",
   "list_video_assemblies",
+  "soft_archive_video_assemblies",
   "get_speech_readiness_matrix",
   "search_confirmed_memory",
 ] as const;
@@ -256,7 +259,7 @@ export function systemExtraForMode(mode: EvidenceAiMode): string {
     case "photo_prep":
       return `MODE photo_prep: Crops and non-destructive derivatives / Pro Edit only. Prefer suggest_crop_plan before create_photo_derivative. Never promote or Approve. Only render_photo_edit_project with confirmRender:true when operator asks.`;
     case "video_prep":
-      return `MODE video_prep: Prep package, excerpts, transcript intel, Pro Edit only. Prefer prep_video_package / plan_video_excerpt. Never invent spoken lines. Only encode/render with explicit confirmEncode/confirmRender.`;
+      return `MODE video_prep: Prep package, excerpts, transcript intel, Pro Edit suite. Prefer prep_video_package / plan_video_excerpt / propose_video_edit_project. Cut-list via update_video_edit_cutlist (times/order only). Preview captions before burn-in. Never invent spoken lines. Only encode/poster/render/archive with confirmEncode/confirmPoster/confirmRender/confirmArchive.`;
     case "publish":
       return `MODE publish: Queue, batch flags, ship, curated placement. Never invent geography. Never silent Approve — only batch_publish_* when operator explicitly asks. confirmCurate required for placement apply. Prefer get_evidence_publish_queue / get_speech_confirm_queue first.`;
     case "command":

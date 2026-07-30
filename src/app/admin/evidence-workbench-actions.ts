@@ -2062,6 +2062,99 @@ export async function renderVideoEditProjectAction(input: {
   };
 }
 
+export async function updateVideoEditCutListAction(input: {
+  projectId: string;
+  updates: Array<
+    | { op: "reorder"; clipIds: string[] }
+    | { op: "remove"; clipId: string }
+    | { op: "trim"; clipId: string; startSeconds?: number; endSeconds?: number }
+    | {
+        op: "set_meta";
+        look?: "neutral" | "warm" | "cool" | "contrast";
+        transition?: "none" | "crossfade";
+        captionMode?: "none" | "sidecar" | "burn_in";
+        exportAspects?: Array<"source" | "vertical_9x16" | "square_1x1" | "landscape_16x9">;
+        loudnorm?: boolean;
+      }
+  >;
+}): Promise<{
+  ok: boolean;
+  message: string;
+  project?: import("@/lib/campaign-media/video-edit-types").VideoEditProject;
+  warnings?: string[];
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { updateVideoEditCutList } = await import("@/lib/campaign-media/video-edit-cutlist");
+  const result = updateVideoEditCutList({
+    projectId: String(input.projectId ?? "").trim(),
+    updates: input.updates ?? [],
+  });
+  if (!result.ok) return { ok: false, message: result.error };
+  revalidatePath("/admin/evidence-workbench");
+  return {
+    ok: true,
+    message: result.message,
+    project: result.project,
+    warnings: result.warnings,
+  };
+}
+
+export async function previewVideoEditCaptionsAction(input: {
+  projectId: string;
+}): Promise<{
+  ok: boolean;
+  message: string;
+  segmentCount?: number;
+  cues?: Array<{ start: number; end: number; text: string }>;
+  previewNote?: string;
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const projectId = String(input.projectId ?? "").trim();
+  if (!projectId) return { ok: false, message: "projectId required." };
+  const { getVideoEditProject } = await import("@/lib/campaign-media/video-edit-store");
+  const project = getVideoEditProject(projectId);
+  if (!project) return { ok: false, message: `Project not found: ${projectId}` };
+  const youtubeVideoId = String(project.youtubeVideoId ?? "").trim();
+  if (!youtubeVideoId) return { ok: false, message: "Project missing youtubeVideoId." };
+  const { previewEditCaptions } = await import("@/lib/campaign-media/video-caption-package");
+  const preview = previewEditCaptions({
+    youtubeVideoId,
+    clips: project.clips,
+    limit: 24,
+  });
+  if (!preview.ok) return { ok: false, message: preview.error };
+  return {
+    ok: true,
+    message: `${preview.segmentCount} caption cue(s) · verbatim only`,
+    segmentCount: preview.segmentCount,
+    cues: preview.cues,
+    previewNote: preview.previewNote,
+  };
+}
+
+export async function softArchiveVideoAssembliesAction(input: {
+  projectId?: string;
+  outId?: string;
+  confirmArchive: boolean;
+}): Promise<{ ok: boolean; message: string; archived?: number }> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  if (!input.confirmArchive) {
+    return { ok: false, message: "confirmArchive:true required — refuse silent archive." };
+  }
+  const { softArchiveVideoAssemblies } = await import("@/lib/campaign-media/video-edit-store");
+  const result = softArchiveVideoAssemblies({
+    projectId: input.projectId ? String(input.projectId).trim() : undefined,
+    outId: input.outId ? String(input.outId).trim() : undefined,
+    confirmArchive: true,
+  });
+  if (!result.ok) return { ok: false, message: result.error };
+  revalidatePath("/admin/evidence-workbench");
+  return { ok: true, message: result.message, archived: result.archived };
+}
+
 export async function analyzeTranscriptIntelAction(input: {
   speechId: string;
   youtubeVideoId: string;

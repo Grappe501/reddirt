@@ -1,5 +1,5 @@
 /**
- * Build verbatim SRT captions from local transcript workspace windows.
+ * Build verbatim SRT/VTT captions from local transcript workspace windows.
  * Never invents spoken lines.
  */
 
@@ -24,14 +24,20 @@ function formatSrtTime(seconds: number): string {
   return `${pad2(h)}:${pad2(m)}:${pad2(sec)},${String(ms).padStart(3, "0")}`;
 }
 
+function formatVttTime(seconds: number): string {
+  return formatSrtTime(seconds).replace(",", ".");
+}
+
 function escapeSrt(text: string): string {
   return text.replace(/\r?\n/g, " ").trim();
 }
 
-export function buildSrtForEditClips(input: {
+export type CaptionCue = { start: number; end: number; text: string };
+
+export function buildCaptionCuesForEditClips(input: {
   youtubeVideoId: string;
   clips: VideoEditClip[];
-}): { ok: true; srt: string; segmentCount: number } | { ok: false; error: string } {
+}): { ok: true; cues: CaptionCue[] } | { ok: false; error: string } {
   const youtubeVideoId = String(input.youtubeVideoId ?? "").trim();
   if (!youtubeVideoId) return { ok: false, error: "youtubeVideoId required for captions." };
   const ws = loadWorkspaceRecord(youtubeVideoId);
@@ -42,8 +48,7 @@ export function buildSrtForEditClips(input: {
     };
   }
 
-  type Cue = { start: number; end: number; text: string };
-  const cues: Cue[] = [];
+  const cues: CaptionCue[] = [];
   let cursor = 0;
 
   for (const clip of input.clips) {
@@ -73,7 +78,10 @@ export function buildSrtForEditClips(input: {
   if (!cues.length) {
     return { ok: false, error: "No transcript segments overlap the edit clip windows." };
   }
+  return { ok: true, cues };
+}
 
+export function cuesToSrt(cues: CaptionCue[]): string {
   const lines: string[] = [];
   cues.forEach((c, i) => {
     lines.push(String(i + 1));
@@ -81,8 +89,44 @@ export function buildSrtForEditClips(input: {
     lines.push(c.text);
     lines.push("");
   });
+  return lines.join("\n");
+}
 
-  return { ok: true, srt: lines.join("\n"), segmentCount: cues.length };
+export function cuesToVtt(cues: CaptionCue[]): string {
+  const lines = ["WEBVTT", ""];
+  cues.forEach((c) => {
+    lines.push(`${formatVttTime(c.start)} --> ${formatVttTime(c.end)}`);
+    lines.push(c.text);
+    lines.push("");
+  });
+  return lines.join("\n");
+}
+
+export function buildSrtForEditClips(input: {
+  youtubeVideoId: string;
+  clips: VideoEditClip[];
+}): { ok: true; srt: string; segmentCount: number } | { ok: false; error: string } {
+  const built = buildCaptionCuesForEditClips(input);
+  if (!built.ok) return built;
+  return { ok: true, srt: cuesToSrt(built.cues), segmentCount: built.cues.length };
+}
+
+export function previewEditCaptions(input: {
+  youtubeVideoId: string;
+  clips: VideoEditClip[];
+  limit?: number;
+}):
+  | { ok: true; segmentCount: number; cues: CaptionCue[]; previewNote: string }
+  | { ok: false; error: string } {
+  const built = buildCaptionCuesForEditClips(input);
+  if (!built.ok) return built;
+  const limit = Math.min(Math.max(Number(input.limit) || 24, 1), 60);
+  return {
+    ok: true,
+    segmentCount: built.cues.length,
+    cues: built.cues.slice(0, limit),
+    previewNote: "Verbatim transcript windows only — never invent spoken lines.",
+  };
 }
 
 export function writeEditCaptionsSidecar(input: {
@@ -90,10 +134,11 @@ export function writeEditCaptionsSidecar(input: {
   outId: string;
   youtubeVideoId: string;
   clips: VideoEditClip[];
+  formats?: Array<"srt" | "vtt">;
 }):
-  | { ok: true; record: VideoCaptionRecord; absPath: string }
+  | { ok: true; record: VideoCaptionRecord; absPath: string; records: VideoCaptionRecord[] }
   | { ok: false; error: string } {
-  const built = buildSrtForEditClips({
+  const built = buildCaptionCuesForEditClips({
     youtubeVideoId: input.youtubeVideoId,
     clips: input.clips,
   });
@@ -101,33 +146,49 @@ export function writeEditCaptionsSidecar(input: {
 
   const outId = String(input.outId ?? "").trim();
   if (!outId) return { ok: false, error: "outId required." };
+  const formats = input.formats?.length ? input.formats : (["srt", "vtt"] as const);
   const stamp = new Date().toISOString().slice(0, 16).replace(/[-:T]/g, "");
-  const filename = `captions-${stamp}.srt`;
   const outDirRel = path.join(MEDIA_DERIVATIVES_PUBLIC_REL, "_video", outId);
   const outDirAbs = path.join(process.cwd(), outDirRel);
   mkdirSync(outDirAbs, { recursive: true });
-  const outAbs = path.join(outDirAbs, filename);
-  writeFileSync(outAbs, built.srt, "utf8");
-
-  // Also stash under .local/temp for burn-in path reliability on Windows paths with spaces.
   const tempDir = path.join(workspaceLocalRoot(), "temp", "video-pro-edit");
   mkdirSync(tempDir, { recursive: true });
-  const tempAbs = path.join(tempDir, `${outId}-${filename}`);
-  writeFileSync(tempAbs, built.srt, "utf8");
 
-  const relativePath = path.join(outDirRel, filename).split(path.sep).join("/");
-  const publicSrc = `/media/campaign-derivatives/_video/${outId}/${filename}`;
-  const record: VideoCaptionRecord = {
-    id: `${outId}--captions--${stamp}`,
-    projectId: input.projectId,
-    outId,
-    format: "srt",
-    publicSrc,
-    relativePath,
-    createdAt: new Date().toISOString(),
-    segmentCount: built.segmentCount,
-    note: `Verbatim SRT from transcript windows (${built.segmentCount} cues). Temp: ${tempAbs}`,
-  };
-  pushCaption(record);
-  return { ok: true, record, absPath: tempAbs };
+  const records: VideoCaptionRecord[] = [];
+  let primaryAbs = "";
+  let primary: VideoCaptionRecord | null = null;
+
+  for (const format of formats) {
+    const body = format === "vtt" ? cuesToVtt(built.cues) : cuesToSrt(built.cues);
+    const filename = `captions-${stamp}.${format}`;
+    const outAbs = path.join(outDirAbs, filename);
+    writeFileSync(outAbs, body, "utf8");
+    const tempAbs = path.join(tempDir, `${outId}-${filename}`);
+    writeFileSync(tempAbs, body, "utf8");
+    const relativePath = path.join(outDirRel, filename).split(path.sep).join("/");
+    const publicSrc = `/media/campaign-derivatives/_video/${outId}/${filename}`;
+    const record: VideoCaptionRecord = {
+      id: `${outId}--captions-${format}--${stamp}`,
+      projectId: input.projectId,
+      outId,
+      format,
+      publicSrc,
+      relativePath,
+      createdAt: new Date().toISOString(),
+      segmentCount: built.cues.length,
+      note: `Verbatim ${format.toUpperCase()} from transcript windows (${built.cues.length} cues). Temp: ${tempAbs}`,
+    };
+    pushCaption(record);
+    records.push(record);
+    if (format === "srt") {
+      primary = record;
+      primaryAbs = tempAbs;
+    }
+  }
+
+  if (!records.length || !primary) {
+    return { ok: false, error: "No caption files written." };
+  }
+
+  return { ok: true, record: primary, absPath: primaryAbs, records };
 }

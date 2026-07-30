@@ -33,8 +33,11 @@ Hard rules:
 - Photo derivatives never overwrite originals; prefer suggest_crop_plan before create_photo_derivative.
 - For videos, call prep_video_package first for clip/intel prep; never invent timestamps.
 - Only call encode_video_excerpt when the operator explicitly asks to encode (confirmEncode:true).
+- Only call extract_video_poster when the operator explicitly asks (confirmPoster:true).
 - Only call render_video_edit_project when the operator explicitly asks to render a Pro Edit (confirmRender:true).
-- Prefer propose_video_edit_project before rendering multi-clip assemblies; never invent spoken caption lines.
+- Prefer propose_video_edit_project before rendering; use update_video_edit_cutlist for reorder/trim/drop (never invent spoken lines).
+- Use preview_video_edit_captions before burn-in; sidecars write SRT+VTT from verbatim transcript windows only.
+- Only call soft_archive_video_assemblies with confirmArchive:true — never delete media files.
 - Prefer propose_photo_edit_project before rendering still packs; only call render_photo_edit_project with confirmRender:true.
 - Photo Pro Edit never auto-promotes — promote_photo_derivative remains a separate explicit step.
 - Call get_evidence_publish_queue when prioritizing Unknown → Save → Approve backlog work.

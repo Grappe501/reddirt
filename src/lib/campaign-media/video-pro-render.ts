@@ -186,6 +186,39 @@ function crossfadeTwo(aAbs: string, bAbs: string, outAbs: string, fade = 0.4): {
   return { ok: true };
 }
 
+/** Pairwise crossfade chain for N clips; falls back to concat on failure. */
+function crossfadeChain(
+  segmentAbs: string[],
+  outAbs: string,
+  fade = 0.4,
+): { ok: true; warnings: string[] } | { ok: false; error: string; warnings: string[] } {
+  const warnings: string[] = [];
+  if (segmentAbs.length < 2) {
+    return { ok: false, error: "Need at least 2 segments for crossfade.", warnings };
+  }
+  if (segmentAbs.length === 2) {
+    const xf = crossfadeTwo(segmentAbs[0], segmentAbs[1], outAbs, fade);
+    if (!xf.ok) return { ok: false, error: xf.error, warnings };
+    return { ok: true, warnings };
+  }
+
+  let current = segmentAbs[0];
+  const work = path.dirname(outAbs);
+  for (let i = 1; i < segmentAbs.length; i++) {
+    const nextOut =
+      i === segmentAbs.length - 1 ? outAbs : path.join(work, `xfade-chain-${i}.mp4`);
+    const xf = crossfadeTwo(current, segmentAbs[i], nextOut, fade);
+    if (!xf.ok) {
+      warnings.push(`Crossfade step ${i} failed (${xf.error}) — falling back to hard-cut concat.`);
+      const cat = concatSegments(segmentAbs, outAbs);
+      if (!cat.ok) return { ok: false, error: cat.error, warnings };
+      return { ok: true, warnings };
+    }
+    current = nextOut;
+  }
+  return { ok: true, warnings };
+}
+
 function finishEncode(input: {
   inAbs: string;
   outAbs: string;
@@ -286,17 +319,16 @@ export function renderVideoEditProject(input: {
   }
 
   const assembledTemp = path.join(work, "assembled.mp4");
-  if (project.transition === "crossfade" && segmentAbs.length === 2) {
-    const xf = crossfadeTwo(segmentAbs[0], segmentAbs[1], assembledTemp);
+  if (project.transition === "crossfade" && segmentAbs.length >= 2) {
+    const xf = crossfadeChain(segmentAbs, assembledTemp);
     if (!xf.ok) {
-      warnings.push(`Crossfade failed (${xf.error}) — falling back to hard cut.`);
+      warnings.push(`Crossfade chain failed (${xf.error}) — falling back to hard cut.`);
       const cat = concatSegments(segmentAbs, assembledTemp);
       if (!cat.ok) return { ok: false, message: cat.error, assemblies: [], warnings };
+    } else {
+      warnings.push(...xf.warnings);
     }
   } else {
-    if (project.transition === "crossfade" && segmentAbs.length !== 2) {
-      warnings.push("Crossfade currently supports 2 clips — using hard-cut concat.");
-    }
     const cat = concatSegments(segmentAbs, assembledTemp);
     if (!cat.ok) return { ok: false, message: cat.error, assemblies: [], warnings };
   }
