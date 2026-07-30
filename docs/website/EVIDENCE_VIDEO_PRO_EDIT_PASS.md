@@ -67,4 +67,4 @@ AI path: `propose_video_edit_project` → operator asks to render → `render_vi
 
 | Pass | Commit | Note |
 | --- | ---: | --- |
-| Pro Edit | _(this pass)_ | Director + confirm render + Speeches UI |
+| Pro Edit | `a71679ac` | Director + confirm render + Speeches UI |
