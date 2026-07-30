@@ -426,19 +426,21 @@ export function getPhotoIntakeStatus(): PhotoIntakeStatus {
   }
 
   let nextStep: PhotoIntakeStatus["nextStep"] = "clear";
-  let nextStepLabel = "Queue clear — label remaining Unknown on Photos, then Approve.";
+  let nextStepLabel =
+    "Queue clear — finish remaining Unknown on Identify, then Approve on County.";
   if (fresh.length > 0) {
     nextStep = "intake";
-    nextStepLabel = `Intake ${fresh.length} new file(s) on disk (nested OK — one click).`;
+    nextStepLabel = `Intake ${fresh.length} new file(s) on disk (nested OK — one click). Rescan first if you dropped outside the browser.`;
   } else if (queueUnknownCounty > 0) {
     nextStep = "label";
-    nextStepLabel = `Label ${queueUnknownCounty} queued still(s) missing county on Photos.`;
+    nextStepLabel = `Identify ${queueUnknownCounty} queued still(s) missing county — Save → Route.`;
   } else if (drafts.photos.length > 0) {
     nextStep = "approve";
-    nextStepLabel = "Geography set — Approve / Homepage on Photos when ready for albums.";
+    nextStepLabel = "Geography set — Approve on County desk when ready for albums.";
   } else if (candidates.length === 0) {
     nextStep = "drop";
-    nextStepLabel = "Drop stills into public/media/campaign-photos/ (folders OK), then Intake.";
+    nextStepLabel =
+      "Drop stills into public/media/campaign-photos/ (folders OK), Rescan if needed, then Intake.";
   }
 
   return {

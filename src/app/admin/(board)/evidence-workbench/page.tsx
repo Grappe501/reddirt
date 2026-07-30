@@ -281,11 +281,12 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
           <>
             <div className="mb-4 rounded-lg border-2 border-[#000066]/15 bg-[#f4f7fc] p-3">
               <p className="font-heading text-xs font-bold uppercase text-[#000066]">
-                Intake · drop only
+                Intake · drop + queue
               </p>
               <p className="mt-1 font-body text-xs text-[#364272]">
-                Put files in the watch folder or drag-drop. Then open Identify Board — no labeling
-                here.
+                Drop zone or Explorer into{" "}
+                <code className="rounded bg-white px-1">campaign-photos/</code>. No background watcher —
+                Rescan after Explorer drops, then Intake all new. Labeling happens on Identify, not here.
               </p>
               <Link
                 href="/admin/evidence-workbench?tab=identify&filter=draft"

@@ -42,12 +42,12 @@ const BUCKET_META: Array<{
   {
     id: "draftIngest",
     label: "Intake drafts",
-    hint: "Label on Photos; graduate to registry is a later ship step",
+    hint: "Identify desk → Save → Route; Approve stays on County",
   },
   {
     id: "turboPending",
     label: "Turbo pending",
-    hint: "Open Photos → Turbo card → Apply identify",
+    hint: "Identify → Turbo card → Apply identify",
   },
   {
     id: "needsApproval",
