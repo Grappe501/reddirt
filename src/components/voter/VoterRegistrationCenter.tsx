@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { MediaPageHero } from "@/components/blocks/MediaPageHero";
+import { PageHero } from "@/components/blocks/PageHero";
 import { SectionHeading } from "@/components/blocks/SectionHeading";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { FullBleedSection } from "@/components/layout/FullBleedSection";
@@ -49,12 +49,11 @@ export async function VoterRegistrationCenter({
 
   return (
     <>
-      <MediaPageHero
-        slotKey="voter-reg.hero"
-        layout="split"
+      <PageHero
+        tone="plan"
         eyebrow="Voter access"
         title="Voter registration center"
-        subtitle="Kelly’s team built this hub so Arkansans aren’t alone in a maze of forms and deadlines. We’ll show you how we count new registrations, where your county stands, and how to reach a real person when you need paper-and-ink help—because Arkansas still doesn’t offer full online registration. Official confirmation stays with the state; we make the path human."
+        subtitle="Official confirmation stays with the state. We help neighbors find the path—and a real person when paper help is needed."
       >
         {liveMetricsUnavailableMessage ? (
           <p className="max-w-2xl rounded-xl border border-amber-300/80 bg-amber-50 px-4 py-3 text-sm leading-relaxed text-amber-950/90">
@@ -68,13 +67,6 @@ export async function VoterRegistrationCenter({
             {focusCounty.leadName ? (
               <span className="mt-1 block">County lead: {focusCounty.leadName}{focusCounty.leadTitle ? ` — ${focusCounty.leadTitle}` : ""}</span>
             ) : null}
-            <span className="mt-1 block text-xs text-white/65">
-              County progress: see{" "}
-              <Link className="font-semibold text-kelly-gold underline-offset-2 hover:underline" href={`/counties/${focusCounty.slug}`}>
-                county command
-              </Link>{" "}
-              for field metrics.
-            </span>
           </p>
         ) : null}
         <div className="flex w-full max-w-3xl flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center" id="as-of">
@@ -85,7 +77,7 @@ export async function VoterRegistrationCenter({
             How we count new registrations
           </Button>
         </div>
-      </MediaPageHero>
+      </PageHero>
 
       {trailPhoto ? (
         <FullBleedSection variant="subtle" className="!pt-0" aria-label="Campaign trail photography">

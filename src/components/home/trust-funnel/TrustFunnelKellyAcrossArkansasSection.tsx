@@ -4,6 +4,7 @@ import { ContentContainer } from "@/components/layout/ContentContainer";
 import { CampaignVideoFeature } from "@/components/media/CampaignVideoFeature";
 import { trustFunnelHomeCopy } from "@/content/home/trust-funnel-home";
 import {
+  homepagePhotoCaption,
   homepagePhotoCountyHref,
   homepagePhotoObjectPositionClass,
   listAcrossArkansasPresencePlaces,
@@ -93,7 +94,7 @@ export function TrustFunnelKellyAcrossArkansasSection() {
                           Location pending confirmation
                         </p>
                       )}
-                      <p className="font-body text-sm leading-relaxed text-kelly-slate">{photo.accessibility.caption}</p>
+                      <p className="font-body text-sm leading-relaxed text-kelly-slate">{homepagePhotoCaption(photo)}</p>
                       {countyHref ? (
                         <Link
                           href={countyHref}

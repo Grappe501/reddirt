@@ -155,4 +155,8 @@ export function getHomepageHeroPhoto(): CampaignPhotoRecord | null {
 }
 
 /** County pages may link only when county is confirmed (not Unknown). */
-export { homepagePhotoCountyHref, homepagePhotoObjectPositionClass } from "@/content/media/homepage-campaign-photo-display";
+export {
+  homepagePhotoCaption,
+  homepagePhotoCountyHref,
+  homepagePhotoObjectPositionClass,
+} from "@/content/media/homepage-campaign-photo-display";

@@ -7,6 +7,7 @@ import { trustFunnelHomeCopy } from "@/content/home/trust-funnel-home";
 import type { CampaignPhotoRecord } from "@/content/media/campaign-photo-types";
 import {
   homepagePhotoCountyHref,
+  homepagePhotoCaption,
   homepagePhotoObjectPositionClass,
 } from "@/content/media/homepage-campaign-photo-display";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
@@ -45,7 +46,7 @@ export function TrustFunnelMeetKellySection({ photo }: { photo?: CampaignPhotoRe
                   />
                 </div>
                 <figcaption className="border-t border-kelly-ink/10 px-4 py-3.5 font-body text-sm leading-relaxed text-kelly-slate">
-                  {photo.accessibility.caption}
+                  {homepagePhotoCaption(photo)}
                   {countyHref ? (
                     <>
                       {" "}

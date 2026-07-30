@@ -24,9 +24,10 @@
 | `/kelly-speaks` | Hear Kelly | Primary voice · `speaks.hero` / `speaks.featured` | I heard her | Meet Kelly / Join | Video dominant |
 | `/campaign-photos` | Trail photos | Authentic activity · `campaign-photos.intro` | Real campaign evidence | Journey / Road | Gallery is primary below |
 | `/endorsements` | Third-party | Confirmed only · `endorsements.hero` | Honest about what’s confirmed | — | Empty OK |
-| `/understand` | Office explainer | Work touches life · `understand.hero` | I get the office | Office areas | Not memoir |
-| `/office/*` | Area depth | Service detail · `office.hero` | This area matters | Priorities | Layer-2 only |
+| `/understand` | Office explainer | Work touches life · **PageHero** (no media until process-true still) | I get the office | Office areas | Not memoir |
+| `/office/*` | Area depth | Service detail · `office.hero` when proof exists | This area matters | Priorities | Layer-2 only |
 | `/direct-democracy` | People power | Regnat Populus · `dd.hero` | Process is for people | Ballot process | Calm, not theater |
+| Ballot process | Civic how-to | **PageHero only** until process-true still | Clear steps | Official links | No campaign wallpaper |
 | `/from-the-road` | Trail notes | Active now · `road.hero` | Campaign is documenting | Events | Release-only |
 | `/press-coverage` | Press | External coverage · `press.hero` | Sourced stories | Road | No invented clips |
 | `/events` | Calendar | Presence · `events.hero` | I can show up | Request | Calendar primary |

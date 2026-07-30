@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { MediaPageHero } from "@/components/blocks/MediaPageHero";
+import { PageHero } from "@/components/blocks/PageHero";
 import { SectionHeading } from "@/components/blocks/SectionHeading";
 import { ProcessSteps } from "@/components/blocks/ProcessSteps";
 import { FullBleedSection } from "@/components/layout/FullBleedSection";
@@ -47,12 +47,10 @@ const officialProcessSteps = [
   },
 ] as const;
 
-export default async function BallotInitiativeProcessPage() {
+export default function BallotInitiativeProcessPage() {
   return (
     <>
-      <MediaPageHero
-        slotKey="dd.ballot.hero"
-        layout="split"
+      <PageHero
         eyebrow="Civic how-to · Arkansas"
         title="How initiatives and referenda reach the ballot"
         subtitle="A plain-language path through the state’s process: the Attorney General certifies what voters read; the Secretary of State receives petitions and runs verification. This page is educational—not legal advice."
@@ -64,10 +62,10 @@ export default async function BallotInitiativeProcessPage() {
         >
           AG: ballot initiative information
         </Button>
-        <Button href="https://www.sos.arkansas.gov/" variant="outlineOnDark">
+        <Button href="https://www.sos.arkansas.gov/" variant="outline">
           Secretary of State
         </Button>
-      </MediaPageHero>
+      </PageHero>
 
       <FullBleedSection padY variant="subtle" aria-labelledby="process-overview">
         <ContentContainer>

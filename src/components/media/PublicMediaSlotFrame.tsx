@@ -34,10 +34,10 @@ function EmptySlotLabel({ label, className }: { label: string; className?: strin
       role="img"
       aria-label={label}
     >
-      <p className="font-body text-[0.65rem] font-bold uppercase tracking-[0.2em] text-kelly-gold">Media slot</p>
+      <p className="font-body text-[0.65rem] font-bold uppercase tracking-[0.2em] text-kelly-gold">Photo forthcoming</p>
       <p className="max-w-md font-heading text-lg font-bold leading-snug text-kelly-mist sm:text-xl">{label}</p>
       <p className="max-w-sm font-body text-sm text-kelly-mist/75">
-        Assign approved Owned Media in admin · Public placements. Unknown geography stays Unknown.
+        We publish trail photos when place is confirmed. Unknown stays unlabeled.
       </p>
     </div>
   );
