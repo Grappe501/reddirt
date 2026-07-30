@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useState, useTransition } from "react";
+import { useEffect, useState, useTransition } from "react";
 import {
   disableSiteEditModeAction,
   enableSiteEditModeAction,
@@ -15,6 +15,8 @@ type Props = {
   canEdit: boolean;
 };
 
+const ENTER_BOX_MINIMIZED_KEY = "reddirt_site_edit_enter_minimized";
+
 /**
  * Public-site edit mode chrome — enter via /edit, browse any public page, exit here.
  * Basic: copy + media slot change. Website workbench later.
@@ -24,7 +26,25 @@ export function SiteEditChrome({ active, canEdit }: Props) {
   const pathname = usePathname();
   const [message, setMessage] = useState("");
   const [showPages, setShowPages] = useState(true);
+  const [enterMinimized, setEnterMinimized] = useState(false);
   const [pending, start] = useTransition();
+
+  useEffect(() => {
+    try {
+      setEnterMinimized(window.localStorage.getItem(ENTER_BOX_MINIMIZED_KEY) === "1");
+    } catch {
+      /* ignore */
+    }
+  }, []);
+
+  function setEnterMinimizedPersist(next: boolean) {
+    setEnterMinimized(next);
+    try {
+      window.localStorage.setItem(ENTER_BOX_MINIMIZED_KEY, next ? "1" : "0");
+    } catch {
+      /* ignore */
+    }
+  }
 
   if (!canEdit && !active) return null;
 
@@ -51,9 +71,34 @@ export function SiteEditChrome({ active, canEdit }: Props) {
   }
 
   if (!active) {
+    if (enterMinimized) {
+      return (
+        <div className="fixed bottom-4 right-4 z-[90]">
+          <button
+            type="button"
+            title="Expand website edit"
+            onClick={() => setEnterMinimizedPersist(false)}
+            className="rounded-lg border-2 border-[#000066] bg-[#000066] px-3 py-2 font-heading text-[11px] font-bold uppercase tracking-wide text-white shadow-lg"
+          >
+            Website edit
+          </button>
+        </div>
+      );
+    }
+
     return (
       <div className="fixed bottom-4 right-4 z-[90] max-w-sm rounded-lg border-2 border-[#000066] bg-white p-3 shadow-lg">
-        <p className="font-heading text-xs font-bold uppercase text-[#000066]">Website edit</p>
+        <div className="flex items-start justify-between gap-2">
+          <p className="font-heading text-xs font-bold uppercase text-[#000066]">Website edit</p>
+          <button
+            type="button"
+            title="Minimize"
+            onClick={() => setEnterMinimizedPersist(true)}
+            className="shrink-0 rounded border border-[#8eb6dc] bg-[#f4f7fc] px-2 py-0.5 font-body text-[10px] font-semibold text-[#000066]"
+          >
+            Minimize
+          </button>
+        </div>
         <p className="mt-1 font-body text-[11px] text-[#364272]">
           Open the public site in edit mode — change copy, swap images/video on media slots. More
           tools come in the website workbench later.
