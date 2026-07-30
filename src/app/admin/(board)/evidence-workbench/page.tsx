@@ -5,6 +5,7 @@ import { EvidenceCalendarPanel } from "@/components/admin/evidence-workbench/Evi
 import { EvidenceIngestPanel } from "@/components/admin/evidence-workbench/EvidenceIngestPanel";
 import { EvidencePhotosPanel } from "@/components/admin/evidence-workbench/EvidencePhotosPanel";
 import { EvidencePublishQueuePanel } from "@/components/admin/evidence-workbench/EvidencePublishQueuePanel";
+import { EvidenceShipPanel } from "@/components/admin/evidence-workbench/EvidenceShipPanel";
 import { EvidenceSpeechesPanel } from "@/components/admin/evidence-workbench/EvidenceSpeechesPanel";
 import { strategicPlacementNotes } from "@/content/media/strategic-photo-placements";
 import { EVIDENCE_AI_TOOL_CATALOG } from "@/lib/campaign-media/evidence-ai-tool-defs";
@@ -16,6 +17,7 @@ import {
   loadSpeechEvidenceStore,
 } from "@/lib/campaign-media/evidence-store";
 import { buildEvidencePublishQueue } from "@/lib/campaign-media/evidence-publish-queue";
+import { buildEvidenceShipReport } from "@/lib/campaign-media/evidence-ship-report";
 import { listCampaignPhotosLive } from "@/lib/campaign-media/list-campaign-photos-live";
 import { listDiskPhotoIngestCandidates } from "@/lib/campaign-media/photo-ingest";
 import { photoRequiresConsentHold } from "@/lib/campaign-media/photo-consent-hold";
@@ -28,6 +30,7 @@ type Props = {
 
 const TABS = [
   { id: "queue", label: "Publish Queue" },
+  { id: "ship", label: "Ship" },
   { id: "calendar", label: "Calendar" },
   { id: "photos", label: "Photos" },
   { id: "speeches", label: "Videos" },
@@ -50,6 +53,7 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
   const { getPhotoIntakeStatus } = await import("@/lib/campaign-media/photo-ingest");
   const intakeStatus = getPhotoIntakeStatus();
   const publishQueue = buildEvidencePublishQueue();
+  const shipReport = buildEvidenceShipReport({ persist: false, includeDerivativeScan: true });
 
   const counties = ARKANSAS_COUNTY_REGISTRY.map((c) => ({
     slug: c.slug,
@@ -122,12 +126,19 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
         APPROVED/PUBLISHED) when ready.
       </p>
 
-      <div className="mt-4 grid gap-3 sm:grid-cols-4">
+      <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
         <div className="rounded-lg border-2 border-[#000066]/15 bg-white px-3 py-2">
           <p className="font-heading text-xs font-bold uppercase text-[#000066]">Publish queue</p>
           <p className="font-body text-sm">
             {unknownCounty} unknown · {needsApproval} need approval · {publishQueue.totals.approvedPublic}{" "}
             approved
+          </p>
+        </div>
+        <div className="rounded-lg border-2 border-[#000066]/15 bg-white px-3 py-2">
+          <p className="font-heading text-xs font-bold uppercase text-[#000066]">Ship</p>
+          <p className="font-body text-sm">
+            {shipReport.totals.overlayJsonDirty} overlay dirty · {shipReport.totals.derivativeLocalOnly}{" "}
+            deriv local-only
           </p>
         </div>
         <div className="rounded-lg border-2 border-[#000066]/15 bg-white px-3 py-2">
@@ -208,6 +219,7 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
 
       <div className="mt-8">
         {tab === "queue" ? <EvidencePublishQueuePanel initialQueue={publishQueue} /> : null}
+        {tab === "ship" ? <EvidenceShipPanel initialReport={shipReport} /> : null}
         {tab === "calendar" ? (
           <EvidenceCalendarPanel
             initialRows={calendar.rows}

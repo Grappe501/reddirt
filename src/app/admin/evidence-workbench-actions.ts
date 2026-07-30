@@ -800,6 +800,45 @@ export async function runPublishQueueTurboAction(input: {
   };
 }
 
+export async function buildEvidenceShipReportAction(input?: {
+  persist?: boolean;
+  includeDerivativeScan?: boolean;
+}): Promise<{
+  ok: boolean;
+  message: string;
+  report?: import("@/lib/campaign-media/evidence-ship-report").EvidenceShipReport;
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { buildEvidenceShipReport } = await import("@/lib/campaign-media/evidence-ship-report");
+  const report = buildEvidenceShipReport({
+    persist: input?.persist !== false,
+    includeDerivativeScan: input?.includeDerivativeScan !== false,
+  });
+  revalidatePath("/admin/evidence-workbench");
+  return {
+    ok: true,
+    message: `Ship report · ${report.totals.overlayJsonDirty} overlay dirty · ${report.totals.photoBinaryDirty} photo dirty · ${report.totals.derivativeLocalOnly} deriv local-only · ready=${report.checklistReady}`,
+    report,
+  };
+}
+
+export async function writeRegistryGraduationStubAction(input?: {
+  onlyReady?: boolean;
+}): Promise<{
+  ok: boolean;
+  message: string;
+  relativePath?: string;
+  candidateCount?: number;
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { writeRegistryGraduationStub } = await import("@/lib/campaign-media/evidence-ship-report");
+  const result = writeRegistryGraduationStub({ onlyReady: input?.onlyReady !== false });
+  revalidatePath("/admin/evidence-workbench");
+  return result;
+}
+
 export async function runTurboIngestAction(input?: {
   intakeFirst?: boolean;
   useAi?: boolean;

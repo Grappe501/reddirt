@@ -231,6 +231,12 @@ export function EvidencePublishQueuePanel({ initialQueue }: Props) {
           Open needs approval
         </Link>
         <Link
+          href="/admin/evidence-workbench?tab=ship"
+          className="rounded border-2 border-[#8eb6dc] bg-white px-2.5 py-1 font-body text-xs font-semibold text-[#12124a]"
+        >
+          Ship checklist
+        </Link>
+        <Link
           href="/admin/evidence-workbench?tab=ingest"
           className="rounded border-2 border-[#8eb6dc] bg-white px-2.5 py-1 font-body text-xs font-semibold text-[#12124a]"
         >

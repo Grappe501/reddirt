@@ -48,8 +48,7 @@ Workbench → Publish Queue (default tab)
 ## Explicit out of scope
 
 - Auto-Approve / invent geography  
-- Draft → registry graduation  
-- Ship-to-prod git checklist (audit #2)  
+- Silent rewrite of `campaign-photo-registry.ts` (stub only — see Ship Checklist)  
 - Curated HOMEPAGE_* mutate (audit #3)  
 
 ## Commit

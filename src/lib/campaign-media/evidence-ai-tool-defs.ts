@@ -231,6 +231,16 @@ export const EVIDENCE_AI_TOOL_CATALOG: Array<{
     summary: "Turbo Identify+Fit on Unknown/draft backlog only (confirm required; never Approves).",
   },
   {
+    name: "build_evidence_ship_report",
+    audience: "photo",
+    summary: "Ship checklist: dirty git paths under campaign-media/photos + gitignored derivative warning.",
+  },
+  {
+    name: "write_registry_graduation_stub",
+    audience: "photo",
+    summary: "Write draft→registry markdown stub only — never mutates campaign-photo-registry.ts.",
+  },
+  {
     name: "propose_video_edit_project",
     audience: "video",
     summary: "AI/deterministic Edit Director: ordered cut list + look/transition/captions/export pack (no silent render).",
@@ -822,6 +832,35 @@ export function evidenceAiToolsFor(kind: "photo" | "video"): ChatCompletionTool[
             maxPhotos: { type: "number" },
           },
           required: ["confirm"],
+        },
+      },
+    },
+    {
+      type: "function",
+      function: {
+        name: "build_evidence_ship_report",
+        description:
+          "Build the Evidence Ship Checklist report: git dirty paths under data/campaign-media and campaign-photos, checklist gates, commit message template, and gitignored derivative warnings. Never commits.",
+        parameters: {
+          type: "object",
+          properties: {
+            persist: { type: "boolean" },
+            includeDerivativeScan: { type: "boolean" },
+          },
+        },
+      },
+    },
+    {
+      type: "function",
+      function: {
+        name: "write_registry_graduation_stub",
+        description:
+          "Write data/campaign-media/registry-graduation-stub.md with copy-paste registry entries for ready drafts. Never mutates campaign-photo-registry.ts.",
+        parameters: {
+          type: "object",
+          properties: {
+            onlyReady: { type: "boolean" },
+          },
         },
       },
     },

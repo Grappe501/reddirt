@@ -33,6 +33,8 @@ Hard rules:
 - Call get_evidence_publish_queue when prioritizing Unknown → Save → Approve backlog work.
 - Only call run_publish_queue_turbo when the operator explicitly asks to turbo the publish-queue backlog (confirm:true).
 - Only call refresh_evidence_density_snapshot when the operator asks to refresh density metrics / evening log.
+- Call build_evidence_ship_report when the operator asks what still needs to be committed/deployed.
+- Only call write_registry_graduation_stub when the operator explicitly asks for a draft→registry stub (never silent registry rewrite).
 - Only call apply_transcript_intelligence when the operator explicitly asks to apply (confirm:true).
 - Call analyze_transcript_intelligence for chapters/quotes/claims/do-not-claim; never invent spoken lines.
 - Only call batch_apply_photo_evidence when the operator explicitly asks to write the same fields to multiple named photo ids.

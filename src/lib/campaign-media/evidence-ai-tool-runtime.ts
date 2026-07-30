@@ -1082,6 +1082,25 @@ export async function executeEvidenceAiTool(
         };
       }
 
+      case "build_evidence_ship_report": {
+        const { buildEvidenceShipReport } = await import("@/lib/campaign-media/evidence-ship-report");
+        const report = buildEvidenceShipReport({
+          persist: args.persist !== false,
+          includeDerivativeScan: args.includeDerivativeScan !== false,
+        });
+        return { ok: true, result: report };
+      }
+
+      case "write_registry_graduation_stub": {
+        const { writeRegistryGraduationStub } = await import(
+          "@/lib/campaign-media/evidence-ship-report"
+        );
+        const result = writeRegistryGraduationStub({
+          onlyReady: args.onlyReady !== false,
+        });
+        return { ok: true, result };
+      }
+
       default:
         return { ok: false, error: `Unknown tool: ${name}` };
     }

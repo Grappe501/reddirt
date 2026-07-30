@@ -1,0 +1,1454 @@
+{
+  "version": 1,
+  "updatedAt": "2026-07-30T01:50:46.266Z",
+  "purpose": "Evidence Ship reports — dirty path inventory + checklist. Never auto-commits; never rewrites registry.",
+  "reports": [
+    {
+      "id": "ship-ms6ux4ag",
+      "generatedAt": "2026-07-30T01:50:46.264Z",
+      "branch": "feature/kelly-schedule-settlement-dashboard",
+      "gitOk": true,
+      "gitNote": "git status porcelain — dirty paths listed.",
+      "dirtyPaths": [
+        {
+          "path": "data/campaign-media/batch-publish-runs.json",
+          "status": "M",
+          "kind": "overlay_json",
+          "bytes": 4484
+        },
+        {
+          "path": "data/campaign-media/media-derivatives.json",
+          "status": "M",
+          "kind": "overlay_json",
+          "bytes": 15290
+        },
+        {
+          "path": "data/campaign-media/photo-evidence.json",
+          "status": "M",
+          "kind": "overlay_json",
+          "bytes": 2352
+        },
+        {
+          "path": "data/campaign-media/photo-ingest-drafts.json",
+          "status": "M",
+          "kind": "overlay_json",
+          "bytes": 28867
+        },
+        {
+          "path": "data/campaign-media/transcript-intelligence.json",
+          "status": "M",
+          "kind": "overlay_json",
+          "bytes": 9064
+        },
+        {
+          "path": "data/campaign-media/_smoke-ship-marker.json",
+          "status": "??",
+          "kind": "overlay_json",
+          "bytes": 85
+        },
+        {
+          "path": "data/campaign-media/evidence-ship-reports.json",
+          "status": "??",
+          "kind": "overlay_json",
+          "bytes": 47668
+        },
+        {
+          "path": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/focus_hero_16x9-f35x42-2026-07-29T2143.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 83843,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/focus_hero_16x9-f35x42-2026-07-29T2314.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 83843,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/focus_square_1x1-f35x42-2026-07-29T2143.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 163969,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/focus_square_1x1-f35x42-2026-07-29T2314.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 163969,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/pro-grade_full-warm-2026-07-30T0026.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 153884,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/pro-hero_16x9-warm-2026-07-30T0026.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 213322,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/pro-square_1x1-warm-2026-07-30T0026.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 174078,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/pro-story_9x16-warm-2026-07-30T0026.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 231757,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/pro-thumb-warm-2026-07-30T0026.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 29269,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/pro-web_max-warm-2026-07-30T0026.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 122473,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/thumb-2026-07-29T2034.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 26783,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/thumb-2026-07-29T2123.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 26783,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/thumb-2026-07-29T2314.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 26783,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/web_max-2026-07-29T2034.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 68836,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/web_max-2026-07-29T2123.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 104186,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/web_max-2026-07-29T2314.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 104186,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/mena-polk-meet-greet-20260411/thumb-2026-07-29T2123.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 37523,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/mena-polk-meet-greet-20260411/thumb-2026-07-29T2314.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 37523,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/mena-polk-meet-greet-20260411/web_max-2026-07-29T2123.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 184842,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/mena-polk-meet-greet-20260411/web_max-2026-07-29T2314.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 184842,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/_video/smoke-pass6/poster-1s-202607292156.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 1604,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/_video/smoke-pass6/poster-1s-202607292314.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 1604,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/_video/smoke-pass7/clip-0-1s-2s-202607292203.mp4",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 23477,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/_video/smoke-pass7/clip-0-1s-2s-202607292315.mp4",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 23477,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/_video/smoke-pass7/clip-0-1s-2s-src-202607292348.mp4",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 23477,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/_video/smoke-video-prep/clip-0-1s-2s-v916-202607292349.mp4",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 32494,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/_video/smoke-video-prep/poster-1s-202607292349.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 5624,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/_video/smoke-video-pro-edit/assembly-source-warm-202607300010.mp4",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 46483,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/_video/smoke-video-pro-edit/assembly-square_1x1-warm-202607300010.mp4",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 46954,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/_video/smoke-video-pro-edit/assembly-vertical_9x16-warm-202607300010.mp4",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 48561,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        }
+      ],
+      "totals": {
+        "dirtyCount": 37,
+        "overlayJsonDirty": 7,
+        "photoBinaryDirty": 0,
+        "derivativeLocalOnly": 30,
+        "dirtyBytes": 2584259
+      },
+      "checklist": [
+        {
+          "id": "overlays",
+          "label": "Overlays saved locally",
+          "ok": true,
+          "detail": "3 photo overlay key(s) in photo-evidence.json"
+        },
+        {
+          "id": "albums",
+          "label": "County album index present",
+          "ok": true,
+          "detail": "county-album-index.json present · ~6.2h since mtime"
+        },
+        {
+          "id": "unknown_backlog",
+          "label": "Unknown backlog acknowledged",
+          "ok": true,
+          "detail": "78 Unknown-county still(s) — they must not inflate shipped proof."
+        },
+        {
+          "id": "needs_approval",
+          "label": "Needs-approval queue",
+          "ok": false,
+          "detail": "3 still(s) have geo but are not album-eligible — Approve or Hold before claiming shipped."
+        },
+        {
+          "id": "binaries",
+          "label": "Draft binaries on disk",
+          "ok": true,
+          "detail": "Ingest draft src files resolve on disk."
+        },
+        {
+          "id": "git_overlays",
+          "label": "Overlay JSON commit state",
+          "ok": true,
+          "detail": "7 dirty data/campaign-media path(s) — commit these to ship overlays to Netlify."
+        },
+        {
+          "id": "derivatives_warning",
+          "label": "Derivative ship path understood",
+          "ok": true,
+          "detail": "30 local derivative file(s) gitignored — not shipped by git alone."
+        }
+      ],
+      "checklistReady": true,
+      "commitMessageTemplate": "Ship Evidence overlays: update campaign-media JSON for confirmed photo proof.\n\nUnknown backlog: 78 · needs approval: 3 · on albums: 9\nDirty overlay paths: 7",
+      "graduationCandidates": [],
+      "warnings": [
+        "30+ derivative file(s) are gitignored — overlay JSON ships via git; derivative binaries need a deploy path that includes this machine's public/media or a rebuild."
+      ],
+      "nextActions": [
+        "git add data/campaign-media/ (no secrets) → commit → push → Netlify deploy.",
+        "Clear needs-approval on Publish Queue before claiming production proof.",
+        "Remember: campaign-derivatives/** is gitignored — Pro Edit packs stay local unless you have another deploy path."
+      ]
+    },
+    {
+      "id": "ship-ms6uvw13",
+      "generatedAt": "2026-07-30T01:49:48.904Z",
+      "branch": null,
+      "gitOk": false,
+      "gitNote": "Error: spawnSync cmd.exe ENOENT",
+      "dirtyPaths": [
+        {
+          "path": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/focus_hero_16x9-f35x42-2026-07-29T2143.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 83843,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/focus_hero_16x9-f35x42-2026-07-29T2314.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 83843,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/focus_square_1x1-f35x42-2026-07-29T2143.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 163969,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/focus_square_1x1-f35x42-2026-07-29T2314.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 163969,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/pro-grade_full-warm-2026-07-30T0026.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 153884,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/pro-hero_16x9-warm-2026-07-30T0026.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 213322,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/pro-square_1x1-warm-2026-07-30T0026.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 174078,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/pro-story_9x16-warm-2026-07-30T0026.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 231757,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/pro-thumb-warm-2026-07-30T0026.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 29269,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/pro-web_max-warm-2026-07-30T0026.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 122473,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/thumb-2026-07-29T2034.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 26783,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/thumb-2026-07-29T2123.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 26783,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/thumb-2026-07-29T2314.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 26783,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/web_max-2026-07-29T2034.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 68836,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/web_max-2026-07-29T2123.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 104186,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/web_max-2026-07-29T2314.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 104186,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/mena-polk-meet-greet-20260411/thumb-2026-07-29T2123.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 37523,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/mena-polk-meet-greet-20260411/thumb-2026-07-29T2314.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 37523,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/mena-polk-meet-greet-20260411/web_max-2026-07-29T2123.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 184842,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/mena-polk-meet-greet-20260411/web_max-2026-07-29T2314.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 184842,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/_video/smoke-pass6/poster-1s-202607292156.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 1604,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/_video/smoke-pass6/poster-1s-202607292314.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 1604,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/_video/smoke-pass7/clip-0-1s-2s-202607292203.mp4",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 23477,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/_video/smoke-pass7/clip-0-1s-2s-202607292315.mp4",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 23477,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/_video/smoke-pass7/clip-0-1s-2s-src-202607292348.mp4",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 23477,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/_video/smoke-video-prep/clip-0-1s-2s-v916-202607292349.mp4",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 32494,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/_video/smoke-video-prep/poster-1s-202607292349.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 5624,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/_video/smoke-video-pro-edit/assembly-source-warm-202607300010.mp4",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 46483,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/_video/smoke-video-pro-edit/assembly-square_1x1-warm-202607300010.mp4",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 46954,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/_video/smoke-video-pro-edit/assembly-vertical_9x16-warm-202607300010.mp4",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 48561,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        }
+      ],
+      "totals": {
+        "dirtyCount": 30,
+        "overlayJsonDirty": 0,
+        "photoBinaryDirty": 0,
+        "derivativeLocalOnly": 30,
+        "dirtyBytes": 2476449
+      },
+      "checklist": [
+        {
+          "id": "overlays",
+          "label": "Overlays saved locally",
+          "ok": true,
+          "detail": "3 photo overlay key(s) in photo-evidence.json"
+        },
+        {
+          "id": "albums",
+          "label": "County album index present",
+          "ok": true,
+          "detail": "county-album-index.json present · ~6.2h since mtime"
+        },
+        {
+          "id": "unknown_backlog",
+          "label": "Unknown backlog acknowledged",
+          "ok": true,
+          "detail": "78 Unknown-county still(s) — they must not inflate shipped proof."
+        },
+        {
+          "id": "needs_approval",
+          "label": "Needs-approval queue",
+          "ok": false,
+          "detail": "3 still(s) have geo but are not album-eligible — Approve or Hold before claiming shipped."
+        },
+        {
+          "id": "binaries",
+          "label": "Draft binaries on disk",
+          "ok": true,
+          "detail": "Ingest draft src files resolve on disk."
+        },
+        {
+          "id": "git_overlays",
+          "label": "Overlay JSON commit state",
+          "ok": true,
+          "detail": "No dirty overlay JSON in watch paths (already committed or unchanged)."
+        },
+        {
+          "id": "derivatives_warning",
+          "label": "Derivative ship path understood",
+          "ok": true,
+          "detail": "30 local derivative file(s) gitignored — not shipped by git alone."
+        }
+      ],
+      "checklistReady": true,
+      "commitMessageTemplate": "Ship Evidence overlays: update campaign-media JSON for confirmed photo proof.\n\nUnknown backlog: 78 · needs approval: 3 · on albums: 9\nOverlay watch paths clean.",
+      "graduationCandidates": [],
+      "warnings": [
+        "Error: spawnSync cmd.exe ENOENT",
+        "30+ derivative file(s) are gitignored — overlay JSON ships via git; derivative binaries need a deploy path that includes this machine's public/media or a rebuild."
+      ],
+      "nextActions": [
+        "Clear needs-approval on Publish Queue before claiming production proof.",
+        "Remember: campaign-derivatives/** is gitignored — Pro Edit packs stay local unless you have another deploy path."
+      ]
+    },
+    {
+      "id": "ship-ms6uv1ue",
+      "generatedAt": "2026-07-30T01:49:09.782Z",
+      "branch": null,
+      "gitOk": false,
+      "gitNote": "'git' is not recognized as an internal or external command,\r\noperable program or batch file.",
+      "dirtyPaths": [
+        {
+          "path": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/focus_hero_16x9-f35x42-2026-07-29T2143.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 83843,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/focus_hero_16x9-f35x42-2026-07-29T2314.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 83843,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/focus_square_1x1-f35x42-2026-07-29T2143.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 163969,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/focus_square_1x1-f35x42-2026-07-29T2314.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 163969,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/pro-grade_full-warm-2026-07-30T0026.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 153884,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/pro-hero_16x9-warm-2026-07-30T0026.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 213322,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/pro-square_1x1-warm-2026-07-30T0026.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 174078,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/pro-story_9x16-warm-2026-07-30T0026.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 231757,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/pro-thumb-warm-2026-07-30T0026.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 29269,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/pro-web_max-warm-2026-07-30T0026.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 122473,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/thumb-2026-07-29T2034.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 26783,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/thumb-2026-07-29T2123.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 26783,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/thumb-2026-07-29T2314.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 26783,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/web_max-2026-07-29T2034.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 68836,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/web_max-2026-07-29T2123.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 104186,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/web_max-2026-07-29T2314.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 104186,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/mena-polk-meet-greet-20260411/thumb-2026-07-29T2123.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 37523,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/mena-polk-meet-greet-20260411/thumb-2026-07-29T2314.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 37523,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/mena-polk-meet-greet-20260411/web_max-2026-07-29T2123.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 184842,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/mena-polk-meet-greet-20260411/web_max-2026-07-29T2314.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 184842,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/_video/smoke-pass6/poster-1s-202607292156.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 1604,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/_video/smoke-pass6/poster-1s-202607292314.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 1604,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/_video/smoke-pass7/clip-0-1s-2s-202607292203.mp4",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 23477,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/_video/smoke-pass7/clip-0-1s-2s-202607292315.mp4",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 23477,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/_video/smoke-pass7/clip-0-1s-2s-src-202607292348.mp4",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 23477,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/_video/smoke-video-prep/clip-0-1s-2s-v916-202607292349.mp4",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 32494,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/_video/smoke-video-prep/poster-1s-202607292349.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 5624,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/_video/smoke-video-pro-edit/assembly-source-warm-202607300010.mp4",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 46483,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/_video/smoke-video-pro-edit/assembly-square_1x1-warm-202607300010.mp4",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 46954,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/_video/smoke-video-pro-edit/assembly-vertical_9x16-warm-202607300010.mp4",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 48561,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        }
+      ],
+      "totals": {
+        "dirtyCount": 30,
+        "overlayJsonDirty": 0,
+        "photoBinaryDirty": 0,
+        "derivativeLocalOnly": 30,
+        "dirtyBytes": 2476449
+      },
+      "checklist": [
+        {
+          "id": "overlays",
+          "label": "Overlays saved locally",
+          "ok": true,
+          "detail": "3 photo overlay key(s) in photo-evidence.json"
+        },
+        {
+          "id": "albums",
+          "label": "County album index present",
+          "ok": true,
+          "detail": "county-album-index.json present · ~6.2h since mtime"
+        },
+        {
+          "id": "unknown_backlog",
+          "label": "Unknown backlog acknowledged",
+          "ok": true,
+          "detail": "78 Unknown-county still(s) — they must not inflate shipped proof."
+        },
+        {
+          "id": "needs_approval",
+          "label": "Needs-approval queue",
+          "ok": false,
+          "detail": "3 still(s) have geo but are not album-eligible — Approve or Hold before claiming shipped."
+        },
+        {
+          "id": "binaries",
+          "label": "Draft binaries on disk",
+          "ok": true,
+          "detail": "Ingest draft src files resolve on disk."
+        },
+        {
+          "id": "git_overlays",
+          "label": "Overlay JSON commit state",
+          "ok": true,
+          "detail": "No dirty overlay JSON in watch paths (already committed or unchanged)."
+        },
+        {
+          "id": "derivatives_warning",
+          "label": "Derivative ship path understood",
+          "ok": true,
+          "detail": "30 local derivative file(s) gitignored — not shipped by git alone."
+        }
+      ],
+      "checklistReady": true,
+      "commitMessageTemplate": "Ship Evidence overlays: update campaign-media JSON for confirmed photo proof.\n\nUnknown backlog: 78 · needs approval: 3 · on albums: 9\nOverlay watch paths clean.",
+      "graduationCandidates": [],
+      "warnings": [
+        "'git' is not recognized as an internal or external command,\r\noperable program or batch file.",
+        "30+ derivative file(s) are gitignored — overlay JSON ships via git; derivative binaries need a deploy path that includes this machine's public/media or a rebuild."
+      ],
+      "nextActions": [
+        "Clear needs-approval on Publish Queue before claiming production proof.",
+        "Remember: campaign-derivatives/** is gitignored — Pro Edit packs stay local unless you have another deploy path."
+      ]
+    },
+    {
+      "id": "ship-ms6us9on",
+      "generatedAt": "2026-07-30T01:46:59.975Z",
+      "branch": null,
+      "gitOk": false,
+      "gitNote": "git status returned non-zero.",
+      "dirtyPaths": [
+        {
+          "path": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/focus_hero_16x9-f35x42-2026-07-29T2143.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 83843,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/focus_hero_16x9-f35x42-2026-07-29T2314.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 83843,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/focus_square_1x1-f35x42-2026-07-29T2143.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 163969,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/focus_square_1x1-f35x42-2026-07-29T2314.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 163969,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/pro-grade_full-warm-2026-07-30T0026.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 153884,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/pro-hero_16x9-warm-2026-07-30T0026.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 213322,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/pro-square_1x1-warm-2026-07-30T0026.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 174078,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/pro-story_9x16-warm-2026-07-30T0026.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 231757,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/pro-thumb-warm-2026-07-30T0026.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 29269,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/pro-web_max-warm-2026-07-30T0026.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 122473,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/thumb-2026-07-29T2034.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 26783,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/thumb-2026-07-29T2123.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 26783,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/thumb-2026-07-29T2314.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 26783,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/web_max-2026-07-29T2034.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 68836,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/web_max-2026-07-29T2123.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 104186,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/web_max-2026-07-29T2314.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 104186,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/mena-polk-meet-greet-20260411/thumb-2026-07-29T2123.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 37523,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/mena-polk-meet-greet-20260411/thumb-2026-07-29T2314.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 37523,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/mena-polk-meet-greet-20260411/web_max-2026-07-29T2123.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 184842,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/mena-polk-meet-greet-20260411/web_max-2026-07-29T2314.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 184842,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/_video/smoke-pass6/poster-1s-202607292156.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 1604,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/_video/smoke-pass6/poster-1s-202607292314.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 1604,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/_video/smoke-pass7/clip-0-1s-2s-202607292203.mp4",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 23477,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/_video/smoke-pass7/clip-0-1s-2s-202607292315.mp4",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 23477,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/_video/smoke-pass7/clip-0-1s-2s-src-202607292348.mp4",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 23477,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/_video/smoke-video-prep/clip-0-1s-2s-v916-202607292349.mp4",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 32494,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/_video/smoke-video-prep/poster-1s-202607292349.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 5624,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/_video/smoke-video-pro-edit/assembly-source-warm-202607300010.mp4",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 46483,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/_video/smoke-video-pro-edit/assembly-square_1x1-warm-202607300010.mp4",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 46954,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/_video/smoke-video-pro-edit/assembly-vertical_9x16-warm-202607300010.mp4",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 48561,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        }
+      ],
+      "totals": {
+        "dirtyCount": 30,
+        "overlayJsonDirty": 0,
+        "photoBinaryDirty": 0,
+        "derivativeLocalOnly": 30,
+        "dirtyBytes": 2476449
+      },
+      "checklist": [
+        {
+          "id": "overlays",
+          "label": "Overlays saved locally",
+          "ok": true,
+          "detail": "3 photo overlay key(s) in photo-evidence.json"
+        },
+        {
+          "id": "albums",
+          "label": "County album index present",
+          "ok": true,
+          "detail": "county-album-index.json present · ~6.2h since mtime"
+        },
+        {
+          "id": "unknown_backlog",
+          "label": "Unknown backlog acknowledged",
+          "ok": true,
+          "detail": "78 Unknown-county still(s) — they must not inflate shipped proof."
+        },
+        {
+          "id": "needs_approval",
+          "label": "Needs-approval queue",
+          "ok": false,
+          "detail": "3 still(s) have geo but are not album-eligible — Approve or Hold before claiming shipped."
+        },
+        {
+          "id": "binaries",
+          "label": "Draft binaries on disk",
+          "ok": true,
+          "detail": "Ingest draft src files resolve on disk."
+        },
+        {
+          "id": "git_overlays",
+          "label": "Overlay JSON commit state",
+          "ok": true,
+          "detail": "No dirty overlay JSON in watch paths (already committed or unchanged)."
+        },
+        {
+          "id": "derivatives_warning",
+          "label": "Derivative ship path understood",
+          "ok": true,
+          "detail": "30 local derivative file(s) gitignored — not shipped by git alone."
+        }
+      ],
+      "checklistReady": true,
+      "commitMessageTemplate": "Ship Evidence overlays: update campaign-media JSON for confirmed photo proof.\n\nUnknown backlog: 78 · needs approval: 3 · on albums: 9\nOverlay watch paths clean.",
+      "graduationCandidates": [],
+      "warnings": [
+        "git status failed — is this a git repo?",
+        "30+ derivative file(s) are gitignored — overlay JSON ships via git; derivative binaries need a deploy path that includes this machine's public/media or a rebuild."
+      ],
+      "nextActions": [
+        "Clear needs-approval on Publish Queue before claiming production proof.",
+        "Remember: campaign-derivatives/** is gitignored — Pro Edit packs stay local unless you have another deploy path."
+      ]
+    },
+    {
+      "id": "ship-ms6uqbv0",
+      "generatedAt": "2026-07-30T01:45:29.484Z",
+      "branch": null,
+      "gitOk": false,
+      "gitNote": "git status returned non-zero.",
+      "dirtyPaths": [
+        {
+          "path": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/focus_hero_16x9-f35x42-2026-07-29T2143.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 83843,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/focus_hero_16x9-f35x42-2026-07-29T2314.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 83843,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/focus_square_1x1-f35x42-2026-07-29T2143.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 163969,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/focus_square_1x1-f35x42-2026-07-29T2314.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 163969,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/pro-grade_full-warm-2026-07-30T0026.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 153884,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/pro-hero_16x9-warm-2026-07-30T0026.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 213322,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/pro-square_1x1-warm-2026-07-30T0026.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 174078,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/pro-story_9x16-warm-2026-07-30T0026.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 231757,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/pro-thumb-warm-2026-07-30T0026.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 29269,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/pro-web_max-warm-2026-07-30T0026.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 122473,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/thumb-2026-07-29T2034.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 26783,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/thumb-2026-07-29T2123.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 26783,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/thumb-2026-07-29T2314.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 26783,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/web_max-2026-07-29T2034.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 68836,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/web_max-2026-07-29T2123.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 104186,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/afl-cio-pre-event-networking-20260629/web_max-2026-07-29T2314.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 104186,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/mena-polk-meet-greet-20260411/thumb-2026-07-29T2123.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 37523,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/mena-polk-meet-greet-20260411/thumb-2026-07-29T2314.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 37523,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/mena-polk-meet-greet-20260411/web_max-2026-07-29T2123.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 184842,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/mena-polk-meet-greet-20260411/web_max-2026-07-29T2314.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 184842,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/_video/smoke-pass6/poster-1s-202607292156.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 1604,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/_video/smoke-pass6/poster-1s-202607292314.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 1604,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/_video/smoke-pass7/clip-0-1s-2s-202607292203.mp4",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 23477,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/_video/smoke-pass7/clip-0-1s-2s-202607292315.mp4",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 23477,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/_video/smoke-pass7/clip-0-1s-2s-src-202607292348.mp4",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 23477,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/_video/smoke-video-prep/clip-0-1s-2s-v916-202607292349.mp4",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 32494,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/_video/smoke-video-prep/poster-1s-202607292349.jpg",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 5624,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/_video/smoke-video-pro-edit/assembly-source-warm-202607300010.mp4",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 46483,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/_video/smoke-video-pro-edit/assembly-square_1x1-warm-202607300010.mp4",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 46954,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        },
+        {
+          "path": "public/media/campaign-derivatives/_video/smoke-video-pro-edit/assembly-vertical_9x16-warm-202607300010.mp4",
+          "status": "!!",
+          "kind": "derivative_gitignored",
+          "bytes": 48561,
+          "note": "Gitignored — will NOT ship via git commit/push."
+        }
+      ],
+      "totals": {
+        "dirtyCount": 30,
+        "overlayJsonDirty": 0,
+        "photoBinaryDirty": 0,
+        "derivativeLocalOnly": 30,
+        "dirtyBytes": 2476449
+      },
+      "checklist": [
+        {
+          "id": "overlays",
+          "label": "Overlays saved locally",
+          "ok": true,
+          "detail": "3 photo overlay key(s) in photo-evidence.json"
+        },
+        {
+          "id": "albums",
+          "label": "County album index present",
+          "ok": true,
+          "detail": "county-album-index.json present · ~6.1h since mtime"
+        },
+        {
+          "id": "unknown_backlog",
+          "label": "Unknown backlog acknowledged",
+          "ok": true,
+          "detail": "78 Unknown-county still(s) — they must not inflate shipped proof."
+        },
+        {
+          "id": "needs_approval",
+          "label": "Needs-approval queue",
+          "ok": false,
+          "detail": "3 still(s) have geo but are not album-eligible — Approve or Hold before claiming shipped."
+        },
+        {
+          "id": "binaries",
+          "label": "Draft binaries on disk",
+          "ok": true,
+          "detail": "Ingest draft src files resolve on disk."
+        },
+        {
+          "id": "git_overlays",
+          "label": "Overlay JSON commit state",
+          "ok": true,
+          "detail": "No dirty overlay JSON in watch paths (already committed or unchanged)."
+        },
+        {
+          "id": "derivatives_warning",
+          "label": "Derivative ship path understood",
+          "ok": true,
+          "detail": "30 local derivative file(s) gitignored — not shipped by git alone."
+        }
+      ],
+      "checklistReady": true,
+      "commitMessageTemplate": "Ship Evidence overlays: update campaign-media JSON for confirmed photo proof.\n\nUnknown backlog: 78 · needs approval: 3 · on albums: 9\nOverlay watch paths clean.",
+      "graduationCandidates": [],
+      "warnings": [
+        "git status failed — is this a git repo?",
+        "30+ derivative file(s) are gitignored — overlay JSON ships via git; derivative binaries need a deploy path that includes this machine's public/media or a rebuild."
+      ],
+      "nextActions": [
+        "Clear needs-approval on Publish Queue before claiming production proof.",
+        "Remember: campaign-derivatives/** is gitignored — Pro Edit packs stay local unless you have another deploy path."
+      ]
+    }
+  ]
+}
