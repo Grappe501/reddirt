@@ -15,8 +15,8 @@
 
 Approved ingest highlights (`listPublicFestivalFeed`) remain a separate hub section — not the research dump.
 
-## Not in Phase 1 (Phase 2)
+## Not in Phase 1 (Phase 2) — **done in EVENTS_PHASE_2.md**
 
-- One pin style / drop attendance palette
-- Drop `includeCalendar` type field entirely
-- Exact coords-only pins restyle
+- ~~One pin style / drop attendance palette~~
+- ~~Drop `includeCalendar` type field entirely~~
+- ~~Exact coords-only pins restyle~~

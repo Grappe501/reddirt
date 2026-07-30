@@ -5,8 +5,7 @@ import { useEffect, useMemo, useRef } from "react";
 import { MapContainer, Marker, Popup, TileLayer, useMap } from "react-leaflet";
 import L from "leaflet";
 import type { LatLngExpression } from "leaflet";
-import type { EventItem, FieldAttendance } from "@/content/types";
-import { FIELD_PIN, getFieldAttendance } from "@/lib/festivals/field-attendance-style";
+import type { EventItem } from "@/content/types";
 import { formatEventWhen } from "@/lib/format/eventDisplay";
 
 import "leaflet/dist/leaflet.css";
@@ -14,49 +13,29 @@ import "leaflet/dist/leaflet.css";
 const ARK_CENTER: LatLngExpression = [34.75, -92.35];
 const DEFAULT_ZOOM = 6.7;
 
-/** Static movement / content events */
-const MOVEMENT_EVENT_PIN = "#991b1b";
-/** Published CampaignOS events merged onto the same map */
-const CALENDAR_OPS_PIN = "#1d4ed8";
+/** Single public pin color — Phase 2 (no HQ/Movement/fair palette). */
+const PUBLIC_EVENT_PIN = "#000066";
+const PIN_Z = 200;
 
 export type MapPin = {
   slug: string;
   title: string;
   type: string;
   position: LatLngExpression;
-  fieldAttendance: FieldAttendance;
-  fillColor: string;
   detailHref: string;
   whenLine: string;
   summary: string;
-  mapPinQuality?: EventItem["mapPinQuality"];
-  eventSource?: EventItem["eventSource"];
 };
 
-function pinZ(att: FieldAttendance): number {
-  switch (att) {
-    case "confirmed":
-      return 600;
-    case "tentative":
-      return 500;
-    case "suggested":
-      return 400;
-    default:
-      return 100;
-  }
-}
-
-function pinFill(event: EventItem, att: FieldAttendance): string {
-  if (event.eventSource === "calendar") {
-    if (event.type === "Fairs and Festivals") return FIELD_PIN[att];
-    return CALENDAR_OPS_PIN;
-  }
-  if (event.type === "Fairs and Festivals") return FIELD_PIN[att];
-  return MOVEMENT_EVENT_PIN;
+/** Exact (or author-set) pins only — Prefer Unknown: region centroids stay list-only. */
+function isPublicMapPinEligible(e: EventItem): boolean {
+  if (e.status !== "upcoming" || !e.mapCoordinates) return false;
+  if (e.mapPinQuality === "region") return false;
+  return true;
 }
 
 function buildPins(events: EventItem[]): MapPin[] {
-  const mappable = events.filter((e) => e.status === "upcoming" && e.mapCoordinates);
+  const mappable = events.filter(isPublicMapPinEligible);
   const atPoint = new Map<string, number>();
 
   return mappable.map((e) => {
@@ -64,23 +43,18 @@ function buildPins(events: EventItem[]): MapPin[] {
     const k = `${c.lat.toFixed(3)}_${c.lng.toFixed(3)}`;
     const n = atPoint.get(k) ?? 0;
     atPoint.set(k, n + 1);
-    const fieldAttendance = getFieldAttendance(e);
-    const fillColor = pinFill(e, fieldAttendance);
     const when = formatEventWhen(e);
     const detailHref = e.detailHref ?? `/events/${e.slug}`;
+    const base: [number, number] = [c.lat, c.lng];
     if (n === 0) {
       return {
         slug: e.slug,
         title: e.title,
         type: e.type,
-        position: [c.lat, c.lng],
-        fieldAttendance,
-        fillColor,
+        position: base,
         detailHref,
         whenLine: when.primary,
         summary: e.summary,
-        mapPinQuality: e.mapPinQuality,
-        eventSource: e.eventSource,
       };
     }
     const step = 0.012;
@@ -89,22 +63,18 @@ function buildPins(events: EventItem[]): MapPin[] {
       slug: e.slug,
       title: e.title,
       type: e.type,
-      position: [c.lat + step * Math.sin(angle), c.lng + step * Math.cos(angle)],
-      fieldAttendance,
-      fillColor,
+      position: [c.lat + step * Math.sin(angle), c.lng + step * Math.cos(angle)] as [number, number],
       detailHref,
       whenLine: when.primary,
       summary: e.summary,
-      mapPinQuality: e.mapPinQuality,
-      eventSource: e.eventSource,
     };
   });
 }
 
-function makeDivIcon(fillColor: string, zIndexOffset: number): L.DivIcon {
+function makeDivIcon(): L.DivIcon {
   return L.divIcon({
     className: "sos-leaflet-pin",
-    html: `<div style="background:${fillColor};width:16px;height:16px;border-radius:50%;border:2px solid #000066;box-shadow:0 1px 4px rgba(0,0,102,.22);z-index:${zIndexOffset}"></div>`,
+    html: `<div style="background:${PUBLIC_EVENT_PIN};width:16px;height:16px;border-radius:50%;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,102,.28);z-index:${PIN_Z}"></div>`,
     iconSize: [16, 16],
     iconAnchor: [8, 8],
   });
@@ -141,13 +111,11 @@ function PanToSelected({ selectedSlug, pins }: { selectedSlug: string | null; pi
 function MapPinMarker({
   pin,
   icon,
-  z,
   isSelected,
   onSelect,
 }: {
   pin: MapPin;
   icon: L.DivIcon;
-  z: number;
   isSelected: boolean;
   onSelect: (slug: string) => void;
 }) {
@@ -160,7 +128,7 @@ function MapPinMarker({
       ref={ref}
       position={pin.position}
       icon={icon}
-      zIndexOffset={z}
+      zIndexOffset={PIN_Z}
       eventHandlers={{
         click: () => onSelect(pin.slug),
       }}
@@ -170,17 +138,8 @@ function MapPinMarker({
           <p className="text-[10px] font-bold uppercase tracking-wider text-kelly-text/55">{pin.type}</p>
           <p className="mt-1 font-heading text-base font-bold leading-snug">{pin.title}</p>
           <p className="mt-1 text-xs font-semibold text-kelly-text/75">{pin.whenLine}</p>
-          {pin.mapPinQuality === "region" ? (
-            <p className="mt-1 text-[11px] text-amber-900/90">Approximate region pin — confirm address on the detail page.</p>
-          ) : null}
-          {pin.eventSource === "calendar" ? (
-            <p className="mt-1 text-[11px] text-kelly-blue">On the campaign calendar.</p>
-          ) : null}
           <p className="mt-2 line-clamp-4 text-xs leading-relaxed text-kelly-text/80">{pin.summary}</p>
-          <a
-            href={pin.detailHref}
-            className="mt-3 inline-block text-sm font-bold text-kelly-navy underline"
-          >
+          <a href={pin.detailHref} className="mt-3 inline-block text-sm font-bold text-kelly-navy underline">
             Open detail page →
           </a>
         </div>
@@ -207,75 +166,7 @@ export function MovementFairsMap({ events, selectedSlug = null, onSelectSlug }: 
         .join("|"),
     [pins],
   );
-  const markerIcons = useMemo(() => {
-    const m = new Map<string, L.DivIcon>();
-    for (const p of pins) {
-      const z = pinZ(p.fieldAttendance);
-      const key = `${p.fillColor}-${z}`;
-      if (!m.has(key)) m.set(key, makeDivIcon(p.fillColor, z));
-    }
-    return m;
-  }, [pins]);
-
-  const hasFairPins = pins.some((p) => p.type === "Fairs and Festivals");
-  const hasCommunity = pins.some((p) => p.eventSource !== "calendar");
-  const hasCalendar = pins.some((p) => p.eventSource === "calendar");
-
-  const legend = (
-    <div className="flex flex-col gap-2 text-sm text-kelly-text/85 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-4 sm:gap-y-2">
-      <span className="font-body font-semibold">Legend</span>
-      {hasCommunity ? (
-        <span className="inline-flex items-center gap-2">
-          <span
-            className="inline-block h-3 w-3 shrink-0 rounded-full border border-kelly-text/20 shadow-sm"
-            style={{ background: MOVEMENT_EVENT_PIN }}
-          />
-          <span className="font-body">Community events</span>
-        </span>
-      ) : null}
-      {hasCalendar ? (
-        <span className="inline-flex items-center gap-2">
-          <span
-            className="inline-block h-3 w-3 shrink-0 rounded-full border border-kelly-text/20 shadow-sm"
-            style={{ background: CALENDAR_OPS_PIN }}
-          />
-          <span className="font-body">Campaign calendar</span>
-        </span>
-      ) : null}
-      {hasFairPins ? (
-        <>
-          <span className="inline-flex items-center gap-2">
-            <span
-              className="inline-block h-3 w-3 shrink-0 rounded-full border border-kelly-text/20 shadow-sm"
-              style={{ background: FIELD_PIN.unscheduled }}
-            />
-            <span className="font-body">Fair / festival · listed</span>
-          </span>
-          <span className="inline-flex items-center gap-2">
-            <span
-              className="inline-block h-3 w-3 shrink-0 rounded-full border border-kelly-text/15 shadow-sm"
-              style={{ background: FIELD_PIN.suggested }}
-            />
-            <span className="font-body">Fair · suggested</span>
-          </span>
-          <span className="inline-flex items-center gap-2">
-            <span
-              className="inline-block h-3 w-3 shrink-0 rounded-full border border-kelly-text/15 shadow-sm"
-              style={{ background: FIELD_PIN.tentative }}
-            />
-            <span className="font-body">Fair · tentative</span>
-          </span>
-          <span className="inline-flex items-center gap-2">
-            <span
-              className="inline-block h-3 w-3 shrink-0 rounded-full border border-kelly-text/15 shadow-sm"
-              style={{ background: FIELD_PIN.confirmed }}
-            />
-            <span className="font-body">Fair · confirmed</span>
-          </span>
-        </>
-      ) : null}
-    </div>
-  );
+  const markerIcon = useMemo(() => makeDivIcon(), []);
 
   const onSelect = (slug: string) => {
     onSelectSlug?.(slug);
@@ -284,9 +175,23 @@ export function MovementFairsMap({ events, selectedSlug = null, onSelectSlug }: 
     });
   };
 
+  const listOnlyUpcoming = useMemo(
+    () => events.filter((e) => e.status === "upcoming" && !isPublicMapPinEligible(e)).length,
+    [events],
+  );
+
   return (
     <div className="space-y-3">
-      {legend}
+      <div className="flex flex-col gap-2 text-sm text-kelly-text/85 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-4 sm:gap-y-2">
+        <span className="font-body font-semibold">Map</span>
+        <span className="inline-flex items-center gap-2">
+          <span
+            className="inline-block h-3 w-3 shrink-0 rounded-full border border-white shadow-sm"
+            style={{ background: PUBLIC_EVENT_PIN }}
+          />
+          <span className="font-body">Published stops with a known location</span>
+        </span>
+      </div>
       <div className="overflow-hidden rounded-2xl border border-kelly-text/10 shadow-[var(--shadow-soft)]">
         <MapContainer
           center={ARK_CENTER}
@@ -306,8 +211,7 @@ export function MovementFairsMap({ events, selectedSlug = null, onSelectSlug }: 
             <MapPinMarker
               key={p.slug}
               pin={p}
-              icon={markerIcons.get(`${p.fillColor}-${pinZ(p.fieldAttendance)}`)!}
-              z={pinZ(p.fieldAttendance)}
+              icon={markerIcon}
               isSelected={selectedSlug === p.slug}
               onSelect={onSelect}
             />
@@ -316,7 +220,10 @@ export function MovementFairsMap({ events, selectedSlug = null, onSelectSlug }: 
       </div>
       <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
         <p className="font-body text-xs text-kelly-text/60">
-          Use the map’s +/− buttons to zoom (scroll moves the page). Some stops are list-only until a location is set.
+          Use the map’s +/− buttons to zoom (scroll moves the page).
+          {listOnlyUpcoming > 0
+            ? ` ${listOnlyUpcoming} upcoming stop${listOnlyUpcoming === 1 ? "" : "s"} stay list-only until a location is known.`
+            : " Stops without a known location stay in the list only."}
         </p>
         <Link
           href="/events"

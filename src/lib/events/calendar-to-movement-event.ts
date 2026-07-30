@@ -2,7 +2,6 @@ import type { CampaignEventType } from "@prisma/client";
 import { getMovementRegionForCountySlug, STATEWIDE_EVENT_REGION } from "@/content/arkansas-movement-regions";
 import type { EventItem, EventType } from "@/content/types";
 import type { PublicCampaignEvent } from "@/lib/calendar/public-event-types";
-import { centroidForMovementRegionLabel } from "@/lib/events/movement-region-centroids";
 
 /** Map CampaignOS types into movement /events filter buckets (approximate but useful). */
 export function campaignEventTypeToMovementEventType(t: CampaignEventType): EventType {
@@ -39,28 +38,12 @@ function regionLabelForPublicEvent(ev: PublicCampaignEvent): string {
 }
 
 /**
- * Prefer Unknown: only place a map pin when we have a county (region centroid).
- * No county → list-only; never invent a fake statewide pin.
- */
-function mapPinForPublicEvent(ev: PublicCampaignEvent): {
-  lat: number;
-  lng: number;
-  quality: NonNullable<EventItem["mapPinQuality"]>;
-} | null {
-  if (!ev.county?.slug) return null;
-  const region = regionLabelForPublicEvent(ev);
-  const c = centroidForMovementRegionLabel(region);
-  return { lat: c.lat, lng: c.lng, quality: "region" };
-}
-
-/**
  * Synthetic movement row for /events map + cards. Source of truth: public calendar query (gated in Prisma).
- * Canceled and non-public events never reach this mapper.
+ * Phase 2: no region-centroid map pins — Prefer Unknown until exact coords exist on the public event.
  */
 export function publicCampaignEventToEventItem(ev: PublicCampaignEvent): EventItem {
   const now = new Date();
   const region = regionLabelForPublicEvent(ev);
-  const pin = mapPinForPublicEvent(ev);
   const hasSummary = Boolean(ev.publicSummary?.trim());
   const mappedType = campaignEventTypeToMovementEventType(ev.eventType);
   const venue = ev.locationName?.trim() || ev.address?.trim() || "";
@@ -88,15 +71,15 @@ export function publicCampaignEventToEventItem(ev: PublicCampaignEvent): EventIt
       { label: "Campaign calendar", href: "/events" },
       { label: "Volunteer", href: ev.joinCampaignHref },
     ],
-    mapCoordinates: pin ? { lat: pin.lat, lng: pin.lng } : undefined,
-    mapPinQuality: pin?.quality,
-    fieldAttendance: ev.eventType === "FESTIVAL" ? "unscheduled" : undefined,
+    // Exact coords only on the public map — none available on PublicCampaignEvent yet.
+    mapCoordinates: undefined,
+    mapPinQuality: undefined,
     detailHref: ev.detailHref,
     eventSource: "calendar",
     opsFlags: {
       missingPublicSummary: !hasSummary,
       missingCounty: !ev.county,
-      missingCoordinates: !pin,
+      missingCoordinates: true,
     },
   };
   return item;

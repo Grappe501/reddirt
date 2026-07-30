@@ -88,9 +88,7 @@ export default async function EventsPage({
         : scheduleParam === "ahead"
           ? "upcoming"
           : "all";
-  const includeCalendar = true;
-
-  const filterKey = JSON.stringify({ type, region, status, audience, schedule, includeCalendar });
+  const filterKey = JSON.stringify({ type, region, status, audience, schedule });
   const calendarMoment = trailPhotosForSlot("events")[0];
 
   return (
@@ -349,7 +347,7 @@ export default async function EventsPage({
             types={[...eventTypes]}
             regions={allMovementRegions}
             audienceTags={audienceTags}
-            initialFilters={{ type, region, status, audience, schedule, includeCalendar }}
+            initialFilters={{ type, region, status, audience, schedule }}
           />
         </ContentContainer>
       </FullBleedSection>

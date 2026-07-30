@@ -42,7 +42,6 @@ export function EventsHub({ events, types, regions, audienceTags, initialFilters
     status: initialFilters?.status ?? "all",
     audience: initialFilters?.audience ?? "all",
     schedule: initialFilters?.schedule ?? "all",
-    includeCalendar: initialFilters?.includeCalendar ?? true,
   });
   const [selectedSlug, setSelectedSlug] = useState<string | null>(null);
 
@@ -122,7 +121,6 @@ export function EventsHub({ events, types, regions, audienceTags, initialFilters
                       status: "all",
                       audience: "all",
                       schedule: "all",
-                      includeCalendar: true,
                     })
                   }
                 >

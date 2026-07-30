@@ -12,8 +12,6 @@ export type EventFiltersState = {
   audience: string | "all";
   /** Central Time windows for field scheduling */
   schedule: EventSchedulePreset;
-  /** Always include published CampaignOS events (Phase 1 — single public schedule). */
-  includeCalendar: boolean;
 };
 
 type EventFilterBarProps = {
@@ -102,7 +100,6 @@ export function EventFilterBar({
               status: "all",
               audience: "all",
               schedule: "all",
-              includeCalendar: true,
             })
           }
         >
