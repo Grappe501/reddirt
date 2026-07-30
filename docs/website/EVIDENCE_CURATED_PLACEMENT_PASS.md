@@ -58,4 +58,4 @@ Fit flags alone do not reorder curated `HOMEPAGE_*` ID tables. Operators get **o
 
 | Pass | Commit | Note |
 | --- | ---: | --- |
-| Curated Placement | _(this pass)_ | Placement tab + propose/apply/undo + smoke |
+| Curated Placement | `eaa321f0` | Placement tab + propose/apply/undo + smoke |
