@@ -1797,13 +1797,24 @@ export function EvidencePhotosPanel({
           <p className="mt-1 font-body text-sm text-[#12124a]">{photo.caption}</p>
           <div className="mt-3 rounded-lg border-2 border-[#000066]/15 bg-white p-3">
             <p className="font-heading text-xs font-bold uppercase tracking-wide text-[#000066]">
-              Placement preview
+              Where this will appear
             </p>
-            <ul className="mt-2 list-disc space-y-1 pl-4 font-body text-xs text-[#364272]">
+            <ul className="mt-2 flex flex-wrap gap-1.5">
               {(promotePreview.length ? promotePreview : photo.placementPreview).map((s) => (
-                <li key={`${photo.id}-${s}`}>{s}</li>
+                <li
+                  key={`${photo.id}-${s}`}
+                  className="rounded border border-[#8eb6dc]/50 bg-[#f4f7fc] px-2 py-1 font-body text-[10px] font-semibold text-[#12124a]"
+                >
+                  {s}
+                </li>
               ))}
             </ul>
+            <Link
+              href={`/admin/evidence-workbench?tab=placement&id=${encodeURIComponent(photo.id)}`}
+              className="mt-2 inline-block font-body text-[11px] font-semibold text-[#000066] underline"
+            >
+              Open on Public Surface Desk →
+            </Link>
           </div>
           <div className={`mt-3 ${ewPanelClass} !border-[#000066]/25`}>
             <p className={ewPanelTitleClass}>Pro Edit suite</p>

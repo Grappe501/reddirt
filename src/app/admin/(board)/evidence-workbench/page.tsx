@@ -9,17 +9,22 @@ import { EvidenceFitBacklogPanel } from "@/components/admin/evidence-workbench/E
 import { EvidenceIngestPanel } from "@/components/admin/evidence-workbench/EvidenceIngestPanel";
 import { EvidenceNextActionsStrip } from "@/components/admin/evidence-workbench/EvidenceNextActionsStrip";
 import { EvidencePhotoReadinessPanel } from "@/components/admin/evidence-workbench/EvidencePhotoReadinessPanel";
-import { EvidencePlacementPanel } from "@/components/admin/evidence-workbench/EvidencePlacementPanel";
 import { EvidencePhotosPanel } from "@/components/admin/evidence-workbench/EvidencePhotosPanel";
+import { EvidencePublicSurfaceDesk } from "@/components/admin/evidence-workbench/EvidencePublicSurfaceDesk";
 import { EvidencePublishQueuePanel } from "@/components/admin/evidence-workbench/EvidencePublishQueuePanel";
 import { EvidenceShipPanel } from "@/components/admin/evidence-workbench/EvidenceShipPanel";
 import { EvidenceSpeechConfirmPanel } from "@/components/admin/evidence-workbench/EvidenceSpeechConfirmPanel";
+import { EvidenceSpeechPlacementStrip } from "@/components/admin/evidence-workbench/EvidenceSpeechPlacementStrip";
 import { EvidenceSpeechesPanel } from "@/components/admin/evidence-workbench/EvidenceSpeechesPanel";
 import { EvidenceToolingBanner } from "@/components/admin/evidence-workbench/EvidenceToolingBanner";
+import { EvidenceVideosStageRail } from "@/components/admin/evidence-workbench/EvidenceVideosStageRail";
 import { buildFitRankedBacklog } from "@/lib/campaign-media/evidence-fit-backlog";
 import { rankEvidenceNextActions } from "@/lib/campaign-media/evidence-next-actions";
 import { getEvidenceToolingReadiness } from "@/lib/campaign-media/evidence-tooling-readiness";
-import { photoPublicSurfacesPreview } from "@/lib/campaign-media/county-albums-live";
+import {
+  photoPublicSurfacesPreview,
+  speechPublicSurfacesPreview,
+} from "@/lib/campaign-media/county-albums-live";
 import {
   loadCalendarPresenceStore,
   loadPhotoEvidenceStore,
@@ -51,7 +56,7 @@ type Props = {
 const TABS = [
   { id: "queue", label: "Publish Queue" },
   { id: "ship", label: "Ship" },
-  { id: "placement", label: "Placement" },
+  { id: "placement", label: "Public surfaces" },
   { id: "calendar", label: "Calendar" },
   { id: "photos", label: "Photos" },
   { id: "speeches", label: "Videos" },
@@ -146,6 +151,38 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
     basePublicationStatus: m.publicationStatus,
     overlay: speechStore.speeches[m.id] ?? null,
   }));
+
+  const focusedLivePhoto = focusId ? liveById.get(focusId) : undefined;
+  const focusedSpeechRow = focusId
+    ? speeches.find((s) => s.id === focusId)
+    : undefined;
+  const focusedPhotoPreview =
+    focusedLivePhoto != null
+      ? {
+          id: focusedLivePhoto.id,
+          title:
+            focusedLivePhoto.accessibility.caption ||
+            focusedLivePhoto.campaign.eventName ||
+            focusedLivePhoto.id,
+          surfaces: photoPublicSurfacesPreview(focusedLivePhoto),
+        }
+      : null;
+  const focusedSpeechPreview =
+    focusedSpeechRow != null
+      ? {
+          id: focusedSpeechRow.id,
+          title: focusedSpeechRow.title,
+          surfaces: speechPublicSurfacesPreview({
+            speechId: focusedSpeechRow.id,
+            approvedForPublic: focusedSpeechRow.overlay?.approvedForPublic,
+            homepageCandidate: focusedSpeechRow.overlay?.homepageCandidate,
+            counties:
+              focusedSpeechRow.overlay?.counties?.length
+                ? focusedSpeechRow.overlay.counties
+                : focusedSpeechRow.baseCounties,
+          }),
+        }
+      : null;
 
   return (
     <div className="ew-shell ew-display">
@@ -250,7 +287,14 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
         ) : null}
         {tab === "ship" ? <EvidenceShipPanel initialReport={shipReport} /> : null}
         {tab === "placement" ? (
-          <EvidencePlacementPanel initialProposal={placementProposal} current={placementCurrent} />
+          <EvidencePublicSurfaceDesk
+            photoProposal={placementProposal}
+            photoCurrent={placementCurrent}
+            speechProposal={speechPlacementProposal}
+            speechCurrent={speechPlacementCurrent}
+            focusedPhoto={focusedPhotoPreview}
+            focusedSpeech={focusedSpeechPreview}
+          />
         ) : null}
         {tab === "calendar" ? (
           <>
@@ -300,20 +344,31 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
           </>
         ) : null}
         {tab === "speeches" ? (
-          <>
-            <EvidenceSpeechConfirmPanel
-              speeches={speeches}
-              initialQueue={speechConfirmQueue}
-              initialRows={speechReadiness.rows}
-              initialPlacement={speechPlacementProposal}
-              placementCurrent={speechPlacementCurrent}
-            />
-            <EvidenceSpeechesPanel
-              speeches={speeches}
-              initialSpeechId={focusId}
-              initialFilter={urlFilter}
-            />
-          </>
+          <EvidenceVideosStageRail
+            confirm={
+              <EvidenceSpeechConfirmPanel
+                speeches={speeches}
+                initialQueue={speechConfirmQueue}
+                initialRows={speechReadiness.rows}
+                initialPlacement={speechPlacementProposal}
+                placementCurrent={speechPlacementCurrent}
+                hidePlacement
+              />
+            }
+            cuts={
+              <EvidenceSpeechesPanel
+                speeches={speeches}
+                initialSpeechId={focusId}
+                initialFilter={urlFilter}
+              />
+            }
+            place={
+              <EvidenceSpeechPlacementStrip
+                initialPlacement={speechPlacementProposal}
+                placementCurrent={speechPlacementCurrent}
+              />
+            }
+          />
         ) : null}
         {tab === "ingest" ? (
           <EvidenceIngestPanel initialCandidates={ingestCandidates} initialStatus={intakeStatus} />

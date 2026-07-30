@@ -29,6 +29,7 @@ export function EvidenceShipPanel({ initialReport }: Props) {
   const [prBody, setPrBody] = useState(initialReport.graduationPrBody ?? "");
   const [gradMatrix, setGradMatrix] = useState<GraduationAssistMatrix | null>(null);
   const [gradSelected, setGradSelected] = useState<Set<string>>(() => new Set());
+  const [showDetails, setShowDetails] = useState(false);
   const [pending, start] = useTransition();
 
   useEffect(() => {
@@ -132,25 +133,175 @@ export function EvidenceShipPanel({ initialReport }: Props) {
   }
 
   const t = report.totals;
+  const lastMile = [
+    {
+      id: "overlays",
+      label: "1 · Overlays",
+      ok: t.overlayJsonDirty === 0,
+      detail:
+        t.overlayJsonDirty > 0
+          ? `${t.overlayJsonDirty} overlay JSON path(s) dirty — commit data/campaign-media/`
+          : "Overlay JSON watch clean (or no dirty overlays).",
+      action: null as null | "refresh",
+    },
+    {
+      id: "shipped",
+      label: "2 · Campaign-shipped",
+      ok: t.promotedOverrideGitignored === 0 && t.promotedOverrideMissing === 0,
+      detail:
+        t.promotedOverrideMissing > 0
+          ? `${t.promotedOverrideMissing} promoted file(s) missing on disk`
+          : t.promotedOverrideGitignored > 0
+            ? `${t.promotedOverrideGitignored} override(s) still on gitignored derivatives — Ship binaries`
+            : "Promoted binaries trackable or none pending.",
+      action: "ship" as const,
+    },
+    {
+      id: "graduation",
+      label: "3 · Graduation ready",
+      ok: gradMatrix
+        ? gradMatrix.readyCount === 0
+        : report.graduationCandidates.filter((c) => c.county !== "Unknown").length === 0,
+      detail: gradMatrix
+        ? `${gradMatrix.readyCount} ready / ${gradMatrix.total} candidates (stub/clipboard only — never auto-registry)`
+        : `${report.graduationCandidates.length} graduation candidate(s) — write stub / copy TS`,
+      action: "grad" as const,
+    },
+    {
+      id: "commit",
+      label: "4 · Commit",
+      ok: t.dirtyCount === 0,
+      detail:
+        t.dirtyCount > 0
+          ? `${t.dirtyCount} dirty path(s) · copy commit template below`
+          : "No dirty watch paths — push when branch is ahead.",
+      action: "commit" as const,
+    },
+  ];
 
   return (
     <div className="space-y-4 text-[#12124a]">
       <div className="rounded-lg border-2 border-[#000066]/20 bg-white p-4">
         <p className="font-heading text-sm font-bold text-[#000066]">
-          Ship Checklist — local confirm ≠ production
+          Ship last mile — overlays → shipped → graduation → commit
         </p>
         <p className="mt-1 font-body text-xs text-[#364272]">
           Approve writes JSON on this machine. Netlify only sees what you{" "}
-          <strong>commit and push</strong>. Keep Pro Edit workspace under{" "}
-          <code className="rounded bg-[#f4f7fc] px-1">campaign-derivatives/**</code> (gitignored). Copy
-          live promotes into{" "}
-          <code className="rounded bg-[#f4f7fc] px-1">campaign-shipped/**</code> to deploy.
+          <strong>commit and push</strong>. Prefer Unknown. Never silent Ship.
         </p>
         <p className="mt-2 font-body text-[11px] text-[#364272]">
           Branch: {report.branch ?? "—"} · {report.gitNote}
         </p>
       </div>
 
+      <div className="space-y-2">
+        {lastMile.map((step) => (
+          <div
+            key={step.id}
+            className={`rounded-lg border-2 bg-white p-3 ${
+              step.ok ? "border-[#000066]/15" : "border-[#ca913d]/50"
+            }`}
+          >
+            <div className="flex flex-wrap items-start justify-between gap-2">
+              <div>
+                <p className="font-heading text-xs font-bold text-[#000066]">
+                  <span className={step.ok ? "text-[#000066]" : "text-[#ca913d]"}>
+                    {step.ok ? "OK" : "CHECK"}
+                  </span>{" "}
+                  · {step.label}
+                </p>
+                <p className="mt-1 font-body text-[11px] text-[#364272]">{step.detail}</p>
+              </div>
+              {step.action === "ship" ? (
+                <button
+                  type="button"
+                  disabled={pending}
+                  onClick={shipPromoted}
+                  className="rounded border-2 border-[#ca913d] bg-[#000066] px-2.5 py-1 font-body text-xs font-bold text-white disabled:opacity-50"
+                >
+                  Ship binaries ({t.promotedOverrideGitignored})
+                </button>
+              ) : null}
+              {step.action === "grad" ? (
+                <div className="flex flex-wrap gap-1">
+                  <button
+                    type="button"
+                    disabled={pending}
+                    onClick={writeStub}
+                    className="rounded border-2 border-[#ca913d] bg-white px-2.5 py-1 font-body text-xs font-semibold disabled:opacity-50"
+                  >
+                    Write stub
+                  </button>
+                  <button
+                    type="button"
+                    disabled={pending}
+                    onClick={copyReadyTsBlocks}
+                    className="rounded border-2 border-[#000066] bg-[#000066] px-2.5 py-1 font-body text-xs font-bold text-white disabled:opacity-50"
+                  >
+                    Copy TS blocks
+                  </button>
+                </div>
+              ) : null}
+              {step.action === "commit" ? (
+                <button
+                  type="button"
+                  disabled={pending}
+                  onClick={() => {
+                    start(async () => {
+                      try {
+                        await navigator.clipboard.writeText(report.commitMessageTemplate);
+                        setMessage("Copied commit template.");
+                      } catch {
+                        setMessage("Clipboard blocked — select template below.");
+                        setShowDetails(true);
+                      }
+                    });
+                  }}
+                  className="rounded border-2 border-[#000066] bg-white px-2.5 py-1 font-body text-xs font-bold text-[#000066] disabled:opacity-50"
+                >
+                  Copy commit template
+                </button>
+              ) : null}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="flex flex-wrap gap-2">
+        <button
+          type="button"
+          disabled={pending}
+          onClick={() => refresh(true)}
+          className="rounded border-2 border-[#000066] bg-[#000066] px-2.5 py-1 font-body text-xs font-bold text-white disabled:opacity-50"
+        >
+          Refresh ship report
+        </button>
+        <button
+          type="button"
+          disabled={pending}
+          onClick={() => setShowDetails((v) => !v)}
+          className="rounded border-2 border-[#8eb6dc] bg-[#f4f7fc] px-2.5 py-1 font-body text-xs font-semibold disabled:opacity-50"
+        >
+          {showDetails ? "Hide secondary details" : "Show secondary details"}
+        </button>
+        <Link
+          href="/admin/evidence-workbench?tab=placement"
+          className="rounded border-2 border-[#8eb6dc] bg-white px-2.5 py-1 font-body text-xs font-semibold text-[#12124a]"
+        >
+          Public Surface Desk
+        </Link>
+        <Link
+          href="/admin/evidence-workbench?tab=queue"
+          className="rounded border-2 border-[#8eb6dc] bg-white px-2.5 py-1 font-body text-xs font-semibold text-[#12124a]"
+        >
+          Publish Queue
+        </Link>
+      </div>
+
+      {message ? <p className="font-body text-xs text-[#364272]">{message}</p> : null}
+
+      {showDetails ? (
+        <>
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         {(
           [
@@ -172,7 +323,7 @@ export function EvidenceShipPanel({ initialReport }: Props) {
       <div className="rounded-lg border-2 border-[#000066]/15 bg-white p-3">
         <div className="flex flex-wrap items-center justify-between gap-2">
           <p className="font-heading text-xs font-bold uppercase tracking-wide text-[#000066]">
-            Checklist · {report.checklistReady ? "core gates OK" : "core gates incomplete"}
+            Full checklist · {report.checklistReady ? "core gates OK" : "core gates incomplete"}
           </p>
           <p className="font-body text-[11px] text-[#364272]">
             Dirty size ~{formatBytes(t.dirtyBytes)}
@@ -197,14 +348,6 @@ export function EvidenceShipPanel({ initialReport }: Props) {
         <button
           type="button"
           disabled={pending}
-          onClick={() => refresh(true)}
-          className="rounded border-2 border-[#000066] bg-[#000066] px-2.5 py-1 font-body text-xs font-bold text-white disabled:opacity-50"
-        >
-          Refresh ship report
-        </button>
-        <button
-          type="button"
-          disabled={pending}
           onClick={shipPromoted}
           className="rounded border-2 border-[#ca913d] bg-[#000066] px-2.5 py-1 font-body text-xs font-bold text-white disabled:opacity-50"
         >
@@ -226,15 +369,7 @@ export function EvidenceShipPanel({ initialReport }: Props) {
         >
           Copy graduation PR body
         </button>
-        <Link
-          href="/admin/evidence-workbench?tab=queue"
-          className="rounded border-2 border-[#8eb6dc] bg-white px-2.5 py-1 font-body text-xs font-semibold text-[#12124a]"
-        >
-          Publish Queue
-        </Link>
       </div>
-
-      {message ? <p className="font-body text-xs text-[#364272]">{message}</p> : null}
 
       {prBody ? (
         <div className="rounded-lg border-2 border-[#000066]/15 bg-white p-3">
@@ -426,6 +561,8 @@ export function EvidenceShipPanel({ initialReport }: Props) {
         <p className="rounded border border-[#8eb6dc]/40 bg-[#f4f7fc] px-3 py-2 font-body text-xs">
           {message}
         </p>
+      ) : null}
+        </>
       ) : null}
 
       <p className="font-body text-[10px] text-[#364272]">

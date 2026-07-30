@@ -30,6 +30,8 @@ type Props = {
   initialRows: SpeechReadinessRow[];
   initialPlacement: SpeechPlacementProposal | null;
   placementCurrent: { primaryId: string; acrossId: string };
+  /** When true, omit homepage video placement (hosted on Public Surface Desk / Place stage). */
+  hidePlacement?: boolean;
 };
 
 export function EvidenceSpeechConfirmPanel({
@@ -38,6 +40,7 @@ export function EvidenceSpeechConfirmPanel({
   initialRows,
   initialPlacement,
   placementCurrent,
+  hidePlacement = false,
 }: Props) {
   const [queue, setQueue] = useState(initialQueue);
   const [rows, setRows] = useState(initialRows);
@@ -48,6 +51,9 @@ export function EvidenceSpeechConfirmPanel({
   const [batchProof, setBatchProof] = useState("");
   const [batchDoNotClaim, setBatchDoNotClaim] = useState("");
   const [proposal, setProposal] = useState<SpeechPlacementProposal | null>(initialPlacement);
+  const [showMatrix, setShowMatrix] = useState(
+    () => initialQueue.totals.noCounty + initialQueue.totals.needsPublish > 0,
+  );
 
   useEffect(() => {
     setQueue(initialQueue);
@@ -339,133 +345,154 @@ export function EvidenceSpeechConfirmPanel({
       </div>
 
       <div className="rounded-lg border-2 border-[#000066]/15 bg-white p-3">
-        <p className="font-heading text-xs font-bold uppercase text-[#000066]">Readiness matrix</p>
-        <div className="mt-2 max-h-64 overflow-auto">
-          <table className="w-full border-collapse font-body text-[11px]">
-            <thead>
-              <tr className="border-b border-[#8eb6dc]/40 text-left text-[#000066]">
-                <th className="py-1 pr-2">Sel</th>
-                <th className="py-1 pr-2">Id</th>
-                <th className="py-1 pr-2">County</th>
-                <th className="py-1 pr-2">Status</th>
-                <th className="py-1 pr-2">Score</th>
-                <th className="py-1 pr-2">Master</th>
-                <th className="py-1 pr-2">Clips</th>
-                <th className="py-1">Next</th>
-              </tr>
-            </thead>
-            <tbody>
-              {rows.slice(0, 40).map((r) => (
-                <tr key={r.id} className="border-b border-[#8eb6dc]/20 align-top">
-                  <td className="py-1 pr-2">
-                    <input
-                      type="checkbox"
-                      checked={selected.has(r.id)}
-                      onChange={() => toggle(r.id)}
-                      aria-label={`Select ${r.id}`}
-                    />
-                  </td>
-                  <td className="py-1 pr-2">
-                    <Link
-                      href={`/admin/evidence-workbench?tab=speeches&id=${encodeURIComponent(r.id)}`}
-                      className="font-mono text-[#000066] underline"
-                    >
-                      {r.id}
-                    </Link>
-                  </td>
-                  <td className="py-1 pr-2">{r.hasConfirmedCounty ? r.counties.join(", ") : "—"}</td>
-                  <td className="py-1 pr-2">
-                    {r.publicationStatus}
-                    {r.approvedForPublic ? " · approved" : ""}
-                    {r.kellySpeaksEligible ? " · live" : ""}
-                  </td>
-                  <td className="py-1 pr-2">{r.readinessScore}</td>
-                  <td className="py-1 pr-2">{r.hasMaster ? "yes" : "—"}</td>
-                  <td className="py-1 pr-2">{r.clipCount}</td>
-                  <td className="py-1 text-[#364272]">{r.nextAction}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-        {!rows.length ? (
-          <p className="mt-2 font-body text-xs text-[#364272]">No speeches in registry.</p>
-        ) : null}
-        <p className="mt-2 font-body text-[10px] text-[#364272]">
-          Showing {Math.min(rows.length, 40)} of {speeches.length} · path: {queue.pathSteps.join(" → ")}
-        </p>
-      </div>
-
-      <div className="rounded-lg border-2 border-[#000066]/15 bg-white p-3">
-        <p className="font-heading text-xs font-bold uppercase text-[#000066]">
-          Homepage video placement propose
-        </p>
-        <p className="mt-1 font-body text-[11px] text-[#364272]">
-          Current · primary <span className="font-mono">{placementCurrent.primaryId}</span> · across{" "}
-          <span className="font-mono">{placementCurrent.acrossId}</span>
-        </p>
-        <div className="mt-2 flex flex-wrap gap-2">
-          <button
-            type="button"
-            disabled={pending}
-            onClick={proposePlacement}
-            className="rounded border-2 border-[#000066] bg-[#000066] px-2.5 py-1 font-body text-xs font-bold text-white disabled:opacity-50"
-          >
-            Propose placement
-          </button>
-          <button
-            type="button"
-            disabled={pending || !proposal}
-            onClick={() => {
-              if (!proposal) return;
-              const proposalId = proposal.id;
-              start(async () => {
-                const res = await writeSpeechPlacementStubAction({ proposalId });
-                setMessage(res.message);
-              });
-            }}
-            className="rounded border-2 border-[#8eb6dc] bg-[#f4f7fc] px-2.5 py-1 font-body text-xs font-semibold disabled:opacity-50"
-          >
-            Write stub
-          </button>
-          <button
-            type="button"
-            disabled={pending || !proposal || proposal.status === "applied"}
-            onClick={applyPlacement}
-            className="rounded border-2 border-[#ca913d] bg-white px-2.5 py-1 font-body text-xs font-semibold disabled:opacity-50"
-          >
-            Apply (confirmCurate)
-          </button>
-          <button
-            type="button"
-            disabled={pending || !proposal?.undoSnapshotId}
-            onClick={undoPlacement}
-            className="rounded border-2 border-[#8eb6dc] bg-white px-2.5 py-1 font-body text-xs font-semibold disabled:opacity-50"
-          >
-            Undo apply
-          </button>
-        </div>
-        {proposal ? (
-          <div className="mt-2 space-y-1 font-body text-[11px]">
-            <p>
-              Proposal {proposal.id} · {proposal.status}
+        <button
+          type="button"
+          onClick={() => setShowMatrix((v) => !v)}
+          className="flex w-full items-center justify-between gap-2 text-left"
+        >
+          <p className="font-heading text-xs font-bold uppercase text-[#000066]">
+            Readiness matrix
+          </p>
+          <span className="font-body text-[11px] font-semibold text-[#364272]">
+            {showMatrix ? "Hide" : "Show"}
+          </span>
+        </button>
+        {showMatrix ? (
+          <>
+            <div className="mt-2 max-h-64 overflow-auto">
+              <table className="w-full border-collapse font-body text-[11px]">
+                <thead>
+                  <tr className="border-b border-[#8eb6dc]/40 text-left text-[#000066]">
+                    <th className="py-1 pr-2">Sel</th>
+                    <th className="py-1 pr-2">Id</th>
+                    <th className="py-1 pr-2">County</th>
+                    <th className="py-1 pr-2">Status</th>
+                    <th className="py-1 pr-2">Score</th>
+                    <th className="py-1 pr-2">Master</th>
+                    <th className="py-1 pr-2">Clips</th>
+                    <th className="py-1">Next</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {rows.slice(0, 40).map((r) => (
+                    <tr key={r.id} className="border-b border-[#8eb6dc]/20 align-top">
+                      <td className="py-1 pr-2">
+                        <input
+                          type="checkbox"
+                          checked={selected.has(r.id)}
+                          onChange={() => toggle(r.id)}
+                          aria-label={`Select ${r.id}`}
+                        />
+                      </td>
+                      <td className="py-1 pr-2">
+                        <Link
+                          href={`/admin/evidence-workbench?tab=speeches&id=${encodeURIComponent(r.id)}`}
+                          className="font-mono text-[#000066] underline"
+                        >
+                          {r.id}
+                        </Link>
+                      </td>
+                      <td className="py-1 pr-2">{r.hasConfirmedCounty ? r.counties.join(", ") : "—"}</td>
+                      <td className="py-1 pr-2">
+                        {r.publicationStatus}
+                        {r.approvedForPublic ? " · approved" : ""}
+                        {r.kellySpeaksEligible ? " · live" : ""}
+                      </td>
+                      <td className="py-1 pr-2">{r.readinessScore}</td>
+                      <td className="py-1 pr-2">{r.hasMaster ? "yes" : "—"}</td>
+                      <td className="py-1 pr-2">{r.clipCount}</td>
+                      <td className="py-1 text-[#364272]">{r.nextAction}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            {!rows.length ? (
+              <p className="mt-2 font-body text-xs text-[#364272]">No speeches in registry.</p>
+            ) : null}
+            <p className="mt-2 font-body text-[10px] text-[#364272]">
+              Showing {Math.min(rows.length, 40)} of {speeches.length} · path: {queue.pathSteps.join(" → ")}
             </p>
-            {proposal.diffs.map((d) => (
-              <p key={d.slot} className="font-mono text-[10px] text-[#364272]">
-                {d.slot}: {d.currentId} → {d.proposedId}
-                {d.changed ? " *" : ""}
-              </p>
-            ))}
-            {proposal.warnings.map((w) => (
-              <p key={w} className="text-[#ca913d]">
-                {w}
-              </p>
-            ))}
-          </div>
+          </>
         ) : (
-          <p className="mt-2 font-body text-xs text-[#364272]">No placement proposal yet.</p>
+          <p className="mt-1 font-body text-[11px] text-[#364272]">
+            Collapsed — expand when Confirm stage needs the backlog matrix.
+          </p>
         )}
       </div>
+
+      {!hidePlacement ? (
+        <div className="rounded-lg border-2 border-[#000066]/15 bg-white p-3">
+          <p className="font-heading text-xs font-bold uppercase text-[#000066]">
+            Homepage video placement propose
+          </p>
+          <p className="mt-1 font-body text-[11px] text-[#364272]">
+            Current · primary <span className="font-mono">{placementCurrent.primaryId}</span> · across{" "}
+            <span className="font-mono">{placementCurrent.acrossId}</span>
+          </p>
+          <div className="mt-2 flex flex-wrap gap-2">
+            <button
+              type="button"
+              disabled={pending}
+              onClick={proposePlacement}
+              className="rounded border-2 border-[#000066] bg-[#000066] px-2.5 py-1 font-body text-xs font-bold text-white disabled:opacity-50"
+            >
+              Propose placement
+            </button>
+            <button
+              type="button"
+              disabled={pending || !proposal}
+              onClick={() => {
+                if (!proposal) return;
+                const proposalId = proposal.id;
+                start(async () => {
+                  const res = await writeSpeechPlacementStubAction({ proposalId });
+                  setMessage(res.message);
+                });
+              }}
+              className="rounded border-2 border-[#8eb6dc] bg-[#f4f7fc] px-2.5 py-1 font-body text-xs font-semibold disabled:opacity-50"
+            >
+              Write stub
+            </button>
+            <button
+              type="button"
+              disabled={pending || !proposal || proposal.status === "applied"}
+              onClick={applyPlacement}
+              className="rounded border-2 border-[#ca913d] bg-white px-2.5 py-1 font-body text-xs font-semibold disabled:opacity-50"
+            >
+              Apply (confirmCurate)
+            </button>
+            <button
+              type="button"
+              disabled={pending || !proposal?.undoSnapshotId}
+              onClick={undoPlacement}
+              className="rounded border-2 border-[#8eb6dc] bg-white px-2.5 py-1 font-body text-xs font-semibold disabled:opacity-50"
+            >
+              Undo apply
+            </button>
+          </div>
+          {proposal ? (
+            <div className="mt-2 space-y-1 font-body text-[11px]">
+              <p>
+                Proposal {proposal.id} · {proposal.status}
+              </p>
+              {proposal.diffs.map((d) => (
+                <p key={d.slot} className="font-mono text-[10px] text-[#364272]">
+                  {d.slot}: {d.currentId} → {d.proposedId}
+                  {d.changed ? " *" : ""}
+                </p>
+              ))}
+              {proposal.warnings.map((w) => (
+                <p key={w} className="text-[#ca913d]">
+                  {w}
+                </p>
+              ))}
+            </div>
+          ) : (
+            <p className="mt-2 font-body text-xs text-[#364272]">No placement proposal yet.</p>
+          )}
+        </div>
+      ) : null}
 
       {message ? (
         <p className="whitespace-pre-wrap rounded border border-[#8eb6dc]/40 bg-[#f4f7fc] px-3 py-2 font-body text-xs">

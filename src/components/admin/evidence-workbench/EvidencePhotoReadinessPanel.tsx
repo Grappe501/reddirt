@@ -18,6 +18,9 @@ export function EvidencePhotoReadinessPanel({ initialMatrix }: Props) {
   const [selected, setSelected] = useState<Set<string>>(() => new Set());
   const [message, setMessage] = useState("");
   const [pending, start] = useTransition();
+  const [expanded, setExpanded] = useState(
+    () => initialMatrix.needsPromote + initialMatrix.needsFocus + initialMatrix.needsProEdit > 0,
+  );
 
   useEffect(() => {
     setMatrix(initialMatrix);
@@ -66,54 +69,71 @@ export function EvidencePhotoReadinessPanel({ initialMatrix }: Props) {
   return (
     <div className="mb-6 space-y-3 text-[#12124a]">
       <div className="rounded-lg border-2 border-[#000066]/20 bg-white p-3">
-        <p className="font-heading text-sm font-bold text-[#000066]">Photo readiness</p>
-        <p className="mt-1 font-body text-xs text-[#364272]">
-          Focus → Pro Edit → Confirm render → Promote (confirm). Prefer Unknown. Never silent promote.
-        </p>
-        <div className="mt-3 grid gap-2 sm:grid-cols-4">
-          {(
-            [
-              ["Total scored", matrix.total],
-              ["Needs focus", matrix.needsFocus],
-              ["Needs Pro Edit", matrix.needsProEdit],
-              ["Needs promote", matrix.needsPromote],
-            ] as const
-          ).map(([label, n]) => (
-            <div key={label} className="rounded border border-[#8eb6dc]/40 bg-[#f4f7fc] px-2 py-1.5">
-              <p className="font-heading text-[10px] font-bold uppercase text-[#000066]">{label}</p>
-              <p className="font-body text-lg font-semibold">{n}</p>
+        <button
+          type="button"
+          onClick={() => setExpanded((v) => !v)}
+          className="flex w-full items-center justify-between gap-2 text-left"
+        >
+          <div>
+            <p className="font-heading text-sm font-bold text-[#000066]">Photo readiness</p>
+            <p className="mt-1 font-body text-xs text-[#364272]">
+              Focus → Pro Edit → Confirm render → Promote (confirm). Prefer Unknown. Never silent
+              promote. · promote {matrix.needsPromote} · focus {matrix.needsFocus}
+            </p>
+          </div>
+          <span className="shrink-0 font-body text-[11px] font-semibold text-[#364272]">
+            {expanded ? "Hide matrix" : "Show matrix"}
+          </span>
+        </button>
+        {expanded ? (
+          <>
+            <div className="mt-3 grid gap-2 sm:grid-cols-4">
+              {(
+                [
+                  ["Total scored", matrix.total],
+                  ["Needs focus", matrix.needsFocus],
+                  ["Needs Pro Edit", matrix.needsProEdit],
+                  ["Needs promote", matrix.needsPromote],
+                ] as const
+              ).map(([label, n]) => (
+                <div key={label} className="rounded border border-[#8eb6dc]/40 bg-[#f4f7fc] px-2 py-1.5">
+                  <p className="font-heading text-[10px] font-bold uppercase text-[#000066]">{label}</p>
+                  <p className="font-body text-lg font-semibold">{n}</p>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-        <div className="mt-3 flex flex-wrap gap-2">
-          <button
-            type="button"
-            disabled={pending}
-            onClick={refresh}
-            className="rounded border-2 border-[#8eb6dc] bg-[#f4f7fc] px-2.5 py-1 font-body text-xs font-semibold disabled:opacity-50"
-          >
-            Refresh matrix
-          </button>
-          <button
-            type="button"
-            disabled={pending}
-            onClick={() => setSelected(new Set(needsPromoteIds))}
-            className="rounded border-2 border-[#8eb6dc] bg-white px-2.5 py-1 font-body text-xs font-semibold disabled:opacity-50"
-          >
-            Select needs-promote ({needsPromoteIds.length})
-          </button>
-          <button
-            type="button"
-            disabled={pending}
-            onClick={promoteSelected}
-            className="rounded border-2 border-[#000066] bg-[#000066] px-2.5 py-1 font-body text-xs font-bold text-white disabled:opacity-50"
-          >
-            Promote selected assemblies (confirm)
-          </button>
-        </div>
-        {message ? <p className="mt-2 font-body text-xs text-[#364272]">{message}</p> : null}
+            <div className="mt-3 flex flex-wrap gap-2">
+              <button
+                type="button"
+                disabled={pending}
+                onClick={refresh}
+                className="rounded border-2 border-[#8eb6dc] bg-[#f4f7fc] px-2.5 py-1 font-body text-xs font-semibold disabled:opacity-50"
+              >
+                Refresh matrix
+              </button>
+              <button
+                type="button"
+                disabled={pending}
+                onClick={() => setSelected(new Set(needsPromoteIds))}
+                className="rounded border-2 border-[#8eb6dc] bg-white px-2.5 py-1 font-body text-xs font-semibold disabled:opacity-50"
+              >
+                Select needs-promote ({needsPromoteIds.length})
+              </button>
+              <button
+                type="button"
+                disabled={pending}
+                onClick={promoteSelected}
+                className="rounded border-2 border-[#000066] bg-[#000066] px-2.5 py-1 font-body text-xs font-bold text-white disabled:opacity-50"
+              >
+                Promote selected assemblies (confirm)
+              </button>
+            </div>
+            {message ? <p className="mt-2 font-body text-xs text-[#364272]">{message}</p> : null}
+          </>
+        ) : null}
       </div>
 
+      {expanded ? (
       <div className="rounded-lg border-2 border-[#000066]/15 bg-white p-3">
         <p className="font-heading text-xs font-bold uppercase text-[#000066]">Readiness matrix</p>
         <div className="mt-2 max-h-72 overflow-auto">
@@ -164,6 +184,7 @@ export function EvidencePhotoReadinessPanel({ initialMatrix }: Props) {
           <p className="mt-2 font-body text-xs text-[#364272]">No photos scored yet.</p>
         ) : null}
       </div>
+      ) : null}
     </div>
   );
 }
