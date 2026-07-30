@@ -34,6 +34,11 @@ import {
   runVisionIdentifyBatchAction,
 } from "@/app/admin/evidence-workbench-actions";
 import type { OwnedMediaEvidenceLink } from "@/lib/campaign-media/owned-media-evidence-link";
+import {
+  photoEditLanePreset,
+  type EvidenceEditIntent,
+  type EvidenceEditSiteSurface,
+} from "@/lib/campaign-media/evidence-edit-intents";
 import { parsePhotosUrlFilter } from "@/lib/campaign-media/evidence-workbench-deep-links";
 import type { BatchPhotoAiProposal } from "@/lib/campaign-media/evidence-ai-types";
 import type { EvidenceBatchOperation } from "@/lib/campaign-media/evidence-batch-ops";
@@ -190,6 +195,9 @@ type Props = {
    * - full: legacy combined desk
    */
   deskMode?: "identify" | "edit" | "full";
+  /** Phase 3 Creative Edit intent lane. */
+  editIntent?: EvidenceEditIntent | null;
+  editSurface?: EvidenceEditSiteSurface | null;
 };
 
 type PhotoFormState = {
@@ -258,6 +266,8 @@ export function EvidencePhotosPanel({
   needsPromoteIds = [],
   stageCounts,
   deskMode = "full",
+  editIntent = null,
+  editSurface = null,
 }: Props) {
   const [filter, setFilter] = useState<Filter>(() => parseFilter(initialFilter));
   const promoteSet = useMemo(() => new Set(needsPromoteIds), [needsPromoteIds]);
@@ -267,24 +277,22 @@ export function EvidencePhotosPanel({
   );
   const [message, setMessage] = useState("");
   const [pending, start] = useTransition();
-  const [aiMode, setAiMode] = useState<EvidenceAiMode>("identify");
+  const [aiMode, setAiMode] = useState<EvidenceAiMode>(() =>
+    deskMode === "edit" ? "photo_prep" : "identify",
+  );
   const [dirty, setDirty] = useState(false);
   const [routeGateOpen, setRouteGateOpen] = useState(false);
   const [derivatives, setDerivatives] = useState<PhotoDerivativeRecord[]>([]);
   const [editProject, setEditProject] = useState<PhotoEditProject | null>(null);
   const [assemblies, setAssemblies] = useState<PhotoAssemblyRecord[]>([]);
-  const [proLook, setProLook] = useState<PhotoLookPreset>("warm");
+  const [proLook, setProLook] = useState<PhotoLookPreset>(() =>
+    photoEditLanePreset(editIntent, editSurface).look,
+  );
   const [proSharpen, setProSharpen] = useState(false);
   const [proUseFocus, setProUseFocus] = useState(true);
-  const [proSlots, setProSlots] = useState<PhotoExportSlot[]>([
-    "grade_full",
-    "hero_16x9",
-    "portrait_4x5",
-    "square_1x1",
-    "story_9x16",
-    "web_max",
-    "thumb",
-  ]);
+  const [proSlots, setProSlots] = useState<PhotoExportSlot[]>(
+    () => photoEditLanePreset(editIntent, editSurface).slots,
+  );
   const [proRenderNote, setProRenderNote] = useState("");
   const [proPreviewSrc, setProPreviewSrc] = useState<string | null>(null);
   const [proPreviewNote, setProPreviewNote] = useState("");
@@ -299,9 +307,15 @@ export function EvidencePhotosPanel({
     () => new Set(DEFAULT_BATCH_DERIV),
   );
   const [derivProgress, setDerivProgress] = useState("");
-  const [promoteHomepage, setPromoteHomepage] = useState(true);
-  const [promoteFeatured, setPromoteFeatured] = useState(false);
-  const [promoteHero, setPromoteHero] = useState<"FEATURE" | "HERO" | "">("FEATURE");
+  const [promoteHomepage, setPromoteHomepage] = useState(
+    () => photoEditLanePreset(editIntent, editSurface).promoteHomepage,
+  );
+  const [promoteFeatured, setPromoteFeatured] = useState(
+    () => photoEditLanePreset(editIntent, editSurface).promoteFeatured,
+  );
+  const [promoteHero, setPromoteHero] = useState<"FEATURE" | "HERO" | "">(
+    () => photoEditLanePreset(editIntent, editSurface).promoteHero,
+  );
   const [promoteApproved, setPromoteApproved] = useState(false);
   const [promotePreview, setPromotePreview] = useState<string[]>([]);
   const [focus, setFocus] = useState<FocusPoint | null>(null);
@@ -378,6 +392,17 @@ export function EvidencePhotosPanel({
       setBatchOps(res.operations ?? []);
     });
   }, []);
+
+  useEffect(() => {
+    if (deskMode !== "edit") return;
+    const preset = photoEditLanePreset(editIntent, editSurface);
+    setProLook(preset.look);
+    setProSlots(preset.slots);
+    setPromoteHomepage(preset.promoteHomepage);
+    setPromoteFeatured(preset.promoteFeatured);
+    setPromoteHero(preset.promoteHero);
+    setMessage(`Lane loaded · ${preset.label} · slots ${preset.slots.join(", ")}`);
+  }, [deskMode, editIntent, editSurface]);
 
   useEffect(() => {
     if (!activeId) {
@@ -2002,7 +2027,12 @@ export function EvidencePhotosPanel({
             hidden={!showProEdit}
             aria-hidden={!showProEdit}
           >
-            <p className={ewPanelTitleClass}>Pro Edit suite</p>
+            <p className={ewPanelTitleClass}>
+              Pro Edit suite
+              {deskMode === "edit" && editIntent
+                ? ` · ${photoEditLanePreset(editIntent, editSurface).label}`
+                : ""}
+            </p>
             <p className="mt-1 font-body text-[11px] text-[#364272]">
               Industry-grade look → focus-aware multi-aspect pack → preview → confirm render → promote.
               Film / bright / editorial looks; slot chips; ledger-bridged assemblies. Never overwrites
@@ -2159,6 +2189,47 @@ export function EvidencePhotosPanel({
                 <p className="font-heading text-[10px] font-bold uppercase tracking-wide text-[#000066]">
                   Assemblies
                 </p>
+                {deskMode === "edit" ? (
+                  <div className="rounded border-2 border-[#ca913d]/40 bg-[#fff8ef] p-2">
+                    <p className="font-heading text-[10px] font-bold uppercase text-[#000066]">
+                      {editIntent === "social" ||
+                      photoEditLanePreset(editIntent, editSurface).deliver === "download"
+                        ? "Download pack"
+                        : "Deliver"}
+                    </p>
+                    <p className="mt-1 font-body text-[10px] text-[#364272]">
+                      {photoEditLanePreset(editIntent, editSurface).deliver === "download"
+                        ? "Open each file below (no auto-post). Prefer Unknown."
+                        : "Promote a slot, then finish placement on Publish desk."}
+                    </p>
+                    <ul className="mt-2 space-y-1">
+                      {assemblies
+                        .filter((a) => !a.note?.includes("[archived"))
+                        .slice(0, 12)
+                        .map((a) => (
+                          <li key={`pack-${a.id}`}>
+                            <a
+                              href={a.publicSrc}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="font-mono text-[10px] font-semibold text-[#000066] underline"
+                            >
+                              {a.slot} · open {a.width}×{a.height}
+                            </a>
+                          </li>
+                        ))}
+                    </ul>
+                    {photoEditLanePreset(editIntent, editSurface).deliver ===
+                    "promote_then_publish" ? (
+                      <Link
+                        href={`/admin/evidence-workbench?tab=publish&id=${encodeURIComponent(photo.id)}`}
+                        className="mt-2 inline-block font-body text-[11px] font-bold text-[#000066] underline"
+                      >
+                        Open Publish desk →
+                      </Link>
+                    ) : null}
+                  </div>
+                ) : null}
                 {assemblies.slice(0, 12).map((a) => (
                   <div key={a.id} className="rounded border border-[#8eb6dc]/40 bg-white p-2">
                     <div className="flex flex-wrap items-center justify-between gap-2">

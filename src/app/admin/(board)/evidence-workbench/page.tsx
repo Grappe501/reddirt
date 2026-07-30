@@ -4,6 +4,7 @@ import { CAMPAIGN_PHOTO_REGISTRY } from "@/content/media/campaign-photo-registry
 import { EvidenceAiCommandCenter } from "@/components/admin/evidence-workbench/EvidenceAiCommandCenter";
 import { EvidenceCalendarPanel } from "@/components/admin/evidence-workbench/EvidenceCalendarPanel";
 import { EvidenceCollapsedChrome } from "@/components/admin/evidence-workbench/EvidenceCollapsedChrome";
+import { EvidenceEditIntentRail } from "@/components/admin/evidence-workbench/EvidenceEditIntentRail";
 import { EvidenceEventNightLoopPanel } from "@/components/admin/evidence-workbench/EvidenceEventNightLoopPanel";
 import { EvidenceFitBacklogPanel } from "@/components/admin/evidence-workbench/EvidenceFitBacklogPanel";
 import { EvidenceIngestPanel } from "@/components/admin/evidence-workbench/EvidenceIngestPanel";
@@ -21,6 +22,10 @@ import {
   EVIDENCE_DESK_TABS,
   resolveEvidenceDeskTab,
 } from "@/lib/campaign-media/evidence-desk-tabs";
+import {
+  parseEvidenceEditIntent,
+  parseEvidenceEditSiteSurface,
+} from "@/lib/campaign-media/evidence-edit-intents";
 import { rankEvidenceNextActions } from "@/lib/campaign-media/evidence-next-actions";
 import { getEvidenceToolingReadiness } from "@/lib/campaign-media/evidence-tooling-readiness";
 import {
@@ -52,13 +57,14 @@ import { ARKANSAS_COUNTY_REGISTRY } from "@/lib/county/arkansas-county-registry"
 import { cn } from "@/lib/utils";
 
 type Props = {
-  searchParams: Promise<{ tab?: string; id?: string; filter?: string; intent?: string }>;
+  searchParams: Promise<{ tab?: string; id?: string; filter?: string; intent?: string; surface?: string }>;
 };
 
 export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
   const sp = await searchParams;
   const urlFilter = sp.filter?.trim() || undefined;
-  const intent = sp.intent?.trim() || undefined;
+  const intent = parseEvidenceEditIntent(sp.intent);
+  const surface = parseEvidenceEditSiteSurface(sp.surface);
   const tab = resolveEvidenceDeskTab(sp.tab, urlFilter);
   const focusId = sp.id?.trim() || undefined;
 
@@ -193,8 +199,8 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
         <p className="ew-eyebrow">Campaign OS · Media evidence</p>
         <h1 className="ew-title">Evidence Workbench</h1>
         <p className="ew-lede">
-          Phase 2 Identify Board: AI-first → Save → Route (locked until Hold). Prefer Unknown. Never
-          invent geography. Saves under{" "}
+          Phase 3 Creative Edit: intent lanes load Pro Edit presets + download pack / Promote →
+          Publish. Prefer Unknown. Never invent geography. Saves under{" "}
           <code className="rounded bg-kelly-fog px-1.5 py-0.5 font-mono text-[12px]">
             data/campaign-media/
           </code>
@@ -370,50 +376,7 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
 
         {tab === "edit" ? (
           <>
-            <div className="mb-4 rounded-lg border-2 border-[#ca913d]/50 bg-[#fff8ef] p-3">
-              <p className="font-heading text-xs font-bold uppercase text-[#000066]">
-                Creative Edit · Board B
-              </p>
-              <p className="mt-1 font-body text-xs text-[#364272]">
-                Only after Route from Identify. Intent
-                {intent ? (
-                  <>
-                    : <span className="font-semibold text-[#000066]">{intent}</span>
-                  </>
-                ) : (
-                  " (social / header / site) guides crop + Pro Edit"
-                )}
-                . Then Publish for site placement or download pack.
-              </p>
-              <div className="mt-2 flex flex-wrap gap-2">
-                {(
-                  [
-                    ["social", "Social"],
-                    ["header", "Super header"],
-                    ["site", "Site surfaces"],
-                  ] as const
-                ).map(([id, label]) => (
-                  <Link
-                    key={id}
-                    href={`/admin/evidence-workbench?tab=edit${focusId ? `&id=${encodeURIComponent(focusId)}` : ""}&intent=${id}&filter=needsPromote`}
-                    className={cn(
-                      "rounded-md border-2 px-3 py-1.5 font-body text-xs font-bold",
-                      intent === id
-                        ? "border-[#000066] bg-[#000066] text-white"
-                        : "border-[#8eb6dc] bg-white text-[#12124a]",
-                    )}
-                  >
-                    {label}
-                  </Link>
-                ))}
-                <Link
-                  href="/admin/evidence-workbench?tab=publish"
-                  className="rounded-md border-2 border-[#000066] bg-white px-3 py-1.5 font-body text-xs font-bold text-[#000066]"
-                >
-                  Publish desk →
-                </Link>
-              </div>
-            </div>
+            <EvidenceEditIntentRail focusId={focusId} intent={intent} surface={surface} />
             <EvidencePhotoReadinessPanel initialMatrix={photoReadiness} />
             <EvidencePhotosPanel
               photos={photos}
@@ -423,15 +386,16 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
               needsPromoteIds={needsPromoteIds}
               stageCounts={photoStageCounts}
               deskMode="edit"
+              editIntent={intent}
+              editSurface={surface}
             />
             <div className="mt-6 border-t-2 border-[#000066]/10 pt-4">
-              <p className="mb-3 font-heading text-xs font-bold uppercase text-[#000066]">
-                Videos · cuts / Pro Edit
-              </p>
               <EvidenceSpeechesPanel
                 speeches={speeches}
                 initialSpeechId={focusId}
                 initialFilter={urlFilter}
+                deskMode="edit"
+                editIntent={intent}
               />
             </div>
           </>

@@ -25,6 +25,10 @@ import {
   suggestSpeechEvidenceAiAction,
 } from "@/app/admin/evidence-workbench-actions";
 import type { SpeechEvidenceOverlay } from "@/lib/campaign-media/evidence-types";
+import {
+  videoEditLaneAspects,
+  type EvidenceEditIntent,
+} from "@/lib/campaign-media/evidence-edit-intents";
 import type {
   VideoClipRecord,
   VideoExcerptPlan,
@@ -79,11 +83,20 @@ type Props = {
   speeches: SpeechWorkbenchItem[];
   initialSpeechId?: string;
   initialFilter?: string;
+  /** Phase 3 — bias Pro Edit aspects from Creative Edit intent. */
+  editIntent?: EvidenceEditIntent | null;
+  deskMode?: "edit" | "full";
 };
 
 type Filter = "all" | "noCounty" | "needsApproval" | "approved";
 
-export function EvidenceSpeechesPanel({ speeches, initialSpeechId, initialFilter }: Props) {
+export function EvidenceSpeechesPanel({
+  speeches,
+  initialSpeechId,
+  initialFilter,
+  editIntent = null,
+  deskMode = "full",
+}: Props) {
   const [filter, setFilter] = useState<Filter>(() => {
     if (initialFilter) return parseSpeechesUrlFilter(initialFilter);
     if (initialSpeechId) return "all";
@@ -93,7 +106,9 @@ export function EvidenceSpeechesPanel({ speeches, initialSpeechId, initialFilter
   const [index, setIndex] = useState(0);
   const [message, setMessage] = useState("");
   const [pending, start] = useTransition();
-  const [aiMode, setAiMode] = useState<EvidenceAiMode>("identify");
+  const [aiMode, setAiMode] = useState<EvidenceAiMode>(() =>
+    deskMode === "edit" ? "video_prep" : "identify",
+  );
   const [ffmpegNote, setFfmpegNote] = useState("");
   const [posterAt, setPosterAt] = useState("1");
   const [posterSrc, setPosterSrc] = useState<string | null>(null);
@@ -113,11 +128,9 @@ export function EvidenceSpeechesPanel({ speeches, initialSpeechId, initialFilter
   const [proLook, setProLook] = useState<"neutral" | "warm" | "cool" | "contrast">("neutral");
   const [proTransition, setProTransition] = useState<"none" | "crossfade">("crossfade");
   const [proCaptions, setProCaptions] = useState<"none" | "sidecar" | "burn_in">("sidecar");
-  const [proAspects, setProAspects] = useState<VideoExportAspect[]>([
-    "source",
-    "vertical_9x16",
-    "square_1x1",
-  ]);
+  const [proAspects, setProAspects] = useState<VideoExportAspect[]>(() =>
+    videoEditLaneAspects(editIntent),
+  );
   const [proMaxClips, setProMaxClips] = useState(3);
   const [proLoudnorm, setProLoudnorm] = useState(true);
   const [proRenderNote, setProRenderNote] = useState("");
@@ -155,6 +168,17 @@ export function EvidenceSpeechesPanel({ speeches, initialSpeechId, initialFilter
     if (idx >= 0) setIndex(idx);
     // eslint-disable-next-line react-hooks/exhaustive-deps -- focus id once filter/list settles
   }, [initialSpeechId, filter, query, speeches]);
+
+  useEffect(() => {
+    if (deskMode !== "edit") return;
+    setProAspects(videoEditLaneAspects(editIntent));
+    setVertical916(editIntent === "social");
+    setMessage(
+      editIntent
+        ? `Video lane · ${editIntent} · aspects ${videoEditLaneAspects(editIntent).join(", ")}`
+        : "Video Creative Edit — pick a photo intent lane above to bias aspects.",
+    );
+  }, [deskMode, editIntent]);
 
   const speech = filtered[Math.min(index, Math.max(0, filtered.length - 1))];
 
@@ -671,6 +695,18 @@ export function EvidenceSpeechesPanel({ speeches, initialSpeechId, initialFilter
 
   return (
     <div className="space-y-4">
+      {deskMode === "edit" ? (
+        <div className="rounded-lg border-2 border-[#000066]/15 bg-[#f4f7fc] p-3">
+          <p className="font-heading text-[11px] font-bold uppercase tracking-wide text-[#000066]">
+            Videos · Cuts / Pro Edit
+            {editIntent ? ` · ${editIntent}` : ""}
+          </p>
+          <p className="mt-1 font-body text-[10px] text-[#364272]">
+            Aspects follow the intent lane above. Social biases 9:16. Confirm render never
+            auto-encodes. Placement stays on Publish.
+          </p>
+        </div>
+      ) : null}
       <div className="flex flex-wrap gap-2">
         {(
           [

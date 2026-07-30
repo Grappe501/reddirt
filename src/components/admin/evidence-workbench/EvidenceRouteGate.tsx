@@ -52,7 +52,7 @@ const PHOTO_CHOICES: Choice[] = [
     label: "Homepage / Meet Kelly / other page",
     hint: "Edit then Publish surfaces.",
     href: (id) =>
-      `/admin/evidence-workbench?tab=edit&id=${encodeURIComponent(id)}&intent=site`,
+      `/admin/evidence-workbench?tab=edit&id=${encodeURIComponent(id)}&intent=site&surface=homepage`,
   },
 ];
 
@@ -81,7 +81,7 @@ const SPEECH_CHOICES: Choice[] = [
     label: "Homepage primary / Across AR",
     hint: "Edit cuts if needed, then Publish placement.",
     href: (id) =>
-      `/admin/evidence-workbench?tab=edit&id=${encodeURIComponent(id)}&intent=site`,
+      `/admin/evidence-workbench?tab=edit&id=${encodeURIComponent(id)}&intent=site&surface=homepage`,
   },
 ];
 
