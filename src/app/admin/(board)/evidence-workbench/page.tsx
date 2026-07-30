@@ -3,6 +3,7 @@ import { CAMPAIGN_MEDIA_REGISTRY } from "@/content/media/campaign-media-registry
 import { CAMPAIGN_PHOTO_REGISTRY } from "@/content/media/campaign-photo-registry";
 import { EvidenceCalendarPanel } from "@/components/admin/evidence-workbench/EvidenceCalendarPanel";
 import { EvidenceIngestPanel } from "@/components/admin/evidence-workbench/EvidenceIngestPanel";
+import { EvidencePlacementPanel } from "@/components/admin/evidence-workbench/EvidencePlacementPanel";
 import { EvidencePhotosPanel } from "@/components/admin/evidence-workbench/EvidencePhotosPanel";
 import { EvidencePublishQueuePanel } from "@/components/admin/evidence-workbench/EvidencePublishQueuePanel";
 import { EvidenceShipPanel } from "@/components/admin/evidence-workbench/EvidenceShipPanel";
@@ -16,6 +17,8 @@ import {
   loadPhotoIngestDrafts,
   loadSpeechEvidenceStore,
 } from "@/lib/campaign-media/evidence-store";
+import { listPendingCuratedPlacementProposals } from "@/lib/campaign-media/curated-placement-store";
+import { getCurrentCuratedPlacementSnapshot } from "@/lib/campaign-media/curated-placement-propose";
 import { buildEvidencePublishQueue } from "@/lib/campaign-media/evidence-publish-queue";
 import { buildEvidenceShipReport } from "@/lib/campaign-media/evidence-ship-report";
 import { listCampaignPhotosLive } from "@/lib/campaign-media/list-campaign-photos-live";
@@ -31,6 +34,7 @@ type Props = {
 const TABS = [
   { id: "queue", label: "Publish Queue" },
   { id: "ship", label: "Ship" },
+  { id: "placement", label: "Placement" },
   { id: "calendar", label: "Calendar" },
   { id: "photos", label: "Photos" },
   { id: "speeches", label: "Videos" },
@@ -54,6 +58,8 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
   const intakeStatus = getPhotoIntakeStatus();
   const publishQueue = buildEvidencePublishQueue();
   const shipReport = buildEvidenceShipReport({ persist: false, includeDerivativeScan: true });
+  const placementCurrent = getCurrentCuratedPlacementSnapshot();
+  const placementProposal = listPendingCuratedPlacementProposals()[0] ?? null;
 
   const counties = ARKANSAS_COUNTY_REGISTRY.map((c) => ({
     slug: c.slug,
@@ -220,6 +226,9 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
       <div className="mt-8">
         {tab === "queue" ? <EvidencePublishQueuePanel initialQueue={publishQueue} /> : null}
         {tab === "ship" ? <EvidenceShipPanel initialReport={shipReport} /> : null}
+        {tab === "placement" ? (
+          <EvidencePlacementPanel initialProposal={placementProposal} current={placementCurrent} />
+        ) : null}
         {tab === "calendar" ? (
           <EvidenceCalendarPanel
             initialRows={calendar.rows}

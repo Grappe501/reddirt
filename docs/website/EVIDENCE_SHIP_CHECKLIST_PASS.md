@@ -48,7 +48,7 @@ Close the integrity loop: operators can see **exactly what still needs to be com
 
 - Auto-commit / auto-push  
 - Silent rewrite of `campaign-photo-registry.ts`  
-- Auto-mutate curated `HOMEPAGE_*`  
+- Silent rewrite of curated `HOMEPAGE_*` (see Placement Propose pass — gated apply only)  
 - Changing Netlify deploy to include gitignored derivatives  
 
 ## Commit

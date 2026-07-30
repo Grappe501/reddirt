@@ -49,7 +49,7 @@ Workbench → Publish Queue (default tab)
 
 - Auto-Approve / invent geography  
 - Silent rewrite of `campaign-photo-registry.ts` (stub only — see Ship Checklist)  
-- Curated HOMEPAGE_* mutate (audit #3)  
+- Curated HOMEPAGE_* mutate (audit #3 — now gated via Placement Propose; see EVIDENCE_CURATED_PLACEMENT_PASS.md)  
 
 ## Commit
 

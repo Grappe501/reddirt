@@ -15,6 +15,7 @@ const SMOKES = [
   "scripts/smoke-photo-intake.ts",
   "scripts/smoke-evidence-publish-queue.ts",
   "scripts/smoke-evidence-ship-checklist.ts",
+  "scripts/smoke-curated-placement.ts",
   "scripts/smoke-turbo-ingest.ts",
   "scripts/smoke-batch-photo-evidence.ts",
   "scripts/smoke-cluster-photo-selection.ts",

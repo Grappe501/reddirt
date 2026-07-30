@@ -1101,6 +1101,88 @@ export async function executeEvidenceAiTool(
         return { ok: true, result };
       }
 
+      case "propose_curated_placement": {
+        const { proposeCuratedPlacement } = await import(
+          "@/lib/campaign-media/curated-placement-propose"
+        );
+        const { writeCuratedPlacementStub } = await import(
+          "@/lib/campaign-media/curated-placement-apply"
+        );
+        const proposal = proposeCuratedPlacement({
+          allowHero: args.allowHero === true,
+          galleryMax: typeof args.galleryMax === "number" ? args.galleryMax : undefined,
+          acrossMax: typeof args.acrossMax === "number" ? args.acrossMax : undefined,
+          persist: true,
+        });
+        writeCuratedPlacementStub(proposal);
+        return { ok: true, result: proposal };
+      }
+
+      case "undo_curated_placement": {
+        if (args.confirmCurate !== true) {
+          return {
+            ok: false,
+            error: "confirmCurate:true required — refuse silent undo.",
+          };
+        }
+        const undoSnapshotId = asString(args.undoSnapshotId);
+        if (!undoSnapshotId) return { ok: false, error: "undoSnapshotId required." };
+        const { undoCuratedPlacement } = await import(
+          "@/lib/campaign-media/curated-placement-apply"
+        );
+        const result = undoCuratedPlacement({ undoSnapshotId, confirmCurate: true });
+        if (!result.ok) return { ok: false, error: result.message };
+        return { ok: true, result };
+      }
+
+      case "write_curated_placement_stub": {
+        const proposalId = asString(args.proposalId);
+        if (!proposalId) return { ok: false, error: "proposalId required." };
+        const { getCuratedPlacementProposal } = await import(
+          "@/lib/campaign-media/curated-placement-store"
+        );
+        const { writeCuratedPlacementStub } = await import(
+          "@/lib/campaign-media/curated-placement-apply"
+        );
+        const proposal = getCuratedPlacementProposal(proposalId);
+        if (!proposal) return { ok: false, error: `Proposal not found: ${proposalId}` };
+        const result = writeCuratedPlacementStub(proposal);
+        return { ok: true, result };
+      }
+
+      case "apply_curated_placement": {
+        if (args.confirmCurate !== true) {
+          return {
+            ok: false,
+            error: "confirmCurate:true required — refuse silent HOMEPAGE_* mutate.",
+          };
+        }
+        const proposalId = asString(args.proposalId);
+        if (!proposalId) return { ok: false, error: "proposalId required." };
+        const { applyCuratedPlacementProposal } = await import(
+          "@/lib/campaign-media/curated-placement-apply"
+        );
+        const result = applyCuratedPlacementProposal({ proposalId, confirmCurate: true });
+        if (!result.ok) return { ok: false, error: result.message };
+        return { ok: true, result };
+      }
+
+      case "list_curated_placement_proposals": {
+        const { loadCuratedPlacementStore } = await import(
+          "@/lib/campaign-media/curated-placement-store"
+        );
+        const { getCurrentCuratedPlacementSnapshot } = await import(
+          "@/lib/campaign-media/curated-placement-propose"
+        );
+        return {
+          ok: true,
+          result: {
+            proposals: loadCuratedPlacementStore().proposals,
+            current: getCurrentCuratedPlacementSnapshot(),
+          },
+        };
+      }
+
       default:
         return { ok: false, error: `Unknown tool: ${name}` };
     }

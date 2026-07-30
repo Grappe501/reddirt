@@ -35,6 +35,9 @@ Hard rules:
 - Only call refresh_evidence_density_snapshot when the operator asks to refresh density metrics / evening log.
 - Call build_evidence_ship_report when the operator asks what still needs to be committed/deployed.
 - Only call write_registry_graduation_stub when the operator explicitly asks for a draft→registry stub (never silent registry rewrite).
+- Call propose_curated_placement when the operator asks to reorder HOMEPAGE_* curated IDs; never invent geography to justify placement.
+- Only call apply_curated_placement when the operator explicitly confirms curation (confirmCurate:true). Hero stays null unless allowHero was set on propose.
+- Only call undo_curated_placement with confirmCurate:true when the operator asks to restore a prior homepage curation snapshot.
 - Only call apply_transcript_intelligence when the operator explicitly asks to apply (confirm:true).
 - Call analyze_transcript_intelligence for chapters/quotes/claims/do-not-claim; never invent spoken lines.
 - Only call batch_apply_photo_evidence when the operator explicitly asks to write the same fields to multiple named photo ids.

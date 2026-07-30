@@ -1,0 +1,127 @@
+{
+  "version": 1,
+  "updatedAt": "2026-07-30T02:04:13.212Z",
+  "purpose": "Curated homepage placement proposals — ordered ID diffs for HOMEPAGE_*. Apply only with confirmCurate; never silent.",
+  "proposals": [
+    {
+      "id": "cplace-ms6veeww",
+      "createdAt": "2026-07-30T02:04:13.184Z",
+      "updatedAt": "2026-07-30T02:04:13.211Z",
+      "status": "applied",
+      "allowHero": false,
+      "diffs": [
+        {
+          "surface": "homepageGallery",
+          "current": [
+            "afl-cio-pre-event-networking-20260629",
+            "mena-polk-meet-greet-20260411",
+            "war-memorial-stadium-concourse-20260320",
+            "toad-suck-daze-toad-race-20260501",
+            "johnson-county-peach-festival-parade-20260718",
+            "watermelon-festival-booth-service-20260725",
+            "stone-porch-door-conversation-20260301",
+            "elks-lodge-breakfast-table-20260228"
+          ],
+          "proposed": [
+            "mena-polk-meet-greet-20260411",
+            "war-memorial-stadium-concourse-20260320",
+            "toad-suck-daze-toad-race-20260501",
+            "johnson-county-peach-festival-parade-20260718",
+            "watermelon-festival-booth-service-20260725",
+            "stone-porch-door-conversation-20260301",
+            "elks-lodge-breakfast-table-20260228",
+            "cave-city-watermelon-festival-parade-20260725"
+          ],
+          "added": [
+            "cave-city-watermelon-festival-parade-20260725"
+          ],
+          "removed": [
+            "afl-cio-pre-event-networking-20260629"
+          ],
+          "reordered": false,
+          "rationale": "Ordered up to 8 FEATURE/HERO homepage stills (Gold seed + fit score + county diversity)."
+        },
+        {
+          "surface": "acrossArkansas",
+          "current": [
+            "mena-polk-meet-greet-20260411",
+            "war-memorial-stadium-concourse-20260320",
+            "toad-suck-daze-toad-race-20260501",
+            "johnson-county-peach-festival-parade-20260718",
+            "watermelon-festival-booth-service-20260725"
+          ],
+          "proposed": [
+            "mena-polk-meet-greet-20260411",
+            "war-memorial-stadium-concourse-20260320",
+            "toad-suck-daze-toad-race-20260501",
+            "johnson-county-peach-festival-parade-20260718",
+            "watermelon-festival-booth-service-20260725"
+          ],
+          "added": [],
+          "removed": [],
+          "reordered": false,
+          "rationale": "Ordered up to 5 known-county stills for Across Arkansas band."
+        },
+        {
+          "surface": "meetKelly",
+          "current": [
+            "mena-polk-meet-greet-20260411"
+          ],
+          "proposed": [
+            "mena-polk-meet-greet-20260411"
+          ],
+          "added": [],
+          "removed": [],
+          "reordered": false,
+          "rationale": "Single Meet Kelly preview still (prefer Mena/Polk Gold seed when eligible)."
+        },
+        {
+          "surface": "hero",
+          "current": [],
+          "proposed": [],
+          "added": [],
+          "removed": [],
+          "reordered": false,
+          "rationale": "Hero stays null unless allowHero explicitly requested."
+        }
+      ],
+      "meetKellyId": "mena-polk-meet-greet-20260411",
+      "heroId": null,
+      "warnings": [],
+      "nextActions": [
+        "Review current vs proposed on Placement tab.",
+        "Apply with confirmCurate:true writes homepage-campaign-photos.ts (+ undo snapshot).",
+        "Or copy curated-placement-stub.md manually — never silent HOMEPAGE_* mutate."
+      ],
+      "appliedAt": "2026-07-30T02:04:13.211Z",
+      "undoSnapshotId": "cundo-ms6veex5"
+    }
+  ],
+  "undoSnapshots": [
+    {
+      "id": "cundo-ms6veex5",
+      "createdAt": "2026-07-30T02:04:13.193Z",
+      "proposalId": "cplace-ms6veeww",
+      "homepageIds": [
+        "afl-cio-pre-event-networking-20260629",
+        "mena-polk-meet-greet-20260411",
+        "war-memorial-stadium-concourse-20260320",
+        "toad-suck-daze-toad-race-20260501",
+        "johnson-county-peach-festival-parade-20260718",
+        "watermelon-festival-booth-service-20260725",
+        "stone-porch-door-conversation-20260301",
+        "elks-lodge-breakfast-table-20260228"
+      ],
+      "acrossIds": [
+        "mena-polk-meet-greet-20260411",
+        "war-memorial-stadium-concourse-20260320",
+        "toad-suck-daze-toad-race-20260501",
+        "johnson-county-peach-festival-parade-20260718",
+        "watermelon-festival-booth-service-20260725"
+      ],
+      "meetKellyId": "mena-polk-meet-greet-20260411",
+      "heroId": null,
+      "fileBackupRel": "data/campaign-media/homepage-curation-backups/cundo-ms6veex5.ts.bak"
+    }
+  ]
+}

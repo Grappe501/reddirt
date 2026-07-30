@@ -839,6 +839,117 @@ export async function writeRegistryGraduationStubAction(input?: {
   return result;
 }
 
+export async function proposeCuratedPlacementAction(input?: {
+  allowHero?: boolean;
+  galleryMax?: number;
+  acrossMax?: number;
+  persist?: boolean;
+}): Promise<{
+  ok: boolean;
+  message: string;
+  proposal?: import("@/lib/campaign-media/curated-placement-types").CuratedPlacementProposal;
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { proposeCuratedPlacement } = await import("@/lib/campaign-media/curated-placement-propose");
+  const { writeCuratedPlacementStub } = await import("@/lib/campaign-media/curated-placement-apply");
+  const proposal = proposeCuratedPlacement({
+    allowHero: Boolean(input?.allowHero),
+    galleryMax: input?.galleryMax,
+    acrossMax: input?.acrossMax,
+    persist: input?.persist !== false,
+  });
+  writeCuratedPlacementStub(proposal);
+  revalidatePath("/admin/evidence-workbench");
+  return {
+    ok: true,
+    message: `Placement proposed ${proposal.id} · gallery ${
+      proposal.diffs.find((d) => d.surface === "homepageGallery")?.proposed.length ?? 0
+    } · across ${proposal.diffs.find((d) => d.surface === "acrossArkansas")?.proposed.length ?? 0}`,
+    proposal,
+  };
+}
+
+export async function listCuratedPlacementProposalsAction(): Promise<{
+  ok: boolean;
+  message: string;
+  proposals?: import("@/lib/campaign-media/curated-placement-types").CuratedPlacementProposal[];
+  current?: ReturnType<
+    typeof import("@/lib/campaign-media/curated-placement-propose").getCurrentCuratedPlacementSnapshot
+  >;
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { loadCuratedPlacementStore } = await import("@/lib/campaign-media/curated-placement-store");
+  const { getCurrentCuratedPlacementSnapshot } = await import(
+    "@/lib/campaign-media/curated-placement-propose"
+  );
+  const proposals = loadCuratedPlacementStore().proposals;
+  return {
+    ok: true,
+    message: `${proposals.length} placement proposal(s)`,
+    proposals,
+    current: getCurrentCuratedPlacementSnapshot(),
+  };
+}
+
+export async function writeCuratedPlacementStubAction(input: {
+  proposalId: string;
+}): Promise<{ ok: boolean; message: string; relativePath?: string }> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { getCuratedPlacementProposal } = await import("@/lib/campaign-media/curated-placement-store");
+  const { writeCuratedPlacementStub } = await import("@/lib/campaign-media/curated-placement-apply");
+  const proposal = getCuratedPlacementProposal(input.proposalId);
+  if (!proposal) return { ok: false, message: "Proposal not found." };
+  return writeCuratedPlacementStub(proposal);
+}
+
+export async function applyCuratedPlacementAction(input: {
+  proposalId: string;
+  confirmCurate: boolean;
+}): Promise<{
+  ok: boolean;
+  message: string;
+  undoSnapshotId?: string;
+  warnings?: string[];
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  if (!input.confirmCurate) {
+    return { ok: false, message: "confirmCurate:true required — refuse silent HOMEPAGE_* mutate." };
+  }
+  const { applyCuratedPlacementProposal } = await import(
+    "@/lib/campaign-media/curated-placement-apply"
+  );
+  const result = applyCuratedPlacementProposal({
+    proposalId: String(input.proposalId ?? "").trim(),
+    confirmCurate: true,
+  });
+  revalidatePath("/admin/evidence-workbench");
+  revalidatePath("/");
+  return result;
+}
+
+export async function undoCuratedPlacementAction(input: {
+  undoSnapshotId: string;
+  confirmCurate: boolean;
+}): Promise<{ ok: boolean; message: string }> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  if (!input.confirmCurate) {
+    return { ok: false, message: "confirmCurate:true required — refuse silent undo." };
+  }
+  const { undoCuratedPlacement } = await import("@/lib/campaign-media/curated-placement-apply");
+  const result = undoCuratedPlacement({
+    undoSnapshotId: String(input.undoSnapshotId ?? "").trim(),
+    confirmCurate: true,
+  });
+  revalidatePath("/admin/evidence-workbench");
+  revalidatePath("/");
+  return result;
+}
+
 export async function runTurboIngestAction(input?: {
   intakeFirst?: boolean;
   useAi?: boolean;

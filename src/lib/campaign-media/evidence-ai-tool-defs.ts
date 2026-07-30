@@ -241,6 +241,31 @@ export const EVIDENCE_AI_TOOL_CATALOG: Array<{
     summary: "Write draft→registry markdown stub only — never mutates campaign-photo-registry.ts.",
   },
   {
+    name: "propose_curated_placement",
+    audience: "photo",
+    summary: "Propose ordered HOMEPAGE_* ID diffs (gallery / Across AR / Meet Kelly / hero). No silent apply.",
+  },
+  {
+    name: "apply_curated_placement",
+    audience: "photo",
+    summary: "Apply a placement proposal to homepage-campaign-photos.ts (confirmCurate required + undo snapshot).",
+  },
+  {
+    name: "list_curated_placement_proposals",
+    audience: "photo",
+    summary: "List curated placement proposals and current HOMEPAGE_* snapshot.",
+  },
+  {
+    name: "write_curated_placement_stub",
+    audience: "photo",
+    summary: "Rewrite curated-placement-stub.md for a proposal (review/paste aid — not apply).",
+  },
+  {
+    name: "undo_curated_placement",
+    audience: "photo",
+    summary: "Restore homepage-campaign-photos.ts from an undo snapshot (confirmCurate required).",
+  },
+  {
     name: "propose_video_edit_project",
     audience: "video",
     summary: "AI/deterministic Edit Director: ordered cut list + look/transition/captions/export pack (no silent render).",
@@ -861,6 +886,80 @@ export function evidenceAiToolsFor(kind: "photo" | "video"): ChatCompletionTool[
           properties: {
             onlyReady: { type: "boolean" },
           },
+        },
+      },
+    },
+    {
+      type: "function",
+      function: {
+        name: "propose_curated_placement",
+        description:
+          "Propose ordered HOMEPAGE_* curated ID diffs for homepage gallery, Across Arkansas, Meet Kelly, and optional hero. Writes proposal JSON + stub. Does not rewrite TS — use apply_curated_placement with confirmCurate.",
+        parameters: {
+          type: "object",
+          properties: {
+            allowHero: { type: "boolean" },
+            galleryMax: { type: "number" },
+            acrossMax: { type: "number" },
+          },
+        },
+      },
+    },
+    {
+      type: "function",
+      function: {
+        name: "apply_curated_placement",
+        description:
+          "Apply a curated placement proposal to src/content/media/homepage-campaign-photos.ts. Requires confirmCurate:true. Saves undo snapshot. Never silent.",
+        parameters: {
+          type: "object",
+          properties: {
+            proposalId: { type: "string" },
+            confirmCurate: { type: "boolean" },
+          },
+          required: ["proposalId", "confirmCurate"],
+        },
+      },
+    },
+    {
+      type: "function",
+      function: {
+        name: "list_curated_placement_proposals",
+        description: "List curated placement proposals and the current HOMEPAGE_* ID snapshot.",
+        parameters: {
+          type: "object",
+          properties: {},
+        },
+      },
+    },
+    {
+      type: "function",
+      function: {
+        name: "write_curated_placement_stub",
+        description:
+          "Rewrite data/campaign-media/curated-placement-stub.md for a named proposal. Review/paste aid only — does not apply.",
+        parameters: {
+          type: "object",
+          properties: {
+            proposalId: { type: "string" },
+          },
+          required: ["proposalId"],
+        },
+      },
+    },
+    {
+      type: "function",
+      function: {
+        name: "undo_curated_placement",
+        description:
+          "Restore src/content/media/homepage-campaign-photos.ts from a prior apply backup. Requires confirmCurate:true and undoSnapshotId.",
+        parameters: {
+          type: "object",
+          properties: {
+            undoSnapshotId: { type: "string" },
+            confirmCurate: { type: "boolean" },
+          },
+          required: ["undoSnapshotId", "confirmCurate"],
         },
       },
     },
