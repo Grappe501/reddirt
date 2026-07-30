@@ -37,6 +37,7 @@ Send to Identify
 ## Out of scope
 
 - Soft-watch / polling — see [`EVIDENCE_WORKBENCH_INTAKE_PHASE_2.md`](./EVIDENCE_WORKBENCH_INTAKE_PHASE_2.md)
+- Declutter / event-night — see [`EVIDENCE_WORKBENCH_INTAKE_PHASE_3.md`](./EVIDENCE_WORKBENCH_INTAKE_PHASE_3.md)
 - Owned Media bridge (Phase 4)
 - Auto-Approve / registry rewrite
 

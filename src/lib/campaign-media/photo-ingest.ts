@@ -72,6 +72,31 @@ export type PhotoIntakeStatus = {
   nextStepLabel: string;
 };
 
+/** Phase 3 — what Bring into system will do before any copy/queue (preview only). */
+export type ArrivalIntakePreviewPlan =
+  | "queue"
+  | "copy_then_queue"
+  | "reuse_flat_then_queue"
+  | "skip_registry"
+  | "skip_drafts"
+  | "skip_basename_collision";
+
+export type ArrivalIntakePreviewRow = {
+  relativePath: string;
+  nested: boolean;
+  flatTarget: string;
+  plan: ArrivalIntakePreviewPlan;
+  warning: string | null;
+};
+
+export type ArrivalIntakePreview = {
+  willQueue: number;
+  willCopyNested: number;
+  willSkip: number;
+  warnCount: number;
+  rows: ArrivalIntakePreviewRow[];
+};
+
 function walkRelativeImages(dirAbs: string, prefix = ""): string[] {
   if (!existsSync(dirAbs)) return [];
   const out: string[] = [];
@@ -154,6 +179,124 @@ export function listDiskPhotoIngestCandidates(): DiskPhotoCandidate[] {
     });
   }
   return out.sort((a, b) => a.relativePath.localeCompare(b.relativePath));
+}
+
+/**
+ * Phase 3 preview — nested→flat plan + dedupe warnings. Never writes.
+ * Prefer Unknown: collisions are skipped, not renamed with -2/-3.
+ */
+export function buildArrivalIntakePreview(
+  candidates: DiskPhotoCandidate[] = listDiskPhotoIngestCandidates(),
+): ArrivalIntakePreview {
+  const root = photosDirAbs();
+  const registryIds = new Set(CAMPAIGN_PHOTO_REGISTRY.map((p) => p.id));
+  const registrySrc = new Set(CAMPAIGN_PHOTO_REGISTRY.map((p) => p.src));
+  const drafts = loadPhotoIngestDrafts();
+  const draftIds = new Set(drafts.photos.map((p) => p.id));
+  const draftSrc = new Set(drafts.photos.map((p) => p.src));
+
+  const fresh = candidates.filter((c) => !c.alreadyInRegistry && !c.alreadyInDrafts);
+  const basenameOwners = new Map<string, string[]>();
+  for (const c of fresh) {
+    const key = c.filename.toLowerCase();
+    const list = basenameOwners.get(key) ?? [];
+    list.push(c.relativePath);
+    basenameOwners.set(key, list);
+  }
+
+  const claimedFlat = new Set<string>();
+  const rows: ArrivalIntakePreviewRow[] = [];
+
+  for (const c of fresh) {
+    const ext = path.extname(c.filename).toLowerCase();
+    const flatTarget = c.nested ? `${c.id}${ext}` : c.filename;
+    const preferredSrc = `/media/campaign-photos/${flatTarget}`;
+    const flatAbs = path.join(root, flatTarget);
+    const owners = basenameOwners.get(c.filename.toLowerCase()) ?? [c.relativePath];
+    const multiBasename = owners.length > 1;
+
+    if (registryIds.has(c.id) || registrySrc.has(preferredSrc) || registrySrc.has(c.src)) {
+      rows.push({
+        relativePath: c.relativePath,
+        nested: c.nested,
+        flatTarget,
+        plan: "skip_registry",
+        warning: "Basename already in registry — will skip (no -2/-3 rename).",
+      });
+      continue;
+    }
+    if (draftIds.has(c.id) || draftSrc.has(preferredSrc) || draftSrc.has(c.src)) {
+      rows.push({
+        relativePath: c.relativePath,
+        nested: c.nested,
+        flatTarget,
+        plan: "skip_drafts",
+        warning: "Basename already in intake queue — will skip.",
+      });
+      continue;
+    }
+    if (multiBasename && owners[0] !== c.relativePath) {
+      rows.push({
+        relativePath: c.relativePath,
+        nested: c.nested,
+        flatTarget,
+        plan: "skip_basename_collision",
+        warning: `Same basename as ${owners[0]} — only one flat target; this path skipped.`,
+      });
+      continue;
+    }
+    if (claimedFlat.has(flatTarget.toLowerCase())) {
+      rows.push({
+        relativePath: c.relativePath,
+        nested: c.nested,
+        flatTarget,
+        plan: "skip_basename_collision",
+        warning: `Flat target ${flatTarget} already claimed in this dump — skipped.`,
+      });
+      continue;
+    }
+
+    claimedFlat.add(flatTarget.toLowerCase());
+
+    if (c.nested) {
+      if (existsSync(flatAbs)) {
+        rows.push({
+          relativePath: c.relativePath,
+          nested: true,
+          flatTarget,
+          plan: "reuse_flat_then_queue",
+          warning: `Flat ${flatTarget} already on disk — will reuse (nested original kept).`,
+        });
+      } else {
+        rows.push({
+          relativePath: c.relativePath,
+          nested: true,
+          flatTarget,
+          plan: "copy_then_queue",
+          warning: null,
+        });
+      }
+    } else {
+      rows.push({
+        relativePath: c.relativePath,
+        nested: false,
+        flatTarget,
+        plan: "queue",
+        warning: null,
+      });
+    }
+  }
+
+  const willQueue = rows.filter((r) =>
+    r.plan === "queue" || r.plan === "copy_then_queue" || r.plan === "reuse_flat_then_queue",
+  ).length;
+  const willCopyNested = rows.filter((r) => r.plan === "copy_then_queue").length;
+  const willSkip = rows.filter((r) =>
+    r.plan === "skip_registry" || r.plan === "skip_drafts" || r.plan === "skip_basename_collision",
+  ).length;
+  const warnCount = rows.filter((r) => Boolean(r.warning)).length;
+
+  return { willQueue, willCopyNested, willSkip, warnCount, rows };
 }
 
 /**

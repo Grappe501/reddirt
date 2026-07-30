@@ -1031,18 +1031,23 @@ export async function listPhotoIngestCandidatesAction(): Promise<{
   message: string;
   candidates?: ReturnType<typeof listDiskPhotoIngestCandidates>;
   status?: import("@/lib/campaign-media/photo-ingest").PhotoIntakeStatus;
+  preview?: import("@/lib/campaign-media/photo-ingest").ArrivalIntakePreview;
 }> {
   const g = await gate();
   if (!g.ok) return { ok: false, message: g.error };
-  const { getPhotoIntakeStatus } = await import("@/lib/campaign-media/photo-ingest");
+  const { getPhotoIntakeStatus, buildArrivalIntakePreview } = await import(
+    "@/lib/campaign-media/photo-ingest"
+  );
   const candidates = listDiskPhotoIngestCandidates();
   const status = getPhotoIntakeStatus();
+  const preview = buildArrivalIntakePreview(candidates);
   const fresh = candidates.filter((c) => !c.alreadyInRegistry && !c.alreadyInDrafts);
   return {
     ok: true,
     message: status.nextStepLabel || `${fresh.length} new on disk · ${status.queueCount} in queue.`,
     candidates,
     status,
+    preview,
   };
 }
 
@@ -2885,15 +2890,19 @@ export async function listArrivalSoftWatchAction(): Promise<{
   candidates?: ReturnType<typeof listDiskPhotoIngestCandidates>;
   status?: import("@/lib/campaign-media/photo-ingest").PhotoIntakeStatus;
   summary?: import("@/lib/campaign-media/video-master-arrival").VideoMasterArrivalSummary;
+  preview?: import("@/lib/campaign-media/photo-ingest").ArrivalIntakePreview;
   polledAt?: string;
 }> {
   const g = await gate();
   if (!g.ok) return { ok: false, message: g.error };
-  const { getPhotoIntakeStatus } = await import("@/lib/campaign-media/photo-ingest");
+  const { getPhotoIntakeStatus, buildArrivalIntakePreview } = await import(
+    "@/lib/campaign-media/photo-ingest"
+  );
   const { listVideoMasterArrival } = await import("@/lib/campaign-media/video-master-arrival");
   const candidates = listDiskPhotoIngestCandidates();
   const status = getPhotoIntakeStatus();
   const summary = listVideoMasterArrival();
+  const preview = buildArrivalIntakePreview(candidates);
   const fresh = candidates.filter((c) => !c.alreadyInRegistry && !c.alreadyInDrafts).length;
   return {
     ok: true,
@@ -2901,6 +2910,7 @@ export async function listArrivalSoftWatchAction(): Promise<{
     candidates,
     status,
     summary,
+    preview,
     polledAt: new Date().toISOString(),
   };
 }

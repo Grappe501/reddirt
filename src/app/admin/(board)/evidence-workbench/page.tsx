@@ -51,7 +51,7 @@ import {
 import { buildSpeechReadinessMatrix } from "@/lib/campaign-media/speech-readiness";
 import { getPhotoReadinessMatrix } from "@/lib/campaign-media/photo-readiness";
 import { listCampaignPhotosLive } from "@/lib/campaign-media/list-campaign-photos-live";
-import { listDiskPhotoIngestCandidates } from "@/lib/campaign-media/photo-ingest";
+import { listDiskPhotoIngestCandidates, buildArrivalIntakePreview } from "@/lib/campaign-media/photo-ingest";
 import {
   listSpeechOptionsForArrival,
   listVideoMasterArrival,
@@ -83,6 +83,7 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
   const intakeStatus = getPhotoIntakeStatus();
   const videoArrival = listVideoMasterArrival();
   const arrivalSpeeches = listSpeechOptionsForArrival();
+  const arrivalPreview = buildArrivalIntakePreview(ingestCandidates);
   const publishQueue = buildEvidencePublishQueue();
   const coverageHeat = buildCountyPhotoCoverageHeat();
   const shipReport = buildEvidenceShipReport({ persist: false, includeDerivativeScan: true });
@@ -290,9 +291,8 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
                 Arrival · stills + video masters
               </p>
               <p className="mt-1 font-body text-xs text-[#364272]">
-                Drop zone routes images and videos. Soft-watch polls while Arrival is open (detect
-                only — never auto-Intake). Bring into system intakes stills; attach unmatched masters
-                to speeches. Labeling stays on Identify.
+                Soft-watch + intake preview (nested→flat / dedupe). Primary: Bring into system → Identify.
+                Event-night preset focuses the path. Never auto-Approve.
               </p>
               <Link
                 href="/admin/evidence-workbench?tab=identify&filter=draft"
@@ -306,6 +306,7 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
               initialStatus={intakeStatus}
               initialVideoSummary={videoArrival}
               initialSpeeches={arrivalSpeeches}
+              initialPreview={arrivalPreview}
             />
           </>
         ) : null}
