@@ -13,12 +13,18 @@ import {
 import type { EvidencePublishQueue, PublishQueueBucketId, PublishQueueItem } from "@/lib/campaign-media/evidence-publish-queue";
 import type { CountyCoverageHeat } from "@/lib/campaign-media/county-coverage-heat";
 import type { SpeechConfirmQueue } from "@/lib/campaign-media/speech-confirm-queue";
+import {
+  parseQueueUrlFilter,
+  queueFilterToBucketId,
+} from "@/lib/campaign-media/evidence-workbench-deep-links";
 import { EVIDENCE_FIELD_CLASS } from "@/components/admin/evidence-workbench/field-styles";
 
 type Props = {
   initialQueue: EvidencePublishQueue;
   initialSpeechQueue?: SpeechConfirmQueue | null;
   initialCoverageHeat?: CountyCoverageHeat | null;
+  /** URL ?filter= — highlights + scrolls to matching queue bucket. */
+  initialUrlFilter?: string | null;
 };
 
 const BUCKET_META: Array<{
@@ -66,12 +72,16 @@ export function EvidencePublishQueuePanel({
   initialQueue,
   initialSpeechQueue = null,
   initialCoverageHeat = null,
+  initialUrlFilter = null,
 }: Props) {
   const [queue, setQueue] = useState(initialQueue);
   const [speechQueue, setSpeechQueue] = useState<SpeechConfirmQueue | null>(initialSpeechQueue);
   const [heat, setHeat] = useState<CountyCoverageHeat | null>(initialCoverageHeat);
   const [coverageFilter, setCoverageFilter] = useState<"all" | "thinOrZero">("all");
   const [countySlugFilter, setCountySlugFilter] = useState<string | null>(null);
+  const [highlightBucket, setHighlightBucket] = useState<PublishQueueBucketId | null>(() =>
+    queueFilterToBucketId(parseQueueUrlFilter(initialUrlFilter)),
+  );
   const [message, setMessage] = useState("");
   const [publishedToday, setPublishedToday] = useState("");
   const [createdNotPublished, setCreatedNotPublished] = useState("");
@@ -99,6 +109,19 @@ export function EvidencePublishQueuePanel({
   useEffect(() => {
     setSpeechQueue(initialSpeechQueue);
   }, [initialSpeechQueue]);
+
+  useEffect(() => {
+    const bucket = queueFilterToBucketId(parseQueueUrlFilter(initialUrlFilter));
+    setHighlightBucket(bucket);
+    if (!bucket) return;
+    const t = window.setTimeout(() => {
+      document.getElementById(`ew-queue-bucket-${bucket}`)?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }, 80);
+    return () => window.clearTimeout(t);
+  }, [initialUrlFilter]);
 
   useEffect(() => {
     if (initialCoverageHeat) {
@@ -190,6 +213,20 @@ export function EvidencePublishQueuePanel({
 
   return (
     <div className="space-y-4 text-[#12124a]">
+      {highlightBucket ? (
+        <p className="rounded border-2 border-[#000066] bg-[#eef2fb] px-3 py-2 font-body text-xs font-semibold text-[#000066]">
+          Deep-link focus: {BUCKET_META.find((b) => b.id === highlightBucket)?.label ?? highlightBucket}{" "}
+          bucket
+          <button
+            type="button"
+            className="ml-2 underline"
+            onClick={() => setHighlightBucket(null)}
+          >
+            Clear
+          </button>
+        </p>
+      ) : null}
+
       <div className="rounded-lg border-2 border-[#000066]/20 bg-white p-4">
         <p className="font-heading text-sm font-bold text-[#000066]">
           Publish Queue — Unknown → Save → Approve
@@ -508,7 +545,15 @@ export function EvidencePublishQueuePanel({
                       ? t.consentHold
                       : t.approvedPublic;
           return (
-            <div key={b.id} className="rounded-lg border-2 border-[#000066]/15 bg-white p-3">
+            <div
+              key={b.id}
+              id={`ew-queue-bucket-${b.id}`}
+              className={`rounded-lg border-2 bg-white p-3 ${
+                highlightBucket === b.id
+                  ? "border-[#000066] ring-2 ring-[#000066]/25"
+                  : "border-[#000066]/15"
+              }`}
+            >
               <div className="flex flex-wrap items-baseline justify-between gap-2">
                 <p className="font-heading text-xs font-bold uppercase tracking-wide text-[#000066]">
                   {b.label} · {totalKey}

@@ -3,6 +3,7 @@ import { CAMPAIGN_MEDIA_REGISTRY } from "@/content/media/campaign-media-registry
 import { CAMPAIGN_PHOTO_REGISTRY } from "@/content/media/campaign-photo-registry";
 import { EvidenceAiCommandCenter } from "@/components/admin/evidence-workbench/EvidenceAiCommandCenter";
 import { EvidenceCalendarPanel } from "@/components/admin/evidence-workbench/EvidenceCalendarPanel";
+import { EvidenceCollapsedChrome } from "@/components/admin/evidence-workbench/EvidenceCollapsedChrome";
 import { EvidenceEventNightLoopPanel } from "@/components/admin/evidence-workbench/EvidenceEventNightLoopPanel";
 import { EvidenceFitBacklogPanel } from "@/components/admin/evidence-workbench/EvidenceFitBacklogPanel";
 import { EvidenceIngestPanel } from "@/components/admin/evidence-workbench/EvidenceIngestPanel";
@@ -15,9 +16,6 @@ import { EvidenceShipPanel } from "@/components/admin/evidence-workbench/Evidenc
 import { EvidenceSpeechConfirmPanel } from "@/components/admin/evidence-workbench/EvidenceSpeechConfirmPanel";
 import { EvidenceSpeechesPanel } from "@/components/admin/evidence-workbench/EvidenceSpeechesPanel";
 import { EvidenceToolingBanner } from "@/components/admin/evidence-workbench/EvidenceToolingBanner";
-import { strategicPlacementNotes } from "@/content/media/strategic-photo-placements";
-import { EVIDENCE_AI_TOOL_CATALOG } from "@/lib/campaign-media/evidence-ai-tool-defs";
-import { listEvidenceAiModesForUi } from "@/lib/campaign-media/evidence-ai-modes";
 import { buildFitRankedBacklog } from "@/lib/campaign-media/evidence-fit-backlog";
 import { rankEvidenceNextActions } from "@/lib/campaign-media/evidence-next-actions";
 import { getEvidenceToolingReadiness } from "@/lib/campaign-media/evidence-tooling-readiness";
@@ -64,7 +62,7 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
   const sp = await searchParams;
   const tab = TABS.some((t) => t.id === sp.tab) ? (sp.tab as (typeof TABS)[number]["id"]) : "queue";
   const focusId = sp.id?.trim() || undefined;
-  const photoFilter = sp.filter?.trim() || undefined;
+  const urlFilter = sp.filter?.trim() || undefined;
 
   const calendar = loadCalendarPresenceStore();
   const photoStore = loadPhotoEvidenceStore();
@@ -167,7 +165,7 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
 
       <EvidenceNextActionsStrip actions={nextActions.actions} generatedAt={nextActions.generatedAt} />
 
-      <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+      <div className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-5">
         <div className="ew-stat">
           <p className="ew-stat-label">Publish queue</p>
           <p className="mt-1 font-body text-sm font-semibold text-kelly-text">
@@ -213,50 +211,9 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
         </div>
       </div>
 
-      <div className="ew-panel mt-5">
-        <p className="ew-panel-title">Where photos go on the site</p>
-        <ul className="mt-3 list-disc space-y-1.5 pl-5 font-body text-sm text-kelly-slate">
-          {strategicPlacementNotes().map((n) => (
-            <li key={n.surface}>
-              <span className="font-semibold text-kelly-navy">{n.surface}:</span> {n.how}
-            </li>
-          ))}
-        </ul>
-      </div>
+      <EvidenceCollapsedChrome />
 
-      <div className="ew-panel mt-5">
-        <p className="ew-panel-title">OpenAI evidence brain</p>
-        <p className="mt-2 font-body text-sm text-kelly-slate">
-          Mode-routed Suggest (Identify · Fit · Prep · Publish · Command · General). Command is freeform
-          across the workbench. Prefer Unknown — never auto-confirm geography.
-        </p>
-        <ul className="mt-4 flex flex-wrap gap-2">
-          {(["photo", "video"] as const).flatMap((kind) =>
-            listEvidenceAiModesForUi(kind).map((m) => (
-              <li key={`${kind}-${m.id}`} className="ew-chip">
-                <span className="font-semibold">
-                  {kind}/{m.label}
-                </span>
-                {" · "}
-                {m.toolCount === "all" ? "all tools" : `${m.toolCount} tools`}
-              </li>
-            )),
-          )}
-        </ul>
-        <ul className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
-          {EVIDENCE_AI_TOOL_CATALOG.map((t) => (
-            <li key={t.name} className="ew-tool-tile">
-              <p className="font-mono text-[11px] font-bold text-kelly-navy">{t.name}</p>
-              <p className="mt-0.5 font-body text-[10px] font-semibold uppercase tracking-wide text-kelly-slate">
-                {t.audience}
-              </p>
-              <p className="mt-1 font-body text-xs leading-relaxed text-kelly-text">{t.summary}</p>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      <nav className="mt-7 flex flex-wrap gap-2" aria-label="Evidence workbench tabs">
+      <nav className="mt-6 flex flex-wrap gap-2" aria-label="Evidence workbench tabs">
         {TABS.map((t) => (
           <Link
             key={t.id}
@@ -271,20 +228,23 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
       <div className="ew-panel mt-5">
         {tab === "queue" ? (
           <>
-            <EvidenceEventNightLoopPanel
-              calendarRows={calendar.rows.map((r) => ({
-                id: r.id,
-                date: r.date,
-                summary: r.summary,
-                status: r.status,
-              }))}
-              initialNeedsApprovalIds={publishQueue.buckets.needsApproval.map((i) => i.id)}
-            />
+            <div id="ew-tonight-ritual">
+              <EvidenceEventNightLoopPanel
+                calendarRows={calendar.rows.map((r) => ({
+                  id: r.id,
+                  date: r.date,
+                  summary: r.summary,
+                  status: r.status,
+                }))}
+                initialNeedsApprovalIds={publishQueue.buckets.needsApproval.map((i) => i.id)}
+              />
+            </div>
             <EvidenceFitBacklogPanel initialBacklog={fitBacklog} />
             <EvidencePublishQueuePanel
               initialQueue={publishQueue}
               initialSpeechQueue={speechConfirmQueue}
               initialCoverageHeat={coverageHeat}
+              initialUrlFilter={urlFilter}
             />
           </>
         ) : null}
@@ -294,20 +254,27 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
         ) : null}
         {tab === "calendar" ? (
           <>
-            <EvidenceEventNightLoopPanel
-              calendarRows={calendar.rows.map((r) => ({
-                id: r.id,
-                date: r.date,
-                summary: r.summary,
-                status: r.status,
-              }))}
-              initialNeedsApprovalIds={publishQueue.buckets.needsApproval.map((i) => i.id)}
-            />
+            <div className="mb-4 rounded-lg border-2 border-[#ca913d]/50 bg-[#fff8ef] p-3">
+              <p className="font-heading text-xs font-bold uppercase text-[#000066]">
+                Tonight ritual lives on Publish Queue
+              </p>
+              <p className="mt-1 font-body text-xs text-[#364272]">
+                Confirm calendar places here, then run pack → identify → approve → ship on Queue (one
+                desk — no duplicate ritual on this tab).
+              </p>
+              <Link
+                href="/admin/evidence-workbench?tab=queue"
+                className="mt-2 inline-flex rounded-md border-2 border-[#000066] bg-[#000066] px-3 py-1.5 font-body text-xs font-bold text-white"
+              >
+                Open Tonight ritual on Queue →
+              </Link>
+            </div>
             <EvidenceCalendarPanel
               initialRows={calendar.rows}
               counties={counties}
               sourceNote={calendar.sourceNote}
               sinceDate={calendar.sinceDate}
+              initialFilter={urlFilter}
             />
           </>
         ) : null}
@@ -318,7 +285,7 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
               photos={photos}
               counties={counties}
               initialPhotoId={focusId}
-              initialFilter={photoFilter}
+              initialFilter={urlFilter}
             />
           </>
         ) : null}
@@ -331,7 +298,11 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
               initialPlacement={speechPlacementProposal}
               placementCurrent={speechPlacementCurrent}
             />
-            <EvidenceSpeechesPanel speeches={speeches} initialSpeechId={focusId} />
+            <EvidenceSpeechesPanel
+              speeches={speeches}
+              initialSpeechId={focusId}
+              initialFilter={urlFilter}
+            />
           </>
         ) : null}
         {tab === "ingest" ? (

@@ -33,6 +33,7 @@ import {
   undoBatchPublishAction,
 } from "@/app/admin/evidence-workbench-actions";
 import type { OwnedMediaEvidenceLink } from "@/lib/campaign-media/owned-media-evidence-link";
+import { parsePhotosUrlFilter } from "@/lib/campaign-media/evidence-workbench-deep-links";
 import type { BatchPhotoAiProposal } from "@/lib/campaign-media/evidence-ai-types";
 import type { EvidenceBatchOperation } from "@/lib/campaign-media/evidence-batch-ops";
 import type { PhotoEvidenceOverlay } from "@/lib/campaign-media/evidence-types";
@@ -142,8 +143,8 @@ type Filter = "all" | "unknown" | "needsApproval" | "draft" | "approved" | "home
 const FILTER_IDS: Filter[] = ["all", "unknown", "needsApproval", "draft", "approved", "homepage"];
 
 function parseFilter(raw?: string): Filter {
-  const v = String(raw ?? "").trim() as Filter;
-  return FILTER_IDS.includes(v) ? v : "all";
+  const normalized = parsePhotosUrlFilter(raw);
+  return FILTER_IDS.includes(normalized) ? normalized : "all";
 }
 
 type Props = {

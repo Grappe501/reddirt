@@ -27,6 +27,7 @@ type Props = {
   counties: CountyOpt[];
   sourceNote: string;
   sinceDate?: string;
+  initialFilter?: string;
 };
 
 type Filter = "queue" | "Needs confirm" | "Confirmed" | "Exclude" | "Unknown" | "physical" | "all";
@@ -55,9 +56,28 @@ function withPlaces(row: CalendarPresenceRow, places: CalendarPresencePlace[]): 
   };
 }
 
-export function EvidenceCalendarPanel({ initialRows, counties, sourceNote, sinceDate }: Props) {
+function parseCalendarUrlFilter(raw?: string): Filter {
+  const v = decodeURIComponent(String(raw ?? "").trim());
+  if (!v) return "queue";
+  if (v === "Needs confirm" || v === "needs-confirm" || v === "needsConfirm") return "Needs confirm";
+  if (v === "Confirmed" || v === "confirmed") return "Confirmed";
+  if (v === "Exclude" || v === "exclude") return "Exclude";
+  if (v === "Unknown" || v === "unknown") return "Unknown";
+  if (v === "physical") return "physical";
+  if (v === "all") return "all";
+  if (v === "queue") return "queue";
+  return "queue";
+}
+
+export function EvidenceCalendarPanel({
+  initialRows,
+  counties,
+  sourceNote,
+  sinceDate,
+  initialFilter,
+}: Props) {
   const [rows, setRows] = useState(initialRows);
-  const [filter, setFilter] = useState<Filter>("queue");
+  const [filter, setFilter] = useState<Filter>(() => parseCalendarUrlFilter(initialFilter));
   const [message, setMessage] = useState("");
   const [pending, start] = useTransition();
   const [icsPath, setIcsPath] = useState(
@@ -71,6 +91,10 @@ export function EvidenceCalendarPanel({ initialRows, counties, sourceNote, since
   useEffect(() => {
     setRows(initialRows);
   }, [initialRows]);
+
+  useEffect(() => {
+    if (initialFilter) setFilter(parseCalendarUrlFilter(initialFilter));
+  }, [initialFilter]);
 
   const filtered = useMemo(() => {
     return rows.filter((r) => {

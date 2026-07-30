@@ -40,6 +40,7 @@ import { EVIDENCE_FIELD_CLASS } from "@/components/admin/evidence-workbench/fiel
 import { EvidenceAiModePanel } from "@/components/admin/evidence-workbench/EvidenceAiModePanel";
 import { isEditableKeyboardTarget } from "@/components/admin/evidence-workbench/keyboard";
 import type { EvidenceAiMode } from "@/lib/campaign-media/evidence-ai-modes";
+import { parseSpeechesUrlFilter } from "@/lib/campaign-media/evidence-workbench-deep-links";
 import {
   ewChipClass,
   ewPanelClass,
@@ -77,15 +78,19 @@ export type SpeechWorkbenchItem = {
 type Props = {
   speeches: SpeechWorkbenchItem[];
   initialSpeechId?: string;
+  initialFilter?: string;
 };
 
 type Filter = "all" | "noCounty" | "needsApproval" | "approved";
 
-export function EvidenceSpeechesPanel({ speeches, initialSpeechId }: Props) {
-  const startIdx = Math.max(0, initialSpeechId ? speeches.findIndex((s) => s.id === initialSpeechId) : 0);
-  const [filter, setFilter] = useState<Filter>("noCounty");
+export function EvidenceSpeechesPanel({ speeches, initialSpeechId, initialFilter }: Props) {
+  const [filter, setFilter] = useState<Filter>(() => {
+    if (initialFilter) return parseSpeechesUrlFilter(initialFilter);
+    if (initialSpeechId) return "all";
+    return "noCounty";
+  });
   const [query, setQuery] = useState("");
-  const [index, setIndex] = useState(startIdx >= 0 ? startIdx : 0);
+  const [index, setIndex] = useState(0);
   const [message, setMessage] = useState("");
   const [pending, start] = useTransition();
   const [aiMode, setAiMode] = useState<EvidenceAiMode>("identify");
@@ -143,6 +148,13 @@ export function EvidenceSpeechesPanel({ speeches, initialSpeechId }: Props) {
       );
     });
   }, [speeches, filter, query]);
+
+  useEffect(() => {
+    if (!initialSpeechId) return;
+    const idx = filtered.findIndex((s) => s.id === initialSpeechId);
+    if (idx >= 0) setIndex(idx);
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- focus id once filter/list settles
+  }, [initialSpeechId, filter, query, speeches]);
 
   const speech = filtered[Math.min(index, Math.max(0, filtered.length - 1))];
 

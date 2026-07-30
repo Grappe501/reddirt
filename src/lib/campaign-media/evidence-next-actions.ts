@@ -77,7 +77,7 @@ export function rankEvidenceNextActions(limit = 5): {
       priority: 100,
       title: `Identify ${queue.totals.unknownCounty} Unknown stills`,
       why: "Geography must be confirmed before Approve — Prefer Unknown until sure.",
-      href: "/admin/evidence-workbench?tab=queue&filter=unknown",
+      href: "/admin/evidence-workbench?tab=photos&filter=unknown",
       modeHint: "identify",
     });
   }
@@ -107,7 +107,7 @@ export function rankEvidenceNextActions(limit = 5): {
       priority: 88,
       title: `Review ${queue.totals.needsApproval} stills needing approval`,
       why: "Saved overlays waiting for Approved/Published — never silent Approve.",
-      href: "/admin/evidence-workbench?tab=queue&filter=needs-approval",
+      href: "/admin/evidence-workbench?tab=queue&filter=needsApproval",
       modeHint: "publish",
     });
   }
@@ -117,7 +117,7 @@ export function rankEvidenceNextActions(limit = 5): {
       priority: 87,
       title: `Promote ${photoReady.needsPromote} ready Pro Edit assembl(y/ies)`,
       why: "Assemblies rendered but not yet set as publicSrcOverride — confirm promote.",
-      href: "/admin/evidence-workbench?tab=photos",
+      href: "/admin/evidence-workbench?tab=photos&filter=draft",
       modeHint: "photo_prep",
     });
   }
@@ -127,7 +127,7 @@ export function rankEvidenceNextActions(limit = 5): {
       priority: 86,
       title: `Confirm counties on ${speechConfirmReady} speeches`,
       why: "Empty county blocks honest publish / homepage video placement.",
-      href: "/admin/evidence-workbench?tab=speeches",
+      href: "/admin/evidence-workbench?tab=speeches&filter=noCounty",
       modeHint: "identify",
     });
   }
@@ -137,7 +137,7 @@ export function rankEvidenceNextActions(limit = 5): {
       priority: 84,
       title: "Run event-night loop (calendar → turbo → approve → ship)",
       why: `${confirmedCal} Confirmed calendar row(s) ready to drive tonight's media path.`,
-      href: "/admin/evidence-workbench?tab=calendar",
+      href: "/admin/evidence-workbench?tab=queue",
       modeHint: "command",
     });
   }
@@ -147,7 +147,7 @@ export function rankEvidenceNextActions(limit = 5): {
       priority: 82,
       title: `Confirm ${needsConfirmCal + unknownCal} calendar presence rows`,
       why: "Confirmed calendar rows become soft priors for photo/video Identify.",
-      href: "/admin/evidence-workbench?tab=calendar",
+      href: "/admin/evidence-workbench?tab=calendar&filter=Needs%20confirm",
       modeHint: "command",
     });
   }
@@ -157,7 +157,7 @@ export function rankEvidenceNextActions(limit = 5): {
       priority: 78,
       title: `Prep ${prepReady} speeches ready for clips/intel`,
       why: "Masters/transcripts present — run video_prep without inventing spoken lines.",
-      href: "/admin/evidence-workbench?tab=speeches",
+      href: "/admin/evidence-workbench?tab=speeches&filter=needsApproval",
       modeHint: "video_prep",
     });
   }
