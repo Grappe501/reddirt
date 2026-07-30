@@ -269,6 +269,15 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
       <div className="ew-panel mt-5">
         {tab === "queue" ? (
           <>
+            <EvidenceEventNightLoopPanel
+              calendarRows={calendar.rows.map((r) => ({
+                id: r.id,
+                date: r.date,
+                summary: r.summary,
+                status: r.status,
+              }))}
+              initialNeedsApprovalIds={publishQueue.buckets.needsApproval.map((i) => i.id)}
+            />
             <EvidenceFitBacklogPanel initialBacklog={fitBacklog} />
             <EvidencePublishQueuePanel
               initialQueue={publishQueue}
@@ -289,6 +298,7 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
                 summary: r.summary,
                 status: r.status,
               }))}
+              initialNeedsApprovalIds={publishQueue.buckets.needsApproval.map((i) => i.id)}
             />
             <EvidenceCalendarPanel
               initialRows={calendar.rows}

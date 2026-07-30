@@ -99,6 +99,7 @@ const WATCH_PATHS = [
   "data/campaign-media",
   "public/media/campaign-photos",
   "public/media/campaign-derivatives",
+  "public/media/campaign-shipped",
 ] as const;
 
 function abs(rel: string): string {
@@ -118,6 +119,7 @@ function classifyPath(rel: string): ShipPathKind {
   if (n.includes("county-album-index.json")) return "album_index";
   if (n.startsWith("data/campaign-media/") && n.endsWith(".json")) return "overlay_json";
   if (n.startsWith("public/media/campaign-photos/")) return "photo_binary";
+  if (n.startsWith("public/media/campaign-shipped/")) return "photo_binary";
   if (n.startsWith("public/media/campaign-derivatives/")) return "derivative_gitignored";
   return "other";
 }
@@ -565,7 +567,7 @@ export function buildEvidenceShipReport(input?: {
   }
   if (promotedOverrideGitignored > 0) {
     warnings.push(
-      `${promotedOverrideGitignored} promoted override(s) point at gitignored campaign-derivatives — commit overlays alone will not ship those binaries.`,
+      `${promotedOverrideGitignored} promoted override(s) still point at gitignored campaign-derivatives — use Ship promoted binaries to copy into campaign-shipped/ before commit.`,
     );
   }
 
@@ -657,10 +659,13 @@ export function buildEvidenceShipReport(input?: {
     .every((c) => c.ok);
 
   const commitMessageTemplate = [
-    "Ship Evidence overlays: update campaign-media JSON for confirmed photo proof.",
+    "Ship Evidence overlays + campaign-shipped binaries for confirmed photo proof.",
     "",
     `Unknown backlog: ${queue.totals.unknownCounty} · needs approval: ${queue.totals.needsApproval} · on albums: ${queue.totals.approvedPublic}`,
     overlayJsonDirty ? `Dirty overlay paths: ${overlayJsonDirty}` : "Overlay watch paths clean.",
+    promotedOverrideGitignored
+      ? `Still pointing at gitignored derivatives: ${promotedOverrideGitignored} — run Ship promoted binaries first.`
+      : "No live overrides on gitignored derivatives.",
   ].join("\n");
 
   const nextActions: string[] = [];

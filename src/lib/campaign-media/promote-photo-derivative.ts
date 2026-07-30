@@ -51,9 +51,10 @@ function placementPreviewFor(photo: CampaignPhotoRecord): string[] {
 
 export function isAllowedPublicSrcOverride(photoId: string, src: string): boolean {
   const s = String(src ?? "").trim();
-  if (!s.startsWith(`/media/campaign-derivatives/${photoId}/`)) return false;
-  if (s.includes("..") || s.includes("//")) return false;
-  return true;
+  if (!s || s.includes("..") || s.includes("//")) return false;
+  const deriv = `/media/campaign-derivatives/${photoId}/`;
+  const shipped = `/media/campaign-shipped/${photoId}/`;
+  return s.startsWith(deriv) || s.startsWith(shipped);
 }
 
 function resolveBase(photoId: string) {

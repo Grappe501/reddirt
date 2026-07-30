@@ -2500,4 +2500,90 @@ export async function runEventNightLoopAction(input: {
   };
 }
 
+export async function shipPromotedDerivativesAction(input: {
+  confirmShip: boolean;
+  photoIds?: string[];
+  limit?: number;
+}): Promise<{
+  ok: boolean;
+  message: string;
+  shipped?: Array<{ photoId: string; from: string; to: string }>;
+  skipped?: Array<{ photoId: string; reason: string }>;
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { shipPromotedDerivatives } = await import(
+    "@/lib/campaign-media/ship-promoted-derivatives"
+  );
+  const result = shipPromotedDerivatives(input);
+  if (result.shipped.length) {
+    revalidatePath("/admin/evidence-workbench");
+    revalidatePath("/campaign-photos");
+  }
+  return result;
+}
+
+export async function runTonightPublishRitualAction(input: {
+  confirmTurbo?: boolean;
+  confirmApprove?: boolean;
+  useAi?: boolean;
+  maxPhotos?: number;
+  approvePhotoIds?: string[];
+  consentConfirmed?: boolean;
+  runTurbo?: boolean;
+}): Promise<{
+  ok: boolean;
+  message: string;
+  ritual?: import("@/lib/campaign-media/tonight-publish-ritual").TonightRitualResult;
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { runTonightPublishRitual } = await import(
+    "@/lib/campaign-media/tonight-publish-ritual"
+  );
+  const ritual = await runTonightPublishRitual(input);
+  revalidatePath("/admin/evidence-workbench");
+  revalidatePath("/campaign-photos");
+  return { ok: ritual.ok, message: ritual.message, ritual };
+}
+
+export async function runVisionIdentifyBatchAction(input: {
+  confirm: boolean;
+  photoIds?: string[];
+  useAi?: boolean;
+  maxPhotos?: number;
+}): Promise<{
+  ok: boolean;
+  message: string;
+  proposalIds?: string[];
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  if (!input.confirm) {
+    return { ok: false, message: "confirm:true required — refuse silent vision identify." };
+  }
+  const { publishQueueTurboTargetIds } = await import(
+    "@/lib/campaign-media/evidence-publish-queue"
+  );
+  const { runTurboIngest } = await import("@/lib/campaign-media/turbo-ingest");
+  const photoIds =
+    input.photoIds?.map((id) => String(id).trim()).filter(Boolean) ??
+    publishQueueTurboTargetIds(input.maxPhotos ?? 16);
+  if (!photoIds.length) {
+    return { ok: true, message: "Vision Identify: no Unknown/draft targets.", proposalIds: [] };
+  }
+  const result = await runTurboIngest({
+    photoIds,
+    useAi: input.useAi !== false,
+    maxPhotos: input.maxPhotos ?? 16,
+    intakeFirst: false,
+  });
+  revalidatePath("/admin/evidence-workbench");
+  return {
+    ok: result.ok,
+    message: `Vision Identify (clamped Prefer Unknown) · ${result.message}`,
+    proposalIds: result.proposalIds,
+  };
+}
+
 export type { CalendarPresenceStatus };

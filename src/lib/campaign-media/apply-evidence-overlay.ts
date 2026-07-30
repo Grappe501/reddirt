@@ -10,9 +10,10 @@ import type { PhotoEvidenceOverlay, SpeechEvidenceOverlay } from "@/lib/campaign
 function safePublicSrcOverride(photoId: string, override: string | undefined): string | null {
   const s = String(override ?? "").trim();
   if (!s) return null;
-  const prefix = `/media/campaign-derivatives/${photoId}/`;
-  if (!s.startsWith(prefix)) return null;
   if (s.includes("..") || s.includes("//")) return null;
+  const deriv = `/media/campaign-derivatives/${photoId}/`;
+  const shipped = `/media/campaign-shipped/${photoId}/`;
+  if (!s.startsWith(deriv) && !s.startsWith(shipped)) return null;
   return s;
 }
 

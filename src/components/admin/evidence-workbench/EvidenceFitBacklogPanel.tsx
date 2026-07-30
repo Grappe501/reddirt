@@ -2,7 +2,10 @@
 
 import { useEffect, useState, useTransition } from "react";
 import Link from "next/link";
-import { getFitRankedBacklogAction } from "@/app/admin/evidence-workbench-actions";
+import {
+  getFitRankedBacklogAction,
+  runVisionIdentifyBatchAction,
+} from "@/app/admin/evidence-workbench-actions";
 import type { FitRankedBacklog } from "@/lib/campaign-media/evidence-fit-backlog";
 
 type Props = {
@@ -27,6 +30,20 @@ export function EvidenceFitBacklogPanel({ initialBacklog }: Props) {
     });
   }
 
+  function visionIdentifyTop() {
+    const ids = backlog.rows.filter((r) => r.unknown).map((r) => r.photoId).slice(0, 16);
+    start(async () => {
+      const res = await runVisionIdentifyBatchAction({
+        confirm: true,
+        useAi: true,
+        maxPhotos: 16,
+        photoIds: ids.length ? ids : undefined,
+      });
+      setMessage(res.message);
+      refresh();
+    });
+  }
+
   return (
     <div className="mb-6 rounded-lg border-2 border-[#000066]/15 bg-white p-3 text-[#12124a]">
       <div className="flex flex-wrap items-center justify-between gap-2">
@@ -35,18 +52,28 @@ export function EvidenceFitBacklogPanel({ initialBacklog }: Props) {
             Fit-ranked backlog
           </p>
           <p className="mt-1 font-body text-[11px] text-[#364272]">
-            Website-fit scores for Unknown / draft / needs-approval. Proposals only — Confirm + Approve
-            stay manual.
+            Website-fit scores for Unknown / draft / needs-approval. Vision Identify proposes only
+            (Prefer Unknown clamp) — Apply/Save/Approve stay manual.
           </p>
         </div>
-        <button
-          type="button"
-          disabled={pending}
-          onClick={refresh}
-          className="rounded border-2 border-[#8eb6dc] bg-[#f4f7fc] px-2.5 py-1 font-body text-xs font-semibold disabled:opacity-50"
-        >
-          Refresh fit ranks
-        </button>
+        <div className="flex flex-wrap gap-2">
+          <button
+            type="button"
+            disabled={pending}
+            onClick={visionIdentifyTop}
+            className="rounded border-2 border-[#000066] bg-[#000066] px-2.5 py-1 font-body text-xs font-bold text-white disabled:opacity-50"
+          >
+            Vision Identify Unknown
+          </button>
+          <button
+            type="button"
+            disabled={pending}
+            onClick={refresh}
+            className="rounded border-2 border-[#8eb6dc] bg-[#f4f7fc] px-2.5 py-1 font-body text-xs font-semibold disabled:opacity-50"
+          >
+            Refresh fit ranks
+          </button>
+        </div>
       </div>
       {message ? <p className="mt-2 font-body text-xs text-[#364272]">{message}</p> : null}
       <div className="mt-2 max-h-64 overflow-auto">

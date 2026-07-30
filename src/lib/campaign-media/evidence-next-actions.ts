@@ -184,11 +184,11 @@ export function rankEvidenceNextActions(limit = 5): {
   if (ship.totals.promotedOverrideGitignored > 0) {
     candidates.push({
       id: "ship-promoted-gitignore",
-      priority: 68,
-      title: `${ship.totals.promotedOverrideGitignored} promoted deriv(s) are gitignored`,
-      why: "Overrides live locally only until you have a binary deploy path.",
+      priority: 93,
+      title: `Ship ${ship.totals.promotedOverrideGitignored} promoted binary(ies) to campaign-shipped`,
+      why: "Overrides still point at gitignored derivatives — copy to trackable campaign-shipped/ then commit.",
       href: "/admin/evidence-workbench?tab=ship",
-      modeHint: "photo_prep",
+      modeHint: "publish",
     });
   } else if (ship.totals.derivativeLocalOnly > 0) {
     candidates.push({

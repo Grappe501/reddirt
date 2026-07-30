@@ -9,6 +9,7 @@ import {
   runEventNightLoopAction,
   runEvidenceAiCommandAction,
   runPublishQueueTurboAction,
+  shipPromotedDerivativesAction,
 } from "@/app/admin/evidence-workbench-actions";
 import type { EvidenceCommandResult } from "@/lib/campaign-media/evidence-ai-command";
 import { ewBtnPrimaryClass } from "@/components/admin/evidence-workbench/evidenceWorkbenchChrome";
@@ -22,7 +23,7 @@ const STARTERS = [
   "Rank Unknown stills by website fit without inventing geography.",
 ];
 
-type MacroId = "next" | "event-night" | "queue-turbo-ship" | "fit-backlog" | "ship";
+type MacroId = "next" | "event-night" | "queue-turbo-ship" | "fit-backlog" | "ship" | "ship-binaries";
 
 const MACROS: Array<{ id: MacroId; label: string; hint: string }> = [
   { id: "next", label: "Macro · Next actions", hint: "Rank deterministic next clicks" },
@@ -30,6 +31,7 @@ const MACROS: Array<{ id: MacroId; label: string; hint: string }> = [
   { id: "queue-turbo-ship", label: "Macro · Queue turbo→ship", hint: "Unknown turbo then ship" },
   { id: "fit-backlog", label: "Macro · Fit backlog", hint: "Score Unknown/needs-approval" },
   { id: "ship", label: "Macro · Ship report", hint: "Refresh ship checklist" },
+  { id: "ship-binaries", label: "Macro · Ship binaries", hint: "Copy promotes → campaign-shipped" },
 ];
 
 /**
@@ -152,6 +154,32 @@ export function EvidenceAiCommandCenter() {
           toolsUsed: ["score_photo_website_fit"],
           warnings: ["Scores propose placement affinity — Prefer Unknown; confirm before Approve."],
           confidence: "medium",
+          model: "local",
+        });
+        return;
+      }
+      if (id === "ship-binaries") {
+        const res = await shipPromotedDerivativesAction({ confirmShip: true, limit: 40 });
+        const ship = await buildEvidenceShipReportAction({
+          persist: true,
+          includeDerivativeScan: true,
+        });
+        setMessage([res.message, ship.message].join(" · "));
+        setResult({
+          headline: "Ship promoted binaries",
+          plan: [
+            res.message,
+            ...(res.shipped ?? []).slice(0, 8).map((s) => `${s.photoId}: ${s.from} → ${s.to}`),
+            ship.message,
+          ],
+          nextClicks: [
+            { label: "Ship tab", href: "/admin/evidence-workbench?tab=ship" },
+            { label: "Publish Queue", href: "/admin/evidence-workbench?tab=queue" },
+          ],
+          toolsSummary: "ship_promoted_derivatives",
+          toolsUsed: ["ship_promoted_derivatives", "build_evidence_ship_report"],
+          warnings: ship.report?.warnings?.slice(0, 4) ?? [],
+          confidence: "high",
           model: "local",
         });
         return;

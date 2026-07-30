@@ -6,7 +6,9 @@ import {
   buildEvidenceShipReportAction,
   proposeEventNightPackAction,
   runEventNightLoopAction,
-  runPublishQueueTurboAction,
+  runTonightPublishRitualAction,
+  runVisionIdentifyBatchAction,
+  shipPromotedDerivativesAction,
 } from "@/app/admin/evidence-workbench-actions";
 import type { EventNightPack } from "@/lib/campaign-media/evidence-event-night-pack";
 import type { EvidenceShipReport } from "@/lib/campaign-media/evidence-ship-report";
@@ -15,21 +17,29 @@ type CalRow = { id: string; date: string; summary: string; status: string };
 
 type Props = {
   calendarRows: CalRow[];
+  initialNeedsApprovalIds?: string[];
 };
 
 /**
- * One-operator loop: calendar pack → turbo identify (confirm) → ship checklist.
- * Never silent Approve.
+ * Tonight ritual: calendar → vision/turbo identify → confirm Approve → ship binaries → commit template.
+ * Never silent Approve. Prefer Unknown.
  */
-export function EvidenceEventNightLoopPanel({ calendarRows }: Props) {
+export function EvidenceEventNightLoopPanel({
+  calendarRows,
+  initialNeedsApprovalIds = [],
+}: Props) {
   const confirmed = useMemo(
     () => calendarRows.filter((r) => r.status === "Confirmed"),
     [calendarRows],
   );
   const [rowId, setRowId] = useState(confirmed[0]?.id ?? calendarRows[0]?.id ?? "");
   const [useAi, setUseAi] = useState(true);
+  const [consentConfirmed, setConsentConfirmed] = useState(false);
   const [pack, setPack] = useState<EventNightPack | null>(null);
   const [ship, setShip] = useState<EvidenceShipReport | null>(null);
+  const [needsApprovalIds, setNeedsApprovalIds] = useState(initialNeedsApprovalIds);
+  const [commitTemplate, setCommitTemplate] = useState("");
+  const [promotedNeeding, setPromotedNeeding] = useState(0);
   const [message, setMessage] = useState("");
   const [pending, start] = useTransition();
 
@@ -59,30 +69,112 @@ export function EvidenceEventNightLoopPanel({ calendarRows }: Props) {
       });
       setMessage(res.message);
       if (res.pack) setPack(res.pack);
-      if (res.ship) setShip(res.ship);
+      if (res.ship) {
+        setShip(res.ship);
+        setCommitTemplate(res.ship.commitMessageTemplate);
+      }
     });
   }
 
-  function turboQueueThenShip() {
+  function visionIdentify() {
     start(async () => {
-      const turbo = await runPublishQueueTurboAction({ confirm: true, useAi, maxPhotos: 24 });
+      const res = await runVisionIdentifyBatchAction({
+        confirm: true,
+        useAi,
+        maxPhotos: 16,
+        photoIds: pack?.photos.map((p) => p.id),
+      });
+      setMessage(res.message);
+    });
+  }
+
+  function tonightApproveAndShip() {
+    if (
+      !window.confirm(
+        `Batch Approve ${needsApprovalIds.length || "current"} needs-approval still(s)? Unknown counties stay skipped. Never silent.`,
+      )
+    ) {
+      return;
+    }
+    start(async () => {
+      const res = await runTonightPublishRitualAction({
+        confirmApprove: true,
+        approvePhotoIds: needsApprovalIds.length ? needsApprovalIds : undefined,
+        consentConfirmed,
+        runTurbo: false,
+      });
+      setMessage(res.message);
+      if (res.ritual) {
+        setShip(res.ritual.ship);
+        setNeedsApprovalIds(res.ritual.needsApprovalIds);
+        setCommitTemplate(res.ritual.commitMessageTemplate);
+        setPromotedNeeding(res.ritual.promotedNeedingShip.length);
+      }
+    });
+  }
+
+  function shipBinaries() {
+    if (
+      !window.confirm(
+        "Copy promoted gitignored derivatives into public/media/campaign-shipped/ and rewrite overlays? Then commit those files to deploy.",
+      )
+    ) {
+      return;
+    }
+    start(async () => {
+      const res = await shipPromotedDerivativesAction({ confirmShip: true, limit: 40 });
+      setMessage(res.message);
       const shipRes = await buildEvidenceShipReportAction({
         persist: true,
         includeDerivativeScan: true,
       });
-      setMessage([turbo.message, shipRes.message].join(" · "));
-      if (shipRes.report) setShip(shipRes.report);
+      if (shipRes.report) {
+        setShip(shipRes.report);
+        setCommitTemplate(shipRes.report.commitMessageTemplate);
+        setPromotedNeeding(shipRes.report.totals.promotedOverrideGitignored);
+      }
+    });
+  }
+
+  function refreshShip() {
+    start(async () => {
+      const shipRes = await buildEvidenceShipReportAction({
+        persist: true,
+        includeDerivativeScan: true,
+      });
+      setMessage(shipRes.message);
+      if (shipRes.report) {
+        setShip(shipRes.report);
+        setCommitTemplate(shipRes.report.commitMessageTemplate);
+        setPromotedNeeding(shipRes.report.totals.promotedOverrideGitignored);
+      }
+    });
+  }
+
+  function copyCommit() {
+    const text = commitTemplate || ship?.commitMessageTemplate || "";
+    if (!text) {
+      setMessage("No commit template yet — refresh ship.");
+      return;
+    }
+    start(async () => {
+      try {
+        await navigator.clipboard.writeText(text);
+        setMessage("Copied ship commit template.");
+      } catch {
+        setMessage("Clipboard blocked — select the template manually.");
+      }
     });
   }
 
   return (
     <div className="mb-6 space-y-3 rounded-lg border-2 border-[#ca913d]/50 bg-[#fff8ef] p-4 text-[#12124a]">
       <p className="font-heading text-sm font-bold uppercase tracking-wide text-[#000066]">
-        Event-night loop
+        Tonight ritual
       </p>
       <p className="font-body text-xs text-[#364272]">
-        Calendar → pack cues → turbo Identify proposals → Ship checklist. Operator still Saves /
-        Approves. Prefer Unknown.
+        Calendar → Vision Identify proposals → Apply/Save on Photos → Confirm Approve → Ship
+        binaries → commit. Prefer Unknown. Never silent Approve.
       </p>
 
       <div className="flex flex-wrap items-end gap-2">
@@ -102,12 +194,16 @@ export function EvidenceEventNightLoopPanel({ calendarRows }: Props) {
           </select>
         </label>
         <label className="inline-flex items-center gap-2 font-body text-xs text-[#12124a]">
+          <input type="checkbox" checked={useAi} onChange={(e) => setUseAi(e.target.checked)} />
+          Use AI / vision
+        </label>
+        <label className="inline-flex items-center gap-2 font-body text-xs text-[#12124a]">
           <input
             type="checkbox"
-            checked={useAi}
-            onChange={(e) => setUseAi(e.target.checked)}
+            checked={consentConfirmed}
+            onChange={(e) => setConsentConfirmed(e.target.checked)}
           />
-          Use AI on turbo
+          Consent confirmed for holds
         </label>
       </div>
 
@@ -124,30 +220,57 @@ export function EvidenceEventNightLoopPanel({ calendarRows }: Props) {
           type="button"
           disabled={pending || !rowId}
           onClick={runFullLoop}
-          className="rounded-md bg-[#000066] px-3 py-2 font-body text-xs font-bold text-white disabled:opacity-50"
+          className="rounded-md border-2 border-[#000066] bg-white px-3 py-2 font-body text-xs font-bold text-[#000066] disabled:opacity-50"
         >
-          2 · Pack + turbo (confirm) + ship
+          2 · Pack + turbo
         </button>
         <button
           type="button"
           disabled={pending}
-          onClick={turboQueueThenShip}
+          onClick={visionIdentify}
           className="rounded-md border-2 border-[#8eb6dc] bg-white px-3 py-2 font-body text-xs font-semibold text-[#000066] disabled:opacity-50"
         >
-          Queue turbo → ship
+          2b · Vision Identify (clamp)
         </button>
         <Link
-          href="/admin/evidence-workbench?tab=queue"
+          href="/admin/evidence-workbench?tab=photos&filter=draft"
           className="rounded-md border-2 border-[#ca913d] bg-white px-3 py-2 font-body text-xs font-bold text-[#12124a]"
         >
-          3 · Approve on Publish Queue
+          3 · Apply / Save on Photos
         </Link>
-        <Link
-          href="/admin/evidence-workbench?tab=ship"
-          className="rounded-md border-2 border-[#ca913d] bg-white px-3 py-2 font-body text-xs font-bold text-[#12124a]"
+        <button
+          type="button"
+          disabled={pending}
+          onClick={tonightApproveAndShip}
+          className="rounded-md bg-[#000066] px-3 py-2 font-body text-xs font-bold text-white disabled:opacity-50"
         >
-          4 · Ship
-        </Link>
+          4 · Confirm Approve ({needsApprovalIds.length})
+        </button>
+        <button
+          type="button"
+          disabled={pending}
+          onClick={shipBinaries}
+          className="rounded-md border-2 border-[#ca913d] bg-[#000066] px-3 py-2 font-body text-xs font-bold text-white disabled:opacity-50"
+        >
+          5 · Ship promoted binaries
+          {promotedNeeding ? ` (${promotedNeeding})` : ""}
+        </button>
+        <button
+          type="button"
+          disabled={pending}
+          onClick={refreshShip}
+          className="rounded-md border-2 border-[#8eb6dc] bg-[#f4f7fc] px-3 py-2 font-body text-xs font-semibold disabled:opacity-50"
+        >
+          Refresh ship
+        </button>
+        <button
+          type="button"
+          disabled={pending}
+          onClick={copyCommit}
+          className="rounded-md border-2 border-[#8eb6dc] bg-white px-3 py-2 font-body text-xs font-semibold disabled:opacity-50"
+        >
+          Copy commit template
+        </button>
       </div>
 
       {message ? <p className="font-body text-xs text-[#364272]">{message}</p> : null}
@@ -165,29 +288,42 @@ export function EvidenceEventNightLoopPanel({ calendarRows }: Props) {
               ))}
             </ul>
           ) : null}
-          <ul className="mt-2 flex flex-wrap gap-2">
-            {pack.recommendedClicks.map((c) => (
-              <li key={`${c.label}-${c.href}`}>
-                <Link href={c.href} className="underline text-[#000066]">
-                  {c.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
         </div>
       ) : null}
 
       {ship ? (
         <div className="rounded border border-[#000066]/15 bg-white p-3 font-body text-xs">
           <p className="font-heading text-xs font-bold text-[#000066]">
-            Ship snapshot · overlays dirty {ship.totals.overlayJsonDirty} · promoted missing{" "}
-            {ship.totals.promotedOverrideMissing} · ready={String(ship.checklistReady)}
+            Ship · overlays dirty {ship.totals.overlayJsonDirty} · photo binaries dirty{" "}
+            {ship.totals.photoBinaryDirty} · promoted missing {ship.totals.promotedOverrideMissing}{" "}
+            · gitignored overrides {ship.totals.promotedOverrideGitignored} · ready=
+            {String(ship.checklistReady)}
           </p>
           <ul className="mt-1 list-disc pl-4 text-[#364272]">
-            {ship.nextActions.slice(0, 4).map((a) => (
+            {ship.nextActions.slice(0, 5).map((a) => (
               <li key={a}>{a}</li>
             ))}
           </ul>
+          {ship.dirtyPaths.length ? (
+            <ul className="mt-2 max-h-28 overflow-auto font-mono text-[10px] text-[#364272]">
+              {ship.dirtyPaths.slice(0, 20).map((d) => (
+                <li key={d.path}>
+                  {d.status} · {d.kind} · {d.path}
+                </li>
+              ))}
+            </ul>
+          ) : null}
+        </div>
+      ) : null}
+
+      {commitTemplate ? (
+        <div className="rounded border border-[#000066]/15 bg-white p-3">
+          <p className="font-heading text-xs font-bold uppercase text-[#000066]">
+            Commit message template
+          </p>
+          <pre className="mt-2 max-h-36 overflow-auto whitespace-pre-wrap rounded border border-[#8eb6dc]/40 bg-[#f4f7fc] p-2 font-mono text-[10px]">
+            {commitTemplate}
+          </pre>
         </div>
       ) : null}
     </div>

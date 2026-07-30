@@ -4,6 +4,7 @@ import { useEffect, useState, useTransition } from "react";
 import Link from "next/link";
 import {
   buildEvidenceShipReportAction,
+  shipPromotedDerivativesAction,
   writeRegistryGraduationStubAction,
 } from "@/app/admin/evidence-workbench-actions";
 import type { EvidenceShipReport } from "@/lib/campaign-media/evidence-ship-report";
@@ -53,6 +54,21 @@ export function EvidenceShipPanel({ initialReport }: Props) {
     });
   }
 
+  function shipPromoted() {
+    if (
+      !window.confirm(
+        "Copy promoted derivatives into public/media/campaign-shipped/ (trackable) and rewrite overlays? Then commit those files.",
+      )
+    ) {
+      return;
+    }
+    start(async () => {
+      const res = await shipPromotedDerivativesAction({ confirmShip: true, limit: 40 });
+      setMessage(res.message);
+      refresh(true);
+    });
+  }
+
   function copyPrBody() {
     const text = prBody || report.graduationPrBody || "";
     if (!text) {
@@ -79,8 +95,10 @@ export function EvidenceShipPanel({ initialReport }: Props) {
         </p>
         <p className="mt-1 font-body text-xs text-[#364272]">
           Approve writes JSON on this machine. Netlify only sees what you{" "}
-          <strong>commit and push</strong>. Derivatives under{" "}
-          <code className="rounded bg-[#f4f7fc] px-1">campaign-derivatives/**</code> are gitignored.
+          <strong>commit and push</strong>. Keep Pro Edit workspace under{" "}
+          <code className="rounded bg-[#f4f7fc] px-1">campaign-derivatives/**</code> (gitignored). Copy
+          live promotes into{" "}
+          <code className="rounded bg-[#f4f7fc] px-1">campaign-shipped/**</code> to deploy.
         </p>
         <p className="mt-2 font-body text-[11px] text-[#364272]">
           Branch: {report.branch ?? "—"} · {report.gitNote}
@@ -137,6 +155,14 @@ export function EvidenceShipPanel({ initialReport }: Props) {
           className="rounded border-2 border-[#000066] bg-[#000066] px-2.5 py-1 font-body text-xs font-bold text-white disabled:opacity-50"
         >
           Refresh ship report
+        </button>
+        <button
+          type="button"
+          disabled={pending}
+          onClick={shipPromoted}
+          className="rounded border-2 border-[#ca913d] bg-[#000066] px-2.5 py-1 font-body text-xs font-bold text-white disabled:opacity-50"
+        >
+          Ship promoted binaries ({t.promotedOverrideGitignored})
         </button>
         <button
           type="button"

@@ -49,8 +49,10 @@ export async function suggestPhotoEvidenceWithAi(input: {
   const userText = `Suggest evidence fields for this campaign PHOTO using tools when helpful (mode=${mode}).
 Call lookup_arkansas_county before asserting a county.
 Call search_calendar_presence / search_confirmed_memory / find_similar_campaign_photos when cues exist.
+Vision: use the attached image for scene cues only — do not invent a county from vibes.
+If confidence is not high OR geo tools did not confirm, keep county/city/venue as Unknown.
 Stay inside the active mode tool subset. Prefer Unknown geography.
-Do not invent geography.
+Do not invent geography. Never Approve / publish.
 
 Registry baseline (may be Unknown):
 id=${input.photo.id}
@@ -78,20 +80,26 @@ ${memory}`;
   if (!result.ok) return result;
 
   const suggestion = result.suggestion;
+  const { clampVisionIdentifySuggestion } = await import(
+    "@/lib/campaign-media/vision-identify-clamp"
+  );
+  const clamped = clampVisionIdentifySuggestion(suggestion, {
+    imageAttached: Boolean(imageDataUrl),
+    toolsUsed: result.toolsUsed,
+  });
   if (!imageDataUrl) {
-    suggestion.warnings = [
-      ...suggestion.warnings,
+    clamped.warnings = [
+      ...clamped.warnings,
       "Local image bytes unavailable — geography should stay Unknown unless text/tools already confirm it.",
     ];
-    if (suggestion.confidence === "high") suggestion.confidence = "medium";
   }
   if (result.toolsUsed.length) {
-    suggestion.warnings = [
-      ...suggestion.warnings,
+    clamped.warnings = [
+      ...clamped.warnings,
       `Tools used: ${result.toolsUsed.join(", ")}`,
     ];
   }
-  return { ok: true, suggestion, mode: result.mode, toolCount: result.toolCount };
+  return { ok: true, suggestion: clamped, mode: result.mode, toolCount: result.toolCount };
 }
 
 export async function suggestSpeechEvidenceWithAi(input: {
