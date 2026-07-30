@@ -69,4 +69,4 @@ AI path: `propose_photo_edit_project` → operator asks to render → `render_ph
 
 | Pass | Commit | Note |
 | --- | ---: | --- |
-| Photo Pro Edit | _(this pass)_ | Director + confirm render + Photos UI |
+| Photo Pro Edit | `b628432d` | Director + confirm render + Photos UI |
