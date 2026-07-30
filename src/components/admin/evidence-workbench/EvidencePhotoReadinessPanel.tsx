@@ -163,7 +163,7 @@ export function EvidencePhotoReadinessPanel({ initialMatrix }: Props) {
                   </td>
                   <td className="py-1 pr-2">
                     <Link
-                      href={`/admin/evidence-workbench?tab=photos&id=${encodeURIComponent(r.photoId)}`}
+                      href={`/admin/evidence-workbench?tab=edit&id=${encodeURIComponent(r.photoId)}`}
                       className="font-mono text-[#000066] underline"
                     >
                       {r.photoId}

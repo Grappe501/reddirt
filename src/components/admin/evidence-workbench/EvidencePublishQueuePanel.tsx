@@ -395,25 +395,25 @@ export function EvidencePublishQueuePanel({
           Refresh queue
         </button>
         <Link
-          href="/admin/evidence-workbench?tab=photos&filter=unknown"
+          href="/admin/evidence-workbench?tab=identify&filter=unknown"
           className="rounded border-2 border-[#8eb6dc] bg-white px-2.5 py-1 font-body text-xs font-semibold text-[#12124a]"
         >
-          Open Unknown on Photos
+          Open Unknown on Identify
         </Link>
         <Link
-          href="/admin/evidence-workbench?tab=photos&filter=needsApproval"
+          href="/admin/evidence-workbench?tab=county&filter=needsApproval"
           className="rounded border-2 border-[#8eb6dc] bg-white px-2.5 py-1 font-body text-xs font-semibold text-[#12124a]"
         >
-          Open needs approval
+          Open needs approval on County
         </Link>
         <Link
-          href="/admin/evidence-workbench?tab=speeches"
+          href="/admin/evidence-workbench?tab=identify"
           className="rounded border-2 border-[#8eb6dc] bg-white px-2.5 py-1 font-body text-xs font-semibold text-[#12124a]"
         >
           Videos / speech confirm
         </Link>
         <Link
-          href="/admin/evidence-workbench?tab=ship"
+          href="/admin/evidence-workbench?tab=publish"
           className="rounded border-2 border-[#8eb6dc] bg-white px-2.5 py-1 font-body text-xs font-semibold text-[#12124a]"
         >
           Ship checklist
@@ -513,7 +513,7 @@ export function EvidencePublishQueuePanel({
                   {items.map((i) => (
                     <li key={i.id}>
                       <Link
-                        href={`/admin/evidence-workbench?tab=speeches&id=${encodeURIComponent(i.id)}`}
+                        href={`/admin/evidence-workbench?tab=identify&id=${encodeURIComponent(i.id)}`}
                         className="underline"
                       >
                         {i.id}
@@ -561,7 +561,7 @@ export function EvidencePublishQueuePanel({
                 </p>
                 {b.filter ? (
                   <Link
-                    href={`/admin/evidence-workbench?tab=photos&filter=${b.filter}`}
+                    href={`/admin/evidence-workbench?tab=identify&filter=${b.filter}`}
                     className="font-body text-[11px] font-semibold text-[#000066] underline"
                   >
                     Open filter
@@ -574,7 +574,7 @@ export function EvidencePublishQueuePanel({
                   {items.map((item) => (
                     <li key={item.id}>
                       <Link
-                        href={`/admin/evidence-workbench?tab=photos&id=${encodeURIComponent(item.id)}`}
+                        href={`/admin/evidence-workbench?tab=identify&id=${encodeURIComponent(item.id)}`}
                         className="block rounded border border-[#8eb6dc]/30 bg-[#f4f7fc] px-2 py-1 hover:border-[#000066]/40"
                       >
                         <p className="truncate font-mono text-[10px] text-[#000066]">{item.id}</p>

@@ -79,7 +79,7 @@ export function EvidenceToolingBanner({ initial }: Props) {
             Re-probe
           </button>
           <Link
-            href="/admin/evidence-workbench?tab=speeches"
+            href="/admin/evidence-workbench?tab=identify"
             className="rounded-md border-2 border-kelly-navy/20 bg-kelly-fog px-3 py-1.5 font-body text-xs font-semibold text-kelly-navy"
           >
             Videos tab

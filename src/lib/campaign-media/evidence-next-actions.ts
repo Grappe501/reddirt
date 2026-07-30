@@ -66,7 +66,7 @@ export function rankEvidenceNextActions(limit = 5): {
       priority: 108,
       title: "Install local ffmpeg for video tooling",
       why: tooling.ffmpeg.note || tooling.ffmpeg.installHint,
-      href: "/admin/evidence-workbench?tab=speeches",
+      href: "/admin/evidence-workbench?tab=edit",
       modeHint: "video_prep",
     });
   }
@@ -77,7 +77,7 @@ export function rankEvidenceNextActions(limit = 5): {
       priority: 100,
       title: `Identify ${queue.totals.unknownCounty} Unknown stills`,
       why: "Geography must be confirmed before Approve — Prefer Unknown until sure.",
-      href: "/admin/evidence-workbench?tab=photos&filter=unknown",
+      href: "/admin/evidence-workbench?tab=identify&filter=unknown",
       modeHint: "identify",
     });
   }
@@ -97,7 +97,7 @@ export function rankEvidenceNextActions(limit = 5): {
       priority: 94,
       title: `Fix ${ship.totals.promotedOverrideMissing} missing promoted file(s)`,
       why: "publicSrcOverride points at files not on disk — public pages will 404.",
-      href: "/admin/evidence-workbench?tab=ship",
+      href: "/admin/evidence-workbench?tab=publish",
       modeHint: "publish",
     });
   }
@@ -107,7 +107,7 @@ export function rankEvidenceNextActions(limit = 5): {
       priority: 88,
       title: `Review ${queue.totals.needsApproval} stills needing approval`,
       why: "Saved overlays waiting for Approved/Published — never silent Approve.",
-      href: "/admin/evidence-workbench?tab=queue&filter=needsApproval",
+      href: "/admin/evidence-workbench?tab=county&filter=needsApproval",
       modeHint: "publish",
     });
   }
@@ -117,7 +117,7 @@ export function rankEvidenceNextActions(limit = 5): {
       priority: 87,
       title: `Promote ${photoReady.needsPromote} ready Pro Edit assembl(y/ies)`,
       why: "Assemblies rendered but not yet set as publicSrcOverride — confirm promote.",
-      href: "/admin/evidence-workbench?tab=photos&filter=needsPromote",
+      href: "/admin/evidence-workbench?tab=edit&filter=needsPromote",
       modeHint: "photo_prep",
     });
   }
@@ -127,7 +127,7 @@ export function rankEvidenceNextActions(limit = 5): {
       priority: 86,
       title: `Confirm counties on ${speechConfirmReady} speeches`,
       why: "Empty county blocks honest publish / homepage video placement.",
-      href: "/admin/evidence-workbench?tab=speeches&filter=noCounty",
+      href: "/admin/evidence-workbench?tab=identify&filter=noCounty",
       modeHint: "identify",
     });
   }
@@ -137,7 +137,7 @@ export function rankEvidenceNextActions(limit = 5): {
       priority: 84,
       title: "Run event-night loop (calendar → turbo → approve → ship)",
       why: `${confirmedCal} Confirmed calendar row(s) ready to drive tonight's media path.`,
-      href: "/admin/evidence-workbench?tab=queue",
+      href: "/admin/evidence-workbench?tab=county",
       modeHint: "command",
     });
   }
@@ -157,7 +157,7 @@ export function rankEvidenceNextActions(limit = 5): {
       priority: 78,
       title: `Prep ${prepReady} speeches ready for clips/intel`,
       why: "Masters/transcripts present — run video_prep without inventing spoken lines.",
-      href: "/admin/evidence-workbench?tab=speeches&filter=needsApproval",
+      href: "/admin/evidence-workbench?tab=edit&filter=needsApproval",
       modeHint: "video_prep",
     });
   }
@@ -167,7 +167,7 @@ export function rankEvidenceNextActions(limit = 5): {
       priority: 72,
       title: `Review ${pendingCurate} curated placement proposal(s)`,
       why: "HOMEPAGE_* diffs waiting — apply only with confirmCurate.",
-      href: "/admin/evidence-workbench?tab=placement",
+      href: "/admin/evidence-workbench?tab=publish",
       modeHint: "fit",
     });
   }
@@ -177,7 +177,7 @@ export function rankEvidenceNextActions(limit = 5): {
       priority: 70,
       title: `Ship ${ship.totals.overlayJsonDirty} dirty overlay path(s)`,
       why: "Local confirmation not yet committed — public site won’t see overlays.",
-      href: "/admin/evidence-workbench?tab=ship",
+      href: "/admin/evidence-workbench?tab=publish",
       modeHint: "publish",
     });
   }
@@ -187,7 +187,7 @@ export function rankEvidenceNextActions(limit = 5): {
       priority: 93,
       title: `Ship ${ship.totals.promotedOverrideGitignored} promoted binary(ies) to campaign-shipped`,
       why: "Overrides still point at gitignored derivatives — copy to trackable campaign-shipped/ then commit.",
-      href: "/admin/evidence-workbench?tab=ship",
+      href: "/admin/evidence-workbench?tab=publish",
       modeHint: "publish",
     });
   } else if (ship.totals.derivativeLocalOnly > 0) {
@@ -196,7 +196,7 @@ export function rankEvidenceNextActions(limit = 5): {
       priority: 55,
       title: `${ship.totals.derivativeLocalOnly} derivative(s) local-only`,
       why: "Derivatives under .local / gitignored — decide promote vs leave local.",
-      href: "/admin/evidence-workbench?tab=ship",
+      href: "/admin/evidence-workbench?tab=publish",
       modeHint: "photo_prep",
     });
   }
@@ -206,7 +206,7 @@ export function rankEvidenceNextActions(limit = 5): {
       priority: 10,
       title: "Workbench steady — ask Command anything",
       why: "Queues look calm. Use Command for event-night packs, fit scores, or ship reports.",
-      href: "/admin/evidence-workbench?tab=queue",
+      href: "/admin/evidence-workbench?tab=identify",
       modeHint: "command",
     });
   }

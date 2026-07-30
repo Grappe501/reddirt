@@ -245,7 +245,7 @@ export function EvidenceSpeechConfirmPanel({
             Clear selection
           </button>
           <Link
-            href="/admin/evidence-workbench?tab=queue"
+            href="/admin/evidence-workbench?tab=county"
             className="rounded border-2 border-[#8eb6dc] bg-white px-2.5 py-1 font-body text-xs font-semibold"
           >
             Publish Queue
@@ -386,7 +386,7 @@ export function EvidenceSpeechConfirmPanel({
                       </td>
                       <td className="py-1 pr-2">
                         <Link
-                          href={`/admin/evidence-workbench?tab=speeches&id=${encodeURIComponent(r.id)}`}
+                          href={`/admin/evidence-workbench?tab=identify&id=${encodeURIComponent(r.id)}`}
                           className="font-mono text-[#000066] underline"
                         >
                           {r.id}

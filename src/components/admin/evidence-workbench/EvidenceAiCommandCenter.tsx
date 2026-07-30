@@ -100,9 +100,9 @@ export function EvidenceAiCommandCenter() {
             "Open Publish Queue Tonight ritual to Approve — never silent.",
           ],
           nextClicks: [
-            { label: "Tonight ritual / Queue", href: "/admin/evidence-workbench?tab=queue" },
-            { label: "Ship", href: "/admin/evidence-workbench?tab=ship" },
-            { label: "Photos Unknown", href: "/admin/evidence-workbench?tab=photos&filter=unknown" },
+            { label: "Tonight ritual / Queue", href: "/admin/evidence-workbench?tab=county" },
+            { label: "Ship", href: "/admin/evidence-workbench?tab=publish" },
+            { label: "Photos Unknown", href: "/admin/evidence-workbench?tab=identify&filter=unknown" },
           ],
           toolsSummary: "run_event_night_loop",
           toolsUsed: ["propose_event_night_pack", "turbo_ingest_photos", "build_evidence_ship_report"],
@@ -127,12 +127,12 @@ export function EvidenceAiCommandCenter() {
             "Review Apply → Save → Batch Approve on Publish Queue.",
           ],
           nextClicks: [
-            { label: "Unknown on Photos", href: "/admin/evidence-workbench?tab=photos&filter=unknown" },
+            { label: "Unknown on Photos", href: "/admin/evidence-workbench?tab=identify&filter=unknown" },
             {
               label: "Needs approval on Queue",
-              href: "/admin/evidence-workbench?tab=queue&filter=needsApproval",
+              href: "/admin/evidence-workbench?tab=county&filter=needsApproval",
             },
-            { label: "Ship", href: "/admin/evidence-workbench?tab=ship" },
+            { label: "Ship", href: "/admin/evidence-workbench?tab=publish" },
           ],
           toolsSummary: "run_publish_queue_turbo + build_evidence_ship_report",
           toolsUsed: ["run_publish_queue_turbo", "build_evidence_ship_report"],
@@ -180,8 +180,8 @@ export function EvidenceAiCommandCenter() {
             ship.message,
           ],
           nextClicks: [
-            { label: "Ship tab", href: "/admin/evidence-workbench?tab=ship" },
-            { label: "Publish Queue", href: "/admin/evidence-workbench?tab=queue" },
+            { label: "Ship tab", href: "/admin/evidence-workbench?tab=publish" },
+            { label: "Publish Queue", href: "/admin/evidence-workbench?tab=county" },
           ],
           toolsSummary: "ship_promoted_derivatives",
           toolsUsed: ["ship_promoted_derivatives", "build_evidence_ship_report"],
@@ -199,7 +199,7 @@ export function EvidenceAiCommandCenter() {
       setResult({
         headline: "Ship report",
         plan: ship.report?.nextActions ?? [ship.message],
-        nextClicks: [{ label: "Open Ship tab", href: "/admin/evidence-workbench?tab=ship" }],
+        nextClicks: [{ label: "Open Ship tab", href: "/admin/evidence-workbench?tab=publish" }],
         toolsSummary: "build_evidence_ship_report",
         toolsUsed: ["build_evidence_ship_report"],
         warnings: ship.report?.warnings?.slice(0, 4) ?? [],

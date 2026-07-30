@@ -46,6 +46,7 @@ import type {
 } from "@/lib/campaign-media/photo-edit-types";
 import type { PhotoExportSlot, PhotoLookPreset } from "@/lib/campaign-media/photo-look-presets";
 import { EVIDENCE_FIELD_CLASS } from "@/components/admin/evidence-workbench/field-styles";
+import { EvidenceRouteGate } from "@/components/admin/evidence-workbench/EvidenceRouteGate";
 import {
   ewChipClass,
   ewPanelClass,
@@ -181,6 +182,13 @@ type Props = {
     needsPromote: number;
     approved: number;
   };
+  /**
+   * Phase 1 desk mode:
+   * - identify: metadata + AI only; Route gate after Save; no Pro Edit
+   * - edit: Pro Edit / promote focus
+   * - full: legacy combined desk
+   */
+  deskMode?: "identify" | "edit" | "full";
 };
 
 type PhotoFormState = {
@@ -248,6 +256,7 @@ export function EvidencePhotosPanel({
   initialFilter,
   needsPromoteIds = [],
   stageCounts,
+  deskMode = "full",
 }: Props) {
   const [filter, setFilter] = useState<Filter>(() => parseFilter(initialFilter));
   const promoteSet = useMemo(() => new Set(needsPromoteIds), [needsPromoteIds]);
@@ -259,6 +268,7 @@ export function EvidencePhotosPanel({
   const [pending, start] = useTransition();
   const [aiMode, setAiMode] = useState<EvidenceAiMode>("identify");
   const [dirty, setDirty] = useState(false);
+  const [routeGateOpen, setRouteGateOpen] = useState(false);
   const [derivatives, setDerivatives] = useState<PhotoDerivativeRecord[]>([]);
   const [editProject, setEditProject] = useState<PhotoEditProject | null>(null);
   const [assemblies, setAssemblies] = useState<PhotoAssemblyRecord[]>([]);
@@ -346,6 +356,7 @@ export function EvidencePhotosPanel({
     setForm(buildForm(item));
     setDirty(false);
     setMessage("");
+    setRouteGateOpen(false);
     setPromotePreview([]);
     setCropAdvice(item.overlay?.cropAdviceNote ?? "");
     setFocusMarker(null);
@@ -523,7 +534,10 @@ export function EvidencePhotosPanel({
       fd.set("publicationStatus", snapshot.publicationStatus);
       const res = await savePhotoEvidenceAction(null, fd);
       setMessage(res.message);
-      if (res.ok) setDirty(false);
+      if (res.ok) {
+        setDirty(false);
+        if (deskMode === "identify") setRouteGateOpen(true);
+      }
     });
   }
 
@@ -1335,50 +1349,126 @@ export function EvidencePhotosPanel({
     });
   }
 
-  const STAGE_STRIP: Array<{ id: Filter; label: string; count?: number; hint: string }> = [
-    { id: "draft", label: "Intake", count: stageCounts?.intake, hint: "Draft / in-review queue" },
-    { id: "unknown", label: "Unknown", count: stageCounts?.unknown, hint: "Prefer Unknown until sure" },
-    {
-      id: "needsApproval",
-      label: "Needs Approve",
-      count: stageCounts?.needsApproval,
-      hint: "Geo saved — Confirm Approve separately",
-    },
-    {
-      id: "needsPromote",
-      label: "Needs Promote",
-      count: stageCounts?.needsPromote,
-      hint: "Pro Edit assemblies waiting for publicSrcOverride",
-    },
-    {
-      id: "approved",
-      label: "Albums / shipped",
-      count: stageCounts?.approved,
-      hint: "Album-eligible — binaries still need Ship tab when gitignored",
-    },
-  ];
+  const STAGE_STRIP: Array<{ id: Filter; label: string; count?: number; hint: string }> =
+    deskMode === "identify"
+      ? [
+          {
+            id: "draft",
+            label: "Intake",
+            count: stageCounts?.intake,
+            hint: "Draft / in-review — identify next",
+          },
+          {
+            id: "unknown",
+            label: "Unknown",
+            count: stageCounts?.unknown,
+            hint: "Prefer Unknown until sure",
+          },
+          {
+            id: "needsApproval",
+            label: "Ready to route",
+            count: stageCounts?.needsApproval,
+            hint: "Geo saved — Route to County or Edit",
+          },
+        ]
+      : deskMode === "edit"
+        ? [
+            {
+              id: "needsPromote",
+              label: "Needs Promote",
+              count: stageCounts?.needsPromote,
+              hint: "Pro Edit assemblies waiting for publicSrcOverride",
+            },
+            {
+              id: "approved",
+              label: "Albums / shipped",
+              count: stageCounts?.approved,
+              hint: "Album-eligible — Ship on Publish desk",
+            },
+            { id: "homepage", label: "Homepage", count: undefined, hint: "Homepage candidates" },
+            { id: "all", label: "All", count: undefined, hint: "All photos for edit" },
+          ]
+        : [
+            {
+              id: "draft",
+              label: "Intake",
+              count: stageCounts?.intake,
+              hint: "Draft / in-review queue",
+            },
+            {
+              id: "unknown",
+              label: "Unknown",
+              count: stageCounts?.unknown,
+              hint: "Prefer Unknown until sure",
+            },
+            {
+              id: "needsApproval",
+              label: "Needs Approve",
+              count: stageCounts?.needsApproval,
+              hint: "Geo saved — Confirm Approve separately",
+            },
+            {
+              id: "needsPromote",
+              label: "Needs Promote",
+              count: stageCounts?.needsPromote,
+              hint: "Pro Edit assemblies waiting for publicSrcOverride",
+            },
+            {
+              id: "approved",
+              label: "Albums / shipped",
+              count: stageCounts?.approved,
+              hint: "Album-eligible — binaries still need Ship when gitignored",
+            },
+          ];
 
-  const FILTERS: { id: Filter; label: string }[] = [
-    { id: "all", label: "All" },
-    { id: "homepage", label: "Homepage" },
-  ];
+  const FILTERS: { id: Filter; label: string }[] =
+    deskMode === "full"
+      ? [
+          { id: "all", label: "All" },
+          { id: "homepage", label: "Homepage" },
+        ]
+      : deskMode === "identify"
+        ? [{ id: "all", label: "All" }]
+        : [];
 
   const imageSrc = `${photo.src}${photo.src.includes("?") ? "&" : "?"}wb=${encodeURIComponent(photo.id)}`;
 
+  const allowProEdit = deskMode !== "identify";
   const showProEdit =
-    filter === "needsPromote" || filter === "approved" || filter === "homepage" || filter === "all";
+    allowProEdit &&
+    (deskMode === "edit" ||
+      filter === "needsPromote" ||
+      filter === "approved" ||
+      filter === "homepage" ||
+      filter === "all");
 
   return (
     <div className="space-y-4">
+      {deskMode === "identify" && routeGateOpen && photo ? (
+        <EvidenceRouteGate
+          assetId={photo.id}
+          kind="photo"
+          open={routeGateOpen}
+          onDismiss={() => setRouteGateOpen(false)}
+        />
+      ) : null}
+
       <FilterBar query={query} setQuery={setQuery} counts={filtered.length} />
 
       <div className="rounded-lg border-2 border-[#000066]/15 bg-[#f4f7fc] p-3">
         <p className="font-heading text-[11px] font-bold uppercase tracking-wide text-[#000066]">
-          Photos stage strip
+          {deskMode === "identify"
+            ? "Identify Board · photos"
+            : deskMode === "edit"
+              ? "Creative Edit · photos"
+              : "Photos stage strip"}
         </p>
         <p className="mt-1 font-body text-[10px] text-[#364272]">
-          Progressive desk — Identify on Unknown; Pro Edit / Promote under Needs Promote. Prefer
-          Unknown. Never silent Approve.
+          {deskMode === "identify"
+            ? "One job: identity + metadata. Save opens Route (County vs Edit). No Pro Edit here. Prefer Unknown."
+            : deskMode === "edit"
+              ? "Pro Edit / promote only. Route here after Identify when the asset needs special use."
+              : "Progressive desk — Identify on Unknown; Pro Edit / Promote under Needs Promote. Prefer Unknown."}
         </p>
         <div className="mt-2 flex flex-wrap gap-2">
           {STAGE_STRIP.map((s) => (
@@ -1411,10 +1501,26 @@ export function EvidencePhotosPanel({
               {f.label}
             </button>
           ))}
+          {deskMode === "identify" ? (
+            <Link
+              href="/admin/evidence-workbench?tab=edit&filter=needsPromote"
+              className="rounded-md border border-[#8eb6dc] bg-white px-3 py-1.5 font-body text-xs font-semibold text-[#12124a]"
+            >
+              Open Edit desk →
+            </Link>
+          ) : null}
+          {deskMode === "edit" ? (
+            <Link
+              href="/admin/evidence-workbench?tab=identify&filter=unknown"
+              className="rounded-md border border-[#8eb6dc] bg-white px-3 py-1.5 font-body text-xs font-semibold text-[#12124a]"
+            >
+              ← Identify Board
+            </Link>
+          ) : null}
         </div>
-        {!showProEdit ? (
+        {!allowProEdit ? (
           <p className="mt-2 font-body text-[10px] text-[#364272]">
-            Pro Edit / crop tools stay available below but this stage focuses Identify → Save.
+            Pro Edit lives on the Edit desk. After Save, use Route → County album or Creative Edit.
           </p>
         ) : null}
       </div>
@@ -1810,13 +1916,29 @@ export function EvidencePhotosPanel({
               ))}
             </ul>
             <Link
-              href={`/admin/evidence-workbench?tab=placement&id=${encodeURIComponent(photo.id)}`}
+              href={`/admin/evidence-workbench?tab=publish&id=${encodeURIComponent(photo.id)}`}
               className="mt-2 inline-block font-body text-[11px] font-semibold text-[#000066] underline"
             >
-              Open on Public Surface Desk →
+              Open on Publish desk →
             </Link>
           </div>
-          <div className={`mt-3 ${ewPanelClass} !border-[#000066]/25`}>
+          {deskMode === "identify" && !showProEdit ? (
+            <p className="mt-3 rounded-lg border-2 border-[#8eb6dc]/40 bg-[#f4f7fc] px-3 py-2 font-body text-[11px] text-[#364272]">
+              Pro Edit is on the{" "}
+              <Link
+                href={`/admin/evidence-workbench?tab=edit&id=${encodeURIComponent(photo.id)}`}
+                className="font-semibold text-[#000066] underline"
+              >
+                Edit desk
+              </Link>
+              . Save identity below, then Route to County or Edit.
+            </p>
+          ) : null}
+          <div
+            className={`mt-3 ${ewPanelClass} !border-[#000066]/25 ${showProEdit ? "" : "hidden"}`}
+            hidden={!showProEdit}
+            aria-hidden={!showProEdit}
+          >
             <p className={ewPanelTitleClass}>Pro Edit suite</p>
             <p className="mt-1 font-body text-[11px] text-[#364272]">
               Industry-grade look → focus-aware multi-aspect pack → preview → confirm render → promote.

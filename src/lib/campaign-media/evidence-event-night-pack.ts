@@ -173,18 +173,18 @@ export function proposeEventNightPack(input: {
   if (photos.length) {
     recommendedClicks.push({
       label: `Review ${photos.length} candidate still(s)`,
-      href: `/admin/evidence-workbench?tab=photos&id=${encodeURIComponent(photos[0].id)}`,
+      href: `/admin/evidence-workbench?tab=identify&id=${encodeURIComponent(photos[0].id)}`,
     });
   }
   if (speeches.length) {
     recommendedClicks.push({
       label: `Review ${speeches.length} candidate speech(es)`,
-      href: `/admin/evidence-workbench?tab=speeches&id=${encodeURIComponent(speeches[0].id)}`,
+      href: `/admin/evidence-workbench?tab=identify&id=${encodeURIComponent(speeches[0].id)}`,
     });
   }
   recommendedClicks.push({
-    label: "Publish queue",
-    href: "/admin/evidence-workbench?tab=queue",
+    label: "County desk",
+    href: "/admin/evidence-workbench?tab=county",
   });
 
   return {

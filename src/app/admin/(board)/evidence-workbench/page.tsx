@@ -14,11 +14,13 @@ import { EvidencePublicSurfaceDesk } from "@/components/admin/evidence-workbench
 import { EvidencePublishQueuePanel } from "@/components/admin/evidence-workbench/EvidencePublishQueuePanel";
 import { EvidenceShipPanel } from "@/components/admin/evidence-workbench/EvidenceShipPanel";
 import { EvidenceSpeechConfirmPanel } from "@/components/admin/evidence-workbench/EvidenceSpeechConfirmPanel";
-import { EvidenceSpeechPlacementStrip } from "@/components/admin/evidence-workbench/EvidenceSpeechPlacementStrip";
 import { EvidenceSpeechesPanel } from "@/components/admin/evidence-workbench/EvidenceSpeechesPanel";
 import { EvidenceToolingBanner } from "@/components/admin/evidence-workbench/EvidenceToolingBanner";
-import { EvidenceVideosStageRail } from "@/components/admin/evidence-workbench/EvidenceVideosStageRail";
 import { buildFitRankedBacklog } from "@/lib/campaign-media/evidence-fit-backlog";
+import {
+  EVIDENCE_DESK_TABS,
+  resolveEvidenceDeskTab,
+} from "@/lib/campaign-media/evidence-desk-tabs";
 import { rankEvidenceNextActions } from "@/lib/campaign-media/evidence-next-actions";
 import { getEvidenceToolingReadiness } from "@/lib/campaign-media/evidence-tooling-readiness";
 import {
@@ -50,24 +52,15 @@ import { ARKANSAS_COUNTY_REGISTRY } from "@/lib/county/arkansas-county-registry"
 import { cn } from "@/lib/utils";
 
 type Props = {
-  searchParams: Promise<{ tab?: string; id?: string; filter?: string }>;
+  searchParams: Promise<{ tab?: string; id?: string; filter?: string; intent?: string }>;
 };
-
-const TABS = [
-  { id: "queue", label: "Publish Queue" },
-  { id: "ship", label: "Ship" },
-  { id: "placement", label: "Public surfaces" },
-  { id: "calendar", label: "Calendar" },
-  { id: "photos", label: "Photos" },
-  { id: "speeches", label: "Videos" },
-  { id: "ingest", label: "Intake" },
-] as const;
 
 export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
   const sp = await searchParams;
-  const tab = TABS.some((t) => t.id === sp.tab) ? (sp.tab as (typeof TABS)[number]["id"]) : "queue";
-  const focusId = sp.id?.trim() || undefined;
   const urlFilter = sp.filter?.trim() || undefined;
+  const intent = sp.intent?.trim() || undefined;
+  const tab = resolveEvidenceDeskTab(sp.tab, urlFilter);
+  const focusId = sp.id?.trim() || undefined;
 
   const calendar = loadCalendarPresenceStore();
   const photoStore = loadPhotoEvidenceStore();
@@ -115,7 +108,6 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
     const overlay = photoStore.photos[p.id] ?? null;
     return {
       id: p.id,
-      /** Public delivery src (may be a promoted derivative). */
       src: live.src,
       registrySrc: p.src,
       caption: p.accessibility.caption,
@@ -153,9 +145,7 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
   }));
 
   const focusedLivePhoto = focusId ? liveById.get(focusId) : undefined;
-  const focusedSpeechRow = focusId
-    ? speeches.find((s) => s.id === focusId)
-    : undefined;
+  const focusedSpeechRow = focusId ? speeches.find((s) => s.id === focusId) : undefined;
   const focusedPhotoPreview =
     focusedLivePhoto != null
       ? {
@@ -176,13 +166,26 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
             speechId: focusedSpeechRow.id,
             approvedForPublic: focusedSpeechRow.overlay?.approvedForPublic,
             homepageCandidate: focusedSpeechRow.overlay?.homepageCandidate,
-            counties:
-              focusedSpeechRow.overlay?.counties?.length
-                ? focusedSpeechRow.overlay.counties
-                : focusedSpeechRow.baseCounties,
+            counties: focusedSpeechRow.overlay?.counties?.length
+              ? focusedSpeechRow.overlay.counties
+              : focusedSpeechRow.baseCounties,
           }),
         }
       : null;
+
+  const photoStageCounts = {
+    intake: publishQueue.totals.draftIngest + publishQueue.totals.intakeNewOnDisk,
+    unknown: publishQueue.totals.unknownCounty,
+    needsApproval: publishQueue.totals.needsApproval,
+    needsPromote: photoReadiness.needsPromote,
+    approved: publishQueue.totals.approvedPublic,
+  };
+  const needsPromoteIds = photoReadiness.rows
+    .filter((r) => r.assemblyCount > 0 && !r.hasPublicOverride)
+    .map((r) => r.photoId);
+
+  const identifyFilter = urlFilter ?? "unknown";
+  const editFilter = urlFilter ?? "needsPromote";
 
   return (
     <div className="ew-shell ew-display">
@@ -190,9 +193,12 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
         <p className="ew-eyebrow">Campaign OS · Media evidence</p>
         <h1 className="ew-title">Evidence Workbench</h1>
         <p className="ew-lede">
-          Local-first photo, video, and calendar confirmation — Fortune-50 confirmation console.
-          Saves under <code className="rounded bg-kelly-fog px-1.5 py-0.5 font-mono text-[12px]">data/campaign-media/</code>{" "}
-          on this machine. Prefer Unknown. Never invent geography.
+          Phase 1 desks: Intake → Identify → County <em>or</em> Edit → Publish. Prefer Unknown. Never
+          invent geography. Saves under{" "}
+          <code className="rounded bg-kelly-fog px-1.5 py-0.5 font-mono text-[12px]">
+            data/campaign-media/
+          </code>
+          .
         </p>
       </header>
 
@@ -204,30 +210,28 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
 
       <div className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-5">
         <div className="ew-stat">
-          <p className="ew-stat-label">Publish queue</p>
+          <p className="ew-stat-label">Identify</p>
           <p className="mt-1 font-body text-sm font-semibold text-kelly-text">
-            {unknownCounty} unknown · {needsApproval} need approval · {publishQueue.totals.approvedPublic}{" "}
-            approved
+            {unknownCounty} unknown · {intakeStatus.newOnDisk} new on disk
           </p>
         </div>
         <div className="ew-stat">
-          <p className="ew-stat-label">Ship</p>
+          <p className="ew-stat-label">County</p>
           <p className="mt-1 font-body text-sm font-semibold text-kelly-text">
-            {shipReport.totals.overlayJsonDirty} overlay dirty · {shipReport.totals.derivativeLocalOnly}{" "}
-            deriv local-only
+            {needsApproval} need approval · {publishQueue.totals.approvedPublic} approved
           </p>
         </div>
         <div className="ew-stat">
-          <p className="ew-stat-label">Intake</p>
+          <p className="ew-stat-label">Edit</p>
           <p className="mt-1 font-body text-sm font-semibold text-kelly-text">
-            {intakeStatus.newOnDisk} new on disk · {intakeStatus.queueCount} in queue
+            {photoReadiness.needsPromote} need promote · videos cuts on Edit
           </p>
         </div>
         <div className="ew-stat">
-          <p className="ew-stat-label">Videos</p>
+          <p className="ew-stat-label">Publish</p>
           <p className="mt-1 font-body text-sm font-semibold text-kelly-text">
-            {speeches.length} speeches · {speechConfirmQueue.totals.noCounty} no county ·{" "}
-            {speechConfirmQueue.totals.needsPublish} needs publish
+            {shipReport.totals.overlayJsonDirty} overlay dirty ·{" "}
+            {shipReport.totals.derivativeLocalOnly} deriv local-only
           </p>
         </div>
         <div className="ew-stat">
@@ -250,8 +254,8 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
 
       <EvidenceCollapsedChrome />
 
-      <nav className="mt-6 flex flex-wrap gap-2" aria-label="Evidence workbench tabs">
-        {TABS.map((t) => (
+      <nav className="mt-6 flex flex-wrap gap-2" aria-label="Evidence workbench desks">
+        {EVIDENCE_DESK_TABS.map((t) => (
           <Link
             key={t.id}
             href={`/admin/evidence-workbench?tab=${t.id}`}
@@ -263,8 +267,89 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
       </nav>
 
       <div className="ew-panel mt-5">
-        {tab === "queue" ? (
+        {tab === "ingest" ? (
           <>
+            <div className="mb-4 rounded-lg border-2 border-[#000066]/15 bg-[#f4f7fc] p-3">
+              <p className="font-heading text-xs font-bold uppercase text-[#000066]">
+                Intake · drop only
+              </p>
+              <p className="mt-1 font-body text-xs text-[#364272]">
+                Put files in the watch folder or drag-drop. Then open Identify Board — no labeling
+                here.
+              </p>
+              <Link
+                href="/admin/evidence-workbench?tab=identify&filter=draft"
+                className="mt-2 inline-flex rounded-md border-2 border-[#000066] bg-[#000066] px-3 py-1.5 font-body text-xs font-bold text-white"
+              >
+                Send queue to Identify →
+              </Link>
+            </div>
+            <EvidenceIngestPanel initialCandidates={ingestCandidates} initialStatus={intakeStatus} />
+          </>
+        ) : null}
+
+        {tab === "identify" ? (
+          <>
+            <div className="mb-4 rounded-lg border-2 border-[#ca913d]/50 bg-[#fff8ef] p-3">
+              <p className="font-heading text-xs font-bold uppercase text-[#000066]">
+                Identify Board · Board A
+              </p>
+              <p className="mt-1 font-body text-xs text-[#364272]">
+                One asset at a time. Heavy AI for names, county, event, people. Save opens Route —
+                County album <em>or</em> Creative Edit. Prefer Unknown. No Pro Edit on this desk.
+              </p>
+            </div>
+            <EvidenceFitBacklogPanel initialBacklog={fitBacklog} />
+            <EvidencePhotosPanel
+              photos={photos}
+              counties={counties}
+              initialPhotoId={focusId}
+              initialFilter={identifyFilter}
+              needsPromoteIds={needsPromoteIds}
+              stageCounts={photoStageCounts}
+              deskMode="identify"
+            />
+            <div className="mt-6 border-t-2 border-[#000066]/10 pt-4">
+              <p className="mb-3 font-heading text-xs font-bold uppercase text-[#000066]">
+                Videos · identify / confirm
+              </p>
+              <EvidenceSpeechConfirmPanel
+                speeches={speeches}
+                initialQueue={speechConfirmQueue}
+                initialRows={speechReadiness.rows}
+                initialPlacement={speechPlacementProposal}
+                placementCurrent={speechPlacementCurrent}
+                hidePlacement
+              />
+            </div>
+          </>
+        ) : null}
+
+        {tab === "county" ? (
+          <>
+            <div className="mb-4 rounded-lg border-2 border-[#000066]/15 bg-[#f4f7fc] p-3">
+              <p className="font-heading text-xs font-bold uppercase text-[#000066]">
+                County desk · fast path
+              </p>
+              <p className="mt-1 font-body text-xs text-[#364272]">
+                After Identify: approve into county albums with full metadata. No creative edit here.
+                Special-use assets go to Edit, then Publish.
+              </p>
+              <div className="mt-2 flex flex-wrap gap-2">
+                <Link
+                  href="/admin/evidence-workbench?tab=identify&filter=unknown"
+                  className="rounded-md border-2 border-[#000066] bg-white px-3 py-1.5 font-body text-xs font-bold text-[#000066]"
+                >
+                  ← Identify Unknown
+                </Link>
+                <Link
+                  href="/admin/evidence-workbench?tab=publish"
+                  className="rounded-md border-2 border-[#000066] bg-[#000066] px-3 py-1.5 font-body text-xs font-bold text-white"
+                >
+                  Publish / Ship →
+                </Link>
+              </div>
+            </div>
             <div id="ew-tonight-ritual">
               <EvidenceEventNightLoopPanel
                 calendarRows={calendar.rows.map((r) => ({
@@ -276,7 +361,6 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
                 initialNeedsApprovalIds={publishQueue.buckets.needsApproval.map((i) => i.id)}
               />
             </div>
-            <EvidenceFitBacklogPanel initialBacklog={fitBacklog} />
             <EvidencePublishQueuePanel
               initialQueue={publishQueue}
               initialSpeechQueue={speechConfirmQueue}
@@ -285,32 +369,115 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
             />
           </>
         ) : null}
-        {tab === "ship" ? <EvidenceShipPanel initialReport={shipReport} /> : null}
-        {tab === "placement" ? (
-          <EvidencePublicSurfaceDesk
-            photoProposal={placementProposal}
-            photoCurrent={placementCurrent}
-            speechProposal={speechPlacementProposal}
-            speechCurrent={speechPlacementCurrent}
-            focusedPhoto={focusedPhotoPreview}
-            focusedSpeech={focusedSpeechPreview}
-          />
+
+        {tab === "edit" ? (
+          <>
+            <div className="mb-4 rounded-lg border-2 border-[#ca913d]/50 bg-[#fff8ef] p-3">
+              <p className="font-heading text-xs font-bold uppercase text-[#000066]">
+                Creative Edit · Board B
+              </p>
+              <p className="mt-1 font-body text-xs text-[#364272]">
+                Only after Route from Identify. Intent
+                {intent ? (
+                  <>
+                    : <span className="font-semibold text-[#000066]">{intent}</span>
+                  </>
+                ) : (
+                  " (social / header / site) guides crop + Pro Edit"
+                )}
+                . Then Publish for site placement or download pack.
+              </p>
+              <div className="mt-2 flex flex-wrap gap-2">
+                {(
+                  [
+                    ["social", "Social"],
+                    ["header", "Super header"],
+                    ["site", "Site surfaces"],
+                  ] as const
+                ).map(([id, label]) => (
+                  <Link
+                    key={id}
+                    href={`/admin/evidence-workbench?tab=edit${focusId ? `&id=${encodeURIComponent(focusId)}` : ""}&intent=${id}&filter=needsPromote`}
+                    className={cn(
+                      "rounded-md border-2 px-3 py-1.5 font-body text-xs font-bold",
+                      intent === id
+                        ? "border-[#000066] bg-[#000066] text-white"
+                        : "border-[#8eb6dc] bg-white text-[#12124a]",
+                    )}
+                  >
+                    {label}
+                  </Link>
+                ))}
+                <Link
+                  href="/admin/evidence-workbench?tab=publish"
+                  className="rounded-md border-2 border-[#000066] bg-white px-3 py-1.5 font-body text-xs font-bold text-[#000066]"
+                >
+                  Publish desk →
+                </Link>
+              </div>
+            </div>
+            <EvidencePhotoReadinessPanel initialMatrix={photoReadiness} />
+            <EvidencePhotosPanel
+              photos={photos}
+              counties={counties}
+              initialPhotoId={focusId}
+              initialFilter={editFilter}
+              needsPromoteIds={needsPromoteIds}
+              stageCounts={photoStageCounts}
+              deskMode="edit"
+            />
+            <div className="mt-6 border-t-2 border-[#000066]/10 pt-4">
+              <p className="mb-3 font-heading text-xs font-bold uppercase text-[#000066]">
+                Videos · cuts / Pro Edit
+              </p>
+              <EvidenceSpeechesPanel
+                speeches={speeches}
+                initialSpeechId={focusId}
+                initialFilter={urlFilter}
+              />
+            </div>
+          </>
         ) : null}
+
+        {tab === "publish" ? (
+          <>
+            <div className="mb-4 rounded-lg border-2 border-[#000066]/15 bg-[#f4f7fc] p-3">
+              <p className="font-heading text-xs font-bold uppercase text-[#000066]">
+                Publish & deliver
+              </p>
+              <p className="mt-1 font-body text-xs text-[#364272]">
+                Public surfaces (homepage / Meet Kelly / video slots) + Ship last mile. One Ship home —
+                overlays → campaign-shipped → graduation → commit.
+              </p>
+            </div>
+            <EvidencePublicSurfaceDesk
+              photoProposal={placementProposal}
+              photoCurrent={placementCurrent}
+              speechProposal={speechPlacementProposal}
+              speechCurrent={speechPlacementCurrent}
+              focusedPhoto={focusedPhotoPreview}
+              focusedSpeech={focusedSpeechPreview}
+            />
+            <div className="mt-6 border-t-2 border-[#000066]/10 pt-4">
+              <EvidenceShipPanel initialReport={shipReport} />
+            </div>
+          </>
+        ) : null}
+
         {tab === "calendar" ? (
           <>
             <div className="mb-4 rounded-lg border-2 border-[#ca913d]/50 bg-[#fff8ef] p-3">
               <p className="font-heading text-xs font-bold uppercase text-[#000066]">
-                Tonight ritual lives on Publish Queue
+                Calendar · side desk
               </p>
               <p className="mt-1 font-body text-xs text-[#364272]">
-                Confirm calendar places here, then run pack → identify → approve → ship on Queue (one
-                desk — no duplicate ritual on this tab).
+                Confirm places here. Event-night pack / approve runs on County desk after Identify.
               </p>
               <Link
-                href="/admin/evidence-workbench?tab=queue"
+                href="/admin/evidence-workbench?tab=county"
                 className="mt-2 inline-flex rounded-md border-2 border-[#000066] bg-[#000066] px-3 py-1.5 font-body text-xs font-bold text-white"
               >
-                Open Tonight ritual on Queue →
+                Open County desk →
               </Link>
             </div>
             <EvidenceCalendarPanel
@@ -321,57 +488,6 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
               initialFilter={urlFilter}
             />
           </>
-        ) : null}
-        {tab === "photos" ? (
-          <>
-            <EvidencePhotoReadinessPanel initialMatrix={photoReadiness} />
-            <EvidencePhotosPanel
-              photos={photos}
-              counties={counties}
-              initialPhotoId={focusId}
-              initialFilter={urlFilter}
-              needsPromoteIds={photoReadiness.rows
-                .filter((r) => r.assemblyCount > 0 && !r.hasPublicOverride)
-                .map((r) => r.photoId)}
-              stageCounts={{
-                intake: publishQueue.totals.draftIngest + publishQueue.totals.intakeNewOnDisk,
-                unknown: publishQueue.totals.unknownCounty,
-                needsApproval: publishQueue.totals.needsApproval,
-                needsPromote: photoReadiness.needsPromote,
-                approved: publishQueue.totals.approvedPublic,
-              }}
-            />
-          </>
-        ) : null}
-        {tab === "speeches" ? (
-          <EvidenceVideosStageRail
-            confirm={
-              <EvidenceSpeechConfirmPanel
-                speeches={speeches}
-                initialQueue={speechConfirmQueue}
-                initialRows={speechReadiness.rows}
-                initialPlacement={speechPlacementProposal}
-                placementCurrent={speechPlacementCurrent}
-                hidePlacement
-              />
-            }
-            cuts={
-              <EvidenceSpeechesPanel
-                speeches={speeches}
-                initialSpeechId={focusId}
-                initialFilter={urlFilter}
-              />
-            }
-            place={
-              <EvidenceSpeechPlacementStrip
-                initialPlacement={speechPlacementProposal}
-                placementCurrent={speechPlacementCurrent}
-              />
-            }
-          />
-        ) : null}
-        {tab === "ingest" ? (
-          <EvidenceIngestPanel initialCandidates={ingestCandidates} initialStatus={intakeStatus} />
         ) : null}
       </div>
     </div>

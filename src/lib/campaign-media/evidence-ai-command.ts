@@ -153,7 +153,7 @@ export async function runEvidenceAiCommand(input: {
           result: {
             headline: "Command response (unparsed)",
             plan: [content.slice(0, 2000)],
-            nextClicks: [{ label: "Publish queue", href: "/admin/evidence-workbench?tab=queue" }],
+            nextClicks: [{ label: "County desk", href: "/admin/evidence-workbench?tab=county" }],
             warnings: ["Model did not return strict JSON — showing raw plan.", "Prefer Unknown"],
             confidence: "low",
             toolsSummary: toolsUsed.length ? `Used: ${[...new Set(toolsUsed)].join(", ")}` : "",

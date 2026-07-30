@@ -288,23 +288,23 @@ export function modeNextSteps(
     case "identify":
       return kind === "photo"
         ? [
-            { label: "Publish Queue → Unknown", href: "/admin/evidence-workbench?tab=queue&filter=unknown" },
+            { label: "Identify → Unknown", href: "/admin/evidence-workbench?tab=identify&filter=unknown" },
             { label: "Suggest → review → Save county (Unknown stays Unknown)" },
             { label: "Optional: Turbo Identify on backlog (confirm)" },
           ]
         : [
-            { label: "Videos confirm → no-county", href: "/admin/evidence-workbench?tab=speeches" },
+            { label: "Videos confirm → no-county", href: "/admin/evidence-workbench?tab=identify" },
             { label: "Suggest → Save counties / proof" },
           ];
     case "fit":
       return kind === "photo"
         ? [
             { label: "Score website surfaces (Suggest in Fit)" },
-            { label: "Placement tab for HOMEPAGE_* propose", href: "/admin/evidence-workbench?tab=placement" },
+            { label: "Publish surfaces for HOMEPAGE_* propose", href: "/admin/evidence-workbench?tab=publish" },
           ]
         : [
             { label: "Speech readiness / confirm queue" },
-            { label: "Homepage video placement propose on Videos tab" },
+            { label: "Homepage video placement propose on Publish desk" },
           ];
     case "photo_prep":
       return [
@@ -318,13 +318,13 @@ export function modeNextSteps(
       ];
     case "publish":
       return [
-        { label: "Publish Queue", href: "/admin/evidence-workbench?tab=queue" },
-        { label: "Ship checklist", href: "/admin/evidence-workbench?tab=ship" },
+        { label: "County desk", href: "/admin/evidence-workbench?tab=county" },
+        { label: "Publish / Ship checklist", href: "/admin/evidence-workbench?tab=publish" },
         { label: "Batch Approve/Publish only when operator confirms" },
       ];
     case "command":
       return [
-        { label: "Ask Command: what should I do next?", href: "/admin/evidence-workbench?tab=queue" },
+        { label: "Ask Command: what should I do next?", href: "/admin/evidence-workbench?tab=identify" },
         { label: "Event-night pack from a Confirmed calendar row" },
         { label: "All confirm* gates still apply — Prefer Unknown" },
       ];

@@ -46,16 +46,16 @@ export function EvidencePublicSurfaceDesk({
         </p>
         <div className="mt-2 flex flex-wrap gap-2">
           <Link
-            href="/admin/evidence-workbench?tab=ship"
+            href="/admin/evidence-workbench?tab=publish"
             className="rounded-md border-2 border-[#000066] bg-[#000066] px-3 py-1.5 font-body text-xs font-bold text-white"
           >
             Open Ship last mile →
           </Link>
           <Link
-            href="/admin/evidence-workbench?tab=queue"
+            href="/admin/evidence-workbench?tab=county"
             className="rounded-md border-2 border-[#000066] bg-white px-3 py-1.5 font-body text-xs font-bold text-[#000066]"
           >
-            Publish Queue
+            County desk
           </Link>
           <Link
             href="/campaign-photos"
@@ -91,7 +91,7 @@ export function EvidencePublicSurfaceDesk({
       {!focusedPhoto && !focusedSpeech ? (
         <p className="font-body text-xs text-[#364272]">
           Tip: open with{" "}
-          <code className="rounded bg-[#f4f7fc] px-1">?tab=placement&amp;id=photo-id</code> to preview
+          <code className="rounded bg-[#f4f7fc] px-1">?tab=publish&amp;id=photo-id</code> to preview
           surfaces for a focused still.
         </p>
       ) : null}

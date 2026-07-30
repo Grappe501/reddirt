@@ -285,16 +285,16 @@ export function EvidenceShipPanel({ initialReport }: Props) {
           {showDetails ? "Hide secondary details" : "Show secondary details"}
         </button>
         <Link
-          href="/admin/evidence-workbench?tab=placement"
+          href="/admin/evidence-workbench?tab=publish"
           className="rounded border-2 border-[#8eb6dc] bg-white px-2.5 py-1 font-body text-xs font-semibold text-[#12124a]"
         >
           Public Surface Desk
         </Link>
         <Link
-          href="/admin/evidence-workbench?tab=queue"
+          href="/admin/evidence-workbench?tab=county"
           className="rounded border-2 border-[#8eb6dc] bg-white px-2.5 py-1 font-body text-xs font-semibold text-[#12124a]"
         >
-          Publish Queue
+          County desk
         </Link>
       </div>
 
@@ -510,7 +510,7 @@ export function EvidenceShipPanel({ initialReport }: Props) {
                 <div className="min-w-0 flex-1">
                   <div className="flex flex-wrap items-center gap-2">
                     <Link
-                      href={`/admin/evidence-workbench?tab=photos&id=${encodeURIComponent(c.id)}`}
+                      href={`/admin/evidence-workbench?tab=edit&id=${encodeURIComponent(c.id)}`}
                       className="font-mono text-[10px] font-semibold text-[#000066] underline"
                     >
                       {c.id}
@@ -538,7 +538,7 @@ export function EvidenceShipPanel({ initialReport }: Props) {
               ? report.graduationCandidates.map((c) => (
                   <li key={c.id} className="rounded border border-[#8eb6dc]/30 bg-[#f4f7fc] px-2 py-1">
                     <Link
-                      href={`/admin/evidence-workbench?tab=photos&id=${encodeURIComponent(c.id)}`}
+                      href={`/admin/evidence-workbench?tab=edit&id=${encodeURIComponent(c.id)}`}
                       className="font-mono text-[10px] font-semibold text-[#000066] underline"
                     >
                       {c.id}

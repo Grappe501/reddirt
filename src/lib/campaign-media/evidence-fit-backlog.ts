@@ -65,7 +65,7 @@ export function buildFitRankedBacklog(input?: { limit?: number }): FitRankedBack
       bestScore: fit.best?.score ?? 0,
       rankingsTop3: fit.rankings.slice(0, 3).map((r) => ({ surface: r.surface, score: r.score })),
       inventoryNote: fit.inventoryNote,
-      href: `/admin/evidence-workbench?tab=photos&id=${encodeURIComponent(id)}`,
+      href: `/admin/evidence-workbench?tab=identify&id=${encodeURIComponent(id)}`,
     });
   }
 

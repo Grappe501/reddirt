@@ -435,7 +435,7 @@ export function EvidenceEventNightLoopPanel({
           </p>
         </div>
         <Link
-          href="/admin/evidence-workbench?tab=photos&filter=unknown"
+          href="/admin/evidence-workbench?tab=identify&filter=unknown"
           className="font-body text-[11px] font-semibold text-[#000066] underline"
         >
           Open Photos factory →

@@ -271,7 +271,7 @@ export function EvidenceIngestPanel({ initialCandidates, initialStatus }: Props)
           Rescan folder
         </button>
         <Link
-          href="/admin/evidence-workbench?tab=photos&filter=draft"
+          href="/admin/evidence-workbench?tab=identify&filter=draft"
           className="rounded-md border-2 border-[#ca913d] bg-white px-4 py-2.5 font-body text-sm font-bold text-[#12124a]"
         >
           Open Photos queue
@@ -358,7 +358,7 @@ export function EvidenceIngestPanel({ initialCandidates, initialStatus }: Props)
                   </p>
                 </div>
                 <Link
-                  href={`/admin/evidence-workbench?tab=photos&id=${encodeURIComponent(row.photoId)}`}
+                  href={`/admin/evidence-workbench?tab=identify&id=${encodeURIComponent(row.photoId)}`}
                   className="shrink-0 font-body text-[11px] font-semibold text-[#000066] underline"
                 >
                   Review
