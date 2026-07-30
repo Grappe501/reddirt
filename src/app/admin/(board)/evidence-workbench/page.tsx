@@ -291,8 +291,8 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
                 Arrival · stills + video masters
               </p>
               <p className="mt-1 font-body text-xs text-[#364272]">
-                Soft-watch + intake preview (nested→flat / dedupe). Primary: Bring into system → Identify.
-                Event-night preset focuses the path. Never auto-Approve.
+                Soft-watch + intake preview. Primary: Bring into system → Identify. Bridges (Owned Media
+                import, graduation clipboard) under Phase 4. Never auto-Approve.
               </p>
               <Link
                 href="/admin/evidence-workbench?tab=identify&filter=draft"

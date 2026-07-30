@@ -7,10 +7,14 @@ import {
   attachVideoMasterAction,
   bringArrivalIntoSystemAction,
   clearVideoMasterOverrideAction,
+  copyReadyGraduationBlocksAction,
   dropCampaignPhotosToDiskAction,
   dropVideoMastersToDiskAction,
+  getGraduationAssistMatrixAction,
   getTurboIngestDashboardAction,
+  importOwnedMediaToEvidenceDraftAction,
   listArrivalSoftWatchAction,
+  listOwnedMediaEvidenceBridgeAction,
   listPhotoIngestCandidatesAction,
   listVideoMasterArrivalAction,
   markVideoMasterUnmatchedAction,
@@ -52,9 +56,10 @@ type VideoRow = {
   bytes: number;
   publicSrc: string | null;
   matchStatus: "auto" | "attached" | "unmatched" | "held";
+  matchConfidence?: "youtube-id" | "speech-id" | "attached" | "fuzzy" | null;
   matchedSpeechId: string | null;
   matchedSpeechTitle: string | null;
-  suggestions: Array<{ id: string; title: string }>;
+  suggestions: Array<{ id: string; title: string; reason?: string }>;
 };
 
 type VideoSummary = {
@@ -179,6 +184,7 @@ export function EvidenceIngestPanel({
   );
   const [dropHover, setDropHover] = useState(false);
   const [showTurbo, setShowTurbo] = useState(false);
+  const [showBridges, setShowBridges] = useState(false);
   const [showHowTo, setShowHowTo] = useState(false);
   const [showPreviewDetails, setShowPreviewDetails] = useState(false);
   const [turbo, setTurbo] = useState<TurboDash | null>(null);
@@ -187,6 +193,20 @@ export function EvidenceIngestPanel({
   const [eventNight, setEventNight] = useState(false);
   const [softWatchToast, setSoftWatchToast] = useState<SoftWatchToast | null>(null);
   const [lastSoftScanLabel, setLastSoftScanLabel] = useState<string | null>(null);
+  const [ownedBridgeRows, setOwnedBridgeRows] = useState<
+    Array<{
+      ownedMediaId: string;
+      fileName: string;
+      title: string;
+      reviewStatus: string;
+      canImport: boolean;
+      reason: string;
+      suggestedPhotoId: string;
+    }>
+  >([]);
+  const [ownedBridgeMessage, setOwnedBridgeMessage] = useState("");
+  const [gradReadyCount, setGradReadyCount] = useState<number | null>(null);
+  const [gradTotal, setGradTotal] = useState<number | null>(null);
   const [pending, start] = useTransition();
   const pendingRef = useRef(pending);
   const softBaselineRef = useRef<{ stillIds: string[]; masterKeys: string[] } | null>(null);
@@ -301,6 +321,7 @@ export function EvidenceIngestPanel({
     setEventNight(on);
     if (on) {
       setShowTurbo(false);
+      setShowBridges(false);
       setShowHowTo(false);
     }
     try {
@@ -308,6 +329,53 @@ export function EvidenceIngestPanel({
     } catch {
       /* ignore */
     }
+  }
+
+  function loadBridges() {
+    start(async () => {
+      const [owned, grad] = await Promise.all([
+        listOwnedMediaEvidenceBridgeAction(),
+        getGraduationAssistMatrixAction(),
+      ]);
+      setOwnedBridgeMessage(owned.message);
+      setOwnedBridgeRows(owned.rows ?? []);
+      if (grad.matrix) {
+        setGradReadyCount(grad.matrix.readyCount);
+        setGradTotal(grad.matrix.total);
+      }
+    });
+  }
+
+  function openBridges() {
+    const next = !showBridges;
+    setShowBridges(next);
+    if (next) loadBridges();
+  }
+
+  function importOwned(ownedMediaId: string) {
+    start(async () => {
+      const res = await importOwnedMediaToEvidenceDraftAction(ownedMediaId);
+      setMessage(res.message);
+      if (res.ok) {
+        await refreshAll();
+        loadBridges();
+      }
+    });
+  }
+
+  function copyGraduation() {
+    start(async () => {
+      const res = await copyReadyGraduationBlocksAction({ onlyReady: true });
+      setMessage(res.message);
+      if (res.ok && res.tsBlocks && typeof navigator !== "undefined" && navigator.clipboard) {
+        try {
+          await navigator.clipboard.writeText(res.tsBlocks);
+          setMessage(`${res.message} (clipboard)`);
+        } catch {
+          setMessage(`${res.message} — clipboard blocked; open Publish Ship to copy.`);
+        }
+      }
+    });
   }
 
   async function refreshAll() {
@@ -768,13 +836,22 @@ export function EvidenceIngestPanel({
           Soft-watch {softWatchOn ? "on" : "off"}
         </button>
         {!eventNight ? (
-          <button
-            type="button"
-            onClick={() => setShowTurbo((v) => !v)}
-            className="rounded-md border border-[#8eb6dc] bg-white px-3 py-1.5 font-body text-xs font-semibold text-[#12124a]"
-          >
-            {showTurbo ? "Hide Turbo" : "Advanced · Turbo"}
-          </button>
+          <>
+            <button
+              type="button"
+              onClick={openBridges}
+              className="rounded-md border border-[#8eb6dc] bg-white px-3 py-1.5 font-body text-xs font-semibold text-[#12124a]"
+            >
+              {showBridges ? "Hide bridges" : "Bridges · Phase 4"}
+            </button>
+            <button
+              type="button"
+              onClick={() => setShowTurbo((v) => !v)}
+              className="rounded-md border border-[#8eb6dc] bg-white px-3 py-1.5 font-body text-xs font-semibold text-[#12124a]"
+            >
+              {showTurbo ? "Hide Turbo" : "Advanced · Turbo"}
+            </button>
+          </>
         ) : null}
       </div>
 
@@ -886,6 +963,7 @@ export function EvidenceIngestPanel({
                     }`}
                   >
                     {row.matchStatus}
+                    {row.matchConfidence ? ` · ${row.matchConfidence}` : ""}
                     {row.matchedSpeechTitle ? ` · ${row.matchedSpeechTitle}` : ""}
                   </span>
                 </div>
@@ -908,6 +986,7 @@ export function EvidenceIngestPanel({
                         : speeches
                       ).map((s) => (
                         <option key={s.id} value={s.id}>
+                          {"reason" in s && s.reason ? `[${s.reason}] ` : ""}
                           {s.title} ({s.id})
                         </option>
                       ))}
@@ -981,6 +1060,98 @@ export function EvidenceIngestPanel({
           </ul>
         )}
       </div>
+
+      {showBridges ? (
+        <div className="space-y-4 rounded-lg border-2 border-[#000066]/20 bg-white p-4">
+          <div className="flex flex-wrap items-baseline justify-between gap-2">
+            <p className="font-heading text-sm font-bold uppercase tracking-wide text-[#000066]">
+              Bridges · Phase 4
+            </p>
+            <button
+              type="button"
+              disabled={pending}
+              onClick={loadBridges}
+              className="font-body text-[11px] font-semibold text-[#000066] underline disabled:opacity-50"
+            >
+              Refresh
+            </button>
+          </div>
+          <p className="font-body text-xs text-[#364272]">
+            Confirm-only bridges. Prefer Unknown. Never silent Approve or registry rewrite.
+          </p>
+
+          <div className="rounded-lg border border-[#8eb6dc]/50 bg-[#f4f7fc] p-3">
+            <p className="font-heading text-xs font-bold uppercase text-[#000066]">
+              Owned Media → Evidence draft
+            </p>
+            <p className="mt-1 font-body text-[11px] text-[#364272]">
+              {ownedBridgeMessage || "Open to load candidates."} LOCAL_DISK images only — copies into
+              campaign-photos + draft queue.
+            </p>
+            {ownedBridgeRows.length === 0 ? (
+              <p className="mt-2 font-body text-xs text-[#364272]">No unbridged candidates.</p>
+            ) : (
+              <ul className="mt-2 max-h-56 space-y-2 overflow-y-auto">
+                {ownedBridgeRows.map((row) => (
+                  <li
+                    key={row.ownedMediaId}
+                    className="flex flex-wrap items-center justify-between gap-2 rounded border border-[#8eb6dc]/40 bg-white px-2 py-2"
+                  >
+                    <div className="min-w-0">
+                      <p className="font-body text-xs font-semibold text-[#12124a]">{row.title}</p>
+                      <p className="font-mono text-[10px] text-[#364272]">
+                        {row.fileName} · {row.reviewStatus} → {row.suggestedPhotoId}
+                      </p>
+                      <p className="font-body text-[10px] text-[#364272]">{row.reason}</p>
+                    </div>
+                    <button
+                      type="button"
+                      disabled={pending || !row.canImport}
+                      onClick={() => importOwned(row.ownedMediaId)}
+                      className="rounded-md bg-[#000066] px-3 py-1.5 font-body text-xs font-bold text-white disabled:opacity-50"
+                    >
+                      Import draft
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            )}
+            <Link
+              href="/admin/owned-media"
+              className="mt-2 inline-block font-body text-[11px] font-semibold text-[#000066] underline"
+            >
+              Open Owned Media →
+            </Link>
+          </div>
+
+          <div className="rounded-lg border border-[#ca913d]/40 bg-[#fff8ef] p-3">
+            <p className="font-heading text-xs font-bold uppercase text-[#000066]">
+              Draft → registry graduation
+            </p>
+            <p className="mt-1 font-body text-[11px] text-[#364272]">
+              {gradReadyCount != null
+                ? `${gradReadyCount} ready / ${gradTotal ?? 0} candidates — clipboard TS only; paste after review.`
+                : "Load bridges to see graduation counts."}
+            </p>
+            <div className="mt-2 flex flex-wrap gap-2">
+              <button
+                type="button"
+                disabled={pending || !gradReadyCount}
+                onClick={copyGraduation}
+                className="rounded-md border-2 border-[#000066] bg-[#000066] px-3 py-1.5 font-body text-xs font-bold text-white disabled:opacity-50"
+              >
+                Copy ready TS blocks
+              </button>
+              <Link
+                href="/admin/evidence-workbench?tab=publish#ew-ship-last-mile"
+                className="rounded-md border-2 border-[#000066] bg-white px-3 py-1.5 font-body text-xs font-bold text-[#000066]"
+              >
+                Open Ship graduation →
+              </Link>
+            </div>
+          </div>
+        </div>
+      ) : null}
 
       {showTurbo ? (
         <div className="rounded-lg border-2 border-[#ca913d]/60 bg-[#fff8ef] p-4">

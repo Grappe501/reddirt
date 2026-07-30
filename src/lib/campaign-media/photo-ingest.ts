@@ -7,7 +7,7 @@
  * Never deletes nested originals. Never overwrites existing flat files.
  */
 
-import { copyFileSync, existsSync, mkdirSync, readdirSync, statSync } from "node:fs";
+import { copyFileSync, existsSync, mkdirSync, readdirSync, statSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { CAMPAIGN_PHOTO_REGISTRY } from "@/content/media/campaign-photo-registry";
 import type { CampaignPhotoRecord } from "@/content/media/campaign-photo-types";
@@ -380,6 +380,59 @@ function queueFlatFile(flatFilename: string): {
   store.photos.push(photo);
   savePhotoIngestDrafts(store);
   return { ok: true, photo };
+}
+
+/**
+ * Phase 4 — write image bytes into campaign-photos and queue a draft.
+ * Never Approves. Never invents -2/-3 when basename already known.
+ */
+export function intakeImageBytesToDraft(opts: {
+  filename: string;
+  bytes: Buffer;
+  note?: string;
+}): { ok: true; photo: CampaignPhotoRecord; flatFilename: string } | { ok: false; error: string } {
+  const safe = path.basename(String(opts.filename ?? "").trim());
+  if (!safe || safe === "." || safe === "..") return { ok: false, error: "Invalid filename." };
+  const ext = path.extname(safe).toLowerCase();
+  if (!IMAGE_EXT.has(ext)) return { ok: false, error: "Not an allowed image type." };
+  if (!opts.bytes?.length) return { ok: false, error: "Empty image bytes." };
+
+  const id = slugFromFilename(safe);
+  const preferred = `${id}${ext}`;
+  const root = photosDirAbs();
+  mkdirSync(root, { recursive: true });
+  const destAbs = path.join(root, preferred);
+  const preferredSrc = `/media/campaign-photos/${preferred}`;
+
+  const registryIds = new Set(CAMPAIGN_PHOTO_REGISTRY.map((p) => p.id));
+  const registrySrc = new Set(CAMPAIGN_PHOTO_REGISTRY.map((p) => p.src));
+  const drafts = loadPhotoIngestDrafts();
+  if (
+    registryIds.has(id) ||
+    registrySrc.has(preferredSrc) ||
+    drafts.photos.some((p) => p.id === id || p.src === preferredSrc)
+  ) {
+    return {
+      ok: false,
+      error: "Basename already in registry or intake queue — refuse duplicate import.",
+    };
+  }
+
+  if (!existsSync(destAbs)) {
+    writeFileSync(destAbs, opts.bytes);
+  }
+  const queued = queueFlatFile(preferred);
+  if (!queued.ok) return queued;
+  if (opts.note) {
+    queued.photo.notes = opts.note;
+    const store = loadPhotoIngestDrafts();
+    const idx = store.photos.findIndex((p) => p.id === queued.photo.id);
+    if (idx >= 0) {
+      store.photos[idx] = { ...store.photos[idx], notes: opts.note, updatedAt: new Date().toISOString() };
+      savePhotoIngestDrafts(store);
+    }
+  }
+  return { ok: true, photo: queued.photo, flatFilename: preferred };
 }
 
 /**

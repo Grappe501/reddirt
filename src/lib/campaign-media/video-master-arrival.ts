@@ -20,6 +20,14 @@ import {
 
 export type VideoMasterMatchStatus = "auto" | "attached" | "unmatched" | "held";
 
+/** Phase 4 — how confident the auto/attached match is. */
+export type VideoMasterMatchConfidence =
+  | "youtube-id"
+  | "speech-id"
+  | "attached"
+  | "fuzzy"
+  | null;
+
 export type VideoMasterArrivalRow = {
   key: string;
   filename: string;
@@ -27,10 +35,11 @@ export type VideoMasterArrivalRow = {
   bytes: number;
   publicSrc: string | null;
   matchStatus: VideoMasterMatchStatus;
+  matchConfidence: VideoMasterMatchConfidence;
   matchedSpeechId: string | null;
   matchedSpeechTitle: string | null;
-  /** Soft auto-match suggestions when unmatched (filename substring). */
-  suggestions: Array<{ id: string; title: string }>;
+  /** Soft auto-match suggestions when unmatched (filename substring). YT-id hits sorted first. */
+  suggestions: Array<{ id: string; title: string; reason?: string }>;
 };
 
 export type VideoMasterArrivalSummary = {
@@ -96,48 +105,69 @@ function speechTitle(id: string): string | null {
   return row?.shortTitle ?? row?.title ?? null;
 }
 
-/** Filename / idHint soft matches against speech id or YouTube id. */
-function autoMatchSpeech(hit: LocalVideoMasterHit): { id: string; title: string } | null {
+/** Filename / idHint matches — prefer exact YouTube id, then speech id, then fuzzy. */
+function autoMatchSpeech(
+  hit: LocalVideoMasterHit,
+): { id: string; title: string; confidence: Exclude<VideoMasterMatchConfidence, "attached" | null> } | null {
   const hay = hit.idHint.toLowerCase();
   const file = hit.filename.toLowerCase();
+
+  for (const m of CAMPAIGN_MEDIA_REGISTRY) {
+    const yt = m.youtubeVideoId.toLowerCase();
+    if (yt.length >= 8 && (hay === yt || hay.includes(yt) || file.includes(yt))) {
+      return { id: m.id, title: m.shortTitle ?? m.title, confidence: "youtube-id" };
+    }
+  }
+  for (const m of CAMPAIGN_MEDIA_REGISTRY) {
+    const id = m.id.toLowerCase();
+    if (hay === id || file.includes(id) || (id.length >= 8 && hay.includes(id))) {
+      return { id: m.id, title: m.shortTitle ?? m.title, confidence: "speech-id" };
+    }
+  }
   for (const m of CAMPAIGN_MEDIA_REGISTRY) {
     const id = m.id.toLowerCase();
     const yt = m.youtubeVideoId.toLowerCase();
-    if (
-      hay === id ||
-      hay === yt ||
-      hay.includes(id) ||
-      hay.includes(yt) ||
-      file.includes(id) ||
-      file.includes(yt) ||
-      id.includes(hay) ||
-      yt.includes(hay)
-    ) {
-      return { id: m.id, title: m.shortTitle ?? m.title };
+    if (id.includes(hay) || yt.includes(hay)) {
+      return { id: m.id, title: m.shortTitle ?? m.title, confidence: "fuzzy" };
     }
   }
   return null;
 }
 
-function softSuggestions(hit: LocalVideoMasterHit, limit = 4): Array<{ id: string; title: string }> {
-  const hay = hit.idHint.toLowerCase().replace(/[^a-z0-9]+/g, " ");
-  const tokens = hay.split(/\s+/).filter((t) => t.length >= 4);
-  if (!tokens.length) return [];
-  const scored: Array<{ id: string; title: string; score: number }> = [];
+function softSuggestions(
+  hit: LocalVideoMasterHit,
+  limit = 4,
+): Array<{ id: string; title: string; reason?: string }> {
+  const hay = hit.idHint.toLowerCase();
+  const file = hit.filename.toLowerCase();
+  const scored: Array<{ id: string; title: string; score: number; reason: string }> = [];
+
   for (const m of CAMPAIGN_MEDIA_REGISTRY) {
-    const blob = `${m.id} ${m.title} ${m.youtubeVideoId}`.toLowerCase();
+    const yt = m.youtubeVideoId.toLowerCase();
+    const id = m.id.toLowerCase();
     let score = 0;
-    for (const t of tokens) {
-      if (blob.includes(t)) score += t.length;
+    let reason = "fuzzy";
+    if (yt.length >= 8 && (hay.includes(yt) || file.includes(yt))) {
+      score = 10_000 + yt.length;
+      reason = "youtube-id";
+    } else if (hay.includes(id) || file.includes(id)) {
+      score = 5_000 + id.length;
+      reason = "speech-id";
+    } else {
+      const tokens = hay.replace(/[^a-z0-9]+/g, " ").split(/\s+/).filter((t) => t.length >= 4);
+      const blob = `${m.id} ${m.title} ${m.youtubeVideoId}`.toLowerCase();
+      for (const t of tokens) {
+        if (blob.includes(t)) score += t.length;
+      }
     }
     if (score > 0) {
-      scored.push({ id: m.id, title: m.shortTitle ?? m.title, score });
+      scored.push({ id: m.id, title: m.shortTitle ?? m.title, score, reason });
     }
   }
   return scored
     .sort((a, b) => b.score - a.score)
     .slice(0, limit)
-    .map(({ id, title }) => ({ id, title }));
+    .map(({ id, title, reason }) => ({ id, title, reason }));
 }
 
 export function listVideoMasterArrival(): VideoMasterArrivalSummary {
@@ -158,6 +188,7 @@ export function listVideoMasterArrival(): VideoMasterArrivalSummary {
         bytes: hit.bytes,
         publicSrc: hit.publicSrc,
         matchStatus: "attached",
+        matchConfidence: "attached",
         matchedSpeechId: attached.speechId,
         matchedSpeechTitle: speechTitle(attached.speechId),
         suggestions: [],
@@ -173,6 +204,7 @@ export function listVideoMasterArrival(): VideoMasterArrivalSummary {
         bytes: hit.bytes,
         publicSrc: hit.publicSrc,
         matchStatus: "held",
+        matchConfidence: null,
         matchedSpeechId: null,
         matchedSpeechTitle: null,
         suggestions: softSuggestions(hit),
@@ -189,6 +221,7 @@ export function listVideoMasterArrival(): VideoMasterArrivalSummary {
         bytes: hit.bytes,
         publicSrc: hit.publicSrc,
         matchStatus: "auto",
+        matchConfidence: auto.confidence,
         matchedSpeechId: auto.id,
         matchedSpeechTitle: auto.title,
         suggestions: [],
@@ -203,6 +236,7 @@ export function listVideoMasterArrival(): VideoMasterArrivalSummary {
       bytes: hit.bytes,
       publicSrc: hit.publicSrc,
       matchStatus: "unmatched",
+      matchConfidence: null,
       matchedSpeechId: null,
       matchedSpeechTitle: null,
       suggestions: softSuggestions(hit),

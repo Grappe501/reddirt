@@ -2880,6 +2880,40 @@ export async function bringArrivalIntoSystemAction(): Promise<{
   };
 }
 
+/** Phase 4 — list Owned Media images not yet in Evidence (confirm required to import). */
+export async function listOwnedMediaEvidenceBridgeAction(): Promise<{
+  ok: boolean;
+  message: string;
+  rows?: import("@/lib/campaign-media/owned-media-to-evidence-bridge").OwnedMediaEvidenceBridgeRow[];
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { listOwnedMediaEvidenceBridgeCandidates } = await import(
+    "@/lib/campaign-media/owned-media-to-evidence-bridge"
+  );
+  const result = await listOwnedMediaEvidenceBridgeCandidates(24);
+  return { ok: true, message: result.message, rows: result.rows };
+}
+
+/** Phase 4 — confirm import Owned Media LOCAL_DISK image → Evidence draft. */
+export async function importOwnedMediaToEvidenceDraftAction(ownedMediaId: string): Promise<{
+  ok: boolean;
+  message: string;
+  photoId?: string;
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { importOwnedMediaToEvidenceDraft } = await import(
+    "@/lib/campaign-media/owned-media-to-evidence-bridge"
+  );
+  const result = await importOwnedMediaToEvidenceDraft(ownedMediaId);
+  if (result.ok) {
+    revalidatePath("/admin/evidence-workbench");
+    revalidatePath("/campaign-photos");
+  }
+  return result;
+}
+
 /**
  * Soft-watch poll (Phase 2) — detect new stills/masters only.
  * Never intakes, never Approves. Speeches omitted to keep polls light.
