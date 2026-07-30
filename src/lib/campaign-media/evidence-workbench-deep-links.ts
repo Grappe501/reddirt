@@ -63,9 +63,10 @@ export function parsePhotosUrlFilter(raw?: string | null): PhotosUrlFilter {
     .replace(/_/g, "-");
   if (v === "unknown") return "unknown";
   if (v === "needsapproval" || v === "needs-approval") return "needsApproval";
-  if (v === "draft" || v === "drafts") return "draft";
-  if (v === "approved" || v === "public") return "approved";
+  if (v === "draft" || v === "drafts" || v === "intake") return "draft";
+  if (v === "approved" || v === "public" || v === "shipped") return "approved";
   if (v === "homepage") return "homepage";
+  if (v === "needspromote" || v === "needs-promote" || v === "promote") return "all";
   return "all";
 }
 

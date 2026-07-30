@@ -286,6 +286,16 @@ export default async function EvidenceWorkbenchPage({ searchParams }: Props) {
               counties={counties}
               initialPhotoId={focusId}
               initialFilter={urlFilter}
+              needsPromoteIds={photoReadiness.rows
+                .filter((r) => r.assemblyCount > 0 && !r.hasPublicOverride)
+                .map((r) => r.photoId)}
+              stageCounts={{
+                intake: publishQueue.totals.draftIngest + publishQueue.totals.intakeNewOnDisk,
+                unknown: publishQueue.totals.unknownCounty,
+                needsApproval: publishQueue.totals.needsApproval,
+                needsPromote: photoReadiness.needsPromote,
+                approved: publishQueue.totals.approvedPublic,
+              }}
             />
           </>
         ) : null}

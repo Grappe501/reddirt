@@ -117,7 +117,7 @@ export function rankEvidenceNextActions(limit = 5): {
       priority: 87,
       title: `Promote ${photoReady.needsPromote} ready Pro Edit assembl(y/ies)`,
       why: "Assemblies rendered but not yet set as publicSrcOverride — confirm promote.",
-      href: "/admin/evidence-workbench?tab=photos&filter=draft",
+      href: "/admin/evidence-workbench?tab=photos&filter=needsPromote",
       modeHint: "photo_prep",
     });
   }

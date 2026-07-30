@@ -1396,6 +1396,26 @@ export async function getTurboProposalAction(photoId: string): Promise<{
   };
 }
 
+/** Batch load turbo proposals for Tonight Asset Desk pack rows. */
+export async function getTurboProposalsForPhotosAction(photoIds: string[]): Promise<{
+  ok: boolean;
+  message: string;
+  proposals?: import("@/lib/campaign-media/turbo-ingest-types").TurboPhotoProposal[];
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { getTurboProposal } = await import("@/lib/campaign-media/turbo-ingest-store");
+  const ids = [...new Set(photoIds.map((id) => String(id ?? "").trim()).filter(Boolean))].slice(0, 40);
+  const proposals = ids
+    .map((id) => getTurboProposal(id))
+    .filter((p): p is NonNullable<typeof p> => Boolean(p));
+  return {
+    ok: true,
+    message: `Loaded ${proposals.length} turbo proposal(s) for ${ids.length} photo(s).`,
+    proposals,
+  };
+}
+
 export async function applyTurboProposalAction(input: {
   photoId: string;
   applyIdentify?: boolean;

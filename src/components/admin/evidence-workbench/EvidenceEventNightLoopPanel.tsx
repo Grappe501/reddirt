@@ -1,9 +1,13 @@
 "use client";
 
-import { useMemo, useState, useTransition } from "react";
+import { useEffect, useMemo, useState, useTransition } from "react";
 import Link from "next/link";
 import {
+  applyTurboProposalAction,
+  batchSavePhotoEvidenceAction,
   buildEvidenceShipReportAction,
+  getEvidencePublishQueueAction,
+  getTurboProposalsForPhotosAction,
   proposeEventNightPackAction,
   proposeEventReelAction,
   renderEventReelAction,
@@ -15,17 +19,56 @@ import {
 import type { EventNightPack } from "@/lib/campaign-media/evidence-event-night-pack";
 import type { EventReelProject } from "@/lib/campaign-media/event-reel-types";
 import type { EvidenceShipReport } from "@/lib/campaign-media/evidence-ship-report";
+import type { TurboPhotoProposal } from "@/lib/campaign-media/turbo-ingest-types";
 
 type CalRow = { id: string; date: string; summary: string; status: string };
+
+type DeskStage = "pick" | "propose" | "identify" | "save" | "approve" | "ship";
+
+type PackRowEdit = {
+  county: string;
+  city: string;
+  venue: string;
+  eventDate: string;
+  eventName: string;
+  photographer: string;
+  whatThisProves: string;
+  applied: boolean;
+  saved: boolean;
+};
 
 type Props = {
   calendarRows: CalRow[];
   initialNeedsApprovalIds?: string[];
 };
 
+const STAGES: Array<{ id: DeskStage; label: string; hint: string }> = [
+  { id: "pick", label: "1 · Pick", hint: "Confirmed calendar row" },
+  { id: "propose", label: "2 · Propose", hint: "Pack + optional reel" },
+  { id: "identify", label: "3 · Identify", hint: "Vision proposals only" },
+  { id: "save", label: "4 · Save", hint: "Inline Apply / Save" },
+  { id: "approve", label: "5 · Approve", hint: "Confirm-gated" },
+  { id: "ship", label: "6 · Ship", hint: "Binaries + commit" },
+];
+
+function emptyEdit(photo: EventNightPack["photos"][number], proposal?: TurboPhotoProposal | null): PackRowEdit {
+  const id = proposal?.identify;
+  return {
+    county: id?.county && id.county !== "Unknown" ? id.county : photo.county || "Unknown",
+    city: id?.city && id.city !== "Unknown" ? id.city : photo.city || "Unknown",
+    venue: id?.venue && id.venue !== "Unknown" ? id.venue : "Unknown",
+    eventDate: id?.eventDate && id.eventDate !== "Unknown" ? id.eventDate : photo.eventDate || "Unknown",
+    eventName: id?.eventName && id.eventName !== "Unknown" ? id.eventName : photo.eventName || "Unknown",
+    photographer: id?.photographer && id.photographer !== "Unknown" ? id.photographer : "Unknown",
+    whatThisProves: id?.whatThisProves ?? "",
+    applied: proposal?.status === "applied",
+    saved: false,
+  };
+}
+
 /**
- * Tonight ritual: calendar → vision/turbo identify → confirm Approve → ship binaries → commit template.
- * Never silent Approve. Prefer Unknown.
+ * Tonight Asset Desk (Round B) — continuous night path without Photos tab bounce.
+ * Prefer Unknown. Never silent Approve.
  */
 export function EvidenceEventNightLoopPanel({
   calendarRows,
@@ -36,16 +79,51 @@ export function EvidenceEventNightLoopPanel({
     [calendarRows],
   );
   const [rowId, setRowId] = useState(confirmed[0]?.id ?? calendarRows[0]?.id ?? "");
+  const [stage, setStage] = useState<DeskStage>("pick");
   const [useAi, setUseAi] = useState(true);
   const [consentConfirmed, setConsentConfirmed] = useState(false);
   const [pack, setPack] = useState<EventNightPack | null>(null);
   const [reel, setReel] = useState<EventReelProject | null>(null);
+  const [proposalsById, setProposalsById] = useState<Record<string, TurboPhotoProposal>>({});
+  const [edits, setEdits] = useState<Record<string, PackRowEdit>>({});
   const [ship, setShip] = useState<EvidenceShipReport | null>(null);
   const [needsApprovalIds, setNeedsApprovalIds] = useState(initialNeedsApprovalIds);
   const [commitTemplate, setCommitTemplate] = useState("");
   const [promotedNeeding, setPromotedNeeding] = useState(0);
   const [message, setMessage] = useState("");
   const [pending, start] = useTransition();
+
+  async function loadProposals(
+    photos: EventNightPack["photos"],
+  ) {
+    const photoIds = photos.map((p) => p.id);
+    if (!photoIds.length) {
+      setProposalsById({});
+      return;
+    }
+    const res = await getTurboProposalsForPhotosAction(photoIds);
+    const map: Record<string, TurboPhotoProposal> = {};
+    for (const p of res.proposals ?? []) map[p.photoId] = p;
+    setProposalsById(map);
+    setEdits((prev) => {
+      const next = { ...prev };
+      for (const photo of photos) {
+        const id = photo.id;
+        next[id] = {
+          ...emptyEdit(photo, map[id] ?? null),
+          applied: prev[id]?.applied || map[id]?.status === "applied",
+          saved: prev[id]?.saved ?? false,
+        };
+      }
+      return next;
+    });
+  }
+
+  useEffect(() => {
+    if (!pack?.photos.length) return;
+    void loadProposals(pack.photos);
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- reload when pack identity changes
+  }, [pack?.calendarRowId, pack?.photos.map((p) => p.id).join("|")]);
 
   function proposeOnly() {
     if (!rowId) {
@@ -55,7 +133,11 @@ export function EvidenceEventNightLoopPanel({
     start(async () => {
       const res = await proposeEventNightPackAction(rowId);
       setMessage(res.message);
-      if (res.pack) setPack(res.pack);
+      if (res.pack) {
+        setPack(res.pack);
+        setEdits({});
+        setStage("propose");
+      }
     });
   }
 
@@ -85,9 +167,7 @@ export function EvidenceEventNightLoopPanel({
     }
     start(async () => {
       const res = await renderEventReelAction({ projectId: reel.id, confirmRender: true });
-      setMessage(
-        [res.message, ...(res.warnings ?? [])].filter(Boolean).join(" · "),
-      );
+      setMessage([res.message, ...(res.warnings ?? [])].filter(Boolean).join(" · "));
       if (res.ok && reel) {
         setReel({
           ...reel,
@@ -111,10 +191,17 @@ export function EvidenceEventNightLoopPanel({
         maxPhotos: 16,
       });
       setMessage(res.message);
-      if (res.pack) setPack(res.pack);
+      if (res.pack) {
+        setPack(res.pack);
+        setEdits({});
+        setStage("identify");
+      }
       if (res.ship) {
         setShip(res.ship);
         setCommitTemplate(res.ship.commitMessageTemplate);
+      }
+      if (res.pack?.photos.length) {
+        await loadProposals(res.pack.photos);
       }
     });
   }
@@ -128,6 +215,127 @@ export function EvidenceEventNightLoopPanel({
         photoIds: pack?.photos.map((p) => p.id),
       });
       setMessage(res.message);
+      setStage("identify");
+      if (pack?.photos.length) await loadProposals(pack.photos);
+      setStage("save");
+    });
+  }
+
+  function updateEdit(photoId: string, patch: Partial<PackRowEdit>) {
+    setEdits((prev) => {
+      const photo = pack?.photos.find((p) => p.id === photoId);
+      const base =
+        prev[photoId] ??
+        (photo
+          ? emptyEdit(photo, proposalsById[photoId] ?? null)
+          : {
+              county: "Unknown",
+              city: "Unknown",
+              venue: "Unknown",
+              eventDate: "Unknown",
+              eventName: "Unknown",
+              photographer: "Unknown",
+              whatThisProves: "",
+              applied: false,
+              saved: false,
+            });
+      return { ...prev, [photoId]: { ...base, ...patch } };
+    });
+  }
+
+  function applyIdentifyRow(photoId: string) {
+    start(async () => {
+      const res = await applyTurboProposalAction({
+        photoId,
+        applyIdentify: true,
+        applyFitFlags: false,
+      });
+      setMessage(res.message);
+      if (res.ok) updateEdit(photoId, { applied: true });
+      if (pack?.photos.length) await loadProposals(pack.photos);
+    });
+  }
+
+  function saveRow(photoId: string) {
+    const edit = edits[photoId];
+    if (!edit) {
+      setMessage(`No edit row for ${photoId}.`);
+      return;
+    }
+    start(async () => {
+      const res = await batchSavePhotoEvidenceAction({
+        photoIds: [photoId],
+        applyFields: [
+          "county",
+          "city",
+          "venue",
+          "eventDate",
+          "eventName",
+          "photographer",
+          "whatThisProves",
+        ],
+        patch: {
+          county: edit.county.trim() || "Unknown",
+          city: edit.city.trim() || "Unknown",
+          venue: edit.venue.trim() || "Unknown",
+          eventDate: edit.eventDate.trim() || "Unknown",
+          eventName: edit.eventName.trim() || "Unknown",
+          photographer: edit.photographer.trim() || "Unknown",
+          whatThisProves: edit.whatThisProves,
+        },
+      });
+      setMessage(res.message);
+      if (res.ok) {
+        updateEdit(photoId, { saved: true });
+        const q = await getEvidencePublishQueueAction();
+        if (q.queue) setNeedsApprovalIds(q.queue.buckets.needsApproval.map((i) => i.id));
+      }
+    });
+  }
+
+  function applySaveAllKnown() {
+    const ids =
+      pack?.photos
+        .map((p) => p.id)
+        .filter((id) => {
+          const e = edits[id];
+          return e && e.county.trim() && e.county.trim() !== "Unknown";
+        }) ?? [];
+    if (!ids.length) {
+      setMessage("No pack rows with a known county to Apply+Save. Prefer Unknown stays Unknown.");
+      return;
+    }
+    start(async () => {
+      const notes: string[] = [];
+      for (const id of ids) {
+        const apply = await applyTurboProposalAction({
+          photoId: id,
+          applyIdentify: true,
+          applyFitFlags: false,
+        });
+        notes.push(`${id}: ${apply.message}`);
+        const edit = edits[id];
+        if (!edit) continue;
+        const save = await batchSavePhotoEvidenceAction({
+          photoIds: [id],
+          applyFields: ["county", "city", "venue", "eventDate", "eventName", "photographer", "whatThisProves"],
+          patch: {
+            county: edit.county.trim() || "Unknown",
+            city: edit.city.trim() || "Unknown",
+            venue: edit.venue.trim() || "Unknown",
+            eventDate: edit.eventDate.trim() || "Unknown",
+            eventName: edit.eventName.trim() || "Unknown",
+            photographer: edit.photographer.trim() || "Unknown",
+            whatThisProves: edit.whatThisProves,
+          },
+        });
+        notes.push(save.message);
+        if (save.ok) updateEdit(id, { applied: true, saved: true });
+      }
+      setMessage(`Apply+Save known (${ids.length}): ${notes.slice(0, 4).join(" · ")}`);
+      const q = await getEvidencePublishQueueAction();
+      if (q.queue) setNeedsApprovalIds(q.queue.buckets.needsApproval.map((i) => i.id));
+      setStage("approve");
     });
   }
 
@@ -152,6 +360,7 @@ export function EvidenceEventNightLoopPanel({
         setNeedsApprovalIds(res.ritual.needsApprovalIds);
         setCommitTemplate(res.ritual.commitMessageTemplate);
         setPromotedNeeding(res.ritual.promotedNeedingShip.length);
+        setStage("ship");
       }
     });
   }
@@ -175,6 +384,7 @@ export function EvidenceEventNightLoopPanel({
         setShip(shipRes.report);
         setCommitTemplate(shipRes.report.commitMessageTemplate);
         setPromotedNeeding(shipRes.report.totals.promotedOverrideGitignored);
+        setStage("ship");
       }
     });
   }
@@ -210,22 +420,55 @@ export function EvidenceEventNightLoopPanel({
     });
   }
 
+  const showSaveDesk = Boolean(pack?.photos.length) && (stage === "identify" || stage === "save" || stage === "approve" || stage === "ship");
+
   return (
     <div className="mb-6 space-y-3 rounded-lg border-2 border-[#ca913d]/50 bg-[#fff8ef] p-4 text-[#12124a]">
-      <p className="font-heading text-sm font-bold uppercase tracking-wide text-[#000066]">
-        Tonight ritual
-      </p>
-      <p className="font-body text-xs text-[#364272]">
-        Calendar → Vision Identify proposals → Apply/Save on Photos → Confirm Approve → Ship
-        binaries → commit. Prefer Unknown. Never silent Approve.
-      </p>
+      <div className="flex flex-wrap items-baseline justify-between gap-2">
+        <div>
+          <p className="font-heading text-sm font-bold uppercase tracking-wide text-[#000066]">
+            Tonight Asset Desk
+          </p>
+          <p className="mt-1 font-body text-xs text-[#364272]">
+            Same desk: pack → identify → inline Apply/Save → Confirm Approve → Ship. Prefer Unknown.
+            Never silent Approve.
+          </p>
+        </div>
+        <Link
+          href="/admin/evidence-workbench?tab=photos&filter=unknown"
+          className="font-body text-[11px] font-semibold text-[#000066] underline"
+        >
+          Open Photos factory →
+        </Link>
+      </div>
+
+      <div className="flex flex-wrap gap-1.5">
+        {STAGES.map((s) => (
+          <button
+            key={s.id}
+            type="button"
+            title={s.hint}
+            onClick={() => setStage(s.id)}
+            className={`rounded border px-2 py-1 font-body text-[10px] font-bold uppercase tracking-wide ${
+              stage === s.id
+                ? "border-[#000066] bg-[#000066] text-white"
+                : "border-[#000066]/20 bg-white text-[#000066]"
+            }`}
+          >
+            {s.label}
+          </button>
+        ))}
+      </div>
 
       <div className="flex flex-wrap items-end gap-2">
         <label className="font-body text-xs font-semibold text-[#000066]">
           Calendar row
           <select
             value={rowId}
-            onChange={(e) => setRowId(e.target.value)}
+            onChange={(e) => {
+              setRowId(e.target.value);
+              setStage("pick");
+            }}
             className="mt-1 block min-w-[16rem] rounded border-2 border-[#000066]/20 bg-white px-2 py-1.5 font-body text-sm"
           >
             {!calendarRows.length ? <option value="">No rows</option> : null}
@@ -257,7 +500,7 @@ export function EvidenceEventNightLoopPanel({
           onClick={proposeOnly}
           className="rounded-md border-2 border-[#000066] bg-white px-3 py-2 font-body text-xs font-bold text-[#000066] disabled:opacity-50"
         >
-          1 · Propose pack
+          Propose pack
         </button>
         <button
           type="button"
@@ -265,7 +508,7 @@ export function EvidenceEventNightLoopPanel({
           onClick={proposeReel}
           className="rounded-md border-2 border-[#ca913d] bg-white px-3 py-2 font-body text-xs font-bold text-[#12124a] disabled:opacity-50"
         >
-          1b · Propose event reel
+          Propose event reel
         </button>
         <button
           type="button"
@@ -273,7 +516,7 @@ export function EvidenceEventNightLoopPanel({
           onClick={confirmRenderReel}
           className="rounded-md border-2 border-[#ca913d] bg-[#000066] px-3 py-2 font-body text-xs font-bold text-white disabled:opacity-50"
         >
-          1c · Confirm render reel
+          Confirm render reel
           {reel?.stills.length ? ` (${reel.stills.length})` : ""}
         </button>
         <button
@@ -282,29 +525,31 @@ export function EvidenceEventNightLoopPanel({
           onClick={runFullLoop}
           className="rounded-md border-2 border-[#000066] bg-white px-3 py-2 font-body text-xs font-bold text-[#000066] disabled:opacity-50"
         >
-          2 · Pack + turbo
+          Pack + turbo
         </button>
         <button
           type="button"
-          disabled={pending}
+          disabled={pending || !pack}
           onClick={visionIdentify}
           className="rounded-md border-2 border-[#8eb6dc] bg-white px-3 py-2 font-body text-xs font-semibold text-[#000066] disabled:opacity-50"
         >
-          2b · Vision Identify (clamp)
+          Vision Identify (clamp)
         </button>
-        <Link
-          href="/admin/evidence-workbench?tab=photos&filter=draft"
-          className="rounded-md border-2 border-[#ca913d] bg-white px-3 py-2 font-body text-xs font-bold text-[#12124a]"
+        <button
+          type="button"
+          disabled={pending || !pack}
+          onClick={applySaveAllKnown}
+          className="rounded-md border-2 border-[#000066] bg-white px-3 py-2 font-body text-xs font-bold text-[#000066] disabled:opacity-50"
         >
-          3 · Apply / Save on Photos
-        </Link>
+          Apply+Save known counties
+        </button>
         <button
           type="button"
           disabled={pending}
           onClick={tonightApproveAndShip}
           className="rounded-md bg-[#000066] px-3 py-2 font-body text-xs font-bold text-white disabled:opacity-50"
         >
-          4 · Confirm Approve ({needsApprovalIds.length})
+          Confirm Approve ({needsApprovalIds.length})
         </button>
         <button
           type="button"
@@ -312,7 +557,7 @@ export function EvidenceEventNightLoopPanel({
           onClick={shipBinaries}
           className="rounded-md border-2 border-[#ca913d] bg-[#000066] px-3 py-2 font-body text-xs font-bold text-white disabled:opacity-50"
         >
-          5 · Ship promoted binaries
+          Ship promoted binaries
           {promotedNeeding ? ` (${promotedNeeding})` : ""}
         </button>
         <button
@@ -351,20 +596,103 @@ export function EvidenceEventNightLoopPanel({
         </div>
       ) : null}
 
+      {showSaveDesk ? (
+        <div className="rounded border-2 border-[#000066]/20 bg-white p-3">
+          <div className="flex flex-wrap items-baseline justify-between gap-2">
+            <p className="font-heading text-xs font-bold uppercase text-[#000066]">
+              Inline Apply / Save — Prefer Unknown
+            </p>
+            <p className="font-body text-[10px] text-[#364272]">
+              Identify never Approves. Leave county Unknown until you are sure.
+            </p>
+          </div>
+          <div className="mt-2 max-h-80 space-y-2 overflow-auto">
+            {pack?.photos.map((photo) => {
+              const proposal = proposalsById[photo.id];
+              const edit = edits[photo.id] ?? emptyEdit(photo, proposal);
+              const proposedCounty = proposal?.identify?.county ?? "—";
+              return (
+                <div
+                  key={photo.id}
+                  className="rounded border border-[#8eb6dc]/40 bg-[#f4f7fc] p-2 font-body text-[11px]"
+                >
+                  <div className="flex flex-wrap items-start justify-between gap-2">
+                    <div>
+                      <p className="font-mono text-[10px] font-bold text-[#000066]">{photo.id}</p>
+                      <p className="text-[#364272]">
+                        Pack {photo.county}/{photo.city} · score {photo.score}
+                        {proposal
+                          ? ` · turbo ${proposal.status} · propose ${proposedCounty} (${proposal.identify?.confidence ?? "—"})`
+                          : " · no turbo proposal yet"}
+                      </p>
+                    </div>
+                    <div className="flex flex-wrap gap-1">
+                      <button
+                        type="button"
+                        disabled={pending || !proposal || proposal.status === "dismissed"}
+                        onClick={() => applyIdentifyRow(photo.id)}
+                        className="rounded border border-[#000066] bg-white px-2 py-1 text-[10px] font-bold text-[#000066] disabled:opacity-50"
+                      >
+                        Apply identify
+                      </button>
+                      <button
+                        type="button"
+                        disabled={pending}
+                        onClick={() => saveRow(photo.id)}
+                        className="rounded border border-[#ca913d] bg-[#000066] px-2 py-1 text-[10px] font-bold text-white disabled:opacity-50"
+                      >
+                        Save
+                      </button>
+                      {edit.applied ? (
+                        <span className="rounded bg-white px-1.5 py-1 text-[10px] text-[#364272]">applied</span>
+                      ) : null}
+                      {edit.saved ? (
+                        <span className="rounded bg-white px-1.5 py-1 text-[10px] text-[#364272]">saved</span>
+                      ) : null}
+                    </div>
+                  </div>
+                  <div className="mt-2 grid gap-1 sm:grid-cols-3 lg:grid-cols-6">
+                    {(
+                      [
+                        ["county", "County"],
+                        ["city", "City"],
+                        ["venue", "Venue"],
+                        ["eventDate", "Event date"],
+                        ["eventName", "Event"],
+                        ["photographer", "Photographer"],
+                      ] as const
+                    ).map(([key, label]) => (
+                      <label key={key} className="block text-[10px] font-semibold text-[#000066]">
+                        {label}
+                        <input
+                          className="mt-0.5 w-full rounded border border-[#8eb6dc]/50 bg-white px-1.5 py-1 font-body text-[11px]"
+                          value={edit[key]}
+                          onChange={(e) => updateEdit(photo.id, { [key]: e.target.value })}
+                        />
+                      </label>
+                    ))}
+                  </div>
+                  <label className="mt-1 block text-[10px] font-semibold text-[#000066]">
+                    What this proves
+                    <input
+                      className="mt-0.5 w-full rounded border border-[#8eb6dc]/50 bg-white px-1.5 py-1 font-body text-[11px]"
+                      value={edit.whatThisProves}
+                      onChange={(e) => updateEdit(photo.id, { whatThisProves: e.target.value })}
+                    />
+                  </label>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      ) : null}
+
       {reel ? (
         <div className="rounded border border-[#ca913d]/40 bg-white p-3 font-body text-xs">
           <p className="font-heading text-xs font-bold text-[#000066]">
             Event reel · {reel.status} · {reel.stills.length} stills · {reel.exportAspects.join(" + ")}
           </p>
           <p className="mt-1 font-mono text-[10px] text-[#364272]">{reel.id}</p>
-          <ul className="mt-1 max-h-28 list-disc overflow-auto pl-4 text-[#364272]">
-            {reel.stills.map((s) => (
-              <li key={s.photoId}>
-                {s.photoId} · {s.county}
-                {s.city && s.city !== "Unknown" ? ` · ${s.city}` : ""} · {s.durationSec}s
-              </li>
-            ))}
-          </ul>
           {reel.assemblies?.length ? (
             <ul className="mt-2 font-mono text-[10px] text-[#364272]">
               {reel.assemblies.map((a) => (
@@ -390,15 +718,6 @@ export function EvidenceEventNightLoopPanel({
               <li key={a}>{a}</li>
             ))}
           </ul>
-          {ship.dirtyPaths.length ? (
-            <ul className="mt-2 max-h-28 overflow-auto font-mono text-[10px] text-[#364272]">
-              {ship.dirtyPaths.slice(0, 20).map((d) => (
-                <li key={d.path}>
-                  {d.status} · {d.kind} · {d.path}
-                </li>
-              ))}
-            </ul>
-          ) : null}
         </div>
       ) : null}
 

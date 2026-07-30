@@ -138,13 +138,33 @@ export type PhotoWorkbenchItem = {
 
 type CountyOpt = { slug: string; displayName: string; shortName: string };
 
-type Filter = "all" | "unknown" | "needsApproval" | "draft" | "approved" | "homepage";
+type Filter =
+  | "all"
+  | "unknown"
+  | "needsApproval"
+  | "draft"
+  | "approved"
+  | "homepage"
+  | "needsPromote";
 
-const FILTER_IDS: Filter[] = ["all", "unknown", "needsApproval", "draft", "approved", "homepage"];
+const FILTER_IDS: Filter[] = [
+  "all",
+  "unknown",
+  "needsApproval",
+  "draft",
+  "approved",
+  "homepage",
+  "needsPromote",
+];
 
 function parseFilter(raw?: string): Filter {
+  const v = String(raw ?? "")
+    .trim()
+    .toLowerCase()
+    .replace(/_/g, "-");
+  if (v === "needspromote" || v === "needs-promote" || v === "promote") return "needsPromote";
   const normalized = parsePhotosUrlFilter(raw);
-  return FILTER_IDS.includes(normalized) ? normalized : "all";
+  return FILTER_IDS.includes(normalized as Filter) ? (normalized as Filter) : "all";
 }
 
 type Props = {
@@ -152,6 +172,15 @@ type Props = {
   counties: CountyOpt[];
   initialPhotoId?: string;
   initialFilter?: string;
+  /** Assembly ready, not yet publicSrcOverride — stage strip Needs Promote. */
+  needsPromoteIds?: string[];
+  stageCounts?: {
+    intake: number;
+    unknown: number;
+    needsApproval: number;
+    needsPromote: number;
+    approved: number;
+  };
 };
 
 type PhotoFormState = {
@@ -212,8 +241,16 @@ function buildForm(photo: PhotoWorkbenchItem): PhotoFormState {
   };
 }
 
-export function EvidencePhotosPanel({ photos, counties, initialPhotoId, initialFilter }: Props) {
+export function EvidencePhotosPanel({
+  photos,
+  counties,
+  initialPhotoId,
+  initialFilter,
+  needsPromoteIds = [],
+  stageCounts,
+}: Props) {
   const [filter, setFilter] = useState<Filter>(() => parseFilter(initialFilter));
+  const promoteSet = useMemo(() => new Set(needsPromoteIds), [needsPromoteIds]);
   const [query, setQuery] = useState("");
   const [activeId, setActiveId] = useState<string>(
     () => initialPhotoId || photos[0]?.id || "",
@@ -277,6 +314,7 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId, initialF
       if (filter === "draft" && !(pub === "DRAFT" || pub === "IN_REVIEW")) return false;
       if (filter === "approved" && !(approved || pub === "APPROVED" || pub === "PUBLISHED")) return false;
       if (filter === "homepage" && !(p.overlay?.homepageCandidate ?? p.base.homepageCandidate)) return false;
+      if (filter === "needsPromote" && !promoteSet.has(p.id)) return false;
       if (!q) return true;
       return (
         p.id.toLowerCase().includes(q) ||
@@ -286,7 +324,7 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId, initialF
         (p.overlay?.eventName ?? p.base.eventName).toLowerCase().includes(q)
       );
     });
-  }, [photos, filter, query]);
+  }, [photos, filter, query, promoteSet]);
 
   const filteredIds = useMemo(() => filtered.map((p) => p.id), [filtered]);
 
@@ -1297,37 +1335,88 @@ export function EvidencePhotosPanel({ photos, counties, initialPhotoId, initialF
     });
   }
 
+  const STAGE_STRIP: Array<{ id: Filter; label: string; count?: number; hint: string }> = [
+    { id: "draft", label: "Intake", count: stageCounts?.intake, hint: "Draft / in-review queue" },
+    { id: "unknown", label: "Unknown", count: stageCounts?.unknown, hint: "Prefer Unknown until sure" },
+    {
+      id: "needsApproval",
+      label: "Needs Approve",
+      count: stageCounts?.needsApproval,
+      hint: "Geo saved — Confirm Approve separately",
+    },
+    {
+      id: "needsPromote",
+      label: "Needs Promote",
+      count: stageCounts?.needsPromote,
+      hint: "Pro Edit assemblies waiting for publicSrcOverride",
+    },
+    {
+      id: "approved",
+      label: "Albums / shipped",
+      count: stageCounts?.approved,
+      hint: "Album-eligible — binaries still need Ship tab when gitignored",
+    },
+  ];
+
   const FILTERS: { id: Filter; label: string }[] = [
     { id: "all", label: "All" },
-    { id: "unknown", label: "Unknown county" },
-    { id: "needsApproval", label: "Needs approval" },
-    { id: "draft", label: "Draft" },
-    { id: "approved", label: "Approved" },
     { id: "homepage", label: "Homepage" },
   ];
 
   const imageSrc = `${photo.src}${photo.src.includes("?") ? "&" : "?"}wb=${encodeURIComponent(photo.id)}`;
 
+  const showProEdit =
+    filter === "needsPromote" || filter === "approved" || filter === "homepage" || filter === "all";
+
   return (
     <div className="space-y-4">
       <FilterBar query={query} setQuery={setQuery} counts={filtered.length} />
-      <div className="flex flex-wrap gap-2">
-        {FILTERS.map((f) => (
-          <button
-            key={f.id}
-            type="button"
-            onClick={() => {
-              setFilter(f.id);
-            }}
-            className={`rounded-md border px-3 py-1.5 font-body text-xs font-semibold ${
-              filter === f.id
-                ? "border-[#000066] bg-[#000066] text-white"
-                : "border-[#8eb6dc] bg-white text-[#12124a]"
-            }`}
-          >
-            {f.label}
-          </button>
-        ))}
+
+      <div className="rounded-lg border-2 border-[#000066]/15 bg-[#f4f7fc] p-3">
+        <p className="font-heading text-[11px] font-bold uppercase tracking-wide text-[#000066]">
+          Photos stage strip
+        </p>
+        <p className="mt-1 font-body text-[10px] text-[#364272]">
+          Progressive desk — Identify on Unknown; Pro Edit / Promote under Needs Promote. Prefer
+          Unknown. Never silent Approve.
+        </p>
+        <div className="mt-2 flex flex-wrap gap-2">
+          {STAGE_STRIP.map((s) => (
+            <button
+              key={s.id}
+              type="button"
+              title={s.hint}
+              onClick={() => setFilter(s.id)}
+              className={`rounded-md border px-3 py-1.5 font-body text-xs font-bold ${
+                filter === s.id
+                  ? "border-[#000066] bg-[#000066] text-white"
+                  : "border-[#8eb6dc] bg-white text-[#12124a]"
+              }`}
+            >
+              {s.label}
+              {typeof s.count === "number" ? ` (${s.count})` : ""}
+            </button>
+          ))}
+          {FILTERS.map((f) => (
+            <button
+              key={f.id}
+              type="button"
+              onClick={() => setFilter(f.id)}
+              className={`rounded-md border px-3 py-1.5 font-body text-xs font-semibold ${
+                filter === f.id
+                  ? "border-[#000066] bg-[#000066] text-white"
+                  : "border-[#8eb6dc]/60 bg-white text-[#364272]"
+              }`}
+            >
+              {f.label}
+            </button>
+          ))}
+        </div>
+        {!showProEdit ? (
+          <p className="mt-2 font-body text-[10px] text-[#364272]">
+            Pro Edit / crop tools stay available below but this stage focuses Identify → Save.
+          </p>
+        ) : null}
       </div>
 
       {turboProposal && turboProposal.status === "pending" ? (
