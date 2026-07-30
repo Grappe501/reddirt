@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { PageHero } from "@/components/blocks/PageHero";
+import { MediaPageHero } from "@/components/blocks/MediaPageHero";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { FullBleedSection } from "@/components/layout/FullBleedSection";
 import { Button } from "@/components/ui/Button";
@@ -20,20 +20,26 @@ export const metadata: Metadata = pageMeta({
   imageSrc: "/media/placeholders/texture-porch-glow.svg",
 });
 
-export default function WhyImRunningPage() {
+export default async function WhyImRunningPage() {
   return (
     <>
-      <PageHero eyebrow="Meet Kelly" title="Why I'm running" subtitle={c.hero.subtitle}>
-        <Button href="/about" variant="outline">
+      <MediaPageHero
+        slotKey="why.hero"
+        layout="split"
+        eyebrow="Meet Kelly"
+        title="Why I'm running"
+        subtitle={c.hero.subtitle}
+      >
+        <Button href="/about" variant="outlineOnDark">
           Meet Kelly overview
         </Button>
-        <Button href="/about/why-secretary-of-state" variant="outline">
+        <Button href="/about/why-secretary-of-state" variant="outlineOnDark">
           Why this office
         </Button>
-        <Button href="/understand" variant="outline">
+        <Button href="/understand" variant="outlineOnDark">
           Understand the office
         </Button>
-      </PageHero>
+      </MediaPageHero>
 
       <FullBleedSection variant="subtle" className="!py-6">
         <ContentContainer className="max-w-3xl">

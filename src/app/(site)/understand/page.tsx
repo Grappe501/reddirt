@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { PageHero } from "@/components/blocks/PageHero";
+import { MediaPageHero } from "@/components/blocks/MediaPageHero";
 import { Button } from "@/components/ui/Button";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { FullBleedSection } from "@/components/layout/FullBleedSection";
@@ -15,10 +15,12 @@ export const metadata: Metadata = pageMeta({
   path: "/understand",
 });
 
-export default function UnderstandTheOfficePage() {
+export default async function UnderstandTheOfficePage() {
   return (
     <>
-      <PageHero
+      <MediaPageHero
+        slotKey="understand.hero"
+        layout="split"
         eyebrow="The Office"
         title="Understand the Secretary of State"
         subtitle="Trust and competence come before persuasion. Learn what this office actually does, then—if you choose—why it matters to Arkansans and what Kelly brings with verified credentials."
@@ -26,10 +28,10 @@ export default function UnderstandTheOfficePage() {
         <Button href="/office/elections" variant="primary">
           Start with elections
         </Button>
-        <Button href="/about" variant="outline">
+        <Button href="/about" variant="outlineOnDark">
           Meet Kelly
         </Button>
-      </PageHero>
+      </MediaPageHero>
 
       <FullBleedSection variant="subtle" padY>
         <ContentContainer wide>

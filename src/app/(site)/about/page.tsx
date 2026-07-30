@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { PageHero } from "@/components/blocks/PageHero";
+import { MediaPageHero } from "@/components/blocks/MediaPageHero";
 import { FullBleedSection } from "@/components/layout/FullBleedSection";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { Button } from "@/components/ui/Button";
@@ -26,7 +26,7 @@ export const metadata: Metadata = pageMeta({
   imageSrc: "/media/placeholders/texture-porch-glow.svg",
 });
 
-export default function AboutPage() {
+export default async function AboutPage() {
   const meetPhoto = getHomepageMeetKellyPhoto();
   const trailPhotos = listHomepageAcrossArkansasPhotos().slice(0, 4);
   const joinHref = getVolunteerSignupHref();
@@ -34,17 +34,23 @@ export default function AboutPage() {
 
   return (
     <>
-      <PageHero eyebrow={c.hero.eyebrow} title={c.hero.title} subtitle={c.hero.subtitle}>
+      <MediaPageHero
+        slotKey="about.hero"
+        layout="split"
+        eyebrow={c.hero.eyebrow}
+        title={c.hero.title}
+        subtitle={c.hero.subtitle}
+      >
         <Button href="/priorities" variant="primary">
           Explore Kelly’s Priorities
         </Button>
-        <Button href="/about/journey" variant="outline">
+        <Button href="/about/journey" variant="outlineOnDark">
           See Kelly Across Arkansas
         </Button>
-        <Button href={joinHref} variant="outline">
+        <Button href={joinHref} variant="outlineOnDark">
           Join the Campaign
         </Button>
-      </PageHero>
+      </MediaPageHero>
 
       <FullBleedSection variant="subtle" className="!py-6">
         <ContentContainer className="max-w-3xl">

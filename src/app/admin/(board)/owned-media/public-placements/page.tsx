@@ -9,12 +9,12 @@ import { prisma } from "@/lib/db";
 import { canPublicReadOwnedMedia } from "@/lib/owned-media/public-read-access";
 import { focalToObjectPosition, resolveEffectiveFocal } from "@/lib/public-media/focal";
 import { collectPublicMediaDiagnostics } from "@/lib/public-media/diagnostics";
-import { listPublicMediaSlotsForPage } from "@/lib/public-media/slot-registry";
+import { listAllPublicMediaSlots, PUBLIC_MEDIA_PAGE_KEYS } from "@/lib/public-media/slot-registry";
 
 export const dynamic = "force-dynamic";
 
 export default async function PublicMediaPlacementsAdminPage() {
-  const slots = listPublicMediaSlotsForPage("home");
+  const slots = listAllPublicMediaSlots();
   const [placements, approvedAssets, diagnostics] = await Promise.all([
     prisma.publicMediaPlacement.findMany({ include: { ownedMediaAsset: true } }),
     prisma.ownedMediaAsset.findMany({
@@ -38,6 +38,10 @@ export default async function PublicMediaPlacementsAdminPage() {
   ]);
 
   const bySlot = new Map(placements.map((p) => [p.slotKey, p]));
+  const slotsByPage = PUBLIC_MEDIA_PAGE_KEYS.map((pageKey) => ({
+    pageKey,
+    slots: slots.filter((s) => s.pageKey === pageKey),
+  })).filter((g) => g.slots.length > 0);
 
   const derivativeReady = await prisma.ownedMediaAsset.findMany({
     where: {
@@ -61,7 +65,7 @@ export default async function PublicMediaPlacementsAdminPage() {
           <p className="text-xs font-bold uppercase tracking-wider text-kelly-gold">Media Center</p>
           <h1 className="mt-2 font-heading text-3xl font-bold text-kelly-ink">Public site placements</h1>
           <p className="mt-2 max-w-2xl text-sm text-kelly-slate">
-            Assign approved Owned Media to typed homepage slots. Placement is not approval —{" "}
+            Assign approved Owned Media to typed public slots (home + inner pages). Placement is not approval —{" "}
             <code className="rounded bg-kelly-fog px-1">approvedForPublicSite</code> remains required.
           </p>
         </div>
@@ -93,8 +97,13 @@ export default async function PublicMediaPlacementsAdminPage() {
         </form>
       </section>
 
-      <div className="space-y-8">
-        {slots.map((slot) => {
+      <div className="space-y-12">
+        {slotsByPage.map((group) => (
+          <div key={group.pageKey} className="space-y-6">
+            <h2 className="font-heading text-xl font-bold text-kelly-ink">
+              Page · <code className="text-kelly-navy">{group.pageKey}</code>
+            </h2>
+            {group.slots.map((slot) => {
           const current = bySlot.get(slot.slotKey);
           const asset = current?.ownedMediaAsset;
           const publishable = asset ? canPublicReadOwnedMedia(asset) && Boolean(current?.enabled) : false;
@@ -107,9 +116,9 @@ export default async function PublicMediaPlacementsAdminPage() {
           });
           return (
             <section key={slot.slotKey} className="rounded-card border border-kelly-ink/10 bg-kelly-fog/40 p-5">
-              <h2 className="font-heading text-lg font-bold text-kelly-navy">{slot.slotKey}</h2>
+              <h3 className="font-heading text-lg font-bold text-kelly-navy">{slot.slotKey}</h3>
               <p className="mt-1 text-sm text-kelly-slate">
-                Needs {slot.requiredDerivative} · {slot.aspectRatioGuidance} · video{" "}
+                {slot.emptySlotLabel} · Needs {slot.requiredDerivative} · {slot.aspectRatioGuidance} · video{" "}
                 {slot.videoAllowed ? "allowed" : "not allowed"}
               </p>
               <ul className="mt-3 flex flex-wrap gap-3 text-xs font-semibold uppercase tracking-wide text-kelly-slate">
@@ -243,7 +252,9 @@ export default async function PublicMediaPlacementsAdminPage() {
               ) : null}
             </section>
           );
-        })}
+            })}
+          </div>
+        ))}
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { PageHero } from "@/components/blocks/PageHero";
+import { MediaPageHero } from "@/components/blocks/MediaPageHero";
 import { SectionHeading } from "@/components/blocks/SectionHeading";
 import { FullBleedSection } from "@/components/layout/FullBleedSection";
 import { ContentContainer } from "@/components/layout/ContentContainer";
@@ -127,7 +127,9 @@ export default async function GetInvolvedPage({
 
   return (
     <>
-      <PageHero
+      <MediaPageHero
+        slotKey="get-involved.hero"
+        layout="split"
         eyebrow="Join in"
         title="Get Involved"
         subtitle="Pick a lane that fits your week. This page converts trust into concrete participation—not pressure."
@@ -135,13 +137,13 @@ export default async function GetInvolvedPage({
         <Button href="#volunteer-ways" variant="primary">
           Volunteer
         </Button>
-        <Button href="/get-involved/bring-5" variant="outline">
+        <Button href="/get-involved/bring-5" variant="outlineOnDark">
           Bring 5
         </Button>
-        <Button href="/events/request" variant="outline">
+        <Button href="/events/request" variant="outlineOnDark">
           Invite Kelly
         </Button>
-      </PageHero>
+      </MediaPageHero>
 
       <FullBleedSection variant="subtle" className="!py-8" aria-labelledby="participation-clarity-heading">
         <ContentContainer className="max-w-3xl">

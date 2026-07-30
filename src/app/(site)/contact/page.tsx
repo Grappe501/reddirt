@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { PageHero } from "@/components/blocks/PageHero";
+import { MediaPageHero } from "@/components/blocks/MediaPageHero";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { FullBleedSection } from "@/components/layout/FullBleedSection";
 import { Button } from "@/components/ui/Button";
@@ -16,13 +16,15 @@ export const metadata: Metadata = pageMeta({
 /**
  * Thin public contact destination — accessibility of the campaign, not a new marketing section.
  */
-export default function ContactPage() {
+export default async function ContactPage() {
   const joinHref = getJoinCampaignHref();
   const volunteerHref = getVolunteerSignupHref();
 
   return (
     <>
-      <PageHero
+      <MediaPageHero
+        slotKey="contact.hero"
+        layout="split"
         eyebrow="Accessibility"
         title="Contact the campaign"
         subtitle="Clear routes to reach the campaign — no hidden forms, no pressure."
@@ -30,13 +32,13 @@ export default function ContactPage() {
         <Button href={joinHref} variant="primary">
           Email the campaign
         </Button>
-        <Button href={volunteerHref} variant="outline">
+        <Button href={volunteerHref} variant="outlineOnDark">
           Join the Campaign
         </Button>
-        <Button href="/events/request" variant="outline">
+        <Button href="/events/request" variant="outlineOnDark">
           Invite Kelly
         </Button>
-      </PageHero>
+      </MediaPageHero>
       <FullBleedSection padY>
         <ContentContainer className="max-w-2xl space-y-5 font-body text-base leading-relaxed text-kelly-slate">
           <p>

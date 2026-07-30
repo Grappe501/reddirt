@@ -10,6 +10,8 @@ type OnTheRoadProofSectionsProps = {
   trailPhotosAvailable?: boolean;
   /** Whether Facebook/Instagram field grid exists below (for story-band cross-links). */
   hasFieldSocial?: boolean;
+  /** When MediaPageHero already renders eyebrow/title/subtitle, keep body copy only. */
+  omitHeroHeader?: boolean;
 };
 
 function ArkansasTrailMapPlaceholder() {
@@ -68,6 +70,7 @@ export function OnTheRoadProofSections({
   upcomingEvents,
   trailPhotosAvailable = false,
   hasFieldSocial = false,
+  omitHeroHeader = false,
 }: OnTheRoadProofSectionsProps) {
   const c = onTheRoadProofCopy;
   const showLiveStories = previewPosts.length > 0;
@@ -75,11 +78,15 @@ export function OnTheRoadProofSections({
   return (
     <>
       <header className="mx-auto max-w-3xl text-center">
-        <p className="font-body text-[11px] font-bold uppercase tracking-[0.24em] text-kelly-gold">{c.hero.eyebrow}</p>
-        <h1 className="mt-4 font-heading text-[clamp(1.95rem,4.2vw,3rem)] font-bold tracking-tight text-kelly-ink">
-          {c.hero.title}
-        </h1>
-        <p className="mt-5 font-body text-lg font-medium text-kelly-ink md:text-xl">{c.hero.subtitle}</p>
+        {omitHeroHeader ? null : (
+          <>
+            <p className="font-body text-[11px] font-bold uppercase tracking-[0.24em] text-kelly-gold">{c.hero.eyebrow}</p>
+            <h1 className="mt-4 font-heading text-[clamp(1.95rem,4.2vw,3rem)] font-bold tracking-tight text-kelly-ink">
+              {c.hero.title}
+            </h1>
+            <p className="mt-5 font-body text-lg font-medium text-kelly-ink md:text-xl">{c.hero.subtitle}</p>
+          </>
+        )}
         {c.hero.bodyParagraphs.map((p) => (
           <p key={p.slice(0, 24)} className="mt-5 font-body text-base leading-relaxed text-kelly-slate md:text-lg">
             {p}

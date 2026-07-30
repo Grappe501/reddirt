@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { PageHero } from "@/components/blocks/PageHero";
+import { MediaPageHero } from "@/components/blocks/MediaPageHero";
 import { FullBleedSection } from "@/components/layout/FullBleedSection";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { Button } from "@/components/ui/Button";
@@ -17,17 +17,23 @@ export const metadata: Metadata = pageMeta({
 
 const c = prioritiesLaunchCopy;
 
-export default function PrioritiesPage() {
+export default async function PrioritiesPage() {
   return (
     <>
-      <PageHero tone="plan" eyebrow={c.hero.eyebrow} title={c.hero.title} subtitle={c.hero.subtitle}>
+      <MediaPageHero
+        slotKey="priorities.hero"
+        layout="split"
+        eyebrow={c.hero.eyebrow}
+        title={c.hero.title}
+        subtitle={c.hero.subtitle}
+      >
         <Button href="/understand" variant="primary">
           Understand the office
         </Button>
         <Button href="/about" variant="outlineOnDark">
           Read Kelly’s Story
         </Button>
-      </PageHero>
+      </MediaPageHero>
 
       <FullBleedSection variant="subtle" padY>
         <ContentContainer className="max-w-3xl">

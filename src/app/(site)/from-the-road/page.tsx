@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ContentPlatform } from "@prisma/client";
 import Link from "next/link";
+import { MediaPageHero } from "@/components/blocks/MediaPageHero";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { ContentHubActionBand } from "@/components/content/ContentHubActionBand";
 import { ContentLocality } from "@/components/content/ContentLocality";
@@ -26,7 +27,7 @@ import { StrategicCountyPhotoStrip } from "@/components/from-the-road/StrategicC
 import { trailPhotosForSlot } from "@/content/media/campaign-trail-assignments";
 import { listCountyAlbumCoverPhotosFrom } from "@/content/media/strategic-photo-placements";
 import { listCampaignPhotosLive } from "@/lib/campaign-media/list-campaign-photos-live";
-import { onTheRoadPageMeta } from "@/content/road/on-the-road";
+import { onTheRoadPageMeta, onTheRoadProofCopy } from "@/content/road/on-the-road";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = pageMeta({
@@ -53,7 +54,17 @@ export default async function FromTheRoadPage() {
   const hasTrailPhotos = trailGallery.length > 0;
   const hasCountyAlbums = countyAlbumCovers.length > 0;
 
+  const roadHero = onTheRoadProofCopy.hero;
+
   return (
+    <>
+      <MediaPageHero
+        slotKey="road.hero"
+        layout="split"
+        eyebrow={roadHero.eyebrow}
+        title={roadHero.title}
+        subtitle={roadHero.subtitle}
+      />
     <div className="min-h-screen bg-gradient-to-b from-kelly-fog/90 via-white to-kelly-fog/50 pb-16 pt-10 md:pb-24 md:pt-14">
       <ContentContainer>
         <OnTheRoadProofSections
@@ -61,6 +72,7 @@ export default async function FromTheRoadPage() {
           upcomingEvents={upcomingEvents}
           trailPhotosAvailable={hasTrailPhotos}
           hasFieldSocial={hasFieldSocial}
+          omitHeroHeader
         />
 
         <div className="mt-10 md:mt-14" aria-hidden />
@@ -224,6 +236,7 @@ export default async function FromTheRoadPage() {
         </div>
       </ContentContainer>
     </div>
+    </>
   );
 }
 

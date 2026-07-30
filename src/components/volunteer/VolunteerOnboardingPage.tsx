@@ -5,7 +5,6 @@ import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 
-import { PageHero } from "@/components/blocks/PageHero";
 import { SectionHeading } from "@/components/blocks/SectionHeading";
 import { FullBleedSection } from "@/components/layout/FullBleedSection";
 import { ContentContainer } from "@/components/layout/ContentContainer";
@@ -76,22 +75,6 @@ export function VolunteerOnboardingPage({
 
   return (
     <>
-      <PageHero
-        eyebrow="Field team"
-        title="Join the Field Team"
-        subtitle="We’re building a volunteer network where everyone owns one small lane, does a little each week, and helps grow something powerful."
-      >
-        <Button href="#how-this-works" variant="primary">
-          Start onboarding
-        </Button>
-        <Button href="/field-playbook" variant="outline">
-          Read the field playbook
-        </Button>
-        <Button href="/volunteer/resources" variant="outline">
-          Volunteer resource library
-        </Button>
-      </PageHero>
-
       {campaignClock ? (
         <div className="border-b border-kelly-text/10 bg-kelly-fog/20">
           <ContentContainer className="max-w-5xl py-5">{campaignClock}</ContentContainer>

@@ -20,9 +20,10 @@ export default function DisclaimerPage() {
         eyebrow="Legal"
         title="Disclaimer"
         subtitle="This is a campaign website, not a government agency site."
+        contentClassName="!pt-6 !pb-8 sm:!pt-8 sm:!pb-10"
       />
-      <FullBleedSection padY>
-        <ContentContainer className="max-w-2xl space-y-6 font-body text-base leading-relaxed text-kelly-text/85">
+      <FullBleedSection padY className="!py-10 sm:!py-14">
+        <ContentContainer className="max-w-prose space-y-5 font-body text-base leading-relaxed text-kelly-text/85">
           <p>
             <strong>Not a government site.</strong> This site is paid for and operated by the Kelly Grappe for
             Secretary of State campaign. It is not the website of the Arkansas Secretary of State’s office, the

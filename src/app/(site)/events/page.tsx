@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { PageHero } from "@/components/blocks/PageHero";
+import { MediaPageHero } from "@/components/blocks/MediaPageHero";
 import { FullBleedSection } from "@/components/layout/FullBleedSection";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { CTASection } from "@/components/blocks/CTASection";
@@ -94,29 +94,29 @@ export default async function EventsPage({
 
   return (
     <>
-      <PageHero
+      <MediaPageHero
+        slotKey="events.hero"
+        layout="split"
         eyebrow="Campaign calendar"
         title="Campaign Calendar"
         subtitle="See where Kelly will be next, where the campaign is showing up, and how Arkansans can join the work."
-        className="!pb-[calc(var(--section-padding-y)*0.5)] lg:!pb-[calc(var(--section-padding-y-lg)*0.5)]"
-        contentClassName="pt-10 pb-5 lg:pt-14 lg:pb-7"
       >
         <Button href="/events/request" variant="primary">
           Invite Kelly
         </Button>
-        <Button href="/host-a-gathering" variant="outline">
+        <Button href="/host-a-gathering" variant="outlineOnDark">
           Host a gathering
         </Button>
-        <Button href={representLocalEventVolunteerHref} variant="outline">
+        <Button href={representLocalEventVolunteerHref} variant="outlineOnDark">
           Represent us locally
         </Button>
-        <Button href="/listening-sessions" variant="outline">
+        <Button href="/listening-sessions" variant="outlineOnDark">
           Listening sessions
         </Button>
-        <Button href="/local-organizing" variant="outline">
+        <Button href="/local-organizing" variant="outlineOnDark">
           Local organizing hub
         </Button>
-      </PageHero>
+      </MediaPageHero>
 
       {calendarMoment ? (
         <FullBleedSection

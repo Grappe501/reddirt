@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { MediaPageHero } from "@/components/blocks/MediaPageHero";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { PressCoverageThirdPartyResources } from "@/components/press/PressCoverageThirdPartyResources";
 import { getPressCoverageCuratedOnly, getPressCoverageFeed } from "@/lib/media-monitor/press-coverage-feed";
@@ -32,22 +33,21 @@ export default async function PressCoveragePage() {
   }
 
   return (
+    <>
+      <MediaPageHero
+        slotKey="press.hero"
+        layout="split"
+        eyebrow="News · Earned media"
+        title="Press Coverage"
+        subtitle="News, interviews, and public coverage of Kelly Grappe for Secretary of State. Below: earned-media clips from Arkansas outlets (selected by our communications team), curated newspaper links, and third-party election guides where helpful. We respect outlet terms and link to originals rather than reproducing paywalled text."
+      />
     <div className="min-h-screen bg-gradient-to-b from-kelly-fog/90 via-white to-kelly-fog/50 pb-16 pt-10 md:pb-24 md:pt-14">
       <ContentContainer>
-        <header className="mx-auto max-w-3xl text-center">
-          {/*
-            TODO: Optional richer press feed / CMS classification — keep human review; do not auto-publish unvetted rows.
-          */}
-          <p className="font-body text-[11px] font-bold uppercase tracking-[0.24em] text-kelly-gold">News · Earned media</p>
-          <h1 className="mt-4 font-heading text-[clamp(1.95rem,4.2vw,3rem)] font-bold tracking-tight text-kelly-ink">
-            Press Coverage
-          </h1>
-          <p className="mt-6 font-body text-lg leading-relaxed text-kelly-slate md:text-xl">
-            News, interviews, and public coverage of Kelly Grappe for Secretary of State. Below: earned-media clips from
-            Arkansas outlets (selected by our communications team), curated newspaper links, and third-party election
-            guides where helpful. We respect outlet terms and link to originals rather than reproducing paywalled text.
-          </p>
-          <p className="mt-4 font-body text-sm text-kelly-slate/85">
+        {/*
+          TODO: Optional richer press feed / CMS classification — keep human review; do not auto-publish unvetted rows.
+        */}
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="font-body text-sm text-kelly-slate/85">
             Monitoring runs on a weekly cadence. For questions about a listing, contact the campaign press team.
           </p>
           {listUnavailableMessage ? (
@@ -55,7 +55,7 @@ export default async function PressCoveragePage() {
               <strong className="font-bold">Listings temporarily unavailable.</strong> {listUnavailableMessage}
             </p>
           ) : null}
-        </header>
+        </div>
 
         <ul className="mx-auto mt-12 max-w-3xl space-y-6">
           {mentions.length === 0 && !listUnavailableMessage ? (
@@ -136,5 +136,6 @@ export default async function PressCoveragePage() {
         <PressCoverageThirdPartyResources />
       </ContentContainer>
     </div>
+    </>
   );
 }

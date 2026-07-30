@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { PageHero } from "@/components/blocks/PageHero";
+import { MediaPageHero } from "@/components/blocks/MediaPageHero";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { FullBleedSection } from "@/components/layout/FullBleedSection";
 import { Button } from "@/components/ui/Button";
@@ -19,12 +19,14 @@ export const metadata: Metadata = pageMeta({
   imageSrc: "/media/placeholders/texture-porch-glow.svg",
 });
 
-export default function CampaignPhotosPage() {
+export default async function CampaignPhotosPage() {
   const albums = listCountyAlbumsLive();
 
   return (
     <>
-      <PageHero
+      <MediaPageHero
+        slotKey="campaign-photos.intro"
+        layout="bleed"
         eyebrow="Across Arkansas"
         title="County albums"
         subtitle="Open a county. Step through the stops. Every still is confirmed geography — not a dump of every file."
@@ -32,10 +34,10 @@ export default function CampaignPhotosPage() {
         <Button href="/about/journey" variant="primary">
           See the journey
         </Button>
-        <Button href="/from-the-road" variant="outline">
+        <Button href="/from-the-road" variant="outlineOnDark">
           From the road
         </Button>
-      </PageHero>
+      </MediaPageHero>
 
       <FullBleedSection padY className="bg-gradient-to-b from-white via-kelly-fog/50 to-kelly-wash/30">
         <ContentContainer>

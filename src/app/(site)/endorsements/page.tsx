@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { PageHero } from "@/components/blocks/PageHero";
+import { MediaPageHero } from "@/components/blocks/MediaPageHero";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { FullBleedSection } from "@/components/layout/FullBleedSection";
 import { Button } from "@/components/ui/Button";
@@ -15,23 +15,26 @@ export const metadata: Metadata = pageMeta({
   path: "/endorsements",
 });
 
-export default function EndorsementsPage() {
+export default async function EndorsementsPage() {
   const endorsements = listConfirmedEndorsements();
 
   return (
     <>
-      <PageHero
+      <MediaPageHero
+        slotKey="endorsements.hero"
+        layout="split"
+        preferLabeledEmpty
         eyebrow="Trust"
         title="Endorsements"
         subtitle="Kelly is earning support from organizations and leaders who serve different parts of Arkansas. Only formal, campaign-confirmed endorsements appear here."
       >
-        <Button href="/about" variant="outline">
+        <Button href="/about" variant="outlineOnDark">
           Read About Kelly’s Experience
         </Button>
         <Button href="/get-involved" variant="primary">
           Join the Campaign
         </Button>
-      </PageHero>
+      </MediaPageHero>
 
       <FullBleedSection padY>
         <ContentContainer className="max-w-4xl">

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { PageHero } from "@/components/blocks/PageHero";
+import { MediaPageHero } from "@/components/blocks/MediaPageHero";
 import { SectionHeading } from "@/components/blocks/SectionHeading";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { FullBleedSection } from "@/components/layout/FullBleedSection";
@@ -36,7 +36,7 @@ type Props = {
   trailPhoto?: CampaignTrailPhoto | null;
 };
 
-export function VoterRegistrationCenter({
+export async function VoterRegistrationCenter({
   counties,
   focusCounty,
   latestSnapshot,
@@ -49,7 +49,9 @@ export function VoterRegistrationCenter({
 
   return (
     <>
-      <PageHero
+      <MediaPageHero
+        slotKey="voter-reg.hero"
+        layout="split"
         eyebrow="Voter access"
         title="Voter registration center"
         subtitle="Kelly’s team built this hub so Arkansans aren’t alone in a maze of forms and deadlines. We’ll show you how we count new registrations, where your county stands, and how to reach a real person when you need paper-and-ink help—because Arkansas still doesn’t offer full online registration. Official confirmation stays with the state; we make the path human."
@@ -60,15 +62,15 @@ export function VoterRegistrationCenter({
           </p>
         ) : null}
         {focusCounty ? (
-          <p className="max-w-2xl rounded-xl border border-kelly-navy/20 bg-kelly-navy/5 px-4 py-3 text-sm text-kelly-text/90">
-            <span className="font-bold text-kelly-navy">Local focus: {focusCounty.displayName}</span>
-            {focusCounty.regionLabel ? <span className="text-kelly-text/70"> · {focusCounty.regionLabel}</span> : null}
+          <p className="max-w-2xl rounded-xl border border-white/25 bg-white/10 px-4 py-3 text-sm text-white/90">
+            <span className="font-bold text-white">Local focus: {focusCounty.displayName}</span>
+            {focusCounty.regionLabel ? <span className="text-white/70"> · {focusCounty.regionLabel}</span> : null}
             {focusCounty.leadName ? (
               <span className="mt-1 block">County lead: {focusCounty.leadName}{focusCounty.leadTitle ? ` — ${focusCounty.leadTitle}` : ""}</span>
             ) : null}
-            <span className="mt-1 block text-xs text-kelly-text/65">
+            <span className="mt-1 block text-xs text-white/65">
               County progress: see{" "}
-              <Link className="font-semibold text-kelly-navy underline-offset-2 hover:underline" href={`/counties/${focusCounty.slug}`}>
+              <Link className="font-semibold text-kelly-gold underline-offset-2 hover:underline" href={`/counties/${focusCounty.slug}`}>
                 county command
               </Link>{" "}
               for field metrics.
@@ -79,11 +81,11 @@ export function VoterRegistrationCenter({
           <Button href={officialUrl} variant="primary" className="w-full min-[400px]:w-auto">
             Open VoterView (new tab)
           </Button>
-          <Button href="#asof-explain" variant="outline" className="w-full min-[400px]:w-auto">
+          <Button href="#asof-explain" variant="outlineOnDark" className="w-full min-[400px]:w-auto">
             How we count new registrations
           </Button>
         </div>
-      </PageHero>
+      </MediaPageHero>
 
       {trailPhoto ? (
         <FullBleedSection variant="subtle" className="!pt-0" aria-label="Campaign trail photography">

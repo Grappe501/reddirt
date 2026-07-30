@@ -19,9 +19,10 @@ export default function AccessibilityPage() {
         eyebrow="Access"
         title="Accessibility"
         subtitle="This campaign website should be usable by as many Arkansans as possible — including people who use keyboards, screen readers, or reduced-motion preferences."
+        contentClassName="!pt-6 !pb-8 sm:!pt-8 sm:!pb-10"
       />
-      <FullBleedSection padY>
-        <ContentContainer className="max-w-3xl space-y-6 font-body text-base leading-relaxed text-kelly-slate">
+      <FullBleedSection padY className="!py-10 sm:!py-14">
+        <ContentContainer className="max-w-prose space-y-5 font-body text-base leading-relaxed text-kelly-slate">
           <p>
             We design public pages with clear headings, visible focus states, click-to-play video (no autoplay of campaign
             statements), and text alternatives for photographs. Transcripts are published when reviewed and ready.

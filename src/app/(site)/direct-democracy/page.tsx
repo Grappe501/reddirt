@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { PageHero } from "@/components/blocks/PageHero";
+import { MediaPageHero } from "@/components/blocks/MediaPageHero";
 import { SectionHeading } from "@/components/blocks/SectionHeading";
 import { FullBleedSection } from "@/components/layout/FullBleedSection";
 import { ContentContainer } from "@/components/layout/ContentContainer";
@@ -57,7 +57,9 @@ export default async function DirectDemocracyPage() {
 
   return (
     <>
-      <PageHero
+      <MediaPageHero
+        slotKey="dd.hero"
+        layout="split"
         eyebrow={hero?.eyebrow ?? "Ballot access"}
         title={hero?.title ?? "Initiatives, referenda, and the Secretary of State’s role"}
         subtitle={
@@ -68,10 +70,10 @@ export default async function DirectDemocracyPage() {
         <Button href="#commitment-network" variant="primary">
           Join the commitment network
         </Button>
-        <Button href="/direct-democracy/ballot-initiative-process" variant="outline">
+        <Button href="/direct-democracy/ballot-initiative-process" variant="outlineOnDark">
           Arkansas ballot process (state rules)
         </Button>
-      </PageHero>
+      </MediaPageHero>
 
       <FullBleedSection aria-labelledby="why-dd-heading">
         <ContentContainer>

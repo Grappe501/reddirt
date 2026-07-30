@@ -19,9 +19,10 @@ export default function PrivacyPage() {
         eyebrow="Legal · draft"
         title="Privacy"
         subtitle="This page is a public-facing structure for campaign counsel to finalize. Do not treat it as legal advice."
+        contentClassName="!pt-6 !pb-8 sm:!pt-8 sm:!pb-10"
       />
-      <FullBleedSection padY>
-        <ContentContainer className="max-w-2xl space-y-6 font-body text-base leading-relaxed text-kelly-text/85">
+      <FullBleedSection padY className="!py-10 sm:!py-14">
+        <ContentContainer className="max-w-prose space-y-5 font-body text-base leading-relaxed text-kelly-text/85">
           <p>
             <strong>Status.</strong> The campaign intends to describe what information may be collected through this
             website (for example, when you submit forms, sign up to volunteer, or contact us), how it is used, how long

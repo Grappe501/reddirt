@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { MediaPageHero } from "@/components/blocks/MediaPageHero";
 import { ContentContainer } from "@/components/layout/ContentContainer";
+import { Button } from "@/components/ui/Button";
 import { listPublicMediaCollections, summarizePublicMediaInventory } from "@/content/media/public-media-collections";
 import { isPublicTranscript, youtubePosterUrl } from "@/lib/media/campaign-transcript";
 import { siteConfig } from "@/config/site";
@@ -17,38 +19,34 @@ export const metadata: Metadata = {
   },
 };
 
-export default function KellySpeaksIndexPage() {
+export default async function KellySpeaksIndexPage() {
   const collections = listPublicMediaCollections();
   const inventory = summarizePublicMediaInventory();
 
   return (
-    <div className="bg-kelly-cream pb-20 pt-10 md:pt-14">
-      <ContentContainer>
-        <header className="mx-auto max-w-3xl text-center">
-          <p className="font-body text-[11px] font-bold uppercase tracking-[0.22em] text-kelly-navy">Kelly Speaks</p>
-          <h1 className="mt-3 font-heading text-[clamp(2rem,5vw,3rem)] font-bold tracking-tight text-kelly-ink">
-            Campaign videos
-          </h1>
-          <p className="mt-4 font-body text-lg leading-relaxed text-kelly-slate">
-            Hear Kelly directly—featured messages, trail stories, and short moments, organized by purpose.
-            Click to play; embeds use privacy-enhanced YouTube.
-          </p>
-          <p className="mt-3 font-body text-sm text-kelly-muted">
-            Public inventory: {inventory.longForm} long-form · {inventory.shorts} Shorts · {inventory.publishedTotal}{" "}
-            published
-          </p>
-          <p className="mt-3">
-            <Link href="/kelly-speaks/search" className="font-body text-sm font-semibold text-kelly-navy underline">
-              Search published transcripts
-            </Link>
-            {" · "}
-            <Link href="/campaign-photos" className="font-body text-sm font-semibold text-kelly-navy underline">
-              View Campaign Photos
-            </Link>
-          </p>
-        </header>
+    <div className="bg-kelly-cream pb-20">
+      <MediaPageHero
+        slotKey="speaks.hero"
+        layout="bleed"
+        eyebrow="Kelly Speaks"
+        title="Campaign videos"
+        subtitle="Hear Kelly directly—featured messages, trail stories, and short moments, organized by purpose. Click to play; embeds use privacy-enhanced YouTube."
+      >
+        <Button href="/kelly-speaks/search" variant="outlineOnDark">
+          Search transcripts
+        </Button>
+        <Button href="/campaign-photos" variant="outlineOnDark">
+          View Campaign Photos
+        </Button>
+      </MediaPageHero>
 
-        <div className="mx-auto mt-14 max-w-5xl space-y-16">
+      <ContentContainer className="pt-10 md:pt-14">
+        <p className="mx-auto max-w-3xl text-center font-body text-sm text-kelly-muted">
+          Public inventory: {inventory.longForm} long-form · {inventory.shorts} Shorts · {inventory.publishedTotal}{" "}
+          published
+        </p>
+
+        <div className="mx-auto mt-10 max-w-5xl space-y-16">
           {collections.map((collection) => (
             <section key={collection.id} aria-labelledby={`collection-${collection.id}`}>
               <h2 id={`collection-${collection.id}`} className="font-heading text-2xl font-bold text-kelly-ink">

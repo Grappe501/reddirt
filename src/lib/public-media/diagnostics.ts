@@ -4,7 +4,7 @@
 
 import { OwnedMediaDerivativeType, OwnedMediaReviewStatus } from "@prisma/client";
 import { prisma } from "@/lib/db";
-import { listPublicMediaSlotsForPage } from "@/lib/public-media/slot-registry";
+import { listAllPublicMediaSlots } from "@/lib/public-media/slot-registry";
 import { resolvePublicMediaSlot } from "@/lib/public-media/resolve-slot";
 
 export type PublicMediaDiagnostics = {
@@ -30,7 +30,7 @@ export async function collectPublicMediaDiagnostics(): Promise<PublicMediaDiagno
     blockedByMissingDerivative: 0,
     webDerivativeReady: 0,
     thumbDerivativeReady: 0,
-    slotsUsingStaticFallback: listPublicMediaSlotsForPage("home").map((s) => s.slotKey),
+    slotsUsingStaticFallback: listAllPublicMediaSlots().map((s) => s.slotKey),
     slotsResolvingOwnedMedia: [],
   };
 
@@ -76,7 +76,7 @@ export async function collectPublicMediaDiagnostics(): Promise<PublicMediaDiagno
 
     const slotsUsingStaticFallback: string[] = [];
     const slotsResolvingOwnedMedia: string[] = [];
-    for (const slot of listPublicMediaSlotsForPage("home")) {
+    for (const slot of listAllPublicMediaSlots()) {
       const resolved = await resolvePublicMediaSlot(slot.slotKey);
       if (resolved.provenance === "owned-media") slotsResolvingOwnedMedia.push(slot.slotKey);
       else slotsUsingStaticFallback.push(slot.slotKey);

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { PageHero } from "@/components/blocks/PageHero";
+import { MediaPageHero } from "@/components/blocks/MediaPageHero";
 import { SectionHeading } from "@/components/blocks/SectionHeading";
 import { FullBleedSection } from "@/components/layout/FullBleedSection";
 import { ContentContainer } from "@/components/layout/ContentContainer";
@@ -81,7 +81,9 @@ export default async function ListeningSessionsPage() {
           hasFloatingStops && LISTENING_SESSIONS_FLOAT_SECTION_PAD,
         )}
       >
-        <PageHero
+        <MediaPageHero
+          slotKey="listening.hero"
+          layout="split"
           eyebrow="Statewide series"
           title="Arkansas election &amp; ballot access listening sessions"
           subtitle="A structured, nonpartisan space to hear Arkansans—on voting, registration, and how process looks from the ground up. Not a platform rollout. A commitment to listen."
@@ -89,10 +91,10 @@ export default async function ListeningSessionsPage() {
           <Button href="#your-town" variant="primary">
             Bring a session to your town
           </Button>
-          <Button href="#what-to-expect" variant="outline">
+          <Button href="#what-to-expect" variant="outlineOnDark">
             What to expect
           </Button>
-        </PageHero>
+        </MediaPageHero>
 
         <FullBleedSection padY aria-labelledby="overview-heading">
           <ContentContainer wide>

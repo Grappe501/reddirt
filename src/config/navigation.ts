@@ -95,7 +95,6 @@ export const primaryNavGroups: NavGroup[] = [
     items: [
       { label: "From the Road", href: "/from-the-road" },
       { label: "Press Coverage", href: "/press-coverage" },
-      { label: "Campaign Updates", href: "/updates" },
       { label: "Campaign Videos", href: "/kelly-speaks" },
       { label: "Editorial", href: "/editorial" },
       { label: "Explainers", href: "/explainers" },
@@ -169,6 +168,7 @@ export const footerNavGroups: { title: string; items: NavItem[] }[] = [
   {
     title: "Legal",
     items: [
+      { label: "Contact", href: "/contact" },
       { label: "Privacy", href: "/privacy" },
       { label: "Accessibility", href: "/accessibility" },
       { label: "Terms of use", href: "/terms" },

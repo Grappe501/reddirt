@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { PageHero } from "@/components/blocks/PageHero";
+import { MediaPageHero } from "@/components/blocks/MediaPageHero";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { FullBleedSection } from "@/components/layout/FullBleedSection";
 import { Button } from "@/components/ui/Button";
@@ -28,21 +28,27 @@ export const metadata: Metadata = pageMeta({
   imageSrc: "/media/placeholders/texture-porch-glow.svg",
 });
 
-export default function AboutJourneyPage() {
+export default async function AboutJourneyPage() {
   const video = getHomepageAcrossArkansasVideo();
   const stills = listHomepageAcrossArkansasPhotos();
   const morePhotos = listHomepageCampaignPhotos().filter((p) => !stills.some((s) => s.id === p.id)).slice(0, 3);
 
   return (
     <>
-      <PageHero eyebrow={c.hero.eyebrow} title={c.hero.title} subtitle={c.hero.subtitle}>
-        <Button href="/about" variant="outline">
+      <MediaPageHero
+        slotKey="journey.hero"
+        layout="bleed"
+        eyebrow={c.hero.eyebrow}
+        title={c.hero.title}
+        subtitle={c.hero.subtitle}
+      >
+        <Button href="/about" variant="outlineOnDark">
           Read About Kelly’s Experience
         </Button>
         <Button href="/events/request" variant="primary">
           Invite Kelly
         </Button>
-      </PageHero>
+      </MediaPageHero>
 
       <FullBleedSection variant="subtle" className="!py-6">
         <ContentContainer className="max-w-3xl">
