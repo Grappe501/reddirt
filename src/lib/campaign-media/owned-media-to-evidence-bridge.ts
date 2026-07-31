@@ -216,7 +216,7 @@ export async function importOwnedMediaToEvidenceDraft(ownedMediaId: string): Pro
     return { ok: false, message: `Read failed: ${msg.slice(0, 120)}` };
   }
 
-  const result = intakeImageBytesToDraft({
+  const result = await intakeImageBytesToDraft({
     filename: display,
     bytes,
     note: `Bridged from Owned Media ${asset.id} (confirm geography on Identify — Prefer Unknown).`,

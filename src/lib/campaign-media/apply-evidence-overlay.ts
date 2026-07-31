@@ -1,5 +1,6 @@
 /**
  * Pure overlay apply — no fs / no static JSON (safe for client + server).
+ * P1: public live readers only honor campaign-shipped overrides (never gitignored derivatives).
  */
 
 import type { CampaignPhotoRecord } from "@/content/media/campaign-photo-types";
@@ -7,13 +8,13 @@ import { UNKNOWN } from "@/content/media/campaign-photo-types";
 import type { CampaignMediaRecord } from "@/content/media/campaign-media-types";
 import type { PhotoEvidenceOverlay, SpeechEvidenceOverlay } from "@/lib/campaign-media/evidence-types";
 
-function safePublicSrcOverride(photoId: string, override: string | undefined): string | null {
+/** Public-facing src override — ship path only (Netlify-safe). */
+export function safePublicSrcOverride(photoId: string, override: string | undefined): string | null {
   const s = String(override ?? "").trim();
   if (!s) return null;
   if (s.includes("..") || s.includes("//")) return null;
-  const deriv = `/media/campaign-derivatives/${photoId}/`;
   const shipped = `/media/campaign-shipped/${photoId}/`;
-  if (!s.startsWith(deriv) && !s.startsWith(shipped)) return null;
+  if (!s.startsWith(shipped)) return null;
   return s;
 }
 

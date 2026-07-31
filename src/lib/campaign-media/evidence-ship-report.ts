@@ -620,12 +620,12 @@ export function buildEvidenceShipReport(input?: {
     },
     {
       id: "git_overlays",
-      label: "Overlay JSON commit state",
-      ok: overlayJsonDirty === 0,
+      label: "Overlay JSON + photo binaries commit state",
+      ok: overlayJsonDirty === 0 && photoBinaryDirty === 0,
       detail:
-        overlayJsonDirty > 0
-          ? `${overlayJsonDirty} dirty data/campaign-media path(s) — commit these to ship overlays to Netlify.`
-          : "No dirty overlay JSON in watch paths (already committed or unchanged).",
+        overlayJsonDirty > 0 || photoBinaryDirty > 0
+          ? `${overlayJsonDirty} dirty overlay JSON · ${photoBinaryDirty} dirty campaign-photos binary path(s) — hard-fail until committed.`
+          : "No dirty overlay JSON or campaign-photos binaries in watch paths.",
     },
     {
       id: "promoted_files",
@@ -640,14 +640,14 @@ export function buildEvidenceShipReport(input?: {
     },
     {
       id: "derivatives_warning",
-      label: "Derivative ship path understood",
-      ok: promotedOverrideGitignored === 0 && derivativeLocalOnly === 0,
+      label: "No live gitignored derivative overrides",
+      ok: promotedOverrideGitignored === 0,
       detail:
         promotedOverrideGitignored > 0
-          ? `${promotedOverrideGitignored} live override(s) use gitignored derivatives — need alternate binary deploy or clear override.`
+          ? `${promotedOverrideGitignored} live override(s) still on campaign-derivatives — hard-fail until Ship to campaign-shipped.`
           : derivativeLocalOnly > 0
-            ? `${derivativeLocalOnly} local derivative file(s) gitignored — not shipped by git alone.`
-            : "No promoted gitignored overrides / no local derivative scan hits.",
+            ? `${derivativeLocalOnly} local derivative file(s) gitignored (workspace OK) · no live overrides on them.`
+            : "No promoted gitignored overrides.",
     },
   ];
 
@@ -659,7 +659,9 @@ export function buildEvidenceShipReport(input?: {
         c.id === "binaries" ||
         c.id === "promoted_files" ||
         c.id === "needs_approval" ||
-        c.id === "unknown_backlog",
+        c.id === "unknown_backlog" ||
+        c.id === "git_overlays" ||
+        c.id === "derivatives_warning",
     )
     .every((c) => c.ok);
 

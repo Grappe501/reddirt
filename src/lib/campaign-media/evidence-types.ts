@@ -58,7 +58,8 @@ export type PhotoEvidenceOverlay = {
   tierIntent?: PhotoEvidenceTier;
   publicationStatus?: "DRAFT" | "IN_REVIEW" | "APPROVED" | "PUBLISHED" | "ARCHIVED";
   /**
-   * Pass 4 — public delivery src override (must be under /media/campaign-derivatives/{photoId}/).
+   * Public delivery src override — public readers only honor /media/campaign-shipped/{photoId}/.
+   * Promote may briefly write campaign-derivatives; Finish/Ship must rewrite before Netlify.
    * Registry original under campaign-photos is never deleted.
    */
   publicSrcOverride?: string;

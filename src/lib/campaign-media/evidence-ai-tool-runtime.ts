@@ -398,7 +398,7 @@ export async function executeEvidenceAiTool(
         const { intakeAllNewCampaignPhotos, getPhotoIntakeStatus } = await import(
           "@/lib/campaign-media/photo-ingest"
         );
-        const result = intakeAllNewCampaignPhotos();
+        const result = await intakeAllNewCampaignPhotos();
         if (!result.ok) return { ok: false, error: result.message };
         return { ok: true, result: { ...result, status: getPhotoIntakeStatus() } };
       }

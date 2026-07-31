@@ -61,7 +61,7 @@ async function main() {
     process.exit(1);
   }
 
-  const result = intakeOneCampaignPhoto(nestRel);
+  const result = await intakeOneCampaignPhoto(nestRel);
   if (!result.ok) {
     console.error("FAIL: intakeOne", result);
     process.exit(1);

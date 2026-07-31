@@ -1,11 +1,17 @@
 /**
- * P0 — Finish photo for web: Apply meta → Confirm render → Promote → Ship.
- * One confirm-gated path so operators don't leave gitignored derivatives as publicSrc.
- * Prefer Unknown; never overwrites originals; never silent.
+ * P0/P1 — Finish photo for web: Apply → Confirm render → Promote → Ship
+ * (+ optional curated placement proposal). Prefer Unknown; never silent; never overwrite originals.
  */
 import "server-only";
 
-import { loadPhotoEvidenceStore } from "@/lib/campaign-media/evidence-store";
+import {
+  curateSurfaceForFinish,
+  type EvidenceFinishSurface,
+} from "@/lib/campaign-media/evidence-edit-intents";
+import { proposeCuratedPlacementForPhoto } from "@/lib/campaign-media/curated-placement-propose";
+import type { CuratedPlacementProposal } from "@/lib/campaign-media/curated-placement-types";
+import { loadPhotoEvidenceStore, savePhotoEvidenceStore } from "@/lib/campaign-media/evidence-store";
+import type { PhotoEvidenceOverlay } from "@/lib/campaign-media/evidence-types";
 import { proposePhotoEditProject } from "@/lib/campaign-media/photo-edit-director";
 import { updatePhotoEditProject } from "@/lib/campaign-media/photo-edit-plan";
 import {
@@ -32,6 +38,8 @@ export type FinishPhotoForWebResult = {
   publicSrc?: string;
   placementPreview?: string[];
   assemblies?: PhotoAssemblyRecord[];
+  curateProposalId?: string;
+  finishSurface?: EvidenceFinishSurface;
 };
 
 function pickAssembly(
@@ -51,6 +59,41 @@ function pickAssembly(
   return live[0] ?? null;
 }
 
+function applySurfaceFlags(input: {
+  photoId: string;
+  finishSurface: EvidenceFinishSurface;
+  homepageCandidate?: boolean;
+  featuredPhoto?: boolean;
+  heroLevel?: string;
+  approvedForPublic?: boolean;
+}): void {
+  const store = loadPhotoEvidenceStore();
+  const prev = store.photos[input.photoId] ?? {};
+  const next: PhotoEvidenceOverlay = { ...prev, updatedAt: new Date().toISOString() };
+
+  if (input.finishSurface === "homepage" || input.finishSurface === "journey") {
+    next.homepageCandidate = input.homepageCandidate ?? true;
+    if (input.featuredPhoto !== undefined) next.featuredPhoto = input.featuredPhoto;
+    if (input.heroLevel === "HERO" || input.heroLevel === "FEATURE" || input.heroLevel === "SUPPORTING" || input.heroLevel === "UNREVIEWED") {
+      next.heroLevel = input.heroLevel;
+    } else if (!next.heroLevel) {
+      next.heroLevel = "FEATURE";
+    }
+    if (input.approvedForPublic !== undefined) next.approvedForPublic = input.approvedForPublic;
+  } else if (input.finishSurface === "album") {
+    next.homepageCandidate = input.homepageCandidate ?? false;
+    next.approvedForPublic = input.approvedForPublic ?? true;
+    if (input.heroLevel === "HERO" || input.heroLevel === "FEATURE" || input.heroLevel === "SUPPORTING" || input.heroLevel === "UNREVIEWED") {
+      next.heroLevel = input.heroLevel;
+    } else if (!next.heroLevel) {
+      next.heroLevel = "FEATURE";
+    }
+  }
+
+  store.photos[input.photoId] = next;
+  savePhotoEvidenceStore(store);
+}
+
 export async function finishPhotoForWeb(input: {
   photoId: string;
   confirmFinish: boolean;
@@ -66,10 +109,15 @@ export async function finishPhotoForWeb(input: {
   heroLevel?: string;
   approvedForPublic?: boolean;
   consentConfirmed?: boolean;
+  /** P1 place surface. */
+  finishSurface?: EvidenceFinishSurface;
+  /** When true (default for homepage/journey), write pending curated proposal after ship. */
+  proposeCurate?: boolean;
 }): Promise<FinishPhotoForWebResult> {
   const steps: string[] = [];
   const warnings: string[] = [];
   const photoId = String(input.photoId ?? "").trim();
+  const finishSurface: EvidenceFinishSurface = input.finishSurface ?? "homepage";
 
   if (!input.confirmFinish) {
     return {
@@ -77,10 +125,17 @@ export async function finishPhotoForWeb(input: {
       message: "confirmFinish:true required — refuse silent Finish for web.",
       steps,
       warnings: ["Silent finish blocked."],
+      finishSurface,
     };
   }
   if (!photoId) {
-    return { ok: false, message: "photoId required.", steps, warnings: ["Missing photoId."] };
+    return {
+      ok: false,
+      message: "photoId required.",
+      steps,
+      warnings: ["Missing photoId."],
+      finishSurface,
+    };
   }
 
   const slots =
@@ -116,6 +171,7 @@ export async function finishPhotoForWeb(input: {
         message: packet.message || "Propose failed.",
         steps,
         warnings: [...warnings, ...(packet.warnings ?? [])],
+        finishSurface,
       };
     }
     project = packet.project;
@@ -138,7 +194,7 @@ export async function finishPhotoForWeb(input: {
     ],
   });
   if (!applied.ok) {
-    return { ok: false, message: applied.error, steps, warnings };
+    return { ok: false, message: applied.error, steps, warnings, finishSurface };
   }
   project = applied.project;
   warnings.push(...applied.warnings);
@@ -155,9 +211,24 @@ export async function finishPhotoForWeb(input: {
       warnings: [...warnings, ...(rendered.warnings ?? [])],
       projectId: project.id,
       assemblies: rendered.assemblies,
+      finishSurface,
     };
   }
   warnings.push(...(rendered.warnings ?? []));
+
+  // Social = download pack only — no public override / ship / curate.
+  if (finishSurface === "social") {
+    steps.push("Download pack");
+    return {
+      ok: true,
+      message: `Social pack ready · ${rendered.assemblies.length} assembl(ies) — open downloads (no public promote). Prefer Unknown.`,
+      steps,
+      warnings,
+      projectId: project.id,
+      assemblies: listPhotoAssemblies(photoId),
+      finishSurface,
+    };
+  }
 
   const assembly = pickAssembly(
     rendered.assemblies,
@@ -171,18 +242,31 @@ export async function finishPhotoForWeb(input: {
       warnings,
       projectId: project.id,
       assemblies: rendered.assemblies,
+      finishSurface,
     };
   }
+
+  applySurfaceFlags({
+    photoId,
+    finishSurface,
+    homepageCandidate: input.homepageCandidate,
+    featuredPhoto: input.featuredPhoto,
+    heroLevel: input.heroLevel,
+    approvedForPublic: input.approvedForPublic,
+  });
 
   steps.push("Promote");
   const promoted = promotePhotoDerivative({
     photoId,
     publicSrc: assembly.publicSrc,
     setAsPublicSrc: true,
-    homepageCandidate: input.homepageCandidate,
+    homepageCandidate:
+      input.homepageCandidate ??
+      (finishSurface === "homepage" || finishSurface === "journey" ? true : false),
     featuredPhoto: input.featuredPhoto,
-    heroLevel: input.heroLevel,
-    approvedForPublic: input.approvedForPublic,
+    heroLevel: input.heroLevel ?? (finishSurface === "homepage" ? "FEATURE" : undefined),
+    approvedForPublic:
+      input.approvedForPublic ?? (finishSurface === "album" ? true : undefined),
     consentConfirmed: input.consentConfirmed,
   });
   if (!promoted.ok) {
@@ -194,6 +278,7 @@ export async function finishPhotoForWeb(input: {
       projectId: project.id,
       assemblies: rendered.assemblies,
       placementPreview: promoted.placementPreview,
+      finishSurface,
     };
   }
 
@@ -205,7 +290,6 @@ export async function finishPhotoForWeb(input: {
   });
   if (!shipped.ok || !shipped.shipped.length) {
     const skipReason = shipped.skipped.map((s) => s.reason).join("; ") || shipped.message;
-    // Already shipped is OK
     const overlay = loadPhotoEvidenceStore().photos[photoId];
     const src = String(overlay?.publicSrcOverride ?? "").trim();
     const already =
@@ -214,13 +298,14 @@ export async function finishPhotoForWeb(input: {
     if (!already) {
       return {
         ok: false,
-        message: `Promoted but Ship failed — public would 404 on Netlify. ${skipReason}`,
+        message: `Promoted but Ship failed — public readers reject unshipped derivatives. ${skipReason}`,
         steps,
         warnings: [...warnings, skipReason],
         projectId: project.id,
         publicSrc: promoted.publicSrc,
         placementPreview: promoted.placementPreview,
         assemblies: listPhotoAssemblies(photoId),
+        finishSurface,
       };
     }
     warnings.push(skipReason || "Already shipped.");
@@ -231,14 +316,46 @@ export async function finishPhotoForWeb(input: {
     loadPhotoEvidenceStore().photos[photoId]?.publicSrcOverride ??
     promoted.publicSrc;
 
+  let curateProposal: CuratedPlacementProposal | null = null;
+  const wantCurate =
+    input.proposeCurate !== false && curateSurfaceForFinish(finishSurface) != null;
+  if (wantCurate) {
+    const curateSurface = curateSurfaceForFinish(finishSurface)!;
+    steps.push("Curate proposal");
+    const curated = proposeCuratedPlacementForPhoto({
+      photoId,
+      surface: curateSurface,
+      persist: true,
+    });
+    warnings.push(...curated.warnings);
+    if (curated.ok && curated.proposal) {
+      curateProposal = curated.proposal;
+    } else {
+      warnings.push(curated.message || "Curate proposal skipped.");
+    }
+  } else if (finishSurface === "album") {
+    warnings.push(
+      "Album surface: eligibility is Approve + known county (no HOMEPAGE_* curate file).",
+    );
+  }
+
   return {
     ok: true,
-    message: `Finished for web · ${steps.join(" → ")} · live src ${finalSrc}. Commit overlays + campaign-shipped to deploy.`,
+    message: [
+      `Finished for web · ${finishSurface} · ${steps.join(" → ")}`,
+      finalSrc ? `live src ${finalSrc}` : null,
+      curateProposal ? `curate ${curateProposal.id} (pending confirmCurate)` : null,
+      "Commit overlays + campaign-shipped to deploy.",
+    ]
+      .filter(Boolean)
+      .join(" · "),
     steps,
     warnings,
     projectId: project.id,
     publicSrc: finalSrc,
     placementPreview: promoted.placementPreview,
     assemblies: listPhotoAssemblies(photoId),
+    curateProposalId: curateProposal?.id,
+    finishSurface,
   };
 }

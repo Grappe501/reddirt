@@ -1,7 +1,7 @@
 /**
  * Evidence Workbench photo intake — one path:
  *   drop under public/media/campaign-photos/ (flat or nested)
- *     → intakeAllNewCampaignPhotos() flattens + queues drafts
+ *     → intakeAllNewCampaignPhotos() converts HEIC→JPEG, flattens + queues drafts
  *     → Photos tab labels / approves
  *
  * Never deletes nested originals. Never overwrites existing flat files.
@@ -18,7 +18,9 @@ import {
   savePhotoIngestDrafts,
 } from "@/lib/campaign-media/evidence-store";
 
-const IMAGE_EXT = new Set([".jpg", ".jpeg", ".png", ".webp", ".gif"]);
+const WEB_IMAGE_EXT = new Set([".jpg", ".jpeg", ".png", ".webp", ".gif"]);
+const HEIC_EXT = new Set([".heic", ".heif"]);
+const IMAGE_EXT = new Set([...WEB_IMAGE_EXT, ...HEIC_EXT]);
 const PHOTOS_DIR_REL = "public/media/campaign-photos";
 
 function photosDirAbs(): string {
@@ -55,6 +57,7 @@ export type PhotoIntakeResult = {
   skippedRegistry: number;
   skippedDrafts: number;
   skippedErrors: number;
+  heicConverted?: number;
   ids: string[];
   message: string;
 };
@@ -300,14 +303,33 @@ export function buildArrivalIntakePreview(
 }
 
 /**
- * Copy one nested image into the flat campaign-photos root (never deletes source).
- * Reuses preferred slug filename when present; skips inventing -2/-3 when basename already queued/registered.
+ * P1 — Convert HEIC/HEIF → JPEG beside the source (never deletes original).
+ * Returns the JPEG absolute path to use for flat intake.
  */
-export function flattenOneNestedPhoto(relativePath: string): {
-  ok: true;
-  flatFilename: string;
-  copied: boolean;
-} | { ok: false; error: string } {
+export async function convertHeicFileToJpeg(srcAbs: string, destAbs: string): Promise<void> {
+  const sharp = (await import("sharp")).default;
+  const jpeg = await sharp(srcAbs, { failOn: "none" }).rotate().jpeg({ quality: 88 }).toBuffer();
+  writeFileSync(destAbs, jpeg);
+}
+
+function webFlatNameFromHeic(filename: string): string {
+  const id = slugFromFilename(filename);
+  return `${id}.jpg`;
+}
+
+/**
+ * Copy one nested image into the flat campaign-photos root (never deletes source).
+ * HEIC/HEIF → JPEG at preferred slug.jpg. Reuses when present; Prefer Unknown on collisions.
+ */
+export async function flattenOneNestedPhoto(relativePath: string): Promise<
+  | {
+      ok: true;
+      flatFilename: string;
+      copied: boolean;
+      heicConverted?: boolean;
+    }
+  | { ok: false; error: string }
+> {
   const rel = relativePath.replace(/\\/g, "/").replace(/^\/+/, "");
   if (!rel || rel.includes("..") || !rel.includes("/")) {
     return { ok: false, error: "Expected a nested relative path under campaign-photos." };
@@ -321,7 +343,7 @@ export function flattenOneNestedPhoto(relativePath: string): {
   if (!IMAGE_EXT.has(ext)) return { ok: false, error: "Not an image." };
 
   const baseId = slugFromFilename(originalFilename);
-  const preferred = `${baseId}${ext}`;
+  const preferred = HEIC_EXT.has(ext) ? `${baseId}.jpg` : `${baseId}${ext}`;
   const preferredSrc = `/media/campaign-photos/${preferred}`;
   const registryIds = new Set(CAMPAIGN_PHOTO_REGISTRY.map((p) => p.id));
   const registrySrc = new Set(CAMPAIGN_PHOTO_REGISTRY.map((p) => p.src));
@@ -331,7 +353,6 @@ export function flattenOneNestedPhoto(relativePath: string): {
     registrySrc.has(preferredSrc) ||
     drafts.photos.some((p) => p.id === baseId || p.src === preferredSrc)
   ) {
-    // Already known — point at preferred flat path if present, else error for operator.
     const destAbs = path.join(root, preferred);
     if (existsSync(destAbs)) return { ok: true, flatFilename: preferred, copied: false };
     return {
@@ -342,12 +363,25 @@ export function flattenOneNestedPhoto(relativePath: string): {
 
   const destAbs = path.join(root, preferred);
   let copied = false;
+  let heicConverted = false;
   if (!existsSync(destAbs)) {
     mkdirSync(root, { recursive: true });
-    copyFileSync(srcAbs, destAbs);
-    copied = true;
+    try {
+      if (HEIC_EXT.has(ext)) {
+        await convertHeicFileToJpeg(srcAbs, destAbs);
+        heicConverted = true;
+      } else {
+        copyFileSync(srcAbs, destAbs);
+      }
+      copied = true;
+    } catch (e) {
+      return {
+        ok: false,
+        error: e instanceof Error ? e.message : "Failed to flatten nested photo.",
+      };
+    }
   }
-  return { ok: true, flatFilename: preferred, copied };
+  return { ok: true, flatFilename: preferred, copied, heicConverted };
 }
 
 function queueFlatFile(flatFilename: string): {
@@ -363,6 +397,10 @@ function queueFlatFile(flatFilename: string): {
   const abs = path.join(root, name);
   if (!existsSync(abs)) return { ok: false, error: `Flat file missing: ${name}` };
 
+  const ext = path.extname(name).toLowerCase();
+  if (!WEB_IMAGE_EXT.has(ext)) {
+    return { ok: false, error: "Queue requires web image (jpg/png/webp/gif) — convert HEIC first." };
+  }
   const src = `/media/campaign-photos/${name}`;
   const id = slugFromFilename(name);
   const registryIds = new Set(CAMPAIGN_PHOTO_REGISTRY.map((p) => p.id));
@@ -384,13 +422,13 @@ function queueFlatFile(flatFilename: string): {
 
 /**
  * Phase 4 — write image bytes into campaign-photos and queue a draft.
- * Never Approves. Never invents -2/-3 when basename already known.
+ * HEIC/HEIF → JPEG. Never Approves. Never invents -2/-3 when basename already known.
  */
-export function intakeImageBytesToDraft(opts: {
+export async function intakeImageBytesToDraft(opts: {
   filename: string;
   bytes: Buffer;
   note?: string;
-}): { ok: true; photo: CampaignPhotoRecord; flatFilename: string } | { ok: false; error: string } {
+}): Promise<{ ok: true; photo: CampaignPhotoRecord; flatFilename: string } | { ok: false; error: string }> {
   const safe = path.basename(String(opts.filename ?? "").trim());
   if (!safe || safe === "." || safe === "..") return { ok: false, error: "Invalid filename." };
   const ext = path.extname(safe).toLowerCase();
@@ -398,7 +436,7 @@ export function intakeImageBytesToDraft(opts: {
   if (!opts.bytes?.length) return { ok: false, error: "Empty image bytes." };
 
   const id = slugFromFilename(safe);
-  const preferred = `${id}${ext}`;
+  const preferred = HEIC_EXT.has(ext) ? `${id}.jpg` : `${id}${ext}`;
   const root = photosDirAbs();
   mkdirSync(root, { recursive: true });
   const destAbs = path.join(root, preferred);
@@ -419,7 +457,22 @@ export function intakeImageBytesToDraft(opts: {
   }
 
   if (!existsSync(destAbs)) {
-    writeFileSync(destAbs, opts.bytes);
+    if (HEIC_EXT.has(ext)) {
+      const tmpHeic = path.join(root, `${id}.heic.tmp`);
+      writeFileSync(tmpHeic, opts.bytes);
+      try {
+        await convertHeicFileToJpeg(tmpHeic, destAbs);
+      } finally {
+        try {
+          const { unlinkSync } = await import("node:fs");
+          if (existsSync(tmpHeic)) unlinkSync(tmpHeic);
+        } catch {
+          /* ignore */
+        }
+      }
+    } else {
+      writeFileSync(destAbs, opts.bytes);
+    }
   }
   const queued = queueFlatFile(preferred);
   if (!queued.ok) return queued;
@@ -439,22 +492,45 @@ export function intakeImageBytesToDraft(opts: {
  * Intake one disk path: flatten if nested, then queue into drafts.
  * Prefer intakeAllNewCampaignPhotos for dumps.
  */
-export function intakeOneCampaignPhoto(filenameOrRel: string): {
-  ok: true;
-  photo: CampaignPhotoRecord;
-  flattened: boolean;
-} | { ok: false; error: string } {
+export async function intakeOneCampaignPhoto(filenameOrRel: string): Promise<
+  | {
+      ok: true;
+      photo: CampaignPhotoRecord;
+      flattened: boolean;
+    }
+  | { ok: false; error: string }
+> {
   const rel = filenameOrRel.replace(/\\/g, "/").replace(/^\/+/, "");
   if (!rel || rel.includes("..")) return { ok: false, error: "Invalid path." };
 
   let flatName = path.basename(rel);
   let flattened = false;
+  const root = photosDirAbs();
 
   if (rel.includes("/")) {
-    const flat = flattenOneNestedPhoto(rel);
+    const flat = await flattenOneNestedPhoto(rel);
     if (!flat.ok) return flat;
     flatName = flat.flatFilename;
     flattened = flat.copied;
+  } else {
+    const ext = path.extname(flatName).toLowerCase();
+    if (HEIC_EXT.has(ext)) {
+      const jpgName = webFlatNameFromHeic(flatName);
+      const jpgAbs = path.join(root, jpgName);
+      const heicAbs = path.join(root, flatName);
+      if (!existsSync(jpgAbs)) {
+        try {
+          await convertHeicFileToJpeg(heicAbs, jpgAbs);
+          flattened = true;
+        } catch (e) {
+          return {
+            ok: false,
+            error: e instanceof Error ? e.message : "HEIC→JPEG conversion failed.",
+          };
+        }
+      }
+      flatName = jpgName;
+    }
   }
 
   const queued = queueFlatFile(flatName);
@@ -463,10 +539,10 @@ export function intakeOneCampaignPhoto(filenameOrRel: string): {
 }
 
 /**
- * One-button intake: flatten every nested new image, queue every new flat file into drafts.
- * Nested originals are copied, never deleted.
+ * One-button intake: HEIC→JPEG, flatten nested, queue flat web images into drafts.
+ * Nested / HEIC originals are kept — never deleted.
  */
-export function intakeAllNewCampaignPhotos(): PhotoIntakeResult {
+export async function intakeAllNewCampaignPhotos(): Promise<PhotoIntakeResult> {
   const root = photosDirAbs();
   if (!existsSync(root)) {
     return {
@@ -477,6 +553,7 @@ export function intakeAllNewCampaignPhotos(): PhotoIntakeResult {
       skippedRegistry: 0,
       skippedDrafts: 0,
       skippedErrors: 0,
+      heicConverted: 0,
       ids: [],
       message: "campaign-photos folder missing — create it and drop stills there.",
     };
@@ -489,14 +566,13 @@ export function intakeAllNewCampaignPhotos(): PhotoIntakeResult {
   const draftSrc = new Set(drafts.photos.map((p) => p.src));
 
   let flattened = 0;
+  let heicConverted = 0;
   let skippedRegistry = 0;
   let skippedDrafts = 0;
   let skippedErrors = 0;
   const ids: string[] = [];
   const allRel = walkRelativeImages(root);
 
-  // Pass 1 — flatten nested into preferred flat names (copy only; reuse if already flat).
-  // Never invent -2/-3 when the basename slug is already in registry/drafts.
   const flatTargets: string[] = [];
   for (const relativePath of allRel.sort()) {
     const nested = relativePath.includes("/");
@@ -505,15 +581,39 @@ export function intakeAllNewCampaignPhotos(): PhotoIntakeResult {
     if (!IMAGE_EXT.has(ext)) continue;
 
     const baseId = slugFromFilename(originalFilename);
-    const preferred = `${baseId}${ext}`;
+    const preferred = HEIC_EXT.has(ext) ? `${baseId}.jpg` : `${baseId}${ext}`;
     const preferredSrc = `/media/campaign-photos/${preferred}`;
 
     if (!nested) {
+      if (HEIC_EXT.has(ext)) {
+        if (
+          registryIds.has(baseId) ||
+          draftIds.has(baseId) ||
+          registrySrc.has(preferredSrc) ||
+          draftSrc.has(preferredSrc)
+        ) {
+          if (registryIds.has(baseId) || registrySrc.has(preferredSrc)) skippedRegistry += 1;
+          else skippedDrafts += 1;
+          continue;
+        }
+        const destAbs = path.join(root, preferred);
+        const srcAbs = path.join(root, originalFilename);
+        try {
+          if (!existsSync(destAbs)) {
+            await convertHeicFileToJpeg(srcAbs, destAbs);
+            heicConverted += 1;
+            flattened += 1;
+          }
+          flatTargets.push(preferred);
+        } catch {
+          skippedErrors += 1;
+        }
+        continue;
+      }
       flatTargets.push(originalFilename);
       continue;
     }
 
-    // Nested dump whose basename already lives in registry/drafts → skip (no duplicate flat).
     if (
       registryIds.has(baseId) ||
       draftIds.has(baseId) ||
@@ -529,7 +629,12 @@ export function intakeAllNewCampaignPhotos(): PhotoIntakeResult {
     const srcAbs = path.join(root, ...relativePath.split("/"));
     try {
       if (!existsSync(destAbs)) {
-        copyFileSync(srcAbs, destAbs);
+        if (HEIC_EXT.has(ext)) {
+          await convertHeicFileToJpeg(srcAbs, destAbs);
+          heicConverted += 1;
+        } else {
+          copyFileSync(srcAbs, destAbs);
+        }
         flattened += 1;
       }
       flatTargets.push(preferred);
@@ -538,12 +643,14 @@ export function intakeAllNewCampaignPhotos(): PhotoIntakeResult {
     }
   }
 
-  // Pass 2 — queue unique flat files not already in registry/drafts.
   const seenFlat = new Set<string>();
   for (const flatName of flatTargets) {
     const key = flatName.toLowerCase();
     if (seenFlat.has(key)) continue;
     seenFlat.add(key);
+
+    const ext = path.extname(flatName).toLowerCase();
+    if (HEIC_EXT.has(ext)) continue;
 
     const src = `/media/campaign-photos/${flatName}`;
     const id = slugFromFilename(flatName);
@@ -578,7 +685,8 @@ export function intakeAllNewCampaignPhotos(): PhotoIntakeResult {
   const ok = skippedErrors === 0 || queued > 0;
   const parts = [
     queued ? `Queued ${queued} still(s) for labeling` : "No new stills to queue",
-    flattened ? `flattened ${flattened} nested copy(ies)` : null,
+    flattened ? `flattened ${flattened} nested/HEIC copy(ies)` : null,
+    heicConverted ? `HEIC→JPEG ${heicConverted}` : null,
     skippedDrafts ? `${skippedDrafts} already queued` : null,
     skippedRegistry ? `${skippedRegistry} already in registry` : null,
     skippedErrors ? `${skippedErrors} error(s)` : null,
@@ -592,6 +700,7 @@ export function intakeAllNewCampaignPhotos(): PhotoIntakeResult {
     skippedRegistry,
     skippedDrafts,
     skippedErrors,
+    heicConverted,
     ids,
     message: `${parts.join(" · ")}. Next: Photos tab → Draft / Unknown county → Save → Approve.`,
   };
@@ -654,22 +763,21 @@ export function getPhotoIntakeStatus(): PhotoIntakeStatus {
 }
 
 /** @deprecated Prefer intakeOneCampaignPhoto — kept for action aliases. */
-export function promoteDiskPhotoToDraft(filenameOrRel: string): {
-  ok: true;
-  photo: CampaignPhotoRecord;
-} | { ok: false; error: string } {
-  const res = intakeOneCampaignPhoto(filenameOrRel);
+export async function promoteDiskPhotoToDraft(filenameOrRel: string): Promise<
+  { ok: true; photo: CampaignPhotoRecord } | { ok: false; error: string }
+> {
+  const res = await intakeOneCampaignPhoto(filenameOrRel);
   if (!res.ok) return res;
   return { ok: true, photo: res.photo };
 }
 
 /** @deprecated Prefer intakeAllNewCampaignPhotos. Flat-only legacy path. */
-export function promoteAllNewDiskPhotosToDrafts(): {
+export async function promoteAllNewDiskPhotosToDrafts(): Promise<{
   promoted: number;
   skipped: number;
   ids: string[];
-} {
-  const result = intakeAllNewCampaignPhotos();
+}> {
+  const result = await intakeAllNewCampaignPhotos();
   return {
     promoted: result.queued,
     skipped: result.skippedRegistry + result.skippedDrafts + result.skippedErrors,

@@ -38,6 +38,7 @@ import {
 import type { OwnedMediaEvidenceLink } from "@/lib/campaign-media/owned-media-evidence-link";
 import {
   photoEditLanePreset,
+  finishSurfaceFromEdit,
   type EvidenceEditIntent,
   type EvidenceEditSiteSurface,
 } from "@/lib/campaign-media/evidence-edit-intents";
@@ -904,11 +905,18 @@ export function EvidencePhotosPanel({
   function finishForWeb() {
     if (!photo) return;
     const photoId = photo.id;
+    const finishSurface = finishSurfaceFromEdit(editIntent, editSurface);
     const slots = proSlots.length ? proSlots : (["web_max", "hero_16x9", "thumb"] as PhotoExportSlot[]);
     if (
       typeof window !== "undefined" &&
       !window.confirm(
-        `Finish for web?\nApply → Confirm render → Promote → Ship\nLook: ${proLook} · ${slots.length} slot(s)\nOriginals stay untouched. Prefer Unknown.`,
+        finishSurface === "social"
+          ? `Finish social download pack?\nLook: ${proLook} · ${slots.length} slot(s)\nNo public promote. Prefer Unknown.`
+          : `Finish for web → ${finishSurface}?\nApply → Confirm → Promote → Ship${
+              finishSurface === "homepage" || finishSurface === "journey"
+                ? " → Curate proposal"
+                : ""
+            }\nLook: ${proLook} · ${slots.length} slot(s)\nOriginals stay untouched. Prefer Unknown.`,
       )
     ) {
       return;
@@ -930,10 +938,17 @@ export function EvidencePhotosPanel({
         heroLevel: promoteHero || undefined,
         approvedForPublic: promoteApproved,
         consentConfirmed: Boolean(form?.consentConfirmed),
+        finishSurface,
+        proposeCurate: finishSurface === "homepage" || finishSurface === "journey",
       });
       setMessage(res.message);
       setProRenderNote(
-        [res.message, ...(res.warnings ?? []), res.steps?.length ? res.steps.join(" → ") : ""]
+        [
+          res.message,
+          ...(res.warnings ?? []),
+          res.steps?.length ? res.steps.join(" → ") : "",
+          res.curateProposalId ? `curate ${res.curateProposalId}` : "",
+        ]
           .filter(Boolean)
           .join(" · "),
       );
@@ -1627,7 +1642,7 @@ export function EvidencePhotosPanel({
           {identifyFocus
             ? "AI first → review fields → Save → Route. Prefer Unknown. No Pro Edit here."
             : deskMode === "edit"
-              ? "Focus · Look · Finish for web (Apply → Confirm → Promote → Ship). Prefer Unknown."
+              ? "Focus · Look · Finish for web (surface → ship + curate). Prefer Unknown."
               : "Progressive desk — Identify on Unknown; Pro Edit / Promote under Needs Promote. Prefer Unknown."}
         </p>
         <div className="mt-2 flex flex-wrap gap-2">
@@ -2167,9 +2182,14 @@ export function EvidencePhotosPanel({
                   className="rounded border-2 border-[#000066] bg-[#000066] px-3 py-2 font-body text-sm font-bold text-white disabled:opacity-50"
                 >
                   Finish for web
+                  {editIntent || editSurface
+                    ? ` · ${finishSurfaceFromEdit(editIntent, editSurface)}`
+                    : ""}
                 </button>
                 <p className="font-body text-[10px] text-[#364272]">
-                  Apply → Confirm → Promote → Ship · confirm required
+                  {finishSurfaceFromEdit(editIntent, editSurface) === "social"
+                    ? "Download pack only · confirm required"
+                    : "Apply → Confirm → Promote → Ship → curate proposal · confirm required"}
                 </p>
               </div>
             ) : null}

@@ -9,8 +9,18 @@ import type { VideoExportAspect } from "@/lib/campaign-media/video-look-presets"
 export const EVIDENCE_EDIT_INTENTS = ["social", "header", "site"] as const;
 export type EvidenceEditIntent = (typeof EVIDENCE_EDIT_INTENTS)[number];
 
-export const EVIDENCE_EDIT_SITE_SURFACES = ["homepage", "meetKelly", "other"] as const;
+export const EVIDENCE_EDIT_SITE_SURFACES = [
+  "homepage",
+  "journey",
+  "album",
+  "meetKelly",
+  "other",
+] as const;
 export type EvidenceEditSiteSurface = (typeof EVIDENCE_EDIT_SITE_SURFACES)[number];
+
+/** P1 Edit desk place surfaces — Homepage / Journey / Album / Social. */
+export const EVIDENCE_FINISH_SURFACES = ["homepage", "journey", "album", "social"] as const;
+export type EvidenceFinishSurface = (typeof EVIDENCE_FINISH_SURFACES)[number];
 
 export function parseEvidenceEditIntent(raw?: string | null): EvidenceEditIntent | null {
   const v = String(raw ?? "").trim().toLowerCase();
@@ -25,8 +35,32 @@ export function parseEvidenceEditSiteSurface(raw?: string | null): EvidenceEditS
     .replace(/[_-]/g, "");
   if (v === "meetkelly") return "meetKelly";
   if (v === "other") return "other";
+  if (v === "journey" || v === "acrossarkansas" || v === "fromtheroad") return "journey";
+  if (v === "album" || v === "countyalbum" || v === "countyalbums") return "album";
   if (v === "homepage" || v === "home") return "homepage";
   return null;
+}
+
+export function parseEvidenceFinishSurface(raw?: string | null): EvidenceFinishSurface | null {
+  const v = String(raw ?? "")
+    .trim()
+    .toLowerCase()
+    .replace(/[_-]/g, "");
+  if (v === "social") return "social";
+  if (v === "journey" || v === "acrossarkansas" || v === "fromtheroad") return "journey";
+  if (v === "album" || v === "countyalbum" || v === "countyalbums") return "album";
+  if (v === "homepage" || v === "home" || v === "gallery") return "homepage";
+  return null;
+}
+
+export function finishSurfaceFromEdit(
+  intent: EvidenceEditIntent | null,
+  surface: EvidenceEditSiteSurface | null,
+): EvidenceFinishSurface {
+  if (intent === "social") return "social";
+  if (surface === "journey") return "journey";
+  if (surface === "album") return "album";
+  return "homepage";
 }
 
 export type PhotoEditLanePreset = {
@@ -72,7 +106,7 @@ export function photoEditLanePreset(
     if (surface === "meetKelly") {
       return {
         label: "Meet Kelly",
-        hint: "Portrait-forward pack for Meet Kelly — Promote, then Publish.",
+        hint: "Portrait-forward pack for Meet Kelly — Finish for web writes ship + curate proposal.",
         look: "warm",
         slots: ["portrait_4x5", "web_max", "grade_full"],
         promoteHomepage: true,
@@ -81,10 +115,34 @@ export function photoEditLanePreset(
         deliver: "promote_then_publish",
       };
     }
+    if (surface === "journey") {
+      return {
+        label: "Journey / Across Arkansas",
+        hint: "Known-county trail pack — Finish ships + proposes Across Arkansas curate.",
+        look: "warm",
+        slots: ["web_max", "hero_16x9", "square_1x1", "grade_full"],
+        promoteHomepage: true,
+        promoteFeatured: false,
+        promoteHero: "FEATURE",
+        deliver: "promote_then_publish",
+      };
+    }
+    if (surface === "album") {
+      return {
+        label: "County album",
+        hint: "Album pack — Finish ships + sets album-eligible flags (known county required).",
+        look: "neutral",
+        slots: ["web_max", "square_1x1", "thumb", "grade_full"],
+        promoteHomepage: false,
+        promoteFeatured: false,
+        promoteHero: "FEATURE",
+        deliver: "promote_then_publish",
+      };
+    }
     if (surface === "other") {
       return {
         label: "Other page",
-        hint: "Web-max pack for non-homepage pages — Promote, then Publish.",
+        hint: "Web-max pack for non-homepage pages — Finish for web, then Publish.",
         look: "neutral",
         slots: ["web_max", "grade_full", "thumb"],
         promoteHomepage: false,
@@ -95,7 +153,7 @@ export function photoEditLanePreset(
     }
     return {
       label: "Homepage gallery",
-      hint: "Homepage-ready pack — Promote, then Public surfaces on Publish.",
+      hint: "Homepage-ready pack — Finish ships + optional curated placement proposal.",
       look: "warm",
       slots: ["hero_16x9", "web_max", "square_1x1", "grade_full"],
       promoteHomepage: true,
@@ -127,14 +185,32 @@ export function evidenceEditHref(input: {
   id?: string;
   intent?: EvidenceEditIntent | null;
   surface?: EvidenceEditSiteSurface | null;
+  finishSurface?: EvidenceFinishSurface | null;
   filter?: string;
 }): string {
   const sp = new URLSearchParams();
   sp.set("tab", "edit");
   if (input.id) sp.set("id", input.id);
-  if (input.intent) sp.set("intent", input.intent);
-  if (input.intent === "site" && input.surface) sp.set("surface", input.surface);
+  const finish = input.finishSurface;
+  if (finish === "social") {
+    sp.set("intent", "social");
+  } else if (finish === "homepage" || finish === "journey" || finish === "album") {
+    sp.set("intent", "site");
+    sp.set("surface", finish);
+  } else if (input.intent) {
+    sp.set("intent", input.intent);
+    if (input.intent === "site" && input.surface) sp.set("surface", input.surface);
+  }
   if (input.filter) sp.set("filter", input.filter);
   else sp.set("filter", "needsPromote");
   return `/admin/evidence-workbench?${sp.toString()}`;
+}
+
+/** Map Finish surface → curated proposal surface (null = no HOMEPAGE_* proposal). */
+export function curateSurfaceForFinish(
+  surface: EvidenceFinishSurface,
+): "homepageGallery" | "acrossArkansas" | null {
+  if (surface === "homepage") return "homepageGallery";
+  if (surface === "journey") return "acrossArkansas";
+  return null;
 }

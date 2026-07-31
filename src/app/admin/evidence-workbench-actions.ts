@@ -1080,7 +1080,7 @@ export async function intakeAllPhotosAction(): Promise<{
   const { intakeAllNewCampaignPhotos, getPhotoIntakeStatus } = await import(
     "@/lib/campaign-media/photo-ingest"
   );
-  const result = intakeAllNewCampaignPhotos();
+  const result = await intakeAllNewCampaignPhotos();
   let ownedMediaLinked = 0;
   let ownedMediaUnlinked = 0;
   let ownedNote = "";
@@ -1460,7 +1460,7 @@ export async function promotePhotoIngestAction(
   const g = await gate();
   if (!g.ok) return { ok: false, message: g.error };
   const { intakeOneCampaignPhoto } = await import("@/lib/campaign-media/photo-ingest");
-  const result = intakeOneCampaignPhoto(filename);
+  const result = await intakeOneCampaignPhoto(filename);
   if (!result.ok) return { ok: false, message: result.error };
   revalidatePath("/admin/evidence-workbench");
   return {
@@ -1660,7 +1660,7 @@ export async function promotePhotoDerivativeAction(input: {
   };
 }
 
-/** P0 — Apply → Confirm render → Promote → Ship in one confirm-gated pass. */
+/** P0/P1 — Apply → Confirm render → Promote → Ship (+ optional curate proposal). */
 export async function finishPhotoForWebAction(input: {
   photoId: string;
   confirmFinish: boolean;
@@ -1678,6 +1678,8 @@ export async function finishPhotoForWebAction(input: {
   heroLevel?: string;
   approvedForPublic?: boolean;
   consentConfirmed?: boolean;
+  finishSurface?: "homepage" | "journey" | "album" | "social";
+  proposeCurate?: boolean;
 }): Promise<{
   ok: boolean;
   message: string;
@@ -1687,6 +1689,8 @@ export async function finishPhotoForWebAction(input: {
   publicSrc?: string;
   placementPreview?: string[];
   assemblies?: import("@/lib/campaign-media/photo-edit-types").PhotoAssemblyRecord[];
+  curateProposalId?: string;
+  finishSurface?: string;
 }> {
   const g = await gate();
   if (!g.ok) return { ok: false, message: g.error };
@@ -1702,6 +1706,8 @@ export async function finishPhotoForWebAction(input: {
     publicSrc: result.publicSrc,
     placementPreview: result.placementPreview,
     assemblies: result.assemblies,
+    curateProposalId: result.curateProposalId,
+    finishSurface: result.finishSurface,
   };
 }
 
@@ -2795,7 +2801,7 @@ export async function dropCampaignPhotosToDiskAction(formData: FormData): Promis
   const { dropCampaignPhotosToDisk } = await import(
     "@/lib/campaign-media/drop-campaign-photos-to-disk"
   );
-  const result = dropCampaignPhotosToDisk(files);
+  const result = await dropCampaignPhotosToDisk(files);
   if (result.ok) {
     revalidatePath("/admin/evidence-workbench");
     revalidatePath("/campaign-photos");

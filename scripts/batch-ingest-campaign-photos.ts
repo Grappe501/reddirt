@@ -24,7 +24,7 @@ async function main() {
   const { intakeAllNewCampaignPhotos, getPhotoIntakeStatus } = await import(
     "../src/lib/campaign-media/photo-ingest"
   );
-  const result = intakeAllNewCampaignPhotos();
+  const result = await intakeAllNewCampaignPhotos();
   const status = getPhotoIntakeStatus();
   console.log(JSON.stringify({ ...result, status }, null, 2));
   if (!result.ok && result.queued === 0 && result.skippedErrors > 0) process.exit(1);
