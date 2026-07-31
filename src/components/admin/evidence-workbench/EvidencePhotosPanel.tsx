@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useRef, useState, useTransition, type MouseEvent } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState, useTransition, type MouseEvent } from "react";
 import {
   batchCreatePhotoDerivativesAction,
   batchPublishPhotosAction,
@@ -56,6 +56,7 @@ import type { PhotoDerivativeRecord } from "@/lib/campaign-media/media-derivativ
 import type {
   PhotoAssemblyRecord,
   PhotoEditProject,
+  PhotoStudioBurnIn,
 } from "@/lib/campaign-media/photo-edit-types";
 import type { PhotoExportSlot, PhotoLookPreset } from "@/lib/campaign-media/photo-look-presets";
 import { EVIDENCE_FIELD_CLASS } from "@/components/admin/evidence-workbench/field-styles";
@@ -333,6 +334,7 @@ export function EvidencePhotosPanel({
   const [inpaintAudit, setInpaintAudit] = useState("");
   const [inpaintMaskBase64, setInpaintMaskBase64] = useState<string>("");
   const [studioSlot, setStudioSlot] = useState<PhotoExportSlot | null>(null);
+  const [studioBurnIn, setStudioBurnIn] = useState<PhotoStudioBurnIn | null>(null);
   const [ownedMediaLink, setOwnedMediaLink] = useState<OwnedMediaEvidenceLink | null>(null);
   const previewImgRef = useRef<HTMLImageElement | null>(null);
   const [form, setForm] = useState<PhotoFormState | null>(() => {
@@ -747,6 +749,10 @@ export function EvidencePhotosPanel({
     return null;
   }, [derivatives]);
 
+  const onStudioBurnInChange = useCallback((burnIn: PhotoStudioBurnIn) => {
+    setStudioBurnIn(burnIn);
+  }, []);
+
   function runFocusCrop(kind: string) {
     if (!photo) return;
     if (!focus) {
@@ -967,6 +973,7 @@ export function EvidencePhotosPanel({
             focusX: focus?.x,
             focusY: focus?.y,
             exportSlots: proSlots.length ? proSlots : ["web_max"],
+            ...(studioBurnIn ? { burnIn: studioBurnIn } : {}),
           },
         ],
       });
@@ -1031,6 +1038,7 @@ export function EvidencePhotosPanel({
             focusX: focus?.x,
             focusY: focus?.y,
             exportSlots: proSlots.length ? proSlots : ["web_max"],
+            ...(studioBurnIn ? { burnIn: studioBurnIn } : {}),
           },
         ],
       });
@@ -1096,6 +1104,7 @@ export function EvidencePhotosPanel({
         consentConfirmed: Boolean(form?.consentConfirmed),
         finishSurface,
         proposeCurate: finishSurface === "homepage" || finishSurface === "journey",
+        ...(studioBurnIn ? { burnIn: studioBurnIn } : {}),
       });
       setMessage(res.message);
       setProRenderNote(
@@ -2185,6 +2194,7 @@ export function EvidencePhotosPanel({
                 focus={focus}
                 onFocusChange={onStudioFocusChange}
                 aiLayerSrc={aiStudioLayerSrc}
+                onBurnInChange={onStudioBurnInChange}
               />
             </div>
           ) : (

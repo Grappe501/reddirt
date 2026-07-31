@@ -1784,6 +1784,7 @@ export async function finishPhotoForWebAction(input: {
   consentConfirmed?: boolean;
   finishSurface?: "homepage" | "journey" | "album" | "social";
   proposeCurate?: boolean;
+  burnIn?: import("@/lib/campaign-media/photo-edit-types").PhotoStudioBurnIn | null;
 }): Promise<{
   ok: boolean;
   message: string;
@@ -2277,6 +2278,7 @@ export async function updatePhotoEditProjectAction(input: {
           | "web_max"
           | "thumb"
           | null;
+        burnIn?: import("@/lib/campaign-media/photo-edit-types").PhotoStudioBurnIn | null;
       }
     | {
         op: "set_slots";

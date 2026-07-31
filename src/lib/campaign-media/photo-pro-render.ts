@@ -89,7 +89,7 @@ async function renderSlot(input: {
   outAbs: string;
   srcW: number;
   srcH: number;
-}): Promise<{ ok: true; width: number; height: number; bytes: number; format: string } | { ok: false; error: string }> {
+}): Promise<{ ok: true; width: number; height: number; bytes: number; format: string; burnNote?: string } | { ok: false; error: string }> {
   const spec = photoSlotSpec(input.slot);
   const focus =
     input.project.useFocus
@@ -143,13 +143,30 @@ async function renderSlot(input: {
     renameSync(tmpAbs, input.outAbs);
 
     const outMeta = await sharp(input.outAbs).metadata();
+    const width = outMeta.width ?? 0;
+    const height = outMeta.height ?? 0;
+
+    const { applyStudioBurnInToAssembly } = await import("@/lib/campaign-media/photo-studio-burnin");
+    const burned = await applyStudioBurnInToAssembly({
+      outAbs: input.outAbs,
+      width,
+      height,
+      slot: input.slot,
+      burnIn: input.project.burnIn,
+    });
+    if (!burned.ok) {
+      return { ok: false, error: burned.error };
+    }
+
+    const finalMeta = await sharp(input.outAbs).metadata();
     const st = statSync(input.outAbs);
     return {
       ok: true,
-      width: outMeta.width ?? 0,
-      height: outMeta.height ?? 0,
+      width: finalMeta.width ?? width,
+      height: finalMeta.height ?? height,
       bytes: st.size,
-      format: outMeta.format ?? "jpeg",
+      format: finalMeta.format ?? "jpeg",
+      burnNote: burned.noteBits.length ? burned.noteBits.join("+") : undefined,
     };
   } catch (err) {
     return { ok: false, error: err instanceof Error ? err.message : "Slot render failed." };
@@ -218,6 +235,7 @@ export async function renderPhotoEditProject(input: {
     }
     const relativePath = path.join(outDirRel, filename).split(path.sep).join("/");
     const publicSrc = `/media/campaign-derivatives/${project.photoId}/${filename}`;
+    const burnBit = rendered.burnNote ? `burn-in ${rendered.burnNote}` : "";
     const record: PhotoAssemblyRecord = {
       id: `${project.photoId}--pro-${slot}--${stamp}`,
       projectId: project.id,
@@ -233,7 +251,9 @@ export async function renderPhotoEditProject(input: {
       focusX: project.useFocus ? project.focusX : undefined,
       focusY: project.useFocus ? project.focusY : undefined,
       createdAt: new Date().toISOString(),
-      note: warnings.length ? warnings.slice(0, 2).join(" · ") : undefined,
+      note: [burnBit, warnings.length ? warnings.slice(0, 2).join(" · ") : ""]
+        .filter(Boolean)
+        .join(" · ") || undefined,
     };
     pushPhotoAssembly(record);
     pushPhotoDerivativeRecord({

@@ -113,6 +113,8 @@ export async function finishPhotoForWeb(input: {
   finishSurface?: EvidenceFinishSurface;
   /** When true (default for homepage/journey), write pending curated proposal after ship. */
   proposeCurate?: boolean;
+  /** V2.1 studio burn-in (text / AI layer) — applied on Confirm render. */
+  burnIn?: import("@/lib/campaign-media/photo-edit-types").PhotoStudioBurnIn | null;
 }): Promise<FinishPhotoForWebResult> {
   const steps: string[] = [];
   const warnings: string[] = [];
@@ -190,6 +192,7 @@ export async function finishPhotoForWeb(input: {
         focusX: input.focusX ?? project.focusX,
         focusY: input.focusY ?? project.focusY,
         exportSlots: slots,
+        ...(input.burnIn !== undefined ? { burnIn: input.burnIn } : {}),
       },
     ],
   });

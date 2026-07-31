@@ -6,6 +6,20 @@ import type { PhotoExportSlot, PhotoLookPreset } from "@/lib/campaign-media/phot
 
 export const PHOTO_PRO_EDITS_REL = "data/campaign-media/photo-pro-edits.json";
 
+/** V2.1 — Studio burn-in that Confirm / Finish must honor. */
+export type PhotoStudioBurnIn = {
+  /** When true and text non-empty, composite text onto assemblies. */
+  burnText: boolean;
+  text: string;
+  textPosition: "top" | "bottom";
+  /** When true and aiLayerPublicSrc set, composite AI derivative under text. */
+  includeAiLayer: boolean;
+  /** Public URL under /media/campaign-derivatives/… */
+  aiLayerPublicSrc?: string;
+  /** Primary artboard hint (promote suggestion soft-bias). */
+  primarySlot?: PhotoExportSlot;
+};
+
 export type PhotoEditProject = {
   id: string;
   photoId: string;
@@ -23,6 +37,8 @@ export type PhotoEditProject = {
   promoteSuggestion?: PhotoExportSlot | null;
   directorRationale?: string;
   notes?: string;
+  /** V2.1 studio composition burned into Confirm render. */
+  burnIn?: PhotoStudioBurnIn;
 };
 
 export type PhotoAssemblyRecord = {

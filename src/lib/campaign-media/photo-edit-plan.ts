@@ -5,13 +5,14 @@
 import "server-only";
 
 import { getPhotoEditProject, upsertPhotoEditProject } from "@/lib/campaign-media/photo-edit-store";
-import type { PhotoEditProject } from "@/lib/campaign-media/photo-edit-types";
+import type { PhotoEditProject, PhotoStudioBurnIn } from "@/lib/campaign-media/photo-edit-types";
 import {
   PHOTO_EXPORT_SLOTS,
   PHOTO_LOOK_PRESETS,
   type PhotoExportSlot,
   type PhotoLookPreset,
 } from "@/lib/campaign-media/photo-look-presets";
+import { normalizeBurnIn } from "@/lib/campaign-media/photo-studio-burnin";
 
 export type PhotoEditPlanUpdate =
   | {
@@ -23,6 +24,7 @@ export type PhotoEditPlanUpdate =
       focusY?: number;
       exportSlots?: PhotoExportSlot[];
       promoteSuggestion?: PhotoExportSlot | null;
+      burnIn?: PhotoStudioBurnIn | null;
     }
   | { op: "set_slots"; exportSlots: PhotoExportSlot[] }
   | { op: "toggle_slot"; slot: PhotoExportSlot; enabled?: boolean };
@@ -59,6 +61,7 @@ export function updatePhotoEditProject(input: {
   let focusY = project.focusY;
   let exportSlots = [...project.exportSlots];
   let promoteSuggestion = project.promoteSuggestion ?? null;
+  let burnIn = project.burnIn;
   const warnings: string[] = [];
 
   for (const u of input.updates.slice(0, 40)) {
@@ -82,6 +85,8 @@ export function updatePhotoEditProject(input: {
         if (isSlot(u.promoteSuggestion)) promoteSuggestion = u.promoteSuggestion;
         else warnings.push(`Ignored invalid promoteSuggestion: ${String(u.promoteSuggestion)}`);
       }
+      if (u.burnIn === null) burnIn = undefined;
+      else if (u.burnIn !== undefined) burnIn = normalizeBurnIn(u.burnIn);
     } else if (u.op === "set_slots") {
       exportSlots = (u.exportSlots ?? []).filter(isSlot).slice(0, 12);
       if (!exportSlots.length) warnings.push("Slot list empty — add at least one before render.");
@@ -100,6 +105,12 @@ export function updatePhotoEditProject(input: {
   if (promoteSuggestion && !exportSlots.includes(promoteSuggestion)) {
     promoteSuggestion = exportSlots[0] ?? null;
   }
+  if (burnIn?.primarySlot && isSlot(burnIn.primarySlot)) {
+    if (!exportSlots.includes(burnIn.primarySlot)) {
+      exportSlots = [burnIn.primarySlot, ...exportSlots].slice(0, 12);
+    }
+    if (!promoteSuggestion) promoteSuggestion = burnIn.primarySlot;
+  }
 
   const next: PhotoEditProject = {
     ...project,
@@ -110,8 +121,12 @@ export function updatePhotoEditProject(input: {
     focusY: useFocus ? focusY : undefined,
     exportSlots,
     promoteSuggestion,
+    burnIn,
     updatedAt: new Date().toISOString(),
-    notes: [project.notes, "Plan updated by operator (look/slots/focus — no silent render)."]
+    notes: [
+      project.notes,
+      "Plan updated by operator (look/slots/focus/burn-in — no silent render).",
+    ]
       .filter(Boolean)
       .join(" · "),
   };

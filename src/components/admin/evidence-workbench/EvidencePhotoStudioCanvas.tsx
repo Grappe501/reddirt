@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState, type PointerEvent as ReactPointerEvent, type WheelEvent as ReactWheelEvent } from "react";
 import { clickToFocusPoint, coverCropRect, type FocusPoint } from "@/lib/campaign-media/focus-crop";
+import type { PhotoStudioBurnIn } from "@/lib/campaign-media/photo-edit-types";
 import type { PhotoExportSlot, PhotoLookPreset } from "@/lib/campaign-media/photo-look-presets";
 import {
   STUDIO_BRAND_TEXT_PRESETS,
@@ -24,6 +25,8 @@ type Props = {
   onFocusChange: (point: FocusPoint) => void;
   /** Optional AI derivative (enhance/cutout) as overlay layer — never invents new photos. */
   aiLayerSrc?: string | null;
+  /** V2.1 — lift burn-in intent so Apply / Confirm / Finish match preview. */
+  onBurnInChange?: (burnIn: PhotoStudioBurnIn) => void;
   className?: string;
 };
 
@@ -44,6 +47,7 @@ export function EvidencePhotoStudioCanvas({
   focus,
   onFocusChange,
   aiLayerSrc,
+  onBurnInChange,
   className = "",
 }: Props) {
   const viewportRef = useRef<HTMLDivElement | null>(null);
@@ -84,6 +88,19 @@ export function EvidencePhotoStudioCanvas({
     setZoom(1);
     setPan({ x: 0, y: 0 });
   }, [photoId, src]);
+
+  useEffect(() => {
+    if (!onBurnInChange) return;
+    const text = brandText.trim().slice(0, 120);
+    onBurnInChange({
+      burnText: layers.text && text.length > 0,
+      text,
+      textPosition: textPos,
+      includeAiLayer: layers.ai && Boolean(aiLayerSrc),
+      aiLayerPublicSrc: aiLayerSrc || undefined,
+      primarySlot: activeSlot,
+    });
+  }, [brandText, textPos, layers.text, layers.ai, aiLayerSrc, activeSlot, onBurnInChange]);
 
   const selectSlot = useCallback(
     (slot: PhotoExportSlot) => {
@@ -416,7 +433,11 @@ export function EvidencePhotoStudioCanvas({
           ? `${Math.round(focus.x * 100)}% × ${Math.round(focus.y * 100)}%`
           : "unset — click canvas"}
         {" · "}
-        Text overlay is studio preview only (not burned in Confirm render yet).
+        {layers.text && brandText.trim()
+          ? "Text burns in on Confirm / Finish."
+          : layers.ai && aiLayerSrc
+            ? "AI layer burns in when enabled on Confirm / Finish."
+            : "Enable Text (or AI) layer to burn into Confirm / Finish."}
       </p>
     </div>
   );
