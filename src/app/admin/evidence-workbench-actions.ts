@@ -1660,6 +1660,51 @@ export async function promotePhotoDerivativeAction(input: {
   };
 }
 
+/** P0 — Apply → Confirm render → Promote → Ship in one confirm-gated pass. */
+export async function finishPhotoForWebAction(input: {
+  photoId: string;
+  confirmFinish: boolean;
+  projectId?: string;
+  look?: "neutral" | "warm" | "cool" | "contrast" | "soft" | "punch" | "mono" | "film" | "bright" | "editorial";
+  exportSlots?: Array<
+    "grade_full" | "hero_16x9" | "portrait_4x5" | "square_1x1" | "story_9x16" | "web_max" | "thumb"
+  >;
+  useFocus?: boolean;
+  focusX?: number;
+  focusY?: number;
+  sharpen?: boolean;
+  homepageCandidate?: boolean;
+  featuredPhoto?: boolean;
+  heroLevel?: string;
+  approvedForPublic?: boolean;
+  consentConfirmed?: boolean;
+}): Promise<{
+  ok: boolean;
+  message: string;
+  steps?: string[];
+  warnings?: string[];
+  projectId?: string;
+  publicSrc?: string;
+  placementPreview?: string[];
+  assemblies?: import("@/lib/campaign-media/photo-edit-types").PhotoAssemblyRecord[];
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { finishPhotoForWeb } = await import("@/lib/campaign-media/finish-photo-for-web");
+  const result = await finishPhotoForWeb(input);
+  if (result.ok) revalidateEvidenceSurfaces();
+  return {
+    ok: result.ok,
+    message: result.message,
+    steps: result.steps,
+    warnings: result.warnings,
+    projectId: result.projectId,
+    publicSrc: result.publicSrc,
+    placementPreview: result.placementPreview,
+    assemblies: result.assemblies,
+  };
+}
+
 export async function clearPhotoPublicSrcOverrideAction(photoId: string): Promise<{
   ok: boolean;
   message: string;
@@ -2223,7 +2268,7 @@ export async function getPhotoReadinessMatrixAction(input?: {
   });
   return {
     ok: true,
-    message: `${matrix.total} still(s) · focus gap ${matrix.needsFocus} · Pro Edit gap ${matrix.needsProEdit} · promote gap ${matrix.needsPromote}`,
+    message: `${matrix.total} still(s) · blocked ${matrix.blocked} · focus ${matrix.needsFocus} · Pro Edit ${matrix.needsProEdit} · promote ${matrix.needsPromote} · ship ${matrix.needsShip}`,
     matrix,
   };
 }

@@ -19,7 +19,13 @@ export function EvidencePhotoReadinessPanel({ initialMatrix }: Props) {
   const [message, setMessage] = useState("");
   const [pending, start] = useTransition();
   const [expanded, setExpanded] = useState(
-    () => initialMatrix.needsPromote + initialMatrix.needsFocus + initialMatrix.needsProEdit > 0,
+    () =>
+      initialMatrix.needsPromote +
+        initialMatrix.needsFocus +
+        initialMatrix.needsProEdit +
+        (initialMatrix.needsShip ?? 0) +
+        (initialMatrix.blocked ?? 0) >
+      0,
   );
 
   useEffect(() => {
@@ -52,7 +58,7 @@ export function EvidencePhotoReadinessPanel({ initialMatrix }: Props) {
   function promoteSelected() {
     const ids = selectedIds.length ? selectedIds : needsPromoteIds.slice(0, 24);
     if (!ids.length) {
-      setMessage("Nothing ready to promote — render Pro Edit assemblies first.");
+      setMessage("Nothing ready to promote — Finish for web or Confirm render first.");
       return;
     }
     start(async () => {
@@ -77,8 +83,9 @@ export function EvidencePhotoReadinessPanel({ initialMatrix }: Props) {
           <div>
             <p className="font-heading text-sm font-bold text-[#000066]">Photo readiness</p>
             <p className="mt-1 font-body text-xs text-[#364272]">
-              Focus → Pro Edit → Confirm render → Promote (confirm). Prefer Unknown. Never silent
-              promote. · promote {matrix.needsPromote} · focus {matrix.needsFocus}
+              Focus → Finish for web (Apply → Confirm → Promote → Ship). Prefer Unknown. Never silent.
+              · block {matrix.blocked ?? 0} · ship {matrix.needsShip ?? 0} · promote{" "}
+              {matrix.needsPromote} · focus {matrix.needsFocus}
             </p>
           </div>
           <span className="shrink-0 font-body text-[11px] font-semibold text-[#364272]">
@@ -87,16 +94,25 @@ export function EvidencePhotoReadinessPanel({ initialMatrix }: Props) {
         </button>
         {expanded ? (
           <>
-            <div className="mt-3 grid gap-2 sm:grid-cols-4">
+            <div className="mt-3 grid gap-2 sm:grid-cols-3 lg:grid-cols-6">
               {(
                 [
                   ["Total scored", matrix.total],
+                  ["Blocked", matrix.blocked ?? 0],
                   ["Needs focus", matrix.needsFocus],
                   ["Needs Pro Edit", matrix.needsProEdit],
                   ["Needs promote", matrix.needsPromote],
+                  ["Needs ship", matrix.needsShip ?? 0],
                 ] as const
               ).map(([label, n]) => (
-                <div key={label} className="rounded border border-[#8eb6dc]/40 bg-[#f4f7fc] px-2 py-1.5">
+                <div
+                  key={label}
+                  className={`rounded border px-2 py-1.5 ${
+                    label === "Blocked" && n > 0
+                      ? "border-red-400 bg-red-50"
+                      : "border-[#8eb6dc]/40 bg-[#f4f7fc]"
+                  }`}
+                >
                   <p className="font-heading text-[10px] font-bold uppercase text-[#000066]">{label}</p>
                   <p className="font-body text-lg font-semibold">{n}</p>
                 </div>
@@ -145,14 +161,23 @@ export function EvidencePhotoReadinessPanel({ initialMatrix }: Props) {
                 <th className="py-1 pr-2">County</th>
                 <th className="py-1 pr-2">Focus</th>
                 <th className="py-1 pr-2">Asm</th>
-                <th className="py-1 pr-2">Override</th>
+                <th className="py-1 pr-2">Ship</th>
                 <th className="py-1 pr-2">Score</th>
                 <th className="py-1">Next</th>
               </tr>
             </thead>
             <tbody>
               {matrix.rows.map((r: PhotoReadinessRow) => (
-                <tr key={r.photoId} className="border-b border-[#8eb6dc]/20 align-top">
+                <tr
+                  key={r.photoId}
+                  className={`border-b border-[#8eb6dc]/20 align-top ${
+                    r.attention === "block"
+                      ? "bg-red-50"
+                      : r.attention === "warn"
+                        ? "bg-amber-50/60"
+                        : ""
+                  }`}
+                >
                   <td className="py-1 pr-2">
                     <input
                       type="checkbox"
@@ -171,8 +196,14 @@ export function EvidencePhotoReadinessPanel({ initialMatrix }: Props) {
                   </td>
                   <td className="py-1 pr-2">{r.confirmedCounty ? r.county : "Unknown"}</td>
                   <td className="py-1 pr-2">{r.hasFocus ? "yes" : "—"}</td>
-                  <td className="py-1 pr-2">{r.assemblyCount}</td>
-                  <td className="py-1 pr-2">{r.hasPublicOverride ? "yes" : "—"}</td>
+                  <td
+                    className={`py-1 pr-2 ${r.assemblyCount === 0 ? "font-bold text-red-700" : ""}`}
+                  >
+                    {r.assemblyCount}
+                  </td>
+                  <td className="py-1 pr-2">
+                    {r.isShipped ? "shipped" : r.needsShip ? "need ship" : r.hasPublicOverride ? "override" : "—"}
+                  </td>
                   <td className="py-1 pr-2">{r.readinessScore}</td>
                   <td className="py-1 text-[#364272]">{r.nextAction}</td>
                 </tr>

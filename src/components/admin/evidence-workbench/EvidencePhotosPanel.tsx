@@ -12,6 +12,7 @@ import {
   createDerivativeFromCropAdviceAction,
   createPhotoDerivativeAction,
   applyTurboProposalAction,
+  finishPhotoForWebAction,
   getTurboProposalAction,
   inspectPhotoPixelsAction,
   listEvidenceBatchOpsAction,
@@ -27,6 +28,7 @@ import {
   softArchivePhotoAssembliesAction,
   savePhotoEvidenceAction,
   savePhotoFocusAction,
+  shipPromotedDerivativesAction,
   suggestBatchPhotoEvidenceAiAction,
   suggestCropPlanAction,
   suggestPhotoEvidenceAiAction,
@@ -851,19 +853,39 @@ export function EvidencePhotosPanel({
     if (
       typeof window !== "undefined" &&
       !window.confirm(
-        `Confirm render ${editProject.exportSlots.length} slot(s) · look ${editProject.look}? Originals stay untouched.`,
+        `Confirm render ${proSlots.length || editProject.exportSlots.length} slot(s) · look ${proLook}? Originals stay untouched.`,
       )
     ) {
       return;
     }
     const projectId = editProject.id;
     const photoId = editProject.photoId;
-    setProRenderNote("Rendering assembly pack…");
+    setProRenderNote("Applying look / slots, then rendering…");
     start(async () => {
+      // P0: auto-Apply before Confirm so UI look/slots aren't lost.
+      const applied = await updatePhotoEditProjectAction({
+        projectId,
+        updates: [
+          {
+            op: "set_meta",
+            look: proLook,
+            sharpen: proSharpen,
+            useFocus: proUseFocus,
+            focusX: focus?.x,
+            focusY: focus?.y,
+            exportSlots: proSlots.length ? proSlots : ["web_max"],
+          },
+        ],
+      });
+      if (applied.ok && applied.project) {
+        setEditProject(applied.project);
+        setProSlots(applied.project.exportSlots);
+      }
       const res = await renderPhotoEditProjectAction({ projectId, confirmRender: true });
       setMessage(res.message);
       setProRenderNote(
         [
+          applied.ok ? "Applied look/slots" : applied.message,
           res.message,
           ...(res.warnings ?? []),
           res.promoteSuggestion ? `Promote suggestion: ${res.promoteSuggestion}` : "",
@@ -875,6 +897,53 @@ export function EvidencePhotosPanel({
       const listed = await listPhotoEditProjectsAction(photoId);
       setAssemblies(listed.assemblies ?? res.assemblies ?? []);
       setEditProject(listed.projects?.find((p) => p.id === projectId) ?? editProject);
+      refreshDerivatives(photoId);
+    });
+  }
+
+  function finishForWeb() {
+    if (!photo) return;
+    const photoId = photo.id;
+    const slots = proSlots.length ? proSlots : (["web_max", "hero_16x9", "thumb"] as PhotoExportSlot[]);
+    if (
+      typeof window !== "undefined" &&
+      !window.confirm(
+        `Finish for web?\nApply → Confirm render → Promote → Ship\nLook: ${proLook} · ${slots.length} slot(s)\nOriginals stay untouched. Prefer Unknown.`,
+      )
+    ) {
+      return;
+    }
+    setProRenderNote("Finishing for web…");
+    start(async () => {
+      const res = await finishPhotoForWebAction({
+        photoId,
+        confirmFinish: true,
+        projectId: editProject?.id,
+        look: proLook,
+        exportSlots: slots,
+        useFocus: proUseFocus,
+        focusX: focus?.x,
+        focusY: focus?.y,
+        sharpen: proSharpen,
+        homepageCandidate: promoteHomepage,
+        featuredPhoto: promoteFeatured,
+        heroLevel: promoteHero || undefined,
+        approvedForPublic: promoteApproved,
+        consentConfirmed: Boolean(form?.consentConfirmed),
+      });
+      setMessage(res.message);
+      setProRenderNote(
+        [res.message, ...(res.warnings ?? []), res.steps?.length ? res.steps.join(" → ") : ""]
+          .filter(Boolean)
+          .join(" · "),
+      );
+      if (res.assemblies?.length) setAssemblies(res.assemblies);
+      if (res.placementPreview) setPromotePreview(res.placementPreview);
+      if (res.projectId) {
+        const listed = await listPhotoEditProjectsAction(photoId);
+        setAssemblies(listed.assemblies ?? res.assemblies ?? []);
+        setEditProject(listed.projects?.find((p) => p.id === res.projectId) ?? listed.projects?.[0] ?? null);
+      }
       refreshDerivatives(photoId);
     });
   }
@@ -902,7 +971,7 @@ export function EvidencePhotosPanel({
     if (
       typeof window !== "undefined" &&
       !window.confirm(
-        `Promote ${a.slot} assembly to public src?\n${a.publicSrc}\nOriginals stay untouched.`,
+        `Promote + Ship ${a.slot}?\n${a.publicSrc}\n→ campaign-shipped (Netlify-safe)\nOriginals stay untouched.`,
       )
     ) {
       return;
@@ -918,7 +987,21 @@ export function EvidencePhotosPanel({
         approvedForPublic: promoteApproved,
         consentConfirmed: Boolean(form?.consentConfirmed),
       });
-      setMessage(res.message);
+      if (!res.ok) {
+        setMessage(res.message);
+        if (res.placementPreview) setPromotePreview(res.placementPreview);
+        return;
+      }
+      const ship = await shipPromotedDerivativesAction({
+        confirmShip: true,
+        photoIds: [photoId],
+        limit: 4,
+      });
+      setMessage(
+        ship.ok && ship.shipped?.length
+          ? `${res.message} · Shipped → ${ship.shipped[0]?.to ?? "campaign-shipped"}`
+          : `${res.message} · Ship: ${ship.message}`,
+      );
       if (res.placementPreview) setPromotePreview(res.placementPreview);
       refreshDerivatives(photoId);
     });
@@ -1544,7 +1627,7 @@ export function EvidencePhotosPanel({
           {identifyFocus
             ? "AI first → review fields → Save → Route. Prefer Unknown. No Pro Edit here."
             : deskMode === "edit"
-              ? "Pro Edit / promote only. Route here after Identify when the asset needs special use."
+              ? "Focus · Look · Finish for web (Apply → Confirm → Promote → Ship). Prefer Unknown."
               : "Progressive desk — Identify on Unknown; Pro Edit / Promote under Needs Promote. Prefer Unknown."}
         </p>
         <div className="mt-2 flex flex-wrap gap-2">
@@ -2028,15 +2111,15 @@ export function EvidencePhotosPanel({
             aria-hidden={!showProEdit}
           >
             <p className={ewPanelTitleClass}>
-              Pro Edit suite
+              {deskMode === "edit" ? "Edit desk · Focus · Look · Finish" : "Pro Edit suite"}
               {deskMode === "edit" && editIntent
                 ? ` · ${photoEditLanePreset(editIntent, editSurface).label}`
                 : ""}
             </p>
             <p className="mt-1 font-body text-[11px] text-[#364272]">
-              Industry-grade look → focus-aware multi-aspect pack → preview → confirm render → promote.
-              Film / bright / editorial looks; slot chips; ledger-bridged assemblies. Never overwrites
-              originals; never auto-promotes.
+              {deskMode === "edit"
+                ? "Click the still for Focus, pick a Look, then Finish for web. One confirm runs Apply → Confirm render → Promote → Ship. Originals never overwritten."
+                : "Industry-grade look → focus-aware multi-aspect pack → preview → confirm render → promote. Never overwrites originals; never auto-promotes."}
             </p>
             <div className="mt-2 flex flex-wrap gap-3 font-body text-[11px] text-[#12124a]">
               <label className="inline-flex flex-col gap-0.5">
@@ -2075,6 +2158,25 @@ export function EvidencePhotosPanel({
                 Extra sharpen
               </label>
             </div>
+            {deskMode === "edit" ? (
+              <div className="mt-3 flex flex-wrap items-center gap-2">
+                <button
+                  type="button"
+                  disabled={pending}
+                  onClick={finishForWeb}
+                  className="rounded border-2 border-[#000066] bg-[#000066] px-3 py-2 font-body text-sm font-bold text-white disabled:opacity-50"
+                >
+                  Finish for web
+                </button>
+                <p className="font-body text-[10px] text-[#364272]">
+                  Apply → Confirm → Promote → Ship · confirm required
+                </p>
+              </div>
+            ) : null}
+            <details className={`mt-3 ${deskMode === "edit" ? "" : "open"}`} open={deskMode !== "edit"}>
+              <summary className="cursor-pointer font-heading text-[10px] font-bold uppercase tracking-wide text-[#000066]">
+                {deskMode === "edit" ? "Advanced · slots & steps" : "Slots & steps"}
+              </summary>
             <div className="mt-2 flex flex-wrap gap-1.5">
               {(
                 [
@@ -2141,6 +2243,7 @@ export function EvidencePhotosPanel({
                 Soft-archive
               </button>
             </div>
+            </details>
             {proRenderNote ? (
               <p className="mt-2 font-body text-[11px] text-[#364272]">{proRenderNote}</p>
             ) : null}
@@ -2244,7 +2347,7 @@ export function EvidencePhotosPanel({
                           onClick={() => promoteAssembly(a)}
                           className="rounded border border-[#000066] px-2 py-0.5 font-body text-[10px] font-semibold text-[#000066] disabled:opacity-50"
                         >
-                          Promote
+                          Promote + Ship
                         </button>
                       ) : null}
                     </div>

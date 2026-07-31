@@ -1,6 +1,7 @@
 /**
  * Photo readiness matrix — next-actions for Evidence Photos / photo_prep AI.
  * Prefer Unknown; never invents geography.
+ * P0: red path when zero assemblies or promoted but not shipped.
  */
 import "server-only";
 
@@ -9,6 +10,7 @@ import { loadPhotoEvidenceStore } from "@/lib/campaign-media/evidence-store";
 import { listPhotoDerivatives } from "@/lib/campaign-media/media-derivatives";
 import { listPhotoAssemblies, listPhotoEditProjects } from "@/lib/campaign-media/photo-edit-store";
 import { publicPublishBlockedByConsent } from "@/lib/campaign-media/photo-consent-hold";
+import { CAMPAIGN_SHIPPED_URL_PREFIX } from "@/lib/campaign-media/ship-promoted-derivatives";
 
 export type PhotoReadinessRow = {
   photoId: string;
@@ -20,10 +22,16 @@ export type PhotoReadinessRow = {
   projectCount: number;
   assemblyCount: number;
   hasPublicOverride: boolean;
+  /** Override under campaign-shipped (Netlify-safe). */
+  isShipped: boolean;
+  /** Override still under gitignored campaign-derivatives. */
+  needsShip: boolean;
   approvedForPublic: boolean;
   consentBlock: string | null;
   readinessScore: number;
   nextAction: string;
+  /** Operator attention — zero assemblies or unshipped derivative override. */
+  attention: "ok" | "warn" | "block";
 };
 
 export type PhotoReadinessMatrix = {
@@ -33,12 +41,15 @@ export type PhotoReadinessMatrix = {
   needsFocus: number;
   needsProEdit: number;
   needsPromote: number;
+  needsShip: number;
+  blocked: number;
   rows: PhotoReadinessRow[];
 };
 
-function scoreRow(r: Omit<PhotoReadinessRow, "readinessScore" | "nextAction">): {
+function scoreRow(r: Omit<PhotoReadinessRow, "readinessScore" | "nextAction" | "attention">): {
   readinessScore: number;
   nextAction: string;
+  attention: PhotoReadinessRow["attention"];
 } {
   let readinessScore = 0;
   if (r.confirmedCounty) readinessScore += 25;
@@ -46,23 +57,42 @@ function scoreRow(r: Omit<PhotoReadinessRow, "readinessScore" | "nextAction">): 
   if (r.derivativeCount > 0) readinessScore += 10;
   if (r.projectCount > 0) readinessScore += 10;
   if (r.assemblyCount > 0) readinessScore += 20;
-  if (r.hasPublicOverride) readinessScore += 10;
+  if (r.isShipped) readinessScore += 15;
+  else if (r.hasPublicOverride) readinessScore += 5;
   if (r.approvedForPublic) readinessScore += 10;
 
   let nextAction = "Identify geography (Prefer Unknown) + whatThisProves.";
-  if (!r.confirmedCounty) nextAction = "Confirm a real county (Unknown stays Unknown).";
-  else if (!r.hasFocus) nextAction = "Click still to set focus for cover crops / Pro Edit.";
-  else if (r.projectCount === 0 && r.assemblyCount === 0) {
-    nextAction = "Pro Edit: Propose look + slots → Preview → Confirm render.";
-  } else if (r.projectCount > 0 && r.assemblyCount === 0) {
-    nextAction = "Preview look, then Confirm render for multi-aspect pack.";
-  } else if (r.assemblyCount > 0 && !r.hasPublicOverride) {
-    nextAction = "Promote a Pro assembly (confirm) — never auto-promotes.";
-  } else if (r.consentBlock) nextAction = `Consent hold: ${r.consentBlock}`;
-  else if (!r.approvedForPublic) nextAction = "Approve for public when placement-ready.";
-  else nextAction = "Ship / place when curated — Prefer Unknown geography already set.";
+  let attention: PhotoReadinessRow["attention"] = "ok";
 
-  return { readinessScore, nextAction };
+  if (!r.confirmedCounty) {
+    nextAction = "Confirm a real county (Unknown stays Unknown).";
+    attention = "warn";
+  } else if (!r.hasFocus) {
+    nextAction = "Focus: click still → then Finish for web.";
+    attention = "warn";
+  } else if (r.assemblyCount === 0) {
+    nextAction = "Finish for web (Apply → Confirm → Promote → Ship).";
+    attention = "block";
+  } else if (r.needsShip) {
+    nextAction = "Ship promoted binary (Finish for web) — Netlify 404s on derivatives.";
+    attention = "block";
+  } else if (r.assemblyCount > 0 && !r.hasPublicOverride) {
+    nextAction = "Finish for web or Promote + Ship (confirm) — never silent.";
+    attention = "warn";
+  } else if (r.consentBlock) {
+    nextAction = `Consent hold: ${r.consentBlock}`;
+    attention = "block";
+  } else if (!r.approvedForPublic) {
+    nextAction = "Approve for public when placement-ready.";
+    attention = "warn";
+  } else if (r.isShipped) {
+    nextAction = "Shipped — place on Publish desk when curated.";
+    attention = "ok";
+  } else {
+    nextAction = "Ship / place when curated — Prefer Unknown geography already set.";
+  }
+
+  return { readinessScore, nextAction, attention };
 }
 
 export function getPhotoReadinessMatrix(input?: {
@@ -92,7 +122,12 @@ export function getPhotoReadinessMatrix(input?: {
     const assemblyCount = listPhotoAssemblies(photo.id).filter(
       (a) => !a.note?.includes("[archived"),
     ).length;
-    const hasPublicOverride = Boolean(overlay?.publicSrcOverride);
+    const override = String(overlay?.publicSrcOverride ?? "").trim();
+    const hasPublicOverride = Boolean(override);
+    const isShipped = override.startsWith(`${CAMPAIGN_SHIPPED_URL_PREFIX}/${photo.id}/`);
+    const needsShip =
+      override.startsWith(`/media/campaign-derivatives/${photo.id}/`) ||
+      (hasPublicOverride && !isShipped && override.includes("campaign-derivatives"));
     const approvedForPublic = Boolean(
       overlay?.approvedForPublic ?? photo.campaign?.approvedForPublic,
     );
@@ -115,6 +150,8 @@ export function getPhotoReadinessMatrix(input?: {
       projectCount,
       assemblyCount,
       hasPublicOverride,
+      isShipped,
+      needsShip,
       approvedForPublic,
       consentBlock,
     };
@@ -132,6 +169,8 @@ export function getPhotoReadinessMatrix(input?: {
     needsFocus: rows.filter((r) => !r.hasFocus).length,
     needsProEdit: rows.filter((r) => r.assemblyCount === 0).length,
     needsPromote: rows.filter((r) => r.assemblyCount > 0 && !r.hasPublicOverride).length,
+    needsShip: rows.filter((r) => r.needsShip).length,
+    blocked: rows.filter((r) => r.attention === "block").length,
     rows: sliced,
   };
 }
