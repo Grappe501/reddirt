@@ -20,6 +20,7 @@ import { listCampaignPhotosLive } from "@/lib/campaign-media/list-campaign-photo
 import {
   formatOpenAIErrorForClient,
   getOpenAIClient,
+  getOpenAIConfigFromEnv,
   isOpenAIConfigured,
 } from "@/lib/openai/client";
 
@@ -30,7 +31,7 @@ function abs(rel: string): string {
 }
 
 function imageModel(): string {
-  return process.env.OPENAI_IMAGE_MODEL?.trim() || "gpt-image-1";
+  return getOpenAIConfigFromEnv().imageModel || "gpt-image-1";
 }
 
 function decodePublicSrcToAbs(src: string): string | null {
