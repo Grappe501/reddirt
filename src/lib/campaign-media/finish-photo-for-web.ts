@@ -115,6 +115,8 @@ export async function finishPhotoForWeb(input: {
   proposeCurate?: boolean;
   /** V2.1 studio burn-in (text / AI layer) — applied on Confirm render. */
   burnIn?: import("@/lib/campaign-media/photo-edit-types").PhotoStudioBurnIn | null;
+  /** V2.2 operator crop rect (normalized 0–1). */
+  cropRect?: import("@/lib/campaign-media/focus-crop").NormalizedCropRect | null;
 }): Promise<FinishPhotoForWebResult> {
   const steps: string[] = [];
   const warnings: string[] = [];
@@ -193,6 +195,7 @@ export async function finishPhotoForWeb(input: {
         focusY: input.focusY ?? project.focusY,
         exportSlots: slots,
         ...(input.burnIn !== undefined ? { burnIn: input.burnIn } : {}),
+        ...(input.cropRect !== undefined ? { cropRect: input.cropRect } : {}),
       },
     ],
   });

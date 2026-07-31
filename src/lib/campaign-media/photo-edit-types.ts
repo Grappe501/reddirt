@@ -2,11 +2,14 @@
  * Evidence Photo Pro Edit — project + assembly types (client-safe).
  */
 
+import type { NormalizedCropRect } from "@/lib/campaign-media/focus-crop";
 import type { PhotoExportSlot, PhotoLookPreset } from "@/lib/campaign-media/photo-look-presets";
 
 export const PHOTO_PRO_EDITS_REL = "data/campaign-media/photo-pro-edits.json";
 
-/** V2.1 — Studio burn-in that Confirm / Finish must honor. */
+export type { NormalizedCropRect };
+
+/** V2.1/V2.2 — Studio burn-in + layer include flags Confirm / Finish must honor. */
 export type PhotoStudioBurnIn = {
   /** When true and text non-empty, composite text onto assemblies. */
   burnText: boolean;
@@ -18,6 +21,11 @@ export type PhotoStudioBurnIn = {
   aiLayerPublicSrc?: string;
   /** Primary artboard hint (promote suggestion soft-bias). */
   primarySlot?: PhotoExportSlot;
+  /**
+   * V2.2 — when false, Confirm skips look grade (Original only + optional AI/text).
+   * Default true when omitted.
+   */
+  includeGrade?: boolean;
 };
 
 export type PhotoEditProject = {
@@ -39,6 +47,11 @@ export type PhotoEditProject = {
   notes?: string;
   /** V2.1 studio composition burned into Confirm render. */
   burnIn?: PhotoStudioBurnIn;
+  /**
+   * V2.2 — operator crop rect in normalized source space (0–1).
+   * When set, Confirm uses this instead of focus-derived cover crop (focus remains fallback).
+   */
+  cropRect?: NormalizedCropRect;
 };
 
 export type PhotoAssemblyRecord = {

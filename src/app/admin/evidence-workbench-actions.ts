@@ -1785,6 +1785,7 @@ export async function finishPhotoForWebAction(input: {
   finishSurface?: "homepage" | "journey" | "album" | "social";
   proposeCurate?: boolean;
   burnIn?: import("@/lib/campaign-media/photo-edit-types").PhotoStudioBurnIn | null;
+  cropRect?: import("@/lib/campaign-media/focus-crop").NormalizedCropRect | null;
 }): Promise<{
   ok: boolean;
   message: string;
@@ -2279,6 +2280,7 @@ export async function updatePhotoEditProjectAction(input: {
           | "thumb"
           | null;
         burnIn?: import("@/lib/campaign-media/photo-edit-types").PhotoStudioBurnIn | null;
+        cropRect?: import("@/lib/campaign-media/focus-crop").NormalizedCropRect | null;
       }
     | {
         op: "set_slots";

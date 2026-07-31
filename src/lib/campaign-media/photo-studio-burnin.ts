@@ -203,5 +203,6 @@ export function normalizeBurnIn(raw: unknown): PhotoStudioBurnIn | undefined {
     includeAiLayer: o.includeAiLayer === true && ai.length > 0,
     aiLayerPublicSrc: ai || undefined,
     primarySlot: primary as PhotoStudioBurnIn["primarySlot"],
+    includeGrade: o.includeGrade !== false,
   };
 }

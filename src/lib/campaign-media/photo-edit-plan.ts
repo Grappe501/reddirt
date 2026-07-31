@@ -6,6 +6,7 @@ import "server-only";
 
 import { getPhotoEditProject, upsertPhotoEditProject } from "@/lib/campaign-media/photo-edit-store";
 import type { PhotoEditProject, PhotoStudioBurnIn } from "@/lib/campaign-media/photo-edit-types";
+import { normalizeCropRect, type NormalizedCropRect } from "@/lib/campaign-media/focus-crop";
 import {
   PHOTO_EXPORT_SLOTS,
   PHOTO_LOOK_PRESETS,
@@ -25,6 +26,7 @@ export type PhotoEditPlanUpdate =
       exportSlots?: PhotoExportSlot[];
       promoteSuggestion?: PhotoExportSlot | null;
       burnIn?: PhotoStudioBurnIn | null;
+      cropRect?: NormalizedCropRect | null;
     }
   | { op: "set_slots"; exportSlots: PhotoExportSlot[] }
   | { op: "toggle_slot"; slot: PhotoExportSlot; enabled?: boolean };
@@ -62,6 +64,7 @@ export function updatePhotoEditProject(input: {
   let exportSlots = [...project.exportSlots];
   let promoteSuggestion = project.promoteSuggestion ?? null;
   let burnIn = project.burnIn;
+  let cropRect = project.cropRect;
   const warnings: string[] = [];
 
   for (const u of input.updates.slice(0, 40)) {
@@ -87,6 +90,12 @@ export function updatePhotoEditProject(input: {
       }
       if (u.burnIn === null) burnIn = undefined;
       else if (u.burnIn !== undefined) burnIn = normalizeBurnIn(u.burnIn);
+      if (u.cropRect === null) cropRect = undefined;
+      else if (u.cropRect !== undefined) {
+        const nextCrop = normalizeCropRect(u.cropRect);
+        if (nextCrop) cropRect = nextCrop;
+        else warnings.push("Ignored invalid cropRect.");
+      }
     } else if (u.op === "set_slots") {
       exportSlots = (u.exportSlots ?? []).filter(isSlot).slice(0, 12);
       if (!exportSlots.length) warnings.push("Slot list empty — add at least one before render.");
@@ -122,10 +131,11 @@ export function updatePhotoEditProject(input: {
     exportSlots,
     promoteSuggestion,
     burnIn,
+    cropRect,
     updatedAt: new Date().toISOString(),
     notes: [
       project.notes,
-      "Plan updated by operator (look/slots/focus/burn-in — no silent render).",
+      "Plan updated by operator (look/slots/focus/crop/burn-in — no silent render).",
     ]
       .filter(Boolean)
       .join(" · "),

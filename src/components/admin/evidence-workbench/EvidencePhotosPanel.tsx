@@ -58,6 +58,7 @@ import type {
   PhotoEditProject,
   PhotoStudioBurnIn,
 } from "@/lib/campaign-media/photo-edit-types";
+import type { NormalizedCropRect } from "@/lib/campaign-media/focus-crop";
 import type { PhotoExportSlot, PhotoLookPreset } from "@/lib/campaign-media/photo-look-presets";
 import { EVIDENCE_FIELD_CLASS } from "@/components/admin/evidence-workbench/field-styles";
 import { EvidenceRouteGate } from "@/components/admin/evidence-workbench/EvidenceRouteGate";
@@ -335,6 +336,7 @@ export function EvidencePhotosPanel({
   const [inpaintMaskBase64, setInpaintMaskBase64] = useState<string>("");
   const [studioSlot, setStudioSlot] = useState<PhotoExportSlot | null>(null);
   const [studioBurnIn, setStudioBurnIn] = useState<PhotoStudioBurnIn | null>(null);
+  const [studioCropRect, setStudioCropRect] = useState<NormalizedCropRect | null>(null);
   const [ownedMediaLink, setOwnedMediaLink] = useState<OwnedMediaEvidenceLink | null>(null);
   const previewImgRef = useRef<HTMLImageElement | null>(null);
   const [form, setForm] = useState<PhotoFormState | null>(() => {
@@ -753,6 +755,10 @@ export function EvidencePhotosPanel({
     setStudioBurnIn(burnIn);
   }, []);
 
+  const onStudioCropRectChange = useCallback((cropRect: NormalizedCropRect | null) => {
+    setStudioCropRect(cropRect);
+  }, []);
+
   function runFocusCrop(kind: string) {
     if (!photo) return;
     if (!focus) {
@@ -974,6 +980,7 @@ export function EvidencePhotosPanel({
             focusY: focus?.y,
             exportSlots: proSlots.length ? proSlots : ["web_max"],
             ...(studioBurnIn ? { burnIn: studioBurnIn } : {}),
+            ...(studioCropRect ? { cropRect: studioCropRect } : {}),
           },
         ],
       });
@@ -1039,6 +1046,7 @@ export function EvidencePhotosPanel({
             focusY: focus?.y,
             exportSlots: proSlots.length ? proSlots : ["web_max"],
             ...(studioBurnIn ? { burnIn: studioBurnIn } : {}),
+            ...(studioCropRect ? { cropRect: studioCropRect } : {}),
           },
         ],
       });
@@ -1105,6 +1113,7 @@ export function EvidencePhotosPanel({
         finishSurface,
         proposeCurate: finishSurface === "homepage" || finishSurface === "journey",
         ...(studioBurnIn ? { burnIn: studioBurnIn } : {}),
+        ...(studioCropRect ? { cropRect: studioCropRect } : {}),
       });
       setMessage(res.message);
       setProRenderNote(
@@ -2195,6 +2204,8 @@ export function EvidencePhotosPanel({
                 onFocusChange={onStudioFocusChange}
                 aiLayerSrc={aiStudioLayerSrc}
                 onBurnInChange={onStudioBurnInChange}
+                onCropRectChange={onStudioCropRectChange}
+                initialCropRect={editProject?.cropRect ?? null}
               />
             </div>
           ) : (
