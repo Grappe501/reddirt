@@ -1817,6 +1817,57 @@ export async function finishPhotoForWebAction(input: {
   };
 }
 
+export async function batchFinishPhotosForWebAction(input: {
+  photoIds: string[];
+  confirmFinish: boolean;
+  look?: "neutral" | "warm" | "cool" | "contrast" | "soft" | "punch" | "mono" | "film" | "bright" | "editorial";
+  exportSlots?: Array<
+    "grade_full" | "hero_16x9" | "portrait_4x5" | "square_1x1" | "story_9x16" | "web_max" | "thumb"
+  >;
+  useFocus?: boolean;
+  sharpen?: boolean;
+  homepageCandidate?: boolean;
+  featuredPhoto?: boolean;
+  heroLevel?: string;
+  approvedForPublic?: boolean;
+  consentConfirmed?: boolean;
+  finishSurface?: "homepage" | "journey" | "album" | "social";
+  proposeCurate?: boolean;
+  burnIn?: import("@/lib/campaign-media/photo-edit-types").PhotoStudioBurnIn | null;
+  cropRect?: import("@/lib/campaign-media/focus-crop").NormalizedCropRect | null;
+}): Promise<{
+  ok: boolean;
+  message: string;
+  finishSurface?: string;
+  finished?: import("@/lib/campaign-media/batch-finish-photos-for-web").BatchFinishItemResult[];
+  refused?: import("@/lib/campaign-media/batch-finish-photos-for-web").BatchFinishItemResult[];
+  failed?: import("@/lib/campaign-media/batch-finish-photos-for-web").BatchFinishItemResult[];
+  curateProposalIds?: string[];
+  warnings?: string[];
+  processed?: number;
+  cappedFrom?: number;
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { batchFinishPhotosForWeb } = await import(
+    "@/lib/campaign-media/batch-finish-photos-for-web"
+  );
+  const result = await batchFinishPhotosForWeb(input);
+  if (result.finished.length > 0) revalidateEvidenceSurfaces();
+  return {
+    ok: result.ok,
+    message: result.message,
+    finishSurface: result.finishSurface,
+    finished: result.finished,
+    refused: result.refused,
+    failed: result.failed,
+    curateProposalIds: result.curateProposalIds,
+    warnings: result.warnings,
+    processed: result.processed,
+    cappedFrom: result.cappedFrom,
+  };
+}
+
 export async function clearPhotoPublicSrcOverrideAction(photoId: string): Promise<{
   ok: boolean;
   message: string;

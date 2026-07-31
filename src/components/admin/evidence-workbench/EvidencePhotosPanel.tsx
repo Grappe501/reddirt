@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState, useTransition, type MouseEvent } from "react";
 import {
   batchCreatePhotoDerivativesAction,
+  batchFinishPhotosForWebAction,
   batchPublishPhotosAction,
   batchSavePhotoEvidenceAction,
   buildPhotoMetadataPacketAction,
@@ -46,6 +47,7 @@ import {
   type EvidenceEditIntent,
   type EvidenceEditSiteSurface,
 } from "@/lib/campaign-media/evidence-edit-intents";
+import { BATCH_FINISH_MAX } from "@/lib/campaign-media/batch-finish-constants";
 import { parsePhotosUrlFilter } from "@/lib/campaign-media/evidence-workbench-deep-links";
 import type { BatchPhotoAiProposal } from "@/lib/campaign-media/evidence-ai-types";
 import type { EvidenceBatchOperation } from "@/lib/campaign-media/evidence-batch-ops";
@@ -1137,6 +1139,76 @@ export function EvidencePhotosPanel({
     });
   }
 
+  function batchFinishForWeb() {
+    const ids = selectedIds.slice(0, BATCH_FINISH_MAX);
+    if (!ids.length) {
+      setMessage(`Select 1–${BATCH_FINISH_MAX} photos for batch Finish.`);
+      return;
+    }
+    const finishSurface = finishSurfaceFromEdit(editIntent, editSurface);
+    const slots = proSlots.length ? proSlots : (["web_max", "hero_16x9", "thumb"] as PhotoExportSlot[]);
+    const cappedNote =
+      selectedIds.length > BATCH_FINISH_MAX
+        ? `\n(Using first ${BATCH_FINISH_MAX} of ${selectedIds.length}.)`
+        : "";
+    if (
+      typeof window !== "undefined" &&
+      !window.confirm(
+        `Batch Finish ${ids.length} still(s) → ${finishSurface}?${cappedNote}\nLook: ${proLook} · ${slots.length} slot(s)\nOne confirm for all. Refuses any lacking focus or consent.\nOriginals untouched. Prefer Unknown.`,
+      )
+    ) {
+      return;
+    }
+    setProRenderNote(`Batch finishing ${ids.length}…`);
+    start(async () => {
+      const res = await batchFinishPhotosForWebAction({
+        photoIds: ids,
+        confirmFinish: true,
+        look: proLook,
+        exportSlots: slots,
+        useFocus: proUseFocus,
+        sharpen: proSharpen,
+        homepageCandidate: promoteHomepage,
+        featuredPhoto: promoteFeatured,
+        heroLevel: promoteHero || undefined,
+        approvedForPublic: promoteApproved,
+        consentConfirmed: Boolean(form?.consentConfirmed),
+        finishSurface,
+        proposeCurate: finishSurface === "homepage" || finishSurface === "journey",
+      });
+      const report = [
+        res.message,
+        ...(res.warnings ?? []).slice(0, 8),
+        res.finished?.length
+          ? `OK: ${res.finished
+              .map((f) => f.photoId)
+              .slice(0, 12)
+              .join(", ")}`
+          : "",
+        res.refused?.length
+          ? `Refused: ${res.refused
+              .map((r) => `${r.photoId} (${r.refuseReason ?? r.message})`)
+              .slice(0, 8)
+              .join("; ")}`
+          : "",
+        res.failed?.length
+          ? `Failed: ${res.failed
+              .map((f) => `${f.photoId}: ${f.message}`)
+              .slice(0, 6)
+              .join("; ")}`
+          : "",
+        res.curateProposalIds?.length
+          ? `Curate pending: ${res.curateProposalIds.join(", ")}`
+          : "",
+      ]
+        .filter(Boolean)
+        .join("\n");
+      setMessage(report);
+      setProRenderNote(report);
+      if (photo) refreshDerivatives(photo.id);
+    });
+  }
+
   function softArchiveProAssemblies() {
     if (!photo && !editProject) return;
     start(async () => {
@@ -1969,6 +2041,15 @@ export function EvidencePhotosPanel({
             </button>
             <button
               type="button"
+              disabled={pending || selectedIds.length < 1}
+              className="rounded border-2 border-[#ca913d] bg-white px-2 py-1 font-body text-[11px] font-bold text-[#12124a] disabled:opacity-50"
+              onClick={batchFinishForWeb}
+              title={`V2.3 · one confirm · max ${BATCH_FINISH_MAX}`}
+            >
+              Batch Finish for web ({Math.min(selectedIds.length, BATCH_FINISH_MAX)})
+            </button>
+            <button
+              type="button"
               disabled={pending || !batchOps.some((o) => o.undoable)}
               className="rounded border-2 border-[#ca913d] bg-white px-2 py-1 font-body text-[11px] font-bold text-[#12124a] disabled:opacity-50"
               onClick={undoLastPublish}
@@ -2390,10 +2471,19 @@ export function EvidencePhotosPanel({
                     ? ` · ${finishSurfaceFromEdit(editIntent, editSurface)}`
                     : ""}
                 </button>
+                <button
+                  type="button"
+                  disabled={pending || selectedIds.length < 1}
+                  onClick={batchFinishForWeb}
+                  className="rounded border-2 border-[#ca913d] bg-white px-3 py-2 font-body text-sm font-bold text-[#12124a] disabled:opacity-50"
+                  title={`Confirm once for up to ${BATCH_FINISH_MAX} selected stills`}
+                >
+                  Batch Finish ({Math.min(selectedIds.length, BATCH_FINISH_MAX) || 0}/{BATCH_FINISH_MAX})
+                </button>
                 <p className="font-body text-[10px] text-[#364272]">
                   {finishSurfaceFromEdit(editIntent, editSurface) === "social"
                     ? "Download pack only · confirm required"
-                    : "Apply → Confirm → Promote → Ship → curate proposal · confirm required"}
+                    : "Apply → Confirm → Promote → Ship → curate proposal · confirm required · batch max 12"}
                 </p>
               </div>
             ) : null}
