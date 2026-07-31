@@ -66,6 +66,7 @@ import {
   ewPanelTitleClass,
 } from "@/components/admin/evidence-workbench/evidenceWorkbenchChrome";
 import { EvidenceAiModePanel } from "@/components/admin/evidence-workbench/EvidenceAiModePanel";
+import { EvidencePhotoStudioCanvas } from "@/components/admin/evidence-workbench/EvidencePhotoStudioCanvas";
 import type { EvidenceAiMode } from "@/lib/campaign-media/evidence-ai-modes";
 import { isEditableKeyboardTarget } from "@/components/admin/evidence-workbench/keyboard";
 
@@ -331,6 +332,7 @@ export function EvidencePhotosPanel({
   const [visionRecommendedKind, setVisionRecommendedKind] = useState<string>("");
   const [inpaintAudit, setInpaintAudit] = useState("");
   const [inpaintMaskBase64, setInpaintMaskBase64] = useState<string>("");
+  const [studioSlot, setStudioSlot] = useState<PhotoExportSlot | null>(null);
   const [ownedMediaLink, setOwnedMediaLink] = useState<OwnedMediaEvidenceLink | null>(null);
   const previewImgRef = useRef<HTMLImageElement | null>(null);
   const [form, setForm] = useState<PhotoFormState | null>(() => {
@@ -388,6 +390,7 @@ export function EvidencePhotosPanel({
     setVisionRecommendedKind("");
     setInpaintAudit("");
     setInpaintMaskBase64("");
+    setStudioSlot(null);
     setFocusMarker(null);
     if (
       typeof item.overlay?.focusX === "number" &&
@@ -720,6 +723,29 @@ export function EvidencePhotosPanel({
       setMessage(res.message);
     });
   }
+
+  function onStudioFocusChange(point: FocusPoint) {
+    if (!photo) return;
+    setFocus(point);
+    start(async () => {
+      const res = await savePhotoFocusAction({
+        photoId: photo.id,
+        focusX: point.x,
+        focusY: point.y,
+        cropAdviceNote: cropAdvice || undefined,
+      });
+      setMessage(res.message);
+    });
+  }
+
+  const aiStudioLayerSrc = useMemo(() => {
+    const prefer = ["enhance_ai", "cutout_bg", "inpaint_cleanup"] as const;
+    for (const kind of prefer) {
+      const hit = derivatives.find((d) => d.kind === kind);
+      if (hit?.publicSrc) return hit.publicSrc;
+    }
+    return null;
+  }, [derivatives]);
 
   function runFocusCrop(kind: string) {
     if (!photo) return;
@@ -1772,7 +1798,7 @@ export function EvidencePhotosPanel({
           {identifyFocus
             ? "AI first → review fields → Save → Route. Prefer Unknown. No Pro Edit here."
             : deskMode === "edit"
-              ? "Focus · Look · Finish for web (surface → ship + curate). Prefer Unknown."
+              ? "Focus · Look · Studio canvas · Finish for web. Prefer Unknown."
               : "Progressive desk — Identify on Unknown; Pro Edit / Promote under Needs Promote. Prefer Unknown."}
         </p>
         <div className="mt-2 flex flex-wrap gap-2">
@@ -2138,39 +2164,66 @@ export function EvidencePhotosPanel({
             </button>
           </div>
           {/* key forces remount so the browser cannot keep a stale frame when advancing */}
-          <div className="relative mt-3">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              key={photo.id}
-              ref={previewImgRef}
-              src={imageSrc}
-              alt={photo.alt}
-              onClick={onPreviewClick}
-              onLoad={() => {
-                const img = previewImgRef.current;
-                if (!img || !focus) {
-                  setFocusMarker(null);
-                  return;
+          {deskMode === "edit" ? (
+            <div className="mt-3">
+              <EvidencePhotoStudioCanvas
+                src={imageSrc}
+                photoId={photo.id}
+                look={proLook}
+                slots={proSlots.length ? proSlots : (["hero_16x9", "square_1x1", "story_9x16"] as PhotoExportSlot[])}
+                activeSlot={
+                  studioSlot && proSlots.includes(studioSlot)
+                    ? studioSlot
+                    : (proSlots[0] ?? "hero_16x9")
                 }
-                setFocusMarker(focusPointToMarker(img, focus));
-              }}
-              title="Click to set focus point for attention crops"
-              className="max-h-[28rem] w-full cursor-crosshair rounded-lg border border-[#8eb6dc]/40 object-contain bg-[#f4f7fc]"
-            />
-            {focusMarker ? (
-              <span
-                className="pointer-events-none absolute h-5 w-5 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-[#ca913d] bg-[#ca913d]/35 shadow"
-                style={{ left: focusMarker.left, top: focusMarker.top }}
-                aria-hidden
+                onActiveSlotChange={(slot) => {
+                  setStudioSlot(slot);
+                  if (!proSlots.includes(slot)) {
+                    setProSlots((prev) => [...prev, slot]);
+                  }
+                }}
+                focus={focus}
+                onFocusChange={onStudioFocusChange}
+                aiLayerSrc={aiStudioLayerSrc}
               />
-            ) : null}
-          </div>
-          <p className="mt-2 font-body text-[11px] text-[#364272]">
-            Focus:{" "}
-            {focus
-              ? `${Math.round(focus.x * 100)}% × ${Math.round(focus.y * 100)}% (click photo to move)`
-              : "click photo to set attention point"}
-          </p>
+            </div>
+          ) : (
+            <div className="relative mt-3">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                key={photo.id}
+                ref={previewImgRef}
+                src={imageSrc}
+                alt={photo.alt}
+                onClick={onPreviewClick}
+                onLoad={() => {
+                  const img = previewImgRef.current;
+                  if (!img || !focus) {
+                    setFocusMarker(null);
+                    return;
+                  }
+                  setFocusMarker(focusPointToMarker(img, focus));
+                }}
+                title="Click to set focus point for attention crops"
+                className="max-h-[28rem] w-full cursor-crosshair rounded-lg border border-[#8eb6dc]/40 object-contain bg-[#f4f7fc]"
+              />
+              {focusMarker ? (
+                <span
+                  className="pointer-events-none absolute h-5 w-5 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-[#ca913d] bg-[#ca913d]/35 shadow"
+                  style={{ left: focusMarker.left, top: focusMarker.top }}
+                  aria-hidden
+                />
+              ) : null}
+            </div>
+          )}
+          {deskMode !== "edit" ? (
+            <p className="mt-2 font-body text-[11px] text-[#364272]">
+              Focus:{" "}
+              {focus
+                ? `${Math.round(focus.x * 100)}% × ${Math.round(focus.y * 100)}% (click photo to move)`
+                : "click photo to set attention point"}
+            </p>
+          ) : null}
           <p className="mt-1 font-mono text-xs text-[#364272]">{photo.id}</p>
           <div className="mt-1 flex flex-wrap items-center gap-2">
             {ownedMediaLink?.linked && ownedMediaLink.ownedMediaId ? (
