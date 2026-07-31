@@ -1797,6 +1797,7 @@ export async function finishPhotoForWebAction(input: {
   assemblies?: import("@/lib/campaign-media/photo-edit-types").PhotoAssemblyRecord[];
   curateProposalId?: string;
   finishSurface?: string;
+  productionProof?: import("@/lib/campaign-media/photo-production-proof").PhotoProductionProof;
 }> {
   const g = await gate();
   if (!g.ok) return { ok: false, message: g.error };
@@ -1814,6 +1815,7 @@ export async function finishPhotoForWebAction(input: {
     assemblies: result.assemblies,
     curateProposalId: result.curateProposalId,
     finishSurface: result.finishSurface,
+    productionProof: result.productionProof,
   };
 }
 
@@ -2669,6 +2671,52 @@ export async function getEvidenceToolingReadinessAction(): Promise<{
       ? "OpenAI + ffmpeg ready."
       : readiness.blockers.join(" · ") || "Tooling blockers present.",
     readiness,
+  };
+}
+
+export async function provePhotoProductionAction(input: {
+  photoId: string;
+  smokeBaseUrl?: string;
+  runHttpSmoke?: boolean;
+}): Promise<{
+  ok: boolean;
+  message: string;
+  proof?: import("@/lib/campaign-media/photo-production-proof").PhotoProductionProof;
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { provePhotoProduction } = await import("@/lib/campaign-media/photo-production-proof");
+  const proof = await provePhotoProduction({
+    photoId: String(input.photoId ?? "").trim(),
+    smokeBaseUrl: input.smokeBaseUrl,
+    runHttpSmoke: input.runHttpSmoke,
+  });
+  return { ok: proof.ok, message: proof.message, proof };
+}
+
+export async function provePhotosProductionAction(input: {
+  photoIds: string[];
+  smokeBaseUrl?: string;
+  runHttpSmoke?: boolean;
+}): Promise<{
+  ok: boolean;
+  message: string;
+  proofs?: import("@/lib/campaign-media/photo-production-proof").PhotoProductionProof[];
+  failedIds?: string[];
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { provePhotosProduction } = await import("@/lib/campaign-media/photo-production-proof");
+  const result = await provePhotosProduction({
+    photoIds: input.photoIds ?? [],
+    smokeBaseUrl: input.smokeBaseUrl,
+    runHttpSmoke: input.runHttpSmoke,
+  });
+  return {
+    ok: result.ok,
+    message: result.message,
+    proofs: result.proofs,
+    failedIds: result.failedIds,
   };
 }
 

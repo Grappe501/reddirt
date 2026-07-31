@@ -9,7 +9,7 @@ type Props = {
   initial: EvidenceToolingReadiness;
 };
 
-/** Sticky OpenAI + ffmpeg readiness — makes silent tooling failures visible. */
+/** Sticky OpenAI + ffmpeg + HEIC readiness — makes silent tooling failures visible. */
 export function EvidenceToolingBanner({ initial }: Props) {
   const [readiness, setReadiness] = useState(initial);
   const [pending, start] = useTransition();
@@ -40,6 +40,18 @@ export function EvidenceToolingBanner({ initial }: Props) {
               <span className="font-semibold">
                 {readiness.openaiConfigured ? "configured" : "missing OPENAI_API_KEY"}
               </span>
+              {readiness.openaiConfigured ? (
+                <span className="text-kelly-slate">
+                  {" "}
+                  · key from {readiness.openaiKeySourceLabel ?? readiness.openaiKeySource}
+                  {readiness.openaiImageModel ? ` · images ${readiness.openaiImageModel}` : ""}
+                </span>
+              ) : (
+                <span className="text-kelly-slate">
+                  {" "}
+                  · set in RedDirt `.env.local` (preferred over Windows env)
+                </span>
+              )}
             </li>
             <li>
               ffmpeg:{" "}
@@ -49,6 +61,15 @@ export function EvidenceToolingBanner({ initial }: Props) {
                   : "missing"}
               </span>
               {readiness.ffmpeg.ffmpegVersion ? ` · ${readiness.ffmpeg.ffmpegVersion}` : ""}
+            </li>
+            <li>
+              HEIC:{" "}
+              <span className="font-semibold">
+                {readiness.heic?.sharpAvailable ? "sharp ready" : "sharp missing"}
+              </span>
+              {readiness.heic?.detail ? (
+                <span className="text-kelly-slate"> · {readiness.heic.detail}</span>
+              ) : null}
             </li>
           </ul>
           {readiness.blockers.length ? (
@@ -68,6 +89,10 @@ export function EvidenceToolingBanner({ initial }: Props) {
           {!readiness.ffmpeg.ffmpegAvailable ? (
             <p className="mt-2 font-mono text-[11px] text-kelly-slate">{readiness.ffmpeg.installHint}</p>
           ) : null}
+          <p className="mt-2 font-body text-[10px] text-kelly-slate">
+            Images assists: if you see 429, wait 30–60s — rate-limit UX is confirm-gated; do not
+            hammer Enhance/Cutout/Inpaint.
+          </p>
         </div>
         <div className="flex flex-wrap gap-2">
           <button

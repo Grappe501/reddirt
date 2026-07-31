@@ -56,6 +56,31 @@ export function resolveOpenAIEnvValue(key: string, fallback = ""): string {
   return fallback;
 }
 
+/** Where OPENAI_API_KEY was resolved from (never returns key material). */
+export type OpenAIKeySource = "env.local" | "env" | "process.env" | "missing";
+
+export function getOpenAIKeySource(): OpenAIKeySource {
+  if (typeof window !== "undefined") return "missing";
+  const cwd = process.cwd();
+  if (readEnvFileKey(path.join(cwd, ".env.local"), "OPENAI_API_KEY")) return "env.local";
+  if (readEnvFileKey(path.join(cwd, ".env"), "OPENAI_API_KEY")) return "env";
+  if (process.env.OPENAI_API_KEY?.trim()) return "process.env";
+  return "missing";
+}
+
+export function describeOpenAIKeySource(source: OpenAIKeySource = getOpenAIKeySource()): string {
+  switch (source) {
+    case "env.local":
+      return "RedDirt `.env.local` (preferred)";
+    case "env":
+      return "RedDirt `.env`";
+    case "process.env":
+      return "process.env / Windows machine env (lane file preferred)";
+    default:
+      return "missing — set OPENAI_API_KEY in RedDirt `.env.local`";
+  }
+}
+
 export function getOpenAIClient(): OpenAI {
   return new OpenAI({ apiKey: resolveOpenAIEnvValue("OPENAI_API_KEY") });
 }
@@ -75,14 +100,20 @@ export function isOpenAIConfigured(): boolean {
   return Boolean(resolveOpenAIEnvValue("OPENAI_API_KEY"));
 }
 
-/** Safe client-facing text when OpenAI returns auth errors (never echo key material). */
+/** Safe client-facing text when OpenAI returns auth/rate errors (never echo key material). */
 export function formatOpenAIErrorForClient(err: unknown): string {
   const raw = err instanceof Error ? err.message : String(err);
   if (/401|invalid_api_key|incorrect api key|invalid x-api-key/i.test(raw)) {
     return (
       "OpenAI rejected the API key (401). Update OPENAI_API_KEY in RedDirt `.env.local` or `.env` " +
-      "(lane file wins over Windows User/System Environment Variables), restart the dev server, " +
+      `(now reading from: ${describeOpenAIKeySource()}), restart the dev server, ` +
       "then try again. https://platform.openai.com/api-keys"
+    );
+  }
+  if (/429|rate.?limit|too many requests|quota/i.test(raw)) {
+    return (
+      "OpenAI rate limit / quota (429). Wait 30–60s before retrying Images assists. " +
+      "Assists stay confirm-gated — avoid rapid re-clicks. Prefer Unknown; originals untouched."
     );
   }
   return raw.replace(/\b(sk-[a-zA-Z0-9_-]{12,})\b/g, "sk-…");

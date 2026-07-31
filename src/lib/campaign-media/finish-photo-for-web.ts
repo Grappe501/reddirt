@@ -40,6 +40,8 @@ export type FinishPhotoForWebResult = {
   assemblies?: PhotoAssemblyRecord[];
   curateProposalId?: string;
   finishSurface?: EvidenceFinishSurface;
+  /** V2.4 post-Finish production proof. */
+  productionProof?: import("@/lib/campaign-media/photo-production-proof").PhotoProductionProof;
 };
 
 function pickAssembly(
@@ -345,12 +347,23 @@ export async function finishPhotoForWeb(input: {
     );
   }
 
+  steps.push("Production proof");
+  const { provePhotoProduction } = await import("@/lib/campaign-media/photo-production-proof");
+  const productionProof = await provePhotoProduction({
+    photoId,
+    runHttpSmoke: true,
+  });
+  if (!productionProof.ok) {
+    warnings.push(productionProof.message);
+  }
+
   return {
     ok: true,
     message: [
       `Finished for web · ${finishSurface} · ${steps.join(" → ")}`,
       finalSrc ? `live src ${finalSrc}` : null,
       curateProposal ? `curate ${curateProposal.id} (pending confirmCurate)` : null,
+      productionProof.ok ? "production proof OK" : "production proof WARN",
       "Commit overlays + campaign-shipped to deploy.",
     ]
       .filter(Boolean)
@@ -363,5 +376,6 @@ export async function finishPhotoForWeb(input: {
     assemblies: listPhotoAssemblies(photoId),
     curateProposalId: curateProposal?.id,
     finishSurface,
+    productionProof,
   };
 }

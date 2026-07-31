@@ -649,6 +649,17 @@ export function buildEvidenceShipReport(input?: {
             ? `${derivativeLocalOnly} local derivative file(s) gitignored (workspace OK) · no live overrides on them.`
             : "No promoted gitignored overrides.",
     },
+    {
+      id: "ship_only_live",
+      label: "Live overrides are campaign-shipped only (V2.4)",
+      ok: promotedOverrideGitignored === 0 && promotedOverrideMissing === 0,
+      detail:
+        promotedOverrides.length === 0
+          ? "No live overrides — nothing to prove."
+          : promotedOverrideGitignored === 0 && promotedOverrideMissing === 0
+            ? `${promotedOverrides.length} override(s) ship-only + on disk.`
+            : `${promotedOverrideGitignored} gitignored · ${promotedOverrideMissing} missing — run Finish/Ship + production proof.`,
+    },
   ];
 
   const checklistReady = checklist
@@ -661,7 +672,8 @@ export function buildEvidenceShipReport(input?: {
         c.id === "needs_approval" ||
         c.id === "unknown_backlog" ||
         c.id === "git_overlays" ||
-        c.id === "derivatives_warning",
+        c.id === "derivatives_warning" ||
+        c.id === "ship_only_live",
     )
     .every((c) => c.ok);
 

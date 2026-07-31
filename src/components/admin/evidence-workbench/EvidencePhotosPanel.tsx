@@ -28,6 +28,8 @@ import {
   previewPhotoEditPackAction,
   promotePhotoDerivativeAction,
   proposePhotoEditProjectAction,
+  provePhotoProductionAction,
+  provePhotosProductionAction,
   renderPhotoEditProjectAction,
   updatePhotoEditProjectAction,
   softArchivePhotoAssembliesAction,
@@ -1124,6 +1126,9 @@ export function EvidencePhotosPanel({
           ...(res.warnings ?? []),
           res.steps?.length ? res.steps.join(" → ") : "",
           res.curateProposalId ? `curate ${res.curateProposalId}` : "",
+          res.productionProof
+            ? `proof: ${res.productionProof.ok ? "OK" : "WARN"} · ${res.productionProof.message}`
+            : "",
         ]
           .filter(Boolean)
           .join(" · "),
@@ -1206,6 +1211,52 @@ export function EvidencePhotosPanel({
       setMessage(report);
       setProRenderNote(report);
       if (photo) refreshDerivatives(photo.id);
+    });
+  }
+
+  function proveProduction() {
+    const ids = selectedIds.length
+      ? selectedIds.slice(0, 24)
+      : photo
+        ? [photo.id]
+        : [];
+    if (!ids.length) {
+      setMessage("Select photos or open a still to run production proof.");
+      return;
+    }
+    setProRenderNote(`Proving production for ${ids.length}…`);
+    start(async () => {
+      if (ids.length === 1) {
+        const res = await provePhotoProductionAction({
+          photoId: ids[0]!,
+          runHttpSmoke: true,
+        });
+        const detail = [
+          res.message,
+          ...(res.proof?.checks ?? []).map((c) => `${c.ok ? "✓" : "✗"} ${c.id}: ${c.detail}`),
+          res.proof?.smoke ? `HTTP: ${res.proof.smoke.detail}` : "",
+        ]
+          .filter(Boolean)
+          .join("\n");
+        setMessage(detail);
+        setProRenderNote(detail);
+        return;
+      }
+      const res = await provePhotosProductionAction({
+        photoIds: ids,
+        runHttpSmoke: true,
+      });
+      const detail = [
+        res.message,
+        res.failedIds?.length ? `Failed: ${res.failedIds.join(", ")}` : "",
+        ...(res.proofs ?? [])
+          .slice(0, 12)
+          .map((p) => `${p.ok ? "OK" : "FAIL"} ${p.photoId}: ${p.message}`),
+      ]
+        .filter(Boolean)
+        .join("\n");
+      setMessage(detail);
+      setProRenderNote(detail);
     });
   }
 
@@ -2480,10 +2531,19 @@ export function EvidencePhotosPanel({
                 >
                   Batch Finish ({Math.min(selectedIds.length, BATCH_FINISH_MAX) || 0}/{BATCH_FINISH_MAX})
                 </button>
+                <button
+                  type="button"
+                  disabled={pending || (!photo && selectedIds.length < 1)}
+                  onClick={proveProduction}
+                  className="rounded border-2 border-[#8eb6dc] bg-[#f4f7fc] px-3 py-2 font-body text-sm font-semibold text-[#12124a] disabled:opacity-50"
+                  title="V2.4 · ship-only override + file on disk (+ optional HTTP smoke)"
+                >
+                  Prove production
+                </button>
                 <p className="font-body text-[10px] text-[#364272]">
                   {finishSurfaceFromEdit(editIntent, editSurface) === "social"
                     ? "Download pack only · confirm required"
-                    : "Apply → Confirm → Promote → Ship → curate proposal · confirm required · batch max 12"}
+                    : "Apply → Confirm → Promote → Ship → curate · production proof · batch max 12"}
                 </p>
               </div>
             ) : null}
