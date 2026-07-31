@@ -5,6 +5,7 @@ import { CAMPAIGN_PHOTO_REGISTRY } from "@/content/media/campaign-photo-registry
 import { loadPhotoIngestDrafts } from "@/lib/campaign-media/evidence-store";
 import {
   coverCropRect,
+  mapVisionRecommendedKind,
   normalizeFocus,
   parseCropAdviceToKind,
   type FocusPoint,
@@ -311,9 +312,14 @@ export async function suggestCropPlan(photoId: string): Promise<
   };
 }
 
+type SharpDerivativeKind = Exclude<
+  PhotoDerivativeKind,
+  "inspect_only" | "enhance_ai" | "cutout_bg" | "inpaint_cleanup"
+>;
+
 type CreateInput = {
   photoId: string;
-  kind: Exclude<PhotoDerivativeKind, "inspect_only">;
+  kind: SharpDerivativeKind;
   /** Longest edge for web_max / thumb (default 1600 / 480). */
   maxEdge?: number;
   quality?: number;
@@ -513,6 +519,7 @@ export async function createPhotoDerivative(
 
 /**
  * Create a focus crop from AI/operator cropAdvice text + optional focus point.
+ * Prefer Vision recommendedKind when provided (P2); keyword parser is fallback.
  */
 export async function createDerivativeFromCropAdvice(input: {
   photoId: string;
@@ -520,19 +527,26 @@ export async function createDerivativeFromCropAdvice(input: {
   focusX?: number;
   focusY?: number;
   note?: string;
+  /** Vision / explicit kind — skips keyword regex when valid. */
+  recommendedKind?: string;
 }): Promise<
   | { ok: true; record: PhotoDerivativeRecord; mappedKind: string; reason: string }
   | { ok: false; error: string }
 > {
   const advice = String(input.cropAdvice ?? "").trim();
-  if (!advice) return { ok: false, error: "cropAdvice required." };
-  const mapped = parseCropAdviceToKind(advice);
+  if (!advice && !input.recommendedKind) return { ok: false, error: "cropAdvice required." };
+  const visionKind = input.recommendedKind
+    ? mapVisionRecommendedKind(String(input.recommendedKind))
+    : null;
+  const mapped = visionKind
+    ? { kind: visionKind, reason: `Vision recommendedKind: ${visionKind}` }
+    : parseCropAdviceToKind(advice || String(input.recommendedKind ?? ""));
   const result = await createPhotoDerivative({
     photoId: input.photoId,
     kind: mapped.kind,
     focusX: input.focusX,
     focusY: input.focusY,
-    note: input.note ?? `cropAdvice: ${advice.slice(0, 120)}`,
+    note: input.note ?? `cropAdvice: ${(advice || mapped.kind).slice(0, 120)}`,
   });
   if (!result.ok) return result;
   return { ok: true, record: result.record, mappedKind: mapped.kind, reason: mapped.reason };

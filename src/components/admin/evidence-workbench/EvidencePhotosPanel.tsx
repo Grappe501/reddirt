@@ -12,8 +12,12 @@ import {
   createDerivativeFromCropAdviceAction,
   createPhotoDerivativeAction,
   applyTurboProposalAction,
+  cutoutPhotoBackgroundAction,
+  enhancePhotoDerivativeAction,
   finishPhotoForWebAction,
   getTurboProposalAction,
+  inpaintPhotoCleanupAction,
+  suggestVisionFocusAction,
   inspectPhotoPixelsAction,
   listEvidenceBatchOpsAction,
   listPhotoDerivativesAction,
@@ -324,6 +328,9 @@ export function EvidencePhotosPanel({
   const [focus, setFocus] = useState<FocusPoint | null>(null);
   const [focusMarker, setFocusMarker] = useState<{ left: number; top: number } | null>(null);
   const [cropAdvice, setCropAdvice] = useState("");
+  const [visionRecommendedKind, setVisionRecommendedKind] = useState<string>("");
+  const [inpaintAudit, setInpaintAudit] = useState("");
+  const [inpaintMaskBase64, setInpaintMaskBase64] = useState<string>("");
   const [ownedMediaLink, setOwnedMediaLink] = useState<OwnedMediaEvidenceLink | null>(null);
   const previewImgRef = useRef<HTMLImageElement | null>(null);
   const [form, setForm] = useState<PhotoFormState | null>(() => {
@@ -378,6 +385,9 @@ export function EvidencePhotosPanel({
     setRouteGateOpen(false);
     setPromotePreview([]);
     setCropAdvice(item.overlay?.cropAdviceNote ?? "");
+    setVisionRecommendedKind("");
+    setInpaintAudit("");
+    setInpaintMaskBase64("");
     setFocusMarker(null);
     if (
       typeof item.overlay?.focusX === "number" &&
@@ -723,21 +733,141 @@ export function EvidencePhotosPanel({
   function applyCropAdvice() {
     if (!photo) return;
     const advice = cropAdvice.trim();
-    if (!advice) {
-      setMessage("No cropAdvice yet — run Suggest with AI first, or type advice.");
+    if (!advice && !visionRecommendedKind) {
+      setMessage("No cropAdvice yet — run Vision suggest focus, or type advice.");
       return;
     }
     const photoId = photo.id;
     start(async () => {
       const res = await createDerivativeFromCropAdviceAction({
         photoId,
-        cropAdvice: advice,
+        cropAdvice: advice || visionRecommendedKind,
         focusX: focus?.x,
         focusY: focus?.y,
+        recommendedKind: visionRecommendedKind || undefined,
       });
       setMessage(res.message);
       if (res.ok) refreshDerivatives(photoId);
     });
+  }
+
+  function runVisionFocus(apply: boolean) {
+    if (!photo) return;
+    const photoId = photo.id;
+    if (
+      apply &&
+      typeof window !== "undefined" &&
+      !window.confirm(`Apply Vision focus to overlay for ${photoId}? Prefer Unknown — no geography invented.`)
+    ) {
+      return;
+    }
+    start(async () => {
+      const res = await suggestVisionFocusAction({
+        photoId,
+        confirmApplyFocus: apply,
+      });
+      setMessage(res.message);
+      if (res.ok && res.suggestion) {
+        setCropAdvice(res.suggestion.cropAdvice);
+        setVisionRecommendedKind(res.suggestion.recommendedKind);
+        setFocus({ x: res.suggestion.focusX, y: res.suggestion.focusY });
+        const img = previewImgRef.current;
+        if (img) {
+          const marker = focusPointToMarker(img, {
+            x: res.suggestion.focusX,
+            y: res.suggestion.focusY,
+          });
+          setFocusMarker(marker);
+        }
+      }
+    });
+  }
+
+  function runAiEnhance() {
+    if (!photo) return;
+    const photoId = photo.id;
+    if (
+      typeof window !== "undefined" &&
+      !window.confirm(
+        `Enhance with OpenAI Images?\nWrites a NEW derivative under campaign-derivatives.\nOriginal untouched. Prefer Unknown.`,
+      )
+    ) {
+      return;
+    }
+    start(async () => {
+      const res = await enhancePhotoDerivativeAction({
+        photoId,
+        confirmEnhance: true,
+      });
+      setMessage(res.message);
+      if (res.ok) refreshDerivatives(photoId);
+    });
+  }
+
+  function runAiCutout() {
+    if (!photo) return;
+    const photoId = photo.id;
+    if (
+      typeof window !== "undefined" &&
+      !window.confirm(
+        `Remove background → cutout PNG?\nNEW derivative only. Original untouched.`,
+      )
+    ) {
+      return;
+    }
+    start(async () => {
+      const res = await cutoutPhotoBackgroundAction({
+        photoId,
+        confirmCutout: true,
+      });
+      setMessage(res.message);
+      if (res.ok) refreshDerivatives(photoId);
+    });
+  }
+
+  function runAiInpaint() {
+    if (!photo) return;
+    const photoId = photo.id;
+    const audit = inpaintAudit.trim();
+    if (audit.length < 8) {
+      setMessage("Inpaint requires an audit note (what you cleaned).");
+      return;
+    }
+    if (!inpaintMaskBase64) {
+      setMessage("Inpaint requires a PNG mask (white = edit region).");
+      return;
+    }
+    if (
+      typeof window !== "undefined" &&
+      !window.confirm(
+        `Inpaint cleanup for ${photoId}?\nAudit: ${audit.slice(0, 120)}\nNEW derivative only. Original untouched.`,
+      )
+    ) {
+      return;
+    }
+    start(async () => {
+      const res = await inpaintPhotoCleanupAction({
+        photoId,
+        confirmInpaint: true,
+        auditNote: audit,
+        maskBase64: inpaintMaskBase64,
+      });
+      setMessage(res.message);
+      if (res.ok) refreshDerivatives(photoId);
+    });
+  }
+
+  function onInpaintMaskFile(file: File | null) {
+    if (!file) {
+      setInpaintMaskBase64("");
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = () => {
+      const result = typeof reader.result === "string" ? reader.result : "";
+      setInpaintMaskBase64(result);
+    };
+    reader.readAsDataURL(file);
   }
 
   function runInspect() {
@@ -2423,12 +2553,28 @@ export function EvidencePhotosPanel({
             </div>
             <div className="mt-3 rounded border border-[#8eb6dc]/40 bg-[#f4f7fc] p-2">
               <p className="font-heading text-[10px] font-bold uppercase tracking-wide text-[#000066]">
-                Focus crops (attention)
+                Focus crops · Vision (P2)
               </p>
               <p className="mt-1 font-body text-[11px] text-[#364272]">
-                Click the photo to set focus, then create a crop that keeps that point in frame.
+                Click the photo or run Vision suggest focus. Prefer Unknown — no geography invented.
               </p>
               <div className="mt-2 flex flex-wrap gap-2">
+                <button
+                  type="button"
+                  disabled={pending}
+                  onClick={() => runVisionFocus(false)}
+                  className="rounded border-2 border-[#000066] bg-white px-2.5 py-1 font-body text-xs font-semibold text-[#000066] disabled:opacity-50"
+                >
+                  Vision suggest focus
+                </button>
+                <button
+                  type="button"
+                  disabled={pending}
+                  onClick={() => runVisionFocus(true)}
+                  className="rounded border-2 border-[#000066] bg-[#000066] px-2.5 py-1 font-body text-xs font-bold text-white disabled:opacity-50"
+                >
+                  Vision → apply focus
+                </button>
                 {(
                   [
                     ["Focus hero 16:9", "focus_hero_16x9"],
@@ -2453,9 +2599,14 @@ export function EvidencePhotosPanel({
                   className={`${EVIDENCE_FIELD_CLASS} mt-1 min-h-[3rem] w-full`}
                   value={cropAdvice}
                   onChange={(e) => setCropAdvice(e.target.value)}
-                  placeholder="From Suggest with AI, or type framing advice"
+                  placeholder="From Vision suggest, or type framing advice"
                 />
               </label>
+              {visionRecommendedKind ? (
+                <p className="mt-1 font-mono text-[10px] text-[#364272]">
+                  Vision kind · {visionRecommendedKind}
+                </p>
+              ) : null}
               <button
                 type="button"
                 disabled={pending}
@@ -2463,6 +2614,58 @@ export function EvidencePhotosPanel({
                 className="mt-2 rounded border-2 border-[#000066] bg-[#000066] px-2.5 py-1 font-body text-xs font-semibold text-white disabled:opacity-50"
               >
                 Apply cropAdvice → derivative
+              </button>
+            </div>
+            <div className="mt-3 rounded border border-[#ca913d]/40 bg-[#fff8ef] p-2">
+              <p className="font-heading text-[10px] font-bold uppercase tracking-wide text-[#000066]">
+                OpenAI Images assist (P2)
+              </p>
+              <p className="mt-1 font-body text-[11px] text-[#364272]">
+                Confirm-gated. Writes under campaign-derivatives only — never overwrites originals.
+              </p>
+              <div className="mt-2 flex flex-wrap gap-2">
+                <button
+                  type="button"
+                  disabled={pending}
+                  onClick={runAiEnhance}
+                  className="rounded border-2 border-[#000066] bg-[#000066] px-2.5 py-1 font-body text-xs font-bold text-white disabled:opacity-50"
+                >
+                  Enhance (confirm)
+                </button>
+                <button
+                  type="button"
+                  disabled={pending}
+                  onClick={runAiCutout}
+                  className="rounded border-2 border-[#8eb6dc] bg-white px-2.5 py-1 font-body text-xs font-semibold text-[#12124a] disabled:opacity-50"
+                >
+                  Remove background (confirm)
+                </button>
+              </div>
+              <label className="mt-2 block font-body text-[11px] text-[#12124a]">
+                Inpaint audit note
+                <input
+                  className={`${EVIDENCE_FIELD_CLASS} mt-1 w-full`}
+                  value={inpaintAudit}
+                  onChange={(e) => setInpaintAudit(e.target.value)}
+                  placeholder="e.g. remove overhead wire top-left — cosmetic only"
+                />
+              </label>
+              <label className="mt-2 block font-body text-[11px] text-[#12124a]">
+                Inpaint mask PNG (white = edit)
+                <input
+                  type="file"
+                  accept="image/png,image/*"
+                  className="mt-1 block w-full font-body text-[10px]"
+                  onChange={(e) => onInpaintMaskFile(e.target.files?.[0] ?? null)}
+                />
+              </label>
+              <button
+                type="button"
+                disabled={pending}
+                onClick={runAiInpaint}
+                className="mt-2 rounded border-2 border-[#ca913d] bg-white px-2.5 py-1 font-body text-xs font-semibold text-[#12124a] disabled:opacity-50"
+              >
+                Inpaint cleanup (confirm)
               </button>
             </div>
             <div className="mt-3 rounded border border-[#ca913d]/40 bg-[#fff8ef] p-2">

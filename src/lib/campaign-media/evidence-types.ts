@@ -68,6 +68,8 @@ export type PhotoEvidenceOverlay = {
   /** Pass 5 — normalized focus point for attention crops (0–1). */
   focusX?: number;
   focusY?: number;
+  /** P2 — optional Vision subject box (normalized 0–1). */
+  focusBox?: { x: number; y: number; w: number; h: number };
   /** Last operator-reviewed crop advice note (from AI or manual). */
   cropAdviceNote?: string;
   updatedAt?: string;

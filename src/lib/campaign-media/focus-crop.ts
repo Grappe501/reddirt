@@ -110,3 +110,42 @@ export function parseCropAdviceToKind(advice: string): {
   }
   return { kind: "focus_hero_16x9", reason: "default focus hero crop from cropAdvice" };
 }
+
+/** Map Vision recommendedKind (or free text) to a focus crop kind. */
+export function mapVisionRecommendedKind(
+  raw: string,
+): "focus_hero_16x9" | "focus_portrait_4x5" | "focus_square_1x1" | null {
+  const t = String(raw ?? "")
+    .trim()
+    .toLowerCase()
+    .replace(/[\s-]+/g, "_");
+  if (
+    t === "focus_square_1x1" ||
+    t === "square_1x1" ||
+    t === "square" ||
+    t === "1x1"
+  ) {
+    return "focus_square_1x1";
+  }
+  if (
+    t === "focus_portrait_4x5" ||
+    t === "portrait_4x5" ||
+    t === "portrait" ||
+    t === "4x5" ||
+    t === "story_9x16"
+  ) {
+    return "focus_portrait_4x5";
+  }
+  if (
+    t === "focus_hero_16x9" ||
+    t === "hero_16x9" ||
+    t === "hero" ||
+    t === "16x9" ||
+    t === "landscape"
+  ) {
+    return "focus_hero_16x9";
+  }
+  if (!t) return null;
+  // Fall back to keyword parse for free-text cropAdvice from Vision
+  return parseCropAdviceToKind(raw).kind;
+}

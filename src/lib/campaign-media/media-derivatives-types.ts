@@ -14,7 +14,11 @@ export type PhotoDerivativeKind =
   | "focus_square_1x1"
   /** Pro Edit pack slots registered for promote bridge. */
   | "grade_full"
-  | "story_9x16";
+  | "story_9x16"
+  /** P2 — OpenAI Images assist (derivatives only; never overwrite originals). */
+  | "enhance_ai"
+  | "cutout_bg"
+  | "inpaint_cleanup";
 
 export type PhotoDerivativeRecord = {
   id: string;

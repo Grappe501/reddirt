@@ -1571,6 +1571,7 @@ export async function createDerivativeFromCropAdviceAction(input: {
   cropAdvice: string;
   focusX?: number;
   focusY?: number;
+  recommendedKind?: string;
 }): Promise<{ ok: boolean; message: string; publicSrc?: string }> {
   const g = await gate();
   if (!g.ok) return { ok: false, message: g.error };
@@ -1583,7 +1584,7 @@ export async function createDerivativeFromCropAdviceAction(input: {
   const prev = store.photos[input.photoId] ?? {};
   store.photos[input.photoId] = {
     ...prev,
-    cropAdviceNote: input.cropAdvice.trim(),
+    cropAdviceNote: input.cropAdvice.trim() || prev.cropAdviceNote,
     focusX: result.record.focusX ?? prev.focusX,
     focusY: result.record.focusY ?? prev.focusY,
     updatedAt: new Date().toISOString(),
@@ -1596,6 +1597,109 @@ export async function createDerivativeFromCropAdviceAction(input: {
     message: `${result.reason} → ${result.mappedKind} → ${result.record.publicSrc}`,
     publicSrc: result.record.publicSrc,
   };
+}
+
+/** P2 — Vision focus + crop advice (propose). Optional confirmApplyFocus writes overlay. */
+export async function suggestVisionFocusAction(input: {
+  photoId: string;
+  confirmApplyFocus?: boolean;
+}): Promise<{
+  ok: boolean;
+  message: string;
+  suggestion?: import("@/lib/campaign-media/vision-focus-suggest").VisionFocusSuggestion;
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { suggestFocusAndCropWithVision } = await import(
+    "@/lib/campaign-media/vision-focus-suggest"
+  );
+  const result = await suggestFocusAndCropWithVision({ photoId: String(input.photoId ?? "").trim() });
+  if (!result.ok) return { ok: false, message: result.error };
+
+  if (input.confirmApplyFocus) {
+    const store = loadPhotoEvidenceStore();
+    const photoId = String(input.photoId ?? "").trim();
+    const prev = store.photos[photoId] ?? {};
+    store.photos[photoId] = {
+      ...prev,
+      focusX: result.suggestion.focusX,
+      focusY: result.suggestion.focusY,
+      focusBox: result.suggestion.focusBox ?? undefined,
+      cropAdviceNote: result.suggestion.cropAdvice,
+      updatedAt: new Date().toISOString(),
+    };
+    savePhotoEvidenceStore(store);
+    revalidatePath("/admin/evidence-workbench");
+  }
+
+  return {
+    ok: true,
+    message: input.confirmApplyFocus
+      ? `${result.message} · focus applied to overlay.`
+      : `${result.message} · propose only (confirm to apply).`,
+    suggestion: result.suggestion,
+  };
+}
+
+/** P2 — gpt-image enhance → campaign-derivatives only. */
+export async function enhancePhotoDerivativeAction(input: {
+  photoId: string;
+  confirmEnhance: boolean;
+  prompt?: string;
+}): Promise<{ ok: boolean; message: string; publicSrc?: string }> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { enhancePhotoDerivative } = await import("@/lib/campaign-media/photo-ai-assist");
+  const result = await enhancePhotoDerivative(input);
+  if (result.ok && result.record) revalidatePath("/admin/evidence-workbench");
+  return { ok: result.ok, message: result.message, publicSrc: result.record?.publicSrc };
+}
+
+/** P2 — background cutout → PNG derivative. */
+export async function cutoutPhotoBackgroundAction(input: {
+  photoId: string;
+  confirmCutout: boolean;
+  prompt?: string;
+}): Promise<{ ok: boolean; message: string; publicSrc?: string }> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { cutoutPhotoBackground } = await import("@/lib/campaign-media/photo-ai-assist");
+  const result = await cutoutPhotoBackground(input);
+  if (result.ok && result.record) revalidatePath("/admin/evidence-workbench");
+  return { ok: result.ok, message: result.message, publicSrc: result.record?.publicSrc };
+}
+
+/** P2 — inpaint cleanup with mask + audit note. */
+export async function inpaintPhotoCleanupAction(input: {
+  photoId: string;
+  confirmInpaint: boolean;
+  auditNote: string;
+  prompt?: string;
+  /** Base64 PNG mask (no data: prefix required; optional data URL accepted). */
+  maskBase64?: string;
+}): Promise<{ ok: boolean; message: string; publicSrc?: string }> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { inpaintPhotoCleanup } = await import("@/lib/campaign-media/photo-ai-assist");
+  let maskBytes: Buffer | undefined;
+  const raw = String(input.maskBase64 ?? "").trim();
+  if (raw) {
+    const b64 = raw.includes(",") ? raw.split(",").pop()! : raw;
+    try {
+      maskBytes = Buffer.from(b64, "base64");
+    } catch {
+      return { ok: false, message: "Invalid maskBase64." };
+    }
+  }
+  const result = await inpaintPhotoCleanup({
+    photoId: input.photoId,
+    confirmInpaint: input.confirmInpaint,
+    auditNote: input.auditNote,
+    prompt: input.prompt,
+    maskBytes,
+  });
+  if (result.ok && result.record) revalidatePath("/admin/evidence-workbench");
+  return { ok: result.ok, message: result.message, publicSrc: result.record?.publicSrc };
 }
 
 export async function batchCreatePhotoDerivativesAction(input: {
