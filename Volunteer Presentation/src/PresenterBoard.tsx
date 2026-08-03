@@ -30,7 +30,8 @@ export function PresenterHub() {
         <h1>Presenters Board</h1>
         <p className="lead">
           Color-analyst notes for the Statewide Volunteer Leadership Kickoff. Same path the audience walks—denser
-          briefing for the people speaking.
+          briefing for the people speaking. This board is link-only (not listed in the public menu). Use the meeting
+          clock at the top — Start when Zoom begins.
         </p>
         <div className="cta-row">
           <Link className="btn btn-gold" to="/presenter/welcome">

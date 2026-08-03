@@ -1,6 +1,7 @@
 import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { SLIDES } from "./content";
+import { MeetingClock } from "./MeetingClock";
 
 export function Shell() {
   const location = useLocation();
@@ -10,6 +11,8 @@ export function Shell() {
   const index = SLIDES.findIndex((s) => s.path === location.pathname);
   const slideIndex = index >= 0 ? index : -1;
   const isForm = location.pathname.startsWith("/join/") || location.pathname === "/thank-you";
+  const isOrg = location.pathname === "/org-chart";
+  const showClock = !isForm;
 
   useEffect(() => {
     if (isForm || isPresenter || slideIndex < 0) return;
@@ -25,77 +28,74 @@ export function Shell() {
 
   return (
     <div className={`app${isPresenter ? " app-presenter" : ""}`}>
-      <header className="header">
-        <div className="header-inner">
-          <div>
-            <p className="brand-eyebrow">Kelly Grappe for Secretary of State</p>
-            <p className="brand-sub">
-              {isPresenter ? "Presenters Board · Kickoff briefing" : "Statewide Volunteer Leadership Kickoff"}
-            </p>
-          </div>
-          <div className="header-actions">
-            {isPresenter ? (
-              <>
-                <Link className="btn btn-ghost" to="/presenter">
-                  Board Home
-                </Link>
-                <Link className="btn btn-ghost hide-sm" to="/org-chart">
-                  Org Chart
-                </Link>
-                <Link className="btn btn-ghost hide-sm" to="/">
-                  Audience View
-                </Link>
-              </>
-            ) : (
-              <>
-                <Link className="btn btn-ghost hide-sm" to="/org-chart">
-                  Org Chart
-                </Link>
-                <Link className="btn btn-ghost hide-sm" to="/presenter">
-                  Presenters
-                </Link>
-                <button type="button" className="btn btn-ghost" onClick={() => setMenuOpen((v) => !v)}>
-                  Menu
-                </button>
-                <Link className="btn btn-gold" to="/join">
-                  Volunteer Now
-                </Link>
-              </>
-            )}
-          </div>
-        </div>
-        {menuOpen && !isPresenter ? (
-          <nav className="menu" aria-label="Sections">
-            <div className="menu-grid">
-              {SLIDES.map((slide, i) => (
-                <Link
-                  key={slide.id}
-                  to={slide.path}
-                  className={slideIndex === i ? "active" : undefined}
-                  onClick={() => setMenuOpen(false)}
-                >
-                  <span>{i + 1}</span>
-                  <span>{slide.navLabel}</span>
-                </Link>
-              ))}
-              <Link to="/org-chart" onClick={() => setMenuOpen(false)}>
-                <span>◎</span>
-                <span>Org Chart</span>
-              </Link>
-              <Link to="/presenter" onClick={() => setMenuOpen(false)}>
-                <span>★</span>
-                <span>Presenters Board</span>
-              </Link>
+      <div className="top-chrome">
+        <header className="header">
+          <div className="header-inner">
+            <div>
+              <p className="brand-eyebrow">Kelly Grappe for Secretary of State</p>
+              <p className="brand-sub">
+                {isPresenter ? "Presenters Board · Kickoff briefing" : "Statewide Volunteer Leadership Kickoff"}
+              </p>
             </div>
-          </nav>
-        ) : null}
-      </header>
+            <div className="header-actions">
+              {isPresenter ? (
+                <>
+                  <Link className="btn btn-ghost" to="/presenter">
+                    Board Home
+                  </Link>
+                  <Link className="btn btn-ghost hide-sm" to="/org-chart">
+                    Org Chart
+                  </Link>
+                  <Link className="btn btn-ghost hide-sm" to="/">
+                    Audience View
+                  </Link>
+                </>
+              ) : (
+                <>
+                  <Link className="btn btn-ghost hide-sm" to="/org-chart">
+                    Org Chart
+                  </Link>
+                  <button type="button" className="btn btn-ghost" onClick={() => setMenuOpen((v) => !v)}>
+                    Menu
+                  </button>
+                  <Link className="btn btn-gold" to="/join">
+                    Volunteer Now
+                  </Link>
+                </>
+              )}
+            </div>
+          </div>
+          {menuOpen && !isPresenter ? (
+            <nav className="menu" aria-label="Sections">
+              <div className="menu-grid">
+                {SLIDES.map((slide, i) => (
+                  <Link
+                    key={slide.id}
+                    to={slide.path}
+                    className={slideIndex === i ? "active" : undefined}
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    <span>{i + 1}</span>
+                    <span>{slide.navLabel}</span>
+                  </Link>
+                ))}
+                <Link to="/org-chart" onClick={() => setMenuOpen(false)}>
+                  <span>◎</span>
+                  <span>Org Chart</span>
+                </Link>
+              </div>
+            </nav>
+          ) : null}
+        </header>
+
+        {showClock ? <MeetingClock compact={isPresenter || isOrg} /> : null}
+      </div>
 
       <main className="main">
         <Outlet />
       </main>
 
-      {!isForm && !isPresenter ? (
+      {!isForm && !isPresenter && !isOrg ? (
         <footer className="footer-nav">
           <div className="footer-inner">
             <button

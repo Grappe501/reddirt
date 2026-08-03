@@ -209,6 +209,13 @@ export function Calendar() {
 export function JoinHub() {
   return (
     <SlideFrame eyebrow="The commitment moment" title="Where Will You Help Build This Campaign?" speaker="Kelly">
+      <div className="card">
+        <h3>Time check</h3>
+        <p>
+          Land the three asks, get forms started, then open <strong>5 minutes of initial Q&A</strong> inside the hour.
+          An optional <strong>15 minutes</strong> is available after the one-hour mark for deeper questions.
+        </p>
+      </div>
       <div className="card accent">
         <p className="eyebrow">Immediate ask · September 17</p>
         <h3>{RALLY.title} planning team</h3>
