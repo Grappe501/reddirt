@@ -27,6 +27,7 @@ export function Welcome() {
       <div className="cta-row">
         <Link className="btn btn-gold" to="/why">Begin the Presentation</Link>
         <Link className="btn btn-navy" to="/join">Volunteer Now</Link>
+        <Link className="btn btn-outline" to="/org-chart">Org Chart</Link>
       </div>
     </SlideFrame>
   );

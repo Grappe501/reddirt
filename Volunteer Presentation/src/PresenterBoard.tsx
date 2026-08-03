@@ -36,6 +36,9 @@ export function PresenterHub() {
           <Link className="btn btn-gold" to="/presenter/welcome">
             Start at Welcome
           </Link>
+          <Link className="btn btn-navy" to="/org-chart">
+            Org Chart
+          </Link>
           <Link className="btn btn-outline" to="/">
             Open audience view
           </Link>

@@ -39,12 +39,18 @@ export function Shell() {
                 <Link className="btn btn-ghost" to="/presenter">
                   Board Home
                 </Link>
+                <Link className="btn btn-ghost hide-sm" to="/org-chart">
+                  Org Chart
+                </Link>
                 <Link className="btn btn-ghost hide-sm" to="/">
                   Audience View
                 </Link>
               </>
             ) : (
               <>
+                <Link className="btn btn-ghost hide-sm" to="/org-chart">
+                  Org Chart
+                </Link>
                 <Link className="btn btn-ghost hide-sm" to="/presenter">
                   Presenters
                 </Link>
@@ -72,6 +78,10 @@ export function Shell() {
                   <span>{slide.navLabel}</span>
                 </Link>
               ))}
+              <Link to="/org-chart" onClick={() => setMenuOpen(false)}>
+                <span>◎</span>
+                <span>Org Chart</span>
+              </Link>
               <Link to="/presenter" onClick={() => setMenuOpen(false)}>
                 <span>★</span>
                 <span>Presenters Board</span>
