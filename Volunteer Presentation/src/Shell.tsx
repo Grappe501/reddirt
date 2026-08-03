@@ -6,12 +6,13 @@ export function Shell() {
   const location = useLocation();
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
+  const isPresenter = location.pathname.startsWith("/presenter");
   const index = SLIDES.findIndex((s) => s.path === location.pathname);
   const slideIndex = index >= 0 ? index : -1;
-  const isForm = location.pathname.startsWith("/join/");
+  const isForm = location.pathname.startsWith("/join/") || location.pathname === "/thank-you";
 
   useEffect(() => {
-    if (isForm || slideIndex < 0) return;
+    if (isForm || isPresenter || slideIndex < 0) return;
     const onKey = (e: KeyboardEvent) => {
       const tag = (e.target as HTMLElement | null)?.tagName;
       if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT") return;
@@ -20,26 +21,44 @@ export function Shell() {
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [isForm, navigate, slideIndex]);
+  }, [isForm, isPresenter, navigate, slideIndex]);
 
   return (
-    <div className="app">
+    <div className={`app${isPresenter ? " app-presenter" : ""}`}>
       <header className="header">
         <div className="header-inner">
           <div>
             <p className="brand-eyebrow">Kelly Grappe for Secretary of State</p>
-            <p className="brand-sub">Statewide Volunteer Leadership Kickoff</p>
+            <p className="brand-sub">
+              {isPresenter ? "Presenters Board · Kickoff briefing" : "Statewide Volunteer Leadership Kickoff"}
+            </p>
           </div>
           <div className="header-actions">
-            <button type="button" className="btn btn-ghost" onClick={() => setMenuOpen((v) => !v)}>
-              Menu
-            </button>
-            <Link className="btn btn-gold" to="/join">
-              Volunteer Now
-            </Link>
+            {isPresenter ? (
+              <>
+                <Link className="btn btn-ghost" to="/presenter">
+                  Board Home
+                </Link>
+                <Link className="btn btn-ghost hide-sm" to="/">
+                  Audience View
+                </Link>
+              </>
+            ) : (
+              <>
+                <Link className="btn btn-ghost hide-sm" to="/presenter">
+                  Presenters
+                </Link>
+                <button type="button" className="btn btn-ghost" onClick={() => setMenuOpen((v) => !v)}>
+                  Menu
+                </button>
+                <Link className="btn btn-gold" to="/join">
+                  Volunteer Now
+                </Link>
+              </>
+            )}
           </div>
         </div>
-        {menuOpen ? (
+        {menuOpen && !isPresenter ? (
           <nav className="menu" aria-label="Sections">
             <div className="menu-grid">
               {SLIDES.map((slide, i) => (
@@ -53,6 +72,10 @@ export function Shell() {
                   <span>{slide.navLabel}</span>
                 </Link>
               ))}
+              <Link to="/presenter" onClick={() => setMenuOpen(false)}>
+                <span>★</span>
+                <span>Presenters Board</span>
+              </Link>
             </div>
           </nav>
         ) : null}
@@ -62,7 +85,7 @@ export function Shell() {
         <Outlet />
       </main>
 
-      {!isForm ? (
+      {!isForm && !isPresenter ? (
         <footer className="footer-nav">
           <div className="footer-inner">
             <button
@@ -100,14 +123,14 @@ export function Shell() {
             </button>
           </div>
         </footer>
-      ) : (
+      ) : isForm ? (
         <footer className="footer-nav">
           <div className="footer-inner">
             <Link to="/join">← Back to choices</Link>
             <Link to="/">Return to presentation</Link>
           </div>
         </footer>
-      )}
+      ) : null}
     </div>
   );
 }

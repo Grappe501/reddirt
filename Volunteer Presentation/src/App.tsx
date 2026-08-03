@@ -1,5 +1,6 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { Shell } from "./Shell";
+import { PresenterDrillPage, PresenterHub, PresenterSlidePage } from "./PresenterBoard";
 import {
   Calendar,
   Campaign,
@@ -75,6 +76,9 @@ export default function App() {
             }
           />
           <Route path="/thank-you" element={<ThankYou />} />
+          <Route path="/presenter" element={<PresenterHub />} />
+          <Route path="/presenter/drill/:drillId" element={<PresenterDrillPage />} />
+          <Route path="/presenter/:slideId" element={<PresenterSlidePage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
       </Routes>

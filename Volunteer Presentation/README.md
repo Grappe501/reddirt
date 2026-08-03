@@ -6,6 +6,14 @@ Standalone presentation for Zoom + follow-along. Separate from the full RedDirt 
 
 `https://kelly-volunteer-kickoff.netlify.app`
 
+## Presenters Board
+
+Private briefing for speakers (dense talking points + drill-downs):
+
+`https://kelly-volunteer-kickoff.netlify.app/presenter`
+
+Mirrors all 12 audience slides with why / campaign fit / lines to land / asks / watch-outs.
+
 ## Local
 
 ```bash
