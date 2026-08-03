@@ -30,8 +30,8 @@ export default function KickoffWelcomePage() {
         <KickoffCard title="Launch the tour">
           Start a sustained statewide community tour after Labor Day.
         </KickoffCard>
-        <KickoffCard title="Staff the teams">
-          Fill volunteer, outreach, logistics, communications, and GOTV lanes.
+        <KickoffCard title="Fill 500 seats on Sept 17">
+          Grassroots & Guitar Strings GOTV kickoff with David Adam Byrnes—planning team needed now.
         </KickoffCard>
       </div>
 

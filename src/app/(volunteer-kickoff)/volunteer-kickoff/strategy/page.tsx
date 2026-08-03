@@ -19,12 +19,19 @@ export default function KickoffStrategyPage() {
           Establish a campaign presence in all 75 counties.
         </KickoffCard>
         <KickoffCard title="After Labor Day" accent>
-          Launch the sustained statewide community tour.
+          Launch the statewide community tour—and our September 17 GOTV kickoff rally.
         </KickoffCard>
         <KickoffCard title="Final Month" accent>
           Activate canvassing, Strike Teams, outreach, and GOTV.
         </KickoffCard>
       </div>
+
+      <KickoffCard title="September 17 — Grassroots & Guitar Strings" accent>
+        <p>
+          Campaign Get Out the Vote Kickoff with David Adam Byrnes in Sherwood. Goal: 500 attendees. We
+          need a dedicated planning team starting tonight—about one month to execute.
+        </p>
+      </KickoffCard>
 
       <div>
         <p className="mb-3 font-heading text-sm font-bold uppercase tracking-[0.14em] text-[var(--kelly-official-navy)]">

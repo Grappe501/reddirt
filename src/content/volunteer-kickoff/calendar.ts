@@ -8,7 +8,33 @@ export type KickoffEvent = {
   title: string;
   volunteerNeed: string;
   tab: KickoffCalendarTab;
+  /** Highlight on calendar and related slides */
+  featured?: boolean;
+  detail?: string;
 };
+
+/**
+ * Featured Campaign GOTV Kickoff — public details still being finalized.
+ * Confirmed for presentation: date, artist, attendance goal, Sherwood framing.
+ * Venue / time / ticket links: fill in when Steve provides the next packet.
+ */
+export const GRASSROOTS_GUITAR_STRINGS = {
+  id: "grassroots-guitar-strings",
+  dateLabel: "Thursday, September 17, 2026",
+  shortDate: "September 17",
+  city: "Sherwood",
+  county: "Pulaski",
+  title: "Grassroots & Guitar Strings",
+  subtitle: "Campaign Get Out the Vote Kickoff Rally",
+  featuredArtist: "David Adam Byrnes",
+  attendanceGoal: 500,
+  volunteerNeed:
+    "Event planning team · tickets & hosts · hospitality · outreach · day-of crew",
+  detail:
+    "Central Arkansas GOTV kickoff with live music. We have about a month to build a planning team and fill 500 seats. Venue, run-of-show, and ticket details will be published as they lock.",
+  coChairs: ["John Duke", "Jay Powell"] as const,
+  joinHrefTeam: "grassroots_guitar_strings",
+} as const;
 
 /** Curated public-facing stops for the kickoff meeting — not the full campaign calendar. */
 export const KICKOFF_EVENTS: readonly KickoffEvent[] = [
@@ -65,6 +91,17 @@ export const KICKOFF_EVENTS: readonly KickoffEvent[] = [
     title: "Festival & Community Event Corridor",
     volunteerNeed: "Local events teams · table shifts · photo help",
     tab: "labor",
+  },
+  {
+    id: GRASSROOTS_GUITAR_STRINGS.id,
+    dateLabel: GRASSROOTS_GUITAR_STRINGS.dateLabel,
+    city: GRASSROOTS_GUITAR_STRINGS.city,
+    county: GRASSROOTS_GUITAR_STRINGS.county,
+    title: `${GRASSROOTS_GUITAR_STRINGS.title} — GOTV Kickoff`,
+    volunteerNeed: GRASSROOTS_GUITAR_STRINGS.volunteerNeed,
+    tab: "tour",
+    featured: true,
+    detail: GRASSROOTS_GUITAR_STRINGS.detail,
   },
   {
     id: "statewide-tour",

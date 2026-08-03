@@ -17,6 +17,7 @@ export type CampaignTeamId =
   | "project_organizer"
   | "fundraising"
   | "strike_team"
+  | "grassroots_guitar_strings"
   | "statewide_gotv";
 
 export const LOCAL_ROLES: readonly {
@@ -117,6 +118,14 @@ export const CAMPAIGN_TEAMS: readonly {
     id: "strike_team",
     title: "Traveling Strike Teams",
     blurb: "Saturday deployments across five regions ahead of priority campaign visits.",
+  },
+  {
+    id: "grassroots_guitar_strings",
+    title: "Grassroots & Guitar Strings Planning Team",
+    blurb:
+      "Immediate priority: plan the September 17 GOTV kickoff rally with David Adam Byrnes—venue ops, tickets, hospitality, outreach, and filling 500 seats.",
+    recognize: "John Duke · Jay Powell",
+    priority: true,
   },
   {
     id: "statewide_gotv",

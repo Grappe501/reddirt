@@ -8,6 +8,23 @@ export default function KickoffJoinPage() {
         Choose one path now. You can always expand later—what matters tonight is stepping forward.
       </p>
 
+      <div className="rounded-[var(--radius-premium)] border border-[var(--kelly-official-gold)]/40 bg-[var(--kelly-mist)]/70 p-5 sm:p-6">
+        <p className="font-heading text-xs font-bold uppercase tracking-[0.14em] text-[var(--kelly-official-navy)]">
+          Immediate ask · September 17
+        </p>
+        <p className="mt-2 text-lg font-semibold text-[var(--kelly-official-navy)]">
+          Grassroots & Guitar Strings planning team
+        </p>
+        <p className="mt-1 text-[var(--color-secondary)]">
+          GOTV kickoff with David Adam Byrnes — help plan and fill 500 seats.
+        </p>
+        <div className="mt-4">
+          <KickoffCtaLink href={`${KICKOFF_BASE}/join/campaign?team=grassroots_guitar_strings`}>
+            Join Rally Planning Team
+          </KickoffCtaLink>
+        </div>
+      </div>
+
       <div className="grid gap-5 md:grid-cols-2">
         <div className="rounded-[var(--radius-premium-lg)] border border-[var(--color-border-subtle)] bg-white p-6 shadow-[var(--shadow-premium)] sm:p-8">
           <p className="font-heading text-xs font-bold uppercase tracking-[0.14em] text-[var(--kelly-official-gold)]">
