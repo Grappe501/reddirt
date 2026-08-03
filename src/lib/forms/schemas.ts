@@ -197,6 +197,46 @@ export const askKellyBetaFeedbackSchema = z.object({
   website: honeypot,
 });
 
+/** Statewide Volunteer Leadership Kickoff — local / campaign / youth / match pathways. */
+export const volunteerKickoffPathwayValues = ["local", "campaign", "youth", "match"] as const;
+
+export const volunteerKickoffSchema = z.object({
+  formType: z.literal("volunteer_kickoff"),
+  pathway: z.enum(volunteerKickoffPathwayValues),
+  name,
+  email,
+  phone: z
+    .string()
+    .min(7, "Mobile number helps us follow up quickly.")
+    .max(40)
+    .transform((v) => v.trim()),
+  county: z.string().min(1, "County helps us route you locally.").max(80),
+  city: z.string().max(120).optional().transform((v) => (v?.trim() ? v.trim() : undefined)),
+  preferredContact: z.enum(["email", "phone", "text"]).default("email"),
+  roles: z.array(z.string().max(80)).max(20).default([]),
+  primaryTeam: z.string().max(80).optional().transform((v) => (v?.trim() ? v.trim() : undefined)),
+  secondaryTeam: z.string().max(80).optional().transform((v) => (v?.trim() ? v.trim() : undefined)),
+  availability: z.string().max(500).optional().transform((v) => (v?.trim() ? v.trim() : undefined)),
+  skills: z.string().max(2000).optional().transform((v) => (v?.trim() ? v.trim() : undefined)),
+  canHost: z.boolean().default(false),
+  canRecruit: z.boolean().default(false),
+  willingToTravel: z.boolean().default(false),
+  leadershipInterest: z.boolean().default(false),
+  organizationName: z
+    .string()
+    .max(200)
+    .optional()
+    .transform((v) => (v?.trim() ? v.trim() : undefined)),
+  preferScope: z.enum(["local", "statewide", "either"]).optional(),
+  enjoyDoing: z.string().max(1000).optional().transform((v) => (v?.trim() ? v.trim() : undefined)),
+  youthIntent: z.enum(["join", "refer", "help"]).optional(),
+  eventId: z.string().max(120).optional().transform((v) => (v?.trim() ? v.trim() : undefined)),
+  regions: z.array(z.string().max(40)).max(8).default([]),
+  notes: z.string().max(3000).optional().transform((v) => (v?.trim() ? v.trim() : undefined)),
+  website: honeypot,
+  ...attributionFields,
+});
+
 export const formSubmissionSchema = z
   .discriminatedUnion("formType", [
     joinMovementSchema,
@@ -206,6 +246,7 @@ export const formSubmissionSchema = z
     storySubmissionSchema,
     hostGatheringShape,
     askKellyBetaFeedbackSchema,
+    volunteerKickoffSchema,
   ])
   .superRefine((data, ctx) => {
     if (data.formType === "host_gathering") {
@@ -221,6 +262,7 @@ export type DirectDemocracyCommitmentInput = z.infer<typeof directDemocracyCommi
 export type StorySubmissionInput = z.infer<typeof storySubmissionSchema>;
 export type HostGatheringInput = z.infer<typeof hostGatheringSchema>;
 export type AskKellyBetaFeedbackInput = z.infer<typeof askKellyBetaFeedbackSchema>;
+export type VolunteerKickoffInput = z.infer<typeof volunteerKickoffSchema>;
 
 const dateYmd = z
   .string()
