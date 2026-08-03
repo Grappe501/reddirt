@@ -1,19 +1,33 @@
-# Volunteer Leadership Kickoff Presentation
+# Volunteer Leadership Kickoff — Netlify static site
 
-Guided one-hour presentation + signup experience for the Statewide Volunteer Leadership Kickoff.
+Standalone presentation for Zoom + follow-along. Separate from the full RedDirt Netlify app (`kgrappe`), which is currently blocked on Lambda deploy errors.
 
-**Live route (RedDirt app):** `/volunteer-kickoff`
+## Live URL (after deploy)
 
-## Modes
+`https://kelly-volunteer-kickoff.netlify.app`
 
-- **Presenter** — full-screen friendly, Back/Next, arrow keys, swipe
-- **Follow-along** — same pages for attendees on phones (`?mode=follow`)
+## Local
 
-## Sign-up pathways
+```bash
+cd "Volunteer Presentation"
+npm install
+npm run dev
+```
 
-- `/volunteer-kickoff/join/local`
-- `/volunteer-kickoff/join/campaign`
-- `/volunteer-kickoff/join/youth`
-- `/volunteer-kickoff/join/match`
+## Deploy to Netlify
 
-Submissions use `formType: volunteer_kickoff` via `/api/forms` → WorkflowIntake with `teamCategory` metadata for operator review/export.
+```bash
+cd "Volunteer Presentation"
+npm install
+npm run build
+npx netlify sites:create --name kelly-volunteer-kickoff --manual
+# or link an existing site:
+npx netlify link
+npm run netlify:deploy
+```
+
+Signups land in **Netlify → Forms → kickoff-signup** (CSV export). When RedDirt production deploys are healthy again, these can be imported into WorkflowIntake.
+
+## Relationship to RedDirt
+
+The full Next.js experience remains at `/volunteer-kickoff` in RedDirt for local/dev. This static site is the shareable public URL for the meeting until `kgrappe` can publish again.
