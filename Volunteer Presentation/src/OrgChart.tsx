@@ -180,9 +180,6 @@ export function OrgChartPage() {
           <Link className="btn btn-gold" to="/join">
             Choose Your Role
           </Link>
-          <Link className="btn btn-outline" to="/presenter">
-            Presenters Board
-          </Link>
           <Link className="btn btn-outline" to="/campaign">
             Campaign Teams Slide
           </Link>
