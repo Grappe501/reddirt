@@ -45,20 +45,18 @@
   # Candidate iPad 11" — bottom nav, touch targets, copilot sheet (set false on staff-only builds)
   NEXT_PUBLIC_CANDIDATE_IPAD_MODE = "true"
 
-# Next.js OpenNext packages ___netlify-server-handler in onBuild.
-# onPostBuild runs in reverse plugin order — list nextjs LAST so prune runs after
-# createServerHandler and after nextjs publishStaticDir (see opennextjs-netlify).
+# Next.js OpenNext — list first so onBuild createServerHandler runs before our prune.
 # Unpinned only (not in package.json). Do NOT also UI-pin an old @netlify/plugin-nextjs.
 # Lambda env cap fix: npm run netlify:env:scopes:launch-minimal — not removing this entry.
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
 
 [[plugins]]
   package = "./netlify/plugins/prune-server-handler"
 
 [[plugins]]
   package = "./netlify/plugins/lambda-env-guard"
-
-[[plugins]]
-  package = "@netlify/plugin-nextjs"
 
 # Netlify upload cap is 250 MB unzipped per function.
 # Do not use external_node_modules here — it copies whole packages into the upload and blows the cap.

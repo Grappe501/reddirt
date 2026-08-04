@@ -67,21 +67,21 @@ const LAUNCH_BOARD_KEEP = new Set(["intelligence"]);
  * kelly_sos_ops on Netlify — whitelist only boards needed for live ops.
  * Everything else under admin/(board) is dropped so ___netlify-server-handler stays under 250 MB.
  */
+/**
+ * kelly_sos_ops on Netlify — minimal board set for Day-3 volunteer intake + login.
+ * Intelligence / campaign-events / evidence trees push ___netlify-server-handler over 250 MB.
+ */
 const KELLY_OPS_NETLIFY_BOARD_KEEP = new Set([
-  // Live ops + Day-3 volunteer kickoff intake (stay under 250 MB unzipped).
-  "intelligence",
-  "evidence-workbench",
-  "campaign-calendar",
-  "campaign-events",
   "workbench",
   "election-plan",
   "settings",
   "volunteers",
   "asks",
   "my-work",
-  "daily-brief",
 ]);
+/** Default admin API keep (opposition launch). Netlify kelly_sos_ops overrides below. */
 const LAUNCH_API_ADMIN_KEEP = new Set(["intelligence", "opposition"]);
+const KELLY_OPS_API_ADMIN_KEEP = new Set(["volunteers", "workbench"]);
 /** Kelly SOS production — keep public site + election-plan portal (force-dynamic). */
 const LAUNCH_APP_TOP_KEEP = new Set([
   "admin",
@@ -174,6 +174,28 @@ const LAUNCH_PUBLIC_SERVER_DIRS = [
   ".next/server/app/(site)/priorities",
   ".next/server/app/(site)/understand",
   ".next/server/app/(site)/listening-sessions",
+  ".next/server/app/(site)/kelly-speaks",
+  ".next/server/app/(site)/county-briefings",
+  ".next/server/app/(site)/start-a-local-team",
+  ".next/server/app/(site)/bring-5",
+  ".next/server/app/(site)/get-involved/bring-5",
+  ".next/server/app/(site)/campaign-trail",
+  ".next/server/app/(site)/updates",
+  ".next/server/app/(site)/watch",
+  ".next/server/app/(site)/conversations",
+  ".next/server/app/(site)/organizing-intelligence",
+  ".next/server/app/election-plan/(portal)/debate-prep",
+  ".next/server/app/election-plan/(portal)/executive-book",
+  ".next/server/app/election-plan/(portal)/battlefield",
+  ".next/server/app/election-plan/(portal)/counties",
+  ".next/server/app/election-plan/(portal)/cities",
+  ".next/server/app/election-plan/(portal)/war-room",
+  ".next/server/app/admin/opposition",
+  ".next/server/app/admin/(board)/intelligence",
+  ".next/server/app/admin/(board)/evidence-workbench",
+  ".next/server/app/admin/(board)/campaign-events",
+  ".next/server/app/admin/(board)/campaign-calendar",
+  ".next/server/app/admin/(board)/compliance",
 ];
 
 const LAUNCH_NODE_MODULES_DIRS = [
@@ -192,10 +214,6 @@ const LAUNCH_NODE_MODULES_DIRS = [
 const MINIMAL_NODE_MODULES = [
   ".prisma",
   "@prisma/client",
-  "@img/sharp-libvips-linux-x64",
-  "@img/sharp-linux-x64",
-  "sharp",
-  "openai",
   "@next/env",
   "react",
   "react-dom",
@@ -208,6 +226,8 @@ const FILE_PRUNE = [
   "node_modules/@prisma/client/index.d.ts",
   "node_modules/.prisma/client/runtime/query_engine_bg.postgresql.wasm",
   "node_modules/@prisma/client/runtime/query_engine_bg.postgresql.wasm",
+  "node_modules/.prisma/client/query_engine-windows.dll.node",
+  "node_modules/.prisma/client/query_engine_bg.postgresql.wasm",
 ];
 
 const DIR_PRUNE_AFTER_MATERIALIZE = [
@@ -216,8 +236,8 @@ const DIR_PRUNE_AFTER_MATERIALIZE = [
 ];
 
 const MAX_MB = 250;
-/** Fail the build before Netlify upload if deploy-size estimate exceeds this (symlink drift margin). */
-const DEPLOY_FAIL_MB = 220;
+/** Fail before Netlify upload if deploy-size estimate exceeds this (margin for zip/included_files drift). */
+const DEPLOY_FAIL_MB = 200;
 
 function isNetlifyBuild() {
   return Boolean(process.env.NETLIFY || process.env.NETLIFY_BUILD_BASE);
@@ -361,7 +381,11 @@ function removeOutboundSymlinks(handlerRoot) {
   return removed;
 }
 
-function pruneLaunchAdminServer(treeRoot, boardKeep = LAUNCH_BOARD_KEEP) {
+function pruneLaunchAdminServer(
+  treeRoot,
+  boardKeep = LAUNCH_BOARD_KEEP,
+  apiAdminKeep = LAUNCH_API_ADMIN_KEEP,
+) {
   const removed = [];
   const adminRoot = path.join(treeRoot, ".next/server/app/admin");
   if (exists(adminRoot)) {
@@ -387,12 +411,45 @@ function pruneLaunchAdminServer(treeRoot, boardKeep = LAUNCH_BOARD_KEEP) {
   if (exists(apiAdminRoot)) {
     for (const ent of fs.readdirSync(apiAdminRoot, { withFileTypes: true })) {
       if (!ent.isDirectory()) continue;
-      if (LAUNCH_API_ADMIN_KEEP.has(ent.name)) continue;
+      if (apiAdminKeep.has(ent.name)) continue;
       const rel = path.join(".next/server/app/api/admin", ent.name);
       if (rmrf(path.join(treeRoot, rel))) removed.push(rel);
     }
   }
 
+  return removed;
+}
+
+/** Drop Windows tmp engines, type defs, and non-Linux Prisma binaries from the handler copy. */
+function prunePrismaClientBloat(handlerRoot) {
+  const removed = [];
+  const clientDir = path.join(handlerRoot, "node_modules/.prisma/client");
+  if (!exists(clientDir)) return removed;
+  let entries;
+  try {
+    entries = fs.readdirSync(clientDir, { withFileTypes: true });
+  } catch {
+    return removed;
+  }
+  for (const ent of entries) {
+    if (!ent.isFile()) continue;
+    const name = ent.name;
+    const drop =
+      /\.tmp/i.test(name) ||
+      /\.d\.ts$/i.test(name) ||
+      /windows/i.test(name) ||
+      /darwin/i.test(name) ||
+      /\.wasm$/i.test(name) ||
+      /openssl-1\.0/i.test(name);
+    if (!drop) continue;
+    const rel = path.join("node_modules/.prisma/client", name);
+    try {
+      fs.rmSync(path.join(handlerRoot, rel), { force: true });
+      removed.push(rel);
+    } catch {
+      /* skip */
+    }
+  }
   return removed;
 }
 
@@ -471,16 +528,30 @@ function pruneLaunchHandlerRoot(handlerRoot) {
   return removed;
 }
 
-function pruneLaunchAppAndApi(handlerRoot, opts = { stripAdminBoards: true, boardKeep: LAUNCH_BOARD_KEEP }) {
+function pruneLaunchAppAndApi(
+  handlerRoot,
+  opts = {
+    stripAdminBoards: true,
+    boardKeep: LAUNCH_BOARD_KEEP,
+    apiAdminKeep: LAUNCH_API_ADMIN_KEEP,
+  },
+) {
   const removed = [];
   const appRoot = path.join(handlerRoot, ".next/server/app");
   if (!exists(appRoot)) return removed;
+  const apiAdminKeep = opts.apiAdminKeep ?? LAUNCH_API_ADMIN_KEEP;
 
   for (const ent of fs.readdirSync(appRoot, { withFileTypes: true })) {
     if (!ent.isDirectory()) continue;
     if (LAUNCH_APP_TOP_KEEP.has(ent.name)) {
       if (ent.name === "admin" && opts.stripAdminBoards) {
-        removed.push(...pruneLaunchAdminServer(handlerRoot, opts.boardKeep ?? LAUNCH_BOARD_KEEP));
+        removed.push(
+          ...pruneLaunchAdminServer(
+            handlerRoot,
+            opts.boardKeep ?? LAUNCH_BOARD_KEEP,
+            apiAdminKeep,
+          ),
+        );
       }
       continue;
     }
@@ -498,7 +569,7 @@ function pruneLaunchAppAndApi(handlerRoot, opts = { stripAdminBoards: true, boar
           if (exists(adminApi)) {
             for (const child of fs.readdirSync(adminApi, { withFileTypes: true })) {
               if (!child.isDirectory()) continue;
-              if (LAUNCH_API_ADMIN_KEEP.has(child.name)) continue;
+              if (apiAdminKeep.has(child.name)) continue;
               const rel = path.join(".next/server/app/api/admin", child.name);
               if (rmrf(path.join(handlerRoot, rel))) removed.push(rel);
             }
@@ -676,11 +747,15 @@ function pruneHandler(handlerRoot, repoRoot) {
       : isNetlifyBuild()
         ? KELLY_OPS_NETLIFY_BOARD_KEEP
         : null;
+    const apiAdminKeep = isNetlifyBuild() && !isOppositionDebateLaunch()
+      ? KELLY_OPS_API_ADMIN_KEEP
+      : LAUNCH_API_ADMIN_KEEP;
     removed.push(
       ...pruneLaunchAppAndApi(handlerRoot, {
         // On Netlify always whitelist admin boards — full ops tree exceeds 250 MB.
         stripAdminBoards: Boolean(boardKeep),
         boardKeep: boardKeep ?? LAUNCH_BOARD_KEEP,
+        apiAdminKeep,
       }),
     );
     for (const rel of LAUNCH_PUBLIC_SERVER_DIRS) {
@@ -690,6 +765,7 @@ function pruneHandler(handlerRoot, repoRoot) {
       if (rmrf(path.join(handlerRoot, rel))) removed.push(rel);
     }
     removed.push(...materializeMinimalNodeModules(handlerRoot, repoRoot));
+    removed.push(...prunePrismaClientBloat(handlerRoot));
     removed.push(...deleteAllSymlinks(handlerRoot));
   }
 
@@ -700,6 +776,7 @@ function pruneHandler(handlerRoot, repoRoot) {
       removed.push(rel);
     }
   }
+  removed.push(...prunePrismaClientBloat(handlerRoot));
 
   const nm = path.join(handlerRoot, "node_modules");
   if (exists(nm)) {
