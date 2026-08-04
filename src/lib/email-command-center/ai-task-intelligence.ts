@@ -3,6 +3,7 @@
  * Advisory only: no calendar writes, no sends, no automatic CampaignTask or DB task creation.
  */
 
+import "server-only";
 import { z } from "zod";
 import type { Prisma } from "@prisma/client";
 import { prisma } from "@/lib/db";
@@ -13,59 +14,26 @@ import {
 } from "@/lib/openai/client";
 import { isEmailAiConfigured } from "@/lib/email-workflow/ai/config";
 import { buildAiSystemPromptForRole, getEmailAiOutputContract } from "@/lib/email-command-center/ai-brain-registry";
+import {
+  EMAIL_AI_TASK_CATEGORY_SLUGS,
+  EMAIL_AI_TASK_INTELLIGENCE_PROMPT_VERSION,
+  EMAIL_AI_TASK_INTELLIGENCE_SCHEMA_VERSION,
+  type EmailAiTaskCategorySlug,
+  type EmailTaskIntelligenceOutput,
+  type EmailTaskIntelligenceStoredV1,
+  type EmailTaskIntelligenceTaskRow,
+} from "@/lib/email-command-center/ai-task-intelligence-types";
 
-export const EMAIL_AI_TASK_INTELLIGENCE_SCHEMA_VERSION = 1 as const;
-export const EMAIL_AI_TASK_INTELLIGENCE_PROMPT_VERSION = "email-task-intelligence-v1" as const;
-
-/** Slugs aligned with model output contract (snake_case). */
-export const EMAIL_AI_TASK_CATEGORY_SLUGS = [
-  "reply_needed",
-  "call_needed",
-  "schedule_follow_up",
-  "volunteer_follow_up",
-  "donor_follow_up",
-  "press_follow_up",
-  "issue_research",
-  "event_request",
-  "data_cleanup",
-  "profile_review",
-  "audience_review",
-  "draft_message",
-  "escalate_to_candidate_principal",
-  "legal_compliance_review",
-] as const;
-
-export type EmailAiTaskCategorySlug = (typeof EMAIL_AI_TASK_CATEGORY_SLUGS)[number];
-
-export type EmailTaskIntelligenceTaskRow = {
-  taskTitle: string;
-  taskType: EmailAiTaskCategorySlug;
-  urgency: string;
-  ownerRole: string;
-  recommendedDueWindow: string;
-  contextSummary: string;
-  dependencies: string[];
-  calendarRelevance: string;
-  emailDraftNeeded: boolean;
-  profileUpdateSuggested: boolean;
-  audienceHintSuggested: boolean;
-  riskFlags: string[];
-};
-
-export type EmailTaskIntelligenceOutput = {
-  tasks: EmailTaskIntelligenceTaskRow[];
-  packetSummary?: string;
-};
-
-export type EmailTaskIntelligenceStoredV1 = {
-  version: typeof EMAIL_AI_TASK_INTELLIGENCE_SCHEMA_VERSION;
-  generatedAt: string;
-  model: string;
-  promptVersion: string;
-  inputSourceSummary: string;
-  lastErrorSafe?: string;
-  output?: EmailTaskIntelligenceOutput;
-};
+export {
+  EMAIL_AI_TASK_CATEGORY_SLUGS,
+  EMAIL_AI_TASK_INTELLIGENCE_PROMPT_VERSION,
+  EMAIL_AI_TASK_INTELLIGENCE_SCHEMA_VERSION,
+  isStoredEmailTaskIntelligenceV1,
+  type EmailAiTaskCategorySlug,
+  type EmailTaskIntelligenceOutput,
+  type EmailTaskIntelligenceStoredV1,
+  type EmailTaskIntelligenceTaskRow,
+} from "@/lib/email-command-center/ai-task-intelligence-types";
 
 const MAX_FIELD = 3200;
 
@@ -383,10 +351,4 @@ export async function generateEmailTaskIntelligenceForQueueItem(
   });
 
   return { ok: true, itemId, stored };
-}
-
-export function isStoredEmailTaskIntelligenceV1(v: unknown): v is EmailTaskIntelligenceStoredV1 {
-  if (!v || typeof v !== "object" || Array.isArray(v)) return false;
-  const o = v as Record<string, unknown>;
-  return o.version === EMAIL_AI_TASK_INTELLIGENCE_SCHEMA_VERSION && typeof o.generatedAt === "string";
 }

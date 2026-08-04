@@ -7,7 +7,7 @@ import {
   isStoredEmailTaskIntelligenceV1,
   type EmailTaskIntelligenceStoredV1,
   type EmailTaskIntelligenceTaskRow,
-} from "@/lib/email-command-center/ai-task-intelligence";
+} from "@/lib/email-command-center/ai-task-intelligence-types";
 
 function asMetaRecord(v: unknown): Record<string, unknown> {
   if (v != null && typeof v === "object" && !Array.isArray(v)) {

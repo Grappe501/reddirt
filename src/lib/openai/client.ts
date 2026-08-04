@@ -4,6 +4,7 @@
  * (Next does not override existing process.env — machine keys otherwise win).
  * Never log or return key material to clients.
  */
+import "server-only";
 import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
 import OpenAI from "openai";
