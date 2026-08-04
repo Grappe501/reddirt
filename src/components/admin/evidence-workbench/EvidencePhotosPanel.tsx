@@ -563,6 +563,23 @@ export function EvidencePhotosPanel({
     setFocusMarker(focusPointToMarker(img, focus));
   }, [focus, activeId, photo?.src]);
 
+  const aiStudioLayerSrc = useMemo(() => {
+    const prefer = ["enhance_ai", "cutout_bg", "inpaint_cleanup"] as const;
+    for (const kind of prefer) {
+      const hit = derivatives.find((d) => d.kind === kind);
+      if (hit?.publicSrc) return hit.publicSrc;
+    }
+    return null;
+  }, [derivatives]);
+
+  const onStudioBurnInChange = useCallback((burnIn: PhotoStudioBurnIn) => {
+    setStudioBurnIn(burnIn);
+  }, []);
+
+  const onStudioCropRectChange = useCallback((cropRect: NormalizedCropRect | null) => {
+    setStudioCropRect(cropRect);
+  }, []);
+
   if (!photo || !form) {
     return (
       <div className="space-y-3">
@@ -745,23 +762,6 @@ export function EvidencePhotosPanel({
       setMessage(res.message);
     });
   }
-
-  const aiStudioLayerSrc = useMemo(() => {
-    const prefer = ["enhance_ai", "cutout_bg", "inpaint_cleanup"] as const;
-    for (const kind of prefer) {
-      const hit = derivatives.find((d) => d.kind === kind);
-      if (hit?.publicSrc) return hit.publicSrc;
-    }
-    return null;
-  }, [derivatives]);
-
-  const onStudioBurnInChange = useCallback((burnIn: PhotoStudioBurnIn) => {
-    setStudioBurnIn(burnIn);
-  }, []);
-
-  const onStudioCropRectChange = useCallback((cropRect: NormalizedCropRect | null) => {
-    setStudioCropRect(cropRect);
-  }, []);
 
   function runFocusCrop(kind: string) {
     if (!photo) return;

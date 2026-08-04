@@ -139,7 +139,7 @@ export async function applyStudioBurnInToAssembly(input: {
   if (w <= 0 || h <= 0) return { ok: true, noteBits: [] };
 
   try {
-    let pipeline = sharp(input.outAbs, { failOn: "none" });
+    const pipeline = sharp(input.outAbs, { failOn: "none" });
     const composites: sharp.OverlayOptions[] = [];
 
     if (burn.includeAiLayer && burn.aiLayerPublicSrc) {
