@@ -285,7 +285,11 @@ export function SignupForm({ pathway, title, intro }: { pathway: Pathway; title:
     const eventInterest = String(data.get("eventInterest") || "").trim();
     const botField = String(data.get("bot-field") || "");
 
-    const reddirtPayload = {
+    const formsApiBase =
+      (import.meta.env.VITE_REDDIRT_FORMS_URL as string | undefined)?.replace(/\/$/, "") ||
+      "https://kgrappe.netlify.app";
+
+    const reddirtKickoffPayload = {
       formType: "volunteer_kickoff" as const,
       pathway,
       name,
@@ -313,32 +317,85 @@ export function SignupForm({ pathway, title, intro }: { pathway: Pathway; title:
       consentPhone: false,
     };
 
-    const formsApiBase =
-      (import.meta.env.VITE_REDDIRT_FORMS_URL as string | undefined)?.replace(/\/$/, "") ||
-      "https://kgrappe.netlify.app";
+    const nameParts = name.split(/\s+/).filter(Boolean);
+    const firstName = nameParts[0] || name;
+    const lastName = nameParts.slice(1).join(" ") || "Volunteer";
+    const preferredRole =
+      pathway === "youth"
+        ? "youth_outreach"
+        : pathway === "campaign"
+          ? "events"
+          : pathway === "local"
+            ? "power_of_five"
+            : "not_sure";
+
+    // Production RedDirt may still be on older schema without volunteer_kickoff.
+    const reddirtVolunteerFallback = {
+      formType: "volunteer" as const,
+      firstName,
+      lastName,
+      email,
+      phone,
+      zip: "72201",
+      county,
+      city: city || undefined,
+      preferredRole,
+      preferredLanguage: "english" as const,
+      student: pathway === "youth",
+      discordInterest: false,
+      hostingInterest: false,
+      fundraisingInterest: false,
+      leadershipInterest: false,
+      interests: [`kickoff:${pathway}`, "volunteer-kickoff", ...roles].slice(0, 20),
+      notes: [
+        `Kickoff pathway: ${pathway}`,
+        primaryTeam ? `Primary team: ${primaryTeam}` : "",
+        roles.length ? `Roles: ${roles.join(", ")}` : "",
+        eventInterest ? `Event interest: ${eventInterest}` : "",
+        availability ? `Availability: ${availability}` : "",
+        notes,
+      ]
+        .filter(Boolean)
+        .join("\n"),
+      availability: availability || undefined,
+      website: botField,
+      sourcePage: typeof window !== "undefined" ? window.location.pathname : `/join/${pathway}`,
+      sourceComponent: "KickoffStaticSignupForm",
+      sourceCampaign: "volunteer-kickoff-netlify",
+      consentEmail: true,
+    };
+
+    async function postReddirt(payload: object): Promise<boolean> {
+      try {
+        const res = await fetch(`${formsApiBase}/api/forms`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+        const json = (await res.json().catch(() => ({}))) as { ok?: boolean };
+        return Boolean(res.ok && json.ok);
+      } catch {
+        return false;
+      }
+    }
 
     try {
-      // Primary: Kelly / RedDirt database via /api/forms → WorkflowIntake
-      const dbRes = await fetch(`${formsApiBase}/api/forms`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(reddirtPayload),
-      });
-      const dbJson = (await dbRes.json().catch(() => ({}))) as { ok?: boolean; error?: string };
-      if (!dbRes.ok || !dbJson.ok) {
-        throw new Error(dbJson.error || "reddirt_submit_failed");
+      let savedToKellyDb = await postReddirt(reddirtKickoffPayload);
+      if (!savedToKellyDb) {
+        savedToKellyDb = await postReddirt(reddirtVolunteerFallback);
       }
 
-      // Backup mirrors (Netlify Forms + local manage board) — best effort
+      // Always mirror to Netlify Forms + Blobs so operators have a local board if Kelly API is down.
       const body = new URLSearchParams();
       data.forEach((value, key) => {
         body.append(key, String(value));
       });
-      void fetch("/", {
+      const formsRes = await fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: body.toString(),
-      }).catch(() => undefined);
+      });
+      if (!formsRes.ok && !savedToKellyDb) throw new Error("submit_failed");
 
       void fetch("/.netlify/functions/signup-capture", {
         method: "POST",
@@ -353,7 +410,7 @@ export function SignupForm({ pathway, title, intro }: { pathway: Pathway; title:
           roles: roles.join(", "),
           primaryTeam,
           availability,
-          notes,
+          notes: savedToKellyDb ? notes : `${notes}\n[kelly_db:pending_retry]`.trim(),
           eventInterest,
           "bot-field": botField,
         }),
