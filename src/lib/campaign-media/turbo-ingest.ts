@@ -202,7 +202,7 @@ export async function runTurboIngest(input?: {
 }): Promise<TurboIngestRunResult> {
   let intakeQueued = 0;
   if (input?.intakeFirst) {
-    const intake = intakeAllNewCampaignPhotos();
+    const intake = await intakeAllNewCampaignPhotos();
     intakeQueued = intake.queued;
   }
 

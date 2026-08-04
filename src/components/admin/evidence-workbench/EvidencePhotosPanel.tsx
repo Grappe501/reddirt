@@ -1,9 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useRef, useState, useTransition, type MouseEvent } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState, useTransition, type MouseEvent } from "react";
 import {
   batchCreatePhotoDerivativesAction,
+  batchFinishPhotosForWebAction,
   batchPublishPhotosAction,
   batchSavePhotoEvidenceAction,
   buildPhotoMetadataPacketAction,
@@ -12,7 +13,12 @@ import {
   createDerivativeFromCropAdviceAction,
   createPhotoDerivativeAction,
   applyTurboProposalAction,
+  cutoutPhotoBackgroundAction,
+  enhancePhotoDerivativeAction,
+  finishPhotoForWebAction,
   getTurboProposalAction,
+  inpaintPhotoCleanupAction,
+  suggestVisionFocusAction,
   inspectPhotoPixelsAction,
   listEvidenceBatchOpsAction,
   listPhotoDerivativesAction,
@@ -22,11 +28,14 @@ import {
   previewPhotoEditPackAction,
   promotePhotoDerivativeAction,
   proposePhotoEditProjectAction,
+  provePhotoProductionAction,
+  provePhotosProductionAction,
   renderPhotoEditProjectAction,
   updatePhotoEditProjectAction,
   softArchivePhotoAssembliesAction,
   savePhotoEvidenceAction,
   savePhotoFocusAction,
+  shipPromotedDerivativesAction,
   suggestBatchPhotoEvidenceAiAction,
   suggestCropPlanAction,
   suggestPhotoEvidenceAiAction,
@@ -36,9 +45,11 @@ import {
 import type { OwnedMediaEvidenceLink } from "@/lib/campaign-media/owned-media-evidence-link";
 import {
   photoEditLanePreset,
+  finishSurfaceFromEdit,
   type EvidenceEditIntent,
   type EvidenceEditSiteSurface,
 } from "@/lib/campaign-media/evidence-edit-intents";
+import { BATCH_FINISH_MAX } from "@/lib/campaign-media/batch-finish-constants";
 import { parsePhotosUrlFilter } from "@/lib/campaign-media/evidence-workbench-deep-links";
 import type { BatchPhotoAiProposal } from "@/lib/campaign-media/evidence-ai-types";
 import type { EvidenceBatchOperation } from "@/lib/campaign-media/evidence-batch-ops";
@@ -49,7 +60,9 @@ import type { PhotoDerivativeRecord } from "@/lib/campaign-media/media-derivativ
 import type {
   PhotoAssemblyRecord,
   PhotoEditProject,
+  PhotoStudioBurnIn,
 } from "@/lib/campaign-media/photo-edit-types";
+import type { NormalizedCropRect } from "@/lib/campaign-media/focus-crop";
 import type { PhotoExportSlot, PhotoLookPreset } from "@/lib/campaign-media/photo-look-presets";
 import { EVIDENCE_FIELD_CLASS } from "@/components/admin/evidence-workbench/field-styles";
 import { EvidenceRouteGate } from "@/components/admin/evidence-workbench/EvidenceRouteGate";
@@ -59,6 +72,7 @@ import {
   ewPanelTitleClass,
 } from "@/components/admin/evidence-workbench/evidenceWorkbenchChrome";
 import { EvidenceAiModePanel } from "@/components/admin/evidence-workbench/EvidenceAiModePanel";
+import { EvidencePhotoStudioCanvas } from "@/components/admin/evidence-workbench/EvidencePhotoStudioCanvas";
 import type { EvidenceAiMode } from "@/lib/campaign-media/evidence-ai-modes";
 import { isEditableKeyboardTarget } from "@/components/admin/evidence-workbench/keyboard";
 
@@ -321,6 +335,12 @@ export function EvidencePhotosPanel({
   const [focus, setFocus] = useState<FocusPoint | null>(null);
   const [focusMarker, setFocusMarker] = useState<{ left: number; top: number } | null>(null);
   const [cropAdvice, setCropAdvice] = useState("");
+  const [visionRecommendedKind, setVisionRecommendedKind] = useState<string>("");
+  const [inpaintAudit, setInpaintAudit] = useState("");
+  const [inpaintMaskBase64, setInpaintMaskBase64] = useState<string>("");
+  const [studioSlot, setStudioSlot] = useState<PhotoExportSlot | null>(null);
+  const [studioBurnIn, setStudioBurnIn] = useState<PhotoStudioBurnIn | null>(null);
+  const [studioCropRect, setStudioCropRect] = useState<NormalizedCropRect | null>(null);
   const [ownedMediaLink, setOwnedMediaLink] = useState<OwnedMediaEvidenceLink | null>(null);
   const previewImgRef = useRef<HTMLImageElement | null>(null);
   const [form, setForm] = useState<PhotoFormState | null>(() => {
@@ -375,6 +395,10 @@ export function EvidencePhotosPanel({
     setRouteGateOpen(false);
     setPromotePreview([]);
     setCropAdvice(item.overlay?.cropAdviceNote ?? "");
+    setVisionRecommendedKind("");
+    setInpaintAudit("");
+    setInpaintMaskBase64("");
+    setStudioSlot(null);
     setFocusMarker(null);
     if (
       typeof item.overlay?.focusX === "number" &&
@@ -708,6 +732,37 @@ export function EvidencePhotosPanel({
     });
   }
 
+  function onStudioFocusChange(point: FocusPoint) {
+    if (!photo) return;
+    setFocus(point);
+    start(async () => {
+      const res = await savePhotoFocusAction({
+        photoId: photo.id,
+        focusX: point.x,
+        focusY: point.y,
+        cropAdviceNote: cropAdvice || undefined,
+      });
+      setMessage(res.message);
+    });
+  }
+
+  const aiStudioLayerSrc = useMemo(() => {
+    const prefer = ["enhance_ai", "cutout_bg", "inpaint_cleanup"] as const;
+    for (const kind of prefer) {
+      const hit = derivatives.find((d) => d.kind === kind);
+      if (hit?.publicSrc) return hit.publicSrc;
+    }
+    return null;
+  }, [derivatives]);
+
+  const onStudioBurnInChange = useCallback((burnIn: PhotoStudioBurnIn) => {
+    setStudioBurnIn(burnIn);
+  }, []);
+
+  const onStudioCropRectChange = useCallback((cropRect: NormalizedCropRect | null) => {
+    setStudioCropRect(cropRect);
+  }, []);
+
   function runFocusCrop(kind: string) {
     if (!photo) return;
     if (!focus) {
@@ -720,21 +775,141 @@ export function EvidencePhotosPanel({
   function applyCropAdvice() {
     if (!photo) return;
     const advice = cropAdvice.trim();
-    if (!advice) {
-      setMessage("No cropAdvice yet — run Suggest with AI first, or type advice.");
+    if (!advice && !visionRecommendedKind) {
+      setMessage("No cropAdvice yet — run Vision suggest focus, or type advice.");
       return;
     }
     const photoId = photo.id;
     start(async () => {
       const res = await createDerivativeFromCropAdviceAction({
         photoId,
-        cropAdvice: advice,
+        cropAdvice: advice || visionRecommendedKind,
         focusX: focus?.x,
         focusY: focus?.y,
+        recommendedKind: visionRecommendedKind || undefined,
       });
       setMessage(res.message);
       if (res.ok) refreshDerivatives(photoId);
     });
+  }
+
+  function runVisionFocus(apply: boolean) {
+    if (!photo) return;
+    const photoId = photo.id;
+    if (
+      apply &&
+      typeof window !== "undefined" &&
+      !window.confirm(`Apply Vision focus to overlay for ${photoId}? Prefer Unknown — no geography invented.`)
+    ) {
+      return;
+    }
+    start(async () => {
+      const res = await suggestVisionFocusAction({
+        photoId,
+        confirmApplyFocus: apply,
+      });
+      setMessage(res.message);
+      if (res.ok && res.suggestion) {
+        setCropAdvice(res.suggestion.cropAdvice);
+        setVisionRecommendedKind(res.suggestion.recommendedKind);
+        setFocus({ x: res.suggestion.focusX, y: res.suggestion.focusY });
+        const img = previewImgRef.current;
+        if (img) {
+          const marker = focusPointToMarker(img, {
+            x: res.suggestion.focusX,
+            y: res.suggestion.focusY,
+          });
+          setFocusMarker(marker);
+        }
+      }
+    });
+  }
+
+  function runAiEnhance() {
+    if (!photo) return;
+    const photoId = photo.id;
+    if (
+      typeof window !== "undefined" &&
+      !window.confirm(
+        `Enhance with OpenAI Images?\nWrites a NEW derivative under campaign-derivatives.\nOriginal untouched. Prefer Unknown.`,
+      )
+    ) {
+      return;
+    }
+    start(async () => {
+      const res = await enhancePhotoDerivativeAction({
+        photoId,
+        confirmEnhance: true,
+      });
+      setMessage(res.message);
+      if (res.ok) refreshDerivatives(photoId);
+    });
+  }
+
+  function runAiCutout() {
+    if (!photo) return;
+    const photoId = photo.id;
+    if (
+      typeof window !== "undefined" &&
+      !window.confirm(
+        `Remove background → cutout PNG?\nNEW derivative only. Original untouched.`,
+      )
+    ) {
+      return;
+    }
+    start(async () => {
+      const res = await cutoutPhotoBackgroundAction({
+        photoId,
+        confirmCutout: true,
+      });
+      setMessage(res.message);
+      if (res.ok) refreshDerivatives(photoId);
+    });
+  }
+
+  function runAiInpaint() {
+    if (!photo) return;
+    const photoId = photo.id;
+    const audit = inpaintAudit.trim();
+    if (audit.length < 8) {
+      setMessage("Inpaint requires an audit note (what you cleaned).");
+      return;
+    }
+    if (!inpaintMaskBase64) {
+      setMessage("Inpaint requires a PNG mask (white = edit region).");
+      return;
+    }
+    if (
+      typeof window !== "undefined" &&
+      !window.confirm(
+        `Inpaint cleanup for ${photoId}?\nAudit: ${audit.slice(0, 120)}\nNEW derivative only. Original untouched.`,
+      )
+    ) {
+      return;
+    }
+    start(async () => {
+      const res = await inpaintPhotoCleanupAction({
+        photoId,
+        confirmInpaint: true,
+        auditNote: audit,
+        maskBase64: inpaintMaskBase64,
+      });
+      setMessage(res.message);
+      if (res.ok) refreshDerivatives(photoId);
+    });
+  }
+
+  function onInpaintMaskFile(file: File | null) {
+    if (!file) {
+      setInpaintMaskBase64("");
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = () => {
+      const result = typeof reader.result === "string" ? reader.result : "";
+      setInpaintMaskBase64(result);
+    };
+    reader.readAsDataURL(file);
   }
 
   function runInspect() {
@@ -808,6 +983,8 @@ export function EvidencePhotosPanel({
             focusX: focus?.x,
             focusY: focus?.y,
             exportSlots: proSlots.length ? proSlots : ["web_max"],
+            ...(studioBurnIn ? { burnIn: studioBurnIn } : {}),
+            ...(studioCropRect ? { cropRect: studioCropRect } : {}),
           },
         ],
       });
@@ -851,19 +1028,41 @@ export function EvidencePhotosPanel({
     if (
       typeof window !== "undefined" &&
       !window.confirm(
-        `Confirm render ${editProject.exportSlots.length} slot(s) · look ${editProject.look}? Originals stay untouched.`,
+        `Confirm render ${proSlots.length || editProject.exportSlots.length} slot(s) · look ${proLook}? Originals stay untouched.`,
       )
     ) {
       return;
     }
     const projectId = editProject.id;
     const photoId = editProject.photoId;
-    setProRenderNote("Rendering assembly pack…");
+    setProRenderNote("Applying look / slots, then rendering…");
     start(async () => {
+      // P0: auto-Apply before Confirm so UI look/slots aren't lost.
+      const applied = await updatePhotoEditProjectAction({
+        projectId,
+        updates: [
+          {
+            op: "set_meta",
+            look: proLook,
+            sharpen: proSharpen,
+            useFocus: proUseFocus,
+            focusX: focus?.x,
+            focusY: focus?.y,
+            exportSlots: proSlots.length ? proSlots : ["web_max"],
+            ...(studioBurnIn ? { burnIn: studioBurnIn } : {}),
+            ...(studioCropRect ? { cropRect: studioCropRect } : {}),
+          },
+        ],
+      });
+      if (applied.ok && applied.project) {
+        setEditProject(applied.project);
+        setProSlots(applied.project.exportSlots);
+      }
       const res = await renderPhotoEditProjectAction({ projectId, confirmRender: true });
       setMessage(res.message);
       setProRenderNote(
         [
+          applied.ok ? "Applied look/slots" : applied.message,
           res.message,
           ...(res.warnings ?? []),
           res.promoteSuggestion ? `Promote suggestion: ${res.promoteSuggestion}` : "",
@@ -876,6 +1075,188 @@ export function EvidencePhotosPanel({
       setAssemblies(listed.assemblies ?? res.assemblies ?? []);
       setEditProject(listed.projects?.find((p) => p.id === projectId) ?? editProject);
       refreshDerivatives(photoId);
+    });
+  }
+
+  function finishForWeb() {
+    if (!photo) return;
+    const photoId = photo.id;
+    const finishSurface = finishSurfaceFromEdit(editIntent, editSurface);
+    const slots = proSlots.length ? proSlots : (["web_max", "hero_16x9", "thumb"] as PhotoExportSlot[]);
+    if (
+      typeof window !== "undefined" &&
+      !window.confirm(
+        finishSurface === "social"
+          ? `Finish social download pack?\nLook: ${proLook} · ${slots.length} slot(s)\nNo public promote. Prefer Unknown.`
+          : `Finish for web → ${finishSurface}?\nApply → Confirm → Promote → Ship${
+              finishSurface === "homepage" || finishSurface === "journey"
+                ? " → Curate proposal"
+                : ""
+            }\nLook: ${proLook} · ${slots.length} slot(s)\nOriginals stay untouched. Prefer Unknown.`,
+      )
+    ) {
+      return;
+    }
+    setProRenderNote("Finishing for web…");
+    start(async () => {
+      const res = await finishPhotoForWebAction({
+        photoId,
+        confirmFinish: true,
+        projectId: editProject?.id,
+        look: proLook,
+        exportSlots: slots,
+        useFocus: proUseFocus,
+        focusX: focus?.x,
+        focusY: focus?.y,
+        sharpen: proSharpen,
+        homepageCandidate: promoteHomepage,
+        featuredPhoto: promoteFeatured,
+        heroLevel: promoteHero || undefined,
+        approvedForPublic: promoteApproved,
+        consentConfirmed: Boolean(form?.consentConfirmed),
+        finishSurface,
+        proposeCurate: finishSurface === "homepage" || finishSurface === "journey",
+        ...(studioBurnIn ? { burnIn: studioBurnIn } : {}),
+        ...(studioCropRect ? { cropRect: studioCropRect } : {}),
+      });
+      setMessage(res.message);
+      setProRenderNote(
+        [
+          res.message,
+          ...(res.warnings ?? []),
+          res.steps?.length ? res.steps.join(" → ") : "",
+          res.curateProposalId ? `curate ${res.curateProposalId}` : "",
+          res.productionProof
+            ? `proof: ${res.productionProof.ok ? "OK" : "WARN"} · ${res.productionProof.message}`
+            : "",
+        ]
+          .filter(Boolean)
+          .join(" · "),
+      );
+      if (res.assemblies?.length) setAssemblies(res.assemblies);
+      if (res.placementPreview) setPromotePreview(res.placementPreview);
+      if (res.projectId) {
+        const listed = await listPhotoEditProjectsAction(photoId);
+        setAssemblies(listed.assemblies ?? res.assemblies ?? []);
+        setEditProject(listed.projects?.find((p) => p.id === res.projectId) ?? listed.projects?.[0] ?? null);
+      }
+      refreshDerivatives(photoId);
+    });
+  }
+
+  function batchFinishForWeb() {
+    const ids = selectedIds.slice(0, BATCH_FINISH_MAX);
+    if (!ids.length) {
+      setMessage(`Select 1–${BATCH_FINISH_MAX} photos for batch Finish.`);
+      return;
+    }
+    const finishSurface = finishSurfaceFromEdit(editIntent, editSurface);
+    const slots = proSlots.length ? proSlots : (["web_max", "hero_16x9", "thumb"] as PhotoExportSlot[]);
+    const cappedNote =
+      selectedIds.length > BATCH_FINISH_MAX
+        ? `\n(Using first ${BATCH_FINISH_MAX} of ${selectedIds.length}.)`
+        : "";
+    if (
+      typeof window !== "undefined" &&
+      !window.confirm(
+        `Batch Finish ${ids.length} still(s) → ${finishSurface}?${cappedNote}\nLook: ${proLook} · ${slots.length} slot(s)\nOne confirm for all. Refuses any lacking focus or consent.\nOriginals untouched. Prefer Unknown.`,
+      )
+    ) {
+      return;
+    }
+    setProRenderNote(`Batch finishing ${ids.length}…`);
+    start(async () => {
+      const res = await batchFinishPhotosForWebAction({
+        photoIds: ids,
+        confirmFinish: true,
+        look: proLook,
+        exportSlots: slots,
+        useFocus: proUseFocus,
+        sharpen: proSharpen,
+        homepageCandidate: promoteHomepage,
+        featuredPhoto: promoteFeatured,
+        heroLevel: promoteHero || undefined,
+        approvedForPublic: promoteApproved,
+        consentConfirmed: Boolean(form?.consentConfirmed),
+        finishSurface,
+        proposeCurate: finishSurface === "homepage" || finishSurface === "journey",
+      });
+      const report = [
+        res.message,
+        ...(res.warnings ?? []).slice(0, 8),
+        res.finished?.length
+          ? `OK: ${res.finished
+              .map((f) => f.photoId)
+              .slice(0, 12)
+              .join(", ")}`
+          : "",
+        res.refused?.length
+          ? `Refused: ${res.refused
+              .map((r) => `${r.photoId} (${r.refuseReason ?? r.message})`)
+              .slice(0, 8)
+              .join("; ")}`
+          : "",
+        res.failed?.length
+          ? `Failed: ${res.failed
+              .map((f) => `${f.photoId}: ${f.message}`)
+              .slice(0, 6)
+              .join("; ")}`
+          : "",
+        res.curateProposalIds?.length
+          ? `Curate pending: ${res.curateProposalIds.join(", ")}`
+          : "",
+      ]
+        .filter(Boolean)
+        .join("\n");
+      setMessage(report);
+      setProRenderNote(report);
+      if (photo) refreshDerivatives(photo.id);
+    });
+  }
+
+  function proveProduction() {
+    const ids = selectedIds.length
+      ? selectedIds.slice(0, 24)
+      : photo
+        ? [photo.id]
+        : [];
+    if (!ids.length) {
+      setMessage("Select photos or open a still to run production proof.");
+      return;
+    }
+    setProRenderNote(`Proving production for ${ids.length}…`);
+    start(async () => {
+      if (ids.length === 1) {
+        const res = await provePhotoProductionAction({
+          photoId: ids[0]!,
+          runHttpSmoke: true,
+        });
+        const detail = [
+          res.message,
+          ...(res.proof?.checks ?? []).map((c) => `${c.ok ? "✓" : "✗"} ${c.id}: ${c.detail}`),
+          res.proof?.smoke ? `HTTP: ${res.proof.smoke.detail}` : "",
+        ]
+          .filter(Boolean)
+          .join("\n");
+        setMessage(detail);
+        setProRenderNote(detail);
+        return;
+      }
+      const res = await provePhotosProductionAction({
+        photoIds: ids,
+        runHttpSmoke: true,
+      });
+      const detail = [
+        res.message,
+        res.failedIds?.length ? `Failed: ${res.failedIds.join(", ")}` : "",
+        ...(res.proofs ?? [])
+          .slice(0, 12)
+          .map((p) => `${p.ok ? "OK" : "FAIL"} ${p.photoId}: ${p.message}`),
+      ]
+        .filter(Boolean)
+        .join("\n");
+      setMessage(detail);
+      setProRenderNote(detail);
     });
   }
 
@@ -902,7 +1283,7 @@ export function EvidencePhotosPanel({
     if (
       typeof window !== "undefined" &&
       !window.confirm(
-        `Promote ${a.slot} assembly to public src?\n${a.publicSrc}\nOriginals stay untouched.`,
+        `Promote + Ship ${a.slot}?\n${a.publicSrc}\n→ campaign-shipped (Netlify-safe)\nOriginals stay untouched.`,
       )
     ) {
       return;
@@ -918,7 +1299,21 @@ export function EvidencePhotosPanel({
         approvedForPublic: promoteApproved,
         consentConfirmed: Boolean(form?.consentConfirmed),
       });
-      setMessage(res.message);
+      if (!res.ok) {
+        setMessage(res.message);
+        if (res.placementPreview) setPromotePreview(res.placementPreview);
+        return;
+      }
+      const ship = await shipPromotedDerivativesAction({
+        confirmShip: true,
+        photoIds: [photoId],
+        limit: 4,
+      });
+      setMessage(
+        ship.ok && ship.shipped?.length
+          ? `${res.message} · Shipped → ${ship.shipped[0]?.to ?? "campaign-shipped"}`
+          : `${res.message} · Ship: ${ship.message}`,
+      );
       if (res.placementPreview) setPromotePreview(res.placementPreview);
       refreshDerivatives(photoId);
     });
@@ -1544,7 +1939,7 @@ export function EvidencePhotosPanel({
           {identifyFocus
             ? "AI first → review fields → Save → Route. Prefer Unknown. No Pro Edit here."
             : deskMode === "edit"
-              ? "Pro Edit / promote only. Route here after Identify when the asset needs special use."
+              ? "Focus · Look · Studio canvas · Finish for web. Prefer Unknown."
               : "Progressive desk — Identify on Unknown; Pro Edit / Promote under Needs Promote. Prefer Unknown."}
         </p>
         <div className="mt-2 flex flex-wrap gap-2">
@@ -1694,6 +2089,15 @@ export function EvidencePhotosPanel({
               onClick={clearSelection}
             >
               Clear
+            </button>
+            <button
+              type="button"
+              disabled={pending || selectedIds.length < 1}
+              className="rounded border-2 border-[#ca913d] bg-white px-2 py-1 font-body text-[11px] font-bold text-[#12124a] disabled:opacity-50"
+              onClick={batchFinishForWeb}
+              title={`V2.3 · one confirm · max ${BATCH_FINISH_MAX}`}
+            >
+              Batch Finish for web ({Math.min(selectedIds.length, BATCH_FINISH_MAX)})
             </button>
             <button
               type="button"
@@ -1910,39 +2314,69 @@ export function EvidencePhotosPanel({
             </button>
           </div>
           {/* key forces remount so the browser cannot keep a stale frame when advancing */}
-          <div className="relative mt-3">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              key={photo.id}
-              ref={previewImgRef}
-              src={imageSrc}
-              alt={photo.alt}
-              onClick={onPreviewClick}
-              onLoad={() => {
-                const img = previewImgRef.current;
-                if (!img || !focus) {
-                  setFocusMarker(null);
-                  return;
+          {deskMode === "edit" ? (
+            <div className="mt-3">
+              <EvidencePhotoStudioCanvas
+                src={imageSrc}
+                photoId={photo.id}
+                look={proLook}
+                slots={proSlots.length ? proSlots : (["hero_16x9", "square_1x1", "story_9x16"] as PhotoExportSlot[])}
+                activeSlot={
+                  studioSlot && proSlots.includes(studioSlot)
+                    ? studioSlot
+                    : (proSlots[0] ?? "hero_16x9")
                 }
-                setFocusMarker(focusPointToMarker(img, focus));
-              }}
-              title="Click to set focus point for attention crops"
-              className="max-h-[28rem] w-full cursor-crosshair rounded-lg border border-[#8eb6dc]/40 object-contain bg-[#f4f7fc]"
-            />
-            {focusMarker ? (
-              <span
-                className="pointer-events-none absolute h-5 w-5 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-[#ca913d] bg-[#ca913d]/35 shadow"
-                style={{ left: focusMarker.left, top: focusMarker.top }}
-                aria-hidden
+                onActiveSlotChange={(slot) => {
+                  setStudioSlot(slot);
+                  if (!proSlots.includes(slot)) {
+                    setProSlots((prev) => [...prev, slot]);
+                  }
+                }}
+                focus={focus}
+                onFocusChange={onStudioFocusChange}
+                aiLayerSrc={aiStudioLayerSrc}
+                onBurnInChange={onStudioBurnInChange}
+                onCropRectChange={onStudioCropRectChange}
+                initialCropRect={editProject?.cropRect ?? null}
               />
-            ) : null}
-          </div>
-          <p className="mt-2 font-body text-[11px] text-[#364272]">
-            Focus:{" "}
-            {focus
-              ? `${Math.round(focus.x * 100)}% × ${Math.round(focus.y * 100)}% (click photo to move)`
-              : "click photo to set attention point"}
-          </p>
+            </div>
+          ) : (
+            <div className="relative mt-3">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                key={photo.id}
+                ref={previewImgRef}
+                src={imageSrc}
+                alt={photo.alt}
+                onClick={onPreviewClick}
+                onLoad={() => {
+                  const img = previewImgRef.current;
+                  if (!img || !focus) {
+                    setFocusMarker(null);
+                    return;
+                  }
+                  setFocusMarker(focusPointToMarker(img, focus));
+                }}
+                title="Click to set focus point for attention crops"
+                className="max-h-[28rem] w-full cursor-crosshair rounded-lg border border-[#8eb6dc]/40 object-contain bg-[#f4f7fc]"
+              />
+              {focusMarker ? (
+                <span
+                  className="pointer-events-none absolute h-5 w-5 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-[#ca913d] bg-[#ca913d]/35 shadow"
+                  style={{ left: focusMarker.left, top: focusMarker.top }}
+                  aria-hidden
+                />
+              ) : null}
+            </div>
+          )}
+          {deskMode !== "edit" ? (
+            <p className="mt-2 font-body text-[11px] text-[#364272]">
+              Focus:{" "}
+              {focus
+                ? `${Math.round(focus.x * 100)}% × ${Math.round(focus.y * 100)}% (click photo to move)`
+                : "click photo to set attention point"}
+            </p>
+          ) : null}
           <p className="mt-1 font-mono text-xs text-[#364272]">{photo.id}</p>
           <div className="mt-1 flex flex-wrap items-center gap-2">
             {ownedMediaLink?.linked && ownedMediaLink.ownedMediaId ? (
@@ -2028,15 +2462,15 @@ export function EvidencePhotosPanel({
             aria-hidden={!showProEdit}
           >
             <p className={ewPanelTitleClass}>
-              Pro Edit suite
+              {deskMode === "edit" ? "Edit desk · Focus · Look · Finish" : "Pro Edit suite"}
               {deskMode === "edit" && editIntent
                 ? ` · ${photoEditLanePreset(editIntent, editSurface).label}`
                 : ""}
             </p>
             <p className="mt-1 font-body text-[11px] text-[#364272]">
-              Industry-grade look → focus-aware multi-aspect pack → preview → confirm render → promote.
-              Film / bright / editorial looks; slot chips; ledger-bridged assemblies. Never overwrites
-              originals; never auto-promotes.
+              {deskMode === "edit"
+                ? "Click the still for Focus, pick a Look, then Finish for web. One confirm runs Apply → Confirm render → Promote → Ship. Originals never overwritten."
+                : "Industry-grade look → focus-aware multi-aspect pack → preview → confirm render → promote. Never overwrites originals; never auto-promotes."}
             </p>
             <div className="mt-2 flex flex-wrap gap-3 font-body text-[11px] text-[#12124a]">
               <label className="inline-flex flex-col gap-0.5">
@@ -2075,6 +2509,48 @@ export function EvidencePhotosPanel({
                 Extra sharpen
               </label>
             </div>
+            {deskMode === "edit" ? (
+              <div className="mt-3 flex flex-wrap items-center gap-2">
+                <button
+                  type="button"
+                  disabled={pending}
+                  onClick={finishForWeb}
+                  className="rounded border-2 border-[#000066] bg-[#000066] px-3 py-2 font-body text-sm font-bold text-white disabled:opacity-50"
+                >
+                  Finish for web
+                  {editIntent || editSurface
+                    ? ` · ${finishSurfaceFromEdit(editIntent, editSurface)}`
+                    : ""}
+                </button>
+                <button
+                  type="button"
+                  disabled={pending || selectedIds.length < 1}
+                  onClick={batchFinishForWeb}
+                  className="rounded border-2 border-[#ca913d] bg-white px-3 py-2 font-body text-sm font-bold text-[#12124a] disabled:opacity-50"
+                  title={`Confirm once for up to ${BATCH_FINISH_MAX} selected stills`}
+                >
+                  Batch Finish ({Math.min(selectedIds.length, BATCH_FINISH_MAX) || 0}/{BATCH_FINISH_MAX})
+                </button>
+                <button
+                  type="button"
+                  disabled={pending || (!photo && selectedIds.length < 1)}
+                  onClick={proveProduction}
+                  className="rounded border-2 border-[#8eb6dc] bg-[#f4f7fc] px-3 py-2 font-body text-sm font-semibold text-[#12124a] disabled:opacity-50"
+                  title="V2.4 · ship-only override + file on disk (+ optional HTTP smoke)"
+                >
+                  Prove production
+                </button>
+                <p className="font-body text-[10px] text-[#364272]">
+                  {finishSurfaceFromEdit(editIntent, editSurface) === "social"
+                    ? "Download pack only · confirm required"
+                    : "Apply → Confirm → Promote → Ship → curate · production proof · batch max 12"}
+                </p>
+              </div>
+            ) : null}
+            <details className={`mt-3 ${deskMode === "edit" ? "" : "open"}`} open={deskMode !== "edit"}>
+              <summary className="cursor-pointer font-heading text-[10px] font-bold uppercase tracking-wide text-[#000066]">
+                {deskMode === "edit" ? "Advanced · slots & steps" : "Slots & steps"}
+              </summary>
             <div className="mt-2 flex flex-wrap gap-1.5">
               {(
                 [
@@ -2141,6 +2617,7 @@ export function EvidencePhotosPanel({
                 Soft-archive
               </button>
             </div>
+            </details>
             {proRenderNote ? (
               <p className="mt-2 font-body text-[11px] text-[#364272]">{proRenderNote}</p>
             ) : null}
@@ -2244,7 +2721,7 @@ export function EvidencePhotosPanel({
                           onClick={() => promoteAssembly(a)}
                           className="rounded border border-[#000066] px-2 py-0.5 font-body text-[10px] font-semibold text-[#000066] disabled:opacity-50"
                         >
-                          Promote
+                          Promote + Ship
                         </button>
                       ) : null}
                     </div>
@@ -2300,12 +2777,28 @@ export function EvidencePhotosPanel({
             </div>
             <div className="mt-3 rounded border border-[#8eb6dc]/40 bg-[#f4f7fc] p-2">
               <p className="font-heading text-[10px] font-bold uppercase tracking-wide text-[#000066]">
-                Focus crops (attention)
+                Focus crops · Vision (P2)
               </p>
               <p className="mt-1 font-body text-[11px] text-[#364272]">
-                Click the photo to set focus, then create a crop that keeps that point in frame.
+                Click the photo or run Vision suggest focus. Prefer Unknown — no geography invented.
               </p>
               <div className="mt-2 flex flex-wrap gap-2">
+                <button
+                  type="button"
+                  disabled={pending}
+                  onClick={() => runVisionFocus(false)}
+                  className="rounded border-2 border-[#000066] bg-white px-2.5 py-1 font-body text-xs font-semibold text-[#000066] disabled:opacity-50"
+                >
+                  Vision suggest focus
+                </button>
+                <button
+                  type="button"
+                  disabled={pending}
+                  onClick={() => runVisionFocus(true)}
+                  className="rounded border-2 border-[#000066] bg-[#000066] px-2.5 py-1 font-body text-xs font-bold text-white disabled:opacity-50"
+                >
+                  Vision → apply focus
+                </button>
                 {(
                   [
                     ["Focus hero 16:9", "focus_hero_16x9"],
@@ -2330,9 +2823,14 @@ export function EvidencePhotosPanel({
                   className={`${EVIDENCE_FIELD_CLASS} mt-1 min-h-[3rem] w-full`}
                   value={cropAdvice}
                   onChange={(e) => setCropAdvice(e.target.value)}
-                  placeholder="From Suggest with AI, or type framing advice"
+                  placeholder="From Vision suggest, or type framing advice"
                 />
               </label>
+              {visionRecommendedKind ? (
+                <p className="mt-1 font-mono text-[10px] text-[#364272]">
+                  Vision kind · {visionRecommendedKind}
+                </p>
+              ) : null}
               <button
                 type="button"
                 disabled={pending}
@@ -2340,6 +2838,58 @@ export function EvidencePhotosPanel({
                 className="mt-2 rounded border-2 border-[#000066] bg-[#000066] px-2.5 py-1 font-body text-xs font-semibold text-white disabled:opacity-50"
               >
                 Apply cropAdvice → derivative
+              </button>
+            </div>
+            <div className="mt-3 rounded border border-[#ca913d]/40 bg-[#fff8ef] p-2">
+              <p className="font-heading text-[10px] font-bold uppercase tracking-wide text-[#000066]">
+                OpenAI Images assist (P2)
+              </p>
+              <p className="mt-1 font-body text-[11px] text-[#364272]">
+                Confirm-gated. Writes under campaign-derivatives only — never overwrites originals.
+              </p>
+              <div className="mt-2 flex flex-wrap gap-2">
+                <button
+                  type="button"
+                  disabled={pending}
+                  onClick={runAiEnhance}
+                  className="rounded border-2 border-[#000066] bg-[#000066] px-2.5 py-1 font-body text-xs font-bold text-white disabled:opacity-50"
+                >
+                  Enhance (confirm)
+                </button>
+                <button
+                  type="button"
+                  disabled={pending}
+                  onClick={runAiCutout}
+                  className="rounded border-2 border-[#8eb6dc] bg-white px-2.5 py-1 font-body text-xs font-semibold text-[#12124a] disabled:opacity-50"
+                >
+                  Remove background (confirm)
+                </button>
+              </div>
+              <label className="mt-2 block font-body text-[11px] text-[#12124a]">
+                Inpaint audit note
+                <input
+                  className={`${EVIDENCE_FIELD_CLASS} mt-1 w-full`}
+                  value={inpaintAudit}
+                  onChange={(e) => setInpaintAudit(e.target.value)}
+                  placeholder="e.g. remove overhead wire top-left — cosmetic only"
+                />
+              </label>
+              <label className="mt-2 block font-body text-[11px] text-[#12124a]">
+                Inpaint mask PNG (white = edit)
+                <input
+                  type="file"
+                  accept="image/png,image/*"
+                  className="mt-1 block w-full font-body text-[10px]"
+                  onChange={(e) => onInpaintMaskFile(e.target.files?.[0] ?? null)}
+                />
+              </label>
+              <button
+                type="button"
+                disabled={pending}
+                onClick={runAiInpaint}
+                className="mt-2 rounded border-2 border-[#ca913d] bg-white px-2.5 py-1 font-body text-xs font-semibold text-[#12124a] disabled:opacity-50"
+              >
+                Inpaint cleanup (confirm)
               </button>
             </div>
             <div className="mt-3 rounded border border-[#ca913d]/40 bg-[#fff8ef] p-2">

@@ -281,9 +281,26 @@ export async function executeEvidenceAiTool(
         if (!DERIVATIVE_KINDS.has(kind)) {
           return { ok: false, error: `Unsupported kind: ${kind}` };
         }
+        if (kind === "enhance_ai" || kind === "cutout_bg" || kind === "inpaint_cleanup") {
+          return {
+            ok: false,
+            error: "Use confirm-gated enhance/cutout/inpaint actions for OpenAI Images kinds.",
+          };
+        }
         const result = await createPhotoDerivative({
           photoId,
-          kind: kind as Exclude<PhotoDerivativeKind, "inspect_only">,
+          kind: kind as
+            | "web_max"
+            | "thumb"
+            | "hero_16x9"
+            | "portrait_4x5"
+            | "square_1x1"
+            | "auto_orient"
+            | "focus_hero_16x9"
+            | "focus_portrait_4x5"
+            | "focus_square_1x1"
+            | "grade_full"
+            | "story_9x16",
           maxEdge: typeof args.maxEdge === "number" ? args.maxEdge : undefined,
           quality: typeof args.quality === "number" ? args.quality : undefined,
           note: asString(args.note) || undefined,
@@ -398,7 +415,7 @@ export async function executeEvidenceAiTool(
         const { intakeAllNewCampaignPhotos, getPhotoIntakeStatus } = await import(
           "@/lib/campaign-media/photo-ingest"
         );
-        const result = intakeAllNewCampaignPhotos();
+        const result = await intakeAllNewCampaignPhotos();
         if (!result.ok) return { ok: false, error: result.message };
         return { ok: true, result: { ...result, status: getPhotoIntakeStatus() } };
       }
@@ -507,7 +524,7 @@ export async function executeEvidenceAiTool(
         }
         const result = await createPhotoDerivative({
           photoId,
-          kind: kind as Exclude<PhotoDerivativeKind, "inspect_only">,
+          kind: kind as "focus_hero_16x9" | "focus_portrait_4x5" | "focus_square_1x1",
           focusX: typeof args.focusX === "number" ? args.focusX : undefined,
           focusY: typeof args.focusY === "number" ? args.focusY : undefined,
         });

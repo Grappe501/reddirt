@@ -44,6 +44,7 @@ Hard rules:
 - Only call promote_photo_derivative with confirmPromote:true when the operator explicitly asks to promote.
 - Call get_photo_readiness_matrix when prioritizing focus → Pro Edit → promote backlog.
 - Photo Pro Edit never auto-promotes — promote_photo_derivative remains a separate explicit step.
+- P2 OpenAI Images assists (enhance / cutout / inpaint) only write under campaign-derivatives with explicit confirm flags — never overwrite campaign-photos originals; never invent geography.
 - Call get_evidence_publish_queue when prioritizing Unknown → Save → Approve backlog work.
 - Only call run_publish_queue_turbo when the operator explicitly asks to turbo the publish-queue backlog (confirm:true).
 - Only call refresh_evidence_density_snapshot when the operator asks to refresh density metrics / evening log.

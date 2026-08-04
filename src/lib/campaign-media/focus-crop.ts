@@ -43,6 +43,169 @@ export function clickToFocusPoint(input: {
 
 export type CropRect = { left: number; top: number; width: number; height: number };
 
+/** Normalized crop in source image space (0–1). V2.2 true crop. */
+export type NormalizedCropRect = { x: number; y: number; w: number; h: number };
+
+const MIN_NORM_CROP = 0.04;
+
+export function clampNorm(n: number): number {
+  if (!Number.isFinite(n)) return 0;
+  return Math.min(1, Math.max(0, n));
+}
+
+/** Validate / clamp a normalized crop rect; returns undefined if unusable. */
+export function normalizeCropRect(raw: unknown): NormalizedCropRect | undefined {
+  if (!raw || typeof raw !== "object") return undefined;
+  const o = raw as Record<string, unknown>;
+  const x = clampNorm(Number(o.x));
+  const y = clampNorm(Number(o.y));
+  let w = Number(o.w);
+  let h = Number(o.h);
+  if (!Number.isFinite(w) || !Number.isFinite(h)) return undefined;
+  w = Math.min(1 - x, Math.max(MIN_NORM_CROP, w));
+  h = Math.min(1 - y, Math.max(MIN_NORM_CROP, h));
+  if (w < MIN_NORM_CROP || h < MIN_NORM_CROP) return undefined;
+  return { x, y, w, h };
+}
+
+export function pixelRectFromNormalized(
+  n: NormalizedCropRect,
+  srcWidth: number,
+  srcHeight: number,
+): CropRect {
+  const srcW = Math.max(1, Math.floor(srcWidth));
+  const srcH = Math.max(1, Math.floor(srcHeight));
+  let left = Math.round(n.x * srcW);
+  let top = Math.round(n.y * srcH);
+  let width = Math.round(n.w * srcW);
+  let height = Math.round(n.h * srcH);
+  width = Math.max(1, Math.min(width, srcW - left));
+  height = Math.max(1, Math.min(height, srcH - top));
+  left = Math.max(0, Math.min(left, srcW - width));
+  top = Math.max(0, Math.min(top, srcH - height));
+  return { left, top, width, height };
+}
+
+export function normalizedFromPixelRect(
+  rect: CropRect,
+  srcWidth: number,
+  srcHeight: number,
+): NormalizedCropRect {
+  const srcW = Math.max(1, srcWidth);
+  const srcH = Math.max(1, srcHeight);
+  return normalizeCropRect({
+    x: rect.left / srcW,
+    y: rect.top / srcH,
+    w: rect.width / srcW,
+    h: rect.height / srcH,
+  }) ?? { x: 0, y: 0, w: 1, h: 1 };
+}
+
+/** Cover-style crop as normalized rect (focus fallback). */
+export function normalizedCoverCrop(input: {
+  srcWidth: number;
+  srcHeight: number;
+  targetAspect: number;
+  focus?: FocusPoint | null;
+}): NormalizedCropRect {
+  const px = coverCropRect(input);
+  return normalizedFromPixelRect(px, input.srcWidth, input.srcHeight);
+}
+
+/** Keep aspect; move by normalized deltas. */
+export function moveNormalizedCrop(
+  rect: NormalizedCropRect,
+  dx: number,
+  dy: number,
+): NormalizedCropRect {
+  const x = clampNorm(Math.min(rect.x + dx, 1 - rect.w));
+  const y = clampNorm(Math.min(rect.y + dy, 1 - rect.h));
+  return { x, y, w: rect.w, h: rect.h };
+}
+
+/**
+ * Resize from a corner while locking aspect. Corner: tl|tr|bl|br.
+ * dx/dy are normalized deltas in source space.
+ */
+export function resizeNormalizedCrop(input: {
+  rect: NormalizedCropRect;
+  corner: "tl" | "tr" | "bl" | "br";
+  dx: number;
+  dy: number;
+  aspect: number;
+}): NormalizedCropRect {
+  const { rect, corner, aspect } = input;
+  const right = rect.x + rect.w;
+  const bottom = rect.y + rect.h;
+  let x1 = rect.x;
+  let y1 = rect.y;
+  let x2 = right;
+  let y2 = bottom;
+
+  if (corner.includes("l")) x1 = clampNorm(rect.x + input.dx);
+  else x2 = clampNorm(right + input.dx);
+  if (corner.startsWith("t")) y1 = clampNorm(rect.y + input.dy);
+  else y2 = clampNorm(bottom + input.dy);
+
+  if (x2 < x1) [x1, x2] = [x2, x1];
+  if (y2 < y1) [y1, y2] = [y2, y1];
+
+  let w = Math.max(MIN_NORM_CROP, x2 - x1);
+  let h = Math.max(MIN_NORM_CROP, y2 - y1);
+
+  // Lock aspect from the dragged corner's opposite anchor.
+  if (aspect > 0) {
+    if (w / h > aspect) {
+      h = w / aspect;
+    } else {
+      w = h * aspect;
+    }
+    if (corner.includes("l")) {
+      x1 = x2 - w;
+    } else {
+      x2 = x1 + w;
+    }
+    if (corner.startsWith("t")) {
+      y1 = y2 - h;
+    } else {
+      y2 = y1 + h;
+    }
+  }
+
+  // Re-clamp into [0,1]
+  if (x1 < 0) {
+    x2 -= x1;
+    x1 = 0;
+  }
+  if (y1 < 0) {
+    y2 -= y1;
+    y1 = 0;
+  }
+  if (x2 > 1) {
+    x1 -= x2 - 1;
+    x2 = 1;
+  }
+  if (y2 > 1) {
+    y1 -= y2 - 1;
+    y2 = 1;
+  }
+  w = Math.max(MIN_NORM_CROP, x2 - x1);
+  h = Math.max(MIN_NORM_CROP, y2 - y1);
+  if (aspect > 0) {
+    if (w / h > aspect) h = w / aspect;
+    else w = h * aspect;
+    if (x1 + w > 1) {
+      w = 1 - x1;
+      h = w / aspect;
+    }
+    if (y1 + h > 1) {
+      h = 1 - y1;
+      w = h * aspect;
+    }
+  }
+  return normalizeCropRect({ x: x1, y: y1, w, h }) ?? rect;
+}
+
 /**
  * Compute a cover-style crop rectangle for targetAspect (width/height),
  * centered on focus when provided; otherwise image center.
@@ -109,4 +272,43 @@ export function parseCropAdviceToKind(advice: string): {
     return { kind: "focus_hero_16x9", reason: "cropAdvice suggests hero/landscape framing" };
   }
   return { kind: "focus_hero_16x9", reason: "default focus hero crop from cropAdvice" };
+}
+
+/** Map Vision recommendedKind (or free text) to a focus crop kind. */
+export function mapVisionRecommendedKind(
+  raw: string,
+): "focus_hero_16x9" | "focus_portrait_4x5" | "focus_square_1x1" | null {
+  const t = String(raw ?? "")
+    .trim()
+    .toLowerCase()
+    .replace(/[\s-]+/g, "_");
+  if (
+    t === "focus_square_1x1" ||
+    t === "square_1x1" ||
+    t === "square" ||
+    t === "1x1"
+  ) {
+    return "focus_square_1x1";
+  }
+  if (
+    t === "focus_portrait_4x5" ||
+    t === "portrait_4x5" ||
+    t === "portrait" ||
+    t === "4x5" ||
+    t === "story_9x16"
+  ) {
+    return "focus_portrait_4x5";
+  }
+  if (
+    t === "focus_hero_16x9" ||
+    t === "hero_16x9" ||
+    t === "hero" ||
+    t === "16x9" ||
+    t === "landscape"
+  ) {
+    return "focus_hero_16x9";
+  }
+  if (!t) return null;
+  // Fall back to keyword parse for free-text cropAdvice from Vision
+  return parseCropAdviceToKind(raw).kind;
 }

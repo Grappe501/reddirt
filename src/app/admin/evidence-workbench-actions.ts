@@ -1080,7 +1080,7 @@ export async function intakeAllPhotosAction(): Promise<{
   const { intakeAllNewCampaignPhotos, getPhotoIntakeStatus } = await import(
     "@/lib/campaign-media/photo-ingest"
   );
-  const result = intakeAllNewCampaignPhotos();
+  const result = await intakeAllNewCampaignPhotos();
   let ownedMediaLinked = 0;
   let ownedMediaUnlinked = 0;
   let ownedNote = "";
@@ -1460,7 +1460,7 @@ export async function promotePhotoIngestAction(
   const g = await gate();
   if (!g.ok) return { ok: false, message: g.error };
   const { intakeOneCampaignPhoto } = await import("@/lib/campaign-media/photo-ingest");
-  const result = intakeOneCampaignPhoto(filename);
+  const result = await intakeOneCampaignPhoto(filename);
   if (!result.ok) return { ok: false, message: result.error };
   revalidatePath("/admin/evidence-workbench");
   return {
@@ -1571,6 +1571,7 @@ export async function createDerivativeFromCropAdviceAction(input: {
   cropAdvice: string;
   focusX?: number;
   focusY?: number;
+  recommendedKind?: string;
 }): Promise<{ ok: boolean; message: string; publicSrc?: string }> {
   const g = await gate();
   if (!g.ok) return { ok: false, message: g.error };
@@ -1583,7 +1584,7 @@ export async function createDerivativeFromCropAdviceAction(input: {
   const prev = store.photos[input.photoId] ?? {};
   store.photos[input.photoId] = {
     ...prev,
-    cropAdviceNote: input.cropAdvice.trim(),
+    cropAdviceNote: input.cropAdvice.trim() || prev.cropAdviceNote,
     focusX: result.record.focusX ?? prev.focusX,
     focusY: result.record.focusY ?? prev.focusY,
     updatedAt: new Date().toISOString(),
@@ -1596,6 +1597,109 @@ export async function createDerivativeFromCropAdviceAction(input: {
     message: `${result.reason} → ${result.mappedKind} → ${result.record.publicSrc}`,
     publicSrc: result.record.publicSrc,
   };
+}
+
+/** P2 — Vision focus + crop advice (propose). Optional confirmApplyFocus writes overlay. */
+export async function suggestVisionFocusAction(input: {
+  photoId: string;
+  confirmApplyFocus?: boolean;
+}): Promise<{
+  ok: boolean;
+  message: string;
+  suggestion?: import("@/lib/campaign-media/vision-focus-suggest").VisionFocusSuggestion;
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { suggestFocusAndCropWithVision } = await import(
+    "@/lib/campaign-media/vision-focus-suggest"
+  );
+  const result = await suggestFocusAndCropWithVision({ photoId: String(input.photoId ?? "").trim() });
+  if (!result.ok) return { ok: false, message: result.error };
+
+  if (input.confirmApplyFocus) {
+    const store = loadPhotoEvidenceStore();
+    const photoId = String(input.photoId ?? "").trim();
+    const prev = store.photos[photoId] ?? {};
+    store.photos[photoId] = {
+      ...prev,
+      focusX: result.suggestion.focusX,
+      focusY: result.suggestion.focusY,
+      focusBox: result.suggestion.focusBox ?? undefined,
+      cropAdviceNote: result.suggestion.cropAdvice,
+      updatedAt: new Date().toISOString(),
+    };
+    savePhotoEvidenceStore(store);
+    revalidatePath("/admin/evidence-workbench");
+  }
+
+  return {
+    ok: true,
+    message: input.confirmApplyFocus
+      ? `${result.message} · focus applied to overlay.`
+      : `${result.message} · propose only (confirm to apply).`,
+    suggestion: result.suggestion,
+  };
+}
+
+/** P2 — gpt-image enhance → campaign-derivatives only. */
+export async function enhancePhotoDerivativeAction(input: {
+  photoId: string;
+  confirmEnhance: boolean;
+  prompt?: string;
+}): Promise<{ ok: boolean; message: string; publicSrc?: string }> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { enhancePhotoDerivative } = await import("@/lib/campaign-media/photo-ai-assist");
+  const result = await enhancePhotoDerivative(input);
+  if (result.ok && result.record) revalidatePath("/admin/evidence-workbench");
+  return { ok: result.ok, message: result.message, publicSrc: result.record?.publicSrc };
+}
+
+/** P2 — background cutout → PNG derivative. */
+export async function cutoutPhotoBackgroundAction(input: {
+  photoId: string;
+  confirmCutout: boolean;
+  prompt?: string;
+}): Promise<{ ok: boolean; message: string; publicSrc?: string }> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { cutoutPhotoBackground } = await import("@/lib/campaign-media/photo-ai-assist");
+  const result = await cutoutPhotoBackground(input);
+  if (result.ok && result.record) revalidatePath("/admin/evidence-workbench");
+  return { ok: result.ok, message: result.message, publicSrc: result.record?.publicSrc };
+}
+
+/** P2 — inpaint cleanup with mask + audit note. */
+export async function inpaintPhotoCleanupAction(input: {
+  photoId: string;
+  confirmInpaint: boolean;
+  auditNote: string;
+  prompt?: string;
+  /** Base64 PNG mask (no data: prefix required; optional data URL accepted). */
+  maskBase64?: string;
+}): Promise<{ ok: boolean; message: string; publicSrc?: string }> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { inpaintPhotoCleanup } = await import("@/lib/campaign-media/photo-ai-assist");
+  let maskBytes: Buffer | undefined;
+  const raw = String(input.maskBase64 ?? "").trim();
+  if (raw) {
+    const b64 = raw.includes(",") ? raw.split(",").pop()! : raw;
+    try {
+      maskBytes = Buffer.from(b64, "base64");
+    } catch {
+      return { ok: false, message: "Invalid maskBase64." };
+    }
+  }
+  const result = await inpaintPhotoCleanup({
+    photoId: input.photoId,
+    confirmInpaint: input.confirmInpaint,
+    auditNote: input.auditNote,
+    prompt: input.prompt,
+    maskBytes,
+  });
+  if (result.ok && result.record) revalidatePath("/admin/evidence-workbench");
+  return { ok: result.ok, message: result.message, publicSrc: result.record?.publicSrc };
 }
 
 export async function batchCreatePhotoDerivativesAction(input: {
@@ -1657,6 +1761,112 @@ export async function promotePhotoDerivativeAction(input: {
     placementPreview: result.placementPreview,
     publicSrc: result.publicSrc,
     registrySrc: result.registrySrc,
+  };
+}
+
+/** P0/P1 — Apply → Confirm render → Promote → Ship (+ optional curate proposal). */
+export async function finishPhotoForWebAction(input: {
+  photoId: string;
+  confirmFinish: boolean;
+  projectId?: string;
+  look?: "neutral" | "warm" | "cool" | "contrast" | "soft" | "punch" | "mono" | "film" | "bright" | "editorial";
+  exportSlots?: Array<
+    "grade_full" | "hero_16x9" | "portrait_4x5" | "square_1x1" | "story_9x16" | "web_max" | "thumb"
+  >;
+  useFocus?: boolean;
+  focusX?: number;
+  focusY?: number;
+  sharpen?: boolean;
+  homepageCandidate?: boolean;
+  featuredPhoto?: boolean;
+  heroLevel?: string;
+  approvedForPublic?: boolean;
+  consentConfirmed?: boolean;
+  finishSurface?: "homepage" | "journey" | "album" | "social";
+  proposeCurate?: boolean;
+  burnIn?: import("@/lib/campaign-media/photo-edit-types").PhotoStudioBurnIn | null;
+  cropRect?: import("@/lib/campaign-media/focus-crop").NormalizedCropRect | null;
+}): Promise<{
+  ok: boolean;
+  message: string;
+  steps?: string[];
+  warnings?: string[];
+  projectId?: string;
+  publicSrc?: string;
+  placementPreview?: string[];
+  assemblies?: import("@/lib/campaign-media/photo-edit-types").PhotoAssemblyRecord[];
+  curateProposalId?: string;
+  finishSurface?: string;
+  productionProof?: import("@/lib/campaign-media/photo-production-proof").PhotoProductionProof;
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { finishPhotoForWeb } = await import("@/lib/campaign-media/finish-photo-for-web");
+  const result = await finishPhotoForWeb(input);
+  if (result.ok) revalidateEvidenceSurfaces();
+  return {
+    ok: result.ok,
+    message: result.message,
+    steps: result.steps,
+    warnings: result.warnings,
+    projectId: result.projectId,
+    publicSrc: result.publicSrc,
+    placementPreview: result.placementPreview,
+    assemblies: result.assemblies,
+    curateProposalId: result.curateProposalId,
+    finishSurface: result.finishSurface,
+    productionProof: result.productionProof,
+  };
+}
+
+export async function batchFinishPhotosForWebAction(input: {
+  photoIds: string[];
+  confirmFinish: boolean;
+  look?: "neutral" | "warm" | "cool" | "contrast" | "soft" | "punch" | "mono" | "film" | "bright" | "editorial";
+  exportSlots?: Array<
+    "grade_full" | "hero_16x9" | "portrait_4x5" | "square_1x1" | "story_9x16" | "web_max" | "thumb"
+  >;
+  useFocus?: boolean;
+  sharpen?: boolean;
+  homepageCandidate?: boolean;
+  featuredPhoto?: boolean;
+  heroLevel?: string;
+  approvedForPublic?: boolean;
+  consentConfirmed?: boolean;
+  finishSurface?: "homepage" | "journey" | "album" | "social";
+  proposeCurate?: boolean;
+  burnIn?: import("@/lib/campaign-media/photo-edit-types").PhotoStudioBurnIn | null;
+  cropRect?: import("@/lib/campaign-media/focus-crop").NormalizedCropRect | null;
+}): Promise<{
+  ok: boolean;
+  message: string;
+  finishSurface?: string;
+  finished?: import("@/lib/campaign-media/batch-finish-photos-for-web").BatchFinishItemResult[];
+  refused?: import("@/lib/campaign-media/batch-finish-photos-for-web").BatchFinishItemResult[];
+  failed?: import("@/lib/campaign-media/batch-finish-photos-for-web").BatchFinishItemResult[];
+  curateProposalIds?: string[];
+  warnings?: string[];
+  processed?: number;
+  cappedFrom?: number;
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { batchFinishPhotosForWeb } = await import(
+    "@/lib/campaign-media/batch-finish-photos-for-web"
+  );
+  const result = await batchFinishPhotosForWeb(input);
+  if (result.finished.length > 0) revalidateEvidenceSurfaces();
+  return {
+    ok: result.ok,
+    message: result.message,
+    finishSurface: result.finishSurface,
+    finished: result.finished,
+    refused: result.refused,
+    failed: result.failed,
+    curateProposalIds: result.curateProposalIds,
+    warnings: result.warnings,
+    processed: result.processed,
+    cappedFrom: result.cappedFrom,
   };
 }
 
@@ -2122,6 +2332,8 @@ export async function updatePhotoEditProjectAction(input: {
           | "web_max"
           | "thumb"
           | null;
+        burnIn?: import("@/lib/campaign-media/photo-edit-types").PhotoStudioBurnIn | null;
+        cropRect?: import("@/lib/campaign-media/focus-crop").NormalizedCropRect | null;
       }
     | {
         op: "set_slots";
@@ -2223,7 +2435,7 @@ export async function getPhotoReadinessMatrixAction(input?: {
   });
   return {
     ok: true,
-    message: `${matrix.total} still(s) · focus gap ${matrix.needsFocus} · Pro Edit gap ${matrix.needsProEdit} · promote gap ${matrix.needsPromote}`,
+    message: `${matrix.total} still(s) · blocked ${matrix.blocked} · focus ${matrix.needsFocus} · Pro Edit ${matrix.needsProEdit} · promote ${matrix.needsPromote} · ship ${matrix.needsShip}`,
     matrix,
   };
 }
@@ -2459,6 +2671,52 @@ export async function getEvidenceToolingReadinessAction(): Promise<{
       ? "OpenAI + ffmpeg ready."
       : readiness.blockers.join(" · ") || "Tooling blockers present.",
     readiness,
+  };
+}
+
+export async function provePhotoProductionAction(input: {
+  photoId: string;
+  smokeBaseUrl?: string;
+  runHttpSmoke?: boolean;
+}): Promise<{
+  ok: boolean;
+  message: string;
+  proof?: import("@/lib/campaign-media/photo-production-proof").PhotoProductionProof;
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { provePhotoProduction } = await import("@/lib/campaign-media/photo-production-proof");
+  const proof = await provePhotoProduction({
+    photoId: String(input.photoId ?? "").trim(),
+    smokeBaseUrl: input.smokeBaseUrl,
+    runHttpSmoke: input.runHttpSmoke,
+  });
+  return { ok: proof.ok, message: proof.message, proof };
+}
+
+export async function provePhotosProductionAction(input: {
+  photoIds: string[];
+  smokeBaseUrl?: string;
+  runHttpSmoke?: boolean;
+}): Promise<{
+  ok: boolean;
+  message: string;
+  proofs?: import("@/lib/campaign-media/photo-production-proof").PhotoProductionProof[];
+  failedIds?: string[];
+}> {
+  const g = await gate();
+  if (!g.ok) return { ok: false, message: g.error };
+  const { provePhotosProduction } = await import("@/lib/campaign-media/photo-production-proof");
+  const result = await provePhotosProduction({
+    photoIds: input.photoIds ?? [],
+    smokeBaseUrl: input.smokeBaseUrl,
+    runHttpSmoke: input.runHttpSmoke,
+  });
+  return {
+    ok: result.ok,
+    message: result.message,
+    proofs: result.proofs,
+    failedIds: result.failedIds,
   };
 }
 
@@ -2750,7 +3008,7 @@ export async function dropCampaignPhotosToDiskAction(formData: FormData): Promis
   const { dropCampaignPhotosToDisk } = await import(
     "@/lib/campaign-media/drop-campaign-photos-to-disk"
   );
-  const result = dropCampaignPhotosToDisk(files);
+  const result = await dropCampaignPhotosToDisk(files);
   if (result.ok) {
     revalidatePath("/admin/evidence-workbench");
     revalidatePath("/campaign-photos");

@@ -17,6 +17,7 @@
     "lint": "node scripts/run-with-h-drive-env.cjs next lint",
     "lint:all": "node scripts/run-with-h-drive-env.cjs next lint",
     "typecheck": "node scripts/run-with-h-drive-env.cjs tsc --noEmit",
+    "smoke:photo-editor-v24": "node scripts/run-with-h-drive-env.cjs node ./node_modules/tsx/dist/cli.mjs scripts/smoke-photo-editor-v24-ops.ts",
     "nightly:self-build:preflight": "node scripts/nightly-self-build-preflight.mjs",
     "email:db:diagnose": "node scripts/email-command-center-db-diagnose.mjs",
     "email:baseline:recon": "node scripts/email-command-center-baseline-recon.mjs",
