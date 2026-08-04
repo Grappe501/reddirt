@@ -34,6 +34,7 @@ const CONSOLE_QUICK_LINKS: { href: string; label: string }[] = [
   { href: "/admin/workbench/comms/broadcasts", label: "SMS broadcasts" },
   { href: "/county-briefings", label: "County briefings" },
   { href: "/admin/workbench/ask-kelly-beta", label: "Beta feedback" },
+  { href: "/admin/workbench/volunteer-kickoff", label: "Kickoff signups" },
   { href: "/admin/insights", label: "Insights (placeholder)" },
 ];
 

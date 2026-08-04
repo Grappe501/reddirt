@@ -11,7 +11,12 @@ import {
 } from "@/lib/volunteers/volunteer-lifecycle";
 
 /** Public form sources that feed the volunteer activation pipeline. */
-export const VOLUNTEER_INTAKE_SOURCES = ["volunteer", "join_movement", "local_team"] as const;
+export const VOLUNTEER_INTAKE_SOURCES = [
+  "volunteer",
+  "join_movement",
+  "local_team",
+  "volunteer_kickoff",
+] as const;
 
 export type VolunteerIntakePipelineStage = VolunteerLifecycleStage;
 
@@ -208,13 +213,17 @@ export async function loadVolunteerIntakeDashboard(): Promise<VolunteerIntakeDas
         county: metaString(meta, "county"),
         city: metaString(meta, "city"),
         zip: metaString(meta, "zip"),
-        preferredRole: metaString(meta, "preferredRole"),
+        preferredRole:
+          metaString(meta, "preferredRole") ??
+          metaString(meta, "primaryTeam") ??
+          metaString(meta, "teamCategory") ??
+          metaString(meta, "pathway"),
         preferredLanguage: metaString(meta, "preferredLanguage"),
         leadershipInterest: metaBool(meta, "leadershipInterest"),
         student: metaBool(meta, "student"),
         schoolCampus: metaString(meta, "schoolCampus"),
         interests: metaStringArray(meta, "interests"),
-        hostingInterest: metaBool(meta, "hostingInterest"),
+        hostingInterest: metaBool(meta, "hostingInterest") ?? metaBool(meta, "canHost"),
         fundraisingInterest: metaBool(meta, "fundraisingInterest"),
         userId: user?.id ?? null,
         userName: user?.name ?? null,

@@ -58,6 +58,7 @@ function sourceLabel(source: string | null): string {
   if (source === "volunteer") return "Volunteer form";
   if (source === "join_movement") return "Join movement";
   if (source === "local_team") return "Local team";
+  if (source === "volunteer_kickoff") return "Kickoff / AYC signup";
   return source ?? "—";
 }
 

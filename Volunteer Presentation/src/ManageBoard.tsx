@@ -220,7 +220,13 @@ export function ManageBoard() {
         <header className="manage-hero">
           <p className="eyebrow">Operators only</p>
           <h1>Volunteer Management Board</h1>
-          <p className="lead">Track kickoff signups: contact status, placement, assignee, and notes.</p>
+          <p className="lead">
+            Mirror board for on-site triage. Source of truth is Kelly DB —{" "}
+            <a href="https://kgrappe.netlify.app/admin/workbench/volunteer-kickoff" target="_blank" rel="noreferrer">
+              open RedDirt kickoff admin
+            </a>
+            .
+          </p>
         </header>
         <form className="manage-login card" onSubmit={login}>
           <div className="field">

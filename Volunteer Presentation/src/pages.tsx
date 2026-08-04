@@ -273,42 +273,95 @@ export function SignupForm({ pathway, title, intro }: { pathway: Pathway; title:
     data.set("form-name", "kickoff-signup");
     data.set("pathway", pathway);
     data.set("roles", roles.join(", "));
-    const body = new URLSearchParams();
-    data.forEach((value, key) => {
-      body.append(key, String(value));
-    });
+
+    const name = String(data.get("name") || "").trim();
+    const email = String(data.get("email") || "").trim();
+    const phone = String(data.get("phone") || "").trim();
+    const county = String(data.get("county") || "").trim();
+    const city = String(data.get("city") || "").trim();
+    const primaryTeam = String(data.get("primaryTeam") || "").trim();
+    const availability = String(data.get("availability") || "").trim();
+    const notes = String(data.get("notes") || "").trim();
+    const eventInterest = String(data.get("eventInterest") || "").trim();
+    const botField = String(data.get("bot-field") || "");
+
+    const reddirtPayload = {
+      formType: "volunteer_kickoff" as const,
+      pathway,
+      name,
+      email,
+      phone,
+      county,
+      city: city || undefined,
+      preferredContact: "email" as const,
+      roles,
+      primaryTeam: primaryTeam || (pathway === "campaign" ? roles[0] : undefined),
+      availability: availability || undefined,
+      notes: notes || undefined,
+      eventId: eventInterest || undefined,
+      regions: [] as string[],
+      canHost: false,
+      canRecruit: false,
+      willingToTravel: false,
+      leadershipInterest: false,
+      website: botField,
+      sourcePage: typeof window !== "undefined" ? window.location.pathname : `/join/${pathway}`,
+      sourceComponent: "KickoffStaticSignupForm",
+      sourceCampaign: "volunteer-kickoff-netlify",
+      consentEmail: true,
+      consentSms: false,
+      consentPhone: false,
+    };
+
+    const formsApiBase =
+      (import.meta.env.VITE_REDDIRT_FORMS_URL as string | undefined)?.replace(/\/$/, "") ||
+      "https://kgrappe.netlify.app";
+
     try {
-      const res = await fetch("/", {
+      // Primary: Kelly / RedDirt database via /api/forms → WorkflowIntake
+      const dbRes = await fetch(`${formsApiBase}/api/forms`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(reddirtPayload),
+      });
+      const dbJson = (await dbRes.json().catch(() => ({}))) as { ok?: boolean; error?: string };
+      if (!dbRes.ok || !dbJson.ok) {
+        throw new Error(dbJson.error || "reddirt_submit_failed");
+      }
+
+      // Backup mirrors (Netlify Forms + local manage board) — best effort
+      const body = new URLSearchParams();
+      data.forEach((value, key) => {
+        body.append(key, String(value));
+      });
+      void fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: body.toString(),
-      });
-      if (!res.ok) throw new Error("submit_failed");
+      }).catch(() => undefined);
 
-      // Dual-write into the management board store (Netlify Blobs via function).
-      const capturePayload = {
-        name: String(data.get("name") || ""),
-        email: String(data.get("email") || ""),
-        phone: String(data.get("phone") || ""),
-        county: String(data.get("county") || ""),
-        city: String(data.get("city") || ""),
-        pathway,
-        roles: roles.join(", "),
-        primaryTeam: String(data.get("primaryTeam") || ""),
-        availability: String(data.get("availability") || ""),
-        notes: String(data.get("notes") || ""),
-        eventInterest: String(data.get("eventInterest") || ""),
-        "bot-field": String(data.get("bot-field") || ""),
-      };
       void fetch("/.netlify/functions/signup-capture", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(capturePayload),
+        body: JSON.stringify({
+          name,
+          email,
+          phone,
+          county,
+          city,
+          pathway,
+          roles: roles.join(", "),
+          primaryTeam,
+          availability,
+          notes,
+          eventInterest,
+          "bot-field": botField,
+        }),
       }).catch(() => undefined);
 
       const q = new URLSearchParams({
         pathway,
-        county: String(data.get("county") || ""),
+        county,
         role: roles[0] || pathway,
       });
       navigate(`/thank-you?${q.toString()}`);
