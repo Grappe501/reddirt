@@ -284,6 +284,28 @@ export function SignupForm({ pathway, title, intro }: { pathway: Pathway; title:
         body: body.toString(),
       });
       if (!res.ok) throw new Error("submit_failed");
+
+      // Dual-write into the management board store (Netlify Blobs via function).
+      const capturePayload = {
+        name: String(data.get("name") || ""),
+        email: String(data.get("email") || ""),
+        phone: String(data.get("phone") || ""),
+        county: String(data.get("county") || ""),
+        city: String(data.get("city") || ""),
+        pathway,
+        roles: roles.join(", "),
+        primaryTeam: String(data.get("primaryTeam") || ""),
+        availability: String(data.get("availability") || ""),
+        notes: String(data.get("notes") || ""),
+        eventInterest: String(data.get("eventInterest") || ""),
+        "bot-field": String(data.get("bot-field") || ""),
+      };
+      void fetch("/.netlify/functions/signup-capture", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(capturePayload),
+      }).catch(() => undefined);
+
       const q = new URLSearchParams({
         pathway,
         county: String(data.get("county") || ""),

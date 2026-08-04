@@ -8,11 +8,12 @@ export function Shell() {
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
   const isPresenter = location.pathname.startsWith("/presenter");
+  const isManage = location.pathname.startsWith("/manage");
   const index = SLIDES.findIndex((s) => s.path === location.pathname);
   const slideIndex = index >= 0 ? index : -1;
   const isForm = location.pathname.startsWith("/join/") || location.pathname === "/thank-you";
   const isOrg = location.pathname === "/org-chart";
-  const showClock = !isForm;
+  const showClock = !isForm && !isManage;
 
   useEffect(() => {
     if (isForm || isPresenter || slideIndex < 0) return;
@@ -27,30 +28,38 @@ export function Shell() {
   }, [isForm, isPresenter, navigate, slideIndex]);
 
   return (
-    <div className={`app${isPresenter ? " app-presenter" : ""}`}>
+    <div className={`app${isPresenter ? " app-presenter" : ""}${isManage ? " app-manage" : ""}`}>
       <div className="top-chrome">
         <header className="header">
           <div className="header-inner">
             <div>
               <p className="brand-eyebrow">Kelly Grappe for Secretary of State</p>
-              <p className="brand-sub">
-                {isPresenter ? "Presenters Board · Kickoff briefing" : "Statewide Volunteer Leadership Kickoff"}
-              </p>
-            </div>
-            <div className="header-actions">
-              {isPresenter ? (
-                <>
-                  <Link className="btn btn-ghost" to="/presenter">
-                    Board Home
-                  </Link>
-                  <Link className="btn btn-ghost hide-sm" to="/org-chart">
-                    Org Chart
-                  </Link>
-                  <Link className="btn btn-ghost hide-sm" to="/">
-                    Audience View
-                  </Link>
-                </>
-              ) : (
+            <p className="brand-sub">
+              {isManage
+                ? "Volunteer Management Board"
+                : isPresenter
+                  ? "Presenters Board · Kickoff briefing"
+                  : "Statewide Volunteer Leadership Kickoff"}
+            </p>
+          </div>
+          <div className="header-actions">
+            {isManage ? (
+              <Link className="btn btn-ghost" to="/">
+                Audience View
+              </Link>
+            ) : isPresenter ? (
+              <>
+                <Link className="btn btn-ghost" to="/presenter">
+                  Board Home
+                </Link>
+                <Link className="btn btn-ghost hide-sm" to="/org-chart">
+                  Org Chart
+                </Link>
+                <Link className="btn btn-ghost hide-sm" to="/">
+                  Audience View
+                </Link>
+              </>
+            ) : (
                 <>
                   <Link className="btn btn-ghost hide-sm" to="/org-chart">
                     Org Chart
@@ -95,7 +104,7 @@ export function Shell() {
         <Outlet />
       </main>
 
-      {!isForm && !isPresenter && !isOrg ? (
+      {!isForm && !isPresenter && !isOrg && !isManage ? (
         <footer className="footer-nav">
           <div className="footer-inner">
             <button

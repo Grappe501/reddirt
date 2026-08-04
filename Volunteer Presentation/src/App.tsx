@@ -2,6 +2,7 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { Shell } from "./Shell";
 import { PresenterDrillPage, PresenterHub, PresenterSlidePage } from "./PresenterBoard";
 import { OrgChartPage } from "./OrgChart";
+import { ManageBoard } from "./ManageBoard";
 import {
   Calendar,
   Campaign,
@@ -78,6 +79,7 @@ export default function App() {
           />
           <Route path="/thank-you" element={<ThankYou />} />
           <Route path="/org-chart" element={<OrgChartPage />} />
+          <Route path="/manage" element={<ManageBoard />} />
           <Route path="/presenter" element={<PresenterHub />} />
           <Route path="/presenter/drill/:drillId" element={<PresenterDrillPage />} />
           <Route path="/presenter/:slideId" element={<PresenterSlidePage />} />

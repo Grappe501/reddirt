@@ -1,6 +1,5 @@
 # Kelly Grappe — Statewide Volunteer Leadership Kickoff
-# Static presentation site (no Next serverless / Prisma).
-# Forms use Netlify Forms until RedDirt production deploys are unblocked.
+# Static presentation + Netlify Functions for volunteer management.
 
 [build]
   command = "npm run build"
@@ -8,6 +7,16 @@
 
 [build.environment]
   NODE_VERSION = "22"
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+# API before SPA fallback
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
 
 [[redirects]]
   from = "/*"

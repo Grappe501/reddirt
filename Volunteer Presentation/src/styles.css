@@ -630,12 +630,189 @@ textarea {
   border-top: 1px solid var(--border);
 }
 
-.app-presenter .footer-nav {
+.app-presenter .footer-nav,
+.app-manage .footer-nav {
   display: none;
 }
 
-.app-presenter .main {
+.app-presenter .main,
+.app-manage .main {
   padding-bottom: 2rem;
+}
+
+/* —— Volunteer management board —— */
+.manage-page {
+  max-width: 78rem;
+  margin: 0 auto;
+}
+
+.manage-hero h1 {
+  margin: 0.25rem 0 0.5rem;
+  font-family: var(--font-heading);
+  font-size: clamp(1.85rem, 4vw, 2.6rem);
+  color: var(--navy);
+}
+
+.manage-login {
+  max-width: 26rem;
+  margin-top: 1.5rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.manage-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(6.5rem, 1fr));
+  gap: 0.5rem;
+  margin: 1.25rem 0;
+}
+
+.manage-stats .stat {
+  display: grid;
+  gap: 0.15rem;
+  padding: 0.7rem 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  background: white;
+  cursor: pointer;
+  text-align: left;
+  color: var(--navy);
+}
+
+.manage-stats .stat strong {
+  font-size: 1.35rem;
+  line-height: 1;
+}
+
+.manage-stats .stat span {
+  font-size: 0.78rem;
+  color: var(--secondary);
+}
+
+.manage-stats .stat.active {
+  border-color: var(--navy);
+  background: rgba(0, 0, 102, 0.06);
+}
+
+.manage-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+
+.manage-filters input,
+.manage-filters select {
+  min-height: 2.6rem;
+  padding: 0.45rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 0.45rem;
+  font: inherit;
+}
+
+.manage-filters input {
+  flex: 1 1 16rem;
+}
+
+.manage-layout {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 960px) {
+  .manage-layout {
+    grid-template-columns: minmax(0, 1.6fr) minmax(16rem, 0.9fr);
+    align-items: start;
+  }
+}
+
+.manage-table-wrap {
+  overflow: auto;
+  border: 1px solid var(--border);
+  border-radius: 0.55rem;
+  background: white;
+}
+
+.manage-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+
+.manage-table th,
+.manage-table td {
+  padding: 0.7rem 0.75rem;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  vertical-align: top;
+}
+
+.manage-table th {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--secondary);
+  background: rgba(0, 0, 102, 0.03);
+}
+
+.manage-table tbody tr {
+  cursor: pointer;
+}
+
+.manage-table tbody tr:hover,
+.manage-table tbody tr.selected {
+  background: rgba(0, 0, 102, 0.04);
+}
+
+.manage-detail {
+  position: sticky;
+  top: 1rem;
+  display: grid;
+  gap: 0.65rem;
+}
+
+.manage-detail h2 {
+  margin: 0;
+  font-family: var(--font-heading);
+  color: var(--navy);
+}
+
+.pill {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.2rem 0.5rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  text-transform: capitalize;
+}
+
+.pill.status-new {
+  background: #eef4ff;
+  color: #123a8a;
+}
+.pill.status-contacted {
+  background: #fff7e6;
+  color: #8a5a00;
+}
+.pill.status-placed {
+  background: #e8f7ee;
+  color: #0f6b35;
+}
+.pill.status-follow_up {
+  background: #f3eefc;
+  color: #4b2a8a;
+}
+.pill.status-declined,
+.pill.status-duplicate {
+  background: #f3f3f3;
+  color: #555;
+}
+
+.muted {
+  color: var(--secondary);
+  font-size: 0.86rem;
 }
 
 /* —— Org chart —— */
