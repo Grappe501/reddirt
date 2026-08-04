@@ -12,15 +12,12 @@ const {
  *
  * @netlify/plugin-nextjs creates ___netlify-server-handler in onBuild.
  * Functions bundling then zips that handler for upload.
- * Pruning only in onPostBuild is TOO LATE — deploy uploads the pre-prune zip (>250 MB)
- * while our directory measurement looks fine. So we prune in onBuild (after Next) and
- * again in onPostBuild as a safety pass.
+ * Prune in onBuild (after Next) and again in onPostBuild.
+ * Must NEVER delete ___netlify-server-handler.mjs / run-config.json / handler .netlify runtime.
  */
 async function runPrune(utils, phase) {
   const result = pruneNetlifyServerHandler(process.cwd());
   if (result.skipped) {
-    // onBuild: Next may not have written the handler yet if plugin order is wrong.
-    // onPostBuild: missing handler is always fatal.
     if (phase === "onPostBuild") {
       await utils.build.failBuild(
         "___netlify-server-handler not found after build — @netlify/plugin-nextjs must run first in netlify.toml. " +
@@ -37,11 +34,13 @@ async function runPrune(utils, phase) {
   console.log(
     `>>> prune-server-handler (${phase}): ${result.beforeMb.toFixed(1)} → ${result.afterMb.toFixed(1)} MB staging, ` +
       `${result.deployMb.toFixed(1)} MB deploy-estimate, ${result.removed.length} paths removed` +
-      `${result.manifestPatched ? ", manifest patched (no ** glob)" : ""} (fail > ${DEPLOY_FAIL_MB} MB, cap ${MAX_MB} MB)`,
+      `${result.manifestPatched ? ", manifest patched (no ** glob)" : ""}` +
+      `${result.openNextEntryOk ? ", OpenNext entry OK" : ", OpenNext entry MISSING"}` +
+      ` (fail > ${DEPLOY_FAIL_MB} MB, cap ${MAX_MB} MB)`,
   );
   utils.status.show({
     title: `Prune server handler (${phase})`,
-    summary: `${result.beforeMb.toFixed(1)} → ${result.afterMb.toFixed(1)} MB (${measuredMb.toFixed(1)} MB measured, ${result.removed.length} paths${result.manifestPatched ? ", manifest exclusions" : ""}; fail>${DEPLOY_FAIL_MB} cap ${MAX_MB} MB)`,
+    summary: `${result.beforeMb.toFixed(1)} → ${result.afterMb.toFixed(1)} MB (${measuredMb.toFixed(1)} MB measured, entry=${result.openNextEntryOk ? "ok" : "MISSING"}; fail>${DEPLOY_FAIL_MB} cap ${MAX_MB} MB)`,
   });
 
   if (shouldFailDeploy(result)) {
@@ -54,7 +53,7 @@ exports.onBuild = async ({ utils }) => {
   await runPrune(utils, "onBuild");
 };
 
-/** Safety pass after bundling / publishStaticDir — catches re-inflation. */
+/** Safety pass after bundling / publishStaticDir. */
 exports.onPostBuild = async ({ utils }) => {
   await runPrune(utils, "onPostBuild");
 };

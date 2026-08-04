@@ -23,7 +23,7 @@ const TOP_LEVEL_DIR_PRUNE = [
   "data/calendar-command-center",
   "data/owned-campaign-media",
   "public",
-  ".netlify",
+  // Do NOT prune handler-local `.netlify` — OpenNext runtime lives there.
   "docs",
   "src",
   "prisma",
@@ -64,10 +64,6 @@ const LAUNCH_DATA_DIR_PRUNE = [
 const LAUNCH_ADMIN_TOP_KEEP = new Set(["login", "(board)", "opposition"]);
 const LAUNCH_BOARD_KEEP = new Set(["intelligence"]);
 /**
- * kelly_sos_ops on Netlify — whitelist only boards needed for live ops.
- * Everything else under admin/(board) is dropped so ___netlify-server-handler stays under 250 MB.
- */
-/**
  * kelly_sos_ops on Netlify — minimal board set for Day-3 volunteer intake + login.
  * Intelligence / campaign-events / evidence trees push ___netlify-server-handler over 250 MB.
  */
@@ -93,19 +89,27 @@ const LAUNCH_APP_TOP_KEEP = new Set([
 ]);
 const LAUNCH_API_TOP_KEEP = new Set(["admin", "election-plan", "forms", "search"]);
 
-/** Standalone copy lands the whole repo in the handler — keep only these top-level names. */
+/**
+ * OpenNext handler root — must keep entry + runtime. Deleting ___netlify-server-handler.mjs
+ * or handler-local `.netlify` produces Deploy Preview "ready" with CDN Page not found on every route.
+ */
 const LAUNCH_HANDLER_ROOT_KEEP = new Set([
   ".next",
+  ".netlify",
   "node_modules",
   "data",
   "docs",
   "package.json",
+  "___netlify-server-handler.mjs",
+  "___netlify-server-handler.js",
+  "run-config.json",
 ]);
 
 /**
  * @netlify/plugin-nextjs writes includedFiles: ["**"] which re-globs the site root into the
  * upload zip after prune. Replace with exclusions only (no "**") so deploy uploads the pruned
  * handler directory without pulling Volunteer Presentation / full node_modules / data back in.
+ * Do NOT exclude node_modules/next — OpenNext needs the traced next runtime in the handler.
  */
 const MANIFEST_INCLUDED_EXCLUSIONS = [
   "!.git/**",
@@ -122,7 +126,6 @@ const MANIFEST_INCLUDED_EXCLUSIONS = [
   "!node_modules/pdf-parse/**",
   "!node_modules/typescript/**",
   "!node_modules/webpack/**",
-  "!node_modules/next/**",
   "!node_modules/@img/**",
   "!node_modules/sharp/**",
   "!data/**",
@@ -210,13 +213,10 @@ const LAUNCH_NODE_MODULES_DIRS = [
   "node_modules/webpack",
 ];
 
-/** Physical copies only — do not copy `next` (adds dev maps/webpack; already in handler trace). */
+/** Physical copies only — unused after ensurePrismaInHandler; kept for docs reference. */
 const MINIMAL_NODE_MODULES = [
   ".prisma",
   "@prisma/client",
-  "@next/env",
-  "react",
-  "react-dom",
 ];
 
 const FILE_PRUNE = [
@@ -596,31 +596,32 @@ function patchServerHandlerManifest(cwd) {
   return true;
 }
 
-function materializeMinimalNodeModules(handlerRoot, repoRoot) {
-  const destNm = path.join(handlerRoot, "node_modules");
-  const srcNm = path.join(repoRoot, "node_modules");
-  if (!exists(srcNm)) return [];
-
+/**
+ * Ensure Prisma client exists in the handler without wiping OpenNext's traced node_modules.
+ * A full wipe previously deleted `next` and broke SSR (CDN Page not found on every route).
+ */
+function ensurePrismaInHandler(handlerRoot, repoRoot) {
   const copied = [];
-  if (exists(destNm)) rmrf(destNm);
+  const srcNm = path.join(repoRoot, "node_modules");
+  const destNm = path.join(handlerRoot, "node_modules");
+  if (!exists(srcNm)) return copied;
   fs.mkdirSync(destNm, { recursive: true });
 
-  const minimalList = (() => {
-    let list = MINIMAL_NODE_MODULES;
-    // Netlify Image CDN covers /_next/image — sharp + libvips blow the 250 MB unzipped cap.
-    if (isNetlifyBuild() || isOppositionDebateLaunch()) {
-      list = list.filter((rel) => !rel.includes("sharp") && !rel.startsWith("@img/"));
-    }
-    return list;
-  })();
-
-  for (const rel of minimalList) {
+  for (const rel of [".prisma", "@prisma/client"]) {
     const src = path.join(srcNm, ...rel.split("/"));
     const dest = path.join(destNm, ...rel.split("/"));
     if (!exists(src)) continue;
-    rmrf(dest);
-    cpDir(src, dest);
-    copied.push(`node_modules/${rel}`);
+    if (!exists(dest)) {
+      cpDir(src, dest);
+      copied.push(`node_modules/${rel}`);
+    }
+  }
+
+  // Drop Sharp from handler when Netlify Image CDN covers /_next/image.
+  if (isNetlifyBuild() || isOppositionDebateLaunch()) {
+    for (const rel of ["sharp", "@img"]) {
+      if (rmrf(path.join(destNm, ...rel.split("/")))) copied.push(`removed:node_modules/${rel}`);
+    }
   }
   return copied;
 }
@@ -652,9 +653,8 @@ function stripDevArtifacts(handlerRoot) {
       const drop =
         /\.map$/i.test(ent.name) ||
         /\.d\.ts$/i.test(ent.name) ||
-        /development/i.test(ent.name) ||
         /\.dev\./i.test(rel) ||
-        /devtools/i.test(rel) ||
+        /\/devtools\//i.test(rel.replace(/\\/g, "/")) ||
         /turbo-experimental/i.test(rel);
       if (drop) {
         try {
@@ -740,7 +740,7 @@ function pruneHandler(handlerRoot, repoRoot) {
   }
 
   if (shouldRunAggressiveLaunchPrune()) {
-    removed.push(...deleteAllSymlinks(handlerRoot));
+    // Keep inbound traced symlinks; only remove outbound / cache leaks above.
     removed.push(...pruneLaunchHandlerRoot(handlerRoot));
     const boardKeep = isOppositionDebateLaunch()
       ? LAUNCH_BOARD_KEEP
@@ -764,9 +764,8 @@ function pruneHandler(handlerRoot, repoRoot) {
     for (const rel of LAUNCH_NODE_MODULES_DIRS) {
       if (rmrf(path.join(handlerRoot, rel))) removed.push(rel);
     }
-    removed.push(...materializeMinimalNodeModules(handlerRoot, repoRoot));
+    removed.push(...ensurePrismaInHandler(handlerRoot, repoRoot));
     removed.push(...prunePrismaClientBloat(handlerRoot));
-    removed.push(...deleteAllSymlinks(handlerRoot));
   }
 
   for (const rel of FILE_PRUNE) {
@@ -868,6 +867,14 @@ function largestFiles(handlerRoot, limit = 15, followSymlinks = true) {
   return rows.sort((a, b) => b.size - a.size).slice(0, limit);
 }
 
+function hasOpenNextHandlerEntry(handlerRoot) {
+  return (
+    exists(path.join(handlerRoot, "___netlify-server-handler.mjs")) ||
+    exists(path.join(handlerRoot, "___netlify-server-handler.js")) ||
+    exists(path.join(handlerRoot, "run-config.json"))
+  );
+}
+
 function pruneNetlifyServerHandler(cwd = process.cwd()) {
   /** Only mutate the packaged handler — never repo `.next` (breaks @netlify/plugin-nextjs onBuild). */
   const handlers = HANDLER_DIRS.map((d) => path.join(cwd, d)).filter(exists);
@@ -880,6 +887,7 @@ function pruneNetlifyServerHandler(cwd = process.cwd()) {
       afterMb: 0,
       deployMb: 0,
       manifestPatched: false,
+      openNextEntryOk: false,
       removed: [...new Set(removed)],
     };
     return skipped;
@@ -896,6 +904,7 @@ function pruneNetlifyServerHandler(cwd = process.cwd()) {
   }
 
   const manifestPatched = isNetlifyBuild() ? patchServerHandlerManifest(cwd) : false;
+  const openNextEntryOk = handlers.every((h) => hasOpenNextHandlerEntry(h));
 
   return {
     skipped: false,
@@ -904,6 +913,7 @@ function pruneNetlifyServerHandler(cwd = process.cwd()) {
     afterMb,
     deployMb,
     manifestPatched,
+    openNextEntryOk,
     removed: [...new Set(removed)],
   };
 }
@@ -911,6 +921,12 @@ function pruneNetlifyServerHandler(cwd = process.cwd()) {
 function formatOversizeMessage(result) {
   if (result.skipped || !result.handler) {
     return "___netlify-server-handler directory missing after @netlify/plugin-nextjs onBuild.";
+  }
+  if (result.openNextEntryOk === false) {
+    return (
+      "Prune removed OpenNext entry (___netlify-server-handler.mjs / run-config.json). " +
+      "Deploy would return CDN Page not found on every route. Keep handler root entry + .netlify runtime."
+    );
   }
   const top = largestFiles(result.handler)
     .map((row) => `  ${(row.size / (1024 * 1024)).toFixed(2)} MB  ${row.rel}`)
@@ -926,6 +942,9 @@ function formatOversizeMessage(result) {
 function shouldFailDeploy(result) {
   if (result.skipped) {
     return isNetlifyBuild();
+  }
+  if (result.openNextEntryOk === false) {
+    return true;
   }
   const measuredMb = Math.max(result.afterMb, result.deployMb);
   return measuredMb > DEPLOY_FAIL_MB;
