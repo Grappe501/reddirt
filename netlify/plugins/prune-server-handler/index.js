@@ -7,15 +7,17 @@ const {
 } = require("../../../scripts/prune-netlify-server-handler.cjs");
 
 /**
- * onPostBuild runs after @netlify/plugin-nextjs packages ___netlify-server-handler
+ * onPostBuild runs after @netlify/plugin-nextjs onBuild packages ___netlify-server-handler
  * and before deploy upload. Do not use onEnd + failBuild (deploy already started).
+ * List this plugin before @netlify/plugin-nextjs in netlify.toml so onPostBuild reverse-order
+ * still leaves prune after Next’s createServerHandler (onBuild) / alongside publishStaticDir.
  */
 exports.onPostBuild = async ({ utils }) => {
   const result = pruneNetlifyServerHandler(process.cwd());
   if (result.skipped) {
     await utils.build.failBuild(
-      "___netlify-server-handler not found after build — @netlify/plugin-nextjs must run first in netlify.toml. " +
-        "Ensure [[plugins]] package = \"@netlify/plugin-nextjs\" is the first plugin entry (unpinned, not in package.json). " +
+      "___netlify-server-handler not found after build — @netlify/plugin-nextjs must package the handler in onBuild. " +
+        "Ensure [[plugins]] package = \"@netlify/plugin-nextjs\" is listed in netlify.toml (unpinned, not in package.json). " +
         "Disable any UI-pinned old @netlify/plugin-nextjs in Netlify Build plugins. Clear cache and redeploy.",
     );
     return;

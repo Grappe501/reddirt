@@ -30,6 +30,16 @@ const TOP_LEVEL_DIR_PRUNE = [
   "scripts",
   "canvases",
   "campaign-system-manual",
+  "Volunteer Presentation",
+  "develop_notes",
+  "field-structure",
+  "reports",
+  "county-vault",
+  "campaign-media",
+  "out",
+  "backups",
+  ".github",
+  ".vscode",
 ];
 
 /** Drop large non-launch data trees (opposition JSON stays). */
@@ -58,6 +68,7 @@ const LAUNCH_BOARD_KEEP = new Set(["intelligence"]);
  * Everything else under admin/(board) is dropped so ___netlify-server-handler stays under 250 MB.
  */
 const KELLY_OPS_NETLIFY_BOARD_KEEP = new Set([
+  // Live ops + Day-3 volunteer kickoff intake (stay under 250 MB unzipped).
   "intelligence",
   "evidence-workbench",
   "campaign-calendar",
@@ -65,18 +76,10 @@ const KELLY_OPS_NETLIFY_BOARD_KEEP = new Set([
   "workbench",
   "election-plan",
   "settings",
-  "counties",
-  "content",
-  "homepage",
-  "media",
-  "pages",
-  "stories",
   "volunteers",
   "asks",
   "my-work",
   "daily-brief",
-  "mission-brief",
-  "events",
 ]);
 const LAUNCH_API_ADMIN_KEEP = new Set(["intelligence", "opposition"]);
 /** Kelly SOS production — keep public site + election-plan portal (force-dynamic). */
@@ -99,7 +102,11 @@ const LAUNCH_HANDLER_ROOT_KEEP = new Set([
   "package.json",
 ]);
 
-/** @netlify/plugin-nextjs writes includedFiles: ["**"] — reinforce exclusions after prune. */
+/**
+ * @netlify/plugin-nextjs writes includedFiles: ["**"] which re-globs the site root into the
+ * upload zip after prune. Replace with exclusions only (no "**") so deploy uploads the pruned
+ * handler directory without pulling Volunteer Presentation / full node_modules / data back in.
+ */
 const MANIFEST_INCLUDED_EXCLUSIONS = [
   "!.git/**",
   "!.next/cache/**",
@@ -131,7 +138,19 @@ const MANIFEST_INCLUDED_EXCLUSIONS = [
   "!prisma/**",
   "!scripts/**",
   "!canvases/**",
+  "!Volunteer Presentation/**",
+  "!Volunteer Presentation",
+  "!develop_notes/**",
+  "!field-structure/**",
+  "!reports/**",
+  "!county-vault/**",
+  "!campaign-media/**",
+  "!out/**",
+  "!backups/**",
+  "!.github/**",
+  "!.vscode/**",
   "!.local/**",
+  "!**/.local/**",
   "!**/npm-cache/**",
   "!**/_cacache/**",
 ];
@@ -500,7 +519,8 @@ function patchServerHandlerManifest(cwd) {
   if (!exists(manifestPath)) return false;
   const json = JSON.parse(fs.readFileSync(manifestPath, "utf8"));
   if (!json.config) return false;
-  json.config.includedFiles = ["**", ...MANIFEST_INCLUDED_EXCLUSIONS];
+  // Do not prefix with "**" — that re-includes the whole site root at upload time.
+  json.config.includedFiles = [...MANIFEST_INCLUDED_EXCLUSIONS];
   fs.writeFileSync(manifestPath, `${JSON.stringify(json)}\n`);
   return true;
 }
