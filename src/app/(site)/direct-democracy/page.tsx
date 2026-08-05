@@ -11,6 +11,7 @@ import { DirectDemocracyCommitmentForm } from "@/components/forms/DirectDemocrac
 import { Button } from "@/components/ui/Button";
 import { siteConfig } from "@/config/site";
 import { getPageBlockPayload, type HeroBlockPayload } from "@/lib/content/page-blocks";
+import { BallotInitiativeWatchSection } from "@/components/direct-democracy/BallotInitiativeWatchSection";
 import { CirculatingInitiativesSection } from "@/components/direct-democracy/CirculatingInitiativesSection";
 
 export const metadata: Metadata = {
@@ -67,13 +68,18 @@ export default async function DirectDemocracyPage() {
             "Elections matter—and so does the process that puts measures on the ballot. This page is about education, discipline, and protecting voter access without turning initiatives into confusion."
         }
       >
-        <Button href="#commitment-network" variant="primary">
+        <Button href="#ballot-initiative-watch" variant="primary">
+          Watch: how the process changed
+        </Button>
+        <Button href="#commitment-network" variant="outlineOnDark">
           Join the commitment network
         </Button>
         <Button href="/direct-democracy/ballot-initiative-process" variant="outlineOnDark">
           Arkansas ballot process (state rules)
         </Button>
       </MediaPageHero>
+
+      <BallotInitiativeWatchSection />
 
       <FullBleedSection aria-labelledby="why-dd-heading">
         <ContentContainer>

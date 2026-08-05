@@ -1,5 +1,6 @@
 import {
   ballotInitiativeProcessHref,
+  ballotInitiativeWatchStandaloneHref,
   directDemocracyCommitmentHref,
   directDemocracyHubHref,
   kellyInitiativesChapterHref,
@@ -76,6 +77,7 @@ export const primaryNavGroups: NavGroup[] = [
     items: [
       { label: "Direct Democracy hub", href: directDemocracyHubHref },
       { label: "Ballot initiative process", href: ballotInitiativeProcessHref },
+      { label: "Watch: ballot process changes", href: ballotInitiativeWatchStandaloneHref },
       { label: "Commitment network", href: directDemocracyCommitmentHref },
       { label: "Kelly's petition organizing", href: kellyInitiativesChapterHref },
     ],
