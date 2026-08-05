@@ -4,11 +4,12 @@ import { MediaPageHero } from "@/components/blocks/MediaPageHero";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { FullBleedSection } from "@/components/layout/FullBleedSection";
 import { Button } from "@/components/ui/Button";
+import { ArkansasVisitsExplorer } from "@/components/kelly-county-visits/ArkansasVisitsExplorer";
 import { CountyProgressGrid } from "@/components/kelly-county-visits/CountyProgressGrid";
-import { StopList } from "@/components/kelly-county-visits/StopList";
 import { VisitInviteCta } from "@/components/kelly-county-visits/VisitInviteCta";
 import { VisitSummaryStats } from "@/components/kelly-county-visits/VisitSummaryStats";
 import {
+  ARKANSAS_COUNTIES,
   getCompletedPublicStops,
   getUpcomingPublicStops,
   getVisitSummary,
@@ -59,29 +60,15 @@ export default function ArkansasVisitsPage() {
 
       <FullBleedSection padY>
         <ContentContainer wide className="max-w-4xl">
-          <StopList
-            id="arkansas-visits-completed"
-            title="Completed stops"
-            lead="Public campaign stops already on the trail, newest first."
-            stops={completed}
-            emptyMessage="No completed public stops are published in the ledger yet."
+          <ArkansasVisitsExplorer
+            completed={completed}
+            upcoming={upcoming}
+            counties={[...ARKANSAS_COUNTIES]}
           />
         </ContentContainer>
       </FullBleedSection>
 
       <FullBleedSection variant="subtle" padY>
-        <ContentContainer wide className="max-w-4xl">
-          <StopList
-            id="arkansas-visits-upcoming"
-            title="Upcoming stops"
-            lead="Scheduled public stops through November 3, 2026."
-            stops={upcoming}
-            emptyMessage="No upcoming public stops are published in the ledger yet."
-          />
-        </ContentContainer>
-      </FullBleedSection>
-
-      <FullBleedSection padY>
         <ContentContainer wide className="max-w-3xl">
           <VisitInviteCta />
           <p className="mt-8 font-body text-xs text-kelly-muted">
