@@ -1,5 +1,6 @@
 import {
   ballotInitiativeProcessHref,
+  ballotInitiativeWatchStandaloneHref,
   directDemocracyCommitmentHref,
   directDemocracyHubHref,
   kellyInitiativesChapterHref,
@@ -76,6 +77,7 @@ export const primaryNavGroups: NavGroup[] = [
     items: [
       { label: "Direct Democracy hub", href: directDemocracyHubHref },
       { label: "Ballot initiative process", href: ballotInitiativeProcessHref },
+      { label: "Watch: ballot process changes", href: ballotInitiativeWatchStandaloneHref },
       { label: "Commitment network", href: directDemocracyCommitmentHref },
       { label: "Kelly's petition organizing", href: kellyInitiativesChapterHref },
     ],
@@ -111,6 +113,7 @@ export const primaryNavGroups: NavGroup[] = [
     items: [
       { label: "Events", href: "/events" },
       { label: "Arkansas Presence", href: "/arkansas" },
+      { label: "Across Arkansas", href: "/arkansas-visits" },
       { label: "Invite Kelly", href: "/events/request" },
       { label: "Suggest a public event", href: "/events#suggest" },
       { label: "Election Integrity Tour", href: "/events/community-election-integrity-tour" },
@@ -157,6 +160,7 @@ export const footerNavGroups: { title: string; items: NavItem[] }[] = [
       { label: "Press Coverage", href: "/press-coverage" },
       { label: "Kelly’s Substack", href: getCampaignBlogUrl() },
       { label: "Events", href: "/events" },
+      { label: "Across Arkansas", href: "/arkansas-visits" },
       { label: "Invite Kelly", href: "/events/request" },
       { label: "Host a gathering", href: "/host-a-gathering" },
       { label: "Listening sessions", href: "/listening-sessions" },
