@@ -14,7 +14,7 @@
 
 ## 3. Ending commit
 
-`4a8eaca4` on branch `fix/netlify-handler-250mb-volunteer-presentation` (not `main`).
+`4a8eaca4` (spine) / tip `0bffb421` on branch `fix/netlify-handler-250mb-volunteer-presentation` (not `main`).
 
 ## 4. Existing infrastructure found
 
