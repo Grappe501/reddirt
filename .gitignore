@@ -180,3 +180,13 @@ supabase-introspection.prisma
 supabase-introspection.stderr.txt
 supabase-to-local-prisma-diff.sql
 supabase-to-local-prisma-diff.stderr.txt
+
+# RCIP public statistics operator artifacts (H: local; do not commit raw API bodies)
+data/public-statistics/raw/**
+!data/public-statistics/raw/.gitkeep
+data/public-statistics/warehouse/**
+!data/public-statistics/warehouse/.gitkeep
+data/public-statistics/reports/**
+!data/public-statistics/reports/.gitkeep
+exports/constitutional-capitalism/**
+!exports/constitutional-capitalism/.gitkeep
