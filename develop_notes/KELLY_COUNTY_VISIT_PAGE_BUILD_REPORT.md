@@ -97,7 +97,7 @@ URL: `http://localhost:3000/arkansas-visits`
 - **Not pushed**
 - **Not deployed**
 - Netlify linkage untouched
-- Local commit: pending after final build confirmation
+- Local commit: see git log on branch (Pass 1 scaffold); **not pushed**
 
 ## Remaining work for Calendar Data Pass 2
 
