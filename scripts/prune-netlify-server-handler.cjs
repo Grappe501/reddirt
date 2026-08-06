@@ -30,6 +30,17 @@ const TOP_LEVEL_DIR_PRUNE = [
   "scripts",
   "canvases",
   "campaign-system-manual",
+  "Volunteer Presentation",
+  "develop_notes",
+  "field-structure",
+  "exports",
+  "backups",
+  "reports",
+  "campaign-media",
+  "county-vault",
+  ".nightly-self-build",
+  "out",
+  ".local",
 ];
 
 /** Drop large non-launch data trees (opposition JSON stays). */
@@ -57,26 +68,19 @@ const LAUNCH_BOARD_KEEP = new Set(["intelligence"]);
  * kelly_sos_ops on Netlify — whitelist only boards needed for live ops.
  * Everything else under admin/(board) is dropped so ___netlify-server-handler stays under 250 MB.
  */
+/**
+ * Tight Netlify whitelist — prior 18-board keep still blew the 250 MB unzipped upload cap.
+ * Public site + core ops boards only; other admin boards stay in repo / local, not Lambda.
+ */
 const KELLY_OPS_NETLIFY_BOARD_KEEP = new Set([
   "intelligence",
-  "evidence-workbench",
   "campaign-calendar",
-  "campaign-events",
-  "workbench",
   "election-plan",
-  "settings",
-  "counties",
-  "content",
-  "homepage",
-  "media",
-  "pages",
-  "stories",
   "volunteers",
-  "asks",
-  "my-work",
-  "daily-brief",
-  "mission-brief",
-  "events",
+  "settings",
+  "content",
+  "media",
+  "homepage",
 ]);
 const LAUNCH_API_ADMIN_KEEP = new Set(["intelligence", "opposition"]);
 /** Kelly SOS production — keep public site + election-plan portal (force-dynamic). */
@@ -85,8 +89,6 @@ const LAUNCH_APP_TOP_KEEP = new Set([
   "election-plan",
   "(site)",
   "volunteers",
-  "onboarding",
-  "dashboard",
 ]);
 const LAUNCH_API_TOP_KEEP = new Set(["admin", "election-plan", "forms", "search"]);
 
@@ -118,6 +120,12 @@ const MANIFEST_INCLUDED_EXCLUSIONS = [
   "!node_modules/next/**",
   "!node_modules/@img/**",
   "!node_modules/sharp/**",
+  "!node_modules/@swc/**",
+  "!node_modules/esbuild/**",
+  "!node_modules/playwright/**",
+  "!node_modules/@playwright/**",
+  "!node_modules/puppeteer/**",
+  "!node_modules/puppeteer-core/**",
   "!data/**",
   "!docs/**",
   "!.env",
@@ -134,9 +142,22 @@ const MANIFEST_INCLUDED_EXCLUSIONS = [
   "!.local/**",
   "!**/npm-cache/**",
   "!**/_cacache/**",
+  "!Volunteer Presentation/**",
+  "!develop_notes/**",
+  "!field-structure/**",
+  "!exports/**",
+  "!backups/**",
+  "!reports/**",
+  "!campaign-media/**",
+  "!county-vault/**",
+  "!.nightly-self-build/**",
+  "!out/**",
 ];
 
-/** Pre-rendered public segments — drop from Lambda; pages render on demand. */
+/**
+ * Pre-rendered / heavy public segments — drop from Lambda so unzipped upload stays under 250 MB.
+ * Keep homepage + /arkansas-visits + thin CTA routes; static HTML is published via .next CDN assets.
+ */
 const LAUNCH_PUBLIC_SERVER_DIRS = [
   ".next/server/app/(site)/events",
   ".next/server/app/(site)/stories",
@@ -155,6 +176,32 @@ const LAUNCH_PUBLIC_SERVER_DIRS = [
   ".next/server/app/(site)/priorities",
   ".next/server/app/(site)/understand",
   ".next/server/app/(site)/listening-sessions",
+  ".next/server/app/(site)/campaign-photos",
+  ".next/server/app/(site)/campaign-calendar",
+  ".next/server/app/(site)/biography",
+  ".next/server/app/(site)/blog",
+  ".next/server/app/(site)/press-coverage",
+  ".next/server/app/(site)/kelly-speaks",
+  ".next/server/app/(site)/start-a-local-team",
+  ".next/server/app/(site)/host-a-gathering",
+  ".next/server/app/(site)/voter-registration",
+  ".next/server/app/(site)/arkansas",
+  ".next/server/app/(site)/civic-depth",
+  ".next/server/app/(site)/direct-democracy",
+  ".next/server/app/(site)/get-involved",
+  ".next/server/app/(site)/contact",
+  ".next/server/app/(site)/donate",
+  ".next/server/app/(site)/accessibility",
+  ".next/server/app/(site)/privacy",
+  ".next/server/app/(site)/terms",
+  ".next/server/app/(site)/disclaimer",
+  ".next/server/app/onboarding",
+  ".next/server/app/dashboard",
+  ".next/server/app/commit",
+  ".next/server/app/county-briefings",
+  ".next/server/app/organizing-intelligence",
+  ".next/server/app/relational",
+  ".next/server/app/kelly",
 ];
 
 const LAUNCH_NODE_MODULES_DIRS = [
@@ -305,6 +352,16 @@ function shouldPruneDirName(name, relFromHandler) {
   if (name === "typescript" && relFromHandler.includes(`${path.sep}node_modules${path.sep}`)) return true;
   if (/linuxmusl/i.test(name) || /sharp-libvips-linuxmusl/i.test(name)) return true;
   if (name === "amphtml-validator" && relFromHandler.includes("next/dist/compiled")) return true;
+  if (
+    name === "Volunteer Presentation" ||
+    name === "develop_notes" ||
+    name === "field-structure" ||
+    name === "campaign-media" ||
+    name === "county-vault" ||
+    name === ".nightly-self-build"
+  ) {
+    return true;
+  }
   return false;
 }
 
