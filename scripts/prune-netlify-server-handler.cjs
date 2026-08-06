@@ -69,20 +69,16 @@ const LAUNCH_BOARD_KEEP = new Set(["intelligence"]);
  * Everything else under admin/(board) is dropped so ___netlify-server-handler stays under 250 MB.
  */
 /**
- * Tight Netlify whitelist — prior 18-board keep still blew the 250 MB unzipped upload cap.
- * Public site + core ops boards only; other admin boards stay in repo / local, not Lambda.
+ * Minimal Netlify whitelist — public Arkansas Visits publish priority.
+ * Full admin boards remain in repo / local; Lambda keeps only launch-critical boards.
  */
 const KELLY_OPS_NETLIFY_BOARD_KEEP = new Set([
   "intelligence",
-  "campaign-calendar",
   "election-plan",
   "volunteers",
   "settings",
-  "content",
-  "media",
-  "homepage",
 ]);
-const LAUNCH_API_ADMIN_KEEP = new Set(["intelligence", "opposition"]);
+const LAUNCH_API_ADMIN_KEEP = new Set(["intelligence"]);
 /** Kelly SOS production — keep public site + election-plan portal (force-dynamic). */
 const LAUNCH_APP_TOP_KEEP = new Set([
   "admin",
@@ -90,7 +86,7 @@ const LAUNCH_APP_TOP_KEEP = new Set([
   "(site)",
   "volunteers",
 ]);
-const LAUNCH_API_TOP_KEEP = new Set(["admin", "election-plan", "forms", "search"]);
+const LAUNCH_API_TOP_KEEP = new Set(["admin", "election-plan", "forms"]);
 
 /** Standalone copy lands the whole repo in the handler — keep only these top-level names. */
 const LAUNCH_HANDLER_ROOT_KEEP = new Set([
@@ -101,25 +97,33 @@ const LAUNCH_HANDLER_ROOT_KEEP = new Set([
   "package.json",
 ]);
 
-/** @netlify/plugin-nextjs writes includedFiles: ["**"] — reinforce exclusions after prune. */
+/**
+ * Exclusions written into the handler manifest after prune.
+ * Keep in sync with [functions."___netlify-server-handler"].included_files in netlify.toml.
+ * Never re-add "**" — that re-pulls the site root into the Lambda upload.
+ */
 const MANIFEST_INCLUDED_EXCLUSIONS = [
   "!.git/**",
+  "!.git/objects/**",
   "!.next/cache/**",
   "!.next/static/**",
   "!.next/diagnostics/**",
   "!.next/types/**",
+  "!node_modules/.prisma/client/libquery_engine-rhel-openssl-1.0.x.so.node",
+  "!node_modules/@img/**",
+  "!node_modules/sharp/**",
+  "!node_modules/@img/sharp-libvips-linuxmusl-x64/**",
+  "!node_modules/@img/sharp-linuxmusl-x64/**",
+  "!node_modules/pdf-parse/**",
   "!node_modules/@googleapis/**",
   "!node_modules/googleapis/**",
   "!node_modules/google-auth-library/**",
   "!node_modules/twilio/**",
   "!node_modules/mammoth/**",
   "!node_modules/xlsx/**",
-  "!node_modules/pdf-parse/**",
   "!node_modules/typescript/**",
   "!node_modules/webpack/**",
   "!node_modules/next/**",
-  "!node_modules/@img/**",
-  "!node_modules/sharp/**",
   "!node_modules/@swc/**",
   "!node_modules/esbuild/**",
   "!node_modules/playwright/**",
@@ -128,18 +132,20 @@ const MANIFEST_INCLUDED_EXCLUSIONS = [
   "!node_modules/puppeteer-core/**",
   "!data/**",
   "!docs/**",
+  "!src/**",
+  "!prisma/**",
+  "!scripts/**",
+  "!canvases/**",
   "!.env",
   "!.env.*",
   "!**/.env",
   "!**/.env.*",
   "!public/**",
+  "!.tmp-heic-preview/**",
   "!docs/kelly-grappe-sos-strategic-plan-manual/**",
   "!campaign-system-manual/**",
-  "!src/**",
-  "!prisma/**",
-  "!scripts/**",
-  "!canvases/**",
   "!.local/**",
+  "!**/.local/**",
   "!**/npm-cache/**",
   "!**/_cacache/**",
   "!Volunteer Presentation/**",
@@ -557,7 +563,16 @@ function patchServerHandlerManifest(cwd) {
   if (!exists(manifestPath)) return false;
   const json = JSON.parse(fs.readFileSync(manifestPath, "utf8"));
   if (!json.config) return false;
-  json.config.includedFiles = ["**", ...MANIFEST_INCLUDED_EXCLUSIONS];
+  /**
+   * Do NOT set includedFiles to ["**"]. With @netlify/plugin-nextjs that re-pulls the
+   * site root into the upload after prune, blowing the 250 MB unzipped Lambda cap even
+   * when the pruned handler directory itself is under the limit.
+   * Keep exclusions only (and strip any prior "**" include).
+   */
+  const prev = Array.isArray(json.config.includedFiles) ? json.config.includedFiles : [];
+  const withoutStar = prev.filter((p) => p !== "**" && p !== "**/*" && p !== "./**");
+  const merged = [...new Set([...withoutStar, ...MANIFEST_INCLUDED_EXCLUSIONS])];
+  json.config.includedFiles = merged;
   fs.writeFileSync(manifestPath, `${JSON.stringify(json)}\n`);
   return true;
 }
@@ -728,6 +743,8 @@ function pruneHandler(handlerRoot, repoRoot) {
     }
     removed.push(...materializeMinimalNodeModules(handlerRoot, repoRoot));
     removed.push(...deleteAllSymlinks(handlerRoot));
+    // Docs already pruned to opposition-only; on Netlify drop the rest of the tree.
+    if (isNetlifyBuild() && rmrf(path.join(handlerRoot, "docs"))) removed.push("docs");
   }
 
   for (const rel of FILE_PRUNE) {

@@ -22,9 +22,12 @@ exports.onPostBuild = async ({ utils }) => {
   }
 
   const measuredMb = Math.max(result.afterMb, result.deployMb);
+  const summary = `${result.beforeMb.toFixed(1)} → ${result.afterMb.toFixed(1)} MB staging / ${result.deployMb.toFixed(1)} MB deploy (${result.removed.length} paths${result.manifestPatched ? ", manifest patched (no **)" : ""}; cap ${MAX_MB} MB)`;
+  // Always print to build log so operators can see size even when status UI is collapsed.
+  console.log(`>>> prune-server-handler: ${summary}`);
   utils.status.show({
     title: "Prune server handler (pre-deploy)",
-    summary: `${result.beforeMb.toFixed(1)} → ${result.afterMb.toFixed(1)} MB (${measuredMb.toFixed(1)} MB measured, ${result.removed.length} paths${result.manifestPatched ? ", manifest exclusions" : ""}; cap ${MAX_MB} MB)`,
+    summary,
   });
 
   if (shouldFailDeploy(result)) {
