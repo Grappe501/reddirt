@@ -1,0 +1,24 @@
+# Standalone Kelly Across Arkansas — static only (no Next server handler).
+#
+# Recommended Netlify site settings:
+#   Base directory: standalone/arkansas-visits
+#   Build command:  (none / echo ok) — commit data/public-visits.json after ledger edits
+#   Publish:        .
+#
+# To regenerate data from the RedDirt ledger (from repo root):
+#   npm run visits:standalone
+
+[build]
+  command = "echo 'arkansas-visits static'"
+  publish = "."
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[headers]]
+  for = "/data/*"
+  [headers.values]
+    Cache-Control = "public, max-age=300"

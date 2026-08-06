@@ -1,0 +1,2431 @@
+{
+  "generatedAt": "2026-08-06T18:07:24.938Z",
+  "siteUrl": "https://kgrappe.netlify.app",
+  "summary": {
+    "visitedCounties": 51,
+    "totalCounties": 75,
+    "percentVisited": 68,
+    "completedStopCount": 190,
+    "scheduledStopCount": 16,
+    "needsReviewCount": 7,
+    "buckets": {
+      "visited": [
+        "Arkansas",
+        "Baxter",
+        "Benton",
+        "Boone",
+        "Bradley",
+        "Carroll",
+        "Clark",
+        "Clay",
+        "Cleburne",
+        "Cleveland",
+        "Columbia",
+        "Conway",
+        "Craighead",
+        "Crawford",
+        "Cross",
+        "Desha",
+        "Drew",
+        "Faulkner",
+        "Franklin",
+        "Fulton",
+        "Garland",
+        "Grant",
+        "Greene",
+        "Hempstead",
+        "Hot Spring",
+        "Independence",
+        "Izard",
+        "Johnson",
+        "Lafayette",
+        "Lee",
+        "Lonoke",
+        "Marion",
+        "Mississippi",
+        "Montgomery",
+        "Nevada",
+        "Ouachita",
+        "Pike",
+        "Poinsett",
+        "Polk",
+        "Pope",
+        "Pulaski",
+        "Saline",
+        "Searcy",
+        "Sebastian",
+        "Sharp",
+        "Stone",
+        "Union",
+        "Van Buren",
+        "Washington",
+        "White",
+        "Yell"
+      ],
+      "scheduled": [
+        "Howard"
+      ],
+      "undocumented": [
+        "Ashley",
+        "Calhoun",
+        "Chicot",
+        "Crittenden",
+        "Dallas",
+        "Jackson",
+        "Jefferson",
+        "Lawrence",
+        "Lincoln",
+        "Little River",
+        "Logan",
+        "Madison",
+        "Miller",
+        "Monroe",
+        "Newton",
+        "Perry",
+        "Phillips",
+        "Prairie",
+        "Randolph",
+        "St. Francis",
+        "Scott",
+        "Sevier",
+        "Woodruff"
+      ]
+    }
+  },
+  "counties": [
+    "Arkansas",
+    "Ashley",
+    "Baxter",
+    "Benton",
+    "Boone",
+    "Bradley",
+    "Calhoun",
+    "Carroll",
+    "Chicot",
+    "Clark",
+    "Clay",
+    "Cleburne",
+    "Cleveland",
+    "Columbia",
+    "Conway",
+    "Craighead",
+    "Crawford",
+    "Crittenden",
+    "Cross",
+    "Dallas",
+    "Desha",
+    "Drew",
+    "Faulkner",
+    "Franklin",
+    "Fulton",
+    "Garland",
+    "Grant",
+    "Greene",
+    "Hempstead",
+    "Hot Spring",
+    "Howard",
+    "Independence",
+    "Izard",
+    "Jackson",
+    "Jefferson",
+    "Johnson",
+    "Lafayette",
+    "Lawrence",
+    "Lee",
+    "Lincoln",
+    "Little River",
+    "Logan",
+    "Lonoke",
+    "Madison",
+    "Marion",
+    "Miller",
+    "Mississippi",
+    "Monroe",
+    "Montgomery",
+    "Nevada",
+    "Newton",
+    "Ouachita",
+    "Perry",
+    "Phillips",
+    "Pike",
+    "Poinsett",
+    "Polk",
+    "Pope",
+    "Prairie",
+    "Pulaski",
+    "Randolph",
+    "St. Francis",
+    "Saline",
+    "Scott",
+    "Searcy",
+    "Sebastian",
+    "Sevier",
+    "Sharp",
+    "Stone",
+    "Union",
+    "Van Buren",
+    "Washington",
+    "White",
+    "Woodruff",
+    "Yell"
+  ],
+  "completed": [
+    {
+      "id": "locked-2026-08-05-nwa-senior-dems",
+      "date": "2026-08-05",
+      "endDate": null,
+      "title": "NWA Senior Dems",
+      "city": "Fayetteville",
+      "counties": [
+        "Washington"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "xlsx-2026-08-01-baxter-county-visit",
+      "date": "2026-08-01",
+      "endDate": null,
+      "title": "Baxter County visit",
+      "city": null,
+      "counties": [
+        "Baxter"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "locked-2026-07-31-sebastian-county-immersion",
+      "date": "2026-07-31",
+      "endDate": "2026-08-02",
+      "title": "Sebastian County immersion",
+      "city": "Fort Smith",
+      "counties": [
+        "Sebastian"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "presence-2026-07-26-mississippi-county-immersion",
+      "date": "2026-07-26",
+      "endDate": null,
+      "title": "Mississippi county immersion",
+      "city": null,
+      "counties": [
+        "Mississippi"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "locked-2026-07-25-union-county-immersion",
+      "date": "2026-07-25",
+      "endDate": "2026-07-29",
+      "title": "Union County immersion",
+      "city": "El Dorado",
+      "counties": [
+        "Union"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "presence-2026-07-24-cave-city-watermelon-festival",
+      "date": "2026-07-24",
+      "endDate": null,
+      "title": "Cave City Watermelon Festival",
+      "city": "Cave City",
+      "counties": [
+        "Sharp"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "presence-2026-07-23-hsv-dems-meeting",
+      "date": "2026-07-23",
+      "endDate": null,
+      "title": "HSV dems meeting",
+      "city": null,
+      "counties": [],
+      "status": "needs-review"
+    },
+    {
+      "id": "presence-2026-07-20-england-democrats-meeting",
+      "date": "2026-07-20",
+      "endDate": null,
+      "title": "England democrats meeting (Bob Edwards)",
+      "city": "England",
+      "counties": [
+        "Lonoke"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "locked-2026-07-20-faulkner-county-engagement",
+      "date": "2026-07-20",
+      "endDate": null,
+      "title": "Faulkner County engagement",
+      "city": "Conway",
+      "counties": [
+        "Faulkner"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "presence-2026-07-18-johnson-county-peach-festival",
+      "date": "2026-07-18",
+      "endDate": null,
+      "title": "Johnson county peach festival",
+      "city": null,
+      "counties": [
+        "Johnson"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "presence-2026-07-17-franklin-county-event-6pm",
+      "date": "2026-07-17",
+      "endDate": null,
+      "title": "Franklin County event 6pm",
+      "city": null,
+      "counties": [
+        "Franklin"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "locked-2026-07-17-johnson-county-immersion",
+      "date": "2026-07-17",
+      "endDate": "2026-07-18",
+      "title": "Johnson County immersion",
+      "city": "Clarksville",
+      "counties": [
+        "Johnson"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "presence-2026-07-16-johnson-county-dems-meeting",
+      "date": "2026-07-16",
+      "endDate": null,
+      "title": "Johnson county Dems meeting",
+      "city": null,
+      "counties": [
+        "Johnson"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "locked-2026-07-14-nixon-flower-farm",
+      "date": "2026-07-14",
+      "endDate": null,
+      "title": "Nixon Flower Farm",
+      "city": "England",
+      "counties": [
+        "Lonoke"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "presence-2026-07-13-benton-county-hbd-america-voter-reg-event",
+      "date": "2026-07-13",
+      "endDate": null,
+      "title": "Benton County HBD America voter reg event",
+      "city": null,
+      "counties": [
+        "Benton"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "locked-2026-07-12-greene-county-immersion",
+      "date": "2026-07-12",
+      "endDate": "2026-07-14",
+      "title": "Greene County immersion",
+      "city": "Paragould",
+      "counties": [
+        "Greene"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "presence-2026-07-11-10am-benton-county-volunteer-meet-up",
+      "date": "2026-07-11",
+      "endDate": null,
+      "title": "10am Benton county volunteer meet up",
+      "city": null,
+      "counties": [
+        "Benton"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "presence-2026-07-11-4pm-6-benton-county-hq-opening",
+      "date": "2026-07-11",
+      "endDate": null,
+      "title": "4pm-6 Benton county HQ opening.",
+      "city": null,
+      "counties": [
+        "Benton"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "locked-2026-07-11-heber-250-ozarks-250-block-party",
+      "date": "2026-07-11",
+      "endDate": null,
+      "title": "Heber 250 / Ozarks 250 Block Party",
+      "city": "Springdale",
+      "counties": [
+        "Washington"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "locked-2026-07-08-hot-spring-county-visit",
+      "date": "2026-07-08",
+      "endDate": null,
+      "title": "Hot Spring County visit",
+      "city": "Malvern",
+      "counties": [
+        "Hot Spring"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "locked-2026-07-04-clay-county-july-4-corridor",
+      "date": "2026-07-04",
+      "endDate": null,
+      "title": "Clay County July 4 corridor",
+      "city": "Piggott",
+      "counties": [
+        "Clay"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "presence-2026-07-03-dewitt-arkansas-county-250-celebration",
+      "date": "2026-07-03",
+      "endDate": null,
+      "title": "Dewitt. Arkansas county 250 celebration",
+      "city": "DeWitt",
+      "counties": [
+        "Arkansas"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "locked-2026-07-03-sherwood-fireworks-food-trucks",
+      "date": "2026-07-03",
+      "endDate": null,
+      "title": "Sherwood Fireworks & Food Trucks",
+      "city": "Sherwood",
+      "counties": [
+        "Pulaski"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-07-02-hillcrest-first-thursday-for-july-4",
+      "date": "2026-07-02",
+      "endDate": null,
+      "title": "Hillcrest First Thursday for July 4",
+      "city": "Home",
+      "counties": [
+        "Pulaski"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "locked-2026-06-28-pulaski-county-dems",
+      "date": "2026-06-28",
+      "endDate": null,
+      "title": "Pulaski County Dems",
+      "city": "Little Rock",
+      "counties": [
+        "Pulaski"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-06-27-king-kennedy-dinner-verify-location",
+      "date": "2026-06-27",
+      "endDate": null,
+      "title": "King Kennedy dinner",
+      "city": null,
+      "counties": [],
+      "status": "needs-review"
+    },
+    {
+      "id": "locked-2026-06-27-pioneer-heritage-festival",
+      "date": "2026-06-27",
+      "endDate": null,
+      "title": "Pioneer Heritage Festival",
+      "city": "Norfork",
+      "counties": [
+        "Baxter"
+      ],
+      "status": "needs-review"
+    },
+    {
+      "id": "item-2026-06-26-sos-debate-annual-press-convention-eureka-springs",
+      "date": "2026-06-26",
+      "endDate": null,
+      "title": "SOS debate - Annual Press Convention - Eureka Springs",
+      "city": null,
+      "counties": [
+        "Carroll"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "locked-2026-06-26-sos-debate-annual-press-convention",
+      "date": "2026-06-26",
+      "endDate": null,
+      "title": "SOS Debate — Annual Press Convention",
+      "city": "Eureka Springs",
+      "counties": [
+        "Carroll"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "locked-2026-06-22-chamber-luncheon-rex-nelson",
+      "date": "2026-06-22",
+      "endDate": null,
+      "title": "Chamber luncheon — Rex Nelson",
+      "city": "Little Rock",
+      "counties": [
+        "Pulaski"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "locked-2026-06-21-benton-county-immersion",
+      "date": "2026-06-21",
+      "endDate": "2026-06-28",
+      "title": "Benton County immersion",
+      "city": "Bentonville",
+      "counties": [
+        "Benton"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "presence-2026-06-20-carlisle-250th-celebration",
+      "date": "2026-06-20",
+      "endDate": null,
+      "title": "Carlisle 250th celebration",
+      "city": "Carlisle",
+      "counties": [
+        "Lonoke"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "xlsx-2026-06-20-conway-county-visit",
+      "date": "2026-06-20",
+      "endDate": null,
+      "title": "Conway County visit",
+      "city": null,
+      "counties": [
+        "Conway"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-06-20-menifee-juneteenth",
+      "date": "2026-06-20",
+      "endDate": null,
+      "title": "Menifee Juneteenth",
+      "city": "Return LR",
+      "counties": [
+        "Conway"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "locked-2026-06-19-juneteenth",
+      "date": "2026-06-19",
+      "endDate": null,
+      "title": "Juneteenth",
+      "city": "Little Rock",
+      "counties": [
+        "Pulaski"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "locked-2026-06-19-juneteenth-morrilton-menifee-corridor",
+      "date": "2026-06-19",
+      "endDate": "2026-06-20",
+      "title": "Juneteenth Morrilton / Menifee corridor",
+      "city": "Morrilton",
+      "counties": [
+        "Conway"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-06-19-juneteenth-morrilton-c5",
+      "date": "2026-06-19",
+      "endDate": null,
+      "title": "Juneteenth Morrilton C5",
+      "city": "Central AR",
+      "counties": [
+        "Conway"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "locked-2026-06-19-mountain-home-craft-fest-baxter",
+      "date": "2026-06-19",
+      "endDate": "2026-06-20",
+      "title": "Mountain Home Craft Fest (Baxter)",
+      "city": "Mountain Home",
+      "counties": [
+        "Baxter"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "locked-2026-06-18-rose-bud-summerfest",
+      "date": "2026-06-18",
+      "endDate": "2026-06-20",
+      "title": "Rose Bud Summerfest",
+      "city": "Rose Bud",
+      "counties": [
+        "White"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-06-17-montgomery-county-meeting",
+      "date": "2026-06-17",
+      "endDate": null,
+      "title": "Montgomery County meeting",
+      "city": "Hot Springs/Mount Ida or return",
+      "counties": [
+        "Montgomery"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "locked-2026-06-17-mt-ida-community-stop",
+      "date": "2026-06-17",
+      "endDate": null,
+      "title": "Mt Ida community stop",
+      "city": "Mount Ida",
+      "counties": [
+        "Montgomery"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-06-14-monticello-juneteenth-festival",
+      "date": "2026-06-14",
+      "endDate": null,
+      "title": "Monticello Juneteenth festival",
+      "city": "Return LR or stay central",
+      "counties": [
+        "Drew"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-06-14-monticello-juneteenth-festival-clarissa-pace",
+      "date": "2026-06-14",
+      "endDate": null,
+      "title": "Monticello Juneteenth festival - Clarissa pace",
+      "city": null,
+      "counties": [
+        "Drew"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-06-11-county-clerk-candidate-q-a-in-mountain-view",
+      "date": "2026-06-11",
+      "endDate": null,
+      "title": "County Clerk Candidate Q & A in Mountain View",
+      "city": null,
+      "counties": [
+        "Stone"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-06-11-pink-tomato-festival-south-ar-visit",
+      "date": "2026-06-11",
+      "endDate": null,
+      "title": "Pink Tomato Festival & South Arkansas visit",
+      "city": "Warren",
+      "counties": [
+        "Bradley",
+        "Drew"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-06-09-greene-county-democrats-meeting-kelly-speaking",
+      "date": "2026-06-09",
+      "endDate": null,
+      "title": "Greene County Democrats meeting — Kelly speaking",
+      "city": null,
+      "counties": [
+        "Greene"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "visit-log-2026-06-07-sharp",
+      "date": "2026-06-07",
+      "endDate": null,
+      "title": "Cave City visit",
+      "city": "Cave City",
+      "counties": [
+        "Sharp"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "visit-log-2026-06-07-yell",
+      "date": "2026-06-07",
+      "endDate": null,
+      "title": "Dardanelle visit",
+      "city": "Dardanelle",
+      "counties": [
+        "Yell"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-06-06-clark-county",
+      "date": "2026-06-06",
+      "endDate": null,
+      "title": "Clark county",
+      "city": null,
+      "counties": [
+        "Clark"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-06-06-clark-county-anchor",
+      "date": "2026-06-06",
+      "endDate": null,
+      "title": "Clark County anchor",
+      "city": "Return or stay region",
+      "counties": [
+        "Clark"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-06-04-fish-fry-faulkner",
+      "date": "2026-06-04",
+      "endDate": null,
+      "title": "Fish fry Faulkner",
+      "city": "Home",
+      "counties": [
+        "Faulkner"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-06-03-extension-homemakers-club-convention",
+      "date": "2026-06-03",
+      "endDate": null,
+      "title": "Extension Homemakers Club Convention",
+      "city": null,
+      "counties": [],
+      "status": "needs-review"
+    },
+    {
+      "id": "xlsx-2026-05-28-cross-county-visit",
+      "date": "2026-05-28",
+      "endDate": null,
+      "title": "Cross County visit",
+      "city": null,
+      "counties": [
+        "Cross"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-05-28-wynne-farm-fest",
+      "date": "2026-05-28",
+      "endDate": null,
+      "title": "Wynne farm fest",
+      "city": null,
+      "counties": [
+        "Cross"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-05-26-hot-springs-election-conversation",
+      "date": "2026-05-26",
+      "endDate": null,
+      "title": "Hot Springs Election Conversation",
+      "city": null,
+      "counties": [
+        "Garland"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-05-24-book-signing-at-paper-hearts",
+      "date": "2026-05-24",
+      "endDate": null,
+      "title": "Book signing at Paper Hearts",
+      "city": "Home",
+      "counties": [
+        "Pulaski"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-05-23-desha-county-memorial-day",
+      "date": "2026-05-23",
+      "endDate": null,
+      "title": "Desha County Memorial Day",
+      "city": "Return or stay Delta",
+      "counties": [
+        "Desha"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "xlsx-2026-05-23-marion-county-visit",
+      "date": "2026-05-23",
+      "endDate": null,
+      "title": "Marion County visit",
+      "city": null,
+      "counties": [
+        "Marion"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-05-21-third-thursday-benton-arkansas-times-tacos-tequilas",
+      "date": "2026-05-21",
+      "endDate": null,
+      "title": "Third Thursday (Benton) and Arkansas Times Tacos & Tequilas",
+      "city": null,
+      "counties": [],
+      "status": "needs-review"
+    },
+    {
+      "id": "item-2026-05-19-rotary-prescott-lunch-program-nevada-county",
+      "date": "2026-05-19",
+      "endDate": null,
+      "title": "Rotary — Prescott lunch program (Nevada County)",
+      "city": null,
+      "counties": [
+        "Nevada"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-05-18-pulaski-county-democrats-meeting-kelly-speaking",
+      "date": "2026-05-18",
+      "endDate": null,
+      "title": "Pulaski County Democrats meeting — Kelly speaking",
+      "city": null,
+      "counties": [
+        "Pulaski"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "visit-log-2026-05-18-pulaski",
+      "date": "2026-05-18",
+      "endDate": null,
+      "title": "Pulaski County Dems",
+      "city": "Little Rock",
+      "counties": [
+        "Pulaski"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-05-17-bishop-arnold-magnolia",
+      "date": "2026-05-17",
+      "endDate": null,
+      "title": "Bishop Arnold magnolia",
+      "city": "Magnolia",
+      "counties": [
+        "Columbia"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-05-17-bishop-arnold-magnolia-tabernacle-of-faith-wynne-at-3-pm",
+      "date": "2026-05-17",
+      "endDate": null,
+      "title": "Bishop Arnold Magnolia; Tabernacle of Faith Wynne at 3 PM",
+      "city": null,
+      "counties": [],
+      "status": "needs-review"
+    },
+    {
+      "id": "visit-log-2026-05-16-columbia",
+      "date": "2026-05-16",
+      "endDate": null,
+      "title": "Magnolia Blossom Festival / steak cookoff immersion",
+      "city": "Magnolia",
+      "counties": [
+        "Columbia"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-05-16-magnolia-fest-and-immersion-weekend",
+      "date": "2026-05-16",
+      "endDate": null,
+      "title": "Magnolia fest and immersion weekend",
+      "city": null,
+      "counties": [
+        "Columbia"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-05-10-church-at-lakewood",
+      "date": "2026-05-10",
+      "endDate": null,
+      "title": "Church at Lakewood",
+      "city": null,
+      "counties": [
+        "Pulaski"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-05-09-501-fest-little-rock",
+      "date": "2026-05-09",
+      "endDate": null,
+      "title": "501 fest Little Rock",
+      "city": "Little Rock",
+      "counties": [
+        "Pulaski"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-05-09-pawpac-saline-brunch-with-teresa",
+      "date": "2026-05-09",
+      "endDate": null,
+      "title": "PAWPAC saline Brunch with Teresa",
+      "city": null,
+      "counties": [
+        "Saline"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-05-09-pike-county-dems",
+      "date": "2026-05-09",
+      "endDate": null,
+      "title": "Pike county Dems",
+      "city": null,
+      "counties": [
+        "Pike"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "xlsx-2026-05-09-searcy-county-visit",
+      "date": "2026-05-09",
+      "endDate": null,
+      "title": "Searcy County visit",
+      "city": null,
+      "counties": [
+        "Searcy"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-05-03-edensong-in-heber",
+      "date": "2026-05-03",
+      "endDate": null,
+      "title": "Edensong in Heber with carol Hutto. Show at 2",
+      "city": "Heber Springs",
+      "counties": [
+        "Cleburne"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-05-02-pioneer-days-melbourne",
+      "date": "2026-05-02",
+      "endDate": null,
+      "title": "Pioneer days melbourne",
+      "city": "Melbourne",
+      "counties": [
+        "Izard"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "visit-log-2026-05-02-faulkner",
+      "date": "2026-05-02",
+      "endDate": null,
+      "title": "Toad Suck Daze",
+      "city": "Conway",
+      "counties": [
+        "Faulkner"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-05-02-toadsuck-days",
+      "date": "2026-05-02",
+      "endDate": null,
+      "title": "Toadsuck days",
+      "city": null,
+      "counties": [
+        "Faulkner"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-05-01-toad-race-at-5-00",
+      "date": "2026-05-01",
+      "endDate": null,
+      "title": "Toad race at 5:00",
+      "city": null,
+      "counties": [
+        "Faulkner"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-04-30-jacksonville-win-event",
+      "date": "2026-04-30",
+      "endDate": null,
+      "title": "Jacksonville win event",
+      "city": null,
+      "counties": [
+        "Pulaski"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-04-26-neighbors-for-a-better-arkansas-lowell",
+      "date": "2026-04-26",
+      "endDate": null,
+      "title": "Neighbors for a better arkansas - Lowell (darecca)",
+      "city": "Lowell",
+      "counties": [
+        "Benton"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-04-24-russellville-pope-county",
+      "date": "2026-04-24",
+      "endDate": null,
+      "title": "Russellville pope county",
+      "city": null,
+      "counties": [
+        "Pope"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-04-20-lunch-with-ozark-forward",
+      "date": "2026-04-20",
+      "endDate": null,
+      "title": "Lunch with Ozark forward",
+      "city": null,
+      "counties": [
+        "Franklin"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-04-20-yellville-meeting",
+      "date": "2026-04-20",
+      "endDate": null,
+      "title": "Yellville  meeting",
+      "city": null,
+      "counties": [
+        "Marion"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "xlsx-2026-04-18-baxter-county-visit",
+      "date": "2026-04-18",
+      "endDate": null,
+      "title": "Baxter County visit",
+      "city": null,
+      "counties": [
+        "Baxter"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-04-12-presbyterian-church-mena",
+      "date": "2026-04-12",
+      "endDate": null,
+      "title": "Presbyterian church Mena",
+      "city": null,
+      "counties": [
+        "Polk"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "xlsx-2026-04-11-polk-county-visit",
+      "date": "2026-04-11",
+      "endDate": null,
+      "title": "Polk County visit",
+      "city": null,
+      "counties": [
+        "Polk"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-04-10-beans-and-greens-supper-jametta-harper-cleveland-co-dem",
+      "date": "2026-04-10",
+      "endDate": null,
+      "title": "Beans and greens supper Jametta Harper Cleveland co dem",
+      "city": null,
+      "counties": [
+        "Cleveland"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "xlsx-2026-04-09-crawford-county-visit",
+      "date": "2026-04-09",
+      "endDate": null,
+      "title": "Crawford County visit",
+      "city": null,
+      "counties": [
+        "Crawford"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "xlsx-2026-04-07-conway-county-visit",
+      "date": "2026-04-07",
+      "endDate": null,
+      "title": "Conway County visit",
+      "city": null,
+      "counties": [
+        "Conway"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-04-06-cross-county-dems-power-of-5-meeting-at-6-we-need-to-be-there-by-6-30",
+      "date": "2026-04-06",
+      "endDate": null,
+      "title": "Cross county Dems power of 5. Meeting at 6. We need to be there by 6:30.",
+      "city": null,
+      "counties": [
+        "Cross"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-04-04-stone-county-dems-jan-misenheimer",
+      "date": "2026-04-04",
+      "endDate": null,
+      "title": "Stone county Dems - Jan Misenheimer",
+      "city": null,
+      "counties": [
+        "Stone"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "xlsx-2026-04-04-stone-county-visit",
+      "date": "2026-04-04",
+      "endDate": null,
+      "title": "Stone County visit",
+      "city": null,
+      "counties": [
+        "Stone"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "xlsx-2026-03-29-garland-county-visit",
+      "date": "2026-03-29",
+      "endDate": null,
+      "title": "Garland County visit",
+      "city": null,
+      "counties": [
+        "Garland"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "xlsx-2026-03-28-garland-county-visit",
+      "date": "2026-03-28",
+      "endDate": null,
+      "title": "Garland County visit",
+      "city": null,
+      "counties": [
+        "Garland"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-03-28-grassroots-and-guitar-strings",
+      "date": "2026-03-28",
+      "endDate": null,
+      "title": "Grassroots and guitar strings",
+      "city": null,
+      "counties": [],
+      "status": "needs-review"
+    },
+    {
+      "id": "xlsx-2026-03-27-pope-county-visit",
+      "date": "2026-03-27",
+      "endDate": null,
+      "title": "Pope County visit",
+      "city": null,
+      "counties": [
+        "Pope"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "xlsx-2026-03-26-conway-county-visit",
+      "date": "2026-03-26",
+      "endDate": null,
+      "title": "Conway County visit",
+      "city": null,
+      "counties": [
+        "Conway"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-03-26-morrilton-c5",
+      "date": "2026-03-26",
+      "endDate": null,
+      "title": "Morrilton C5",
+      "city": "Morrilton",
+      "counties": [
+        "Conway"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-03-24-jacksonville-town-hall",
+      "date": "2026-03-24",
+      "endDate": null,
+      "title": "Jacksonville town hall",
+      "city": "Jacksonville",
+      "counties": [
+        "Pulaski"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-03-22-church-in-camden-with-bishop-arnold",
+      "date": "2026-03-22",
+      "endDate": null,
+      "title": "Church in Camden with bishop Arnold",
+      "city": null,
+      "counties": [
+        "Ouachita"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "xlsx-2026-03-22-lafayette-county-visit",
+      "date": "2026-03-22",
+      "endDate": null,
+      "title": "Lafayette County visit",
+      "city": null,
+      "counties": [
+        "Lafayette"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "xlsx-2026-03-22-ouachita-county-visit",
+      "date": "2026-03-22",
+      "endDate": null,
+      "title": "Ouachita County visit",
+      "city": null,
+      "counties": [
+        "Ouachita"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "xlsx-2026-03-21-hempstead-county-visit",
+      "date": "2026-03-21",
+      "endDate": null,
+      "title": "Hempstead County visit",
+      "city": null,
+      "counties": [
+        "Hempstead"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "presence-2026-03-21-jonquil-festival-washington",
+      "date": "2026-03-21",
+      "endDate": null,
+      "title": "Jonquil festival Washington",
+      "city": "Washington",
+      "counties": [
+        "Hempstead"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "xlsx-2026-03-21-van-buren-county-visit",
+      "date": "2026-03-21",
+      "endDate": null,
+      "title": "Van Buren County visit",
+      "city": null,
+      "counties": [
+        "Van Buren"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-03-19-cindy-nations-campaign-kick-off-conway",
+      "date": "2026-03-19",
+      "endDate": null,
+      "title": "Cindy nations campaign kick off Conway",
+      "city": "Conway",
+      "counties": [
+        "Faulkner"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "xlsx-2026-03-17-van-buren-county-visit",
+      "date": "2026-03-17",
+      "endDate": null,
+      "title": "Van Buren County visit",
+      "city": null,
+      "counties": [
+        "Van Buren"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "xlsx-2026-03-14-benton-county-visit",
+      "date": "2026-03-14",
+      "endDate": null,
+      "title": "Benton County visit",
+      "city": null,
+      "counties": [
+        "Benton"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-03-14-dpa-state-committee-meeting-march-2026",
+      "date": "2026-03-14",
+      "endDate": null,
+      "title": "DPA State Committee Meeting, March 2026",
+      "city": "Springdale",
+      "counties": [
+        "Washington"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "xlsx-2026-03-14-washington-county-visit",
+      "date": "2026-03-14",
+      "endDate": null,
+      "title": "Washington County visit",
+      "city": null,
+      "counties": [
+        "Washington"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-03-12-pto-hillcrest-merchants-meeting",
+      "date": "2026-03-12",
+      "endDate": null,
+      "title": "PTO: Hillcrest merchants meeting",
+      "city": null,
+      "counties": [
+        "Pulaski"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-03-11-sherwood-event-check-in",
+      "date": "2026-03-11",
+      "endDate": null,
+      "title": "Sherwood event check in",
+      "city": null,
+      "counties": [
+        "Pulaski"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-03-10-saline-county-meeting",
+      "date": "2026-03-10",
+      "endDate": null,
+      "title": "Saline county meeting",
+      "city": null,
+      "counties": [
+        "Saline"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "xlsx-2026-03-10-saline-county-visit",
+      "date": "2026-03-10",
+      "endDate": null,
+      "title": "Saline County visit",
+      "city": null,
+      "counties": [
+        "Saline"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "xlsx-2026-03-06-cross-county-visit",
+      "date": "2026-03-06",
+      "endDate": null,
+      "title": "Cross County visit",
+      "city": null,
+      "counties": [
+        "Cross"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-03-05-jeannie-gray-sherwood-event",
+      "date": "2026-03-05",
+      "endDate": null,
+      "title": "Jeannie gray sherwood event",
+      "city": null,
+      "counties": [
+        "Pulaski"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "xlsx-2026-03-01-johnson-county-visit",
+      "date": "2026-03-01",
+      "endDate": null,
+      "title": "Johnson County visit",
+      "city": null,
+      "counties": [
+        "Johnson"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "xlsx-2026-02-28-garland-county-visit",
+      "date": "2026-02-28",
+      "endDate": null,
+      "title": "Garland County visit",
+      "city": null,
+      "counties": [
+        "Garland"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "xlsx-2026-02-26-craighead-county-visit",
+      "date": "2026-02-26",
+      "endDate": null,
+      "title": "Craighead County visit",
+      "city": null,
+      "counties": [
+        "Craighead"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "xlsx-2026-02-24-garland-county-visit",
+      "date": "2026-02-24",
+      "endDate": null,
+      "title": "Garland County visit",
+      "city": null,
+      "counties": [
+        "Garland"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-02-24-pulaski-county-dems-meeting",
+      "date": "2026-02-24",
+      "endDate": null,
+      "title": "Pulaski county Dems meeting",
+      "city": null,
+      "counties": [
+        "Pulaski"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-02-24-virginia-clinton-kelly-candidate-forum",
+      "date": "2026-02-24",
+      "endDate": null,
+      "title": "Virginia Clinton Kelly candidate forum",
+      "city": null,
+      "counties": [
+        "Garland"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-02-21-formosa-chili-supper-vbc",
+      "date": "2026-02-21",
+      "endDate": null,
+      "title": "Formosa chili supper vbc",
+      "city": null,
+      "counties": [
+        "Van Buren"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-02-21-jacksonville-naacp-ivory-tillman-youth-speech-competition",
+      "date": "2026-02-21",
+      "endDate": null,
+      "title": "Jacksonville NAACP Ivory Tillman Youth Speech Competition",
+      "city": null,
+      "counties": [
+        "Pulaski"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "xlsx-2026-02-20-searcy-county-visit",
+      "date": "2026-02-20",
+      "endDate": null,
+      "title": "Searcy County visit",
+      "city": null,
+      "counties": [
+        "Searcy"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "presence-2026-02-19-berryville-chamber-meet-the-candidate-event",
+      "date": "2026-02-19",
+      "endDate": null,
+      "title": "Berryville Chamber Meet the Candidate Event",
+      "city": "Berryville",
+      "counties": [
+        "Carroll"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "xlsx-2026-02-17-grant-county-visit",
+      "date": "2026-02-17",
+      "endDate": null,
+      "title": "Grant County visit",
+      "city": null,
+      "counties": [
+        "Grant"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-02-16-hot-springs-village-forum",
+      "date": "2026-02-16",
+      "endDate": null,
+      "title": "Hot springs village forum",
+      "city": null,
+      "counties": [
+        "Garland"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-02-14-saline-county-library-civic-event",
+      "date": "2026-02-14",
+      "endDate": null,
+      "title": "Saline county library civic event",
+      "city": null,
+      "counties": [
+        "Saline"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "xlsx-2026-02-12-boone-county-visit",
+      "date": "2026-02-12",
+      "endDate": null,
+      "title": "Boone County visit",
+      "city": null,
+      "counties": [
+        "Boone"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "xlsx-2026-02-12-searcy-county-visit",
+      "date": "2026-02-12",
+      "endDate": null,
+      "title": "Searcy County visit",
+      "city": null,
+      "counties": [
+        "Searcy"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-02-10-saline-county-dems-meeting",
+      "date": "2026-02-10",
+      "endDate": null,
+      "title": "Saline County Dems Meeting",
+      "city": null,
+      "counties": [
+        "Saline"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-02-09-sebastian-county-dems-meeting",
+      "date": "2026-02-09",
+      "endDate": null,
+      "title": "Sebastian County Dems Meeting",
+      "city": null,
+      "counties": [
+        "Sebastian"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "xlsx-2026-02-09-sebastian-county-visit",
+      "date": "2026-02-09",
+      "endDate": null,
+      "title": "Sebastian County visit",
+      "city": null,
+      "counties": [
+        "Sebastian"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "xlsx-2026-02-08-cleburne-county-visit",
+      "date": "2026-02-08",
+      "endDate": null,
+      "title": "Cleburne County visit",
+      "city": null,
+      "counties": [
+        "Cleburne"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-02-07-van-buren-county-candidate-forum-and-county-visit-pie-auction",
+      "date": "2026-02-07",
+      "endDate": null,
+      "title": "Van Buren County Candidate Forum and County Visit (Pie Auction)",
+      "city": null,
+      "counties": [
+        "Van Buren"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-02-07-van-buren-county-pie-auction-in-allread",
+      "date": "2026-02-07",
+      "endDate": null,
+      "title": "Van Buren County Pie Auction in allread",
+      "city": null,
+      "counties": [
+        "Van Buren"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "xlsx-2026-02-07-van-buren-county-visit",
+      "date": "2026-02-07",
+      "endDate": null,
+      "title": "Van Buren County visit",
+      "city": null,
+      "counties": [
+        "Van Buren"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-02-05-cross-county-farm-bureau-event",
+      "date": "2026-02-05",
+      "endDate": null,
+      "title": "Cross county farm bureau event",
+      "city": null,
+      "counties": [
+        "Cross"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "xlsx-2026-02-05-cross-county-visit",
+      "date": "2026-02-05",
+      "endDate": null,
+      "title": "Cross County visit",
+      "city": null,
+      "counties": [
+        "Cross"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-02-05-muslim-organizing-meeting-argenta",
+      "date": "2026-02-05",
+      "endDate": null,
+      "title": "Muslim organizing meeting - argenta",
+      "city": null,
+      "counties": [
+        "Pulaski"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-02-04-harding-young-dems-holland-waller-room-208",
+      "date": "2026-02-04",
+      "endDate": null,
+      "title": "Harding young Dems Holland Waller room 208",
+      "city": null,
+      "counties": [
+        "White"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-02-02-faulkner-county",
+      "date": "2026-02-02",
+      "endDate": null,
+      "title": "Faulkner county",
+      "city": null,
+      "counties": [
+        "Faulkner"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "xlsx-2026-02-02-faulkner-county-visit",
+      "date": "2026-02-02",
+      "endDate": null,
+      "title": "Faulkner County visit",
+      "city": null,
+      "counties": [
+        "Faulkner"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-01-31-fulton-county-candidate-forum-and-visit",
+      "date": "2026-01-31",
+      "endDate": null,
+      "title": "Fulton County Candidate Forum and Visit",
+      "city": null,
+      "counties": [
+        "Fulton"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-01-31-spend-the-day-in-fulton-county-area",
+      "date": "2026-01-31",
+      "endDate": null,
+      "title": "Spend the Day in Fulton County Area",
+      "city": null,
+      "counties": [
+        "Fulton"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-01-30-jacksonville-chamber-event",
+      "date": "2026-01-30",
+      "endDate": null,
+      "title": "Jacksonville chamber event",
+      "city": null,
+      "counties": [
+        "Pulaski"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-01-24-voice-of-hind-rajab-little-rock",
+      "date": "2026-01-24",
+      "endDate": null,
+      "title": "Voice of Hind Rajab Little Rock",
+      "city": "Little Rock",
+      "counties": [
+        "Pulaski"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-01-22-camden-candidate-meeting-at-6-contacted-reese-broadnax",
+      "date": "2026-01-22",
+      "endDate": null,
+      "title": "Camden candidate meeting at 6 contacted Reese Broadnax",
+      "city": null,
+      "counties": [
+        "Ouachita"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "xlsx-2026-01-22-ouachita-county-visit",
+      "date": "2026-01-22",
+      "endDate": null,
+      "title": "Ouachita County visit",
+      "city": null,
+      "counties": [
+        "Ouachita"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-01-20-meet-the-candidates-lee-county",
+      "date": "2026-01-20",
+      "endDate": null,
+      "title": "Meet the candidates Lee county",
+      "city": null,
+      "counties": [
+        "Lee"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-01-19-jacksonville-naacp-mlk-day-celebration",
+      "date": "2026-01-19",
+      "endDate": null,
+      "title": "Jacksonville NAACP MLK Day Celebration",
+      "city": null,
+      "counties": [
+        "Pulaski"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "xlsx-2026-01-19-lee-county-visit",
+      "date": "2026-01-19",
+      "endDate": null,
+      "title": "Lee County visit",
+      "city": null,
+      "counties": [
+        "Lee"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "xlsx-2026-01-19-pulaski-county-visit",
+      "date": "2026-01-19",
+      "endDate": null,
+      "title": "Pulaski County visit",
+      "city": null,
+      "counties": [
+        "Pulaski"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "xlsx-2026-01-18-saline-county-visit",
+      "date": "2026-01-18",
+      "endDate": null,
+      "title": "Saline County visit",
+      "city": null,
+      "counties": [
+        "Saline"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "xlsx-2026-01-17-baxter-county-visit",
+      "date": "2026-01-17",
+      "endDate": null,
+      "title": "Baxter County visit",
+      "city": null,
+      "counties": [
+        "Baxter"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-01-17-fish-fry-in-st-joe-ar",
+      "date": "2026-01-17",
+      "endDate": null,
+      "title": "Fish Fry in St. Joe, AR",
+      "city": null,
+      "counties": [
+        "Searcy"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-01-17-fulton-county-workshop-and-county-visit",
+      "date": "2026-01-17",
+      "endDate": null,
+      "title": "Fulton County - Workshop and County Visit",
+      "city": null,
+      "counties": [
+        "Fulton"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "xlsx-2026-01-17-fulton-county-visit",
+      "date": "2026-01-17",
+      "endDate": null,
+      "title": "Fulton County visit",
+      "city": null,
+      "counties": [
+        "Fulton"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-01-17-stone-county-meet-up",
+      "date": "2026-01-17",
+      "endDate": null,
+      "title": "Stone County Meet Up",
+      "city": null,
+      "counties": [
+        "Stone"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "xlsx-2026-01-17-stone-county-visit",
+      "date": "2026-01-17",
+      "endDate": null,
+      "title": "Stone County visit",
+      "city": null,
+      "counties": [
+        "Stone"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "xlsx-2026-01-16-searcy-county-visit",
+      "date": "2026-01-16",
+      "endDate": null,
+      "title": "Searcy County visit",
+      "city": null,
+      "counties": [
+        "Searcy"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-01-13-heber-girls-lunch",
+      "date": "2026-01-13",
+      "endDate": null,
+      "title": "Heber girls lunch",
+      "city": null,
+      "counties": [
+        "Cleburne"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-01-12-polk-county-meeting",
+      "date": "2026-01-12",
+      "endDate": null,
+      "title": "Polk County Meeting",
+      "city": null,
+      "counties": [
+        "Polk"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "xlsx-2026-01-11-polk-county-visit",
+      "date": "2026-01-11",
+      "endDate": null,
+      "title": "Polk County visit",
+      "city": null,
+      "counties": [
+        "Polk"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-01-10-aea-conference",
+      "date": "2026-01-10",
+      "endDate": null,
+      "title": "AEA Conference",
+      "city": "Little Rock",
+      "counties": [
+        "Pulaski"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-01-10-gillette-coon-supper",
+      "date": "2026-01-10",
+      "endDate": null,
+      "title": "Gillette Coon Supper",
+      "city": null,
+      "counties": [
+        "Arkansas"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-01-09-white-county-dems",
+      "date": "2026-01-09",
+      "endDate": null,
+      "title": "White county Dems",
+      "city": null,
+      "counties": [
+        "White"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-01-07-hot-springs-event-planning",
+      "date": "2026-01-07",
+      "endDate": null,
+      "title": "Hot Springs Event Planning",
+      "city": null,
+      "counties": [
+        "Garland"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2026-01-01-voter-registration-meeting-eureka",
+      "date": "2026-01-01",
+      "endDate": null,
+      "title": "Voter registration meeting eureka",
+      "city": null,
+      "counties": [
+        "Carroll"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "xlsx-2026-01-01-washington-county-visit",
+      "date": "2026-01-01",
+      "endDate": null,
+      "title": "Washington County visit",
+      "city": null,
+      "counties": [
+        "Washington"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "xlsx-2025-12-31-carroll-county-visit",
+      "date": "2025-12-31",
+      "endDate": null,
+      "title": "Carroll County visit",
+      "city": null,
+      "counties": [
+        "Carroll"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "xlsx-2025-12-22-poinsett-county-visit",
+      "date": "2025-12-22",
+      "endDate": null,
+      "title": "Poinsett County visit",
+      "city": null,
+      "counties": [
+        "Poinsett"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2025-12-20-jacksonville-pastor-s-chili-cook-off-with-dr-trenika-mccoy",
+      "date": "2025-12-20",
+      "endDate": null,
+      "title": "Jacksonville Pastor's Chili Cook Off with Dr. Trenika McCoy",
+      "city": null,
+      "counties": [
+        "Pulaski"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2025-12-19-cross-county-dems-meeting",
+      "date": "2025-12-19",
+      "endDate": null,
+      "title": "Cross County Dems Meeting",
+      "city": null,
+      "counties": [
+        "Cross"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "xlsx-2025-12-18-cross-county-visit",
+      "date": "2025-12-18",
+      "endDate": null,
+      "title": "Cross County visit",
+      "city": null,
+      "counties": [
+        "Cross"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2025-12-18-jacksonville-boys-girls-club-christmas-event",
+      "date": "2025-12-18",
+      "endDate": null,
+      "title": "Jacksonville Boys & Girls Club Christmas Event",
+      "city": "Jacksonville",
+      "counties": [
+        "Pulaski"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "xlsx-2025-12-15-craighead-county-visit",
+      "date": "2025-12-15",
+      "endDate": null,
+      "title": "Craighead County visit",
+      "city": null,
+      "counties": [
+        "Craighead"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2025-12-15-lunch-in-jonesboro",
+      "date": "2025-12-15",
+      "endDate": null,
+      "title": "Lunch in Jonesboro",
+      "city": null,
+      "counties": [
+        "Craighead"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "xlsx-2025-12-15-poinsett-county-visit",
+      "date": "2025-12-15",
+      "endDate": null,
+      "title": "Poinsett County visit",
+      "city": null,
+      "counties": [
+        "Poinsett"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2025-12-14-naacp-jacksonville-branch-christmas-party-meeting",
+      "date": "2025-12-14",
+      "endDate": null,
+      "title": "NAACP Jacksonville Branch Christmas Party & Meeting",
+      "city": null,
+      "counties": [
+        "Pulaski"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "item-2025-12-13-koffee-with-kelly",
+      "date": "2025-12-13",
+      "endDate": null,
+      "title": "Koffee with Kelly",
+      "city": null,
+      "counties": [
+        "Pope"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "xlsx-2025-12-13-pope-county-visit",
+      "date": "2025-12-13",
+      "endDate": null,
+      "title": "Pope County visit",
+      "city": null,
+      "counties": [
+        "Pope"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "xlsx-2025-12-08-conway-county-visit",
+      "date": "2025-12-08",
+      "endDate": null,
+      "title": "Conway County visit",
+      "city": null,
+      "counties": [
+        "Conway"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "xlsx-2025-12-08-sebastian-county-visit",
+      "date": "2025-12-08",
+      "endDate": null,
+      "title": "Sebastian County visit",
+      "city": null,
+      "counties": [
+        "Sebastian"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "xlsx-2025-12-07-garland-county-visit",
+      "date": "2025-12-07",
+      "endDate": null,
+      "title": "Garland County visit",
+      "city": null,
+      "counties": [
+        "Garland"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "xlsx-2025-12-05-searcy-county-visit",
+      "date": "2025-12-05",
+      "endDate": null,
+      "title": "Searcy County visit",
+      "city": null,
+      "counties": [
+        "Searcy"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "xlsx-2025-12-02-van-buren-county-visit",
+      "date": "2025-12-02",
+      "endDate": null,
+      "title": "Van Buren County visit",
+      "city": null,
+      "counties": [
+        "Van Buren"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "xlsx-2025-11-29-independence-county-visit",
+      "date": "2025-11-29",
+      "endDate": null,
+      "title": "Independence County visit",
+      "city": null,
+      "counties": [
+        "Independence"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "xlsx-2025-11-15-baxter-county-visit",
+      "date": "2025-11-15",
+      "endDate": null,
+      "title": "Baxter County visit",
+      "city": null,
+      "counties": [
+        "Baxter"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "xlsx-2025-11-08-clark-county-visit",
+      "date": "2025-11-08",
+      "endDate": null,
+      "title": "Clark County visit",
+      "city": null,
+      "counties": [
+        "Clark"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "xlsx-2025-11-03-faulkner-county-visit",
+      "date": "2025-11-03",
+      "endDate": null,
+      "title": "Faulkner County visit",
+      "city": null,
+      "counties": [
+        "Faulkner"
+      ],
+      "status": "completed"
+    }
+  ],
+  "upcoming": [
+    {
+      "id": "locked-2026-08-12-arkadelphia-visit",
+      "date": "2026-08-12",
+      "endDate": null,
+      "title": "Arkadelphia visit",
+      "city": "Arkadelphia",
+      "counties": [
+        "Clark"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "locked-2026-08-18-hot-springs-village",
+      "date": "2026-08-18",
+      "endDate": null,
+      "title": "Hot Springs Village",
+      "city": "Hot Springs Village",
+      "counties": [
+        "Garland"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "locked-2026-08-22-cave-city",
+      "date": "2026-08-22",
+      "endDate": null,
+      "title": "Cave City",
+      "city": "Cave City",
+      "counties": [
+        "Sharp"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "locked-2026-08-29-mt-nebo-chicken-fry",
+      "date": "2026-08-29",
+      "endDate": null,
+      "title": "Mt Nebo Chicken Fry",
+      "city": "Dardanelle",
+      "counties": [
+        "Yell"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "locked-2026-09-05-marion-county-visit",
+      "date": "2026-09-05",
+      "endDate": null,
+      "title": "Marion County visit",
+      "city": "Yellville",
+      "counties": [
+        "Marion"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "locked-2026-09-12-conway-county-fair",
+      "date": "2026-09-12",
+      "endDate": "2026-09-14",
+      "title": "Conway County Fair",
+      "city": "Morrilton",
+      "counties": [
+        "Conway"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "locked-2026-09-15-pope-county-fair",
+      "date": "2026-09-15",
+      "endDate": "2026-09-19",
+      "title": "Pope County Fair",
+      "city": "Russellville",
+      "counties": [
+        "Pope"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "locked-2026-09-18-arkansas-comic-con",
+      "date": "2026-09-18",
+      "endDate": "2026-09-20",
+      "title": "Arkansas Comic Con",
+      "city": "Little Rock",
+      "counties": [
+        "Pulaski"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "locked-2026-09-20-jacksonville-festiville",
+      "date": "2026-09-20",
+      "endDate": null,
+      "title": "Jacksonville Festiville",
+      "city": "Jacksonville",
+      "counties": [
+        "Pulaski"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "locked-2026-09-22-howard-county-visit",
+      "date": "2026-09-22",
+      "endDate": null,
+      "title": "Howard County visit",
+      "city": "Nashville",
+      "counties": [
+        "Howard"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "locked-2026-09-25-hot-springs-forum",
+      "date": "2026-09-25",
+      "endDate": null,
+      "title": "Hot Springs Forum",
+      "city": "Hot Springs",
+      "counties": [
+        "Garland"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "locked-2026-09-28-harrison-balloon-fest",
+      "date": "2026-09-28",
+      "endDate": null,
+      "title": "Harrison Balloon Fest",
+      "city": "Harrison",
+      "counties": [
+        "Boone"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "locked-2026-10-04-air-show",
+      "date": "2026-10-04",
+      "endDate": null,
+      "title": "Air Show",
+      "city": "Little Rock",
+      "counties": [
+        "Pulaski"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "locked-2026-10-10-turkey-drop-yellville",
+      "date": "2026-10-10",
+      "endDate": null,
+      "title": "Turkey Drop — Yellville",
+      "city": "Yellville",
+      "counties": [
+        "Marion"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "locked-2026-10-12-saline-county-gotv-push",
+      "date": "2026-10-12",
+      "endDate": null,
+      "title": "Saline County GOTV push",
+      "city": "Benton",
+      "counties": [
+        "Saline"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "locked-2026-10-20-early-voting-launch",
+      "date": "2026-10-20",
+      "endDate": "2026-11-03",
+      "title": "Early Voting launch",
+      "city": "Little Rock",
+      "counties": [
+        "Pulaski"
+      ],
+      "status": "scheduled"
+    }
+  ]
+}
