@@ -1,6 +1,6 @@
 # Kelly Across Arkansas — Steve Review Sheet
 
-**Generated:** 2026-08-05T11:46:10.029Z  
+**Generated:** 2026-08-06T15:42:51.728Z  
 **Canonical data:** `src/data/kelly-county-visits/kelly-county-visits.ts`  
 **Public page:** `/arkansas-visits`
 
@@ -8,10 +8,10 @@
 
 | Metric | Count |
 | --- | ---: |
-| Total records in ledger | 344 |
-| Public records | 207 |
-| Public completed stops | 189 |
-| Public scheduled stops | 18 |
+| Total records in ledger | 343 |
+| Public records | 206 |
+| Public completed stops | 190 |
+| Public scheduled stops | 16 |
 | Unique counties completed (visited) | 51 |
 | Unique counties scheduled only (not yet visited) | 1 |
 | Unresolved public county assignments | 7 |

@@ -5,8 +5,8 @@ import type { KellyCampaignStop } from "./types";
  * Steve: edit this file to correct counties, add stops, or hide records.
  * Pass 2 will merge the full Google Calendar inventory into this same array.
  *
- * Seeded 344 records (~212 public-facing; ~15 need county review after reconcile).
- * Window: 2025-11-01 → 2026-11-03. Reference "today" for status split: 2026-08-05.
+ * Seeded 343 records (~206 public-facing; ~7 need county review).
+ * Window: 2025-11-01 → 2026-11-03. Reference "today" for status split: 2026-08-06.
  */
 export const kellyCampaignStops: KellyCampaignStop[] = [
   {
@@ -3139,7 +3139,7 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     title: "NWA Senior Dems",
     city: "Fayetteville",
     counties: ["Washington"],
-    status: "scheduled",
+    status: "completed",
     includeOnPublicPage: true,
     confidence: "likely",
     notes: "Seeded from locked-events-steve.json",
@@ -3402,19 +3402,6 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     confidence: "uncertain",
     notes: "Presence row without county — held for Pass 2 / Steve assignment",
     sourceType: "calendar",
-  },
-  {
-    id: "manual-2026-09-01-example-county-visit",
-    date: "2026-09-01",
-    title: "Original calendar heading goes here",
-    publicTitle: "Optional cleaner public title",
-    city: "City name",
-    counties: ["Pulaski"],
-    status: "scheduled",
-    includeOnPublicPage: true,
-    confidence: "confirmed",
-    notes: "Internal only — not shown on the public page",
-    sourceType: "manual",
   },
   {
     id: "presence-2026-09-03-conway-county-fair-opening-night-spend-the-night",
