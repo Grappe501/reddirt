@@ -1,6 +1,7 @@
 import { cookies, headers } from "next/headers";
 import { redirect } from "next/navigation";
 
+import { isElectionPlanAuthBypassed } from "@/lib/election-plan/auth/constants";
 import {
   VOLUNTEER_SESSION_COOKIE,
   getVolunteerHubPassword,
@@ -8,6 +9,11 @@ import {
 } from "@/lib/volunteers/auth/session";
 
 export async function requireVolunteerHubPage(): Promise<{ leaderSlug: string; initials: string }> {
+  // TEMP DEMO: password gates off — flip ELECTION_PLAN_AUTH_BYPASS to restore.
+  if (isElectionPlanAuthBypassed()) {
+    return { leaderSlug: "will-larue", initials: "WLA" };
+  }
+
   const secret = getVolunteerHubPassword();
   if (!secret) {
     if (process.env.NODE_ENV === "production") {

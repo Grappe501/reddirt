@@ -1,6 +1,9 @@
 import { type NextRequest, NextResponse } from "next/server";
 
-import { ELECTION_PLAN_SESSION_COOKIE } from "@/lib/election-plan/auth/constants";
+import {
+  ELECTION_PLAN_SESSION_COOKIE,
+  isElectionPlanAuthBypassed,
+} from "@/lib/election-plan/auth/constants";
 import {
   isLeaderWorkbenchPath,
   isLeaderWorkbenchSignInPath,
@@ -15,6 +18,9 @@ export function handleElectionPlanAuth(request: NextRequest): NextResponse | nul
   const { pathname } = request.nextUrl;
   if (!pathname.startsWith("/election-plan")) return null;
   if (pathname === "/election-plan/login" || pathname.startsWith("/election-plan/login/")) return null;
+
+  // TEMP DEMO: password gates off — flip ELECTION_PLAN_AUTH_BYPASS to restore.
+  if (isElectionPlanAuthBypassed()) return null;
 
   const leaderZone = isLeaderWorkbenchPath(pathname);
   if (leaderZone && isLeaderWorkbenchSignInPath(pathname)) return null;

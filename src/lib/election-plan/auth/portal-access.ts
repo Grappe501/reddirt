@@ -1,7 +1,10 @@
 import { cookies, headers } from "next/headers";
 import { redirect } from "next/navigation";
 
-import { ELECTION_PLAN_SESSION_COOKIE } from "@/lib/election-plan/auth/constants";
+import {
+  ELECTION_PLAN_SESSION_COOKIE,
+  isElectionPlanAuthBypassed,
+} from "@/lib/election-plan/auth/constants";
 import {
   isCoalitionCommandOpsPath,
   isCommsCommandOpsPath,
@@ -52,6 +55,11 @@ async function currentPathname(): Promise<string> {
 
 /** Election Plan password session OR volunteer-leader session on leader workbench routes only. */
 export async function requireElectionPlanPortalAccess(): Promise<PortalAuthMode> {
+  // TEMP DEMO: password gates off — flip ELECTION_PLAN_AUTH_BYPASS to restore.
+  if (isElectionPlanAuthBypassed()) {
+    return "dev-open";
+  }
+
   const pathname = await currentPathname();
   const epSecret = getElectionPlanPassword();
   const volSecret = getVolunteerHubPassword();
