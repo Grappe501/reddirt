@@ -2,30 +2,44 @@
 
 Bypasses the RedDirt Next.js `___netlify-server-handler` 250 MB deploy cap.
 
-## What it is
+## GitHub to connect in Netlify
+
+**Repository:** [https://github.com/Grappe501/reddirt](https://github.com/Grappe501/reddirt)
+
+This is a **new Netlify site** (do not reuse the `kgrappe` site).
+
+## Netlify site settings
+
+| Setting | Value |
+| --- | --- |
+| Repository | `Grappe501/reddirt` |
+| Branch | `main` (or the branch that has `standalone/arkansas-visits`) |
+| Base directory | `standalone/arkansas-visits` |
+| Build command | `echo 'arkansas-visits static'` |
+| Publish directory | `.` |
+| Next.js plugin | **Off** |
+
+## What it publishes
 
 Static site in `standalone/arkansas-visits/`:
 
-- Same public ledger (generated from `src/data/kelly-county-visits`)
-- Filters, county grid, summary stats
-- Links CTAs back to `kgrappe.netlify.app`
+- County visited / not visited math
+- Completed, upcoming, and needs-attention stop lists
+- Per-stop detail pages (`stop.html?id=…`)
+- CTA links back to `kgrappe.netlify.app` (optional)
 
-## Regenerate data
+Staff **editing** stays local (`npm run visits:edit` on port 8877). Public Netlify is view-only.
 
-From repo root after ledger edits:
+## Regenerate after ledger edits
 
-```bash
+From repo root:
+
+```powershell
+cd H:\SOSWebsite\RedDirt
 npm run visits:standalone
+git add standalone/arkansas-visits
+git commit -m "Update Arkansas Visits standalone data"
+git push
 ```
 
-Commits `standalone/arkansas-visits/data/public-visits.json`.
-
-## Deploy (new Netlify site)
-
-1. Create a Netlify site linked to `Grappe501/reddirt` (or drag-drop the folder).
-2. **Base directory:** `standalone/arkansas-visits`
-3. **Build command:** leave as `echo 'arkansas-visits static'` (or empty)
-4. **Publish directory:** `.`
-5. Deploy — no Next plugin, no Lambda.
-
-Optional: point a path/domain (e.g. `visits.kelly…` or temporary `*.netlify.app`) and later 301 `/arkansas-visits` on the main site once that deploy works again.
+Netlify will redeploy from the connected branch.

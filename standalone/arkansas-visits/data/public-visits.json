@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-08-06T18:07:24.938Z",
+  "generatedAt": "2026-08-07T04:40:04.379Z",
   "siteUrl": "https://kgrappe.netlify.app",
   "summary": {
-    "visitedCounties": 51,
+    "visitedCounties": 55,
     "totalCounties": 75,
-    "percentVisited": 68,
-    "completedStopCount": 190,
+    "percentVisited": 73.3,
+    "completedStopCount": 189,
     "scheduledStopCount": 16,
-    "needsReviewCount": 7,
+    "needsReviewCount": 0,
     "buckets": {
       "visited": [
         "Arkansas",
@@ -35,11 +35,14 @@
         "Greene",
         "Hempstead",
         "Hot Spring",
+        "Howard",
         "Independence",
         "Izard",
+        "Jefferson",
         "Johnson",
         "Lafayette",
         "Lee",
+        "Little River",
         "Lonoke",
         "Marion",
         "Mississippi",
@@ -54,6 +57,7 @@
         "Saline",
         "Searcy",
         "Sebastian",
+        "Sevier",
         "Sharp",
         "Stone",
         "Union",
@@ -62,9 +66,7 @@
         "White",
         "Yell"
       ],
-      "scheduled": [
-        "Howard"
-      ],
+      "scheduled": [],
       "undocumented": [
         "Ashley",
         "Calhoun",
@@ -72,10 +74,8 @@
         "Crittenden",
         "Dallas",
         "Jackson",
-        "Jefferson",
         "Lawrence",
         "Lincoln",
-        "Little River",
         "Logan",
         "Madison",
         "Miller",
@@ -87,7 +87,6 @@
         "Randolph",
         "St. Francis",
         "Scott",
-        "Sevier",
         "Woodruff"
       ]
     }
@@ -185,10 +184,15 @@
       "id": "xlsx-2026-08-01-baxter-county-visit",
       "date": "2026-08-01",
       "endDate": null,
-      "title": "Baxter County visit",
-      "city": null,
+      "title": "Howard County Rally",
+      "city": "Locksburg, Murfreesboro, Gum Springs, Smithen, Ashdown, Foreman",
       "counties": [
-        "Baxter"
+        "Clark",
+        "Hempstead",
+        "Howard",
+        "Little River",
+        "Pike",
+        "Sevier"
       ],
       "status": "completed"
     },
@@ -242,8 +246,11 @@
       "endDate": null,
       "title": "HSV dems meeting",
       "city": null,
-      "counties": [],
-      "status": "needs-review"
+      "counties": [
+        "Garland",
+        "Saline"
+      ],
+      "status": "completed"
     },
     {
       "id": "presence-2026-07-20-england-democrats-meeting",
@@ -449,8 +456,10 @@
       "endDate": null,
       "title": "King Kennedy dinner",
       "city": null,
-      "counties": [],
-      "status": "needs-review"
+      "counties": [
+        "Pulaski"
+      ],
+      "status": "completed"
     },
     {
       "id": "locked-2026-06-27-pioneer-heritage-festival",
@@ -459,9 +468,10 @@
       "title": "Pioneer Heritage Festival",
       "city": "Norfork",
       "counties": [
-        "Baxter"
+        "Baxter",
+        "Sharp"
       ],
-      "status": "needs-review"
+      "status": "completed"
     },
     {
       "id": "item-2026-06-26-sos-debate-annual-press-convention-eureka-springs",
@@ -556,9 +566,10 @@
       "date": "2026-06-19",
       "endDate": "2026-06-20",
       "title": "Juneteenth Morrilton / Menifee corridor",
-      "city": "Morrilton",
+      "city": "Center Ridge",
       "counties": [
-        "Conway"
+        "Conway",
+        "Faulkner"
       ],
       "status": "completed"
     },
@@ -729,15 +740,6 @@
       "status": "completed"
     },
     {
-      "id": "item-2026-06-03-extension-homemakers-club-convention",
-      "date": "2026-06-03",
-      "endDate": null,
-      "title": "Extension Homemakers Club Convention",
-      "city": null,
-      "counties": [],
-      "status": "needs-review"
-    },
-    {
       "id": "xlsx-2026-05-28-cross-county-visit",
       "date": "2026-05-28",
       "endDate": null,
@@ -788,7 +790,8 @@
       "title": "Desha County Memorial Day",
       "city": "Return or stay Delta",
       "counties": [
-        "Desha"
+        "Desha",
+        "Jefferson"
       ],
       "status": "completed"
     },
@@ -809,8 +812,11 @@
       "endDate": null,
       "title": "Third Thursday (Benton) and Arkansas Times Tacos & Tequilas",
       "city": null,
-      "counties": [],
-      "status": "needs-review"
+      "counties": [
+        "Pulaski",
+        "Saline"
+      ],
+      "status": "completed"
     },
     {
       "id": "item-2026-05-19-rotary-prescott-lunch-program-nevada-county",
@@ -862,8 +868,12 @@
       "endDate": null,
       "title": "Bishop Arnold Magnolia; Tabernacle of Faith Wynne at 3 PM",
       "city": null,
-      "counties": [],
-      "status": "needs-review"
+      "counties": [
+        "Columbia",
+        "Lafayette",
+        "Ouachita"
+      ],
+      "status": "completed"
     },
     {
       "id": "visit-log-2026-05-16-columbia",
@@ -1179,8 +1189,10 @@
       "endDate": null,
       "title": "Grassroots and guitar strings",
       "city": null,
-      "counties": [],
-      "status": "needs-review"
+      "counties": [
+        "Pulaski"
+      ],
+      "status": "completed"
     },
     {
       "id": "xlsx-2026-03-27-pope-county-visit",
