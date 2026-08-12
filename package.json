@@ -119,6 +119,7 @@
     "publicdata:probe-nass-key": "node scripts/run-with-h-drive-env.cjs node scripts/probe-nass-key.mjs",
     "publicdata:pass10:fred": "node scripts/run-with-h-drive-env.cjs node ./node_modules/tsx/dist/cli.mjs scripts/publicdata-cli.ts pass10:fred",
     "publicdata:pass10:fred:density": "node scripts/run-with-h-drive-env.cjs node ./node_modules/tsx/dist/cli.mjs scripts/publicdata-cli.ts pass10:fred:density",
+    "publicdata:pass10:fred:release": "node scripts/run-with-h-drive-env.cjs node ./node_modules/tsx/dist/cli.mjs scripts/publicdata-cli.ts pass10:fred:release",
     "publicdata:crosscheck": "node scripts/run-with-h-drive-env.cjs node ./node_modules/tsx/dist/cli.mjs scripts/publicdata-cli.ts crosscheck",
     "publicdata:validate": "node scripts/run-with-h-drive-env.cjs node ./node_modules/tsx/dist/cli.mjs scripts/publicdata-cli.ts validate",
     "publicdata:export:cc": "node scripts/run-with-h-drive-env.cjs node ./node_modules/tsx/dist/cli.mjs scripts/publicdata-cli.ts export:cc",

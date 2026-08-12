@@ -7,7 +7,7 @@ import { createEiaConnector } from "../connectors/eia";
 import { createFdicConnector } from "../connectors/fdic";
 import { createHrsaConnector } from "../connectors/hrsa";
 import { createNassConnector } from "../connectors/nass";
-import { createFredConnector } from "../connectors/fred";
+import { createFredConnector, fetchFredReleaseObservations } from "../connectors/fred";
 import { runPhase1CrossChecks } from "../cross-checks/engine";
 import { writeCcExport } from "../exports/ccExport";
 import {
@@ -1356,6 +1356,275 @@ export async function seedPass10FredBeaDensity(): Promise<Record<string, unknown
     connector: "pass10_fred_bea_density",
     note: "BEA-first densify via FRED: DFA asset shares, real GDP/income, farm income, fiscal %GDP, BLS productivity/comp. Preserve producer. 0 new panels. Structure ≠ capture.",
   });
+}
+
+export async function seedPass10FredReleaseDensity(): Promise<Record<string, unknown>> {
+  const commit = gitCommitShort();
+  const rawRoot = path.join(repoRoot(), "data", "public-statistics", "raw");
+  const warehouse = loadWarehouse(repoRoot());
+  const manifest = loadManifest("cc-pass10-fred-release-density-1.0.json") as {
+    fred_release_id?: number;
+    indicators: Array<Record<string, unknown>>;
+    distinction?: string;
+  };
+  const runId = newId("run");
+  const run: import("../types").IngestionRunRecord = {
+    runId,
+    connector: "pass10_fred_release_density",
+    startedAt: new Date().toISOString(),
+    completedAt: null,
+    environment: process.env.NODE_ENV || "development",
+    status: "running",
+    requestedSeries: manifest.indicators.map((i) => String(i.series)),
+    requestedGeographies: manifest.indicators.map((i) => String(i.geography)),
+    insertedObservations: 0,
+    updatedObservations: 0,
+    rejectedObservations: 0,
+    warnings: [],
+    errors: [],
+    softwareCommit: commit,
+    operator: "publicdata-cli",
+  };
+  recordIngestionRun(warehouse, run);
+
+  const fred = createFredConnector({ rawRoot, commit });
+  const validation = await fred.validateConfiguration();
+  if (!validation.ok) {
+    run.completedAt = new Date().toISOString();
+    run.status = "failed";
+    run.errors.push(...validation.errors);
+    recordIngestionRun(warehouse, { ...run, status: run.status });
+    saveWarehouse(repoRoot(), warehouse);
+    return {
+      ...run,
+      note: "Fail-closed: configure FRED_API_KEY via npm run publicdata:configure-fred-key",
+    };
+  }
+
+  const apiKey = process.env.FRED_API_KEY!.trim();
+  const releaseIndicators = manifest.indicators.filter(
+    (i) => String(i.dataset) === "release/observations",
+  );
+  const seriesIndicators = manifest.indicators.filter(
+    (i) => String(i.dataset) !== "release/observations",
+  );
+  const releaseId = Number(manifest.fred_release_id || 52);
+  const whitelist = new Set(releaseIndicators.map((i) => String(i.series)));
+
+  if (whitelist.size) {
+    const releaseFetch = await fetchFredReleaseObservations({
+      releaseId,
+      apiKey,
+      whitelistSeriesIds: whitelist,
+      stopWhenWhitelistComplete: true,
+      maxPages: 200,
+    });
+    run.warnings.push(...releaseFetch.warnings);
+    const queryId = newId("qry");
+    recordSourceQuery(warehouse, {
+      queryId,
+      sourceId: "fred",
+      datasetId: "release/observations",
+      endpoint: "https://api.stlouisfed.org/fred/v2/release/observations",
+      safeParams: {
+        route: "release/observations",
+        release_id: String(releaseId),
+        release_name: releaseFetch.releaseName,
+        producer: releaseFetch.producerName,
+        pages: String(releaseFetch.pages),
+        whitelist: [...whitelist].join(","),
+        auth: "Authorization_Bearer",
+        key_env: "FRED_API_KEY",
+      },
+      canonicalQuery: `fred|release/observations|${releaseId}|whitelist=${[...whitelist].sort().join("+")}`,
+      requestTimestamp: new Date().toISOString(),
+      responseStatus: releaseFetch.series.size > 0 ? 200 : 404,
+      responseChecksum: null,
+      rawResponseLocation: null,
+      rowCount: [...releaseFetch.series.values()].reduce(
+        (n, s) => n + (s.observations?.length || 0),
+        0,
+      ),
+      retryCount: 0,
+      ingestionRunId: runId,
+    });
+    const releaseRecId = newId("rel");
+    warehouse.releases.push({
+      releaseId: releaseRecId,
+      datasetId: "release/observations",
+      releaseDate: new Date().toISOString().slice(0, 10),
+      referencePeriod: `Z.1 release ${releaseId}`,
+      publicationStatus: "retrieved",
+      sourceUrl: "https://api.stlouisfed.org/fred/v2/release/observations",
+      retrievalTimestamp: new Date().toISOString(),
+      checksum: null,
+    });
+
+    for (const indicator of releaseIndicators) {
+      const consumerMetricId = String(indicator.consumer_metric_id);
+      const seriesId = String(indicator.series);
+      const unit = indicator.unit ? String(indicator.unit) : "millions_usd";
+      const page = releaseFetch.series.get(seriesId);
+      if (!page) {
+        run.errors.push(`${consumerMetricId}: series ${seriesId} not found in release ${releaseId}`);
+        continue;
+      }
+      const freq = page.frequency || String(indicator.frequency || "q");
+      let accepted = 0;
+      for (const row of page.observations || []) {
+        const date = String(row.date || "");
+        const raw = String(row.value ?? "").trim();
+        if (!date || raw === "." || raw === "") continue;
+        const value = Number(raw);
+        if (!Number.isFinite(value)) {
+          run.rejectedObservations += 1;
+          continue;
+        }
+        const [y, m] = date.split("-").map(Number);
+        let period = String(y);
+        const fl = freq.toLowerCase();
+        if (fl.startsWith("q")) period = `${y}-Q${Math.floor((m - 1) / 3) + 1}`;
+        else if (fl.startsWith("m")) period = `${y}-${String(m).padStart(2, "0")}`;
+        const warehouseObs: WarehouseObservation = {
+          observationId: newId("obs"),
+          sourceId: "fred",
+          datasetId: "release/observations",
+          seriesCode: seriesId,
+          seriesTitle: page.title || String(indicator.title || seriesId),
+          geographyId: "nation",
+          geographyName: "United States",
+          geographyType: "nation",
+          period,
+          value,
+          unit,
+          estimateType: "observation",
+          definition: `FRED v2 Z.1 release observations; producing agency: ${releaseFetch.producerName}`,
+          limitations: [
+            "Z.1 structure/history ≠ local ownership, market power, or political capture.",
+          ],
+          consumerMetricId,
+          releaseId: releaseRecId,
+          sourceQueryId: queryId,
+          ingestionRunId: runId,
+          validationStatus: "accepted",
+          confidence: "verified_primary",
+          retrievedAt: new Date().toISOString(),
+        };
+        const result = upsertObservation(warehouse, warehouseObs);
+        if (result.inserted) run.insertedObservations += 1;
+        if (result.revised) run.updatedObservations += 1;
+        accepted += 1;
+      }
+      if (!accepted) {
+        run.errors.push(`${consumerMetricId}: zero accepted observations for ${seriesId}`);
+      }
+    }
+  }
+
+  for (const indicator of seriesIndicators) {
+    const consumerMetricId = String(indicator.consumer_metric_id);
+    const series = String(indicator.series);
+    const geography = String(indicator.geography || "nation");
+    const start = String(indicator.period_start || "1945");
+    const end = String(indicator.period_end || start);
+    const frequency = indicator.frequency ? String(indicator.frequency) : "q";
+    const unit = indicator.unit ? String(indicator.unit) : undefined;
+    const seriesTitle = indicator.title ? String(indicator.title) : undefined;
+    try {
+      const request = {
+        dataset: "series/observations",
+        variablesOrSeries: [series],
+        geography,
+        period: start,
+        endPeriod: end,
+        frequency,
+        unit,
+        seriesTitle,
+        consumerMetricId,
+      };
+      const raw = await fred.fetch(request);
+      const queryId = newId("qry");
+      recordSourceQuery(warehouse, {
+        queryId,
+        sourceId: "fred",
+        datasetId: "series/observations",
+        endpoint: raw.endpoint,
+        safeParams: raw.safeParams,
+        canonicalQuery: `fred|series/observations|${series}|${start}-${end}|${geography}|${frequency}|z1-alias`,
+        requestTimestamp: raw.retrievedAt,
+        responseStatus: raw.status,
+        responseChecksum: raw.checksum,
+        rawResponseLocation: raw.rawPath || null,
+        rowCount: 0,
+        retryCount: raw.retryCount,
+        ingestionRunId: runId,
+      });
+      const batch = await fred.normalize(raw);
+      run.warnings.push(...batch.warnings.map((w) => `${consumerMetricId}: ${w}`));
+      if (raw.status !== 200 || !batch.observations.length) {
+        run.errors.push(
+          `${consumerMetricId}: fred status ${raw.status} with ${batch.observations.length} observations`,
+        );
+        continue;
+      }
+      const releaseRecId = newId("rel");
+      warehouse.releases.push({
+        releaseId: releaseRecId,
+        datasetId: "series/observations",
+        releaseDate: raw.retrievedAt.slice(0, 10),
+        referencePeriod: `${start}-${end}`,
+        publicationStatus: "retrieved",
+        sourceUrl: raw.endpoint,
+        retrievalTimestamp: raw.retrievedAt,
+        checksum: raw.checksum,
+      });
+      for (const obs of batch.observations) {
+        obs.consumerMetricId = consumerMetricId;
+        if (obs.value == null) {
+          run.rejectedObservations += 1;
+          continue;
+        }
+        const warehouseObs: WarehouseObservation = {
+          ...obs,
+          observationId: newId("obs"),
+          sourceId: "fred",
+          datasetId: "series/observations",
+          releaseId: releaseRecId,
+          sourceQueryId: queryId,
+          ingestionRunId: runId,
+          validationStatus: "accepted",
+          confidence: "verified_primary",
+          retrievedAt: raw.retrievedAt,
+        };
+        const result = upsertObservation(warehouse, warehouseObs);
+        if (result.inserted) run.insertedObservations += 1;
+        if (result.revised) run.updatedObservations += 1;
+      }
+    } catch (err) {
+      run.errors.push(
+        `${consumerMetricId}: ${err instanceof Error ? err.message : String(err)}`,
+      );
+    }
+    await new Promise((resolve) => setTimeout(resolve, 200));
+  }
+
+  run.completedAt = new Date().toISOString();
+  if (run.insertedObservations === 0 && run.updatedObservations === 0) {
+    run.status = "failed";
+  } else if (run.errors.length || run.warnings.length) {
+    run.status = "partial";
+  } else {
+    run.status = "succeeded";
+  }
+  recordIngestionRun(warehouse, { ...run, status: run.status });
+  saveWarehouse(repoRoot(), warehouse);
+  return {
+    ...run,
+    distinction: manifest.distinction,
+    accepted_observation_count: warehouse.observations.filter((o) => o.validationStatus === "accepted")
+      .length,
+    note: "Z.1 demand-filtered densify via FRED v2 release/observations + Z.1 aliases. Preserve Fed producer. 0 new panels. Structure ≠ capture.",
+  };
 }
 
 export function crosscheck() {
