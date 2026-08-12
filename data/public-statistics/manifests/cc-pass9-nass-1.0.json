@@ -1,0 +1,289 @@
+{
+  "version": "1.1",
+  "mission": "RCIP-PASS-9-USDA-NASS-FARM-STRUCTURE-ADAPTER-AND-PUBLICATION-BINDING-1.0",
+  "consumer": "constitutional_capitalism",
+  "note": "Credentials follow publication demand. NASS → Arkansas farm structure → family-farm economics → food/resource sovereignty → rural/community comparisons. Production concentration ≠ market power ≠ monopsony ≠ political capture. Facets minimized to short_desc + domain to avoid Quick Stats 400 conflicts. Bind into existing panels only; 0 new panels by default.",
+  "distinction": "NASS establishes agricultural structure. It cannot by itself establish market power, monopsony, or political capture.",
+  "indicators": [
+    {
+      "consumer_metric_id": "CC-PASS9-NASS-US-FARM-OPERATIONS",
+      "title": "US farm operations (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "FARM_OPERATIONS_COUNT",
+      "geography": "nation",
+      "period_start": "1987",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": ["CENSUS"],
+        "short_desc": ["FARM OPERATIONS - NUMBER OF OPERATIONS"],
+        "domain_desc": ["TOTAL"]
+      },
+      "unit": "operations",
+      "demand_ids": ["RCIP-DEM-0005"],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-PASS9-NASS-AR-FARM-OPERATIONS",
+      "title": "Arkansas farm operations (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "FARM_OPERATIONS_COUNT",
+      "geography": "state:05",
+      "period_start": "1987",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": ["CENSUS"],
+        "short_desc": ["FARM OPERATIONS - NUMBER OF OPERATIONS"],
+        "domain_desc": ["TOTAL"]
+      },
+      "unit": "operations",
+      "arkansas_us_pair": "CC-PASS9-NASS-US-FARM-OPERATIONS",
+      "demand_ids": ["RCIP-DEM-0005"],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-PASS9-NASS-US-ACRES-OPERATED",
+      "title": "US acres operated (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "ACRES_OPERATED",
+      "geography": "nation",
+      "period_start": "1987",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": ["CENSUS"],
+        "short_desc": ["FARM OPERATIONS - ACRES OPERATED"],
+        "domain_desc": ["TOTAL"]
+      },
+      "unit": "acres",
+      "demand_ids": ["RCIP-DEM-0005"],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-PASS9-NASS-AR-ACRES-OPERATED",
+      "title": "Arkansas acres operated (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "ACRES_OPERATED",
+      "geography": "state:05",
+      "period_start": "1987",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": ["CENSUS"],
+        "short_desc": ["FARM OPERATIONS - ACRES OPERATED"],
+        "domain_desc": ["TOTAL"]
+      },
+      "unit": "acres",
+      "arkansas_us_pair": "CC-PASS9-NASS-US-ACRES-OPERATED",
+      "demand_ids": ["RCIP-DEM-0005"],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-PASS9-NASS-US-AG-PRODUCT-SALES",
+      "title": "US market value of ag products sold (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "AG_PRODUCT_SALES",
+      "geography": "nation",
+      "period_start": "1987",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": ["CENSUS"],
+        "short_desc": ["COMMODITY TOTALS - SALES, MEASURED IN $"],
+        "domain_desc": ["TOTAL"]
+      },
+      "unit": "usd",
+      "demand_ids": ["RCIP-DEM-0005"],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-PASS9-NASS-AR-AG-PRODUCT-SALES",
+      "title": "Arkansas market value of ag products sold (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "AG_PRODUCT_SALES",
+      "geography": "state:05",
+      "period_start": "1987",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": ["CENSUS"],
+        "short_desc": ["COMMODITY TOTALS - SALES, MEASURED IN $"],
+        "domain_desc": ["TOTAL"]
+      },
+      "unit": "usd",
+      "arkansas_us_pair": "CC-PASS9-NASS-US-AG-PRODUCT-SALES",
+      "demand_ids": ["RCIP-DEM-0005"],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-PASS9-NASS-US-BROILER-INVENTORY",
+      "title": "US broiler inventory (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "BROILER_INVENTORY",
+      "geography": "nation",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": ["CENSUS"],
+        "short_desc": ["CHICKENS, BROILERS - INVENTORY"],
+        "domain_desc": ["TOTAL"]
+      },
+      "unit": "head",
+      "demand_ids": ["RCIP-DEM-0005"],
+      "status": "approved_for_ingest",
+      "notes": "Commodity-structure series; inventory ≠ market power."
+    },
+    {
+      "consumer_metric_id": "CC-PASS9-NASS-AR-BROILER-INVENTORY",
+      "title": "Arkansas broiler inventory (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "BROILER_INVENTORY",
+      "geography": "state:05",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": ["CENSUS"],
+        "short_desc": ["CHICKENS, BROILERS - INVENTORY"],
+        "domain_desc": ["TOTAL"]
+      },
+      "unit": "head",
+      "arkansas_us_pair": "CC-PASS9-NASS-US-BROILER-INVENTORY",
+      "demand_ids": ["RCIP-DEM-0005"],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-PASS9-NASS-US-CATTLE-COWS-INVENTORY",
+      "title": "US cattle cows inventory (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "CATTLE_COWS_INVENTORY",
+      "geography": "nation",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": ["CENSUS"],
+        "short_desc": ["CATTLE, COWS - INVENTORY"],
+        "domain_desc": ["TOTAL"]
+      },
+      "unit": "head",
+      "demand_ids": ["RCIP-DEM-0005"],
+      "status": "approved_for_ingest",
+      "notes": "Cows inventory used because total incl-calves short_desc is definition-unstable across years in Quick Stats."
+    },
+    {
+      "consumer_metric_id": "CC-PASS9-NASS-AR-CATTLE-COWS-INVENTORY",
+      "title": "Arkansas cattle cows inventory (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "CATTLE_COWS_INVENTORY",
+      "geography": "state:05",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": ["CENSUS"],
+        "short_desc": ["CATTLE, COWS - INVENTORY"],
+        "domain_desc": ["TOTAL"]
+      },
+      "unit": "head",
+      "arkansas_us_pair": "CC-PASS9-NASS-US-CATTLE-COWS-INVENTORY",
+      "demand_ids": ["RCIP-DEM-0005"],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-PASS9-NASS-US-FARMS-BY-SALES-LT1K",
+      "title": "US farms with sales < $1,000 (Census 2022 economic class)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "FARMS_SALES_LT_1K",
+      "geography": "nation",
+      "period_start": "2022",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": ["CENSUS"],
+        "short_desc": ["FARM OPERATIONS - NUMBER OF OPERATIONS"],
+        "domain_desc": ["ECONOMIC CLASS"],
+        "domaincat_desc": ["ECONOMIC CLASS: (LESS THAN 1,000 $)"]
+      },
+      "unit": "operations",
+      "demand_ids": ["RCIP-DEM-0005"],
+      "status": "approved_for_ingest",
+      "notes": "Sales-class structure only — not a verdict that small farms are good or large farms are bad."
+    },
+    {
+      "consumer_metric_id": "CC-PASS9-NASS-AR-FARMS-BY-SALES-LT1K",
+      "title": "Arkansas farms with sales < $1,000 (Census 2022 economic class)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "FARMS_SALES_LT_1K",
+      "geography": "state:05",
+      "period_start": "2022",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": ["CENSUS"],
+        "short_desc": ["FARM OPERATIONS - NUMBER OF OPERATIONS"],
+        "domain_desc": ["ECONOMIC CLASS"],
+        "domaincat_desc": ["ECONOMIC CLASS: (LESS THAN 1,000 $)"]
+      },
+      "unit": "operations",
+      "arkansas_us_pair": "CC-PASS9-NASS-US-FARMS-BY-SALES-LT1K",
+      "demand_ids": ["RCIP-DEM-0005"],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-PASS9-NASS-US-FARMS-BY-SALES-GE1M",
+      "title": "US farms with sales ≥ $1,000,000 (Census 2022 economic class)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "FARMS_SALES_GE_1M",
+      "geography": "nation",
+      "period_start": "2022",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": ["CENSUS"],
+        "short_desc": ["FARM OPERATIONS - NUMBER OF OPERATIONS"],
+        "domain_desc": ["ECONOMIC CLASS"],
+        "domaincat_desc": ["ECONOMIC CLASS: (1,000,000 OR MORE $)"]
+      },
+      "unit": "operations",
+      "demand_ids": ["RCIP-DEM-0005"],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-PASS9-NASS-AR-FARMS-BY-SALES-GE1M",
+      "title": "Arkansas farms with sales ≥ $1,000,000 (Census 2022 economic class)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "FARMS_SALES_GE_1M",
+      "geography": "state:05",
+      "period_start": "2022",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": ["CENSUS"],
+        "short_desc": ["FARM OPERATIONS - NUMBER OF OPERATIONS"],
+        "domain_desc": ["ECONOMIC CLASS"],
+        "domaincat_desc": ["ECONOMIC CLASS: (1,000,000 OR MORE $)"]
+      },
+      "unit": "operations",
+      "arkansas_us_pair": "CC-PASS9-NASS-US-FARMS-BY-SALES-GE1M",
+      "demand_ids": ["RCIP-DEM-0005"],
+      "status": "approved_for_ingest"
+    }
+  ],
+  "still_blocked": [
+    {
+      "id": "PASS9-COUNTY-FULL-PANEL",
+      "reason": "County comparisons deferred until state/national series qualify; disclosure suppressions common"
+    },
+    {
+      "id": "PASS9-OPERATOR-CHARACTERISTICS-FULL",
+      "reason": "Producer/operator characteristic series require stable definition locks across census years — second pass"
+    },
+    {
+      "id": "PASS9-MARKET-POWER-MONOPSONY-CAPTURE",
+      "reason": "NASS cannot establish market power, monopsony, or political capture by itself"
+    }
+  ]
+}

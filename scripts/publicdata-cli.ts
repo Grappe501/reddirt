@@ -8,6 +8,7 @@ import {
   seedPass6SeriesArrays,
   seedPass7EiaSeries,
   seedPass8FdicHrsa,
+  seedPass9Nass,
   crosscheck,
   validateWarehouse,
   exportCc,
@@ -46,6 +47,9 @@ async function main() {
       break;
     case "pass8:fdic-hrsa":
       result = await seedPass8FdicHrsa();
+      break;
+    case "pass9:nass":
+      result = await seedPass9Nass();
       break;
     case "aligned:all":
       result = {
@@ -92,6 +96,7 @@ async function main() {
     cmd === "pass6:series" ||
     cmd === "pass7:eia" ||
     cmd === "pass8:fdic-hrsa" ||
+    cmd === "pass9:nass" ||
     cmd === "all"
   ) {
     const status = (result as { status?: string }).status;

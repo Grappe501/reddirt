@@ -6,6 +6,7 @@ import { createBlsConnector } from "../connectors/bls";
 import { createEiaConnector } from "../connectors/eia";
 import { createFdicConnector } from "../connectors/fdic";
 import { createHrsaConnector } from "../connectors/hrsa";
+import { createNassConnector } from "../connectors/nass";
 import { runPhase1CrossChecks } from "../cross-checks/engine";
 import { writeCcExport } from "../exports/ccExport";
 import {
@@ -70,6 +71,7 @@ export async function diagnose(): Promise<Record<string, unknown>> {
   const eia = createEiaConnector({ rawRoot, commit });
   const fdic = createFdicConnector({ rawRoot, commit });
   const hrsa = createHrsaConnector({ rawRoot, commit });
+  const nass = createNassConnector({ rawRoot, commit });
   const warehouse = loadWarehouse(repoRoot());
   const report = {
     mission: "RCIP-PHASE-1-PUBLIC-STATISTICS-SPINE-1.0",
@@ -80,6 +82,7 @@ export async function diagnose(): Promise<Record<string, unknown>> {
       eia: await eia.validateConfiguration(),
       fdic: await fdic.validateConfiguration(),
       hrsa: await hrsa.validateConfiguration(),
+      nass: await nass.validateConfiguration(),
     },
     supported_datasets: {
       census: await census.listSupportedDatasets(),
@@ -87,6 +90,7 @@ export async function diagnose(): Promise<Record<string, unknown>> {
       eia: await eia.listSupportedDatasets(),
       fdic: await fdic.listSupportedDatasets(),
       hrsa: await hrsa.listSupportedDatasets(),
+      nass: await nass.listSupportedDatasets(),
     },
     database_target: classifyDbTarget(),
     raw_archive_path: rawRoot,
@@ -101,6 +105,9 @@ export async function diagnose(): Promise<Record<string, unknown>> {
   if (!report.connectors.census.keyPresent) report.warnings.push("CENSUS_API_KEY missing");
   if (!report.connectors.bls.keyPresent) report.warnings.push("BLS_API_KEY missing");
   if (!report.connectors.eia.keyPresent) report.warnings.push("EIA_API_KEY missing");
+  if (!report.connectors.nass.keyPresent) {
+    report.warnings.push("NASS_API_KEY missing (Quick Stats; not API_DOT_GOV_KEY)");
+  }
   if ((report.database_target as { hosted_supabase?: boolean }).hosted_supabase) {
     report.warnings.push(
       "Configured DB appears hosted Supabase — do not apply public_statistics migration without operator confirmation",
@@ -976,6 +983,165 @@ export async function seedPass8FdicHrsa(): Promise<Record<string, unknown>> {
       .length,
     fred_note:
       "FRED not seeded in Pass 8 — no demanded local-capital/healthcare series required FRED as a distribution channel.",
+  };
+}
+
+export async function seedPass9Nass(): Promise<Record<string, unknown>> {
+  const commit = gitCommitShort();
+  const rawRoot = path.join(repoRoot(), "data", "public-statistics", "raw");
+  const warehouse = loadWarehouse(repoRoot());
+  const manifest = loadManifest("cc-pass9-nass-1.0.json") as {
+    indicators: Array<Record<string, unknown>>;
+    still_blocked?: Array<Record<string, unknown>>;
+    distinction?: string;
+  };
+  const runId = newId("run");
+  const run: import("../types").IngestionRunRecord = {
+    runId,
+    connector: "pass9_nass",
+    startedAt: new Date().toISOString(),
+    completedAt: null,
+    environment: process.env.NODE_ENV || "development",
+    status: "running",
+    requestedSeries: manifest.indicators.map((i) => String(i.series)),
+    requestedGeographies: manifest.indicators.map((i) => String(i.geography)),
+    insertedObservations: 0,
+    updatedObservations: 0,
+    rejectedObservations: 0,
+    warnings: [],
+    errors: [],
+    softwareCommit: commit,
+    operator: "publicdata-cli",
+  };
+  recordIngestionRun(warehouse, run);
+
+  const nass = createNassConnector({ rawRoot, commit });
+  const validation = await nass.validateConfiguration();
+  if (!validation.ok) {
+    run.completedAt = new Date().toISOString();
+    run.status = "failed";
+    run.errors.push(...validation.errors);
+    recordIngestionRun(warehouse, { ...run, status: run.status });
+    saveWarehouse(repoRoot(), warehouse);
+    return {
+      ...run,
+      still_blocked: manifest.still_blocked || [],
+      note: "Fail-closed: configure NASS_API_KEY via npm run publicdata:configure-nass-key",
+    };
+  }
+
+  for (const indicator of manifest.indicators) {
+    const consumerMetricId = String(indicator.consumer_metric_id);
+    const source = String(indicator.source);
+    const dataset = String(indicator.dataset);
+    const series = String(indicator.series);
+    const geography = String(indicator.geography);
+    const start = String(indicator.period_start || "1987");
+    const end = String(indicator.period_end || start);
+    const facets = (indicator.facets as Record<string, string[]> | undefined) || undefined;
+    const unit = indicator.unit ? String(indicator.unit) : undefined;
+    const seriesTitle = indicator.title ? String(indicator.title) : undefined;
+    const demandIds = (indicator.demand_ids as string[] | undefined) || undefined;
+    if (source !== "nass") {
+      run.errors.push(`${consumerMetricId}: unsupported source ${source}`);
+      continue;
+    }
+    try {
+      const request = {
+        dataset,
+        variablesOrSeries: [series],
+        geography,
+        period: start,
+        endPeriod: end,
+        facets,
+        unit,
+        seriesTitle,
+        consumerMetricId,
+        demandIds,
+        pointPolicy: "all_annual" as const,
+      };
+      const raw = await nass.fetch(request);
+      const queryId = newId("qry");
+      recordSourceQuery(warehouse, {
+        queryId,
+        sourceId: source,
+        datasetId: dataset,
+        endpoint: raw.endpoint,
+        safeParams: raw.safeParams,
+        canonicalQuery: `${source}|${dataset}|${series}|${start}-${end}|${geography}|${JSON.stringify(facets || {})}`,
+        requestTimestamp: raw.retrievedAt,
+        responseStatus: raw.status,
+        responseChecksum: raw.checksum,
+        rawResponseLocation: raw.rawPath || null,
+        rowCount: 0,
+        retryCount: raw.retryCount,
+        ingestionRunId: runId,
+      });
+      const batch = await nass.normalize(raw);
+      run.warnings.push(...batch.warnings.map((w) => `${consumerMetricId}: ${w}`));
+      if (raw.status !== 200 || !batch.observations.length) {
+        run.errors.push(
+          `${consumerMetricId}: ${source} status ${raw.status} with ${batch.observations.length} observations`,
+        );
+        continue;
+      }
+      const releaseId = newId("rel");
+      warehouse.releases.push({
+        releaseId,
+        datasetId: dataset,
+        releaseDate: raw.retrievedAt.slice(0, 10),
+        referencePeriod: `${start}-${end}`,
+        publicationStatus: "retrieved",
+        sourceUrl: raw.endpoint,
+        retrievalTimestamp: raw.retrievedAt,
+        checksum: raw.checksum,
+      });
+      for (const obs of batch.observations) {
+        obs.consumerMetricId = consumerMetricId;
+        if (obs.value == null) {
+          run.rejectedObservations += 1;
+          continue;
+        }
+        const warehouseObs: WarehouseObservation = {
+          ...obs,
+          observationId: newId("obs"),
+          sourceId: source,
+          datasetId: dataset,
+          releaseId,
+          sourceQueryId: queryId,
+          ingestionRunId: runId,
+          validationStatus: "accepted",
+          confidence: "verified_primary",
+          retrievedAt: raw.retrievedAt,
+        };
+        const result = upsertObservation(warehouse, warehouseObs);
+        if (result.inserted) run.insertedObservations += 1;
+        if (result.revised) run.updatedObservations += 1;
+      }
+    } catch (err) {
+      run.errors.push(
+        `${consumerMetricId}: ${err instanceof Error ? err.message : String(err)}`,
+      );
+    }
+  }
+
+  run.completedAt = new Date().toISOString();
+  if (run.insertedObservations === 0 && run.updatedObservations === 0) {
+    run.status = "failed";
+  } else if (run.errors.length || run.warnings.length) {
+    run.status = "partial";
+  } else {
+    run.status = "succeeded";
+  }
+  recordIngestionRun(warehouse, { ...run, status: run.status });
+  saveWarehouse(repoRoot(), warehouse);
+  return {
+    ...run,
+    still_blocked: manifest.still_blocked || [],
+    distinction: manifest.distinction,
+    accepted_observation_count: warehouse.observations.filter((o) => o.validationStatus === "accepted")
+      .length,
+    note: "Bind into existing agriculture/rural panels only. 0 new panels by default.",
   };
 }
 

@@ -31,6 +31,8 @@ const PUBLICDATA_KEY_NAMES = new Set([
   "OPENFEC_API_KEY",
   "OPENSTATES_API_KEY",
   "API_DOT_GOV_KEY",
+  "NASS_API_KEY",
+  "USDA_NASS_API_KEY",
 ]);
 
 /**

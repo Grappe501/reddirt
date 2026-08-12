@@ -24,6 +24,7 @@ function agencyName(sourceId: string): string {
   if (sourceId === "fdic") return "Federal Deposit Insurance Corporation";
   if (sourceId === "hrsa") return "Health Resources and Services Administration";
   if (sourceId === "fred") return "Federal Reserve Economic Data (FRED)";
+  if (sourceId === "nass") return "USDA National Agricultural Statistics Service";
   return "Bureau of Labor Statistics";
 }
 
@@ -33,6 +34,7 @@ function officialUrl(source: string, _series: string): string {
   if (source === "fdic") return "https://banks.data.fdic.gov/";
   if (source === "hrsa") return "https://data.hrsa.gov/";
   if (source === "fred") return "https://fred.stlouisfed.org/";
+  if (source === "nass") return "https://quickstats.nass.usda.gov/";
   return "https://www.bls.gov/data/";
 }
 
@@ -167,6 +169,13 @@ export function buildCcExportFiles(opts: {
           abbreviation: "HRSA",
           homepage: "https://www.hrsa.gov/",
           api_docs: "https://data.hrsa.gov/",
+        },
+        {
+          slug: "nass",
+          name: "USDA National Agricultural Statistics Service",
+          abbreviation: "NASS",
+          homepage: "https://www.nass.usda.gov/",
+          api_docs: "https://quickstats.nass.usda.gov/api",
         },
       ],
     },
