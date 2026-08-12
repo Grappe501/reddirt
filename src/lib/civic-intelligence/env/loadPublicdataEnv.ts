@@ -33,6 +33,8 @@ const PUBLICDATA_KEY_NAMES = new Set([
   "API_DOT_GOV_KEY",
   "NASS_API_KEY",
   "USDA_NASS_API_KEY",
+  "NEWSAPI_API_KEY",
+  "SOCRATA_APP_TOKEN",
 ]);
 
 /**
