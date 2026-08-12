@@ -3,6 +3,9 @@ import {
   diagnose,
   seedCensus,
   seedBls,
+  seedBaselineAlignedBds,
+  seedBaselineAlignedCpsVoting,
+  seedPass6SeriesArrays,
   crosscheck,
   validateWarehouse,
   exportCc,
@@ -26,6 +29,23 @@ async function main() {
       break;
     case "bls:seed":
       result = await seedBls();
+      break;
+    case "aligned:bds":
+      result = await seedBaselineAlignedBds();
+      break;
+    case "aligned:cps-voting":
+      result = await seedBaselineAlignedCpsVoting();
+      break;
+    case "pass6:series":
+      result = await seedPass6SeriesArrays();
+      break;
+    case "aligned:all":
+      result = {
+        bds: await seedBaselineAlignedBds(),
+        cps_voting: await seedBaselineAlignedCpsVoting(),
+        validate: validateWarehouse(),
+        export: exportCc(),
+      };
       break;
     case "crosscheck":
       result = crosscheck();
@@ -56,12 +76,25 @@ async function main() {
   ) {
     process.exit(1);
   }
-  if (cmd === "census:seed" || cmd === "bls:seed" || cmd === "all") {
-    const status =
-      cmd === "all"
-        ? null
-        : (result as { status?: string }).status;
+  if (
+    cmd === "census:seed" ||
+    cmd === "bls:seed" ||
+    cmd === "aligned:bds" ||
+    cmd === "aligned:cps-voting" ||
+    cmd === "pass6:series" ||
+    cmd === "all"
+  ) {
+    const status = (result as { status?: string }).status;
     if (status === "failed") process.exit(1);
+  }
+  if (cmd === "aligned:all") {
+    const r = result as {
+      bds?: { status?: string };
+      cps_voting?: { status?: string };
+    };
+    if (r.bds?.status === "failed" || r.cps_voting?.status === "failed") {
+      process.exit(1);
+    }
   }
 }
 

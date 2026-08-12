@@ -6,7 +6,9 @@ import { resolveGeography } from "../../geography/registry";
 import type {
   ConnectorValidation,
   DatasetDescriptor,
+  NormalizedObservation,
   NormalizedStatisticsBatch,
+  PointPolicy,
   PublicStatisticsRequest,
   RawStatisticsResponse,
 } from "../../types";
@@ -16,6 +18,43 @@ const ENDPOINT = "https://api.bls.gov/publicAPI/v2/timeseries/data/";
 
 function keyPresent(): boolean {
   return isUsableApiKey(process.env.BLS_API_KEY);
+}
+
+function yearOnly(period: string): string {
+  return period.slice(0, 4);
+}
+
+function selectPoints(
+  data: Array<{
+    year: string;
+    period: string;
+    periodName: string;
+    value: string;
+  }>,
+  policy: PointPolicy,
+): typeof data {
+  if (!data.length) return [];
+  if (policy === "latest_only") {
+    const annual = data.filter((d) => d.period === "M13" || d.periodName === "Annual");
+    const pick =
+      annual[0] ||
+      data.slice().sort((a, b) => `${b.year}${b.period}`.localeCompare(`${a.year}${a.period}`))[0];
+    return pick ? [pick] : [];
+  }
+  if (policy === "all_annual") {
+    const annual = data.filter((d) => d.period === "M13" || d.periodName === "Annual");
+    if (annual.length) return annual;
+    // Fall back to December points when annual cells are absent (common for CES/CPI).
+    return data.filter((d) => d.period === "M12");
+  }
+  if (policy === "december_only") {
+    return data.filter((d) => d.period === "M12");
+  }
+  if (policy === "fourth_quarter_only") {
+    return data.filter((d) => d.period === "Q04");
+  }
+  // all_monthly — drop annual rollups to avoid double-counting
+  return data.filter((d) => d.period !== "M13" && d.periodName !== "Annual");
 }
 
 export function createBlsConnector(opts: {
@@ -58,6 +97,18 @@ export function createBlsConnector(opts: {
           frequency: "monthly",
           documentationUrl: "https://www.bls.gov/ces/",
         },
+        {
+          code: "productivity",
+          title: "Major Sector Productivity and Costs",
+          frequency: "annual",
+          documentationUrl: "https://www.bls.gov/productivity/",
+        },
+        {
+          code: "jolts",
+          title: "Job Openings and Labor Turnover Survey",
+          frequency: "monthly",
+          documentationUrl: "https://www.bls.gov/jlt/",
+        },
       ];
     },
     async fetch(request: PublicStatisticsRequest): Promise<RawStatisticsResponse> {
@@ -66,8 +117,8 @@ export function createBlsConnector(opts: {
         throw new Error(validation.errors.join("; "));
       }
       const registrationkey = process.env.BLS_API_KEY!.trim();
-      const startyear = request.period;
-      const endyear = request.period;
+      const startyear = yearOnly(request.period);
+      const endyear = yearOnly(request.endPeriod || request.period);
       const body = {
         seriesid: request.variablesOrSeries,
         startyear,
@@ -80,6 +131,7 @@ export function createBlsConnector(opts: {
         endyear,
         geography: request.geography,
         dataset: request.dataset,
+        pointPolicy: request.pointPolicy || "latest_only",
       };
       safeLog("bls.fetch", { endpoint: ENDPOINT, safeParams });
       const { status, text, retryCount } = await fetchWithRetry(ENDPOINT, {
@@ -139,34 +191,38 @@ export function createBlsConnector(opts: {
         if (parsed.message?.length) warnings.push(...parsed.message);
       }
       const geography = resolveGeography(response.safeParams.geography || "nation");
-      const observations = [];
+      const policy = (response.safeParams.pointPolicy || "latest_only") as PointPolicy;
+      const observations: NormalizedObservation[] = [];
       for (const series of parsed.Results?.series || []) {
-        const annual = (series.data || []).filter((d) => d.period === "M13" || d.periodName === "Annual");
-        const pick =
-          annual[0] ||
-          (series.data || []).sort((a, b) => `${b.year}${b.period}`.localeCompare(`${a.year}${a.period}`))[0];
-        if (!pick) {
-          warnings.push(`No observations for series ${series.seriesID}`);
+        const picks = selectPoints(series.data || [], policy);
+        if (!picks.length) {
+          warnings.push(`No observations for series ${series.seriesID} under policy ${policy}`);
           continue;
         }
-        const value = Number(pick.value);
-        observations.push({
-          seriesCode: series.seriesID,
-          seriesTitle: `BLS ${series.seriesID}`,
-          geographyId: geography.geographyId,
-          geographyType: geography.geographyType,
-          geographyName: geography.name,
-          period: pick.period === "M13" ? pick.year : `${pick.year}-${pick.period}`,
-          value: Number.isFinite(value) ? value : null,
-          unit: "as_reported",
-          seasonalAdjustment: null,
-          estimateType: "bls_series",
-          definition: `BLS series ${series.seriesID}`,
-          limitations: [
-            "Do not mix seasonally adjusted and non-seasonally adjusted series silently",
-            "Survey and administrative series are not identical concepts",
-          ],
-        });
+        for (const pick of picks) {
+          const value = Number(pick.value);
+          observations.push({
+            seriesCode: series.seriesID,
+            seriesTitle: `BLS ${series.seriesID}`,
+            geographyId: geography.geographyId,
+            geographyType: geography.geographyType,
+            geographyName: geography.name,
+            period:
+              pick.period === "M13" || pick.periodName === "Annual"
+                ? pick.year
+                : `${pick.year}-${pick.period}`,
+            value: Number.isFinite(value) ? value : null,
+            unit: "as_reported",
+            seasonalAdjustment: null,
+            estimateType: "bls_series",
+            definition: `BLS series ${series.seriesID}`,
+            limitations: [
+              "Do not mix seasonally adjusted and non-seasonally adjusted series silently",
+              "Survey and administrative series are not identical concepts",
+              `point_policy=${policy}`,
+            ],
+          });
+        }
       }
       return {
         source: SOURCE,

@@ -62,10 +62,55 @@ export function buildCcExportFiles(opts: {
   const county = accepted.filter((o) => o.geographyType === "county").map(toMetric);
 
   const periods = accepted.map((o) => o.period).sort();
+  const arrayKey = (o: (typeof accepted)[number]) =>
+    `${o.consumerMetricId || o.seriesCode}|${o.seriesCode}|${o.geographyId}`;
+  const arrayMap = new Map<
+    string,
+    {
+      consumer_metric_id: string;
+      series_code: string;
+      geography_id: string;
+      geography_name: string;
+      dataset: string;
+      source_agency: string;
+      unit: string;
+      points: Array<{ period: string; value: number | null; observation_id: string }>;
+    }
+  >();
+  for (const o of accepted) {
+    const key = arrayKey(o);
+    if (!arrayMap.has(key)) {
+      arrayMap.set(key, {
+        consumer_metric_id: o.consumerMetricId || o.seriesCode,
+        series_code: o.seriesCode,
+        geography_id: o.geographyId,
+        geography_name: o.geographyName,
+        dataset: o.datasetId,
+        source_agency:
+          o.sourceId === "census" ? "United States Census Bureau" : "Bureau of Labor Statistics",
+        unit: o.unit,
+        points: [],
+      });
+    }
+    arrayMap.get(key)!.points.push({
+      period: o.period,
+      value: o.value,
+      observation_id: o.observationId,
+    });
+  }
+  for (const series of arrayMap.values()) {
+    series.points.sort((a, b) => a.period.localeCompare(b.period));
+  }
+
   const files: Record<string, unknown> = {
     "national-baseline.json": { metrics: national },
     "arkansas-baseline.json": { metrics: arkansas },
     "county-baselines.json": { metrics: county },
+    "series-arrays.json": {
+      contract_note:
+        "Multi-period observation arrays for publication evidence systems. Do not interpolate missing periods. Do not collapse AR/US unless definitions match.",
+      series: [...arrayMap.values()],
+    },
     "series-metadata.json": {
       series: accepted.map((o) => ({
         series_code: o.seriesCode,
@@ -128,7 +173,6 @@ export function buildCcExportFiles(opts: {
     },
   };
 
-  const checksum = checksumPayload(files);
   const validationStatus: CcExportManifestV1["validation_status"] =
     accepted.length > 0 ? "passed" : "failed";
   const crossStatus: CcExportManifestV1["cross_check_status"] =
@@ -138,6 +182,23 @@ export function buildCcExportFiles(opts: {
         ? "failed"
         : "partial";
 
+  // Privacy scan must mutate validation-report BEFORE checksum — otherwise
+  // on-disk privacy_scan ("passed") will not match the pre-scan hash.
+  const privacy = scanExportPayload({
+    ...files,
+    "manifest.json": {
+      contract_version: CC_EXPORT_CONTRACT_VERSION,
+      export_id: exportId,
+      contains_private_data: false,
+    },
+  });
+  (files["validation-report.json"] as { privacy_scan: string; privacy_errors?: string[] }).privacy_scan =
+    privacy.ok ? "passed" : "failed";
+  if (!privacy.ok) {
+    (files["validation-report.json"] as { privacy_errors?: string[] }).privacy_errors = privacy.errors;
+  }
+
+  const checksum = checksumPayload(files);
   const manifest: CcExportManifestV1 = {
     contract_version: CC_EXPORT_CONTRACT_VERSION,
     export_id: exportId,
@@ -158,13 +219,6 @@ export function buildCcExportFiles(opts: {
     checksum,
   };
   files["manifest.json"] = manifest;
-
-  const privacy = scanExportPayload(files);
-  (files["validation-report.json"] as { privacy_scan: string; privacy_errors?: string[] }).privacy_scan =
-    privacy.ok ? "passed" : "failed";
-  if (!privacy.ok) {
-    (files["validation-report.json"] as { privacy_errors?: string[] }).privacy_errors = privacy.errors;
-  }
 
   return { files, privacyOk: privacy.ok, privacyErrors: privacy.errors };
 }

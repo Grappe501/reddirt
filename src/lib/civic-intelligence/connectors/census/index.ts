@@ -24,12 +24,46 @@ function acsProductPath(variable: string): string {
   return `acs/acs5`;
 }
 
-function buildAcsUrl(request: PublicStatisticsRequest, apiKey: string): {
+function buildCensusUrl(
+  request: PublicStatisticsRequest,
+  apiKey: string,
+): {
   url: string;
   safeParams: Record<string, string>;
   endpoint: string;
 } {
   const geo = resolveGeography(request.geography);
+  const dataset = request.dataset || "acs5";
+
+  if (dataset === "bds" || dataset === "timeseries/bds") {
+    const variable = request.variablesOrSeries[0] || "";
+    const year = request.period;
+    const base = "https://api.census.gov/data/timeseries/bds";
+    const params = new URLSearchParams({
+      get: variable,
+      YEAR: year,
+      key: apiKey,
+    });
+    if (geo.geographyType === "nation") {
+      params.set("for", "us:*");
+    } else if (geo.geographyType === "state" && geo.stateCode) {
+      params.set("for", `state:${geo.stateCode}`);
+    } else {
+      throw new Error(`BDS geography not supported: ${request.geography}`);
+    }
+    const url = `${base}?${params.toString()}`;
+    return {
+      url,
+      endpoint: base,
+      safeParams: {
+        get: variable,
+        for: params.get("for") || "",
+        year,
+        dataset: "bds",
+      },
+    };
+  }
+
   const primaryVar = request.variablesOrSeries[0] || "";
   const product = acsProductPath(primaryVar);
   const get = ["NAME", ...request.variablesOrSeries].join(",");
@@ -40,16 +74,19 @@ function buildAcsUrl(request: PublicStatisticsRequest, apiKey: string): {
   } else if (geo.geographyType === "state" && geo.stateCode) {
     params.set("for", `state:${geo.stateCode}`);
   } else {
-    throw new Error(`Census geography not supported in Phase 1: ${request.geography}`);
+    throw new Error(`Census geography not supported: ${request.geography}`);
   }
   const url = `${base}?${params.toString()}`;
-  const safeParams: Record<string, string> = {
-    get,
-    for: params.get("for") || "",
-    year: ACS5_YEAR,
-    dataset: product,
+  return {
+    url,
+    endpoint: base,
+    safeParams: {
+      get,
+      for: params.get("for") || "",
+      year: ACS5_YEAR,
+      dataset: product,
+    },
   };
-  return { url, safeParams, endpoint: base };
 }
 
 function parseCensusNumber(raw: string | undefined): number | null {
@@ -86,6 +123,12 @@ export function createCensusConnector(opts: {
           frequency: "annual",
           documentationUrl: "https://www.census.gov/programs-surveys/acs",
         },
+        {
+          code: "bds",
+          title: "Business Dynamics Statistics (timeseries API)",
+          frequency: "annual",
+          documentationUrl: "https://www.census.gov/data/developers/data-sets/business-dynamics.html",
+        },
       ];
     },
     async fetch(request: PublicStatisticsRequest): Promise<RawStatisticsResponse> {
@@ -94,7 +137,7 @@ export function createCensusConnector(opts: {
         throw new Error(validation.errors.join("; "));
       }
       const apiKey = process.env.CENSUS_API_KEY!.trim();
-      const { url, safeParams, endpoint } = buildAcsUrl(request, apiKey);
+      const { url, safeParams, endpoint } = buildCensusUrl(request, apiKey);
       safeLog("census.fetch", { endpoint, safeParams });
       const { status, text, retryCount } = await fetchWithRetry(url);
       return persistRawResponse({
@@ -147,38 +190,66 @@ export function createCensusConnector(opts: {
         };
       }
       const headers = rows[0];
-      const values = rows[1];
       const geoFor = response.safeParams.for || "";
-      const geography =
-        geoFor.startsWith("state:")
-          ? resolveGeography(`state:${geoFor.split(":")[1]}`)
-          : resolveGeography("nation");
+      const geography = geoFor.startsWith("state:")
+        ? resolveGeography(`state:${geoFor.split(":")[1]}`)
+        : resolveGeography("nation");
 
+      const isBds = dataset === "bds";
+      const yearIdx = headers.findIndex((h) => h === "YEAR" || h === "year");
       const observations = [];
-      for (let i = 0; i < headers.length; i += 1) {
-        const code = headers[i];
-        if (code === "NAME" || code === "state" || code === "us") continue;
-        if (code.endsWith("M") || code.endsWith("MA") || code.endsWith("EA")) continue;
-        const value = parseCensusNumber(values[i]);
-        const moeIdx = headers.indexOf(code.endsWith("E") ? `${code.slice(0, -1)}M` : `${code}M`);
-        const moe = moeIdx >= 0 ? parseCensusNumber(values[moeIdx]) : null;
-        observations.push({
-          seriesCode: code,
-          seriesTitle: `ACS5 ${code}`,
-          geographyId: geography.geographyId,
-          geographyType: geography.geographyType,
-          geographyName: geography.name,
-          period: response.safeParams.year || ACS5_YEAR,
-          value,
-          marginOfError: moe,
-          unit: "as_reported",
-          estimateType: "acs5_estimate",
-          definition: `Census ACS 5-Year variable ${code}`,
-          limitations: [
-            "ACS 5-Year estimate; do not mix with ACS 1-Year without disclosure",
-            "Margins of error stored when provided",
-          ],
-        });
+      const dataRows = rows.slice(1);
+      for (const values of dataRows) {
+        const rowYear =
+          yearIdx >= 0 ? values[yearIdx] : response.safeParams.year || (isBds ? "" : ACS5_YEAR);
+        for (let i = 0; i < headers.length; i += 1) {
+          const code = headers[i];
+          if (
+            code === "NAME" ||
+            code === "state" ||
+            code === "us" ||
+            code === "YEAR" ||
+            code === "year"
+          ) {
+            continue;
+          }
+          if (!isBds && (code.endsWith("M") || code.endsWith("MA") || code.endsWith("EA"))) {
+            continue;
+          }
+          const value = parseCensusNumber(values[i]);
+          const moeIdx = headers.indexOf(
+            code.endsWith("E") ? `${code.slice(0, -1)}M` : `${code}M`,
+          );
+          const moe = !isBds && moeIdx >= 0 ? parseCensusNumber(values[moeIdx]) : null;
+          observations.push({
+            seriesCode: code,
+            seriesTitle: isBds ? `BDS ${code}` : `ACS5 ${code}`,
+            geographyId: geography.geographyId,
+            geographyType: geography.geographyType,
+            geographyName: geography.name,
+            period: String(rowYear),
+            value,
+            marginOfError: moe,
+            unit: isBds
+              ? code.includes("RATE")
+                ? "percent"
+                : "count"
+              : "as_reported",
+            estimateType: isBds ? "bds_annual" : "acs5_estimate",
+            definition: isBds
+              ? `Census Business Dynamics Statistics variable ${code}`
+              : `Census ACS 5-Year variable ${code}`,
+            limitations: isBds
+              ? [
+                  "BDS annual establishment/firm dynamics; do not confuse with Business Formation Statistics (BFS)",
+                  "Economy-wide national cell unless geography explicitly narrower",
+                ]
+              : [
+                  "ACS 5-Year estimate; do not mix with ACS 1-Year without disclosure",
+                  "Margins of error stored when provided",
+                ],
+          });
+        }
       }
 
       return {
@@ -192,6 +263,9 @@ export function createCensusConnector(opts: {
 }
 
 export function censusCanonicalQuery(safeParams: Record<string, string>): string {
+  if (safeParams.dataset === "bds") {
+    return `census|bds|${safeParams.year}|${safeParams.get}|${safeParams.for}`;
+  }
   return `census|acs5|${safeParams.year}|${safeParams.get}|${safeParams.for}`;
 }
 

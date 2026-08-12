@@ -13,12 +13,26 @@ export type DatasetDescriptor = {
   documentationUrl: string;
 };
 
+export type PointPolicy =
+  | "latest_only"
+  | "all_annual"
+  | "all_monthly"
+  | "december_only"
+  | "fourth_quarter_only";
+
 export type PublicStatisticsRequest = {
   dataset: string;
   variablesOrSeries: string[];
   geography: string;
+  /** Start year / single period (YYYY or YYYY-Mnn). */
   period: string;
+  /** Inclusive end year for multi-year BLS/Census pulls. */
+  endPeriod?: string;
+  /** How many observations to keep after normalize. Default latest_only. */
+  pointPolicy?: PointPolicy;
   consumerMetricId?: string;
+  /** Pass-6 publication demand id(s) for provenance. */
+  demandIds?: string[];
 };
 
 export type RawStatisticsResponse = {

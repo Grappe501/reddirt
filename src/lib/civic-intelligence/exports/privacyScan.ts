@@ -25,6 +25,7 @@ const ALLOWED_TOP_LEVEL_FILES = new Set([
   "arkansas-baseline.json",
   "county-baselines.json",
   "series-metadata.json",
+  "series-arrays.json",
   "source-registry.json",
   "source-citations.json",
   "cross-check-results.json",

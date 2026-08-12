@@ -1,0 +1,192 @@
+{
+  "version": "1.0",
+  "mission": "CC-PUBLICATION-EVIDENCE-UPGRADE-PASS-6.0",
+  "consumer": "constitutional_capitalism",
+  "note": "Multi-year series arrays for existing evidence systems. No curiosity series. Do not invent baseline promotions.",
+  "indicators": [
+    {
+      "consumer_metric_id": "CC-PASS6-CES-AHE-LEVEL",
+      "title": "US CES average hourly earnings level (private)",
+      "source": "bls",
+      "dataset": "ces",
+      "series": "CES0500000003",
+      "geography": "nation",
+      "period_start": "2007",
+      "period_end": "2025",
+      "point_policy": "december_only",
+      "demand_ids": ["PASS5-DEM-L01-SERIES", "RCIP-DEM-0006"],
+      "evidence_system_id": "CC-EP-WAGES-PRODUCTIVITY-1",
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-PASS6-CPI-U",
+      "title": "US CPI-U index",
+      "source": "bls",
+      "dataset": "cpi",
+      "series": "CUUR0000SA0",
+      "geography": "nation",
+      "period_start": "2007",
+      "period_end": "2025",
+      "point_policy": "december_only",
+      "demand_ids": ["PASS5-DEM-L01-SERIES", "RCIP-DEM-0006"],
+      "evidence_system_id": "CC-EP-WAGES-PRODUCTIVITY-1",
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-PASS6-NFB-PRODUCTIVITY-Q4",
+      "title": "US nonfarm business labor productivity % change (Q4, annual rate)",
+      "source": "bls",
+      "dataset": "productivity",
+      "series": "PRS85006092",
+      "geography": "nation",
+      "period_start": "1970",
+      "period_end": "2024",
+      "point_policy": "fourth_quarter_only",
+      "demand_ids": ["PASS5-DEM-L02-SERIES", "RCIP-DEM-0006"],
+      "evidence_system_id": "CC-EP-WAGES-PRODUCTIVITY-1",
+      "status": "approved_for_ingest",
+      "notes": "PRS85006092 is quarterly % change at annual rate. Q4 points are a history spine — not identical to CC-IND-L02 annual dial. Definition break must stay visible."
+    },
+    {
+      "consumer_metric_id": "CC-PASS6-JOLTS-QUITS",
+      "title": "US JOLTS quits rate (total nonfarm)",
+      "source": "bls",
+      "dataset": "jolts",
+      "series": "JTS000000000000000QUR",
+      "geography": "nation",
+      "period_start": "2001",
+      "period_end": "2024",
+      "point_policy": "all_annual",
+      "demand_ids": ["PASS5-DEM-L04-SERIES", "RCIP-DEM-0006"],
+      "evidence_system_id": "CC-EP-WAGES-PRODUCTIVITY-1",
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-PASS6-UNEMP-US",
+      "title": "US unemployment rate",
+      "source": "bls",
+      "dataset": "laus_cps",
+      "series": "LNS14000000",
+      "geography": "nation",
+      "period_start": "2007",
+      "period_end": "2025",
+      "point_policy": "december_only",
+      "demand_ids": ["PASS5-DEM-L01-SERIES"],
+      "evidence_system_id": "CC-EP-WAGES-PRODUCTIVITY-1",
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-PASS6-UNEMP-AR",
+      "title": "Arkansas unemployment rate",
+      "source": "bls",
+      "dataset": "laus",
+      "series": "LASST050000000000003",
+      "geography": "state:05",
+      "period_start": "2007",
+      "period_end": "2025",
+      "point_policy": "december_only",
+      "demand_ids": ["PASS5-DEM-L01-SERIES"],
+      "evidence_system_id": "CC-EP-WAGES-PRODUCTIVITY-1",
+      "arkansas_us_pair": "CC-PASS6-UNEMP-US",
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-IND-B01",
+      "title": "US BDS establishment entry rate",
+      "source": "census",
+      "dataset": "bds",
+      "variable": "ESTABS_ENTRY_RATE",
+      "geography": "nation",
+      "period_start": "2000",
+      "period_end": "2023",
+      "point_policy": "all_annual",
+      "demand_ids": ["PASS5-DEM-BDS-HISTORY", "RCIP-DEM-0008"],
+      "evidence_system_id": "CC-EP-MARKET-DYNAMICS-SYSTEM-1",
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-IND-B02",
+      "title": "US BDS establishment exit rate",
+      "source": "census",
+      "dataset": "bds",
+      "variable": "ESTABS_EXIT_RATE",
+      "geography": "nation",
+      "period_start": "2000",
+      "period_end": "2023",
+      "point_policy": "all_annual",
+      "demand_ids": ["PASS5-DEM-BDS-HISTORY", "RCIP-DEM-0008"],
+      "evidence_system_id": "CC-EP-MARKET-DYNAMICS-SYSTEM-1",
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-IND-C02",
+      "title": "US BDS establishment births",
+      "source": "census",
+      "dataset": "bds",
+      "variable": "ESTABS_ENTRY",
+      "geography": "nation",
+      "period_start": "2000",
+      "period_end": "2023",
+      "point_policy": "all_annual",
+      "demand_ids": ["PASS5-DEM-BDS-HISTORY", "RCIP-DEM-0008"],
+      "evidence_system_id": "CC-EP-MARKET-DYNAMICS-SYSTEM-1",
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-PASS6-BDS-ENTRY-AR",
+      "title": "Arkansas BDS establishment entry rate",
+      "source": "census",
+      "dataset": "bds",
+      "variable": "ESTABS_ENTRY_RATE",
+      "geography": "state:05",
+      "period_start": "2000",
+      "period_end": "2023",
+      "point_policy": "all_annual",
+      "demand_ids": ["PASS5-DEM-BDS-AR", "PASS5-DEM-BDS-HISTORY"],
+      "evidence_system_id": "CC-EP-RURAL-LOCAL-CAPITAL-SYSTEM-1",
+      "arkansas_us_pair": "CC-IND-B01",
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-PASS6-BDS-EXIT-AR",
+      "title": "Arkansas BDS establishment exit rate",
+      "source": "census",
+      "dataset": "bds",
+      "variable": "ESTABS_EXIT_RATE",
+      "geography": "state:05",
+      "period_start": "2000",
+      "period_end": "2023",
+      "point_policy": "all_annual",
+      "demand_ids": ["PASS5-DEM-BDS-AR", "PASS5-DEM-BDS-HISTORY"],
+      "evidence_system_id": "CC-EP-RURAL-LOCAL-CAPITAL-SYSTEM-1",
+      "arkansas_us_pair": "CC-IND-B02",
+      "status": "approved_for_ingest"
+    }
+  ],
+  "blocked_without_adapter": [
+    {
+      "demand_ids": ["RCIP-DEM-0418", "RCIP-DEM-0419", "RCIP-DEM-0420", "RCIP-DEM-0421", "RCIP-DEM-0422", "RCIP-DEM-0423", "RCIP-DEM-0424", "RCIP-DEM-0425"],
+      "reason": "No EIA connector / EIA_API_KEY path in RCIP spine yet"
+    },
+    {
+      "demand_ids": ["PASS5-DEM-SCF-HISTORY", "PASS5-DEM-DFA-PATH", "RCIP-DEM-0001"],
+      "reason": "No Federal Reserve SCF/DFA / FRED connector"
+    },
+    {
+      "demand_ids": ["PASS5-DEM-CBO-BUDGET-HISTORY", "PASS5-DEM-CBO-TAX-RATES", "PASS5-DEM-REV-COMPOSITION", "RCIP-DEM-0007"],
+      "reason": "No CBO historical budget adapter"
+    },
+    {
+      "demand_ids": ["PASS5-DEM-FDIC-PATH", "RCIP-DEM-0414"],
+      "reason": "No FDIC QBP connector"
+    },
+    {
+      "demand_ids": ["PASS5-DEM-HPSA-HISTORY", "PASS5-DEM-HPSA-AR", "RCIP-DEM-0412"],
+      "reason": "No HRSA HPSA connector"
+    },
+    {
+      "demand_ids": ["PASS5-DEM-CR-SAMPLE", "PASS5-DEM-MARKUPS"],
+      "reason": "No Economic Census CR / markup packer yet"
+    }
+  ]
+}
