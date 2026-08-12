@@ -240,7 +240,15 @@ export function createNassConnector(opts: {
       });
       const useRows = yearRows.length ? yearRows : rows;
 
-      // One observation per year (latest load_time wins if duplicates).
+      // One observation per year. Prefer TOTAL domain over PRODUCERS / size-class
+      // domains; among equals, latest load_time wins.
+      const domainRank = (row: Record<string, unknown>) => {
+        const d = String(row.domain_desc || "").toUpperCase();
+        if (d === "TOTAL") return 3;
+        if (d === "PRODUCERS") return 1;
+        if (d.startsWith("INVENTORY OF")) return 0;
+        return 2;
+      };
       const byYear = new Map<string, Record<string, unknown>>();
       for (const row of useRows) {
         const y = String(row.year ?? "");
@@ -250,6 +258,13 @@ export function createNassConnector(opts: {
           byYear.set(y, row);
           continue;
         }
+        const prevRank = domainRank(prev);
+        const nextRank = domainRank(row);
+        if (nextRank > prevRank) {
+          byYear.set(y, row);
+          continue;
+        }
+        if (nextRank < prevRank) continue;
         const prevLoad = String(prev.load_time || "");
         const nextLoad = String(row.load_time || "");
         if (nextLoad >= prevLoad) byYear.set(y, row);

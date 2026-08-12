@@ -10,6 +10,7 @@ import {
   seedPass8FdicHrsa,
   seedPass9Nass,
   seedCountyNassFarmStructure,
+  seedCountyNassFarmStructureDensity,
   seedPass10FredBea,
   crosscheck,
   validateWarehouse,
@@ -55,6 +56,9 @@ async function main() {
       break;
     case "county:nass":
       result = await seedCountyNassFarmStructure();
+      break;
+    case "county:nass:density":
+      result = await seedCountyNassFarmStructureDensity();
       break;
     case "pass10:fred":
       result = await seedPass10FredBea();
@@ -106,6 +110,7 @@ async function main() {
     cmd === "pass8:fdic-hrsa" ||
     cmd === "pass9:nass" ||
     cmd === "county:nass" ||
+    cmd === "county:nass:density" ||
     cmd === "pass10:fred" ||
     cmd === "all"
   ) {

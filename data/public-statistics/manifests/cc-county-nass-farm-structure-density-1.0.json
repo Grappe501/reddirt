@@ -1,0 +1,2293 @@
+{
+  "version": "1.0",
+  "mission": "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-DENSITY-1.0",
+  "consumer": "constitutional_capitalism",
+  "note": "Density expansion on designated AR research counties: crop/animal sales split, commodity acreage, and additional livestock inventories. Maximize reusable county evidence under existing rural/family-farm arguments. Structure ≠ capture. Disclosure suppressions expected.",
+  "distinction": "NASS can tell us what happened to agricultural structure. It cannot by itself tell us why it happened.",
+  "counties": [
+    {
+      "fips": "05001",
+      "slug": "ARKANSAS",
+      "name": "Arkansas County"
+    },
+    {
+      "fips": "05141",
+      "slug": "VAN-BUREN",
+      "name": "Van Buren County"
+    },
+    {
+      "fips": "05129",
+      "slug": "SEARCY",
+      "name": "Searcy County"
+    },
+    {
+      "fips": "05093",
+      "slug": "MISSISSIPPI",
+      "name": "Mississippi County"
+    },
+    {
+      "fips": "05073",
+      "slug": "LAFAYETTE",
+      "name": "Lafayette County"
+    },
+    {
+      "fips": "05107",
+      "slug": "PHILLIPS",
+      "name": "Phillips County"
+    },
+    {
+      "fips": "05145",
+      "slug": "WHITE",
+      "name": "White County"
+    }
+  ],
+  "indicators": [
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05001-CROP-SALES",
+      "title": "Arkansas County crop sales (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "CROP_SALES",
+      "geography": "county:05001",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "CROP TOTALS - SALES, MEASURED IN $"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "usd",
+      "research_geo_note": "ARKANSAS",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0",
+        "RCIP-PASS-COUNTY-NASS-DENSITY-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05001-ANIMAL-PRODUCT-SALES",
+      "title": "Arkansas County animal totals incl products sales (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "ANIMAL_PRODUCT_SALES",
+      "geography": "county:05001",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "ANIMAL TOTALS, INCL PRODUCTS - SALES, MEASURED IN $"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "usd",
+      "research_geo_note": "ARKANSAS",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0",
+        "RCIP-PASS-COUNTY-NASS-DENSITY-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05001-RICE-ACRES",
+      "title": "Arkansas County rice acres harvested (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "RICE_ACRES_HARVESTED",
+      "geography": "county:05001",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "RICE - ACRES HARVESTED"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "acres",
+      "research_geo_note": "ARKANSAS",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0",
+        "RCIP-PASS-COUNTY-NASS-DENSITY-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05001-SOYBEAN-ACRES",
+      "title": "Arkansas County soybean acres harvested (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "SOYBEAN_ACRES_HARVESTED",
+      "geography": "county:05001",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "SOYBEANS - ACRES HARVESTED"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "acres",
+      "research_geo_note": "ARKANSAS",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0",
+        "RCIP-PASS-COUNTY-NASS-DENSITY-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05001-COTTON-ACRES",
+      "title": "Arkansas County cotton acres harvested (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "COTTON_ACRES_HARVESTED",
+      "geography": "county:05001",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "COTTON - ACRES HARVESTED"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "acres",
+      "research_geo_note": "ARKANSAS",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0",
+        "RCIP-PASS-COUNTY-NASS-DENSITY-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05001-CORN-GRAIN-ACRES",
+      "title": "Arkansas County corn grain acres harvested (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "CORN_GRAIN_ACRES_HARVESTED",
+      "geography": "county:05001",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "CORN, GRAIN - ACRES HARVESTED"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "acres",
+      "research_geo_note": "ARKANSAS",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0",
+        "RCIP-PASS-COUNTY-NASS-DENSITY-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05001-WHEAT-ACRES",
+      "title": "Arkansas County wheat acres harvested (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "WHEAT_ACRES_HARVESTED",
+      "geography": "county:05001",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "WHEAT - ACRES HARVESTED"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "acres",
+      "research_geo_note": "ARKANSAS",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0",
+        "RCIP-PASS-COUNTY-NASS-DENSITY-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05001-HAY-ACRES",
+      "title": "Arkansas County hay and haylage acres harvested (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "HAY_ACRES_HARVESTED",
+      "geography": "county:05001",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "HAY & HAYLAGE - ACRES HARVESTED"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "acres",
+      "research_geo_note": "ARKANSAS",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0",
+        "RCIP-PASS-COUNTY-NASS-DENSITY-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05001-HOGS-INVENTORY",
+      "title": "Arkansas County hogs inventory (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "HOGS_INVENTORY",
+      "geography": "county:05001",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "HOGS - INVENTORY"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "head",
+      "research_geo_note": "ARKANSAS",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0",
+        "RCIP-PASS-COUNTY-NASS-DENSITY-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05001-CATTLE-INCL-CALVES",
+      "title": "Arkansas County cattle incl calves inventory (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "CATTLE_INCL_CALVES_INVENTORY",
+      "geography": "county:05001",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "CATTLE, INCL CALVES - INVENTORY"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "head",
+      "research_geo_note": "ARKANSAS",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0",
+        "RCIP-PASS-COUNTY-NASS-DENSITY-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05001-LAYERS-INVENTORY",
+      "title": "Arkansas County layer chicken inventory (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "LAYERS_INVENTORY",
+      "geography": "county:05001",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "CHICKENS, LAYERS - INVENTORY"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "head",
+      "research_geo_note": "ARKANSAS",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0",
+        "RCIP-PASS-COUNTY-NASS-DENSITY-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05141-CROP-SALES",
+      "title": "Van Buren County crop sales (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "CROP_SALES",
+      "geography": "county:05141",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "CROP TOTALS - SALES, MEASURED IN $"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "usd",
+      "research_geo_note": "VAN-BUREN",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0",
+        "RCIP-PASS-COUNTY-NASS-DENSITY-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05141-ANIMAL-PRODUCT-SALES",
+      "title": "Van Buren County animal totals incl products sales (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "ANIMAL_PRODUCT_SALES",
+      "geography": "county:05141",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "ANIMAL TOTALS, INCL PRODUCTS - SALES, MEASURED IN $"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "usd",
+      "research_geo_note": "VAN-BUREN",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0",
+        "RCIP-PASS-COUNTY-NASS-DENSITY-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05141-RICE-ACRES",
+      "title": "Van Buren County rice acres harvested (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "RICE_ACRES_HARVESTED",
+      "geography": "county:05141",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "RICE - ACRES HARVESTED"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "acres",
+      "research_geo_note": "VAN-BUREN",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0",
+        "RCIP-PASS-COUNTY-NASS-DENSITY-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05141-SOYBEAN-ACRES",
+      "title": "Van Buren County soybean acres harvested (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "SOYBEAN_ACRES_HARVESTED",
+      "geography": "county:05141",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "SOYBEANS - ACRES HARVESTED"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "acres",
+      "research_geo_note": "VAN-BUREN",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0",
+        "RCIP-PASS-COUNTY-NASS-DENSITY-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05141-COTTON-ACRES",
+      "title": "Van Buren County cotton acres harvested (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "COTTON_ACRES_HARVESTED",
+      "geography": "county:05141",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "COTTON - ACRES HARVESTED"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "acres",
+      "research_geo_note": "VAN-BUREN",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0",
+        "RCIP-PASS-COUNTY-NASS-DENSITY-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05141-CORN-GRAIN-ACRES",
+      "title": "Van Buren County corn grain acres harvested (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "CORN_GRAIN_ACRES_HARVESTED",
+      "geography": "county:05141",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "CORN, GRAIN - ACRES HARVESTED"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "acres",
+      "research_geo_note": "VAN-BUREN",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0",
+        "RCIP-PASS-COUNTY-NASS-DENSITY-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05141-WHEAT-ACRES",
+      "title": "Van Buren County wheat acres harvested (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "WHEAT_ACRES_HARVESTED",
+      "geography": "county:05141",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "WHEAT - ACRES HARVESTED"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "acres",
+      "research_geo_note": "VAN-BUREN",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0",
+        "RCIP-PASS-COUNTY-NASS-DENSITY-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05141-HAY-ACRES",
+      "title": "Van Buren County hay and haylage acres harvested (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "HAY_ACRES_HARVESTED",
+      "geography": "county:05141",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "HAY & HAYLAGE - ACRES HARVESTED"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "acres",
+      "research_geo_note": "VAN-BUREN",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0",
+        "RCIP-PASS-COUNTY-NASS-DENSITY-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05141-HOGS-INVENTORY",
+      "title": "Van Buren County hogs inventory (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "HOGS_INVENTORY",
+      "geography": "county:05141",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "HOGS - INVENTORY"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "head",
+      "research_geo_note": "VAN-BUREN",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0",
+        "RCIP-PASS-COUNTY-NASS-DENSITY-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05141-CATTLE-INCL-CALVES",
+      "title": "Van Buren County cattle incl calves inventory (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "CATTLE_INCL_CALVES_INVENTORY",
+      "geography": "county:05141",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "CATTLE, INCL CALVES - INVENTORY"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "head",
+      "research_geo_note": "VAN-BUREN",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0",
+        "RCIP-PASS-COUNTY-NASS-DENSITY-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05141-LAYERS-INVENTORY",
+      "title": "Van Buren County layer chicken inventory (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "LAYERS_INVENTORY",
+      "geography": "county:05141",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "CHICKENS, LAYERS - INVENTORY"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "head",
+      "research_geo_note": "VAN-BUREN",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0",
+        "RCIP-PASS-COUNTY-NASS-DENSITY-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05129-CROP-SALES",
+      "title": "Searcy County crop sales (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "CROP_SALES",
+      "geography": "county:05129",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "CROP TOTALS - SALES, MEASURED IN $"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "usd",
+      "research_geo_note": "SEARCY",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0",
+        "RCIP-PASS-COUNTY-NASS-DENSITY-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05129-ANIMAL-PRODUCT-SALES",
+      "title": "Searcy County animal totals incl products sales (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "ANIMAL_PRODUCT_SALES",
+      "geography": "county:05129",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "ANIMAL TOTALS, INCL PRODUCTS - SALES, MEASURED IN $"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "usd",
+      "research_geo_note": "SEARCY",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0",
+        "RCIP-PASS-COUNTY-NASS-DENSITY-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05129-RICE-ACRES",
+      "title": "Searcy County rice acres harvested (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "RICE_ACRES_HARVESTED",
+      "geography": "county:05129",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "RICE - ACRES HARVESTED"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "acres",
+      "research_geo_note": "SEARCY",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0",
+        "RCIP-PASS-COUNTY-NASS-DENSITY-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05129-SOYBEAN-ACRES",
+      "title": "Searcy County soybean acres harvested (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "SOYBEAN_ACRES_HARVESTED",
+      "geography": "county:05129",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "SOYBEANS - ACRES HARVESTED"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "acres",
+      "research_geo_note": "SEARCY",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0",
+        "RCIP-PASS-COUNTY-NASS-DENSITY-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05129-COTTON-ACRES",
+      "title": "Searcy County cotton acres harvested (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "COTTON_ACRES_HARVESTED",
+      "geography": "county:05129",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "COTTON - ACRES HARVESTED"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "acres",
+      "research_geo_note": "SEARCY",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0",
+        "RCIP-PASS-COUNTY-NASS-DENSITY-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05129-CORN-GRAIN-ACRES",
+      "title": "Searcy County corn grain acres harvested (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "CORN_GRAIN_ACRES_HARVESTED",
+      "geography": "county:05129",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "CORN, GRAIN - ACRES HARVESTED"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "acres",
+      "research_geo_note": "SEARCY",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0",
+        "RCIP-PASS-COUNTY-NASS-DENSITY-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05129-WHEAT-ACRES",
+      "title": "Searcy County wheat acres harvested (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "WHEAT_ACRES_HARVESTED",
+      "geography": "county:05129",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "WHEAT - ACRES HARVESTED"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "acres",
+      "research_geo_note": "SEARCY",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0",
+        "RCIP-PASS-COUNTY-NASS-DENSITY-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05129-HAY-ACRES",
+      "title": "Searcy County hay and haylage acres harvested (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "HAY_ACRES_HARVESTED",
+      "geography": "county:05129",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "HAY & HAYLAGE - ACRES HARVESTED"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "acres",
+      "research_geo_note": "SEARCY",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0",
+        "RCIP-PASS-COUNTY-NASS-DENSITY-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05129-HOGS-INVENTORY",
+      "title": "Searcy County hogs inventory (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "HOGS_INVENTORY",
+      "geography": "county:05129",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "HOGS - INVENTORY"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "head",
+      "research_geo_note": "SEARCY",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0",
+        "RCIP-PASS-COUNTY-NASS-DENSITY-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05129-CATTLE-INCL-CALVES",
+      "title": "Searcy County cattle incl calves inventory (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "CATTLE_INCL_CALVES_INVENTORY",
+      "geography": "county:05129",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "CATTLE, INCL CALVES - INVENTORY"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "head",
+      "research_geo_note": "SEARCY",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0",
+        "RCIP-PASS-COUNTY-NASS-DENSITY-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05129-LAYERS-INVENTORY",
+      "title": "Searcy County layer chicken inventory (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "LAYERS_INVENTORY",
+      "geography": "county:05129",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "CHICKENS, LAYERS - INVENTORY"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "head",
+      "research_geo_note": "SEARCY",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0",
+        "RCIP-PASS-COUNTY-NASS-DENSITY-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05093-CROP-SALES",
+      "title": "Mississippi County crop sales (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "CROP_SALES",
+      "geography": "county:05093",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "CROP TOTALS - SALES, MEASURED IN $"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "usd",
+      "research_geo_note": "MISSISSIPPI",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0",
+        "RCIP-PASS-COUNTY-NASS-DENSITY-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05093-ANIMAL-PRODUCT-SALES",
+      "title": "Mississippi County animal totals incl products sales (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "ANIMAL_PRODUCT_SALES",
+      "geography": "county:05093",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "ANIMAL TOTALS, INCL PRODUCTS - SALES, MEASURED IN $"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "usd",
+      "research_geo_note": "MISSISSIPPI",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0",
+        "RCIP-PASS-COUNTY-NASS-DENSITY-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05093-RICE-ACRES",
+      "title": "Mississippi County rice acres harvested (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "RICE_ACRES_HARVESTED",
+      "geography": "county:05093",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "RICE - ACRES HARVESTED"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "acres",
+      "research_geo_note": "MISSISSIPPI",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0",
+        "RCIP-PASS-COUNTY-NASS-DENSITY-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05093-SOYBEAN-ACRES",
+      "title": "Mississippi County soybean acres harvested (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "SOYBEAN_ACRES_HARVESTED",
+      "geography": "county:05093",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "SOYBEANS - ACRES HARVESTED"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "acres",
+      "research_geo_note": "MISSISSIPPI",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0",
+        "RCIP-PASS-COUNTY-NASS-DENSITY-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05093-COTTON-ACRES",
+      "title": "Mississippi County cotton acres harvested (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "COTTON_ACRES_HARVESTED",
+      "geography": "county:05093",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "COTTON - ACRES HARVESTED"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "acres",
+      "research_geo_note": "MISSISSIPPI",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0",
+        "RCIP-PASS-COUNTY-NASS-DENSITY-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05093-CORN-GRAIN-ACRES",
+      "title": "Mississippi County corn grain acres harvested (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "CORN_GRAIN_ACRES_HARVESTED",
+      "geography": "county:05093",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "CORN, GRAIN - ACRES HARVESTED"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "acres",
+      "research_geo_note": "MISSISSIPPI",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0",
+        "RCIP-PASS-COUNTY-NASS-DENSITY-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05093-WHEAT-ACRES",
+      "title": "Mississippi County wheat acres harvested (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "WHEAT_ACRES_HARVESTED",
+      "geography": "county:05093",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "WHEAT - ACRES HARVESTED"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "acres",
+      "research_geo_note": "MISSISSIPPI",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0",
+        "RCIP-PASS-COUNTY-NASS-DENSITY-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05093-HAY-ACRES",
+      "title": "Mississippi County hay and haylage acres harvested (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "HAY_ACRES_HARVESTED",
+      "geography": "county:05093",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "HAY & HAYLAGE - ACRES HARVESTED"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "acres",
+      "research_geo_note": "MISSISSIPPI",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0",
+        "RCIP-PASS-COUNTY-NASS-DENSITY-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05093-HOGS-INVENTORY",
+      "title": "Mississippi County hogs inventory (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "HOGS_INVENTORY",
+      "geography": "county:05093",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "HOGS - INVENTORY"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "head",
+      "research_geo_note": "MISSISSIPPI",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0",
+        "RCIP-PASS-COUNTY-NASS-DENSITY-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05093-CATTLE-INCL-CALVES",
+      "title": "Mississippi County cattle incl calves inventory (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "CATTLE_INCL_CALVES_INVENTORY",
+      "geography": "county:05093",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "CATTLE, INCL CALVES - INVENTORY"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "head",
+      "research_geo_note": "MISSISSIPPI",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0",
+        "RCIP-PASS-COUNTY-NASS-DENSITY-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05093-LAYERS-INVENTORY",
+      "title": "Mississippi County layer chicken inventory (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "LAYERS_INVENTORY",
+      "geography": "county:05093",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "CHICKENS, LAYERS - INVENTORY"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "head",
+      "research_geo_note": "MISSISSIPPI",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0",
+        "RCIP-PASS-COUNTY-NASS-DENSITY-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05073-CROP-SALES",
+      "title": "Lafayette County crop sales (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "CROP_SALES",
+      "geography": "county:05073",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "CROP TOTALS - SALES, MEASURED IN $"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "usd",
+      "research_geo_note": "LAFAYETTE",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0",
+        "RCIP-PASS-COUNTY-NASS-DENSITY-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05073-ANIMAL-PRODUCT-SALES",
+      "title": "Lafayette County animal totals incl products sales (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "ANIMAL_PRODUCT_SALES",
+      "geography": "county:05073",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "ANIMAL TOTALS, INCL PRODUCTS - SALES, MEASURED IN $"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "usd",
+      "research_geo_note": "LAFAYETTE",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0",
+        "RCIP-PASS-COUNTY-NASS-DENSITY-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05073-RICE-ACRES",
+      "title": "Lafayette County rice acres harvested (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "RICE_ACRES_HARVESTED",
+      "geography": "county:05073",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "RICE - ACRES HARVESTED"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "acres",
+      "research_geo_note": "LAFAYETTE",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0",
+        "RCIP-PASS-COUNTY-NASS-DENSITY-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05073-SOYBEAN-ACRES",
+      "title": "Lafayette County soybean acres harvested (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "SOYBEAN_ACRES_HARVESTED",
+      "geography": "county:05073",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "SOYBEANS - ACRES HARVESTED"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "acres",
+      "research_geo_note": "LAFAYETTE",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0",
+        "RCIP-PASS-COUNTY-NASS-DENSITY-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05073-COTTON-ACRES",
+      "title": "Lafayette County cotton acres harvested (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "COTTON_ACRES_HARVESTED",
+      "geography": "county:05073",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "COTTON - ACRES HARVESTED"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "acres",
+      "research_geo_note": "LAFAYETTE",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0",
+        "RCIP-PASS-COUNTY-NASS-DENSITY-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05073-CORN-GRAIN-ACRES",
+      "title": "Lafayette County corn grain acres harvested (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "CORN_GRAIN_ACRES_HARVESTED",
+      "geography": "county:05073",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "CORN, GRAIN - ACRES HARVESTED"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "acres",
+      "research_geo_note": "LAFAYETTE",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0",
+        "RCIP-PASS-COUNTY-NASS-DENSITY-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05073-WHEAT-ACRES",
+      "title": "Lafayette County wheat acres harvested (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "WHEAT_ACRES_HARVESTED",
+      "geography": "county:05073",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "WHEAT - ACRES HARVESTED"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "acres",
+      "research_geo_note": "LAFAYETTE",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0",
+        "RCIP-PASS-COUNTY-NASS-DENSITY-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05073-HAY-ACRES",
+      "title": "Lafayette County hay and haylage acres harvested (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "HAY_ACRES_HARVESTED",
+      "geography": "county:05073",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "HAY & HAYLAGE - ACRES HARVESTED"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "acres",
+      "research_geo_note": "LAFAYETTE",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0",
+        "RCIP-PASS-COUNTY-NASS-DENSITY-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05073-HOGS-INVENTORY",
+      "title": "Lafayette County hogs inventory (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "HOGS_INVENTORY",
+      "geography": "county:05073",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "HOGS - INVENTORY"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "head",
+      "research_geo_note": "LAFAYETTE",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0",
+        "RCIP-PASS-COUNTY-NASS-DENSITY-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05073-CATTLE-INCL-CALVES",
+      "title": "Lafayette County cattle incl calves inventory (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "CATTLE_INCL_CALVES_INVENTORY",
+      "geography": "county:05073",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "CATTLE, INCL CALVES - INVENTORY"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "head",
+      "research_geo_note": "LAFAYETTE",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0",
+        "RCIP-PASS-COUNTY-NASS-DENSITY-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05073-LAYERS-INVENTORY",
+      "title": "Lafayette County layer chicken inventory (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "LAYERS_INVENTORY",
+      "geography": "county:05073",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "CHICKENS, LAYERS - INVENTORY"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "head",
+      "research_geo_note": "LAFAYETTE",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0",
+        "RCIP-PASS-COUNTY-NASS-DENSITY-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05107-CROP-SALES",
+      "title": "Phillips County crop sales (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "CROP_SALES",
+      "geography": "county:05107",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "CROP TOTALS - SALES, MEASURED IN $"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "usd",
+      "research_geo_note": "PHILLIPS",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0",
+        "RCIP-PASS-COUNTY-NASS-DENSITY-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05107-ANIMAL-PRODUCT-SALES",
+      "title": "Phillips County animal totals incl products sales (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "ANIMAL_PRODUCT_SALES",
+      "geography": "county:05107",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "ANIMAL TOTALS, INCL PRODUCTS - SALES, MEASURED IN $"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "usd",
+      "research_geo_note": "PHILLIPS",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0",
+        "RCIP-PASS-COUNTY-NASS-DENSITY-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05107-RICE-ACRES",
+      "title": "Phillips County rice acres harvested (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "RICE_ACRES_HARVESTED",
+      "geography": "county:05107",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "RICE - ACRES HARVESTED"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "acres",
+      "research_geo_note": "PHILLIPS",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0",
+        "RCIP-PASS-COUNTY-NASS-DENSITY-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05107-SOYBEAN-ACRES",
+      "title": "Phillips County soybean acres harvested (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "SOYBEAN_ACRES_HARVESTED",
+      "geography": "county:05107",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "SOYBEANS - ACRES HARVESTED"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "acres",
+      "research_geo_note": "PHILLIPS",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0",
+        "RCIP-PASS-COUNTY-NASS-DENSITY-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05107-COTTON-ACRES",
+      "title": "Phillips County cotton acres harvested (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "COTTON_ACRES_HARVESTED",
+      "geography": "county:05107",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "COTTON - ACRES HARVESTED"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "acres",
+      "research_geo_note": "PHILLIPS",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0",
+        "RCIP-PASS-COUNTY-NASS-DENSITY-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05107-CORN-GRAIN-ACRES",
+      "title": "Phillips County corn grain acres harvested (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "CORN_GRAIN_ACRES_HARVESTED",
+      "geography": "county:05107",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "CORN, GRAIN - ACRES HARVESTED"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "acres",
+      "research_geo_note": "PHILLIPS",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0",
+        "RCIP-PASS-COUNTY-NASS-DENSITY-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05107-WHEAT-ACRES",
+      "title": "Phillips County wheat acres harvested (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "WHEAT_ACRES_HARVESTED",
+      "geography": "county:05107",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "WHEAT - ACRES HARVESTED"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "acres",
+      "research_geo_note": "PHILLIPS",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0",
+        "RCIP-PASS-COUNTY-NASS-DENSITY-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05107-HAY-ACRES",
+      "title": "Phillips County hay and haylage acres harvested (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "HAY_ACRES_HARVESTED",
+      "geography": "county:05107",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "HAY & HAYLAGE - ACRES HARVESTED"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "acres",
+      "research_geo_note": "PHILLIPS",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0",
+        "RCIP-PASS-COUNTY-NASS-DENSITY-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05107-HOGS-INVENTORY",
+      "title": "Phillips County hogs inventory (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "HOGS_INVENTORY",
+      "geography": "county:05107",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "HOGS - INVENTORY"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "head",
+      "research_geo_note": "PHILLIPS",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0",
+        "RCIP-PASS-COUNTY-NASS-DENSITY-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05107-CATTLE-INCL-CALVES",
+      "title": "Phillips County cattle incl calves inventory (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "CATTLE_INCL_CALVES_INVENTORY",
+      "geography": "county:05107",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "CATTLE, INCL CALVES - INVENTORY"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "head",
+      "research_geo_note": "PHILLIPS",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0",
+        "RCIP-PASS-COUNTY-NASS-DENSITY-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05107-LAYERS-INVENTORY",
+      "title": "Phillips County layer chicken inventory (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "LAYERS_INVENTORY",
+      "geography": "county:05107",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "CHICKENS, LAYERS - INVENTORY"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "head",
+      "research_geo_note": "PHILLIPS",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0",
+        "RCIP-PASS-COUNTY-NASS-DENSITY-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05145-CROP-SALES",
+      "title": "White County crop sales (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "CROP_SALES",
+      "geography": "county:05145",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "CROP TOTALS - SALES, MEASURED IN $"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "usd",
+      "research_geo_note": "WHITE",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0",
+        "RCIP-PASS-COUNTY-NASS-DENSITY-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05145-ANIMAL-PRODUCT-SALES",
+      "title": "White County animal totals incl products sales (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "ANIMAL_PRODUCT_SALES",
+      "geography": "county:05145",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "ANIMAL TOTALS, INCL PRODUCTS - SALES, MEASURED IN $"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "usd",
+      "research_geo_note": "WHITE",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0",
+        "RCIP-PASS-COUNTY-NASS-DENSITY-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05145-RICE-ACRES",
+      "title": "White County rice acres harvested (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "RICE_ACRES_HARVESTED",
+      "geography": "county:05145",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "RICE - ACRES HARVESTED"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "acres",
+      "research_geo_note": "WHITE",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0",
+        "RCIP-PASS-COUNTY-NASS-DENSITY-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05145-SOYBEAN-ACRES",
+      "title": "White County soybean acres harvested (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "SOYBEAN_ACRES_HARVESTED",
+      "geography": "county:05145",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "SOYBEANS - ACRES HARVESTED"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "acres",
+      "research_geo_note": "WHITE",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0",
+        "RCIP-PASS-COUNTY-NASS-DENSITY-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05145-COTTON-ACRES",
+      "title": "White County cotton acres harvested (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "COTTON_ACRES_HARVESTED",
+      "geography": "county:05145",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "COTTON - ACRES HARVESTED"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "acres",
+      "research_geo_note": "WHITE",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0",
+        "RCIP-PASS-COUNTY-NASS-DENSITY-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05145-CORN-GRAIN-ACRES",
+      "title": "White County corn grain acres harvested (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "CORN_GRAIN_ACRES_HARVESTED",
+      "geography": "county:05145",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "CORN, GRAIN - ACRES HARVESTED"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "acres",
+      "research_geo_note": "WHITE",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0",
+        "RCIP-PASS-COUNTY-NASS-DENSITY-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05145-WHEAT-ACRES",
+      "title": "White County wheat acres harvested (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "WHEAT_ACRES_HARVESTED",
+      "geography": "county:05145",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "WHEAT - ACRES HARVESTED"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "acres",
+      "research_geo_note": "WHITE",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0",
+        "RCIP-PASS-COUNTY-NASS-DENSITY-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05145-HAY-ACRES",
+      "title": "White County hay and haylage acres harvested (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "HAY_ACRES_HARVESTED",
+      "geography": "county:05145",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "HAY & HAYLAGE - ACRES HARVESTED"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "acres",
+      "research_geo_note": "WHITE",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0",
+        "RCIP-PASS-COUNTY-NASS-DENSITY-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05145-HOGS-INVENTORY",
+      "title": "White County hogs inventory (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "HOGS_INVENTORY",
+      "geography": "county:05145",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "HOGS - INVENTORY"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "head",
+      "research_geo_note": "WHITE",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0",
+        "RCIP-PASS-COUNTY-NASS-DENSITY-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05145-CATTLE-INCL-CALVES",
+      "title": "White County cattle incl calves inventory (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "CATTLE_INCL_CALVES_INVENTORY",
+      "geography": "county:05145",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "CATTLE, INCL CALVES - INVENTORY"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "head",
+      "research_geo_note": "WHITE",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0",
+        "RCIP-PASS-COUNTY-NASS-DENSITY-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05145-LAYERS-INVENTORY",
+      "title": "White County layer chicken inventory (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "LAYERS_INVENTORY",
+      "geography": "county:05145",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "CHICKENS, LAYERS - INVENTORY"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "head",
+      "research_geo_note": "WHITE",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0",
+        "RCIP-PASS-COUNTY-NASS-DENSITY-1.0"
+      ],
+      "status": "approved_for_ingest"
+    }
+  ],
+  "still_blocked": [
+    {
+      "id": "COUNTY_SALES_CLASS",
+      "reason": "Economic-class facets returned HTTP 400 at county agg_level in prior pass."
+    },
+    {
+      "id": "COUNTY_TENURE_OPERATOR",
+      "reason": "Tenure/operator short_desc paths returned HTTP 400 in density probe."
+    },
+    {
+      "id": "COUNTY_NET_CASH_GOV_ASSETS",
+      "reason": "Net cash income / government payments / asset-value short_desc paths returned HTTP 400 in density probe."
+    }
+  ]
+}

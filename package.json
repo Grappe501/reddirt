@@ -108,6 +108,7 @@
     "publicdata:pass8:fdic-hrsa": "node scripts/run-with-h-drive-env.cjs node ./node_modules/tsx/dist/cli.mjs scripts/publicdata-cli.ts pass8:fdic-hrsa",
     "publicdata:pass9:nass": "node scripts/run-with-h-drive-env.cjs node ./node_modules/tsx/dist/cli.mjs scripts/publicdata-cli.ts pass9:nass",
     "publicdata:county:nass": "node scripts/run-with-h-drive-env.cjs node ./node_modules/tsx/dist/cli.mjs scripts/publicdata-cli.ts county:nass",
+    "publicdata:county:nass:density": "node scripts/run-with-h-drive-env.cjs node ./node_modules/tsx/dist/cli.mjs scripts/publicdata-cli.ts county:nass:density",
     "publicdata:configure-eia-key": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/configure-eia-key.ps1",
     "publicdata:configure-nass-key": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/configure-nass-key.ps1",
     "publicdata:configure-fred-key": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/configure-fred-key.ps1",

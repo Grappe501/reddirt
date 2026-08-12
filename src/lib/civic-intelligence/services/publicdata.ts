@@ -1171,6 +1171,14 @@ export async function seedCountyNassFarmStructure(): Promise<Record<string, unkn
   });
 }
 
+export async function seedCountyNassFarmStructureDensity(): Promise<Record<string, unknown>> {
+  return seedNassManifest({
+    manifestFile: "cc-county-nass-farm-structure-density-1.0.json",
+    connector: "county_nass_farm_structure_density",
+    note: "Density expansion: crop/animal sales split, commodity acres, extra livestock. Structure history ≠ causation. Bind existing rural panels only; 0 new panels.",
+  });
+}
+
 async function seedFredManifest(opts: {
   manifestFile: string;
   connector: string;
