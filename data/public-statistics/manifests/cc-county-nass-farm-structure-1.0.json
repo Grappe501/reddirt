@@ -1,0 +1,1474 @@
+{
+  "version": "1.0",
+  "mission": "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0",
+  "consumer": "constitutional_capitalism",
+  "note": "Targeted county NASS for designated AR research geographies only. Stop treating rural Arkansas as one farm economy. Production concentration ≠ market power ≠ monopsony ≠ political capture. Disclosure suppressions expected; nulls are valid. Bind into existing panels only; 0 new panels.",
+  "distinction": "NASS establishes agricultural structure. It cannot by itself establish market power, monopsony, or political capture.",
+  "counties": [
+    {
+      "fips": "05001",
+      "slug": "ARKANSAS",
+      "name": "Arkansas County"
+    },
+    {
+      "fips": "05141",
+      "slug": "VAN-BUREN",
+      "name": "Van Buren County"
+    },
+    {
+      "fips": "05129",
+      "slug": "SEARCY",
+      "name": "Searcy County"
+    },
+    {
+      "fips": "05093",
+      "slug": "MISSISSIPPI",
+      "name": "Mississippi County"
+    },
+    {
+      "fips": "05073",
+      "slug": "LAFAYETTE",
+      "name": "Lafayette County"
+    },
+    {
+      "fips": "05107",
+      "slug": "PHILLIPS",
+      "name": "Phillips County"
+    },
+    {
+      "fips": "05145",
+      "slug": "WHITE",
+      "name": "White County"
+    }
+  ],
+  "indicators": [
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05001-FARM-OPERATIONS",
+      "title": "Arkansas County farm operations (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "FARM_OPERATIONS_COUNT",
+      "geography": "county:05001",
+      "period_start": "1987",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "FARM OPERATIONS - NUMBER OF OPERATIONS"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "operations",
+      "research_geo_note": "ARKANSAS",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05001-ACRES-OPERATED",
+      "title": "Arkansas County acres operated (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "ACRES_OPERATED",
+      "geography": "county:05001",
+      "period_start": "1987",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "FARM OPERATIONS - ACRES OPERATED"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "acres",
+      "research_geo_note": "ARKANSAS",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05001-AG-PRODUCT-SALES",
+      "title": "Arkansas County ag product sales (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "AG_PRODUCT_SALES",
+      "geography": "county:05001",
+      "period_start": "1987",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "COMMODITY TOTALS - SALES, MEASURED IN $"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "usd",
+      "research_geo_note": "ARKANSAS",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05001-BROILER-INVENTORY",
+      "title": "Arkansas County broiler inventory (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "BROILER_INVENTORY",
+      "geography": "county:05001",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "CHICKENS, BROILERS - INVENTORY"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "head",
+      "research_geo_note": "ARKANSAS",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05001-CATTLE-COWS-INVENTORY",
+      "title": "Arkansas County cattle cows inventory (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "CATTLE_COWS_INVENTORY",
+      "geography": "county:05001",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "CATTLE, COWS - INVENTORY"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "head",
+      "research_geo_note": "ARKANSAS",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05001-FARMS-SALES-LT1K",
+      "title": "Arkansas County farms with sales < ,000 (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "FARMS_SALES_LT_1K",
+      "geography": "county:05001",
+      "period_start": "2022",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "FARM OPERATIONS - NUMBER OF OPERATIONS"
+        ],
+        "domain_desc": [
+          "ECONOMIC CLASS"
+        ],
+        "domaincat_desc": [
+          "ECONOMIC CLASS: (LESS THAN 1,000 $)"
+        ]
+      },
+      "unit": "operations",
+      "research_geo_note": "ARKANSAS",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05001-FARMS-SALES-GE1M",
+      "title": "Arkansas County farms with sales ≥ ,000,000 (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "FARMS_SALES_GE_1M",
+      "geography": "county:05001",
+      "period_start": "2022",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "FARM OPERATIONS - NUMBER OF OPERATIONS"
+        ],
+        "domain_desc": [
+          "ECONOMIC CLASS"
+        ],
+        "domaincat_desc": [
+          "ECONOMIC CLASS: (1,000,000 OR MORE $)"
+        ]
+      },
+      "unit": "operations",
+      "research_geo_note": "ARKANSAS",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05141-FARM-OPERATIONS",
+      "title": "Van Buren County farm operations (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "FARM_OPERATIONS_COUNT",
+      "geography": "county:05141",
+      "period_start": "1987",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "FARM OPERATIONS - NUMBER OF OPERATIONS"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "operations",
+      "research_geo_note": "VAN-BUREN",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05141-ACRES-OPERATED",
+      "title": "Van Buren County acres operated (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "ACRES_OPERATED",
+      "geography": "county:05141",
+      "period_start": "1987",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "FARM OPERATIONS - ACRES OPERATED"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "acres",
+      "research_geo_note": "VAN-BUREN",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05141-AG-PRODUCT-SALES",
+      "title": "Van Buren County ag product sales (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "AG_PRODUCT_SALES",
+      "geography": "county:05141",
+      "period_start": "1987",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "COMMODITY TOTALS - SALES, MEASURED IN $"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "usd",
+      "research_geo_note": "VAN-BUREN",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05141-BROILER-INVENTORY",
+      "title": "Van Buren County broiler inventory (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "BROILER_INVENTORY",
+      "geography": "county:05141",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "CHICKENS, BROILERS - INVENTORY"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "head",
+      "research_geo_note": "VAN-BUREN",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05141-CATTLE-COWS-INVENTORY",
+      "title": "Van Buren County cattle cows inventory (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "CATTLE_COWS_INVENTORY",
+      "geography": "county:05141",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "CATTLE, COWS - INVENTORY"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "head",
+      "research_geo_note": "VAN-BUREN",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05141-FARMS-SALES-LT1K",
+      "title": "Van Buren County farms with sales < ,000 (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "FARMS_SALES_LT_1K",
+      "geography": "county:05141",
+      "period_start": "2022",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "FARM OPERATIONS - NUMBER OF OPERATIONS"
+        ],
+        "domain_desc": [
+          "ECONOMIC CLASS"
+        ],
+        "domaincat_desc": [
+          "ECONOMIC CLASS: (LESS THAN 1,000 $)"
+        ]
+      },
+      "unit": "operations",
+      "research_geo_note": "VAN-BUREN",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05141-FARMS-SALES-GE1M",
+      "title": "Van Buren County farms with sales ≥ ,000,000 (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "FARMS_SALES_GE_1M",
+      "geography": "county:05141",
+      "period_start": "2022",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "FARM OPERATIONS - NUMBER OF OPERATIONS"
+        ],
+        "domain_desc": [
+          "ECONOMIC CLASS"
+        ],
+        "domaincat_desc": [
+          "ECONOMIC CLASS: (1,000,000 OR MORE $)"
+        ]
+      },
+      "unit": "operations",
+      "research_geo_note": "VAN-BUREN",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05129-FARM-OPERATIONS",
+      "title": "Searcy County farm operations (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "FARM_OPERATIONS_COUNT",
+      "geography": "county:05129",
+      "period_start": "1987",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "FARM OPERATIONS - NUMBER OF OPERATIONS"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "operations",
+      "research_geo_note": "SEARCY",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05129-ACRES-OPERATED",
+      "title": "Searcy County acres operated (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "ACRES_OPERATED",
+      "geography": "county:05129",
+      "period_start": "1987",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "FARM OPERATIONS - ACRES OPERATED"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "acres",
+      "research_geo_note": "SEARCY",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05129-AG-PRODUCT-SALES",
+      "title": "Searcy County ag product sales (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "AG_PRODUCT_SALES",
+      "geography": "county:05129",
+      "period_start": "1987",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "COMMODITY TOTALS - SALES, MEASURED IN $"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "usd",
+      "research_geo_note": "SEARCY",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05129-BROILER-INVENTORY",
+      "title": "Searcy County broiler inventory (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "BROILER_INVENTORY",
+      "geography": "county:05129",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "CHICKENS, BROILERS - INVENTORY"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "head",
+      "research_geo_note": "SEARCY",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05129-CATTLE-COWS-INVENTORY",
+      "title": "Searcy County cattle cows inventory (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "CATTLE_COWS_INVENTORY",
+      "geography": "county:05129",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "CATTLE, COWS - INVENTORY"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "head",
+      "research_geo_note": "SEARCY",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05129-FARMS-SALES-LT1K",
+      "title": "Searcy County farms with sales < ,000 (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "FARMS_SALES_LT_1K",
+      "geography": "county:05129",
+      "period_start": "2022",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "FARM OPERATIONS - NUMBER OF OPERATIONS"
+        ],
+        "domain_desc": [
+          "ECONOMIC CLASS"
+        ],
+        "domaincat_desc": [
+          "ECONOMIC CLASS: (LESS THAN 1,000 $)"
+        ]
+      },
+      "unit": "operations",
+      "research_geo_note": "SEARCY",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05129-FARMS-SALES-GE1M",
+      "title": "Searcy County farms with sales ≥ ,000,000 (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "FARMS_SALES_GE_1M",
+      "geography": "county:05129",
+      "period_start": "2022",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "FARM OPERATIONS - NUMBER OF OPERATIONS"
+        ],
+        "domain_desc": [
+          "ECONOMIC CLASS"
+        ],
+        "domaincat_desc": [
+          "ECONOMIC CLASS: (1,000,000 OR MORE $)"
+        ]
+      },
+      "unit": "operations",
+      "research_geo_note": "SEARCY",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05093-FARM-OPERATIONS",
+      "title": "Mississippi County farm operations (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "FARM_OPERATIONS_COUNT",
+      "geography": "county:05093",
+      "period_start": "1987",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "FARM OPERATIONS - NUMBER OF OPERATIONS"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "operations",
+      "research_geo_note": "MISSISSIPPI",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05093-ACRES-OPERATED",
+      "title": "Mississippi County acres operated (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "ACRES_OPERATED",
+      "geography": "county:05093",
+      "period_start": "1987",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "FARM OPERATIONS - ACRES OPERATED"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "acres",
+      "research_geo_note": "MISSISSIPPI",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05093-AG-PRODUCT-SALES",
+      "title": "Mississippi County ag product sales (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "AG_PRODUCT_SALES",
+      "geography": "county:05093",
+      "period_start": "1987",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "COMMODITY TOTALS - SALES, MEASURED IN $"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "usd",
+      "research_geo_note": "MISSISSIPPI",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05093-BROILER-INVENTORY",
+      "title": "Mississippi County broiler inventory (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "BROILER_INVENTORY",
+      "geography": "county:05093",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "CHICKENS, BROILERS - INVENTORY"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "head",
+      "research_geo_note": "MISSISSIPPI",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05093-CATTLE-COWS-INVENTORY",
+      "title": "Mississippi County cattle cows inventory (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "CATTLE_COWS_INVENTORY",
+      "geography": "county:05093",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "CATTLE, COWS - INVENTORY"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "head",
+      "research_geo_note": "MISSISSIPPI",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05093-FARMS-SALES-LT1K",
+      "title": "Mississippi County farms with sales < ,000 (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "FARMS_SALES_LT_1K",
+      "geography": "county:05093",
+      "period_start": "2022",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "FARM OPERATIONS - NUMBER OF OPERATIONS"
+        ],
+        "domain_desc": [
+          "ECONOMIC CLASS"
+        ],
+        "domaincat_desc": [
+          "ECONOMIC CLASS: (LESS THAN 1,000 $)"
+        ]
+      },
+      "unit": "operations",
+      "research_geo_note": "MISSISSIPPI",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05093-FARMS-SALES-GE1M",
+      "title": "Mississippi County farms with sales ≥ ,000,000 (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "FARMS_SALES_GE_1M",
+      "geography": "county:05093",
+      "period_start": "2022",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "FARM OPERATIONS - NUMBER OF OPERATIONS"
+        ],
+        "domain_desc": [
+          "ECONOMIC CLASS"
+        ],
+        "domaincat_desc": [
+          "ECONOMIC CLASS: (1,000,000 OR MORE $)"
+        ]
+      },
+      "unit": "operations",
+      "research_geo_note": "MISSISSIPPI",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05073-FARM-OPERATIONS",
+      "title": "Lafayette County farm operations (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "FARM_OPERATIONS_COUNT",
+      "geography": "county:05073",
+      "period_start": "1987",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "FARM OPERATIONS - NUMBER OF OPERATIONS"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "operations",
+      "research_geo_note": "LAFAYETTE",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05073-ACRES-OPERATED",
+      "title": "Lafayette County acres operated (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "ACRES_OPERATED",
+      "geography": "county:05073",
+      "period_start": "1987",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "FARM OPERATIONS - ACRES OPERATED"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "acres",
+      "research_geo_note": "LAFAYETTE",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05073-AG-PRODUCT-SALES",
+      "title": "Lafayette County ag product sales (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "AG_PRODUCT_SALES",
+      "geography": "county:05073",
+      "period_start": "1987",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "COMMODITY TOTALS - SALES, MEASURED IN $"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "usd",
+      "research_geo_note": "LAFAYETTE",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05073-BROILER-INVENTORY",
+      "title": "Lafayette County broiler inventory (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "BROILER_INVENTORY",
+      "geography": "county:05073",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "CHICKENS, BROILERS - INVENTORY"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "head",
+      "research_geo_note": "LAFAYETTE",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05073-CATTLE-COWS-INVENTORY",
+      "title": "Lafayette County cattle cows inventory (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "CATTLE_COWS_INVENTORY",
+      "geography": "county:05073",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "CATTLE, COWS - INVENTORY"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "head",
+      "research_geo_note": "LAFAYETTE",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05073-FARMS-SALES-LT1K",
+      "title": "Lafayette County farms with sales < ,000 (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "FARMS_SALES_LT_1K",
+      "geography": "county:05073",
+      "period_start": "2022",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "FARM OPERATIONS - NUMBER OF OPERATIONS"
+        ],
+        "domain_desc": [
+          "ECONOMIC CLASS"
+        ],
+        "domaincat_desc": [
+          "ECONOMIC CLASS: (LESS THAN 1,000 $)"
+        ]
+      },
+      "unit": "operations",
+      "research_geo_note": "LAFAYETTE",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05073-FARMS-SALES-GE1M",
+      "title": "Lafayette County farms with sales ≥ ,000,000 (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "FARMS_SALES_GE_1M",
+      "geography": "county:05073",
+      "period_start": "2022",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "FARM OPERATIONS - NUMBER OF OPERATIONS"
+        ],
+        "domain_desc": [
+          "ECONOMIC CLASS"
+        ],
+        "domaincat_desc": [
+          "ECONOMIC CLASS: (1,000,000 OR MORE $)"
+        ]
+      },
+      "unit": "operations",
+      "research_geo_note": "LAFAYETTE",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05107-FARM-OPERATIONS",
+      "title": "Phillips County farm operations (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "FARM_OPERATIONS_COUNT",
+      "geography": "county:05107",
+      "period_start": "1987",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "FARM OPERATIONS - NUMBER OF OPERATIONS"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "operations",
+      "research_geo_note": "PHILLIPS",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05107-ACRES-OPERATED",
+      "title": "Phillips County acres operated (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "ACRES_OPERATED",
+      "geography": "county:05107",
+      "period_start": "1987",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "FARM OPERATIONS - ACRES OPERATED"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "acres",
+      "research_geo_note": "PHILLIPS",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05107-AG-PRODUCT-SALES",
+      "title": "Phillips County ag product sales (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "AG_PRODUCT_SALES",
+      "geography": "county:05107",
+      "period_start": "1987",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "COMMODITY TOTALS - SALES, MEASURED IN $"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "usd",
+      "research_geo_note": "PHILLIPS",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05107-BROILER-INVENTORY",
+      "title": "Phillips County broiler inventory (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "BROILER_INVENTORY",
+      "geography": "county:05107",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "CHICKENS, BROILERS - INVENTORY"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "head",
+      "research_geo_note": "PHILLIPS",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05107-CATTLE-COWS-INVENTORY",
+      "title": "Phillips County cattle cows inventory (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "CATTLE_COWS_INVENTORY",
+      "geography": "county:05107",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "CATTLE, COWS - INVENTORY"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "head",
+      "research_geo_note": "PHILLIPS",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05107-FARMS-SALES-LT1K",
+      "title": "Phillips County farms with sales < ,000 (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "FARMS_SALES_LT_1K",
+      "geography": "county:05107",
+      "period_start": "2022",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "FARM OPERATIONS - NUMBER OF OPERATIONS"
+        ],
+        "domain_desc": [
+          "ECONOMIC CLASS"
+        ],
+        "domaincat_desc": [
+          "ECONOMIC CLASS: (LESS THAN 1,000 $)"
+        ]
+      },
+      "unit": "operations",
+      "research_geo_note": "PHILLIPS",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05107-FARMS-SALES-GE1M",
+      "title": "Phillips County farms with sales ≥ ,000,000 (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "FARMS_SALES_GE_1M",
+      "geography": "county:05107",
+      "period_start": "2022",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "FARM OPERATIONS - NUMBER OF OPERATIONS"
+        ],
+        "domain_desc": [
+          "ECONOMIC CLASS"
+        ],
+        "domaincat_desc": [
+          "ECONOMIC CLASS: (1,000,000 OR MORE $)"
+        ]
+      },
+      "unit": "operations",
+      "research_geo_note": "PHILLIPS",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05145-FARM-OPERATIONS",
+      "title": "White County farm operations (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "FARM_OPERATIONS_COUNT",
+      "geography": "county:05145",
+      "period_start": "1987",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "FARM OPERATIONS - NUMBER OF OPERATIONS"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "operations",
+      "research_geo_note": "WHITE",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05145-ACRES-OPERATED",
+      "title": "White County acres operated (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "ACRES_OPERATED",
+      "geography": "county:05145",
+      "period_start": "1987",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "FARM OPERATIONS - ACRES OPERATED"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "acres",
+      "research_geo_note": "WHITE",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05145-AG-PRODUCT-SALES",
+      "title": "White County ag product sales (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "AG_PRODUCT_SALES",
+      "geography": "county:05145",
+      "period_start": "1987",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "COMMODITY TOTALS - SALES, MEASURED IN $"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "usd",
+      "research_geo_note": "WHITE",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05145-BROILER-INVENTORY",
+      "title": "White County broiler inventory (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "BROILER_INVENTORY",
+      "geography": "county:05145",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "CHICKENS, BROILERS - INVENTORY"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "head",
+      "research_geo_note": "WHITE",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05145-CATTLE-COWS-INVENTORY",
+      "title": "White County cattle cows inventory (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "CATTLE_COWS_INVENTORY",
+      "geography": "county:05145",
+      "period_start": "1997",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "CATTLE, COWS - INVENTORY"
+        ],
+        "domain_desc": [
+          "TOTAL"
+        ]
+      },
+      "unit": "head",
+      "research_geo_note": "WHITE",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05145-FARMS-SALES-LT1K",
+      "title": "White County farms with sales < ,000 (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "FARMS_SALES_LT_1K",
+      "geography": "county:05145",
+      "period_start": "2022",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "FARM OPERATIONS - NUMBER OF OPERATIONS"
+        ],
+        "domain_desc": [
+          "ECONOMIC CLASS"
+        ],
+        "domaincat_desc": [
+          "ECONOMIC CLASS: (LESS THAN 1,000 $)"
+        ]
+      },
+      "unit": "operations",
+      "research_geo_note": "WHITE",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0"
+      ],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-COUNTY-NASS-05145-FARMS-SALES-GE1M",
+      "title": "White County farms with sales ≥ ,000,000 (Census of Agriculture)",
+      "source": "nass",
+      "dataset": "api_GET",
+      "series": "FARMS_SALES_GE_1M",
+      "geography": "county:05145",
+      "period_start": "2022",
+      "period_end": "2022",
+      "facets": {
+        "source_desc": [
+          "CENSUS"
+        ],
+        "short_desc": [
+          "FARM OPERATIONS - NUMBER OF OPERATIONS"
+        ],
+        "domain_desc": [
+          "ECONOMIC CLASS"
+        ],
+        "domaincat_desc": [
+          "ECONOMIC CLASS: (1,000,000 OR MORE $)"
+        ]
+      },
+      "unit": "operations",
+      "research_geo_note": "WHITE",
+      "demand_ids": [
+        "RCIP-DEM-0005",
+        "RCIP-PASS-COUNTY-NASS-FARM-STRUCTURE-1.0"
+      ],
+      "status": "approved_for_ingest"
+    }
+  ],
+  "still_blocked": [
+    {
+      "id": "PASS9-OPERATOR-CHARACTERISTICS-FULL",
+      "reason": "Operator-characteristic facets remain definition-sensitive at county scale; not in this targeted pass."
+    },
+    {
+      "id": "PASS9-MARKET-POWER-MONOPSONY-CAPTURE",
+      "reason": "Structure series do not prove market power, monopsony, or political capture."
+    },
+    {
+      "id": "STATEWIDE_ALL_COUNTY_NASS",
+      "reason": "This pass is designated-geography only, not a full Arkansas county panel."
+    }
+  ]
+}

@@ -1,0 +1,158 @@
+{
+  "version": "1.0",
+  "mission": "RCIP-PASS-10-FRED-BEA-MACRO-WEALTH-GAPS-1.0",
+  "consumer": "constitutional_capitalism",
+  "note": "FRED as distribution channel for Fed DFA wealth-share histories and BEA-produced macro series (saving rate, state personal income, state GDP). Bind into existing wealth/ownership/rural panels only. 0 new panels. Wealth shares ≠ political capture.",
+  "distinction": "FRED/BEA establish macro and wealth-structure histories. They do not by themselves establish market power or political capture.",
+  "indicators": [
+    {
+      "consumer_metric_id": "CC-PASS10-FRED-DFA-TOP1-NET-WORTH-SHARE",
+      "title": "DFA share of net worth — top 1% (via FRED)",
+      "source": "fred",
+      "dataset": "series/observations",
+      "series": "WFRBST01134",
+      "geography": "nation",
+      "period_start": "1989-Q3",
+      "period_end": "2026-Q1",
+      "frequency": "q",
+      "unit": "percent_of_aggregate",
+      "demand_ids": ["PASS5-DEM-DFA-PATH", "RCIP-DEM-0001"],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-PASS10-FRED-DFA-P90-P99-NET-WORTH-SHARE",
+      "title": "DFA share of net worth — 90th–99th percentiles (via FRED)",
+      "source": "fred",
+      "dataset": "series/observations",
+      "series": "WFRBSN09161",
+      "geography": "nation",
+      "period_start": "1989-Q3",
+      "period_end": "2026-Q1",
+      "frequency": "q",
+      "unit": "percent_of_aggregate",
+      "demand_ids": ["PASS5-DEM-DFA-PATH", "RCIP-DEM-0001"],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-PASS10-FRED-DFA-P50-P90-NET-WORTH-SHARE",
+      "title": "DFA share of net worth — 50th–90th percentiles (via FRED)",
+      "source": "fred",
+      "dataset": "series/observations",
+      "series": "WFRBSN40188",
+      "geography": "nation",
+      "period_start": "1989-Q3",
+      "period_end": "2026-Q1",
+      "frequency": "q",
+      "unit": "percent_of_aggregate",
+      "demand_ids": ["PASS5-DEM-DFA-PATH", "RCIP-DEM-0001"],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-PASS10-FRED-DFA-BOTTOM50-NET-WORTH-SHARE",
+      "title": "DFA share of net worth — bottom 50% (via FRED)",
+      "source": "fred",
+      "dataset": "series/observations",
+      "series": "WFRBSB50215",
+      "geography": "nation",
+      "period_start": "1989-Q3",
+      "period_end": "2026-Q1",
+      "frequency": "q",
+      "unit": "percent_of_aggregate",
+      "demand_ids": ["PASS5-DEM-DFA-PATH", "RCIP-DEM-0001"],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-PASS10-FRED-BEA-PERSONAL-SAVING-RATE",
+      "title": "BEA personal saving rate (annual, via FRED)",
+      "source": "fred",
+      "dataset": "series/observations",
+      "series": "A072RC1A156NBEA",
+      "geography": "nation",
+      "period_start": "1980",
+      "period_end": "2025",
+      "frequency": "a",
+      "unit": "percent",
+      "producer": "BEA",
+      "demand_ids": ["CC-IND-F04"],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-PASS10-FRED-BEA-US-PCPI",
+      "title": "BEA per capita personal income — United States (via FRED)",
+      "source": "fred",
+      "dataset": "series/observations",
+      "series": "A792RC0A052NBEA",
+      "geography": "nation",
+      "period_start": "1980",
+      "period_end": "2025",
+      "frequency": "a",
+      "unit": "usd_per_capita",
+      "producer": "BEA",
+      "demand_ids": ["RCIP-DEM-0007"],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-PASS10-FRED-BEA-AR-PCPI",
+      "title": "BEA per capita personal income — Arkansas (via FRED)",
+      "source": "fred",
+      "dataset": "series/observations",
+      "series": "ARPCPI",
+      "geography": "state:05",
+      "period_start": "1980",
+      "period_end": "2025",
+      "frequency": "a",
+      "unit": "usd_per_capita",
+      "producer": "BEA",
+      "demand_ids": ["RCIP-DEM-0007"],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-PASS10-FRED-BEA-AR-GDP",
+      "title": "BEA GDP — Arkansas all-industry total (via FRED)",
+      "source": "fred",
+      "dataset": "series/observations",
+      "series": "ARNGSP",
+      "geography": "state:05",
+      "period_start": "1997",
+      "period_end": "2025",
+      "frequency": "a",
+      "unit": "millions_of_usd",
+      "producer": "BEA",
+      "demand_ids": ["RCIP-DEM-0007"],
+      "status": "approved_for_ingest"
+    },
+    {
+      "consumer_metric_id": "CC-PASS10-FRED-BEA-US-GDP",
+      "title": "BEA GDP — United States (via FRED)",
+      "source": "fred",
+      "dataset": "series/observations",
+      "series": "GDP",
+      "geography": "nation",
+      "period_start": "1980",
+      "period_end": "2025",
+      "frequency": "a",
+      "unit": "billions_of_usd",
+      "producer": "BEA",
+      "demand_ids": ["RCIP-DEM-0007"],
+      "status": "approved_for_ingest"
+    }
+  ],
+  "still_blocked": [
+    {
+      "id": "PASS5-DEM-SCF-HISTORY",
+      "reason": "Full SCF triennial micro tables are not a generic FRED series path; keep separate."
+    },
+    {
+      "id": "PASS5-DEM-CBO",
+      "reason": "CBO budget/tax history needs its own adapter."
+    },
+    {
+      "id": "PASS5-DEM-MARKUPS",
+      "reason": "Markup series remain definition-locked."
+    },
+    {
+      "id": "BEA_API_DIRECT",
+      "reason": "Direct BEA API deferred; this pass uses FRED redistribution of BEA series."
+    }
+  ]
+}

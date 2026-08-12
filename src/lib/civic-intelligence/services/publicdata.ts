@@ -7,6 +7,7 @@ import { createEiaConnector } from "../connectors/eia";
 import { createFdicConnector } from "../connectors/fdic";
 import { createHrsaConnector } from "../connectors/hrsa";
 import { createNassConnector } from "../connectors/nass";
+import { createFredConnector } from "../connectors/fred";
 import { runPhase1CrossChecks } from "../cross-checks/engine";
 import { writeCcExport } from "../exports/ccExport";
 import {
@@ -72,6 +73,7 @@ export async function diagnose(): Promise<Record<string, unknown>> {
   const fdic = createFdicConnector({ rawRoot, commit });
   const hrsa = createHrsaConnector({ rawRoot, commit });
   const nass = createNassConnector({ rawRoot, commit });
+  const fred = createFredConnector({ rawRoot, commit });
   const warehouse = loadWarehouse(repoRoot());
   const report = {
     mission: "RCIP-PHASE-1-PUBLIC-STATISTICS-SPINE-1.0",
@@ -83,6 +85,7 @@ export async function diagnose(): Promise<Record<string, unknown>> {
       fdic: await fdic.validateConfiguration(),
       hrsa: await hrsa.validateConfiguration(),
       nass: await nass.validateConfiguration(),
+      fred: await fred.validateConfiguration(),
     },
     supported_datasets: {
       census: await census.listSupportedDatasets(),
@@ -91,6 +94,7 @@ export async function diagnose(): Promise<Record<string, unknown>> {
       fdic: await fdic.listSupportedDatasets(),
       hrsa: await hrsa.listSupportedDatasets(),
       nass: await nass.listSupportedDatasets(),
+      fred: await fred.listSupportedDatasets(),
     },
     database_target: classifyDbTarget(),
     raw_archive_path: rawRoot,
@@ -986,11 +990,15 @@ export async function seedPass8FdicHrsa(): Promise<Record<string, unknown>> {
   };
 }
 
-export async function seedPass9Nass(): Promise<Record<string, unknown>> {
+async function seedNassManifest(opts: {
+  manifestFile: string;
+  connector: string;
+  note: string;
+}): Promise<Record<string, unknown>> {
   const commit = gitCommitShort();
   const rawRoot = path.join(repoRoot(), "data", "public-statistics", "raw");
   const warehouse = loadWarehouse(repoRoot());
-  const manifest = loadManifest("cc-pass9-nass-1.0.json") as {
+  const manifest = loadManifest(opts.manifestFile) as {
     indicators: Array<Record<string, unknown>>;
     still_blocked?: Array<Record<string, unknown>>;
     distinction?: string;
@@ -998,7 +1006,7 @@ export async function seedPass9Nass(): Promise<Record<string, unknown>> {
   const runId = newId("run");
   const run: import("../types").IngestionRunRecord = {
     runId,
-    connector: "pass9_nass",
+    connector: opts.connector,
     startedAt: new Date().toISOString(),
     completedAt: null,
     environment: process.env.NODE_ENV || "development",
@@ -1123,6 +1131,8 @@ export async function seedPass9Nass(): Promise<Record<string, unknown>> {
         `${consumerMetricId}: ${err instanceof Error ? err.message : String(err)}`,
       );
     }
+    // Pace Quick Stats — county passes issue many sequential calls.
+    await new Promise((resolve) => setTimeout(resolve, 350));
   }
 
   run.completedAt = new Date().toISOString();
@@ -1141,8 +1151,195 @@ export async function seedPass9Nass(): Promise<Record<string, unknown>> {
     distinction: manifest.distinction,
     accepted_observation_count: warehouse.observations.filter((o) => o.validationStatus === "accepted")
       .length,
-    note: "Bind into existing agriculture/rural panels only. 0 new panels by default.",
+    note: opts.note,
   };
+}
+
+export async function seedPass9Nass(): Promise<Record<string, unknown>> {
+  return seedNassManifest({
+    manifestFile: "cc-pass9-nass-1.0.json",
+    connector: "pass9_nass",
+    note: "Bind into existing agriculture/rural panels only. 0 new panels by default.",
+  });
+}
+
+export async function seedCountyNassFarmStructure(): Promise<Record<string, unknown>> {
+  return seedNassManifest({
+    manifestFile: "cc-county-nass-farm-structure-1.0.json",
+    connector: "county_nass_farm_structure",
+    note: "Designated AR counties only. Structure ≠ market power ≠ monopsony ≠ capture. Bind into existing rural/family-farm panels; 0 new panels.",
+  });
+}
+
+async function seedFredManifest(opts: {
+  manifestFile: string;
+  connector: string;
+  note: string;
+}): Promise<Record<string, unknown>> {
+  const commit = gitCommitShort();
+  const rawRoot = path.join(repoRoot(), "data", "public-statistics", "raw");
+  const warehouse = loadWarehouse(repoRoot());
+  const manifest = loadManifest(opts.manifestFile) as {
+    indicators: Array<Record<string, unknown>>;
+    still_blocked?: Array<Record<string, unknown>>;
+    distinction?: string;
+  };
+  const runId = newId("run");
+  const run: import("../types").IngestionRunRecord = {
+    runId,
+    connector: opts.connector,
+    startedAt: new Date().toISOString(),
+    completedAt: null,
+    environment: process.env.NODE_ENV || "development",
+    status: "running",
+    requestedSeries: manifest.indicators.map((i) => String(i.series)),
+    requestedGeographies: manifest.indicators.map((i) => String(i.geography)),
+    insertedObservations: 0,
+    updatedObservations: 0,
+    rejectedObservations: 0,
+    warnings: [],
+    errors: [],
+    softwareCommit: commit,
+    operator: "publicdata-cli",
+  };
+  recordIngestionRun(warehouse, run);
+
+  const fred = createFredConnector({ rawRoot, commit });
+  const validation = await fred.validateConfiguration();
+  if (!validation.ok) {
+    run.completedAt = new Date().toISOString();
+    run.status = "failed";
+    run.errors.push(...validation.errors);
+    recordIngestionRun(warehouse, { ...run, status: run.status });
+    saveWarehouse(repoRoot(), warehouse);
+    return {
+      ...run,
+      still_blocked: manifest.still_blocked || [],
+      note: "Fail-closed: configure FRED_API_KEY via npm run publicdata:configure-fred-key",
+    };
+  }
+
+  for (const indicator of manifest.indicators) {
+    const consumerMetricId = String(indicator.consumer_metric_id);
+    const source = String(indicator.source);
+    const dataset = String(indicator.dataset);
+    const series = String(indicator.series);
+    const geography = String(indicator.geography);
+    const start = String(indicator.period_start || "1980");
+    const end = String(indicator.period_end || start);
+    const frequency = indicator.frequency ? String(indicator.frequency) : "a";
+    const unit = indicator.unit ? String(indicator.unit) : undefined;
+    const seriesTitle = indicator.title ? String(indicator.title) : undefined;
+    const demandIds = (indicator.demand_ids as string[] | undefined) || undefined;
+    if (source !== "fred") {
+      run.errors.push(`${consumerMetricId}: unsupported source ${source}`);
+      continue;
+    }
+    try {
+      const request = {
+        dataset,
+        variablesOrSeries: [series],
+        geography,
+        period: start,
+        endPeriod: end,
+        frequency,
+        unit,
+        seriesTitle,
+        consumerMetricId,
+        demandIds,
+      };
+      const raw = await fred.fetch(request);
+      const queryId = newId("qry");
+      recordSourceQuery(warehouse, {
+        queryId,
+        sourceId: source,
+        datasetId: dataset,
+        endpoint: raw.endpoint,
+        safeParams: raw.safeParams,
+        canonicalQuery: `${source}|${dataset}|${series}|${start}-${end}|${geography}|${frequency}`,
+        requestTimestamp: raw.retrievedAt,
+        responseStatus: raw.status,
+        responseChecksum: raw.checksum,
+        rawResponseLocation: raw.rawPath || null,
+        rowCount: 0,
+        retryCount: raw.retryCount,
+        ingestionRunId: runId,
+      });
+      const batch = await fred.normalize(raw);
+      run.warnings.push(...batch.warnings.map((w) => `${consumerMetricId}: ${w}`));
+      if (raw.status !== 200 || !batch.observations.length) {
+        run.errors.push(
+          `${consumerMetricId}: ${source} status ${raw.status} with ${batch.observations.length} observations`,
+        );
+        continue;
+      }
+      const releaseId = newId("rel");
+      warehouse.releases.push({
+        releaseId,
+        datasetId: dataset,
+        releaseDate: raw.retrievedAt.slice(0, 10),
+        referencePeriod: `${start}-${end}`,
+        publicationStatus: "retrieved",
+        sourceUrl: raw.endpoint,
+        retrievalTimestamp: raw.retrievedAt,
+        checksum: raw.checksum,
+      });
+      for (const obs of batch.observations) {
+        obs.consumerMetricId = consumerMetricId;
+        if (obs.value == null) {
+          run.rejectedObservations += 1;
+          continue;
+        }
+        const warehouseObs: WarehouseObservation = {
+          ...obs,
+          observationId: newId("obs"),
+          sourceId: source,
+          datasetId: dataset,
+          releaseId,
+          sourceQueryId: queryId,
+          ingestionRunId: runId,
+          validationStatus: "accepted",
+          confidence: "verified_primary",
+          retrievedAt: raw.retrievedAt,
+        };
+        const result = upsertObservation(warehouse, warehouseObs);
+        if (result.inserted) run.insertedObservations += 1;
+        if (result.revised) run.updatedObservations += 1;
+      }
+    } catch (err) {
+      run.errors.push(
+        `${consumerMetricId}: ${err instanceof Error ? err.message : String(err)}`,
+      );
+    }
+    await new Promise((resolve) => setTimeout(resolve, 200));
+  }
+
+  run.completedAt = new Date().toISOString();
+  if (run.insertedObservations === 0 && run.updatedObservations === 0) {
+    run.status = "failed";
+  } else if (run.errors.length || run.warnings.length) {
+    run.status = "partial";
+  } else {
+    run.status = "succeeded";
+  }
+  recordIngestionRun(warehouse, { ...run, status: run.status });
+  saveWarehouse(repoRoot(), warehouse);
+  return {
+    ...run,
+    still_blocked: manifest.still_blocked || [],
+    distinction: manifest.distinction,
+    accepted_observation_count: warehouse.observations.filter((o) => o.validationStatus === "accepted")
+      .length,
+    note: opts.note,
+  };
+}
+
+export async function seedPass10FredBea(): Promise<Record<string, unknown>> {
+  return seedFredManifest({
+    manifestFile: "cc-pass10-fred-bea-1.0.json",
+    connector: "pass10_fred_bea",
+    note: "FRED channel for DFA net-worth shares + BEA-produced macro series. Bind ownership/wealth/rural panels only. 0 new panels. Structure ≠ capture.",
+  });
 }
 
 export function crosscheck() {

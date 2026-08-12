@@ -9,6 +9,8 @@ import {
   seedPass7EiaSeries,
   seedPass8FdicHrsa,
   seedPass9Nass,
+  seedCountyNassFarmStructure,
+  seedPass10FredBea,
   crosscheck,
   validateWarehouse,
   exportCc,
@@ -50,6 +52,12 @@ async function main() {
       break;
     case "pass9:nass":
       result = await seedPass9Nass();
+      break;
+    case "county:nass":
+      result = await seedCountyNassFarmStructure();
+      break;
+    case "pass10:fred":
+      result = await seedPass10FredBea();
       break;
     case "aligned:all":
       result = {
@@ -97,6 +105,8 @@ async function main() {
     cmd === "pass7:eia" ||
     cmd === "pass8:fdic-hrsa" ||
     cmd === "pass9:nass" ||
+    cmd === "county:nass" ||
+    cmd === "pass10:fred" ||
     cmd === "all"
   ) {
     const status = (result as { status?: string }).status;
