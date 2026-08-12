@@ -7,6 +7,7 @@ import {
   seedBaselineAlignedCpsVoting,
   seedPass6SeriesArrays,
   seedPass7EiaSeries,
+  seedPass8FdicHrsa,
   crosscheck,
   validateWarehouse,
   exportCc,
@@ -42,6 +43,9 @@ async function main() {
       break;
     case "pass7:eia":
       result = await seedPass7EiaSeries();
+      break;
+    case "pass8:fdic-hrsa":
+      result = await seedPass8FdicHrsa();
       break;
     case "aligned:all":
       result = {
@@ -87,6 +91,7 @@ async function main() {
     cmd === "aligned:cps-voting" ||
     cmd === "pass6:series" ||
     cmd === "pass7:eia" ||
+    cmd === "pass8:fdic-hrsa" ||
     cmd === "all"
   ) {
     const status = (result as { status?: string }).status;

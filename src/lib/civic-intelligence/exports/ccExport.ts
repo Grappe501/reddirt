@@ -21,6 +21,8 @@ function checksumPayload(files: Record<string, unknown>): string {
 function agencyName(sourceId: string): string {
   if (sourceId === "census") return "United States Census Bureau";
   if (sourceId === "eia") return "U.S. Energy Information Administration";
+  if (sourceId === "fdic") return "Federal Deposit Insurance Corporation";
+  if (sourceId === "hrsa") return "Health Resources and Services Administration";
   if (sourceId === "fred") return "Federal Reserve Economic Data (FRED)";
   return "Bureau of Labor Statistics";
 }
@@ -28,6 +30,8 @@ function agencyName(sourceId: string): string {
 function officialUrl(source: string, _series: string): string {
   if (source === "census") return "https://api.census.gov/data.html";
   if (source === "eia") return "https://www.eia.gov/opendata/";
+  if (source === "fdic") return "https://banks.data.fdic.gov/";
+  if (source === "hrsa") return "https://data.hrsa.gov/";
   if (source === "fred") return "https://fred.stlouisfed.org/";
   return "https://www.bls.gov/data/";
 }
@@ -149,6 +153,20 @@ export function buildCcExportFiles(opts: {
           abbreviation: "EIA",
           homepage: "https://www.eia.gov/",
           api_docs: "https://www.eia.gov/opendata/",
+        },
+        {
+          slug: "fdic",
+          name: "Federal Deposit Insurance Corporation",
+          abbreviation: "FDIC",
+          homepage: "https://www.fdic.gov/",
+          api_docs: "https://api.fdic.gov/banks/docs",
+        },
+        {
+          slug: "hrsa",
+          name: "Health Resources and Services Administration",
+          abbreviation: "HRSA",
+          homepage: "https://www.hrsa.gov/",
+          api_docs: "https://data.hrsa.gov/",
         },
       ],
     },

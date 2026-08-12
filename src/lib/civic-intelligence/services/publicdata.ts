@@ -4,6 +4,8 @@ import path from "node:path";
 import { createCensusConnector, censusCanonicalQuery } from "../connectors/census";
 import { createBlsConnector } from "../connectors/bls";
 import { createEiaConnector } from "../connectors/eia";
+import { createFdicConnector } from "../connectors/fdic";
+import { createHrsaConnector } from "../connectors/hrsa";
 import { runPhase1CrossChecks } from "../cross-checks/engine";
 import { writeCcExport } from "../exports/ccExport";
 import {
@@ -66,6 +68,8 @@ export async function diagnose(): Promise<Record<string, unknown>> {
   const census = createCensusConnector({ rawRoot, commit });
   const bls = createBlsConnector({ rawRoot, commit });
   const eia = createEiaConnector({ rawRoot, commit });
+  const fdic = createFdicConnector({ rawRoot, commit });
+  const hrsa = createHrsaConnector({ rawRoot, commit });
   const warehouse = loadWarehouse(repoRoot());
   const report = {
     mission: "RCIP-PHASE-1-PUBLIC-STATISTICS-SPINE-1.0",
@@ -74,11 +78,15 @@ export async function diagnose(): Promise<Record<string, unknown>> {
       census: await census.validateConfiguration(),
       bls: await bls.validateConfiguration(),
       eia: await eia.validateConfiguration(),
+      fdic: await fdic.validateConfiguration(),
+      hrsa: await hrsa.validateConfiguration(),
     },
     supported_datasets: {
       census: await census.listSupportedDatasets(),
       bls: await bls.listSupportedDatasets(),
       eia: await eia.listSupportedDatasets(),
+      fdic: await fdic.listSupportedDatasets(),
+      hrsa: await hrsa.listSupportedDatasets(),
     },
     database_target: classifyDbTarget(),
     raw_archive_path: rawRoot,
@@ -811,6 +819,163 @@ export async function seedPass7EiaSeries(): Promise<Record<string, unknown>> {
       manifest.still_blocked_without_defensible_series || [],
     accepted_observation_count: warehouse.observations.filter((o) => o.validationStatus === "accepted")
       .length,
+  };
+}
+
+/**
+ * Pass 8: FDIC + HRSA adapters for local-capital and healthcare evidence systems.
+ * FRED is intentionally not seeded generically — reserved for awkward agency gaps
+ * with original-producer provenance.
+ */
+export async function seedPass8FdicHrsa(): Promise<Record<string, unknown>> {
+  const commit = gitCommitShort();
+  const rawRoot = path.join(repoRoot(), "data", "public-statistics", "raw");
+  const warehouse = loadWarehouse(repoRoot());
+  const manifest = loadManifest("cc-pass8-fdic-hrsa-1.0.json") as {
+    indicators: Array<Record<string, unknown>>;
+    still_blocked?: Array<Record<string, unknown>>;
+  };
+  const runId = newId("run");
+  const run: import("../types").IngestionRunRecord = {
+    runId,
+    connector: "pass8_fdic_hrsa",
+    startedAt: new Date().toISOString(),
+    completedAt: null,
+    environment: process.env.NODE_ENV || "development",
+    status: "running",
+    requestedSeries: manifest.indicators.map((i) => String(i.series)),
+    requestedGeographies: manifest.indicators.map((i) => String(i.geography)),
+    insertedObservations: 0,
+    updatedObservations: 0,
+    rejectedObservations: 0,
+    warnings: [],
+    errors: [],
+    softwareCommit: commit,
+    operator: "publicdata-cli",
+  };
+  recordIngestionRun(warehouse, run);
+
+  const fdic = createFdicConnector({ rawRoot, commit });
+  const hrsa = createHrsaConnector({ rawRoot, commit });
+
+  for (const indicator of manifest.indicators) {
+    const consumerMetricId = String(indicator.consumer_metric_id);
+    const source = String(indicator.source);
+    const dataset = String(indicator.dataset);
+    const series = String(indicator.series);
+    const geography = String(indicator.geography);
+    const start = String(indicator.period_start || "2000");
+    const end = String(indicator.period_end || start);
+    const facets = (indicator.facets as Record<string, string[]> | undefined) || undefined;
+    const unit = indicator.unit ? String(indicator.unit) : undefined;
+    const seriesTitle = indicator.title ? String(indicator.title) : undefined;
+    const demandIds = (indicator.demand_ids as string[] | undefined) || undefined;
+    const connector = source === "fdic" ? fdic : source === "hrsa" ? hrsa : null;
+    if (!connector) {
+      run.errors.push(`${consumerMetricId}: unsupported source ${source}`);
+      continue;
+    }
+    try {
+      const validation = await connector.validateConfiguration();
+      if (!validation.ok) {
+        run.errors.push(`${consumerMetricId}: ${validation.errors.join("; ")}`);
+        continue;
+      }
+      const request = {
+        dataset,
+        variablesOrSeries: [series],
+        geography,
+        period: start,
+        endPeriod: end,
+        facets,
+        unit,
+        seriesTitle,
+        consumerMetricId,
+        demandIds,
+        pointPolicy: "all_annual" as const,
+      };
+      const raw = await connector.fetch(request);
+      const queryId = newId("qry");
+      recordSourceQuery(warehouse, {
+        queryId,
+        sourceId: source,
+        datasetId: dataset,
+        endpoint: raw.endpoint,
+        safeParams: raw.safeParams,
+        canonicalQuery: `${source}|${dataset}|${series}|${start}-${end}|${geography}|${JSON.stringify(facets || {})}`,
+        requestTimestamp: raw.retrievedAt,
+        responseStatus: raw.status,
+        responseChecksum: raw.checksum,
+        rawResponseLocation: raw.rawPath || null,
+        rowCount: 0,
+        retryCount: raw.retryCount,
+        ingestionRunId: runId,
+      });
+      const batch = await connector.normalize(raw);
+      run.warnings.push(...batch.warnings.map((w) => `${consumerMetricId}: ${w}`));
+      if (raw.status !== 200 || !batch.observations.length) {
+        run.errors.push(
+          `${consumerMetricId}: ${source} status ${raw.status} with ${batch.observations.length} observations`,
+        );
+        continue;
+      }
+      const releaseId = newId("rel");
+      warehouse.releases.push({
+        releaseId,
+        datasetId: dataset,
+        releaseDate: raw.retrievedAt.slice(0, 10),
+        referencePeriod: `${start}-${end}`,
+        publicationStatus: "retrieved",
+        sourceUrl: raw.endpoint,
+        retrievalTimestamp: raw.retrievedAt,
+        checksum: raw.checksum,
+      });
+      for (const obs of batch.observations) {
+        obs.consumerMetricId = consumerMetricId;
+        if (obs.value == null) {
+          run.rejectedObservations += 1;
+          continue;
+        }
+        const warehouseObs: WarehouseObservation = {
+          ...obs,
+          observationId: newId("obs"),
+          sourceId: source,
+          datasetId: dataset,
+          releaseId,
+          sourceQueryId: queryId,
+          ingestionRunId: runId,
+          validationStatus: "accepted",
+          confidence: "verified_primary",
+          retrievedAt: raw.retrievedAt,
+        };
+        const result = upsertObservation(warehouse, warehouseObs);
+        if (result.inserted) run.insertedObservations += 1;
+        if (result.revised) run.updatedObservations += 1;
+      }
+    } catch (err) {
+      run.errors.push(
+        `${consumerMetricId}: ${err instanceof Error ? err.message : String(err)}`,
+      );
+    }
+  }
+
+  run.completedAt = new Date().toISOString();
+  if (run.insertedObservations === 0 && run.updatedObservations === 0) {
+    run.status = "failed";
+  } else if (run.errors.length || run.warnings.length) {
+    run.status = "partial";
+  } else {
+    run.status = "succeeded";
+  }
+  recordIngestionRun(warehouse, { ...run, status: run.status });
+  saveWarehouse(repoRoot(), warehouse);
+  return {
+    ...run,
+    still_blocked: manifest.still_blocked || [],
+    accepted_observation_count: warehouse.observations.filter((o) => o.validationStatus === "accepted")
+      .length,
+    fred_note:
+      "FRED not seeded in Pass 8 — no demanded local-capital/healthcare series required FRED as a distribution channel.",
   };
 }
 

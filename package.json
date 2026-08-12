@@ -104,6 +104,7 @@
     "publicdata:aligned:all": "node scripts/run-with-h-drive-env.cjs node ./node_modules/tsx/dist/cli.mjs scripts/publicdata-cli.ts aligned:all",
     "publicdata:pass6:series": "node scripts/run-with-h-drive-env.cjs node ./node_modules/tsx/dist/cli.mjs scripts/publicdata-cli.ts pass6:series",
     "publicdata:pass7:eia": "node scripts/run-with-h-drive-env.cjs node ./node_modules/tsx/dist/cli.mjs scripts/publicdata-cli.ts pass7:eia",
+    "publicdata:pass8:fdic-hrsa": "node scripts/run-with-h-drive-env.cjs node ./node_modules/tsx/dist/cli.mjs scripts/publicdata-cli.ts pass8:fdic-hrsa",
     "publicdata:configure-eia-key": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/configure-eia-key.ps1",
     "publicdata:crosscheck": "node scripts/run-with-h-drive-env.cjs node ./node_modules/tsx/dist/cli.mjs scripts/publicdata-cli.ts crosscheck",
     "publicdata:validate": "node scripts/run-with-h-drive-env.cjs node ./node_modules/tsx/dist/cli.mjs scripts/publicdata-cli.ts validate",
