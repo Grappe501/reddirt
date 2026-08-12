@@ -12,6 +12,7 @@ import {
   seedCountyNassFarmStructure,
   seedCountyNassFarmStructureDensity,
   seedPass10FredBea,
+  seedPass10FredBeaDensity,
   crosscheck,
   validateWarehouse,
   exportCc,
@@ -63,6 +64,9 @@ async function main() {
     case "pass10:fred":
       result = await seedPass10FredBea();
       break;
+    case "pass10:fred:density":
+      result = await seedPass10FredBeaDensity();
+      break;
     case "aligned:all":
       result = {
         bds: await seedBaselineAlignedBds(),
@@ -112,6 +116,7 @@ async function main() {
     cmd === "county:nass" ||
     cmd === "county:nass:density" ||
     cmd === "pass10:fred" ||
+    cmd === "pass10:fred:density" ||
     cmd === "all"
   ) {
     const status = (result as { status?: string }).status;

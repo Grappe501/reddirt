@@ -19,7 +19,7 @@ function keyPresent(): boolean {
 }
 
 function toFredObservationDate(period: string): string {
-  // Accept YYYY, YYYY-Qn, or YYYY-MM-DD
+  // Accept YYYY, YYYY-Qn, YYYY-MM, or YYYY-MM-DD
   const q = period.match(/^(\d{4})-Q([1-4])$/i);
   if (q) {
     const year = Number(q[1]);
@@ -27,15 +27,20 @@ function toFredObservationDate(period: string): string {
     const month = (quarter - 1) * 3 + 1;
     return `${year}-${String(month).padStart(2, "0")}-01`;
   }
+  if (/^\d{4}-\d{2}$/.test(period)) return `${period}-01`;
   if (/^\d{4}$/.test(period)) return `${period}-01-01`;
   return period.slice(0, 10);
 }
 
 function periodFromFredDate(date: string, frequency: string): string {
   const [y, m] = date.split("-").map(Number);
-  if ((frequency || "").toLowerCase().startsWith("q")) {
+  const freq = (frequency || "").toLowerCase();
+  if (freq.startsWith("q")) {
     const q = Math.floor((m - 1) / 3) + 1;
     return `${y}-Q${q}`;
+  }
+  if (freq.startsWith("m")) {
+    return `${y}-${String(m).padStart(2, "0")}`;
   }
   return String(y);
 }

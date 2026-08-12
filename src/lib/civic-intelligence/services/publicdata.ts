@@ -1350,6 +1350,14 @@ export async function seedPass10FredBea(): Promise<Record<string, unknown>> {
   });
 }
 
+export async function seedPass10FredBeaDensity(): Promise<Record<string, unknown>> {
+  return seedFredManifest({
+    manifestFile: "cc-pass10-fred-bea-density-1.0.json",
+    connector: "pass10_fred_bea_density",
+    note: "BEA-first densify via FRED: DFA asset shares, real GDP/income, farm income, fiscal %GDP, BLS productivity/comp. Preserve producer. 0 new panels. Structure ≠ capture.",
+  });
+}
+
 export function crosscheck() {
   const warehouse = loadWarehouse(repoRoot());
   const checks = runPhase1CrossChecks(warehouse.observations);
