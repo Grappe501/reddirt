@@ -33,6 +33,16 @@ export type PublicStatisticsRequest = {
   consumerMetricId?: string;
   /** Pass-6 publication demand id(s) for provenance. */
   demandIds?: string[];
+  /** EIA v2 frequency (annual|monthly). */
+  frequency?: "annual" | "monthly";
+  /** EIA v2 data columns (default ["value"]). */
+  dataColumns?: string[];
+  /** EIA v2 facets, e.g. { stateid: ["AR"], sectorid: ["RES"] }. */
+  facets?: Record<string, string[]>;
+  /** Optional unit override for normalize. */
+  unit?: string;
+  /** Optional series title override. */
+  seriesTitle?: string;
 };
 
 export type RawStatisticsResponse = {

@@ -18,11 +18,18 @@ function checksumPayload(files: Record<string, unknown>): string {
   return createHash("sha256").update(ordered.join("\n"), "utf8").digest("hex");
 }
 
-function officialUrl(source: string, series: string): string {
-  if (source === "census") {
-    return "https://api.census.gov/data.html";
-  }
-  return `https://www.bls.gov/data/`;
+function agencyName(sourceId: string): string {
+  if (sourceId === "census") return "United States Census Bureau";
+  if (sourceId === "eia") return "U.S. Energy Information Administration";
+  if (sourceId === "fred") return "Federal Reserve Economic Data (FRED)";
+  return "Bureau of Labor Statistics";
+}
+
+function officialUrl(source: string, _series: string): string {
+  if (source === "census") return "https://api.census.gov/data.html";
+  if (source === "eia") return "https://www.eia.gov/opendata/";
+  if (source === "fred") return "https://fred.stlouisfed.org/";
+  return "https://www.bls.gov/data/";
 }
 
 export function buildCcExportFiles(opts: {
@@ -40,7 +47,7 @@ export function buildCcExportFiles(opts: {
     reference_period: o.period,
     geography_id: o.geographyId,
     geography_name: o.geographyName,
-    source_agency: o.sourceId === "census" ? "United States Census Bureau" : "Bureau of Labor Statistics",
+    source_agency: agencyName(o.sourceId),
     dataset: o.datasetId,
     series_code: o.seriesCode,
     definition: o.definition,
@@ -86,8 +93,7 @@ export function buildCcExportFiles(opts: {
         geography_id: o.geographyId,
         geography_name: o.geographyName,
         dataset: o.datasetId,
-        source_agency:
-          o.sourceId === "census" ? "United States Census Bureau" : "Bureau of Labor Statistics",
+        source_agency: agencyName(o.sourceId),
         unit: o.unit,
         points: [],
       });
@@ -136,6 +142,13 @@ export function buildCcExportFiles(opts: {
           abbreviation: "BLS",
           homepage: "https://www.bls.gov/",
           api_docs: "https://www.bls.gov/developers/",
+        },
+        {
+          slug: "eia",
+          name: "U.S. Energy Information Administration",
+          abbreviation: "EIA",
+          homepage: "https://www.eia.gov/",
+          api_docs: "https://www.eia.gov/opendata/",
         },
       ],
     },
@@ -206,7 +219,7 @@ export function buildCcExportFiles(opts: {
     consumer: "constitutional_capitalism",
     generator_repository: "RedDirt",
     generator_commit: opts.generatorCommit,
-    source_agencies: ["United States Census Bureau", "Bureau of Labor Statistics"],
+    source_agencies: [...new Set(accepted.map((o) => agencyName(o.sourceId)))],
     dataset_versions: [...new Set(accepted.map((o) => o.datasetId))],
     series_count: new Set(accepted.map((o) => o.seriesCode)).size,
     observation_count: accepted.length,

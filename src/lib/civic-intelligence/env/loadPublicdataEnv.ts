@@ -21,14 +21,36 @@ function parseEnvFile(filePath: string): Record<string, string> {
   return out;
 }
 
-/** Load .env / .env.local into process.env without overwriting already-set values. */
+const PUBLICDATA_KEY_NAMES = new Set([
+  "CENSUS_API_KEY",
+  "BLS_API_KEY",
+  "EIA_API_KEY",
+  "FRED_API_KEY",
+  "GOOGLE_CIVIC_API_KEY",
+  "CONGRESS_GOV_API_KEY",
+  "OPENFEC_API_KEY",
+  "OPENSTATES_API_KEY",
+  "API_DOT_GOV_KEY",
+]);
+
+/**
+ * Load .env / .env.local into process.env.
+ * Default: do not overwrite already-set values.
+ * Exception: for known public-data API keys, replace parent-shell
+ * placeholders (e.g. angle-bracket stubs) with usable file values.
+ * Note: API_DOT_GOV_KEY is not a Census substitute.
+ */
 export function loadPublicdataEnv(repoRoot: string): void {
   const merged = {
     ...parseEnvFile(path.join(repoRoot, ".env")),
     ...parseEnvFile(path.join(repoRoot, ".env.local")),
   };
   for (const [k, v] of Object.entries(merged)) {
-    if (process.env[k] == null || process.env[k] === "") {
+    const current = process.env[k];
+    const missing = current == null || current === "";
+    const replacePlaceholder =
+      PUBLICDATA_KEY_NAMES.has(k) && !isUsableApiKey(current);
+    if (missing || replacePlaceholder) {
       process.env[k] = v;
     }
   }

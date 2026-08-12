@@ -6,6 +6,7 @@ import {
   seedBaselineAlignedBds,
   seedBaselineAlignedCpsVoting,
   seedPass6SeriesArrays,
+  seedPass7EiaSeries,
   crosscheck,
   validateWarehouse,
   exportCc,
@@ -38,6 +39,9 @@ async function main() {
       break;
     case "pass6:series":
       result = await seedPass6SeriesArrays();
+      break;
+    case "pass7:eia":
+      result = await seedPass7EiaSeries();
       break;
     case "aligned:all":
       result = {
@@ -82,6 +86,7 @@ async function main() {
     cmd === "aligned:bds" ||
     cmd === "aligned:cps-voting" ||
     cmd === "pass6:series" ||
+    cmd === "pass7:eia" ||
     cmd === "all"
   ) {
     const status = (result as { status?: string }).status;

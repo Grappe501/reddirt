@@ -17,6 +17,7 @@ export function sha256(text: string): string {
 export function redactSecretsFromUrl(url: string): string {
   return url
     .replace(/([?&]key=)[^&]+/gi, "$1REDACTED")
+    .replace(/([?&]api_key=)[^&]+/gi, "$1REDACTED")
     .replace(/([?&]registrationkey=)[^&]+/gi, "$1REDACTED");
 }
 
