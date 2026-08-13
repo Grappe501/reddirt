@@ -93,6 +93,7 @@ export function publicCampaignEventToEventItem(ev: PublicCampaignEvent): EventIt
     city: ev.city?.trim() || undefined,
     campaignTrail: true,
     statewideVirtual: ev.venueMode === "virtual",
+    qualifiesAsVisit: ev.venueMode === "virtual" ? false : undefined,
     opsFlags: {
       missingPublicSummary: !hasSummary,
       missingCounty: !ev.county,

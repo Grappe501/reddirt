@@ -2,6 +2,11 @@ import type { EventItem } from "@/content/types";
 import { markSuggestedFestivalPath } from "@/lib/festivals/suggest-coverage-path";
 import { august2026CampaignStops } from "@/content/events/august-2026-campaign-stops";
 import { september2026CampaignStops } from "@/content/events/september-2026-campaign-stops";
+import { october2026CampaignStops } from "@/content/events/october-2026-campaign-stops";
+import {
+  RECURRING_VIRTUAL_SLUG_ALIASES,
+  recurringVirtualSeries,
+} from "@/content/events/recurring-virtual-series";
 
 /** Fair research dump — operator/Evidence only; not merged into the public `/events` hub (Phase 1). */
 export { ARKANSAS_FESTIVAL_EVENTS_2026 } from "./arkansas-festivals-2026";
@@ -593,6 +598,8 @@ export const events: EventItem[] = markSuggestedFestivalPath([
   ...movementEventsCore,
   ...august2026CampaignStops,
   ...september2026CampaignStops,
+  ...october2026CampaignStops,
+  ...recurringVirtualSeries,
 ]);
 
 export const eventTypes = [
@@ -619,9 +626,10 @@ export function listMovementEventAudienceOptions(): string[] {
 }
 
 export function getEventBySlug(slug: string): EventItem | undefined {
-  return events.find((e) => e.slug === slug);
+  const canonical = RECURRING_VIRTUAL_SLUG_ALIASES[slug] ?? slug;
+  return events.find((e) => e.slug === canonical);
 }
 
 export function listEventSlugs(): string[] {
-  return events.map((e) => e.slug);
+  return [...events.map((e) => e.slug), ...Object.keys(RECURRING_VIRTUAL_SLUG_ALIASES)];
 }

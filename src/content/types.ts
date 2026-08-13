@@ -43,6 +43,8 @@ export type EventItem = {
   region: string;
   /** County slug when tied to a region page, optional */
   countySlug?: string;
+  /** Multi-county appearances — public eyebrow and map use every listed county. */
+  countySlugs?: string[];
   status: EventStatus;
   startsAt: string; // ISO
   endsAt?: string;
@@ -82,10 +84,19 @@ export type EventItem = {
   /** Confirmed campaign-trail stop for the chronological list on `/events`. */
   campaignTrail?: boolean;
   /**
-   * Wednesday prayer Zoom calls and other statewide virtual appearances.
+   * Wednesday faith Zoom calls and other statewide virtual appearances.
    * Listed on the calendar; never paints a county or increments 51/75.
    */
   statewideVirtual?: boolean;
+  /** Explicit visit gate — virtual series must stay false. */
+  qualifiesAsVisit?: boolean;
+  /** Collapse weekly series to the next occurrence on the /events Movement list. */
+  recurringSeriesId?: string;
+  /** Card/detail primary action (Facebook event, AYC site). */
+  primaryHref?: string;
+  primaryCtaLabel?: string;
+  /** When true, the calendar card title also goes to `primaryHref`. */
+  linkCardToPrimary?: boolean;
   /** Public participation — omit for older static rows (treated as campaign appearance). */
   attendanceType?: "PUBLIC_OPEN" | "PUBLIC_REGISTRATION" | "INVITATION" | "CAMPAIGN_APPEARANCE" | "PRIVATE";
   city?: string;

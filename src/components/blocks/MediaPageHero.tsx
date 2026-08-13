@@ -18,6 +18,8 @@ type MediaPageHeroProps = {
   className?: string;
   /** split = media plane + navy copy panel; bleed = media under dark scrim + copy overlay */
   layout?: "split" | "bleed";
+  /** How the split-pane image is fitted. `contain` is for the Kelly super-header cutout. */
+  splitMediaFit?: "cover" | "contain";
   /** Prefer labeled empty when no owned placement (default false — show honest static stills). */
   preferLabeledEmpty?: boolean;
 };
@@ -57,6 +59,7 @@ export async function MediaPageHero({
   className,
   layout = "split",
   preferLabeledEmpty = false,
+  splitMediaFit = "cover",
 }: MediaPageHeroProps) {
   const editing = await isSiteEditMode();
   const eyebrowNode =
@@ -100,12 +103,13 @@ export async function MediaPageHero({
   return (
     <FullBleedSection variant="plain" padY={false} className={cn("border-b border-kelly-ink/10", className)}>
       <div className="grid lg:grid-cols-2 lg:min-h-[22rem]">
-        <div className="relative min-h-[16rem] overflow-hidden lg:min-h-full">
+        <div className="relative min-h-[16rem] overflow-hidden bg-gradient-to-br from-kelly-navy via-kelly-slate to-kelly-ink lg:min-h-full">
           <PublicMediaSlotFrame
             slotKey={slotKey}
             preferLabeledEmpty={preferLabeledEmpty}
             priority
             className="absolute inset-0 h-full w-full"
+            mediaClassName={splitMediaFit === "contain" ? "object-contain object-center p-6 sm:p-8" : undefined}
             sizes="(max-width: 1024px) 100vw, 50vw"
           />
         </div>

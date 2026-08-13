@@ -8,11 +8,13 @@ export function EventMeta({
   className,
   dense,
   zoomHref,
+  joinHref,
 }: {
   event: EventItem;
   className?: string;
   dense?: boolean;
   zoomHref?: string | null;
+  joinHref?: string | null;
 }) {
   const when = formatEventWhen(event);
   return (
@@ -40,15 +42,15 @@ export function EventMeta({
         {event.addressLine ? (
           <dd className="mt-1 text-kelly-text/75">{event.addressLine}</dd>
         ) : null}
-        {zoomHref ? (
+        {joinHref || zoomHref ? (
           <dd className="mt-2">
             <a
-              href={zoomHref}
+              href={(joinHref || zoomHref)!}
               className="font-semibold text-kelly-navy underline-offset-4 hover:underline"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Open Zoom link
+              {event.primaryCtaLabel ?? "Open Zoom link"}
             </a>
           </dd>
         ) : null}

@@ -37,7 +37,7 @@ export default async function AboutJourneyPage() {
     <>
       <MediaPageHero
         slotKey="journey.hero"
-        layout="bleed"
+        layout="split"
         eyebrow={c.hero.eyebrow}
         title={c.hero.title}
         subtitle={c.hero.subtitle}

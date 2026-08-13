@@ -1,5 +1,6 @@
 import type { EventItem } from "@/content/types";
 import { EventStopCard } from "@/components/organizing/EventStopCard";
+import { collapseRecurringSeriesToNextOccurrence } from "@/lib/events/collapse-recurring-series";
 import { kellyNextStopsRoute } from "@/lib/events/kelly-next-stops-route";
 import { compareEventsForHub, resolveEventStatus } from "@/lib/format/eventDisplay";
 
@@ -13,7 +14,9 @@ function isMovementListEvent(event: EventItem, now: Date): boolean {
 
 export function EventsMovementSection({ events }: { events: EventItem[] }) {
   const now = new Date();
-  const upcoming = events.filter((e) => isMovementListEvent(e, now)).sort((a, b) => compareEventsForHub(a, b, now));
+  const upcoming = collapseRecurringSeriesToNextOccurrence(
+    events.filter((e) => isMovementListEvent(e, now)).sort((a, b) => compareEventsForHub(a, b, now)),
+  );
   const routeLine = kellyNextStopsRoute(upcoming);
 
   return (

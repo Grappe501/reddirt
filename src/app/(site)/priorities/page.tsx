@@ -6,13 +6,14 @@ import { ContentContainer } from "@/components/layout/ContentContainer";
 import { Button } from "@/components/ui/Button";
 import { prioritiesLaunchCopy } from "@/content/website/priorities-launch";
 import { pageMeta } from "@/lib/seo/metadata";
+import { brandMediaFromLegacySite } from "@/config/brand-media";
 
 export const metadata: Metadata = pageMeta({
   title: "My Plan",
   description:
     "Kelly Grappe’s plan for Arkansas Secretary of State: restore trust in elections, protect the people’s constitutional voice, support all 75 counties, and make government work better for people.",
   path: "/priorities",
-  imageSrc: "/media/placeholders/texture-porch-glow.svg",
+  imageSrc: brandMediaFromLegacySite.statewideBanner,
 });
 
 const c = prioritiesLaunchCopy;
@@ -23,6 +24,7 @@ export default async function PrioritiesPage() {
       <MediaPageHero
         slotKey="priorities.hero"
         layout="split"
+        splitMediaFit="contain"
         eyebrow={c.hero.eyebrow}
         title={c.hero.title}
         subtitle={c.hero.subtitle}

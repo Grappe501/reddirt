@@ -4,6 +4,7 @@ import {
   COUNTY_TO_VERIFY_EYEBROW,
   STATEWIDE_VIRTUAL_EYEBROW,
   countyNameFromAnySlug,
+  eventCountySlugs,
   formatCountyEyebrow,
 } from "@/lib/events/county-key";
 
@@ -18,9 +19,11 @@ export function isStatewideVirtualEvent(event: EventItem): boolean {
 export function publicCountyEyebrow(event: EventItem): string {
   if (isStatewideVirtualEvent(event) || event.statewideVirtual) return STATEWIDE_VIRTUAL_EYEBROW;
   if (event.opsFlags?.missingCounty) return COUNTY_TO_VERIFY_EYEBROW;
-  const name = countyNameFromAnySlug(event.countySlug);
-  if (!name) return COUNTY_TO_VERIFY_EYEBROW;
-  return formatCountyEyebrow(name);
+  const names = eventCountySlugs(event)
+    .map((slug) => countyNameFromAnySlug(slug))
+    .filter((name): name is NonNullable<typeof name> => Boolean(name));
+  if (names.length === 0) return COUNTY_TO_VERIFY_EYEBROW;
+  return names.map((name) => formatCountyEyebrow(name)).join(" · ");
 }
 
 export function publicEventCityLine(event: EventItem): string {

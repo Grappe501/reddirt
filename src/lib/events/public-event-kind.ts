@@ -83,8 +83,31 @@ export function attendanceCtaLabel(kind: CampaignEventAttendanceType | string | 
   }
 }
 
-export function eventCardCtaLabel(event: { statewideVirtual?: boolean; fieldAttendance?: string; attendanceType?: string }): string {
-  if (event.statewideVirtual) return "Join the Zoom call";
+export function eventCardTitleHref(event: {
+  slug: string;
+  detailHref?: string;
+  primaryHref?: string;
+  linkCardToPrimary?: boolean;
+}): string {
+  if (event.linkCardToPrimary && event.primaryHref) return event.primaryHref;
+  return event.detailHref ?? `/events/${event.slug}`;
+}
+
+export function eventCardActionHref(event: {
+  slug: string;
+  detailHref?: string;
+  primaryHref?: string;
+}): string {
+  return event.primaryHref ?? event.detailHref ?? `/events/${event.slug}`;
+}
+
+export function eventCardCtaLabel(event: {
+  primaryCtaLabel?: string;
+  statewideVirtual?: boolean;
+  fieldAttendance?: string;
+  attendanceType?: string;
+}): string {
+  if (event.primaryCtaLabel) return event.primaryCtaLabel;
   if (event.fieldAttendance === "tentative") return "View tentative date";
   return attendanceCtaLabel(event.attendanceType);
 }

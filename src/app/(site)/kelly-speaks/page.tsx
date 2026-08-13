@@ -27,7 +27,7 @@ export default async function KellySpeaksIndexPage() {
     <div className="bg-kelly-cream pb-20">
       <MediaPageHero
         slotKey="speaks.hero"
-        layout="bleed"
+        layout="split"
         eyebrow="Kelly Speaks"
         title="Campaign videos"
         subtitle="Hear Kelly directly—featured messages, trail stories, and short moments, organized by purpose. Click to play; embeds use privacy-enhanced YouTube."

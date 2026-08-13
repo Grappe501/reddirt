@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { ReactNode } from "react";
+import { KellySuperHeaderStill } from "@/components/media/KellySuperHeaderStill";
 import { ContentImage } from "@/components/media/ContentImage";
 import { SiteEditMediaChrome } from "@/components/site-edit/SiteEditMediaChrome";
 import { media, type MediaRef } from "@/content/media/registry";
@@ -80,7 +81,11 @@ export async function PublicMediaSlotFrame({
     resolved.provenance === "fallback-placeholder" ||
     (resolved.provenance === "static-content-image" && resolved.sourceUrl.includes("placeholder"));
 
-  if (showEmpty && resolved.provenance !== "owned-media") {
+  if (
+    showEmpty &&
+    resolved.provenance !== "owned-media" &&
+    def.staticFallbackMediaKey !== "kellySuperHeader"
+  ) {
     return withEditChrome(
       editing,
       slotKey,
@@ -140,6 +145,13 @@ export async function PublicMediaSlotFrame({
   }
 
   const fallback: MediaRef = media[def.staticFallbackMediaKey];
+  if (def.staticFallbackMediaKey === "kellySuperHeader") {
+    return withEditChrome(
+      editing,
+      slotKey,
+      <KellySuperHeaderStill className={className} mediaClassName={mediaClassName} alt={fallback.alt} />,
+    );
+  }
   return withEditChrome(
     editing,
     slotKey,

@@ -4,6 +4,8 @@ import Link from "next/link";
 import type { EventItem } from "@/content/types";
 import { resolveEventStatus, stripPublicMarkdown } from "@/lib/format/eventDisplay";
 import { formatCountyFirstMeta, publicCountyEyebrow } from "@/lib/events/public-event-county";
+import { eventCardActionHref, eventCardCtaLabel, eventCardTitleHref } from "@/lib/events/public-event-kind";
+import { isExternalHref } from "@/lib/href";
 import { cn } from "@/lib/utils";
 
 type EventCardProps = {
@@ -24,7 +26,10 @@ function locationIsTba(event: EventItem): boolean {
 
 export function EventCard({ event, className, highlighted, onActivate }: EventCardProps) {
   const status = resolveEventStatus(event);
-  const detailHref = event.detailHref ?? `/events/${event.slug}`;
+  const titleHref = eventCardTitleHref(event);
+  const actionHref = eventCardActionHref(event);
+  const actionExt = isExternalHref(actionHref);
+  const titleExt = isExternalHref(titleHref);
   const tba = locationIsTba(event);
   return (
     <article
@@ -64,8 +69,10 @@ export function EventCard({ event, className, highlighted, onActivate }: EventCa
         </div>
         <h3 className="mt-4 font-heading text-xl font-bold text-kelly-text lg:text-2xl">
           <Link
-            href={detailHref}
+            href={titleHref}
             className="hover:text-kelly-navy focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-kelly-navy/40"
+            target={titleExt ? "_blank" : undefined}
+            rel={titleExt ? "noopener noreferrer" : undefined}
           >
             {event.title}
           </Link>
@@ -76,10 +83,12 @@ export function EventCard({ event, className, highlighted, onActivate }: EventCa
         </p>
       </div>
       <Link
-        href={detailHref}
+        href={actionHref}
         className="mt-6 inline-flex items-center gap-2 font-body text-sm font-semibold text-kelly-navy"
+        target={actionExt ? "_blank" : undefined}
+        rel={actionExt ? "noopener noreferrer" : undefined}
       >
-        View details
+        {eventCardCtaLabel(event)}
         <span aria-hidden>→</span>
       </Link>
     </article>

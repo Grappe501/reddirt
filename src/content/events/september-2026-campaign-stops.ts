@@ -46,9 +46,7 @@ function campaignStop(draft: StopDraft): EventItem {
     summary: draft.summary,
     description: draft.description ?? DETAILS_LATER,
     whatToExpect: draft.whatToExpect ?? ["Stop details will be added when the host confirms venue and program."],
-    whoItsFor: draft.statewideVirtual
-      ? "Supporters joining the statewide campaign prayer call."
-      : "Neighbors, volunteers, and anyone who wants to meet the campaign on the trail.",
+    whoItsFor: "Neighbors, volunteers, and anyone who wants to meet the campaign on the trail.",
     organizerNote: tentative
       ? "September 2026 campaign timeline — tentative until confirmed."
       : "September 2026 campaign timeline — public facts only; details to be added.",
@@ -72,32 +70,7 @@ function campaignStop(draft: StopDraft): EventItem {
   };
 }
 
-function prayerCall(slug: string, ymd: string, related: string[]): EventItem {
-  return campaignStop({
-    slug,
-    title: "Campaign Prayer Zoom Call",
-    type: "Community Conversation",
-    region: "Statewide",
-    startsAt: `${ymd}T19:15:00`,
-    endsAt: `${ymd}T20:00:00`,
-    locationLabel: "Statewide / Virtual",
-    addressLine: "Zoom — join from this event page",
-    summary: "Wednesday 7:15 p.m. Central campaign prayer Zoom call. Statewide / virtual — does not count as a county visit.",
-    description:
-      "Wednesday 7:15 p.m. Central statewide campaign prayer call on Zoom. Anyone is welcome. This gathering is statewide and virtual, so it never paints a county on the map and never changes the 51/75 county count.",
-    whatToExpect: [
-      "7:15–8:00 p.m. Central",
-      "Join from the Zoom link on this page",
-      "Statewide / virtual — does not count as a county visit",
-    ],
-    audienceTags: ["Prayer", "Statewide", "Virtual"],
-    relatedEventSlugs: related,
-    statewideVirtual: true,
-    missingCounty: false,
-  });
-}
-
-/** Public September 2026 campaign timeline. Virtual rows never affect the 75-county map. */
+/** Public September 2026 campaign timeline. Virtual series live in `recurring-virtual-series.ts`. */
 export const september2026CampaignStops: EventItem[] = [
   campaignStop({
     slug: "madison-county-meeting-2026-09-03",
@@ -158,12 +131,8 @@ export const september2026CampaignStops: EventItem[] = [
     summary: "Saturday 11:00 a.m. Central at FestiVille in Jacksonville.",
     audienceTags: ["Jacksonville", "Pulaski County", "Festival"],
     mapCoordinates: { lat: 34.8662, lng: -92.1101 },
-    relatedEventSlugs: ["campaign-prayer-zoom-2026-09-09"],
+    relatedEventSlugs: ["faith-and-reflection-zoom-2026-09-09"],
   }),
-  prayerCall("campaign-prayer-zoom-2026-09-09", "2026-09-09", [
-    "festiville-jacksonville-2026-09-05",
-    "roosevelt-dinner-2026-09-10",
-  ]),
   campaignStop({
     slug: "roosevelt-dinner-2026-09-10",
     title: "Roosevelt Dinner",
@@ -251,7 +220,7 @@ export const september2026CampaignStops: EventItem[] = [
     summary: "Tuesday 3:00–7:00 p.m. Central registration event in Russellville.",
     audienceTags: ["Russellville", "Pope County", "Voter registration"],
     mapCoordinates: { lat: 35.2784, lng: -93.1338 },
-    relatedEventSlugs: ["hsv-candidate-forum-2026-09-16", "campaign-prayer-zoom-2026-09-16"],
+    relatedEventSlugs: ["hsv-candidate-forum-2026-09-16", "faith-and-reflection-zoom-2026-09-16"],
   }),
   campaignStop({
     slug: "hsv-candidate-forum-2026-09-16",
@@ -264,13 +233,9 @@ export const september2026CampaignStops: EventItem[] = [
     city: "HSV",
     summary: "Wednesday 2:00 p.m. Central HSV candidate forum. City and county still to be verified before this stop can appear on the county map.",
     audienceTags: ["Candidate Forum"],
-    relatedEventSlugs: ["campaign-prayer-zoom-2026-09-16", "grassroots-guitar-strings-sherwood-2026-09-17"],
+    relatedEventSlugs: ["faith-and-reflection-zoom-2026-09-16", "grassroots-guitar-strings-sherwood-2026-09-17"],
     missingCounty: true,
   }),
-  prayerCall("campaign-prayer-zoom-2026-09-16", "2026-09-16", [
-    "hsv-candidate-forum-2026-09-16",
-    "grassroots-guitar-strings-sherwood-2026-09-17",
-  ]),
   campaignStop({
     slug: "grassroots-guitar-strings-sherwood-2026-09-17",
     title: "Grassroots & Guitar Strings",
@@ -380,14 +345,10 @@ export const september2026CampaignStops: EventItem[] = [
     city: "Location to verify",
     summary: "Tentative Press Freedom Gala. Location and time still needed — this date is not a Paragould candidate forum.",
     audienceTags: ["Press"],
-    relatedEventSlugs: ["campaign-prayer-zoom-2026-09-23"],
+    relatedEventSlugs: ["faith-and-reflection-zoom-2026-09-23"],
     fieldAttendance: "tentative",
     missingCounty: true,
   }),
-  prayerCall("campaign-prayer-zoom-2026-09-23", "2026-09-23", [
-    "press-freedom-gala-2026-09-22",
-    "greene-county-candidate-forum-2026-09-26",
-  ]),
   campaignStop({
     slug: "greene-county-candidate-forum-2026-09-26",
     title: "Candidate Forum",
@@ -416,8 +377,7 @@ export const september2026CampaignStops: EventItem[] = [
     summary: "Tentative 8:00 a.m. Central stop in Little Flock.",
     audienceTags: ["Little Flock", "Benton County", "Northwest Arkansas"],
     mapCoordinates: { lat: 36.3851, lng: -94.1355 },
-    relatedEventSlugs: ["campaign-prayer-zoom-2026-09-30"],
+    relatedEventSlugs: ["faith-and-reflection-zoom-2026-09-30"],
     fieldAttendance: "tentative",
   }),
-  prayerCall("campaign-prayer-zoom-2026-09-30", "2026-09-30", ["little-flock-2026-09-27"]),
 ];

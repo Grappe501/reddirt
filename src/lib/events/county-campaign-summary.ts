@@ -8,6 +8,7 @@ import {
   arkansasCountyKey,
   arkansasCountySlugFromKey,
   countyNameFromAnySlug,
+  eventCountySlugs,
 } from "@/lib/events/county-key";
 import { formatMapEventLine } from "@/lib/events/public-event-county";
 import type { CountyVisitLedger } from "@/lib/events/county-visit-ledger";
@@ -51,10 +52,11 @@ const VIRTUAL_HINT = /\b(virtual|zoom|webinar|livestream)\b/i;
 
 export function drivesPublicCountyMap(event: EventItem): boolean {
   if (event.statewideVirtual) return false;
+  if (event.qualifiesAsVisit === false) return false;
   if (event.opsFlags?.missingCounty) return false;
   if (event.fieldAttendance === "unscheduled" || event.fieldAttendance === "suggested") return false;
   if (VIRTUAL_HINT.test(`${event.locationLabel} ${event.addressLine ?? ""} ${event.title}`)) return false;
-  if (!countyNameFromAnySlug(event.countySlug)) return false;
+  if (eventCountySlugs(event).every((slug) => !countyNameFromAnySlug(slug))) return false;
   return event.campaignTrail === true || event.eventSource === "calendar";
 }
 
@@ -121,13 +123,15 @@ export function buildCountyCampaignSummaries(input: {
     if (resolveEventStatus(event, now) !== "upcoming") continue;
     const attendance = isMapUpcomingAttendance(event);
     if (!attendance) continue;
-    const name = countyNameFromAnySlug(event.countySlug);
-    if (!name) continue;
     const row = toSummary(event, attendance);
     const bucket = attendance === "tentative" ? tentative : confirmed;
-    const list = bucket.get(name) ?? [];
-    list.push(row);
-    bucket.set(name, list);
+    for (const slug of eventCountySlugs(event)) {
+      const name = countyNameFromAnySlug(slug);
+      if (!name) continue;
+      const list = bucket.get(name) ?? [];
+      list.push(row);
+      bucket.set(name, list);
+    }
   }
 
   return ARKANSAS_COUNTIES.map((countyName) => {

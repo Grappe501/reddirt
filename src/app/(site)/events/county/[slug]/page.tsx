@@ -11,7 +11,7 @@ import { ARKANSAS_COUNTY_SVG_PATHS } from "@/data/kelly-county-visits/arkansas-c
 import { queryPublicCampaignEvents } from "@/lib/calendar/public-events";
 import { mergeMovementAndCalendarEvents } from "@/lib/events/calendar-to-movement-event";
 import { drivesPublicCountyMap } from "@/lib/events/county-campaign-summary";
-import { countyNameFromKey, formatCountyEyebrow, normalizeArkansasCountyKey } from "@/lib/events/county-key";
+import { countyNameFromKey, eventCountySlugs, formatCountyEyebrow, normalizeArkansasCountyKey } from "@/lib/events/county-key";
 import { skipPublicStaticGenerationForNetlifyLaunch } from "@/lib/intelligence/intelligenceLaunchMode";
 import { compareEventsForHub, resolveEventStatus } from "@/lib/format/eventDisplay";
 import { pageMeta } from "@/lib/seo/metadata";
@@ -48,7 +48,7 @@ export default async function CountyEventsPage({ params }: Props) {
   const now = new Date();
   const upcoming = merged
     .filter((e) => drivesPublicCountyMap(e))
-    .filter((e) => normalizeArkansasCountyKey(e.countySlug) === key)
+    .filter((e) => eventCountySlugs(e).some((s) => normalizeArkansasCountyKey(s) === key))
     .filter((e) => resolveEventStatus(e, now) === "upcoming")
     .sort((a, b) => compareEventsForHub(a, b, now));
 
