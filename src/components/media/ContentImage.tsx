@@ -27,7 +27,8 @@ export function ContentImage({
 }: ContentImageProps) {
   const isSvg = m.src.endsWith(".svg");
   const imgClass = cn("h-full w-full object-cover", mediaClassName);
-  const style = objectPosition ? { objectPosition } : undefined;
+  const cropPosition = objectPosition ?? m.objectPosition;
+  const style = cropPosition ? { objectPosition: cropPosition } : undefined;
 
   const inner = isSvg ? (
     // SVG placeholders in /public — next/image SVG optimization not enabled; explicit dimensions prevent CLS.

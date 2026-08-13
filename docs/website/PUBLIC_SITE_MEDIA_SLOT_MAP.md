@@ -53,11 +53,11 @@
 | about-journey | journey.strip | Secondary proof | editorialDefault |
 | about-community | community.hero | Community still | arkansasPorch |
 | about-why | why.hero | Why-running still | arkansasPorch |
-| priorities | priorities.hero | Filings / work still | splitLabor |
+| priorities | priorities.hero | Filings / work still | prioritiesHero (War Memorial Stadium concourse) |
 | kelly-speaks | speaks.hero | Video preferred | heroHome |
 | kelly-speaks | speaks.featured | Featured message video | heroHome |
 | campaign-photos | campaign-photos.intro | Intro still | heroHome |
-| endorsements | endorsements.hero | Soft; labeled empty OK | editorialDefault |
+| endorsements | endorsements.hero | Coalition trail still (AFL-CIO pre-event; not the endorsement announcement) | endorsementsHero |
 | understand | understand.hero | Capitol / office | splitDemocracy |
 | office | office.hero | Area still | splitDemocracy |
 | direct-democracy | dd.hero | People / process | splitDemocracy |
