@@ -42,14 +42,6 @@ const teamRoles: { title: string; blurb: string }[] = [
   { title: "Media / story lead", blurb: "Captures honest field notes, photos, or quotes so your county’s truth travels accurately." },
 ];
 
-const crossLinks: { label: string; href: string }[] = [
-  { label: "Bring 5 Friends", href: "/get-involved/bring-5" },
-  { label: "Invite Kelly", href: "/events/request" },
-  { label: "County Fairs", href: "/events/county-fairs" },
-  { label: "Community Election Integrity Tour", href: "/events/community-election-integrity-tour" },
-  { label: "From the Road", href: "/from-the-road" },
-];
-
 export default async function StartALocalTeamPage() {
   return (
     <>
@@ -169,30 +161,6 @@ export default async function StartALocalTeamPage() {
               Starter guides
             </Button>
           </div>
-        </ContentContainer>
-      </FullBleedSection>
-
-      <FullBleedSection variant="subtle" padY aria-labelledby="crosslinks-heading">
-        <ContentContainer className="max-w-3xl">
-          <SectionHeading
-            id="crosslinks-heading"
-            align="left"
-            eyebrow="Plug in"
-            title="Field plan links"
-            subtitle="Local teams connect to fairs, tour stops, and relational invites."
-          />
-          <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-3">
-            {crossLinks.map((c) => (
-              <li key={c.href}>
-                <Link
-                  href={c.href}
-                  className="font-body text-sm font-semibold text-kelly-navy underline underline-offset-2 hover:text-kelly-text"
-                >
-                  {c.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
         </ContentContainer>
       </FullBleedSection>
 
