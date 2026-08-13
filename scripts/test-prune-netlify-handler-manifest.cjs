@@ -1,6 +1,6 @@
 /**
- * Assert OpenNext handler manifest stays scoped to the handler directory.
- * Site-root exclusion-only included_files re-inflate ___netlify-server-handler past 250 MB.
+ * Assert zip-it includes only the pruned handler directory from the site root.
+ * A bare "**" re-inflates ___netlify-server-handler past 250 MB.
  */
 const assert = require("node:assert/strict");
 const fs = require("node:fs");
@@ -8,7 +8,8 @@ const path = require("node:path");
 const {
   patchServerHandlerManifest,
   buildPatchedHandlerManifest,
-  MANIFEST_INCLUDED_EXCLUSIONS,
+  applyServerHandlerIncludeGlobs,
+  HANDLER_SITE_INCLUDE_GLOBS,
 } = require("./prune-netlify-server-handler.cjs");
 
 const tmpRoot = path.join(__dirname, "..", ".local", "temp");
@@ -35,25 +36,24 @@ assert.equal(patched, true, "must patch OpenNext JSON inside the handler directo
 
 const json = JSON.parse(fs.readFileSync(manifestPath, "utf8"));
 assert.equal(json.config.nodeBundler, "none");
-assert.equal(json.config.includedFilesBasePath, handlerDir);
-assert.equal(json.config.includedFiles[0], "**", "OpenNext requires ** scoped to the handler dir");
-assert.ok(
-  json.config.includedFiles.includes("!node_modules/next/**"),
-  "handler-relative exclusions remain",
-);
-assert.ok(
-  !json.config.includedFiles.some((p) => p === "**/*" || p === "./**"),
-  "no extra site-root globs",
-);
+assert.equal(json.config.includedFilesBasePath, tmp);
+assert.deepEqual(json.config.includedFiles, HANDLER_SITE_INCLUDE_GLOBS);
+assert.ok(!json.config.includedFiles.includes("**"), "bare ** would zip the site root");
 
 const rebuilt = buildPatchedHandlerManifest(
-  { config: { includedFiles: ["src/**", "!data/**"] }, version: 1 },
-  handlerDir,
+  { config: { includedFiles: ["**", "src/**", "!data/**"] }, version: 1 },
+  { handlerRoot: handlerDir, cwd: tmp },
 );
-assert.equal(rebuilt.config.includedFiles[0], "**");
-assert.ok(!rebuilt.config.includedFiles.includes("src/**"), "drop site-root positive includes");
-assert.ok(rebuilt.config.includedFiles.includes("!data/**"));
-assert.ok(MANIFEST_INCLUDED_EXCLUSIONS.every((p) => p.startsWith("!")));
+assert.deepEqual(rebuilt.config.includedFiles, HANDLER_SITE_INCLUDE_GLOBS);
+assert.equal(rebuilt.config.includedFilesBasePath, tmp);
+
+const netlifyConfig = { functions: { "___netlify-server-handler": { node_bundler: "esbuild" } } };
+applyServerHandlerIncludeGlobs(netlifyConfig);
+assert.equal(netlifyConfig.functions["___netlify-server-handler"].node_bundler, "none");
+assert.deepEqual(
+  netlifyConfig.functions["___netlify-server-handler"].included_files,
+  HANDLER_SITE_INCLUDE_GLOBS,
+);
 
 fs.rmSync(tmp, { recursive: true, force: true });
 console.log("ok prune-netlify-handler-manifest");

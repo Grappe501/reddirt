@@ -62,13 +62,15 @@
 # Netlify upload cap is 250 MB unzipped per function.
 # Do not use external_node_modules here — it copies whole packages into the upload and blows the cap.
 #
-# Do NOT set included_files on ___netlify-server-handler.
-# OpenNext writes includedFiles: ["**"] with includedFilesBasePath = the handler directory.
-# Toml included_files are site-root relative and replace that manifest, so exclusion-only
-# lists (or a bare "**") re-pull node_modules/.next from the repo and exceed 250 MB.
-# Handler-relative exclusions live in scripts/prune-netlify-server-handler.cjs.
+# zip-it `none` bundler globs included_files from the site root (it drops OpenNext's
+# includedFilesBasePath). A bare "**" or exclusion-only list therefore zips the repo.
+# Include only the pruned handler directory — keep in sync with HANDLER_SITE_INCLUDE_GLOBS.
 [functions."___netlify-server-handler"]
   node_bundler = "none"
+  included_files = [
+    ".netlify/functions-internal/___netlify-server-handler/**",
+    ".netlify/functions/___netlify-server-handler/**",
+  ]
 
 # Optional: document dev port alignment
 # [dev]
