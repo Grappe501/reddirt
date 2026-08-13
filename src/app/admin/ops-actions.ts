@@ -3,6 +3,8 @@
 import { revalidatePath } from "next/cache";
 import { randomBytes } from "node:crypto";
 import {
+  CampaignEventAttendanceType,
+  CampaignEventPurpose,
   CampaignEventStatus,
   CampaignEventType,
   CampaignEventVisibility,
@@ -30,6 +32,33 @@ function slugify(input: string): string {
 
 function newEventSlug(title: string) {
   return `${slugify(title)}-${randomBytes(3).toString("hex")}`;
+}
+
+function parsePurposes(formData: FormData): CampaignEventPurpose[] {
+  const allowed = new Set<string>(Object.values(CampaignEventPurpose));
+  return formData
+    .getAll("campaignPurposes")
+    .map((v) => String(v))
+    .filter((v): v is CampaignEventPurpose => allowed.has(v));
+}
+
+function parseLifecycleFields(formData: FormData, status: CampaignEventStatus) {
+  const city = String(formData.get("city") ?? "").trim() || null;
+  const isTravelLeg = formData.get("isTravelLeg") === "1";
+  const attendanceType = pickEnum(
+    String(formData.get("attendanceType") ?? "CAMPAIGN_APPEARANCE"),
+    Object.values(CampaignEventAttendanceType),
+    CampaignEventAttendanceType.CAMPAIGN_APPEARANCE,
+  );
+  const campaignPurposes = parsePurposes(formData);
+  const wantsPublic = formData.get("isPublicOnWebsite") === "1";
+  const isPublicOnWebsite =
+    !isTravelLeg &&
+    status !== CampaignEventStatus.TENTATIVE &&
+    status !== CampaignEventStatus.DRAFT &&
+    status !== CampaignEventStatus.CANCELLED &&
+    wantsPublic;
+  return { city, isTravelLeg, attendanceType, campaignPurposes, isPublicOnWebsite };
 }
 
 // --- Events ---
@@ -61,6 +90,10 @@ export async function createCampaignEventAction(formData: FormData) {
     Object.values(CampaignEventStatus),
     CampaignEventStatus.SCHEDULED
   );
+  const { city, isTravelLeg, attendanceType, campaignPurposes, isPublicOnWebsite } = parseLifecycleFields(
+    formData,
+    status,
+  );
 
   const ev = await prisma.campaignEvent.create({
     data: {
@@ -73,6 +106,11 @@ export async function createCampaignEventAction(formData: FormData) {
       countyId,
       locationName,
       address,
+      city,
+      isTravelLeg,
+      attendanceType,
+      campaignPurposes,
+      isPublicOnWebsite,
       startAt,
       endAt,
     },
@@ -116,6 +154,10 @@ export async function updateCampaignEventAction(formData: FormData) {
     CampaignEventStatus.SCHEDULED
   );
   const notes = String(formData.get("notes") ?? "").trim() || null;
+  const { city, isTravelLeg, attendanceType, campaignPurposes, isPublicOnWebsite } = parseLifecycleFields(
+    formData,
+    status,
+  );
 
   await prisma.campaignEvent.update({
     where: { id },
@@ -128,6 +170,11 @@ export async function updateCampaignEventAction(formData: FormData) {
       countyId,
       locationName,
       address,
+      city,
+      isTravelLeg,
+      attendanceType,
+      campaignPurposes,
+      isPublicOnWebsite,
       startAt,
       endAt,
       notes,

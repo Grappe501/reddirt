@@ -8,6 +8,7 @@ import { SectionHeading } from "@/components/blocks/SectionHeading";
 import { Button } from "@/components/ui/Button";
 import { EventMeta } from "@/components/organizing/EventMeta";
 import { EventCard } from "@/components/organizing/EventCard";
+import { EventShareActions } from "@/components/organizing/EventShareActions";
 import { RelatedLinksSection } from "@/components/organizing/RelatedLinksSection";
 import { getEventBySlug, listEventSlugs } from "@/content/events";
 import type { EventItem } from "@/content/types";
@@ -18,7 +19,9 @@ import {
   resolvePublicEventTitleForMetadata,
 } from "@/lib/calendar/public-events";
 import { publicCampaignEventToEventItem } from "@/lib/events/calendar-to-movement-event";
-import { getJoinCampaignHref } from "@/config/external-campaign";
+import { attendanceDetailCopy } from "@/lib/events/public-event-kind";
+import { getJoinCampaignHref, getVolunteerSignupHref } from "@/config/external-campaign";
+import { siteConfig } from "@/config/site";
 import { isPrismaDatabaseUnavailable, logPrismaDatabaseUnavailable } from "@/lib/prisma-connectivity";
 import { pageMeta } from "@/lib/seo/metadata";
 import { stripPublicMarkdown, withLiveEventStatus } from "@/lib/format/eventDisplay";
@@ -63,16 +66,22 @@ function CuratedOrCalendarEventView({ event }: { event: EventItem }) {
     .filter((e) => e.slug !== live.slug)
     .map((e) => withLiveEventStatus(e));
 
+  const city = live.city?.trim() || live.locationLabel;
+  const attendance = attendanceDetailCopy(live.attendanceType, city);
+  const volunteerHref = getVolunteerSignupHref();
   const rsvpHref =
     live.rsvpHref ??
     `/get-involved?intent=rsvp&event=${encodeURIComponent(live.slug)}`;
+  const sharePath = `/events/${live.slug}`;
 
   return (
     <>
       <PageHero eyebrow={live.type} title={live.title} subtitle={stripPublicMarkdown(live.summary)}>
-        <Button href={rsvpHref} variant="primary">
-          RSVP or raise your hand
-        </Button>
+        {attendance.rsvpLabel ? (
+          <Button href={rsvpHref} variant="primary">
+            {attendance.rsvpLabel}
+          </Button>
+        ) : null}
         <Button href="/events" variant="outline">
           All events
         </Button>
@@ -88,7 +97,7 @@ function CuratedOrCalendarEventView({ event }: { event: EventItem }) {
                 title="When, where, and what"
                 subtitle="Plain facts first—then the human stuff underneath."
               />
-              <div className="mt-8 rounded-card border border-kelly-text/10 bg-[var(--color-surface-elevated)] p-6 shadow-[var(--shadow-soft)] md:p-8">
+              <div id="details" className="mt-8 rounded-card border border-kelly-text/10 bg-[var(--color-surface-elevated)] p-6 shadow-[var(--shadow-soft)] md:p-8">
                 <EventMeta event={live} />
               </div>
 
@@ -133,14 +142,26 @@ function CuratedOrCalendarEventView({ event }: { event: EventItem }) {
 
             <aside className="space-y-6 lg:sticky lg:top-28">
               <div className="rounded-card border border-kelly-text/10 bg-[var(--color-surface-elevated)] p-6 shadow-[var(--shadow-soft)]">
-                <h2 className="font-heading text-lg font-bold text-kelly-text">Join this stop</h2>
+                <h2 className="font-heading text-lg font-bold text-kelly-text">{attendance.headline}</h2>
                 <p className="mt-3 font-body text-sm leading-relaxed text-kelly-text/75">{live.locationLabel}</p>
                 {live.addressLine ? (
                   <p className="mt-2 font-body text-sm text-kelly-text/65">{live.addressLine}</p>
                 ) : null}
+                {attendance.note ? (
+                  <p className="mt-3 font-body text-sm leading-relaxed text-kelly-text/75">{attendance.note}</p>
+                ) : null}
               </div>
-              <Button href={rsvpHref} variant="primary" className="w-full justify-center">
-                RSVP or raise your hand
+              {attendance.rsvpLabel ? (
+                <Button href={rsvpHref} variant="primary" className="w-full justify-center">
+                  {attendance.rsvpLabel}
+                </Button>
+              ) : null}
+              <div>
+                <p className="mb-2 font-body text-xs font-bold uppercase tracking-wider text-kelly-navy">Share</p>
+                <EventShareActions title={live.title} url={`${siteConfig.url}${sharePath}`} />
+              </div>
+              <Button href={volunteerHref} variant="outline" className="w-full justify-center">
+                Volunteer
               </Button>
               {county ? (
                 <Link

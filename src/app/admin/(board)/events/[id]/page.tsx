@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { CampaignEventStatus, CampaignEventType, CampaignEventVisibility } from "@prisma/client";
+import { CampaignEventAttendanceType, CampaignEventPurpose, CampaignEventStatus, CampaignEventType, CampaignEventVisibility } from "@prisma/client";
 import { createEventSignupAction, updateCampaignEventAction } from "@/app/admin/ops-actions";
 import { prisma } from "@/lib/db";
 
@@ -109,11 +109,25 @@ export default async function AdminEventDetailPage({ params }: Props) {
             <input name="locationName" defaultValue={event.locationName ?? ""} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
           </label>
           <label className="block text-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Address</span>
-            <input name="address" defaultValue={event.address ?? ""} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">City / town (public)</span>
+            <input name="city" defaultValue={event.city ?? ""} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
           </label>
         </div>
+        <label className="block text-sm">
+          <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Address</span>
+          <input name="address" defaultValue={event.address ?? ""} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
+        </label>
         <div className="grid gap-4 md:grid-cols-2">
+          <label className="block text-sm">
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Attendance (public copy)</span>
+            <select name="attendanceType" defaultValue={event.attendanceType} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm">
+              {Object.values(CampaignEventAttendanceType).map((t) => (
+                <option key={t} value={t}>
+                  {t}
+                </option>
+              ))}
+            </select>
+          </label>
           <label className="block text-sm">
             <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Visibility</span>
             <select name="visibility" defaultValue={event.visibility} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm">
@@ -124,6 +138,39 @@ export default async function AdminEventDetailPage({ params }: Props) {
               ))}
             </select>
           </label>
+        </div>
+        <fieldset className="rounded-md border border-kelly-text/10 p-4">
+          <legend className="px-1 text-xs font-semibold uppercase tracking-wider text-kelly-muted">
+            Campaign purposes (internal — never public)
+          </legend>
+          <div className="mt-2 grid gap-2 sm:grid-cols-2">
+            {Object.values(CampaignEventPurpose).map((p) => (
+              <label key={p} className="flex items-center gap-2 text-sm text-kelly-text">
+                <input
+                  type="checkbox"
+                  name="campaignPurposes"
+                  value={p}
+                  defaultChecked={event.campaignPurposes.includes(p)}
+                />
+                {p.replaceAll("_", " ")}
+              </label>
+            ))}
+          </div>
+        </fieldset>
+        <div className="space-y-2 rounded-md border border-kelly-text/10 p-4">
+          <label className="flex items-center gap-2 text-sm text-kelly-text">
+            <input type="checkbox" name="isTravelLeg" value="1" defaultChecked={event.isTravelLeg} />
+            Travel / repositioning leg (never public; not a visited-county appearance)
+          </label>
+          <label className="flex items-center gap-2 text-sm text-kelly-text">
+            <input type="checkbox" name="isPublicOnWebsite" value="1" defaultChecked={event.isPublicOnWebsite} />
+            Show on public website (also requires PUBLISHED workflow in Calendar HQ)
+          </label>
+          <p className="text-xs text-kelly-subtle">
+            TENTATIVE, DRAFT, CANCELLED, and travel legs are forced off the public site even if this box is checked.
+          </p>
+        </div>
+        <div className="grid gap-4 md:grid-cols-2">
           <label className="block text-sm">
             <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Status</span>
             <select name="status" defaultValue={event.status} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm">

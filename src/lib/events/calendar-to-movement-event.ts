@@ -12,6 +12,18 @@ export function campaignEventTypeToMovementEventType(t: CampaignEventType): Even
       return "Volunteer Training";
     case "FESTIVAL":
       return "Fairs and Festivals";
+    case "YOUTH":
+      return "Youth Civic Session";
+    case "LISTENING":
+      return "Listening Session";
+    case "CIVIC":
+      return "Direct Democracy Briefing";
+    case "COUNTY_PARTY":
+    case "FORUM":
+    case "SPEAKING":
+      return "Town Hall";
+    case "COMMUNITY":
+      return "Community Conversation";
     case "RALLY":
     case "APPEARANCE":
     case "PRESS":
@@ -60,7 +72,7 @@ export function publicCampaignEventToEventItem(ev: PublicCampaignEvent): EventIt
     startsAt: ev.startAt.toISOString(),
     endsAt: ev.endAt.toISOString(),
     timezone: ev.timezone,
-    locationLabel: venue || "Unknown",
+    locationLabel: ev.city?.trim() || venue || "Unknown",
     addressLine: ev.address ?? undefined,
     summary,
     description: ev.publicSummary?.trim() || ev.title,
@@ -77,6 +89,8 @@ export function publicCampaignEventToEventItem(ev: PublicCampaignEvent): EventIt
     mapPinQuality: undefined,
     detailHref: ev.detailHref,
     eventSource: "calendar",
+    attendanceType: ev.attendanceType,
+    city: ev.city?.trim() || undefined,
     opsFlags: {
       missingPublicSummary: !hasSummary,
       missingCounty: !ev.county,

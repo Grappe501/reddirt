@@ -2991,16 +2991,47 @@ enum CampaignEventType {
   /// Third-party fair, festival, or community gathering (often after promotion from ingest).
   FESTIVAL
   OTHER
+  COMMUNITY
+  COUNTY_PARTY
+  FORUM
+  YOUTH
+  CIVIC
+  SPEAKING
+  LISTENING
 
   @@schema("public")
 }
 
 enum CampaignEventStatus {
   DRAFT
+  TENTATIVE
   SCHEDULED
   IN_PROGRESS
   COMPLETED
   CANCELLED
+
+  @@schema("public")
+}
+
+enum CampaignEventAttendanceType {
+  PUBLIC_OPEN
+  PUBLIC_REGISTRATION
+  INVITATION
+  CAMPAIGN_APPEARANCE
+  PRIVATE
+
+  @@schema("public")
+}
+
+enum CampaignEventPurpose {
+  LISTEN
+  RELATIONSHIP
+  VISIBILITY
+  VOLUNTEER
+  FUNDRAISING
+  MEDIA
+  GOTV
+  VOTER_REGISTRATION
 
   @@schema("public")
 }
@@ -3278,6 +3309,14 @@ model CampaignEvent {
   visibility               CampaignEventVisibility @default(INTERNAL)
   countyId                 String?
   county                   County?                 @relation(fields: [countyId], references: [id], onDelete: SetNull)
+  /// City/town for public cards (county stays on countyId).
+  city                     String?
+  /// Internal travel/repositioning — never public, never a visited-county appearance.
+  isTravelLeg              Boolean                 @default(false)
+  /// Who may attend if the event is published.
+  attendanceType           CampaignEventAttendanceType @default(CAMPAIGN_APPEARANCE)
+  /// Internal campaign purposes (never public).
+  campaignPurposes         CampaignEventPurpose[]  @default([])
   locationName             String?
   address                  String?                 @db.Text
   startAt                  DateTime
@@ -3385,6 +3424,7 @@ model CampaignEvent {
   @@index([status, startAt])
   @@index([eventWorkflowState, startAt])
   @@index([isPublicOnWebsite, eventWorkflowState, startAt])
+  @@index([isTravelLeg, isPublicOnWebsite])
   @@index([googleEventId])
   @@index([googleSyncState, updatedAt])
   @@schema("public")

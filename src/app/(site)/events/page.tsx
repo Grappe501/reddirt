@@ -5,17 +5,12 @@ import { FullBleedSection } from "@/components/layout/FullBleedSection";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { CTASection } from "@/components/blocks/CTASection";
 import { Button } from "@/components/ui/Button";
-import { EventsHub } from "@/components/organizing/EventsHub";
-import { UpcomingCampaignStops } from "@/components/organizing/UpcomingCampaignStops";
+import { EventsSurface, type EventsSurfaceView } from "@/components/organizing/EventsSurface";
 import { SuggestCommunityEventForm } from "@/components/organizing/SuggestCommunityEventForm";
-import { events, eventTypes, listMovementEventAudienceOptions } from "@/content/events";
-import type { EventFiltersState } from "@/components/organizing/EventFilterBar";
-import type { EventType } from "@/content/types";
-import { listMovementEventRegionFilterLabels } from "@/content/arkansas-movement-regions";
+import { events } from "@/content/events";
 import { queryPublicCampaignEvents } from "@/lib/calendar/public-events";
 import { mergeMovementAndCalendarEvents } from "@/lib/events/calendar-to-movement-event";
 import { safePublishedCountyOptions } from "@/lib/county/safe-published-county-options";
-import type { EventSchedulePreset } from "@/lib/format/event-schedule-in-zone";
 import { representLocalEventVolunteerHref } from "@/config/navigation";
 
 import { pageMeta } from "@/lib/seo/metadata";
@@ -24,7 +19,7 @@ import { brandMediaFromLegacySite } from "@/config/brand-media";
 export const metadata: Metadata = pageMeta({
   title: "Events",
   description:
-    "Where Kelly will be next — confirmed campaign and community stops in Arkansas Central Time. Invite Kelly or host a gathering if your town is not on the list yet.",
+    "Where Kelly will be next — from county fairs and community meetings to cookouts, candidate forums, and front porches. Invite Kelly or host a gathering if your town is not on the list yet.",
   path: "/events",
   imageSrc: brandMediaFromLegacySite.statewideBanner,
 });
@@ -34,6 +29,11 @@ function pickParam(sp: Record<string, string | string[] | undefined>, key: strin
   if (typeof v === "string") return v;
   if (Array.isArray(v)) return v[0];
   return undefined;
+}
+
+function pickView(raw: string | undefined): EventsSurfaceView {
+  if (raw === "calendar" || raw === "map" || raw === "past") return raw;
+  return "upcoming";
 }
 
 /**
@@ -47,41 +47,12 @@ export default async function EventsPage({
 }) {
   const sp = (await searchParams) ?? {};
   const suggestOk = pickParam(sp, "ok");
+  const initialView = pickView(pickParam(sp, "view"));
   const [counties, calendarRows] = await Promise.all([
     safePublishedCountyOptions(),
-    queryPublicCampaignEvents({ range: "all_upcoming" }, { take: 200 }),
+    queryPublicCampaignEvents({ range: "all" }, { take: 200 }),
   ]);
   const mergedEvents = mergeMovementAndCalendarEvents(events, calendarRows);
-  const typeRaw = pickParam(sp, "type");
-  const regionRaw = pickParam(sp, "region");
-  const statusRaw = pickParam(sp, "status");
-  const audienceRaw = pickParam(sp, "audience");
-
-  const allMovementRegions = listMovementEventRegionFilterLabels();
-  const audienceTags = listMovementEventAudienceOptions();
-
-  const type: EventFiltersState["type"] =
-    typeRaw && (eventTypes as readonly string[]).includes(typeRaw) ? (typeRaw as EventType) : "all";
-  const regionDecoded = regionRaw ? decodeURIComponent(regionRaw) : "all";
-  const region: EventFiltersState["region"] =
-    regionDecoded !== "all" && allMovementRegions.includes(regionDecoded) ? regionDecoded : "all";
-  const status: EventFiltersState["status"] =
-    statusRaw === "all" || statusRaw === "past" || statusRaw === "upcoming" ? statusRaw : "upcoming";
-  const audienceDecoded = audienceRaw ? decodeURIComponent(audienceRaw) : "all";
-  const audience: EventFiltersState["audience"] =
-    audienceDecoded !== "all" && audienceTags.includes(audienceDecoded) ? audienceDecoded : "all";
-
-  const scheduleParam = pickParam(sp, "when");
-  const schedule: EventSchedulePreset =
-    scheduleParam === "today"
-      ? "today"
-      : scheduleParam === "week"
-        ? "this_week"
-        : scheduleParam === "ahead"
-          ? "upcoming"
-          : "all";
-  const filterKey = JSON.stringify({ type, region, status, audience, schedule });
-  const upcomingCount = mergedEvents.filter((e) => e.status === "upcoming").length;
 
   return (
     <>
@@ -90,43 +61,29 @@ export default async function EventsPage({
         layout="split"
         eyebrow="Events"
         title="Where Kelly will be next"
-        subtitle="Confirmed stops in Arkansas Central Time. If your town is not on the list yet, invite Kelly or host a gathering — nothing is public until it is verified."
+        subtitle="From county fairs and community meetings to cookouts, candidate forums, and front porches — see where Kelly is headed next."
       >
         <Button href="/events/request" variant="primary">
           Invite Kelly
         </Button>
         <Button href="/host-a-gathering" variant="outlineOnDark">
-          Host a gathering
+          Host a Gathering
         </Button>
       </MediaPageHero>
 
       <FullBleedSection
         padY
-        aria-labelledby="upcoming-stops-heading"
+        aria-labelledby="events-surface-heading"
         className="!pt-[calc(var(--section-padding-y)*0.55)] lg:!pt-[calc(var(--section-padding-y-lg)*0.55)]"
-      >
-        <ContentContainer>
-          <UpcomingCampaignStops events={mergedEvents} />
-        </ContentContainer>
-      </FullBleedSection>
-
-      <FullBleedSection
-        padY
-        aria-labelledby="calendar-heading"
-        className="!pt-[calc(var(--section-padding-y)*0.45)] lg:!pt-[calc(var(--section-padding-y-lg)*0.45)]"
       >
         <ContentContainer wide>
           <div className="mb-8 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
             <div>
-              <h2 id="calendar-heading" className="font-heading text-xl font-bold text-kelly-text md:text-2xl">
-                Calendar
+              <h2 id="events-surface-heading" className="font-heading text-xl font-bold text-kelly-text md:text-2xl">
+                Stops
               </h2>
               <p className="mt-2 max-w-2xl font-body text-kelly-text/75">
-                {upcomingCount === 1
-                  ? "One confirmed stop ahead — times below are Central."
-                  : upcomingCount > 1
-                    ? `${upcomingCount} confirmed stops ahead — times below are Central.`
-                    : "No confirmed upcoming stops on this list yet. Switch Timing to Past to browse what already happened, or invite Kelly to your town."}
+                Upcoming, calendar, map, and past stops from the same public records. Times are Central.
               </p>
             </div>
             <nav
@@ -150,14 +107,7 @@ export default async function EventsPage({
               </Link>
             </nav>
           </div>
-          <EventsHub
-            key={filterKey}
-            events={mergedEvents}
-            types={[...eventTypes]}
-            regions={allMovementRegions}
-            audienceTags={audienceTags}
-            initialFilters={{ type, region, status, audience, schedule }}
-          />
+          <EventsSurface events={mergedEvents} initialView={initialView} />
         </ContentContainer>
       </FullBleedSection>
 
