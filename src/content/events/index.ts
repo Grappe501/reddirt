@@ -1,5 +1,6 @@
 import type { EventItem } from "@/content/types";
 import { markSuggestedFestivalPath } from "@/lib/festivals/suggest-coverage-path";
+import { august2026CampaignStops } from "@/content/events/august-2026-campaign-stops";
 
 /** Fair research dump — operator/Evidence only; not merged into the public `/events` hub (Phase 1). */
 export { ARKANSAS_FESTIVAL_EVENTS_2026 } from "./arkansas-festivals-2026";
@@ -587,7 +588,10 @@ const movementEventsCore: EventItem[] = [
 ];
 
 /** Public curated movement events only. Published CampaignOS rows merge on `/events` at request time. */
-export const events: EventItem[] = markSuggestedFestivalPath([...movementEventsCore]);
+export const events: EventItem[] = markSuggestedFestivalPath([
+  ...movementEventsCore,
+  ...august2026CampaignStops,
+]);
 
 export const eventTypes = [
   "Town Hall",

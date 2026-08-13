@@ -3,6 +3,7 @@ import { SectionHeading } from "@/components/blocks/SectionHeading";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { FullBleedSection } from "@/components/layout/FullBleedSection";
 import type { EventItem } from "@/content/types";
+import { parseEventInstant } from "@/lib/format/eventDisplay";
 import { cn } from "@/lib/utils";
 
 /**
@@ -18,7 +19,7 @@ type PlannedListeningEventsSectionProps = {
 };
 
 function formatEventTileWhen(ev: EventItem): { dateLine: string; timeLine: string } {
-  const start = new Date(ev.startsAt);
+  const start = parseEventInstant(ev.startsAt, ev.timezone);
   const tz = ev.timezone;
   const dateLine = new Intl.DateTimeFormat("en-US", {
     weekday: "short",

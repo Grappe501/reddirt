@@ -6,6 +6,7 @@ import { ContentContainer } from "@/components/layout/ContentContainer";
 import { CTASection } from "@/components/blocks/CTASection";
 import { Button } from "@/components/ui/Button";
 import { EventsHub } from "@/components/organizing/EventsHub";
+import { UpcomingCampaignStops } from "@/components/organizing/UpcomingCampaignStops";
 import { SuggestCommunityEventForm } from "@/components/organizing/SuggestCommunityEventForm";
 import { events, eventTypes, listMovementEventAudienceOptions } from "@/content/events";
 import type { EventFiltersState } from "@/components/organizing/EventFilterBar";
@@ -101,8 +102,18 @@ export default async function EventsPage({
 
       <FullBleedSection
         padY
-        aria-labelledby="calendar-heading"
+        aria-labelledby="upcoming-stops-heading"
         className="!pt-[calc(var(--section-padding-y)*0.55)] lg:!pt-[calc(var(--section-padding-y-lg)*0.55)]"
+      >
+        <ContentContainer>
+          <UpcomingCampaignStops events={mergedEvents} />
+        </ContentContainer>
+      </FullBleedSection>
+
+      <FullBleedSection
+        padY
+        aria-labelledby="calendar-heading"
+        className="!pt-[calc(var(--section-padding-y)*0.45)] lg:!pt-[calc(var(--section-padding-y-lg)*0.45)]"
       >
         <ContentContainer wide>
           <div className="mb-8 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">

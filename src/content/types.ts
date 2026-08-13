@@ -76,7 +76,11 @@ export type EventItem = {
     missingPublicSummary?: boolean;
     missingCounty?: boolean;
     missingCoordinates?: boolean;
+    /** Date is confirmed; clock time is not public yet — do not invent a start hour. */
+    timeTbd?: boolean;
   };
+  /** Confirmed campaign-trail stop for the chronological list on `/events`. */
+  campaignTrail?: boolean;
   /**
    * When true, this event is listed on `/listening-sessions` under “Events planned,” alongside every
    * event whose `type` is `Listening Session`. Set on partner or special-format stops that match the

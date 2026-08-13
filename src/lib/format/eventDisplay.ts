@@ -75,6 +75,10 @@ export function formatEventWhen(ev: EventItem): { primary: string; secondary?: s
   });
   const primary = dateFmt.format(start);
 
+  if (ev.opsFlags?.timeTbd) {
+    return { primary, secondary: `${monthShortDay.format(start)} · Time TBA` };
+  }
+
   let secondary: string;
   if (!end) {
     secondary = `${monthShortDay.format(start)} · ${timeWithZone.format(start)}`;
@@ -84,4 +88,9 @@ export function formatEventWhen(ev: EventItem): { primary: string; secondary?: s
     secondary = `${monthShortDay.format(start)}, ${timeWithZone.format(start)} – ${monthShortDay.format(end)}, ${timeWithZone.format(end)}`;
   }
   return { primary, secondary };
+}
+
+/** YYYY-MM-DD in the event timezone — for grouping trail days. */
+export function eventCalendarDayKey(ev: Pick<EventItem, "startsAt" | "timezone">): string {
+  return calendarDayInZone(parseEventInstant(ev.startsAt, ev.timezone), ev.timezone);
 }
