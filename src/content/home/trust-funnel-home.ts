@@ -390,7 +390,7 @@ export const trustFunnelHomeCopy = {
     lead:
       "Kelly entered this race to defend fair elections and the citizen path to ballot measures—not to narrow who gets to petition or how signatures are counted.",
     body:
-      "Stand Up Arkansas, LEARNS petition work, and the commitment network are the same story: neighbors learning the process, circulating responsibly, and holding power accountable when it overreaches.",
+      "Stand Up Arkansas and LEARNS petition work are the same story: neighbors learning the process, circulating responsibly, and holding power accountable when it overreaches.",
     pillars: [
       {
         title: "Protect ballot access",
@@ -401,8 +401,8 @@ export const trustFunnelHomeCopy = {
         body: "Plain-language steps from title drafting through verification—so organizers know what the Secretary of State’s office actually controls.",
       },
       {
-        title: "Organize the commitment network",
-        body: "Circulators, notaries, and local captains who pledge to follow Arkansas law and keep citizen-led work in citizens’ hands.",
+        title: "Organize volunteers",
+        body: "Circulators, notaries, and local captains who follow Arkansas law and keep citizen-led work in citizens’ hands.",
       },
       {
         title: "Kelly’s organizing record",
@@ -412,7 +412,7 @@ export const trustFunnelHomeCopy = {
     ctas: {
       hub: "Direct democracy hub",
       process: "How initiatives reach the ballot",
-      commitment: "Join the commitment network",
+      commitment: "Get involved",
     },
   },
 

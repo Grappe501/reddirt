@@ -1,6 +1,5 @@
 import {
   ballotInitiativeProcessHref,
-  directDemocracyCommitmentHref,
   directDemocracyHubHref,
   kellyInitiativesChapterHref,
 } from "@/config/direct-democracy-links";
@@ -104,7 +103,6 @@ export const primaryNavGroups: NavGroup[] = [
     items: [
       { label: "Learn How Direct Democracy Works", href: ballotInitiativeProcessHref },
       { label: "The People's Voice hub", href: directDemocracyHubHref },
-      { label: "Commitment network", href: directDemocracyCommitmentHref },
       { label: "Kelly's petition organizing", href: kellyInitiativesChapterHref },
     ],
   },
