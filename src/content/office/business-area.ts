@@ -18,30 +18,29 @@ export const businessAreaConfig: OfficeAreaConfig = {
   shortTitle: "Business & Filings",
   navLabel: "Business & Filings",
   metaDescription:
-    "How the Arkansas Secretary of State's business services support registrations, filings, and public records employers and nonprofits rely on—with plain language and reliable process.",
+    "Arkansas Secretary of State Business and Commercial Services: corporations, LLCs, nonprofits, annual reports, franchise tax, UCC filings, trademarks, and the public business-entity search.",
   layerOne: {
     eyebrow: OFFICE_LAYER_EYEBROWS[1],
     title: "Business & Filings",
     intro:
-      "The Secretary of State's office is part of Arkansas's economic infrastructure. When filings are clear, searchable, and understandable, small businesses, nonprofits, employers, and local organizations can spend less time fighting paperwork and more time doing their work.",
+      "Business and Commercial Services is Arkansas’s starting point for people who form or transact business in the state, whether they are based here or elsewhere. Several filing desks sit under one division so a name search, an entity filing, and a later annual report live in the same system.",
     sections: [
       {
-        heading: "What this office touches",
+        heading: "What Business and Commercial Services files",
         paragraphs: [
-          "Business registrations—the on-ramps that let lawful entities form and operate in Arkansas with confidence.",
-          "Annual reports and filings the law assigns to this office.",
-          "Nonprofit filings that keep charities and civic organizations in good standing.",
-          "Official business records maintained as the durable, public-facing history of what was filed.",
-          "Searchable public information so lenders, partners, and researchers can verify what the law expects to be visible.",
+          "Domestic and foreign business corporations, nonprofit corporations, professional corporations, limited partnerships, LLPs, LLLPs, and limited liability companies are formed or qualified by filing with this division.",
+          "Filers can search whether a company name is available, then file articles, amendments, mergers, or dissolutions. The office publishes that most filings complete within two business days of receipt; the effective date is the date BCS receives the document unless the filing sets a later date.",
+          "Corporations and LLCs file annual reports and pay franchise tax to the Secretary of State—online, by mail, or in person in Little Rock or Fayetteville.",
+          "The division records Uniform Commercial Code financing statements and other lien documents, and registers trademarks and service marks.",
+          "Other filings assigned to this office include commercial registered agents, cooperatives, international student-exchange organizations, and related commercial records.",
         ],
       },
       {
-        heading: "What users should expect",
+        heading: "How to use the office",
         paragraphs: [
-          "Clear instructions written for humans who are busy—not manuals written only for specialists.",
-          "Predictable steps you can plan around instead of guessing which door to knock on next.",
-          "Forms and guidance that are easy to find.",
-          "Fewer loops and false finishes—the process should feel on your side when you are trying to do things right.",
+          "The public business-entity search lets lenders, partners, and neighbors check what was filed.",
+          "Counter service is at the Victory Building, 1401 W. Capitol Avenue, Suite 250, Little Rock, and at 300 North College, Suite 201F, Fayetteville.",
+          "Notary commissions, eNotary, and apostilles are also housed in this division; those duties are described on the Notaries page.",
         ],
       },
     ],
@@ -105,8 +104,10 @@ export const businessAreaConfig: OfficeAreaConfig = {
   },
   layerTwoNextLabel: "What Kelly brings",
   relatedLinks: [
+    { label: "Business & Commercial Services (official)", href: "https://www.sos.arkansas.gov/business-commercial-services-bcs" },
+    { label: "Duties of the office (official)", href: "https://www.sos.arkansas.gov/about-the-office/duties-of-the-office" },
     { label: "Understand the Office", href: "/understand" },
-    { label: "Experience & Leadership", href: "/about/journey" },
+    { label: "Notaries", href: "/office/notaries" },
     { label: "Meet Kelly", href: "/about" },
   ],
 };
