@@ -7,7 +7,6 @@ import { ResponsiveGrid } from "@/components/layout/ResponsiveGrid";
 import { ProcessSteps } from "@/components/blocks/ProcessSteps";
 import { QuoteBand } from "@/components/blocks/QuoteBand";
 import { CTASection } from "@/components/blocks/CTASection";
-import { DirectDemocracyCommitmentForm } from "@/components/forms/DirectDemocracyCommitmentForm";
 import { Button } from "@/components/ui/Button";
 import { siteConfig } from "@/config/site";
 import { getPageBlockPayload, type HeroBlockPayload } from "@/lib/content/page-blocks";
@@ -70,8 +69,8 @@ export default async function DirectDemocracyPage() {
         <Button href="/direct-democracy/ballot-initiative-process" variant="primary">
           Learn How Direct Democracy Works →
         </Button>
-        <Button href="#commitment-network" variant="outlineOnDark">
-          Join the commitment network
+        <Button href="/get-involved" variant="outlineOnDark">
+          Get involved
         </Button>
       </MediaPageHero>
 
@@ -108,38 +107,6 @@ export default async function DirectDemocracyPage() {
               </p>
             </div>
           </div>
-        </ContentContainer>
-      </FullBleedSection>
-
-      <FullBleedSection variant="subtle" id="commitment-network" aria-labelledby="network-heading">
-        <ContentContainer>
-          <SectionHeading
-            id="network-heading"
-            eyebrow="Commitment"
-            title="Referendum commitment network"
-            subtitle="We’re building a large-scale network of Arkansans who pledge to sign referendum petitions when the legislature crosses clear lines on voter power—so issues can reach the ballot."
-          />
-          <div className="mt-10 max-w-3xl space-y-4">
-            <div className="rounded-card border border-kelly-text/10 bg-[var(--color-surface-elevated)] p-6 shadow-[var(--shadow-soft)] md:p-8">
-              <h3 className="font-heading text-2xl font-bold text-kelly-text">Raise your hand—responsibly</h3>
-              <p className="mt-3 font-body text-base leading-relaxed text-kelly-text/75">
-                This isn’t agreement on every issue. It’s a shared promise to protect the public’s right to decide
-                when power tries to slip away.
-              </p>
-              <div className="mt-8">
-                <DirectDemocracyCommitmentForm />
-              </div>
-            </div>
-            <p className="font-body text-sm leading-relaxed text-kelly-text/60">
-              Legal thresholds, petition language, and compliance will be finalized with counsel before any
-              signature collection begins.
-            </p>
-          </div>
-          <p className="mt-8 max-w-3xl font-body text-sm leading-relaxed text-kelly-text/60">
-            Target scale for organizing conversations: roughly <strong>65,000</strong> Arkansans committed to
-            defend ballot access—large enough to signal seriousness and rebuild public leverage. Exact targets
-            follow legal guidance.
-          </p>
         </ContentContainer>
       </FullBleedSection>
 
@@ -307,15 +274,15 @@ export default async function DirectDemocracyPage() {
 
       <CTASection
         eyebrow="Next step"
-        title="Learn the process. Join the network. Stay ready."
+        title="Learn the process. Stay ready."
         description={`${siteConfig.shortName} is committed to plain-language civic education and disciplined organizing around ballot access—grounded in what the Secretary of State’s office actually administers.`}
         variant="primary-band"
       >
-        <Button href="#commitment-network" variant="secondary">
-          Commitment network
-        </Button>
-        <Button href="/get-involved" variant="outline" className="border-kelly-page/50 text-kelly-page hover:bg-kelly-page/10">
+        <Button href="/get-involved" variant="secondary">
           Get involved
+        </Button>
+        <Button href="/direct-democracy/ballot-initiative-process" variant="outline" className="border-kelly-page/50 text-kelly-page hover:bg-kelly-page/10">
+          How a measure reaches the ballot
         </Button>
       </CTASection>
     </>

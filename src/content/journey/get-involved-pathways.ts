@@ -89,11 +89,11 @@ export const getInvolvedPathways: GetInvolvedPathwayDefinition[] = [
     id: "petitions-gotv",
     title: "Help with petitions and GOTV",
     whatYouDo:
-      "Join the referendum commitment network for ballot-access pledges (legal details finalized with counsel before collection), and use the volunteer form for general election GOTV shifts when coordinators publish them.",
+      "Use the volunteer form for petition education, ballot-access work, and general election GOTV shifts when coordinators publish them.",
     whyItMatters:
       "Ballot access and turnout are complementary: one protects the public’s leverage; the other ensures voters get over the finish line.",
-    timeRequired: "10–15 minutes for the commitment form; GOTV windows are seasonal and shift-based.",
-    primaryAction: { label: "Join the commitment network", href: "/direct-democracy#commitment-network" },
-    secondaryAction: { label: "Volunteer for field shifts", href: "/get-involved#volunteer" },
+    timeRequired: "GOTV windows are seasonal and shift-based; petition education can start with a short volunteer signup.",
+    primaryAction: { label: "Volunteer for field shifts", href: "/get-involved#volunteer" },
+    secondaryAction: { label: "How a measure reaches the ballot", href: "/direct-democracy/ballot-initiative-process" },
   },
 ];
