@@ -128,6 +128,8 @@ model User {
   emailContactImportBatchesCreated    EmailContactImportBatch[]           @relation("EmailContactImportBatchCreatedBy")
   emailContactImportBatchesApproved   EmailContactImportBatch[]           @relation("EmailContactImportBatchApprovedBy")
   emailContactImportDecisions         EmailContactImportDecision[]        @relation("EmailContactImportDecisionDecidedBy")
+  /// CONTACT-INTEL-1.0 — spreadsheet ingest jobs (email/phone library; no send).
+  contactIntelImportJobsCreated       ContactIntelImportJob[]             @relation("ContactIntelImportJobCreatedBy")
   /// EMAIL-MESSAGE-STUDIO-SERVER-DRAFTS-1.0 — shared campaign drafts (persistence only; no send).
   messageStudioDraftsCreated          MessageStudioDraft[]                @relation("MessageStudioDraftCreatedBy")
   messageStudioDraftsUpdated          MessageStudioDraft[]                @relation("MessageStudioDraftUpdatedBy")
@@ -7634,6 +7636,152 @@ model CommunityWorkbenchPilotDefect {
   updatedAt        DateTime @updatedAt
 
   @@index([workbenchSlug, status])
+  @@schema("public")
+}
+
+// --- CONTACT-INTEL-1.0 — unified email/phone contact library (spreadsheet ingest).
+// Separate from EmailContactProfile (email-required), RelationalContact (volunteer-owned),
+// and User (CRM login identity). No outbound send. Extra source columns stay in rawJson.
+
+enum ContactIntelMethodKind {
+  EMAIL
+  PHONE
+
+  @@schema("public")
+}
+
+enum ContactIntelImportJobStatus {
+  UPLOADED
+  PREVIEWED
+  COMMITTED
+  FAILED
+
+  @@schema("public")
+}
+
+enum ContactIntelSourceRowStatus {
+  PENDING
+  INVALID
+  NEW
+  UPDATE
+  CONFLICT
+  SKIPPED
+  COMMITTED
+
+  @@schema("public")
+}
+
+enum ContactIntelConflictStatus {
+  OPEN
+  DISMISSED
+
+  @@schema("public")
+}
+
+model ContactIntelPerson {
+  id          String   @id @default(cuid())
+  displayName String
+  firstName   String?  @db.VarChar(200)
+  lastName    String?  @db.VarChar(200)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  methods    ContactIntelMethod[]
+  sourceRows ContactIntelSourceRow[]
+  conflictsLeft  ContactIntelConflict[] @relation("ContactIntelConflictLeft")
+  conflictsRight ContactIntelConflict[] @relation("ContactIntelConflictRight")
+
+  @@index([displayName])
+  @@index([updatedAt])
+  @@schema("public")
+}
+
+model ContactIntelMethod {
+  id              String                 @id @default(cuid())
+  personId        String
+  person          ContactIntelPerson     @relation(fields: [personId], references: [id], onDelete: Cascade)
+  kind            ContactIntelMethodKind
+  originalValue   String                 @db.Text
+  normalizedValue String                 @db.VarChar(320)
+  createdAt       DateTime               @default(now())
+
+  @@unique([kind, normalizedValue])
+  @@index([personId])
+  @@index([normalizedValue])
+  @@schema("public")
+}
+
+model ContactIntelImportJob {
+  id               String                     @id @default(cuid())
+  originalFilename String                     @db.VarChar(500)
+  fileHash         String                     @db.VarChar(64)
+  sourceLabel      String?                    @db.VarChar(320)
+  status           ContactIntelImportJobStatus @default(UPLOADED)
+  mappingJson      Json                       @default("{}")
+  headerJson       Json                       @default("[]")
+  statsJson        Json                       @default("{}")
+  previewJson      Json                       @default("{}")
+  errorSummary     String?                    @db.Text
+  createdByUserId  String?
+  createdBy        User?                      @relation("ContactIntelImportJobCreatedBy", fields: [createdByUserId], references: [id], onDelete: SetNull)
+  createdAt        DateTime                   @default(now())
+  updatedAt        DateTime                   @updatedAt
+  committedAt      DateTime?
+
+  rows      ContactIntelSourceRow[]
+  conflicts ContactIntelConflict[]
+
+  @@index([fileHash])
+  @@index([status, createdAt])
+  @@index([createdByUserId])
+  @@schema("public")
+}
+
+model ContactIntelSourceRow {
+  id           String                      @id @default(cuid())
+  jobId        String
+  job          ContactIntelImportJob       @relation(fields: [jobId], references: [id], onDelete: Cascade)
+  rowNumber    Int
+  rawJson      Json                        @default("{}")
+  rowHash      String                      @db.VarChar(64)
+  status       ContactIntelSourceRowStatus @default(PENDING)
+  displayName  String?
+  firstName    String?                     @db.VarChar(200)
+  lastName     String?                     @db.VarChar(200)
+  emailsJson   Json                        @default("[]")
+  phonesJson   Json                        @default("[]")
+  personId     String?
+  person       ContactIntelPerson?         @relation(fields: [personId], references: [id], onDelete: SetNull)
+  messagesJson Json                        @default("[]")
+  createdAt    DateTime                    @default(now())
+  updatedAt    DateTime                    @updatedAt
+
+  conflicts ContactIntelConflict[]
+
+  @@unique([jobId, rowNumber])
+  @@index([jobId, status])
+  @@index([rowHash])
+  @@index([personId])
+  @@schema("public")
+}
+
+model ContactIntelConflict {
+  id            String                    @id @default(cuid())
+  jobId         String
+  job           ContactIntelImportJob     @relation(fields: [jobId], references: [id], onDelete: Cascade)
+  sourceRowId   String
+  sourceRow     ContactIntelSourceRow     @relation(fields: [sourceRowId], references: [id], onDelete: Cascade)
+  leftPersonId  String
+  leftPerson    ContactIntelPerson        @relation("ContactIntelConflictLeft", fields: [leftPersonId], references: [id], onDelete: Cascade)
+  rightPersonId String
+  rightPerson   ContactIntelPerson        @relation("ContactIntelConflictRight", fields: [rightPersonId], references: [id], onDelete: Cascade)
+  reason        String                    @db.Text
+  status        ContactIntelConflictStatus @default(OPEN)
+  createdAt     DateTime                  @default(now())
+  updatedAt     DateTime                  @updatedAt
+
+  @@index([jobId, status])
+  @@index([sourceRowId])
   @@schema("public")
 }
 

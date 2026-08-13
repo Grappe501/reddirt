@@ -35,6 +35,7 @@
     "voter-modeling:probe": "tsx scripts/probe-voter-modeling-chunks.ts",
     "communication-ingest:guardrails": "tsx scripts/verify-communication-ingest-guardrails.ts",
     "communication-ingest:normalize-check": "tsx scripts/verify-communication-normalize.ts",
+    "contact-intel:normalize-check": "node scripts/run-with-h-drive-env.cjs node ./node_modules/tsx/dist/cli.mjs scripts/verify-contact-intel-normalize.ts",
     "email:ai:eval": "node scripts/email-ai-quality-eval.mjs --static-only",
     "email:sendgrid:event-parse-check": "tsx scripts/verify-sendgrid-event-parse.ts",
     "email:gmail:preflight": "node scripts/email-command-center-preflight.mjs",
