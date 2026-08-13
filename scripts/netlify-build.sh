@@ -308,7 +308,7 @@ else
   fi
 fi
 
-echo ">>> public-hub stash (do not compile election-plan/admin boards into Lambda)"
+echo ">>> public-hub stash (keep election-plan; do not compile admin boards into Lambda)"
 node scripts/stash-netlify-public-hub-app.cjs
 
 if [ -n "${NETLIFY:-}" ] || [ -n "${NETLIFY_BUILD_BASE:-}" ]; then

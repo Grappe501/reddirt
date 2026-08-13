@@ -303,6 +303,14 @@ const nextConfig: NextConfig = {
           "./data/calendar-command-center/event-volunteer-reminders.staged.json",
         ],
         "/election-plan/team-kickoff/**": ["./data/cpos/**"],
+        "/election-plan/**": [
+          "./data/election-plan/**",
+          "./data/campaign-brain/election-plan/**",
+        ],
+        "/api/election-plan/**": [
+          "./data/election-plan/election-plan-search-index.json",
+          "./data/campaign-brain/election-plan/page-briefs.source.json",
+        ],
         "/api/cpos/**": ["./data/cpos/**"],
       },
   /**
