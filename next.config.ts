@@ -143,6 +143,16 @@ const nextConfig: NextConfig = {
         destination: "/get-involved#volunteer",
         permanent: false,
       },
+      {
+        source: "/my-plan",
+        destination: "/priorities",
+        permanent: false,
+      },
+      {
+        source: "/the-peoples-voice",
+        destination: "/direct-democracy",
+        permanent: false,
+      },
       /**
        * Pathway Honesty (KELLY-PUBLIC-PATHWAY-HONESTY-1.0):
        * Do not bait public CTAs into `/about`. Participation bookmarks must land on real participation paths.

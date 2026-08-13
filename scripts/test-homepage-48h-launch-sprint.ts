@@ -25,13 +25,8 @@ const lazy = read("src/components/media/LazyYouTubeEmbed.tsx");
 
 const order = [
   "<TrustFunnelHero",
-  "<TrustFunnelFourPillarsSection",
+  "<TrustFunnelApprovedBody",
   "<TrustFunnelPrimaryMessageSection",
-  "<TrustFunnelMeetKellySection",
-  "<TrustFunnelKellyAcrossArkansasSection",
-  "<TrustFunnelCampaignPhotosSection",
-  "<TrustFunnelEndorsementsSection",
-  "<TrustFunnelNewsUpdatesSection",
   "<TrustFunnelFinalActionSection",
 ];
 let last = -1;
@@ -59,9 +54,9 @@ assert.ok(feature.includes("CampaignVideoFeature"), "feature component present")
 assert.ok(lazy.includes("youtube-nocookie.com"), "privacy-enhanced embeds");
 assert.ok(lazy.includes("autoplay=1"), "autoplay only after click activate");
 
-assert.equal(trustFunnelHomeCopy.hero.promise, "This office belongs to the people.");
+assert.equal(trustFunnelHomeCopy.hero.brand, "THE PEOPLE RULE.");
 assert.equal(trustFunnelHomeCopy.hero.ctas.length, 2);
-assert.ok(trustFunnelHomeCopy.governmentThatWorks.pillars.every((p) => p.commitments.length >= 3));
+assert.ok(trustFunnelHomeCopy.approvedHome.planCards.cards.length === 7);
 assert.ok(trustFunnelHomeCopy.meetKelly.values.length > 40);
 
 const photos = listHomepageCampaignPhotos();

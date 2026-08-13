@@ -16,15 +16,15 @@ import { isValidResourceVolunteerSlug } from "@/content/resources/toolkit";
 export const metadata: Metadata = {
   title: "Get Involved",
   description:
-    "Volunteering made simple—event help, calls, doors, hosting, fairs, tour support, story, or logistics. Pick what sounds like you.",
+    "The Power of 5, volunteer, host Kelly, or donate — this campaign grows through relationships.",
 };
 
 const sectionLinks: { label: string; href: string }[] = [
-  { label: "Stay connected", href: "#join" },
+  { label: "Power of 5", href: "#bring-5" },
   { label: "Volunteer", href: "#volunteer" },
-  { label: "Bring 5", href: "#bring-5" },
+  { label: "Host Kelly", href: "#invite-kelly" },
+  { label: "Stay connected", href: "#join" },
   { label: "Start a Local Team", href: "#local-team" },
-  { label: "Invite Kelly", href: "#invite-kelly" },
   { label: "Donate", href: "#donate-section" },
 ];
 
@@ -62,13 +62,6 @@ const volunteerLanes: {
     blurb: "Living room, break room, or civic space—invite a small group and keep the tone friendly.",
     nextLabel: "Host a gathering",
     nextHref: "/host-a-gathering",
-  },
-  {
-    id: "county-fairs",
-    title: "County fairs",
-    blurb: "Pack, set up, or cover a shift where Arkansans expect neighbors, not a sales pitch.",
-    nextLabel: "County fairs hub",
-    nextHref: "/events/county-fairs",
   },
   {
     id: "integrity-tour",
@@ -131,16 +124,16 @@ export default async function GetInvolvedPage({
         layout="split"
         eyebrow="Participation ladder"
         title="Get Involved"
-        subtitle="Stay connected first. Volunteer when you are ready. Bring friends. Build a local team. Donate last—never first."
+        subtitle="Stay connected. Volunteer. Activate your Power of 5. Host Kelly. Donate when you are ready."
       >
-        <Button href="#join" variant="primary">
-          Stay connected
+        <Button href="/get-involved/bring-5" variant="primary">
+          Activate Your Power of 5 →
         </Button>
         <Button href="#volunteer" variant="outlineOnDark">
           Volunteer
         </Button>
-        <Button href="/get-involved/bring-5" variant="outlineOnDark">
-          Bring 5
+        <Button href="/events/request" variant="outlineOnDark">
+          Host Kelly
         </Button>
       </MediaPageHero>
 
@@ -410,16 +403,22 @@ export default async function GetInvolvedPage({
         <ContentContainer>
           <SectionHeading
             id="bring-5-heading"
-            eyebrow="Relational"
-            title="Bring 5"
-            subtitle="Five people you know—one conversation or one event at a time."
+            eyebrow="Power of 5"
+            title="Your power is closer than you think"
+            subtitle="Start with five people. This is the campaign’s independent Power of 5 organizing approach — people are more likely to participate when someone they know invites them in."
           />
           <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
             <Button href="/get-involved/bring-5" variant="primary" className="min-h-[48px]">
-              Bring 5 Friends
+              Activate Your Power of 5 →
             </Button>
-            <Button href="/get-involved/bring-5" variant="outline" className="min-h-[48px]">
-              How Bring 5 works
+            <Button href="#volunteer" variant="outline" className="min-h-[48px]">
+              Volunteer
+            </Button>
+            <Button href="/events/request" variant="outline" className="min-h-[48px]">
+              Host Kelly
+            </Button>
+            <Button href="/donate" variant="outline" className="min-h-[48px]">
+              Donate
             </Button>
           </div>
         </ContentContainer>

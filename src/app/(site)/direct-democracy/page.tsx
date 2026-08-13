@@ -60,18 +60,18 @@ export default async function DirectDemocracyPage() {
       <MediaPageHero
         slotKey="dd.hero"
         layout="split"
-        eyebrow={hero?.eyebrow ?? "Ballot access"}
-        title={hero?.title ?? "Initiatives, referenda, and the Secretary of State’s role"}
+        eyebrow="The People's Voice"
+        title={hero?.title ?? "The people’s constitutional voice"}
         subtitle={
           hero?.subtitle ??
-            "Elections matter—and so does the process that puts measures on the ballot. This page is about education, discipline, and protecting voter access without turning initiatives into confusion."
+            "Arkansas is one of only 16 states where citizens have both initiative and referendum powers. Learn how the process works — then, if you choose, see how this campaign defends that right."
         }
       >
-        <Button href="#commitment-network" variant="primary">
-          Join the commitment network
+        <Button href="/direct-democracy/ballot-initiative-process" variant="primary">
+          Learn How Direct Democracy Works →
         </Button>
-        <Button href="/direct-democracy/ballot-initiative-process" variant="outlineOnDark">
-          Arkansas ballot process (state rules)
+        <Button href="#commitment-network" variant="outlineOnDark">
+          Join the commitment network
         </Button>
       </MediaPageHero>
 

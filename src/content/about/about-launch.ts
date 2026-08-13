@@ -1,124 +1,80 @@
 /**
- * Launch Meet Kelly — qualification-centered page (not memoir).
- * Verified campaign-facing facts only. Deep chapters remain optional links.
- * @see docs/website/PUBLIC_MESSAGE_PRECISION_AUDIT.md
+ * Meet Kelly — approved first-person biography from Kelly Grappe Website Master Direction.
+ * First person throughout this page. Why I'm Running is its own route.
  */
 
 export const aboutLaunchCopy = {
   hero: {
-    eyebrow: "Meet Kelly Grappe",
-    title: "Meet Kelly Grappe",
+    eyebrow: "Meet Kelly",
+    title: "Experience that translates to the job",
     subtitle:
-      "Candidate for Arkansas Secretary of State — relevant experience, how she leads, and why she seeks this office.",
+      "I’ve spent my career leading people, solving complex problems, and making organizations work better.",
   },
   opening: {
-    title: "Meet Kelly Grappe",
-    /** Target: 100–140 words */
+    title: "Experience that translates to the job",
     body: [
-      "Kelly Grappe is running for Arkansas Secretary of State. She is a community organizer and operations leader who has spent years helping neighbors understand elections and ballot access—including grassroots petition work after the LEARNS Act—and nearly twenty-five years leading teams in telecom operations where training, process, and customer impact could not fail.",
-      "She and her husband Steve built a life around Rose Bud and Forevermost Farms, including small-market and farm work where permits and paperwork are daily reality. That is the standard she brings to this race: competence at the counter, equal service for all 75 counties, and a Secretary of State’s office that works for Arkansas—clear, accountable, and faithful to the law.",
+      "For nearly 25 years with Alltel and Verizon, I worked across multiple states and in large, complex operations. I led teams, supported multi-site operations, managed multimillion-dollar budgets and projects, worked with enterprise systems and major vendors, and was responsible for turning strategy into results.",
+      "At one point, my responsibilities included an operation of roughly 800 employees on a large corporate campus. At that scale, you learn quickly that strategy only works when the people responsible for carrying it out have the right systems, tools, training and support.",
+      "Today, I work full time leading Learning & Development for a large dental organization based in Little Rock with operations across multiple states. I build learning strategy and, just as importantly, the practical systems and tools required to implement it across many locations.",
+      "But my experience isn’t only from inside large organizations.",
+      "Steve and I have also owned a small business and operated a farm in rural Arkansas. I’ve been the person managing expenses, navigating requirements and trying to keep an operation going when margins are tight. We ultimately had to pause our farm operations, so I understand how hard it can be for small-business owners and farmers who are simply trying to make a living in a system that can feel stacked against them.",
+      "That perspective matters in an office responsible for Business Services. Government shouldn’t make it harder than necessary for someone to start a business, maintain it, understand what they’re required to file, or get an answer when something goes wrong.",
+      "Throughout my career — from Alltel and Verizon to running a small business and farm of my own — I’ve believed in looking at the work honestly: understand the problem, listen to the people closest to it, look at the evidence, build a solution, measure the results and change course when something isn’t working.",
+      "That’s the experience I would bring to the Secretary of State’s office: leading people, managing complex systems, understanding the people who depend on them, and making those systems work better.",
     ],
   },
-  experience: {
-    title: "Experience That Prepared Her to Serve",
-    intro:
-      "Relevant preparation only—leadership, organizing, administration, and listening across differences. Optional chapters add depth; they are not required to understand her qualifications for this constitutional office.",
-    items: [
-      {
-        title: "Operations leadership",
-        body: "Nearly 25 years with Alltel and Verizon in operations leadership: training rooms, team leadership, and process discipline when customer-impacting services could not fail. That habit—clarity, training, and protecting the person in front of you when rules are confusing—transfers directly to public-facing state systems voters and filers use every day.",
-        links: [{ href: "/about/business", label: "Business & career" }],
-      },
-      {
-        title: "Community and civic organizing",
-        body: "Through Stand Up Arkansas and grassroots petition work after LEARNS, Kelly and neighbors organized around voter education and ballot access—including field support for petition packets and notaries. She treats democracy as a skill neighbors can practice when the official process is intelligible, and she teaches what the Secretary of State’s office actually controls versus what it does not.",
-        links: [
-          { href: "/about/community", label: "Community & civic work" },
-          { href: "/direct-democracy", label: "Direct democracy hub" },
-        ],
-      },
-      {
-        title: "Small business and rural administration",
-        body: "Running small-market and farm operations at Forevermost Farms taught the filer’s side of the counter: permits, cash flow, and paperwork friction that costs Main Street time. That ground truth shapes how she talks about business filings, nonprofit compliance, and equal service for rural counties—not as abstract policy, but as desks people actually stand at.",
-        links: [
-          { href: "/about/forevermost", label: "Stewardship & Forevermost" },
-        ],
-      },
+  experienceCta: {
+    href: "/about/experience",
+    label: "View Kelly’s Professional Experience →",
+  },
+  family: {
+    title: "Home, family & the life that shaped me",
+    paragraphs: [
+      "I’m a wife, mom, GiGi, animal lover, small-town Arkansan and someone who believes deeply in showing up for people.",
+      "Steve and I live in Rose Bud, where our life has included a farm, a small business, goats, chickens and more animals than we probably intended to collect. Rural life has a way of keeping you grounded. Things break. Plans change. Neighbors help neighbors. And you learn pretty quickly that most problems aren’t solved by arguing about them — somebody has to roll up their sleeves and get to work.",
+    ],
+  },
+  familyPath: {
+    title: "Family isn’t always a straight line",
+    paragraphs: [
+      "Our daughter, Grace, came into our lives through foster care. Becoming her mom changed me and expanded my understanding of what family and community can look like.",
+      "Watching her grow, find her own way and thrive has been one of the greatest gifts of my life. And now, watching her become a wonderful mom herself has made that gift even sweeter.",
+      "Today, one of my favorite titles is GiGi.",
+      "Our family’s story hasn’t always followed the easiest or most traditional path. It has taught me a lot about listening before judging, meeting people where they are, and understanding that the story you see from the outside is rarely the whole story.",
+      "Those lessons have shaped the way I lead and the way I see people.",
+    ],
+  },
+  rural: {
+    title: "Rural Arkansas matters",
+    paragraphs: [
+      "Too often, both Republicans and Democrats have forgotten about rural Arkansas. Communities outside our largest cities shouldn’t matter only during an election year, and rural Arkansans shouldn’t have to fight harder for information, services or a voice in decisions that affect them.",
+      "I’ve spent a lot of time traveling Arkansas and listening. What I find in small towns isn’t the apathy we’re so often told exists. I find people who care deeply about their schools, businesses, churches, farms and communities — but who don’t always believe their government is listening.",
+      "I want an office that listens to all 75 counties and remembers that state government serves the people who live miles from the Capitol just as much as the people who can see its dome from their office window.",
     ],
   },
   whySos: {
-    title: "Why the Secretary of State’s Office",
+    title: "Why I’m running",
     body: [
-      "The Secretary of State administers elections support, business filings, public records access, and Capitol stewardship. Those systems touch ordinary Arkansans every day—whether they vote, register a business, request a record, or visit the Capitol. Competence here is not optional; confusion at this desk becomes statewide friction.",
-      "Kelly entered this race because ballot access and fair administration should stay under Arkansas law, explained plainly, without partisan favoritism. She is not asking voters to invent new powers for the office. She is asking them to demand competence, equal service for all 75 counties, and a front office that treats people with respect while staying inside legal limits.",
+      "The Arkansas Constitution says “all political power is inherent in the people.” I believe those words should mean something.",
+      "I’m running because I believe government works best when the people understand it, can participate in it, and know the people entrusted with it remember who they work for.",
     ],
     cta: { href: "/about/why-im-running", label: "Why I’m running" },
-    officeCta: { href: "/understand", label: "Understand the office" },
-  },
-  leadership: {
-    title: "How Kelly Leads",
-    items: [
-      {
-        title: "She listens before deciding",
-        body: "Campaign stops are conversations in community rooms, civic clubs, and trail events—not invented crowd claims. Verified field notes appear on From the Road when published.",
-      },
-      {
-        title: "She explains how decisions are made",
-        body: "Her organizing work emphasizes plain-language steps for initiatives and petitioning so volunteers know what the Secretary of State’s office actually controls—and what it does not.",
-      },
-      {
-        title: "She treats public service as responsibility",
-        body: "From telecom operations to small-business filings, her record is about removing duplicate steps, training people, and reducing the quiet friction of forms that never quite match the desk you are standing at.",
-      },
-      {
-        title: "She focuses on practical results",
-        body: "Modernize what is broken inside the office’s legal duties. Defend lawful ballot access. Make state services easier for ordinary Arkansans to use.",
-      },
-    ],
+    officeCta: { href: "/understand", label: "What the office does" },
   },
   acrossArkansas: {
-    title: "Across Arkansas",
+    title: "From the road",
     intro:
-      "Selected trail photography and a featured journey video show how Kelly travels, listens, asks questions, and carries concerns into plans for the office. This section is shorter than the dedicated journey page on purpose.",
-    cta: { href: "/about/journey", label: "See Kelly Across Arkansas" },
-    photosCta: { href: "/campaign-photos", label: "View Campaign Photos" },
-  },
-  bringToOffice: {
-    title: "What Kelly Will Bring to the Office",
-    items: [
-      {
-        title: "Transparency",
-        body: "Plain language about process, limits, and what the office holds—so accountability is usable, not theatrical.",
-      },
-      {
-        title: "Accessibility",
-        body: "Services and guidance that work for people who are not specialists: clearer filings, elections support, and records paths.",
-      },
-      {
-        title: "Accurate administration",
-        body: "Faithful execution of Arkansas law with equal respect for all 75 counties and the clerks who run Election Day locally.",
-      },
-      {
-        title: "Respect for voters",
-        body: "A front office culture that treats Arkansans as owners of their government, not obstacles in a queue.",
-      },
-      {
-        title: "Responsible stewardship",
-        body: "Professional care for Capitol operations and the public trust attached to this constitutional office.",
-      },
-      {
-        title: "Clear public communication",
-        body: "Answers people can follow—what changed, why it matters, and what to do next—without insider jargon.",
-      },
-    ],
+      "County visits, local stories, and what I’m learning as I travel Arkansas.",
+    cta: { href: "/from-the-road", label: "From the Road" },
+    photosCta: { href: "/campaign-photos", label: "View campaign photos" },
   },
   closing: {
-    title: "Choose your next step",
-    body: "Explore what Kelly intends to improve inside the office’s authority, see how she shows up on the trail, or join the work in your community.",
+    title: "How you can be part of it",
+    body: "Read my plan, see the work on the road, or start with five people you know.",
     ctas: [
-      { href: "/priorities", label: "Explore Kelly’s Priorities" },
-      { href: "/about/journey", label: "See Kelly Across Arkansas" },
-      { href: "/get-involved", label: "Join the Campaign" },
+      { href: "/priorities", label: "See My Plan" },
+      { href: "/from-the-road", label: "From the Road" },
+      { href: "/get-involved", label: "Get Involved" },
     ],
   },
 } as const;

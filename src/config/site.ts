@@ -18,7 +18,7 @@ export const siteConfig = {
   latinMotto: "Regnat Populus",
   tagline: "The People Rule. · Arkansas",
   description:
-    "Kelly Grappe is running to serve every Arkansan as Secretary of State: fair elections, ballot access you can understand, and a front office that works for all 75 counties—not just the loudest voices.",
+    "Kelly Grappe is running for Arkansas Secretary of State to restore trust in our systems, protect the people’s constitutional voice, and make this office work for the people it belongs to.",
   /** Strip trailing slash; set NEXT_PUBLIC_SITE_URL in Netlify for accurate OG URLs. May be host-only (we prepend https://). Use `https://kgrappe.netlify.app` — not `www.…` (Netlify’s cert does not cover www on *.netlify.app). */
   url: normalizePublicSiteUrl(process.env.NEXT_PUBLIC_SITE_URL),
   /**

@@ -34,7 +34,7 @@ assert.ok(
 assert.ok(header.includes("getVolunteerSignupHref"), "header Volunteer must use getVolunteerSignupHref");
 assert.ok(!header.includes("getJoinCampaignHref"), "header must not use getJoinCampaignHref for Volunteer");
 
-assert.ok(wireframe.includes("TrustFunnelNewsUpdatesSection"), "campaign updates band must mount");
+assert.ok(wireframe.includes("TrustFunnelApprovedBody"), "approved homepage body must mount");
 assert.ok(wireframe.includes("TrustFunnelFinalActionSection"), "final action band must mount");
 assert.ok(!wireframe.includes("Shorts"), "no Shorts carousel in wireframe");
 

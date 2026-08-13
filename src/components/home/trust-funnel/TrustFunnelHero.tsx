@@ -8,7 +8,6 @@ import { EditableCopy } from "@/components/site-edit/EditableCopy";
 import { SiteEditMediaChrome } from "@/components/site-edit/SiteEditMediaChrome";
 import { media } from "@/content/media/registry";
 import { trustFunnelHomeCopy } from "@/content/home/trust-funnel-home";
-import { getJoinCampaignHref } from "@/config/external-campaign";
 import {
   trustFunnelCtaOutlineOnDark,
   trustFunnelCtaPrimary,
@@ -41,7 +40,6 @@ export function TrustFunnelHero({ editing = false, copy }: Props) {
   const y = reduceMotion ? 0 : 12;
   const dur = reduceMotion ? 0.01 : 0.42;
   const ease = [0.22, 1, 0.36, 1] as const;
-  const joinHref = getJoinCampaignHref();
   const c: TrustFunnelHeroCopy = copy ?? {
     brand: defaults.brand,
     office: defaults.office,
@@ -141,7 +139,7 @@ export function TrustFunnelHero({ editing = false, copy }: Props) {
                 { label: c.ctaSecondary, href: defaults.ctas[1].href, variant: "secondary" as const, key: "home.hero.ctaSecondary" },
               ] as const
             ).map((cta, i) => {
-              const href = cta.href === "__join__" ? joinHref : cta.href;
+              const href = cta.href;
               const isPrimary = cta.variant === "primary";
               return (
                 <motion.div

@@ -1,30 +1,10 @@
 /**
- * Homepage section orchestrator — LIVE CANON shell for `/`
- * (KELLY-PUBLIC-WEBSITE-48H-LAUNCH-SPRINT-1.0 narrative order).
- * @see docs/website/HOMEPAGE_48H_LAUNCH_SPRINT_MAP.md
- *
- * Upper stack stays on `/`: hero → Government That Works → primary message →
- * personality still bridge → closing ask.
- *
- * Do not remount menu homes below the bridge:
- * Meet Kelly story → /about · Journey / Across Arkansas → /about/journey ·
- * Photos → /campaign-photos · News → /from-the-road · Events → /events ·
- * Endorsements → /endorsements · Videos library → /kelly-speaks
+ * Homepage section orchestrator for `/`.
+ * Approved narrative: hero → restore trust / office / My Plan cards / Arkansas elections →
+ * primary message → personality still → closing ask.
+ * Menu homes stay on their own routes (Meet Kelly, From the Road, Events, photos, videos).
  */
-/**
- * Homepage section orchestrator — LIVE CANON shell for `/`
- * (KELLY-PUBLIC-WEBSITE-48H-LAUNCH-SPRINT-1.0 narrative order).
- * @see docs/website/HOMEPAGE_48H_LAUNCH_SPRINT_MAP.md
- *
- * Upper stack stays on `/`: hero → Government That Works → primary message →
- * personality still bridge → closing ask.
- *
- * Do not remount menu homes below the bridge:
- * Meet Kelly story → /about · Journey / Across Arkansas → /about/journey ·
- * Photos → /campaign-photos · News → /from-the-road · Events → /events ·
- * Endorsements → /endorsements · Videos library → /kelly-speaks
- */
-import { TrustFunnelFourPillarsSection } from "@/components/home/trust-funnel/TrustFunnelFourPillarsSection";
+import { TrustFunnelApprovedBody } from "@/components/home/trust-funnel/TrustFunnelApprovedBody";
 import { TrustFunnelHero } from "@/components/home/trust-funnel/TrustFunnelHero";
 import { TrustFunnelPrimaryMessageSection } from "@/components/home/trust-funnel/TrustFunnelPrimaryMessageSection";
 import { TrustFunnelFinalActionSection } from "@/components/home/trust-funnel/TrustFunnelFinalActionSection";
@@ -73,7 +53,7 @@ export async function HomeTrustFunnelWireframe() {
     <div className="bg-white">
       <TrustFunnelHero editing={editing} copy={copy} />
 
-      <TrustFunnelFourPillarsSection />
+      <TrustFunnelApprovedBody />
 
       <TrustFunnelPrimaryMessageSection />
 

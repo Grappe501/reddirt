@@ -24,10 +24,23 @@ const c = aboutLaunchCopy;
 export const metadata: Metadata = pageMeta({
   title: "Meet Kelly Grappe",
   description:
-    "Kelly Grappe for Arkansas Secretary of State — relevant experience, leadership in practice, and why she seeks this office.",
+    "Kelly Grappe for Arkansas Secretary of State — operations leadership, rural Arkansas, family, and why she is running.",
   path: "/about",
   imageSrc: "/media/placeholders/texture-porch-glow.svg",
 });
+
+function ProseBlock({ title, paragraphs }: { title: string; paragraphs: readonly string[] }) {
+  return (
+    <>
+      <h2 className="font-heading text-2xl font-bold text-kelly-ink md:text-3xl">{title}</h2>
+      {paragraphs.map((para) => (
+        <p key={para.slice(0, 56)} className="mt-4 font-body text-lg leading-relaxed text-kelly-slate">
+          {para}
+        </p>
+      ))}
+    </>
+  );
+}
 
 export default async function AboutPage() {
   const meetPhoto = getHomepageMeetKellyPhoto();
@@ -45,13 +58,13 @@ export default async function AboutPage() {
         subtitle={c.hero.subtitle}
       >
         <Button href="/priorities" variant="primary">
-          Explore Kelly’s Priorities
+          See My Plan
         </Button>
-        <Button href="/about/journey" variant="outlineOnDark">
-          See Kelly Across Arkansas
+        <Button href="/about/why-im-running" variant="outlineOnDark">
+          Why I’m running
         </Button>
         <Button href={joinHref} variant="outlineOnDark">
-          Stay connected
+          Get Involved
         </Button>
         <Button href={volunteerHref} variant="outlineOnDark">
           Volunteer
@@ -65,17 +78,6 @@ export default async function AboutPage() {
       </FullBleedSection>
 
       <FullBleedSection padY>
-        <ContentContainer className="max-w-3xl">
-          <h2 className="font-heading text-2xl font-bold text-kelly-ink md:text-3xl">{c.opening.title}</h2>
-          {c.opening.body.map((para) => (
-            <p key={para.slice(0, 48)} className="mt-4 font-body text-lg leading-relaxed text-kelly-slate">
-              {para}
-            </p>
-          ))}
-        </ContentContainer>
-      </FullBleedSection>
-
-      <FullBleedSection variant="subtle" padY>
         <ContentContainer>
           <div className="grid items-start gap-10 lg:grid-cols-2 lg:gap-12">
             {meetPhoto ? (
@@ -106,30 +108,32 @@ export default async function AboutPage() {
             ) : null}
 
             <div>
-              <h2 className="font-heading text-2xl font-bold text-kelly-ink md:text-3xl">{c.experience.title}</h2>
-              <p className="mt-4 font-body text-base leading-relaxed text-kelly-slate">{c.experience.intro}</p>
-              <div className="mt-8 space-y-8">
-                {c.experience.items.map((section) => (
-                  <article key={section.title}>
-                    <h3 className="font-heading text-xl font-bold text-kelly-navy">{section.title}</h3>
-                    <p className="mt-3 font-body text-base leading-relaxed text-kelly-slate">{section.body}</p>
-                    <ul className="mt-3 flex flex-wrap gap-x-4 gap-y-2">
-                      {section.links.map((link) => (
-                        <li key={link.href}>
-                          <Link
-                            href={link.href}
-                            className="font-body text-sm font-semibold text-kelly-blue underline decoration-kelly-blue/25 underline-offset-4 hover:decoration-kelly-blue"
-                          >
-                            {link.label} →
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </article>
-                ))}
+              <ProseBlock title={c.opening.title} paragraphs={c.opening.body} />
+              <div className="mt-8">
+                <Button href={c.experienceCta.href} variant="primary">
+                  {c.experienceCta.label}
+                </Button>
               </div>
             </div>
           </div>
+        </ContentContainer>
+      </FullBleedSection>
+
+      <FullBleedSection variant="subtle" padY>
+        <ContentContainer className="max-w-3xl">
+          <ProseBlock title={c.family.title} paragraphs={c.family.paragraphs} />
+        </ContentContainer>
+      </FullBleedSection>
+
+      <FullBleedSection padY>
+        <ContentContainer className="max-w-3xl">
+          <ProseBlock title={c.familyPath.title} paragraphs={c.familyPath.paragraphs} />
+        </ContentContainer>
+      </FullBleedSection>
+
+      <FullBleedSection variant="subtle" padY>
+        <ContentContainer className="max-w-3xl">
+          <ProseBlock title={c.rural.title} paragraphs={c.rural.paragraphs} />
         </ContentContainer>
       </FullBleedSection>
 
@@ -153,23 +157,6 @@ export default async function AboutPage() {
       </FullBleedSection>
 
       <FullBleedSection variant="subtle" padY>
-        <ContentContainer>
-          <h2 className="mx-auto max-w-3xl text-center font-heading text-2xl font-bold text-kelly-ink md:text-3xl">
-            {c.leadership.title}
-          </h2>
-          <ul className="mx-auto mt-10 grid max-w-5xl list-none gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {c.leadership.items.map((item) => (
-              <li key={item.title} className="rounded-card border border-kelly-ink/10 bg-white p-6 shadow-sm">
-                <h3 className="font-heading text-lg font-bold text-kelly-navy">{item.title}</h3>
-                <p className="mt-3 font-body text-sm leading-relaxed text-kelly-slate">{item.body}</p>
-              </li>
-            ))}
-          </ul>
-        </ContentContainer>
-      </FullBleedSection>
-
-      {/* Journey / photos live on their own routes — CTA only, no remounted trail grid. */}
-      <FullBleedSection padY>
         <ContentContainer className="max-w-3xl text-center">
           <h2 className="font-heading text-2xl font-bold text-kelly-ink md:text-3xl">{c.acrossArkansas.title}</h2>
           <p className="mt-4 font-body text-lg text-kelly-slate">{c.acrossArkansas.intro}</p>
@@ -181,20 +168,6 @@ export default async function AboutPage() {
               {c.acrossArkansas.photosCta.label}
             </Button>
           </div>
-        </ContentContainer>
-      </FullBleedSection>
-
-      <FullBleedSection variant="subtle" padY>
-        <ContentContainer className="max-w-3xl">
-          <h2 className="font-heading text-2xl font-bold text-kelly-ink md:text-3xl">{c.bringToOffice.title}</h2>
-          <ul className="mt-8 space-y-6">
-            {c.bringToOffice.items.map((item) => (
-              <li key={item.title}>
-                <h3 className="font-heading text-xl font-bold text-kelly-navy">{item.title}</h3>
-                <p className="mt-2 font-body text-base leading-relaxed text-kelly-slate">{item.body}</p>
-              </li>
-            ))}
-          </ul>
         </ContentContainer>
       </FullBleedSection>
 
@@ -215,9 +188,9 @@ export default async function AboutPage() {
               <Button
                 key={cta.href}
                 href={cta.href === "/get-involved" ? joinHref : cta.href}
-                variant={cta.href === "/get-involved" || cta.href === "/priorities" ? "primary" : "outline"}
+                variant={cta.href === "/priorities" ? "primary" : "outline"}
                 className={
-                  cta.href === "/get-involved" || cta.href === "/priorities"
+                  cta.href === "/priorities"
                     ? "bg-kelly-gold text-kelly-navy hover:bg-kelly-gold-soft"
                     : "border-white/40 text-white hover:bg-white/10"
                 }

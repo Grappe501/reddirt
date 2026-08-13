@@ -74,10 +74,11 @@ export const MEET_KELLY_QUESTIONS: readonly MeetKellyQuestion[] = [
 
 export const MEET_KELLY_SUBNAV = [
   { href: "/about", label: "Overview" },
+  { href: "/about/experience", label: "Experience" },
+  { href: "/about/why-im-running", label: "Why I'm running" },
   { href: "/about/journey", label: "Journey" },
   { href: "/about/community", label: "Community" },
-  { href: "/about/why-im-running", label: "Why I'm running" },
-  { href: directDemocracyHubHref, label: "Direct democracy" },
+  { href: directDemocracyHubHref, label: "The People's Voice" },
   { href: kellyInitiativesChapterHref, label: "Initiatives & petitions" },
 ] as const;
 
