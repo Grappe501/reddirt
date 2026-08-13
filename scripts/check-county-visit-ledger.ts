@@ -75,6 +75,8 @@ const rollover = buildCountyVisitLedger({
       organizerNote: "Trail",
       relatedEventSlugs: [],
       relatedResourceHrefs: [],
+      campaignTrail: true,
+      fieldAttendance: "confirmed",
     },
   ],
 });

@@ -1,6 +1,11 @@
 import type { EventItem } from "@/content/types";
+import { countyNameFromAnySlug } from "@/lib/events/county-key";
+import { isStatewideVirtualEvent } from "@/lib/events/public-event-county";
 
 function stopPlace(e: EventItem): string {
+  if (e.statewideVirtual || isStatewideVirtualEvent(e)) return "Statewide / Virtual";
+  const name = countyNameFromAnySlug(e.countySlug);
+  if (name) return `${name} County`;
   return (e.city?.trim() || e.locationLabel).replace(/,\s*AR\b.*$/i, "").trim();
 }
 

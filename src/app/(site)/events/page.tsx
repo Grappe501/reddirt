@@ -10,6 +10,7 @@ import { events } from "@/content/events";
 import { queryPublicCampaignEvents } from "@/lib/calendar/public-events";
 import { mergeMovementAndCalendarEvents } from "@/lib/events/calendar-to-movement-event";
 import { loadCountyVisitLedger } from "@/lib/events/load-county-visit-ledger";
+import { buildEventsMapModel } from "@/lib/events/events-map-model";
 import { safePublishedCountyOptions } from "@/lib/county/safe-published-county-options";
 
 import { pageMeta } from "@/lib/seo/metadata";
@@ -46,6 +47,7 @@ export default async function EventsPage({
   ]);
   const mergedEvents = mergeMovementAndCalendarEvents(events, calendarRows);
   const ledger = await loadCountyVisitLedger(mergedEvents);
+  const { features } = buildEventsMapModel(ledger, mergedEvents);
 
   return (
     <>
@@ -66,7 +68,7 @@ export default async function EventsPage({
 
       <FullBleedSection padY aria-labelledby="events-proof-heading">
         <ContentContainer>
-          <EventsProofSection ledger={ledger} />
+          <EventsProofSection ledger={ledger} features={features} />
         </ContentContainer>
       </FullBleedSection>
 

@@ -81,6 +81,11 @@ export type EventItem = {
   };
   /** Confirmed campaign-trail stop for the chronological list on `/events`. */
   campaignTrail?: boolean;
+  /**
+   * Wednesday prayer Zoom calls and other statewide virtual appearances.
+   * Listed on the calendar; never paints a county or increments 51/75.
+   */
+  statewideVirtual?: boolean;
   /** Public participation — omit for older static rows (treated as campaign appearance). */
   attendanceType?: "PUBLIC_OPEN" | "PUBLIC_REGISTRATION" | "INVITATION" | "CAMPAIGN_APPEARANCE" | "PRIVATE";
   city?: string;

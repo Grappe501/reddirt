@@ -1,5 +1,6 @@
 import type { EventItem } from "@/content/types";
 import { formatEventWhen } from "@/lib/format/eventDisplay";
+import { publicCountyEyebrow } from "@/lib/events/public-event-county";
 import { cn } from "@/lib/utils";
 
 export function EventMeta({
@@ -20,6 +21,10 @@ export function EventMeta({
         className,
       )}
     >
+      <div>
+        <dt className="text-xs font-bold uppercase tracking-wider text-kelly-text/50">County</dt>
+        <dd className="mt-1 font-semibold text-kelly-text">{publicCountyEyebrow(event)}</dd>
+      </div>
       <div>
         <dt className="text-xs font-bold uppercase tracking-wider text-kelly-text/50">When</dt>
         <dd className="mt-1">

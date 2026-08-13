@@ -3,11 +3,17 @@ import { EventStopCard } from "@/components/organizing/EventStopCard";
 import { kellyNextStopsRoute } from "@/lib/events/kelly-next-stops-route";
 import { compareEventsForHub, resolveEventStatus } from "@/lib/format/eventDisplay";
 
+function isMovementListEvent(event: EventItem, now: Date): boolean {
+  if (resolveEventStatus(event, now) !== "upcoming") return false;
+  if (event.fieldAttendance === "tentative" || event.fieldAttendance === "suggested" || event.fieldAttendance === "unscheduled") {
+    return false;
+  }
+  return event.campaignTrail === true || event.eventSource === "calendar" || event.statewideVirtual === true;
+}
+
 export function EventsMovementSection({ events }: { events: EventItem[] }) {
   const now = new Date();
-  const upcoming = events
-    .filter((e) => resolveEventStatus(e, now) === "upcoming")
-    .sort((a, b) => compareEventsForHub(a, b, now));
+  const upcoming = events.filter((e) => isMovementListEvent(e, now)).sort((a, b) => compareEventsForHub(a, b, now));
   const routeLine = kellyNextStopsRoute(upcoming);
 
   return (
@@ -18,8 +24,9 @@ export function EventsMovementSection({ events }: { events: EventItem[] }) {
           Where Kelly will be next
         </h2>
         <p className="mt-2 max-w-2xl font-body text-kelly-text/75">
-          Confirmed public stops in Central Time. When a stop ends, it leaves this list and — if it was an in-person
-          appearance — the county joins the visited ledger on the next build.
+          Confirmed public stops in Central Time, county first. Tentative dates appear on the map only until they are
+          confirmed. When a stop ends, it leaves this list and — if it was an in-person appearance — the county joins the
+          visited ledger on the next build.
         </p>
       </div>
 

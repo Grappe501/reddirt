@@ -1,9 +1,16 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
-import { PublicMediaSlotFrame } from "@/components/media/PublicMediaSlotFrame";
+import { CampaignJourneyMap } from "@/components/organizing/events-map/CampaignJourneyMap";
+import type { CountyMapFeature } from "@/components/organizing/events-map/county-map-types";
 import type { CountyVisitLedger } from "@/lib/events/county-visit-ledger";
 
-export async function EventsProofSection({ ledger }: { ledger: CountyVisitLedger }) {
+export function EventsProofSection({
+  ledger,
+  features,
+}: {
+  ledger: CountyVisitLedger;
+  features: CountyMapFeature[];
+}) {
   const n = ledger.visited.length;
 
   return (
@@ -14,21 +21,16 @@ export async function EventsProofSection({ ledger }: { ledger: CountyVisitLedger
           Showing up matters.
         </h2>
         <p className="mt-2 max-w-2xl font-body text-kelly-text/75">
-          Kelly has traveled Arkansas listening to the people who actually live here.
+          Kelly has traveled Arkansas listening to the people who actually live here. The map updates when a qualifying
+          in-person stop ends — Central Time, no manual graphic swap.
         </p>
       </div>
 
-      <figure className="overflow-hidden rounded-2xl border border-kelly-text/10 shadow-[var(--shadow-soft)]">
-        <PublicMediaSlotFrame
-          slotKey="events.been.graphic"
-          className="min-h-[16rem] w-full"
-          sizes="(min-width: 1024px) 960px, 100vw"
-        />
-        <figcaption className="border-t border-kelly-text/10 bg-kelly-text/[0.03] px-4 py-3 font-body text-xs text-kelly-text/65">
-          Regnat Populus brand art. The county count below is computed from the campaign visit ledger — not from this
-          image.
-        </figcaption>
-      </figure>
+      <CampaignJourneyMap features={features} />
+      <p className="font-body text-xs text-kelly-text/65">
+        Blue is the proof layer: a county stays blue after Kelly has been there. A gold outline means another confirmed
+        stop is coming; a dashed outline means a tentative date. Statewide / virtual appearances never paint a county.
+      </p>
 
       <div className="rounded-card border border-kelly-navy/15 bg-kelly-navy/[0.04] px-5 py-6">
         <p className="font-heading text-4xl font-bold text-kelly-navy md:text-5xl">

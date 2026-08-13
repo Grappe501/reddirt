@@ -25,6 +25,7 @@ import { siteConfig } from "@/config/site";
 import { isPrismaDatabaseUnavailable, logPrismaDatabaseUnavailable } from "@/lib/prisma-connectivity";
 import { pageMeta } from "@/lib/seo/metadata";
 import { stripPublicMarkdown, withLiveEventStatus } from "@/lib/format/eventDisplay";
+import { publicCountyEyebrow, publicEventCityLine } from "@/lib/events/public-event-county";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -66,8 +67,8 @@ function CuratedOrCalendarEventView({ event }: { event: EventItem }) {
     .filter((e) => e.slug !== live.slug)
     .map((e) => withLiveEventStatus(e));
 
-  const city = live.city?.trim() || live.locationLabel;
-  const attendance = attendanceDetailCopy(live.attendanceType, city);
+  const city = publicEventCityLine(live);
+  const attendance = attendanceDetailCopy(live.attendanceType, live.statewideVirtual ? "this statewide call" : city);
   const volunteerHref = getVolunteerSignupHref();
   const rsvpHref =
     live.rsvpHref ??
@@ -76,7 +77,7 @@ function CuratedOrCalendarEventView({ event }: { event: EventItem }) {
 
   return (
     <>
-      <PageHero eyebrow={live.type} title={live.title} subtitle={stripPublicMarkdown(live.summary)}>
+      <PageHero eyebrow={publicCountyEyebrow(live)} title={live.title} subtitle={stripPublicMarkdown(live.summary)}>
         {attendance.rsvpLabel ? (
           <Button href={rsvpHref} variant="primary">
             {attendance.rsvpLabel}

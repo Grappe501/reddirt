@@ -91,6 +91,8 @@ export function publicCampaignEventToEventItem(ev: PublicCampaignEvent): EventIt
     eventSource: "calendar",
     attendanceType: ev.attendanceType,
     city: ev.city?.trim() || undefined,
+    campaignTrail: true,
+    statewideVirtual: ev.venueMode === "virtual",
     opsFlags: {
       missingPublicSummary: !hasSummary,
       missingCounty: !ev.county,
