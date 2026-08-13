@@ -87,70 +87,9 @@ const LAUNCH_HANDLER_ROOT_KEEP = new Set([
   "package.json",
 ]);
 
-/**
- * Handler-relative exclusions merged after OpenNext's includedFiles: ["**"].
- * "**" is required and MUST stay scoped via includedFilesBasePath = handler directory.
- * Do not put these globs in netlify.toml — toml paths are site-root relative and
- * replace the OpenNext manifest, which re-inflates the upload past 250 MB.
- */
-const MANIFEST_INCLUDED_EXCLUSIONS = [
-  "!.git/**",
-  "!.git/objects/**",
-  "!.next/cache/**",
-  "!.next/static/**",
-  "!.next/diagnostics/**",
-  "!.next/types/**",
-  "!node_modules/.prisma/client/libquery_engine-rhel-openssl-1.0.x.so.node",
-  "!node_modules/@img/**",
-  "!node_modules/sharp/**",
-  "!node_modules/@img/sharp-libvips-linuxmusl-x64/**",
-  "!node_modules/@img/sharp-linuxmusl-x64/**",
-  "!node_modules/pdf-parse/**",
-  "!node_modules/@googleapis/**",
-  "!node_modules/googleapis/**",
-  "!node_modules/google-auth-library/**",
-  "!node_modules/twilio/**",
-  "!node_modules/mammoth/**",
-  "!node_modules/xlsx/**",
-  "!node_modules/typescript/**",
-  "!node_modules/webpack/**",
-  "!node_modules/next/**",
-  "!node_modules/@swc/**",
-  "!node_modules/esbuild/**",
-  "!node_modules/playwright/**",
-  "!node_modules/@playwright/**",
-  "!node_modules/puppeteer/**",
-  "!node_modules/puppeteer-core/**",
-  "!data/**",
-  "!docs/**",
-  "!src/**",
-  "!prisma/**",
-  "!scripts/**",
-  "!canvases/**",
-  "!.env",
-  "!.env.*",
-  "!**/.env",
-  "!**/.env.*",
-  "!public/**",
-  "!.tmp-heic-preview/**",
-  "!docs/kelly-grappe-sos-strategic-plan-manual/**",
-  "!campaign-system-manual/**",
-  "!.local/**",
-  "!**/.local/**",
-  "!**/npm-cache/**",
-  "!**/_cacache/**",
-  "!Volunteer Presentation/**",
-  "!develop_notes/**",
-  "!field-structure/**",
-  "!exports/**",
-  "!backups/**",
-  "!reports/**",
-  "!campaign-media/**",
-  "!county-vault/**",
-  "!.nightly-self-build/**",
-  "!out/**",
-  "!standalone/**",
-  "!node_modules/.cache/**",
+/** Site-root globs for zip-it. Never use a bare "**" — deploy drops includedFilesBasePath and "**" then zips the repo. */
+const HANDLER_SITE_INCLUDE_GLOBS = [
+  ".netlify/functions-internal/___netlify-server-handler/**",
 ];
 
 /**
@@ -557,9 +496,8 @@ function handlerDirForManifest(manifestPath) {
   return exists(sibling) ? sibling : dir;
 }
 
-function buildPatchedHandlerManifest(json, handlerRoot) {
-  const prev = Array.isArray(json.config?.includedFiles) ? json.config.includedFiles : [];
-  const prevExclusions = prev.filter((p) => typeof p === "string" && p.startsWith("!"));
+function buildPatchedHandlerManifest(json, { handlerRoot, cwd }) {
+  const siteRoot = cwd || path.dirname(path.dirname(handlerRoot));
   const config = json.config && typeof json.config === "object" ? json.config : {};
   return {
     ...json,
@@ -567,13 +505,8 @@ function buildPatchedHandlerManifest(json, handlerRoot) {
       ...config,
       name: config.name || "Next.js Server Handler",
       nodeBundler: "none",
-      /**
-       * OpenNext zips this directory when includedFiles is ["**"] AND
-       * includedFilesBasePath is the handler root. Site-root "**" (no basePath)
-       * or exclusion-only toml included_files re-inflates past 250 MB.
-       */
-      includedFiles: ["**", ...new Set([...MANIFEST_INCLUDED_EXCLUSIONS, ...prevExclusions])],
-      includedFilesBasePath: handlerRoot,
+      includedFiles: [...HANDLER_SITE_INCLUDE_GLOBS],
+      includedFilesBasePath: siteRoot,
     },
   };
 }
@@ -586,11 +519,23 @@ function patchServerHandlerManifest(cwd) {
     const json = JSON.parse(fs.readFileSync(manifestPath, "utf8"));
     if (!json.config && json.version == null) continue;
     const handlerRoot = handlerDirForManifest(manifestPath);
-    const nextJson = buildPatchedHandlerManifest(json, handlerRoot);
+    const nextJson = buildPatchedHandlerManifest(json, { handlerRoot, cwd });
     fs.writeFileSync(manifestPath, `${JSON.stringify(nextJson)}\n`);
     patched = true;
   }
   return patched;
+}
+
+function applyServerHandlerIncludeGlobs(netlifyConfig) {
+  if (!netlifyConfig || typeof netlifyConfig !== "object") return false;
+  if (!netlifyConfig.functions) netlifyConfig.functions = {};
+  const prev = netlifyConfig.functions["___netlify-server-handler"] || {};
+  netlifyConfig.functions["___netlify-server-handler"] = {
+    ...prev,
+    node_bundler: "none",
+    included_files: [...HANDLER_SITE_INCLUDE_GLOBS],
+  };
+  return true;
 }
 
 function materializeMinimalNodeModules(handlerRoot, repoRoot) {
@@ -606,7 +551,9 @@ function materializeMinimalNodeModules(handlerRoot, repoRoot) {
     let list = MINIMAL_NODE_MODULES;
     // Netlify Image CDN covers /_next/image — sharp + libvips blow the 250 MB unzipped cap.
     if (isNetlifyBuild() || isOppositionDebateLaunch()) {
-      list = list.filter((rel) => !rel.includes("sharp") && !rel.startsWith("@img/"));
+      list = list.filter(
+        (rel) => !rel.includes("sharp") && !rel.startsWith("@img/") && rel !== "openai",
+      );
     }
     return list;
   })();
@@ -861,6 +808,52 @@ function largestFiles(handlerRoot, limit = 15, followSymlinks = true) {
   return rows.sort((a, b) => b.size - a.size).slice(0, limit);
 }
 
+function topLevelSizes(handlerRoot) {
+  const rows = [];
+  if (!exists(handlerRoot)) return rows;
+  let entries;
+  try {
+    entries = fs.readdirSync(handlerRoot, { withFileTypes: true });
+  } catch {
+    return rows;
+  }
+  for (const ent of entries) {
+    const abs = path.join(handlerRoot, ent.name);
+    let size = 0;
+    try {
+      if (ent.isSymbolicLink()) continue;
+      if (ent.isFile()) size = fs.statSync(abs).size;
+      else if (ent.isDirectory()) size = dirSizeBytesFollowSymlinks(abs);
+    } catch {
+      continue;
+    }
+    rows.push({ name: ent.name, mb: size / (1024 * 1024) });
+  }
+  return rows.sort((a, b) => b.mb - a.mb);
+}
+
+function countSymlinks(treeRoot) {
+  let n = 0;
+  function walk(dir) {
+    let entries;
+    try {
+      entries = fs.readdirSync(dir, { withFileTypes: true });
+    } catch {
+      return;
+    }
+    for (const ent of entries) {
+      const abs = path.join(dir, ent.name);
+      if (ent.isSymbolicLink()) {
+        n += 1;
+        continue;
+      }
+      if (ent.isDirectory()) walk(abs);
+    }
+  }
+  if (exists(treeRoot)) walk(treeRoot);
+  return n;
+}
+
 function pruneNetlifyServerHandler(cwd = process.cwd()) {
   /** Only mutate the packaged handler — never repo `.next` (breaks @netlify/plugin-nextjs onBuild). */
   const handlers = HANDLER_DIRS.map((d) => path.join(cwd, d)).filter(exists);
@@ -888,14 +881,31 @@ function pruneNetlifyServerHandler(cwd = process.cwd()) {
     deployMb += dirSizeBytesFollowSymlinks(handler) / (1024 * 1024);
   }
 
+  const duplicate = path.join(cwd, ".netlify/functions/___netlify-server-handler");
+  if (exists(duplicate)) {
+    rmrf(duplicate);
+    removed.push(".netlify/functions/___netlify-server-handler");
+  }
+
+  const primary = path.join(cwd, ".netlify/functions-internal/___netlify-server-handler");
+  const handler = exists(primary) ? primary : handlers[0];
+  if (exists(handler)) {
+    deleteAllSymlinks(handler);
+  }
+
   const manifestPatched = isNetlifyBuild() ? patchServerHandlerManifest(cwd) : false;
+  afterMb = exists(handler) ? dirSizeBytes(handler) / (1024 * 1024) : afterMb;
+  deployMb = exists(handler) ? dirSizeBytesFollowSymlinks(handler) / (1024 * 1024) : deployMb;
 
   return {
     skipped: false,
-    handler: handlers[0],
+    handler,
     beforeMb,
     afterMb,
     deployMb,
+    symlinkCount: exists(handler) ? countSymlinks(handler) : 0,
+    topLevels: exists(handler) ? topLevelSizes(handler) : [],
+    largest: exists(handler) ? largestFiles(handler) : [],
     manifestPatched,
     removed: [...new Set(removed)],
   };
@@ -910,9 +920,17 @@ function formatOversizeMessage(result) {
     .join("\n");
   const mode = process.env.NEXT_PUBLIC_INTELLIGENCE_LAUNCH_MODE ?? "default";
   const launchNote = `\nLaunch mode: ${mode}.`;
+  const symlinkNote = result.symlinkCount
+    ? `\nLeftover symlinks: ${result.symlinkCount} (zip-it follows them and re-inflates the upload).`
+    : "";
+  const topDirs = (result.topLevels || [])
+    .map((row) => `  ${row.mb.toFixed(1)} MB  ${row.name}`)
+    .join("\n");
   return (
     `___netlify-server-handler deploy size is ${result.deployMb.toFixed(1)} MB (Netlify unzipped limit ${MAX_MB} MB).` +
-    ` Staging tree: ${result.afterMb.toFixed(1)} MB.${launchNote}\nLargest files:\n${top}`
+    ` Staging tree: ${result.afterMb.toFixed(1)} MB.${launchNote}${symlinkNote}` +
+    (topDirs ? `\nTop-level:\n${topDirs}` : "") +
+    `\nLargest files:\n${top}`
   );
 }
 
@@ -921,7 +939,7 @@ function shouldFailDeploy(result) {
     return isNetlifyBuild();
   }
   const measuredMb = Math.max(result.afterMb, result.deployMb);
-  return measuredMb > DEPLOY_FAIL_MB;
+  return measuredMb > DEPLOY_FAIL_MB || (isNetlifyBuild() && result.symlinkCount > 0);
 }
 
 if (require.main === module) {
@@ -949,7 +967,8 @@ module.exports = {
   patchServerHandlerManifest,
   buildPatchedHandlerManifest,
   handlerDirForManifest,
-  MANIFEST_INCLUDED_EXCLUSIONS,
+  applyServerHandlerIncludeGlobs,
+  HANDLER_SITE_INCLUDE_GLOBS,
   MAX_MB,
   DEPLOY_FAIL_MB,
 };
