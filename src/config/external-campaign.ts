@@ -68,6 +68,18 @@ export function getContactMailto(): string {
   return `mailto:${raw.replace(/^mailto:/i, "")}`;
 }
 
+/**
+ * Recurring Wednesday campaign prayer Zoom. Public join URL only.
+ * Per-event `rsvpHref` wins; otherwise `NEXT_PUBLIC_CAMPAIGN_PRAYER_ZOOM_URL`.
+ */
+export function getCampaignPrayerZoomHref(eventRsvpHref?: string | null): string | null {
+  const fromEvent = eventRsvpHref?.trim() ?? "";
+  if (/^https?:\/\//i.test(fromEvent)) return fromEvent;
+  const fromEnv = process.env.NEXT_PUBLIC_CAMPAIGN_PRAYER_ZOOM_URL?.trim() ?? "";
+  if (/^https?:\/\//i.test(fromEnv)) return fromEnv;
+  return null;
+}
+
 /** Donate: env override, else GoodChange default from legacy site. */
 export function resolvePublicDonateHref(): string {
   const ext = process.env.NEXT_PUBLIC_DONATE_EXTERNAL_URL?.trim().replace(/\/$/, "");

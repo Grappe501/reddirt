@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import type { EventItem } from "@/content/types";
-import { formatEventWhen } from "@/lib/format/eventDisplay";
+import { resolveEventStatus, stripPublicMarkdown } from "@/lib/format/eventDisplay";
+import { formatCountyFirstMeta, publicCountyEyebrow } from "@/lib/events/public-event-county";
 import { cn } from "@/lib/utils";
 
 type EventCardProps = {
@@ -13,6 +14,7 @@ type EventCardProps = {
 };
 
 function locationIsTba(event: EventItem): boolean {
+  if (event.statewideVirtual) return false;
   if (event.mapPinQuality === "region") return true;
   if (event.opsFlags?.missingCounty || event.opsFlags?.missingCoordinates) return true;
   if (!event.mapCoordinates) return true;
@@ -21,7 +23,7 @@ function locationIsTba(event: EventItem): boolean {
 }
 
 export function EventCard({ event, className, highlighted, onActivate }: EventCardProps) {
-  const when = formatEventWhen(event);
+  const status = resolveEventStatus(event);
   const detailHref = event.detailHref ?? `/events/${event.slug}`;
   const tba = locationIsTba(event);
   return (
@@ -42,17 +44,17 @@ export function EventCard({ event, className, highlighted, onActivate }: EventCa
       <div>
         <div className="flex flex-wrap items-center gap-2">
           <span className="rounded-full border border-kelly-navy/25 bg-kelly-navy/10 px-2.5 py-0.5 font-body text-[11px] font-bold uppercase tracking-wider text-kelly-text">
-            {event.type}
+            {publicCountyEyebrow(event)}
           </span>
           <span
             className={cn(
               "rounded-full px-2.5 py-0.5 font-body text-[11px] font-bold uppercase tracking-wider",
-              event.status === "upcoming"
+              status === "upcoming"
                 ? "border border-kelly-success/35 bg-kelly-success/12 text-kelly-text"
                 : "border border-kelly-text/15 bg-kelly-text/[0.05] text-kelly-text/70",
             )}
           >
-            {event.status === "upcoming" ? "Upcoming" : "Past"}
+            {status === "upcoming" ? "Upcoming" : "Past"}
           </span>
           {tba ? (
             <span className="rounded-full border border-kelly-text/20 bg-kelly-text/[0.06] px-2.5 py-0.5 font-body text-[11px] font-bold uppercase tracking-wider text-kelly-text/80">
@@ -68,12 +70,10 @@ export function EventCard({ event, className, highlighted, onActivate }: EventCa
             {event.title}
           </Link>
         </h3>
-        <p className="mt-2 font-body text-sm font-semibold text-kelly-text/70">{when.primary}</p>
-        {when.secondary ? (
-          <p className="mt-0.5 font-body text-sm text-kelly-text/70">{when.secondary}</p>
-        ) : null}
-        <p className="mt-1 font-body text-sm text-kelly-text/60">{event.locationLabel}</p>
-        <p className="mt-4 font-body text-base leading-relaxed text-kelly-text/75">{event.summary}</p>
+        <p className="mt-2 font-body text-sm font-semibold text-kelly-text/70">{formatCountyFirstMeta(event)}</p>
+        <p className="mt-4 font-body text-base leading-relaxed text-kelly-text/75">
+          {stripPublicMarkdown(event.summary)}
+        </p>
       </div>
       <Link
         href={detailHref}

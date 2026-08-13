@@ -29,7 +29,7 @@ export type MapPin = {
 
 /** Exact (or author-set) pins only — Prefer Unknown: region centroids stay list-only. */
 function isPublicMapPinEligible(e: EventItem): boolean {
-  if (e.status !== "upcoming" || !e.mapCoordinates) return false;
+  if (!e.mapCoordinates) return false;
   if (e.mapPinQuality === "region") return false;
   return true;
 }
@@ -152,9 +152,10 @@ type MovementFairsMapProps = {
   events: EventItem[];
   selectedSlug?: string | null;
   onSelectSlug?: (slug: string | null) => void;
+  pinMode?: "upcoming" | "past";
 };
 
-export function MovementFairsMap({ events, selectedSlug = null, onSelectSlug }: MovementFairsMapProps) {
+export function MovementFairsMap({ events, selectedSlug = null, onSelectSlug, pinMode = "upcoming" }: MovementFairsMapProps) {
   const pins = useMemo(() => buildPins(events), [events]);
   const boundsKey = useMemo(
     () =>
@@ -175,8 +176,8 @@ export function MovementFairsMap({ events, selectedSlug = null, onSelectSlug }: 
     });
   };
 
-  const listOnlyUpcoming = useMemo(
-    () => events.filter((e) => e.status === "upcoming" && !isPublicMapPinEligible(e)).length,
+  const listOnlyUnmapped = useMemo(
+    () => events.filter((e) => !isPublicMapPinEligible(e)).length,
     [events],
   );
 
@@ -221,8 +222,8 @@ export function MovementFairsMap({ events, selectedSlug = null, onSelectSlug }: 
       <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
         <p className="font-body text-xs text-kelly-text/60">
           Use the map’s +/− buttons to zoom (scroll moves the page).
-          {listOnlyUpcoming > 0
-            ? ` ${listOnlyUpcoming} upcoming stop${listOnlyUpcoming === 1 ? "" : "s"} stay list-only until a location is known.`
+          {listOnlyUnmapped > 0
+            ? ` ${listOnlyUnmapped} ${pinMode === "past" ? "past" : "upcoming"} stop${listOnlyUnmapped === 1 ? "" : "s"} stay list-only until a location is known.`
             : " Stops without a known location stay in the list only."}
         </p>
         <Link

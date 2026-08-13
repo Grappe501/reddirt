@@ -1,4 +1,5 @@
 import type { EventItem } from "@/content/types";
+import { parseEventInstant, resolveEventStatus } from "@/lib/format/eventDisplay";
 
 /**
  * Events shown on `/listening-sessions` → “Events planned”:
@@ -8,7 +9,9 @@ import type { EventItem } from "@/content/types";
  * New listening sessions: use `type: "Listening Session"` in `src/content/events` and they appear here automatically.
  */
 export function listListeningSessionSeriesEvents(mergedEvents: EventItem[]): EventItem[] {
+  const now = new Date();
   return [...mergedEvents]
     .filter((e) => e.type === "Listening Session" || e.listeningSessionSeries === true)
-    .sort((a, b) => a.startsAt.localeCompare(b.startsAt));
+    .filter((e) => resolveEventStatus(e, now) === "upcoming")
+    .sort((a, b) => parseEventInstant(a.startsAt, a.timezone).getTime() - parseEventInstant(b.startsAt, b.timezone).getTime());
 }

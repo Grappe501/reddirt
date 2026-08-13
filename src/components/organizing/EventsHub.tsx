@@ -8,6 +8,7 @@ import { EventFilterBar, type EventFiltersState } from "@/components/organizing/
 import type { EventType } from "@/content/types";
 import { Button } from "@/components/ui/Button";
 import { eventMatchesSchedulePreset } from "@/lib/format/event-schedule-in-zone";
+import { compareEventsForHub, resolveEventStatus } from "@/lib/format/eventDisplay";
 
 const MovementFairsMap = dynamic(
   () => import("@/components/organizing/MovementFairsMap").then((m) => m.MovementFairsMap),
@@ -39,25 +40,28 @@ export function EventsHub({ events, types, regions, audienceTags, initialFilters
   const [filters, setFilters] = useState<EventFiltersState>({
     type: initialFilters?.type ?? "all",
     region: initialFilters?.region ?? "all",
-    status: initialFilters?.status ?? "all",
+    status: initialFilters?.status ?? "upcoming",
     audience: initialFilters?.audience ?? "all",
     schedule: initialFilters?.schedule ?? "all",
   });
   const [selectedSlug, setSelectedSlug] = useState<string | null>(null);
 
   const filtered = useMemo(() => {
-    return events.filter((e) => {
-      // Published calendar rows are always part of the hub merge (Phase 1–2).
-      if (filters.type !== "all" && e.type !== filters.type) return false;
-      if (filters.region !== "all" && e.region !== filters.region) return false;
-      if (filters.status !== "all" && e.status !== filters.status) return false;
-      if (filters.audience !== "all") {
-        const tags = e.audienceTags ?? [];
-        if (!tags.includes(filters.audience)) return false;
-      }
-      if (!eventMatchesSchedulePreset(e.startsAt, e.endsAt, filters.schedule)) return false;
-      return true;
-    });
+    const now = new Date();
+    return events
+      .filter((e) => {
+        const liveStatus = resolveEventStatus(e, now);
+        if (filters.type !== "all" && e.type !== filters.type) return false;
+        if (filters.region !== "all" && e.region !== filters.region) return false;
+        if (filters.status !== "all" && liveStatus !== filters.status) return false;
+        if (filters.audience !== "all") {
+          const tags = e.audienceTags ?? [];
+          if (!tags.includes(filters.audience)) return false;
+        }
+        if (!eventMatchesSchedulePreset(e.startsAt, e.endsAt, filters.schedule, e.timezone)) return false;
+        return true;
+      })
+      .sort((a, b) => compareEventsForHub(a, b, now));
   }, [events, filters]);
 
   useEffect(() => {
@@ -70,10 +74,7 @@ export function EventsHub({ events, types, regions, audienceTags, initialFilters
     filters.region !== "all" && events.filter((e) => e.region === filters.region).length === 0;
 
   const unmappedUpcoming = useMemo(
-    () =>
-      filtered.filter(
-        (e) => e.status === "upcoming" && !e.mapCoordinates,
-      ),
+    () => filtered.filter((e) => resolveEventStatus(e) === "upcoming" && !e.mapCoordinates),
     [filtered],
   );
 

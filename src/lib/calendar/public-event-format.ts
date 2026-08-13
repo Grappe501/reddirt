@@ -1,23 +1,9 @@
 import type { CampaignEventType } from "@prisma/client";
+import { formatPublicEventKind } from "@/lib/events/public-event-kind";
 import { PUBLIC_CALENDAR_DEFAULT_TZ, type PublicVenueMode } from "@/lib/calendar/public-event-types";
 
-const TYPE_LABEL: Record<CampaignEventType, string> = {
-  RALLY: "Rally",
-  APPEARANCE: "Appearance",
-  TRAINING: "Training",
-  MEETING: "Meeting",
-  CANVASS: "Canvass",
-  PHONE_BANK: "Phone bank",
-  FUNDRAISER: "Fundraiser",
-  PRESS: "Press",
-  DEADLINE: "Deadline",
-  ORIENTATION: "Orientation",
-  FESTIVAL: "Fair / festival",
-  OTHER: "Event",
-};
-
 export function formatPublicEventType(t: CampaignEventType): string {
-  return TYPE_LABEL[t] ?? t;
+  return formatPublicEventKind(t);
 }
 
 const VIRTUAL_HINT = /\b(virtual|zoom|online|webinar|livestream|teams\.microsoft|meet\.google|webex|\.zoom\.us)\b/i;

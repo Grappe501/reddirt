@@ -1,12 +1,14 @@
 import Link from "next/link";
-import { CampaignEventStatus, CampaignEventType, CampaignEventVisibility } from "@prisma/client";
+import { CampaignEventAttendanceType, CampaignEventPurpose, CampaignEventStatus, CampaignEventType, CampaignEventVisibility } from "@prisma/client";
 import { createCampaignEventAction } from "@/app/admin/ops-actions";
 import { countPendingPublicFormFestivalIngests } from "@/lib/festivals/admin-queries";
 import { prisma } from "@/lib/db";
 import { CAMPAIGN_ROLE_KEYS, formatRoleLabel } from "@/lib/ops/roles";
+import { loadCountyVisitLedger } from "@/lib/events/load-county-visit-ledger";
+import { CountyVisitLedgerNotice } from "@/components/admin/CountyVisitLedgerNotice";
 
 export default async function AdminEventsPage() {
-  const [events, counties, publicSuggestPending] = await Promise.all([
+  const [events, counties, publicSuggestPending, visitLedger] = await Promise.all([
     prisma.campaignEvent.findMany({
       orderBy: { startAt: "asc" },
       take: 80,
@@ -14,6 +16,7 @@ export default async function AdminEventsPage() {
     }),
     prisma.county.findMany({ orderBy: { sortOrder: "asc" }, select: { id: true, displayName: true } }),
     countPendingPublicFormFestivalIngests().catch(() => 0),
+    loadCountyVisitLedger(),
   ]);
 
   return (
@@ -22,6 +25,7 @@ export default async function AdminEventsPage() {
       <p className="mt-2 font-body text-sm text-kelly-text/75">
         Create campaign events. Saving runs workflow templates (appearance prep, etc.) for matching types.
       </p>
+      <CountyVisitLedgerNotice ledger={visitLedger} />
 
       {publicSuggestPending > 0 ? (
         <div className="mt-5 rounded-md border border-amber-200 bg-amber-50/80 px-4 py-3 font-body text-sm text-amber-950">
@@ -95,13 +99,46 @@ export default async function AdminEventsPage() {
             </select>
           </label>
           <label className="block text-sm">
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">City / town (public)</span>
+            <input name="city" className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
+          </label>
+        </div>
+        <div className="grid gap-4 md:grid-cols-2">
+          <label className="block text-sm">
             <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Location name</span>
             <input name="locationName" className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
+          </label>
+          <label className="block text-sm">
+            <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Attendance (public copy)</span>
+            <select name="attendanceType" defaultValue={CampaignEventAttendanceType.CAMPAIGN_APPEARANCE} className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm">
+              {Object.values(CampaignEventAttendanceType).map((t) => (
+                <option key={t} value={t}>
+                  {t}
+                </option>
+              ))}
+            </select>
           </label>
         </div>
         <label className="block text-sm">
           <span className="text-xs font-semibold uppercase tracking-wider text-kelly-muted">Address</span>
           <input name="address" className="mt-1 w-full rounded-md border border-kelly-text/15 bg-white px-3 py-2 text-sm" />
+        </label>
+        <fieldset className="rounded-md border border-kelly-text/10 p-4">
+          <legend className="px-1 text-xs font-semibold uppercase tracking-wider text-kelly-muted">
+            Campaign purposes (internal — never public)
+          </legend>
+          <div className="mt-2 grid gap-2 sm:grid-cols-2">
+            {Object.values(CampaignEventPurpose).map((p) => (
+              <label key={p} className="flex items-center gap-2 text-sm text-kelly-text">
+                <input type="checkbox" name="campaignPurposes" value={p} />
+                {p.replaceAll("_", " ")}
+              </label>
+            ))}
+          </div>
+        </fieldset>
+        <label className="flex items-center gap-2 text-sm text-kelly-text">
+          <input type="checkbox" name="isTravelLeg" value="1" />
+          Travel / repositioning leg (never public)
         </label>
         <div className="grid gap-4 md:grid-cols-2">
           <label className="block text-sm">
