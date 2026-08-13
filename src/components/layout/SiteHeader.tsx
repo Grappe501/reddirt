@@ -92,12 +92,25 @@ export function SiteHeader() {
     <header
       ref={headerRootRef}
       className={cn(
-        "fixed left-0 right-0 top-0 z-50 w-full isolate border-b border-kelly-gold/25 transition-[background-color,box-shadow,backdrop-filter] duration-300 ease-out",
+        "fixed left-0 right-0 top-0 z-[200] w-full overflow-visible border-b border-kelly-gold/25 transition-[box-shadow] duration-300 ease-out",
         compactHeader
-          ? "bg-kelly-navy/94 shadow-[0_6px_28px_rgba(0,0,102,0.42)] backdrop-blur-md backdrop-saturate-125"
-          : "bg-kelly-navy shadow-[0_8px_32px_rgba(0,0,102,0.35)]",
+          ? "shadow-[0_6px_28px_rgba(0,0,102,0.42)]"
+          : "shadow-[0_8px_32px_rgba(0,0,102,0.35)]",
       )}
     >
+      {/*
+        Backdrop-filter on the <header> itself clips overflow (the desktop ▾ menus hang below the bar).
+        Keep blur on a padded background layer so submenus can paint over the page after scroll.
+      */}
+      <div
+        aria-hidden
+        className={cn(
+          "pointer-events-none absolute inset-0 z-0",
+          compactHeader
+            ? "bg-kelly-navy/94 backdrop-blur-md backdrop-saturate-125"
+            : "bg-kelly-navy",
+        )}
+      />
       <SearchDialog open={searchOpen} onClose={() => setSearchOpen(false)} />
       <div className="relative z-10 border-b border-kelly-gold/20">
         <div
