@@ -42,7 +42,7 @@ export const ASK_KELLY_SYSTEM_ROUTES = {
   countyBriefingFaulknerV2: "/county-briefings/faulkner/v2",
   countyIntel: "/admin/county-intelligence",
   /** Marketing site discovery hub — legacy volunteer URLs redirect here via `next.config.ts`. */
-  volunteerPublic: "/about",
+  volunteerPublic: "/get-involved",
   adminVolunteerIntake: "/admin/volunteers/intake",
   /** Stable bookmark paths → `redirects()` in next.config.ts (no duplicate pages). */
   aliasCountyWorkbench: "/countyWorkbench",

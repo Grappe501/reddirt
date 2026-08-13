@@ -107,6 +107,6 @@ export const notariesAreaConfig: OfficeAreaConfig = {
   relatedLinks: [
     { label: "Understand the Office", href: "/understand" },
     { label: "Business & Filings", href: "/office/business" },
-    { label: "Meet Kelly", href: "/about" },
+    { label: "Campaign Videos", href: "/kelly-speaks" },
   ],
 };

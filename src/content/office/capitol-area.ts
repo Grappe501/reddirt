@@ -115,7 +115,7 @@ export const capitolAreaConfig: OfficeAreaConfig = {
   layerTwoNextLabel: "What Kelly brings",
   relatedLinks: [
     { label: "Understand the Office", href: "/understand" },
-    { label: "Meet Kelly", href: "/about" },
+    { label: "Campaign Videos", href: "/kelly-speaks" },
     { label: "Office priorities", href: "/priorities" },
   ],
 };

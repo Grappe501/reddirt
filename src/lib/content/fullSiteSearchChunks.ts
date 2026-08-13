@@ -17,7 +17,6 @@ import {
   GET_INVOLVED_SECTION,
 } from "../../content/home/homepagePremium";
 import { JOURNEY_BEAT_DEFINITIONS } from "../../content/home/journey";
-import { KELLY_ABOUT_CHAPTERS } from "../../content/about/kelly-about-chapters";
 import { circulatingInitiatives2026, CIRCULATING_DISCLAIMER } from "../../content/direct-democracy/circulating-initiatives";
 import { allToolkitGuides } from "../../content/resources/toolkit-guides";
 import { kellyFriendInviteScripts } from "../../content/resources/kelly-friend-invite-scripts";
@@ -128,22 +127,6 @@ export function loadFullSiteSearchChunks(): DocChunk[] {
     chunkIndex: nextChunkIndex("route:/", idx),
     content: cap(journeyText),
   });
-
-  for (const c of KELLY_ABOUT_CHAPTERS) {
-    const text = [
-      c.title,
-      c.eyebrow,
-      c.summary,
-      c.description,
-      `Meet Kelly chapter — read more at /about/${c.slug}`,
-    ].join("\n\n");
-    out.push({
-      path: `route:/about/${c.slug}`,
-      title: `${c.title} — Meet Kelly`,
-      chunkIndex: 0,
-      content: cap(text),
-    });
-  }
 
   const circHeader = ["# Circulating ballot measures (education snapshot)", CIRCULATING_DISCLAIMER, ""].join("\n\n");
   for (const init of circulatingInitiatives2026) {

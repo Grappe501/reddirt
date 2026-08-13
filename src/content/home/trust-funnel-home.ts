@@ -13,7 +13,7 @@ export const trustFunnelHomeCopy = {
     body:
       "Our state motto, Regnat Populus — “The People Rule” — should be more than words on a seal. It should define how the Secretary of State serves the people of Arkansas. I’m running to take the politics out of this office, restore trust in our systems, and make the Secretary of State’s office work better for the people it belongs to.",
     ctas: [
-      { label: "Meet Kelly", href: "/about", variant: "primary" },
+      { label: "Campaign Videos", href: "/kelly-speaks", variant: "primary" },
       { label: "See My Plan", href: "/priorities", variant: "secondary" },
     ] as const,
   },
@@ -245,8 +245,8 @@ export const trustFunnelHomeCopy = {
       "She spent nearly 25 years in telecom operations leadership—training teams and protecting customer-impacting work when systems could not fail—and years organizing around fair elections and ballot access, including grassroots petition work after LEARNS. She also knows the filer’s side of the counter through small-market and farm operations. That mix of administration and listening shapes how she would run the office: professionally, transparently, and with equal respect for all 75 counties.",
     values:
       "Those experiences led her to seek this office: modernize what is broken inside its legal duties, defend lawful ballot access, and make state services easier for ordinary Arkansans to use. People over politics means competence, accessibility, and accountable public service—not personality worship.",
-    cta: "Read About Kelly’s Experience",
-    ctaHref: "/about",
+    cta: "Watch Kelly speak",
+    ctaHref: "/kelly-speaks",
   },
 
   acrossArkansas: {
@@ -260,7 +260,7 @@ export const trustFunnelHomeCopy = {
     videoIntroduction:
       "A trail story from Hot Springs Village: neighbors gathering, conversations starting, and the work of showing up.",
     cta: "See Kelly Across Arkansas",
-    ctaHref: "/about/journey",
+    ctaHref: "/arkansas-visits",
   },
 
   campaignPhotos: {
@@ -380,7 +380,7 @@ export const trustFunnelHomeCopy = {
       label: "Why Kelly is running",
       supportingLine:
         "Arkansas elections administered for Arkansans—under law, without partisan favoritism.",
-      href: "/about/why-kelly",
+      href: "/office/why-this-race-matters",
     },
   },
 
@@ -410,7 +410,7 @@ export const trustFunnelHomeCopy = {
       },
     ] as const,
     ctas: {
-      hub: "Direct democracy hub",
+      hub: "How initiatives reach the ballot",
       process: "How initiatives reach the ballot",
       commitment: "Get involved",
     },
@@ -423,8 +423,8 @@ export const trustFunnelHomeCopy = {
       "It improves because leaders know how to build strong teams, modernize operations, solve complex problems, and serve the public with professionalism.",
     closer:
       "Kelly brings decades of executive leadership, organizational development, technology modernization, and large-team management experience to the Secretary of State's office—focused on building a culture of service that puts Arkansas first.",
-    cta: "Learn more about Kelly's experience →",
-    ctaHref: "/about",
+    cta: "Watch Kelly speak →",
+    ctaHref: "/kelly-speaks",
   },
 
   listening: {

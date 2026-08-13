@@ -3,8 +3,6 @@
  * Two-level public architecture: overview summaries → journey / community / why-im-running drill-downs.
  */
 
-import { directDemocracyHubHref, kellyInitiativesChapterHref } from "@/config/direct-democracy-links";
-
 export type MeetKellyQuestionId =
   | "who"
   | "done"
@@ -72,15 +70,8 @@ export const MEET_KELLY_QUESTIONS: readonly MeetKellyQuestion[] = [
   },
 ] as const;
 
-export const MEET_KELLY_SUBNAV = [
-  { href: "/about", label: "Overview" },
-  { href: "/about/experience", label: "Experience" },
-  { href: "/about/why-im-running", label: "Why I'm running" },
-  { href: "/about/journey", label: "Journey" },
-  { href: "/about/community", label: "Community" },
-  { href: directDemocracyHubHref, label: "The People's Voice" },
-  { href: kellyInitiativesChapterHref, label: "Initiatives & petitions" },
-] as const;
+/** Parked with the Meet Kelly bio pages — restore this list when those routes return. */
+export const MEET_KELLY_SUBNAV: readonly { href: string; label: string }[] = [];
 
 export const meetKellyExecutiveSummary = {
   eyebrow: "Meet Kelly",

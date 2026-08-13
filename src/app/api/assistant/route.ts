@@ -235,8 +235,8 @@ export async function POST(req: Request) {
         "I’m supposed to answer from what the campaign has loaded into my notebook—and right now that notebook is blank on this server. You can still browse everything on the site the old-fashioned way (menus, links—revolutionary, I know). If you came for something specific about Kelly or this race and I’m useless, email kelly@kellygrappe.com with what you were trying to find—I only know what the campaign has taught me.",
       suggestions: [
         { label: "Office priorities", href: "/priorities" },
-        { label: "Direct democracy", href: "/direct-democracy" },
-        { label: "Meet Kelly", href: "/about" },
+        { label: "How initiatives reach the ballot", href: "/direct-democracy/ballot-initiative-process" },
+        { label: "Campaign Videos", href: "/kelly-speaks" },
         { label: "Get involved", href: "/get-involved" },
       ],
     });

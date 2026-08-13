@@ -106,7 +106,7 @@ export function playbookSuggestionExtras(id: PlaybookId): Array<{ label: string;
     case "press":
       return [
         { label: "Press coverage", href: "/press-coverage" },
-        { label: "About Kelly", href: "/about" },
+        { label: "Campaign Videos", href: "/kelly-speaks" },
       ];
     case "volunteer":
       return [
@@ -115,7 +115,7 @@ export function playbookSuggestionExtras(id: PlaybookId): Array<{ label: string;
       ];
     default:
       return [
-        { label: "Meet Kelly", href: "/about" },
+        { label: "Campaign Videos", href: "/kelly-speaks" },
         { label: "Priorities", href: "/priorities" },
       ];
   }

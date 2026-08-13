@@ -24,8 +24,8 @@ export default async function WhyThisRaceMattersPage() {
         title="Why this race matters"
         subtitle="This job isn’t abstract—it runs systems families and employers rely on. Here’s the high-level case, with room to go deeper on each part of the office when you’re ready."
       >
-        <Button href="/about/why-kelly" variant="primary">
-          Why Kelly
+        <Button href="/priorities" variant="primary">
+          See My Plan
         </Button>
         <Button href="/understand" variant="outlineOnDark">
           Understand the Office
