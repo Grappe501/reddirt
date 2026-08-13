@@ -74,7 +74,7 @@ export async function MediaPageHero({
 
   if (layout === "bleed") {
     return (
-      <FullBleedSection variant="plain" padY={false} className={cn("relative isolate overflow-hidden", className)}>
+      <FullBleedSection variant="plain" padY={false} className={cn("relative isolate overflow-hidden text-kelly-inverse", className)}>
         <div className="absolute inset-0 -z-10">
           <PublicMediaSlotFrame
             slotKey={slotKey}
