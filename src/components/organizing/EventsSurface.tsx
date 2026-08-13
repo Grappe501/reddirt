@@ -12,6 +12,7 @@ import {
 } from "@/lib/format/eventDisplay";
 import { eventMatchesSchedulePreset } from "@/lib/format/event-schedule-in-zone";
 import { publicLaneForMovementType, type PublicEventLane } from "@/lib/events/public-event-kind";
+import { kellyNextStopsRoute } from "@/lib/events/kelly-next-stops-route";
 import { cn } from "@/lib/utils";
 import dynamic from "next/dynamic";
 
@@ -44,21 +45,6 @@ function applyLane(events: EventItem[], lane: LaneChip): EventItem[] {
     return events.filter((e) => eventMatchesSchedulePreset(e.startsAt, e.endsAt, "this_week", e.timezone));
   }
   return events.filter((e) => publicLaneForMovementType(e.type) === lane);
-}
-
-function stopPlace(e: EventItem): string {
-  return (e.city?.trim() || e.locationLabel).replace(/,\s*AR\b.*$/i, "").trim();
-}
-
-/** Public journey string from upcoming appearances — never travel legs. */
-export function kellyNextStopsRoute(events: EventItem[]): string {
-  const places: string[] = [];
-  for (const e of events) {
-    const place = stopPlace(e);
-    if (!place || /^unknown$/i.test(place)) continue;
-    if (places[places.length - 1] !== place) places.push(place);
-  }
-  return places.join(" → ");
 }
 
 function EventsMonthGrid({ events }: { events: EventItem[] }) {

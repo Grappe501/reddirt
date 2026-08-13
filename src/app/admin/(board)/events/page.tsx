@@ -4,9 +4,11 @@ import { createCampaignEventAction } from "@/app/admin/ops-actions";
 import { countPendingPublicFormFestivalIngests } from "@/lib/festivals/admin-queries";
 import { prisma } from "@/lib/db";
 import { CAMPAIGN_ROLE_KEYS, formatRoleLabel } from "@/lib/ops/roles";
+import { loadCountyVisitLedger } from "@/lib/events/load-county-visit-ledger";
+import { CountyVisitLedgerNotice } from "@/components/admin/CountyVisitLedgerNotice";
 
 export default async function AdminEventsPage() {
-  const [events, counties, publicSuggestPending] = await Promise.all([
+  const [events, counties, publicSuggestPending, visitLedger] = await Promise.all([
     prisma.campaignEvent.findMany({
       orderBy: { startAt: "asc" },
       take: 80,
@@ -14,6 +16,7 @@ export default async function AdminEventsPage() {
     }),
     prisma.county.findMany({ orderBy: { sortOrder: "asc" }, select: { id: true, displayName: true } }),
     countPendingPublicFormFestivalIngests().catch(() => 0),
+    loadCountyVisitLedger(),
   ]);
 
   return (
@@ -22,6 +25,7 @@ export default async function AdminEventsPage() {
       <p className="mt-2 font-body text-sm text-kelly-text/75">
         Create campaign events. Saving runs workflow templates (appearance prep, etc.) for matching types.
       </p>
+      <CountyVisitLedgerNotice ledger={visitLedger} />
 
       {publicSuggestPending > 0 ? (
         <div className="mt-5 rounded-md border border-amber-200 bg-amber-50/80 px-4 py-3 font-body text-sm text-amber-950">

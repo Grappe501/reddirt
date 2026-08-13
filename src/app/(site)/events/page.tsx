@@ -1,17 +1,16 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { MediaPageHero } from "@/components/blocks/MediaPageHero";
 import { FullBleedSection } from "@/components/layout/FullBleedSection";
 import { ContentContainer } from "@/components/layout/ContentContainer";
-import { CTASection } from "@/components/blocks/CTASection";
 import { Button } from "@/components/ui/Button";
-import { EventsSurface, type EventsSurfaceView } from "@/components/organizing/EventsSurface";
+import { EventsProofSection } from "@/components/organizing/EventsProofSection";
+import { EventsMovementSection } from "@/components/organizing/EventsMovementSection";
 import { SuggestCommunityEventForm } from "@/components/organizing/SuggestCommunityEventForm";
 import { events } from "@/content/events";
 import { queryPublicCampaignEvents } from "@/lib/calendar/public-events";
 import { mergeMovementAndCalendarEvents } from "@/lib/events/calendar-to-movement-event";
+import { loadCountyVisitLedger } from "@/lib/events/load-county-visit-ledger";
 import { safePublishedCountyOptions } from "@/lib/county/safe-published-county-options";
-import { representLocalEventVolunteerHref } from "@/config/navigation";
 
 import { pageMeta } from "@/lib/seo/metadata";
 import { brandMediaFromLegacySite } from "@/config/brand-media";
@@ -19,10 +18,13 @@ import { brandMediaFromLegacySite } from "@/config/brand-media";
 export const metadata: Metadata = pageMeta({
   title: "Events",
   description:
-    "Where Kelly will be next — from county fairs and community meetings to cookouts, candidate forums, and front porches. Invite Kelly or host a gathering if your town is not on the list yet.",
+    "Where Kelly has been and where she will be next — county visits computed from the campaign ledger, plus confirmed stops in Arkansas Central Time.",
   path: "/events",
   imageSrc: brandMediaFromLegacySite.statewideBanner,
 });
+
+/** Netlify builds re-evaluate ended appearances in America/Chicago. */
+export const revalidate = 3600;
 
 function pickParam(sp: Record<string, string | string[] | undefined>, key: string): string | undefined {
   const v = sp[key];
@@ -31,15 +33,6 @@ function pickParam(sp: Record<string, string | string[] | undefined>, key: strin
   return undefined;
 }
 
-function pickView(raw: string | undefined): EventsSurfaceView {
-  if (raw === "calendar" || raw === "map" || raw === "past") return raw;
-  return "upcoming";
-}
-
-/**
- * Campaign calendar hub: curated public movement events + published CampaignOS events.
- * Fair research (~80 festivals) is not merged here (Phase 1).
- */
 export default async function EventsPage({
   searchParams,
 }: {
@@ -47,12 +40,12 @@ export default async function EventsPage({
 }) {
   const sp = (await searchParams) ?? {};
   const suggestOk = pickParam(sp, "ok");
-  const initialView = pickView(pickParam(sp, "view"));
   const [counties, calendarRows] = await Promise.all([
     safePublishedCountyOptions(),
     queryPublicCampaignEvents({ range: "all" }, { take: 200 }),
   ]);
   const mergedEvents = mergeMovementAndCalendarEvents(events, calendarRows);
+  const ledger = await loadCountyVisitLedger(mergedEvents);
 
   return (
     <>
@@ -71,43 +64,38 @@ export default async function EventsPage({
         </Button>
       </MediaPageHero>
 
-      <FullBleedSection
-        padY
-        aria-labelledby="events-surface-heading"
-        className="!pt-[calc(var(--section-padding-y)*0.55)] lg:!pt-[calc(var(--section-padding-y-lg)*0.55)]"
-      >
+      <FullBleedSection padY aria-labelledby="events-proof-heading">
+        <ContentContainer>
+          <EventsProofSection ledger={ledger} />
+        </ContentContainer>
+      </FullBleedSection>
+
+      <FullBleedSection variant="subtle" padY aria-labelledby="events-movement-heading">
         <ContentContainer wide>
-          <div className="mb-8 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
-            <div>
-              <h2 id="events-surface-heading" className="font-heading text-xl font-bold text-kelly-text md:text-2xl">
-                Stops
-              </h2>
-              <p className="mt-2 max-w-2xl font-body text-kelly-text/75">
-                Upcoming, calendar, map, and past stops from the same public records. Times are Central.
-              </p>
-            </div>
-            <nav
-              aria-label="Other ways to show up"
-              className="flex flex-wrap gap-x-4 gap-y-2 font-body text-sm font-semibold text-kelly-navy"
-            >
-              <Link href={representLocalEventVolunteerHref} className="underline-offset-4 hover:underline">
-                Represent locally
-              </Link>
-              <Link href="/listening-sessions" className="underline-offset-4 hover:underline">
-                Listening sessions
-              </Link>
-              <Link href="/events/community-election-integrity-tour" className="underline-offset-4 hover:underline">
-                Integrity tour
-              </Link>
-              <Link href="#suggest" className="underline-offset-4 hover:underline">
-                Suggest an event
-              </Link>
-              <Link href="/from-the-road" className="underline-offset-4 hover:underline">
-                From the Road
-              </Link>
-            </nav>
+          <EventsMovementSection events={mergedEvents} />
+        </ContentContainer>
+      </FullBleedSection>
+
+      <FullBleedSection id="invite" padY aria-labelledby="events-invitation-heading">
+        <ContentContainer>
+          <p className="font-body text-xs font-bold uppercase tracking-wider text-kelly-navy">Invitation</p>
+          <h2 id="events-invitation-heading" className="mt-1 font-heading text-2xl font-bold text-kelly-text md:text-3xl">
+            How to get Kelly here
+          </h2>
+          <p className="mt-2 max-w-2xl font-body text-kelly-text/75">
+            If your town is not on the list yet, open the next date — nothing is public until it is verified.
+          </p>
+          <div className="mt-6 flex flex-wrap gap-3">
+            <Button href="/events/request" variant="primary">
+              Invite Kelly
+            </Button>
+            <Button href="/host-a-gathering" variant="outline">
+              Host a Gathering
+            </Button>
+            <Button href="#suggest" variant="ghost">
+              Suggest an Event
+            </Button>
           </div>
-          <EventsSurface events={mergedEvents} initialView={initialView} />
         </ContentContainer>
       </FullBleedSection>
 
@@ -140,27 +128,6 @@ export default async function EventsPage({
           <SuggestCommunityEventForm counties={counties} idPrefix="suggest" />
         </ContentContainer>
       </FullBleedSection>
-
-      <CTASection
-        eyebrow="Make the next opening"
-        title="The calendar belongs to hosts"
-        description="If you don’t see your town yet, you might be the person who makes the first dot on the map—or the neighbor who represents us where the community already gathers."
-        variant="ink-band"
-      >
-        <Button href="/host-a-gathering" variant="primary" className="bg-kelly-page text-kelly-text hover:bg-kelly-page/90">
-          Host a gathering
-        </Button>
-        <Button
-          href={representLocalEventVolunteerHref}
-          variant="outline"
-          className="border-kelly-page/40 text-kelly-page hover:bg-kelly-page/10"
-        >
-          Represent locally
-        </Button>
-        <Button href="/start-a-local-team" variant="outline" className="border-kelly-page/40 text-kelly-page hover:bg-kelly-page/10">
-          Start a local team
-        </Button>
-      </CTASection>
     </>
   );
 }
