@@ -19,30 +19,33 @@ export const notariesAreaConfig: OfficeAreaConfig = {
   shortTitle: "Notaries",
   navLabel: "Notaries",
   metaDescription:
-    "What the Arkansas Secretary of State does for notaries: commission standards, training resources, and public trust in everyday legal acknowledgments.",
+    "Arkansas Secretary of State notary duties: commissioning notaries and eNotaries, the public notary search, the notary handbook and exam, complaints, and apostilles for use abroad.",
   layerOne: {
     eyebrow: OFFICE_LAYER_EYEBROWS[1],
     title: "Notaries",
     intro:
-      "Notaries public are part of Arkansas’s everyday legal infrastructure—witnessing signatures, administering oaths, and helping documents travel between people, businesses, and institutions. The Secretary of State’s office sets commission standards and maintains the systems notaries and the public rely on.",
+      "Business and Commercial Services records and certifies notaries public for Arkansas. A notary verifies the identity of a person who appears before them and acts as an official witness to an oath, testimony, or signature on a legal document.",
     sections: [
       {
-        heading: "What this office touches",
+        heading: "Commissions, search, and training",
         paragraphs: [
-          "Notary public commissions—the lawful authorization for Arkansans to serve as notaries under state rules.",
-          "Application and renewal processes so commissions stay current and traceable.",
-          "Training and guidance materials that help notaries understand their duties—not guess from rumor.",
-          "Official records related to notary commissions within the Secretary of State’s authority.",
-          "Coordination with the standards state law assigns to this office—not every notarial question in every context, but the commission system itself.",
+          "The office runs the notary application and renewal process, keeps a public search of Arkansas notaries, and publishes the Notary Public and eNotary handbook.",
+          "Applicants use the online filing portal. The office also publishes a user guide, change-of-information forms, affidavit templates, a notario-publico disclaimer, a complaint form, and an online notary exam.",
+          "Non-resident spouses of U.S. military members working or operating a business in Arkansas may apply under Act 215 of 2019 by contacting the office.",
         ],
       },
       {
-        heading: "What notaries and the public should expect",
+        heading: "eNotary and remote online notarization",
         paragraphs: [
-          "Clear rules about who may serve, how to apply, and how to stay in good standing.",
-          "Accessible instructions—not buried PDFs that only insiders can parse.",
-          "Consistent standards so a lawful acknowledgment in one county matches what neighbors expect statewide.",
-          "Respect for notaries as volunteers and professionals who absorb liability so others can transact with confidence.",
+          "The Secretary of State commissions notaries who perform electronic notarial acts. An eNotary uses a digital signature, seal, and certificate on digital documents.",
+          "Arkansas law allows in-person electronic notarization and remote online notarization through approved solution providers. A person must hold a traditional notary commission in good standing before applying for an eNotary commission, then complete office-required training and an exam.",
+        ],
+      },
+      {
+        heading: "Apostilles and authentications",
+        paragraphs: [
+          "The same division issues apostilles and certificates of authentication so notarized public documents can be used in other countries, including Hague Convention countries.",
+          "Requests can be prepared through the BCS portal. That is a document-authentication duty of this office, not a substitute for a notary’s own act.",
         ],
       },
     ],
@@ -105,8 +108,9 @@ export const notariesAreaConfig: OfficeAreaConfig = {
   },
   layerTwoNextLabel: "What Kelly brings",
   relatedLinks: [
-    { label: "Understand the Office", href: "/understand" },
+    { label: "Notary & eNotary (official)", href: "https://www.sos.arkansas.gov/business-commercial-services-bcs/notary-e-notary/" },
     { label: "Business & Filings", href: "/office/business" },
+    { label: "Understand the Office", href: "/understand" },
     { label: "Meet Kelly", href: "/about" },
   ],
 };

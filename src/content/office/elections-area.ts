@@ -18,30 +18,38 @@ export const electionsAreaConfig: OfficeAreaConfig = {
   shortTitle: "Elections",
   navLabel: "Elections",
   metaDescription:
-    "What the Arkansas Secretary of State does in election administration: clear rules, secure systems, county partnership, and public confidence in an evenhanded process.",
+    "Duties of the Arkansas Secretary of State in elections: statewide voter registration, candidate and petition filings, ballot certification, returns, voting equipment, and chair of the State Board of Election Commissioners.",
   layerOne: {
     eyebrow: OFFICE_LAYER_EYEBROWS[1],
     title: "Elections",
     intro:
-      "Free and fair elections require clear rules, secure systems, consistent communication with counties, and public confidence that the process is administered evenhandedly under Arkansas law.",
+      "State law names the Secretary of State Arkansas’s chief election official. The office administers state and federal elections together with the State Board of Election Commissioners and with county clerks and county boards of election commissioners in all 75 counties.",
     sections: [
       {
-        heading: "What this office touches",
+        heading: "What the Elections Division does",
         paragraphs: [
-          "Statewide election systems the public depends on—the infrastructure, software relationships, and coordination that keep lawful process on schedule.",
-          "Voter registration infrastructure: the backbone data and procedures that support lawful registration and updates.",
-          "Guidance and partnership with county election officials who do the front-line work.",
-          "Election information for voters: deadlines, practical how-to, and plain-language help.",
-          "Certification and official election processes where state law assigns that role.",
+          "It keeps the state’s election records and helps county officials conduct federal, state, and district elections.",
+          "It maintains Arkansas’s uniform statewide voter registration system and helps the state meet federal requirements such as the National Voter Registration Act and the Help America Vote Act.",
+          "It oversees training on the state’s electronic voting systems and answers questions on voting equipment.",
+          "It receives candidate filings for U.S. Senate, U.S. House, state, and district offices; files and reviews ballot-access and ballot-measure petitions; and certifies the candidate and measure list for ballot placement.",
+          "It compiles county election returns, reports results, and publishes current and historical election results, including historical initiative and referendum results.",
+          "It hosts a public search for ethics filings that candidates and officials submit through the state’s ethics process. The Arkansas Ethics Commission remains the ethics regulator.",
         ],
       },
       {
-        heading: "What voters should expect",
+        heading: "Chair of the State Board of Election Commissioners",
         paragraphs: [
-          "Clear rules—published, explained, and applied with consistency across counties.",
-          "Accessible information—so ordinary citizens, not just insiders, can follow what happens and when.",
-          "Consistent administration—one standard, faithfully explained.",
-          "Respect for every lawful voter—access and safeguards held together, not treated as opposites.",
+          "By statute, the Secretary of State is chair and secretary of the seven-member State Board of Election Commissioners.",
+          "The Board trains county election commissioners and election officials, monitors compliance with election law, investigates complaints of alleged misconduct, and distributes state funds to counties for specified elections.",
+          "Those Board duties sit beside—not instead of—the Elections Division’s filing, registration, equipment, and results work.",
+        ],
+      },
+      {
+        heading: "Where county officials remain in charge",
+        paragraphs: [
+          "County clerks and county boards of election commissioners run polling places, appoint poll workers, and administer Election Day in each county.",
+          "The State Board’s procedures manual sends voter registration, candidate filing, petitions, tabulation, certification, voting equipment, and interpretation of election laws to the Secretary of State. It sends general procedures, complaints, monitors, reimbursement, and poll-worker training to the Board.",
+          "The Secretary of State also sits on the Arkansas Board of Apportionment, the three-member body that draws state legislative districts after each census.",
         ],
       },
     ],
@@ -119,9 +127,11 @@ export const electionsAreaConfig: OfficeAreaConfig = {
   },
   layerTwoNextLabel: "What Kelly brings",
   relatedLinks: [
+    { label: "Arkansas Secretary of State — Elections", href: "https://www.sos.arkansas.gov/elections" },
+    { label: "Duties of the office (official)", href: "https://www.sos.arkansas.gov/about-the-office/duties-of-the-office" },
+    { label: "State Board of Election Commissioners", href: "https://sbec.arkansas.gov/about-us/" },
     { label: "Understand the Office", href: "/understand" },
     { label: "Why I'm running", href: "/about/why-im-running" },
     { label: "Meet Kelly", href: "/about" },
-    { label: "Election listening sessions", href: "/listening-sessions" },
   ],
 };
