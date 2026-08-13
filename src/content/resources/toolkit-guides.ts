@@ -608,7 +608,7 @@ const guides: ToolkitGuide[] = [
           "Before you send a single assigned text, set up a separate number. Google Voice is a common free option on Android and iOS; other VoIP and second-line services work too. Use that number only for this work so replies and opt-outs do not follow you home.",
         ],
         bullets: [
-          "Never paste the voter file into a personal group chat or a for-profit blast tool. Stay inside the workflow we give you.",
+          "Never paste campaign contact lists into a personal group chat or a for-profit blast tool. Stay inside the workflow we give you.",
           "If someone says stop, you stop and mark it in the system—no debate, no second message from another number.",
         ],
         callout: "We will walk through the setup in training. If a tool changes, the principle does not: one campaign-facing line, not your family cell.",

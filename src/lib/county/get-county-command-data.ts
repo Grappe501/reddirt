@@ -2,8 +2,6 @@ import { ContentHubKind, OwnedMediaReviewStatus, Prisma, type CountyCampaignStat
 import { roadPostPublicWhere } from "@/lib/content/content-hub-visibility";
 import { prisma } from "@/lib/db";
 import type { RoadPostCard } from "@/lib/content/content-hub-queries";
-import type { CountyVoterMetricsWithSnapshot } from "@/lib/voter-file/queries";
-import { getLatestCountyVoterMetrics } from "@/lib/voter-file/queries";
 import { listUpcomingPublicCampaignEventsForCountySlug } from "@/lib/calendar/public-events";
 import type { PublicCampaignEvent } from "@/lib/calendar/public-event-types";
 import {
@@ -171,8 +169,8 @@ export async function getCountyCommandBySlug(slug: string): Promise<CountyComman
 
 export type CountyPageSnapshot = {
   county: CountyCommandRecord;
-  /** Precomputed SOS file rollups when the voter pipeline has completed a snapshot */
-  latestVoterMetrics: CountyVoterMetricsWithSnapshot | null;
+  /** Public county pages do not load campaign voter-file metrics. */
+  latestVoterMetrics: null;
   latestVisitPost: RoadPostCard | null;
   latestStoryPost: RoadPostCard | null;
   mediaGallery: Awaited<ReturnType<typeof loadCountyOwnedMediaPreview>>;
@@ -255,23 +253,18 @@ export async function getCountyPageSnapshot(slug: string): Promise<CountyPageSna
   let latestVisitPost: RoadPostCard | null = null;
   let latestStoryPost: RoadPostCard | null = null;
   let mediaGallery: Awaited<ReturnType<typeof loadCountyOwnedMediaPreview>> = [];
-  let latestVoterMetrics: CountyVoterMetricsWithSnapshot | null = null;
   let vaultPublicCount = 0;
   let upcomingPublicCampaignEvents: PublicCampaignEvent[] = [];
 
   try {
-    const [{ visit, story }, gallery, metrics, vaultCount] = await Promise.all([
+    const [{ visit, story }, gallery, vaultCount] = await Promise.all([
       loadStoryAndVisitPosts(slug),
       loadCountyOwnedMediaPreview(slug),
-      county.id.startsWith("registry:")
-        ? Promise.resolve(null)
-        : getLatestCountyVoterMetrics(county.id),
       countCountyVaultPublic(slug),
     ]);
     latestVisitPost = visit;
     latestStoryPost = story;
     mediaGallery = gallery;
-    latestVoterMetrics = metrics;
     vaultPublicCount = vaultCount;
   } catch (err) {
     if (!isPrismaLiveDataUnavailable(err)) throw err;
@@ -287,7 +280,7 @@ export async function getCountyPageSnapshot(slug: string): Promise<CountyPageSna
 
   return {
     county,
-    latestVoterMetrics,
+    latestVoterMetrics: null,
     latestVisitPost,
     latestStoryPost,
     mediaGallery,

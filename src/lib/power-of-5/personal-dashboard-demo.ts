@@ -176,6 +176,6 @@ export const PERSONAL_DASHBOARD_DEMO: PersonalDashboardDemo = {
     invitesExtendedCount: 6,
     estimatedTrustedReach: 38,
     caption:
-      "Impact here is relationship-first: conversations and invites you own, plus a rough trusted-reach estimate from demo math — not voter-file rolls.",
+      "Impact here is relationship-first: conversations and invites you own, plus a rough trusted-reach estimate from demo math.",
   },
 };

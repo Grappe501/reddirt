@@ -32,7 +32,7 @@ export function buildVolunteerLeaderPowerOf5Context(leader: VolunteerLeader): Vo
     countyLabel: county,
     intro: `${leader.displayName}, build your Power of 5 here: map five people you already trust, log conversations, and grow teams in ${county}. Demo numbers below — your live roster connects as the campaign scales.`,
     impactExplanation:
-      "Power of 5 is how one trusted conversation becomes five, then twenty-five. Your workbench tracks My Five, team completion, and follow-ups — not voter-file rolls.",
+      "Power of 5 is how one trusted conversation becomes five, then twenty-five. Your workbench tracks My Five, team completion, and follow-ups.",
     kpiItems: [
       {
         label: "My Five mapped",

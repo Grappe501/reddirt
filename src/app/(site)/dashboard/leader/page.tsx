@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 };
 
 /**
- * Public route with demo / seed data only — no auth, voter file, or live Power of 5 metrics. Route `/dashboard/leader` unchanged.
+ * Public route with demo / seed data only — no auth or live Power of 5 metrics. Route `/dashboard/leader` unchanged.
  */
 export default function LeaderDashboardPage() {
   const data = buildPowerOf5LeaderDashboardDemo();

@@ -332,7 +332,7 @@ export const ASK_KELLY_ONBOARDING_ROUTE_FINDER_TITLE = "Ask where something is";
 export const ASK_KELLY_WHAT_CAN_I_ASK = {
   title: "What can I ask?",
   intro:
-    "On the public site, open Ask Kelly (bottom-right) and type in your own words—or start from examples like these. The guide covers routing and process, not donor or voter files.",
+    "On the public site, open Ask Kelly (bottom-right) and type in your own words—or start from examples like these. The guide covers routing and process, not donor lists or private campaign databases.",
   groups: [
     {
       heading: "Find a dashboard",

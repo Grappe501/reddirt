@@ -84,7 +84,7 @@ const BASE: Record<VolunteerTeamLaneId, Omit<LaneDrillDownPage, "laneId">> = {
     organizing: {
       id: "organizing",
       title: "Organizing",
-      intro: "Coordinate people and places — not voter-file rolls.",
+      intro: "Coordinate people and places.",
       items: [
         {
           id: "community-wb",
