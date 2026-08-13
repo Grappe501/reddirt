@@ -91,6 +91,13 @@ export const media = {
     width: 1200,
     height: 700,
   },
+  /** Dashboard super header cutout — used in public split heroes (navy pane + object-contain). */
+  kellySuperHeader: {
+    src: "/images/kelly/headshots/kelly-hero.png",
+    alt: "Kelly Grappe, candidate for Arkansas Secretary of State",
+    width: 1200,
+    height: 1500,
+  },
   explainerSteps: {
     src: "/media/placeholders/explainer-steps.svg",
     alt: "Numbered path through soft shapes, teaching visual",

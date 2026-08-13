@@ -13,6 +13,7 @@ function stopPlace(e: EventItem): string {
 export function kellyNextStopsRoute(events: EventItem[]): string {
   const places: string[] = [];
   for (const e of events) {
+    if (e.statewideVirtual || isStatewideVirtualEvent(e)) continue;
     const place = stopPlace(e);
     if (!place || /^unknown$/i.test(place)) continue;
     if (places[places.length - 1] !== place) places.push(place);

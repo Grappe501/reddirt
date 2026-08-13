@@ -19,8 +19,8 @@ import {
   resolvePublicEventTitleForMetadata,
 } from "@/lib/calendar/public-events";
 import { publicCampaignEventToEventItem } from "@/lib/events/calendar-to-movement-event";
-import { attendanceDetailCopy } from "@/lib/events/public-event-kind";
-import { getCampaignPrayerZoomHref, getJoinCampaignHref, getVolunteerSignupHref } from "@/config/external-campaign";
+import { attendanceDetailCopy, eventCardCtaLabel } from "@/lib/events/public-event-kind";
+import { getJoinCampaignHref, getVolunteerSignupHref } from "@/config/external-campaign";
 import { siteConfig } from "@/config/site";
 import { isPrismaDatabaseUnavailable, logPrismaDatabaseUnavailable } from "@/lib/prisma-connectivity";
 import { pageMeta } from "@/lib/seo/metadata";
@@ -68,18 +68,18 @@ function CuratedOrCalendarEventView({ event }: { event: EventItem }) {
     .map((e) => withLiveEventStatus(e));
 
   const city = publicEventCityLine(live);
-  const zoomHref = live.statewideVirtual ? getCampaignPrayerZoomHref(live.rsvpHref) : null;
+  const joinHref = live.primaryHref ?? live.rsvpHref ?? null;
+  const joinLabel = live.primaryCtaLabel ?? (joinHref ? eventCardCtaLabel(live) : null);
   const attendance = live.statewideVirtual
     ? {
-        headline: "Join the statewide Zoom call",
-        rsvpLabel: zoomHref ? "Join on Zoom" : null,
-        note: "Wednesday 7:15 p.m. Central. This call is statewide and virtual — it never counts as a county visit and never changes the 51/75 map.",
+        headline: joinLabel ?? "Statewide / Virtual",
+        rsvpLabel: joinHref ? joinLabel : null,
+        note: "This gathering is statewide and virtual — it never counts as a county visit and never changes the 51/75 map.",
       }
     : attendanceDetailCopy(live.attendanceType, city);
   const volunteerHref = getVolunteerSignupHref();
   const rsvpHref =
-    zoomHref ??
-    live.rsvpHref ??
+    joinHref ??
     `/get-involved?intent=rsvp&event=${encodeURIComponent(live.slug)}`;
   const sharePath = `/events/${live.slug}`;
 
@@ -107,22 +107,26 @@ function CuratedOrCalendarEventView({ event }: { event: EventItem }) {
                 subtitle="Plain facts first—then the human stuff underneath."
               />
               <div id="details" className="mt-8 rounded-card border border-kelly-text/10 bg-[var(--color-surface-elevated)] p-6 shadow-[var(--shadow-soft)] md:p-8">
-                <EventMeta event={live} zoomHref={zoomHref} />
+                <EventMeta event={live} joinHref={live.statewideVirtual ? joinHref : null} />
                 {live.statewideVirtual ? (
                   <div className="mt-6 rounded-lg border border-kelly-navy/15 bg-kelly-navy/[0.04] p-4">
-                    <p className="font-body text-xs font-bold uppercase tracking-wider text-kelly-navy">Zoom</p>
-                    {zoomHref ? (
+                    <p className="font-body text-xs font-bold uppercase tracking-wider text-kelly-navy">
+                      Join / Event Information
+                    </p>
+                    {joinHref ? (
                       <>
                         <p className="mt-2 font-body text-sm text-kelly-text/80">
-                          Join the Wednesday prayer call on Zoom. The link opens in a new tab.
+                          {live.primaryCtaLabel
+                            ? "Open the event link for this statewide virtual gathering. It never counts as a county visit."
+                            : "Join from the link on this page. This gathering is statewide and virtual."}
                         </p>
-                        <Button href={zoomHref} variant="primary" className="mt-3">
-                          Join on Zoom
+                        <Button href={joinHref} variant="primary" className="mt-3">
+                          {joinLabel ?? "Join"}
                         </Button>
                       </>
                     ) : (
                       <p className="mt-2 font-body text-sm text-kelly-text/80">
-                        This is a statewide Zoom call. The join link will be posted on this page when the campaign
+                        This is a statewide virtual gathering. The join link will be posted on this page when the campaign
                         publishes it. It never counts as a county visit.
                       </p>
                     )}
@@ -138,7 +142,13 @@ function CuratedOrCalendarEventView({ event }: { event: EventItem }) {
                 title="Why this gathering exists"
               />
               <p className="mt-6 font-body text-lg leading-relaxed text-kelly-text/85">
-                {stripPublicMarkdown(live.description)}
+                {stripPublicMarkdown(live.description)
+                  .split(/\n\n+/)
+                  .map((para) => (
+                    <span key={para.slice(0, 48)} className="mb-4 block last:mb-0">
+                      {para}
+                    </span>
+                  ))}
               </p>
 
               <SectionHeading
@@ -186,7 +196,7 @@ function CuratedOrCalendarEventView({ event }: { event: EventItem }) {
                 </Button>
               ) : live.statewideVirtual ? (
                 <p className="font-body text-sm text-kelly-text/70">
-                  The Zoom join link will appear here as soon as it is posted.
+                  The join link will appear here as soon as it is posted.
                 </p>
               ) : null}
               <div>

@@ -1,6 +1,12 @@
-import { events } from "../src/content/events";
+import { events, getEventBySlug } from "../src/content/events";
 import { august2026CampaignStops } from "../src/content/events/august-2026-campaign-stops";
 import { september2026CampaignStops } from "../src/content/events/september-2026-campaign-stops";
+import {
+  ARKANSAS_YOUTH_COALITION_HREF,
+  FAITH_REFLECTION_FACEBOOK_HREF,
+  recurringVirtualSeries,
+} from "../src/content/events/recurring-virtual-series";
+import { collapseRecurringSeriesToNextOccurrence } from "../src/lib/events/collapse-recurring-series";
 import type { EventItem } from "../src/content/types";
 import { ARKANSAS_COUNTY_COUNT } from "../src/data/kelly-county-visits/arkansas-counties";
 import { ARKANSAS_COUNTY_SVG_PATHS } from "../src/data/kelly-county-visits/arkansas-county-svg-paths";
@@ -275,14 +281,50 @@ if (arkansasCountyKey("Van Buren") !== "van-buren") fail("van-buren key");
   const arkansas = summaryByName(summaries, "Arkansas");
   if (countyMapHref(arkansas) !== null) fail("Visited-only Arkansas should have no click href");
 
-  const prayer = september2026CampaignStops.filter((e) => e.statewideVirtual);
-  if (prayer.length !== 4) fail(`Expected 4 statewide prayer calls, got ${prayer.length}`);
-  if (prayer.some((e) => !e.statewideVirtual || e.attendanceType !== "PUBLIC_OPEN")) {
-    fail("Prayer Zoom calls must be statewide virtual public-open events");
+  const virtual = recurringVirtualSeries;
+  if (!virtual.some((e) => e.slug === "faith-and-reflection-zoom-2026-09-09")) {
+    fail("Faith & Reflection Sep 9 missing");
   }
-  if (summaries.some((s) => s.confirmedUpcomingEvents.some((e) => e.slug.startsWith("campaign-prayer-zoom")))) {
-    fail("Prayer Zoom calls must not paint counties");
+  if (virtual.filter((e) => e.recurringSeriesId === "faith-reflection-zoom").length !== 11) {
+    fail("Faith series should recur weekly through Election Day (11 Wednesdays from Aug 19 through Oct 28)");
   }
+  if (virtual.filter((e) => e.recurringSeriesId === "college-young-people-zoom").length !== 12) {
+    fail("College/youth series should recur weekly through Election Day (12 Thursdays from Aug 13 through Oct 29)");
+  }
+  if (virtual.some((e) => e.qualifiesAsVisit !== false || !e.statewideVirtual)) {
+    fail("Recurring virtual series must never qualify as a county visit");
+  }
+  const faith = virtual.find((e) => e.slug.startsWith("faith-and-reflection-zoom-"))!;
+  if (!faith.startsAt.endsWith("T19:15:00")) fail("Faith Zoom stays 7:15 PM Central");
+  if (faith.rsvpHref !== FAITH_REFLECTION_FACEBOOK_HREF) fail("Faith series must use the specific Facebook event link");
+  if (/facebook\.com\/events/i.test(faith.rsvpHref ?? "")) fail("Do not use generic Facebook Online Events discovery URL");
+  const youth = virtual.find((e) => e.slug.startsWith("college-young-people-zoom-"))!;
+  if (youth.rsvpHref !== ARKANSAS_YOUTH_COALITION_HREF || youth.linkCardToPrimary !== true) {
+    fail("College Zoom must link to Arkansas Youth Coalition");
+  }
+  if (!youth.audienceTags?.includes("youth_college")) fail("College Zoom needs audience youth_college");
+  if (!youth.opsFlags?.timeTbd) fail("College Zoom clock time is still TBA until Steve confirms it");
+  if (summaries.some((s) => s.confirmedUpcomingEvents.some((e) => e.slug.includes("zoom")))) {
+    fail("Virtual Zoom series must not paint counties");
+  }
+  const { summaries: withVirtual, ledger: virtualLedger } = build(SNAPSHOT, [
+    ...august2026CampaignStops,
+    ...september2026CampaignStops,
+    ...virtual,
+  ]);
+  if (virtualLedger.visited.length !== 51) fail("Recurring virtual series must not change 51/75");
+  if (withVirtual.some((s) => s.confirmedUpcomingEvents.some((e) => e.slug.includes("zoom")))) {
+    fail("Recurring virtual series must not paint the county map");
+  }
+  const collapsed = collapseRecurringSeriesToNextOccurrence(
+    virtual.filter((e) => e.status === "upcoming" || true).sort((a, b) => a.startsAt.localeCompare(b.startsAt)),
+  );
+  const collapsedSeries = collapsed.filter((e) => e.recurringSeriesId);
+  if (collapsedSeries.length !== 2) fail(`Expected 2 collapsed virtual series cards, got ${collapsedSeries.length}`);
+  if (getEventBySlug("campaign-prayer-zoom-2026-09-09")?.title !== "Faith & Reflection Zoom") {
+    fail("Old prayer Zoom slugs must alias to Faith & Reflection Zoom");
+  }
+
   if (summaryByName(summaries, "Calhoun").publicState !== "tentative_upcoming") fail("Calhoun tentative");
   if (summaryByName(summaries, "Randolph").publicState !== "confirmed_upcoming") fail("Randolph confirmed upcoming");
   if (summaryByName(summaries, "Pulaski").upcomingIndicator !== "confirmed") fail("Pulaski gold ring");
@@ -304,4 +346,4 @@ console.log("  visited + confirmed upcoming: Pulaski County (blue fill, gold out
 console.log("  unvisited confirmed upcoming: Randolph County (gold fill → Pocahontas Aug 15)");
 console.log("  tentative: Calhoun County (sky fill, dashed outline → fair Sep 18)");
 console.log("  neutral: Chicot County (gray, no click)");
-console.log("  statewide / virtual: Campaign Prayer Zoom Call (calendar only, never 51/75)");
+console.log("  statewide / virtual: Faith & Reflection Zoom (Wed 7:15 PM) + College & Young People Zoom (Thu, time TBA) — calendar only, never 51/75");

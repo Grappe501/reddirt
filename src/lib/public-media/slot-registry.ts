@@ -285,7 +285,7 @@ const INNER_SLOTS: Record<(typeof PUBLIC_MEDIA_INNER_SLOTS)[number], PublicMedia
   "journey.strip": imageHero("about-journey", "journey.strip", "Trail proof forthcoming", "editorialDefault", "any"),
   "community.hero": imageHero("about-community", "community.hero", "Community work forthcoming", "arkansasPorch"),
   "why.hero": imageHero("about-why", "why.hero", "Why this race — photo forthcoming", "arkansasPorch"),
-  "priorities.hero": imageHero("priorities", "priorities.hero", "Governing work forthcoming", "splitLabor"),
+  "priorities.hero": imageHero("priorities", "priorities.hero", "Kelly Grappe", "kellySuperHeader"),
   "speaks.hero": videoOrImageHero("kelly-speaks", "speaks.hero", "Hear Kelly — video forthcoming", "heroHome"),
   "speaks.featured": videoOrImageHero("kelly-speaks", "speaks.featured", "Featured message forthcoming", "heroHome"),
   "campaign-photos.intro": imageHero(

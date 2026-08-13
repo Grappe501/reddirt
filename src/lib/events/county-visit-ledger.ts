@@ -165,6 +165,7 @@ const VIRTUAL_HINT = /\b(virtual|zoom|webinar|livestream)\b/i;
 
 export function isQualifyingMovementAppearance(event: EventItem, now: Date): boolean {
   if (event.statewideVirtual) return false;
+  if (event.qualifiesAsVisit === false) return false;
   if (event.fieldAttendance === "tentative" || event.fieldAttendance === "suggested" || event.fieldAttendance === "unscheduled") {
     return false;
   }

@@ -51,6 +51,7 @@ const VIRTUAL_HINT = /\b(virtual|zoom|webinar|livestream)\b/i;
 
 export function drivesPublicCountyMap(event: EventItem): boolean {
   if (event.statewideVirtual) return false;
+  if (event.qualifiesAsVisit === false) return false;
   if (event.opsFlags?.missingCounty) return false;
   if (event.fieldAttendance === "unscheduled" || event.fieldAttendance === "suggested") return false;
   if (VIRTUAL_HINT.test(`${event.locationLabel} ${event.addressLine ?? ""} ${event.title}`)) return false;
