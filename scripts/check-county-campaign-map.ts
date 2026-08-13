@@ -277,6 +277,9 @@ if (arkansasCountyKey("Van Buren") !== "van-buren") fail("van-buren key");
 
   const prayer = september2026CampaignStops.filter((e) => e.statewideVirtual);
   if (prayer.length !== 4) fail(`Expected 4 statewide prayer calls, got ${prayer.length}`);
+  if (prayer.some((e) => !e.statewideVirtual || e.attendanceType !== "PUBLIC_OPEN")) {
+    fail("Prayer Zoom calls must be statewide virtual public-open events");
+  }
   if (summaries.some((s) => s.confirmedUpcomingEvents.some((e) => e.slug.startsWith("campaign-prayer-zoom")))) {
     fail("Prayer Zoom calls must not paint counties");
   }

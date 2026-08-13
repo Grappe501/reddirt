@@ -4,7 +4,7 @@ import Link from "next/link";
 import type { EventItem } from "@/content/types";
 import { formatCountyFirstMeta, publicCountyEyebrow } from "@/lib/events/public-event-county";
 import { resolveEventStatus, stripPublicMarkdown } from "@/lib/format/eventDisplay";
-import { attendanceCtaLabel, attendanceIsOpenInvite } from "@/lib/events/public-event-kind";
+import { attendanceIsOpenInvite, eventCardCtaLabel } from "@/lib/events/public-event-kind";
 
 export function EventStopCard({ event }: { event: EventItem }) {
   const status = resolveEventStatus(event);
@@ -30,7 +30,7 @@ export function EventStopCard({ event }: { event: EventItem }) {
         <p className="mt-3 font-body text-sm text-kelly-text/70">Kelly will be in {event.city?.trim() || event.locationLabel}.</p>
       ) : null}
       <Link href={href} className="mt-4 inline-flex font-body text-sm font-semibold text-kelly-navy">
-        {attendanceCtaLabel(event.attendanceType)} →
+        {eventCardCtaLabel(event)} →
       </Link>
     </article>
   );

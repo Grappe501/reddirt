@@ -62,6 +62,7 @@ function campaignStop(draft: StopDraft): EventItem {
     fieldAttendance: draft.fieldAttendance ?? "confirmed",
     campaignTrail: true,
     statewideVirtual: draft.statewideVirtual,
+    attendanceType: draft.statewideVirtual ? "PUBLIC_OPEN" : undefined,
     eventSource: "movement",
     opsFlags: {
       timeTbd: draft.timeTbd,
@@ -80,8 +81,15 @@ function prayerCall(slug: string, ymd: string, related: string[]): EventItem {
     startsAt: `${ymd}T19:15:00`,
     endsAt: `${ymd}T20:00:00`,
     locationLabel: "Statewide / Virtual",
-    addressLine: "Zoom (link posted to supporters)",
+    addressLine: "Zoom — join from this event page",
     summary: "Wednesday 7:15 p.m. Central campaign prayer Zoom call. Statewide / virtual — does not count as a county visit.",
+    description:
+      "Wednesday 7:15 p.m. Central statewide campaign prayer call on Zoom. Anyone is welcome. This gathering is statewide and virtual, so it never paints a county on the map and never changes the 51/75 county count.",
+    whatToExpect: [
+      "7:15–8:00 p.m. Central",
+      "Join from the Zoom link on this page",
+      "Statewide / virtual — does not count as a county visit",
+    ],
     audienceTags: ["Prayer", "Statewide", "Virtual"],
     relatedEventSlugs: related,
     statewideVirtual: true,

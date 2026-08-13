@@ -83,6 +83,12 @@ export function attendanceCtaLabel(kind: CampaignEventAttendanceType | string | 
   }
 }
 
+export function eventCardCtaLabel(event: { statewideVirtual?: boolean; fieldAttendance?: string; attendanceType?: string }): string {
+  if (event.statewideVirtual) return "Join the Zoom call";
+  if (event.fieldAttendance === "tentative") return "View tentative date";
+  return attendanceCtaLabel(event.attendanceType);
+}
+
 export function attendanceIsOpenInvite(kind: CampaignEventAttendanceType | string | undefined): boolean {
   return kind === "PUBLIC_OPEN" || kind === "PUBLIC_REGISTRATION";
 }
