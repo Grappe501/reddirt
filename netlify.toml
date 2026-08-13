@@ -69,7 +69,6 @@
   node_bundler = "none"
   included_files = [
     ".netlify/functions-internal/___netlify-server-handler/**",
-    ".netlify/functions/___netlify-server-handler/**",
   ]
 
 # Optional: document dev port alignment

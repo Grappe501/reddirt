@@ -90,7 +90,6 @@ const LAUNCH_HANDLER_ROOT_KEEP = new Set([
 /** Site-root globs for zip-it. Never use a bare "**" — deploy drops includedFilesBasePath and "**" then zips the repo. */
 const HANDLER_SITE_INCLUDE_GLOBS = [
   ".netlify/functions-internal/___netlify-server-handler/**",
-  ".netlify/functions/___netlify-server-handler/**",
 ];
 
 /**
@@ -809,6 +808,52 @@ function largestFiles(handlerRoot, limit = 15, followSymlinks = true) {
   return rows.sort((a, b) => b.size - a.size).slice(0, limit);
 }
 
+function topLevelSizes(handlerRoot) {
+  const rows = [];
+  if (!exists(handlerRoot)) return rows;
+  let entries;
+  try {
+    entries = fs.readdirSync(handlerRoot, { withFileTypes: true });
+  } catch {
+    return rows;
+  }
+  for (const ent of entries) {
+    const abs = path.join(handlerRoot, ent.name);
+    let size = 0;
+    try {
+      if (ent.isSymbolicLink()) continue;
+      if (ent.isFile()) size = fs.statSync(abs).size;
+      else if (ent.isDirectory()) size = dirSizeBytesFollowSymlinks(abs);
+    } catch {
+      continue;
+    }
+    rows.push({ name: ent.name, mb: size / (1024 * 1024) });
+  }
+  return rows.sort((a, b) => b.mb - a.mb);
+}
+
+function countSymlinks(treeRoot) {
+  let n = 0;
+  function walk(dir) {
+    let entries;
+    try {
+      entries = fs.readdirSync(dir, { withFileTypes: true });
+    } catch {
+      return;
+    }
+    for (const ent of entries) {
+      const abs = path.join(dir, ent.name);
+      if (ent.isSymbolicLink()) {
+        n += 1;
+        continue;
+      }
+      if (ent.isDirectory()) walk(abs);
+    }
+  }
+  if (exists(treeRoot)) walk(treeRoot);
+  return n;
+}
+
 function pruneNetlifyServerHandler(cwd = process.cwd()) {
   /** Only mutate the packaged handler — never repo `.next` (breaks @netlify/plugin-nextjs onBuild). */
   const handlers = HANDLER_DIRS.map((d) => path.join(cwd, d)).filter(exists);
@@ -836,14 +881,31 @@ function pruneNetlifyServerHandler(cwd = process.cwd()) {
     deployMb += dirSizeBytesFollowSymlinks(handler) / (1024 * 1024);
   }
 
+  const duplicate = path.join(cwd, ".netlify/functions/___netlify-server-handler");
+  if (exists(duplicate)) {
+    rmrf(duplicate);
+    removed.push(".netlify/functions/___netlify-server-handler");
+  }
+
+  const primary = path.join(cwd, ".netlify/functions-internal/___netlify-server-handler");
+  const handler = exists(primary) ? primary : handlers[0];
+  if (exists(handler)) {
+    deleteAllSymlinks(handler);
+  }
+
   const manifestPatched = isNetlifyBuild() ? patchServerHandlerManifest(cwd) : false;
+  afterMb = exists(handler) ? dirSizeBytes(handler) / (1024 * 1024) : afterMb;
+  deployMb = exists(handler) ? dirSizeBytesFollowSymlinks(handler) / (1024 * 1024) : deployMb;
 
   return {
     skipped: false,
-    handler: handlers[0],
+    handler,
     beforeMb,
     afterMb,
     deployMb,
+    symlinkCount: exists(handler) ? countSymlinks(handler) : 0,
+    topLevels: exists(handler) ? topLevelSizes(handler) : [],
+    largest: exists(handler) ? largestFiles(handler) : [],
     manifestPatched,
     removed: [...new Set(removed)],
   };
@@ -858,9 +920,17 @@ function formatOversizeMessage(result) {
     .join("\n");
   const mode = process.env.NEXT_PUBLIC_INTELLIGENCE_LAUNCH_MODE ?? "default";
   const launchNote = `\nLaunch mode: ${mode}.`;
+  const symlinkNote = result.symlinkCount
+    ? `\nLeftover symlinks: ${result.symlinkCount} (zip-it follows them and re-inflates the upload).`
+    : "";
+  const topDirs = (result.topLevels || [])
+    .map((row) => `  ${row.mb.toFixed(1)} MB  ${row.name}`)
+    .join("\n");
   return (
     `___netlify-server-handler deploy size is ${result.deployMb.toFixed(1)} MB (Netlify unzipped limit ${MAX_MB} MB).` +
-    ` Staging tree: ${result.afterMb.toFixed(1)} MB.${launchNote}\nLargest files:\n${top}`
+    ` Staging tree: ${result.afterMb.toFixed(1)} MB.${launchNote}${symlinkNote}` +
+    (topDirs ? `\nTop-level:\n${topDirs}` : "") +
+    `\nLargest files:\n${top}`
   );
 }
 
@@ -869,7 +939,7 @@ function shouldFailDeploy(result) {
     return isNetlifyBuild();
   }
   const measuredMb = Math.max(result.afterMb, result.deployMb);
-  return measuredMb > DEPLOY_FAIL_MB;
+  return measuredMb > DEPLOY_FAIL_MB || (isNetlifyBuild() && result.symlinkCount > 0);
 }
 
 if (require.main === module) {
