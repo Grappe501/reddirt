@@ -3,7 +3,6 @@ import { ContentContainer } from "@/components/layout/ContentContainer";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import {
   ballotInitiativeProcessHref,
-  directDemocracyCommitmentHref,
   directDemocracyHubHref,
 } from "@/config/direct-democracy-links";
 import { trustFunnelHomeCopy } from "@/content/home/trust-funnel-home";
@@ -55,7 +54,7 @@ export function TrustFunnelDirectDemocracySection() {
                 {copy.ctas.process}
               </Link>
               <Link
-                href={directDemocracyCommitmentHref}
+                href="/get-involved"
                 className="inline-flex min-h-[48px] items-center justify-center rounded-btn border-2 border-kelly-gold/50 bg-kelly-gold/15 px-6 py-3 text-sm font-bold uppercase tracking-wider text-kelly-navy transition hover:bg-kelly-gold/25"
               >
                 {copy.ctas.commitment}

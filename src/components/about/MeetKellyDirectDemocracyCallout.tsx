@@ -1,7 +1,6 @@
 import Link from "next/link";
 import {
   ballotInitiativeProcessHref,
-  directDemocracyCommitmentHref,
   directDemocracyHubHref,
   kellyInitiativesChapterHref,
 } from "@/config/direct-democracy-links";
@@ -19,7 +18,7 @@ export function MeetKellyDirectDemocracyCallout() {
       <p className="mt-4 max-w-3xl font-body text-base leading-relaxed text-kelly-text/85">
         Kelly entered this race not only to administer elections fairly—but to defend Arkansans&apos; path to put
         measures on the ballot, run referenda when power overreaches, and keep signature gathering in volunteers&apos;
-        hands. Stand Up Arkansas, LEARNS petition work, and the commitment network are part of the same story.
+        hands. Stand Up Arkansas and LEARNS petition work are part of the same story.
       </p>
       <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
         <Link
@@ -39,12 +38,6 @@ export function MeetKellyDirectDemocracyCallout() {
           className="inline-flex min-h-[44px] items-center justify-center rounded-btn border-2 border-kelly-navy/15 px-5 py-2.5 text-sm font-semibold text-kelly-navy hover:border-kelly-gold/40"
         >
           Kelly&apos;s petition organizing story
-        </Link>
-        <Link
-          href={directDemocracyCommitmentHref}
-          className="inline-flex min-h-[44px] items-center justify-center rounded-btn border-2 border-kelly-gold/45 bg-kelly-gold/10 px-5 py-2.5 text-sm font-semibold text-kelly-navy hover:bg-kelly-gold/20"
-        >
-          Join the commitment network
         </Link>
       </div>
     </section>
