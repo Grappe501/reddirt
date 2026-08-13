@@ -1,9 +1,10 @@
 # RedDirt Contact Intelligence — Master Build Plan
 
 **Packet:** CONTACT-INTEL-1.0  
-**Lane:** `RedDirt/` only  
-**Branch:** `feat/contact-intelligence-v1` (from `origin/main`)  
-**Worktree (H: only):** `H:\SOSWebsite\RedDirt-contact-intel`  
+**Product repo:** [https://github.com/Grappe501/data](https://github.com/Grappe501/data) (`H:\SOSWebsite\data-upload`)  
+**Lane:** RedDirt database + env; standalone UI is **not** Campaign OS  
+**RedDirt branch (schema/migrations):** `feat/contact-intelligence-v1`  
+**Worktree (H: only):** `H:\SOSWebsite\RedDirt-contact-intel` (schema owner) · `H:\SOSWebsite\data-upload` (dashboard)  
 **Database / env:** existing RedDirt `DATABASE_URL` + `DIRECT_URL` (`.env` / `.env.local`)  
 **Auth:** existing `requireAdminPage` / `requireAdminAction` / `ADMIN_SECRET`  
 **Dashboard:** `/admin/contact-intel` (standalone chrome, not Campaign OS shell)
