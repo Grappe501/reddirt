@@ -1,5 +1,6 @@
 import { cookies } from "next/headers";
 
+import { isElectionPlanAuthBypassed } from "@/lib/election-plan/auth/constants";
 import {
   ELECTION_PLAN_OPERATOR_COOKIE,
   verifyElectionPlanOperatorToken,
@@ -12,6 +13,9 @@ import {
 import { prisma } from "@/lib/db";
 
 export async function requireElectionPlanApiSession(): Promise<boolean> {
+  // TEMP DEMO: password gates off — flip ELECTION_PLAN_AUTH_BYPASS to restore.
+  if (isElectionPlanAuthBypassed()) return true;
+
   const secret = getElectionPlanPassword();
   if (!secret) {
     return process.env.NODE_ENV !== "production";

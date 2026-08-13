@@ -8,9 +8,9 @@ import { prioritiesLaunchCopy } from "@/content/website/priorities-launch";
 import { pageMeta } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = pageMeta({
-  title: "Kelly’s Priorities",
+  title: "My Plan",
   description:
-    "What the Arkansas Secretary of State can deliver — elections, business filings, transparency, and Capitol stewardship — with clear limits of the office.",
+    "Kelly Grappe’s plan for Arkansas Secretary of State: restore trust in elections, protect the people’s constitutional voice, support all 75 counties, and make government work better for people.",
   path: "/priorities",
   imageSrc: "/media/placeholders/texture-porch-glow.svg",
 });
@@ -27,64 +27,76 @@ export default async function PrioritiesPage() {
         title={c.hero.title}
         subtitle={c.hero.subtitle}
       >
-        <Button href="/understand" variant="primary">
-          Understand the office
+        <Button href="/about" variant="primary">
+          Meet Kelly
         </Button>
-        <Button href="/about" variant="outlineOnDark">
-          Read Kelly’s Story
+        <Button href="/direct-democracy/ballot-initiative-process" variant="outlineOnDark">
+          Learn How Direct Democracy Works →
         </Button>
       </MediaPageHero>
 
       <FullBleedSection variant="subtle" padY>
         <ContentContainer className="max-w-3xl">
           <p className="rounded-card border border-kelly-gold/30 bg-kelly-gold/10 px-5 py-4 font-body text-sm leading-relaxed text-kelly-navy">
-            <strong className="font-semibold">Authority note.</strong> {c.authorityNote}
+            <strong className="font-semibold">Limits of the office. </strong>
+            {c.authorityNote}
           </p>
+          <nav aria-label="My Plan sections" className="mt-8">
+            <ul className="flex flex-wrap gap-2">
+              {c.pillars.map((pillar) => (
+                <li key={pillar.id}>
+                  <a
+                    href={`#${pillar.id}`}
+                    className="inline-flex rounded-full border border-kelly-navy/20 bg-white px-3 py-2 font-body text-xs font-semibold text-kelly-navy hover:border-kelly-navy/40"
+                  >
+                    {pillar.number}. {pillar.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
         </ContentContainer>
       </FullBleedSection>
 
       {c.pillars.map((pillar, index) => (
-        <FullBleedSection key={pillar.id} variant={index % 2 === 0 ? "default" : "subtle"} padY>
+        <FullBleedSection key={pillar.id} id={pillar.id} variant={index % 2 === 0 ? "default" : "subtle"} padY>
           <ContentContainer className="max-w-3xl">
-            <h2 className="font-heading text-2xl font-bold text-kelly-ink md:text-3xl">{pillar.title}</h2>
+            <p className="font-body text-xs font-bold uppercase tracking-[0.18em] text-kelly-gold">
+              Priority {pillar.number}
+            </p>
+            <h2 className="mt-2 font-heading text-2xl font-bold text-kelly-ink md:text-3xl">{pillar.title}</h2>
 
-            <h3 className="mt-8 font-heading text-lg font-bold text-kelly-navy">What the issue is</h3>
-            <p className="mt-2 font-body text-base leading-relaxed text-kelly-slate">{pillar.issue}</p>
-
-            <h3 className="mt-6 font-heading text-lg font-bold text-kelly-navy">Why Arkansans should care</h3>
-            <p className="mt-2 font-body text-base leading-relaxed text-kelly-slate">{pillar.whyCare}</p>
-
-            <h3 className="mt-6 font-heading text-lg font-bold text-kelly-navy">
-              What the Secretary of State can actually influence
-            </h3>
-            <p className="mt-2 font-body text-base leading-relaxed text-kelly-slate">{pillar.officeRole}</p>
-
-            <h3 className="mt-6 font-heading text-lg font-bold text-kelly-navy">Kelly’s position</h3>
-            <p className="mt-2 font-body text-base leading-relaxed text-kelly-slate">{pillar.position}</p>
-
-            <h3 className="mt-6 font-heading text-lg font-bold text-kelly-navy">What Kelly would do</h3>
-            <ul className="mt-3 list-none space-y-2">
-              {pillar.wouldDo.map((item) => (
-                <li
-                  key={item}
-                  className="relative pl-4 font-body text-sm leading-relaxed text-kelly-slate before:absolute before:left-0 before:top-[0.55em] before:h-1.5 before:w-1.5 before:rounded-full before:bg-kelly-gold"
-                >
-                  {item}
-                </li>
+            <div className="mt-6 space-y-4 font-body text-base leading-relaxed text-kelly-slate">
+              {pillar.intro.map((p) => (
+                <p key={p.slice(0, 56)}>{p}</p>
               ))}
-            </ul>
-
-            <h3 className="mt-6 font-heading text-lg font-bold text-kelly-navy">Limits of the office</h3>
-            <p className="mt-2 font-body text-base leading-relaxed text-kelly-slate">{pillar.limits}</p>
-
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Button href={pillar.relatedOfficeHref} variant="outline">
-                {pillar.relatedOfficeLabel}
-              </Button>
-              <Button href={pillar.nextAction.href} variant="primary">
-                {pillar.nextAction.label}
-              </Button>
             </div>
+
+            <div className="mt-8 space-y-3">
+              {pillar.subsections.map((sub) => (
+                <details
+                  key={sub.heading}
+                  className="rounded-card border border-kelly-ink/10 bg-white p-5 shadow-sm open:shadow-md"
+                >
+                  <summary className="cursor-pointer font-heading text-lg font-bold text-kelly-navy">
+                    {sub.heading}
+                  </summary>
+                  <div className="mt-4 space-y-4 font-body text-base leading-relaxed text-kelly-slate">
+                    {sub.paragraphs.map((p) => (
+                      <p key={p.slice(0, 56)}>{p}</p>
+                    ))}
+                  </div>
+                </details>
+              ))}
+            </div>
+
+            {"cta" in pillar && pillar.cta ? (
+              <div className="mt-8">
+                <Button href={pillar.cta.href} variant="primary">
+                  {pillar.cta.label}
+                </Button>
+              </div>
+            ) : null}
           </ContentContainer>
         </FullBleedSection>
       ))}
@@ -106,9 +118,9 @@ export default async function PrioritiesPage() {
             ))}
           </div>
           <p className="mt-8 font-body text-sm text-white/70">
-            Related campaign statement:{" "}
-            <Link href="/#primary-message" className="font-semibold text-kelly-gold underline-offset-2 hover:underline">
-              Watch Kelly’s Message
+            Official voter resources:{" "}
+            <Link href="/voter-registration" className="font-semibold text-kelly-gold underline-offset-2 hover:underline">
+              Register / check registration
             </Link>
           </p>
         </ContentContainer>

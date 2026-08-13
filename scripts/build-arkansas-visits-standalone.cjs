@@ -73,11 +73,24 @@ console.log(JSON.stringify(payload));
 }
 
 fs.mkdirSync(dataDir, { recursive: true });
+const assetsDir = path.join(outDir, "assets");
+fs.mkdirSync(assetsDir, { recursive: true });
+
 const payload = loadPublicPayload();
 const outFile = path.join(dataDir, "public-visits.json");
 fs.writeFileSync(outFile, `${JSON.stringify(payload, null, 2)}\n`, "utf8");
 
+// Embedded payload so the page works without fetch (file:// or offline) and
+// stays in sync after ledger edits via the local editor server.
+const visitsDataJs = path.join(assetsDir, "visits-data.js");
+fs.writeFileSync(
+  visitsDataJs,
+  `window.__KELLY_VISITS__ = ${JSON.stringify(payload)};\n`,
+  "utf8",
+);
+
 console.log(
   `>>> arkansas-visits standalone: ${payload.completed.length} completed, ${payload.upcoming.length} upcoming → ${path.relative(root, outFile)}`,
 );
+console.log(`>>> embedded data: ${path.relative(root, visitsDataJs)}`);
 console.log(`>>> publish folder: ${path.relative(root, outDir)}`);

@@ -1,11 +1,13 @@
 # Standalone Kelly Across Arkansas — static only (no Next server handler).
 #
-# Recommended Netlify site settings:
+# Connect Netlify to GitHub: Grappe501/reddirt
+# Site settings:
 #   Base directory: standalone/arkansas-visits
-#   Build command:  (none / echo ok) — commit data/public-visits.json after ledger edits
-#   Publish:        .
+#   Build command:  echo 'arkansas-visits static'
+#   Publish directory: .
+#   Branch: main (or the branch that contains this folder)
 #
-# To regenerate data from the RedDirt ledger (from repo root):
+# Regenerate from RedDirt repo root after ledger edits:
 #   npm run visits:standalone
 
 [build]
@@ -17,8 +19,14 @@
   [headers.values]
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
+    Cache-Control = "public, max-age=0, must-revalidate"
 
 [[headers]]
   for = "/data/*"
   [headers.values]
     Cache-Control = "public, max-age=300"
+
+[[redirects]]
+  from = "/stop/*"
+  to = "/stop.html"
+  status = 200

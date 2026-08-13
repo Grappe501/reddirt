@@ -1,8 +1,10 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { redirect } from "next/navigation";
 
 import { LeaderSignInInitialsPicker } from "@/components/volunteers/LeaderSignInInitialsPicker";
 import { EpButton } from "@/components/election-plan/ui/EpButton";
+import { isElectionPlanAuthBypassed } from "@/lib/election-plan/auth/constants";
 import { volunteerHubLoginAction } from "@/lib/volunteers/auth/volunteer-auth-actions";
 import { getVolunteerLeadersForDashboardPicker } from "@/lib/volunteers/leader-roster";
 import { getVolunteerHubPassword } from "@/lib/volunteers/auth/session";
@@ -19,7 +21,6 @@ type Props = { searchParams: Promise<{ error?: string; next?: string }> };
 
 export default async function LeaderWorkbenchSignInPage({ searchParams }: Props) {
   const sp = await searchParams;
-  const configured = Boolean(getVolunteerHubPassword());
   const roster = getVolunteerLeadersForDashboardPicker();
   const nextPath = sp.next?.trim();
   const redirectTo =
@@ -30,6 +31,13 @@ export default async function LeaderWorkbenchSignInPage({ searchParams }: Props)
     !nextPath.startsWith("/election-plan/operators/leaders/sign-in")
       ? nextPath
       : "/election-plan/operators/leaders/me";
+
+  // TEMP DEMO: password gates off — flip ELECTION_PLAN_AUTH_BYPASS to restore.
+  if (isElectionPlanAuthBypassed()) {
+    redirect(redirectTo);
+  }
+
+  const configured = Boolean(getVolunteerHubPassword());
 
   return (
     <>

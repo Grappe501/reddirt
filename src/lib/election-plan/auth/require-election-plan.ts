@@ -1,5 +1,6 @@
 import { cookies, headers } from "next/headers";
 import { redirect } from "next/navigation";
+import { isElectionPlanAuthBypassed } from "@/lib/election-plan/auth/constants";
 import {
   ELECTION_PLAN_SESSION_COOKIE,
   getElectionPlanPassword,
@@ -7,6 +8,9 @@ import {
 } from "@/lib/election-plan/auth/session";
 
 export async function requireElectionPlanPage(): Promise<void> {
+  // TEMP DEMO: password gates off — flip ELECTION_PLAN_AUTH_BYPASS to restore.
+  if (isElectionPlanAuthBypassed()) return;
+
   const secret = getElectionPlanPassword();
   if (!secret) {
     if (process.env.NODE_ENV === "production") {

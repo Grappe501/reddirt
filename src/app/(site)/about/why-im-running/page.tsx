@@ -12,9 +12,9 @@ export const dynamic = "force-dynamic";
 const c = whyKellyPageCopy;
 
 export const metadata: Metadata = pageMeta({
-  title: "Why I'm running",
+  title: "Why I’m running",
   description:
-    "Why Kelly Grappe entered the Secretary of State race: lawful, transparent elections administered for Arkansas voters—non-partisan administration under state law.",
+    "Why Kelly Grappe is running for Arkansas Secretary of State: restore trust, protect the people’s constitutional voice, and make the office work for the people it belongs to.",
   path: "/about/why-im-running",
   imageSrc: "/media/placeholders/texture-porch-glow.svg",
 });
@@ -26,17 +26,17 @@ export default async function WhyImRunningPage() {
         slotKey="why.hero"
         layout="split"
         eyebrow="Meet Kelly"
-        title="Why I'm running"
+        title={c.hero.title}
         subtitle={c.hero.subtitle}
       >
         <Button href="/about" variant="outlineOnDark">
-          Meet Kelly overview
+          Meet Kelly
         </Button>
-        <Button href="/about/why-secretary-of-state" variant="outlineOnDark">
-          Why this office
+        <Button href="/priorities" variant="outlineOnDark">
+          See My Plan
         </Button>
         <Button href="/understand" variant="outlineOnDark">
-          Understand the office
+          What the office does
         </Button>
       </MediaPageHero>
 
@@ -46,60 +46,37 @@ export default async function WhyImRunningPage() {
         </ContentContainer>
       </FullBleedSection>
 
-      <FullBleedSection variant="subtle" padY aria-labelledby="why-running-why-heading">
-        <ContentContainer className="max-w-3xl">
-          <h2 id="why-running-why-heading" className="font-heading text-2xl font-bold text-kelly-navy md:text-3xl">
-            {c.why.title}
-          </h2>
-          <div className="mt-8 space-y-6 font-body text-lg leading-relaxed text-kelly-text/88">
-            {c.why.paragraphs.map((p, i) => (
-              <p key={`why-${i}`}>{p}</p>
-            ))}
-          </div>
-        </ContentContainer>
-      </FullBleedSection>
+      {c.sections.map((section, index) => (
+        <FullBleedSection
+          key={section.title}
+          variant={index % 2 === 0 ? "subtle" : "default"}
+          padY
+          aria-labelledby={`why-running-${index}`}
+        >
+          <ContentContainer className="max-w-3xl">
+            <h2 id={`why-running-${index}`} className="font-heading text-2xl font-bold text-kelly-navy md:text-3xl">
+              {section.title}
+            </h2>
+            <div className="mt-8 space-y-6 font-body text-lg leading-relaxed text-kelly-text/88">
+              {section.paragraphs.map((p) => (
+                <p key={p.slice(0, 56)}>{p}</p>
+              ))}
+            </div>
+          </ContentContainer>
+        </FullBleedSection>
+      ))}
 
-      <FullBleedSection padY aria-labelledby="why-running-how-heading">
+      <FullBleedSection padY>
         <ContentContainer className="max-w-3xl">
-          <h2 id="why-running-how-heading" className="font-heading text-2xl font-bold text-kelly-navy md:text-3xl">
-            {c.how.title}
-          </h2>
-          <div className="mt-8 space-y-5 font-body text-lg leading-relaxed text-kelly-text/88">
-            {c.how.paragraphs.map((p, i) => (
-              <p key={`how-${i}`}>{p}</p>
-            ))}
-          </div>
-        </ContentContainer>
-      </FullBleedSection>
-
-      <FullBleedSection variant="subtle" padY aria-labelledby="why-running-what-heading">
-        <ContentContainer>
-          <h2
-            id="why-running-what-heading"
-            className="mx-auto max-w-3xl font-heading text-2xl font-bold text-kelly-navy md:text-3xl"
-          >
-            {c.what.title}
-          </h2>
-          <ul className="mt-10 grid list-none gap-6 md:grid-cols-3">
-            {c.what.cards.map((card) => (
-              <li
-                key={card.title}
-                className="rounded-card border border-kelly-text/10 bg-[var(--color-surface-elevated)] p-6 shadow-[var(--shadow-soft)]"
-              >
-                <h3 className="font-heading text-lg font-bold text-kelly-navy">{card.title}</h3>
-                <p className="mt-3 font-body text-sm leading-relaxed text-kelly-text/85">{card.body}</p>
-              </li>
-            ))}
-          </ul>
-          <p className="mx-auto mt-12 max-w-3xl border-l-4 border-kelly-gold/70 pl-6 font-body text-lg font-medium leading-relaxed text-kelly-text">
-            {c.roadLine}
-          </p>
-          <div className="mx-auto mt-10 flex max-w-3xl flex-wrap justify-center gap-3">
+          <div className="flex flex-wrap justify-center gap-3">
             <Button href="/about" variant="outline">
               Back to Meet Kelly
             </Button>
-            <Button href="/priorities" variant="outline">
-              Office priorities
+            <Button href="/priorities" variant="primary">
+              See My Plan
+            </Button>
+            <Button href="/direct-democracy/ballot-initiative-process" variant="outline">
+              Learn How Direct Democracy Works →
             </Button>
           </div>
         </ContentContainer>

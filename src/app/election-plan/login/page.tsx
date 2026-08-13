@@ -1,8 +1,10 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { redirect } from "next/navigation";
 
 import { EpButton } from "@/components/election-plan/ui/EpButton";
 import { electionPlanLoginAction } from "@/lib/election-plan/auth/election-plan-auth-actions";
+import { isElectionPlanAuthBypassed } from "@/lib/election-plan/auth/constants";
 import { getElectionPlanPassword } from "@/lib/election-plan/auth/session";
 
 export const metadata: Metadata = {
@@ -17,7 +19,6 @@ type Props = { searchParams: Promise<{ error?: string; next?: string }> };
 
 export default async function ElectionPlanLoginPage({ searchParams }: Props) {
   const sp = await searchParams;
-  const configured = Boolean(getElectionPlanPassword());
   const nextPath = sp.next?.trim();
   const redirectTo =
     nextPath &&
@@ -27,6 +28,13 @@ export default async function ElectionPlanLoginPage({ searchParams }: Props) {
     !nextPath.startsWith("/election-plan/login")
       ? nextPath
       : "/election-plan";
+
+  // TEMP DEMO: password gates off — flip ELECTION_PLAN_AUTH_BYPASS to restore.
+  if (isElectionPlanAuthBypassed()) {
+    redirect(redirectTo);
+  }
+
+  const configured = Boolean(getElectionPlanPassword());
 
   return (
     <div className="ep-login-shell">

@@ -1,35 +1,58 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { PageHero } from "@/components/blocks/PageHero";
 import { Button } from "@/components/ui/Button";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { FullBleedSection } from "@/components/layout/FullBleedSection";
 import { OfficeThreeLevelExplainer } from "@/components/office/OfficeThreeLevelExplainer";
 import { OfficeUnderstandGateway } from "@/components/office/OfficeUnderstandGateway";
+import { officeExplainerCopy } from "@/content/office/office-explainer";
 import { pageMeta } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = pageMeta({
-  title: "Understand the office",
+  title: "What the office does",
   description:
-    "What the Arkansas Secretary of State does—elections, business filings, notaries, records, and Capitol stewardship. Civic education in two levels: what the office does, then why it matters and what Kelly brings.",
+    "Plain-language explainer of the Arkansas Secretary of State: elections, business services, initiatives and referenda, public records, and the State Capitol.",
   path: "/understand",
 });
+
+const c = officeExplainerCopy;
 
 export default function UnderstandTheOfficePage() {
   return (
     <>
-      <PageHero
-        tone="plan"
-        eyebrow="The Office"
-        title="Understand the Secretary of State"
-        subtitle="Trust and competence come before persuasion. Learn what this office actually does, then—if you choose—why it matters to Arkansans and what Kelly brings with verified credentials."
-      >
-        <Button href="/office/elections" variant="primary">
-          Start with elections
+      <PageHero tone="plan" eyebrow={c.hero.eyebrow} title={c.hero.title} subtitle={c.hero.subtitle}>
+        <Button href="/priorities" variant="primary">
+          See My Plan
         </Button>
         <Button href="/about" variant="outlineOnDark">
           Meet Kelly
         </Button>
       </PageHero>
+
+      <FullBleedSection padY>
+        <ContentContainer>
+          <ul className="grid list-none gap-5 md:grid-cols-2">
+            {c.functions.map((fn) => (
+              <li key={fn.title} className="rounded-card border border-kelly-ink/10 bg-white p-6 shadow-sm">
+                <h2 className="font-heading text-xl font-bold text-kelly-navy">{fn.title}</h2>
+                <p className="mt-3 font-body text-base leading-relaxed text-kelly-slate">{fn.body}</p>
+                <p className="mt-4">
+                  <Link
+                    href={fn.href}
+                    className="font-body text-sm font-bold text-kelly-blue underline decoration-kelly-blue/25 underline-offset-4 hover:decoration-kelly-blue"
+                  >
+                    Learn more →
+                  </Link>
+                </p>
+              </li>
+            ))}
+          </ul>
+          <p className="mx-auto mt-10 max-w-3xl text-center font-body text-lg leading-relaxed text-kelly-slate">
+            {c.closer}
+          </p>
+        </ContentContainer>
+      </FullBleedSection>
 
       <FullBleedSection variant="subtle" padY>
         <ContentContainer wide>
@@ -39,23 +62,6 @@ export default function UnderstandTheOfficePage() {
 
       <FullBleedSection variant="band-fog" padY aria-labelledby="office-three-layer-gateway">
         <OfficeUnderstandGateway />
-      </FullBleedSection>
-
-      <FullBleedSection padY>
-        <ContentContainer className="max-w-3xl text-center">
-          <p className="font-body text-base leading-relaxed text-kelly-text/85">
-            When you leave this section, you should know what the Secretary of State does and—if you read the second
-            level—why it matters and why Kelly believes she is prepared. Persuasion can wait.
-          </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-3">
-            <Button href="/about/why-im-running" variant="outline">
-              Why I&apos;m running
-            </Button>
-            <Button href="/priorities" variant="outline">
-              Office priorities
-            </Button>
-          </div>
-        </ContentContainer>
       </FullBleedSection>
     </>
   );
