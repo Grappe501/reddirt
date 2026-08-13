@@ -153,11 +153,11 @@ export default function BallotInitiativeProcessPage() {
             ))}
           </div>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Button href="/direct-democracy" variant="primary">
-              Measures in the public conversation
+            <Button href="/priorities#peoples-voice" variant="primary">
+              The people’s constitutional voice
             </Button>
-            <Button href="/about/why-im-running" variant="outlineOnDark">
-              Why Kelly is running
+            <Button href="/office/why-this-race-matters" variant="outlineOnDark">
+              Why this race matters
             </Button>
           </div>
         </ContentContainer>
@@ -221,8 +221,8 @@ export default function BallotInitiativeProcessPage() {
         <ContentContainer>
           <SectionHeading id="related" align="left" eyebrow="On this site" title="Related pages" className="max-w-2xl" />
           <div className="mt-8 flex flex-wrap gap-4">
-            <Button href="/direct-democracy" variant="primary">
-              Ballot access &amp; initiatives
+            <Button href="/priorities#peoples-voice" variant="primary">
+              The people’s constitutional voice
             </Button>
             <Button href="/resources" variant="outline">
               Resources hub
