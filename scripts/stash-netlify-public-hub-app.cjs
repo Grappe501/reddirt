@@ -1,6 +1,7 @@
 /**
  * Netlify public-hub build: move App Router *route* files out of heavy trees so
  * `next build` does not compile those pages into ___netlify-server-handler.
+ * Keep `src/app/election-plan` — kgrappe.netlify.app must serve the portal.
  * Leave `*-actions.ts` and other modules in place — Next still typechecks
  * components that import them (see ApprovalPackageScaffold).
  * CI workspace only — not a repo move.
@@ -11,7 +12,6 @@ const path = require("node:path");
 const STASH_ROOT = ".netlify-build-stash";
 
 const APP_STASH_DIRS = [
-  "src/app/election-plan",
   "src/app/volunteers",
   "src/app/campaign-events",
   "src/app/commit",
@@ -23,7 +23,7 @@ const APP_STASH_DIRS = [
   "src/app/admin/(board)",
 ];
 
-const API_KEEP = new Set(["forms"]);
+const API_KEEP = new Set(["forms", "election-plan"]);
 
 /** App Router files that create routes / pages. Everything else stays for typecheck. */
 const ROUTE_FILE_RE =

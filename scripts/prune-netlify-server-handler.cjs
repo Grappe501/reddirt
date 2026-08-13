@@ -65,18 +65,19 @@ const LAUNCH_DATA_DIR_PRUNE = [
 const LAUNCH_ADMIN_TOP_KEEP = new Set(["login", "(board)", "opposition"]);
 const LAUNCH_BOARD_KEEP = new Set(["intelligence"]);
 /**
- * Public-hub Netlify whitelist — kgrappe ships the voter site, not the full campaign OS.
- * election-plan / intelligence / volunteer boards stay in repo and local; they blow the 250 MB cap.
+ * Public-hub Netlify whitelist — kgrappe ships the voter site plus Election Plan.
+ * Intelligence / volunteer boards stay local or satellite; they blow the 250 MB cap.
  */
 const KELLY_OPS_NETLIFY_BOARD_KEEP = new Set([]);
 const LAUNCH_API_ADMIN_KEEP = new Set(["intelligence"]);
-/** Public hub Lambda — site + volunteer-kickoff CTAs. Ops portals are local / satellite. */
+/** Public hub Lambda — site + election-plan portal. Ops admin boards stay stashed. */
 const LAUNCH_APP_TOP_KEEP = new Set([
   "admin",
   "(site)",
   "(volunteer-kickoff)",
+  "election-plan",
 ]);
-const LAUNCH_API_TOP_KEEP = new Set(["admin", "forms"]);
+const LAUNCH_API_TOP_KEEP = new Set(["admin", "forms", "election-plan"]);
 
 /** Standalone copy lands the whole repo in the handler — keep only these top-level names. */
 const LAUNCH_HANDLER_ROOT_KEEP = new Set([
@@ -969,6 +970,8 @@ module.exports = {
   handlerDirForManifest,
   applyServerHandlerIncludeGlobs,
   HANDLER_SITE_INCLUDE_GLOBS,
+  LAUNCH_APP_TOP_KEEP,
+  LAUNCH_API_TOP_KEEP,
   MAX_MB,
   DEPLOY_FAIL_MB,
 };

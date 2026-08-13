@@ -10,6 +10,8 @@ const {
   buildPatchedHandlerManifest,
   applyServerHandlerIncludeGlobs,
   HANDLER_SITE_INCLUDE_GLOBS,
+  LAUNCH_APP_TOP_KEEP,
+  LAUNCH_API_TOP_KEEP,
 } = require("./prune-netlify-server-handler.cjs");
 const { APP_STASH_DIRS, API_KEEP, stashPublicHubAppDirs, isRouteFileName, STASH_ROOT } = require("./stash-netlify-public-hub-app.cjs");
 
@@ -62,9 +64,12 @@ assert.deepEqual(
 );
 
 fs.rmSync(tmp, { recursive: true, force: true });
-assert.ok(APP_STASH_DIRS.includes("src/app/election-plan"));
+assert.ok(!APP_STASH_DIRS.includes("src/app/election-plan"), "election-plan must ship on kgrappe.netlify.app");
 assert.ok(APP_STASH_DIRS.includes("src/app/admin/(board)"));
 assert.ok(API_KEEP.has("forms"));
+assert.ok(API_KEEP.has("election-plan"));
+assert.ok(LAUNCH_APP_TOP_KEEP.has("election-plan"));
+assert.ok(LAUNCH_API_TOP_KEEP.has("election-plan"));
 assert.ok(isRouteFileName("page.tsx"));
 assert.ok(isRouteFileName("route.ts"));
 assert.ok(!isRouteFileName("approval-email-actions.ts"));
