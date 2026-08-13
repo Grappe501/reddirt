@@ -61,65 +61,14 @@
 
 # Netlify upload cap is 250 MB unzipped per function.
 # Do not use external_node_modules here — it copies whole packages into the upload and blows the cap.
-# Keep in sync with MANIFEST_INCLUDED_EXCLUSIONS in scripts/prune-netlify-server-handler.cjs.
+#
+# Do NOT set included_files on ___netlify-server-handler.
+# OpenNext writes includedFiles: ["**"] with includedFilesBasePath = the handler directory.
+# Toml included_files are site-root relative and replace that manifest, so exclusion-only
+# lists (or a bare "**") re-pull node_modules/.next from the repo and exceed 250 MB.
+# Handler-relative exclusions live in scripts/prune-netlify-server-handler.cjs.
 [functions."___netlify-server-handler"]
-  included_files = [
-    "!.git/**",
-    "!.git/objects/**",
-    "!.next/cache/**",
-    "!.next/static/**",
-    "!.next/diagnostics/**",
-    "!.next/types/**",
-    "!node_modules/.prisma/client/libquery_engine-rhel-openssl-1.0.x.so.node",
-    "!node_modules/@img/**",
-    "!node_modules/sharp/**",
-    "!node_modules/@img/sharp-libvips-linuxmusl-x64/**",
-    "!node_modules/@img/sharp-linuxmusl-x64/**",
-    "!node_modules/pdf-parse/**",
-    "!node_modules/@googleapis/**",
-    "!node_modules/googleapis/**",
-    "!node_modules/google-auth-library/**",
-    "!node_modules/twilio/**",
-    "!node_modules/mammoth/**",
-    "!node_modules/xlsx/**",
-    "!node_modules/typescript/**",
-    "!node_modules/webpack/**",
-    "!node_modules/next/**",
-    "!node_modules/@swc/**",
-    "!node_modules/esbuild/**",
-    "!node_modules/playwright/**",
-    "!node_modules/@playwright/**",
-    "!node_modules/puppeteer/**",
-    "!node_modules/puppeteer-core/**",
-    "!data/**",
-    "!docs/**",
-    "!src/**",
-    "!prisma/**",
-    "!scripts/**",
-    "!canvases/**",
-    "!.env",
-    "!.env.*",
-    "!**/.env",
-    "!**/.env.*",
-    "!public/**",
-    "!.tmp-heic-preview/**",
-    "!docs/kelly-grappe-sos-strategic-plan-manual/**",
-    "!campaign-system-manual/**",
-    "!.local/**",
-    "!**/.local/**",
-    "!**/npm-cache/**",
-    "!**/_cacache/**",
-    "!Volunteer Presentation/**",
-    "!develop_notes/**",
-    "!field-structure/**",
-    "!exports/**",
-    "!backups/**",
-    "!reports/**",
-    "!campaign-media/**",
-    "!county-vault/**",
-    "!.nightly-self-build/**",
-    "!out/**",
-  ]
+  node_bundler = "none"
 
 # Optional: document dev port alignment
 # [dev]
