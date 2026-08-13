@@ -6,6 +6,7 @@ import { FullBleedSection } from "@/components/layout/FullBleedSection";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { pageMeta } from "@/lib/seo/metadata";
 import { cn, focusRing } from "@/lib/utils";
+import { getArVoterRegistrationLookupUrl } from "@/lib/county/official-links";
 
 export const metadata: Metadata = pageMeta({
   title: "Privacy & trust for organizers",
@@ -63,7 +64,7 @@ export default function PrivacyAndTrustPage() {
               We build organizing tools to grow participation and strengthen communities—not to embarrass people, expose private details, or turn neighbors into a public spectacle.
             </p>
             <p>
-              That means we treat relationships and voter reference data as <strong>serious responsibilities</strong>: clear roles, careful boundaries, and room to opt out when someone says no.
+              That means we treat relationships and the information people share with us as <strong>serious responsibilities</strong>: clear roles, careful boundaries, and room to opt out when someone says no.
             </p>
           </Section>
 
@@ -78,26 +79,14 @@ export default function PrivacyAndTrustPage() {
             </ul>
           </Section>
 
-          <Section id="voter-file-tools" title="What voter-file reference tools are—and are not">
-            <p>
-              A <strong>voter file</strong> (where the campaign is permitted to use one) is a reference for organizers: matching people to the right precinct, keeping lists accurate, and planning outreach at a <strong>neighborhood or district level</strong>.
-            </p>
-            <p>
-              <strong>Reference tools can</strong> help staff and authorized organizers confirm geography, improve data quality, and support compliance-aware outreach—under campaign rules and training.
-            </p>
-            <p>
-              <strong>They are not</strong> a public search engine for Arkansans, a hobby map of households, or a place to casually scroll through names. Browsing and microtargeting for spectacle are out of scope for how we want this program to behave.
-            </p>
-          </Section>
-
           <Section id="public-vs-private" title="What is public vs private">
             <p>Expectations by surface (details evolve as features ship; the boundaries stay the same):</p>
             <ul className="list-disc space-y-2 pl-5">
               <li>
-                <strong>Public pages</strong> (for example statewide or county organizing views meant for everyone) emphasize <strong>rolled-up numbers</strong>, geography names, and education—not individual voter identities or sensitive scores.
+                <strong>Public pages</strong> (for example statewide or county organizing views meant for everyone) emphasize <strong>rolled-up numbers</strong>, geography names, and education—not other people’s private details.
               </li>
               <li>
-                <strong>Signed-in or volunteer views</strong> can show more that is relevant to <strong>your</strong> work—your tasks, your team, your turf—without turning the whole file into something anyone on the open web can mine.
+                <strong>Signed-in or volunteer views</strong> can show more that is relevant to <strong>your</strong> work—your tasks, your team, your turf—without turning private lists into something anyone on the open web can mine.
               </li>
               <li>
                 <strong>Staff and admin tools</strong> exist for reconciliation, quality control, and auditing. Those screens carry extra duty of care: access should match the job, and sensitive exports should stay rare, controlled, and documented.
@@ -107,13 +96,17 @@ export default function PrivacyAndTrustPage() {
 
           <Section id="no-household-maps" title="No public household maps">
             <p>
-              We do not publish maps that let the public click around to <strong>households or individuals</strong> from voter data. If you see geography on the site, read it as <strong>storytelling and accountability at a community level</strong>, not a pin for every door.
+              We do not publish maps that let the public click around to <strong>households or individuals</strong>. If you see geography on the site, read it as <strong>storytelling and accountability at a community level</strong>, not a pin for every door.
             </p>
           </Section>
 
-          <Section id="no-public-voter-browsing" title="No public voter-file browsing">
+          <Section id="official-registration" title="Official registration stays with the state">
             <p>
-              There is no feature goal of letting random visitors search a voter database from the campaign website. Organizing intelligence and county pages are built to explain <strong>how the field picture fits together</strong>, not to expose rows from a file.
+              To confirm whether you are registered to vote in Arkansas, use the state’s official{" "}
+              <a className={cn(focusRing, "rounded-sm font-semibold text-kelly-navy underline")} href={getArVoterRegistrationLookupUrl()} target="_blank" rel="noreferrer">
+                VoterView
+              </a>{" "}
+              lookup—or ask your county clerk. This campaign website does not replace that official check.
             </p>
           </Section>
 

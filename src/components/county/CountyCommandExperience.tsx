@@ -18,7 +18,6 @@ import {
   getVolunteerInCountyHref,
 } from "@/lib/county/official-links";
 import { getCountyIntelligenceEntryForSlug } from "@/lib/county/county-intelligence-catalog";
-import { getCampaignRegistrationBaselineDisplayCentral } from "@/config/campaign-registration-baseline";
 import { cn } from "@/lib/utils";
 import { PublicCampaignEventCard } from "@/components/calendar/PublicCampaignEventCard";
 import { ownedMediaPreviewUrl } from "@/lib/media-library/public-urls";
@@ -46,31 +45,13 @@ const fmtDateLong = (d: Date | string) => {
   return x.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
 };
 
-function formatDistanceAgo(d: Date) {
-  const sec = Math.floor((Date.now() - d.getTime()) / 1000);
-  if (sec < 60) return "just now";
-  const min = Math.floor(sec / 60);
-  if (min < 60) return `${min}m ago`;
-  const hr = Math.floor(min / 60);
-  if (hr < 48) return `${hr}h ago`;
-  const day = Math.floor(hr / 24);
-  return `${day}d ago`;
-}
-
 export function CountyCommandExperience({ data }: { data: CountyPageSnapshot }) {
-  const { county, latestVoterMetrics, latestVisitPost, latestStoryPost, mediaGallery, vaultPublicCount, nextPublicCampaignEvent, upcomingPublicCampaignEvents } =
+  const { county, latestVisitPost, latestStoryPost, mediaGallery, vaultPublicCount, nextPublicCampaignEvent, upcomingPublicCampaignEvents } =
     data;
   const countyIntel = getCountyIntelligenceEntryForSlug(county.slug);
   const stats = county.campaignStats;
-  const vm = latestVoterMetrics;
   const demo = county.demographics;
-  const centralBaselineLabel = getCampaignRegistrationBaselineDisplayCentral();
-  const regSinceLabel = `New registrations since ${centralBaselineLabel} (campaign baseline)`;
   const voterUrl = getArVoterRegistrationLookupUrl();
-  const newSinceBaseline =
-    vm?.newRegistrationsSinceBaseline ?? stats?.newRegistrationsSinceBaseline ?? null;
-  const regGoal = vm?.countyGoal ?? stats?.registrationGoal ?? null;
-  const progressPct = vm?.progressPercent ?? null;
 
   return (
     <>
@@ -139,33 +120,9 @@ export function CountyCommandExperience({ data }: { data: CountyPageSnapshot }) 
             align="left"
             eyebrow="Field metrics"
             title="County scoreboard"
-            subtitle="Numbers come from our voter file warehouse when a snapshot completes: baseline date is campaign-wide (see voter center). If a row is pending, the pipeline is still catching up."
+            subtitle="Campaign activity in this county: visits, volunteers, and upcoming public events."
           />
-          <p className="mt-4 text-xs text-kelly-text/60">
-            Campaign baseline (all counties): <strong>{centralBaselineLabel}</strong>
-            {vm ? (
-              <>
-                {" "}
-                · File as of: <strong>{fmtDateLong(vm.asOfDate)}</strong>
-              </>
-            ) : null}
-          </p>
-          <ul className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-7" role="list">
-            <ScoreItem label="Registration goal" value={fmt(regGoal)} />
-            <ScoreItem
-              label={regSinceLabel}
-              value={newSinceBaseline == null ? "—" : fmt(newSinceBaseline)}
-            />
-            <ScoreItem
-              label="Registered voters (last file)"
-              value={vm?.totalRegisteredCount == null ? "—" : fmt(vm.totalRegisteredCount)}
-              hint="From SOS-imported roll in warehouse"
-            />
-            <ScoreItem
-              label="Progress to goal"
-              value={progressPct == null ? "—" : `${Math.round(progressPct)}%`}
-              hint={regGoal ? `Goal ${fmt(regGoal)}` : undefined}
-            />
+          <ul className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3" role="list">
             <ScoreItem label="Campaign visits" value={fmt(stats?.campaignVisits)} />
             <ScoreItem
               label="Active volunteers (field)"
@@ -177,19 +134,6 @@ export function CountyCommandExperience({ data }: { data: CountyPageSnapshot }) 
               value={upcomingPublicCampaignEvents.length > 0 ? String(upcomingPublicCampaignEvents.length) : "0"}
             />
           </ul>
-          {vm ? (
-            <p className="mt-4 text-xs text-kelly-text/55">
-              Voter file as of {fmtDateLong(vm.asOfDate)} · Last import: +{fmt(vm.newRegistrationsSincePreviousSnapshot)} new
-              registrants / {fmt(vm.droppedSincePreviousSnapshot)} no longer in file vs previous snapshot · Net{" "}
-              {vm.netChangeSincePreviousSnapshot >= 0 ? "+" : ""}
-              {fmt(vm.netChangeSincePreviousSnapshot)}. Review: {vm.reviewStatus.toLowerCase().replace(/_/g, " ")}.
-            </p>
-          ) : stats?.dataPipelineSource ? (
-            <p className="mt-4 text-xs text-kelly-text/55">
-              Data pipeline: {stats.dataPipelineSource}
-              {stats.pipelineLastSyncAt ? ` · Last attempt ${formatDistanceAgo(stats.pipelineLastSyncAt)}` : null}
-            </p>
-          ) : null}
         </ContentContainer>
       </FullBleedSection>
 

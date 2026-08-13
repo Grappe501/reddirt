@@ -29,7 +29,7 @@ export function PopeRelationalGraphDemoPanel({ graph, className }: Props) {
         description={
           <>
             Ten Power Teams in Pope County — six complete rosters, four still forming. Nodes are anonymous roster placeholders; edges show leader ties
-            and a few mentor bridges. Matches the numeric strip above. No voter file or contact tokens.
+            and a few mentor bridges. Matches the numeric strip above. No real contact tokens.
           </>
         }
       />

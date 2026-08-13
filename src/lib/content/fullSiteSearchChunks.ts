@@ -245,8 +245,8 @@ export function loadFullSiteSearchChunks(): DocChunk[] {
     content: cap(
       [
         "# How we protect people",
-        "Power of 5, public organizing intelligence, voter-file reference tools, consent, and what stays private.",
-        "No public household maps. No public voter-file browsing. Questions via Get involved or Privacy (counsel draft).",
+        "Power of 5, public organizing intelligence, consent, and what stays private.",
+        "No public household maps. Official registration lookup stays with Arkansas VoterView. Questions via Get involved or Privacy (counsel draft).",
         "Link: /privacy-and-trust",
       ].join("\n\n"),
     ),

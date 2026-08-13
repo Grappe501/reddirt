@@ -225,7 +225,7 @@ const LISTENING_PROMPTS: PublicMemberHubListeningPrompt[] = [
   {
     title: "Hope and homework",
     prompt: "If we got rules that were easier to read and easier to trust, what would change in your community?",
-    reminder: "Invite them to stay in touch; no voter file talk on public surfaces.",
+    reminder: "Invite them to stay in touch.",
   },
 ];
 
