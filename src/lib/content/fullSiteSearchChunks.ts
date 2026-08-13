@@ -152,6 +152,7 @@ export function loadFullSiteSearchChunks(): DocChunk[] {
       `## ${init.name}`,
       init.shortLabel,
       `Category: ${init.category} · ${init.format}`,
+      `Outcome: ${init.stamp.mark} — ${init.stamp.submark}`,
       init.statusLine,
       init.summary,
       init.whatItWouldDo,
