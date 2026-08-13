@@ -42,7 +42,11 @@ export function FAQAccordion({ items, className }: { items: FaqItem[]; className
               hidden={!isOpen}
               className="border-t border-kelly-text/10 px-5 pb-5 pt-2 md:px-6"
             >
-              <p className="font-body text-base leading-relaxed text-kelly-text/80">{item.a}</p>
+              <div className="space-y-3 font-body text-base leading-relaxed text-kelly-text/80">
+                {item.a.split(/\n\n+/).map((para, pi) => (
+                  <p key={pi}>{para}</p>
+                ))}
+              </div>
             </div>
           </div>
         );
