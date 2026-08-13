@@ -5,56 +5,20 @@ import { ProcessSteps } from "@/components/blocks/ProcessSteps";
 import { FullBleedSection } from "@/components/layout/FullBleedSection";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { Button } from "@/components/ui/Button";
+import { ballotInitiativeProcessCopy as c } from "@/content/direct-democracy/ballot-initiative-process";
 import { pageMeta } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = pageMeta({
   title: "Arkansas ballot initiative process",
   description:
-    "How citizen measures get a ballot title, signatures, and filing deadlines in Arkansas—Attorney General, Secretary of State, and what voters should know.",
+    "How the Attorney General’s title desk and the Secretary of State’s signature review decide whether Arkansans get to vote on citizen measures—process, last-decade examples, and why this office matters.",
   path: "/direct-democracy/ballot-initiative-process",
 });
-
-const officialProcessSteps = [
-  {
-    step: 1,
-    title: "Ballot title and popular name (Attorney General)",
-    description:
-      "Sponsors file proposed language with the Arkansas Attorney General, who reviews the popular name and ballot title for clarity and compliance. The Attorney General may request changes; when a title is certified, sponsors may print petitions with that language.",
-  },
-  {
-    step: 2,
-    title: "Petition and circulation",
-    description:
-      "After certification, committees circulate official petitions. Circulators should follow all rules for who may sign, witness requirements, and honest representation of the measure. This page is education, not legal advice.",
-  },
-  {
-    step: 3,
-    title: "Valid signatures (thresholds for 2026)",
-    description:
-      "Targets are set as a percentage of votes for Governor in the last gubernatorial election. For 2026, widely published figures are about 90,704 for an initiated constitutional amendment, about 72,563 for an initiated state statute, and about 54,422 for a veto referendum. Confirm the exact numbers each cycle with the Secretary of State.",
-  },
-  {
-    step: 4,
-    title: "File with the Secretary of State",
-    description:
-      "Completed petitions are filed with the Arkansas Secretary of State for verification. For a November general election, citizen initiatives are typically due several months before Election Day (often around early July for a November race—verify the official calendar for the year you are filing).",
-  },
-  {
-    step: 5,
-    title: "Ballot placement and the vote",
-    description:
-      "If enough valid signatures are verified, the measure is placed on the ballot for a statewide vote. Legislatively referred measures from the General Assembly skip signature gathering but still appear on the same ballot—see the trackers below.",
-  },
-] as const;
 
 export default function BallotInitiativeProcessPage() {
   return (
     <>
-      <PageHero
-        eyebrow="Civic how-to · Arkansas"
-        title="Learn how direct democracy works"
-        subtitle="A plain-language path through the state’s process: the Attorney General certifies what voters read; the Secretary of State receives petitions and runs verification. This page is educational—not legal advice."
-      >
+      <PageHero eyebrow={c.hero.eyebrow} title={c.hero.title} subtitle={c.hero.subtitle}>
         <Button
           href="https://arkansasag.gov/resources/ballot-initiative-information/"
           variant="primary"
@@ -72,31 +36,34 @@ export default function BallotInitiativeProcessPage() {
           <SectionHeading
             id="process-overview"
             align="left"
-            eyebrow="State roles"
-            title="Two big offices, two different jobs"
-            subtitle="Voters see one ballot—the process behind it is split between review of language and administration of signatures."
+            eyebrow={c.roles.eyebrow}
+            title={c.roles.title}
+            subtitle={c.roles.subtitle}
             className="max-w-3xl"
           />
-          <div className="mt-10 max-w-3xl space-y-4 font-body text-base leading-relaxed text-kelly-text/82 md:text-lg">
-            <p>
-              <strong>Attorney General</strong> certifies the ballot title and popular name so voters are not misled.
-              That step must succeed before most committees circulate petitions at scale.
-            </p>
-            <p>
-              <strong>Secretary of State</strong> receives filed petitions, applies counting and verification rules, and
-              operates the election infrastructure that lists qualified measures for voters.
-            </p>
+          <div className="mt-10 max-w-3xl space-y-8 font-body text-base leading-relaxed text-kelly-text/82 md:text-lg">
+            <div>
+              <h3 className="font-heading text-xl font-bold text-kelly-navy">{c.roles.ag.heading}</h3>
+              {c.roles.ag.paragraphs.map((p) => (
+                <p key={p.slice(0, 48)} className="mt-3">
+                  {p}
+                </p>
+              ))}
+            </div>
+            <div>
+              <h3 className="font-heading text-xl font-bold text-kelly-navy">{c.roles.sos.heading}</h3>
+              {c.roles.sos.paragraphs.map((p) => (
+                <p key={p.slice(0, 48)} className="mt-3">
+                  {p}
+                </p>
+              ))}
+            </div>
             <p className="rounded-card border border-kelly-text/10 bg-[var(--color-surface-elevated)] p-5 text-sm text-kelly-text/75 shadow-[var(--shadow-soft)]">
-              Treat signature gathering as a responsibility: one honest signature at a time, with no shortcuts around
-              witness rules or eligibility.
+              {c.roles.volunteerNote}
             </p>
-            <p className="mt-4 rounded-card border border-kelly-navy/20 bg-kelly-page p-5 text-sm leading-relaxed text-kelly-text/85 shadow-[var(--shadow-soft)]">
+            <p className="rounded-card border border-kelly-navy/20 bg-kelly-page p-5 text-sm leading-relaxed text-kelly-text/85 shadow-[var(--shadow-soft)]">
               <span className="font-heading font-bold text-kelly-text">Campaign position. </span>
-              We believe the ballot initiative process should use <strong>volunteers only</strong> to collect
-              signatures—committees can raise and spend for marketing, training, and materials, but not to pay canvassers
-              by the signature or the hour. In our view, paid canvassing is the same class of problem as dark money: it
-              lets cash substitute for real consent. What statute allows today is for the General Assembly and voters to
-              decide; this is the standard we will advocate for in public and support in law.
+              {c.roles.campaignPosition.replace(/^Campaign position\.\s*/, "")}
             </p>
           </div>
         </ContentContainer>
@@ -110,7 +77,89 @@ export default function BallotInitiativeProcessPage() {
             title="From title review to the statewide ballot"
             subtitle="Simplified. Sponsors and treasurers should work from current statutes, Attorney General guidance, and Secretary of State instructions."
           />
-          <ProcessSteps className="mt-12" steps={[...officialProcessSteps]} id="ar-ballot-official" />
+          <ProcessSteps className="mt-12" steps={[...c.steps]} id="ar-ballot-official" />
+        </ContentContainer>
+      </FullBleedSection>
+
+      <FullBleedSection padY variant="subtle" aria-labelledby="title-desk">
+        <ContentContainer>
+          <SectionHeading
+            id="title-desk"
+            align="left"
+            eyebrow={c.titleDesk.eyebrow}
+            title={c.titleDesk.title}
+            subtitle={c.titleDesk.lead}
+            className="max-w-3xl"
+          />
+          <ul className="mt-10 max-w-3xl space-y-8">
+            {c.titleDesk.items.map((item) => (
+              <li key={item.heading}>
+                <h3 className="font-heading text-lg font-bold text-kelly-navy">{item.heading}</h3>
+                <p className="mt-2 font-body text-base leading-relaxed text-kelly-text/82">{item.body}</p>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-8 max-w-3xl font-body text-base leading-relaxed text-kelly-text/82">{c.titleDesk.closer}</p>
+        </ContentContainer>
+      </FullBleedSection>
+
+      <FullBleedSection padY aria-labelledby="signature-desk">
+        <ContentContainer>
+          <SectionHeading
+            id="signature-desk"
+            align="left"
+            eyebrow={c.signatureDesk.eyebrow}
+            title={c.signatureDesk.title}
+            subtitle={c.signatureDesk.lead}
+            className="max-w-3xl"
+          />
+          <ul className="mt-10 max-w-3xl space-y-8">
+            {c.signatureDesk.items.map((item) => (
+              <li key={item.heading}>
+                <h3 className="font-heading text-lg font-bold text-kelly-navy">{item.heading}</h3>
+                <p className="mt-2 font-body text-base leading-relaxed text-kelly-text/82">{item.body}</p>
+              </li>
+            ))}
+          </ul>
+        </ContentContainer>
+      </FullBleedSection>
+
+      <FullBleedSection padY variant="subtle" aria-labelledby="courts">
+        <ContentContainer>
+          <SectionHeading
+            id="courts"
+            align="left"
+            eyebrow={c.courts.eyebrow}
+            title={c.courts.title}
+            className="max-w-3xl"
+          />
+          <div className="mt-8 max-w-3xl space-y-4 font-body text-base leading-relaxed text-kelly-text/82 md:text-lg">
+            {c.courts.paragraphs.map((p) => (
+              <p key={p.slice(0, 56)}>{p}</p>
+            ))}
+          </div>
+        </ContentContainer>
+      </FullBleedSection>
+
+      <FullBleedSection padY className="bg-kelly-navy text-kelly-page" aria-labelledby="why-sos">
+        <ContentContainer>
+          <p className="font-body text-xs font-bold uppercase tracking-[0.18em] text-kelly-gold">{c.whySos.eyebrow}</p>
+          <h2 id="why-sos" className="mt-3 font-heading text-2xl font-bold md:text-3xl">
+            {c.whySos.title}
+          </h2>
+          <div className="mt-6 max-w-3xl space-y-4 font-body text-base leading-relaxed text-kelly-page/88 md:text-lg">
+            {c.whySos.paragraphs.map((p) => (
+              <p key={p.slice(0, 56)}>{p}</p>
+            ))}
+          </div>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Button href="/direct-democracy" variant="primary">
+              Measures in the public conversation
+            </Button>
+            <Button href="/about/why-im-running" variant="outlineOnDark">
+              Why Kelly is running
+            </Button>
+          </div>
         </ContentContainer>
       </FullBleedSection>
 
@@ -157,8 +206,7 @@ export default function BallotInitiativeProcessPage() {
                 className="font-semibold text-kelly-navy underline decoration-kelly-navy/30 underline-offset-2 hover:decoration-kelly-navy"
               >
                 Ballotpedia — Arkansas 2026 ballot measures
-              </a>{" "}
-              (nonprofit tracker: potential citizen measures, legislatively referred items, and context)
+              </a>
             </li>
           </ul>
           <p className="mt-8 max-w-3xl font-body text-sm leading-relaxed text-kelly-text/65">
@@ -171,13 +219,7 @@ export default function BallotInitiativeProcessPage() {
 
       <FullBleedSection padY aria-labelledby="related">
         <ContentContainer>
-          <SectionHeading
-            id="related"
-            align="left"
-            eyebrow="On this site"
-            title="Related pages"
-            className="max-w-2xl"
-          />
+          <SectionHeading id="related" align="left" eyebrow="On this site" title="Related pages" className="max-w-2xl" />
           <div className="mt-8 flex flex-wrap gap-4">
             <Button href="/direct-democracy" variant="primary">
               Ballot access &amp; initiatives
