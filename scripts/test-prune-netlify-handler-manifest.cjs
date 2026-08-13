@@ -11,7 +11,7 @@ const {
   applyServerHandlerIncludeGlobs,
   HANDLER_SITE_INCLUDE_GLOBS,
 } = require("./prune-netlify-server-handler.cjs");
-const { APP_STASH_DIRS, API_KEEP } = require("./stash-netlify-public-hub-app.cjs");
+const { APP_STASH_DIRS, API_KEEP, stashPublicHubAppDirs, isRouteFileName, STASH_ROOT } = require("./stash-netlify-public-hub-app.cjs");
 
 const tmpRoot = path.join(__dirname, "..", ".local", "temp");
 fs.mkdirSync(tmpRoot, { recursive: true });
@@ -65,4 +65,22 @@ fs.rmSync(tmp, { recursive: true, force: true });
 assert.ok(APP_STASH_DIRS.includes("src/app/election-plan"));
 assert.ok(APP_STASH_DIRS.includes("src/app/admin/(board)"));
 assert.ok(API_KEEP.has("forms"));
+assert.ok(isRouteFileName("page.tsx"));
+assert.ok(isRouteFileName("route.ts"));
+assert.ok(!isRouteFileName("approval-email-actions.ts"));
+
+const stashTmp = fs.mkdtempSync(path.join(tmpRoot, "public-hub-stash-"));
+const board = path.join(stashTmp, "src/app/admin/(board)/campaign-events");
+fs.mkdirSync(board, { recursive: true });
+fs.writeFileSync(path.join(board, "page.tsx"), "export default function Page() { return null; }\n");
+fs.writeFileSync(path.join(board, "approval-email-actions.ts"), "export async function loadApprovalPackageBundleAction() {}\n");
+const stashed = stashPublicHubAppDirs(stashTmp);
+assert.ok(stashed >= 1);
+assert.ok(!fs.existsSync(path.join(board, "page.tsx")), "route page must be stashed");
+assert.ok(
+  fs.existsSync(path.join(board, "approval-email-actions.ts")),
+  "server actions must stay for typecheck",
+);
+assert.ok(fs.existsSync(path.join(stashTmp, STASH_ROOT, "src/app/admin/(board)/campaign-events/page.tsx")));
+fs.rmSync(stashTmp, { recursive: true, force: true });
 console.log("ok prune-netlify-handler-manifest");
