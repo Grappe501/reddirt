@@ -308,8 +308,15 @@ else
   fi
 fi
 
-echo ">>> election plan workbench snapshot"
-npm run election-plan:build
+echo ">>> public-hub stash (do not compile election-plan/admin boards into Lambda)"
+node scripts/stash-netlify-public-hub-app.cjs
+
+if [ -n "${NETLIFY:-}" ] || [ -n "${NETLIFY_BUILD_BASE:-}" ]; then
+  echo ">>> skip election-plan:build on Netlify public hub"
+else
+  echo ">>> election plan workbench snapshot"
+  npm run election-plan:build
+fi
 
 echo ">>> next build (NODE_ENV=production; npx next build — no H: npm-cache wrapper on CI)"
 export NODE_ENV=production

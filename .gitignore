@@ -53,6 +53,7 @@ Thumbs.db
 .vercel
 # Netlify CLI local state (netlify dev / link — plugins node_modules can be 20k+ files)
 .netlify/
+.netlify-build-stash/
 # H: workspace toolchain cache/temp (parent folder — never commit)
 ../.local/
 

@@ -18,10 +18,10 @@ Toml `included_files` **replaces** the JSON list (resolved config shows toml onl
 
 ## Fix (RedDirt only)
 
-1. `netlify.toml` `included_files` = `.netlify/functions-internal/___netlify-server-handler/**` (and the `.netlify/functions/` twin). `node_bundler = "none"`.
-2. Patch the JSON inside the handler directory to the same globs with `includedFilesBasePath` = site root.
-3. Keep Netlify admin board whitelist empty on the public hub; drop `election-plan` / `volunteers` from the Lambda. Keep `(site)` public routes that the live site must SSR.
-4. Plugin always logs `>>> prune-server-handler: …` so size is visible in the build log.
+1. `netlify.toml` `included_files` = **only** `.netlify/functions-internal/___netlify-server-handler/**` (do not also glob `.netlify/functions/` — that doubles the zip).
+2. Before `next build` on Netlify, stash election-plan / admin boards / extra APIs out of `src/app` so they are not compiled into `.next/server/chunks`.
+3. Patch the JSON to the same handler glob. Delete leftover `.netlify/functions/___netlify-server-handler` after prune.
+4. Plugin always logs `>>> prune-server-handler:` plus top-level sizes.
 
 ## Verify after deploy
 
