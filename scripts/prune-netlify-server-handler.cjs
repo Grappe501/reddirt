@@ -65,28 +65,18 @@ const LAUNCH_DATA_DIR_PRUNE = [
 const LAUNCH_ADMIN_TOP_KEEP = new Set(["login", "(board)", "opposition"]);
 const LAUNCH_BOARD_KEEP = new Set(["intelligence"]);
 /**
- * kelly_sos_ops on Netlify — whitelist only boards needed for live ops.
- * Everything else under admin/(board) is dropped so ___netlify-server-handler stays under 250 MB.
+ * Public-hub Netlify whitelist — kgrappe ships the voter site, not the full campaign OS.
+ * election-plan / intelligence / volunteer boards stay in repo and local; they blow the 250 MB cap.
  */
-/**
- * Minimal Netlify whitelist — public Arkansas Visits publish priority.
- * Full admin boards remain in repo / local; Lambda keeps only launch-critical boards.
- */
-const KELLY_OPS_NETLIFY_BOARD_KEEP = new Set([
-  "intelligence",
-  "election-plan",
-  "volunteers",
-  "settings",
-]);
+const KELLY_OPS_NETLIFY_BOARD_KEEP = new Set([]);
 const LAUNCH_API_ADMIN_KEEP = new Set(["intelligence"]);
-/** Kelly SOS production — keep public site + election-plan portal (force-dynamic). */
+/** Public hub Lambda — site + volunteer-kickoff CTAs. Ops portals are local / satellite. */
 const LAUNCH_APP_TOP_KEEP = new Set([
   "admin",
-  "election-plan",
   "(site)",
-  "volunteers",
+  "(volunteer-kickoff)",
 ]);
-const LAUNCH_API_TOP_KEEP = new Set(["admin", "election-plan", "forms"]);
+const LAUNCH_API_TOP_KEEP = new Set(["admin", "forms"]);
 
 /** Standalone copy lands the whole repo in the handler — keep only these top-level names. */
 const LAUNCH_HANDLER_ROOT_KEEP = new Set([
@@ -98,9 +88,10 @@ const LAUNCH_HANDLER_ROOT_KEEP = new Set([
 ]);
 
 /**
- * Exclusions written into the handler manifest after prune.
- * Keep in sync with [functions."___netlify-server-handler"].included_files in netlify.toml.
- * Never re-add "**" — that re-pulls the site root into the Lambda upload.
+ * Handler-relative exclusions merged after OpenNext's includedFiles: ["**"].
+ * "**" is required and MUST stay scoped via includedFilesBasePath = handler directory.
+ * Do not put these globs in netlify.toml — toml paths are site-root relative and
+ * replace the OpenNext manifest, which re-inflates the upload past 250 MB.
  */
 const MANIFEST_INCLUDED_EXCLUSIONS = [
   "!.git/**",
@@ -158,6 +149,8 @@ const MANIFEST_INCLUDED_EXCLUSIONS = [
   "!county-vault/**",
   "!.nightly-self-build/**",
   "!out/**",
+  "!standalone/**",
+  "!node_modules/.cache/**",
 ];
 
 /**
@@ -171,16 +164,12 @@ const LAUNCH_PUBLIC_SERVER_DIRS = [
   ".next/server/app/(site)/editorial",
   ".next/server/app/(site)/explainers",
   ".next/server/app/(site)/local-organizing",
-  ".next/server/app/(site)/about",
   ".next/server/app/(site)/office",
   ".next/server/app/(site)/dashboard",
   ".next/server/app/(site)/counties",
   ".next/server/app/(site)/volunteer",
-  ".next/server/app/(site)/from-the-road",
   ".next/server/app/(site)/messages",
   ".next/server/app/(site)/endorsements",
-  ".next/server/app/(site)/priorities",
-  ".next/server/app/(site)/understand",
   ".next/server/app/(site)/listening-sessions",
   ".next/server/app/(site)/campaign-photos",
   ".next/server/app/(site)/campaign-calendar",
@@ -193,10 +182,6 @@ const LAUNCH_PUBLIC_SERVER_DIRS = [
   ".next/server/app/(site)/voter-registration",
   ".next/server/app/(site)/arkansas",
   ".next/server/app/(site)/civic-depth",
-  ".next/server/app/(site)/direct-democracy",
-  ".next/server/app/(site)/get-involved",
-  ".next/server/app/(site)/contact",
-  ".next/server/app/(site)/donate",
   ".next/server/app/(site)/accessibility",
   ".next/server/app/(site)/privacy",
   ".next/server/app/(site)/terms",
@@ -558,23 +543,54 @@ function pruneLaunchAppAndApi(handlerRoot, opts = { stripAdminBoards: true, boar
   return removed;
 }
 
+const MANIFEST_JSON_CANDIDATES = [
+  ".netlify/functions-internal/___netlify-server-handler/___netlify-server-handler.json",
+  ".netlify/functions-internal/___netlify-server-handler.json",
+  ".netlify/functions/___netlify-server-handler/___netlify-server-handler.json",
+  ".netlify/functions/___netlify-server-handler.json",
+];
+
+function handlerDirForManifest(manifestPath) {
+  const dir = path.dirname(manifestPath);
+  if (path.basename(dir) === "___netlify-server-handler") return dir;
+  const sibling = path.join(dir, "___netlify-server-handler");
+  return exists(sibling) ? sibling : dir;
+}
+
+function buildPatchedHandlerManifest(json, handlerRoot) {
+  const prev = Array.isArray(json.config?.includedFiles) ? json.config.includedFiles : [];
+  const prevExclusions = prev.filter((p) => typeof p === "string" && p.startsWith("!"));
+  const config = json.config && typeof json.config === "object" ? json.config : {};
+  return {
+    ...json,
+    config: {
+      ...config,
+      name: config.name || "Next.js Server Handler",
+      nodeBundler: "none",
+      /**
+       * OpenNext zips this directory when includedFiles is ["**"] AND
+       * includedFilesBasePath is the handler root. Site-root "**" (no basePath)
+       * or exclusion-only toml included_files re-inflates past 250 MB.
+       */
+      includedFiles: ["**", ...new Set([...MANIFEST_INCLUDED_EXCLUSIONS, ...prevExclusions])],
+      includedFilesBasePath: handlerRoot,
+    },
+  };
+}
+
 function patchServerHandlerManifest(cwd) {
-  const manifestPath = path.join(cwd, ".netlify/functions-internal/___netlify-server-handler.json");
-  if (!exists(manifestPath)) return false;
-  const json = JSON.parse(fs.readFileSync(manifestPath, "utf8"));
-  if (!json.config) return false;
-  /**
-   * Do NOT set includedFiles to ["**"]. With @netlify/plugin-nextjs that re-pulls the
-   * site root into the upload after prune, blowing the 250 MB unzipped Lambda cap even
-   * when the pruned handler directory itself is under the limit.
-   * Keep exclusions only (and strip any prior "**" include).
-   */
-  const prev = Array.isArray(json.config.includedFiles) ? json.config.includedFiles : [];
-  const withoutStar = prev.filter((p) => p !== "**" && p !== "**/*" && p !== "./**");
-  const merged = [...new Set([...withoutStar, ...MANIFEST_INCLUDED_EXCLUSIONS])];
-  json.config.includedFiles = merged;
-  fs.writeFileSync(manifestPath, `${JSON.stringify(json)}\n`);
-  return true;
+  let patched = false;
+  for (const rel of MANIFEST_JSON_CANDIDATES) {
+    const manifestPath = path.join(cwd, rel);
+    if (!exists(manifestPath)) continue;
+    const json = JSON.parse(fs.readFileSync(manifestPath, "utf8"));
+    if (!json.config && json.version == null) continue;
+    const handlerRoot = handlerDirForManifest(manifestPath);
+    const nextJson = buildPatchedHandlerManifest(json, handlerRoot);
+    fs.writeFileSync(manifestPath, `${JSON.stringify(nextJson)}\n`);
+    patched = true;
+  }
+  return patched;
 }
 
 function materializeMinimalNodeModules(handlerRoot, repoRoot) {
@@ -930,6 +946,10 @@ module.exports = {
   isNetlifyBuild,
   isKellySosLaunch,
   isOppositionDebateLaunch,
+  patchServerHandlerManifest,
+  buildPatchedHandlerManifest,
+  handlerDirForManifest,
+  MANIFEST_INCLUDED_EXCLUSIONS,
   MAX_MB,
   DEPLOY_FAIL_MB,
 };

@@ -5,11 +5,12 @@ import { OWNED_MEDIA_SERVER_ACTION_BODY_LIMIT } from "./src/lib/owned-media/limi
 
 const tracingRoot = path.dirname(fileURLToPath(import.meta.url));
 
-/** Netlify opposition-debate launch — shrink traced server artifacts (see netlify.toml). */
+/** Netlify / opposition-debate — shrink traced server artifacts (see netlify.toml). */
 const oppositionDebateLaunch =
   process.env.NEXT_PUBLIC_INTELLIGENCE_LAUNCH_MODE === "opposition_debate";
+const slimNetlifyTrace = oppositionDebateLaunch || Boolean(process.env.NETLIFY);
 
-const oppositionDebateTraceExcludes = oppositionDebateLaunch
+const oppositionDebateTraceExcludes = slimNetlifyTrace
   ? [
       "data/campaign-events/**",
       "data/compliance/**",
@@ -33,8 +34,6 @@ const oppositionDebateTraceExcludes = oppositionDebateLaunch
 const nextConfig: NextConfig = {
   /** Keep file tracing inside RedDirt — never the SOSWebsite monorepo sibling lanes. */
   outputFileTracingRoot: tracingRoot,
-  /** Opposition launch: skip Sharp in Lambda (~16 MB); public images still work unoptimized. */
-  ...(oppositionDebateLaunch ? { images: { unoptimized: true } } : {}),
   /** Optional: legacy client env if you add Google Maps elsewhere; /events uses OpenStreetMap + Leaflet. */
   env: {
     NEXT_PUBLIC_GOOGLE_MAPS_API_KEY:
@@ -51,6 +50,7 @@ const nextConfig: NextConfig = {
     },
   },
   images: {
+    ...(slimNetlifyTrace ? { unoptimized: true } : {}),
     formats: ["image/avif", "image/webp"],
     remotePatterns: [
       { protocol: "https", hostname: "images.squarespace-cdn.com", pathname: "/content/**" },
