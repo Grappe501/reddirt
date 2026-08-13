@@ -35,22 +35,21 @@ export const powerOf5OnboardingHref = "/get-involved/bring-5";
 export const voterRegistrationHref = "/voter-registration";
 
 /**
- * Mobile drawer group order (psychology: field activity before news cycle).
- * Desktop primary nav: Meet Kelly → Direct Democracy → The Office → News → Events → Get Involved.
+ * Mobile drawer group order.
+ * Desktop primary nav: Meet Kelly → My Plan → The Office → The People's Voice → From the Road → Get Involved.
  */
 export const primaryNavMobileDrawerGroupOrder = [
   "meet",
-  "direct-democracy",
+  "plan",
   "office",
-  "events",
-  "news",
+  "peoples-voice",
+  "road",
   "involved",
 ] as const;
 
 /**
- * Top nav — one home per destination (Pathway Nav Simplify).
- * Campaign Videos live under Meet Kelly only. Invite Kelly lives under Events only.
- * News reading set: From the Road + Press (+ Substack in footer).
+ * Top nav — Kelly Grappe Website Master Direction:
+ * Meet Kelly · My Plan · The Office · The People's Voice · From the Road · Get Involved
  */
 export const primaryNavGroups: NavGroup[] = [
   {
@@ -59,25 +58,28 @@ export const primaryNavGroups: NavGroup[] = [
     groupLandingHref: "/about",
     items: [
       { label: "Meet Kelly", href: "/about" },
+      { label: "Professional experience", href: "/about/experience" },
+      { label: "Why I'm Running", href: "/about/why-im-running" },
       { label: "Kelly Across Arkansas", href: "/about/journey" },
       { label: "Community & Civic Work", href: "/about/community" },
-      { label: "Why I'm Running", href: "/about/why-im-running" },
-      { label: "Initiatives & petitions", href: kellyInitiativesChapterHref },
       { label: "Campaign Videos", href: "/kelly-speaks" },
       { label: "Campaign Photos", href: "/campaign-photos" },
       { label: "Endorsements", href: "/endorsements" },
-      { label: "Priorities", href: "/priorities" },
     ],
   },
   {
-    id: "direct-democracy",
-    label: "Direct Democracy",
-    groupLandingHref: directDemocracyHubHref,
+    id: "plan",
+    label: "My Plan",
+    groupLandingHref: "/priorities",
     items: [
-      { label: "Direct Democracy hub", href: directDemocracyHubHref },
-      { label: "Ballot initiative process", href: ballotInitiativeProcessHref },
-      { label: "Commitment network", href: directDemocracyCommitmentHref },
-      { label: "Kelly's petition organizing", href: kellyInitiativesChapterHref },
+      { label: "My Plan", href: "/priorities" },
+      { label: "Restore Trust", href: "/priorities#restore-trust" },
+      { label: "The People's Constitutional Voice", href: "/priorities#peoples-voice" },
+      { label: "Support All 75 Counties", href: "/priorities#counties" },
+      { label: "Transparency", href: "/priorities#transparency" },
+      { label: "Election Processes", href: "/priorities#election-processes" },
+      { label: "A More Engaged Arkansas", href: "/priorities#engagement" },
+      { label: "Business Services", href: "/priorities#business" },
     ],
   },
   {
@@ -85,7 +87,7 @@ export const primaryNavGroups: NavGroup[] = [
     label: "The Office",
     groupLandingHref: "/understand",
     items: [
-      { label: "Understand the Office", href: "/understand" },
+      { label: "What the Office Does", href: "/understand" },
       { label: "Elections", href: "/office/elections" },
       { label: "Business & Filings", href: "/office/business" },
       { label: "Notaries", href: "/office/notaries" },
@@ -96,27 +98,26 @@ export const primaryNavGroups: NavGroup[] = [
     ],
   },
   {
-    id: "news",
-    label: "News",
+    id: "peoples-voice",
+    label: "The People's Voice",
+    groupLandingHref: directDemocracyHubHref,
+    items: [
+      { label: "Learn How Direct Democracy Works", href: ballotInitiativeProcessHref },
+      { label: "The People's Voice hub", href: directDemocracyHubHref },
+      { label: "Commitment network", href: directDemocracyCommitmentHref },
+      { label: "Kelly's petition organizing", href: kellyInitiativesChapterHref },
+    ],
+  },
+  {
+    id: "road",
+    label: "From the Road",
     groupLandingHref: "/from-the-road",
     items: [
       { label: "From the Road", href: "/from-the-road" },
       { label: "Press Coverage", href: "/press-coverage" },
-    ],
-  },
-  {
-    id: "events",
-    label: "Events",
-    groupLandingHref: "/events",
-    items: [
       { label: "Events", href: "/events" },
-      { label: "Arkansas Presence", href: "/arkansas" },
       { label: "Across Arkansas", href: "/arkansas-visits" },
       { label: "Invite Kelly", href: "/events/request" },
-      { label: "Suggest a public event", href: "/events#suggest" },
-      { label: "Election Integrity Tour", href: "/events/community-election-integrity-tour" },
-      { label: "County Fairs", href: "/events/county-fairs" },
-      { label: "County Party Meetings", href: "/events/county-party-meetings" },
       { label: "Listening Sessions", href: "/listening-sessions" },
     ],
   },
@@ -125,11 +126,13 @@ export const primaryNavGroups: NavGroup[] = [
     label: "Get Involved",
     groupLandingHref: "/get-involved",
     items: [
-      { label: "Stay connected", href: "/get-involved#join" },
+      { label: "Power of 5", href: "/get-involved/bring-5" },
       { label: "Volunteer", href: "/get-involved#volunteer" },
-      { label: "Bring 5 Friends", href: "/get-involved/bring-5" },
+      { label: "Host Kelly", href: "/events/request" },
+      { label: "Stay connected", href: "/get-involved#join" },
       { label: "Start a Local Team", href: "/start-a-local-team" },
       { label: "Donate", href: "/donate" },
+      { label: "Register / Check Registration", href: voterRegistrationHref },
     ],
   },
 ];
@@ -144,15 +147,15 @@ export const footerNavGroups: { title: string; items: NavItem[] }[] = [
     items: [...(navGroupById("meet")?.items ?? [])],
   },
   {
-    title: "Direct Democracy",
-    items: [...(navGroupById("direct-democracy")?.items ?? [])],
+    title: "The People's Voice",
+    items: [...(navGroupById("peoples-voice")?.items ?? [])],
   },
   {
     title: "The Office",
     items: [...(navGroupById("office")?.items ?? [])],
   },
   {
-    title: "News & events",
+    title: "From the Road",
     items: [
       { label: "From the Road", href: "/from-the-road" },
       { label: "Press Coverage", href: "/press-coverage" },
@@ -167,12 +170,14 @@ export const footerNavGroups: { title: string; items: NavItem[] }[] = [
   {
     title: "Get involved",
     items: [
+      { label: "Power of 5", href: "/get-involved/bring-5" },
       { label: "Stay connected", href: "/get-involved#join" },
       { label: "Volunteer", href: "/get-involved#volunteer" },
-      { label: "Bring 5 Friends", href: "/get-involved/bring-5" },
+      { label: "Host Kelly", href: "/events/request" },
       { label: "Start a Local Team", href: "/start-a-local-team" },
       { label: "Represent at local events", href: representLocalEventVolunteerHref },
       { label: "Donate", href: "/donate" },
+      { label: "Español", href: "/es" },
     ],
   },
   {
@@ -183,6 +188,7 @@ export const footerNavGroups: { title: string; items: NavItem[] }[] = [
       { label: "Accessibility", href: "/accessibility" },
       { label: "Terms of use", href: "/terms" },
       { label: "Disclaimer", href: "/disclaimer" },
+      { label: "Español", href: "/es" },
     ],
   },
 ];

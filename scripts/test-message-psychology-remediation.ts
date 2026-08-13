@@ -1,5 +1,6 @@
 /**
- * KELLY-PUBLIC-MESSAGE-PSYCHOLOGY-REMEDIATION-1.0 — message precision invariants.
+ * Public message invariants after Kelly Grappe Website Master Direction.
+ * Candidate-approved copy supersedes prior word-count psychology caps.
  */
 import assert from "node:assert/strict";
 import fs from "node:fs";
@@ -11,66 +12,33 @@ import { trustFunnelHomeCopy } from "../src/content/home/trust-funnel-home";
 const root = path.join(__dirname, "..");
 const read = (rel: string) => fs.readFileSync(path.join(root, rel), "utf8");
 
-function wordCount(text: string): number {
-  return text
-    .trim()
-    .split(/\s+/)
-    .filter(Boolean).length;
-}
-
 assert.ok(fs.existsSync(path.join(root, "docs/website/PUBLIC_MESSAGE_PRECISION_AUDIT.md")));
 assert.ok(fs.existsSync(path.join(root, "docs/website/PUBLIC_CORE_MESSAGE_MAP.md")));
 
-const heroWords = wordCount(trustFunnelHomeCopy.hero.body);
-assert.ok(heroWords >= 25 && heroWords <= 45, `hero body words=${heroWords}`);
-
-const meetWords = wordCount(
-  [trustFunnelHomeCopy.meetKelly.intro, trustFunnelHomeCopy.meetKelly.body, trustFunnelHomeCopy.meetKelly.values].join(
-    " ",
-  ),
-);
-assert.ok(meetWords >= 150 && meetWords <= 220, `meet kelly words=${meetWords}`);
-assert.equal(trustFunnelHomeCopy.meetKelly.cta, "Read About Kelly’s Experience");
-
-const videoIntro = wordCount(trustFunnelHomeCopy.primaryMessage.introduction);
-assert.ok(videoIntro >= 25 && videoIntro <= 60, `primary video intro words=${videoIntro}`);
-
-assert.ok(!/across the (entire )?state/i.test(trustFunnelHomeCopy.acrossArkansas.intro));
-assert.ok(!/all 75 counties/i.test(trustFunnelHomeCopy.acrossArkansas.intro));
-assert.ok(!/momentum/i.test(trustFunnelHomeCopy.acrossArkansas.videoIntroduction));
+assert.equal(trustFunnelHomeCopy.hero.brand, "THE PEOPLE RULE.");
+assert.equal(trustFunnelHomeCopy.hero.ctas[0].label, "Meet Kelly");
+assert.equal(trustFunnelHomeCopy.hero.ctas[1].label, "See My Plan");
+assert.equal(trustFunnelHomeCopy.hero.ctas[1].href, "/priorities");
+assert.equal(trustFunnelHomeCopy.approvedHome.planCards.cards.length, 7);
+assert.ok(trustFunnelHomeCopy.approvedHome.arkansasElections.title.includes("Arkansas Runs Arkansas Elections"));
 
 assert.ok(trustFunnelHomeCopy.finalAction.ctas.join);
 assert.ok(trustFunnelHomeCopy.finalAction.ctas.volunteer);
 assert.ok(trustFunnelHomeCopy.finalAction.ctas.priorities);
 assert.ok(!("about" in trustFunnelHomeCopy.finalAction.ctas));
-assert.equal(trustFunnelHomeCopy.finalAction.mottoLatin, "Regnat Populus");
-assert.equal(trustFunnelHomeCopy.finalAction.mottoEnglish, "The People Rule.");
 assert.ok(trustFunnelHomeCopy.acrossArkansas.presenceLabel);
 
 const aboutPage = read("src/app/(site)/about/page.tsx");
-assert.ok(aboutPage.includes("c.experience"), "about uses experience section");
-assert.ok(aboutPage.includes("c.bringToOffice"), "about uses bring-to-office");
+assert.ok(aboutPage.includes("c.family"), "about uses family section");
+assert.ok(aboutPage.includes("c.rural"), "about uses rural Arkansas section");
+assert.ok(aboutPage.includes("c.experienceCta"), "about links to public experience");
 assert.ok(!aboutPage.includes("c.herStory"), "memoir herStory removed from page");
-assert.ok(!aboutPage.includes("c.values"), "soft values block replaced");
 
-const openingWords = wordCount(aboutLaunchCopy.opening.body.join(" "));
-assert.ok(openingWords >= 100 && openingWords <= 140, `about opening words=${openingWords}`);
+assert.ok(aboutLaunchCopy.opening.body.length >= 6);
+assert.ok(aboutLaunchCopy.family.paragraphs.length >= 2);
+assert.ok(aboutLaunchCopy.rural.paragraphs.length >= 2);
 
-const aboutFull = wordCount(
-  [
-    aboutLaunchCopy.opening.body.join(" "),
-    aboutLaunchCopy.experience.intro,
-    ...aboutLaunchCopy.experience.items.map((i) => i.body),
-    ...aboutLaunchCopy.whySos.body,
-    ...aboutLaunchCopy.leadership.items.map((i) => `${i.title} ${i.body}`),
-    aboutLaunchCopy.acrossArkansas.intro,
-    ...aboutLaunchCopy.bringToOffice.items.map((i) => `${i.title} ${i.body}`),
-    aboutLaunchCopy.closing.body,
-  ].join(" "),
-);
-assert.ok(aboutFull >= 700 && aboutFull <= 1100, `about full words=${aboutFull}`);
-
-const journeyIntro = wordCount(acrossArkansasJourneyCopy.intro);
+const journeyIntro = acrossArkansasJourneyCopy.intro.trim().split(/\s+/).filter(Boolean).length;
 assert.ok(journeyIntro >= 75 && journeyIntro <= 130, `journey intro words=${journeyIntro}`);
 assert.deepEqual(
   [...acrossArkansasJourneyCopy.evidenceVerbs],
@@ -87,8 +55,4 @@ const aflcioBlock = registry.slice(
 );
 assert.ok(!/earned the organization.?s endorsement/i.test(aflcioBlock), "AFL-CIO caption must not claim endorsement");
 
-console.log("Message psychology remediation checks passed.");
-console.log("  heroWords=", heroWords);
-console.log("  meetWords=", meetWords);
-console.log("  aboutOpening=", openingWords, "aboutFull=", aboutFull);
-console.log("  journeyIntro=", journeyIntro);
+console.log("Master-direction public copy checks passed.");

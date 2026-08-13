@@ -19,10 +19,10 @@ export type CampaignVideoFeatureProps = {
 };
 
 function relatedLinkLabel(href: string): string {
-  if (href === "/about") return "Read About Kelly’s Experience";
-  if (href === "/priorities") return "Explore Kelly’s Priorities";
+  if (href === "/about") return "Meet Kelly";
+  if (href === "/priorities") return "See My Plan";
   if (href === "/about/journey") return "See Kelly Across Arkansas";
-  if (href === "/get-involved" || href === "/volunteer") return "Join the Campaign";
+  if (href === "/get-involved" || href === "/volunteer") return "Get Involved";
   return href;
 }
 

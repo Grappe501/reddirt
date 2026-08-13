@@ -52,7 +52,7 @@ export default function BallotInitiativeProcessPage() {
     <>
       <PageHero
         eyebrow="Civic how-to · Arkansas"
-        title="How initiatives and referenda reach the ballot"
+        title="Learn how direct democracy works"
         subtitle="A plain-language path through the state’s process: the Attorney General certifies what voters read; the Secretary of State receives petitions and runs verification. This page is educational—not legal advice."
       >
         <Button

@@ -7,16 +7,88 @@
 
 export const trustFunnelHomeCopy = {
   hero: {
-    brand: "Kelly Grappe",
-    office: "For Arkansas Secretary of State",
-    promise: "This office belongs to the people.",
-    /** Target: 25–45 words */
+    brand: "THE PEOPLE RULE.",
+    office: "Kelly Grappe for Arkansas Secretary of State",
+    promise: "The Arkansas Constitution says that “all political power is inherent in the people.”",
     body:
-      "Elections people can trust, clearer business filings, open public records, and a Capitol that serves Arkansans — government that stays accessible, transparent, secure, and responsive.",
+      "Our state motto, Regnat Populus — “The People Rule” — should be more than words on a seal. It should define how the Secretary of State serves the people of Arkansas. I’m running to take the politics out of this office, restore trust in our systems, and make the Secretary of State’s office work better for the people it belongs to.",
     ctas: [
       { label: "Meet Kelly", href: "/about", variant: "primary" },
-      { label: "Join the Campaign", href: "__join__", variant: "secondary" },
+      { label: "See My Plan", href: "/priorities", variant: "secondary" },
     ] as const,
+  },
+
+  /**
+   * Homepage body — Kelly Grappe Website Master Direction (approved).
+   * Keep concise here; proof and subsections live on /priorities.
+   */
+  approvedHome: {
+    restoreTrust: {
+      title: "My First Priority: Restore Trust",
+      paragraphs: [
+        "Trust cannot be demanded. It has to be earned.",
+        "I want to lift up the hood on Arkansas elections and show people how our systems actually work — how votes are cast, protected, counted and verified, and why those systems are secure.",
+        "That also means being willing to hear hard questions. When people have concerns, we should answer them with facts instead of dismissing them. And when we find a problem, we should say so, fix it and tell the public what we did.",
+        "Transparency isn’t a threat to election security. It’s one of the ways we build confidence in it.",
+      ],
+    },
+    officeResponsibility: {
+      title: "What the Secretary of State Is Responsible For",
+      paragraphs: [
+        "The Secretary of State is responsible for major functions of Arkansas government — including statewide election administration and support, business and commercial services, public and government records, the initiative and referendum process, and stewardship of the State Capitol.",
+        "At its core, this is a large and complex service organization.",
+        "That is why my experience matters. I spent decades leading teams, managing complex systems, serving customers and businesses, solving operational problems, and turning complicated information into something people can actually use.",
+        "I’m not running because I’ve spent my career in politics. I’m running because I’ve spent my career making organizations work better for people.",
+      ],
+    },
+    planCards: {
+      title: "My Plan",
+      intro: "Seven commitments for an office that belongs to the people.",
+      cards: [
+        {
+          id: "restore-trust",
+          title: "Restore Trust in Our Elections",
+          href: "/priorities#restore-trust",
+        },
+        {
+          id: "peoples-voice",
+          title: "Protect the People’s Constitutional Voice",
+          href: "/priorities#peoples-voice",
+        },
+        {
+          id: "counties",
+          title: "Support All 75 Counties",
+          href: "/priorities#counties",
+        },
+        {
+          id: "transparency",
+          title: "Make Government More Transparent",
+          href: "/priorities#transparency",
+        },
+        {
+          id: "election-processes",
+          title: "Make Election Processes Work Better",
+          href: "/priorities#election-processes",
+        },
+        {
+          id: "engagement",
+          title: "Build a More Engaged Arkansas",
+          href: "/priorities#engagement",
+        },
+        {
+          id: "business",
+          title: "Make It Easier to Do Business With Arkansas",
+          href: "/priorities#business",
+        },
+      ],
+    },
+    arkansasElections: {
+      title: "Arkansas Runs Arkansas Elections",
+      paragraphs: [
+        "I will be a fierce advocate for Arkansas’s constitutional role in administering our elections. I will comply with federal law and work constructively with federal partners where appropriate, but I will oppose attempts to unnecessarily nationalize election administration or take legitimate decision-making authority away from Arkansas and our local election officials.",
+        "If federal overreach threatens Arkansas’s lawful authority over our elections, I will hold the line.",
+      ],
+    },
   },
 
   governmentThatWorks: {
@@ -219,17 +291,16 @@ export const trustFunnelHomeCopy = {
   },
 
   finalAction: {
-    /** One memorable motto placement — governing philosophy, then the ask */
-    mottoLatin: "Regnat Populus",
-    mottoEnglish: "The People Rule.",
-    title: "The next step is yours",
-    /** Target: 15–40 words */
+    /** Motto already appears once in the hero — close with the organizing ask. */
+    mottoLatin: "Get Involved",
+    mottoEnglish: "Your power is closer than you think.",
+    title: "Be part of it",
     body:
-      "You know who Kelly is, why the office matters, and how she works. Stay connected, volunteer, or explore her priorities—donate when you are ready.",
+      "Start with five people you know. Volunteer. Host Kelly. Or support the work. This campaign grows through relationships — one conversation at a time.",
     ctas: {
-      join: "Stay connected",
+      join: "Activate Your Power of 5",
       volunteer: "Volunteer",
-      priorities: "Explore Kelly’s Priorities",
+      priorities: "Host Kelly",
       donate: "Donate",
     },
   },
