@@ -21,6 +21,7 @@ import { publicCampaignEventToEventItem } from "@/lib/events/calendar-to-movemen
 import { getJoinCampaignHref } from "@/config/external-campaign";
 import { isPrismaDatabaseUnavailable, logPrismaDatabaseUnavailable } from "@/lib/prisma-connectivity";
 import { pageMeta } from "@/lib/seo/metadata";
+import { stripPublicMarkdown, withLiveEventStatus } from "@/lib/format/eventDisplay";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -35,7 +36,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (curated) {
     return pageMeta({
       title: curated.title,
-      description: curated.summary,
+      description: stripPublicMarkdown(curated.summary),
       path: `/events/${slug}`,
     });
   }
@@ -54,19 +55,21 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 function CuratedOrCalendarEventView({ event }: { event: EventItem }) {
-  const county = event.countySlug ? getRegionBySlug(event.countySlug) : undefined;
-  const related = event.relatedEventSlugs
+  const live = withLiveEventStatus(event);
+  const county = live.countySlug ? getRegionBySlug(live.countySlug) : undefined;
+  const related = live.relatedEventSlugs
     .map((s) => getEventBySlug(s))
     .filter((e): e is NonNullable<typeof e> => Boolean(e))
-    .filter((e) => e.slug !== event.slug);
+    .filter((e) => e.slug !== live.slug)
+    .map((e) => withLiveEventStatus(e));
 
   const rsvpHref =
-    event.rsvpHref ??
-    `/get-involved?intent=rsvp&event=${encodeURIComponent(event.slug)}`;
+    live.rsvpHref ??
+    `/get-involved?intent=rsvp&event=${encodeURIComponent(live.slug)}`;
 
   return (
     <>
-      <PageHero eyebrow={event.type} title={event.title} subtitle={event.summary}>
+      <PageHero eyebrow={live.type} title={live.title} subtitle={stripPublicMarkdown(live.summary)}>
         <Button href={rsvpHref} variant="primary">
           RSVP or raise your hand
         </Button>
@@ -86,7 +89,7 @@ function CuratedOrCalendarEventView({ event }: { event: EventItem }) {
                 subtitle="Plain facts first—then the human stuff underneath."
               />
               <div className="mt-8 rounded-card border border-kelly-text/10 bg-[var(--color-surface-elevated)] p-6 shadow-[var(--shadow-soft)] md:p-8">
-                <EventMeta event={event} />
+                <EventMeta event={live} />
               </div>
 
               <SectionHeading
@@ -96,7 +99,9 @@ function CuratedOrCalendarEventView({ event }: { event: EventItem }) {
                 eyebrow="Narrative"
                 title="Why this gathering exists"
               />
-              <p className="mt-6 font-body text-lg leading-relaxed text-kelly-text/85">{event.description}</p>
+              <p className="mt-6 font-body text-lg leading-relaxed text-kelly-text/85">
+                {stripPublicMarkdown(live.description)}
+              </p>
 
               <SectionHeading
                 className="mt-14"
@@ -106,13 +111,13 @@ function CuratedOrCalendarEventView({ event }: { event: EventItem }) {
                 title="What to expect"
               />
               <ul className="mt-6 space-y-3">
-                {event.whatToExpect.length ? (
-                  event.whatToExpect.map((line) => (
+                {live.whatToExpect.length ? (
+                  live.whatToExpect.map((line) => (
                     <li
                       key={line}
                       className="rounded-lg border border-kelly-text/10 bg-kelly-text/[0.03] px-4 py-3 font-body text-kelly-text/85"
                     >
-                      {line}
+                      {stripPublicMarkdown(line)}
                     </li>
                   ))
                 ) : (
@@ -123,15 +128,15 @@ function CuratedOrCalendarEventView({ event }: { event: EventItem }) {
               </ul>
 
               <SectionHeading className="mt-14" align="left" as="h3" eyebrow="Fit" title="Who it’s for" />
-              <p className="mt-6 font-body text-lg leading-relaxed text-kelly-text/85">{event.whoItsFor}</p>
+              <p className="mt-6 font-body text-lg leading-relaxed text-kelly-text/85">{live.whoItsFor}</p>
             </div>
 
             <aside className="space-y-6 lg:sticky lg:top-28">
               <div className="rounded-card border border-kelly-text/10 bg-[var(--color-surface-elevated)] p-6 shadow-[var(--shadow-soft)]">
                 <h2 className="font-heading text-lg font-bold text-kelly-text">Join this stop</h2>
-                <p className="mt-3 font-body text-sm leading-relaxed text-kelly-text/75">{event.locationLabel}</p>
-                {event.addressLine ? (
-                  <p className="mt-2 font-body text-sm text-kelly-text/65">{event.addressLine}</p>
+                <p className="mt-3 font-body text-sm leading-relaxed text-kelly-text/75">{live.locationLabel}</p>
+                {live.addressLine ? (
+                  <p className="mt-2 font-body text-sm text-kelly-text/65">{live.addressLine}</p>
                 ) : null}
               </div>
               <Button href={rsvpHref} variant="primary" className="w-full justify-center">
@@ -155,7 +160,7 @@ function CuratedOrCalendarEventView({ event }: { event: EventItem }) {
           id="event-related-resources"
           title="Related resources"
           subtitle="Short bridges into explainers and toolkits—deep libraries keep growing in /resources."
-          links={event.relatedResourceHrefs.map((r) => ({ label: r.label, href: r.href }))}
+          links={live.relatedResourceHrefs.map((r) => ({ label: r.label, href: r.href }))}
         />
       </ContentContainer>
 

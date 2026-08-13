@@ -1,5 +1,6 @@
 import { addDays, startOfDay } from "date-fns";
 import { toZonedTime } from "date-fns-tz";
+import { parseEventInstant } from "@/lib/format/eventDisplay";
 
 const TZ = "America/Chicago";
 
@@ -10,10 +11,11 @@ export function eventMatchesSchedulePreset(
   startsAtIso: string,
   endsAtIso: string | undefined,
   preset: EventSchedulePreset,
+  timeZone: string = TZ,
 ): boolean {
   if (preset === "all") return true;
-  const start = new Date(startsAtIso);
-  const end = endsAtIso ? new Date(endsAtIso) : start;
+  const start = parseEventInstant(startsAtIso, timeZone);
+  const end = endsAtIso ? parseEventInstant(endsAtIso, timeZone) : start;
   const now = new Date();
 
   if (preset === "upcoming") {

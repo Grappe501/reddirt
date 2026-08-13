@@ -9,17 +9,12 @@ import { EventsHub } from "@/components/organizing/EventsHub";
 import { SuggestCommunityEventForm } from "@/components/organizing/SuggestCommunityEventForm";
 import { events, eventTypes, listMovementEventAudienceOptions } from "@/content/events";
 import type { EventFiltersState } from "@/components/organizing/EventFilterBar";
-import type { EventStatus, EventType } from "@/content/types";
-import { listPublicFestivalFeed } from "@/lib/festivals/queries";
-import { listMovementEventRegionFilterLabels, listMovementRegionInfo } from "@/content/arkansas-movement-regions";
+import type { EventType } from "@/content/types";
+import { listMovementEventRegionFilterLabels } from "@/content/arkansas-movement-regions";
 import { queryPublicCampaignEvents } from "@/lib/calendar/public-events";
 import { mergeMovementAndCalendarEvents } from "@/lib/events/calendar-to-movement-event";
 import { safePublishedCountyOptions } from "@/lib/county/safe-published-county-options";
 import type { EventSchedulePreset } from "@/lib/format/event-schedule-in-zone";
-import { cn } from "@/lib/utils";
-import { EditorialCampaignPhoto } from "@/components/about/EditorialCampaignPhoto";
-import { trailPhotosForSlot } from "@/content/media/campaign-trail-assignments";
-import { RepresentLocalEventPanel } from "@/components/organizing/RepresentLocalEventPanel";
 import { representLocalEventVolunteerHref } from "@/config/navigation";
 
 import { pageMeta } from "@/lib/seo/metadata";
@@ -28,7 +23,7 @@ import { brandMediaFromLegacySite } from "@/config/brand-media";
 export const metadata: Metadata = pageMeta({
   title: "Events",
   description:
-    "See where Kelly will be next, where the campaign is showing up, and how Arkansans can join the work — trainings, gatherings, and public calendar items as they are approved.",
+    "Where Kelly will be next — confirmed campaign and community stops in Arkansas Central Time. Invite Kelly or host a gathering if your town is not on the list yet.",
   path: "/events",
   imageSrc: brandMediaFromLegacySite.statewideBanner,
 });
@@ -43,9 +38,6 @@ function pickParam(sp: Record<string, string | string[] | undefined>, key: strin
 /**
  * Campaign calendar hub: curated public movement events + published CampaignOS events.
  * Fair research (~80 festivals) is not merged here (Phase 1).
- * TODO: Approved Google Calendar public feed (read-only) after integration design.
- * TODO: Pending-approval calendar / admin queue remains internal — never show unconfirmed stops as public fact.
- * TODO: Optional map + county completion visualization (later; no placeholder map pins).
  */
 export default async function EventsPage({
   searchParams,
@@ -54,9 +46,8 @@ export default async function EventsPage({
 }) {
   const sp = (await searchParams) ?? {};
   const suggestOk = pickParam(sp, "ok");
-  const [counties, communityFeed, calendarRows] = await Promise.all([
+  const [counties, calendarRows] = await Promise.all([
     safePublishedCountyOptions(),
-    listPublicFestivalFeed(6),
     queryPublicCampaignEvents({ range: "all_upcoming" }, { take: 200 }),
   ]);
   const mergedEvents = mergeMovementAndCalendarEvents(events, calendarRows);
@@ -74,7 +65,7 @@ export default async function EventsPage({
   const region: EventFiltersState["region"] =
     regionDecoded !== "all" && allMovementRegions.includes(regionDecoded) ? regionDecoded : "all";
   const status: EventFiltersState["status"] =
-    statusRaw === "upcoming" || statusRaw === "past" ? (statusRaw as EventStatus) : "all";
+    statusRaw === "all" || statusRaw === "past" || statusRaw === "upcoming" ? statusRaw : "upcoming";
   const audienceDecoded = audienceRaw ? decodeURIComponent(audienceRaw) : "all";
   const audience: EventFiltersState["audience"] =
     audienceDecoded !== "all" && audienceTags.includes(audienceDecoded) ? audienceDecoded : "all";
@@ -89,7 +80,7 @@ export default async function EventsPage({
           ? "upcoming"
           : "all";
   const filterKey = JSON.stringify({ type, region, status, audience, schedule });
-  const calendarMoment = trailPhotosForSlot("events")[0];
+  const upcomingCount = mergedEvents.filter((e) => e.status === "upcoming").length;
 
   return (
     <>
@@ -97,8 +88,8 @@ export default async function EventsPage({
         slotKey="events.hero"
         layout="split"
         eyebrow="Events"
-        title="Events"
-        subtitle="See where Kelly will be next, where the campaign is showing up, and how Arkansans can join the work."
+        title="Where Kelly will be next"
+        subtitle="Confirmed stops in Arkansas Central Time. If your town is not on the list yet, invite Kelly or host a gathering — nothing is public until it is verified."
       >
         <Button href="/events/request" variant="primary">
           Invite Kelly
@@ -106,241 +97,48 @@ export default async function EventsPage({
         <Button href="/host-a-gathering" variant="outlineOnDark">
           Host a gathering
         </Button>
-        <Button href={representLocalEventVolunteerHref} variant="outlineOnDark">
-          Represent us locally
-        </Button>
-        <Button href="/listening-sessions" variant="outlineOnDark">
-          Listening sessions
-        </Button>
-        <Button href="/start-a-local-team" variant="outlineOnDark">
-          Start a local team
-        </Button>
       </MediaPageHero>
 
-      {calendarMoment ? (
-        <FullBleedSection
-          variant="subtle"
-          className="!pt-[calc(var(--section-padding-y)*0.45)] !pb-0 lg:!pt-[calc(var(--section-padding-y-lg)*0.45)] lg:!pb-0"
-        >
-          <ContentContainer wide className="py-6 md:py-8">
-            <EditorialCampaignPhoto variant="breakout" photo={calendarMoment} kicker="Field" />
-          </ContentContainer>
-        </FullBleedSection>
-      ) : null}
-
-      <FullBleedSection
-        id="represent-locally"
-        padY
-        aria-labelledby="represent-locally-heading"
-        className="!pt-[calc(var(--section-padding-y)*0.65)] lg:!pt-[calc(var(--section-padding-y-lg)*0.65)]"
-      >
-        <ContentContainer>
-          <h2
-            id="represent-locally-heading"
-            className="font-heading text-xl font-bold text-kelly-text md:text-2xl"
-          >
-            Can you represent the campaign at something on your local calendar?
-          </h2>
-          <p className="mt-2 max-w-3xl font-body text-sm text-kelly-text/75 md:text-base">
-            Volunteers ask for real tasks—here is one. Fairs, festivals, party meetings, and civic nights need neighbors
-            who can listen, hand out vetted information, and invite people into the movement without turning a public
-            event into a debate stage.
-          </p>
-          <RepresentLocalEventPanel className="mt-8 max-w-3xl" />
-        </ContentContainer>
-      </FullBleedSection>
-
-      <FullBleedSection variant="subtle" padY aria-labelledby="civic-roadshow-heading">
-        <ContentContainer>
-          <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-14">
-            <div className="lg:col-span-5">
-              <p className="font-body text-xs font-bold uppercase text-kelly-navy">
-                Civic education
-              </p>
-              <h2 id="civic-roadshow-heading" className="mt-3 font-heading text-2xl font-bold text-kelly-text md:text-3xl">
-                Take the process to the places Arkansans already gather
-              </h2>
-              <p className="mt-4 font-body text-base leading-relaxed text-kelly-text/75">
-                Kelly’s voter engagement model is not a school-only program or a one-week slogan. It is a traveling,
-                plain-language approach: understand the system, trust what deserves trust, and know how to change what
-                needs changing.
-              </p>
-            </div>
-            <div className="grid gap-4 sm:grid-cols-3 lg:col-span-7">
-              <article className="rounded-card border border-kelly-text/10 bg-white p-5 shadow-sm">
-                <h3 className="font-heading text-base font-bold text-kelly-text">Community spaces</h3>
-                <p className="mt-2 font-body text-sm leading-relaxed text-kelly-text/70">
-                  Churches, fish fries, libraries, county fairs, coffee shops, colleges, and workforce centers are all
-                  civic classrooms when neighbors are invited with respect.
-                </p>
-              </article>
-              <article className="rounded-card border border-kelly-text/10 bg-white p-5 shadow-sm">
-                <h3 className="font-heading text-base font-bold text-kelly-text">Process open houses</h3>
-                <p className="mt-2 font-body text-sm leading-relaxed text-kelly-text/70">
-                  Public demonstrations of ballots, equipment, audits, chain of custody, and results reporting can make
-                  trust visible instead of asking people to take it on faith.
-                </p>
-              </article>
-              <article className="rounded-card border border-kelly-text/10 bg-white p-5 shadow-sm">
-                <h3 className="font-heading text-base font-bold text-kelly-text">People-powered weeks</h3>
-                <p className="mt-2 font-body text-sm leading-relaxed text-kelly-text/70">
-                  Future civic engagement weeks should be Arkansas-rooted: local hosts, practical voter education, and a
-                  clear path from curiosity to participation.
-                </p>
-              </article>
-            </div>
-          </div>
-        </ContentContainer>
-      </FullBleedSection>
-
       <FullBleedSection
         padY
-        aria-labelledby="event-tags-heading"
-        className="!pt-[calc(var(--section-padding-y)*0.5)] lg:!pt-[calc(var(--section-padding-y-lg)*0.5)]"
+        aria-labelledby="calendar-heading"
+        className="!pt-[calc(var(--section-padding-y)*0.55)] lg:!pt-[calc(var(--section-padding-y-lg)*0.55)]"
       >
-        <ContentContainer>
-          <h2 id="event-tags-heading" className="font-heading text-xl font-bold text-kelly-text">
-            Browse by type or region
-          </h2>
-          <p className="mt-2 max-w-3xl font-body text-kelly-text/75">
-            Every county sits in one of nine geographic regions (aligned to how Arkansans and tourism maps talk about
-            the state) plus a <strong>Statewide</strong> label for online or multi-area programs. Tap a tag to jump the
-            filters—keyboard-friendly selects are below.
-          </p>
-          <div className="mt-6 flex flex-wrap gap-2" aria-label="Quick filters by event type">
-            {eventTypes.map((t) => (
-              <Link
-                key={t}
-                href={`/events?type=${encodeURIComponent(t)}`}
-                className={cn(
-                  "rounded-full border px-3 py-1.5 font-body text-xs font-semibold transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-kelly-navy",
-                  type === t
-                    ? "border-kelly-navy/40 bg-kelly-navy/12 text-kelly-text"
-                    : "border-kelly-text/15 bg-kelly-text/[0.04] text-kelly-text/80 hover:border-kelly-navy/25",
-                )}
-              >
-                {t}
-              </Link>
-            ))}
-          </div>
-          <div className="mt-4 flex flex-wrap gap-2" aria-label="Arkansas regions">
-            {allMovementRegions.map((r) => (
-              <Link
-                key={r}
-                href={`/events?region=${encodeURIComponent(r)}`}
-                className={cn(
-                  "rounded-full border px-3 py-1.5 font-body text-xs font-semibold transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-kelly-navy",
-                  region === r
-                    ? "border-kelly-success/40 bg-kelly-success/12 text-kelly-text"
-                    : "border-kelly-text/15 bg-kelly-text/[0.04] text-kelly-text/80 hover:border-kelly-success/30",
-                )}
-              >
-                {r}
-              </Link>
-            ))}
-          </div>
-
-          <h3 className="mt-10 font-heading text-lg font-bold text-kelly-text">Regions at a glance</h3>
-          <p className="mt-2 max-w-3xl font-body text-sm text-kelly-text/70">
-            Same region buckets used across county pages and calendars so navigation stays consistent.
-          </p>
-          <ul className="mt-4 grid list-none grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-3">
-            {listMovementRegionInfo().map((info) => (
-              <li
-                key={info.key}
-                className="rounded-lg border border-kelly-text/10 bg-white/80 px-4 py-3 shadow-sm"
-              >
-                <h4 className="font-heading text-base font-bold text-kelly-text">
-                  <Link
-                    href={`/events?region=${encodeURIComponent(info.label)}`}
-                    className="text-kelly-slate decoration-kelly-navy/30 hover:underline"
-                  >
-                    {info.label}
-                  </Link>
-                </h4>
-                <p className="mt-1.5 font-body text-xs leading-relaxed text-kelly-text/75">{info.blurb}</p>
-              </li>
-            ))}
-          </ul>
-        </ContentContainer>
-      </FullBleedSection>
-
-      <FullBleedSection id="upcoming" padY aria-labelledby="campaign-upcoming-heading">
         <ContentContainer wide>
-          <h2 id="campaign-upcoming-heading" className="font-heading text-xl font-bold text-kelly-text md:text-2xl">
-            Upcoming events
-          </h2>
-          <p className="mt-3 max-w-3xl font-body text-kelly-text/75">
-            The filterable grid below lists campaign and community events as they are published. New stops appear when
-            details are confirmed.
-          </p>
-          {calendarRows.length === 0 ? (
-            <p
-              className="mt-4 max-w-3xl rounded-card border border-dashed border-kelly-text/20 bg-kelly-wash/60 px-4 py-4 font-body text-sm leading-relaxed text-kelly-text/80"
-              role="status"
+          <div className="mb-8 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+            <div>
+              <h2 id="calendar-heading" className="font-heading text-xl font-bold text-kelly-text md:text-2xl">
+                Calendar
+              </h2>
+              <p className="mt-2 max-w-2xl font-body text-kelly-text/75">
+                {upcomingCount === 1
+                  ? "One confirmed stop ahead — times below are Central."
+                  : upcomingCount > 1
+                    ? `${upcomingCount} confirmed stops ahead — times below are Central.`
+                    : "No confirmed upcoming stops on this list yet. Switch Timing to Past to browse what already happened, or invite Kelly to your town."}
+              </p>
+            </div>
+            <nav
+              aria-label="Other ways to show up"
+              className="flex flex-wrap gap-x-4 gap-y-2 font-body text-sm font-semibold text-kelly-navy"
             >
-              Live calendar updates aren’t available here yet. You can still browse listed events — and trail moments always live on{" "}
-              <Link href="/from-the-road" className="font-semibold text-kelly-navy underline-offset-2 hover:underline">
+              <Link href={representLocalEventVolunteerHref} className="underline-offset-4 hover:underline">
+                Represent locally
+              </Link>
+              <Link href="/listening-sessions" className="underline-offset-4 hover:underline">
+                Listening sessions
+              </Link>
+              <Link href="/events/community-election-integrity-tour" className="underline-offset-4 hover:underline">
+                Integrity tour
+              </Link>
+              <Link href="#suggest" className="underline-offset-4 hover:underline">
+                Suggest an event
+              </Link>
+              <Link href="/from-the-road" className="underline-offset-4 hover:underline">
                 From the Road
               </Link>
-              .
-            </p>
-          ) : null}
-        </ContentContainer>
-      </FullBleedSection>
-
-      <FullBleedSection variant="subtle" padY aria-labelledby="past-stops-heading">
-        <ContentContainer>
-          <h2 id="past-stops-heading" className="font-heading text-xl font-bold text-kelly-text md:text-2xl">
-            Past stops / On the Road
-          </h2>
-          <p className="mt-3 max-w-2xl font-body text-kelly-text/75">
-            Miles, engagements, and trail proof live on the dedicated road hub — including verified milestones while we keep
-            building the public calendar.
-          </p>
-          <Button href="/from-the-road" variant="outline" className="mt-6 min-h-[48px]">
-            Open From the Road
-          </Button>
-        </ContentContainer>
-      </FullBleedSection>
-
-      <FullBleedSection padY aria-labelledby="request-kelly-cal-heading">
-        <ContentContainer>
-          <h2 id="request-kelly-cal-heading" className="font-heading text-xl font-bold text-kelly-text md:text-2xl">
-            Invite Kelly
-          </h2>
-          <p className="mt-3 max-w-2xl font-body text-kelly-text/75">
-            Want Kelly in your town, fair, county meeting, or civic room? Start with the invite pathway — the campaign will
-            review, follow up, and confirm logistics before anything is treated as public schedule.
-          </p>
-          <Button href="/events/request" variant="primary" className="mt-6 min-h-[48px]">
-            Invite Kelly — why, how, and what
-          </Button>
-        </ContentContainer>
-      </FullBleedSection>
-
-      <FullBleedSection variant="subtle" padY aria-labelledby="integrity-tour-heading">
-        <ContentContainer>
-          <h2 id="integrity-tour-heading" className="font-heading text-xl font-bold text-kelly-text md:text-2xl">
-            Community Election Integrity Tour
-          </h2>
-          <p className="mt-3 max-w-2xl font-body text-kelly-text/75">
-            Planned civic-education stops — plain-language systems, local questions, and county point teams. Nothing is added
-            to the public calendar until a stop is verified.
-          </p>
-          <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            <Button href="/events/community-election-integrity-tour" variant="outline" className="min-h-[48px]">
-              Tour overview
-            </Button>
-            <Button href="/events/community-election-integrity-tour/request" variant="outline" className="min-h-[48px]">
-              Invite a tour stop
-            </Button>
+            </nav>
           </div>
-        </ContentContainer>
-      </FullBleedSection>
-
-      <FullBleedSection variant="subtle" padY>
-        <ContentContainer wide>
           <EventsHub
             key={filterKey}
             events={mergedEvents}
@@ -352,61 +150,6 @@ export default async function EventsPage({
         </ContentContainer>
       </FullBleedSection>
 
-      {communityFeed.length > 0 ? (
-        <FullBleedSection padY aria-labelledby="community-feed-title">
-          <ContentContainer>
-            <h2
-              id="community-feed-title"
-              className="font-heading text-xl font-bold text-kelly-text md:text-2xl"
-            >
-              Community calendar highlights
-            </h2>
-            <p className="mt-2 max-w-2xl font-body text-sm text-kelly-text/75">
-              Fairs, festivals, and public gatherings listed for the site-wide feed. Full list and map on the{" "}
-              <Link href="/from-the-road" className="font-semibold text-kelly-navy underline">
-                From the Road
-              </Link>
-              .
-            </p>
-            <ul className="mt-5 grid list-none grid-cols-1 gap-3 md:grid-cols-2">
-              {communityFeed.map((e) => (
-                <li
-                  key={e.id}
-                  className="rounded-lg border border-kelly-text/10 bg-kelly-page/80 px-4 py-3 shadow-sm"
-                >
-                  <p className="text-[10px] font-bold uppercase tracking-wider text-kelly-slate/90">
-                    {new Date(e.startAt).toLocaleString("en-US", {
-                      timeZone: "America/Chicago",
-                      month: "short",
-                      day: "numeric",
-                    })}{" "}
-                    –{" "}
-                    {new Date(e.endAt).toLocaleString("en-US", {
-                      timeZone: "America/Chicago",
-                      month: "short",
-                      day: "numeric",
-                      year: "numeric",
-                    })}
-                    {e.countyDisplayName ? ` · ${e.countyDisplayName}` : e.city ? ` · ${e.city}` : null}
-                  </p>
-                  <p className="mt-1 font-heading text-base font-bold text-kelly-text">{e.name}</p>
-                  {e.linkUrl ? (
-                    <a
-                      href={e.linkUrl}
-                      className="mt-1 inline-block text-sm font-semibold text-kelly-navy underline"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Details →
-                    </a>
-                  ) : null}
-                </li>
-              ))}
-            </ul>
-          </ContentContainer>
-        </FullBleedSection>
-      ) : null}
-
       <FullBleedSection id="suggest" variant="subtle" padY aria-labelledby="suggest-title">
         <ContentContainer>
           <h2 id="suggest-title" className="font-heading text-xl font-bold text-kelly-text md:text-2xl">
@@ -417,12 +160,18 @@ export default async function EventsPage({
             here and on the trail.
           </p>
           {suggestOk === "suggest" ? (
-            <p className="mt-3 rounded-md border border-kelly-success/30 bg-kelly-success/10 px-3 py-2 font-body text-sm text-kelly-text" role="status">
+            <p
+              className="mt-3 rounded-md border border-kelly-success/30 bg-kelly-success/10 px-3 py-2 font-body text-sm text-kelly-text"
+              role="status"
+            >
               Thanks — we received your suggestion. The team will review it before anything goes live.
             </p>
           ) : null}
           {counties.length === 0 ? (
-            <p className="mt-3 rounded-md border border-amber-200/80 bg-amber-50/90 px-3 py-2 font-body text-sm text-amber-950/90" role="status">
+            <p
+              className="mt-3 rounded-md border border-amber-200/80 bg-amber-50/90 px-3 py-2 font-body text-sm text-amber-950/90"
+              role="status"
+            >
               County pick-list is temporarily unavailable. You can still describe the location in your message—we’ll match
               it to a county.
             </p>

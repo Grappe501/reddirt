@@ -6,7 +6,7 @@ import { MapContainer, Marker, Popup, TileLayer, useMap } from "react-leaflet";
 import L from "leaflet";
 import type { LatLngExpression } from "leaflet";
 import type { EventItem } from "@/content/types";
-import { formatEventWhen } from "@/lib/format/eventDisplay";
+import { formatEventWhen, resolveEventStatus } from "@/lib/format/eventDisplay";
 
 import "leaflet/dist/leaflet.css";
 
@@ -176,7 +176,7 @@ export function MovementFairsMap({ events, selectedSlug = null, onSelectSlug }: 
   };
 
   const listOnlyUpcoming = useMemo(
-    () => events.filter((e) => e.status === "upcoming" && !isPublicMapPinEligible(e)).length,
+    () => events.filter((e) => resolveEventStatus(e) === "upcoming" && !isPublicMapPinEligible(e)).length,
     [events],
   );
 

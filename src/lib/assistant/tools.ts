@@ -7,6 +7,7 @@ import type { DocumentBlock } from "@/content/shared/document";
 import type { EditorialSection } from "@/content/editorial/types";
 import { events } from "@/content/events/index";
 import type { EventItem } from "@/content/types";
+import { parseEventInstant, resolveEventStatus, stripPublicMarkdown } from "@/lib/format/eventDisplay";
 import { KELLY_PUBLIC_CONTACT_EMAIL } from "@/lib/openai/prompts";
 
 /** Mirrors public /priorities pillar copy — keep in sync with `src/app/(site)/priorities/page.tsx`. */
@@ -121,9 +122,9 @@ function listUpcomingEvents(args: {
   const countyLower = args.county_slug?.toLowerCase().trim();
   const q = args.search_query?.toLowerCase().trim();
 
-  let rows = events.filter((e) => e.status === "upcoming");
+  let rows = events.filter((e) => resolveEventStatus(e) === "upcoming");
   try {
-    rows = rows.filter((e) => new Date(e.startsAt).getTime() >= now - 86_400_000);
+    rows = rows.filter((e) => parseEventInstant(e.startsAt, e.timezone).getTime() >= now - 86_400_000);
   } catch {
     /* keep */
   }
@@ -141,7 +142,9 @@ function listUpcomingEvents(args: {
     });
   }
 
-  rows = [...rows].sort((a, b) => new Date(a.startsAt).getTime() - new Date(b.startsAt).getTime());
+  rows = [...rows].sort(
+    (a, b) => parseEventInstant(a.startsAt, a.timezone).getTime() - parseEventInstant(b.startsAt, b.timezone).getTime(),
+  );
 
   const slice = rows.slice(0, args.limit);
   if (!slice.length) {
@@ -164,7 +167,7 @@ function listUpcomingEvents(args: {
       region: e.region,
       county_slug: e.countySlug ?? null,
       location: e.locationLabel,
-      summary: e.summary,
+      summary: stripPublicMarkdown(e.summary),
       url_path: eventDetailHref(e),
       type: e.type,
     })),

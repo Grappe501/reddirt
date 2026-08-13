@@ -2,6 +2,7 @@ import type { CampaignEventType } from "@prisma/client";
 import { getMovementRegionForCountySlug, STATEWIDE_EVENT_REGION } from "@/content/arkansas-movement-regions";
 import type { EventItem, EventType } from "@/content/types";
 import type { PublicCampaignEvent } from "@/lib/calendar/public-event-types";
+import { withLiveEventStatus } from "@/lib/format/eventDisplay";
 
 /** Map CampaignOS types into movement /events filter buckets (approximate but useful). */
 export function campaignEventTypeToMovementEventType(t: CampaignEventType): EventType {
@@ -91,5 +92,6 @@ export function mergeMovementAndCalendarEvents(
 ): EventItem[] {
   const taken = new Set(movement.map((e) => e.slug));
   const synthetic = calendar.filter((c) => !taken.has(c.slug)).map(publicCampaignEventToEventItem);
-  return [...movement, ...synthetic];
+  const now = new Date();
+  return [...movement, ...synthetic].map((e) => withLiveEventStatus(e, now));
 }

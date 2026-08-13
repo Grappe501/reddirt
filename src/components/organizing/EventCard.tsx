@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import type { EventItem } from "@/content/types";
-import { formatEventWhen } from "@/lib/format/eventDisplay";
+import { formatEventWhen, resolveEventStatus, stripPublicMarkdown } from "@/lib/format/eventDisplay";
 import { cn } from "@/lib/utils";
 
 type EventCardProps = {
@@ -22,6 +22,7 @@ function locationIsTba(event: EventItem): boolean {
 
 export function EventCard({ event, className, highlighted, onActivate }: EventCardProps) {
   const when = formatEventWhen(event);
+  const status = resolveEventStatus(event);
   const detailHref = event.detailHref ?? `/events/${event.slug}`;
   const tba = locationIsTba(event);
   return (
@@ -47,12 +48,12 @@ export function EventCard({ event, className, highlighted, onActivate }: EventCa
           <span
             className={cn(
               "rounded-full px-2.5 py-0.5 font-body text-[11px] font-bold uppercase tracking-wider",
-              event.status === "upcoming"
+              status === "upcoming"
                 ? "border border-kelly-success/35 bg-kelly-success/12 text-kelly-text"
                 : "border border-kelly-text/15 bg-kelly-text/[0.05] text-kelly-text/70",
             )}
           >
-            {event.status === "upcoming" ? "Upcoming" : "Past"}
+            {status === "upcoming" ? "Upcoming" : "Past"}
           </span>
           {tba ? (
             <span className="rounded-full border border-kelly-text/20 bg-kelly-text/[0.06] px-2.5 py-0.5 font-body text-[11px] font-bold uppercase tracking-wider text-kelly-text/80">
@@ -73,7 +74,9 @@ export function EventCard({ event, className, highlighted, onActivate }: EventCa
           <p className="mt-0.5 font-body text-sm text-kelly-text/70">{when.secondary}</p>
         ) : null}
         <p className="mt-1 font-body text-sm text-kelly-text/60">{event.locationLabel}</p>
-        <p className="mt-4 font-body text-base leading-relaxed text-kelly-text/75">{event.summary}</p>
+        <p className="mt-4 font-body text-base leading-relaxed text-kelly-text/75">
+          {stripPublicMarkdown(event.summary)}
+        </p>
       </div>
       <Link
         href={detailHref}
