@@ -69,6 +69,21 @@ export function countyNameFromAnySlug(slug: string | null | undefined): Arkansas
   return countyNameFromKey(slug);
 }
 
+/** Canonical county slugs for an event — multi-county rows keep every county, in listed order. */
+export function eventCountySlugs(event: { countySlug?: string; countySlugs?: string[] }): string[] {
+  const raw = [...(event.countySlugs ?? [])];
+  if (event.countySlug) raw.push(event.countySlug);
+  const seen = new Set<string>();
+  const out: string[] = [];
+  for (const slug of raw) {
+    const key = normalizeArkansasCountyKey(slug);
+    if (!key || seen.has(key)) continue;
+    seen.add(key);
+    out.push(arkansasCountySlugFromKey(key));
+  }
+  return out;
+}
+
 export function formatCountyEyebrow(name: ArkansasCountyName): string {
   return `${name.toUpperCase()} COUNTY`;
 }

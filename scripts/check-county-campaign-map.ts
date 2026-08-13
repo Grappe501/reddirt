@@ -1,12 +1,15 @@
 import { events, getEventBySlug } from "../src/content/events";
 import { august2026CampaignStops } from "../src/content/events/august-2026-campaign-stops";
 import { september2026CampaignStops } from "../src/content/events/september-2026-campaign-stops";
+import { october2026CampaignStops } from "../src/content/events/october-2026-campaign-stops";
 import {
   ARKANSAS_YOUTH_COALITION_HREF,
   FAITH_REFLECTION_FACEBOOK_HREF,
   recurringVirtualSeries,
 } from "../src/content/events/recurring-virtual-series";
 import { collapseRecurringSeriesToNextOccurrence } from "../src/lib/events/collapse-recurring-series";
+import { eventCountySlugs } from "../src/lib/events/county-key";
+import { publicCountyEyebrow } from "../src/lib/events/public-event-county";
 import type { EventItem } from "../src/content/types";
 import { ARKANSAS_COUNTY_COUNT } from "../src/data/kelly-county-visits/arkansas-counties";
 import { ARKANSAS_COUNTY_SVG_PATHS } from "../src/data/kelly-county-visits/arkansas-county-svg-paths";
@@ -338,12 +341,61 @@ if (events.some((e) => /paragould/i.test(e.slug) && e.startsAt.startsWith("2026-
   fail("Paragould forum must not appear on September 22");
 }
 
+{
+  const { summaries, ledger } = build(SNAPSHOT, [
+    ...august2026CampaignStops,
+    ...september2026CampaignStops,
+    ...october2026CampaignStops,
+  ]);
+  if (ledger.visited.length !== 51) fail("October public stops must not change 51/75 before they end");
+  if (summaryByName(summaries, "Perry").publicState !== "confirmed_upcoming") fail("Perry Goat Festival confirmed upcoming");
+  if (summaryByName(summaries, "Phillips").publicState !== "confirmed_upcoming") fail("Phillips King Biscuit confirmed upcoming");
+  if (summaryByName(summaries, "Madison").publicState !== "confirmed_upcoming") fail("Madison Oct 26 confirmed upcoming");
+  if (!summaryByName(summaries, "Johnson").confirmedUpcomingEvents.some((e) => e.slug === "flat-rock-fish-fry-2026-10-17")) {
+    fail("Flat Rock fish fry must map to Johnson County");
+  }
+  const cleburne = summaryByName(summaries, "Cleburne");
+  if (!cleburne.visited || !cleburne.tentativeUpcomingEvents.some((e) => e.slug === "greers-ferry-event-2026-10-23")) {
+    fail("Greers Ferry must be tentative on Cleburne");
+  }
+  const poinsett = summaryByName(summaries, "Poinsett");
+  if (poinsett.confirmedUpcomingEvents.length || poinsett.tentativeUpcomingEvents.length) {
+    fail("Poinsett must not show Rice Festival / Weiner as upcoming");
+  }
+  if (events.some((e) => /rice.?festival|\bweiner\b/i.test(`${e.slug} ${e.title}`))) {
+    fail("Arkansas Rice Festival / Weiner must not be in the public catalog");
+  }
+  if (events.some((e) => /debate week|campaign block/i.test(e.title))) {
+    fail("Internal October blocks must not be published");
+  }
+  if (!events.some((e) => e.slug === "bella-vista-meet-2026-10-08") || !events.some((e) => e.slug === "bella-vista-meet-2026-10-15")) {
+    fail("Bella Vista Oct 8 and Oct 15 are separate confirmed stops");
+  }
+  const twoCounty = events.find((e) => e.slug === "madison-newton-county-day-2026-10-26");
+  if (!twoCounty) fail("Madison / Newton County Day missing");
+  if (publicCountyEyebrow(twoCounty) !== "MADISON COUNTY · NEWTON COUNTY") {
+    fail(`Oct 26 must show both counties, got ${publicCountyEyebrow(twoCounty)}`);
+  }
+  if (eventCountySlugs(twoCounty).length !== 2) fail("Oct 26 must list Madison and Newton");
+  if (!summaryByName(summaries, "Madison").confirmedUpcomingEvents.some((e) => e.slug === "madison-newton-county-day-2026-10-26")) {
+    fail("Madison map must include Oct 26");
+  }
+  if (!summaryByName(summaries, "Newton").confirmedUpcomingEvents.some((e) => e.slug === "madison-newton-county-day-2026-10-26")) {
+    fail("Newton map must include Oct 26");
+  }
+  const arkansasOct = summaryByName(summaries, "Arkansas");
+  if (!arkansasOct.visited || !arkansasOct.confirmedUpcomingEvents.some((e) => e.slug === "stuttgart-event-2026-10-17")) {
+    fail("Arkansas County stays visited and gains Stuttgart Oct 17 as confirmed upcoming");
+  }
+}
+
 console.log("county-campaign-map checks passed");
 console.log(`SVG counties: ${ARKANSAS_COUNTY_SVG_PATHS.length}/${ARKANSAS_COUNTY_COUNT}`);
 console.log("Operator review (as of 2026-08-13, America/Chicago) — http://localhost:3000/events");
-console.log("  visited-only: Arkansas County (blue, no click)");
+console.log("  visited-only: Arkansas County (blue, no click) until Stuttgart Oct 17");
 console.log("  visited + confirmed upcoming: Pulaski County (blue fill, gold outline → /events/county/pulaski)");
-console.log("  unvisited confirmed upcoming: Randolph County (gold fill → Pocahontas Aug 15)");
-console.log("  tentative: Calhoun County (sky fill, dashed outline → fair Sep 18)");
+console.log("  unvisited confirmed upcoming: Randolph County (gold fill → Pocahontas Aug 15); Perry, Phillips, Madison from October");
+console.log("  tentative: Calhoun County (sky fill, dashed outline → fair Sep 18); Greers Ferry Oct 23 on Cleburne");
 console.log("  neutral: Chicot County (gray, no click)");
 console.log("  statewide / virtual: Faith & Reflection Zoom (Wed 7:15 PM) + College & Young People Zoom (Thu, time TBA) — calendar only, never 51/75");
+console.log("  October: no Rice Festival / Weiner; Flat Rock = Johnson County; Bella Vista Oct 8 and Oct 15 both public");

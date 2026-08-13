@@ -14,6 +14,7 @@ import type { KellyCampaignStop } from "@/data/kelly-county-visits/types";
 import { inferPublicVenueMode } from "@/lib/calendar/public-event-format";
 import { PUBLIC_CALENDAR_DEFAULT_TZ } from "@/lib/calendar/public-event-types";
 import { parseEventInstant } from "@/lib/format/eventDisplay";
+import { eventCountySlugs } from "@/lib/events/county-key";
 import type { EventItem } from "@/content/types";
 
 const TZ = PUBLIC_CALENDAR_DEFAULT_TZ;
@@ -170,14 +171,15 @@ export function isQualifyingMovementAppearance(event: EventItem, now: Date): boo
     return false;
   }
   if (event.campaignTrail !== true && event.eventSource !== "calendar") return false;
-  if (!event.countySlug) return false;
+  const slugs = eventCountySlugs(event);
+  if (slugs.length === 0) return false;
   if (event.opsFlags?.missingCounty) return false;
   if (event.type === "Volunteer Training" || event.type === "Immersion") return false;
   if (VIRTUAL_HINT.test(`${event.locationLabel} ${event.addressLine ?? ""} ${event.title}`)) return false;
   const tz = event.timezone || TZ;
   const end = parseEventInstant(event.endsAt ?? event.startsAt, tz);
   if (end.getTime() >= now.getTime()) return false;
-  return countyNameFromSlug(event.countySlug) != null;
+  return slugs.some((slug) => countyNameFromSlug(slug) != null);
 }
 
 function chicagoYmdFromStopDate(isoDate: string): string {
@@ -248,10 +250,12 @@ export function buildCountyVisitLedger(input: {
 
   for (const ev of input.movementEvents) {
     if (!isQualifyingMovementAppearance(ev, now)) continue;
-    const name = countyNameFromSlug(ev.countySlug);
-    if (!name) continue;
     const end = parseEventInstant(ev.endsAt ?? ev.startsAt, ev.timezone || TZ);
-    considerAppearance(name, ev.slug, end, "movement-event");
+    for (const slug of eventCountySlugs(ev)) {
+      const name = countyNameFromSlug(slug);
+      if (!name) continue;
+      considerAppearance(name, ev.slug, end, "movement-event");
+    }
   }
 
   for (const name of HISTORICAL_VISITED_COUNTIES) {

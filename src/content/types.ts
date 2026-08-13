@@ -43,6 +43,8 @@ export type EventItem = {
   region: string;
   /** County slug when tied to a region page, optional */
   countySlug?: string;
+  /** Multi-county appearances — public eyebrow and map use every listed county. */
+  countySlugs?: string[];
   status: EventStatus;
   startsAt: string; // ISO
   endsAt?: string;

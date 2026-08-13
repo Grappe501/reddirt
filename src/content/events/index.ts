@@ -2,6 +2,7 @@ import type { EventItem } from "@/content/types";
 import { markSuggestedFestivalPath } from "@/lib/festivals/suggest-coverage-path";
 import { august2026CampaignStops } from "@/content/events/august-2026-campaign-stops";
 import { september2026CampaignStops } from "@/content/events/september-2026-campaign-stops";
+import { october2026CampaignStops } from "@/content/events/october-2026-campaign-stops";
 import {
   RECURRING_VIRTUAL_SLUG_ALIASES,
   recurringVirtualSeries,
@@ -597,6 +598,7 @@ export const events: EventItem[] = markSuggestedFestivalPath([
   ...movementEventsCore,
   ...august2026CampaignStops,
   ...september2026CampaignStops,
+  ...october2026CampaignStops,
   ...recurringVirtualSeries,
 ]);
 

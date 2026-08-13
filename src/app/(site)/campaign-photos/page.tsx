@@ -26,7 +26,7 @@ export default async function CampaignPhotosPage() {
     <>
       <MediaPageHero
         slotKey="campaign-photos.intro"
-        layout="bleed"
+        layout="split"
         eyebrow="Campaign photos"
         title="County albums"
         subtitle="Open a county. Step through the stops. Every still is confirmed geography — not a dump of every file."
