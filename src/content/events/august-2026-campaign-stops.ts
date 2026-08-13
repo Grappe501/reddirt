@@ -34,6 +34,7 @@ function campaignStop(draft: StopDraft): EventItem {
     endsAt: draft.endsAt ?? (draft.timeTbd ? `${date}T23:59:00` : undefined),
     timezone: TZ,
     locationLabel: draft.locationLabel,
+    city: draft.locationLabel,
     addressLine: draft.addressLine,
     summary: draft.summary,
     description: DETAILS_LATER,

@@ -1,15 +1,18 @@
 import type { EventItem } from "@/content/types";
 import { formatEventWhen } from "@/lib/format/eventDisplay";
+import { publicCountyEyebrow } from "@/lib/events/public-event-county";
 import { cn } from "@/lib/utils";
 
 export function EventMeta({
   event,
   className,
   dense,
+  zoomHref,
 }: {
   event: EventItem;
   className?: string;
   dense?: boolean;
+  zoomHref?: string | null;
 }) {
   const when = formatEventWhen(event);
   return (
@@ -20,6 +23,10 @@ export function EventMeta({
         className,
       )}
     >
+      <div>
+        <dt className="text-xs font-bold uppercase tracking-wider text-kelly-text/50">County</dt>
+        <dd className="mt-1 font-semibold text-kelly-text">{publicCountyEyebrow(event)}</dd>
+      </div>
       <div>
         <dt className="text-xs font-bold uppercase tracking-wider text-kelly-text/50">When</dt>
         <dd className="mt-1">
@@ -32,6 +39,18 @@ export function EventMeta({
         <dd className="mt-1 font-semibold text-kelly-text">{event.locationLabel}</dd>
         {event.addressLine ? (
           <dd className="mt-1 text-kelly-text/75">{event.addressLine}</dd>
+        ) : null}
+        {zoomHref ? (
+          <dd className="mt-2">
+            <a
+              href={zoomHref}
+              className="font-semibold text-kelly-navy underline-offset-4 hover:underline"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Open Zoom link
+            </a>
+          </dd>
         ) : null}
       </div>
       <div className="flex flex-wrap gap-2">

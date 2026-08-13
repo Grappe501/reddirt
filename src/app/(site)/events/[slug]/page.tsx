@@ -8,6 +8,7 @@ import { SectionHeading } from "@/components/blocks/SectionHeading";
 import { Button } from "@/components/ui/Button";
 import { EventMeta } from "@/components/organizing/EventMeta";
 import { EventCard } from "@/components/organizing/EventCard";
+import { EventShareActions } from "@/components/organizing/EventShareActions";
 import { RelatedLinksSection } from "@/components/organizing/RelatedLinksSection";
 import { getEventBySlug, listEventSlugs } from "@/content/events";
 import type { EventItem } from "@/content/types";
@@ -18,10 +19,13 @@ import {
   resolvePublicEventTitleForMetadata,
 } from "@/lib/calendar/public-events";
 import { publicCampaignEventToEventItem } from "@/lib/events/calendar-to-movement-event";
-import { getJoinCampaignHref } from "@/config/external-campaign";
+import { attendanceDetailCopy } from "@/lib/events/public-event-kind";
+import { getCampaignPrayerZoomHref, getJoinCampaignHref, getVolunteerSignupHref } from "@/config/external-campaign";
+import { siteConfig } from "@/config/site";
 import { isPrismaDatabaseUnavailable, logPrismaDatabaseUnavailable } from "@/lib/prisma-connectivity";
 import { pageMeta } from "@/lib/seo/metadata";
 import { stripPublicMarkdown, withLiveEventStatus } from "@/lib/format/eventDisplay";
+import { publicCountyEyebrow, publicEventCityLine } from "@/lib/events/public-event-county";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -63,16 +67,30 @@ function CuratedOrCalendarEventView({ event }: { event: EventItem }) {
     .filter((e) => e.slug !== live.slug)
     .map((e) => withLiveEventStatus(e));
 
+  const city = publicEventCityLine(live);
+  const zoomHref = live.statewideVirtual ? getCampaignPrayerZoomHref(live.rsvpHref) : null;
+  const attendance = live.statewideVirtual
+    ? {
+        headline: "Join the statewide Zoom call",
+        rsvpLabel: zoomHref ? "Join on Zoom" : null,
+        note: "Wednesday 7:15 p.m. Central. This call is statewide and virtual — it never counts as a county visit and never changes the 51/75 map.",
+      }
+    : attendanceDetailCopy(live.attendanceType, city);
+  const volunteerHref = getVolunteerSignupHref();
   const rsvpHref =
+    zoomHref ??
     live.rsvpHref ??
     `/get-involved?intent=rsvp&event=${encodeURIComponent(live.slug)}`;
+  const sharePath = `/events/${live.slug}`;
 
   return (
     <>
-      <PageHero eyebrow={live.type} title={live.title} subtitle={stripPublicMarkdown(live.summary)}>
-        <Button href={rsvpHref} variant="primary">
-          RSVP or raise your hand
-        </Button>
+      <PageHero eyebrow={publicCountyEyebrow(live)} title={live.title} subtitle={stripPublicMarkdown(live.summary)}>
+        {attendance.rsvpLabel ? (
+          <Button href={rsvpHref} variant="primary">
+            {attendance.rsvpLabel}
+          </Button>
+        ) : null}
         <Button href="/events" variant="outline">
           All events
         </Button>
@@ -88,8 +106,28 @@ function CuratedOrCalendarEventView({ event }: { event: EventItem }) {
                 title="When, where, and what"
                 subtitle="Plain facts first—then the human stuff underneath."
               />
-              <div className="mt-8 rounded-card border border-kelly-text/10 bg-[var(--color-surface-elevated)] p-6 shadow-[var(--shadow-soft)] md:p-8">
-                <EventMeta event={live} />
+              <div id="details" className="mt-8 rounded-card border border-kelly-text/10 bg-[var(--color-surface-elevated)] p-6 shadow-[var(--shadow-soft)] md:p-8">
+                <EventMeta event={live} zoomHref={zoomHref} />
+                {live.statewideVirtual ? (
+                  <div className="mt-6 rounded-lg border border-kelly-navy/15 bg-kelly-navy/[0.04] p-4">
+                    <p className="font-body text-xs font-bold uppercase tracking-wider text-kelly-navy">Zoom</p>
+                    {zoomHref ? (
+                      <>
+                        <p className="mt-2 font-body text-sm text-kelly-text/80">
+                          Join the Wednesday prayer call on Zoom. The link opens in a new tab.
+                        </p>
+                        <Button href={zoomHref} variant="primary" className="mt-3">
+                          Join on Zoom
+                        </Button>
+                      </>
+                    ) : (
+                      <p className="mt-2 font-body text-sm text-kelly-text/80">
+                        This is a statewide Zoom call. The join link will be posted on this page when the campaign
+                        publishes it. It never counts as a county visit.
+                      </p>
+                    )}
+                  </div>
+                ) : null}
               </div>
 
               <SectionHeading
@@ -133,14 +171,30 @@ function CuratedOrCalendarEventView({ event }: { event: EventItem }) {
 
             <aside className="space-y-6 lg:sticky lg:top-28">
               <div className="rounded-card border border-kelly-text/10 bg-[var(--color-surface-elevated)] p-6 shadow-[var(--shadow-soft)]">
-                <h2 className="font-heading text-lg font-bold text-kelly-text">Join this stop</h2>
+                <h2 className="font-heading text-lg font-bold text-kelly-text">{attendance.headline}</h2>
                 <p className="mt-3 font-body text-sm leading-relaxed text-kelly-text/75">{live.locationLabel}</p>
                 {live.addressLine ? (
                   <p className="mt-2 font-body text-sm text-kelly-text/65">{live.addressLine}</p>
                 ) : null}
+                {attendance.note ? (
+                  <p className="mt-3 font-body text-sm leading-relaxed text-kelly-text/75">{attendance.note}</p>
+                ) : null}
               </div>
-              <Button href={rsvpHref} variant="primary" className="w-full justify-center">
-                RSVP or raise your hand
+              {attendance.rsvpLabel ? (
+                <Button href={rsvpHref} variant="primary" className="w-full justify-center">
+                  {attendance.rsvpLabel}
+                </Button>
+              ) : live.statewideVirtual ? (
+                <p className="font-body text-sm text-kelly-text/70">
+                  The Zoom join link will appear here as soon as it is posted.
+                </p>
+              ) : null}
+              <div>
+                <p className="mb-2 font-body text-xs font-bold uppercase tracking-wider text-kelly-navy">Share</p>
+                <EventShareActions title={live.title} url={`${siteConfig.url}${sharePath}`} />
+              </div>
+              <Button href={volunteerHref} variant="outline" className="w-full justify-center">
+                Volunteer
               </Button>
               {county ? (
                 <Link

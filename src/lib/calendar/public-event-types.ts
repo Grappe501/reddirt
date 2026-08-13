@@ -1,4 +1,4 @@
-import type { CampaignEventType, Prisma } from "@prisma/client";
+import type { CampaignEventAttendanceType, CampaignEventType, Prisma } from "@prisma/client";
 
 /** Default display grouping for the public site (Arkansas field program). */
 export const PUBLIC_CALENDAR_DEFAULT_TZ = "America/Chicago";
@@ -19,8 +19,12 @@ export type PublicCampaignEvent = {
   timezone: string;
   locationName: string | null;
   address: string | null;
+  city: string | null;
+  attendanceType: CampaignEventAttendanceType;
   eventType: CampaignEventType;
+  /** Public-facing kind (Community Event, Festival/Fair, …) — never staff purpose. */
   eventTypeLabel: string;
+  publicKindLabel: string;
   county: { displayName: string; slug: string } | null;
   venueMode: PublicVenueMode;
   /** Reserved for a future public tag field; currently empty. */
@@ -33,7 +37,7 @@ export type PublicCampaignEvent = {
   secondaryAction: { label: string; href: string };
 };
 
-export type PublicEventRangePreset = "all_upcoming" | "this_week" | "this_month";
+export type PublicEventRangePreset = "all_upcoming" | "this_week" | "this_month" | "all";
 
 export type PublicEventListFilters = {
   countySlug?: string | null;
@@ -60,6 +64,8 @@ export const publicCampaignEventSelect = {
   timezone: true,
   locationName: true,
   address: true,
+  city: true,
+  attendanceType: true,
   eventType: true,
   county: { select: { displayName: true, slug: true } },
 } as const;

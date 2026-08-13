@@ -1,4 +1,5 @@
 import {
+  CampaignEventAttendanceType,
   CampaignEventStatus,
   CampaignEventType,
   EventWorkflowState,
@@ -22,6 +23,7 @@ import {
   ymdInTimeZone,
 } from "@/lib/calendar/public-event-format";
 import { isPrismaDatabaseUnavailable, logPrismaDatabaseUnavailable } from "@/lib/prisma-connectivity";
+import { attendanceCtaLabel } from "@/lib/events/public-event-kind";
 
 const JOIN = () => getJoinCampaignHref();
 const PUBLIC_CALENDAR_SNAPSHOT_PATH = path.join(
@@ -52,8 +54,9 @@ type SnapshotFile = {
 export function whereLivePublicOnWebsite(): Prisma.CampaignEventWhereInput {
   return {
     isPublicOnWebsite: true,
+    isTravelLeg: false,
     eventWorkflowState: EventWorkflowState.PUBLISHED,
-    status: { not: CampaignEventStatus.CANCELLED },
+    status: { notIn: [CampaignEventStatus.CANCELLED, CampaignEventStatus.TENTATIVE, CampaignEventStatus.DRAFT] },
   };
 }
 
@@ -79,14 +82,17 @@ function snapshotToPublicDto(
     timezone: row.timezone,
     locationName: row.locationName,
     address: row.address,
+    city: null,
+    attendanceType: CampaignEventAttendanceType.CAMPAIGN_APPEARANCE,
     eventType: row.eventType,
     eventTypeLabel: formatPublicEventType(row.eventType),
+    publicKindLabel: formatPublicEventType(row.eventType),
     county: row.county,
     venueMode,
     publicTags: [],
     detailHref,
     joinCampaignHref: joinHref,
-    primaryAction: { label: "Details & RSVP", href: detailHref },
+    primaryAction: { label: attendanceCtaLabel(CampaignEventAttendanceType.CAMPAIGN_APPEARANCE), href: detailHref },
     secondaryAction: { label: "Volunteer", href: joinHref },
   };
 }
@@ -127,12 +133,15 @@ function toPublicDto(
     timezone: string;
     locationName: string | null;
     address: string | null;
+    city?: string | null;
+    attendanceType?: CampaignEventAttendanceType;
     eventType: CampaignEventType;
     county: { displayName: string; slug: string } | null;
   },
   joinHref: string
 ): PublicCampaignEvent {
   const detailHref = `/events/${row.slug}`;
+  const attendanceType = row.attendanceType ?? CampaignEventAttendanceType.CAMPAIGN_APPEARANCE;
   const venueMode = inferPublicVenueMode({
     eventType: row.eventType,
     locationName: row.locationName,
@@ -148,14 +157,17 @@ function toPublicDto(
     timezone: row.timezone,
     locationName: row.locationName,
     address: row.address,
+    city: row.city ?? null,
+    attendanceType,
     eventType: row.eventType,
     eventTypeLabel: formatPublicEventType(row.eventType),
+    publicKindLabel: formatPublicEventType(row.eventType),
     county: row.county,
     venueMode,
     publicTags: [],
     detailHref,
     joinCampaignHref: joinHref,
-    primaryAction: { label: "Details & RSVP", href: detailHref },
+    primaryAction: { label: attendanceCtaLabel(attendanceType), href: detailHref },
     secondaryAction: { label: "Volunteer", href: joinHref },
   };
 }
@@ -174,6 +186,9 @@ function addCalendarDays(ymd: string, days: number): string {
  */
 function prismaWindowForFilters(filters: PublicEventListFilters): Prisma.CampaignEventWhereInput {
   const now = new Date();
+  if (filters.range === "all") {
+    return {};
+  }
   if (filters.monthYear) {
     const { year, month } = filters.monthYear;
     // Month bounds in UTC with padding (overlap filter in JS to event’s timezone for display month).
@@ -205,7 +220,7 @@ function rowPassesFilters(
   filters: PublicEventListFilters
 ): boolean {
   const now = new Date();
-  if (!filters.monthYear && row.endAt < now) return false;
+  if (filters.range !== "all" && !filters.monthYear && row.endAt < now) return false;
 
   if (filters.eventType && row.eventType !== filters.eventType) return false;
   if (filters.countySlug && row.county?.slug !== filters.countySlug) return false;

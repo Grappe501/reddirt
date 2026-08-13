@@ -28,6 +28,8 @@ console.log(JSON.stringify({ summary, completed: getCompletedPublicStops().lengt
       : `
 import { kellyCampaignStops } from "./src/data/kelly-county-visits/kelly-county-visits.ts";
 import { ARKANSAS_COUNTIES } from "./src/data/kelly-county-visits/arkansas-counties.ts";
+import { assertHistoricalCountyVisitSeed } from "./src/data/kelly-county-visits/historical-visited-seed.ts";
+assertHistoricalCountyVisitSeed();
 console.log(JSON.stringify({ stops: kellyCampaignStops, counties: ARKANSAS_COUNTIES }));
 `;
   const r = spawnSync(process.execPath, [tsxCli, "-e", code], {
@@ -117,6 +119,7 @@ console.log(
       completed: pub.filter((s) => s.status === "completed").length,
       scheduled: pub.filter((s) => s.status === "scheduled").length,
       needsReview: pub.filter((s) => s.status === "needs-review" || s.counties.length === 0).length,
+      historicalSeed: "ok",
     },
     null,
     2,

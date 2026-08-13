@@ -3229,10 +3229,10 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     title: "Arkadelphia visit",
     city: "Arkadelphia",
     counties: ["Clark"],
-    status: "scheduled",
+    status: "completed",
     includeOnPublicPage: true,
     confidence: "likely",
-    notes: "Seeded from locked-events-steve.json",
+    notes: "Seeded from locked-events-steve.json; marked completed after 2026-08-12 end (Central).",
     sourceType: "local-file",
   },
   {
