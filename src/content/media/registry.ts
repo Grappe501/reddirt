@@ -9,6 +9,8 @@ export type MediaRef = {
   alt: string;
   width: number;
   height: number;
+  /** CSS object-position when the still is cropped to fill a slot (portraits in landscape panes). */
+  objectPosition?: string;
 };
 
 export const media = {
@@ -90,6 +92,22 @@ export const media = {
     alt: "Notebook margin and field green, editorial texture",
     width: 1200,
     height: 700,
+  },
+  /** File-backed campaign still — War Memorial Stadium / Pulaski. Fills `/priorities` split hero. */
+  prioritiesHero: {
+    src: "/media/campaign-photos/war-memorial-stadium-concourse-20260320.png",
+    alt: "Kelly Grappe speaks on the War Memorial Stadium concourse overlooking a crowded field celebration in Little Rock.",
+    width: 768,
+    height: 1024,
+    objectPosition: "50% 28%",
+  },
+  /** File-backed campaign still — AFL-CIO pre-event networking. Fills `/endorsements` split hero. */
+  endorsementsHero: {
+    src: "/media/campaign-photos/afl-cio-pre-event-networking-20260629.png",
+    alt: "Kelly Grappe talks with attendees before addressing an Arkansas AFL-CIO gathering, standing in conversation inside the event venue.",
+    width: 1536,
+    height: 2048,
+    objectPosition: "50% 22%",
   },
   explainerSteps: {
     src: "/media/placeholders/explainer-steps.svg",

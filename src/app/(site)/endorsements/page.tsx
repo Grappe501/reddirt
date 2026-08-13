@@ -25,7 +25,6 @@ export default async function EndorsementsPage() {
       <MediaPageHero
         slotKey="endorsements.hero"
         layout="split"
-        preferLabeledEmpty
         eyebrow="Trust"
         title="Endorsements"
         subtitle="Only formal, campaign-confirmed endorsements appear here. A photograph or conversation is never listed as support."

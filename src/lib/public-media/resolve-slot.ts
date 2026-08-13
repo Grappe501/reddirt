@@ -54,7 +54,7 @@ function staticPresentation(
     height: ref.height,
     alt: ref.alt,
     caption: null,
-    objectPosition: "50% 50%",
+    objectPosition: ref.objectPosition ?? "50% 50%",
     posterUrl: null,
     derivativeRole: null,
     fallbackUsed: true,

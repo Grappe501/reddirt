@@ -284,7 +284,7 @@ const INNER_SLOTS: Record<(typeof PUBLIC_MEDIA_INNER_SLOTS)[number], PublicMedia
   "journey.strip": imageHero("about-journey", "journey.strip", "Trail proof forthcoming", "editorialDefault", "any"),
   "community.hero": imageHero("about-community", "community.hero", "Community work forthcoming", "arkansasPorch"),
   "why.hero": imageHero("about-why", "why.hero", "Why this race — photo forthcoming", "arkansasPorch"),
-  "priorities.hero": imageHero("priorities", "priorities.hero", "Governing work forthcoming", "splitLabor"),
+  "priorities.hero": imageHero("priorities", "priorities.hero", "Governing work forthcoming", "prioritiesHero"),
   "speaks.hero": videoOrImageHero("kelly-speaks", "speaks.hero", "Hear Kelly — video forthcoming", "heroHome"),
   "speaks.featured": videoOrImageHero("kelly-speaks", "speaks.featured", "Featured message forthcoming", "heroHome"),
   "campaign-photos.intro": imageHero(
@@ -297,7 +297,7 @@ const INNER_SLOTS: Record<(typeof PUBLIC_MEDIA_INNER_SLOTS)[number], PublicMedia
     "endorsements",
     "endorsements.hero",
     "Confirmed endorsements publish here",
-    "editorialDefault",
+    "endorsementsHero",
   ),
   "understand.hero": imageHero("understand", "understand.hero", "Office explained", "splitDemocracy"),
   "office.hero": imageHero("office", "office.hero", "Office work forthcoming", "splitDemocracy"),
