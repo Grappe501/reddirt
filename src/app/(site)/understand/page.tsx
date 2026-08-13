@@ -25,8 +25,8 @@ export default function UnderstandTheOfficePage() {
         <Button href="/priorities" variant="primary">
           See My Plan
         </Button>
-        <Button href="/about" variant="outlineOnDark">
-          Meet Kelly
+        <Button href="/kelly-speaks" variant="outlineOnDark">
+          Campaign Videos
         </Button>
       </PageHero>
 

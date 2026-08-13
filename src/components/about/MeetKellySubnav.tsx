@@ -3,11 +3,12 @@ import { MEET_KELLY_SUBNAV } from "@/content/about/meet-kelly-hub";
 import { cn } from "@/lib/utils";
 
 type Props = {
-  current: (typeof MEET_KELLY_SUBNAV)[number]["href"];
+  current?: string;
   className?: string;
 };
 
 export function MeetKellySubnav({ current, className }: Props) {
+  if (MEET_KELLY_SUBNAV.length === 0) return null;
   return (
     <nav
       aria-label="Meet Kelly sections"

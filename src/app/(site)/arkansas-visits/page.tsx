@@ -82,10 +82,10 @@ export default function ArkansasVisitsPage() {
             </Link>
             {" · "}
             <Link
-              href="/about/journey"
+              href="/campaign-photos"
               className="font-semibold text-kelly-navy underline-offset-2 hover:underline"
             >
-              Journey photos
+              Campaign photos
             </Link>
           </p>
         </ContentContainer>

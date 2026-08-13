@@ -207,7 +207,7 @@ export function VolunteerForm({
             local organizing
           </Link>{" "}
           or learn about{" "}
-          <Link className="font-semibold text-kelly-navy underline" href="/direct-democracy">
+          <Link className="font-semibold text-kelly-navy underline" href="/direct-democracy/ballot-initiative-process">
             direct democracy tools
           </Link>
           .

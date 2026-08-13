@@ -45,8 +45,8 @@ export const pathwayCards = [
   {
     title: "Direct democracy & ballot access",
     description: "How initiatives and referenda move from idea to ballot—and how we protect citizen-led petition work.",
-    href: "/direct-democracy",
-    ctaLabel: "Explore direct democracy",
+    href: "/priorities#peoples-voice",
+    ctaLabel: "See this in My Plan",
   },
   {
     title: "Ballot initiative process",

@@ -30,8 +30,8 @@ export default async function EndorsementsPage() {
         title="Endorsements"
         subtitle="Only formal, campaign-confirmed endorsements appear here. A photograph or conversation is never listed as support."
       >
-        <Button href="/about" variant="outlineOnDark">
-          Read About Kelly’s Experience
+        <Button href="/kelly-speaks" variant="outlineOnDark">
+          Campaign Videos
         </Button>
         <Button href={joinHref} variant="primary">
           Stay connected

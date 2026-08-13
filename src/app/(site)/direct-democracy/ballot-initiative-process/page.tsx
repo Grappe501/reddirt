@@ -179,8 +179,8 @@ export default function BallotInitiativeProcessPage() {
             className="max-w-2xl"
           />
           <div className="mt-8 flex flex-wrap gap-4">
-            <Button href="/direct-democracy" variant="primary">
-              Ballot access &amp; initiatives
+            <Button href="/priorities#peoples-voice" variant="primary">
+              The people’s constitutional voice
             </Button>
             <Button href="/resources" variant="outline">
               Resources hub

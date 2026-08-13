@@ -1,8 +1,4 @@
-import {
-  ballotInitiativeProcessHref,
-  directDemocracyHubHref,
-  kellyInitiativesChapterHref,
-} from "@/config/direct-democracy-links";
+import { ballotInitiativeProcessHref } from "@/config/direct-democracy-links";
 import { getCampaignBlogUrl } from "@/config/external-campaign";
 
 export type NavItem = {
@@ -14,8 +10,8 @@ export type NavGroup = {
   id: string;
   label: string;
   /**
-   * When set, the group label is a direct link (e.g. Meet Kelly → /about). The ▾ control still opens the full
-   * submenu so “Understand the office” and siblings stay one click away.
+   * When set, the group label is a direct link (e.g. Meet Kelly → /kelly-speaks). The ▾ control still opens the full
+   * submenu so remaining siblings stay one click away.
    */
   groupLandingHref?: string;
   items: NavItem[];
@@ -54,13 +50,8 @@ export const primaryNavGroups: NavGroup[] = [
   {
     id: "meet",
     label: "Meet Kelly",
-    groupLandingHref: "/about",
+    groupLandingHref: "/kelly-speaks",
     items: [
-      { label: "Meet Kelly", href: "/about" },
-      { label: "Professional experience", href: "/about/experience" },
-      { label: "Why I'm Running", href: "/about/why-im-running" },
-      { label: "Kelly Across Arkansas", href: "/about/journey" },
-      { label: "Community & Civic Work", href: "/about/community" },
       { label: "Campaign Videos", href: "/kelly-speaks" },
       { label: "Campaign Photos", href: "/campaign-photos" },
       { label: "Endorsements", href: "/endorsements" },
@@ -99,11 +90,9 @@ export const primaryNavGroups: NavGroup[] = [
   {
     id: "peoples-voice",
     label: "The People's Voice",
-    groupLandingHref: directDemocracyHubHref,
+    groupLandingHref: ballotInitiativeProcessHref,
     items: [
       { label: "Learn How Direct Democracy Works", href: ballotInitiativeProcessHref },
-      { label: "The People's Voice hub", href: directDemocracyHubHref },
-      { label: "Kelly's petition organizing", href: kellyInitiativesChapterHref },
     ],
   },
   {

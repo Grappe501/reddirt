@@ -121,11 +121,6 @@ export default async function ResourcesPage() {
           <ResponsiveGrid cols="2" className="mt-12">
             {[
               {
-                t: "Direct democracy",
-                h: "/direct-democracy",
-                b: "Initiatives, referendums, and why ballot access is civic infrastructure—not a hobby for lawyers.",
-              },
-              {
                 t: "How initiatives reach the ballot",
                 h: "/direct-democracy/ballot-initiative-process",
                 b: "Attorney General title review, signature thresholds, Secretary of State filing, and official trackers.",

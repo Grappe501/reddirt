@@ -110,7 +110,6 @@ export const electionsAreaConfig: OfficeAreaConfig = {
         heading: "Stewardship under law",
         paragraphs: [
           "Kelly believes Arkansas elections should be administered under Arkansas law—with steadiness, transparent explanation, and careful handling of voter data as a public trust.",
-          "Kelly believes Arkansas elections should be administered under Arkansas law—with steadiness, transparent explanation, and careful handling of voter data as a public trust. Read Why I'm running for the personal case Kelly makes for entering the race.",
         ],
       },
       kellyBringsStewardshipCloser,
@@ -120,8 +119,8 @@ export const electionsAreaConfig: OfficeAreaConfig = {
   layerTwoNextLabel: "What Kelly brings",
   relatedLinks: [
     { label: "Understand the Office", href: "/understand" },
-    { label: "Why I'm running", href: "/about/why-im-running" },
-    { label: "Meet Kelly", href: "/about" },
+    { label: "Why this race matters", href: "/office/why-this-race-matters" },
+    { label: "Campaign Videos", href: "/kelly-speaks" },
     { label: "Election listening sessions", href: "/listening-sessions" },
   ],
 };

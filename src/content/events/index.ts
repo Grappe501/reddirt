@@ -582,7 +582,7 @@ const movementEventsCore: EventItem[] = [
     whoItsFor: "Anyone considering civic action beyond election day.",
     organizerNote: "Past event archive placeholder.",
     relatedEventSlugs: [],
-    relatedResourceHrefs: [{ label: "Direct democracy pillar page", href: "/direct-democracy" }],
+    relatedResourceHrefs: [{ label: "How a measure reaches the ballot", href: "/direct-democracy/ballot-initiative-process" }],
   },
 ];
 

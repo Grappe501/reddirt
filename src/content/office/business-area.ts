@@ -106,7 +106,7 @@ export const businessAreaConfig: OfficeAreaConfig = {
   layerTwoNextLabel: "What Kelly brings",
   relatedLinks: [
     { label: "Understand the Office", href: "/understand" },
-    { label: "Experience & Leadership", href: "/about/journey" },
-    { label: "Meet Kelly", href: "/about" },
+    { label: "Campaign Videos", href: "/kelly-speaks" },
+    { label: "From the Road", href: "/from-the-road" },
   ],
 };

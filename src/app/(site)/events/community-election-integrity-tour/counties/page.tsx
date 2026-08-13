@@ -79,8 +79,8 @@ export default function IntegrityTourCountiesPage() {
               </Link>
             </li>
             <li>
-              <Link href="/about/why-kelly" className="font-semibold text-kelly-navy underline-offset-2 hover:underline">
-                Why Kelly
+              <Link href="/office/why-this-race-matters" className="font-semibold text-kelly-navy underline-offset-2 hover:underline">
+                Why this race matters
               </Link>
             </li>
             <li>

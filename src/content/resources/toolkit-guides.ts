@@ -110,7 +110,6 @@ const guides: ToolkitGuide[] = [
       { label: "Campaign calendar (where we are on the road)", href: "/events" },
       { label: "Host a gathering (tell us your date & place)", href: "/host-a-gathering" },
       { label: "Talking about Kelly (what to say in the room)", href: "/resources/talking-about-kelly" },
-      { label: "Direct democracy & what can be on the ballot", href: "/direct-democracy" },
       { label: "How a measure reaches the Arkansas ballot (official steps)", href: "/direct-democracy/ballot-initiative-process" },
       { label: "Facilitation: run a community meeting", href: "/resources/community-meeting" },
       { label: "Field: listen before organizing", href: "/resources/listen-before-organizing" },
@@ -318,7 +317,6 @@ const guides: ToolkitGuide[] = [
       },
     ],
     goDeeper: [
-      { label: "Direct democracy (campaign pillar — big picture)", href: "/direct-democracy" },
       { label: "How a measure reaches the Arkansas ballot (step-by-step on this site)", href: "/direct-democracy/ballot-initiative-process" },
       { label: "Attorney General — ballot initiative information", href: "https://arkansasag.gov/resources/ballot-initiative-information/" },
     ],
@@ -480,7 +478,7 @@ const guides: ToolkitGuide[] = [
       },
     ],
     goDeeper: [
-      { label: "Meet Kelly (story & path)", href: "/about" },
+      { label: "Campaign Videos", href: "/kelly-speaks" },
       { label: "Office priorities (the plan in one place)", href: "/priorities" },
       { label: "Secretary of State 101 (what the job is)", href: "/resources/sos-office-brief" },
       { label: "Talking with neighbors (field habits)", href: "/resources/neighbor-conversations" },
@@ -660,7 +658,7 @@ const guides: ToolkitGuide[] = [
     ],
     goDeeper: [
       { label: "Office priorities (campaign)", href: "/priorities" },
-      { label: "Direct democracy (why ballots matter here)", href: "/direct-democracy" },
+      { label: "How a measure reaches the ballot", href: "/direct-democracy/ballot-initiative-process" },
     ],
   },
 ];

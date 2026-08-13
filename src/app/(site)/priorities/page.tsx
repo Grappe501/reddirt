@@ -27,8 +27,8 @@ export default async function PrioritiesPage() {
         title={c.hero.title}
         subtitle={c.hero.subtitle}
       >
-        <Button href="/about" variant="primary">
-          Meet Kelly
+        <Button href="/kelly-speaks" variant="primary">
+          Campaign Videos
         </Button>
         <Button href="/direct-democracy/ballot-initiative-process" variant="outlineOnDark">
           Learn How Direct Democracy Works →

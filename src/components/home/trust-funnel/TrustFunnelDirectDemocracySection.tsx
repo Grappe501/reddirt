@@ -3,7 +3,6 @@ import { ContentContainer } from "@/components/layout/ContentContainer";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import {
   ballotInitiativeProcessHref,
-  directDemocracyHubHref,
 } from "@/config/direct-democracy-links";
 import { trustFunnelHomeCopy } from "@/content/home/trust-funnel-home";
 
@@ -42,14 +41,8 @@ export function TrustFunnelDirectDemocracySection() {
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <Link
-                href={directDemocracyHubHref}
-                className="inline-flex min-h-[48px] items-center justify-center rounded-btn bg-kelly-navy px-6 py-3 text-sm font-bold uppercase tracking-wider text-white transition hover:bg-kelly-blue"
-              >
-                {copy.ctas.hub}
-              </Link>
-              <Link
                 href={ballotInitiativeProcessHref}
-                className="inline-flex min-h-[48px] items-center justify-center rounded-btn border-2 border-kelly-navy/20 bg-white px-6 py-3 text-sm font-bold uppercase tracking-wider text-kelly-navy transition hover:border-kelly-gold/50"
+                className="inline-flex min-h-[48px] items-center justify-center rounded-btn bg-kelly-navy px-6 py-3 text-sm font-bold uppercase tracking-wider text-white transition hover:bg-kelly-blue"
               >
                 {copy.ctas.process}
               </Link>

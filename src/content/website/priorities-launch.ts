@@ -371,7 +371,7 @@ export const prioritiesLaunchCopy = {
     body: "See what the office does today, meet Kelly, or start with five people you know.",
     ctas: [
       { href: "/understand", label: "What the office does" },
-      { href: "/about", label: "Meet Kelly" },
+      { href: "/kelly-speaks", label: "Campaign Videos" },
       { href: "/get-involved", label: "Get Involved" },
     ],
   },

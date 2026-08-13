@@ -1,6 +1,7 @@
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import type { NextConfig } from "next";
+import { parkedPublicPageRedirects } from "./src/config/hidden-public-pages";
 import { OWNED_MEDIA_SERVER_ACTION_BODY_LIMIT } from "./src/lib/owned-media/limits";
 
 const tracingRoot = path.dirname(fileURLToPath(import.meta.url));
@@ -59,6 +60,7 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      ...parkedPublicPageRedirects,
       {
         source: "/the-arkansas-we-know",
         destination: "/",
@@ -150,7 +152,7 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/the-peoples-voice",
-        destination: "/direct-democracy",
+        destination: "/direct-democracy/ballot-initiative-process",
         permanent: false,
       },
       /**
@@ -185,7 +187,7 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/dashboard",
-        destination: "/about",
+        destination: "/kelly-speaks",
         permanent: false,
       },
       /**
