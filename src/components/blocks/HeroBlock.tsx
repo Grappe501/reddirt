@@ -30,6 +30,7 @@ export function HeroBlock({
         "flex flex-col gap-4 sm:gap-6",
         align === "center" && "items-center text-center",
         size === "home" && "gap-6 sm:gap-8 lg:gap-10",
+        onDark && "text-kelly-inverse",
         className,
       )}
     >
@@ -47,7 +48,7 @@ export function HeroBlock({
         className={cn(
           "font-heading font-bold tracking-tight",
           onDark
-            ? "text-kelly-mist"
+            ? "text-kelly-inverse"
             : "bg-gradient-to-br from-kelly-ink from-[5%] via-kelly-navy to-kelly-slate/95 bg-clip-text text-transparent drop-shadow-sm",
           size === "home" &&
             "max-w-[22ch] text-[clamp(2.5rem,6vw,4.75rem)] leading-[1.05] lg:max-w-[18ch]",
@@ -61,7 +62,7 @@ export function HeroBlock({
         <div
           className={cn(
             "max-w-2xl font-body text-base leading-relaxed sm:text-lg lg:text-xl",
-            onDark ? "text-kelly-mist/92" : "text-kelly-text/85",
+            onDark ? "text-kelly-inverse-muted" : "text-kelly-text/85",
             align === "center" && "mx-auto",
           )}
         >
