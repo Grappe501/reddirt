@@ -18,19 +18,35 @@ export const metadata: Metadata = {
 const faq = [
   {
     q: "Do I need experience?",
-    a: "No. Reliability and curiosity beat résumés. If you can show up twice in a row, you can learn the rest.",
+    a: `No. You do not need a campaign résumé, a political title, or a public-speaking habit. Reliability and curiosity beat a stack of credentials. If you can show up twice in a row and tell the truth about what you can take on, you can learn the rest.
+
+A starter team in your county is 2–5 neighbors who will text back. One person can wear two hats at first. We point you to approved talking points, voter-info basics, and simple jobs—hosting, inviting, tabling with integrity, or helping someone check their registration—not improvising the law or picking a fight.
+
+Fill out the form on this page with your county and who is in your first circle. A real organizer will follow up with something proportionate to your life, not a binder of homework.`,
   },
   {
     q: "Is this a partisan club?",
-    a: "We’re honest about values—but teams win when they welcome neighbors who don’t share every label. The work is civic, not performative.",
+    a: `This is a campaign team for Kelly Grappe for Arkansas Secretary of State—not a closed club, not a debate society, and not a loyalty test at the door.
+
+We’re honest about values: restore trust in the systems people depend on, protect ballot access, and make this office work for all 75 counties. Local teams win when they welcome neighbors who don’t share every label. The work is civic—listening, explaining process in plain language, and showing up where people already gather.
+
+If someone wants to argue national talking points, that’s not the job. If they want to help a neighbor understand registration, host a small gathering, or represent the campaign with vetted materials, they belong in the circle.`,
   },
   {
     q: "What if my county is mostly one party?",
-    a: "So is much of Arkansas. The goal is lawful, respectful visibility—neighbor to neighbor, without surprise tricks.",
+    a: `So is much of Arkansas. A Secretary of State still serves every county—rural and urban, whichever way the last race went. The goal is lawful, respectful visibility: neighbor to neighbor, without surprise tricks or treating anyone as a prop.
+
+You are not asked to “flip” a county overnight or pretend the local map isn’t what it is. You are asked to be present: a named team people can find, honest voter information, and a human who will take a question seriously.
+
+Start small. Coffee with two people you trust beats a loud event nobody asked for. If the room is mixed or mostly one party, the same rules apply—listen first, don’t overclaim, and leave people with a way to stay in touch if they want it.`,
   },
   {
     q: "How much time is this?",
-    a: "Most starter teams run on a light weekly touch and one monthly rhythm. We’ll help you right-size it to your life.",
+    a: `Most starter teams run on a light weekly touch and one monthly rhythm. We’ll help you right-size it to your life—school, shift work, farm hours, and caregiving all count.
+
+A weekly touch can be 20–40 minutes: a check-in text, one invite, or updating who you still need to talk with. A monthly rhythm is often one real gathering, fair table, or listening room—not a second full-time job.
+
+Say your real availability on the form. If you can only do one Saturday a month, we plan around that. If you want to be county lead, we’ll talk about what that actually means before anyone puts your name on it.`,
   },
 ];
 
@@ -40,14 +56,6 @@ const teamRoles: { title: string; blurb: string }[] = [
   { title: "Outreach lead", blurb: "Keeps invitations going—relational follow-up, institutions, and neighbor-to-neighbor invites." },
   { title: "Voter education lead", blurb: "Makes registration, deadlines, and voting steps plain enough to share at a kitchen table." },
   { title: "Media / story lead", blurb: "Captures honest field notes, photos, or quotes so your county’s truth travels accurately." },
-];
-
-const crossLinks: { label: string; href: string }[] = [
-  { label: "Bring 5 Friends", href: "/get-involved/bring-5" },
-  { label: "Invite Kelly", href: "/events/request" },
-  { label: "County Fairs", href: "/events/county-fairs" },
-  { label: "Community Election Integrity Tour", href: "/events/community-election-integrity-tour" },
-  { label: "From the Road", href: "/from-the-road" },
 ];
 
 export default async function StartALocalTeamPage() {
@@ -169,30 +177,6 @@ export default async function StartALocalTeamPage() {
               Starter guides
             </Button>
           </div>
-        </ContentContainer>
-      </FullBleedSection>
-
-      <FullBleedSection variant="subtle" padY aria-labelledby="crosslinks-heading">
-        <ContentContainer className="max-w-3xl">
-          <SectionHeading
-            id="crosslinks-heading"
-            align="left"
-            eyebrow="Plug in"
-            title="Field plan links"
-            subtitle="Local teams connect to fairs, tour stops, and relational invites."
-          />
-          <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-3">
-            {crossLinks.map((c) => (
-              <li key={c.href}>
-                <Link
-                  href={c.href}
-                  className="font-body text-sm font-semibold text-kelly-navy underline underline-offset-2 hover:text-kelly-text"
-                >
-                  {c.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
         </ContentContainer>
       </FullBleedSection>
 
