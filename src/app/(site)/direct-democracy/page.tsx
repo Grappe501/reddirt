@@ -239,7 +239,6 @@ export default async function DirectDemocracyPage() {
 
       <QuoteBand
         quote="We’re not only asking for your vote—we’re building a system where your voice can’t be ignored."
-        attribution="Direct democracy commitment"
         variant="gold-band"
       />
 
