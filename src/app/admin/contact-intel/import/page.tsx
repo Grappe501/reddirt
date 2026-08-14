@@ -26,7 +26,7 @@ export default async function ContactIntelImportIndexPage({ searchParams }: Prop
           columns are kept as source data and ignored until you map them. Do not upload a real contact
           file into an unintended environment.
         </p>
-        <form action={uploadContactIntelFileAction} encType="multipart/form-data" className="mt-4 space-y-3">
+        <form action={uploadContactIntelFileAction} className="mt-4 space-y-3">
           <label className="block text-xs font-semibold text-kelly-text/80">
             Source label (optional)
             <input
