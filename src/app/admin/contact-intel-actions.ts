@@ -9,6 +9,16 @@ import { buildContactIntelMappingFromForm, guessContactIntelMapping } from "@/li
 import { ContactIntelUploadError } from "@/lib/contact-intel/parse";
 import { applyContactIntelMappingAndPreview, commitContactIntelImport } from "@/lib/contact-intel/pipeline";
 
+function isNextRedirect(err: unknown): boolean {
+  return (
+    typeof err === "object" &&
+    err !== null &&
+    "digest" in err &&
+    typeof (err as { digest?: unknown }).digest === "string" &&
+    (err as { digest: string }).digest.startsWith("NEXT_REDIRECT")
+  );
+}
+
 function trim(fd: FormData, key: string): string {
   const v = fd.get(key);
   return typeof v === "string" ? v.trim() : "";
@@ -33,6 +43,7 @@ export async function uploadContactIntelFileAction(fd: FormData): Promise<void> 
     revalidatePath("/admin/contact-intel/import");
     redirect(`/admin/contact-intel/import/${jobId}`);
   } catch (err) {
+    if (isNextRedirect(err)) throw err;
     const code = err instanceof ContactIntelUploadError ? err.code : "parse";
     redirect(`/admin/contact-intel/import?error=${code}`);
   }
