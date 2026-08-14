@@ -7921,6 +7921,22 @@ model ContactIntelVoterMatch {
   @@schema("public")
 }
 
+/// Oscar compounding memory — query plans and tool use. No person PII in keys.
+model ContactIntelOscarLesson {
+  id          String   @id @default(cuid())
+  kind        String   @db.VarChar(40)
+  key         String   @db.VarChar(200)
+  label       String   @db.VarChar(320)
+  payloadJson Json     @default("{}")
+  uses        Int      @default(1)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@unique([kind, key])
+  @@index([kind, updatedAt])
+  @@schema("public")
+}
+
 /// Local vote-target cushion — field ops boost; does not change global snapshot.
 model CommunityWorkbenchVoteCushion {
   id                 String   @id @default(cuid())
