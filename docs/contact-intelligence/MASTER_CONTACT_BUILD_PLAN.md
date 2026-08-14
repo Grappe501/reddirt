@@ -68,7 +68,7 @@ For every person the system must answer:
 8. **Do not auto-merge** when an email points at person A and a phone points at person B.
 9. **Names never merge people.**
 10. **Original row values are always kept** (`rawJson` + `originalValue`).
-11. Extra columns that are not mapped stay in `rawJson`. Schema expansion for custom fields is Phase 5, not Phase 1–4.
+11. Extra columns that are not mapped stay in `rawJson`. Addresses, tags, and governed custom fields are Phase 5 enrichment and never identity keys.
 12. One phase per Cursor script. No drive-by refactors, dependency upgrades, visual redesigns, or later-phase schema.
 
 ---
@@ -80,7 +80,7 @@ An imported row must contain **at least one valid email or one valid phone**.
 | Rule | Behavior |
 |------|----------|
 | Email | trim + lowercase via `normalizeEmail`; keep original |
-| Phone | `normalizePhone` (10-digit US); keep original |
+| Phone | Import uses `normalizeContactIntelPhone` (10-digit US or `+1`); keep original. Does not take the last 10 digits of longer junk. |
 | Multiple email/phone columns | all collected onto one person |
 | No matching identifiers | create `ContactIntelPerson` |
 | All matching identifiers belong to one person | enrich that person (add missing methods; fill empty names) |
@@ -100,7 +100,7 @@ An imported row must contain **at least one valid email or one valid phone**.
 | `ContactIntelSourceRow` | Untouched source row + mapped extraction |
 | `ContactIntelConflict` | Identifier collision for operator review |
 
-Core mapping targets for v1: `email`, `phone`, `full_name`, `first_name`, `last_name`, `ignore`.
+Core mapping targets: `email`, `phone`, `full_name`, `first_name`, `last_name`, `address`, `city`, `state`, `zip`, `tag`, `custom:<key>`, `ignore`.
 
 ---
 
@@ -180,17 +180,45 @@ Core mapping targets for v1: `email`, `phone`, `full_name`, `first_name`, `last_
 
 ---
 
-### Phase 5 — Addresses, tags, governed custom fields
+### Phase 5 — MVP hardening (Steve override, 2026-08-13)
 
-**Goal:** Expand the person schema without a new database.
+**Goal:** Make the existing upload → mapping → preview → commit → search path safe for representative CSV/XLSX files. No new product capabilities.
 
-**Allowed:** additive fields (`ContactIntelAddress`, `ContactIntelTag`, `ContactIntelCustomFieldDef` + values), mapping targets, profile UI.
+**Status:** Implemented in this pass. Automated checker is isolated (no live `DATABASE_URL` writes).
 
-**Forbidden:** Google, local disk scanners, outbound comms, rewriting v1 match rules.
+**Allowed:** fixture tests, import limits, safe parse, commit transaction/idempotency, operator guide, minor UI clarity.
 
-**Exit:** an extra column can be mapped to a reusable custom field or kept as raw source.
+**Forbidden:** addresses, tags, custom fields, disk/Drive/Gmail, fuzzy name merge, conflict merge UI, writes into other identity tables, new DB/ORM/auth.
 
-**Cursor script:** `docs/contact-intelligence/CURSOR_SCRIPT_PHASE_05_SCHEMA_EXPANSION.md`
+**Confirmed limits:** 8MB, 20,000 data rows, `.csv`/`.xlsx`/`.xls`, first sheet only, sanitized filenames, duplicate headers rejected.
+
+**Confirmed transaction behavior:** upload job+rows, preview staging, and commit people/methods/conflicts each run in `prisma.$transaction`. Commit failure marks the job `FAILED` and does not keep partial people/methods from that attempt.
+
+**Tests added:** `scripts/verify-contact-intel-hardening.ts` (`npm run contact-intel:harden-check`) plus existing `contact-intel:normalize-check`.
+
+**Remaining limitations:** phone extensions unsupported; preview writes staging only (not the contact graph); no live-DB integration tests; no merge UI.
+
+**Operator guide:** `docs/contact-intelligence/OPERATOR_GUIDE.md`
+
+### Phase 5b — Schema expansion (addresses, tags, custom fields)
+
+**Goal:** Map extra spreadsheet columns onto existing people without changing email/phone identity.
+
+**Status:** Implemented this pass. Migration `20260813223000_contact_intelligence_schema_expansion`.
+
+**Models:** `ContactIntelAddress`, `ContactIntelTag`, `ContactIntelPersonTag`, `ContactIntelCustomFieldDefinition`, `ContactIntelCustomFieldValue`.
+
+**Address dedup:** SHA-256 of `normalizedLine|normalizedCity|normalizedState|normalizedPostal` per person. Partial addresses allowed. Not an identity key.
+
+**Tags:** split on comma/semicolon only; key is lowercase collapsed text; first-seen display name kept.
+
+**Custom fields:** `custom:<key>` with key `lowercase_alnum`; type TEXT; one current value per person+definition; earlier values remain on source rows.
+
+**Preview:** staging + plan only. Does not create tags, definitions, addresses, joins, or values.
+
+**Forbidden:** Google, local disk, outbound comms, rewriting v1 match rules.
+
+**Exit:** a synthetic CSV and XLSX can be previewed, classified, committed, retrieved by email/phone, audited to original rows, and re-imported without duplicate people/methods; a conflicting email/phone row stays unmerged; a failed commit leaves no partial contact data.
 
 ---
 
@@ -240,7 +268,8 @@ From `H:\SOSWebsite\RedDirt-contact-intel`:
 
 ```bash
 node scripts/run-with-h-drive-env.cjs npm run stack:migrate
-node scripts/run-with-h-drive-env.cjs node ./node_modules/tsx/dist/cli.mjs scripts/verify-contact-intel-normalize.ts
+node scripts/run-with-h-drive-env.cjs npm run contact-intel:normalize-check
+node scripts/run-with-h-drive-env.cjs npm run contact-intel:harden-check
 node scripts/run-with-h-drive-env.cjs npm run typecheck
 node scripts/run-with-h-drive-env.cjs npm run dev
 ```
@@ -251,8 +280,7 @@ Open: `http://localhost:3000/admin/contact-intel`
 
 ## 7. What this first release will not do
 
-- Addresses, tags, custom-field UI
-- Local disk crawler
+- Local disk crawler (Phase 6)
 - Google Drive / Contacts / Gmail ingest
 - Merge UI for conflicts (conflicts are flagged and left uncommitted)
 - Linking into `User` / `RelationalContact` / `EmailContactProfile` / `VoterRecord`

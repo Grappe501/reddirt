@@ -12,12 +12,19 @@ export default async function ContactIntelImportIndexPage({ searchParams }: Prop
     <div className="space-y-6">
       {error === "file" ? <Banner>Choose a CSV or XLSX file.</Banner> : null}
       {error === "size" ? <Banner>File is larger than 8MB. Split it and retry.</Banner> : null}
+      {error === "ext" ? <Banner>Only .csv, .xlsx, and .xls files are accepted.</Banner> : null}
+      {error === "headers" ? <Banner>No header row found. Put column names on the first row.</Banner> : null}
+      {error === "dupheaders" ? <Banner>Duplicate column headers are not allowed. Rename them and retry.</Banner> : null}
+      {error === "rows" ? <Banner>No data rows found, or the file has more than 20,000 data rows.</Banner> : null}
       {error === "parse" ? <Banner>Could not read headers or rows from that file.</Banner> : null}
+      {error === "job" ? <Banner>That import job could not be found.</Banner> : null}
 
       <section className="rounded-lg border border-kelly-text/15 bg-white px-4 py-4">
         <h2 className="font-heading text-lg font-bold text-kelly-navy">Upload spreadsheet</h2>
         <p className="mt-1 text-sm text-kelly-text/80">
-          CSV or first-sheet XLSX. Map columns on the next screen. Extra columns are kept as source data and ignored until you map them.
+          CSV or first-sheet XLSX, 8MB and 20,000 data rows max. Map columns on the next screen. Extra
+          columns are kept as source data and ignored until you map them. Do not upload a real contact
+          file into an unintended environment.
         </p>
         <form action={uploadContactIntelFileAction} encType="multipart/form-data" className="mt-4 space-y-3">
           <label className="block text-xs font-semibold text-kelly-text/80">

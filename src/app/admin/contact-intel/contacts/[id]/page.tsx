@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getContactIntelPerson } from "@/lib/contact-intel/queries";
@@ -56,6 +57,46 @@ export default async function ContactIntelPersonPage({ params }: Props) {
         </div>
       </section>
 
+      <section className="grid gap-4 md:grid-cols-2">
+        <div className="rounded-lg border border-kelly-text/15 bg-white px-4 py-4">
+          <h3 className="font-heading text-base font-bold text-kelly-navy">Addresses</h3>
+          <p className="mt-1 text-xs text-kelly-muted">Imported source values. Not used to match or merge people.</p>
+          <ul className="mt-2 space-y-2 text-sm">
+            {person.addresses.length === 0 ? <li className="text-kelly-muted">None</li> : null}
+            {person.addresses.map((a) => (
+              <li key={a.id}>
+                {[a.line, a.city, a.state, a.postalCode].filter(Boolean).join(", ") || "Partial address"}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="rounded-lg border border-kelly-text/15 bg-white px-4 py-4">
+          <h3 className="font-heading text-base font-bold text-kelly-navy">Tags</h3>
+          <ul className="mt-2 flex flex-wrap gap-2 text-sm">
+            {person.personTags.length === 0 ? <li className="text-kelly-muted">None</li> : null}
+            {person.personTags.map((pt) => (
+              <li key={pt.id} className="rounded border border-kelly-text/15 px-2 py-0.5">
+                {pt.tag.name}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section className="rounded-lg border border-kelly-text/15 bg-white px-4 py-4">
+        <h3 className="font-heading text-base font-bold text-kelly-navy">Custom fields</h3>
+        <p className="mt-1 text-xs text-kelly-muted">Current values from imports. Earlier observations stay on source rows.</p>
+        <ul className="mt-2 space-y-1 text-sm">
+          {person.customValues.length === 0 ? <li className="text-kelly-muted">None</li> : null}
+          {person.customValues.map((v) => (
+            <li key={v.id}>
+              <span className="font-semibold">{v.definition.label}</span>
+              <span className="ml-2">{v.originalValue}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
       <section className="rounded-lg border border-kelly-text/15 bg-white px-4 py-4">
         <h3 className="font-heading text-base font-bold text-kelly-navy">Source rows</h3>
         <div className="mt-3 overflow-x-auto">
@@ -70,16 +111,23 @@ export default async function ContactIntelPersonPage({ params }: Props) {
             </thead>
             <tbody>
               {person.sourceRows.map((row) => (
-                <tr key={row.id} className="border-b border-kelly-text/8">
-                  <td className="px-2 py-1.5">
-                    <Link className="text-kelly-navy underline" href={`/admin/contact-intel/import/${row.job.id}`}>
-                      {row.job.originalFilename}
-                    </Link>
-                  </td>
-                  <td className="px-2 py-1.5">{row.rowNumber}</td>
-                  <td className="px-2 py-1.5">{row.status}</td>
-                  <td className="px-2 py-1.5 text-kelly-muted">{row.createdAt.toISOString().slice(0, 16).replace("T", " ")}</td>
-                </tr>
+                <Fragment key={row.id}>
+                  <tr className="border-b border-kelly-text/8">
+                    <td className="px-2 py-1.5">
+                      <Link className="text-kelly-navy underline" href={`/admin/contact-intel/import/${row.job.id}`}>
+                        {row.job.originalFilename}
+                      </Link>
+                    </td>
+                    <td className="px-2 py-1.5">{row.rowNumber}</td>
+                    <td className="px-2 py-1.5">{row.status}</td>
+                    <td className="px-2 py-1.5 text-kelly-muted">{row.createdAt.toISOString().slice(0, 16).replace("T", " ")}</td>
+                  </tr>
+                  <tr className="border-b border-kelly-text/8">
+                    <td colSpan={4} className="px-2 py-1.5 font-mono text-[11px] text-kelly-muted">
+                      {summarizeRaw(row.rawJson)}
+                    </td>
+                  </tr>
+                </Fragment>
               ))}
             </tbody>
           </table>
@@ -87,4 +135,13 @@ export default async function ContactIntelPersonPage({ params }: Props) {
       </section>
     </div>
   );
+}
+
+function summarizeRaw(json: unknown): string {
+  if (!json || typeof json !== "object") return "—";
+  try {
+    return JSON.stringify(json);
+  } catch {
+    return "—";
+  }
 }

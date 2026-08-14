@@ -41,11 +41,11 @@ For every person the system answers:
 **Core identity rules (locked — do not rewrite in Phase 5)**
 
 - A row needs **email and/or phone**. Names never merge people.
-- Email: trim + lowercase. Phone: 10-digit US via existing `normalizePhone`. Keep originals.
+- Email: trim + lowercase. Phone: 10-digit US via import-only `normalizeContactIntelPhone` (not last-10-of-junk). Keep originals.
 - No match → create person. All identifiers → one person → enrich.
 - Email points at A and phone points at B → **CONFLICT**, do not commit onto either.
 - `(kind, normalizedValue)` is unique on `ContactIntelMethod` — re-import updates, it does not clone.
-- Unmapped extra columns stay in `rawJson` until Phase 5 maps them.
+- Unmapped extra columns stay in `rawJson`. Mapped extras become addresses, tags, or custom fields and never identity keys.
 - **No sends.** Import is not consent.
 - **Do not write** into `EmailContactProfile`, `RelationalContact`, `User`, or `VoterRecord`.
 
@@ -62,7 +62,7 @@ For every person the system answers:
 | 2 Engine | **Done** | Parse / map / normalize / match / preview / commit |
 | 3 Import UI | **Done** | Upload → map → preview → commit |
 | 4 Retrieval | **Done** | Search by email / phone / name + person page |
-| **5 Schema expansion** | **Next — Ernie writes the Cursor script, then implement** | Addresses, tags, governed custom fields |
+| **5 MVP hardening + schema expansion** | **This pass** | Hardening plus addresses, tags, governed custom fields. |
 | 6 Local discovery | Later (script stub exists) | Operator-selected H: folders only |
 | 7 Google Drive | Later (script stub exists) | Least-privilege, no auto-ingest |
 | 8 Google Contacts | Later (script stub exists) | Saved contacts only |
@@ -122,14 +122,19 @@ Phases 6–9 already have stub scripts in `docs/contact-intelligence/CURSOR_SCRI
 
 **Shipped:** library search + `/contacts/[id]` (data) / `/admin/contact-intel/contacts/[id]` (RedDirt).
 
-**Ernie script work:** Phase 5 shows addresses/tags/custom values on the person page. Do not change match rules to use names or addresses for auto-merge.
+**Ernie script work:** A later schema-expansion phase may show addresses/tags/custom values on the person page. Do not change match rules to use names or addresses for auto-merge.
 
 ---
 
-## Phase 5 — Addresses, tags, governed custom fields — NEXT SCRIPT
+## Phase 5 — Hardening + schema expansion — THIS PASS
 
-**This is the only phase Ernie should write a build script for right now.**  
-Existing stub: `docs/contact-intelligence/CURSOR_SCRIPT_PHASE_05_SCHEMA_EXPANSION.md` — expand it into a full Cursor implementation script using the template below. Then implement only that script.
+Steve’s replacement script implements addresses, tags, and governed custom fields on top of the hardened importer. See `OPERATOR_GUIDE.md`. Identity matching remains email/phone only.
+
+---
+
+## Deferred — Addresses, tags, governed custom fields (original Phase 5 stub)
+
+Existing stub: `docs/contact-intelligence/CURSOR_SCRIPT_PHASE_05_SCHEMA_EXPANSION.md`. Do not implement until Steve asks for schema expansion.
 
 **One objective:** Let Steve map extra spreadsheet columns to addresses, tags, or reusable custom fields without rebuilding the database and without changing email/phone identity rules.
 
@@ -215,8 +220,7 @@ Completion report: files, migration, tests, limitations
 
 ---
 
-## What Ernie should produce next
+## What comes after hardening
 
-1. **One file:** a complete `CURSOR_SCRIPT_PHASE_05` (replace/expand the stub) that a Cursor agent can execute without asking Steve about scope.
-2. **Do not** write Phase 6–9 implementation scripts until Steve says so. Stubs already exist.
-3. **Do not** start Phase 5 implementation in the same pass as writing the script unless Steve says “build Phase 5 now.”
+1. Schema expansion (addresses/tags/custom fields) using the deferred stub — only when Steve asks.
+2. **Do not** write Phase 6–9 implementation until Steve says so. Stubs already exist.
