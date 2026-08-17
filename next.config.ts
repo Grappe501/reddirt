@@ -80,6 +80,11 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: "/events/dumas-regional-meeting-2026-08-21",
+        destination: "/events/power-of-one-vote-dumas-2026-08-21",
+        permanent: true,
+      },
+      {
         source: "/the-arkansas-we-know",
         destination: "/",
         permanent: true,
