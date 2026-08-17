@@ -8,7 +8,7 @@
 
 ## Footer & public legal
 
-- [x] **Paid-for line** — `CampaignPaidForBar` + `CAMPAIGN_POLICY_V1.disclaimers.pageFooterPaidForLine`; optional `NEXT_PUBLIC_COMMITTEE_SITE_URL`.
+- [x] **Paid-for line** — `CampaignPaidForBar` + `CAMPAIGN_POLICY_V1.disclaimers.pageFooterPaidForLine`; visible site is `kellygrappe.com`.
 - [x] **Legal routes live** — `/privacy`, `/terms`, `/disclaimer` (draft structure; **counsel** replaces body copy as needed).
 - [x] **Footer** — Legal group links in `footerNavGroups` (`src/config/navigation.ts`); four-column layout on large screens.
 

@@ -217,7 +217,7 @@
 | **Contact mailto** | `getContactMailto()` | `kelly@kellygrappe.com` | `NEXT_PUBLIC_CONTACT_EMAIL` |
 | **Site URL / OG** | `siteConfig.url` | `https://kgrappe.netlify.app` (default) | `NEXT_PUBLIC_SITE_URL` |
 | **Social** | `getPublicSocialLinks()` | Facebook, Instagram, … | `NEXT_PUBLIC_SOCIAL_*` |
-| **Paid-for / committee** | `CampaignPaidForBar` | policy + `NEXT_PUBLIC_COMMITTEE_SITE_URL` | |
+| **Paid-for / committee** | `CampaignPaidForBar` | policy + `kellygrappe.com` display host | |
 
 **Placeholder / broken risk (Day 2 verify):**
 

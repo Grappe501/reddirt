@@ -9,21 +9,10 @@ type Props = {
 
 /**
  * FEC-style “paid for” line — required on every public and admin surface.
- * Wording comes from `CAMPAIGN_POLICY_V1` (POLICY-1); optional `NEXT_PUBLIC_COMMITTEE_SITE_URL` links the campaign site.
+ * Wording comes from `CAMPAIGN_POLICY_V1` (POLICY-1).
+ * The visible website is the launch domain; the href stays on this development site until DNS cutover.
  */
-function linkLabelForHref(href: string): string {
-  try {
-    if (href.startsWith("http")) {
-      return new URL(href).hostname.replace(/^www\./, "");
-    }
-  } catch {
-    /* fall through */
-  }
-  return "Campaign site";
-}
-
 export function CampaignPaidForBar({ variant = "dark" }: Props) {
-  const committeeHref = process.env.NEXT_PUBLIC_COMMITTEE_SITE_URL?.trim() || siteConfig.url;
   const isDark = variant === "dark";
   return (
     <p
@@ -35,14 +24,14 @@ export function CampaignPaidForBar({ variant = "dark" }: Props) {
     >
       {CAMPAIGN_POLICY_V1.disclaimers.pageFooterPaidForLine} ·{" "}
       <Link
-        href={committeeHref}
+        href="/"
         className={
           isDark
             ? "text-kelly-page/75 underline-offset-2 hover:text-kelly-page hover:underline"
             : "text-kelly-navy underline-offset-2 hover:underline"
         }
       >
-        {linkLabelForHref(committeeHref)}
+        {siteConfig.publicDisplayHost}
       </Link>
     </p>
   );

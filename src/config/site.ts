@@ -22,6 +22,11 @@ export const siteConfig = {
   /** Strip trailing slash; set NEXT_PUBLIC_SITE_URL in Netlify for accurate OG URLs. May be host-only (we prepend https://). Use `https://kgrappe.netlify.app` — not `www.…` (Netlify’s cert does not cover www on *.netlify.app). */
   url: normalizePublicSiteUrl(process.env.NEXT_PUBLIC_SITE_URL),
   /**
+   * Launch brand hostname shown in the paid-for footer.
+   * This Netlify host stays the live deploy until DNS points kellygrappe.com here.
+   */
+  publicDisplayHost: "kellygrappe.com",
+  /**
    * Fundraising — defaults to GoodChange URL used on www.kellygrappe.com.
    * Override with NEXT_PUBLIC_DONATE_EXTERNAL_URL. Internal `/donate` page still explains the redirect.
    */
