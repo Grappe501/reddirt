@@ -29,9 +29,9 @@ const officialProcessSteps = [
   },
   {
     step: 3,
-    title: "Valid signatures (thresholds for 2026)",
+    title: "Valid signatures (thresholds)",
     description:
-      "Targets are set as a percentage of votes for Governor in the last gubernatorial election. For 2026, widely published figures are about 90,704 for an initiated constitutional amendment, about 72,563 for an initiated state statute, and about 54,422 for a veto referendum. Confirm the exact numbers each cycle with the Secretary of State.",
+      "Targets are set as a percentage of votes for Governor in the last gubernatorial election. In 2026, for example, that produced different totals for a constitutional amendment, an initiated statute, and a veto referendum. Confirm the exact numbers each cycle with the Secretary of State.",
   },
   {
     step: 4,
