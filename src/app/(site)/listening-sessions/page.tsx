@@ -328,9 +328,6 @@ export default async function ListeningSessionsPage() {
 
         <FullBleedSection padY aria-labelledby="listening-crosslinks-heading">
           <ContentContainer className="max-w-3xl">
-            {/*
-              TODO: Link to Google-approved calendar segments when public schedule UX is unified (later).
-            */}
             <h2 id="listening-crosslinks-heading" className="font-heading text-xl font-bold text-kelly-text md:text-2xl">
               Related next steps
             </h2>

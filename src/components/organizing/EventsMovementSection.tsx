@@ -27,9 +27,7 @@ export function EventsMovementSection({ events }: { events: EventItem[] }) {
           Where Kelly will be next
         </h2>
         <p className="mt-2 max-w-2xl font-body text-kelly-text/75">
-          Confirmed public stops in Central Time, county first. Tentative dates appear on the map only until they are
-          confirmed. When a stop ends, it leaves this list and — if it was an in-person appearance — the county joins the
-          visited ledger on the next build.
+          Confirmed public stops. Invite Kelly to bring one to your community.
         </p>
       </div>
 

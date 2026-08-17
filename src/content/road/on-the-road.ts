@@ -79,12 +79,11 @@ export const onTheRoadProofCopy = {
   },
 
   map: {
-    title: "Trail map (coming with verified stops)",
-    /** Accessible description for placeholder graphic — no markers until data is approved. */
+    title: "On the road across Arkansas",
     placeholderAriaLabel:
-      "Placeholder for an Arkansas trail map. Verified county and city stops will be plotted here after approval. There are no map markers yet.",
+      "Arkansas trail map. County visits and photos live on From the Road and Events.",
     placeholderCaption:
-      "TODO: Connect verified stops and county data — no fabricated pins.",
+      "See Events and From the Road for where Kelly has been and where she is headed next.",
   },
 
   stories: {

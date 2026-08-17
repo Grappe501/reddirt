@@ -184,10 +184,9 @@ export default function LocalOrganizingPage() {
           align="left"
           eyebrow="Territory"
           title="Counties and regions we’re building with"
-          subtitle="Tap a place to see what we’re hearing, what’s coming up, and how to plug in. More maps and live RSVPs arrive with the next integration pass."
+          subtitle="Tap a place to see what we’re hearing, what’s coming up, and how to plug in."
         />
         <p className="mt-6 font-body text-base leading-relaxed text-kelly-text/75">
-          {/* Future: optional county-level summary tiles for organizers */}
           Each hub page tracks a simple story: what neighbors name as urgent, what we’re scheduling next, and where
           to begin.
         </p>

@@ -166,10 +166,7 @@ export const inviteKellyContent = {
         body: "Invite the campaign to table, walk the grounds, speak briefly, or simply meet people where summer gathers.",
       },
     ] as const satisfies readonly InviteKellyHostCard[],
-    formPlaceholderTitle: "Request form coming soon",
-    formPlaceholderBody:
-      "When the form goes live, it will live here — same review standards as other campaign touchpoints. Until then, email with your county, timing range, venue type, expected headcount, and any accessibility notes.",
-    primaryCtaLabel: "Start a request",
+    primaryCtaLabel: "Email to invite Kelly",
     secondaryLinks: [
       { label: "Events", href: "/events" },
       { label: "From the Road", href: "/from-the-road" },

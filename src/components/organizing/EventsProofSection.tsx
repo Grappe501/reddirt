@@ -26,20 +26,13 @@ export function EventsProofSection({
       </div>
 
       <CampaignJourneyMap features={features} />
-      <p className="font-body text-xs text-kelly-text/65">
-        Blue is the proof layer: a county stays blue after Kelly has been there. A gold outline means another confirmed
-        stop is coming; a dashed outline means a tentative date. Statewide / virtual appearances never paint a county.
-      </p>
+      <p className="font-body text-xs text-kelly-text/65">Blue counties are places Kelly has already been.</p>
 
       <div className="rounded-card border border-kelly-navy/15 bg-kelly-navy/[0.04] px-5 py-6">
         <p className="font-heading text-4xl font-bold text-kelly-navy md:text-5xl">
           {n} of {ledger.totalCounties}
         </p>
         <p className="mt-2 font-body text-sm font-semibold text-kelly-text">Arkansas counties visited</p>
-        <p className="mt-1 font-body text-sm text-kelly-text/70">
-          A county counts after an in-person Kelly appearance has ended (Central Time). Travel, volunteer-only work,
-          overnight legs, virtual stops, and tentative dates do not count.
-        </p>
       </div>
 
       <div>
