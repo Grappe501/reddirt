@@ -12,7 +12,7 @@ export const ARKANSAS_YOUTH_COALITION_HREF = "https://arkansasyouth.netlify.app"
 
 const FAITH_DESCRIPTION = [
   "My faith is important to me, and I know faith is an important part of life for many others, too. I also respect that faith and reflection look different for each of us.",
-  "Each Wednesday, we gather on Zoom for a dedicated space to connect, reflect, and pray for our country, our state, our communities, and the work we are doing together.",
+  "Each Wednesday at 7:30 a.m. Central — before the rest of the day begins — we gather on Zoom for a dedicated space to connect, reflect, and pray for our country, our state, our communities, and the work we are doing together.",
   "This is an open and welcoming space for people of all faiths and traditions. Come as you are, pray in the way that is meaningful to you, or simply join us in a spirit of hope and reflection.",
   "All are welcome.",
   "Statewide / virtual — this gathering never counts as a county visit and never changes the 51/75 map.",
@@ -42,22 +42,23 @@ function faithOccurrence(ymd: string): EventItem {
     type: "Community Conversation",
     region: "Statewide",
     status: "upcoming",
-    startsAt: `${ymd}T19:15:00`,
-    endsAt: `${ymd}T20:00:00`,
+    startsAt: `${ymd}T07:30:00`,
+    endsAt: `${ymd}T08:15:00`,
     timezone: TZ,
     locationLabel: "Statewide / Virtual",
     addressLine: "Online — Zoom. Join from the Facebook event link.",
     summary:
-      "Every Wednesday at 7:15 p.m. Central. An open Zoom gathering to connect, reflect, and pray. All are welcome. Statewide / virtual — does not count as a county visit.",
+      "Every Wednesday at 7:30 a.m. Central, before the rest of the day begins. An open Zoom gathering to connect, reflect, and pray. All are welcome. Statewide / virtual — does not count as a county visit.",
     description: FAITH_DESCRIPTION,
     whatToExpect: [
-      "Every Wednesday · 7:15–8:00 p.m. Central",
+      "Every Wednesday · 7:30–8:15 a.m. Central",
       "Open and welcoming — people of all faiths and traditions",
       "Join / event information on the Facebook event page",
       "Statewide / virtual — never counts as a county visit",
     ],
     whoItsFor: "Anyone who wants a weekly space for faith, reflection, and hope — come as you are.",
-    organizerNote: "Recurring statewide virtual series through Election Day. Does not qualify as a county visit.",
+    organizerNote:
+      "Recurring statewide virtual series through Election Day. Morning gathering — never treated as a conflict with later in-person stops. Does not qualify as a county visit.",
     rsvpHref: FAITH_REFLECTION_FACEBOOK_HREF,
     primaryHref: FAITH_REFLECTION_FACEBOOK_HREF,
     primaryCtaLabel: "Join / Event Information",

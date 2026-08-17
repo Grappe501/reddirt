@@ -298,7 +298,7 @@ if (arkansasCountyKey("Van Buren") !== "van-buren") fail("van-buren key");
     fail("Recurring virtual series must never qualify as a county visit");
   }
   const faith = virtual.find((e) => e.slug.startsWith("faith-and-reflection-zoom-"))!;
-  if (!faith.startsAt.endsWith("T19:15:00")) fail("Faith Zoom stays 7:15 PM Central");
+  if (!faith.startsAt.endsWith("T07:30:00")) fail("Faith Zoom stays 7:30 AM Central");
   if (faith.rsvpHref !== FAITH_REFLECTION_FACEBOOK_HREF) fail("Faith series must use the specific Facebook event link");
   if (/facebook\.com\/events/i.test(faith.rsvpHref ?? "")) fail("Do not use generic Facebook Online Events discovery URL");
   const youth = virtual.find((e) => e.slug.startsWith("college-young-people-zoom-"))!;
@@ -423,5 +423,5 @@ console.log("  visited + confirmed upcoming: Pulaski County (blue fill, gold out
 console.log("  unvisited confirmed upcoming: Woodruff (McCrory Aug 22), Clay (Rector Sept 6), Perry, Phillips from October");
 console.log("  tentative: Calhoun County (sky fill, dashed outline → fair Sep 18); Greers Ferry Oct 23 on Cleburne");
 console.log("  neutral: Chicot County (gray, no click)");
-console.log("  statewide / virtual: Faith & Reflection Zoom (Wed 7:15 PM) + College & Young People Zoom (Thu, time TBA) — calendar only, never the visited county count");
+console.log("  statewide / virtual: Faith & Reflection Zoom (Wed 7:30 AM) + College & Young People Zoom (Thu, time TBA) — calendar only, never the visited county count");
 console.log("  October: no Rice Festival / Weiner; Flat Rock = Johnson County; Bella Vista Oct 8 and Oct 15 both public");

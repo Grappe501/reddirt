@@ -81,11 +81,16 @@ export const september2026CampaignStops: EventItem[] = [
     startsAt: "2026-09-03T12:00:00",
     timeTbd: true,
     locationLabel: "Madison County (venue TBA)",
-    summary: "Tentative Madison County meeting. Time and venue to be posted if confirmed.",
+    summary: "Confirmed Madison County meeting. Time and venue to be posted.",
+    description:
+      "Thursday, September 3, 2026. Madison County meeting. Time and venue will be posted here when the host confirms them. All times are U.S. Central.",
+    whatToExpect: [
+      "Thursday, September 3. Time to be posted.",
+      "Madison County, Northwest Arkansas. Venue to be posted.",
+    ],
     audienceTags: ["Madison County", "Northwest Arkansas"],
     mapCoordinates: { lat: 36.0106, lng: -93.7232 },
     relatedEventSlugs: ["conway-county-fair-opening-night-2026-09-03"],
-    fieldAttendance: "tentative",
   }),
   campaignStop({
     slug: "conway-county-fair-opening-night-2026-09-03",
@@ -95,13 +100,18 @@ export const september2026CampaignStops: EventItem[] = [
     countySlug: "conway-county",
     startsAt: "2026-09-03T18:00:00",
     endsAt: "2026-09-03T20:00:00",
-    locationLabel: "Conway County Fair",
-    city: "Conway County",
-    summary: "Tentative 6:00 p.m. Central Conway County Fair opening night.",
-    audienceTags: ["Conway County", "Festival"],
+    locationLabel: "Conway County Fair, Morrilton",
+    city: "Morrilton",
+    summary: "Thursday, September 3, 6:00–8:00 p.m. Central. Conway County Fair opening night in Morrilton.",
+    description:
+      "Thursday, September 3, 2026, 6:00–8:00 p.m. Central. Conway County Fair opening night in Morrilton. Fairgrounds details will be posted here when confirmed.",
+    whatToExpect: [
+      "Thursday, September 3, 6:00–8:00 p.m. Central.",
+      "Conway County Fair, Morrilton.",
+    ],
+    audienceTags: ["Conway County", "Morrilton", "Festival"],
     mapCoordinates: { lat: 35.2648, lng: -92.6843 },
     relatedEventSlugs: ["madison-county-meeting-2026-09-03", "ashley-county-fair-2026-09-04"],
-    fieldAttendance: "tentative",
   }),
   campaignStop({
     slug: "ashley-county-fair-2026-09-04",
