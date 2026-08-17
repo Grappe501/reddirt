@@ -17,7 +17,7 @@ const c = meetKellyCommunityCopy;
 export const metadata: Metadata = pageMeta({
   title: "Community & civic leadership",
   description:
-    "Kelly Grappe's community leadership—Stand Up Arkansas, grassroots petition work, and Forevermost Farms.",
+    "Kelly Grappe's community leadership—grassroots petition work and Forevermost Farms.",
   path: "/about/community",
   imageSrc: "/media/placeholders/texture-porch-glow.svg",
 });

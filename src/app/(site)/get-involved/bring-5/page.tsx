@@ -58,10 +58,6 @@ export default function Bring5FriendsPage() {
             </p>
             <p>Your five become their five. That’s how a campaign becomes a community.</p>
           </div>
-          <p className="mt-6 rounded-card border border-kelly-ink/10 bg-kelly-wash/50 px-4 py-3 font-body text-sm text-kelly-slate">
-            This is the campaign’s independent Power of 5 organizing approach. It is not affiliated with Stand Up
-            Arkansas or another nonprofit.
-          </p>
         </ContentContainer>
       </FullBleedSection>
 

@@ -390,7 +390,7 @@ export const trustFunnelHomeCopy = {
     lead:
       "Kelly entered this race to defend fair elections and the citizen path to ballot measures—not to narrow who gets to petition or how signatures are counted.",
     body:
-      "Stand Up Arkansas and LEARNS petition work are the same story: neighbors learning the process, circulating responsibly, and holding power accountable when it overreaches.",
+      "LEARNS petition work is the same story: neighbors learning the process, circulating responsibly, and holding power accountable when it overreaches.",
     pillars: [
       {
         title: "Protect ballot access",

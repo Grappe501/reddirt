@@ -149,10 +149,6 @@ export default function PowerOf5WorkshopMaterialsPage() {
             </Link>
             .
           </p>
-          <p className="mt-6 rounded-card border border-kelly-ink/10 bg-white px-4 py-3 font-body text-sm text-kelly-slate">
-            This is the campaign’s independent Power of 5 organizing approach. It is not affiliated with Stand Up
-            Arkansas or another nonprofit.
-          </p>
         </ContentContainer>
       </FullBleedSection>
 

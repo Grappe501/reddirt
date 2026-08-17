@@ -146,64 +146,6 @@ export function KellyChapterBody({ slug }: Props) {
         </div>
       );
 
-    case "stand-up-arkansas":
-      return (
-        <div className="space-y-6">
-          <p className={lead}>
-            Democracy is not a spectator sport, and it is not only what happens in Washington.{" "}
-            <a href="https://www.standuparkansas.com" target="_blank" rel="noopener noreferrer" className={linkOut}>
-              Stand Up Arkansas
-            </a>{" "}
-            is a civics-oriented nonprofit Kelly helps lead: a <strong>grassroots hub</strong> for real conversations,{" "}
-            <strong>leadership development</strong>, and tools that help ordinary Arkansans feel{" "}
-            <strong>competent and equipped</strong> in their public life—precinct work, local boards, ballot measures,
-            and the patient work of organizing that never fits in a 30-second ad.
-          </p>
-          <p className={p}>
-            The through-line is <strong>recruit, train, activate</strong>: find people with fire in their chest, help
-            them build skills that match the rules on the ground, then put them in roles where the state actually
-            changes—in school districts, in county courthouses, in initiative campaigns, and in the long tail of
-            <strong> follow-up</strong> that separates meaningful civic life from a one-off rally. That bias toward
-            <strong> teaching</strong> instead of <strong> performing</strong> is exactly the posture Kelly wants from a
-            Secretary of State: an office you can <strong>learn your way through</strong>, not a black box for insiders
-            with the right contact.
-          </p>
-          <p className={p}>
-            The values the organization publicizes are the same ones you want in someone who would swear an oath to
-            uphold the law for everyone: <strong>inclusivity, empowerment, integrity, collaboration, continuous
-            learning</strong>, and a durable commitment to <strong>democratic principles</strong>. The Secretary of
-            State is not a legislator, but the office can model <strong>respect for the electorate</strong> in how it
-            answers questions, how it enforces rules evenly, and how it equips both voters and local officials to do
-            their jobs <strong>without tripping on ambiguity</strong>.
-          </p>
-          <p className={p}>
-            If you care about <strong>ballot access and clarity</strong>, about <strong>youth and first-time
-            voters</strong>, and about a culture where neighbors argue on purpose without treating each other as
-            disposable, this work is not a cute sidebar in Kelly’s biography—it is the <strong>evidence of how she
-            leads</strong> when no camera is guaranteed.
-          </p>
-          <p className="rounded-xl border border-kelly-success/25 bg-kelly-success/[0.06] p-4 font-body text-sm text-kelly-text/80">
-            <span className="font-bold text-kelly-text">Explore: </span>
-            <a
-              href="https://www.standuparkansas.com/civic-education-hub"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={linkOut}
-            >
-              Civic education hub
-            </a>{" "}
-            ·{" "}
-            <a href="https://www.standuparkansas.com/about-us" target="_blank" rel="noopener noreferrer" className={linkOut}>
-              About us
-            </a>{" "}
-            ·{" "}
-            <a href="https://www.standuparkansas.com" target="_blank" rel="noopener noreferrer" className={linkOut}>
-              standuparkansas.com
-            </a>
-          </p>
-        </div>
-      );
-
     case "initiatives-petitions":
       return (
         <div className="space-y-6">

@@ -60,6 +60,11 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        source: "/about/stand-up-arkansas",
+        destination: "/about/community",
+        permanent: true,
+      },
+      {
         source: "/the-arkansas-we-know",
         destination: "/",
         permanent: true,

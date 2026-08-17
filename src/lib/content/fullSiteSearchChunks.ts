@@ -26,7 +26,6 @@ import { listMovementRegionInfo } from "../../content/arkansas-movement-regions"
 import { campaignTrailPhotos } from "../../content/media/campaign-trail-photos";
 import { trailPhotoWittyCaption } from "../../content/media/campaign-trail-wit";
 import { loadForevermostFarmsSearchChunks } from "../../content/background/forevermost-farms";
-import { loadStandUpArkansasSearchChunks } from "../../content/background/stand-up-arkansas";
 import { loadStrategicMessagingTrustReformChunks } from "../../content/background/strategic-messaging-trust-reform";
 import { loadYouthEngagementStrategyChunks } from "../../content/background/youth-engagement-strategy";
 
@@ -273,7 +272,6 @@ export function loadFullSiteSearchChunks(): DocChunk[] {
   return [
     ...out,
     ...loadForevermostFarmsSearchChunks(),
-    ...loadStandUpArkansasSearchChunks(),
     ...loadStrategicMessagingTrustReformChunks(),
     ...loadYouthEngagementStrategyChunks(),
   ].filter((c) => c.content.length >= 40);

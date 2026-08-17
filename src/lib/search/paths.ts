@@ -30,7 +30,6 @@ export function pathKindLabel(path: string): string {
   if (path.startsWith("external:")) {
     const href = path.slice("external:".length);
     if (/forevermostfarms\.com/i.test(href)) return "Kelly & Steve’s farm site";
-    if (/standuparkansas\.com/i.test(href)) return "Stand Up Arkansas";
     return "External site";
   }
   if (path.startsWith("route:")) return "Page";

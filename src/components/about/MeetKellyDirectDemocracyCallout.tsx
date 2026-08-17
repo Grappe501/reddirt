@@ -18,7 +18,7 @@ export function MeetKellyDirectDemocracyCallout() {
       <p className="mt-4 max-w-3xl font-body text-base leading-relaxed text-kelly-text/85">
         Kelly entered this race not only to administer elections fairly—but to defend Arkansans&apos; path to put
         measures on the ballot, run referenda when power overreaches, and keep signature gathering in volunteers&apos;
-        hands. Stand Up Arkansas and LEARNS petition work are part of the same story.
+        hands. LEARNS petition work is part of that story.
       </p>
       <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
         <Link

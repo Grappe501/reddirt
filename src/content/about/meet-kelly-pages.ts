@@ -42,21 +42,13 @@ export const meetKellyCommunityCopy = {
     eyebrow: "Meet Kelly",
     title: "Community & civic work",
     subtitle:
-      "Organizations Kelly helps lead, grassroots petition work, and civics as skill-building—not performance. Specific initiative claims require Kelly approval before publication.",
+      "Grassroots petition work and civics as skill-building—not performance.",
   },
   sections: [
     {
-      title: "Stand Up Arkansas",
-      body:
-        "Nonprofit civic organization focused on voter education and community engagement—recruiting, training, and activating leaders across the state.",
-      href: "https://www.standuparkansas.com/",
-      hrefLabel: "standuparkansas.com",
-      status: "VERIFIED" as const,
-    },
-    {
       title: "Ballot petitions & LEARNS",
       body:
-        "After the LEARNS Act, Kelly and neighbors organized referendum and initiative support—including a temporary Sherwood office for petition packets and notaries. Timeline and scope need campaign verification. Democracy starts local; citizen-led work stays volunteer-centered.",
+        "After the LEARNS Act, Kelly and neighbors organized referendum and initiative support—including a temporary Sherwood office for petition packets and notaries. Democracy starts local; citizen-led work stays volunteer-centered.",
       href: "/direct-democracy/ballot-initiative-process",
       hrefLabel: "How initiatives reach the ballot",
       status: "NEEDS KELLY APPROVAL" as const,

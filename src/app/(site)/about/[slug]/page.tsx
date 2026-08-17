@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import Link from "next/link";
 import { PageHero } from "@/components/blocks/PageHero";
 import { ContentContainer } from "@/components/layout/ContentContainer";
@@ -24,6 +24,7 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug: raw } = await params;
+  if (raw === "stand-up-arkansas") return {};
   if (!isKellyAboutSlug(raw)) return {};
   const c = getKellyAboutChapter(raw);
   if (!c) return {};
@@ -38,6 +39,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 /** Level 2 — expanded campaign chapters (full prose). Level 3 manuscript stays off at PUBLIC_BIOGRAPHY_DEPTH 3. */
 export default async function AboutChapterPage({ params }: PageProps) {
   const { slug: raw } = await params;
+  if (raw === "stand-up-arkansas") redirect("/about/community");
   if (!isKellyAboutSlug(raw)) notFound();
   const slug = raw as KellyAboutSlug;
   const c = getKellyAboutChapter(slug);

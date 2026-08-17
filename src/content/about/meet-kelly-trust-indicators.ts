@@ -25,13 +25,6 @@ export const MEET_KELLY_TRUST_INDICATORS: readonly TrustIndicator[] = [
   },
   {
     kind: "organization",
-    label: "Stand Up Arkansas",
-    detail: "Nonprofit civic organization Kelly helps lead — voter education and community engagement.",
-    href: "https://www.standuparkansas.com/",
-    verification: "VERIFIED",
-  },
-  {
-    kind: "organization",
     label: "Forevermost Farms",
     detail: "Family farm and market operations in Rose Bud, Arkansas.",
     href: "https://www.facebook.com/forevermostfarms",
