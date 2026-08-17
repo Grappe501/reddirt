@@ -18,7 +18,6 @@ import {
 } from "../../content/home/homepagePremium";
 import { JOURNEY_BEAT_DEFINITIONS } from "../../content/home/journey";
 import { KELLY_ABOUT_CHAPTERS } from "../../content/about/kelly-about-chapters";
-import { circulatingInitiatives2026, CIRCULATING_DISCLAIMER } from "../../content/direct-democracy/circulating-initiatives";
 import { allToolkitGuides } from "../../content/resources/toolkit-guides";
 import { kellyFriendInviteScripts } from "../../content/resources/kelly-friend-invite-scripts";
 import { publishedMediaEarlier, publishedMediaSince2025_11 } from "../../content/editorial/external-media";
@@ -140,30 +139,6 @@ export function loadFullSiteSearchChunks(): DocChunk[] {
       path: `route:/about/${c.slug}`,
       title: `${c.title} — Meet Kelly`,
       chunkIndex: 0,
-      content: cap(text),
-    });
-  }
-
-  const circHeader = ["# Circulating ballot measures (education snapshot)", CIRCULATING_DISCLAIMER, ""].join("\n\n");
-  for (const init of circulatingInitiatives2026) {
-    const text = [
-      circHeader,
-      `## ${init.name}`,
-      init.shortLabel,
-      `Category: ${init.category} · ${init.format}`,
-      `Outcome: ${init.stamp.mark} — ${init.stamp.submark}`,
-      init.statusLine,
-      init.summary,
-      init.whatItWouldDo,
-      init.organizing,
-      init.sosStewardship,
-      init.verify,
-      `Learn more: ${init.directWebsite.label} ${init.directWebsite.href}`,
-    ].join("\n\n");
-    out.push({
-      path: "route:/resources/direct-democracy-guide",
-      title: init.shortLabel,
-      chunkIndex: nextChunkIndex("route:/resources/direct-democracy-guide", idx),
       content: cap(text),
     });
   }

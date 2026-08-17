@@ -43,7 +43,7 @@ const explainers: ExplainerEntry[] = [
       },
     ],
     relatedLinks: [
-      { label: "Direct democracy pillar", href: "/direct-democracy" },
+      { label: "How initiatives reach the ballot", href: "/direct-democracy/ballot-initiative-process" },
       { label: "Editorial: democracy in practice", href: "/editorial/direct-democracy-in-practice" },
     ],
     relatedSlugs: ["how-ballot-initiatives-work", "how-local-organizing-works"],

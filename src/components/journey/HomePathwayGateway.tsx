@@ -30,8 +30,8 @@ const PATHWAYS: PathwayCard[] = [
     title: "Ballot access & democracy",
     line: "How initiatives work and why direct democracy needs a fair front office.",
     chapterHref: "/civic-depth",
-    href: "/direct-democracy",
-    hrefLabel: "Direct democracy",
+    href: "/direct-democracy/ballot-initiative-process",
+    hrefLabel: "How initiatives work",
   },
   {
     key: "field",

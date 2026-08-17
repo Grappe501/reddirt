@@ -1,6 +1,5 @@
 import {
   ballotInitiativeProcessHref,
-  directDemocracyHubHref,
   kellyInitiativesChapterHref,
 } from "@/config/direct-democracy-links";
 import { getCampaignBlogUrl } from "@/config/external-campaign";
@@ -98,11 +97,10 @@ export const primaryNavGroups: NavGroup[] = [
   {
     id: "peoples-voice",
     label: "The People's Voice",
-    groupLandingHref: directDemocracyHubHref,
+    groupLandingHref: "/priorities#peoples-voice",
     items: [
       { label: "Kelly's petition organizing", href: kellyInitiativesChapterHref },
       { label: "Learn How Direct Democracy Works", href: ballotInitiativeProcessHref },
-      { label: "The People's Voice hub", href: directDemocracyHubHref },
     ],
   },
   {

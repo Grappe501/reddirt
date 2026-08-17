@@ -26,7 +26,7 @@ export const PUBLIC_EDIT_PAGE_LINKS: PublicEditPageLink[] = [
   { href: "/volunteer", label: "Volunteer", hint: "Volunteer" },
   { href: "/donate", label: "Donate", hint: "Donate hero" },
   { href: "/contact", label: "Contact", hint: "Contact" },
-  { href: "/direct-democracy", label: "Direct democracy", hint: "DD path" },
+  { href: "/direct-democracy/ballot-initiative-process", label: "Ballot initiative process", hint: "How initiatives work" },
   { href: "/arkansas", label: "Arkansas", hint: "Statewide" },
   { href: "/press-coverage", label: "Press", hint: "Coverage" },
   { href: "/host-a-gathering", label: "Host gathering", hint: "Host path" },

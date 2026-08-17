@@ -4,13 +4,11 @@ import { SectionHeading } from "@/components/blocks/SectionHeading";
 import { FullBleedSection } from "@/components/layout/FullBleedSection";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { ResponsiveGrid } from "@/components/layout/ResponsiveGrid";
-import { ProcessSteps } from "@/components/blocks/ProcessSteps";
 import { QuoteBand } from "@/components/blocks/QuoteBand";
 import { CTASection } from "@/components/blocks/CTASection";
 import { Button } from "@/components/ui/Button";
 import { siteConfig } from "@/config/site";
 import { getPageBlockPayload, type HeroBlockPayload } from "@/lib/content/page-blocks";
-import { CirculatingInitiativesSection } from "@/components/direct-democracy/CirculatingInitiativesSection";
 
 export const dynamic = "force-dynamic";
 
@@ -19,39 +17,6 @@ export const metadata: Metadata = {
   description:
     "Direct democracy, campaign finance, and a volunteer-only standard for initiative signatures—spend on training and marketing, not paid canvassers. The Secretary of State’s role is fair process and clarity.",
 };
-
-const pipelineSteps = [
-  {
-    step: 1,
-    title: "Issue identification",
-    description:
-      "Neighbors name a problem with clarity: what happened, who it hurts, and what voters should decide.",
-  },
-  {
-    step: 2,
-    title: "Coalition building",
-    description:
-      "Trusted leaders align on language, scope, and responsibility—especially with communities most affected.",
-  },
-  {
-    step: 3,
-    title: "Education",
-    description:
-      "Plain-language briefings so voters know what they’re signing, what changes, and what doesn’t.",
-  },
-  {
-    step: 4,
-    title: "Signature collection",
-    description:
-      "Volunteer-only signatures. Organized, respectful canvassing with legal guardrails—dignity for signers and volunteers. Spend on education, training, and marketing; do not pay people per signature or by the hour to collect them. Paid canvassers are another way money can distort the process—no better, in this campaign’s view, than dark money at the door.",
-  },
-  {
-    step: 5,
-    title: "Ballot placement",
-    description:
-      "If thresholds are met, the decision belongs to voters—not backroom deals.",
-  },
-] as const;
 
 export default async function DirectDemocracyPage() {
   const hero = await getPageBlockPayload<HeroBlockPayload>("direct-democracy", "hero");
@@ -112,21 +77,7 @@ export default async function DirectDemocracyPage() {
         </ContentContainer>
       </FullBleedSection>
 
-      {/* Referendum commitment network stays off this page until a separate launch. */}
-
-      <FullBleedSection aria-labelledby="pipeline-heading">
-        <ContentContainer wide>
-          <SectionHeading
-            id="pipeline-heading"
-            eyebrow="How it moves"
-            title="Ballot initiative pipeline"
-            subtitle="Citizen-led initiatives should be disciplined: clear, coalition-backed, and understandable to neighbors—not rushed gimmicks."
-          />
-          <ProcessSteps className="mt-12" steps={[...pipelineSteps]} id="initiative-pipeline" />
-        </ContentContainer>
-      </FullBleedSection>
-
-      <CirculatingInitiativesSection />
+      {/* Referendum network, pipeline, and specific ballot initiatives stay off this page until a separate launch. */}
 
       <FullBleedSection variant="elevated" aria-labelledby="priority-heading">
         <ContentContainer>

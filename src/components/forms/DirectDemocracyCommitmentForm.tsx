@@ -86,8 +86,8 @@ export function DirectDemocracyCommitmentForm({ id }: { id?: string }) {
         </p>
         <p>
           Until then, read how the{" "}
-          <Link className="font-semibold text-kelly-navy underline" href="/direct-democracy#initiative-pipeline">
-            initiative pipeline
+          <Link className="font-semibold text-kelly-navy underline" href="/direct-democracy/ballot-initiative-process">
+            how a measure reaches the ballot
           </Link>{" "}
           works and share the{" "}
           <Link className="font-semibold text-kelly-navy underline" href="/resources">

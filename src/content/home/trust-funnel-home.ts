@@ -410,7 +410,7 @@ export const trustFunnelHomeCopy = {
       },
     ] as const,
     ctas: {
-      hub: "Direct democracy hub",
+      hub: "The People's Constitutional Voice",
       process: "How initiatives reach the ballot",
       getInvolved: "Get involved",
     },

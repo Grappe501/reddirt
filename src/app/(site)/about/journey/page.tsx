@@ -35,8 +35,8 @@ export default async function AboutJourneyPage() {
         <Button href="/about/why-im-running" variant="outlineOnDark">
           Why I’m running
         </Button>
-        <Button href="/direct-democracy" variant="outlineOnDark">
-          Direct democracy
+        <Button href="/direct-democracy/ballot-initiative-process" variant="outlineOnDark">
+          How initiatives work
         </Button>
       </MediaPageHero>
 

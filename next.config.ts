@@ -70,8 +70,13 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: "/direct-democracy",
+        destination: "/priorities#peoples-voice",
+        permanent: true,
+      },
+      {
         source: "/direct-democracy/commitment-network",
-        destination: "/direct-democracy",
+        destination: "/priorities#peoples-voice",
         permanent: true,
       },
       {
@@ -180,7 +185,7 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/the-peoples-voice",
-        destination: "/direct-democracy",
+        destination: "/priorities#peoples-voice",
         permanent: false,
       },
       /**

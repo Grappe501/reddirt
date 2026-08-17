@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { CirculatingInitiativesSection } from "@/components/direct-democracy/CirculatingInitiativesSection";
 import { FriendInviteScriptsSection } from "@/components/resources/FriendInviteScriptsSection";
 import { ToolkitGuideView } from "@/components/resources/ToolkitGuideView";
 import { getToolkitGuide, getToolkitSlugs } from "@/content/resources/toolkit";
@@ -31,11 +30,7 @@ export default async function ToolkitGuidePage({ params }: Props) {
   const guide = getToolkitGuide(slug);
   if (!guide) notFound();
   const insertBeforeGoDeeper =
-    slug === "talking-about-kelly" ? (
-      <FriendInviteScriptsSection />
-    ) : slug === "direct-democracy-guide" ? (
-      <CirculatingInitiativesSection />
-    ) : null;
+    slug === "talking-about-kelly" ? <FriendInviteScriptsSection /> : null;
 
   return <ToolkitGuideView guide={guide} insertBeforeGoDeeper={insertBeforeGoDeeper} />;
 }

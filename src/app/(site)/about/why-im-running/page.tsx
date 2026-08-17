@@ -106,8 +106,8 @@ export default async function WhyImRunningPage() {
             <Button href="/priorities" variant="primary">
               See My Plan
             </Button>
-            <Button href="/direct-democracy" variant="outline">
-              Direct democracy
+            <Button href="/direct-democracy/ballot-initiative-process" variant="outline">
+              How initiatives work
             </Button>
           </div>
         </ContentContainer>

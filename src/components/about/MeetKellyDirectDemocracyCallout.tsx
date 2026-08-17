@@ -1,7 +1,6 @@
 import Link from "next/link";
 import {
   ballotInitiativeProcessHref,
-  directDemocracyHubHref,
   kellyInitiativesChapterHref,
 } from "@/config/direct-democracy-links";
 
@@ -28,14 +27,8 @@ export function MeetKellyDirectDemocracyCallout() {
       </div>
       <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
         <Link
-          href={directDemocracyHubHref}
-          className="inline-flex min-h-[44px] items-center justify-center rounded-btn bg-kelly-navy px-5 py-2.5 text-sm font-bold uppercase tracking-wide text-white hover:bg-kelly-blue"
-        >
-          Direct democracy hub
-        </Link>
-        <Link
           href={ballotInitiativeProcessHref}
-          className="inline-flex min-h-[44px] items-center justify-center rounded-btn border-2 border-kelly-navy/20 bg-white px-5 py-2.5 text-sm font-bold uppercase tracking-wide text-kelly-navy hover:border-kelly-gold/50"
+          className="inline-flex min-h-[44px] items-center justify-center rounded-btn bg-kelly-navy px-5 py-2.5 text-sm font-bold uppercase tracking-wide text-white hover:bg-kelly-blue"
         >
           How initiatives reach the ballot
         </Link>

@@ -40,16 +40,10 @@ const pageSeeds = [
       "Kelly’s story, values, and why she is running for Secretary of State—farming roots, public service, transparent elections, and respect for every county.",
   },
   {
-    path: "route:/direct-democracy",
-    title: "Direct Democracy",
-    content:
-      "Ballot initiatives, referenda, signature processes, and how the Secretary of State’s office relates to voter access.",
-  },
-  {
     path: "route:/priorities",
     title: "Office priorities",
     content:
-      "Secretary of State responsibilities: elections, public records, business filings—focused on competence, clarity, and trust.",
+      "Secretary of State responsibilities: elections, public records, business filings—focused on competence, clarity, and trust. The People's Constitutional Voice covers ballot access and the citizen initiative process.",
   },
   {
     path: "route:/civic-depth",
