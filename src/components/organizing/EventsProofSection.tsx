@@ -21,8 +21,7 @@ export function EventsProofSection({
           Showing up matters.
         </h2>
         <p className="mt-2 max-w-2xl font-body text-kelly-text/75">
-          Kelly has traveled Arkansas listening to the people who actually live here. The map updates when a qualifying
-          in-person stop ends — Central Time, no manual graphic swap.
+          Kelly has traveled Arkansas listening to the people who actually live here.
         </p>
       </div>
 
