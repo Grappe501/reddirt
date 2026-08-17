@@ -374,7 +374,7 @@ Mobilize link: [MOBILIZE_LINK_PLACEHOLDER]
 
 ## Paid for disclaimer
 
-Paid for by Kelly Grappe for Secretary of State
+Paid for by The Committee to Elect Kelly Grappe
 `,
       "utf8",
     );
@@ -394,7 +394,7 @@ function writeSocialGraphics(stops: UpcomingStopActivation[]) {
       location: s.city !== "TBD" ? `${s.city}, ${s.county}` : s.county,
       callToAction: "RSVP on Mobilize — link TBD",
       brandTone: "Warm · local · proof-of-presence · not attack",
-      requiredDisclaimers: "Paid for by Kelly Grappe for Secretary of State",
+      requiredDisclaimers: "Paid for by The Committee to Elect Kelly Grappe",
       status: s.graphicsStatus,
     };
     return [

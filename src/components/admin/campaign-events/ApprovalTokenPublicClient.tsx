@@ -127,7 +127,7 @@ export function ApprovalTokenPublicClient({
         </p>
       )}
 
-      <p className="mt-10 text-center text-[10px] text-kelly-subtle">Paid for by Kelly Grappe for Secretary of State</p>
+      <p className="mt-10 text-center text-[10px] text-kelly-subtle">Paid for by The Committee to Elect Kelly Grappe</p>
     </main>
   );
 }

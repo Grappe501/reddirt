@@ -110,7 +110,7 @@ export const CAMPAIGN_POLICY_V1 = {
   },
   disclaimers: {
     /** Shown on public + admin footers; must stay consistent with `CampaignPaidForBar` usage. */
-    pageFooterPaidForLine: "Paid for by Kelly Grappe for Secretary of State",
+    pageFooterPaidForLine: "Paid for by The Committee to Elect Kelly Grappe",
   },
   expense: {
     /** USD per mile — policy default, not a statutory rate claim. */

@@ -31,7 +31,7 @@ These are **initial campaign policy defaults** in **`CAMPAIGN_POLICY_V1`** (`pol
 | **Tone** | Calm |
 | **Philosophy** | Bottom-up |
 | **Organizing line** | “We are here to help people organize where they are.” |
-| **Page disclaimer (public + admin footers)** | “Paid for by Kelly Grappe for Secretary of State” (see `CampaignPaidForBar`, sourced from `CAMPAIGN_POLICY_V1`) |
+| **Page disclaimer (public + admin footers)** | “Paid for by The Committee to Elect Kelly Grappe” (see `CampaignPaidForBar`, sourced from `CAMPAIGN_POLICY_V1`) |
 | **Mileage reimbursement (internal default)** | **$0.725** per mile |
 | **Reimbursement scope (internal default)** | **Candidate expenses only** (`ReimbursementScope.CANDIDATE_EXPENSES_ONLY`) |
 | **Spend approval bands (BUDGET-2, narrative only)** | `CAMPAIGN_POLICY_V1.spendBudget.approvalThresholds` — small / medium / high **USD ceilings** with **SOP** copy; **no** software enforcement |

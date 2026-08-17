@@ -191,7 +191,7 @@ export function OfficialReimbursementReportView({
             </dl>
             <p className="mt-3 font-body text-xs text-kelly-muted">{report.statusNote}</p>
             <p className="mt-2 font-body text-[10px] text-kelly-subtle print:block">
-              Paid for by Kelly Grappe for Secretary of State. Internal campaign ledger — not a FIN-1 filing packet.
+              Paid for by The Committee to Elect Kelly Grappe. Internal campaign ledger — not a FIN-1 filing packet.
             </p>
           </header>
 
@@ -328,7 +328,7 @@ export function OfficialReimbursementReportView({
           </section>
 
           <footer className="border-t border-kelly-text/15 pt-4 font-body text-[10px] text-kelly-subtle">
-            Paid for by Kelly Grappe for Secretary of State · Generated from Campaign Event Ledger · {report.month} ·
+            Paid for by The Committee to Elect Kelly Grappe · Generated from Campaign Event Ledger · {report.month} ·
             Print date {new Date().toISOString().slice(0, 10)}
           </footer>
         </div>

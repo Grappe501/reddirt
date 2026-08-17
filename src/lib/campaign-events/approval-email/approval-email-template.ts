@@ -54,7 +54,7 @@ export function buildApprovalEmailBodies(input: ApprovalEmailTemplateInput): { h
     "",
     "Google Calendar promotion is not enabled yet. Decisions update the campaign ledger only.",
     "",
-    "Paid for by Kelly Grappe for Secretary of State",
+    "Paid for by The Committee to Elect Kelly Grappe",
   ].join("\n");
 
   const html = `<!DOCTYPE html>
@@ -81,7 +81,7 @@ export function buildApprovalEmailBodies(input: ApprovalEmailTemplateInput): { h
     </tr></table>
     <p style="font-size:12px;color:#6b7280;margin-top:20px">Google Calendar promotion is not enabled yet. Your decision updates the campaign event ledger only.</p>
     <hr style="border:none;border-top:1px solid #e5e2db;margin:24px 0 12px"/>
-    <p style="font-size:11px;color:#6b7280;margin:0">Paid for by Kelly Grappe for Secretary of State</p>
+    <p style="font-size:11px;color:#6b7280;margin:0">Paid for by The Committee to Elect Kelly Grappe</p>
   </div>
 </body>
 </html>`;
