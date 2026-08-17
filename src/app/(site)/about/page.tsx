@@ -7,6 +7,7 @@ import { ContentContainer } from "@/components/layout/ContentContainer";
 import { Button } from "@/components/ui/Button";
 import { MeetKellySubnav } from "@/components/about/MeetKellySubnav";
 import { MeetKellyTrustIndicators } from "@/components/about/MeetKellyTrustIndicators";
+import { MeetKellyDirectDemocracyCallout } from "@/components/about/MeetKellyDirectDemocracyCallout";
 import { aboutLaunchCopy } from "@/content/about/about-launch";
 import {
   getHomepageMeetKellyPhoto,
@@ -74,6 +75,9 @@ export default async function AboutPage() {
       <FullBleedSection variant="subtle" className="!py-6">
         <ContentContainer className="max-w-3xl">
           <MeetKellySubnav current="/about" />
+          <div className="mt-10">
+            <MeetKellyDirectDemocracyCallout />
+          </div>
         </ContentContainer>
       </FullBleedSection>
 

@@ -94,7 +94,7 @@ export const prioritiesLaunchCopy = {
         "Arkansas is one of only 16 states where citizens have both initiative and referendum powers. Our Constitution doesn’t simply allow citizens to participate in this process — it reserves that power to the people.",
         "In recent years, the legislature has repeatedly added requirements and barriers to exercising that right. The process has become so complicated and unforgiving that ordinary Arkansans can invest months of work, organize volunteers, gather thousands of signatures and still lose their effort over a technical or procedural issue.",
         "A constitutional right shouldn’t require an army of lawyers and political professionals to exercise it.",
-        "I want to build a process that ordinary Arkansans and grassroots organizations can realistically navigate.",
+        "I want to build a process that ordinary Arkansans can realistically navigate.",
       ],
       subsections: [
         {
