@@ -3383,6 +3383,20 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     sourceType: "calendar",
   },
   {
+    id: "manual-2026-08-21-power-of-one-vote-dumas",
+    date: "2026-08-21",
+    title: "The Power of One Vote — Dumas",
+    publicTitle: "The Power of One Vote — Dumas",
+    city: "Dumas",
+    counties: ["Desha"],
+    status: "scheduled",
+    includeOnPublicPage: true,
+    confidence: "confirmed",
+    notes:
+      "Public listing is power-of-one-vote-dumas-2026-08-21. Hosted with the 12th Episcopal District of the AME Church and the Arkansas Democratic Black Caucus. Steve 2026-08-17: ADBC July 2026 church voter-registration working document (David L. Ashley, President) treats this as part of statewide church turnout for all four statewide races, including SOS. Partner contact stays off the public page. Send ADBC kellygrappe.com; their contact sheet currently routes Kelly through the Democratic Party of Arkansas. Do not publish ADBC opponent attack lines. Do not use their Oct 7 registration or Oct 20-Nov 1 early-vote dates — official SOS calendar is register by Oct 5 and early vote Oct 19-Nov 2.",
+    sourceType: "manual",
+  },
+  {
     id: "locked-2026-08-22-cave-city",
     date: "2026-08-22",
     title: "Cave City",
