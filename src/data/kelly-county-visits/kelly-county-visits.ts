@@ -2782,11 +2782,12 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     id: "presence-2026-07-07-hot-spring-county-meeting-malvern",
     date: "2026-07-07",
     title: "Hot spring county meeting. Malvern.",
-    counties: [],
-    status: "needs-review",
+    counties: ["Hot Spring"],
+    status: "completed",
     includeOnPublicPage: false,
-    confidence: "uncertain",
-    notes: "Presence row without county — held for Pass 2 / Steve assignment",
+    confidence: "likely",
+    notes:
+      "Summer Malvern meeting. Public completed visit for the county is locked-2026-07-08-hot-spring-county-visit so this row does not double-count. Taylor Jones confirmed the summer stop on July 28.",
     sourceType: "calendar",
   },
   {
@@ -2797,8 +2798,9 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     counties: ["Hot Spring"],
     status: "completed",
     includeOnPublicPage: true,
-    confidence: "likely",
-    notes: "Seeded from locked-events-steve.json",
+    confidence: "confirmed",
+    notes:
+      "Seeded from locked-events-steve.json. Steve 2026-08-17: Taylor Jones thanked Kelly for coming to Malvern this summer. September 19 cookout is the next public stop: hot-spring-county-cookout-2026-09-19.",
     sourceType: "local-file",
   },
   {
@@ -2925,11 +2927,8 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     status: "completed",
     includeOnPublicPage: true,
     confidence: "likely",
-    notes: "Seeded from locked-events-steve.json",
-    sourceType: "local-file",
-  },
-  {
-    id: "presence-2026-07-17-franklin-county-event-6pm",
+    notes:
+      "Seeded from locked-events-steve.json. Steve 2026-08-17: Taylor Jones thanked Kelly for the summer Malvern visit. Public cookout is hot-spring-county-cookout-2026-09-19.",
     date: "2026-07-17",
     title: "Franklin County event 6pm",
     counties: ["Franklin"],
@@ -3788,11 +3787,26 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     date: "2026-09-19",
     title: "4pm hot spring dems picnic tentative",
     counties: [],
-    status: "needs-review",
+    status: "duplicate",
     includeOnPublicPage: false,
-    confidence: "uncertain",
-    notes: "Presence row without county — held for Pass 2 / Steve assignment",
+    confidence: "confirmed",
+    notes:
+      "Superseded. Confirmed public stop is hot-spring-county-cookout-2026-09-19, 5:00-7:00 p.m. at the Hot Spring County 4-H Center. Steve booked July 30.",
     sourceType: "calendar",
+  },
+  {
+    id: "manual-2026-09-19-hot-spring-county-cookout",
+    date: "2026-09-19",
+    title: "Community Cookout — Hot Spring County Democrats",
+    publicTitle: "Community Cookout — Hot Spring County Democrats",
+    city: "Malvern",
+    counties: ["Hot Spring"],
+    status: "scheduled",
+    includeOnPublicPage: true,
+    confidence: "confirmed",
+    notes:
+      "Steve 2026-08-17: Booked July 30 with Taylor Jones for 5:00 p.m. Sept 19. Flyer: Hot Spring County 4-H Center, 1407 US-270, Malvern, 5:00-7:00 p.m. Public listing is hot-spring-county-cookout-2026-09-19. Same day as Little Rock Comic Con 9:00 a.m.-2:00 p.m. — Kelly already said she could do Comic Con then Malvern in the evening. Host contact stays off the public page. Sept 26 was declined because they are booked (Paragould forum).",
+    sourceType: "manual",
   },
   {
     id: "locked-2026-09-20-jacksonville-festiville",
