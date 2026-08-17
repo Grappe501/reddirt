@@ -3305,12 +3305,13 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
   {
     id: "presence-2026-08-18-meet-with-senior-dems-in-nwar-debby-winters-contact",
     date: "2026-08-18",
-    title: "Meet with Senior Dems in NWAR (Debby Winters contact)",
-    counties: [],
-    status: "needs-review",
+    title: "NWA Senior Democrats meeting — Fayetteville",
+    city: "Fayetteville",
+    counties: ["Washington"],
+    status: "scheduled",
     includeOnPublicPage: false,
-    confidence: "uncertain",
-    notes: "Presence row without county — held for Pass 2 / Steve assignment",
+    confidence: "confirmed",
+    notes: "Public listing is /events/nwa-senior-democrats-fayetteville-2026-08-18. Butterfield Trail Village Lodge, noon.",
     sourceType: "calendar",
   },
   {

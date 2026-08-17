@@ -70,6 +70,11 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: "/events/bella-vista-senior-nwa-2026-08-18",
+        destination: "/events/nwa-senior-democrats-fayetteville-2026-08-18",
+        permanent: true,
+      },
+      {
         source: "/the-arkansas-we-know",
         destination: "/",
         permanent: true,

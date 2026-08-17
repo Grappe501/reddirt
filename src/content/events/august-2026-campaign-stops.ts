@@ -14,10 +14,17 @@ type StopDraft = {
   endsAt?: string;
   timeTbd?: boolean;
   locationLabel: string;
+  city?: string;
   addressLine?: string;
   summary: string;
+  description?: string;
+  whatToExpect?: string[];
+  whoItsFor?: string;
+  organizerNote?: string;
+  attendanceType?: EventItem["attendanceType"];
   audienceTags: string[];
   mapCoordinates?: { lat: number; lng: number };
+  mapPinQuality?: EventItem["mapPinQuality"];
   relatedEventSlugs: string[];
 };
 
@@ -34,13 +41,17 @@ function campaignStop(draft: StopDraft): EventItem {
     endsAt: draft.endsAt ?? (draft.timeTbd ? `${date}T23:59:00` : undefined),
     timezone: TZ,
     locationLabel: draft.locationLabel,
-    city: draft.locationLabel,
+    city: draft.city ?? draft.locationLabel,
     addressLine: draft.addressLine,
     summary: draft.summary,
-    description: DETAILS_LATER,
-    whatToExpect: ["Stop details will be added when the host confirms venue and program."],
-    whoItsFor: "Neighbors, volunteers, and anyone who wants to meet the campaign on the trail.",
-    organizerNote: "August 2026 campaign timeline — public facts only; details to be added.",
+    description: draft.description ?? DETAILS_LATER,
+    whatToExpect: draft.whatToExpect ?? [
+      "Stop details will be added when the host confirms venue and program.",
+    ],
+    whoItsFor: draft.whoItsFor ?? "Neighbors, volunteers, and anyone who wants to meet the campaign on the trail.",
+    organizerNote:
+      draft.organizerNote ?? "August 2026 campaign timeline — public facts only; details to be added.",
+    attendanceType: draft.attendanceType,
     audienceTags: draft.audienceTags,
     relatedEventSlugs: draft.relatedEventSlugs,
     relatedResourceHrefs: [
@@ -48,6 +59,7 @@ function campaignStop(draft: StopDraft): EventItem {
       { label: "Get involved", href: "/get-involved" },
     ],
     mapCoordinates: draft.mapCoordinates,
+    mapPinQuality: draft.mapPinQuality,
     fieldAttendance: "confirmed",
     campaignTrail: true,
     eventSource: "movement",
@@ -131,21 +143,35 @@ export const august2026CampaignStops: EventItem[] = [
     summary: "Confirmed Washington County Democrats meeting. Time, format, and room to be posted.",
     audienceTags: ["Democratic Party", "Washington County", "Fayetteville"],
     mapCoordinates: { lat: 36.0626, lng: -94.1574 },
-    relatedEventSlugs: ["bella-vista-senior-nwa-2026-08-18"],
+    relatedEventSlugs: ["nwa-senior-democrats-fayetteville-2026-08-18"],
   }),
   campaignStop({
-    slug: "bella-vista-senior-nwa-2026-08-18",
-    title: "Senior Northwest Arkansas — Bella Vista",
+    slug: "nwa-senior-democrats-fayetteville-2026-08-18",
+    title: "NWA Senior Democrats meeting — Fayetteville",
     type: "Community Conversation",
     region: "Northwest Arkansas",
-    countySlug: "benton-county",
-    startsAt: "2026-08-18T11:00:00",
+    countySlug: "washington-county",
+    startsAt: "2026-08-18T12:00:00",
     endsAt: "2026-08-18T13:00:00",
-    locationLabel: "Bella Vista",
-    addressLine: "Bella Vista, AR (venue TBA)",
-    summary: "Late-morning program with Senior Northwest Arkansas in Bella Vista. Venue to be posted.",
-    audienceTags: ["Bella Vista", "Benton County", "Northwest Arkansas"],
-    mapCoordinates: { lat: 36.4815, lng: -94.231 },
+    locationLabel: "Butterfield Trail Village Lodge",
+    city: "Fayetteville",
+    addressLine: "1923 E. Joyce Blvd., Fayetteville, AR 72703",
+    summary:
+      "Tuesday at noon. Kelly will speak at the Northwest Arkansas Senior Democrats meeting at Butterfield Trail Village Lodge in Fayetteville.",
+    description:
+      "The Northwest Arkansas Senior Democrats meet at the Butterfield Trail Village Lodge in Fayetteville, off Joyce Boulevard. The meeting starts at noon. Members often arrive around 11:30 a.m. to eat and socialize; remarks usually begin around 12:20 p.m., and the meeting ends at 1:00 p.m. Parking is in front of the Lodge and on streets inside the Village — do not park on the mailbox side of the street. Look first for the EV charging station in front of the Lodge.",
+    whatToExpect: [
+      "Noon meeting at Butterfield Trail Village Lodge, with social time from about 11:30 a.m.",
+      "Kelly speaks during the noon program; please leave time for questions.",
+      "Park in front of the Lodge or on Village streets — not on the mailbox side. Look for the EV charging station out front.",
+      "The meeting wraps at 1:00 p.m.",
+    ],
+    whoItsFor: "Members of the Northwest Arkansas Senior Democrats and guests at their monthly meeting.",
+    organizerNote: "Confirmed with the host for Tuesday, August 18, 2026. Public venue and schedule only.",
+    attendanceType: "CAMPAIGN_APPEARANCE",
+    audienceTags: ["Democratic Party", "Washington County", "Fayetteville", "Northwest Arkansas"],
+    mapCoordinates: { lat: 36.0994, lng: -94.1368 },
+    mapPinQuality: "exact",
     relatedEventSlugs: ["washington-county-democrats-2026-08-17"],
   }),
   campaignStop({
@@ -299,7 +325,7 @@ export const AUGUST_2026_CAMPAIGN_ROUTE: Array<{ date: string; line: string }> =
   { date: "Aug. 15", line: "Pocahontas → Horseshoe Bend" },
   { date: "Aug. 16", line: "Saline County → Fayetteville" },
   { date: "Aug. 17", line: "Washington County" },
-  { date: "Aug. 18", line: "Bella Vista → North Little Rock" },
+  { date: "Aug. 18", line: "Fayetteville" },
   { date: "Aug. 19", line: "Little Rock" },
   { date: "Aug. 20", line: "→ Dumas" },
   { date: "Aug. 21", line: "Dumas → Rose Bud" },
