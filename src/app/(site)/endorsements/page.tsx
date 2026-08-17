@@ -28,7 +28,7 @@ export default async function EndorsementsPage() {
         preferLabeledEmpty
         eyebrow="Trust"
         title="Endorsements"
-        subtitle="Only formal, campaign-confirmed endorsements appear here. A photograph or conversation is never listed as support."
+        subtitle="Organizations and community leaders who have endorsed Kelly Grappe."
       >
         <Button href="/about" variant="outlineOnDark">
           Read About Kelly’s Experience
@@ -40,24 +40,13 @@ export default async function EndorsementsPage() {
 
       <FullBleedSection padY>
         <ContentContainer className="max-w-4xl">
-          <aside className="mx-auto max-w-2xl rounded-card border border-kelly-ink/10 bg-kelly-fog/50 px-6 py-5 text-left md:px-7">
-            <h2 className="font-heading text-base font-bold tracking-tight text-kelly-ink">
-              Published when confirmed — empty until then
-            </h2>
-            <p className="mt-2 font-body text-sm leading-relaxed text-kelly-slate">
-              Attendance at an event, a photograph, or a private conversation is not an endorsement. Names appear when
-              organizations and community leaders formally announce support.
-            </p>
-          </aside>
-
           {endorsements.length === 0 ? (
             <div className="mt-10 rounded-card border border-kelly-ink/15 bg-kelly-fog/40 px-6 py-10 text-center md:px-10">
               <h2 className="font-heading text-2xl font-bold tracking-tight text-kelly-ink">
-                Earned support, published when confirmed
+                Endorsements
               </h2>
               <p className="mt-4 font-body text-base leading-relaxed text-kelly-slate">
-                This page stays intentionally quiet until organizations and community leaders formally announce support.
-                When they do, you will see the exact organization name, approved wording, and source here.
+                Check back as organizations and community leaders announce their support.
               </p>
             </div>
           ) : (

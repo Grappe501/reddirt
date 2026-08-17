@@ -33,8 +33,6 @@ export const CONFIRMED_ENDORSEMENTS: readonly ConfirmedEndorsement[] = [
     status: "Endorsed",
     description: "Represents workers from affiliated labor organizations across Arkansas.",
     relatedPhotoId: "afl-cio-pre-event-networking-20260629",
-    relatedPhotoNote:
-      "Photograph from before Kelly addressed an Arkansas AFL-CIO gathering. Meeting attendance and the formal endorsement are separate moments.",
     sourceNote: "Campaign-confirmed endorsement for Arkansas Secretary of State.",
     homepage: true,
   },
