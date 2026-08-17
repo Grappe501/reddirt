@@ -423,6 +423,9 @@ export const september2026CampaignStops: EventItem[] = [
     audienceTags: ["Little Rock", "Pulaski County", "Festival"],
     mapCoordinates: { lat: 34.7465, lng: -92.2896 },
     relatedEventSlugs: ["hot-spring-county-cookout-2026-09-19"],
+  }),
+  campaignStop({
+    slug: "hot-spring-county-cookout-2026-09-19",
     title: "Community Cookout — Hot Spring County Democrats",
     type: "Community Conversation",
     region: "West Central Arkansas",
