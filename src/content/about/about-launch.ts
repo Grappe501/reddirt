@@ -55,8 +55,8 @@ export const aboutLaunchCopy = {
   whySos: {
     title: "Why I’m running",
     body: [
-      "The Arkansas Constitution says “all political power is inherent in the people.” I believe those words should mean something.",
-      "I’m running because I believe government works best when the people understand it, can participate in it, and know the people entrusted with it remember who they work for.",
+      "The Arkansas Constitution begins with a promise I believe we have lost sight of: “All political power is inherent in the people.” That is why I’m running for Secretary of State.",
+      "I’m running because I believe we can restore trust—not by asking Arkansans to blindly trust government, but by building a government worthy of their trust.",
     ],
     cta: { href: "/about/why-im-running", label: "Why I’m running" },
     officeCta: { href: "/understand", label: "What the office does" },

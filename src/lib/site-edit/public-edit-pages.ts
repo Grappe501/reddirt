@@ -13,7 +13,6 @@ export const PUBLIC_EDIT_PAGE_LINKS: PublicEditPageLink[] = [
   { href: "/", label: "Home", hint: "Trust funnel hero + media" },
   { href: "/about", label: "Meet Kelly", hint: "About hero + story" },
   { href: "/about/journey", label: "Journey", hint: "Bio journey" },
-  { href: "/about/community", label: "Community", hint: "Community proof" },
   { href: "/about/why-im-running", label: "Why running", hint: "Why this race" },
   { href: "/priorities", label: "Priorities", hint: "Issues heroes" },
   { href: "/kelly-speaks", label: "Kelly Speaks", hint: "Video index" },

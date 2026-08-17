@@ -174,14 +174,6 @@ export function KellyChapterBody({ slug }: Props) {
             <strong>state</strong>, and—when it makes sense—the country. The last several years have put that{" "}
             <strong>local-first</strong> muscle front and center.
           </p>
-          <p className={p}>
-            Kelly is <strong>not personally circulating petitions</strong> this year so there is no fair question of
-            bias in how she would administer the office—but she <strong>believes in the process</strong>: if the people
-            of Arkansas want the question on the ballot, <strong>they should get to vote</strong>. She also believes we
-            should <strong>work to limit corporate and dark money</strong> in initiative politics—ideally keeping
-            citizen-led work <strong>volunteer-centered</strong> so that money and paid interests do not, once again,{" "}
-            <strong>outweigh people’s power and rights</strong> in a process meant to belong to the public.
-          </p>
         </div>
       );
 
@@ -266,7 +258,7 @@ export function KellyChapterBody({ slug }: Props) {
           <ol className="list-decimal space-y-4 pl-5 font-body text-base leading-relaxed text-kelly-text/85">
             <li>
               <strong>Know the story</strong> well enough to explain it in one minute to a neighbor who does not follow
-              politics: <strong>business and farm</strong> experience, <strong>Stand Up</strong>, ballot and initiative
+              politics: <strong>business and farm</strong> experience, ballot and initiative
               work, and what the Secretary of State’s office is actually responsible for under law (not a fantasy portfolio).
             </li>
             <li>

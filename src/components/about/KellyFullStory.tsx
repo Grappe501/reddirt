@@ -188,9 +188,7 @@ const sections: { id: string; moreHref: string; eyebrow: string; title: string; 
         <p className={body}>
           Work has since expanded to <strong>multiple statewide initiatives</strong> and to local efforts—such as{" "}
           <strong>Jacksonville’s</strong> push on <strong>at-large voting</strong> and patterns tied to a{" "}
-          <strong>Jim Crow–era</strong> design. This year Kelly is <strong>not circulating petitions herself</strong> to
-          keep any question of bias out of the Secretary of State’s race, but she supports the people’s right to vote
-          when they want a measure on the ballot. She also believes in <strong>reducing corporate and dark money</strong>{" "}
+          <strong>Jim Crow–era</strong> design. She also believes in <strong>reducing corporate and dark money</strong>{" "}
           in the process and in keeping citizen-led work as <strong>volunteer-driven</strong> as possible—so that money
           and outside interests do not drown out <strong>public power</strong>. <ReadMoreLink href={H_INIT} />
         </p>
@@ -274,7 +272,7 @@ const sections: { id: string; moreHref: string; eyebrow: string; title: string; 
         </p>
         <ol className="list-decimal space-y-3 pl-5 font-body text-base leading-relaxed text-kelly-text/85">
           <li>
-            <strong>Know the story</strong>—her business and farm experience, Stand Up, ballot and initiative work, the
+            <strong>Know the story</strong>—her business and farm experience, ballot and initiative work, the
             office—enough to
             explain it in one minute to a neighbor who does not follow politics.
           </li>
@@ -304,7 +302,7 @@ const sections: { id: string; moreHref: string; eyebrow: string; title: string; 
 ];
 
 export type KellyFullStoryProps = {
-  /** Two breakouts: after “The story we share” and after Stand Up (farm stills stay in the Forevermost block). */
+  /** Two breakouts: after “The story we share” (farm stills stay in the Forevermost block). */
   trailPeoplePhotos?: CampaignTrailPhoto[];
   /**
    * Forevermost / Heifer USA YouTube (above the “The land & the work” heading). From

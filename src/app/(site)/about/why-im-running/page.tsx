@@ -12,9 +12,9 @@ export const dynamic = "force-dynamic";
 const c = whyKellyPageCopy;
 
 export const metadata: Metadata = pageMeta({
-  title: "Why I’m running",
+  title: "Why I’m Running",
   description:
-    "Why Kelly Grappe is running for Arkansas Secretary of State: restore trust, protect the people’s constitutional voice, and make the office work for the people it belongs to.",
+    "Why Kelly Grappe is running for Arkansas Secretary of State: restore trust, partner with all 75 counties, and make the office work for the people it belongs to.",
   path: "/about/why-im-running",
   imageSrc: "/media/placeholders/texture-porch-glow.svg",
 });
@@ -46,27 +46,46 @@ export default async function WhyImRunningPage() {
         </ContentContainer>
       </FullBleedSection>
 
-      {c.sections.map((section, index) => (
-        <FullBleedSection
-          key={section.title}
-          variant={index % 2 === 0 ? "subtle" : "default"}
-          padY
-          aria-labelledby={`why-running-${index}`}
-        >
-          <ContentContainer className="max-w-3xl">
-            <h2 id={`why-running-${index}`} className="font-heading text-2xl font-bold text-kelly-navy md:text-3xl">
-              {section.title}
-            </h2>
-            <div className="mt-8 space-y-6 font-body text-lg leading-relaxed text-kelly-text/88">
-              {section.paragraphs.map((p) => (
-                <p key={p.slice(0, 56)}>{p}</p>
-              ))}
-            </div>
-          </ContentContainer>
-        </FullBleedSection>
-      ))}
+      <FullBleedSection variant="subtle" padY>
+        <ContentContainer className="max-w-3xl">
+          <p className="font-body text-lg font-semibold leading-relaxed text-kelly-navy md:text-xl">
+            {c.intro}
+          </p>
+          <div className="mt-8 space-y-6 font-body text-lg leading-relaxed text-kelly-text/88">
+            {c.paragraphs.map((p) => (
+              <p key={p.slice(0, 56)}>{p}</p>
+            ))}
+          </div>
+        </ContentContainer>
+      </FullBleedSection>
 
-      <FullBleedSection padY>
+      <FullBleedSection padY aria-labelledby="what-ill-do">
+        <ContentContainer className="max-w-3xl">
+          <h2 id="what-ill-do" className="font-heading text-2xl font-bold text-kelly-navy md:text-3xl">
+            {c.whatIllDo.title}
+          </h2>
+          <ul className="mt-8 list-none space-y-6">
+            {c.whatIllDo.items.map((item) => (
+              <li
+                key={item.title}
+                className="rounded-card border border-kelly-text/10 bg-[var(--color-surface-elevated)] p-6 shadow-[var(--shadow-soft)]"
+              >
+                <h3 className="font-heading text-sm font-bold uppercase tracking-[0.14em] text-kelly-gold">
+                  {item.title}
+                </h3>
+                <p className="mt-3 font-body text-base leading-relaxed text-kelly-text/88 md:text-lg">
+                  {item.body}
+                </p>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-10 font-body text-lg leading-relaxed text-kelly-navy md:text-xl">
+            {c.whatIllDo.closer}
+          </p>
+        </ContentContainer>
+      </FullBleedSection>
+
+      <FullBleedSection variant="subtle" padY>
         <ContentContainer className="max-w-3xl">
           <div className="flex flex-wrap justify-center gap-3">
             <Button href="/about" variant="outline">
@@ -75,8 +94,8 @@ export default async function WhyImRunningPage() {
             <Button href="/priorities" variant="primary">
               See My Plan
             </Button>
-            <Button href="/direct-democracy/ballot-initiative-process" variant="outline">
-              Learn How Direct Democracy Works →
+            <Button href="/direct-democracy" variant="outline">
+              Direct democracy
             </Button>
           </div>
         </ContentContainer>

@@ -39,7 +39,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 /** Level 2 — expanded campaign chapters (full prose). Level 3 manuscript stays off at PUBLIC_BIOGRAPHY_DEPTH 3. */
 export default async function AboutChapterPage({ params }: PageProps) {
   const { slug: raw } = await params;
-  if (raw === "stand-up-arkansas") redirect("/about/community");
+  if (raw === "stand-up-arkansas") redirect("/about");
   if (!isKellyAboutSlug(raw)) notFound();
   const slug = raw as KellyAboutSlug;
   const c = getKellyAboutChapter(slug);

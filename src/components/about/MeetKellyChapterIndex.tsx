@@ -8,9 +8,6 @@ export function MeetKellyChapterIndex() {
       <h2 id="meet-kelly-chapters" className="font-heading text-2xl font-bold text-kelly-text md:text-3xl">
         Go deeper — campaign chapters
       </h2>
-      <p className="mt-3 max-w-2xl font-body text-base leading-relaxed text-kelly-text/78">
-        Longer essays on each arc. Résumé and timeline claims need campaign verification before republishing elsewhere.
-      </p>
       <ContentPendingBadge variant="draft" className="mt-4" />
       <ul className="mt-8 grid gap-4 sm:grid-cols-2">
         {KELLY_ABOUT_CHAPTERS.map((ch) => (

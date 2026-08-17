@@ -260,7 +260,7 @@ export const trustFunnelHomeCopy = {
     videoIntroduction:
       "A trail story from Hot Springs Village: neighbors gathering, conversations starting, and the work of showing up.",
     cta: "See Kelly Across Arkansas",
-    ctaHref: "/about/journey",
+    ctaHref: "/arkansas-visits",
   },
 
   campaignPhotos: {

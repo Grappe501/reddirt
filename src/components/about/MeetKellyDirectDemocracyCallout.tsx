@@ -22,12 +22,6 @@ export function MeetKellyDirectDemocracyCallout() {
       </p>
       <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
         <Link
-          href={directDemocracyHubHref}
-          className="inline-flex min-h-[44px] items-center justify-center rounded-btn bg-kelly-navy px-5 py-2.5 text-sm font-bold uppercase tracking-wide text-white hover:bg-kelly-blue"
-        >
-          Direct democracy hub
-        </Link>
-        <Link
           href={ballotInitiativeProcessHref}
           className="inline-flex min-h-[44px] items-center justify-center rounded-btn border-2 border-kelly-navy/20 bg-white px-5 py-2.5 text-sm font-bold uppercase tracking-wide text-kelly-navy hover:border-kelly-gold/50"
         >
@@ -38,6 +32,12 @@ export function MeetKellyDirectDemocracyCallout() {
           className="inline-flex min-h-[44px] items-center justify-center rounded-btn border-2 border-kelly-navy/15 px-5 py-2.5 text-sm font-semibold text-kelly-navy hover:border-kelly-gold/40"
         >
           Kelly&apos;s petition organizing story
+        </Link>
+        <Link
+          href={directDemocracyHubHref}
+          className="inline-flex min-h-[44px] items-center justify-center rounded-btn bg-kelly-navy px-5 py-2.5 text-sm font-bold uppercase tracking-wide text-white hover:bg-kelly-blue"
+        >
+          Direct democracy hub
         </Link>
       </div>
     </section>

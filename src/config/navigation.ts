@@ -59,8 +59,7 @@ export const primaryNavGroups: NavGroup[] = [
       { label: "Meet Kelly", href: "/about" },
       { label: "Professional experience", href: "/about/experience" },
       { label: "Why I'm Running", href: "/about/why-im-running" },
-      { label: "Kelly Across Arkansas", href: "/about/journey" },
-      { label: "Community & Civic Work", href: "/about/community" },
+      { label: "Journey", href: "/about/journey" },
       { label: "Campaign Videos", href: "/kelly-speaks" },
       { label: "Campaign Photos", href: "/campaign-photos" },
       { label: "Endorsements", href: "/endorsements" },
@@ -101,9 +100,9 @@ export const primaryNavGroups: NavGroup[] = [
     label: "The People's Voice",
     groupLandingHref: directDemocracyHubHref,
     items: [
+      { label: "Kelly's petition organizing", href: kellyInitiativesChapterHref },
       { label: "Learn How Direct Democracy Works", href: ballotInitiativeProcessHref },
       { label: "The People's Voice hub", href: directDemocracyHubHref },
-      { label: "Kelly's petition organizing", href: kellyInitiativesChapterHref },
     ],
   },
   {

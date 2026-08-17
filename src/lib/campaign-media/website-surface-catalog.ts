@@ -64,7 +64,7 @@ const SURFACE_COPY: Array<{
   {
     id: "journey",
     label: "Journey /about/journey",
-    how: "Same Across Arkansas evidence set beside the trail video.",
+    how: "Meet Kelly biographical journey page — not the Across Arkansas trail stills.",
     capacityHint: 8,
   },
   {

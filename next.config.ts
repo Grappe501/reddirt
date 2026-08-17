@@ -61,7 +61,12 @@ const nextConfig: NextConfig = {
     return [
       {
         source: "/about/stand-up-arkansas",
-        destination: "/about/community",
+        destination: "/about",
+        permanent: true,
+      },
+      {
+        source: "/about/community",
+        destination: "/about",
         permanent: true,
       },
       {

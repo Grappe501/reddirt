@@ -77,9 +77,8 @@ export const MEET_KELLY_SUBNAV = [
   { href: "/about/experience", label: "Experience" },
   { href: "/about/why-im-running", label: "Why I'm running" },
   { href: "/about/journey", label: "Journey" },
-  { href: "/about/community", label: "Community" },
-  { href: directDemocracyHubHref, label: "The People's Voice" },
   { href: kellyInitiativesChapterHref, label: "Initiatives & petitions" },
+  { href: directDemocracyHubHref, label: "Direct democracy" },
 ] as const;
 
 export const meetKellyExecutiveSummary = {
@@ -87,6 +86,4 @@ export const meetKellyExecutiveSummary = {
   title: "Kelly Grappe",
   subtitle:
     "Candidate for Arkansas Secretary of State. Before systems and statutes, you deserve to know the person asking for your trust—where she comes from, what she has built, and why she entered this race.",
-  lead:
-    "This page answers six questions voters, reporters, and local leaders ask—not a chronological résumé. Read the summaries here, then open each campaign chapter for the full essay. The long-form literary biography manuscript stays offline until Kelly approves depth 4.",
 } as const;

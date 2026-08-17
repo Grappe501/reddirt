@@ -31,7 +31,7 @@ assert.ok(about.includes("aboutLaunchCopy") || about.includes("Who Kelly is"), "
 
 const journey = read("src/app/(site)/about/journey/page.tsx");
 assert.ok(!journey.includes("ContentPendingBadge"), "journey must not show pending badges");
-assert.ok(journey.includes("CampaignVideoFeature") || journey.includes("getHomepageAcrossArkansasVideo"), "journey video");
+assert.ok(journey.includes("meetKellyJourneyCopy"), "journey uses Kelly bio copy");
 
 const priorities = read("src/app/(site)/priorities/page.tsx");
 assert.ok(!priorities.includes("ContentPendingBadge"), "priorities without pending badges");

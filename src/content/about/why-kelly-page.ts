@@ -4,44 +4,40 @@
 
 export const whyKellyPageCopy = {
   hero: {
-    title: "Why I’m running",
+    title: "Why I’m Running",
     subtitle:
-      "The Arkansas Constitution says “all political power is inherent in the people.” I believe those words should mean something.",
+      "The Arkansas Constitution begins with a promise I believe we have lost sight of: “All political power is inherent in the people.”",
   },
 
-  sections: [
-    {
-      title: "Why I’m running",
-      paragraphs: [
-        "My path to this race began long before I became a candidate. I became more deeply involved in civic life because I saw ordinary Arkansans trying to participate in their government — and a system that too often seemed designed to make that participation harder.",
-        "I saw it firsthand through our work in direct democracy.",
-        "Arkansas is one of only 16 states where citizens have both the initiative and referendum powers — the ability to propose laws and constitutional amendments and to challenge laws passed by the legislature. That right exists for a reason: the people are not supposed to have to ask their government for permission to have a voice in it.",
-        "But in recent years, our legislature has passed law after law adding barriers to the initiative and referendum process. I’ve watched requirements become more complicated, technical mistakes carry enormous consequences, and ordinary citizens face a process increasingly difficult to navigate without significant money, lawyers and professional infrastructure.",
-        "At some point, a constitutional right can still exist on paper while becoming nearly impossible for ordinary people to exercise.",
-        "I refuse to accept that as the future of direct democracy in Arkansas.",
-      ],
-    },
-    {
-      title: "This is bigger than any one issue",
-      paragraphs: [
-        "I won’t agree with every initiative Arkansans put forward. I don’t expect everyone to agree with mine. That’s the point.",
-        "You don’t have to agree with what the people are proposing to defend their right to propose it.",
-        "The Secretary of State should administer that process fairly, consistently and transparently — without putting a thumb on the scale because of politics, ideology or personal opinion.",
-        "And that principle extends beyond ballot initiatives. Voters deserve straight answers about how our elections work. County officials deserve a state partner who listens to them. Small-business owners deserve systems they can actually navigate. Public records should be accessible. Young people should understand how to participate. And Arkansans should be able to ask hard questions of their government without being dismissed for asking them.",
-      ],
-    },
-    {
-      title: "Why Secretary of State",
-      paragraphs: [
-        "I looked at this office and saw something much bigger than an election administrator.",
-        "I saw an office responsible for many of the places where people meet their government — when they register to vote, cast a ballot, start a business, search for a public record, visit their Capitol or exercise their constitutional right to put an issue before their fellow citizens.",
-        "And I saw an opportunity to bring what I’ve spent my career doing — leading people, improving systems, using what we learn from the work to solve problems and turning strategy into practical action — to an office that can make a meaningful difference in people’s everyday interactions with their state.",
-        "My first priority will be restoring trust in our systems. Not by asking Arkansans to simply trust the system.",
-        "By opening it up and showing them why they can.",
-        "Explain how our elections work. Show people the safeguards. Answer the hard questions. Give people opportunities to see the process for themselves. Be honest when something isn’t working. Fix problems when we find them. And make it easier for Arkansans to see what their government is doing in their name.",
-        "I’m running because I believe government works best when the people understand it, can participate in it, and know the people entrusted with it remember who they work for.",
-        "Regnat Populus. The People Rule. That’s not just our state motto. It’s the job.",
-      ],
-    },
+  intro: "That is why I’m running for Secretary of State.",
+
+  paragraphs: [
+    "Over the last several years, I’ve watched Arkansans become increasingly frustrated with a government that feels harder to access, harder to understand, and further removed from the people it is supposed to serve. I’ve seen citizens work incredibly hard to participate in our democracy only to encounter more barriers. I’ve met voters who no longer trust our elections, young people who don’t believe their voices matter, and county officials trying to serve their communities without the support and resources they need.",
+    "I don’t believe the answer is more politics. I believe it is better leadership.",
+    "The Secretary of State should be a steady, trusted administrator of our elections—not a partisan gatekeeper. The office should work alongside our 75 counties, make it easier for Arkansans to understand how their government works, protect both access and election security, and administer the law fairly whether the people exercising their rights agree with us or not.",
+    "And this office is about more than elections. It touches small businesses, the State Capitol, and some of the most basic ways Arkansans interact with their state government. And in many cases, it’s the first experience young people have interacting with our government. Those services should be modern, accessible, transparent, and built around the people who use them.",
+    "I’m running because I believe we can restore trust—not by asking Arkansans to blindly trust government, but by building a government worthy of their trust.",
+    "Regnat Populus. The People Rule.",
+    "It’s more than our state motto. It should be the standard by which this office operates.",
   ],
+
+  whatIllDo: {
+    title: "What I’ll Do",
+    items: [
+      {
+        title: "Put people back in the process",
+        body: "Make civic participation easier to understand and easier to access. Expand voter education, help Arkansans understand how elections and citizen-led initiatives work, and make the Secretary of State’s office a resource for participation—not another barrier to it.",
+      },
+      {
+        title: "Partner with all 75 counties",
+        body: "Treat county clerks and election officials as partners. Improve communication, training, technology, and statewide support while respecting the different needs of rural and urban communities.",
+      },
+      {
+        title: "Modernize the office",
+        body: "Bring a customer-service mindset to the Secretary of State’s office. Modernize outdated systems, improve online services and accessibility, and make everything from voter information to starting a business easier to navigate.",
+      },
+    ],
+    closer:
+      "Regnat Populus means “The People Rule.” I’m running to make sure the Secretary of State’s office remembers who it works for.",
+  },
 } as const;
