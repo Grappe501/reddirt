@@ -28,7 +28,12 @@ export function resolveEventStatus(
   ev: Pick<EventItem, "startsAt" | "endsAt" | "timezone">,
   now: Date = new Date(),
 ): EventStatus {
-  const end = parseEventInstant(ev.endsAt ?? ev.startsAt, ev.timezone);
+  const tz = ev.timezone || "America/Chicago";
+  const start = parseEventInstant(ev.startsAt, tz);
+  const startYmd = calendarDayInZone(start, tz);
+  const nowYmd = calendarDayInZone(now, tz);
+  if (startYmd < nowYmd) return "past";
+  const end = parseEventInstant(ev.endsAt ?? ev.startsAt, tz);
   return end.getTime() >= now.getTime() ? "upcoming" : "past";
 }
 

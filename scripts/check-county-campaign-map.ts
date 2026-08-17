@@ -25,7 +25,7 @@ import {
   normalizeArkansasCountyKey,
 } from "../src/lib/events/county-key";
 import { buildCountyVisitLedger } from "../src/lib/events/county-visit-ledger";
-import { parseEventInstant } from "../src/lib/format/eventDisplay";
+import { parseEventInstant, resolveEventStatus } from "../src/lib/format/eventDisplay";
 
 function fail(message: string): never {
   throw new Error(message);
@@ -88,22 +88,22 @@ if (arkansasCountyKey("Van Buren") !== "van-buren") fail("van-buren key");
   const arkansas = summaryByName(summaries, "Arkansas");
   if (arkansas.publicState !== "visited") fail("Historical Arkansas should be visited");
   if (arkansas.upcomingIndicator !== null) fail("Arkansas should have no upcoming indicator in empty-event build");
-  if (ledger.visited.length !== 55) fail(`Expected 55 visited, got ${ledger.visited.length}`);
+  if (ledger.visited.length !== 56) fail(`Expected 56 visited, got ${ledger.visited.length}`);
 }
 
 {
   const { summaries } = build(SNAPSHOT, [
     baseEvent({
-      slug: "randolph-first",
+      slug: "dallas-first",
       title: "Breakfast",
-      countySlug: "randolph-county",
+      countySlug: "dallas-county",
       startsAt: "2026-08-15T09:00:00",
       endsAt: "2026-08-15T11:00:00",
     }),
   ]);
-  const randolph = summaryByName(summaries, "Randolph");
-  if (randolph.visited) fail("Randolph should still be unvisited before the event ends");
-  if (randolph.publicState !== "confirmed_upcoming") fail("Unvisited confirmed upcoming");
+  const dallas = summaryByName(summaries, "Dallas");
+  if (dallas.visited) fail("Dallas should still be unvisited before the event ends");
+  if (dallas.publicState !== "confirmed_upcoming") fail("Unvisited confirmed upcoming");
 }
 
 {
@@ -156,14 +156,14 @@ if (arkansasCountyKey("Van Buren") !== "van-buren") fail("van-buren key");
     baseEvent({
       slug: "new-county-forum",
       title: "Forum",
-      countySlug: "randolph-county",
+      countySlug: "dallas-county",
       startsAt: "2026-09-12T12:00:00",
       endsAt: "2026-09-12T14:00:00",
     }),
   ]);
-  const randolphAfter = summaryByName(after.summaries, "Randolph");
-  if (randolphAfter.publicState !== "visited") fail("Completed rollover should mark Randolph visited");
-  if (randolphAfter.upcomingIndicator !== null) fail("Upcoming indicator should clear after end");
+  const dallasAfter = summaryByName(after.summaries, "Dallas");
+  if (dallasAfter.publicState !== "visited") fail("Completed rollover should mark Dallas visited");
+  if (dallasAfter.upcomingIndicator !== null) fail("Upcoming indicator should clear after end");
 }
 
 {
@@ -260,7 +260,7 @@ if (arkansasCountyKey("Van Buren") !== "van-buren") fail("van-buren key");
     }),
   ]);
   if (ledger.visited.some((c) => c.countyName === "Dallas")) fail("Virtual Zoom must not become visited");
-  if (ledger.visited.length !== 55) fail("Virtual statewide call must not change the visited county count");
+  if (ledger.visited.length !== 56) fail("Virtual statewide call must not change the visited county count");
 }
 
 {
@@ -315,7 +315,7 @@ if (arkansasCountyKey("Van Buren") !== "van-buren") fail("van-buren key");
     ...september2026CampaignStops,
     ...virtual,
   ]);
-  if (virtualLedger.visited.length !== 55) fail("Recurring virtual series must not change the visited county count");
+  if (virtualLedger.visited.length !== 56) fail("Recurring virtual series must not change the visited county count");
   if (withVirtual.some((s) => s.confirmedUpcomingEvents.some((e) => e.slug.includes("zoom")))) {
     fail("Recurring virtual series must not paint the county map");
   }
@@ -329,7 +329,8 @@ if (arkansasCountyKey("Van Buren") !== "van-buren") fail("van-buren key");
   }
 
   if (summaryByName(summaries, "Calhoun").publicState !== "tentative_upcoming") fail("Calhoun tentative");
-  if (summaryByName(summaries, "Randolph").publicState !== "confirmed_upcoming") fail("Randolph confirmed upcoming");
+  if (summaryByName(summaries, "Randolph").publicState !== "visited") fail("Randolph should be visited / blue");
+  if (summaryByName(summaries, "Randolph").upcomingIndicator !== "confirmed") fail("Randolph keeps Pocahontas as confirmed upcoming before Aug 15");
   if (summaryByName(summaries, "Pulaski").upcomingIndicator !== "confirmed") fail("Pulaski gold ring");
   if (summaryByName(summaries, "Howard").publicState !== "visited") fail("Howard should be visited / blue");
   if (summaryByName(summaries, "Sevier").publicState !== "visited") fail("Sevier should be visited / blue");
@@ -353,7 +354,7 @@ if (events.some((e) => /paragould/i.test(e.slug) && e.startsAt.startsWith("2026-
     ...september2026CampaignStops,
     ...october2026CampaignStops,
   ]);
-  if (ledger.visited.length !== 55) fail("October public stops must not change the visited county count before they end");
+  if (ledger.visited.length !== 56) fail("October public stops must not change the visited county count before they end");
   if (summaryByName(summaries, "Perry").publicState !== "confirmed_upcoming") fail("Perry Goat Festival confirmed upcoming");
   if (summaryByName(summaries, "Phillips").publicState !== "confirmed_upcoming") fail("Phillips King Biscuit confirmed upcoming");
   if (summaryByName(summaries, "Madison").publicState !== "visited") fail("Madison should be visited / blue");
@@ -396,12 +397,30 @@ if (events.some((e) => /paragould/i.test(e.slug) && e.startsAt.startsWith("2026-
   }
 }
 
+{
+  const morning = new Date("2026-08-17T11:02:00-05:00");
+  for (const e of august2026CampaignStops) {
+    const ymd = e.startsAt.slice(0, 10);
+    const status = resolveEventStatus(e, morning);
+    if (ymd < "2026-08-17" && status !== "past") {
+      fail(`${e.slug} dated ${ymd} must not show as upcoming on Aug 17`);
+    }
+    if (ymd > "2026-08-17" && status !== "upcoming") {
+      fail(`${e.slug} dated ${ymd} should remain upcoming on Aug 17`);
+    }
+  }
+  const washington = august2026CampaignStops.find((e) => e.slug === "washington-county-democrats-2026-08-17");
+  if (!washington || resolveEventStatus(washington, morning) !== "upcoming") {
+    fail("Washington County Aug 17 stays upcoming until that day ends");
+  }
+}
+
 console.log("county-campaign-map checks passed");
 console.log(`SVG counties: ${ARKANSAS_COUNTY_SVG_PATHS.length}/${ARKANSAS_COUNTY_COUNT}`);
 console.log("Operator review (as of 2026-08-13, America/Chicago) — http://localhost:3000/events");
 console.log("  visited-only: Arkansas County (blue, no click) until Stuttgart Oct 17");
 console.log("  visited + confirmed upcoming: Pulaski County (blue fill, gold outline → /events/county/pulaski)");
-console.log("  unvisited confirmed upcoming: Randolph County (gold fill → Pocahontas Aug 15); Perry, Phillips from October");
+console.log("  unvisited confirmed upcoming: Woodruff (McCrory Aug 22), Clay (Rector Sept 6), Perry, Phillips from October");
 console.log("  tentative: Calhoun County (sky fill, dashed outline → fair Sep 18); Greers Ferry Oct 23 on Cleburne");
 console.log("  neutral: Chicot County (gray, no click)");
 console.log("  statewide / virtual: Faith & Reflection Zoom (Wed 7:15 PM) + College & Young People Zoom (Thu, time TBA) — calendar only, never the visited county count");
