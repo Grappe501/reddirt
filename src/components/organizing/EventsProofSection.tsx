@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { CampaignJourneyMap } from "@/components/organizing/events-map/CampaignJourneyMap";
 import type { CountyMapFeature } from "@/components/organizing/events-map/county-map-types";
@@ -50,9 +49,9 @@ export function EventsProofSection({
         <Button href="/events/request" variant="primary">
           Invite Kelly
         </Button>
-        <Link href="/arkansas-visits" className="font-body text-sm font-semibold text-kelly-navy underline-offset-4 hover:underline">
-          Full county trail →
-        </Link>
+        <Button href="/events" variant="outline">
+          Campaign calendar
+        </Button>
       </div>
     </section>
   );

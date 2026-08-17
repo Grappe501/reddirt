@@ -65,6 +65,11 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: "/arkansas-visits",
+        destination: "/events",
+        permanent: true,
+      },
+      {
         source: "/about/community",
         destination: "/about",
         permanent: true,

@@ -31,8 +31,8 @@ export default async function CampaignPhotosPage() {
         title="County albums"
         subtitle="Open a county. Step through the stops. Every still is confirmed geography — not a dump of every file."
       >
-        <Button href="/arkansas-visits" variant="primary">
-          Kelly Across Arkansas
+        <Button href="/events" variant="primary">
+          Campaign calendar
         </Button>
         <Button href="/from-the-road" variant="outlineOnDark">
           From the Road

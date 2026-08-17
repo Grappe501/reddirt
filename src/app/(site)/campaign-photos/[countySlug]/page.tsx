@@ -51,8 +51,8 @@ export default async function CountyCampaignPhotosPage({ params }: Props) {
         <Button href="/campaign-photos" variant="outline">
           All county albums
         </Button>
-        <Button href="/arkansas-visits" variant="primary">
-          Kelly Across Arkansas
+        <Button href="/events" variant="primary">
+          Campaign calendar
         </Button>
       </PageHero>
 

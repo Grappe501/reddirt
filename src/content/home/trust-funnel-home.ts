@@ -259,8 +259,8 @@ export const trustFunnelHomeCopy = {
     presenceLabel: "Confirmed communities in this band",
     videoIntroduction:
       "A trail story from Hot Springs Village: neighbors gathering, conversations starting, and the work of showing up.",
-    cta: "See Kelly Across Arkansas",
-    ctaHref: "/arkansas-visits",
+    cta: "From the Road",
+    ctaHref: "/from-the-road",
   },
 
   campaignPhotos: {
