@@ -8,6 +8,7 @@ import { handleVolunteerHubAuth } from "@/lib/volunteers/auth/volunteer-middlewa
  * Edge-safe middleware — no intelligence/dashboard imports (they abort on Netlify edge).
  * Admin auth + launch redirects live in Node layouts, next.config redirects, and /admin/page.tsx.
  *
+ * `/es` and `/es/*` set locale headers and rewrite to the English route tree.
  * Supabase `auth.getUser()` was removed from the edge path: no App Router routes use
  * `@/utils/supabase/*` (Prisma + cookie gates only), and the network call was timing out on Netlify edge.
  */
@@ -26,13 +27,28 @@ export function middleware(request: NextRequest) {
 
   const requestHeaders = new Headers(request.headers);
   requestHeaders.set("x-pathname", pathname);
+
+  if (pathname === "/es" || pathname === "/es/") {
+    requestHeaders.set("x-locale", "es");
+    return NextResponse.next({ request: { headers: requestHeaders } });
+  }
+
+  if (pathname.startsWith("/es/")) {
+    const rest = pathname.slice("/es".length) || "/";
+    const url = request.nextUrl.clone();
+    url.pathname = rest;
+    requestHeaders.set("x-locale", "es");
+    return NextResponse.rewrite(url, { request: { headers: requestHeaders } });
+  }
+
   return NextResponse.next({ request: { headers: requestHeaders } });
 }
 
 export const config = {
   matcher: [
-    /** Only election-plan + legacy volunteers — skip public site to avoid edge timeouts. */
     "/election-plan/:path*",
     "/volunteers/:path*",
+    "/es",
+    "/es/:path*",
   ],
 };

@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useMemo, useState } from "react";
 import type { StoryCategory, StoryEntry } from "@/content/stories";
 import { storyCategoryFilters } from "@/content/stories";
@@ -91,9 +92,9 @@ export function StoriesHub({ stories, featured, substackPosts = [] }: StoriesHub
               design, no iframe.
             </p>
             <p className="mt-2 font-body text-xs text-kelly-text/60">
-              <a href="/from-the-road" className="font-semibold text-kelly-navy underline-offset-2 hover:underline">
+              <Link href="/from-the-road" className="font-semibold text-kelly-navy underline-offset-2 hover:underline">
                 Open From the Road →
-              </a>
+              </Link>
             </p>
           </div>
           {notebookFeatured.length ? (

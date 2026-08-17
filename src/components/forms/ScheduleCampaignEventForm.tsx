@@ -16,6 +16,10 @@ import {
   scheduleCampaignEventBodySchema,
   type ScheduleCampaignEventBody,
 } from "@/lib/forms/public-schedule-schema";
+import { useLocale } from "@/i18n/client";
+import { scheduleFormText } from "@/i18n/forms/public-forms";
+import { withLocaleHref } from "@/i18n/path";
+import { chromeText } from "@/i18n/chrome";
 
 type ApiOk = {
   ok: true;
@@ -32,6 +36,7 @@ type ApiOk = {
 };
 
 export function ScheduleCampaignEventForm({ id }: { id?: string }) {
+  const locale = useLocale();
   const [serverError, setServerError] = useState<string | null>(null);
   const [showSuccess, setShowSuccess] = useState(false);
   const [assistant, setAssistant] = useState<ApiOk["publicAssistant"] | null>(null);
@@ -83,7 +88,7 @@ export function ScheduleCampaignEventForm({ id }: { id?: string }) {
           form.setError(k as keyof ScheduleCampaignEventBody, { message: v });
         });
       }
-      setServerError(json.error ?? "Something went wrong.");
+      setServerError(json.error ?? scheduleFormText("serverError", locale));
       return;
     }
     if (json.ok) {
@@ -96,7 +101,7 @@ export function ScheduleCampaignEventForm({ id }: { id?: string }) {
   if (showSuccess && assistant) {
     return (
       <div id={id} className="space-y-6">
-        <FormSuccessPanel title="Request received — tentative only">
+        <FormSuccessPanel title={scheduleFormText("successTitle", locale)}>
           <p className="font-semibold text-kelly-text">{assistant.publicMessage}</p>
           {assistant.suggestedWindows.length ? (
             <ul className="mt-3 list-inside list-disc text-sm text-kelly-text/85">
@@ -109,7 +114,7 @@ export function ScheduleCampaignEventForm({ id }: { id?: string }) {
           ) : null}
           <p className="mt-3 text-xs text-kelly-text/65">Status: {assistant.intakeStatus.replace(/_/g, " ")}</p>
           <Button type="button" variant="outline" className="mt-4" onClick={() => setShowSuccess(false)}>
-            Submit another request
+            {scheduleFormText("submitAnother", locale)}
           </Button>
         </FormSuccessPanel>
       </div>
@@ -120,12 +125,16 @@ export function ScheduleCampaignEventForm({ id }: { id?: string }) {
     <div id={id} className="space-y-8">
       <div className="rounded-card border border-kelly-text/10 bg-[var(--color-surface-elevated)] p-6 shadow-[var(--shadow-soft)] md:p-8">
         <p className="font-body text-sm leading-relaxed text-kelly-text/80">
-          This form starts a <strong>tentative</strong> request — not a confirmation. Staff reviews every submission. The
-          assistant uses a <strong>public-safe</strong> view of schedule density (no private calendar titles).
+          {scheduleFormText("introLead", locale)}
         </p>
         <p className="mt-2 font-body text-xs text-kelly-text/65">
-          Questions? <Link href="/contact">Contact the campaign</Link> or see{" "}
-          <Link href="/host-a-gathering">host a gathering</Link> for neighbor-led formats.
+          {locale === "es" ? "¿Preguntas?" : "Questions?"}{" "}
+          <Link href={withLocaleHref("/contact", locale)}>{chromeText("contactCampaign", locale)}</Link>
+          {locale === "es" ? " o vea " : " or see "}
+          <Link href={withLocaleHref("/host-a-gathering", locale)}>
+            {locale === "es" ? "organizar una reunión" : "host a gathering"}
+          </Link>
+          {locale === "es" ? " para formatos vecinales." : " for neighbor-led formats."}
         </p>
       </div>
 
@@ -135,28 +144,28 @@ export function ScheduleCampaignEventForm({ id }: { id?: string }) {
         {serverError ? <FormErrorSummary errors={{ server: serverError }} /> : null}
 
         <section className="space-y-4">
-          <h2 className="font-heading text-lg font-bold text-kelly-text">Your contact</h2>
+          <h2 className="font-heading text-lg font-bold text-kelly-text">{scheduleFormText("contactHeading", locale)}</h2>
           <div className="grid gap-4 md:grid-cols-2">
             <FormField>
-              <FormLabel htmlFor="ps-name">Name</FormLabel>
+              <FormLabel htmlFor="ps-name">{scheduleFormText("name", locale)}</FormLabel>
               <Input id="ps-name" {...form.register("requesterName")} autoComplete="name" />
               {form.formState.errors.requesterName ? (
                 <p className="text-sm text-kelly-navy">{form.formState.errors.requesterName.message}</p>
               ) : null}
             </FormField>
             <FormField>
-              <FormLabel htmlFor="ps-org">Organization</FormLabel>
+              <FormLabel htmlFor="ps-org">{scheduleFormText("organization", locale)}</FormLabel>
               <Input id="ps-org" {...form.register("organization")} />
             </FormField>
             <FormField>
-              <FormLabel htmlFor="ps-email">Email</FormLabel>
+              <FormLabel htmlFor="ps-email">{scheduleFormText("email", locale)}</FormLabel>
               <Input id="ps-email" type="email" {...form.register("email")} autoComplete="email" />
               {form.formState.errors.email ? (
                 <p className="text-sm text-kelly-navy">{form.formState.errors.email.message}</p>
               ) : null}
             </FormField>
             <FormField>
-              <FormLabel htmlFor="ps-phone">Phone</FormLabel>
+              <FormLabel htmlFor="ps-phone">{scheduleFormText("phone", locale)}</FormLabel>
               <Input id="ps-phone" type="tel" {...form.register("phone")} autoComplete="tel" />
               {form.formState.errors.phone ? (
                 <p className="text-sm text-kelly-navy">{form.formState.errors.phone.message}</p>
@@ -166,16 +175,16 @@ export function ScheduleCampaignEventForm({ id }: { id?: string }) {
         </section>
 
         <section className="space-y-4">
-          <h2 className="font-heading text-lg font-bold text-kelly-text">Event</h2>
+          <h2 className="font-heading text-lg font-bold text-kelly-text">{scheduleFormText("eventHeading", locale)}</h2>
           <FormField>
-            <FormLabel htmlFor="ps-title">Event title</FormLabel>
+            <FormLabel htmlFor="ps-title">{scheduleFormText("eventTitle", locale)}</FormLabel>
             <Input id="ps-title" {...form.register("eventTitle")} />
             {form.formState.errors.eventTitle ? (
               <p className="text-sm text-kelly-navy">{form.formState.errors.eventTitle.message}</p>
             ) : null}
           </FormField>
           <FormField>
-            <FormLabel htmlFor="ps-type">Event type</FormLabel>
+            <FormLabel htmlFor="ps-type">{scheduleFormText("eventType", locale)}</FormLabel>
             <select
               id="ps-type"
               className="w-full rounded-md border border-kelly-text/20 bg-white px-3 py-2 font-body text-sm text-kelly-text"
@@ -192,45 +201,45 @@ export function ScheduleCampaignEventForm({ id }: { id?: string }) {
           </FormField>
           <div className="grid gap-4 md:grid-cols-2">
             <FormField>
-              <FormLabel htmlFor="ps-county">County</FormLabel>
+              <FormLabel htmlFor="ps-county">{scheduleFormText("county", locale)}</FormLabel>
               <Input id="ps-county" {...form.register("county")} placeholder="Arkansas county" />
               {form.formState.errors.county ? (
                 <p className="text-sm text-kelly-navy">{form.formState.errors.county.message}</p>
               ) : null}
             </FormField>
             <FormField>
-              <FormLabel htmlFor="ps-city">City</FormLabel>
+              <FormLabel htmlFor="ps-city">{scheduleFormText("city", locale)}</FormLabel>
               <Input id="ps-city" {...form.register("city")} />
             </FormField>
           </div>
           <FormField>
-            <FormLabel htmlFor="ps-address">Venue / address</FormLabel>
+            <FormLabel htmlFor="ps-address">{scheduleFormText("address", locale)}</FormLabel>
             <Textarea id="ps-address" rows={2} {...form.register("address")} placeholder="Street address or well-known venue" />
           </FormField>
           <FormField>
-            <FormLabel htmlFor="ps-pref">Preferred date (YYYY-MM-DD)</FormLabel>
+            <FormLabel htmlFor="ps-pref">{scheduleFormText("preferredDate", locale)}</FormLabel>
             <Input id="ps-pref" {...form.register("preferredDate")} placeholder="2026-06-15" />
             {form.formState.errors.preferredDate ? (
               <p className="text-sm text-kelly-navy">{form.formState.errors.preferredDate.message}</p>
             ) : null}
           </FormField>
           <FormField>
-            <FormLabel htmlFor="ps-alt">Alternate dates (optional)</FormLabel>
+            <FormLabel htmlFor="ps-alt">{scheduleFormText("alternateDates", locale)}</FormLabel>
             <p className="text-xs text-kelly-text/60">One per line or comma-separated, each as YYYY-MM-DD.</p>
             <Textarea id="ps-alt" rows={2} {...form.register("alternateDatesText")} />
           </FormField>
           <div className="grid gap-4 md:grid-cols-2">
             <FormField>
-              <FormLabel htmlFor="ps-st">Preferred start (local)</FormLabel>
+              <FormLabel htmlFor="ps-st">{scheduleFormText("startTime", locale)}</FormLabel>
               <Input id="ps-st" {...form.register("preferredStartTime")} placeholder="17:30" />
             </FormField>
             <FormField>
-              <FormLabel htmlFor="ps-en">Preferred end</FormLabel>
+              <FormLabel htmlFor="ps-en">{scheduleFormText("endTime", locale)}</FormLabel>
               <Input id="ps-en" {...form.register("preferredEndTime")} />
             </FormField>
           </div>
           <FormField>
-            <FormLabel htmlFor="ps-flex">Flexibility</FormLabel>
+            <FormLabel htmlFor="ps-flex">{scheduleFormText("flexibility", locale)}</FormLabel>
             <select
               id="ps-flex"
               className="w-full rounded-md border border-kelly-text/20 bg-white px-3 py-2 font-body text-sm text-kelly-text"
@@ -243,7 +252,7 @@ export function ScheduleCampaignEventForm({ id }: { id?: string }) {
             </select>
           </FormField>
           <FormField>
-            <FormLabel htmlFor="ps-aud">Audience size (approx.)</FormLabel>
+            <FormLabel htmlFor="ps-aud">{scheduleFormText("audienceSize", locale)}</FormLabel>
             <Input
               id="ps-aud"
               type="number"
@@ -254,7 +263,7 @@ export function ScheduleCampaignEventForm({ id }: { id?: string }) {
             />
           </FormField>
           <FormField>
-            <FormLabel htmlFor="ps-purpose">Event purpose</FormLabel>
+            <FormLabel htmlFor="ps-purpose">{scheduleFormText("purpose", locale)}</FormLabel>
             <Textarea id="ps-purpose" rows={3} {...form.register("eventPurpose")} />
           </FormField>
           <FormField>
@@ -271,19 +280,19 @@ export function ScheduleCampaignEventForm({ id }: { id?: string }) {
         </section>
 
         <section className="space-y-4">
-          <h2 className="font-heading text-lg font-bold text-kelly-text">Press & roles</h2>
+          <h2 className="font-heading text-lg font-bold text-kelly-text">{scheduleFormText("pressHeading", locale)}</h2>
           <div className="flex flex-wrap gap-6 font-body text-sm text-kelly-text">
             <label className="flex items-center gap-2">
               <input type="checkbox" {...form.register("pressInvited")} />
-              Press invited?
+              {scheduleFormText("pressInvited", locale)}
             </label>
             <label className="flex items-center gap-2">
               <input type="checkbox" {...form.register("speakingRequested")} />
-              Speaking requested?
+              {scheduleFormText("speakingRequested", locale)}
             </label>
             <label className="flex items-center gap-2">
               <input type="checkbox" {...form.register("localHostAvailable")} />
-              Local host / guide available?
+              {scheduleFormText("localHost", locale)}
             </label>
           </div>
           <FormField>
@@ -306,17 +315,15 @@ export function ScheduleCampaignEventForm({ id }: { id?: string }) {
         </section>
 
         <section className="space-y-4">
-          <h2 className="font-heading text-lg font-bold text-kelly-text">Notes</h2>
+          <h2 className="font-heading text-lg font-bold text-kelly-text">{scheduleFormText("notesHeading", locale)}</h2>
           <FormField>
-            <FormLabel htmlFor="ps-notes">Anything else we should know?</FormLabel>
+            <FormLabel htmlFor="ps-notes">{scheduleFormText("notesLabel", locale)}</FormLabel>
             <Textarea id="ps-notes" rows={3} {...form.register("notes")} />
           </FormField>
           <FormField>
             <label className="flex items-start gap-2 font-body text-sm text-kelly-text">
               <input type="checkbox" {...form.register("permissionToContact")} className="mt-1" />
-              <span>
-                I give the campaign permission to contact me about this request. (Required — we need a way to reply.)
-              </span>
+              <span>{scheduleFormText("permissionLabel", locale)}</span>
             </label>
             {form.formState.errors.permissionToContact ? (
               <p className="text-sm text-kelly-navy">{form.formState.errors.permissionToContact.message}</p>
@@ -325,7 +332,7 @@ export function ScheduleCampaignEventForm({ id }: { id?: string }) {
         </section>
 
         <Button type="submit" variant="primary" disabled={form.formState.isSubmitting}>
-          {form.formState.isSubmitting ? "Submitting…" : "Submit scheduling request"}
+          {form.formState.isSubmitting ? scheduleFormText("submitting", locale) : scheduleFormText("submit", locale)}
         </Button>
       </form>
     </div>

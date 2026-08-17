@@ -12,17 +12,21 @@ import { Textarea } from "@/components/forms/Textarea";
 import { Button } from "@/components/ui/Button";
 import { FormErrorSummary, FormSuccessPanel } from "@/components/forms/FormMessages";
 import { trackFormComplete, trackFormStart } from "@/lib/analytics/track";
+import { useLocale } from "@/i18n/client";
+import { joinFormText } from "@/i18n/forms/public-forms";
+import { withLocaleHref } from "@/i18n/path";
 
 const interestOptions = [
-  { id: "field", label: "Field / events" },
-  { id: "digital", label: "Digital help" },
-  { id: "faith_communities", label: "Faith communities" },
-  { id: "voter_education", label: "Voter education" },
-  { id: "party_or_civic_meeting", label: "Party or civic meeting invite" },
-  { id: "direct_democracy", label: "Ballot access & initiatives" },
+  { id: "field", key: "interestField" as const },
+  { id: "digital", key: "interestDigital" as const },
+  { id: "faith_communities", key: "interestFaith" as const },
+  { id: "voter_education", key: "interestVoterEd" as const },
+  { id: "party_or_civic_meeting", key: "interestParty" as const },
+  { id: "direct_democracy", key: "interestDD" as const },
 ] as const;
 
 export function JoinMovementForm({ id }: { id?: string }) {
+  const locale = useLocale();
   const [serverError, setServerError] = useState<string | null>(null);
   const [showSuccess, setShowSuccess] = useState(false);
   const [started, setStarted] = useState(false);
@@ -70,7 +74,7 @@ export function JoinMovementForm({ id }: { id?: string }) {
           form.setError(k as keyof JoinMovementInput, { message: v });
         });
       }
-      setServerError(json.error ?? "Something went wrong.");
+      setServerError(json.error ?? joinFormText("serverError", locale));
       return;
     }
     trackFormComplete("join_movement", json.submissionId);
@@ -90,24 +94,37 @@ export function JoinMovementForm({ id }: { id?: string }) {
 
   if (showSuccess) {
     return (
-      <FormSuccessPanel title="You’re in.">
+      <FormSuccessPanel title={joinFormText("successTitle", locale)}>
+        <p>{joinFormText("successBody", locale)}</p>
         <p>
-          Thanks for raising your hand. A real human will review your note—especially meeting invites—and route it
-          to the right contact.
-        </p>
-        <p>
-          <strong>What happens next:</strong> watch your inbox. Explore{" "}
-          <Link className="font-semibold text-kelly-navy underline" href="/priorities">
-            office priorities
-          </Link>{" "}
-          or{" "}
-          <Link className="font-semibold text-kelly-navy underline" href="/local-organizing">
-            local organizing
-          </Link>
-          .
+          <strong>{joinFormText("successNext", locale)}</strong>{" "}
+          {locale === "es" ? "revise su correo." : "watch your inbox. Explore"}{" "}
+          {locale === "en" ? (
+            <>
+              <Link className="font-semibold text-kelly-navy underline" href="/priorities">
+                office priorities
+              </Link>{" "}
+              or{" "}
+              <Link className="font-semibold text-kelly-navy underline" href="/local-organizing">
+                local organizing
+              </Link>
+              .
+            </>
+          ) : (
+            <>
+              <Link className="font-semibold text-kelly-navy underline" href={withLocaleHref("/priorities", locale)}>
+                prioridades de la oficina
+              </Link>{" "}
+              o{" "}
+              <Link className="font-semibold text-kelly-navy underline" href={withLocaleHref("/local-organizing", locale)}>
+                organización local
+              </Link>
+              .
+            </>
+          )}
         </p>
         <Button type="button" variant="outline" onClick={() => setShowSuccess(false)}>
-          Submit another
+          {joinFormText("submitAnother", locale)}
         </Button>
       </FormSuccessPanel>
     );
@@ -129,25 +146,25 @@ export function JoinMovementForm({ id }: { id?: string }) {
       {serverError ? <FormErrorSummary errors={{ server: serverError }} /> : null}
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
         <FormField>
-          <FormLabel htmlFor="jm-name">Full name</FormLabel>
+          <FormLabel htmlFor="jm-name">{joinFormText("fullName", locale)}</FormLabel>
           <Input id="jm-name" {...form.register("name")} autoComplete="name" />
           {form.formState.errors.name ? (
             <p className="text-sm text-kelly-navy">{form.formState.errors.name.message}</p>
           ) : null}
         </FormField>
         <FormField>
-          <FormLabel htmlFor="jm-email">Email</FormLabel>
+          <FormLabel htmlFor="jm-email">{joinFormText("email", locale)}</FormLabel>
           <Input id="jm-email" type="email" {...form.register("email")} autoComplete="email" />
           {form.formState.errors.email ? (
             <p className="text-sm text-kelly-navy">{form.formState.errors.email.message}</p>
           ) : null}
         </FormField>
         <FormField>
-          <FormLabel htmlFor="jm-phone">Phone (optional)</FormLabel>
+          <FormLabel htmlFor="jm-phone">{joinFormText("phoneOptional", locale)}</FormLabel>
           <Input id="jm-phone" type="tel" {...form.register("phone")} autoComplete="tel" />
         </FormField>
         <FormField>
-          <FormLabel htmlFor="jm-zip">ZIP</FormLabel>
+          <FormLabel htmlFor="jm-zip">{joinFormText("zip", locale)}</FormLabel>
           <Input id="jm-zip" {...form.register("zip")} autoComplete="postal-code" />
           {form.formState.errors.zip ? (
             <p className="text-sm text-kelly-navy">{form.formState.errors.zip.message}</p>
@@ -155,11 +172,11 @@ export function JoinMovementForm({ id }: { id?: string }) {
         </FormField>
       </div>
       <FormField>
-        <FormLabel htmlFor="jm-county">County (optional)</FormLabel>
+        <FormLabel htmlFor="jm-county">{joinFormText("countyOptional", locale)}</FormLabel>
         <Input id="jm-county" {...form.register("county")} />
       </FormField>
       <FormField>
-        <FormLabel>How you want to help (optional)</FormLabel>
+        <FormLabel>{joinFormText("interests", locale)}</FormLabel>
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
           {interestOptions.map((opt) => (
             <label key={opt.id} className="flex items-center gap-3 font-body text-sm text-kelly-text">
@@ -169,17 +186,17 @@ export function JoinMovementForm({ id }: { id?: string }) {
                 checked={interests.includes(opt.id)}
                 onChange={() => toggleInterest(opt.id)}
               />
-              {opt.label}
+              {joinFormText(opt.key, locale)}
             </label>
           ))}
         </div>
       </FormField>
       <FormField>
-        <FormLabel htmlFor="jm-message">Anything we should know? (optional)</FormLabel>
+        <FormLabel htmlFor="jm-message">{joinFormText("message", locale)}</FormLabel>
         <Textarea id="jm-message" {...form.register("message")} rows={5} />
       </FormField>
       <Button type="submit" variant="primary" disabled={form.formState.isSubmitting}>
-        {form.formState.isSubmitting ? "Sending…" : "Submit"}
+        {form.formState.isSubmitting ? joinFormText("sending", locale) : joinFormText("submit", locale)}
       </Button>
     </form>
   );

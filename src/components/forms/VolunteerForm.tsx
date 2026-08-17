@@ -21,6 +21,8 @@ import { Button } from "@/components/ui/Button";
 import { FormErrorSummary, FormSuccessPanel } from "@/components/forms/FormMessages";
 import { trackFormComplete, trackFormStart } from "@/lib/analytics/track";
 import { DISCORD_VOLUNTEER_BLURB } from "@/lib/volunteer-ops/discord-volunteer-copy";
+import { useLocale } from "@/i18n/client";
+import { volunteerFormText } from "@/i18n/forms/public-forms";
 
 const OUTREACH_OPTION_COPY: {
   slug: OutreachResourceSlug;
@@ -44,21 +46,21 @@ const OUTREACH_OPTION_COPY: {
   },
 ];
 
-const PREFERRED_ROLE_LABELS: Record<(typeof volunteerPreferredRoleValues)[number], string> = {
-  events: "Events",
-  social_media: "Social media",
-  power_of_five: "Power of 5 / voter registration",
-  youth_outreach: "Youth outreach",
-  womens_outreach: "Women’s outreach",
-  fundraising: "Fundraising",
-  not_sure: "Not sure yet",
-};
+const PREFERRED_ROLE_KEYS = {
+  events: "roleEvents",
+  social_media: "roleSocial",
+  power_of_five: "rolePower5",
+  youth_outreach: "roleYouth",
+  womens_outreach: "roleWomen",
+  fundraising: "roleFundraising",
+  not_sure: "roleNotSure",
+} as const;
 
-const PREFERRED_LANGUAGE_LABELS: Record<(typeof volunteerPreferredLanguageValues)[number], string> = {
-  english: "English",
-  spanish: "Spanish",
-  marshallese: "Marshallese",
-};
+const PREFERRED_LANGUAGE_KEYS = {
+  english: "langEnglish",
+  spanish: "langSpanish",
+  marshallese: "langMarshallese",
+} as const;
 
 function resourceToken(slug: OutreachResourceSlug) {
   return `resource:${slug}` as const;
@@ -102,6 +104,7 @@ export function VolunteerForm({
   /** When user picks a lane on /volunteer, align the role select */
   presetPreferredRole?: VolunteerInput["preferredRole"] | null;
 }) {
+  const locale = useLocale();
   const [serverError, setServerError] = useState<string | null>(null);
   const [showSuccess, setShowSuccess] = useState(false);
   const [successTeamSlug, setSuccessTeamSlug] = useState<string | null>(null);
@@ -156,7 +159,7 @@ export function VolunteerForm({
           form.setError(k as keyof VolunteerInput, { message: v });
         });
       }
-      setServerError(json.error ?? "Something went wrong.");
+      setServerError(json.error ?? volunteerFormText("serverError", locale));
       return;
     }
     trackFormComplete("volunteer", json.submissionId);
@@ -167,11 +170,8 @@ export function VolunteerForm({
 
   if (showSuccess) {
     return (
-      <FormSuccessPanel title="Thank you — you’re in the system." showResponseExpectation={false}>
-        <p>
-          A coordinator can follow up using what you submitted. Until automated email is fully live, the campaign still
-          sees your signup immediately in our operations queue.
-        </p>
+      <FormSuccessPanel title={volunteerFormText("successTitle", locale)} showResponseExpectation={false}>
+        <p>{volunteerFormText("successLead", locale)}</p>
         <p className="mt-3 font-body text-sm leading-relaxed text-kelly-text/85">
           <strong>Teams vs. Power of 5:</strong> every volunteer belongs to a small 3-person operating team for weekly
           rhythm. Separately, you can build a Power of 5 network of people you personally know — those contacts only join
@@ -213,7 +213,7 @@ export function VolunteerForm({
           .
         </p>
         <Button type="button" variant="outline" onClick={() => { setShowSuccess(false); setSuccessTeamSlug(null); }}>
-          Submit another volunteer form
+          {volunteerFormText("submitAnother", locale)}
         </Button>
       </FormSuccessPanel>
     );
@@ -265,52 +265,52 @@ export function VolunteerForm({
       {serverError ? <FormErrorSummary errors={{ server: serverError }} /> : null}
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
         <FormField>
-          <FormLabel htmlFor="vf-first">First name</FormLabel>
+          <FormLabel htmlFor="vf-first">{volunteerFormText("firstName", locale)}</FormLabel>
           <Input id="vf-first" {...form.register("firstName")} autoComplete="given-name" />
           {form.formState.errors.firstName ? (
             <p className="text-sm text-kelly-navy">{form.formState.errors.firstName.message}</p>
           ) : null}
         </FormField>
         <FormField>
-          <FormLabel htmlFor="vf-last">Last name</FormLabel>
+          <FormLabel htmlFor="vf-last">{volunteerFormText("lastName", locale)}</FormLabel>
           <Input id="vf-last" {...form.register("lastName")} autoComplete="family-name" />
           {form.formState.errors.lastName ? (
             <p className="text-sm text-kelly-navy">{form.formState.errors.lastName.message}</p>
           ) : null}
         </FormField>
         <FormField>
-          <FormLabel htmlFor="vf-email">Email</FormLabel>
+          <FormLabel htmlFor="vf-email">{volunteerFormText("email", locale)}</FormLabel>
           <Input id="vf-email" type="email" {...form.register("email")} autoComplete="email" />
           {form.formState.errors.email ? (
             <p className="text-sm text-kelly-navy">{form.formState.errors.email.message}</p>
           ) : null}
         </FormField>
         <FormField>
-          <FormLabel htmlFor="vf-phone">Phone</FormLabel>
+          <FormLabel htmlFor="vf-phone">{volunteerFormText("phone", locale)}</FormLabel>
           <Input id="vf-phone" type="tel" {...form.register("phone")} autoComplete="tel" />
           {form.formState.errors.phone ? (
             <p className="text-sm text-kelly-navy">{form.formState.errors.phone.message}</p>
           ) : null}
         </FormField>
         <FormField>
-          <FormLabel htmlFor="vf-zip">ZIP code</FormLabel>
+          <FormLabel htmlFor="vf-zip">{volunteerFormText("zip", locale)}</FormLabel>
           <Input id="vf-zip" {...form.register("zip")} autoComplete="postal-code" />
           {form.formState.errors.zip ? (
             <p className="text-sm text-kelly-navy">{form.formState.errors.zip.message}</p>
           ) : null}
         </FormField>
         <FormField>
-          <FormLabel htmlFor="vf-county">County</FormLabel>
+          <FormLabel htmlFor="vf-county">{volunteerFormText("county", locale)}</FormLabel>
           <Input id="vf-county" {...form.register("county")} autoComplete="address-level1" />
         </FormField>
       </div>
       <FormField>
-        <FormLabel htmlFor="vf-city">City</FormLabel>
+        <FormLabel htmlFor="vf-city">{volunteerFormText("city", locale)}</FormLabel>
         <Input id="vf-city" {...form.register("city")} autoComplete="address-level2" />
       </FormField>
 
       <FormField>
-        <FormLabel htmlFor="vf-role">Preferred role</FormLabel>
+        <FormLabel htmlFor="vf-role">{volunteerFormText("preferredRole", locale)}</FormLabel>
         <select
           id="vf-role"
           className="w-full rounded-md border border-kelly-text/20 bg-white px-3 py-2 font-body text-kelly-text"
@@ -318,14 +318,14 @@ export function VolunteerForm({
         >
           {volunteerPreferredRoleValues.map((v) => (
             <option key={v} value={v}>
-              {PREFERRED_ROLE_LABELS[v]}
+              {volunteerFormText(PREFERRED_ROLE_KEYS[v], locale)}
             </option>
           ))}
         </select>
       </FormField>
 
       <FormField>
-        <FormLabel htmlFor="vf-lang">Preferred language</FormLabel>
+        <FormLabel htmlFor="vf-lang">{volunteerFormText("preferredLanguage", locale)}</FormLabel>
         <select
           id="vf-lang"
           className="w-full rounded-md border border-kelly-text/20 bg-white px-3 py-2 font-body text-kelly-text"
@@ -333,7 +333,7 @@ export function VolunteerForm({
         >
           {volunteerPreferredLanguageValues.map((v) => (
             <option key={v} value={v}>
-              {PREFERRED_LANGUAGE_LABELS[v]}
+              {volunteerFormText(PREFERRED_LANGUAGE_KEYS[v], locale)}
             </option>
           ))}
         </select>
@@ -412,12 +412,12 @@ export function VolunteerForm({
       </FormField>
 
       <FormField>
-        <FormLabel htmlFor="vf-notes">Notes (optional)</FormLabel>
+        <FormLabel htmlFor="vf-notes">{volunteerFormText("notes", locale)}</FormLabel>
         <Textarea id="vf-notes" rows={4} {...form.register("notes")} />
       </FormField>
 
       <FormField>
-        <FormLabel htmlFor="vf-availability">Availability (optional)</FormLabel>
+        <FormLabel htmlFor="vf-availability">{volunteerFormText("availability", locale)}</FormLabel>
         <Textarea id="vf-availability" rows={3} {...form.register("availability")} />
       </FormField>
       <FormField>
@@ -464,7 +464,7 @@ export function VolunteerForm({
         </ul>
       </div>
       <Button type="submit" variant="primary" disabled={form.formState.isSubmitting}>
-        {form.formState.isSubmitting ? "Sending…" : "Volunteer"}
+        {form.formState.isSubmitting ? volunteerFormText("sending", locale) : volunteerFormText("submit", locale)}
       </Button>
     </form>
   );

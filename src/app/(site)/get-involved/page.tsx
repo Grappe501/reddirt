@@ -12,12 +12,20 @@ import { trailPhotosForSlot } from "@/content/media/campaign-trail-assignments";
 import { RepresentLocalEventPanel } from "@/components/organizing/RepresentLocalEventPanel";
 import { representLocalEventVolunteerHref } from "@/config/navigation";
 import { isValidResourceVolunteerSlug } from "@/content/resources/toolkit";
+import { getRequestLocale } from "@/i18n/server";
+import { getInvolvedCopy } from "@/i18n/pages/get-involved";
+import { pageMeta } from "@/lib/seo/metadata";
+import { withLocaleHref } from "@/i18n/path";
+import { chromeText } from "@/i18n/chrome";
 
-export const metadata: Metadata = {
-  title: "Get Involved",
-  description:
-    "The Power of 5, volunteer, host Kelly, or donate — this campaign grows through relationships.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getRequestLocale();
+  return pageMeta({
+    title: getInvolvedCopy("metaTitle", locale),
+    description: getInvolvedCopy("metaDescription", locale),
+    path: locale === "es" ? "/es/get-involved" : "/get-involved",
+  });
+}
 
 const sectionLinks: { label: string; href: string }[] = [
   { label: "Power of 5", href: "#bring-5" },
@@ -106,6 +114,7 @@ export default async function GetInvolvedPage({
   searchParams?: Promise<Record<string, string | string[] | undefined>>;
 }) {
   const sp = (await searchParams) ?? {};
+  const locale = await getRequestLocale();
   const laneParam = pickLane(sp);
   const resourceParam = pickResource(sp);
   const volunteerPrefillResource =
@@ -122,18 +131,18 @@ export default async function GetInvolvedPage({
       <MediaPageHero
         slotKey="get-involved.hero"
         layout="split"
-        eyebrow="Participation ladder"
-        title="Get Involved"
-        subtitle="Stay connected. Volunteer. Activate your Power of 5. Host Kelly. Donate when you are ready."
+        eyebrow={getInvolvedCopy("eyebrow", locale)}
+        title={getInvolvedCopy("title", locale)}
+        subtitle={getInvolvedCopy("subtitle", locale)}
       >
-        <Button href="/get-involved/bring-5" variant="primary">
-          Activate Your Power of 5 →
+        <Button href={withLocaleHref("/get-involved/bring-5", locale)} variant="primary">
+          {getInvolvedCopy("activatePower5", locale)}
         </Button>
         <Button href="#volunteer" variant="outlineOnDark">
-          Volunteer
+          {chromeText("volunteer", locale)}
         </Button>
-        <Button href="/events/request" variant="outlineOnDark">
-          Host Kelly
+        <Button href={withLocaleHref("/events/request", locale)} variant="outlineOnDark">
+          {chromeText("itemHostKelly", locale)}
         </Button>
       </MediaPageHero>
 
@@ -351,10 +360,11 @@ export default async function GetInvolvedPage({
             subtitle="Use whichever box fits—Stay connected for a quick hello, events for a clear field shift, or the volunteer form for skills and availability."
           />
           <div id="join" className="mt-10 scroll-mt-24">
-            <h3 className="font-heading text-base font-bold text-kelly-text md:text-lg">Stay connected</h3>
+            <h3 className="font-heading text-base font-bold text-kelly-text md:text-lg">
+              {getInvolvedCopy("joinTitle", locale)}
+            </h3>
             <p className="mt-2 max-w-3xl font-body text-sm leading-relaxed text-kelly-text/75">
-              Name, best way to reach you, and a sentence about what sounds fun. If you are hosting or inviting us local,
-              say so.
+              {getInvolvedCopy("joinLead", locale)}
             </p>
             <div className="mt-8 max-w-3xl">
               <JoinMovementForm />
@@ -376,21 +386,28 @@ export default async function GetInvolvedPage({
           </div>
 
           <div id="volunteer" className="mt-14 scroll-mt-24">
-            <h3 className="font-heading text-base font-bold text-kelly-text md:text-lg">Volunteer signup</h3>
+            <h3 className="font-heading text-base font-bold text-kelly-text md:text-lg">
+              {getInvolvedCopy("volunteerTitle", locale)}
+            </h3>
             <p className="mt-2 max-w-3xl font-body text-sm leading-relaxed text-kelly-text/75">
-              Check what fits—even one line helps. Tips:{" "}
-              <Link className="font-semibold text-kelly-navy underline" href="/resources/postcard-outreach">
-                postcards
-              </Link>
-              ,{" "}
-              <Link className="font-semibold text-kelly-navy underline" href="/resources/phone-banking">
-                phone
-              </Link>
-              ,{" "}
-              <Link className="font-semibold text-kelly-navy underline" href="/resources/text-banking">
-                texts
-              </Link>
-              .
+              {getInvolvedCopy("volunteerLead", locale)}
+              {locale === "en" ? (
+                <>
+                  Tips:{" "}
+                  <Link className="font-semibold text-kelly-navy underline" href="/resources/postcard-outreach">
+                    postcards
+                  </Link>
+                  ,{" "}
+                  <Link className="font-semibold text-kelly-navy underline" href="/resources/phone-banking">
+                    phone
+                  </Link>
+                  ,{" "}
+                  <Link className="font-semibold text-kelly-navy underline" href="/resources/text-banking">
+                    texts
+                  </Link>
+                  .
+                </>
+              ) : null}
             </p>
             <div className="mt-8 max-w-3xl">
               <VolunteerForm prefillLane={volunteerPrefillLane} prefillResource={volunteerPrefillResource} />
@@ -450,16 +467,16 @@ export default async function GetInvolvedPage({
         <ContentContainer>
           <SectionHeading
             id="invite-kelly-heading"
-            eyebrow="Your table"
-            title="Invite Kelly"
-            subtitle="Coffee, backyard, barn, or county room—we align before anything is public."
+            eyebrow={locale === "es" ? "Su mesa" : "Your table"}
+            title={getInvolvedCopy("inviteTitle", locale)}
+            subtitle={getInvolvedCopy("inviteSubtitle", locale)}
           />
           <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
-            <Button href="/events/request" variant="primary" className="min-h-[48px]">
-              Invite Kelly
+            <Button href={withLocaleHref("/events/request", locale)} variant="primary" className="min-h-[48px]">
+              {chromeText("itemInvite", locale)}
             </Button>
-            <Button href="/host-a-gathering" variant="outline" className="min-h-[48px]">
-              Host a gathering
+            <Button href={withLocaleHref("/host-a-gathering", locale)} variant="outline" className="min-h-[48px]">
+              {chromeText("itemHostGathering", locale)}
             </Button>
           </div>
         </ContentContainer>

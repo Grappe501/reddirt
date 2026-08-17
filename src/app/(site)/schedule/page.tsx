@@ -5,45 +5,55 @@ import { FullBleedSection } from "@/components/layout/FullBleedSection";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { Button } from "@/components/ui/Button";
 import { ScheduleCampaignEventForm } from "@/components/forms/ScheduleCampaignEventForm";
+import { getRequestLocale } from "@/i18n/server";
+import { scheduleCopy } from "@/i18n/pages/schedule";
+import { pageMeta } from "@/lib/seo/metadata";
+import { withLocaleHref } from "@/i18n/path";
+import { chromeText } from "@/i18n/chrome";
 
-export const metadata: Metadata = {
-  title: "Invite Kelly · Share an event",
-  description:
-    "Invite Kelly to your county or share a local fair, festival, civic club, church, chamber, or community gathering. Staff review every request—nothing is confirmed from this form alone.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getRequestLocale();
+  return pageMeta({
+    title: scheduleCopy("metaTitle", locale),
+    description: scheduleCopy("metaDescription", locale),
+    path: locale === "es" ? "/es/schedule" : "/schedule",
+  });
+}
 
 export default async function ScheduleCampaignEventPage() {
+  const locale = await getRequestLocale();
+
   return (
     <>
       <MediaPageHero
         slotKey="schedule.hero"
         layout="split"
-        eyebrow="Schedule / invite"
-        title="Invite Kelly · Share local events"
-        subtitle="Help us find fairs, festivals, civic clubs, churches, chambers, and community gatherings. Tell us what you are hoping to host or convene—we route every request through staff review. Tentative only; never a public confirmation of Kelly’s private calendar."
+        eyebrow={scheduleCopy("eyebrow", locale)}
+        title={scheduleCopy("title", locale)}
+        subtitle={scheduleCopy("subtitle", locale)}
       >
         <Button href="#schedule-form" variant="primary">
-          Share an opportunity
+          {scheduleCopy("shareOpportunity", locale)}
         </Button>
-        <Button href="/events/request" variant="outlineOnDark">
-          Invite Kelly pathway
+        <Button href={withLocaleHref("/events/request", locale)} variant="outlineOnDark">
+          {scheduleCopy("invitePathway", locale)}
         </Button>
       </MediaPageHero>
 
       <FullBleedSection padY aria-labelledby="schedule-copy-heading">
         <ContentContainer wide className="max-w-3xl">
           <h2 id="schedule-copy-heading" className="font-heading text-xl font-bold text-kelly-text">
-            What to include
+            {scheduleCopy("whatToInclude", locale)}
           </h2>
           <ul className="mt-4 list-disc space-y-2 pl-5 font-body text-base leading-relaxed text-kelly-text/85">
-            <li>Your county and the kind of gathering (fair, festival, club, faith community, chamber, backyard, etc.)</li>
-            <li>Approximate date or window, expected audience size, and who is hosting</li>
-            <li>Whether the event is public, invitation-only, or still being planned</li>
+            <li>{scheduleCopy("bullet1", locale)}</li>
+            <li>{scheduleCopy("bullet2", locale)}</li>
+            <li>{scheduleCopy("bullet3", locale)}</li>
           </ul>
           <p className="mt-6 font-body text-sm text-kelly-muted">
-            Prefer the step-by-step invite flow? Use{" "}
-            <Link href="/events/request" className="font-semibold text-kelly-navy underline">
-              Invite Kelly
+            {scheduleCopy("preferPathway", locale)}{" "}
+            <Link href={withLocaleHref("/events/request", locale)} className="font-semibold text-kelly-navy underline">
+              {chromeText("itemInvite", locale)}
             </Link>
             .
           </p>
@@ -53,7 +63,7 @@ export default async function ScheduleCampaignEventPage() {
       <FullBleedSection padY aria-labelledby="schedule-form-heading">
         <ContentContainer wide>
           <h2 id="schedule-form-heading" className="sr-only">
-            Public scheduling request form
+            {locale === "es" ? "Formulario de solicitud de agenda" : "Public scheduling request form"}
           </h2>
           <ScheduleCampaignEventForm id="schedule-form" />
         </ContentContainer>

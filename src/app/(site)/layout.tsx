@@ -5,6 +5,9 @@ import { SiteFooter } from "@/components/layout/SiteFooter";
 import { PublicLayoutMain } from "@/components/layout/PublicLayoutMain";
 import { SiteEditChrome } from "@/components/site-edit/SiteEditChrome";
 import { canUseSiteEditMode, isSiteEditMode } from "@/lib/site-edit/edit-mode";
+import { DocumentLang } from "@/components/i18n/DocumentLang";
+import { getRequestLocale } from "@/i18n/server";
+import { chromeText } from "@/i18n/chrome";
 
 /**
  * Public marketing site — header, footer. Isolated from `/admin` so campaign manager
@@ -12,15 +15,20 @@ import { canUseSiteEditMode, isSiteEditMode } from "@/lib/site-edit/edit-mode";
  * Edit mode: visit /edit (admin) for basic copy + media slot changes.
  */
 export default async function SiteLayout({ children }: { children: ReactNode }) {
-  const [editing, canEdit] = await Promise.all([isSiteEditMode(), canUseSiteEditMode()]);
+  const [editing, canEdit, locale] = await Promise.all([
+    isSiteEditMode(),
+    canUseSiteEditMode(),
+    getRequestLocale(),
+  ]);
 
   return (
     <>
+      <DocumentLang locale={locale} />
       <a
         href="#main-content"
         className="sr-only focus-visible:not-sr-only focus-visible:absolute focus-visible:left-4 focus-visible:top-4 focus-visible:z-[100] focus-visible:rounded-btn focus-visible:bg-kelly-gold focus-visible:px-4 focus-visible:py-3 focus-visible:text-kelly-navy focus-visible:shadow-lg"
       >
-        Skip to main content
+        {chromeText("skip", locale)}
       </a>
       <SiteEditChrome active={editing} canEdit={canEdit} />
       <SiteHeader />

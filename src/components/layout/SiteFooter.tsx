@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { CampaignPaidForBar } from "@/components/layout/CampaignPaidForBar";
 import { SocialFooterIcons } from "@/components/layout/SocialFooterIcons";
@@ -6,11 +8,16 @@ import { footerNavGroups } from "@/config/navigation";
 import { siteConfig } from "@/config/site";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { isExternalHref } from "@/lib/href";
+import { useLocale } from "@/i18n/client";
+import { chromeText, localizeFooterGroups } from "@/i18n/chrome";
+import { withLocaleHref } from "@/i18n/path";
 
 export function SiteFooter() {
+  const locale = useLocale();
   const year = new Date().getFullYear();
   const volunteerHref = getVolunteerSignupHref();
   const volunteerExternal = isExternalHref(volunteerHref);
+  const localizedGroups = localizeFooterGroups(footerNavGroups, locale);
 
   return (
     <footer className="w-full border-t border-kelly-gold/25 bg-gradient-to-b from-kelly-navy to-kelly-deep text-kelly-page">
@@ -27,31 +34,31 @@ export function SiteFooter() {
               rel={volunteerExternal ? "noopener noreferrer" : undefined}
               className="mt-6 inline-flex min-h-[48px] items-center rounded-btn bg-gradient-to-b from-kelly-gold to-[#b8872f] px-5 py-3 font-body text-sm font-bold text-kelly-navy shadow-[var(--shadow-gold-cta)] transition hover:brightness-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-kelly-gold"
             >
-              Volunteer with Kelly →
+              {chromeText("volunteerCta", locale)}
             </Link>
             <p className="mt-4 font-body text-sm text-kelly-page/70">
-              Questions?{" "}
+              {chromeText("questions", locale)}{" "}
               <Link
-                href="/contact"
+                href={withLocaleHref("/contact", locale)}
                 className="font-semibold text-kelly-page underline decoration-kelly-page/30 underline-offset-4 transition hover:text-kelly-gold hover:decoration-kelly-gold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-kelly-gold"
               >
-                Contact the campaign
+                {chromeText("contactCampaign", locale)}
               </Link>
             </p>
             <p className="mt-8 font-body text-xs font-bold uppercase tracking-[0.2em] text-kelly-page/50">
-              Follow the campaign
+              {chromeText("follow", locale)}
             </p>
             <SocialFooterIcons className="mt-3" />
           </div>
           <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:col-span-8">
-            {footerNavGroups.map((group) => (
+            {localizedGroups.map((group) => (
               <nav key={group.title} aria-label={group.title}>
                 <p className="font-body text-xs font-bold uppercase tracking-[0.2em] text-kelly-page/50">
                   {group.title}
                 </p>
                 <ul className="mt-4 space-y-2.5">
                   {group.items.map((item) => {
-                    const href = item.label === "Donate" ? siteConfig.donateHref : item.href;
+                    const href = item.href === "/donate" ? siteConfig.donateHref : item.href;
                     const ext = isExternalHref(href);
                     return (
                       <li key={`${item.label}-${item.href}`}>
@@ -75,7 +82,7 @@ export function SiteFooter() {
           <div className="mx-auto flex max-w-2xl flex-col items-center gap-2 text-center">
             <CampaignPaidForBar variant="dark" />
             <p className="font-body text-[9px] leading-snug text-kelly-page/45">
-              © {year} {siteConfig.name}. All rights reserved.
+              © {year} {siteConfig.name}. {chromeText("rights", locale)}
             </p>
           </div>
         </div>

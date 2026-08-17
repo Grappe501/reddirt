@@ -13,6 +13,10 @@ import { Button } from "@/components/ui/Button";
 import { SearchDialog } from "@/components/search/SearchDialog";
 import { HeaderRoundLogo } from "@/components/layout/HeaderRoundLogo";
 import { NavDesktop } from "@/components/layout/NavDesktop";
+import { LanguageSwitcher } from "@/components/i18n/LanguageSwitcher";
+import { useLocale } from "@/i18n/client";
+import { chromeText, localizeNavGroups } from "@/i18n/chrome";
+import { withLocaleHref } from "@/i18n/path";
 
 function navItemActive(pathname: string, href: string) {
   return pathname === href || (href.length > 1 && pathname.startsWith(`${href}/`));
@@ -26,13 +30,18 @@ function navGroupsForMobileDrawer(): NavGroup[] {
 
 export function SiteHeader() {
   const pathname = usePathname();
+  const locale = useLocale();
+  const localizedNavGroups = localizeNavGroups(primaryNavGroups, locale);
+  const localizedMobileGroups = localizeNavGroups(navGroupsForMobileDrawer(), locale);
+  const localizedVoteHref = withLocaleHref(voterRegistrationHref, locale);
   const [open, setOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [compactHeader, setCompactHeader] = useState(false);
   const panelId = useId();
   /** Slice 1: same destination as homepage Get Involved Volunteer card. */
-  const volunteerHref = getVolunteerSignupHref();
-  const volunteerExternal = isExternalHref(volunteerHref);
+  const volunteerHrefRaw = getVolunteerSignupHref();
+  const volunteerExternal = isExternalHref(volunteerHrefRaw);
+  const volunteerHref = volunteerExternal ? volunteerHrefRaw : withLocaleHref(volunteerHrefRaw, locale);
   const headerRootRef = useRef<HTMLElement | null>(null);
 
   /** Sets `--site-header-h` (px) so `globals.css` can compute `--site-header-shim` for the layout shim. */
@@ -107,8 +116,8 @@ export function SiteHeader() {
           )}
         >
         <Link
-          href="/"
-          aria-label={`${siteConfig.name} — home`}
+          href={withLocaleHref("/", locale)}
+          aria-label={`${siteConfig.name} — ${chromeText("home", locale).toLowerCase()}`}
           className="group relative z-20 flex min-w-0 max-w-[11.5rem] shrink-0 items-center gap-2.5 sm:max-w-[14rem] sm:gap-3 xl:max-w-[15.5rem] 2xl:max-w-[17rem] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-kelly-gold/50 focus-visible:ring-offset-2 focus-visible:ring-offset-kelly-navy"
         >
           <span
@@ -127,7 +136,7 @@ export function SiteHeader() {
               {siteConfig.shortName}
             </span>
             <span className="mt-0.5 truncate font-body text-[9px] font-medium uppercase tracking-[0.12em] text-white/90 sm:text-[10px]">
-              for Arkansas Secretary of State
+              {chromeText("forSos", locale)}
             </span>
             <span className="mt-0.5 hidden truncate font-body text-[9px] font-semibold uppercase tracking-[0.16em] text-kelly-gold/90 2xl:block">
               {siteConfig.tagline}
@@ -144,25 +153,26 @@ export function SiteHeader() {
             Desktop chrome starts at xl (1280px) — lg was too tight for six menus + CTAs.
           */}
           <div className="flex min-h-0 min-w-0 flex-1 items-center justify-end overflow-visible pr-0.5">
-            <NavDesktop groups={primaryNavGroups} pathname={pathname} theme="dark" />
+            <NavDesktop groups={localizedNavGroups} pathname={pathname} theme="dark" />
           </div>
+          <LanguageSwitcher className="hidden shrink-0 xl:inline-flex" tone="dark" />
           <Button
             type="button"
             variant="ghostOnDark"
             className="shrink-0 px-2 py-2 text-xs font-semibold tracking-wide 2xl:px-3"
             onClick={() => setSearchOpen(true)}
           >
-            Search
+            {chromeText("search", locale)}
           </Button>
           <Button
-            href={voterRegistrationHref}
+            href={localizedVoteHref}
             variant="outlineOnDark"
-            title="Vote / Register"
+            title={chromeText("voteRegister", locale)}
             className="hidden min-h-[44px] min-w-0 flex-shrink-0 border border-white/45 bg-transparent px-2.5 py-2 text-xs font-semibold uppercase tracking-wide text-white/95 transition hover:border-white/70 hover:bg-white/10 xl:inline-flex 2xl:min-h-[48px] 2xl:px-3.5 2xl:text-sm"
-            aria-label="Vote / Register — voter registration center"
+            aria-label={`${chromeText("voteRegister", locale)} — voter registration center`}
           >
-            <span className="2xl:hidden">Vote</span>
-            <span className="hidden 2xl:inline">Vote / Register</span>
+            <span className="2xl:hidden">{chromeText("vote", locale)}</span>
+            <span className="hidden 2xl:inline">{chromeText("voteRegister", locale)}</span>
           </Button>
           <Button
             href={volunteerHref}
@@ -170,29 +180,30 @@ export function SiteHeader() {
             rel={volunteerExternal ? "noopener noreferrer" : undefined}
             variant="outlineOnDark"
             className="hidden min-h-[44px] flex-shrink-0 border-2 border-white/55 bg-white/10 px-2.5 py-2 text-xs font-bold uppercase tracking-wide text-white shadow-sm transition hover:border-white/75 hover:bg-white/16 xl:inline-flex 2xl:min-h-[48px] 2xl:px-3.5 2xl:text-sm"
-            aria-label="Volunteer — sign up to help the campaign"
+            aria-label={`${chromeText("volunteer", locale)} — sign up to help the campaign`}
           >
-            Volunteer
+            {chromeText("volunteer", locale)}
           </Button>
           <Button
             href={siteConfig.donateHref}
             variant="primary"
             className="hidden min-h-[44px] min-w-0 flex-shrink-0 px-3 py-2 text-xs font-extrabold uppercase tracking-wide xl:inline-flex 2xl:min-h-[48px] 2xl:px-4 2xl:text-sm"
-            aria-label="Donate to the campaign"
+            aria-label={`${chromeText("donate", locale)} to the campaign`}
           >
-            Donate
+            {chromeText("donate", locale)}
           </Button>
         </nav>
 
         <div className="ml-auto flex max-w-[min(100%,18rem)] flex-shrink-0 flex-wrap items-center justify-end gap-1.5 sm:max-w-none sm:gap-2 text-kelly-fog xl:hidden">
+          <LanguageSwitcher className="order-first basis-full justify-end sm:order-none sm:basis-auto" tone="dark" />
           <Button
-            href={voterRegistrationHref}
+            href={localizedVoteHref}
             variant="outlineOnDark"
-            title="Vote / Register"
-            className="order-first min-h-[48px] border border-white/45 bg-transparent px-2.5 py-2 text-[10px] font-semibold uppercase tracking-wide text-white sm:px-3 sm:text-xs"
-            aria-label="Vote / Register — voter registration center"
+            title={chromeText("voteRegister", locale)}
+            className="min-h-[48px] border border-white/45 bg-transparent px-2.5 py-2 text-[10px] font-semibold uppercase tracking-wide text-white sm:px-3 sm:text-xs"
+            aria-label={`${chromeText("voteRegister", locale)} — voter registration center`}
           >
-            Vote
+            {chromeText("vote", locale)}
           </Button>
           <Button
             href={volunteerHref}
@@ -200,17 +211,17 @@ export function SiteHeader() {
             rel={volunteerExternal ? "noopener noreferrer" : undefined}
             variant="outlineOnDark"
             className="min-h-[48px] border-2 border-white/50 bg-white/10 px-2.5 py-2 text-[10px] font-bold uppercase tracking-wide text-white sm:px-3.5 sm:text-xs"
-            aria-label="Volunteer — sign up"
+            aria-label={`${chromeText("volunteer", locale)} — sign up`}
           >
-            Volunteer
+            {chromeText("volunteer", locale)}
           </Button>
           <Button
             href={siteConfig.donateHref}
             variant="primary"
             className="min-h-[48px] px-2.5 py-2 text-[10px] font-extrabold uppercase tracking-wide sm:px-3.5 sm:text-xs"
-            aria-label="Donate"
+            aria-label={chromeText("donate", locale)}
           >
-            Donate
+            {chromeText("donate", locale)}
           </Button>
           <Button
             type="button"
@@ -218,7 +229,7 @@ export function SiteHeader() {
             className="min-h-[48px] px-2.5 py-2 text-[10px] sm:px-3 sm:text-xs"
             onClick={() => setSearchOpen(true)}
           >
-            Search
+            {chromeText("search", locale)}
           </Button>
           <Button
             type="button"
@@ -228,7 +239,7 @@ export function SiteHeader() {
             aria-controls={panelId}
             onClick={() => setOpen((v) => !v)}
           >
-            Menu
+            {chromeText("menu", locale)}
           </Button>
         </div>
         </div>
@@ -257,23 +268,23 @@ export function SiteHeader() {
       >
         <div className="flex h-full flex-col px-[var(--gutter-x)] py-6">
           <div className="flex items-center justify-between border-b border-kelly-gold/20 pb-4">
-            <span className="font-heading text-lg font-bold text-white">Menu</span>
+            <span className="font-heading text-lg font-bold text-white">{chromeText("menu", locale)}</span>
             <Button type="button" variant="ghostOnDark" onClick={() => setOpen(false)}>
-              Close
+              {chromeText("close", locale)}
             </Button>
           </div>
           <nav className="mt-4 flex flex-1 flex-col gap-6 overflow-y-auto pb-6" aria-label="Mobile primary">
             <div>
               <Link
-                href={voterRegistrationHref}
+                href={localizedVoteHref}
                 className="block min-h-[48px] rounded-btn bg-kelly-gold px-3 py-3 text-center font-body text-base font-bold text-kelly-navy shadow-md transition hover:bg-kelly-gold-soft focus-visible:outline focus-visible:ring-2 focus-visible:ring-kelly-gold/70"
                 onClick={() => setOpen(false)}
               >
-                Vote / Register
+                {chromeText("voteRegister", locale)}
               </Link>
             </div>
 
-            {navGroupsForMobileDrawer().map((group) => (
+            {localizedMobileGroups.map((group) => (
               <div key={group.id} className="border-t border-kelly-gold/15 pt-4">
                 <p className="px-3 font-body text-[11px] font-bold tracking-wide text-white/85">{group.label}</p>
                 <div className="mt-2 flex flex-col gap-0.5">
@@ -309,7 +320,7 @@ export function SiteHeader() {
                 className="block min-h-[48px] rounded-btn border-2 border-white/50 bg-white/10 px-3 py-3 text-center font-body text-base font-bold text-white focus-visible:outline focus-visible:ring-2 focus-visible:ring-kelly-gold/45"
                 onClick={() => setOpen(false)}
               >
-                Volunteer
+                {chromeText("volunteer", locale)}
               </Link>
               <Link
                 href={siteConfig.donateHref}
@@ -318,7 +329,7 @@ export function SiteHeader() {
                 className="block min-h-[48px] rounded-btn bg-gradient-to-b from-kelly-gold to-[#b8872f] px-3 py-3 text-center font-body text-base font-extrabold text-kelly-navy shadow-[var(--shadow-gold-cta)] focus-visible:outline focus-visible:ring-2 focus-visible:ring-kelly-gold/35"
                 onClick={() => setOpen(false)}
               >
-                Donate
+                {chromeText("donate", locale)}
               </Link>
               <Button
                 type="button"
@@ -329,16 +340,16 @@ export function SiteHeader() {
                   setSearchOpen(true);
                 }}
               >
-                Search
+                {chromeText("search", locale)}
               </Button>
             </div>
 
             <Link
-              href="/"
+              href={withLocaleHref("/", locale)}
               className="mt-2 block rounded-btn px-3 py-3 text-center font-body text-base font-medium text-kelly-gold/95 hover:bg-kelly-blue/30 focus-visible:outline focus-visible:ring-2 focus-visible:ring-kelly-gold/40"
               onClick={() => setOpen(false)}
             >
-              Home
+              {chromeText("home", locale)}
             </Link>
           </nav>
         </div>

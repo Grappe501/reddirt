@@ -3,24 +3,35 @@ import { EventPathwayPage } from "@/components/events/EventPathwayPage";
 import { inviteKellyContent } from "@/content/events/invite-kelly";
 import { pageMeta } from "@/lib/seo/metadata";
 import { brandMediaFromLegacySite } from "@/config/brand-media";
+import { getRequestLocale } from "@/i18n/server";
+import { inviteKellyLayer1Copy } from "@/i18n/pages/invite-kelly";
+import { withLocaleHref } from "@/i18n/path";
 
 const { meta, layerOne: L1 } = inviteKellyContent;
 
-export const metadata: Metadata = pageMeta({
-  title: meta.layerOne.title,
-  description: meta.layerOne.description,
-  path: meta.layerOne.path,
-  imageSrc: brandMediaFromLegacySite.statewideBanner,
-});
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getRequestLocale();
+  return pageMeta({
+    title: locale === "es" ? inviteKellyLayer1Copy("title", locale) : meta.layerOne.title,
+    description: meta.layerOne.description,
+    path: locale === "es" ? "/es/events/request" : meta.layerOne.path,
+    imageSrc: brandMediaFromLegacySite.statewideBanner,
+  });
+}
 
-export default function InviteKellyLayerOnePage() {
+export default async function InviteKellyLayerOnePage() {
+  const locale = await getRequestLocale();
+
   return (
     <EventPathwayPage
       layer={1}
-      eyebrow={L1.eyebrow}
-      title={L1.title}
-      subtitle={L1.subtitle}
-      nextStep={L1.nextCta}
+      eyebrow={inviteKellyLayer1Copy("eyebrow", locale)}
+      title={inviteKellyLayer1Copy("title", locale)}
+      subtitle={inviteKellyLayer1Copy("subtitle", locale)}
+      nextStep={{
+        label: inviteKellyLayer1Copy("nextCta", locale),
+        href: withLocaleHref("/events/request/how-it-works", locale),
+      }}
     >
       <div className="space-y-10 font-body text-kelly-text/88">
         {L1.leadParagraphs.map((p) => (

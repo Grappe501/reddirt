@@ -4,33 +4,42 @@ import { MediaPageHero } from "@/components/blocks/MediaPageHero";
 import { CampaignCountdown } from "@/components/campaign/CampaignCountdown";
 import { Button } from "@/components/ui/Button";
 import { VolunteerOnboardingPage } from "@/components/volunteer/VolunteerOnboardingPage";
+import { getRequestLocale } from "@/i18n/server";
+import { volunteerPageCopy } from "@/i18n/pages/volunteer-page";
+import { pageMeta } from "@/lib/seo/metadata";
+import { withLocaleHref } from "@/i18n/path";
 
-export const metadata: Metadata = {
-  title: { absolute: "Volunteer Onboarding | Kelly Grappe" },
-  description: "Start here to join the volunteer field team.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getRequestLocale();
+  return pageMeta({
+    title: volunteerPageCopy("metaTitle", locale),
+    description: volunteerPageCopy("metaDescription", locale),
+    path: locale === "es" ? "/es/volunteer" : "/volunteer",
+  });
+}
 
 type PageProps = { searchParams: Promise<{ role?: string }> };
 
 export default async function VolunteerPage({ searchParams }: PageProps) {
   const sp = await searchParams;
+  const locale = await getRequestLocale();
   return (
     <>
       <MediaPageHero
         slotKey="get-involved.hero"
         layout="split"
-        eyebrow="Field team"
-        title="Join the Field Team"
-        subtitle="We’re building a volunteer network where everyone owns one small lane, does a little each week, and helps grow something powerful."
+        eyebrow={volunteerPageCopy("eyebrow", locale)}
+        title={volunteerPageCopy("title", locale)}
+        subtitle={volunteerPageCopy("subtitle", locale)}
       >
         <Button href="#how-this-works" variant="primary">
-          Start onboarding
+          {volunteerPageCopy("startOnboarding", locale)}
         </Button>
-        <Button href="/field-playbook" variant="outlineOnDark">
-          Read the field playbook
+        <Button href={withLocaleHref("/field-playbook", locale)} variant="outlineOnDark">
+          {volunteerPageCopy("fieldPlaybook", locale)}
         </Button>
-        <Button href="/volunteer/resources" variant="outlineOnDark">
-          Volunteer resource library
+        <Button href={withLocaleHref("/volunteer/resources", locale)} variant="outlineOnDark">
+          {volunteerPageCopy("resourceLibrary", locale)}
         </Button>
       </MediaPageHero>
       <VolunteerOnboardingPage campaignClock={<CampaignCountdown />} initialSignupRole={sp.role ?? null} />
