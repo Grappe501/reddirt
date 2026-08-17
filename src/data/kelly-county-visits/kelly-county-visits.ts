@@ -3518,7 +3518,7 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     includeOnPublicPage: true,
     confidence: "confirmed",
     notes:
-      "Steve 2026-08-17: Anne Bean (Logan County Democrats chair) invited Kelly for Thursday Aug 27, 6:00 p.m. in Paris. Newly re-established county party; other candidates also attending. Public listing is logan-county-democrats-paris-2026-08-27. Room still TBA. ACTION: reply to Anne to confirm Kelly will be there. Host contact stays off the public page; she is on the DPA officer roster. Previous morning is Dardanelle Chamber breakfast Aug 26; next evening is Youth Coalition Retreat at Mount Nebo Aug 28. Not a conflict with Faith Zoom (Wednesday mornings).",
+      "Steve 2026-08-17: host flyers confirm Union Bank Community Center, 23 E Main Street, Paris, AR 72855, Thursday Aug 27, 6:00 p.m. Kelly is a featured speaker. Host flyers also list James Rus Russell (U.S. Congress). Public listing is logan-county-democrats-paris-2026-08-27. Anne Bean invited; host contact stays off the public page. Previous morning is Dardanelle Chamber breakfast Aug 26; next evening is Youth Coalition Retreat at Mount Nebo Aug 28. Not a conflict with Faith Zoom (Wednesday mornings).",
     sourceType: "manual",
   },
   {

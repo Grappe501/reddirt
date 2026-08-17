@@ -106,6 +106,8 @@ export type EventItem = {
   /** Public flyer image under `/public`, e.g. `/media/event-flyers/coffee-with-kelly-searcy-2026-08-22.png`. */
   flyerSrc?: string;
   flyerAlt?: string;
+  /** Extra host flyers shown on the event page (first image should match `flyerSrc` for social preview). */
+  flyerGallery?: Array<{ src: string; alt: string }>;
   /** Public participation — omit for older static rows (treated as campaign appearance). */
   attendanceType?: "PUBLIC_OPEN" | "PUBLIC_REGISTRATION" | "INVITATION" | "CAMPAIGN_APPEARANCE" | "PRIVATE";
   city?: string;

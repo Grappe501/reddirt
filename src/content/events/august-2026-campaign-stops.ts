@@ -36,6 +36,7 @@ type StopDraft = {
   featuredSummary?: string;
   flyerSrc?: string;
   flyerAlt?: string;
+  flyerGallery?: Array<{ src: string; alt: string }>;
 };
 
 function campaignStop(draft: StopDraft): EventItem {
@@ -73,6 +74,7 @@ function campaignStop(draft: StopDraft): EventItem {
     featuredSummary: draft.featuredSummary,
     flyerSrc: draft.flyerSrc,
     flyerAlt: draft.flyerAlt,
+    flyerGallery: draft.flyerGallery,
     mapCoordinates: draft.mapCoordinates,
     mapPinQuality: draft.mapPinQuality,
     fieldAttendance: draft.fieldAttendance ?? "confirmed",
@@ -493,27 +495,59 @@ export const august2026CampaignStops: EventItem[] = [
     region: "West Central Arkansas",
     countySlug: "logan-county",
     startsAt: "2026-08-27T18:00:00",
-    locationLabel: "Paris",
+    locationLabel: "Union Bank Community Center — Paris",
     city: "Paris",
-    addressLine: "Paris, AR (room to be posted)",
+    addressLine: "23 E Main Street, Paris, AR 72855",
     summary:
-      "Thursday, August 27, 6:00 p.m. Central. Meeting of the newly re-established Logan County Democratic Party in Paris. Other candidates will also attend. Room to be posted.",
+      "Thursday, August 27, 6:00 p.m. Central. Logan County Democrats meeting at the Union Bank Community Center in Paris. Kelly Grappe will speak.",
     description:
-      "Thursday, August 27, 2026, 6:00 p.m. Central in Paris. The newly re-established Democratic Party of Logan County is gathering, and other candidates will also attend. Kelly Grappe, candidate for Arkansas Secretary of State, has this stop on the campaign calendar. The exact room will be posted here when the host publishes it.",
+      "Thursday, August 27, 2026, 6:00 p.m. Central at the Union Bank Community Center, 23 E Main Street, Paris, AR 72855. Logan County Democrats are gathering, and Kelly Grappe, candidate for Arkansas Secretary of State, will speak. The host flyers also list James “Rus” Russell, candidate for U.S. Congress, at this meeting. This is a county party meeting, not a campaign rally.",
     whatToExpect: [
       "Thursday, August 27, 2026, 6:00 p.m. Central.",
-      "Paris, Arkansas. Room to be posted.",
-      "Newly re-established Logan County Democratic Party meeting. Other candidates will also attend.",
+      "Union Bank Community Center, 23 E Main Street, Paris, AR 72855.",
+      "Kelly Grappe will speak. The Logan County Democrats flyers also list James “Rus” Russell, candidate for U.S. Congress.",
+      "Open county party meeting. Connect, get involved, and meet neighbors in Logan County.",
     ],
-    whoItsFor: "Neighbors in Paris and Logan County, and anyone who wants to meet the Secretary of State candidates on August 27.",
+    whoItsFor: "Neighbors in Paris and Logan County, and anyone who wants to hear Kelly Grappe at the August 27 meeting.",
     organizerNote:
-      "Invitation from the Logan County chair dated August 7, 2026. Host contact stays off the public page. Venue room still TBA. Next evening is the Arkansas Youth Coalition Retreat at Mount Nebo.",
+      "Venue, time, and speakers posted from Logan County Democrats host flyers (August 2026). Host contact stays off the public page. Next evening is the Arkansas Youth Coalition Retreat at Mount Nebo.",
     attendanceType: "PUBLIC_OPEN",
     audienceTags: ["Democratic Party", "Logan County", "Paris"],
-    mapCoordinates: { lat: 35.292, lng: -93.7224 },
+    mapCoordinates: { lat: 35.2919, lng: -93.7294 },
+    mapPinQuality: "venue",
     relatedEventSlugs: [
       "dardanelle-chamber-buzz-breakfast-2026-08-26",
       "arkansas-youth-coalition-retreat-2026-08-28",
+    ],
+    relatedResourceHrefs: [
+      { label: "Logan County Democrats on Facebook", href: "https://www.facebook.com/LCDemocrats" },
+      { label: "Events calendar", href: "/events" },
+      { label: "Get involved", href: "/get-involved" },
+    ],
+    flyerSrc: "/media/event-flyers/logan-county-democrats-paris-2026-08-27-kelly-1.png",
+    flyerAlt:
+      "Logan County Democrats flyer: Kelly Grappe will speak Thursday, August 27, 2026 at 6:00 p.m. at the Union Bank Community Center, 23 E Main Street, Paris, AR.",
+    flyerGallery: [
+      {
+        src: "/media/event-flyers/logan-county-democrats-paris-2026-08-27-kelly-1.png",
+        alt: "Logan County Democrats flyer announcing Kelly Grappe as a speaker on August 27, 2026 in Paris.",
+      },
+      {
+        src: "/media/event-flyers/logan-county-democrats-paris-2026-08-27-kelly-2.png",
+        alt: "Logan County Democrats flyer supporting Kelly Grappe for Secretary of State, with meeting details for August 27 in Paris.",
+      },
+      {
+        src: "/media/event-flyers/logan-county-democrats-paris-2026-08-27-kelly-3.png",
+        alt: "Logan County Democrats flyer with Kelly Grappe portrait and Union Bank Community Center meeting details.",
+      },
+      {
+        src: "/media/event-flyers/logan-county-democrats-paris-2026-08-27-rus-and-kelly-1.png",
+        alt: "Logan County Democrats flyer featuring James Rus Russell and Kelly Grappe for the August 27, 2026 meeting in Paris.",
+      },
+      {
+        src: "/media/event-flyers/logan-county-democrats-paris-2026-08-27-rus-and-kelly-2.png",
+        alt: "Logan County Democrats join-us flyer for the August 27, 2026 meeting with Rus Russell and Kelly Grappe.",
+      },
     ],
   }),
   campaignStop({

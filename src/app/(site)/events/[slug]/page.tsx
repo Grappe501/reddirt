@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/Button";
 import { EventMeta } from "@/components/organizing/EventMeta";
 import { EventCard } from "@/components/organizing/EventCard";
 import { EventShareActions } from "@/components/organizing/EventShareActions";
-import { EventFlyer } from "@/components/organizing/EventFlyer";
+import { EventFlyerGallery } from "@/components/organizing/EventFlyer";
 import { RelatedLinksSection } from "@/components/organizing/RelatedLinksSection";
 import { getEventBySlug, listEventSlugs } from "@/content/events";
 import type { EventItem } from "@/content/types";
@@ -86,6 +86,12 @@ function CuratedOrCalendarEventView({ event }: { event: EventItem }) {
   const heroCtaLabel = live.primaryCtaLabel ?? attendance.rsvpLabel;
   const featured = Boolean(live.featured);
   const sharePath = `/events/${live.slug}`;
+  const flyers =
+    live.flyerGallery && live.flyerGallery.length > 0
+      ? live.flyerGallery
+      : live.flyerSrc
+        ? [{ src: live.flyerSrc, alt: live.flyerAlt ?? `${live.title} flyer` }]
+        : [];
 
   return (
     <>
@@ -158,9 +164,7 @@ function CuratedOrCalendarEventView({ event }: { event: EventItem }) {
                 ) : null}
               </div>
 
-              {live.flyerSrc ? (
-                <EventFlyer src={live.flyerSrc} alt={live.flyerAlt ?? `${live.title} flyer`} />
-              ) : null}
+              {flyers.length ? <EventFlyerGallery items={flyers} /> : null}
 
               <SectionHeading
                 className="mt-14"
