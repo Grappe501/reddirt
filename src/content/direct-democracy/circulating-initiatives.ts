@@ -1,6 +1,6 @@
 /**
- * Public-reporting snapshot of measures Arkansans may see in signature drives for 2026.
- * Not a legal filing. Update as Attorney General opinions and sponsor announcements change.
+ * Internal snapshot of 2026 measures. Do not mount on public pages until Steve launches
+ * a separate Direct Democracy site. CirculatingInitiativesSection currently renders nothing.
  */
 export type InitiativeStampTone = "denied" | "qualified";
 

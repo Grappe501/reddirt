@@ -270,9 +270,9 @@ const guides: ToolkitGuide[] = [
     title: "Direct democracy in Arkansas: basics & ballot process",
     tag: "Civic power",
     shortDescription:
-      "Plain-language vocabulary, how an idea moves toward the ballot, the Secretary of State’s role, a live list of initiatives in the public conversation (with drill-downs), and links to the full policy pages—without replacing official filings.",
+      "Plain-language vocabulary, how an idea moves toward the ballot, the Secretary of State’s role, and links to official sources—without replacing filings or listing specific measures.",
     intro:
-      "This is the volunteer-friendly layer: enough vocabulary and flow to teach a neighbor, not a law review. The campaign’s deep pages on direct democracy and the step-by-step ballot process stay the canonical references; use this guide when you need one place to rehearse the story. Always verify deadlines and certified text with the Attorney General and Secretary of State when you are working with live petitions. After the sections below, this page includes the same 2026 field snapshot of measures in public conversation—expandable cards with direct website links, coalition notes, and how to verify—so you do not have to bounce away to remember what is moving.",
+      "This is the volunteer-friendly layer: enough vocabulary and flow to teach a neighbor, not a law review. Use this guide when you need one place to rehearse the story. Always verify deadlines and certified text with the Attorney General and Secretary of State. This campaign site does not list specific ballot measures in circulation.",
     anyOneCan: [
       "You can help without signing anything: witness tables, education tables, and driving seniors to a signing event are all part of a healthy process.",
       "If you are asked to sign, you deserve to read the certified title and summary, not a paraphrase on a clipboard.",

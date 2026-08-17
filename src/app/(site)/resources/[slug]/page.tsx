@@ -6,6 +6,8 @@ import { getToolkitGuide, getToolkitSlugs } from "@/content/resources/toolkit";
 import { pageMeta } from "@/lib/seo/metadata";
 import { skipPublicStaticGenerationForNetlifyLaunch } from "@/lib/intelligence/intelligenceLaunchMode";
 
+export const dynamic = "force-dynamic";
+
 type Props = { params: Promise<{ slug: string }> };
 
 export function generateStaticParams() {
