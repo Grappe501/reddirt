@@ -3382,6 +3382,17 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     sourceType: "calendar",
   },
   {
+    id: "private-2026-08-23-personal-hold",
+    date: "2026-08-23",
+    title: "Personal hold",
+    counties: [],
+    status: "private",
+    includeOnPublicPage: false,
+    confidence: "confirmed",
+    notes: "Sunday personal calendar hold. Not a campaign appearance. Do not list on /events.",
+    sourceType: "calendar",
+  },
+  {
     id: "locked-2026-08-29-mt-nebo-chicken-fry",
     date: "2026-08-29",
     title: "Mt Nebo Chicken Fry",
