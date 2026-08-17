@@ -202,6 +202,14 @@ export const VOLUNTEER_RESOURCES: VolunteerResource[] = [
     fileType: "Web",
   },
   {
+    id: "p5-workshop",
+    category: "getting-started",
+    title: "Power of 5 Workshop Materials",
+    description: "Session flow, worksheet, and conversation practice for a 60–90 minute Power of 5 workshop.",
+    href: "/volunteer/resources/power-of-5-workshop",
+    fileType: "Web",
+  },
+  {
     id: "build-team",
     category: "team-building",
     title: "How to build a 3-person team",

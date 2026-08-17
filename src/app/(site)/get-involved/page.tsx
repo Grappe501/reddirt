@@ -411,6 +411,9 @@ export default async function GetInvolvedPage({
             <Button href="/get-involved/bring-5" variant="primary" className="min-h-[48px]">
               Activate Your Power of 5 →
             </Button>
+            <Button href="/volunteer/resources/power-of-5-workshop" variant="outline" className="min-h-[48px]">
+              Workshop materials
+            </Button>
             <Button href="#volunteer" variant="outline" className="min-h-[48px]">
               Volunteer
             </Button>

@@ -29,7 +29,10 @@ export default function Bring5FriendsPage() {
         title="Your power is closer than you think"
         subtitle="You don’t need a political title, a huge following or years of campaign experience to make a difference. Start with five people."
       >
-        <Button href="/get-involved#volunteer" variant="primary">
+        <Button href="/volunteer/resources/power-of-5-workshop" variant="primary">
+          Workshop materials
+        </Button>
+        <Button href="/get-involved#volunteer" variant="outline">
           Volunteer →
         </Button>
         <Button href="/events/request" variant="outline">

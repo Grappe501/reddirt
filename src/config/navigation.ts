@@ -125,6 +125,7 @@ export const primaryNavGroups: NavGroup[] = [
     groupLandingHref: "/get-involved",
     items: [
       { label: "Power of 5", href: "/get-involved/bring-5" },
+      { label: "Power of 5 Workshop Materials", href: "/volunteer/resources/power-of-5-workshop" },
       { label: "Volunteer", href: "/get-involved#volunteer" },
       { label: "Host Kelly", href: "/events/request" },
       { label: "Stay connected", href: "/get-involved#join" },
@@ -169,6 +170,7 @@ export const footerNavGroups: { title: string; items: NavItem[] }[] = [
     title: "Get involved",
     items: [
       { label: "Power of 5", href: "/get-involved/bring-5" },
+      { label: "Power of 5 Workshop Materials", href: "/volunteer/resources/power-of-5-workshop" },
       { label: "Stay connected", href: "/get-involved#join" },
       { label: "Volunteer", href: "/get-involved#volunteer" },
       { label: "Host Kelly", href: "/events/request" },
