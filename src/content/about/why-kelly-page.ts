@@ -1,43 +1,52 @@
 /**
- * Why I’m Running — first person, Kelly Grappe Website Master Direction.
+ * Why I’m Running — public campaign copy.
  */
 
 export const whyKellyPageCopy = {
   hero: {
     title: "Why I’m Running",
-    subtitle:
-      "The Arkansas Constitution begins with a promise I believe we have lost sight of: “All political power is inherent in the people.”",
+    subtitle: "The Secretary of State’s office should belong to the people of Arkansas.",
   },
 
-  intro: "That is why I’m running for Secretary of State.",
-
-  paragraphs: [
-    "Over the last several years, I’ve watched Arkansans become increasingly frustrated with a government that feels harder to access, harder to understand, and further removed from the people it is supposed to serve. I’ve seen citizens work incredibly hard to participate in our democracy only to encounter more barriers. I’ve met voters who no longer trust our elections, young people who don’t believe their voices matter, and county officials trying to serve their communities without the support and resources they need.",
-    "I don’t believe the answer is more politics. I believe it is better leadership.",
-    "The Secretary of State should be a steady, trusted administrator of our elections—not a partisan gatekeeper. The office should work alongside our 75 counties, make it easier for Arkansans to understand how their government works, protect both access and election security, and administer the law fairly whether the people exercising their rights agree with us or not.",
-    "And this office is about more than elections. It touches small businesses, the State Capitol, and some of the most basic ways Arkansans interact with their state government. And in many cases, it’s the first experience young people have interacting with our government. Those services should be modern, accessible, transparent, and built around the people who use them.",
-    "I’m running because I believe we can restore trust—not by asking Arkansans to blindly trust government, but by building a government worthy of their trust.",
-    "Regnat Populus. The People Rule.",
-    "It’s more than our state motto. It should be the standard by which this office operates.",
+  opening: [
+    "Kelly stepped into this race because she believes the Secretary of State’s office should belong to the people of Arkansas—not to a political party, an ideology, or whoever happens to hold power.",
+    "Traveling the state has only strengthened that conviction. She has met voters who don’t understand where to find basic election information, young people who want to participate but don’t know where to begin, county officials doing difficult work with limited resources, and citizens who have spent months gathering signatures only to discover how difficult Arkansas has made it to exercise a constitutional right.",
+    "The problem isn’t that Arkansans don’t care. Too often, the system makes participation harder than it needs to be.",
+    "Kelly believes the Secretary of State should be the state’s chief advocate for civic participation while administering the law fairly and consistently. That means secure elections and meaningful access. It means protecting the initiative process whether she agrees with the proposal or not. It means giving counties the tools and support they need. And it means helping Arkansans understand how their government works and how they can take part in it.",
   ],
 
-  whatIllDo: {
-    title: "What I’ll Do",
+  putPeopleFirst: {
+    title: "Put the People Back at the Center",
+    paragraphs: [
+      "Kelly will administer Arkansas elections according to the law, without changing the rules based on politics or who is asking.",
+      "She will make voter information easier to find and understand, improve statewide voter education, and work directly with county clerks to make sure Arkansans receive clear and consistent information.",
+      "She will defend the constitutional right of Arkansans to petition their government and insist that citizen-led initiatives receive a fair, transparent process.",
+      "She will modernize an office that should make it easier—not harder—to vote, start a business, find public information, or understand how to participate in civic life.",
+      "And she will work to rebuild trust by showing Arkansans what the office is doing, why it is doing it, and how decisions are being made.",
+    ],
+  },
+
+  whatYouCanCountOn: {
+    title: "What You Can Count On",
     items: [
       {
-        title: "Put people back in the process",
-        body: "Make civic participation easier to understand and easier to access. Expand voter education, help Arkansans understand how elections and citizen-led initiatives work, and make the Secretary of State’s office a resource for participation—not another barrier to it.",
+        title: "Free, fair and secure elections",
+        body: "The rules should be clear, consistently applied, and administered without favor to either political party.",
       },
       {
-        title: "Partner with all 75 counties",
-        body: "Treat county clerks and election officials as partners. Improve communication, training, technology, and statewide support while respecting the different needs of rural and urban communities.",
+        title: "A government people can actually navigate",
+        body: "Voting information, business services, candidate information and public resources should be understandable and accessible to ordinary Arkansans.",
       },
       {
-        title: "Modernize the office",
-        body: "Bring a customer-service mindset to the Secretary of State’s office. Modernize outdated systems, improve online services and accessibility, and make everything from voter information to starting a business easier to navigate.",
+        title: "A strong voice for the people’s constitutional rights",
+        body: "Kelly may not agree with every ballot initiative. She will defend Arkansans’ right to bring one forward.",
+      },
+      {
+        title: "A Secretary of State who trusts Arkansans",
+        body: "The Arkansas Constitution begins with a powerful idea: all political power is inherent in the people. Kelly believes the office should operate like it.",
       },
     ],
-    closer:
-      "Regnat Populus means “The People Rule.” I’m running to make sure the Secretary of State’s office remembers who it works for.",
   },
+
+  closer: ["This office doesn’t belong to Democrats or Republicans.", "It belongs to the people."],
 } as const;
