@@ -152,7 +152,7 @@ export const september2026CampaignStops: EventItem[] = [
   }),
   campaignStop({
     slug: "rector-labor-day-2026-09-06",
-    title: "Rector Labor Day",
+    title: "86th Rector Picnic and Parade",
     type: "Fairs and Festivals",
     region: "Northeast Arkansas",
     countySlug: "clay-county",
@@ -160,8 +160,20 @@ export const september2026CampaignStops: EventItem[] = [
     timeTbd: true,
     locationLabel: "Rector",
     city: "Rector",
-    summary: "Labor Day stop in Rector. Time and venue to be posted.",
-    audienceTags: ["Clay County", "Rector", "Northeast Arkansas", "Festival"],
+    summary:
+      "Labor Day weekend in Rector. The Rector Chamber of Commerce is sending a formal invitation for the 86th picnic and parade. Program times and the parade route will be posted here when that invitation arrives.",
+    description:
+      "The Rector Chamber of Commerce is preparing invitations for the 86th Rector Picnic and Parade over Labor Day weekend. Kelly Grappe, candidate for Arkansas Secretary of State, is on the list for a formal invitation with the full program. Parade time, picnic hours, and the gathering spot will be posted on this page when the Chamber’s invitation arrives.",
+    whatToExpect: [
+      "Labor Day weekend in Rector, Clay County.",
+      "86th Rector Picnic and Parade, hosted with the Rector Chamber of Commerce.",
+      "Parade time, picnic hours, and the gathering spot will be posted when the formal invitation arrives.",
+    ],
+    whoItsFor: "Neighbors in Rector, Clay County, and anyone coming home for the picnic and parade.",
+    organizerNote:
+      "Posted from Rector Chamber invitation request. Host phone and mailing follow-up stay off the public page.",
+    attendanceType: "PUBLIC_OPEN",
+    audienceTags: ["Clay County", "Rector", "Northeast Arkansas", "Festival", "Parade"],
     mapCoordinates: { lat: 36.2631, lng: -90.2923 },
     relatedEventSlugs: ["festiville-jacksonville-2026-09-05", "roosevelt-dinner-2026-09-10"],
   }),

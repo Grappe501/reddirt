@@ -3521,13 +3521,15 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     id: "locked-2026-09-06-rector-labor-day",
     date: "2026-09-06",
     title: "Rector Labor Day",
+    publicTitle: "86th Rector Picnic and Parade",
     city: "Rector",
     counties: ["Clay"],
     status: "scheduled",
     includeOnPublicPage: true,
-    confidence: "likely",
-    notes: "Steve 2026-08-17: Clay County scheduled stop — gold on the Events map.",
-    sourceType: "local-file",
+    confidence: "confirmed",
+    notes:
+      "Steve 2026-08-17: Clay County scheduled stop. Rector Chamber of Commerce is sending a formal invitation. Event contact (off public page): Steven Sigsby, Rector Chamber of Commerce, 870-595-4214. He asked for a campaign mailing address for the invitation. Do not publish the host phone on /events.",
+    sourceType: "calendar",
   },
   {
     id: "presence-2026-09-10-johnson-county-roosevelt-dinner-6pm",
