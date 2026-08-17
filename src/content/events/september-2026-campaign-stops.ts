@@ -29,6 +29,8 @@ type StopDraft = {
   organizerNote?: string;
   attendanceType?: EventItem["attendanceType"];
   mapPinQuality?: EventItem["mapPinQuality"];
+  flyerSrc?: string;
+  flyerAlt?: string;
 };
 
 function campaignStop(draft: StopDraft): EventItem {
@@ -65,6 +67,8 @@ function campaignStop(draft: StopDraft): EventItem {
     ],
     mapCoordinates: draft.mapCoordinates,
     mapPinQuality: draft.mapPinQuality,
+    flyerSrc: draft.flyerSrc,
+    flyerAlt: draft.flyerAlt,
     fieldAttendance: draft.fieldAttendance ?? "confirmed",
     campaignTrail: true,
     statewideVirtual: draft.statewideVirtual,
@@ -181,6 +185,8 @@ export const september2026CampaignStops: EventItem[] = [
     mapPinQuality: "exact",
     relatedEventSlugs: ["festiville-jacksonville-2026-09-05", "rector-labor-day-2026-09-06"],
     fieldAttendance: "tentative",
+    flyerSrc: "/media/event-flyers/hispanic-heritage-festival-conway-2026-09-05.png",
+    flyerAlt: "Festival de la Herencia Hispana 2026 flyer for Saturday, September 5 at Laurel Park in Conway.",
   }),
   campaignStop({
     slug: "rector-labor-day-2026-09-06",
@@ -452,6 +458,8 @@ export const september2026CampaignStops: EventItem[] = [
     audienceTags: ["Malvern", "Hot Spring County", "Cookout", "Democratic Party"],
     mapCoordinates: { lat: 34.3775, lng: -92.821 },
     mapPinQuality: "exact",
+    flyerSrc: "/media/event-flyers/hot-spring-county-cookout-2026-09-19.png",
+    flyerAlt: "Hot Spring County Democratic Party community cookout flyer for Saturday, September 19 at the 4-H Center in Malvern.",
     relatedEventSlugs: ["little-rock-comic-con-2026-09-19", "clark-county-multi-church-tour-2026-09-20"],
   }),
   campaignStop({

@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/Button";
 import { EventMeta } from "@/components/organizing/EventMeta";
 import { EventCard } from "@/components/organizing/EventCard";
 import { EventShareActions } from "@/components/organizing/EventShareActions";
+import { EventFlyer } from "@/components/organizing/EventFlyer";
 import { RelatedLinksSection } from "@/components/organizing/RelatedLinksSection";
 import { getEventBySlug, listEventSlugs } from "@/content/events";
 import type { EventItem } from "@/content/types";
@@ -42,6 +43,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: curated.title,
       description: stripPublicMarkdown(curated.summary),
       path: `/events/${slug}`,
+      imageSrc: curated.flyerSrc,
     });
   }
   try {
@@ -155,6 +157,10 @@ function CuratedOrCalendarEventView({ event }: { event: EventItem }) {
                   </div>
                 ) : null}
               </div>
+
+              {live.flyerSrc ? (
+                <EventFlyer src={live.flyerSrc} alt={live.flyerAlt ?? `${live.title} flyer`} />
+              ) : null}
 
               <SectionHeading
                 className="mt-14"

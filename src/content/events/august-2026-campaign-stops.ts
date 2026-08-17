@@ -34,6 +34,8 @@ type StopDraft = {
   featured?: boolean;
   featuredLabel?: string;
   featuredSummary?: string;
+  flyerSrc?: string;
+  flyerAlt?: string;
 };
 
 function campaignStop(draft: StopDraft): EventItem {
@@ -69,6 +71,8 @@ function campaignStop(draft: StopDraft): EventItem {
     featured: draft.featured,
     featuredLabel: draft.featuredLabel,
     featuredSummary: draft.featuredSummary,
+    flyerSrc: draft.flyerSrc,
+    flyerAlt: draft.flyerAlt,
     mapCoordinates: draft.mapCoordinates,
     mapPinQuality: draft.mapPinQuality,
     fieldAttendance: draft.fieldAttendance ?? "confirmed",
@@ -300,6 +304,8 @@ export const august2026CampaignStops: EventItem[] = [
     audienceTags: ["Dumas", "Desha County", "Lower Delta", "AME Church", "Arkansas Democratic Black Caucus"],
     mapCoordinates: { lat: 33.8873, lng: -91.4915 },
     mapPinQuality: "exact",
+    flyerSrc: "/media/event-flyers/power-of-one-vote-dumas-2026-08-21.png",
+    flyerAlt: "The Power of One Vote flyer for Friday, August 21, 2026 at the Dumas Community Center.",
     relatedEventSlugs: ["coffee-with-kelly-searcy-2026-08-22"],
   }),
   campaignStop({
@@ -328,6 +334,8 @@ export const august2026CampaignStops: EventItem[] = [
     audienceTags: ["Searcy", "White County", "Coffee with Kelly"],
     mapCoordinates: { lat: 35.2478, lng: -91.7612 },
     mapPinQuality: "exact",
+    flyerSrc: "/media/event-flyers/coffee-with-kelly-searcy-2026-08-22.png",
+    flyerAlt: "Coffee with Kelly flyer for Saturday, August 22, 2026 at the Janet and Larry Crain Memorial Library in Searcy.",
     relatedEventSlugs: ["power-of-one-vote-dumas-2026-08-21", "mccrory-fair-rodeo-2026-08-22"],
   }),
   campaignStop({
@@ -376,6 +384,8 @@ export const august2026CampaignStops: EventItem[] = [
     fieldAttendance: "tentative",
     primaryHref: "https://www.trueholiness.net",
     primaryCtaLabel: "True Holiness Saints Center",
+    flyerSrc: "/media/event-flyers/college-day-true-holiness-2026-08-23.png",
+    flyerAlt: "College Day 2026 flyer from True Holiness Saints Center for Sunday, August 23 in Conway.",
   }),
   campaignStop({
     slug: "paragould-campaign-activities-2026-08-25",

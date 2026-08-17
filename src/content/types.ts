@@ -103,6 +103,9 @@ export type EventItem = {
   featuredLabel?: string;
   /** Extra line on the event-page highlight band. */
   featuredSummary?: string;
+  /** Public flyer image under `/public`, e.g. `/media/event-flyers/coffee-with-kelly-searcy-2026-08-22.png`. */
+  flyerSrc?: string;
+  flyerAlt?: string;
   /** Public participation — omit for older static rows (treated as campaign appearance). */
   attendanceType?: "PUBLIC_OPEN" | "PUBLIC_REGISTRATION" | "INVITATION" | "CAMPAIGN_APPEARANCE" | "PRIVATE";
   city?: string;

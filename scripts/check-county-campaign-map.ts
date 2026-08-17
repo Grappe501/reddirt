@@ -1,4 +1,6 @@
 import { events, getEventBySlug } from "../src/content/events";
+import { existsSync } from "node:fs";
+import path from "node:path";
 import { august2026CampaignStops } from "../src/content/events/august-2026-campaign-stops";
 import { september2026CampaignStops } from "../src/content/events/september-2026-campaign-stops";
 import { october2026CampaignStops } from "../src/content/events/october-2026-campaign-stops";
@@ -355,6 +357,14 @@ if (events.some((e) => e.slug === "mt-nebo-chicken-fry-2026-08-29")) {
 }
 if (getEventBySlug("mt-nebo-chicken-fry-2026-08-29")?.slug !== "chickin-n-politikin-mount-nebo-2026-08-29") {
   fail("mt-nebo-chicken-fry-2026-08-29 must resolve to Chickin-n-Politikin");
+}
+{
+  const flyerEvents = events.filter((e) => e.flyerSrc);
+  if (flyerEvents.length < 5) fail(`Expected at least 5 public event flyers, got ${flyerEvents.length}`);
+  for (const e of flyerEvents) {
+    const disk = path.join(process.cwd(), "public", e.flyerSrc!.replace(/^\//, "").replace(/\//g, path.sep));
+    if (!existsSync(disk)) fail(`Missing flyer file for ${e.slug}: ${e.flyerSrc}`);
+  }
 }
 if (events.some((e) => /paragould/i.test(e.slug) && e.startsAt.startsWith("2026-09-22"))) {
   fail("Paragould forum must not appear on September 22");
