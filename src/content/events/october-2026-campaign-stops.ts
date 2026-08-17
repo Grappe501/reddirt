@@ -27,6 +27,10 @@ type StopDraft = {
   relatedEventSlugs: string[];
   relatedResourceHrefs?: Array<{ label: string; href: string }>;
   fieldAttendance?: "confirmed" | "tentative";
+  whoItsFor?: string;
+  organizerNote?: string;
+  attendanceType?: EventItem["attendanceType"];
+  statewideVirtual?: boolean;
 };
 
 function regionFor(slug: string): string {
@@ -54,10 +58,13 @@ function campaignStop(draft: StopDraft): EventItem {
     summary: draft.summary,
     description: draft.description ?? DETAILS_LATER,
     whatToExpect: draft.whatToExpect ?? ["Stop details will be added when the host confirms venue and program."],
-    whoItsFor: "Neighbors, volunteers, and anyone who wants to meet the campaign on the trail.",
-    organizerNote: tentative
-      ? "October 2026 campaign timeline — tentative until confirmed."
-      : "October 2026 campaign timeline — public facts only; details to be added.",
+    whoItsFor: draft.whoItsFor ?? "Neighbors, volunteers, and anyone who wants to meet the campaign on the trail.",
+    organizerNote:
+      draft.organizerNote ??
+      (tentative
+        ? "October 2026 campaign timeline — tentative until confirmed."
+        : "October 2026 campaign timeline — public facts only; details to be added."),
+    attendanceType: draft.attendanceType,
     audienceTags: draft.audienceTags,
     relatedEventSlugs: draft.relatedEventSlugs,
     relatedResourceHrefs: draft.relatedResourceHrefs ?? [
@@ -67,18 +74,20 @@ function campaignStop(draft: StopDraft): EventItem {
     mapCoordinates: draft.mapCoordinates,
     fieldAttendance: draft.fieldAttendance ?? "confirmed",
     campaignTrail: true,
+    statewideVirtual: draft.statewideVirtual,
     eventSource: "movement",
     opsFlags: {
       timeTbd: draft.timeTbd,
-      missingCounty: !countySlug,
-      missingCoordinates: !draft.mapCoordinates,
+      missingCounty: draft.statewideVirtual ? false : !countySlug,
+      missingCoordinates: draft.statewideVirtual ? false : !draft.mapCoordinates,
     },
   };
 }
 
 /**
  * Public October 2026 campaign timeline.
- * Personal days, campaign blocks, and Debate Week are internal-only and are not listed.
+ * Personal days and campaign blocks stay internal-only.
+ * Arkansas TV debates for the week of Oct 12–16 are public; exact day still TBA.
  * Arkansas Rice Festival / Weiner is removed and must not be re-added.
  */
 export const october2026CampaignStops: EventItem[] = [
@@ -204,9 +213,40 @@ export const october2026CampaignStops: EventItem[] = [
     summary: "Sunday AYC karaoke event in Hot Springs. Time to be posted.",
     audienceTags: ["Hot Springs", "Garland County", "Youth", "College"],
     mapCoordinates: { lat: 34.5037, lng: -93.0552 },
-    relatedEventSlugs: ["hot-springs-chili-cookoff-2026-10-11", "bella-vista-meet-2026-10-15"],
+    relatedEventSlugs: ["hot-springs-chili-cookoff-2026-10-11", "arkansas-tv-debates-2026-10-12"],
     relatedResourceHrefs: [
       { label: "Arkansas Youth Coalition", href: ARKANSAS_YOUTH_COALITION_HREF },
+      { label: "Events calendar", href: "/events" },
+    ],
+  }),
+  campaignStop({
+    slug: "arkansas-tv-debates-2026-10-12",
+    title: "Election 2026: The Debates — Arkansas TV",
+    type: "Town Hall",
+    region: STATEWIDE_EVENT_REGION,
+    startsAt: "2026-10-12T12:00:00",
+    endsAt: "2026-10-16T23:59:00",
+    timeTbd: true,
+    locationLabel: "Arkansas TV",
+    city: "Conway",
+    summary:
+      "Week of Monday, October 12 through Friday, October 16. Arkansas TV is hosting debates for constitutional and congressional candidates. Exact day, time, and how to watch will be posted when the invitation arrives.",
+    description:
+      "Arkansas TV is preparing Election 2026: The Debates for candidates running for Arkansas constitutional and congressional offices, the week of October 12 through October 16, 2026. Kelly Grappe, candidate for Arkansas Secretary of State, is holding that week on the campaign calendar. The exact debate day, call time, and how neighbors can watch will be posted here when Arkansas TV sends the invitation.",
+    whatToExpect: [
+      "Week of October 12–16, 2026. Exact day and time to be posted.",
+      "Hosted by Arkansas TV for constitutional and congressional candidates.",
+      "How to watch — broadcast, stream, or studio audience — will be posted when the invitation arrives.",
+    ],
+    whoItsFor: "Anyone in Arkansas who wants to hear the Secretary of State candidates on Arkansas TV.",
+    organizerNote:
+      "Posted from Arkansas TV producer correspondence. Producer phone, email, and the campaign PO Box stay off the public page. Exact debate day still TBA.",
+    attendanceType: "CAMPAIGN_APPEARANCE",
+    statewideVirtual: true,
+    audienceTags: ["Arkansas TV", "Debate", "Statewide"],
+    relatedEventSlugs: ["ayc-karaoke-hot-springs-2026-10-11", "bella-vista-meet-2026-10-15"],
+    relatedResourceHrefs: [
+      { label: "Arkansas TV", href: "https://www.arkansastv.gov/" },
       { label: "Events calendar", href: "/events" },
     ],
   }),
@@ -222,7 +262,7 @@ export const october2026CampaignStops: EventItem[] = [
     summary: "Thursday Bella Vista meet — a separate Benton County stop from October 8. Time still to be posted.",
     audienceTags: ["Bella Vista", "Benton County", "Northwest Arkansas"],
     mapCoordinates: { lat: 36.4295, lng: -94.2316 },
-    relatedEventSlugs: ["ayc-karaoke-hot-springs-2026-10-11", "stuttgart-event-2026-10-17"],
+    relatedEventSlugs: ["arkansas-tv-debates-2026-10-12", "stuttgart-event-2026-10-17"],
   }),
   campaignStop({
     slug: "stuttgart-event-2026-10-17",

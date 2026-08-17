@@ -3868,6 +3868,21 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     sourceType: "local-file",
   },
   {
+    id: "manual-2026-10-12-arkansas-tv-debates",
+    date: "2026-10-12",
+    endDate: "2026-10-16",
+    title: "Arkansas TV debates hold",
+    publicTitle: "Election 2026: The Debates — Arkansas TV",
+    city: "Conway",
+    counties: [],
+    status: "scheduled",
+    includeOnPublicPage: true,
+    confidence: "confirmed",
+    notes:
+      "Steve 2026-08-17: Kelly asked Arkansas TV to hold Oct 12-16. Public listing is arkansas-tv-debates-2026-10-12. Exact day TBA. Producer contact stays off the public page. Campaign mailing for the invitation is the Rose Bud PO Box on file. Bella Vista Oct 15 sits inside this week until the debate day is named.",
+    sourceType: "manual",
+  },
+  {
     id: "presence-2026-10-18-logan-and-scott-immersion",
     date: "2026-10-18",
     title: "Logan and Scott Immersion",
