@@ -1,0 +1,95 @@
+{
+  "campaign": "Kelly Grappe for Arkansas Secretary of State",
+  "site": "https://kgrappe.netlify.app",
+  "contact": "kelly@kellygrappe.com",
+  "timezone": "America/Chicago",
+  "packetDate": "2026-08-17",
+  "request": {
+    "createHostedForms": true,
+    "returnPerForm": ["hostedUrl", "embedSnippet", "fieldKeyConfirmation", "webhookOrExportMethod"],
+    "preserveFieldKeys": true,
+    "countySource": "ARKANSAS_COUNTIES.csv"
+  },
+  "doNotBuild": [
+    "donate (GoodChange)",
+    "substack_subscribe",
+    "contact_mailto",
+    "admin_operator_forms",
+    "direct_democracy_commitment"
+  ],
+  "sharedHiddenFields": ["form_id", "sourcePage", "sourceComponent", "sourceCampaign", "referrerCode"],
+  "consent": {
+    "consentEmailDefault": false,
+    "consentSmsDefault": false,
+    "submitIsNotConsent": true
+  },
+  "forms": [
+    {
+      "form_id": "join_movement",
+      "priority": "P0",
+      "name": "Stay connected / Join the campaign",
+      "siteUrls": ["/get-involved#join"],
+      "submitButton": "Stay connected"
+    },
+    {
+      "form_id": "volunteer",
+      "priority": "P0",
+      "name": "Volunteer signup",
+      "siteUrls": ["/get-involved#volunteer", "/volunteer#signup"],
+      "submitButton": "Volunteer"
+    },
+    {
+      "form_id": "invite_kelly",
+      "priority": "P0",
+      "name": "Invite Kelly / schedule a campaign stop",
+      "siteUrls": ["/schedule", "/events/request"],
+      "submitButton": "Submit request"
+    },
+    {
+      "form_id": "host_gathering",
+      "priority": "P0",
+      "name": "Host a gathering",
+      "siteUrls": ["/host-a-gathering", "/listening-sessions"],
+      "submitButton": "Send host request"
+    },
+    {
+      "form_id": "local_team",
+      "priority": "P1",
+      "name": "Start a local team",
+      "siteUrls": ["/start-a-local-team"],
+      "submitButton": "Start a local team"
+    },
+    {
+      "form_id": "suggest_community_event",
+      "priority": "P1",
+      "name": "Suggest a community event",
+      "siteUrls": ["/events"],
+      "submitButton": "Submit for review"
+    },
+    {
+      "form_id": "story_submission",
+      "priority": "P2",
+      "name": "Share a story",
+      "siteUrls": ["/stories"],
+      "submitButton": "Submit story"
+    },
+    {
+      "form_id": "volunteer_kickoff",
+      "priority": "P2",
+      "name": "Volunteer leadership kickoff",
+      "variants": [
+        { "pathway": "local", "siteUrl": "/volunteer-kickoff/join/local", "submitButton": "Join My Local Team" },
+        { "pathway": "campaign", "siteUrl": "/volunteer-kickoff/join/campaign", "submitButton": "Join a Statewide Campaign Team" },
+        { "pathway": "youth", "siteUrl": "/volunteer-kickoff/join/youth", "submitButton": "Join the Youth Coalition Effort" },
+        { "pathway": "match", "siteUrl": "/volunteer-kickoff/join/match", "submitButton": "Help Me Find My Place" }
+      ]
+    },
+    {
+      "form_id": "ask_kelly_beta_feedback",
+      "priority": "P3",
+      "name": "Ask Kelly beta feedback",
+      "siteUrls": ["sitewide dock"],
+      "submitButton": "Send to Kelly"
+    }
+  ]
+}

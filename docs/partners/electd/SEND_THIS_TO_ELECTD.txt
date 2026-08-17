@@ -1,0 +1,47 @@
+Subject: Kelly Grappe for SOS — public website form specs (please build in Electd and return hosted URLs)
+
+Hi Electd team,
+
+Kelly Grappe for Arkansas Secretary of State is moving every public website form onto Electd. You will create the forms in your dashboard. Those submissions should populate our campaign database. You will then send us hosted form URLs (and embed snippets if you have them) so we can place them on https://kgrappe.netlify.app.
+
+Attached packet:
+- ELECTD_PUBLIC_FORMS_PACKET.md  (read this first)
+- ELECTD_FIELDS.csv              (one row per field)
+- ARKANSAS_COUNTIES.csv          (75-county dropdown; use these exact spellings)
+- ELECTD_FORMS.json              (machine-readable copy of the same spec)
+
+Please build these 9 public forms, in this order:
+
+P0 (needed first)
+1. join_movement — Stay connected / join
+2. volunteer — Volunteer signup
+3. invite_kelly — Invite Kelly / schedule a campaign stop
+4. host_gathering — Host a gathering
+
+P1
+5. local_team — Start a local team
+6. suggest_community_event — Suggest a community event
+
+P2
+7. story_submission — Share a story
+8. volunteer_kickoff — four pathway variants (local / campaign / youth / match)
+
+P3 (optional / invite-only)
+9. ask_kelly_beta — Ask Kelly beta feedback
+
+Please do not build: donate (GoodChange), Substack subscribe, admin logins, or a Direct Democracy commitment form.
+
+What we need back for each form_id:
+1. Hosted form URL
+2. Embed snippet if available
+3. Confirmation that field keys match the packet (so we can map into our Kelly DB)
+4. How we receive submissions (dashboard + webhook or export)
+
+Use the field_key values exactly as written. Include a hidden form_id on every form. County fields should be a dropdown from ARKANSAS_COUNTIES.csv.
+
+Consent: email and SMS opt-in must be unchecked by default. Do not treat a form submit as consent.
+
+Questions: kelly@kellygrappe.com
+
+Thank you,
+Kelly Grappe campaign

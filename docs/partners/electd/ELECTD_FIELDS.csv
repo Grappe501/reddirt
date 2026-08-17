@@ -1,0 +1,154 @@
+# Kelly Grappe for Arkansas Secretary of State
+# Electd public-forms packet
+# Date: 2026-08-17
+# Site: https://kgrappe.netlify.app
+# Contact: kelly@kellygrappe.com
+#
+# What we need back from Electd:
+# 1) One hosted form URL per form_id below
+# 2) Optional embed snippet (or we will iframe/link the hosted URL)
+# 3) Field keys that match the field_key column (so submissions can populate our Kelly DB)
+# 4) Confirmation that submissions land in the Electd dashboard AND can export/webhook to us
+#
+# Out of scope for Electd (do not rebuild):
+# - Donate (GoodChange processor)
+# - Substack subscribe (Kelly's Substack)
+# - Admin / operator / volunteer-board login forms
+# - mailto:kelly@kellygrappe.com contact
+# - Event RSVP that is a Google Meet / Facebook join link
+# - Direct democracy commitment form (code exists, not mounted on the public site)
+
+form_id,priority,form_name,site_urls,submit_button,field_key,label,type,required,options,notes
+join_movement,P0,Stay connected / Join the campaign,/get-involved#join,Stay connected,name,Full name,text,TRUE,,
+join_movement,P0,Stay connected / Join the campaign,/get-involved#join,Stay connected,email,Email,email,TRUE,,
+join_movement,P0,Stay connected / Join the campaign,/get-involved#join,Stay connected,phone,Phone,tel,FALSE,,Optional
+join_movement,P0,Stay connected / Join the campaign,/get-involved#join,Stay connected,zip,ZIP,text,FALSE,,Optional in schema; collect if possible
+join_movement,P0,Stay connected / Join the campaign,/get-involved#join,Stay connected,county,County,select,FALSE,See ARKANSAS_COUNTIES.csv,75 Arkansas counties dropdown preferred
+join_movement,P0,Stay connected / Join the campaign,/get-involved#join,Stay connected,interests,How you want to help,multiselect,FALSE,"field=Field / events; digital=Digital help; faith_communities=Faith communities; voter_education=Voter education; party_or_civic_meeting=Party or civic meeting invite; direct_democracy=Ballot access & initiatives",
+join_movement,P0,Stay connected / Join the campaign,/get-involved#join,Stay connected,message,Anything we should know?,textarea,FALSE,,Max 2000
+join_movement,P0,Stay connected / Join the campaign,/get-involved#join,Stay connected,consentEmail,Email me campaign updates,checkbox,FALSE,,Explicit opt-in only; do not infer from submit
+join_movement,P0,Stay connected / Join the campaign,/get-involved#join,Stay connected,consentSms,Text me (SMS),checkbox,FALSE,,Requires phone if checked
+join_movement,P0,Stay connected / Join the campaign,/get-involved#join,Stay connected,sourcePage,Source page,hidden,FALSE,,Auto: current URL path
+join_movement,P0,Stay connected / Join the campaign,/get-involved#join,Stay connected,sourceComponent,Source component,hidden,FALSE,,Example: JoinMovementForm
+join_movement,P0,Stay connected / Join the campaign,/get-involved#join,Stay connected,form_id,Form ID,hidden,TRUE,join_movement,Always send this value
+volunteer,P0,Volunteer,/get-involved#volunteer | /volunteer#signup,Volunteer,firstName,First name,text,TRUE,,
+volunteer,P0,Volunteer,/get-involved#volunteer | /volunteer#signup,Volunteer,lastName,Last name,text,TRUE,,
+volunteer,P0,Volunteer,/get-involved#volunteer | /volunteer#signup,Volunteer,email,Email,email,TRUE,,
+volunteer,P0,Volunteer,/get-involved#volunteer | /volunteer#signup,Volunteer,phone,Phone,tel,FALSE,,Preferred; email satisfies contact
+volunteer,P0,Volunteer,/get-involved#volunteer | /volunteer#signup,Volunteer,zip,ZIP code,text,FALSE,,
+volunteer,P0,Volunteer,/get-involved#volunteer | /volunteer#signup,Volunteer,county,County,select,FALSE,See ARKANSAS_COUNTIES.csv,
+volunteer,P0,Volunteer,/get-involved#volunteer | /volunteer#signup,Volunteer,city,City,text,FALSE,,
+volunteer,P0,Volunteer,/get-involved#volunteer | /volunteer#signup,Volunteer,preferredRole,Preferred role,select,TRUE,"events=Events; social_media=Social media; power_of_five=Power of 5 / voter registration; youth_outreach=Youth outreach; womens_outreach=Women's outreach; fundraising=Fundraising; not_sure=Not sure yet",Default not_sure
+volunteer,P0,Volunteer,/get-involved#volunteer | /volunteer#signup,Volunteer,preferredLanguage,Preferred language,select,TRUE,"english=English; spanish=Spanish; marshallese=Marshallese",Default english
+volunteer,P0,Volunteer,/get-involved#volunteer | /volunteer#signup,Volunteer,student,I am a student,checkbox,FALSE,,
+volunteer,P0,Volunteer,/get-involved#volunteer | /volunteer#signup,Volunteer,schoolCampus,School / campus,text,FALSE,,Show if student=true
+volunteer,P0,Volunteer,/get-involved#volunteer | /volunteer#signup,Volunteer,discordInterest,Want a Discord invite,checkbox,FALSE,,Manual follow-up; no auto-join
+volunteer,P0,Volunteer,/get-involved#volunteer | /volunteer#signup,Volunteer,hostingInterest,Interested in hosting a gathering,checkbox,FALSE,,
+volunteer,P0,Volunteer,/get-involved#volunteer | /volunteer#signup,Volunteer,fundraisingInterest,Interested in fundraising,checkbox,FALSE,,
+volunteer,P0,Volunteer,/get-involved#volunteer | /volunteer#signup,Volunteer,leadershipInterest,Open to leadership training,checkbox,FALSE,,Prefill true when URL has leadership=1
+volunteer,P0,Volunteer,/get-involved#volunteer | /volunteer#signup,Volunteer,interests,Ways to help,multiselect,FALSE,"resource:postcard-outreach=Handwritten postcards; resource:phone-banking=Phone banking; resource:text-banking=Peer-to-peer text banking; lane:event_representation=Represent campaign at local events",May also include taxonomy keys in ELECTD_FORMS_PACKET.md
+volunteer,P0,Volunteer,/get-involved#volunteer | /volunteer#signup,Volunteer,notes,Notes,textarea,FALSE,,Max 3000
+volunteer,P0,Volunteer,/get-involved#volunteer | /volunteer#signup,Volunteer,availability,Availability,textarea,FALSE,,Max 500
+volunteer,P0,Volunteer,/get-involved#volunteer | /volunteer#signup,Volunteer,skills,Skills / experience,textarea,FALSE,,Max 2000
+volunteer,P0,Volunteer,/get-involved#volunteer | /volunteer#signup,Volunteer,consentEmail,Email me campaign updates,checkbox,FALSE,,
+volunteer,P0,Volunteer,/get-involved#volunteer | /volunteer#signup,Volunteer,consentSms,Text me (SMS),checkbox,FALSE,,
+volunteer,P0,Volunteer,/get-involved#volunteer | /volunteer#signup,Volunteer,sourcePage,Source page,hidden,FALSE,,
+volunteer,P0,Volunteer,/get-involved#volunteer | /volunteer#signup,Volunteer,sourceComponent,Source component,hidden,FALSE,,VolunteerForm
+volunteer,P0,Volunteer,/get-involved#volunteer | /volunteer#signup,Volunteer,form_id,Form ID,hidden,TRUE,volunteer,
+invite_kelly,P0,Invite Kelly / schedule a campaign stop,/schedule | /events/request (pathway ends here),Submit request,requesterName,Your name,text,TRUE,,
+invite_kelly,P0,Invite Kelly / schedule a campaign stop,/schedule,Submit request,organization,Organization,text,FALSE,,
+invite_kelly,P0,Invite Kelly / schedule a campaign stop,/schedule,Submit request,email,Email,email,TRUE,,
+invite_kelly,P0,Invite Kelly / schedule a campaign stop,/schedule,Submit request,phone,Phone,tel,TRUE,,
+invite_kelly,P0,Invite Kelly / schedule a campaign stop,/schedule,Submit request,eventTitle,Event title,text,TRUE,,
+invite_kelly,P0,Invite Kelly / schedule a campaign stop,/schedule,Submit request,eventType,Event type,select,TRUE,"county_party_meeting=County party meeting; house_party=House party; civic_club=Civic club; school_campus=School / campus event; fair_festival=Fair / festival; fundraiser=Fundraiser; listening_session=Listening session; church_community=Church / community event; press_media=Press / media; volunteer_event=Volunteer event; other=Other",
+invite_kelly,P0,Invite Kelly / schedule a campaign stop,/schedule,Submit request,county,County,select,TRUE,See ARKANSAS_COUNTIES.csv,
+invite_kelly,P0,Invite Kelly / schedule a campaign stop,/schedule,Submit request,city,City,text,FALSE,,
+invite_kelly,P0,Invite Kelly / schedule a campaign stop,/schedule,Submit request,address,Venue / address,textarea,FALSE,,"Do not require street address; hosts may omit private homes"
+invite_kelly,P0,Invite Kelly / schedule a campaign stop,/schedule,Submit request,preferredDate,Preferred date,date,FALSE,,Required unless flexibility=campaign_suggests
+invite_kelly,P0,Invite Kelly / schedule a campaign stop,/schedule,Submit request,alternateDatesText,Alternate dates,textarea,FALSE,,YYYY-MM-DD one per line or comma-separated; max 12
+invite_kelly,P0,Invite Kelly / schedule a campaign stop,/schedule,Submit request,preferredStartTime,Preferred start time,time,FALSE,,
+invite_kelly,P0,Invite Kelly / schedule a campaign stop,/schedule,Submit request,preferredEndTime,Preferred end time,time,FALSE,,
+invite_kelly,P0,Invite Kelly / schedule a campaign stop,/schedule,Submit request,flexibility,Date flexibility,select,TRUE,"exact_date_only=Exact date only; same_week=Same week; same_month=Same month; campaign_suggests=Campaign can suggest",
+invite_kelly,P0,Invite Kelly / schedule a campaign stop,/schedule,Submit request,audienceSize,Expected audience size,number,FALSE,,Positive integer
+invite_kelly,P0,Invite Kelly / schedule a campaign stop,/schedule,Submit request,eventPurpose,Purpose / what you want from the visit,textarea,FALSE,,Max 4000
+invite_kelly,P0,Invite Kelly / schedule a campaign stop,/schedule,Submit request,eventVisibility,Visibility,select,TRUE,"public=Public; private=Private / invitation-only",
+invite_kelly,P0,Invite Kelly / schedule a campaign stop,/schedule,Submit request,pressInvited,Press invited,checkbox,TRUE,,Boolean
+invite_kelly,P0,Invite Kelly / schedule a campaign stop,/schedule,Submit request,pressReleaseInterest,Press release interest,select,TRUE,"no=No; maybe=Maybe; yes=Yes; staff_decide=Staff decide",
+invite_kelly,P0,Invite Kelly / schedule a campaign stop,/schedule,Submit request,localIssueAngle,Local issue angle,textarea,FALSE,,Max 2000
+invite_kelly,P0,Invite Kelly / schedule a campaign stop,/schedule,Submit request,speakingRequested,Speaking requested,checkbox,TRUE,,Boolean
+invite_kelly,P0,Invite Kelly / schedule a campaign stop,/schedule,Submit request,localHostAvailable,Local host available,checkbox,TRUE,,Boolean
+invite_kelly,P0,Invite Kelly / schedule a campaign stop,/schedule,Submit request,notes,Notes,textarea,FALSE,,Max 8000
+invite_kelly,P0,Invite Kelly / schedule a campaign stop,/schedule,Submit request,permissionToContact,Campaign may contact me about this request,checkbox,TRUE,,Must be true
+invite_kelly,P0,Invite Kelly / schedule a campaign stop,/schedule,Submit request,form_id,Form ID,hidden,TRUE,invite_kelly,
+host_gathering,P0,Host a gathering,/host-a-gathering | /listening-sessions,Send host request,name,Full name,text,TRUE,,
+host_gathering,P0,Host a gathering,/host-a-gathering,Send host request,email,Email,email,TRUE,,
+host_gathering,P0,Host a gathering,/host-a-gathering,Send host request,phone,Phone,tel,FALSE,,
+host_gathering,P0,Host a gathering,/host-a-gathering,Send host request,zip,ZIP,text,TRUE,,
+host_gathering,P0,Host a gathering,/host-a-gathering,Send host request,county,County,select,FALSE,See ARKANSAS_COUNTIES.csv,
+host_gathering,P0,Host a gathering,/host-a-gathering,Send host request,community,Town or neighborhood,text,TRUE,,
+host_gathering,P0,Host a gathering,/host-a-gathering,Send host request,gatheringType,Gathering type,select,TRUE,"front_porch=Front porch conversation; living_room=Living room gathering; coffee_meetup=Coffee meetup; listening_session=Local listening session; issue_briefing=Issue briefing; postcard_party=Postcard writing party; phone_bank_party=Phone bank party; other=Something else",Default living_room; listening-sessions page defaults to listening_session
+host_gathering,P0,Host a gathering,/host-a-gathering,Send host request,gatheringTypeOther,If other what kind,text,FALSE,,Required when gatheringType=other
+host_gathering,P0,Host a gathering,/host-a-gathering,Send host request,preferredTiming,Preferred timing,textarea,FALSE,,
+host_gathering,P0,Host a gathering,/host-a-gathering,Send host request,expectedGuests,Expected guests,text,FALSE,,
+host_gathering,P0,Host a gathering,/host-a-gathering,Send host request,needs,What you need from the campaign,textarea,FALSE,,
+host_gathering,P0,Host a gathering,/host-a-gathering,Send host request,form_id,Form ID,hidden,TRUE,host_gathering,
+local_team,P1,Start a local team,/start-a-local-team,Start a local team,name,Full name,text,TRUE,,
+local_team,P1,Start a local team,/start-a-local-team,Start a local team,email,Email,email,TRUE,,
+local_team,P1,Start a local team,/start-a-local-team,Start a local team,phone,Phone,tel,FALSE,,
+local_team,P1,Start a local team,/start-a-local-team,Start a local team,zip,ZIP,text,TRUE,,
+local_team,P1,Start a local team,/start-a-local-team,Start a local team,county,County,select,FALSE,See ARKANSAS_COUNTIES.csv,
+local_team,P1,Start a local team,/start-a-local-team,Start a local team,community,Town or community,text,TRUE,,
+local_team,P1,Start a local team,/start-a-local-team,Start a local team,teamGoal,What you want this team to do,textarea,FALSE,,
+local_team,P1,Start a local team,/start-a-local-team,Start a local team,form_id,Form ID,hidden,TRUE,local_team,
+suggest_community_event,P1,Suggest a community event,/events,Submit for review,eventName,Event name,text,TRUE,,
+suggest_community_event,P1,Suggest a community event,/events,Submit for review,shortDescription,Short description,textarea,FALSE,,
+suggest_community_event,P1,Suggest a community event,/events,Submit for review,startDate,Start date,date,TRUE,,
+suggest_community_event,P1,Suggest a community event,/events,Submit for review,startTime,Start time,time,TRUE,,
+suggest_community_event,P1,Suggest a community event,/events,Submit for review,endDate,End date,date,TRUE,,
+suggest_community_event,P1,Suggest a community event,/events,Submit for review,endTime,End time,time,TRUE,,End on or after start
+suggest_community_event,P1,Suggest a community event,/events,Submit for review,city,City,text,FALSE,,
+suggest_community_event,P1,Suggest a community event,/events,Submit for review,county,County,select,FALSE,See ARKANSAS_COUNTIES.csv,We store county name; our DB also has countyId
+suggest_community_event,P1,Suggest a community event,/events,Submit for review,venueName,Venue,text,FALSE,,
+suggest_community_event,P1,Suggest a community event,/events,Submit for review,infoUrl,Event info URL,url,FALSE,,https only
+suggest_community_event,P1,Suggest a community event,/events,Submit for review,submitterName,Your name,text,TRUE,,
+suggest_community_event,P1,Suggest a community event,/events,Submit for review,submitterEmail,Your email,email,TRUE,,
+suggest_community_event,P1,Suggest a community event,/events,Submit for review,form_id,Form ID,hidden,TRUE,suggest_community_event,
+story_submission,P2,Share a story,/stories,Submit story,name,Full name,text,TRUE,,
+story_submission,P2,Share a story,/stories,Submit story,email,Email,email,TRUE,,
+story_submission,P2,Share a story,/stories,Submit story,phone,Phone,tel,FALSE,,
+story_submission,P2,Share a story,/stories,Submit story,county,County,select,FALSE,See ARKANSAS_COUNTIES.csv,
+story_submission,P2,Share a story,/stories,Submit story,title,Short title,text,TRUE,,3-200 characters
+story_submission,P2,Share a story,/stories,Submit story,story,Your story,textarea,TRUE,,Min 40 characters; max 12000
+story_submission,P2,Share a story,/stories,Submit story,consentPublic,I understand the campaign may follow up and will not publish without explicit OK,checkbox,TRUE,,Must be true
+story_submission,P2,Share a story,/stories,Submit story,form_id,Form ID,hidden,TRUE,story_submission,
+volunteer_kickoff,P2,Volunteer leadership kickoff,/volunteer-kickoff/join/local | /campaign | /youth | /match,Continue,pathway,Pathway,hidden,TRUE,"local; campaign; youth; match",Set per page
+volunteer_kickoff,P2,Volunteer leadership kickoff,/volunteer-kickoff/join/*,Continue,name,Full name,text,TRUE,,
+volunteer_kickoff,P2,Volunteer leadership kickoff,/volunteer-kickoff/join/*,Continue,email,Email,email,TRUE,,
+volunteer_kickoff,P2,Volunteer leadership kickoff,/volunteer-kickoff/join/*,Continue,phone,Mobile phone,tel,TRUE,,
+volunteer_kickoff,P2,Volunteer leadership kickoff,/volunteer-kickoff/join/*,Continue,county,County,select,TRUE,See ARKANSAS_COUNTIES.csv,
+volunteer_kickoff,P2,Volunteer leadership kickoff,/volunteer-kickoff/join/*,Continue,city,City,text,FALSE,,
+volunteer_kickoff,P2,Volunteer leadership kickoff,/volunteer-kickoff/join/*,Continue,preferredContact,Preferred contact,select,TRUE,"email=Email; phone=Phone; text=Text",Default email
+volunteer_kickoff,P2,Volunteer leadership kickoff,/volunteer-kickoff/join/*,Continue,roles,Roles,multiselect,FALSE,See packet local roles / campaign teams,
+volunteer_kickoff,P2,Volunteer leadership kickoff,/volunteer-kickoff/join/*,Continue,primaryTeam,Primary campaign team,select,FALSE,See packet campaign teams,Campaign pathway
+volunteer_kickoff,P2,Volunteer leadership kickoff,/volunteer-kickoff/join/*,Continue,secondaryTeam,Secondary campaign team,select,FALSE,See packet campaign teams,
+volunteer_kickoff,P2,Volunteer leadership kickoff,/volunteer-kickoff/join/*,Continue,availability,Availability,textarea,FALSE,,
+volunteer_kickoff,P2,Volunteer leadership kickoff,/volunteer-kickoff/join/*,Continue,skills,Skills,textarea,FALSE,,
+volunteer_kickoff,P2,Volunteer leadership kickoff,/volunteer-kickoff/join/*,Continue,canHost,I can host,checkbox,FALSE,,
+volunteer_kickoff,P2,Volunteer leadership kickoff,/volunteer-kickoff/join/*,Continue,canRecruit,I can recruit,checkbox,FALSE,,
+volunteer_kickoff,P2,Volunteer leadership kickoff,/volunteer-kickoff/join/*,Continue,willingToTravel,Willing to travel,checkbox,FALSE,,
+volunteer_kickoff,P2,Volunteer leadership kickoff,/volunteer-kickoff/join/*,Continue,leadershipInterest,Leadership interest,checkbox,FALSE,,
+volunteer_kickoff,P2,Volunteer leadership kickoff,/volunteer-kickoff/join/*,Continue,organizationName,Organization name,text,FALSE,,Match pathway
+volunteer_kickoff,P2,Volunteer leadership kickoff,/volunteer-kickoff/join/*,Continue,preferScope,Scope,select,FALSE,"local=Local; statewide=Statewide; either=Either",
+volunteer_kickoff,P2,Volunteer leadership kickoff,/volunteer-kickoff/join/*,Continue,enjoyDoing,What you enjoy doing,textarea,FALSE,,
+volunteer_kickoff,P2,Volunteer leadership kickoff,/volunteer-kickoff/join/*,Continue,youthIntent,Youth intent,select,FALSE,"join=Join; refer=Refer; help=Help",Youth pathway
+volunteer_kickoff,P2,Volunteer leadership kickoff,/volunteer-kickoff/join/*,Continue,eventId,Related event id,hidden,FALSE,,
+volunteer_kickoff,P2,Volunteer leadership kickoff,/volunteer-kickoff/join/*,Continue,regions,Strike regions,multiselect,FALSE,See packet,
+volunteer_kickoff,P2,Volunteer leadership kickoff,/volunteer-kickoff/join/*,Continue,notes,Notes,textarea,FALSE,,
+volunteer_kickoff,P2,Volunteer leadership kickoff,/volunteer-kickoff/join/*,Continue,form_id,Form ID,hidden,TRUE,volunteer_kickoff,
+ask_kelly_beta,P3,Ask Kelly beta feedback,Site dock (invite-only beta),Send to Kelly,name,Full name,text,TRUE,,
+ask_kelly_beta,P3,Ask Kelly beta feedback,Site dock,Send to Kelly,email,Email,email,TRUE,,
+ask_kelly_beta,P3,Ask Kelly beta feedback,Site dock,Send to Kelly,phone,Phone,tel,FALSE,,
+ask_kelly_beta,P3,Ask Kelly beta feedback,Site dock,Send to Kelly,category,Category,select,TRUE,"website_issues_ease_of_use=Website issues / ease of use; volunteer_questions_onboarding=Volunteer questions and onboarding; message_content_feedback=Message / content feedback",
+ask_kelly_beta,P3,Ask Kelly beta feedback,Site dock,Send to Kelly,pagePath,Page path,text,FALSE,,Path only; no PII in query string
+ask_kelly_beta,P3,Ask Kelly beta feedback,Site dock,Send to Kelly,feedback,Feedback,textarea,TRUE,,Min 10; max 8000
+ask_kelly_beta,P3,Ask Kelly beta feedback,Site dock,Send to Kelly,form_id,Form ID,hidden,TRUE,ask_kelly_beta,
