@@ -75,6 +75,11 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: "/events/white-county-meeting-2026-08-22",
+        destination: "/events/coffee-with-kelly-searcy-2026-08-22",
+        permanent: true,
+      },
+      {
         source: "/the-arkansas-we-know",
         destination: "/",
         permanent: true,
