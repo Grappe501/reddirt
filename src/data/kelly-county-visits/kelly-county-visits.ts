@@ -3321,9 +3321,10 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     city: "Hot Springs Village",
     counties: ["Garland"],
     status: "scheduled",
-    includeOnPublicPage: true,
+    includeOnPublicPage: false,
     confidence: "likely",
-    notes: "Seeded from locked-events-steve.json",
+    notes:
+      "Seeded from locked-events-steve.json. Steve 2026-08-17: Kelly is in Fayetteville for NWA Senior Democrats this day, not Hot Springs Village. Public stop is nwa-senior-democrats-fayetteville-2026-08-18.",
     sourceType: "local-file",
   },
   {
@@ -3341,12 +3342,14 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     id: "presence-2026-08-18-meet-with-senior-dems-in-nwar-debby-winters-contact",
     date: "2026-08-18",
     title: "NWA Senior Democrats meeting — Fayetteville",
+    publicTitle: "NWA Senior Democrats meeting — Fayetteville",
     city: "Fayetteville",
     counties: ["Washington"],
     status: "scheduled",
-    includeOnPublicPage: false,
+    includeOnPublicPage: true,
     confidence: "confirmed",
-    notes: "Public listing is /events/nwa-senior-democrats-fayetteville-2026-08-18. Butterfield Trail Village Lodge, noon.",
+    notes:
+      "Public listing is nwa-senior-democrats-fayetteville-2026-08-18. Butterfield Trail Village Lodge, 1923 E. Joyce Blvd. Kelly arrives 11:30 a.m. with yard signs and materials, speaks first in the program (before Bill), leaves by 12:45 p.m. Host Debby Winters confirmed Aug 17. Host contact stays off the public page. Same-day locked Hot Springs Village row is not the public stop.",
     sourceType: "calendar",
   },
   {
