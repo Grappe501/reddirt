@@ -168,29 +168,6 @@ export default function BallotInitiativeProcessPage() {
           </p>
         </ContentContainer>
       </FullBleedSection>
-
-      <FullBleedSection padY aria-labelledby="related">
-        <ContentContainer>
-          <SectionHeading
-            id="related"
-            align="left"
-            eyebrow="On this site"
-            title="Related pages"
-            className="max-w-2xl"
-          />
-          <div className="mt-8 flex flex-wrap gap-4">
-            <Button href="/direct-democracy" variant="primary">
-              Ballot access &amp; initiatives
-            </Button>
-            <Button href="/resources" variant="outline">
-              Resources hub
-            </Button>
-            <Button href="/explainers" variant="outline">
-              Explainers
-            </Button>
-          </div>
-        </ContentContainer>
-      </FullBleedSection>
     </>
   );
 }
