@@ -25,6 +25,10 @@ type StopDraft = {
   fieldAttendance?: "confirmed" | "tentative";
   statewideVirtual?: boolean;
   missingCounty?: boolean;
+  whoItsFor?: string;
+  organizerNote?: string;
+  attendanceType?: EventItem["attendanceType"];
+  mapPinQuality?: EventItem["mapPinQuality"];
 };
 
 function campaignStop(draft: StopDraft): EventItem {
@@ -46,10 +50,13 @@ function campaignStop(draft: StopDraft): EventItem {
     summary: draft.summary,
     description: draft.description ?? DETAILS_LATER,
     whatToExpect: draft.whatToExpect ?? ["Stop details will be added when the host confirms venue and program."],
-    whoItsFor: "Neighbors, volunteers, and anyone who wants to meet the campaign on the trail.",
-    organizerNote: tentative
-      ? "September 2026 campaign timeline — tentative until confirmed."
-      : "September 2026 campaign timeline — public facts only; details to be added.",
+    whoItsFor: draft.whoItsFor ?? "Neighbors, volunteers, and anyone who wants to meet the campaign on the trail.",
+    organizerNote:
+      draft.organizerNote ??
+      (tentative
+        ? "September 2026 campaign timeline — tentative until confirmed."
+        : "September 2026 campaign timeline — public facts only; details to be added."),
+    attendanceType: draft.attendanceType ?? (draft.statewideVirtual ? "PUBLIC_OPEN" : undefined),
     audienceTags: draft.audienceTags,
     relatedEventSlugs: draft.relatedEventSlugs,
     relatedResourceHrefs: [
@@ -57,10 +64,10 @@ function campaignStop(draft: StopDraft): EventItem {
       { label: "Get involved", href: "/get-involved" },
     ],
     mapCoordinates: draft.mapCoordinates,
+    mapPinQuality: draft.mapPinQuality,
     fieldAttendance: draft.fieldAttendance ?? "confirmed",
     campaignTrail: true,
     statewideVirtual: draft.statewideVirtual,
-    attendanceType: draft.statewideVirtual ? "PUBLIC_OPEN" : undefined,
     eventSource: "movement",
     opsFlags: {
       timeTbd: draft.timeTbd,
@@ -160,17 +167,32 @@ export const september2026CampaignStops: EventItem[] = [
   }),
   campaignStop({
     slug: "roosevelt-dinner-2026-09-10",
-    title: "Roosevelt Dinner",
+    title: "Johnson County Roosevelt Dinner",
     type: "Community Conversation",
-    region: "Statewide",
-    startsAt: "2026-09-10T18:00:00",
-    endsAt: "2026-09-10T20:00:00",
-    locationLabel: "Location to verify",
-    city: "Location to verify",
-    summary: "Thursday 6:00 p.m. Central Roosevelt Dinner. County and venue still to be verified before this stop can appear on the county map.",
-    audienceTags: ["Dinner"],
-    relatedEventSlugs: ["lafayette-county-softball-2026-09-11"],
-    missingCounty: true,
+    region: "North Central Arkansas",
+    countySlug: "johnson-county",
+    startsAt: "2026-09-10T17:30:00",
+    locationLabel: "University of the Ozarks",
+    city: "Clarksville",
+    addressLine: "University of the Ozarks, Clarksville, AR (building TBA)",
+    summary:
+      "Thursday. Doors 5:30 p.m. Central for cocktail hour, candidate mingling, and a silent auction. Dinner at 6:30 p.m. at the University of the Ozarks in Clarksville. Kelly will speak.",
+    description:
+      "Thursday, September 10, 2026, at the University of the Ozarks in Clarksville. Doors open at 5:30 p.m. Central for cocktail hour, candidate mingling, and opening bids on silent auction items. Dinner begins at 6:30 p.m. Kelly Grappe, candidate for Arkansas Secretary of State, will speak. The host’s focus this year is showing up and voting. Exact building on campus will be posted here when it is confirmed.",
+    whatToExpect: [
+      "Doors 5:30 p.m. Central on Thursday, September 10 — cocktail hour, candidate mingling, and silent auction.",
+      "Dinner begins at 6:30 p.m. Central.",
+      "University of the Ozarks, Clarksville — building to be posted.",
+      "Kelly Grappe will speak (about 15 minutes).",
+    ],
+    whoItsFor: "Neighbors in Johnson County, Clarksville, and anyone coming to the Roosevelt Dinner.",
+    organizerNote:
+      "Posted from the Johnson County Roosevelt Dinner speaker email. Host contact and the speaker-video request stay off the public page. Campus building still TBA.",
+    attendanceType: "PUBLIC_OPEN",
+    audienceTags: ["Clarksville", "Johnson County", "Roosevelt Dinner", "University of the Ozarks"],
+    mapCoordinates: { lat: 35.4742, lng: -93.4668 },
+    mapPinQuality: "region",
+    relatedEventSlugs: ["rector-labor-day-2026-09-06", "lafayette-county-softball-2026-09-11"],
   }),
   campaignStop({
     slug: "lafayette-county-softball-2026-09-11",
