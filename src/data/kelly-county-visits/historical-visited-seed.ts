@@ -4,7 +4,7 @@ import { ARKANSAS_COUNTIES, ARKANSAS_COUNTY_COUNT } from "./arkansas-counties";
 /**
  * Frozen campaign-history snapshot (as-of 2026-08-13, America/Chicago).
  * Source: existing Kelly county-visit ledger selectors — not the unlabeled Regnat Populus PNG.
- * Howard is scheduled-only and is not in the visited set.
+ * Steve confirmed 2026-08-17: Howard, Little River, Madison, and Sevier are visited (blue).
  */
 export const HISTORICAL_VISIT_SNAPSHOT_AS_OF = "2026-08-13";
 
@@ -34,12 +34,15 @@ export const HISTORICAL_VISITED_COUNTIES = [
   "Greene",
   "Hempstead",
   "Hot Spring",
+  "Howard",
   "Independence",
   "Izard",
   "Johnson",
   "Lafayette",
   "Lee",
+  "Little River",
   "Lonoke",
+  "Madison",
   "Marion",
   "Mississippi",
   "Montgomery",
@@ -53,6 +56,7 @@ export const HISTORICAL_VISITED_COUNTIES = [
   "Saline",
   "Searcy",
   "Sebastian",
+  "Sevier",
   "Sharp",
   "Stone",
   "Union",
@@ -72,9 +76,7 @@ export const HISTORICAL_UNVISITED_COUNTIES = [
   "Jefferson",
   "Lawrence",
   "Lincoln",
-  "Little River",
   "Logan",
-  "Madison",
   "Miller",
   "Monroe",
   "Newton",
@@ -84,11 +86,10 @@ export const HISTORICAL_UNVISITED_COUNTIES = [
   "Randolph",
   "St. Francis",
   "Scott",
-  "Sevier",
   "Woodruff",
 ] as const satisfies readonly ArkansasCountyName[];
 
-export const HISTORICAL_SCHEDULED_ONLY_COUNTIES = ["Howard"] as const satisfies readonly ArkansasCountyName[];
+export const HISTORICAL_SCHEDULED_ONLY_COUNTIES = [] as const satisfies readonly ArkansasCountyName[];
 
 const VISITED_SET = new Set<string>(HISTORICAL_VISITED_COUNTIES);
 const UNVISITED_SET = new Set<string>(HISTORICAL_UNVISITED_COUNTIES);
@@ -109,11 +110,11 @@ export function isHistoricalScheduledOnlyCounty(name: string): boolean {
 /** Throws if the frozen snapshot is internally inconsistent. Safe to call from validate scripts. */
 export function assertHistoricalCountyVisitSeed(): void {
   const all = [...HISTORICAL_VISITED_COUNTIES, ...HISTORICAL_UNVISITED_COUNTIES, ...HISTORICAL_SCHEDULED_ONLY_COUNTIES];
-  if (HISTORICAL_VISITED_COUNTIES.length !== 51) {
-    throw new Error(`Historical visited seed must be 51 counties, got ${HISTORICAL_VISITED_COUNTIES.length}`);
+  if (HISTORICAL_VISITED_COUNTIES.length !== 55) {
+    throw new Error(`Historical visited seed must be 55 counties, got ${HISTORICAL_VISITED_COUNTIES.length}`);
   }
-  if (HISTORICAL_UNVISITED_COUNTIES.length !== 23) {
-    throw new Error(`Historical unvisited seed must be 23 counties, got ${HISTORICAL_UNVISITED_COUNTIES.length}`);
+  if (HISTORICAL_UNVISITED_COUNTIES.length !== 20) {
+    throw new Error(`Historical unvisited seed must be 20 counties, got ${HISTORICAL_UNVISITED_COUNTIES.length}`);
   }
   if (all.length !== ARKANSAS_COUNTY_COUNT) {
     throw new Error(`Historical seed union must be ${ARKANSAS_COUNTY_COUNT}, got ${all.length}`);

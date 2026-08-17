@@ -88,7 +88,7 @@ if (arkansasCountyKey("Van Buren") !== "van-buren") fail("van-buren key");
   const arkansas = summaryByName(summaries, "Arkansas");
   if (arkansas.publicState !== "visited") fail("Historical Arkansas should be visited");
   if (arkansas.upcomingIndicator !== null) fail("Arkansas should have no upcoming indicator in empty-event build");
-  if (ledger.visited.length !== 51) fail(`Expected 51 visited, got ${ledger.visited.length}`);
+  if (ledger.visited.length !== 55) fail(`Expected 55 visited, got ${ledger.visited.length}`);
 }
 
 {
@@ -260,7 +260,7 @@ if (arkansasCountyKey("Van Buren") !== "van-buren") fail("van-buren key");
     }),
   ]);
   if (ledger.visited.some((c) => c.countyName === "Jefferson")) fail("Virtual Zoom must not become visited");
-  if (ledger.visited.length !== 51) fail("Virtual statewide call must not change 51/75");
+  if (ledger.visited.length !== 55) fail("Virtual statewide call must not change the visited county count");
 }
 
 {
@@ -315,7 +315,7 @@ if (arkansasCountyKey("Van Buren") !== "van-buren") fail("van-buren key");
     ...september2026CampaignStops,
     ...virtual,
   ]);
-  if (virtualLedger.visited.length !== 51) fail("Recurring virtual series must not change 51/75");
+  if (virtualLedger.visited.length !== 55) fail("Recurring virtual series must not change the visited county count");
   if (withVirtual.some((s) => s.confirmedUpcomingEvents.some((e) => e.slug.includes("zoom")))) {
     fail("Recurring virtual series must not paint the county map");
   }
@@ -331,7 +331,9 @@ if (arkansasCountyKey("Van Buren") !== "van-buren") fail("van-buren key");
   if (summaryByName(summaries, "Calhoun").publicState !== "tentative_upcoming") fail("Calhoun tentative");
   if (summaryByName(summaries, "Randolph").publicState !== "confirmed_upcoming") fail("Randolph confirmed upcoming");
   if (summaryByName(summaries, "Pulaski").upcomingIndicator !== "confirmed") fail("Pulaski gold ring");
-  if (summaryByName(summaries, "Howard").publicState !== "neutral") fail("Howard remains scheduled-only / neutral");
+  if (summaryByName(summaries, "Howard").publicState !== "visited") fail("Howard should be visited / blue");
+  if (summaryByName(summaries, "Sevier").publicState !== "visited") fail("Sevier should be visited / blue");
+  if (summaryByName(summaries, "Little River").publicState !== "visited") fail("Little River should be visited / blue");
   if (summaryByName(summaries, "Chicot").publicState !== "neutral") fail("Chicot remaining unvisited");
 }
 
@@ -347,10 +349,11 @@ if (events.some((e) => /paragould/i.test(e.slug) && e.startsAt.startsWith("2026-
     ...september2026CampaignStops,
     ...october2026CampaignStops,
   ]);
-  if (ledger.visited.length !== 51) fail("October public stops must not change 51/75 before they end");
+  if (ledger.visited.length !== 55) fail("October public stops must not change the visited county count before they end");
   if (summaryByName(summaries, "Perry").publicState !== "confirmed_upcoming") fail("Perry Goat Festival confirmed upcoming");
   if (summaryByName(summaries, "Phillips").publicState !== "confirmed_upcoming") fail("Phillips King Biscuit confirmed upcoming");
-  if (summaryByName(summaries, "Madison").publicState !== "confirmed_upcoming") fail("Madison Oct 26 confirmed upcoming");
+  if (summaryByName(summaries, "Madison").publicState !== "visited") fail("Madison should be visited / blue");
+  if (summaryByName(summaries, "Madison").upcomingIndicator !== "confirmed") fail("Madison keeps Oct 26 as confirmed upcoming");
   if (!summaryByName(summaries, "Johnson").confirmedUpcomingEvents.some((e) => e.slug === "flat-rock-fish-fry-2026-10-17")) {
     fail("Flat Rock fish fry must map to Johnson County");
   }
@@ -394,8 +397,8 @@ console.log(`SVG counties: ${ARKANSAS_COUNTY_SVG_PATHS.length}/${ARKANSAS_COUNTY
 console.log("Operator review (as of 2026-08-13, America/Chicago) — http://localhost:3000/events");
 console.log("  visited-only: Arkansas County (blue, no click) until Stuttgart Oct 17");
 console.log("  visited + confirmed upcoming: Pulaski County (blue fill, gold outline → /events/county/pulaski)");
-console.log("  unvisited confirmed upcoming: Randolph County (gold fill → Pocahontas Aug 15); Perry, Phillips, Madison from October");
+console.log("  unvisited confirmed upcoming: Randolph County (gold fill → Pocahontas Aug 15); Perry, Phillips from October");
 console.log("  tentative: Calhoun County (sky fill, dashed outline → fair Sep 18); Greers Ferry Oct 23 on Cleburne");
 console.log("  neutral: Chicot County (gray, no click)");
-console.log("  statewide / virtual: Faith & Reflection Zoom (Wed 7:15 PM) + College & Young People Zoom (Thu, time TBA) — calendar only, never 51/75");
+console.log("  statewide / virtual: Faith & Reflection Zoom (Wed 7:15 PM) + College & Young People Zoom (Thu, time TBA) — calendar only, never the visited county count");
 console.log("  October: no Rice Festival / Weiner; Flat Rock = Johnson County; Bella Vista Oct 8 and Oct 15 both public");

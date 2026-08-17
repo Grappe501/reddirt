@@ -13,14 +13,13 @@ const ledger = buildCountyVisitLedger({
   movementEvents: [],
 });
 
-if (ledger.visited.length !== 51) {
-  throw new Error(`Expected 51 visited from seed, got ${ledger.visited.length}`);
+if (ledger.visited.length !== 55) {
+  throw new Error(`Expected 55 visited from seed, got ${ledger.visited.length}`);
 }
-if (ledger.visited.some((c) => c.countyName === "Howard")) {
-  throw new Error("Howard must not count as visited while scheduled-only");
-}
-if (ledger.unvisitedNames.includes("Howard") !== true) {
-  throw new Error("Howard should remain unvisited until the appearance ends");
+for (const name of ["Howard", "Little River", "Madison", "Sevier"] as const) {
+  if (!ledger.visited.some((c) => c.countyName === name)) {
+    throw new Error(`${name} must count as visited`);
+  }
 }
 if (ledger.visited.length + ledger.unvisitedNames.length !== ARKANSAS_COUNTY_COUNT) {
   throw new Error("Visited + unvisited must equal 75");
