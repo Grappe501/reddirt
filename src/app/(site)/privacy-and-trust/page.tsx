@@ -47,7 +47,7 @@ export default function PrivacyAndTrustPage() {
             <Link className={cn(focusRing, "rounded-sm font-semibold text-kelly-navy underline")} href="/privacy">
               Privacy
             </Link>{" "}
-            page (draft for counsel).{" "}
+            page.{" "}
             <Link className={cn(focusRing, "rounded-sm font-semibold text-kelly-navy underline")} href="/terms">
               Terms of use
             </Link>{" "}
