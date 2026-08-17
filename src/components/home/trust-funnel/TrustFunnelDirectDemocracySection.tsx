@@ -57,7 +57,7 @@ export function TrustFunnelDirectDemocracySection() {
                 href="/get-involved"
                 className="inline-flex min-h-[48px] items-center justify-center rounded-btn border-2 border-kelly-gold/50 bg-kelly-gold/15 px-6 py-3 text-sm font-bold uppercase tracking-wider text-kelly-navy transition hover:bg-kelly-gold/25"
               >
-                {copy.ctas.commitment}
+                {copy.ctas.getInvolved}
               </Link>
             </div>
           </ScrollReveal>

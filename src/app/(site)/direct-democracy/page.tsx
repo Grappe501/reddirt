@@ -12,6 +12,8 @@ import { siteConfig } from "@/config/site";
 import { getPageBlockPayload, type HeroBlockPayload } from "@/lib/content/page-blocks";
 import { CirculatingInitiativesSection } from "@/components/direct-democracy/CirculatingInitiativesSection";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Ballot access & initiatives",
   description:
@@ -109,6 +111,8 @@ export default async function DirectDemocracyPage() {
           </div>
         </ContentContainer>
       </FullBleedSection>
+
+      {/* Referendum commitment network stays off this page until a separate launch. */}
 
       <FullBleedSection aria-labelledby="pipeline-heading">
         <ContentContainer wide>
@@ -239,7 +243,7 @@ export default async function DirectDemocracyPage() {
 
       <QuoteBand
         quote="We’re not only asking for your vote—we’re building a system where your voice can’t be ignored."
-        attribution="Direct democracy commitment"
+        attribution="The people’s voice"
         variant="gold-band"
       />
 

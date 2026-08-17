@@ -1,5 +1,10 @@
 "use client";
 
+/**
+ * Internal form for a future referendum-network launch.
+ * Do not mount this on public pages until Steve is ready to launch it with more context.
+ */
+
 import Link from "next/link";
 import { useState } from "react";
 import { useForm } from "react-hook-form";

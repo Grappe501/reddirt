@@ -412,7 +412,7 @@ export const trustFunnelHomeCopy = {
     ctas: {
       hub: "Direct democracy hub",
       process: "How initiatives reach the ballot",
-      commitment: "Get involved",
+      getInvolved: "Get involved",
     },
   },
 
