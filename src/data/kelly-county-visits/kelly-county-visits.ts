@@ -3502,6 +3502,20 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     sourceType: "manual",
   },
   {
+    id: "manual-2026-08-27-logan-county-democrats-paris",
+    date: "2026-08-27",
+    title: "Logan County Democrats — Paris",
+    publicTitle: "Logan County Democrats — Paris",
+    city: "Paris",
+    counties: ["Logan"],
+    status: "scheduled",
+    includeOnPublicPage: true,
+    confidence: "confirmed",
+    notes:
+      "Steve 2026-08-17: Anne Bean (Logan County Democrats chair) invited Kelly for Thursday Aug 27, 6:00 p.m. in Paris. Newly re-established county party; other candidates also attending. Public listing is logan-county-democrats-paris-2026-08-27. Room still TBA. ACTION: reply to Anne to confirm Kelly will be there. Host contact stays off the public page; she is on the DPA officer roster. Previous morning is Dardanelle Chamber breakfast Aug 26; next evening is Youth Coalition Retreat at Mount Nebo Aug 28. Not a conflict with Faith Zoom (Wednesday mornings).",
+    sourceType: "manual",
+  },
+  {
     id: "locked-2026-08-29-mt-nebo-chicken-fry",
     date: "2026-08-29",
     title: "Mt Nebo Chicken Fry",

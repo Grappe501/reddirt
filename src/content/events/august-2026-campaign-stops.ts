@@ -460,15 +460,31 @@ export const august2026CampaignStops: EventItem[] = [
     slug: "logan-county-democrats-paris-2026-08-27",
     title: "Logan County Democrats — Paris",
     type: "Community Conversation",
-    region: "Northwest Arkansas",
+    region: "West Central Arkansas",
     countySlug: "logan-county",
     startsAt: "2026-08-27T18:00:00",
-    locationLabel: "Paris, Arkansas",
-    addressLine: "Paris, AR (venue TBA)",
-    summary: "Thursday 6:00 p.m. Central Logan County Democrats meeting in Paris. Venue to be posted.",
+    locationLabel: "Paris",
+    city: "Paris",
+    addressLine: "Paris, AR (room to be posted)",
+    summary:
+      "Thursday, August 27, 6:00 p.m. Central. Meeting of the newly re-established Logan County Democratic Party in Paris. Other candidates will also attend. Room to be posted.",
+    description:
+      "Thursday, August 27, 2026, 6:00 p.m. Central in Paris. The newly re-established Democratic Party of Logan County is gathering, and other candidates will also attend. Kelly Grappe, candidate for Arkansas Secretary of State, has this stop on the campaign calendar. The exact room will be posted here when the host publishes it.",
+    whatToExpect: [
+      "Thursday, August 27, 2026, 6:00 p.m. Central.",
+      "Paris, Arkansas. Room to be posted.",
+      "Newly re-established Logan County Democratic Party meeting. Other candidates will also attend.",
+    ],
+    whoItsFor: "Neighbors in Paris and Logan County, and anyone who wants to meet the Secretary of State candidates on August 27.",
+    organizerNote:
+      "Invitation from the Logan County chair dated August 7, 2026. Host contact stays off the public page. Venue room still TBA. Next evening is the Arkansas Youth Coalition Retreat at Mount Nebo.",
+    attendanceType: "PUBLIC_OPEN",
     audienceTags: ["Democratic Party", "Logan County", "Paris"],
     mapCoordinates: { lat: 35.292, lng: -93.7224 },
-    relatedEventSlugs: ["arkansas-youth-coalition-retreat-2026-08-28"],
+    relatedEventSlugs: [
+      "dardanelle-chamber-buzz-breakfast-2026-08-26",
+      "arkansas-youth-coalition-retreat-2026-08-28",
+    ],
   }),
   campaignStop({
     slug: "arkansas-youth-coalition-retreat-2026-08-28",
