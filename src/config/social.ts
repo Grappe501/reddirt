@@ -25,9 +25,20 @@ export const DEFAULT_SOCIAL_FACEBOOK_URL =
   "https://www.facebook.com/profile.php?id=61582696603861";
 export const DEFAULT_SOCIAL_INSTAGRAM_URL = "https://www.instagram.com/KellyGrappeSOS/";
 
+/** Canonical Kelly Grappe SOS YouTube channel. */
+export const DEFAULT_SOCIAL_YOUTUBE_CHANNEL_ID = "UCVjTINJvRs0dHea2StyAROg";
+export const DEFAULT_SOCIAL_YOUTUBE_URL = `https://www.youtube.com/channel/${DEFAULT_SOCIAL_YOUTUBE_CHANNEL_ID}`;
+/** YouTube “Uploads” playlist is UU + the rest of the UC channel id. */
+export const DEFAULT_SOCIAL_YOUTUBE_UPLOADS_PLAYLIST_ID = `UU${DEFAULT_SOCIAL_YOUTUBE_CHANNEL_ID.slice(2)}`;
+
 function isDeprecatedFacebookUrl(href: string): boolean {
   const lower = href.toLowerCase();
   return lower.includes("kelly.grappe.sos") || lower.includes("kelly-grappe-sos");
+}
+
+function isDeprecatedYoutubeUrl(href: string): boolean {
+  const lower = href.toLowerCase();
+  return lower.includes("@kellygrappesos") || /youtube\.com\/kellygrappesos\/?$/i.test(lower);
 }
 
 /** Footer, From the Road, and any public Facebook CTA. Ignores the old vanity URL if still in env. */
@@ -37,6 +48,15 @@ export function getPublicFacebookUrl(override?: string | null): string {
     if (candidate && !isDeprecatedFacebookUrl(candidate)) return candidate;
   }
   return DEFAULT_SOCIAL_FACEBOOK_URL;
+}
+
+/** Footer and From the Road YouTube CTA. Ignores the old @kellygrappesos handle if still in env. */
+export function getPublicYoutubeUrl(override?: string | null): string {
+  for (const raw of [override, process.env.NEXT_PUBLIC_SOCIAL_YOUTUBE_URL]) {
+    const candidate = raw?.trim();
+    if (candidate && !isDeprecatedYoutubeUrl(candidate)) return candidate;
+  }
+  return DEFAULT_SOCIAL_YOUTUBE_URL;
 }
 
 /**
@@ -63,7 +83,7 @@ export function getPublicSocialLinks(): PublicSocialLink[] {
     {
       id: "youtube",
       label: "YouTube",
-      href: envUrl("NEXT_PUBLIC_SOCIAL_YOUTUBE_URL", "https://www.youtube.com/@kellygrappesos"),
+      href: getPublicYoutubeUrl(),
     },
     {
       id: "substack",

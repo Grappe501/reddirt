@@ -1,4 +1,4 @@
-import { getPublicFacebookUrl } from "@/config/social";
+import { getPublicFacebookUrl, DEFAULT_SOCIAL_YOUTUBE_UPLOADS_PLAYLIST_ID } from "@/config/social";
 
 /**
  * Public embed configuration for /from-the-road (NEXT_PUBLIC_* only — safe in client).
@@ -27,7 +27,7 @@ export function getFromTheRoadEmbedsConfig(): FromTheRoadEmbedsConfig {
     .map((s) => s.trim())
     .filter((s) => /^\d{8,20}$/.test(s));
 
-  const ytPl = process.env.NEXT_PUBLIC_FTR_YOUTUBE_UPLOADS_PLAYLIST_ID?.trim() ?? "";
+  const ytPl = process.env.NEXT_PUBLIC_FTR_YOUTUBE_UPLOADS_PLAYLIST_ID?.trim() || DEFAULT_SOCIAL_YOUTUBE_UPLOADS_PLAYLIST_ID;
   const youtubePlaylistId = /^[a-zA-Z0-9_-]{10,}$/.test(ytPl) ? ytPl : null;
 
   const igRaw = process.env.NEXT_PUBLIC_FTR_INSTAGRAM_EMBED_SHORTCODES?.trim() ?? "";
