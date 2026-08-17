@@ -180,12 +180,12 @@ export function OnTheRoadProofSections({
         <p className="mx-auto mt-3 max-w-2xl text-center font-body text-sm leading-relaxed text-kelly-slate md:text-base">
           {showLiveStories ? (
             <>
-              Longer entries and the full grid live below—open{" "}
+              Longer entries and the full grid live in{" "}
               <a
-                href="#notebook"
+                href="#journal"
                 className="font-semibold text-kelly-blue underline-offset-2 hover:underline focus-visible:rounded-sm focus-visible:outline focus-visible:ring-2 focus-visible:ring-kelly-gold/50"
               >
-                Writing on Substack
+                the journal
               </a>
               {hasFieldSocial ? (
                 <>

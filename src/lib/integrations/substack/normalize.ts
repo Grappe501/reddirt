@@ -43,7 +43,7 @@ export function normalizeRssItem(item: SubstackFeedItemRaw): NormalizedSubstackP
   if (!slug) return null;
 
   const title = (item.title ?? "Untitled").trim();
-  const html = item.content ?? "";
+  const html = item.contentEncoded || item.content || "";
   const snippet = (item.contentSnippet ?? "").trim();
   const summary =
     snippet ||

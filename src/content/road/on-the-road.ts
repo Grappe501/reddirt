@@ -19,9 +19,29 @@
  */
 
 export const onTheRoadPageMeta = {
-  title: "On the Road Across Arkansas",
+  title: "From the Road with Kelly Grappe",
   description:
-    "Kelly Grappe’s campaign trail: showing up across Arkansas—in counties, communities, and faith spaces—with verified milestones and ways to follow along.",
+    "Stories, people and lessons from 75 counties. Kelly writes during the campaign about what she is hearing, seeing, and learning across Arkansas.",
+} as const;
+
+export const fromTheRoadJournalCopy = {
+  eyebrow: "From the Road",
+  title: "From the Road with Kelly Grappe",
+  tagline: "Stories, people and lessons from 75 counties.",
+  framing:
+    "Kelly is writing during this campaign about what she is hearing, seeing, and learning as she shows up across Arkansas. This is the journal of that work — the written companion to the county map, the photographs, and the rooms along the way.",
+  latestEyebrow: "Latest from Kelly",
+  archiveTitle: "Journal archive",
+  archiveIntro: "Earlier entries, newest first. Open any piece to read it here on the campaign site.",
+  subscribeTitle: "Subscribe to Kelly’s Substack",
+  subscribeBody:
+    "Get From the Road in your inbox. Writing is published on Substack; you read it here. Sign-up, comments, and the full Substack archive stay with her Substack account.",
+  subscribeCta: "Subscribe to Kelly’s Substack",
+  emptyTitle: "New trail writing is on the way",
+  emptyBody: "When Kelly publishes the next entry, it will appear here first. You can still subscribe so you do not miss it.",
+  discussCta: "Discuss on Substack",
+  archiveOnSubstackCta: "Full archive on Substack",
+  moreFromCountyCta: "More from this county",
 } as const;
 
 /** Shared Layer 3 band for Office full-picture pages (Elections primary; optional elsewhere). */
@@ -35,10 +55,9 @@ export const OFFICE_LAYER_THREE_CAMPAIGN_TRAIL_PROOF = {
 
 export const onTheRoadProofCopy = {
   hero: {
-    eyebrow: "Campaign trail",
-    title: "On the Road Across Arkansas",
-    subtitle:
-      "Kelly is showing up where Arkansans live, work, worship, organize, and ask hard questions.",
+    eyebrow: "From the Road",
+    title: "From the Road with Kelly Grappe",
+    subtitle: "Stories, people and lessons from 75 counties.",
     bodyParagraphs: [
       "From the night she filed, Kelly went straight to the people. Her first stop was Faulkner County Democrats, where she stood up for the first time and said, “I’m Kelly Grappe, and I’m running for Secretary of State.” Thank you to Teresa Huff for giving her that first platform.",
     ] as const,

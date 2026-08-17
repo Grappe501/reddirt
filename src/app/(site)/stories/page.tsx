@@ -34,7 +34,7 @@ export default async function StoriesPage() {
       <PageHero
         eyebrow="Voices"
         title="Stories"
-        subtitle="Kelly’s Substack posts when the feed is connected. Neighbor stories appear here when they’re ready to share—no invented testimonials."
+        subtitle="Kelly’s Substack writing, read here. Neighbor stories appear when they’re ready to share—no invented testimonials."
       />
 
       {!PUBLIC_ILLUSTRATIVE_STORIES_ENABLED ? (

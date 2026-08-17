@@ -33,7 +33,7 @@ export function toBlogCard(post: SyncedPostWithHero): HomepageBlogCard {
     slug: post.slug,
     title: post.title,
     excerpt,
-    href: `/blog/${post.slug}`,
+    href: `/from-the-road/${post.slug}`,
     canonicalUrl: post.canonicalUrl,
     publishedAt: post.publishedAt,
     imageSrc,

@@ -2,7 +2,7 @@ import {
   ballotInitiativeProcessHref,
   kellyInitiativesChapterHref,
 } from "@/config/direct-democracy-links";
-import { getCampaignBlogUrl } from "@/config/external-campaign";
+import { getCampaignBlogSubscribeUrl } from "@/config/external-campaign";
 
 export type NavItem = {
   label: string;
@@ -154,7 +154,8 @@ export const footerNavGroups: { title: string; items: NavItem[] }[] = [
     items: [
       { label: "From the Road", href: "/from-the-road" },
       { label: "Press Coverage", href: "/press-coverage" },
-      { label: "Kelly’s Substack", href: getCampaignBlogUrl() },
+      { label: "Kelly’s Substack", href: "/from-the-road" },
+      { label: "Subscribe to Kelly’s Substack", href: getCampaignBlogSubscribeUrl() },
       { label: "Events", href: "/events" },
       { label: "Invite Kelly", href: "/events/request" },
       { label: "Host a gathering", href: "/host-a-gathering" },

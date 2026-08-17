@@ -13,6 +13,8 @@ export type SubstackFeedItemRaw = {
   categories?: string[];
   contentSnippet?: string;
   content?: string;
+  /** rss-parser custom field for content:encoded */
+  contentEncoded?: string;
   enclosure?: { url?: string; type?: string };
   /** rss-parser may expose itunes:image or media:content depending on feed */
   itunes?: { image?: string };

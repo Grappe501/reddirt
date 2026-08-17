@@ -70,7 +70,7 @@ export function TrustFunnelNewsUpdatesSection({
         ) : (
           <div className={`mt-10 grid gap-5 ${featuredOnly ? "mx-auto max-w-xl" : "md:grid-cols-2 lg:grid-cols-3"}`}>
             {posts.map((post, i) => {
-              const href = post.canonicalUrl?.trim() || `/from-the-road#post-${post.slug}`;
+              const href = post.slug ? `/from-the-road/${post.slug}` : "/from-the-road";
               const excerpt = roadPostExcerpt(post);
               return (
                 <ScrollReveal key={post.id} delay={40 + i * 30} yOffset={6}>

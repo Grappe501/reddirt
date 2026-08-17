@@ -65,7 +65,7 @@ export function HomeFromTheRoadPreviewSection({
                     layoutRail && "w-[min(88vw,20rem)] shrink-0 snap-center md:w-auto md:shrink-0 md:snap-align-none",
                   )}
                 >
-                  <Link href={`/from-the-road#post-${post.slug}`} className="block shrink-0">
+                  <Link href={`/from-the-road/${post.slug}`} className="block shrink-0">
                     <div className="relative aspect-[16/10] bg-kelly-navy/10">
                       {img ? (
                         // eslint-disable-next-line @next/next/no-img-element
@@ -83,7 +83,7 @@ export function HomeFromTheRoadPreviewSection({
                     ) : null}
                     <ContentLocality countySlug={post.countySlug} city={post.city} variant="compact" />
                     <h3 className="mt-2 font-heading text-lg font-bold leading-snug text-kelly-ink">
-                      <Link href={post.canonicalUrl} target="_blank" rel="noreferrer" className="hover:text-kelly-blue">
+                      <Link href={`/from-the-road/${post.slug}`} className="hover:text-kelly-blue">
                         {post.title}
                       </Link>
                     </h3>
@@ -91,9 +91,7 @@ export function HomeFromTheRoadPreviewSection({
                       <p className="mt-2 line-clamp-3 flex-1 font-body text-sm leading-relaxed text-kelly-slate">{excerpt}</p>
                     ) : null}
                     <Link
-                      href={post.canonicalUrl}
-                      target="_blank"
-                      rel="noreferrer"
+                      href={`/from-the-road/${post.slug}`}
                       className="mt-4 inline-flex text-sm font-bold uppercase tracking-wider text-kelly-blue transition hover:underline"
                     >
                       Read entry →

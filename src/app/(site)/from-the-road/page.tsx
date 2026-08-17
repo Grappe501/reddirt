@@ -5,6 +5,7 @@ import { MediaPageHero } from "@/components/blocks/MediaPageHero";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { ContentHubActionBand } from "@/components/content/ContentHubActionBand";
 import { ContentLocality } from "@/components/content/ContentLocality";
+import { FromTheRoadJournal } from "@/components/from-the-road/FromTheRoadJournal";
 import { FromTheRoadLiveEmbeds } from "@/components/from-the-road/FromTheRoadLiveEmbeds";
 import { FromTheRoadSocialHub } from "@/components/from-the-road/FromTheRoadSocialHub";
 import { LazyYouTubeEmbed } from "@/components/media/LazyYouTubeEmbed";
@@ -14,9 +15,6 @@ import {
   listFromTheRoadPosts,
   listFromTheRoadSocialItems,
   listFromTheRoadYoutubeMoments,
-  roadPostExcerpt,
-  roadPostImageSrc,
-  type RoadPostCard,
   type RoadSocialCardVM,
 } from "@/lib/content/content-hub-queries";
 import { listUpcomingPublicCampaignEventsForHomepage } from "@/lib/calendar/public-events";
@@ -24,8 +22,11 @@ import { pageMeta } from "@/lib/seo/metadata";
 import { brandMediaFromLegacySite } from "@/config/brand-media";
 import { TrailPhotosShowcase } from "@/components/campaign-trail/TrailPhotosShowcase";
 import { trailPhotosForSlot } from "@/content/media/campaign-trail-assignments";
-import { onTheRoadPageMeta, onTheRoadProofCopy } from "@/content/road/on-the-road";
+import { fromTheRoadJournalCopy, onTheRoadPageMeta } from "@/content/road/on-the-road";
+import { listPublicSubstackPosts } from "@/lib/integrations/substack/list-public-posts";
 import { cn } from "@/lib/utils";
+
+export const revalidate = 600;
 
 export const metadata: Metadata = pageMeta({
   title: onTheRoadPageMeta.title,
@@ -36,32 +37,38 @@ export const metadata: Metadata = pageMeta({
 
 export default async function FromTheRoadPage() {
   const embedsConfig = getFromTheRoadEmbedsConfig();
-  const [posts, social, youtube, upcomingEvents] = await Promise.all([
+  const [posts, social, youtube, upcomingEvents, journalPosts] = await Promise.all([
     listFromTheRoadPosts(48),
     listFromTheRoadSocialItems(32),
     listFromTheRoadYoutubeMoments(8),
     listUpcomingPublicCampaignEventsForHomepage(4),
+    listPublicSubstackPosts().catch((err) => {
+      console.error("[from-the-road] Substack journal feed failed:", err);
+      return [];
+    }),
   ]);
   const trailGallery = trailPhotosForSlot("fromTheRoad", { fromTheRoadMax: 96 });
   const hasEmbeds = fromTheRoadHasLiveEmbeds(embedsConfig);
   const hasFieldSocial = social.length > 0;
-  const hasNotebook = posts.length > 0;
   const hasYoutube = youtube.length > 0;
   const hasTrailPhotos = trailGallery.length > 0;
-
-  const roadHero = onTheRoadProofCopy.hero;
+  const hasJournal = journalPosts.length > 0;
 
   return (
     <>
       <MediaPageHero
         slotKey="road.hero"
         layout="split"
-        eyebrow={roadHero.eyebrow}
-        title={roadHero.title}
-        subtitle={roadHero.subtitle}
+        eyebrow={fromTheRoadJournalCopy.eyebrow}
+        title={fromTheRoadJournalCopy.title}
+        subtitle={fromTheRoadJournalCopy.tagline}
       />
     <div className="min-h-screen bg-gradient-to-b from-kelly-fog/90 via-white to-kelly-fog/50 pb-16 pt-10 md:pb-24 md:pt-14">
       <ContentContainer>
+        <FromTheRoadJournal posts={journalPosts} />
+
+        <div className="mt-16 md:mt-20" aria-hidden />
+
         <OnTheRoadProofSections
           previewPosts={posts}
           upcomingEvents={upcomingEvents}
@@ -117,27 +124,6 @@ export default async function FromTheRoadPage() {
           </section>
         ) : null}
 
-        {hasNotebook ? (
-          <section id="notebook" className="scroll-mt-24 border-t border-kelly-ink/8 pt-16 md:pt-20" aria-label="Writing on Substack">
-            <h2 className="font-heading text-2xl font-bold text-kelly-ink md:text-3xl">Writing on Substack</h2>
-            <p className="mt-3 max-w-3xl font-body text-base leading-relaxed text-kelly-slate md:text-lg">
-              Longer writing from the road—stories, explainers, and the voice you can share without a platform account
-              watching over your shoulder.
-            </p>
-            <div className="mt-10 grid gap-10 md:grid-cols-2 lg:grid-cols-3">
-              {posts.map((post) => (
-                <RoadJournalCard key={post.id} post={post} />
-              ))}
-            </div>
-          </section>
-        ) : null}
-
-        {!hasNotebook && !hasFieldSocial && !hasYoutube && !hasEmbeds ? (
-          <p className="mx-auto mt-16 max-w-lg text-center font-body text-kelly-slate/75">
-            Trail writing and updates will appear here as they&apos;re published. Check back soon.
-          </p>
-        ) : null}
-
         {hasYoutube ? (
           <section
             id="on-camera"
@@ -180,6 +166,14 @@ export default async function FromTheRoadPage() {
           <p className="mb-3 font-semibold text-kelly-ink">On this page</p>
           <ul className="flex flex-wrap gap-x-3 gap-y-2">
             <li>
+              <a className="text-kelly-blue underline-offset-2 hover:underline focus-visible:rounded-sm focus-visible:outline focus-visible:ring-2 focus-visible:ring-kelly-gold/50" href="#latest">Latest from Kelly</a>
+            </li>
+            {hasJournal ? (
+              <li>
+                <a className="text-kelly-blue underline-offset-2 hover:underline focus-visible:rounded-sm focus-visible:outline focus-visible:ring-2 focus-visible:ring-kelly-gold/50" href="#journal">Journal archive</a>
+              </li>
+            ) : null}
+            <li>
               <a className="text-kelly-blue underline-offset-2 hover:underline focus-visible:rounded-sm focus-visible:outline focus-visible:ring-2 focus-visible:ring-kelly-gold/50" href="#channels">All channels</a>
             </li>
             {hasEmbeds ? (
@@ -190,11 +184,6 @@ export default async function FromTheRoadPage() {
             {hasFieldSocial ? (
               <li>
                 <a className="text-kelly-blue underline-offset-2 hover:underline focus-visible:rounded-sm focus-visible:outline focus-visible:ring-2 focus-visible:ring-kelly-gold/50" href="#field">Field posts</a>
-              </li>
-            ) : null}
-            {hasNotebook ? (
-              <li>
-                <a className="text-kelly-blue underline-offset-2 hover:underline focus-visible:rounded-sm focus-visible:outline focus-visible:ring-2 focus-visible:ring-kelly-gold/50" href="#notebook">Writing</a>
               </li>
             ) : null}
             {hasYoutube ? (
@@ -224,53 +213,6 @@ export default async function FromTheRoadPage() {
       </ContentContainer>
     </div>
     </>
-  );
-}
-
-function RoadJournalCard({ post }: { post: RoadPostCard }) {
-  const img = roadPostImageSrc(post);
-  const excerpt = roadPostExcerpt(post);
-  const date =
-    post.publishedAt?.toLocaleDateString("en-US", {
-      month: "short",
-      day: "numeric",
-      year: "numeric",
-    }) ?? "";
-
-  return (
-    <article
-      id={`post-${post.slug}`}
-      className="flex flex-col overflow-hidden rounded-card border border-kelly-ink/12 bg-white/95 shadow-md shadow-kelly-ink/5"
-    >
-      {img ? (
-        <div className="relative aspect-[16/10] bg-kelly-navy/10">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={img} alt="" className="h-full w-full object-cover" loading="lazy" />
-        </div>
-      ) : (
-        <div className="flex aspect-[16/10] items-center justify-center bg-gradient-to-br from-kelly-blue/15 to-kelly-navy/25 font-body text-xs font-medium text-kelly-ink/70">
-          From the trail
-        </div>
-      )}
-      <div className="flex flex-1 flex-col p-5 md:p-6">
-        {date ? <p className="font-body text-[10px] font-bold uppercase tracking-[0.2em] text-kelly-slate/50">{date}</p> : null}
-        <ContentLocality countySlug={post.countySlug} city={post.city} variant="journal" />
-        <h3 className="mt-3 font-heading text-lg font-bold leading-snug text-kelly-ink md:text-xl">
-          <Link href={post.canonicalUrl} target="_blank" rel="noreferrer" className="hover:text-kelly-blue">
-            {post.title}
-          </Link>
-        </h3>
-        {excerpt ? <p className="mt-3 line-clamp-4 font-body text-sm leading-relaxed text-kelly-slate md:text-[0.9375rem]">{excerpt}</p> : null}
-        <Link
-          href={post.canonicalUrl}
-          target="_blank"
-          rel="noreferrer"
-          className="mt-5 inline-flex text-sm font-bold uppercase tracking-wider text-kelly-blue hover:underline"
-        >
-          Read the full entry →
-        </Link>
-      </div>
-    </article>
   );
 }
 

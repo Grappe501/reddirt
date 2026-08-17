@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { GET_INVOLVED_SECTION } from "@/content/home/homepagePremium";
-import { getCampaignBlogUrl, getJoinCampaignHref } from "@/config/external-campaign";
+import { getJoinCampaignHref } from "@/config/external-campaign";
 import { siteConfig } from "@/config/site";
 import { FadeInWhenVisible } from "@/components/home/FadeInWhenVisible";
 import { isExternalHref } from "@/lib/href";
@@ -27,10 +27,10 @@ const ACTIONS = [
     cta: "Donate",
   },
   {
-    title: "Stay Connected",
-    body: "Follow the road journal on Substack—stories, speeches, and campaign moments in Kelly’s voice.",
-    href: getCampaignBlogUrl(),
-    cta: "Read on Substack",
+    title: "From the Road",
+    body: "Stories, people and lessons from 75 counties—Kelly’s journal, read here on the campaign site.",
+    href: "/from-the-road",
+    cta: "Read From the Road",
   },
 ] as const;
 

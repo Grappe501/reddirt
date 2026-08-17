@@ -61,6 +61,32 @@ export function getCampaignBlogUrl(): string {
   return process.env.NEXT_PUBLIC_CAMPAIGN_BLOG_URL?.trim().replace(/\/$/, "") || CAMPAIGN_BLOG;
 }
 
+/** Native on-site journal (Substack is the publishing engine underneath). */
+export function fromTheRoadPostHref(slug: string): string {
+  return `/from-the-road/${encodeURIComponent(slug.trim())}`;
+}
+
+/** Substack-hosted email signup — keep subscriptions on Substack. */
+export function getCampaignBlogSubscribeUrl(): string {
+  return `${getCampaignBlogUrl()}/subscribe`;
+}
+
+export function getCampaignBlogArchiveUrl(): string {
+  return `${getCampaignBlogUrl()}/archive`;
+}
+
+export function getCampaignBlogEmbedUrl(): string {
+  return `${getCampaignBlogUrl()}/embed`;
+}
+
+export function getCampaignBlogPostUrl(slug: string): string {
+  return `${getCampaignBlogUrl()}/p/${encodeURIComponent(slug.trim())}`;
+}
+
+export function getCampaignBlogCommentsUrl(slug: string): string {
+  return `${getCampaignBlogPostUrl(slug)}/comments`;
+}
+
 export function getContactMailto(): string {
   const raw = process.env.NEXT_PUBLIC_CONTACT_EMAIL?.trim();
   if (!raw) return "mailto:kelly@kellygrappe.com";

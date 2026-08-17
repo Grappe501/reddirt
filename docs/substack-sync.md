@@ -40,12 +40,14 @@ Per post (`/admin/blog/[slug]`):
 
 ## Public surfaces
 
-- `/blog` — branded index  
-- `/blog/[slug]` — on-site summary + prominent link to canonical Substack URL  
+- `/from-the-road` — native journal landing (latest entry + archive), rendered in Kelly’s design system
+- `/from-the-road/[slug]` — native article pages from public Substack feed/metadata (no iframe)
+- `/blog` and `/blog/[slug]` redirect to the From the Road journal
+- Subscribe / comments / full Substack archive remain on `https://kellygrappesos.substack.com`
 
 ## Failure behavior
 
-If the feed is missing, unreachable, or invalid XML, sync records `SiteSettings.lastSubstackSyncOk = false` and an error string. The public `/blog` page shows an empty state with instructions.
+If the feed is missing, unreachable, or invalid XML, sync records `SiteSettings.lastSubstackSyncOk = false` and an error string. The public `/from-the-road` page still shows subscribe and trail proof, with an empty journal state.
 
 ## Future: scheduled jobs
 

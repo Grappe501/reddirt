@@ -9,7 +9,7 @@ const PITCH: Partial<Record<PublicSocialId, string>> = {
   instagram: "Photos and reels from counties and community stops.",
   x: "News nuggets, retweets, and rapid response.",
   youtube: "Speeches, interviews, and longer-form video.",
-  substack: "Essays and the notebook—read without an algorithm.",
+      substack: "Kelly’s journal from the road—read it here, subscribe on Substack.",
   tiktok: "Short clips that meet people where they scroll.",
 };
 
@@ -52,12 +52,16 @@ export function FromTheRoadSocialHub() {
       </div>
 
       <ul className="mt-10 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-        {channels.map((item) => (
+        {channels.map((item) => {
+          const isJournal = item.id === "substack";
+          const href = isJournal ? "/from-the-road" : item.href;
+          const external = !isJournal;
+          return (
           <li key={item.id}>
             <a
-              href={item.href}
-              target="_blank"
-              rel="noopener noreferrer"
+              href={href}
+              target={external ? "_blank" : undefined}
+              rel={external ? "noopener noreferrer" : undefined}
               className={cn(
                 "group flex h-full flex-col rounded-card border border-kelly-ink/10 bg-gradient-to-br p-5 shadow-sm transition",
                 "hover:border-kelly-blue/25 hover:shadow-md hover:shadow-kelly-ink/5",
@@ -75,18 +79,19 @@ export function FromTheRoadSocialHub() {
                   <SocialGlyph id={item.id} />
                 </span>
                 <div className="min-w-0 flex-1">
-                  <p className="font-heading text-lg font-bold text-kelly-ink">{item.label}</p>
+                  <p className="font-heading text-lg font-bold text-kelly-ink">{isJournal ? "From the Road" : item.label}</p>
                   {PITCH[item.id] ? (
                     <p className="mt-1.5 font-body text-sm leading-relaxed text-kelly-slate/90">{PITCH[item.id]}</p>
                   ) : null}
                 </div>
               </div>
               <span className="mt-4 inline-flex items-center font-body text-sm font-bold uppercase tracking-wider text-kelly-blue group-hover:underline">
-                Open {item.label} ↗
+                {isJournal ? "Read the journal" : `Open ${item.label} ↗`}
               </span>
             </a>
           </li>
-        ))}
+          );
+        })}
       </ul>
 
       {email ? (

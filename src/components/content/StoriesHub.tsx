@@ -5,7 +5,6 @@ import type { StoryCategory, StoryEntry } from "@/content/stories";
 import { storyCategoryFilters } from "@/content/stories";
 import { StoryCard } from "@/components/blocks/StoryCard";
 import { cn } from "@/lib/utils";
-import { getCampaignBlogUrl } from "@/config/external-campaign";
 import type { PublicSubstackPost } from "@/lib/integrations/substack/list-public-posts";
 
 const PAGE_SIZE = 6;
@@ -86,20 +85,14 @@ export function StoriesHub({ stories, featured, substackPosts = [] }: StoriesHub
         <div className="space-y-4 rounded-card border border-kelly-text/15 bg-white/60 p-6 shadow-[var(--shadow-soft)] md:p-8">
           <div>
             <p className="font-body text-[11px] font-bold uppercase tracking-[0.2em] text-kelly-navy/90">Campaign notebook</p>
-            <h2 className="mt-2 font-heading text-xl font-bold text-kelly-text md:text-2xl">From Kelly’s Substack</h2>
+            <h2 className="mt-2 font-heading text-xl font-bold text-kelly-text md:text-2xl">From the Road</h2>
             <p className="mt-3 max-w-3xl font-body text-sm leading-relaxed text-kelly-text/75">
-              These summaries are pulled from our live RSS feed and updated automatically. Each card links to the{" "}
-              <strong className="font-semibold text-kelly-text/90">full post on Substack</strong> (opens in a new tab)—not
-              the on-site story pages below.
+              These pieces are pulled from Kelly’s Substack and read here on the campaign site—same writing, Kelly’s
+              design, no iframe.
             </p>
             <p className="mt-2 font-body text-xs text-kelly-text/60">
-              <a
-                href={getCampaignBlogUrl()}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-semibold text-kelly-navy underline-offset-2 hover:underline"
-              >
-                Open the notebook home →
+              <a href="/from-the-road" className="font-semibold text-kelly-navy underline-offset-2 hover:underline">
+                Open From the Road →
               </a>
             </p>
           </div>
@@ -112,14 +105,13 @@ export function StoriesHub({ stories, featured, substackPosts = [] }: StoriesHub
                   <li key={p.slug}>
                     <StoryCard
                       featured
-                      external
                       title={p.title}
                       excerpt={p.summary}
-                      href={p.canonicalUrl}
+                      href={p.nativeHref}
                       meta={metaBits.join(" · ")}
                       imageSrc={p.featuredImageUrl ?? undefined}
                       imageAlt=""
-                      ctaLabel="Read on Substack"
+                      ctaLabel="Read here"
                     />
                   </li>
                 );
@@ -136,14 +128,13 @@ export function StoriesHub({ stories, featured, substackPosts = [] }: StoriesHub
                   return (
                     <li key={p.slug}>
                       <StoryCard
-                        external
                         title={p.title}
                         excerpt={p.summary}
-                        href={p.canonicalUrl}
+                        href={p.nativeHref}
                         meta={metaBits.join(" · ")}
                         imageSrc={p.featuredImageUrl ?? undefined}
                         imageAlt=""
-                        ctaLabel="Read on Substack"
+                        ctaLabel="Read here"
                       />
                     </li>
                   );

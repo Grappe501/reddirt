@@ -134,6 +134,16 @@ const nextConfig: NextConfig = {
         destination: "/from-the-road",
         permanent: false,
       },
+      {
+        source: "/blog",
+        destination: "/from-the-road",
+        permanent: true,
+      },
+      {
+        source: "/blog/:slug",
+        destination: "/from-the-road/:slug",
+        permanent: true,
+      },
       /** Public alias — Victory Plan / Campaign Plan bookmarks → election-plan workbench. */
       {
         source: "/campaign-plan",
