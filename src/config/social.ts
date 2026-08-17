@@ -31,6 +31,10 @@ export const DEFAULT_SOCIAL_YOUTUBE_URL = `https://www.youtube.com/channel/${DEF
 /** YouTube “Uploads” playlist is UU + the rest of the UC channel id. */
 export const DEFAULT_SOCIAL_YOUTUBE_UPLOADS_PLAYLIST_ID = `UU${DEFAULT_SOCIAL_YOUTUBE_CHANNEL_ID.slice(2)}`;
 
+/** Canonical Kelly Grappe SOS TikTok. */
+export const DEFAULT_SOCIAL_TIKTOK_HANDLE = "kellygrappeforarsos";
+export const DEFAULT_SOCIAL_TIKTOK_URL = `https://www.tiktok.com/@${DEFAULT_SOCIAL_TIKTOK_HANDLE}`;
+
 function isDeprecatedFacebookUrl(href: string): boolean {
   const lower = href.toLowerCase();
   return lower.includes("kelly.grappe.sos") || lower.includes("kelly-grappe-sos");
@@ -38,7 +42,12 @@ function isDeprecatedFacebookUrl(href: string): boolean {
 
 function isDeprecatedYoutubeUrl(href: string): boolean {
   const lower = href.toLowerCase();
-  return lower.includes("@kellygrappesos") || /youtube\.com\/kellygrappesos\/?$/i.test(lower);
+  return lower.includes("youtube.com") && (lower.includes("@kellygrappesos") || /youtube\.com\/kellygrappesos\/?$/i.test(lower));
+}
+
+function isDeprecatedTiktokUrl(href: string): boolean {
+  const lower = href.toLowerCase();
+  return lower.includes("tiktok.com") && lower.includes("@kellygrappesos") && !lower.includes("@kellygrappeforarsos");
 }
 
 /** Footer, From the Road, and any public Facebook CTA. Ignores the old vanity URL if still in env. */
@@ -57,6 +66,29 @@ export function getPublicYoutubeUrl(override?: string | null): string {
     if (candidate && !isDeprecatedYoutubeUrl(candidate)) return candidate;
   }
   return DEFAULT_SOCIAL_YOUTUBE_URL;
+}
+
+/** Footer, From the Road, and TikTok creator embed. Ignores the old @kellygrappesos handle if still in env. */
+export function getPublicTiktokUrl(override?: string | null): string {
+  for (const raw of [override, process.env.NEXT_PUBLIC_SOCIAL_TIKTOK_URL]) {
+    const candidate = raw?.trim();
+    if (candidate && !isDeprecatedTiktokUrl(candidate)) {
+      try {
+        const u = new URL(candidate);
+        u.search = "";
+        u.hash = "";
+        return u.toString().replace(/\/$/, "");
+      } catch {
+        return candidate;
+      }
+    }
+  }
+  return DEFAULT_SOCIAL_TIKTOK_URL;
+}
+
+export function getPublicTiktokHandle(url = getPublicTiktokUrl()): string {
+  const match = url.match(/tiktok\.com\/@([^/?#]+)/i);
+  return match?.[1] ?? DEFAULT_SOCIAL_TIKTOK_HANDLE;
 }
 
 /**
@@ -93,7 +125,7 @@ export function getPublicSocialLinks(): PublicSocialLink[] {
     {
       id: "tiktok",
       label: "TikTok",
-      href: envUrl("NEXT_PUBLIC_SOCIAL_TIKTOK_URL", "https://www.tiktok.com/@kellygrappesos"),
+      href: getPublicTiktokUrl(),
     },
     {
       id: "email",

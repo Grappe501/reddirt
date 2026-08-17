@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo } from "react";
+import Script from "next/script";
 import type { FromTheRoadEmbedsConfig } from "@/config/from-the-road-embeds";
 
 const FB_W = 500;
@@ -30,6 +31,7 @@ export function FromTheRoadLiveEmbeds({ config }: Props) {
 
   if (
     !config.facebookPageUrl &&
+    !config.tiktokCreatorHandle &&
     config.tiktokVideoIds.length === 0 &&
     !config.youtubePlaylistId &&
     config.instagramEmbedShortcodes.length === 0
@@ -63,7 +65,53 @@ export function FromTheRoadLiveEmbeds({ config }: Props) {
             </div>
           </div>
         ) : null}
-        {config.tiktokVideoIds.length > 0 ? (
+        {config.tiktokCreatorHandle ? (
+          <div className="flex min-h-0 flex-col">
+            <div className="mb-2 font-body text-[11px] font-bold uppercase tracking-[0.2em] text-kelly-slate/60">
+              TikTok
+            </div>
+            <div
+              className="overflow-hidden rounded-card border border-kelly-ink/12 bg-white p-2 shadow-inner shadow-kelly-ink/5"
+              role="region"
+              aria-label="TikTok profile"
+            >
+              <blockquote
+                className="tiktok-embed"
+                cite={config.tiktokCreatorUrl}
+                data-unique-id={config.tiktokCreatorHandle}
+                data-embed-type="creator"
+                style={{ maxWidth: 780, minWidth: 288 }}
+              >
+                <section>
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href={`${config.tiktokCreatorUrl}?refer=creator_embed`}
+                  >
+                    @{config.tiktokCreatorHandle}
+                  </a>
+                </section>
+              </blockquote>
+              <Script src="https://www.tiktok.com/embed.js" strategy="lazyOnload" />
+            </div>
+            {config.tiktokVideoIds.length > 0 ? (
+              <ul className="mt-4 max-h-[min(80vh,900px)] space-y-6 overflow-y-auto rounded-card border border-kelly-ink/12 bg-kelly-navy/5 p-3 pr-2 shadow-inner sm:p-4">
+                {config.tiktokVideoIds.map((id) => (
+                  <li key={id} className="mx-auto w-full max-w-md overflow-hidden rounded-lg bg-black/80 shadow-lg">
+                    <iframe
+                      title={`TikTok video ${id}`}
+                      src={`https://www.tiktok.com/embed/v2/${encodeURIComponent(id)}`}
+                      className="aspect-[9/16] w-full min-h-[420px] border-0 sm:min-h-[480px]"
+                      allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+                      allowFullScreen
+                      loading="lazy"
+                    />
+                  </li>
+                ))}
+              </ul>
+            ) : null}
+          </div>
+        ) : config.tiktokVideoIds.length > 0 ? (
           <div className="flex min-h-0 flex-col">
             <div className="mb-2 font-body text-[11px] font-bold uppercase tracking-[0.2em] text-kelly-slate/60">
               TikTok — selected clips
