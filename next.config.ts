@@ -95,6 +95,11 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: "/events/chickin-n-politikin-mount-nebo-2026-08-29",
+        destination: "/events/mt-nebo-chicken-fry-2026-08-29",
+        permanent: true,
+      },
+      {
         source: "/the-arkansas-we-know",
         destination: "/",
         permanent: true,
