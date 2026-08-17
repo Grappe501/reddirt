@@ -3742,7 +3742,7 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     includeOnPublicPage: false,
     confidence: "confirmed",
     notes:
-      "Steve 2026-08-17: Kelly confirmed a forum in Hot Springs on 9/16. This is the Hot Springs Village POA Governmental Affairs Committee candidate meet-and-greet, 2:00-5:00 p.m. Public listing is hsv-candidate-forum-2026-09-16. Village sits in Garland and Saline; do not pin one county until Steve confirms. Room still TBA. A separate locked Hot Springs Forum remains on Sept 25.",
+      "Steve 2026-08-17: Kelly confirmed a forum in Hot Springs on 9/16. POA letter dated April 27, 2026: Candidate Meet and Greet, Wed Sept 16, 2:00-5:00 p.m., Coronado Community Center, 150 Ponderosa Lane, Hot Springs Village. Table-style; GAC/POA host. Public listing is hsv-candidate-forum-2026-09-16. OSM places the building in Garland County; the Village also includes Saline. Do not pin one county on the public page until Steve confirms. ACTION: email Sam Sacco at samjsacco@aol.com to reserve Kelly's table. Deb Bryan (HSV Democratic Club) forwarded the invitation; her contact stays off the public page. Same-day Faith Zoom 7:30 a.m. is not a conflict. Garland Library forum participation form is also due Sept 16 (separate Sept 29 event). Mary's county-fair booth day 1 is blocked by this stop. A separate locked Hot Springs Forum remains on Sept 25.",
     sourceType: "calendar",
   },
   {
