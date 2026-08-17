@@ -104,7 +104,6 @@ function CuratedOrCalendarEventView({ event }: { event: EventItem }) {
                 align="left"
                 eyebrow="Details"
                 title="When, where, and what"
-                subtitle="Plain facts first—then the human stuff underneath."
               />
               <div id="details" className="mt-8 rounded-card border border-kelly-text/10 bg-[var(--color-surface-elevated)] p-6 shadow-[var(--shadow-soft)] md:p-8">
                 <EventMeta event={live} joinHref={live.statewideVirtual ? joinHref : null} />
@@ -133,23 +132,6 @@ function CuratedOrCalendarEventView({ event }: { event: EventItem }) {
                   </div>
                 ) : null}
               </div>
-
-              <SectionHeading
-                className="mt-14"
-                align="left"
-                as="h3"
-                eyebrow="Narrative"
-                title="Why this gathering exists"
-              />
-              <p className="mt-6 font-body text-lg leading-relaxed text-kelly-text/85">
-                {stripPublicMarkdown(live.description)
-                  .split(/\n\n+/)
-                  .map((para) => (
-                    <span key={para.slice(0, 48)} className="mb-4 block last:mb-0">
-                      {para}
-                    </span>
-                  ))}
-              </p>
 
               <SectionHeading
                 className="mt-14"
