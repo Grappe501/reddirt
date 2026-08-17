@@ -95,8 +95,8 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
-        source: "/events/chickin-n-politikin-mount-nebo-2026-08-29",
-        destination: "/events/mt-nebo-chicken-fry-2026-08-29",
+        source: "/events/fayetteville-visit-2026-10-08",
+        destination: "/events/bella-vista-meet-2026-10-08",
         permanent: true,
       },
       {

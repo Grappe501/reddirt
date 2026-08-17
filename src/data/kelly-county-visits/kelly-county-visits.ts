@@ -3808,6 +3808,18 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     sourceType: "calendar",
   },
   {
+    id: "private-2026-10-08-dusty-personal-hold",
+    date: "2026-10-08",
+    title: "Personal hold",
+    counties: [],
+    status: "private",
+    includeOnPublicPage: false,
+    confidence: "confirmed",
+    notes:
+      "Steve 2026-08-17: Dusty, Thursday Oct 8 4:00-7:00 p.m. Central. Kelly not available. Not a campaign appearance. Do not list on /events. Conflicts with the old Fayetteville Visit 5:30 p.m. listing, which was taken off the public calendar. Meet link stays off public pages. Bella Vista Oct 8 remains a separate daytime stop.",
+    sourceType: "calendar",
+  },
+  {
     id: "locked-2026-10-10-turkey-drop-yellville",
     date: "2026-10-10",
     title: "Turkey Drop — Yellville",
