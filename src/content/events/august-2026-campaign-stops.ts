@@ -207,11 +207,23 @@ export const august2026CampaignStops: EventItem[] = [
     type: "Community Conversation",
     region: "Northwest Arkansas",
     countySlug: "washington-county",
-    startsAt: "2026-08-17T12:00:00",
-    timeTbd: true,
+    startsAt: "2026-08-17T18:00:00",
     locationLabel: "Washington County (venue TBA)",
-    addressLine: "Washington County, AR",
-    summary: "Confirmed Washington County Democrats meeting. Time, format, and room to be posted.",
+    city: "Fayetteville",
+    addressLine: "Washington County, AR — room to be posted",
+    summary:
+      "Monday 6:00 p.m. Central. Washington County Democrats meeting. Kelly is speaking. Room to be posted. This is scheduled campaign stop 226.",
+    description:
+      "Monday, August 17, 2026, 6:00 p.m. Central. The Washington County Democratic Party is meeting, and Kelly Grappe, candidate for Arkansas Secretary of State, is speaking. The exact room will be posted here when the host publishes it. This listing is scheduled campaign stop 226 as of this meeting.",
+    whatToExpect: [
+      "Monday, August 17, 2026, 6:00 p.m. Central.",
+      "Washington County — room to be posted.",
+      "Washington County Democrats meeting. Kelly Grappe is speaking.",
+    ],
+    whoItsFor: "Neighbors in Washington County and anyone who wants to meet the Secretary of State candidate on August 17.",
+    organizerNote:
+      "Steve 2026-08-17: this meeting is scheduled campaign stop 226. Public count lives in campaign-stop-milestone.ts. Calendar presence had 6:00 p.m. Room still TBA. Host contact stays off the public page.",
+    attendanceType: "PUBLIC_OPEN",
     audienceTags: ["Democratic Party", "Washington County", "Fayetteville"],
     mapCoordinates: { lat: 36.0626, lng: -94.1574 },
     relatedEventSlugs: ["nwa-senior-democrats-fayetteville-2026-08-18"],

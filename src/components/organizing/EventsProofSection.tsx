@@ -1,7 +1,13 @@
+import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { CampaignJourneyMap } from "@/components/organizing/events-map/CampaignJourneyMap";
 import type { CountyMapFeature } from "@/components/organizing/events-map/county-map-types";
 import type { CountyVisitLedger } from "@/lib/events/county-visit-ledger";
+import {
+  CAMPAIGN_STOP_MILESTONE,
+  campaignStopMilestoneAsOfHref,
+  formatCampaignStopAsOfDate,
+} from "@/content/events/campaign-stop-milestone";
 
 export function EventsProofSection({
   ledger,
@@ -11,6 +17,8 @@ export function EventsProofSection({
   features: CountyMapFeature[];
 }) {
   const n = ledger.visited.length;
+  const asOfDate = formatCampaignStopAsOfDate();
+  const asOfHref = campaignStopMilestoneAsOfHref();
 
   return (
     <section aria-labelledby="events-proof-heading" className="space-y-8">
@@ -27,11 +35,24 @@ export function EventsProofSection({
       <CampaignJourneyMap features={features} />
       <p className="font-body text-xs text-kelly-text/65">Blue counties are places Kelly has already been.</p>
 
-      <div className="rounded-card border border-kelly-navy/15 bg-kelly-navy/[0.04] px-5 py-6">
-        <p className="font-heading text-4xl font-bold text-kelly-navy md:text-5xl">
-          {n} of {ledger.totalCounties}
-        </p>
-        <p className="mt-2 font-body text-sm font-semibold text-kelly-text">Arkansas counties visited</p>
+      <div className="grid gap-4 sm:grid-cols-2">
+        <div className="rounded-card border border-kelly-navy/15 bg-kelly-navy/[0.04] px-5 py-6">
+          <p className="font-heading text-4xl font-bold text-kelly-navy md:text-5xl">{CAMPAIGN_STOP_MILESTONE.count}</p>
+          <p className="mt-2 font-body text-sm font-semibold text-kelly-text">Scheduled campaign stops</p>
+          <p className="mt-1 font-body text-sm text-kelly-text/70">
+            As of {asOfDate} —{" "}
+            <Link href={asOfHref} className="font-semibold text-kelly-navy underline-offset-4 hover:underline">
+              {CAMPAIGN_STOP_MILESTONE.asOfEventTitle}
+            </Link>
+            .
+          </p>
+        </div>
+        <div className="rounded-card border border-kelly-navy/15 bg-kelly-navy/[0.04] px-5 py-6">
+          <p className="font-heading text-4xl font-bold text-kelly-navy md:text-5xl">
+            {n} of {ledger.totalCounties}
+          </p>
+          <p className="mt-2 font-body text-sm font-semibold text-kelly-text">Arkansas counties visited</p>
+        </div>
       </div>
 
       <div>

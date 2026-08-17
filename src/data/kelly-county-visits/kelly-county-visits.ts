@@ -3324,11 +3324,14 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     id: "presence-2026-08-17-washington-county-dem-kelly-is-speaking-6-pm",
     date: "2026-08-17",
     title: "Washington County dem kelly is speaking 6 PM",
-    counties: [],
-    status: "needs-review",
+    publicTitle: "Washington County Democrats meeting",
+    city: "Fayetteville",
+    counties: ["Washington"],
+    status: "scheduled",
     includeOnPublicPage: false,
-    confidence: "uncertain",
-    notes: "Presence row without county — held for Pass 2 / Steve assignment",
+    confidence: "confirmed",
+    notes:
+      "Steve 2026-08-17: Washington County Democrats meeting is scheduled campaign stop 226. Public listing is washington-county-democrats-2026-08-17 at 6:00 p.m. Room still TBA. Public count lives in campaign-stop-milestone.ts. Host contact stays off the public page. includeOnPublicPage stays false so the movement event page is the single public listing.",
     sourceType: "calendar",
   },
   {

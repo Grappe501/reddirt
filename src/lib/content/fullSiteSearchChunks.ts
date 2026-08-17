@@ -16,6 +16,7 @@ import {
   PLACEHOLDER_JOURNAL,
   GET_INVOLVED_SECTION,
 } from "../../content/home/homepagePremium";
+import { campaignStopMilestoneLine } from "../../content/events/campaign-stop-milestone";
 import { JOURNEY_BEAT_DEFINITIONS } from "../../content/home/journey";
 import { KELLY_ABOUT_CHAPTERS } from "../../content/about/kelly-about-chapters";
 import { allToolkitGuides } from "../../content/resources/toolkit-guides";
@@ -84,6 +85,7 @@ export function loadFullSiteSearchChunks(): DocChunk[] {
   prem.push(
     `# ${STATEWIDE_SECTION.title}`,
     STATEWIDE_SECTION.body,
+    campaignStopMilestoneLine(),
     "",
     `# ${VIDEO_SECTION.title}`,
     VIDEO_SECTION.intro,

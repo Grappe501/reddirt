@@ -1,6 +1,11 @@
 import Link from "next/link";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { STATEWIDE_SECTION } from "@/content/home/homepagePremium";
+import {
+  CAMPAIGN_STOP_MILESTONE,
+  campaignStopMilestoneAsOfHref,
+  formatCampaignStopAsOfDate,
+} from "@/content/events/campaign-stop-milestone";
 import { FadeInWhenVisible } from "@/components/home/FadeInWhenVisible";
 
 export function HomeStatewideSection() {
@@ -25,6 +30,18 @@ export function HomeStatewideSection() {
               {STATEWIDE_SECTION.body}
             </p>
             <p className="mt-10 font-heading text-[clamp(3.5rem,12vw,6rem)] font-bold leading-none tracking-tight text-kelly-gold">
+              {CAMPAIGN_STOP_MILESTONE.count}
+            </p>
+            <p className="mt-2 font-body text-xs font-bold uppercase tracking-[0.28em] text-kelly-gold/70">
+              scheduled stops
+            </p>
+            <p className="mt-1 font-body text-sm text-kelly-gold-soft/80">
+              as of {formatCampaignStopAsOfDate()} —{" "}
+              <Link href={campaignStopMilestoneAsOfHref()} className="underline underline-offset-4 hover:text-kelly-gold">
+                {CAMPAIGN_STOP_MILESTONE.asOfEventTitle}
+              </Link>
+            </p>
+            <p className="mt-8 font-heading text-[clamp(2.5rem,8vw,4rem)] font-bold leading-none tracking-tight text-kelly-gold">
               75
             </p>
             <p className="mt-2 font-body text-xs font-bold uppercase tracking-[0.28em] text-kelly-gold/70">

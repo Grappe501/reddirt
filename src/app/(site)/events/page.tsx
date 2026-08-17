@@ -15,11 +15,12 @@ import { safePublishedCountyOptions } from "@/lib/county/safe-published-county-o
 
 import { pageMeta } from "@/lib/seo/metadata";
 import { brandMediaFromLegacySite } from "@/config/brand-media";
+import { campaignStopMilestoneLine } from "@/content/events/campaign-stop-milestone";
 
 export const metadata: Metadata = pageMeta({
   title: "Events",
   description:
-    "Where Kelly has been and where she will be next — county visits computed from the campaign ledger, plus confirmed stops in Arkansas Central Time.",
+    `${campaignStopMilestoneLine()}. Where Kelly has been and where she will be next — county visits plus confirmed stops in Arkansas Central Time.`,
   path: "/events",
   imageSrc: brandMediaFromLegacySite.statewideBanner,
 });
@@ -56,7 +57,7 @@ export default async function EventsPage({
         layout="split"
         eyebrow="Events"
         title="Where Kelly will be next"
-        subtitle="From county fairs and community meetings to cookouts, candidate forums, and front porches — see where Kelly is headed next."
+        subtitle={`${campaignStopMilestoneLine()}. From county fairs and community meetings to cookouts, candidate forums, and front porches — see where Kelly is headed next.`}
       >
         <Button href="/events/request" variant="primary">
           Invite Kelly

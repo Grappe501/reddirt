@@ -28,6 +28,7 @@ import {
 } from "../src/lib/events/county-key";
 import { buildCountyVisitLedger } from "../src/lib/events/county-visit-ledger";
 import { parseEventInstant, resolveEventStatus } from "../src/lib/format/eventDisplay";
+import { CAMPAIGN_STOP_MILESTONE } from "../src/content/events/campaign-stop-milestone";
 
 function fail(message: string): never {
   throw new Error(message);
@@ -438,6 +439,28 @@ if (events.some((e) => /paragould/i.test(e.slug) && e.startsAt.startsWith("2026-
   const washington = august2026CampaignStops.find((e) => e.slug === "washington-county-democrats-2026-08-17");
   if (!washington || resolveEventStatus(washington, morning) !== "upcoming") {
     fail("Washington County Aug 17 stays upcoming until that day ends");
+  }
+}
+
+{
+  const asOf = getEventBySlug(CAMPAIGN_STOP_MILESTONE.asOfEventSlug);
+  if (!asOf) fail(`Milestone as-of event missing: ${CAMPAIGN_STOP_MILESTONE.asOfEventSlug}`);
+  if (asOf.startsAt.slice(0, 10) !== CAMPAIGN_STOP_MILESTONE.asOfYmd) {
+    fail(`Milestone as-of date ${CAMPAIGN_STOP_MILESTONE.asOfYmd} must match ${asOf.slug} (${asOf.startsAt.slice(0, 10)})`);
+  }
+  const now = new Date();
+  for (const e of events) {
+    if (e.statewideVirtual || e.campaignTrail !== true) continue;
+    if (e.fieldAttendance === "tentative" || e.fieldAttendance === "suggested" || e.fieldAttendance === "unscheduled") {
+      continue;
+    }
+    if (resolveEventStatus(e, now) !== "past") continue;
+    const ymd = e.startsAt.slice(0, 10);
+    if (ymd > CAMPAIGN_STOP_MILESTONE.asOfYmd) {
+      fail(
+        `Bump CAMPAIGN_STOP_MILESTONE: ${e.slug} completed on ${ymd} after as-of ${CAMPAIGN_STOP_MILESTONE.asOfYmd}`,
+      );
+    }
   }
 }
 
