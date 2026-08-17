@@ -1,4 +1,4 @@
-import { DEFAULT_SOCIAL_FACEBOOK_URL } from "@/config/social";
+import { getPublicFacebookUrl } from "@/config/social";
 
 /**
  * Public embed configuration for /from-the-road (NEXT_PUBLIC_* only — safe in client).
@@ -20,10 +20,7 @@ export type FromTheRoadEmbedsConfig = {
 };
 
 export function getFromTheRoadEmbedsConfig(): FromTheRoadEmbedsConfig {
-  const fb =
-    process.env.NEXT_PUBLIC_FTR_FACEBOOK_PAGE_URL?.trim() ||
-    process.env.NEXT_PUBLIC_SOCIAL_FACEBOOK_URL?.trim() ||
-    DEFAULT_SOCIAL_FACEBOOK_URL;
+  const fb = getPublicFacebookUrl(process.env.NEXT_PUBLIC_FTR_FACEBOOK_PAGE_URL);
   const raw = process.env.NEXT_PUBLIC_FTR_TIKTOK_VIDEO_IDS?.trim() ?? "";
   const tiktokVideoIds = raw
     .split(/[\s,]+/)
