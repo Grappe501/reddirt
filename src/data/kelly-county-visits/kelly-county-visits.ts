@@ -3461,6 +3461,18 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     sourceType: "local-file",
   },
   {
+    id: "canceled-2026-09-crawford-county-democrats-picnic",
+    date: "2026-09-05",
+    title: "Crawford County Democrats picnic",
+    counties: ["Crawford"],
+    status: "canceled",
+    includeOnPublicPage: false,
+    confidence: "confirmed",
+    notes:
+      "Host cancelled the 2026 picnic (Aug 13). No Saturday was ever confirmed. Do not list on the public calendar.",
+    sourceType: "manual",
+  },
+  {
     id: "locked-2026-09-06-rector-labor-day",
     date: "2026-09-06",
     title: "Rector Labor Day",
