@@ -302,7 +302,32 @@ export const august2026CampaignStops: EventItem[] = [
     summary: "Confirmed Chickin’ N Politikin’ gathering at Mount Nebo. Time and site to be posted.",
     audienceTags: ["Mount Nebo", "Yell County"],
     mapCoordinates: { lat: 35.2146, lng: -93.2518 },
-    relatedEventSlugs: ["arkansas-youth-coalition-retreat-2026-08-28", "political-animals-fayetteville-2026-08-31"],
+    relatedEventSlugs: ["arkansas-youth-coalition-retreat-2026-08-28", "quendy-event-scott-2026-08-30"],
+  }),
+  campaignStop({
+    slug: "quendy-event-scott-2026-08-30",
+    title: "Quendy event — Scott",
+    type: "Community Conversation",
+    region: "Central Arkansas",
+    countySlug: "pulaski-county",
+    startsAt: "2026-08-30T16:30:00",
+    endsAt: "2026-08-30T17:30:00",
+    locationLabel: "Scott",
+    city: "Scott",
+    addressLine: "Scott, AR (venue TBA)",
+    summary: "Sunday 4:30–5:30 p.m. Central gathering in Scott. Exact site to be posted.",
+    description:
+      "Confirmed on Kelly’s calendar for Sunday, August 30, 2026, from 4:30 to 5:30 p.m. Central in Scott. The street address and how to join will be posted here when the host confirms them.",
+    whatToExpect: [
+      "4:30–5:30 p.m. Central on Sunday, August 30.",
+      "Scott, Arkansas — exact site to be posted.",
+    ],
+    whoItsFor: "Neighbors and supporters gathering in Scott.",
+    organizerNote: "Confirmed calendar hold. Venue details to be added when the host confirms them. No virtual join link on the public page.",
+    attendanceType: "CAMPAIGN_APPEARANCE",
+    audienceTags: ["Scott", "Pulaski County", "Central Arkansas"],
+    mapCoordinates: { lat: 34.6965, lng: -92.0943 },
+    relatedEventSlugs: ["chickin-n-politikin-mount-nebo-2026-08-29", "political-animals-fayetteville-2026-08-31"],
   }),
   campaignStop({
     slug: "political-animals-fayetteville-2026-08-31",
@@ -316,7 +341,7 @@ export const august2026CampaignStops: EventItem[] = [
     summary: "Monday 6:00 p.m. Central Political Animals in Fayetteville. Venue to be posted.",
     audienceTags: ["Fayetteville", "Washington County", "Northwest Arkansas"],
     mapCoordinates: { lat: 36.0626, lng: -94.1574 },
-    relatedEventSlugs: ["chickin-n-politikin-mount-nebo-2026-08-29"],
+    relatedEventSlugs: ["quendy-event-scott-2026-08-30"],
   }),
 ];
 
@@ -337,6 +362,6 @@ export const AUGUST_2026_CAMPAIGN_ROUTE: Array<{ date: string; line: string }> =
   { date: "Aug. 27", line: "Paris" },
   { date: "Aug. 28", line: "→ Mount Nebo" },
   { date: "Aug. 29", line: "Mount Nebo" },
-  { date: "Aug. 30", line: "→ Fayetteville" },
+  { date: "Aug. 30", line: "Scott" },
   { date: "Aug. 31", line: "Fayetteville" },
 ];
