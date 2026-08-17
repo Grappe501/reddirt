@@ -13,8 +13,11 @@ const ledger = buildCountyVisitLedger({
   movementEvents: [],
 });
 
-if (ledger.visited.length !== 55) {
-  throw new Error(`Expected 55 visited from seed, got ${ledger.visited.length}`);
+if (ledger.visited.length !== 54) {
+  throw new Error(`Expected 54 visited from seed, got ${ledger.visited.length}`);
+}
+if (ledger.visited.some((c) => c.countyName === "Clay")) {
+  throw new Error("Clay must not count as visited");
 }
 for (const name of ["Howard", "Little River", "Madison", "Sevier"] as const) {
   if (!ledger.visited.some((c) => c.countyName === name)) {

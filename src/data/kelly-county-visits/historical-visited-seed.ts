@@ -5,6 +5,7 @@ import { ARKANSAS_COUNTIES, ARKANSAS_COUNTY_COUNT } from "./arkansas-counties";
  * Frozen campaign-history snapshot (as-of 2026-08-13, America/Chicago).
  * Source: existing Kelly county-visit ledger selectors — not the unlabeled Regnat Populus PNG.
  * Steve confirmed 2026-08-17: Howard, Little River, Madison, and Sevier are visited (blue).
+ * Clay is scheduled-only (gold) — Rector Labor Day — not counted as visited.
  */
 export const HISTORICAL_VISIT_SNAPSHOT_AS_OF = "2026-08-13";
 
@@ -16,7 +17,6 @@ export const HISTORICAL_VISITED_COUNTIES = [
   "Bradley",
   "Carroll",
   "Clark",
-  "Clay",
   "Cleburne",
   "Cleveland",
   "Columbia",
@@ -70,6 +70,7 @@ export const HISTORICAL_UNVISITED_COUNTIES = [
   "Ashley",
   "Calhoun",
   "Chicot",
+  "Clay",
   "Crittenden",
   "Dallas",
   "Jackson",
@@ -110,11 +111,11 @@ export function isHistoricalScheduledOnlyCounty(name: string): boolean {
 /** Throws if the frozen snapshot is internally inconsistent. Safe to call from validate scripts. */
 export function assertHistoricalCountyVisitSeed(): void {
   const all = [...HISTORICAL_VISITED_COUNTIES, ...HISTORICAL_UNVISITED_COUNTIES, ...HISTORICAL_SCHEDULED_ONLY_COUNTIES];
-  if (HISTORICAL_VISITED_COUNTIES.length !== 55) {
-    throw new Error(`Historical visited seed must be 55 counties, got ${HISTORICAL_VISITED_COUNTIES.length}`);
+  if (HISTORICAL_VISITED_COUNTIES.length !== 54) {
+    throw new Error(`Historical visited seed must be 54 counties, got ${HISTORICAL_VISITED_COUNTIES.length}`);
   }
-  if (HISTORICAL_UNVISITED_COUNTIES.length !== 20) {
-    throw new Error(`Historical unvisited seed must be 20 counties, got ${HISTORICAL_UNVISITED_COUNTIES.length}`);
+  if (HISTORICAL_UNVISITED_COUNTIES.length !== 21) {
+    throw new Error(`Historical unvisited seed must be 21 counties, got ${HISTORICAL_UNVISITED_COUNTIES.length}`);
   }
   if (all.length !== ARKANSAS_COUNTY_COUNT) {
     throw new Error(`Historical seed union must be ${ARKANSAS_COUNTY_COUNT}, got ${all.length}`);
