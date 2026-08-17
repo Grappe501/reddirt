@@ -17,6 +17,8 @@ export function EventsMovementSection({ events }: { events: EventItem[] }) {
   const upcoming = collapseRecurringSeriesToNextOccurrence(
     events.filter((e) => isMovementListEvent(e, now)).sort((a, b) => compareEventsForHub(a, b, now)),
   );
+  const featured = upcoming.filter((e) => e.featured);
+  const rest = upcoming.filter((e) => !e.featured);
   const routeLine = kellyNextStopsRoute(upcoming);
 
   return (
@@ -38,15 +40,37 @@ export function EventsMovementSection({ events }: { events: EventItem[] }) {
         </aside>
       ) : null}
 
-      {upcoming.length ? (
+      {featured.length ? (
+        <aside className="space-y-4 rounded-card border-2 border-kelly-gold/50 bg-kelly-navy/[0.04] p-5">
+          <div>
+            <p className="font-body text-xs font-bold uppercase tracking-wider text-kelly-navy">
+              {featured[0]?.featuredLabel ?? "Weekend highlight"}
+            </p>
+            <h3 className="mt-1 font-heading text-xl font-bold text-kelly-text">Chickin-n-Politikin at Mount Nebo</h3>
+            <p className="mt-2 max-w-2xl font-body text-sm leading-relaxed text-kelly-text/80">
+              {featured.find((e) => e.featuredSummary)?.featuredSummary ??
+                "A special campaign weekend — details are on each event page."}
+            </p>
+          </div>
+          <ul className="grid list-none grid-cols-1 gap-4 md:grid-cols-2">
+            {featured.map((e) => (
+              <li key={e.slug}>
+                <EventStopCard event={e} />
+              </li>
+            ))}
+          </ul>
+        </aside>
+      ) : null}
+
+      {rest.length ? (
         <ul className="grid list-none grid-cols-1 gap-4 md:grid-cols-2">
-          {upcoming.map((e) => (
+          {rest.map((e) => (
             <li key={e.slug}>
               <EventStopCard event={e} />
             </li>
           ))}
         </ul>
-      ) : (
+      ) : upcoming.length ? null : (
         <p className="rounded-card border border-dashed border-kelly-text/20 px-4 py-6 font-body text-sm text-kelly-text/75">
           No confirmed upcoming stops on the public calendar yet. Invite Kelly or host a gathering.
         </p>

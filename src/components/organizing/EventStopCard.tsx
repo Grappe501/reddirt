@@ -38,8 +38,19 @@ export function EventStopCard({ event }: { event: EventItem }) {
   const tentative = event.fieldAttendance === "tentative";
 
   return (
-    <article className="rounded-card border border-kelly-text/10 bg-[var(--color-surface-elevated)] p-5 shadow-[var(--shadow-soft)]">
+    <article
+      className={
+        event.featured
+          ? "rounded-card border-2 border-kelly-gold/55 bg-[var(--color-surface-elevated)] p-5 shadow-[var(--shadow-soft)]"
+          : "rounded-card border border-kelly-text/10 bg-[var(--color-surface-elevated)] p-5 shadow-[var(--shadow-soft)]"
+      }
+    >
       <p className="font-body text-xs font-bold uppercase tracking-wider text-kelly-navy">{publicCountyEyebrow(event)}</p>
+      {event.featured ? (
+        <p className="mt-1 font-body text-[11px] font-bold uppercase tracking-wider text-kelly-navy">
+          {event.featuredLabel ?? "Weekend highlight"}
+        </p>
+      ) : null}
       {tentative ? (
         <p className="mt-1 font-body text-[11px] font-bold uppercase tracking-wider text-kelly-text/60">Tentative</p>
       ) : null}

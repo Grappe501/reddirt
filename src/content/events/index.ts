@@ -9,6 +9,12 @@ import {
   recurringVirtualSeries,
 } from "@/content/events/recurring-virtual-series";
 
+/** Old public slugs that still resolve to a canonical event page. */
+const EVENT_SLUG_ALIASES: Record<string, string> = {
+  ...RECURRING_VIRTUAL_SLUG_ALIASES,
+  "mt-nebo-chicken-fry-2026-08-29": "chickin-n-politikin-mount-nebo-2026-08-29",
+};
+
 /** Fair research dump — operator/Evidence only; not merged into the public `/events` hub (Phase 1). */
 export { ARKANSAS_FESTIVAL_EVENTS_2026 } from "./arkansas-festivals-2026";
 
@@ -628,10 +634,10 @@ export function listMovementEventAudienceOptions(): string[] {
 }
 
 export function getEventBySlug(slug: string): EventItem | undefined {
-  const canonical = RECURRING_VIRTUAL_SLUG_ALIASES[slug] ?? slug;
+  const canonical = EVENT_SLUG_ALIASES[slug] ?? slug;
   return events.find((e) => e.slug === canonical);
 }
 
 export function listEventSlugs(): string[] {
-  return [...events.map((e) => e.slug), ...Object.keys(RECURRING_VIRTUAL_SLUG_ALIASES)];
+  return [...events.map((e) => e.slug), ...Object.keys(EVENT_SLUG_ALIASES)];
 }

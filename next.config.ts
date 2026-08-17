@@ -70,6 +70,11 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: "/events/mt-nebo-chicken-fry-2026-08-29",
+        destination: "/events/chickin-n-politikin-mount-nebo-2026-08-29",
+        permanent: true,
+      },
+      {
         source: "/about/community",
         destination: "/about",
         permanent: true,

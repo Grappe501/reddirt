@@ -81,17 +81,28 @@ function CuratedOrCalendarEventView({ event }: { event: EventItem }) {
   const rsvpHref =
     joinHref ??
     `/get-involved?intent=rsvp&event=${encodeURIComponent(live.slug)}`;
+  const heroCtaLabel = live.primaryCtaLabel ?? attendance.rsvpLabel;
+  const featured = Boolean(live.featured);
   const sharePath = `/events/${live.slug}`;
 
   return (
     <>
-      <PageHero eyebrow={publicCountyEyebrow(live)} title={live.title} subtitle={stripPublicMarkdown(live.summary)}>
-        {attendance.rsvpLabel ? (
+      <PageHero
+        tone={featured ? "plan" : "default"}
+        eyebrow={
+          featured
+            ? `${live.featuredLabel ?? "Weekend highlight"} · ${publicCountyEyebrow(live)}`
+            : publicCountyEyebrow(live)
+        }
+        title={live.title}
+        subtitle={stripPublicMarkdown(live.summary)}
+      >
+        {heroCtaLabel ? (
           <Button href={rsvpHref} variant="primary">
-            {attendance.rsvpLabel}
+            {heroCtaLabel}
           </Button>
         ) : null}
-        <Button href="/events" variant="outline">
+        <Button href="/events" variant={featured ? "outlineOnDark" : "outline"}>
           All events
         </Button>
       </PageHero>
@@ -106,6 +117,18 @@ function CuratedOrCalendarEventView({ event }: { event: EventItem }) {
                 title="When, where, and what"
               />
               <div id="details" className="mt-8 rounded-card border border-kelly-text/10 bg-[var(--color-surface-elevated)] p-6 shadow-[var(--shadow-soft)] md:p-8">
+                {featured ? (
+                  <div className="mb-6 rounded-lg border border-kelly-gold/40 bg-kelly-navy/[0.04] p-4">
+                    <p className="font-body text-xs font-bold uppercase tracking-wider text-kelly-navy">
+                      {live.featuredLabel ?? "Weekend highlight"}
+                    </p>
+                    {live.featuredSummary ? (
+                      <p className="mt-2 font-body text-sm leading-relaxed text-kelly-text/80">
+                        {live.featuredSummary}
+                      </p>
+                    ) : null}
+                  </div>
+                ) : null}
                 <EventMeta event={live} joinHref={live.statewideVirtual ? joinHref : null} />
                 {live.statewideVirtual ? (
                   <div className="mt-6 rounded-lg border border-kelly-navy/15 bg-kelly-navy/[0.04] p-4">
@@ -172,9 +195,9 @@ function CuratedOrCalendarEventView({ event }: { event: EventItem }) {
                   <p className="mt-3 font-body text-sm leading-relaxed text-kelly-text/75">{attendance.note}</p>
                 ) : null}
               </div>
-              {attendance.rsvpLabel ? (
+              {heroCtaLabel ? (
                 <Button href={rsvpHref} variant="primary" className="w-full justify-center">
-                  {attendance.rsvpLabel}
+                  {heroCtaLabel}
                 </Button>
               ) : live.statewideVirtual ? (
                 <p className="font-body text-sm text-kelly-text/70">

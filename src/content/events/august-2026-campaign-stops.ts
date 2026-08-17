@@ -1,4 +1,5 @@
 import type { EventItem, EventType } from "@/content/types";
+import { ARKANSAS_YOUTH_COALITION_HREF } from "@/content/events/recurring-virtual-series";
 
 const TZ = "America/Chicago";
 const DETAILS_LATER =
@@ -26,9 +27,13 @@ type StopDraft = {
   mapCoordinates?: { lat: number; lng: number };
   mapPinQuality?: EventItem["mapPinQuality"];
   relatedEventSlugs: string[];
+  relatedResourceHrefs?: Array<{ label: string; href: string }>;
   fieldAttendance?: EventItem["fieldAttendance"];
   primaryHref?: string;
   primaryCtaLabel?: string;
+  featured?: boolean;
+  featuredLabel?: string;
+  featuredSummary?: string;
 };
 
 function campaignStop(draft: StopDraft): EventItem {
@@ -57,10 +62,13 @@ function campaignStop(draft: StopDraft): EventItem {
     attendanceType: draft.attendanceType,
     audienceTags: draft.audienceTags,
     relatedEventSlugs: draft.relatedEventSlugs,
-    relatedResourceHrefs: [
+    relatedResourceHrefs: draft.relatedResourceHrefs ?? [
       { label: "Events calendar", href: "/events" },
       { label: "Get involved", href: "/get-involved" },
     ],
+    featured: draft.featured,
+    featuredLabel: draft.featuredLabel,
+    featuredSummary: draft.featuredSummary,
     mapCoordinates: draft.mapCoordinates,
     mapPinQuality: draft.mapPinQuality,
     fieldAttendance: draft.fieldAttendance ?? "confirmed",
@@ -419,7 +427,7 @@ export const august2026CampaignStops: EventItem[] = [
     mapPinQuality: "exact",
     relatedEventSlugs: [
       "paragould-rotary-lunch-2026-08-26",
-      "mt-nebo-chicken-fry-2026-08-29",
+      "chickin-n-politikin-mount-nebo-2026-08-29",
     ],
   }),
   campaignStop({
@@ -488,21 +496,49 @@ export const august2026CampaignStops: EventItem[] = [
   }),
   campaignStop({
     slug: "arkansas-youth-coalition-retreat-2026-08-28",
-    title: "Arkansas Youth Coalition Retreat",
+    title: "Arkansas Youth Coalition Retreat #2",
     type: "Youth Civic Session",
     region: "North Central Arkansas",
     countySlug: "yell-county",
     startsAt: "2026-08-28T19:00:00",
-    locationLabel: "Mount Nebo",
-    addressLine: "Mount Nebo, AR (retreat site TBA)",
-    summary: "Friday 7:00 p.m. Central Arkansas Youth Coalition Retreat at Mount Nebo. Site details to be posted.",
-    audienceTags: ["Youth", "Mount Nebo", "Yell County"],
-    mapCoordinates: { lat: 35.2146, lng: -93.2518 },
-    relatedEventSlugs: ["mt-nebo-chicken-fry-2026-08-29"],
+    endsAt: "2026-08-29T10:00:00",
+    locationLabel: "Base of Mount Nebo",
+    city: "Dardanelle",
+    addressLine: "Lodging at the base of Mount Nebo — address shared with registered participants",
+    summary:
+      "Friday night, August 28. Arkansas Youth Coalition Retreat #2 at lodging at the base of Mount Nebo — space for 12 young leaders. Team building, trust exercises, and training, then Saturday at Chickin-n-Politikin on the mountain.",
+    description:
+      "Friday night, August 28, 2026, the Arkansas Youth Coalition gathers for Retreat #2 at lodging at the base of Mount Nebo. There is space for 12 young leaders. Arrival is Friday evening.\n\nThe night is for team building and trust exercises, plus training on how to approach people, how to have hard conversations with people of differing beliefs, how to lead in your community, and more.\n\nThis is not a walk-in gathering. Registered Retreat #2 participants receive lodging details privately. The street address is not posted here.\n\nSaturday, August 29, the same team takes those skills to Chickin-n-Politikin at the Mount Nebo Chicken Fry — practicing in the crowd and campaigning with Kelly.",
+    whatToExpect: [
+      "Arrive Friday evening, August 28. Gathering starts at 7:00 p.m. Central.",
+      "Overnight lodging at the base of Mount Nebo — space for 12. Address is shared privately with registered participants.",
+      "Team building and trust exercises.",
+      "Training: how to approach people; how to have hard conversations with people of differing beliefs; how to lead in your community; and more.",
+      "Saturday is the field day: Chickin-n-Politikin at the Mount Nebo Chicken Fry, practicing those skills and campaigning.",
+    ],
+    whoItsFor:
+      "Young leaders with the Arkansas Youth Coalition. Retreat #2 has space for 12. Neighbors headed to Saturday’s Chicken Fry are welcome at the festival — not at the overnight lodging.",
+    organizerNote:
+      "Steve 2026-08-17: AYC Retreat #2, lodging at the base of Mt Nebo that sleeps 12, arrive Friday night Aug 28. Street address stays off the public page. Saturday is Chickin-n-Politikin at the Chamber Chicken Fry. No host phones or volunteer-ops T-shirt forms on the public page.",
+    attendanceType: "INVITATION",
+    audienceTags: ["Youth", "Arkansas Youth Coalition", "Mount Nebo", "Yell County"],
+    mapCoordinates: { lat: 35.2226, lng: -93.1477 },
+    featured: true,
+    featuredLabel: "Weekend highlight",
+    featuredSummary:
+      "Friday night training with the Arkansas Youth Coalition. Saturday is Chickin-n-Politikin at the Chicken Fry — practicing those skills and campaigning.",
+    primaryHref: ARKANSAS_YOUTH_COALITION_HREF,
+    primaryCtaLabel: "Ask about Retreat #2",
+    relatedEventSlugs: ["chickin-n-politikin-mount-nebo-2026-08-29"],
+    relatedResourceHrefs: [
+      { label: "Arkansas Youth Coalition", href: ARKANSAS_YOUTH_COALITION_HREF },
+      { label: "Chickin-n-Politikin on Saturday", href: "/events/chickin-n-politikin-mount-nebo-2026-08-29" },
+      { label: "Get involved", href: "/get-involved" },
+    ],
   }),
   campaignStop({
-    slug: "mt-nebo-chicken-fry-2026-08-29",
-    title: "79th Annual Mount Nebo Chicken Fry",
+    slug: "chickin-n-politikin-mount-nebo-2026-08-29",
+    title: "Chickin-n-Politikin at the Mount Nebo Chicken Fry",
     type: "Fairs and Festivals",
     region: "North Central Arkansas",
     countySlug: "yell-county",
@@ -512,26 +548,37 @@ export const august2026CampaignStops: EventItem[] = [
     city: "Dardanelle",
     addressLine: "16728 State Highway 155, Dardanelle, AR 72834",
     summary:
-      "Saturday at Mount Nebo State Park. The Dardanelle Area Chamber of Commerce hosts the 79th Annual Mount Nebo Chicken Fry. Kelly will be there as a sponsor. Program hours to be posted.",
+      "Saturday on the mountain: Chickin-n-Politikin at the 79th Annual Mount Nebo Chicken Fry. After Friday night’s Arkansas Youth Coalition Retreat #2, young leaders spend Saturday practicing new skills and campaigning with Kelly. The Chamber hosts. Kelly is a sponsor. Program hours to be posted.",
     description:
-      "Saturday, August 29, 2026, the Dardanelle Area Chamber of Commerce hosts the 79th Annual Mount Nebo Chicken Fry at Mount Nebo State Park, 16728 State Highway 155, Dardanelle. Kelly Grappe, candidate for Arkansas Secretary of State, will be there as a sponsor. This is a Yell County tradition — chicken dinners, community booths, and a day on the mountain. Program hours will be posted here when the Chamber publishes them.",
+      "Saturday, August 29, 2026, is Chickin-n-Politikin at the 79th Annual Mount Nebo Chicken Fry. The Dardanelle Area Chamber of Commerce hosts this Yell County tradition at Mount Nebo State Park, 16728 State Highway 155, Dardanelle. Kelly Grappe, candidate for Arkansas Secretary of State, will be there as a sponsor.\n\nThis Saturday is also the public field day for Arkansas Youth Coalition Retreat #2. After Friday night training at the base of the mountain — team building, trust, how to approach people, how to have hard conversations across belief, and how to lead in community — young leaders spend Saturday at the festival putting those skills to work and campaigning with Kelly.\n\nCome for chicken dinners, community booths, and a day on the mountain. Program hours will be posted here when the Chamber publishes them.",
     whatToExpect: [
       "Saturday, August 29, at Mount Nebo State Park — program hours to be posted.",
       "16728 State Highway 155, Dardanelle, Arkansas.",
-      "Hosted by the Dardanelle Area Chamber of Commerce.",
-      "Kelly Grappe will be there as a sponsor of the 79th Annual Mount Nebo Chicken Fry.",
+      "Hosted by the Dardanelle Area Chamber of Commerce. Kelly Grappe is a sponsor.",
+      "Chickin-n-Politikin: Arkansas Youth Coalition Retreat #2 spends Saturday here practicing new skills and campaigning.",
+      "Friday night is Retreat #2 at lodging at the base of the mountain (registered participants — not a walk-in).",
     ],
-    whoItsFor: "Neighbors in Dardanelle, Yell County, and anyone headed up the mountain for the Chicken Fry.",
+    whoItsFor:
+      "Neighbors in Dardanelle, Yell County, and anyone headed up the mountain for the Chicken Fry — plus young leaders putting Retreat #2 training into practice.",
     organizerNote:
-      "Posted from the Dardanelle Area Chamber sponsor email. Host phones, emails, T-shirt forms, and volunteer-ops links stay off the public page.",
+      "Steve 2026-08-17: public highlight is Chickin-n-Politikin wrapping the Chamber Chicken Fry, with AYC Retreat #2 practicing and campaigning on Saturday. Canonical slug chickin-n-politikin-mount-nebo-2026-08-29. Old mt-nebo-chicken-fry slug redirects. Host phones, emails, T-shirt forms, and volunteer-ops links stay off the public page. Airbnb street address stays off the public page.",
     attendanceType: "PUBLIC_OPEN",
-    audienceTags: ["Mount Nebo", "Dardanelle", "Yell County", "Festival", "Chamber of Commerce"],
+    audienceTags: ["Mount Nebo", "Dardanelle", "Yell County", "Festival", "Chamber of Commerce", "Youth"],
     mapCoordinates: { lat: 35.2146, lng: -93.2518 },
     mapPinQuality: "exact",
+    featured: true,
+    featuredLabel: "Weekend highlight",
+    featuredSummary:
+      "The public field day for Arkansas Youth Coalition Retreat #2: young leaders practice new skills in the crowd and campaign with Kelly.",
     relatedEventSlugs: [
       "dardanelle-chamber-buzz-breakfast-2026-08-26",
       "arkansas-youth-coalition-retreat-2026-08-28",
       "quendy-event-scott-2026-08-30",
+    ],
+    relatedResourceHrefs: [
+      { label: "Arkansas Youth Coalition Retreat #2", href: "/events/arkansas-youth-coalition-retreat-2026-08-28" },
+      { label: "Arkansas Youth Coalition", href: ARKANSAS_YOUTH_COALITION_HREF },
+      { label: "Get involved", href: "/get-involved" },
     ],
   }),
   campaignStop({
@@ -557,7 +604,7 @@ export const august2026CampaignStops: EventItem[] = [
     attendanceType: "CAMPAIGN_APPEARANCE",
     audienceTags: ["Scott", "Pulaski County", "Central Arkansas"],
     mapCoordinates: { lat: 34.6965, lng: -92.0943 },
-    relatedEventSlugs: ["mt-nebo-chicken-fry-2026-08-29", "political-animals-fayetteville-2026-08-31"],
+    relatedEventSlugs: ["chickin-n-politikin-mount-nebo-2026-08-29", "political-animals-fayetteville-2026-08-31"],
   }),
   campaignStop({
     slug: "political-animals-fayetteville-2026-08-31",

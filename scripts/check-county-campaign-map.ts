@@ -344,6 +344,18 @@ if (arkansasCountyKey("Van Buren") !== "van-buren") fail("van-buren key");
 if (!events.some((e) => e.slug === "cleveland-county-candidate-forum")) fail("Cleveland slug missing from events catalog");
 if (!events.some((e) => e.slug === "rector-labor-day-2026-09-06")) fail("Rector Labor Day missing from events catalog");
 if (!events.some((e) => e.slug === "clark-county-multi-church-tour-2026-09-20")) fail("Clark tour missing");
+if (!events.some((e) => e.slug === "chickin-n-politikin-mount-nebo-2026-08-29")) {
+  fail("Chickin-n-Politikin Saturday missing from events catalog");
+}
+if (!events.some((e) => e.slug === "arkansas-youth-coalition-retreat-2026-08-28")) {
+  fail("AYC Retreat #2 Friday missing from events catalog");
+}
+if (events.some((e) => e.slug === "mt-nebo-chicken-fry-2026-08-29")) {
+  fail("Old Mount Nebo Chicken Fry slug must alias, not duplicate");
+}
+if (getEventBySlug("mt-nebo-chicken-fry-2026-08-29")?.slug !== "chickin-n-politikin-mount-nebo-2026-08-29") {
+  fail("mt-nebo-chicken-fry-2026-08-29 must resolve to Chickin-n-Politikin");
+}
 if (events.some((e) => /paragould/i.test(e.slug) && e.startsAt.startsWith("2026-09-22"))) {
   fail("Paragould forum must not appear on September 22");
 }

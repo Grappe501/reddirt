@@ -37,6 +37,7 @@ export function EventCard({ event, className, highlighted, onActivate }: EventCa
       className={cn(
         "flex h-full flex-col justify-between rounded-card border border-kelly-text/10 bg-[var(--color-surface-elevated)] p-6 shadow-[var(--shadow-soft)] md:p-7 scroll-mt-28",
         highlighted && "ring-2 ring-kelly-navy/50 ring-offset-2 ring-offset-kelly-page",
+        event.featured && "border-kelly-gold/55 ring-1 ring-kelly-gold/35",
         onActivate && "cursor-pointer",
         className,
       )}
@@ -64,6 +65,11 @@ export function EventCard({ event, className, highlighted, onActivate }: EventCa
           {tba ? (
             <span className="rounded-full border border-kelly-text/20 bg-kelly-text/[0.06] px-2.5 py-0.5 font-body text-[11px] font-bold uppercase tracking-wider text-kelly-text/80">
               Location TBA
+            </span>
+          ) : null}
+          {event.featured ? (
+            <span className="rounded-full border border-kelly-gold/50 bg-kelly-gold/15 px-2.5 py-0.5 font-body text-[11px] font-bold uppercase tracking-wider text-kelly-navy">
+              {event.featuredLabel ?? "Weekend highlight"}
             </span>
           ) : null}
         </div>

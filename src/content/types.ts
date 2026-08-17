@@ -97,6 +97,12 @@ export type EventItem = {
   primaryCtaLabel?: string;
   /** When true, the calendar card title also goes to `primaryHref`. */
   linkCardToPrimary?: boolean;
+  /** Pin this stop in the /events highlight band and on the event page. */
+  featured?: boolean;
+  /** Public badge, e.g. "Weekend highlight". */
+  featuredLabel?: string;
+  /** Extra line on the event-page highlight band. */
+  featuredSummary?: string;
   /** Public participation — omit for older static rows (treated as campaign appearance). */
   attendanceType?: "PUBLIC_OPEN" | "PUBLIC_REGISTRATION" | "INVITATION" | "CAMPAIGN_APPEARANCE" | "PRIVATE";
   city?: string;
