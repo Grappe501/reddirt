@@ -204,7 +204,11 @@ export const september2026CampaignStops: EventItem[] = [
     audienceTags: ["Clarksville", "Johnson County", "Roosevelt Dinner", "University of the Ozarks"],
     mapCoordinates: { lat: 35.4742, lng: -93.4668 },
     mapPinQuality: "region",
-    relatedEventSlugs: ["rector-labor-day-2026-09-06", "lafayette-county-softball-2026-09-11"],
+    relatedEventSlugs: [
+      "johnson-county-peach-festival-2026-07-18",
+      "rector-labor-day-2026-09-06",
+      "lafayette-county-softball-2026-09-11",
+    ],
   }),
   campaignStop({
     slug: "lafayette-county-softball-2026-09-11",

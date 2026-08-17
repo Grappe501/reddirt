@@ -1,5 +1,6 @@
 import type { EventItem } from "@/content/types";
 import { markSuggestedFestivalPath } from "@/lib/festivals/suggest-coverage-path";
+import { july2026CampaignStops } from "@/content/events/july-2026-campaign-stops";
 import { august2026CampaignStops } from "@/content/events/august-2026-campaign-stops";
 import { september2026CampaignStops } from "@/content/events/september-2026-campaign-stops";
 import { october2026CampaignStops } from "@/content/events/october-2026-campaign-stops";
@@ -596,6 +597,7 @@ const movementEventsCore: EventItem[] = [
 /** Public curated movement events only. Published CampaignOS rows merge on `/events` at request time. */
 export const events: EventItem[] = markSuggestedFestivalPath([
   ...movementEventsCore,
+  ...july2026CampaignStops,
   ...august2026CampaignStops,
   ...september2026CampaignStops,
   ...october2026CampaignStops,

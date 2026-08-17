@@ -2943,11 +2943,14 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     id: "presence-2026-07-18-johnson-county-peach-festival",
     date: "2026-07-18",
     title: "Johnson county peach festival",
+    publicTitle: "Johnson County Peach Festival and Parade",
+    city: "Clarksville",
     counties: ["Johnson"],
     status: "completed",
     includeOnPublicPage: true,
-    confidence: "likely",
-    notes: "Johnson County Peach Festival (title). Reconcile promote.",
+    confidence: "confirmed",
+    notes:
+      "Steve 2026-08-17: Kenny Smith, Johnson County Democratic Party chair, confirmed Kelly attended the Peach Festival and Parade. Public listing is johnson-county-peach-festival-2026-07-18. Custom T-shirts were appreciated. Host asked for private feedback on a Johnson County 2027-2031 strategic roadmap; that is operator follow-up, not public copy. Host contact stays off the public page: Kenny Smith, Johnson County Democratic Party chair and JP District 1 candidate.",
     sourceType: "calendar",
   },
   {
@@ -3557,7 +3560,7 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     includeOnPublicPage: true,
     confidence: "confirmed",
     notes:
-      "Steve forwarded speaker email. Public listing is roosevelt-dinner-2026-09-10. University of the Ozarks, Clarksville. Doors 5:30 p.m., dinner 6:30 p.m. Kelly speaks ~15 minutes. Campus building TBA. Speaker promo video request is operator follow-up, not public copy. Steve 2026-08-17: Kelly declined a same-night Food Bank meeting at 6:00 p.m. because of this dinner. That declined hold is manual-2026-09-10-food-bank-meeting-declined.",
+      "Steve forwarded speaker email. Public listing is roosevelt-dinner-2026-09-10. University of the Ozarks, Clarksville. Doors 5:30 p.m., dinner 6:30 p.m. Kelly speaks ~15 minutes. Campus building TBA. Speaker promo video request is operator follow-up, not public copy. Steve 2026-08-17: Kelly declined a same-night Food Bank meeting at 6:00 p.m. because of this dinner. That declined hold is manual-2026-09-10-food-bank-meeting-declined. Johnson County Democratic Party chair Kenny Smith (also a JP District 1 candidate) confirmed the July 18 Peach Festival stop and asked for private feedback on a county strategic plan. Host contact stays off the public page.",
     sourceType: "calendar",
   },
   {
