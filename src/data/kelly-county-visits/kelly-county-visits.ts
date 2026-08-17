@@ -3371,8 +3371,23 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     status: "needs-review",
     includeOnPublicPage: false,
     confidence: "uncertain",
-    notes: "Presence row without county — held for Pass 2 / Steve assignment",
+    notes:
+      "Presence row without county — held for Pass 2 / Steve assignment. Same afternoon as tentative UCA Conway Daze (manual-2026-08-19-uca-conway-daze).",
     sourceType: "calendar",
+  },
+  {
+    id: "manual-2026-08-19-uca-conway-daze",
+    date: "2026-08-19",
+    title: "UCA Conway Daze / Student Fair",
+    publicTitle: "UCA Conway Daze / Student Fair",
+    city: "Conway",
+    counties: ["Faulkner"],
+    status: "scheduled",
+    includeOnPublicPage: true,
+    confidence: "uncertain",
+    notes:
+      "Steve 2026-08-17: Faulkner County Democrats flagged Welcome Week student fair, 2:00-5:00 p.m. at UCA TREC / old HPER, Table 166 with Young Dems. Public listing is uca-conway-daze-2026-08-19. Tentative for Kelly. Route line that day still says Little Rock. Host contact stays off the public page.",
+    sourceType: "manual",
   },
   {
     id: "presence-2026-08-20-benton-county",
@@ -3441,8 +3456,22 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     status: "private",
     includeOnPublicPage: false,
     confidence: "confirmed",
-    notes: "Sunday personal calendar hold. Not a campaign appearance. Do not list on /events.",
+    notes: "Sunday personal calendar hold. Not a campaign appearance. Do not list on /events. Same day as tentative True Holiness College Day in Conway (manual-2026-08-23-true-holiness-college-day) — not confirmed over this hold.",
     sourceType: "calendar",
+  },
+  {
+    id: "manual-2026-08-23-true-holiness-college-day",
+    date: "2026-08-23",
+    title: "College Day 2026 — True Holiness Saints Center",
+    publicTitle: "College Day 2026 — True Holiness Saints Center",
+    city: "Conway",
+    counties: ["Faulkner"],
+    status: "scheduled",
+    includeOnPublicPage: true,
+    confidence: "uncertain",
+    notes:
+      "Steve 2026-08-17: Faulkner County Democrats flagged this church welcome, 11:00 a.m., doors 10:15, 198 Hwy 286 East, Conway. Public listing is true-holiness-college-day-2026-08-23. Tentative. Conflicts with private-2026-08-23-personal-hold. Also same date as a 3-county immersion presence row. Host contact stays off the public page.",
+    sourceType: "manual",
   },
   {
     id: "manual-2026-08-26-dardanelle-chamber-buzz-breakfast",
@@ -3537,7 +3566,8 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     status: "scheduled",
     includeOnPublicPage: true,
     confidence: "likely",
-    notes: "Seeded from locked-events-steve.json",
+    notes:
+      "Seeded from locked-events-steve.json. Same Saturday as public FestiVille in Jacksonville and tentative Hispanic Heritage Festival in Conway. Yellville cannot be stacked with Conway or Jacksonville that afternoon without dropping the other stops.",
     sourceType: "local-file",
   },
   {
@@ -3550,6 +3580,20 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     confidence: "confirmed",
     notes:
       "Host cancelled the 2026 picnic (Aug 13). No Saturday was ever confirmed. Do not list on the public calendar.",
+    sourceType: "manual",
+  },
+  {
+    id: "manual-2026-09-05-hispanic-heritage-festival-conway",
+    date: "2026-09-05",
+    title: "Festival de la Herencia Hispana — Conway",
+    publicTitle: "Festival de la Herencia Hispana — Conway",
+    city: "Conway",
+    counties: ["Faulkner"],
+    status: "scheduled",
+    includeOnPublicPage: true,
+    confidence: "uncertain",
+    notes:
+      "Steve 2026-08-17: Faulkner County Democrats flagged Paloma Community Services festival, 4:00-9:00 p.m., Laurel Park, 2310 Robinson Avenue. Public listing is hispanic-heritage-festival-conway-2026-09-05. Tentative for Kelly. Same Saturday as FestiVille Jacksonville 11:00 a.m.-3:00 p.m. (tight drive) and locked Marion County / Yellville. Host contact stays off the public page. Booths not confirmed.",
     sourceType: "manual",
   },
   {
@@ -3646,8 +3690,23 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     status: "needs-review",
     includeOnPublicPage: false,
     confidence: "uncertain",
-    notes: "Presence row without county — held for Pass 2 / Steve assignment",
+    notes:
+      "Presence row without county — public stop is baxter-county-candidate-forum-2026-09-14, 6:00 p.m. Mountain Home. Same day as tentative Faulkner HQ opening in Conway (manual-2026-09-14-faulkner-dems-hq-opening). Conway to Mountain Home is not a same-evening stack if the HQ program runs into late afternoon.",
     sourceType: "calendar",
+  },
+  {
+    id: "manual-2026-09-14-faulkner-dems-hq-opening",
+    date: "2026-09-14",
+    title: "Faulkner County Democratic Headquarters opening",
+    publicTitle: "Faulkner County Democratic Headquarters opening",
+    city: "Conway",
+    counties: ["Faulkner"],
+    status: "scheduled",
+    includeOnPublicPage: true,
+    confidence: "uncertain",
+    notes:
+      "Steve 2026-08-17: Faulkner County Democrats flagged HQ grand opening and candidate town hall at 1151 Markham, Conway, outdoor tents. Time not posted. Public listing is faulkner-dems-hq-opening-2026-09-14. Tentative for Kelly. Conflicts with Mountain Home candidate forum at 6:00 p.m. if the Conway program is late afternoon or evening. Host contact stays off the public page.",
+    sourceType: "manual",
   },
   {
     id: "locked-2026-09-15-pope-county-fair",

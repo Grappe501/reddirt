@@ -26,6 +26,9 @@ type StopDraft = {
   mapCoordinates?: { lat: number; lng: number };
   mapPinQuality?: EventItem["mapPinQuality"];
   relatedEventSlugs: string[];
+  fieldAttendance?: EventItem["fieldAttendance"];
+  primaryHref?: string;
+  primaryCtaLabel?: string;
 };
 
 function campaignStop(draft: StopDraft): EventItem {
@@ -60,9 +63,11 @@ function campaignStop(draft: StopDraft): EventItem {
     ],
     mapCoordinates: draft.mapCoordinates,
     mapPinQuality: draft.mapPinQuality,
-    fieldAttendance: "confirmed",
+    fieldAttendance: draft.fieldAttendance ?? "confirmed",
     campaignTrail: true,
     eventSource: "movement",
+    primaryHref: draft.primaryHref,
+    primaryCtaLabel: draft.primaryCtaLabel,
     opsFlags: {
       timeTbd: draft.timeTbd,
       missingCounty: !draft.countySlug,
@@ -198,7 +203,40 @@ export const august2026CampaignStops: EventItem[] = [
     audienceTags: ["Democratic Party", "Washington County", "Fayetteville", "Northwest Arkansas"],
     mapCoordinates: { lat: 36.0994, lng: -94.1368 },
     mapPinQuality: "exact",
-    relatedEventSlugs: ["washington-county-democrats-2026-08-17"],
+    relatedEventSlugs: ["washington-county-democrats-2026-08-17", "uca-conway-daze-2026-08-19"],
+  }),
+  campaignStop({
+    slug: "uca-conway-daze-2026-08-19",
+    title: "UCA Conway Daze / Student Fair",
+    type: "Youth Civic Session",
+    region: "Central Arkansas",
+    countySlug: "faulkner-county",
+    startsAt: "2026-08-19T14:00:00",
+    endsAt: "2026-08-19T17:00:00",
+    locationLabel: "UCA TREC (campus gym)",
+    city: "Conway",
+    addressLine: "University of Central Arkansas TREC, Conway, AR (old HPER / campus gym)",
+    summary:
+      "Wednesday, August 19, 2:00–5:00 p.m. Central. UCA Welcome Week student fair. Faulkner County Democrats are set up with the Young Dems at Table 166. Kelly’s attendance is tentative.",
+    description:
+      "UCA Welcome Week includes Conway Daze on Wednesday, August 19, 2026, from 2:00 to 5:00 p.m. Central at the TREC campus gym (the old HPER Center) in Conway. Faulkner County Democrats are currently at Table 166 with the Young Dems. Kelly Grappe’s attendance is tentative. Table number will be updated if the host changes it.",
+    whatToExpect: [
+      "Wednesday, August 19, 2:00–5:00 p.m. Central.",
+      "UCA TREC / campus gym (old HPER Center), Conway.",
+      "Faulkner County Democrats with Young Dems at Table 166, unless the host posts a change.",
+      "Kelly’s attendance is tentative.",
+    ],
+    whoItsFor: "UCA students and anyone walking Conway Daze during Welcome Week.",
+    organizerNote:
+      "Flagged by Faulkner County Democrats. Tentative for Kelly. Host contact stays off the public page. Official fair page: https://uca.edu/fye/conwaydaze/",
+    attendanceType: "PUBLIC_OPEN",
+    audienceTags: ["Conway", "Faulkner County", "UCA", "Youth", "College"],
+    mapCoordinates: { lat: 35.0784, lng: -92.4575 },
+    mapPinQuality: "region",
+    relatedEventSlugs: ["nwa-senior-democrats-fayetteville-2026-08-18", "power-of-one-vote-dumas-2026-08-21"],
+    fieldAttendance: "tentative",
+    primaryHref: "https://uca.edu/fye/conwaydaze/",
+    primaryCtaLabel: "Conway Daze details",
   }),
   campaignStop({
     slug: "power-of-one-vote-dumas-2026-08-21",
@@ -268,7 +306,40 @@ export const august2026CampaignStops: EventItem[] = [
     summary: "Saturday 5:00 p.m. Central at the McCrory Fair & Rodeo. Exact table or staging spot to be posted.",
     audienceTags: ["McCrory", "Woodruff County", "Festival"],
     mapCoordinates: { lat: 35.2565, lng: -91.1998 },
-    relatedEventSlugs: ["coffee-with-kelly-searcy-2026-08-22"],
+    relatedEventSlugs: ["coffee-with-kelly-searcy-2026-08-22", "true-holiness-college-day-2026-08-23"],
+  }),
+  campaignStop({
+    slug: "true-holiness-college-day-2026-08-23",
+    title: "College Day 2026 — True Holiness Saints Center",
+    type: "Youth Civic Session",
+    region: "Central Arkansas",
+    countySlug: "faulkner-county",
+    startsAt: "2026-08-23T11:00:00",
+    locationLabel: "True Holiness Saints Center",
+    city: "Conway",
+    addressLine: "198 Hwy 286 East, Conway, AR",
+    summary:
+      "Sunday, August 23. Doors 10:15 a.m., program 11:00 a.m. Central. Welcome for UCA, Hendrix, and Central Baptist College students. Free lunch. Kelly’s attendance is tentative.",
+    description:
+      "True Holiness Saints Center hosts College Day 2026 on Sunday, August 23, 2026, in Conway. Doors open at 10:15 a.m. Central. The program begins at 11:00 a.m. The welcome is for students from the University of Central Arkansas, Hendrix College, and Central Baptist College. The flyer lists student-led worship, a sermon, and a free lunch. This is a church-hosted welcome, not a campaign rally. Kelly Grappe’s attendance is tentative.",
+    whatToExpect: [
+      "Sunday, August 23. Doors 10:15 a.m. Program 11:00 a.m. Central.",
+      "True Holiness Saints Center, 198 Hwy 286 East, Conway.",
+      "Student-led worship, sermon, and a free lunch.",
+      "Welcome for UCA, Hendrix, and Central Baptist College students.",
+      "Kelly’s attendance is tentative.",
+    ],
+    whoItsFor: "College students arriving in Conway and neighbors joining the church welcome.",
+    organizerNote:
+      "Flagged by Faulkner County Democrats. Tentative for Kelly. Same calendar day as a personal hold — not confirmed. Host contact stays off the public page.",
+    attendanceType: "CAMPAIGN_APPEARANCE",
+    audienceTags: ["Conway", "Faulkner County", "College", "Youth", "Faith"],
+    mapCoordinates: { lat: 35.0752, lng: -92.3965 },
+    mapPinQuality: "exact",
+    relatedEventSlugs: ["mccrory-fair-rodeo-2026-08-22", "paragould-campaign-activities-2026-08-25"],
+    fieldAttendance: "tentative",
+    primaryHref: "https://www.trueholiness.net",
+    primaryCtaLabel: "True Holiness Saints Center",
   }),
   campaignStop({
     slug: "paragould-campaign-activities-2026-08-25",
@@ -466,11 +537,11 @@ export const AUGUST_2026_CAMPAIGN_ROUTE: Array<{ date: string; line: string }> =
   { date: "Aug. 16", line: "Saline County → Fayetteville" },
   { date: "Aug. 17", line: "Washington County" },
   { date: "Aug. 18", line: "Fayetteville" },
-  { date: "Aug. 19", line: "Little Rock" },
+  { date: "Aug. 19", line: "Little Rock · Conway Daze (tentative)" },
   { date: "Aug. 20", line: "→ Dumas" },
   { date: "Aug. 21", line: "Dumas → Rose Bud" },
   { date: "Aug. 22", line: "Searcy → McCrory" },
-  { date: "Aug. 23", line: "Open" },
+  { date: "Aug. 23", line: "College Day Conway (tentative)" },
   { date: "Aug. 24", line: "→ Paragould" },
   { date: "Aug. 25", line: "Paragould" },
   { date: "Aug. 26", line: "Dardanelle Chamber (morning) → Paragould / Jonesboro" },
