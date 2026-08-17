@@ -74,6 +74,32 @@ function campaignStop(draft: StopDraft): EventItem {
 /** Confirmed public campaign stops for August 2026. Travel-only days are not listed. */
 export const august2026CampaignStops: EventItem[] = [
   campaignStop({
+    slug: "ms-magazine-interview-2026-08-07",
+    title: "Ms. magazine interview — Little Rock",
+    type: "Community Conversation",
+    region: "Central Arkansas",
+    countySlug: "pulaski-county",
+    startsAt: "2026-08-07T08:30:00",
+    locationLabel: "Downtown Little Rock",
+    city: "Little Rock",
+    addressLine: "Downtown Little Rock coffee shop",
+    summary:
+      "Friday, August 7, 8:30 a.m. Central. Kelly sat down in downtown Little Rock for a Ms. magazine interview.",
+    description:
+      "Kelly Grappe, candidate for Arkansas Secretary of State, met with Ms. magazine in downtown Little Rock on Friday, August 7, 2026, at 8:30 a.m. This was a press interview, not an open public event.",
+    whatToExpect: [
+      "Friday, August 7, 2026, 8:30 a.m. Central.",
+      "Downtown Little Rock coffee shop.",
+      "Press interview with Ms. magazine. This was not an open public event.",
+    ],
+    whoItsFor: "This listing records a completed press interview. It was not an open invite.",
+    organizerNote: "Completed Aug 7, 2026. Reporter contact stays off the public page.",
+    attendanceType: "CAMPAIGN_APPEARANCE",
+    audienceTags: ["Little Rock", "Pulaski County", "Press"],
+    mapCoordinates: { lat: 34.7465, lng: -92.2896 },
+    relatedEventSlugs: [],
+  }),
+  campaignStop({
     slug: "pocahontas-breakfast-meet-greet-2026-08-15",
     title: "Breakfast meet & greet — Pocahontas",
     type: "Community Conversation",

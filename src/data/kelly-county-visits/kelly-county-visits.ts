@@ -3192,8 +3192,23 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     status: "canceled",
     includeOnPublicPage: false,
     confidence: "uncertain",
-    notes: "Marked Exclude in calendar-presence.json",
+    notes:
+      "Calendar-presence marked Exclude. The completed stop is manual-2026-08-07-ms-magazine-interview.",
     sourceType: "calendar",
+  },
+  {
+    id: "manual-2026-08-07-ms-magazine-interview",
+    date: "2026-08-07",
+    title: "Ms. magazine interview",
+    publicTitle: "Ms. magazine interview — Little Rock",
+    city: "Little Rock",
+    counties: ["Pulaski"],
+    status: "completed",
+    includeOnPublicPage: true,
+    confidence: "confirmed",
+    notes:
+      "Steve 2026-08-17: Kelly met Jim Grossfeld for Ms. magazine at 8:30 a.m. Friday Aug 7 at a downtown Little Rock coffee shop. Public listing is ms-magazine-interview-2026-08-07. Reporter contact stays off the public page. Presence row presence-cal_nz2qt2_48 was excluded in error.",
+    sourceType: "manual",
   },
   {
     id: "presence-2026-08-08-hempstead-county-clerk-invite",
