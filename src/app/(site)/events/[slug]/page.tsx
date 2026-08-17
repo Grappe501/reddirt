@@ -83,20 +83,10 @@ function CuratedOrCalendarEventView({ event }: { event: EventItem }) {
                 align="left"
                 eyebrow="Details"
                 title="When, where, and what"
-                subtitle="Plain facts first—then the human stuff underneath."
               />
               <div className="mt-8 rounded-card border border-kelly-text/10 bg-[var(--color-surface-elevated)] p-6 shadow-[var(--shadow-soft)] md:p-8">
                 <EventMeta event={event} />
               </div>
-
-              <SectionHeading
-                className="mt-14"
-                align="left"
-                as="h3"
-                eyebrow="Narrative"
-                title="Why this gathering exists"
-              />
-              <p className="mt-6 font-body text-lg leading-relaxed text-kelly-text/85">{event.description}</p>
 
               <SectionHeading
                 className="mt-14"
