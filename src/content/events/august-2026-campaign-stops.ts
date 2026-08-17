@@ -514,7 +514,7 @@ export const august2026CampaignStops: EventItem[] = [
     attendanceType: "PUBLIC_OPEN",
     audienceTags: ["Democratic Party", "Logan County", "Paris"],
     mapCoordinates: { lat: 35.2919, lng: -93.7294 },
-    mapPinQuality: "venue",
+    mapPinQuality: "exact",
     relatedEventSlugs: [
       "dardanelle-chamber-buzz-breakfast-2026-08-26",
       "arkansas-youth-coalition-retreat-2026-08-28",
