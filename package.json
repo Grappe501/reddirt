@@ -19,6 +19,7 @@
     "typecheck": "node scripts/run-with-h-drive-env.cjs tsc --noEmit",
     "visits:validate": "node scripts/run-with-h-drive-env.cjs node ./scripts/validate-kelly-county-visits.cjs",
     "events:county-map:check": "node scripts/run-with-h-drive-env.cjs node ./node_modules/tsx/dist/cli.mjs scripts/check-county-visit-ledger.ts && node scripts/run-with-h-drive-env.cjs node ./node_modules/tsx/dist/cli.mjs scripts/check-county-campaign-map.ts",
+    "check:public-site": "node scripts/check-public-site-hardening.cjs",
     "events:county-map:build-svg": "node scripts/build-arkansas-county-svg.cjs",
     "visits:standalone": "node scripts/run-with-h-drive-env.cjs node ./scripts/build-arkansas-visits-standalone.cjs",
     "smoke:photo-editor-v24": "node scripts/run-with-h-drive-env.cjs node ./node_modules/tsx/dist/cli.mjs scripts/smoke-photo-editor-v24-ops.ts",
