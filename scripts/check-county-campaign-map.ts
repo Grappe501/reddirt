@@ -88,7 +88,7 @@ if (arkansasCountyKey("Van Buren") !== "van-buren") fail("van-buren key");
   const arkansas = summaryByName(summaries, "Arkansas");
   if (arkansas.publicState !== "visited") fail("Historical Arkansas should be visited");
   if (arkansas.upcomingIndicator !== null) fail("Arkansas should have no upcoming indicator in empty-event build");
-  if (ledger.visited.length !== 54) fail(`Expected 54 visited, got ${ledger.visited.length}`);
+  if (ledger.visited.length !== 55) fail(`Expected 55 visited, got ${ledger.visited.length}`);
 }
 
 {
@@ -250,17 +250,17 @@ if (arkansasCountyKey("Van Buren") !== "van-buren") fail("van-buren key");
       addressLine: "Zoom",
     }),
     baseEvent({
-      slug: "jefferson-zoom",
+      slug: "dallas-zoom",
       title: "Zoom appearance",
-      countySlug: "jefferson-county",
+      countySlug: "dallas-county",
       startsAt: "2026-09-09T19:15:00",
       endsAt: "2026-09-09T20:00:00",
       locationLabel: "Zoom",
       addressLine: "zoom.us",
     }),
   ]);
-  if (ledger.visited.some((c) => c.countyName === "Jefferson")) fail("Virtual Zoom must not become visited");
-  if (ledger.visited.length !== 54) fail("Virtual statewide call must not change the visited county count");
+  if (ledger.visited.some((c) => c.countyName === "Dallas")) fail("Virtual Zoom must not become visited");
+  if (ledger.visited.length !== 55) fail("Virtual statewide call must not change the visited county count");
 }
 
 {
@@ -315,7 +315,7 @@ if (arkansasCountyKey("Van Buren") !== "van-buren") fail("van-buren key");
     ...september2026CampaignStops,
     ...virtual,
   ]);
-  if (virtualLedger.visited.length !== 54) fail("Recurring virtual series must not change the visited county count");
+  if (virtualLedger.visited.length !== 55) fail("Recurring virtual series must not change the visited county count");
   if (withVirtual.some((s) => s.confirmedUpcomingEvents.some((e) => e.slug.includes("zoom")))) {
     fail("Recurring virtual series must not paint the county map");
   }
@@ -334,6 +334,7 @@ if (arkansasCountyKey("Van Buren") !== "van-buren") fail("van-buren key");
   if (summaryByName(summaries, "Howard").publicState !== "visited") fail("Howard should be visited / blue");
   if (summaryByName(summaries, "Sevier").publicState !== "visited") fail("Sevier should be visited / blue");
   if (summaryByName(summaries, "Little River").publicState !== "visited") fail("Little River should be visited / blue");
+  if (summaryByName(summaries, "Jefferson").publicState !== "visited") fail("Jefferson should be visited / blue");
   if (summaryByName(summaries, "Clay").publicState !== "confirmed_upcoming") fail("Clay scheduled stop should be gold");
   if (summaryByName(summaries, "Clay").visited) fail("Clay must not be visited");
   if (summaryByName(summaries, "Chicot").publicState !== "neutral") fail("Chicot remaining unvisited");
@@ -352,7 +353,7 @@ if (events.some((e) => /paragould/i.test(e.slug) && e.startsAt.startsWith("2026-
     ...september2026CampaignStops,
     ...october2026CampaignStops,
   ]);
-  if (ledger.visited.length !== 54) fail("October public stops must not change the visited county count before they end");
+  if (ledger.visited.length !== 55) fail("October public stops must not change the visited county count before they end");
   if (summaryByName(summaries, "Perry").publicState !== "confirmed_upcoming") fail("Perry Goat Festival confirmed upcoming");
   if (summaryByName(summaries, "Phillips").publicState !== "confirmed_upcoming") fail("Phillips King Biscuit confirmed upcoming");
   if (summaryByName(summaries, "Madison").publicState !== "visited") fail("Madison should be visited / blue");
