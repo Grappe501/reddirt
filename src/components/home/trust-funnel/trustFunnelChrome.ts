@@ -15,7 +15,7 @@ export const trustFunnelCtaOutline =
   `${trustFunnelCtaBase} border-2 border-kelly-navy/20 bg-white/90 text-kelly-navy backdrop-blur-sm hover:border-kelly-gold hover:shadow-[var(--shadow-soft)] focus-visible:outline-kelly-navy`;
 
 export const trustFunnelCtaOutlineOnDark =
-  `${trustFunnelCtaBase} border border-white/35 bg-white/5 text-white backdrop-blur-sm hover:border-white/55 hover:bg-white/12 focus-visible:outline-kelly-gold`;
+  `${trustFunnelCtaBase} border-2 border-white/70 bg-kelly-navy text-white hover:border-kelly-gold hover:bg-kelly-navy/90 focus-visible:outline-kelly-gold`;
 
 /** Soft card chrome used across homepage evidence / pillar cards */
 export const trustFunnelCardClass =

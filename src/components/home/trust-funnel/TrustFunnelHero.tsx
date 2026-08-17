@@ -73,7 +73,7 @@ export function TrustFunnelHero({ editing = false, copy }: Props) {
       </div>
 
       <ContentContainer className="relative z-[1] flex min-h-[min(92svh,740px)] flex-col justify-end pb-[max(2.5rem,env(safe-area-inset-bottom))] pt-24 sm:min-h-[min(100svh,880px)] sm:pt-28 md:justify-center md:pb-16 md:pt-24 lg:pt-28">
-        <div className="ml-auto w-full max-w-[min(100%,22rem)] rounded-card border border-white/12 bg-kelly-navy/82 p-5 shadow-[0_24px_60px_rgba(12,18,34,0.55)] backdrop-blur-md xs:max-w-md sm:max-w-lg sm:p-7 md:max-w-xl md:p-8 lg:max-w-[32rem] text-white">
+        <div className="ml-auto w-full max-w-[min(100%,22rem)] rounded-card border border-white/18 bg-kelly-navy p-5 shadow-[0_24px_60px_rgba(12,18,34,0.7)] xs:max-w-md sm:max-w-lg sm:p-7 md:max-w-xl md:p-8 lg:max-w-[32rem] text-white">
           <motion.h1
             id="trust-funnel-hero-heading"
             className="font-heading text-[clamp(1.85rem,7.2vw,3.25rem)] font-bold leading-[1.08] tracking-tight text-white sm:text-[clamp(2rem,6vw,3.25rem)]"
@@ -118,7 +118,7 @@ export function TrustFunnelHero({ editing = false, copy }: Props) {
             />
           </motion.div>
           <motion.div
-            className="mt-4 max-w-xl font-body text-base leading-relaxed text-white/92 md:text-lg"
+            className="mt-4 max-w-xl font-body text-base leading-relaxed text-white md:text-lg"
             initial={reduceMotion ? false : { opacity: 0, y }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: dur, delay: reduceMotion ? 0 : 0.22, ease }}
@@ -129,7 +129,7 @@ export function TrustFunnelHero({ editing = false, copy }: Props) {
               editing={editing}
               as="p"
               multiline
-              className="max-w-xl font-body text-base leading-relaxed text-white/92 md:text-lg"
+              className="max-w-xl font-body text-base leading-relaxed text-white md:text-lg"
             />
           </motion.div>
           <div className="mt-7 flex flex-col gap-2.5 sm:mt-8 sm:flex-row sm:flex-wrap sm:gap-3" role="group" aria-label="Primary actions">
