@@ -519,7 +519,37 @@ export const september2026CampaignStops: EventItem[] = [
     summary: "Tentative 8:00 a.m. Central stop in Little Flock.",
     audienceTags: ["Little Flock", "Benton County", "Northwest Arkansas"],
     mapCoordinates: { lat: 36.3851, lng: -94.1355 },
-    relatedEventSlugs: ["faith-and-reflection-zoom-2026-09-30"],
+    relatedEventSlugs: ["garland-county-library-candidate-forum-2026-09-29", "faith-and-reflection-zoom-2026-09-30"],
     fieldAttendance: "tentative",
+  }),
+  campaignStop({
+    slug: "garland-county-library-candidate-forum-2026-09-29",
+    title: "Garland County Library Candidate Forum",
+    type: "Town Hall",
+    region: "Central Arkansas",
+    countySlug: "garland-county",
+    startsAt: "2026-09-29T17:00:00",
+    locationLabel: "Garland County Library",
+    city: "Hot Springs",
+    addressLine: "1427 Malvern Ave., Hot Springs, AR 71901",
+    summary:
+      "Tuesday, September 29. Doors 5:00 p.m. Central for a meet-and-greet. Forum begins at 6:00 p.m. In person at Garland County Library, and livestreamed.",
+    description:
+      "The Garland County Library is hosting its 2026 State and Federal Candidates Forum on Tuesday, September 29, 2026, at 1427 Malvern Avenue in Hot Springs. Doors open to the public at 5:00 p.m. Central for a meet-and-greet. The forum begins at 6:00 p.m. It is in person and will be livestreamed and recorded on Facebook and YouTube. All state and federal candidates who will be on a Garland County ballot are invited. Light refreshments will be available. Candidates will not have booth or table space; handouts should be carried on person. Format, speaking order, and livestream links will be posted here when the library sends them.",
+    whatToExpect: [
+      "Tuesday, September 29. Doors 5:00 p.m. Central. Forum 6:00 p.m.",
+      "Garland County Library, 1427 Malvern Ave., Hot Springs.",
+      "In person, with livestream and recording for people watching online.",
+      "Meet-and-greet before the forum. No candidate booths — bring handouts with you.",
+      "Format and speaking order will be posted when the library sends them.",
+    ],
+    whoItsFor: "Garland County neighbors and anyone who wants to hear state and federal candidates on a Hot Springs ballot.",
+    organizerNote:
+      "Posted from the Garland County Library invitation. Host contact stays off the public page.",
+    attendanceType: "PUBLIC_OPEN",
+    audienceTags: ["Hot Springs", "Garland County", "Candidate Forum", "Library"],
+    mapCoordinates: { lat: 34.507, lng: -93.056 },
+    mapPinQuality: "exact",
+    relatedEventSlugs: ["little-flock-2026-09-27", "faith-and-reflection-zoom-2026-09-30"],
   }),
 ];

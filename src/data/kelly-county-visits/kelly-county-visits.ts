@@ -3838,7 +3838,8 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     status: "scheduled",
     includeOnPublicPage: true,
     confidence: "likely",
-    notes: "Seeded from locked-events-steve.json",
+    notes:
+      "Seeded from locked-events-steve.json. This is not the Garland County Library forum. Library forum is Tuesday Sept 29, public listing garland-county-library-candidate-forum-2026-09-29.",
     sourceType: "local-file",
   },
   {
@@ -3863,6 +3864,20 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     confidence: "likely",
     notes: "Seeded from locked-events-steve.json",
     sourceType: "local-file",
+  },
+  {
+    id: "manual-2026-09-29-garland-county-library-candidate-forum",
+    date: "2026-09-29",
+    title: "Garland County Library Candidate Forum",
+    publicTitle: "Garland County Library Candidate Forum",
+    city: "Hot Springs",
+    counties: ["Garland"],
+    status: "scheduled",
+    includeOnPublicPage: true,
+    confidence: "confirmed",
+    notes:
+      "Steve 2026-08-17: Library invitation for Tuesday Sept 29. Public listing is garland-county-library-candidate-forum-2026-09-29. Doors 5:00 p.m., forum 6:00 p.m., 1427 Malvern Ave. Livestreamed. No candidate tables. Operator leftover: fill the library participation form by Sept 16. Host contact stays off the public page. Different date from locked-2026-09-25-hot-springs-forum. Harrison Balloon Fest is Sept 28 — travel adjacency, not a same-hour conflict.",
+    sourceType: "manual",
   },
   {
     id: "presence-cal_gmodfg_35",
