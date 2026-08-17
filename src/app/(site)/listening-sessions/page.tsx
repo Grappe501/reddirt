@@ -23,7 +23,7 @@ import { representLocalEventVolunteerHref } from "@/config/navigation";
 export const metadata: Metadata = {
   title: "Election & ballot access listening sessions",
   description:
-    "Arkansas-wide listening sessions on elections, ballot access, and transparency—what to expect, how to bring one to your town, and how the campaign plans follow-up.",
+    "November and December, after the election and before taking office: Arkansas listening sessions on elections, ballot access, and transparency.",
 };
 
 const principles = [
@@ -84,9 +84,9 @@ export default async function ListeningSessionsPage() {
         <MediaPageHero
           slotKey="listening.hero"
           layout="split"
-          eyebrow="Statewide series"
+          eyebrow="November &amp; December"
           title="Arkansas election &amp; ballot access listening sessions"
-          subtitle="A structured, nonpartisan space to hear Arkansans—on voting, registration, and how process looks from the ground up. Not a platform rollout. A commitment to listen."
+          subtitle="After the election, before taking office: a structured, nonpartisan space to hear Arkansans—on voting, registration, and how process looks from the ground up. Not a platform rollout. A commitment to listen."
         >
           <Button href="#your-town" variant="primary">
             Bring a session to your town
@@ -107,7 +107,8 @@ export default async function ListeningSessionsPage() {
             />
             <div className="mt-8 max-w-3xl space-y-4 font-body text-base leading-relaxed text-kelly-text/85">
               <p>
-                Kelly Grappe is convening a statewide series of{" "}
+                This is the November and December plan—after Election Day, before
+                taking office. Kelly Grappe will convene a statewide series of{" "}
                 <strong>
                   Arkansas Election &amp; Ballot Access Listening Sessions
                 </strong>{" "}
@@ -118,11 +119,12 @@ export default async function ListeningSessionsPage() {
                 points in the way.
               </p>
               <p className="mt-4">
-                Input from these sessions is meant to inform a future,
-                transparent <strong>process review</strong> (mapping how ballot
-                access and election administration actually work in practice—and
-                where the public need better visibility). It starts with hearing
-                people where they are.
+                What she hears in those rooms will shape a transparent{" "}
+                <strong>process review</strong> when she takes office: mapping
+                how ballot access and election administration actually work in
+                practice, and where the public need better visibility. The
+                listening happens first, while there is still time to walk in
+                prepared.
               </p>
             </div>
           </ContentContainer>
@@ -219,17 +221,17 @@ export default async function ListeningSessionsPage() {
               id="next-heading"
               eyebrow="After listening"
               title="From listening to review"
-              subtitle="When elected, this feeds a disciplined public process: Listen → Map → Verify → Improve → Report."
+              subtitle="November and December are for listening. After taking office, that record feeds a public process: Listen → Map → Verify → Improve → Report."
             />
             <p className="mt-4 max-w-3xl font-body text-kelly-text/80">
-              The campaign’s commitment is to use what we hear in these rooms to
-              shape a future{" "}
+              The commitment is to use what Arkansans say in these rooms to
+              shape a{" "}
               <strong>
                 transparent election and ballot access process review
-              </strong>
-              : map the system end to end, stress-test safeguards, and recommend
-              practical improvements—with findings shared in public, not in a
-              back room.
+              </strong>{" "}
+              once she is in office: map the system end to end, stress-test
+              safeguards, and recommend practical improvements—with findings
+              shared in public, not in a back room.
             </p>
           </ContentContainer>
         </FullBleedSection>
@@ -274,7 +276,7 @@ export default async function ListeningSessionsPage() {
               id="town-heading"
               eyebrow="Your community"
               title="Bring a session to your town"
-              subtitle="We’ll build a calendar region by region. Tell us who you are, where you’re rooted, and what help you need to host a dignified, well-prepared room."
+              subtitle="We’ll build a November and December calendar region by region. Tell us who you are, where you’re rooted, and what help you need to host a dignified, well-prepared room."
             />
             <p className="mt-3 max-w-3xl font-body text-sm text-kelly-text/75">
               Use the form below (the same host pipeline as our other local
