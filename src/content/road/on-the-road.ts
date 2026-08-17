@@ -53,7 +53,7 @@ export const onTheRoadProofCopy = {
     items: [
       { label: "Miles (February)", value: "3,200+", note: "Campaign log — February" },
       { label: "Engagements (February)", value: "27", note: "Campaign log — February" },
-      { label: "Pace since then", value: "Month after month", note: "Similar energy has continued — see field posts and calendar below." },
+      { label: "Pace since then", value: "Month after month", note: "Similar energy has continued." },
     ] as const,
     /**
      * County/city totals stay off the public page until Steve marks rows Confirmed in
