@@ -3081,12 +3081,15 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
   {
     id: "presence-2026-08-02-faulkner-county-event",
     date: "2026-08-02",
-    title: "Faulkner county event",
-    counties: [],
-    status: "needs-review",
-    includeOnPublicPage: false,
-    confidence: "uncertain",
-    notes: "Presence row without county — held for Pass 2 / Steve assignment",
+    title: "Faulkner County Democratic Party fundraiser — The Revolution Continues",
+    publicTitle: "The Revolution Continues — Faulkner County Democratic Party fundraiser",
+    city: "Conway",
+    counties: ["Faulkner"],
+    status: "completed",
+    includeOnPublicPage: true,
+    confidence: "confirmed",
+    notes:
+      "Steve 2026-08-17: Kelly attended. Willow Event Center, 1040 Holiday Drive, Conway, 5:00-7:30 p.m. Hosted by the Faulkner County Democratic Party. Door password and host email stay off the public page.",
     sourceType: "calendar",
   },
   {
