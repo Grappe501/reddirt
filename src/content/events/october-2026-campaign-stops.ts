@@ -289,10 +289,11 @@ export const october2026CampaignStops: EventItem[] = [
     timeTbd: true,
     locationLabel: "Mountain View",
     city: "Mountain View",
-    summary: "Saturday Outhouse Races in Mountain View. Time to be posted.",
+    summary: "Tentative Saturday Outhouse Races in Mountain View. Time to be posted if confirmed.",
     audienceTags: ["Mountain View", "Stone County", "Festival"],
     mapCoordinates: { lat: 35.8684, lng: -92.1176 },
     relatedEventSlugs: ["greers-ferry-event-2026-10-23", "ponca-color-fest-2026-10-25"],
+    fieldAttendance: "tentative",
   }),
   campaignStop({
     slug: "ponca-color-fest-2026-10-25",

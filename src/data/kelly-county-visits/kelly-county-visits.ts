@@ -3886,6 +3886,18 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     sourceType: "calendar",
   },
   {
+    id: "presence-2026-10-24-mountain-view-outhouse-races",
+    date: "2026-10-24",
+    title: "Mountain View Outhouse Races",
+    city: "Mountain View",
+    counties: ["Stone"],
+    status: "scheduled",
+    includeOnPublicPage: false,
+    confidence: "uncertain",
+    notes: "Steve hold: Jan asked if Kelly still wants to drive an outhouse on Oct 24. Public listing is tentative (mountain-view-outhouse-races-2026-10-24). Host contact stays off the public page.",
+    sourceType: "manual",
+  },
+  {
     id: "presence-2026-10-25-madison-and-newton-county-immersion-ponca-color-fest",
     date: "2026-10-25",
     title: "Madison and Newton county Immersion Ponca Color Fest",

@@ -366,6 +366,10 @@ if (events.some((e) => /paragould/i.test(e.slug) && e.startsAt.startsWith("2026-
   if (!cleburne.visited || !cleburne.tentativeUpcomingEvents.some((e) => e.slug === "greers-ferry-event-2026-10-23")) {
     fail("Greers Ferry must be tentative on Cleburne");
   }
+  const stone = summaryByName(summaries, "Stone");
+  if (!stone.visited || !stone.tentativeUpcomingEvents.some((e) => e.slug === "mountain-view-outhouse-races-2026-10-24")) {
+    fail("Mountain View Outhouse Races must be tentative on Stone");
+  }
   const poinsett = summaryByName(summaries, "Poinsett");
   if (poinsett.confirmedUpcomingEvents.length || poinsett.tentativeUpcomingEvents.length) {
     fail("Poinsett must not show Rice Festival / Weiner as upcoming");
@@ -421,7 +425,7 @@ console.log("Operator review (as of 2026-08-13, America/Chicago) — http://loca
 console.log("  visited-only: Arkansas County (blue, no click) until Stuttgart Oct 17");
 console.log("  visited + confirmed upcoming: Pulaski County (blue fill, gold outline → /events/county/pulaski)");
 console.log("  unvisited confirmed upcoming: Woodruff (McCrory Aug 22), Clay (Rector Sept 6), Perry, Phillips from October");
-console.log("  tentative: Calhoun County (sky fill, dashed outline → fair Sep 18); Greers Ferry Oct 23 on Cleburne");
+console.log("  tentative: Calhoun County (sky fill, dashed outline → fair Sep 18); Greers Ferry Oct 23 on Cleburne; Mountain View Outhouse Races Oct 24 on Stone");
 console.log("  neutral: Chicot County (gray, no click)");
 console.log("  statewide / virtual: Faith & Reflection Zoom (Wed 7:30 AM) + College & Young People Zoom (Thu, time TBA) — calendar only, never the visited county count");
 console.log("  October: no Rice Festival / Weiner; Flat Rock = Johnson County; Bella Vista Oct 8 and Oct 15 both public");
