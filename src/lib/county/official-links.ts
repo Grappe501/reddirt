@@ -4,7 +4,7 @@
  *
  * @see https://www.sos.arkansas.gov/ — Voter / registration pages may move; keep URL in env.
  */
-const DEFAULT_AR_VOTER_LOOKUP = "https://www.voterview.ar-nova.org/voterview";
+const DEFAULT_AR_VOTER_LOOKUP = "https://www.voterview.ar-nova.org/VoterView";
 
 export function getArVoterRegistrationLookupUrl(): string {
   const fromEnv = process.env.NEXT_PUBLIC_AR_VOTER_LOOKUP_URL?.trim();

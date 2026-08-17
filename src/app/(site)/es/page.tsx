@@ -4,6 +4,7 @@ import { FullBleedSection } from "@/components/layout/FullBleedSection";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { Button } from "@/components/ui/Button";
 import { pageMeta } from "@/lib/seo/metadata";
+import { getArVoterRegistrationLookupUrl } from "@/lib/county/official-links";
 
 export const metadata: Metadata = pageMeta({
   title: "Información para votantes",
@@ -20,7 +21,7 @@ export default function SpanishVoterPathPage() {
         title="Información para votantes"
         subtitle="Un camino claro hacia los recursos oficiales de Arkansas. Esta campaña no reemplaza a la oficina del Secretario de Estado ni a su secretario del condado."
       >
-        <Button href="https://www.voterview.ar-nova.org/VoterView/" variant="primary">
+        <Button href={getArVoterRegistrationLookupUrl()} variant="primary">
           Verificar mi registro
         </Button>
         <Button href="/voter-registration" variant="outline">
