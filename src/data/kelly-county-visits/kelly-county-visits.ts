@@ -3557,8 +3557,20 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     includeOnPublicPage: true,
     confidence: "confirmed",
     notes:
-      "Steve forwarded speaker email. Public listing is roosevelt-dinner-2026-09-10. University of the Ozarks, Clarksville. Doors 5:30 p.m., dinner 6:30 p.m. Kelly speaks ~15 minutes. Campus building TBA. Speaker promo video request is operator follow-up, not public copy.",
+      "Steve forwarded speaker email. Public listing is roosevelt-dinner-2026-09-10. University of the Ozarks, Clarksville. Doors 5:30 p.m., dinner 6:30 p.m. Kelly speaks ~15 minutes. Campus building TBA. Speaker promo video request is operator follow-up, not public copy. Steve 2026-08-17: Kelly declined a same-night Food Bank meeting at 6:00 p.m. because of this dinner. That declined hold is manual-2026-09-10-food-bank-meeting-declined.",
     sourceType: "calendar",
+  },
+  {
+    id: "manual-2026-09-10-food-bank-meeting-declined",
+    date: "2026-09-10",
+    title: "Food Bank meeting",
+    counties: [],
+    status: "declined",
+    includeOnPublicPage: false,
+    confidence: "confirmed",
+    notes:
+      "Steve 2026-08-17: Mary moved this meeting to Thursday Sept 10 at 6:00 p.m. at the Food Bank. Kelly declined because of the Johnson County Roosevelt Dinner the same night. Host first name and any overnight offer stay off the public site. County not confirmed. Same host also offered a county-fair booth window 9/16-19; that hold is manual-2026-09-16-county-fair-booth-window.",
+    sourceType: "manual",
   },
   {
     id: "presence-2026-09-11-fordyce-dallas-county-fair-6pm",
@@ -3645,12 +3657,28 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     id: "presence-2026-09-16-hsv-candidate-forum",
     date: "2026-09-16",
     title: "HSV candidate forum",
+    publicTitle: "Candidate Meet & Greet — Hot Springs Village",
+    city: "Hot Springs Village",
+    counties: [],
+    status: "scheduled",
+    includeOnPublicPage: false,
+    confidence: "confirmed",
+    notes:
+      "Steve 2026-08-17: Kelly confirmed a forum in Hot Springs on 9/16. This is the Hot Springs Village POA Governmental Affairs Committee candidate meet-and-greet, 2:00-5:00 p.m. Public listing is hsv-candidate-forum-2026-09-16. Village sits in Garland and Saline; do not pin one county until Steve confirms. Room still TBA. A separate locked Hot Springs Forum remains on Sept 25.",
+    sourceType: "calendar",
+  },
+  {
+    id: "manual-2026-09-16-county-fair-booth-window",
+    date: "2026-09-16",
+    endDate: "2026-09-19",
+    title: "County fair booth window",
     counties: [],
     status: "needs-review",
     includeOnPublicPage: false,
     confidence: "uncertain",
-    notes: "Presence row without county — held for Pass 2 / Steve assignment",
-    sourceType: "calendar",
+    notes:
+      "Steve 2026-08-17: Mary said her group will have a booth at the county fair all four days 9/16-19 and offered that as a substitute after the Sept 10 Food Bank meeting was declined. Kelly has Hot Springs Village 9/16 and said she will look at the other days. Not a public event until a day and county are confirmed. Do not publish a forum organized by another candidate's campaign. Kelly can attend a third-party forum; she cannot coordinate with Terri Green's campaign. Closest date match for a four-day booth 9/16-19 is Baxter County Fair commercial exhibits, but do not assign Baxter until Steve confirms Mary is that county.",
+    sourceType: "manual",
   },
   {
     id: "locked-2026-09-18-arkansas-comic-con",
