@@ -3236,6 +3236,20 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     sourceType: "local-file",
   },
   {
+    id: "manual-2026-08-10-sebastian-county-democrats-fort-smith",
+    date: "2026-08-10",
+    title: "Sebastian County Democrats August meeting",
+    publicTitle: "Sebastian County Democrats August meeting — Fort Smith",
+    city: "Fort Smith",
+    counties: ["Sebastian"],
+    status: "completed",
+    includeOnPublicPage: true,
+    confidence: "confirmed",
+    notes:
+      "Steve 2026-08-17: Kelly attended. Flyer and Janet Renwick reminder: Monday Aug 10, 6:00 p.m., Creekmore Park Rose Room, 3301 South M Street, Fort Smith. Special guest for Secretary of State. Local JP candidates also on the program. Public listing is sebastian-county-democrats-fort-smith-2026-08-10. Host contact stays off the public page; Janet Renwick is on the DPA officer roster. Tuesday Aug 11 4-8 p.m. Creekmore work session (envelopes/postcards) was a county party volunteer shift, not a Kelly public stop. Same-day private Ali Khan fundraiser row remains separate.",
+    sourceType: "manual",
+  },
+  {
     id: "presence-2026-08-10-6pm-franklin-county",
     date: "2026-08-10",
     title: "6pm Franklin County",
@@ -3243,7 +3257,8 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     status: "needs-review",
     includeOnPublicPage: false,
     confidence: "uncertain",
-    notes: "Presence row without county — held for Pass 2 / Steve assignment",
+    notes:
+      "Steve 2026-08-17: 6:00 p.m. on Aug 10 was the Sebastian County Democrats meeting in Fort Smith, not Franklin. Do not treat this Franklin row as attended. Presence row without county — held for Pass 2 / Steve assignment.",
     sourceType: "calendar",
   },
   {

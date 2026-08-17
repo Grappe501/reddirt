@@ -105,6 +105,34 @@ export const august2026CampaignStops: EventItem[] = [
     relatedEventSlugs: [],
   }),
   campaignStop({
+    slug: "sebastian-county-democrats-fort-smith-2026-08-10",
+    title: "Sebastian County Democrats August meeting — Fort Smith",
+    type: "Town Hall",
+    region: "West Central Arkansas",
+    countySlug: "sebastian-county",
+    startsAt: "2026-08-10T18:00:00",
+    locationLabel: "Creekmore Park Rose Room",
+    city: "Fort Smith",
+    addressLine: "3301 South M Street, Fort Smith, AR 72903",
+    summary:
+      "Monday, August 10, 6:00 p.m. Central. Kelly joined the Sebastian County Democrats monthly meeting at Creekmore Park in Fort Smith.",
+    description:
+      "Monday, August 10, 2026, 6:00 p.m. Central at the Creekmore Park Rose Room, 3301 South M Street, Fort Smith. The Sebastian County Democratic Party hosted its August meeting with Kelly Grappe, candidate for Arkansas Secretary of State, as a special guest. Local Democratic candidates also appeared. This listing records a completed campaign stop.",
+    whatToExpect: [
+      "Monday, August 10, 2026, 6:00 p.m. Central.",
+      "Creekmore Park Rose Room, 3301 South M Street, Fort Smith.",
+      "Sebastian County Democrats monthly meeting. Kelly Grappe was a special guest.",
+      "This listing records a completed campaign stop.",
+    ],
+    whoItsFor: "Neighbors in Fort Smith and Sebastian County, and anyone looking back at where the campaign has been.",
+    organizerNote:
+      "Completed Aug 10, 2026. Hosted by Sebastian County Democrats. Host contact stays off the public page. The Aug 11 Creekmore work session was a county party volunteer shift, not a Kelly public stop.",
+    attendanceType: "PUBLIC_OPEN",
+    audienceTags: ["Fort Smith", "Sebastian County", "Democratic Party"],
+    mapCoordinates: { lat: 35.37087, lng: -94.39711 },
+    relatedEventSlugs: ["river-valley-candidate-rally-fort-smith-2026-09-13"],
+  }),
+  campaignStop({
     slug: "pocahontas-breakfast-meet-greet-2026-08-15",
     title: "Breakfast meet & greet — Pocahontas",
     type: "Community Conversation",
