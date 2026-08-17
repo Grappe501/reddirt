@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { CountyPartyOfficerRoster } from "@/components/election-plan/CountyPartyOfficerRoster";
 import {
   countyPartiesHubHref,
   countyPartyDetailHref,
@@ -14,6 +15,12 @@ import {
 import { forwardMotionStopHref } from "@/lib/election-plan/forward-motion-links";
 import { getCountyMeetingAssignment } from "@/lib/election-plan/load-county-meeting-assignments";
 import { countyPlaybookHref } from "@/lib/election-plan/location-links";
+import {
+  getDpaChairForCounty,
+  getDpaCountyOfficerStats,
+  getDpaOfficerOrg,
+  getHsvDemsOfficerOrg,
+} from "@/lib/election-plan/load-dpa-county-officers";
 
 function ConfidenceBadge({ profile }: { profile: CountyPartyProfile }) {
   const colors = {
@@ -40,11 +47,14 @@ export function CountyPartyIntelligencePanel({ profile, variant = "panel", hideP
   const proposedMeetings = getProposedCountyPartyMeetingsForCounty(profile.slug);
   const action = getRecommendedCountyPartyAction(profile);
   const assignment = getCountyMeetingAssignment(profile.slug);
+  const dpaOrg = getDpaOfficerOrg(profile.slug);
+  const dpaChair = getDpaChairForCounty(profile.slug);
+  const chairLabel = dpaChair?.displayName ?? profile.countyChair ?? "TBD";
 
   if (variant === "compact") {
     return (
       <p className="text-sm text-[var(--ep-navy-muted)]">
-        Chair: <strong>{profile.countyChair ?? "TBD"}</strong>
+        Chair: <strong>{chairLabel}</strong>
         {profile.meetingInfoRaw ? (
           <>
             {" "}
@@ -82,17 +92,28 @@ export function CountyPartyIntelligencePanel({ profile, variant = "panel", hideP
       <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3 text-sm">
         <div>
           <p className="text-xs font-bold uppercase text-[var(--ep-navy-muted)]">County chair</p>
-          <p className="font-semibold">{profile.countyChair ?? "—"}</p>
+          <p className="font-semibold">{chairLabel}</p>
+          {dpaChair?.phone ? <p className="text-xs text-[var(--ep-navy-muted)]">{dpaChair.phone}</p> : null}
         </div>
         <div>
           <p className="text-xs font-bold uppercase text-[var(--ep-navy-muted)]">Election commissioner</p>
-          <p className="font-semibold">{profile.electionCommissioner ?? "—"}</p>
+          <p className="font-semibold">
+            {dpaOrg?.officers.find((o) => o.officeKey === "election-commissioner" && o.displayName)?.displayName ??
+              profile.electionCommissioner ??
+              "—"}
+          </p>
         </div>
         <div>
           <p className="text-xs font-bold uppercase text-[var(--ep-navy-muted)]">Meeting info</p>
           <p className="font-medium">{profile.meetingInfoRaw ?? "—"}</p>
         </div>
       </div>
+
+      {dpaOrg ? (
+        <div className="mt-6">
+          <CountyPartyOfficerRoster orgs={[dpaOrg]} variant="full" title="Officer roster" />
+        </div>
+      ) : null}
 
       {proposedMeetings.length > 0 ? (
         <div className="mt-4">
@@ -188,33 +209,41 @@ export function CountyPartiesHubPanel() {
   const rollup = getCountyPartyIntelligenceRollup();
   const topMeetings = getTopCountyMeetingQueue(10);
   const needsVerify = profiles.filter((p) => p.needsHumanVerification);
+  const dpa = getDpaCountyOfficerStats();
+  const hsv = getHsvDemsOfficerOrg();
 
   return (
     <section>
       <p className="text-xs font-bold uppercase tracking-[0.15em] text-[var(--ep-gold)]">Phase 18.7I</p>
       <h1 className="font-heading text-2xl font-bold text-[var(--ep-navy)]">County Party Intelligence</h1>
       <p className="mt-1 text-sm text-[var(--ep-navy-muted)]">
-        Public ArkDems.org data · ingested · flagged for verification · not live outreach
+        DPA public officer list plus ArkDems.org meeting pages · operator contacts · not public website copy
       </p>
 
       <div className="my-6 ep-stat-grid">
         <div className="ep-stat">
-          <div className="ep-stat-value">{rollup.fetchedOk}/75</div>
-          <div className="ep-stat-label">Pages fetched</div>
+          <div className="ep-stat-value">{dpa.counties}/75</div>
+          <div className="ep-stat-label">Counties in DPA roster</div>
         </div>
         <div className="ep-stat">
-          <div className="ep-stat-value">{rollup.chairsFound}</div>
-          <div className="ep-stat-label">Chairs found</div>
+          <div className="ep-stat-value">{rollup.dpaChairsNamed}</div>
+          <div className="ep-stat-label">Named chairs</div>
+        </div>
+        <div className="ep-stat">
+          <div className="ep-stat-value">{rollup.dpaNamedOfficers}</div>
+          <div className="ep-stat-label">Named officers</div>
         </div>
         <div className="ep-stat">
           <div className="ep-stat-value">{rollup.parseableMeetings}</div>
           <div className="ep-stat-label">Parseable meetings</div>
         </div>
-        <div className="ep-stat">
-          <div className="ep-stat-value text-amber-700">{rollup.needsVerification}</div>
-          <div className="ep-stat-label">Need verification</div>
-        </div>
       </div>
+
+      {hsv ? (
+        <div className="mb-8">
+          <CountyPartyOfficerRoster orgs={[hsv]} variant="full" title="Hot Springs Village Democratic Club" />
+        </div>
+      ) : null}
 
       <div className="mb-8 ep-card">
         <h2 className="font-heading font-bold text-[var(--ep-navy)]">Top 10 county meeting opportunities (proposed)</h2>
@@ -250,7 +279,9 @@ export function CountyPartiesHubPanel() {
                 <span className="text-[10px] font-bold uppercase text-emerald-700">OK</span>
               )}
             </div>
-            <p className="mt-1 text-sm text-[var(--ep-navy-muted)]">{p.countyChair ?? "Chair TBD"}</p>
+            <p className="mt-1 text-sm text-[var(--ep-navy-muted)]">
+              {getDpaChairForCounty(p.slug)?.displayName ?? p.countyChair ?? "Chair TBD"}
+            </p>
             <p className="mt-1 line-clamp-2 text-xs">{p.meetingInfoRaw ?? "No meeting info"}</p>
           </Link>
         ))}

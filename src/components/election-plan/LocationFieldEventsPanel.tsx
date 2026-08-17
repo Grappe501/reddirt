@@ -9,6 +9,8 @@ import {
 import { cityLocationBriefHref, countyPlaybookHref } from "@/lib/election-plan/location-links";
 import type { ElectionPlanCity } from "@/lib/election-plan/types";
 import { cn } from "@/lib/utils";
+import { CountyPartyOfficerRoster } from "@/components/election-plan/CountyPartyOfficerRoster";
+import { getDpaOfficerOrgsForLocation } from "@/lib/election-plan/load-dpa-county-officers";
 
 type Props = {
   title?: string;
@@ -85,12 +87,18 @@ export function LocationFieldEventsPanel({
   showCountyLink = true,
 }: Props) {
   const cityLookup = buildCitySlugLookup(cities);
+  const officerOrgs = getDpaOfficerOrgsForLocation({ countySlug });
 
   if (upcoming.length === 0 && recent.length === 0) {
     return (
       <div className="ep-card">
         <h2 className="font-heading text-lg font-bold text-[var(--ep-navy)]">{title}</h2>
         <p className="mt-2 text-sm text-[var(--ep-navy-muted)]">No field calendar entries for this location yet.</p>
+        {officerOrgs.length > 0 ? (
+          <div className="mt-3">
+            <CountyPartyOfficerRoster orgs={officerOrgs} variant="compact" />
+          </div>
+        ) : null}
         {showCountyLink ? (
           <Link href={countyPlaybookHref(countyName, countySlug)} className="ep-chapter-link mt-3 inline-block text-sm">
             {countyName} County playbook →
@@ -106,6 +114,11 @@ export function LocationFieldEventsPanel({
         <div>
           <h2 className="font-heading text-lg font-bold text-[var(--ep-navy)]">{title}</h2>
           {subtitle ? <p className="mt-1 text-sm text-[var(--ep-navy-muted)]">{subtitle}</p> : null}
+          {officerOrgs.length > 0 ? (
+            <div className="mt-2">
+              <CountyPartyOfficerRoster orgs={officerOrgs} variant="compact" />
+            </div>
+          ) : null}
         </div>
         <Link href="/election-plan?tab=fieldCalendar" className="ep-chapter-link text-sm">
           Full field calendar →

@@ -370,7 +370,7 @@ export const september2026CampaignStops: EventItem[] = [
     ],
     whoItsFor: "Hot Springs Village neighbors and anyone who wants to meet the Secretary of State candidates on September 16.",
     organizerNote:
-      "POA invitation dated April 27, 2026 names Coronado Community Center. Host RSVP contact stays off the public page. Do not pin Garland vs Saline until Steve confirms. Same-day Faith & Reflection Zoom is 7:30 a.m. and is not a conflict. Table reservation is still required.",
+      "POA invitation dated April 27, 2026 names Coronado Community Center. Host RSVP contact stays off the public page. HSV Democratic Club officers are in election-plan /county-parties/hsv-dems. Do not pin Garland vs Saline until Steve confirms. Same-day Faith & Reflection Zoom is 7:30 a.m. and is not a conflict. Table reservation is still required.",
     attendanceType: "PUBLIC_OPEN",
     audienceTags: ["Hot Springs Village", "Candidate Forum", "Garland County", "Saline County"],
     mapCoordinates: { lat: 34.6494, lng: -92.98118 },

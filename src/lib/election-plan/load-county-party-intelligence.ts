@@ -3,6 +3,12 @@ import candidatesSource from "../../../data/campaign-brain/county-party-intellig
 import indexSource from "../../../data/campaign-brain/county-party-intelligence/county-party-source-index.json";
 import chunksSource from "../../../data/campaign-brain/county-party-intelligence/county-party-search-chunks.json";
 import { getAllCountyVictoryTargets } from "./load-county-victory-targets";
+import {
+  formatDpaOfficerLine,
+  getDpaChairForCounty,
+  getDpaCountyOfficerStats,
+  getDpaOfficerSearchChunks,
+} from "./load-dpa-county-officers";
 
 export type CountyPartyProfile = {
   county: string;
@@ -100,12 +106,14 @@ export function getCountyMeetingCandidatesForCounty(slug: string): CountyMeeting
 }
 
 export function getCountyPartySearchChunks(): CountyPartySearchChunk[] {
-  return (chunksSource as { chunks: CountyPartySearchChunk[] }).chunks;
+  const arkdems = (chunksSource as { chunks: CountyPartySearchChunk[] }).chunks;
+  return [...arkdems, ...getDpaOfficerSearchChunks()];
 }
 
 export function getCountyPartyIntelligenceRollup() {
   const profiles = getCountyPartyProfiles();
   const candidates = getCountyMeetingCandidates();
+  const dpa = getDpaCountyOfficerStats();
   return {
     countyCount: profiles.length,
     fetchedOk: profiles.filter((p) => p.fetchStatus === "ok").length,
@@ -115,12 +123,22 @@ export function getCountyPartyIntelligenceRollup() {
     parseableMeetings: profiles.filter((p) => p.parsedMeetingRule?.parseStatus === "parsed").length,
     needsVerification: profiles.filter((p) => p.needsHumanVerification).length,
     meetingCandidates: candidates.filter((c) => c.status === "candidate").length,
+    dpaNamedOfficers: dpa.namedOfficers,
+    dpaChairsNamed: dpa.chairsNamed,
+    dpaVacantOffices: dpa.vacantOffices,
     sourceIndexUrl: (indexSource as { sourceIndexUrl: string }).sourceIndexUrl,
     generatedAt: (profilesSource as { generatedAt: string }).generatedAt,
   };
 }
 
 export function getRecommendedCountyPartyAction(profile: CountyPartyProfile): string {
+  const chair = getDpaChairForCounty(profile.slug);
+  if (chair?.displayName && chair.phone) {
+    return `Call ${formatDpaOfficerLine(chair)} and confirm the next meeting before locking Kelly or a surrogate.`;
+  }
+  if (chair?.displayName) {
+    return `Email ${formatDpaOfficerLine(chair)} and confirm the next meeting before locking the calendar.`;
+  }
   if (profile.needsHumanVerification) return "Call county party chair and confirm meeting before scheduling";
   if (profile.parsedMeetingRule?.parseStatus === "parsed") return "Request speaking slot · confirm with chair · add to calendar as proposed";
   if (profile.countyChair) return "Pair with local coffee or house party · surrogate outreach";

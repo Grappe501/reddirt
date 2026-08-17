@@ -19,6 +19,7 @@ import { EXECUTIVE_BOOK_CHAPTERS } from "@/lib/election-plan/executiveBookChapte
 import { fieldEventWorksheetHref, fieldOperationalCalendarHref } from "@/lib/election-plan/field-calendar-links";
 import { forwardMotionStopHref } from "@/lib/election-plan/forward-motion-links";
 import { getCountyPartyProfiles } from "@/lib/election-plan/load-county-party-intelligence";
+import { getDpaOfficerOrgs } from "@/lib/election-plan/load-dpa-county-officers";
 import { buildLanesDrillDown } from "@/lib/election-plan/load-lanes-drill-down";
 import { getMeetingAccountability } from "@/lib/election-plan/load-meeting-accountability";
 import { getArkansasCampuses } from "@/lib/election-plan/load-movement-infrastructure";
@@ -86,7 +87,7 @@ const STATIC_PORTAL_HUBS: AdminElectionPlanLink[] = [
   { label: "Leadership · responsibility matrix", href: "/election-plan/leadership/responsibility-matrix" },
   { label: "Leadership · weekly packet", href: "/election-plan/leadership/weekly-packet" },
   { label: "Meeting & accountability", href: "/election-plan/meetings", keywords: ["rhythm", "cadence"] },
-  { label: "County party intelligence", href: "/election-plan/county-parties", keywords: ["arkdems", "chairs"] },
+  { label: "County party intelligence", href: "/election-plan/county-parties", keywords: ["arkdems", "chairs", "dpa", "officers"] },
   { label: "Immersion missions", href: "/election-plan/immersion-missions" },
   { label: "Intelligence opportunities", href: "/election-plan/intelligence-opportunities" },
   { label: "Event approvals", href: "/election-plan/event-approvals" },
@@ -260,6 +261,7 @@ export function buildAdminElectionPlanCatalogFromSnapshot(
   const academy = getVolunteerAcademy();
   const meetings = getMeetingAccountability().meetings;
   const countyParties = getCountyPartyProfiles();
+  const dpaOrgs = getDpaOfficerOrgs();
 
   const warRoomLinks: AdminElectionPlanLink[] = WAR_ROOM_TAB_GROUPS.flatMap((group) =>
     group.tabs.map((tab) => ({
@@ -401,12 +403,24 @@ export function buildAdminElectionPlanCatalogFromSnapshot(
     keywords: [meeting.id, meeting.title, meeting.day, "accountability"],
   }));
 
-  const countyPartyLinks: AdminElectionPlanLink[] = countyParties.map((profile) => ({
-    label: `${profile.county} · county party profile`,
-    href: `/election-plan/county-parties/${profile.slug}`,
-    keywords: [profile.slug, profile.county, "arkdems", "party"],
-    related: [{ label: "County playbook", href: countyPlaybookHref(profile.slug) }],
-  }));
+  const countyPartyLinks: AdminElectionPlanLink[] = dpaOrgs.map((org) => {
+    const profile = countyParties.find((p) => p.slug === org.orgSlug);
+    return {
+      label: `${org.orgName} · officers`,
+      href: org.href,
+      detail: org.chair?.displayName ? `${org.chair.office} ${org.chair.displayName}` : "Officer roster",
+      keywords: [
+        org.orgSlug,
+        org.orgName,
+        "dpa",
+        "officers",
+        "arkdems",
+        org.chair?.displayName,
+        ...org.officers.slice(0, 8).flatMap((o) => [o.displayName, o.office]),
+      ].filter(Boolean) as string[],
+      related: profile ? [{ label: "County playbook", href: countyPlaybookHref(profile.slug) }] : [],
+    };
+  });
 
   const smokeTestLinks = buildSmokeTestQuickLinks();
 
@@ -538,7 +552,7 @@ export function buildAdminElectionPlanCatalogFromSnapshot(
     {
       id: "county-parties",
       title: "County party intelligence",
-      description: "ArkDems-sourced county party profiles and meeting candidates.",
+      description: "DPA public officer list plus ArkDems meeting pages — chairs, emails, and event booking contacts.",
       links: [{ label: "County parties hub", href: "/election-plan/county-parties" }, ...countyPartyLinks],
     },
     {

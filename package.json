@@ -440,6 +440,7 @@
     "election-plan:community-workbench:pilot-smoke": "node scripts/run-with-h-drive-env.cjs tsx scripts/election-plan/community-workbench-pilot-smoke.ts",
     "election-plan:18.7h:rebuild": "npm run election-plan:build && npm run election-plan:search:build",
     "election-plan:county-parties:scrape": "tsx scripts/election-plan/scrape-arkdems-county-parties.ts",
+    "election-plan:county-officers:ingest": "tsx scripts/election-plan/ingest-dpa-county-officers.ts",
     "election-plan:18.7i:rebuild": "npm run election-plan:county-parties:scrape && npm run election-plan:18.7h:rebuild",
     "election-plan:audit:routes": "tsx scripts/election-plan/audit-portal-routes.ts",
     "election-plan:audit:county-links": "tsx scripts/election-plan/audit-county-playbook-links.ts",

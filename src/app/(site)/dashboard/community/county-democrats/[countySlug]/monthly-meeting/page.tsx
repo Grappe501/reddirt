@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { CountyMonthlyMeetingForm } from "@/components/dashboard/community/county-democrats/CountyMonthlyMeetingForm";
+import { CountyPartyOfficerRoster } from "@/components/election-plan/CountyPartyOfficerRoster";
 import { countyDemocratsHref } from "@/lib/campaign-ops/county-democrats-dashboard-plan";
 import { getRegistryCountyBySlug } from "@/lib/county/arkansas-county-registry";
+import { getDpaOfficerOrgsForLocation } from "@/lib/election-plan/load-dpa-county-officers";
 
 type Props = { params: Promise<{ countySlug: string }> };
 
@@ -17,6 +19,7 @@ export default async function CountyDemocratsMonthlyMeetingPage({ params }: Prop
   const { countySlug } = await params;
   const reg = getRegistryCountyBySlug(countySlug);
   const name = reg?.displayName ?? countySlug;
+  const officerOrgs = getDpaOfficerOrgsForLocation({ countySlug });
 
   return (
     <div className="space-y-8">
@@ -37,6 +40,15 @@ export default async function CountyDemocratsMonthlyMeetingPage({ params }: Prop
           </li>
         </ul>
       </div>
+
+      {officerOrgs.length > 0 ? (
+        <CountyPartyOfficerRoster
+          orgs={officerOrgs}
+          variant="contacts"
+          theme="dashboard"
+          title="County officers for this meeting"
+        />
+      ) : null}
 
       <CountyMonthlyMeetingForm countySlug={countySlug} countyDisplayName={name} />
 

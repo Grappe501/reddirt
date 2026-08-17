@@ -10,6 +10,7 @@ import { getVolunteerLeaderRoster } from "@/lib/volunteers/leader-roster";
 import { leaderWorkbenchHref } from "@/lib/volunteers/build-leader-workbench-v2";
 import type { VolunteerLeader } from "@/lib/volunteers/types";
 import type { WorkbenchEventRow } from "@/lib/campaign-events/merge-persisted-row";
+import { getDpaOfficerOrgsForLocation } from "@/lib/election-plan/load-dpa-county-officers";
 
 const TZ = "America/Chicago";
 const UPCOMING_HORIZON_DAYS = 14;
@@ -30,6 +31,8 @@ export type EventsCommandQueueRow = {
   daysUntil: number;
   missingInfo: boolean;
   duplicateRisk: boolean;
+  partyChair: string | null;
+  partyOfficersHref: string | null;
   detailHref: string;
   adminReviewHref: string;
   forwardMotionHref: string | null;
@@ -126,6 +129,13 @@ function mapWorkbenchRow(
     forwardMotionByName.get(`${title} ${row.county ?? ""}`.toLowerCase()) ??
     null;
 
+  const officerOrgs = getDpaOfficerOrgsForLocation({
+    countySlug: row.county,
+    city: row.likelyCity,
+    eventSlug: title,
+  });
+  const chair = officerOrgs[0]?.chair ?? null;
+
   return {
     recordId: row.recordId,
     dateYmd: row.dateYmd,
@@ -140,6 +150,8 @@ function mapWorkbenchRow(
     daysUntil: daysBetween(todayYmd, row.dateYmd),
     missingInfo: row.persistedMissingCount > 0 || Boolean(row.requestInfoStatus),
     duplicateRisk: row.duplicateRisk,
+    partyChair: chair?.displayName ? `${chair.office} ${chair.displayName}` : null,
+    partyOfficersHref: officerOrgs[0]?.href ?? null,
     detailHref: `/election-plan/operators/events-command?event=${row.recordId}`,
     adminReviewHref: `/admin/campaign-events/review?month=${period}&mode=chronological`,
     forwardMotionHref: fmId ? `/election-plan/forward-motion/${fmId}` : null,

@@ -2,6 +2,12 @@ import Link from "next/link";
 
 import { getCountyPartyProfileBySlug } from "@/lib/election-plan/load-county-party-intelligence";
 import {
+  formatDpaOfficerLine,
+  getDpaChairForCounty,
+  getDpaOfficerOrgsForLocation,
+} from "@/lib/election-plan/load-dpa-county-officers";
+import { CountyPartyOfficerRoster } from "@/components/election-plan/CountyPartyOfficerRoster";
+import {
   filterImmersionMissionForDisplay,
   getImmersionMissionForLocation,
 } from "@/lib/election-plan/load-immersion-county-missions";
@@ -30,6 +36,12 @@ function buildAfterLeave(view: StopCommandCenterView): string {
 
 export function KellyStopBriefPanel({ view }: Props) {
   const countyParty = view.countySlug ? getCountyPartyProfileBySlug(view.countySlug) : null;
+  const officerOrgs = getDpaOfficerOrgsForLocation({
+    countySlug: view.countySlug,
+    city: view.stop.city,
+    eventSlug: view.stop.eventName,
+  });
+  const dpaChair = (view.countySlug ? getDpaChairForCounty(view.countySlug) : officerOrgs[0]?.chair) ?? null;
   const mission = filterImmersionMissionForDisplay(
     getImmersionMissionForLocation({
       countySlug: view.countySlug ?? undefined,
@@ -40,7 +52,7 @@ export function KellyStopBriefPanel({ view }: Props) {
   const progress = mission ? getMissionProgress(mission.id) : null;
 
   const whoMeeting = [
-    countyParty?.countyChair ? `County chair ${countyParty.countyChair}` : null,
+    dpaChair ? formatDpaOfficerLine(dpaChair) : countyParty?.countyChair ? `County chair ${countyParty.countyChair}` : null,
     ...view.coalitionTargets.slice(0, 3).map((c) => c.label),
   ]
     .filter(Boolean)
@@ -88,6 +100,12 @@ export function KellyStopBriefPanel({ view }: Props) {
         ))}
       </ol>
 
+      {officerOrgs.length > 0 ? (
+        <div className="mt-5">
+          <CountyPartyOfficerRoster orgs={officerOrgs} variant="contacts" title="Who to call for this stop" />
+        </div>
+      ) : null}
+
       {mission && progress ? (
         <div className="mt-5">
           <MissionProgressPanel progress={progress} missionHeadline={mission.headline} compact />
@@ -100,7 +118,11 @@ export function KellyStopBriefPanel({ view }: Props) {
             County playbook →
           </Link>
         ) : null}
-        {countyParty ? (
+        {officerOrgs[0] ? (
+          <Link href={officerOrgs[0].href} className="text-[var(--ep-navy)] hover:underline">
+            County party officers →
+          </Link>
+        ) : countyParty ? (
           <Link href={`/election-plan/county-parties/${countyParty.slug}`} className="text-[var(--ep-navy)] hover:underline">
             County party intel →
           </Link>

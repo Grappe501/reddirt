@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import { CampaignCountdown } from "@/components/campaign/CampaignCountdown";
 import { CountyRegistrationGoalCard } from "@/components/dashboard/vos/CountyRegistrationGoalCard";
+import { CountyPartyOfficerRoster } from "@/components/election-plan/CountyPartyOfficerRoster";
 import {
   COUNTY_PARTY_LEADERSHIP_MODEL,
   countyDemocratsHref,
@@ -10,6 +11,7 @@ import {
 import { loadCountyRegistrationGoalCardData } from "@/lib/campaign-engine/county-registration-goal-load";
 import { getRegistryCountyBySlug } from "@/lib/county/arkansas-county-registry";
 import { VOLUNTEER_OS_DEMO_TEAM_SLUG } from "@/lib/team-naming";
+import { getDpaOfficerOrgsForLocation } from "@/lib/election-plan/load-dpa-county-officers";
 
 type Props = { params: Promise<{ countySlug: string }> };
 
@@ -27,6 +29,7 @@ export default async function CountyDemocratsOverviewPage({ params }: Props) {
   const { countySlug } = await params;
   const reg = getRegistryCountyBySlug(countySlug);
   const countyGoalData = await loadCountyRegistrationGoalCardData(countySlug);
+  const officerOrgs = getDpaOfficerOrgsForLocation({ countySlug });
 
   return (
     <div className="space-y-8">
@@ -34,6 +37,15 @@ export default async function CountyDemocratsOverviewPage({ params }: Props) {
         <CampaignCountdown variant="compact" className="h-full" />
         <CountyRegistrationGoalCard mode="county" data={countyGoalData} className="h-full" />
       </div>
+
+      {officerOrgs.length > 0 ? (
+        <CountyPartyOfficerRoster
+          orgs={officerOrgs}
+          variant="contacts"
+          theme="dashboard"
+          title={`${reg?.displayName ?? "County"} party officers`}
+        />
+      ) : null}
 
       <div className="rounded-2xl border border-kelly-gold/30 bg-kelly-gold/[0.06] p-5">
         <p className="font-heading text-sm font-bold text-kelly-navy">Recruitment engines for this county</p>

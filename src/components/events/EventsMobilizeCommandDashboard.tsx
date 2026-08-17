@@ -289,8 +289,19 @@ function EventDetailPanel({ row }: { row: EventsCommandQueueRow }) {
           <dt className="text-xs font-bold uppercase text-[var(--ep-navy-muted)]">Promotion</dt>
           <dd className="mt-1 text-[var(--ep-navy)]">{row.promotionStatus.replaceAll("_", " ")}</dd>
         </div>
+        {row.partyChair ? (
+          <div>
+            <dt className="text-xs font-bold uppercase text-[var(--ep-navy-muted)]">County party</dt>
+            <dd className="mt-1 text-[var(--ep-navy)]">{row.partyChair}</dd>
+          </div>
+        ) : null}
       </dl>
       <div className="mt-6 flex flex-wrap gap-4 text-xs font-semibold">
+        {row.partyOfficersHref ? (
+          <Link href={row.partyOfficersHref} className="text-[var(--ep-blue)] hover:underline">
+            County party officers →
+          </Link>
+        ) : null}
         {row.forwardMotionHref ? (
           <Link href={row.forwardMotionHref} className="text-[var(--ep-blue)] hover:underline">
             Forward Motion command center →

@@ -6,6 +6,7 @@ import {
   type CountyMeetingAssignment,
 } from "@/lib/election-plan/load-county-meeting-assignments";
 import { countyPartyDetailHref } from "@/lib/election-plan/load-county-party-intelligence";
+import { getDpaChairForCounty } from "@/lib/election-plan/load-dpa-county-officers";
 
 function assignmentBadge(plan: string, label: string) {
   const colors: Record<string, string> = {
@@ -31,7 +32,7 @@ function AssignmentRow({ row }: { row: CountyMeetingAssignment }) {
           {row.county}
         </Link>
       </td>
-      <td className="py-2 pr-3 text-sm">{row.countyChair ?? "—"}</td>
+      <td className="py-2 pr-3 text-sm">{getDpaChairForCounty(row.countySlug)?.displayName ?? row.countyChair ?? "—"}</td>
       <td className="py-2 pr-3 text-sm">{row.countyMissionHeadline ?? "—"}</td>
       <td className="py-2 pr-3 text-sm">{row.volunteerCaptain}</td>
       <td className="py-2 pr-3">{assignmentBadge(row.meetingAttendancePlan, row.meetingAttendanceLabel)}</td>
