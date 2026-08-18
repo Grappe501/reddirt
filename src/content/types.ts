@@ -103,6 +103,9 @@ export type EventItem = {
   featuredLabel?: string;
   /** Extra line on the event-page highlight band. */
   featuredSummary?: string;
+  /** Dedicated companion microsite (e.g. Grassroots & Guitar Strings). */
+  companionSiteHref?: string;
+  companionSiteLabel?: string;
   /** Public flyer image under `/public`, e.g. `/media/event-flyers/coffee-with-kelly-searcy-2026-08-22.png`. */
   flyerSrc?: string;
   flyerAlt?: string;

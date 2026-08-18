@@ -1,4 +1,8 @@
 import type { EventItem, EventType } from "@/content/types";
+import {
+  GRASSROOTS_GUITAR_STRINGS_TICKET_URL,
+  getGrassrootsGuitarStringsSiteUrl,
+} from "@/config/external-campaign";
 
 const TZ = "America/Chicago";
 const DETAILS_LATER =
@@ -31,6 +35,13 @@ type StopDraft = {
   mapPinQuality?: EventItem["mapPinQuality"];
   flyerSrc?: string;
   flyerAlt?: string;
+  companionSiteHref?: string;
+  companionSiteLabel?: string;
+  primaryHref?: string;
+  primaryCtaLabel?: string;
+  featured?: boolean;
+  featuredLabel?: string;
+  featuredSummary?: string;
 };
 
 function campaignStop(draft: StopDraft): EventItem {
@@ -69,6 +80,13 @@ function campaignStop(draft: StopDraft): EventItem {
     mapPinQuality: draft.mapPinQuality,
     flyerSrc: draft.flyerSrc,
     flyerAlt: draft.flyerAlt,
+    companionSiteHref: draft.companionSiteHref,
+    companionSiteLabel: draft.companionSiteLabel,
+    primaryHref: draft.primaryHref,
+    primaryCtaLabel: draft.primaryCtaLabel,
+    featured: draft.featured,
+    featuredLabel: draft.featuredLabel,
+    featuredSummary: draft.featuredSummary,
     fieldAttendance: draft.fieldAttendance ?? "confirmed",
     campaignTrail: true,
     statewideVirtual: draft.statewideVirtual,
@@ -390,14 +408,36 @@ export const september2026CampaignStops: EventItem[] = [
     type: "Community Conversation",
     region: "Central Arkansas",
     countySlug: "pulaski-county",
-    startsAt: "2026-09-17T18:00:00",
-    timeTbd: true,
-    locationLabel: "Sherwood",
+    startsAt: "2026-09-17T17:30:00",
+    timeTbd: false,
+    locationLabel: "Sherwood Forest",
     city: "Sherwood",
-    summary: "Grassroots & Guitar Strings in Sherwood. Time to be posted.",
-    audienceTags: ["Sherwood", "Pulaski County"],
+    summary:
+      "A Sherwood homecoming with David Adam Byrnes — live music, a hometown meal, and a celebration of democracy. Kelly kicks off the final six weeks of her campaign.",
+    description:
+      "Grassroots & Guitar Strings is Kelly Grappe's Sherwood homecoming and campaign election rally — Constitution Day, September 17, 2026. David Adam Byrnes returns for live country music; Kelly's brother and friends prepare a shared meal. This is a celebration to bring neighbors together, register voters, and launch the final six-week tour — not a night of partisan argument.",
+    whatToExpect: [
+      "Thursday, September 17, 2026 — 5:30 p.m. Central at Sherwood Forest, Sherwood.",
+      "Live country music with David Adam Byrnes (Arkansas roots — farm festivals, Rose Bud, and years of friendship with Kelly and Steve).",
+      "Hometown meal, voter-registration support, and a celebration-of-democracy program.",
+      "Tickets and table hosting via GoodChange — individual contributions only.",
+    ],
+    whoItsFor:
+      "Neighbors, families, and anyone who wants an Arkansas homecoming night with music and fellowship — all political persuasions welcome at the table.",
+    organizerNote:
+      "Companion event website at grassrootsguitarstrings.com (or NEXT_PUBLIC_GRASSROOTS_EVENT_SITE_URL). Venue address and run-of-show details TBD. David's tour lists Sherwood Forest 5:30 p.m. Confirm with host before hard-locking times.",
+    attendanceType: "PUBLIC_OPEN",
+    audienceTags: ["Sherwood", "Pulaski County", "Homecoming", "David Adam Byrnes"],
     mapCoordinates: { lat: 34.8151, lng: -92.2243 },
     relatedEventSlugs: ["calhoun-county-fair-2026-09-18"],
+    companionSiteHref: getGrassrootsGuitarStringsSiteUrl(),
+    companionSiteLabel: "Visit the event website",
+    primaryHref: GRASSROOTS_GUITAR_STRINGS_TICKET_URL,
+    primaryCtaLabel: "Get tickets",
+    featured: true,
+    featuredLabel: "Homecoming celebration",
+    featuredSummary:
+      "Full event site with music, Kelly & David's story, tickets, and table hosting — explore before you arrive.",
   }),
   campaignStop({
     slug: "calhoun-county-fair-2026-09-18",

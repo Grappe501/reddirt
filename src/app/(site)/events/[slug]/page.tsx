@@ -9,7 +9,9 @@ import { Button } from "@/components/ui/Button";
 import { EventMeta } from "@/components/organizing/EventMeta";
 import { EventCard } from "@/components/organizing/EventCard";
 import { EventShareActions } from "@/components/organizing/EventShareActions";
+import { EventCompanionSiteBanner } from "@/components/organizing/EventCompanionSiteBanner";
 import { EventFlyerGallery } from "@/components/organizing/EventFlyer";
+import { getGrassrootsGuitarStringsSiteUrl } from "@/config/external-campaign";
 import { RelatedLinksSection } from "@/components/organizing/RelatedLinksSection";
 import { getEventBySlug, listEventSlugs } from "@/content/events";
 import type { EventItem } from "@/content/types";
@@ -88,6 +90,10 @@ async function CuratedOrCalendarEventView({ event }: { event: EventItem }) {
   const heroCtaLabel = live.primaryCtaLabel ?? attendance.rsvpLabel;
   const featured = Boolean(live.featured);
   const sharePath = `/events/${live.slug}`;
+  const companionSiteHref =
+    live.companionSiteHref && live.slug === "grassroots-guitar-strings-sherwood-2026-09-17"
+      ? getGrassrootsGuitarStringsSiteUrl()
+      : live.companionSiteHref;
   const flyers =
     live.flyerGallery && live.flyerGallery.length > 0
       ? live.flyerGallery
@@ -97,6 +103,13 @@ async function CuratedOrCalendarEventView({ event }: { event: EventItem }) {
 
   return (
     <>
+      {companionSiteHref ? (
+        <EventCompanionSiteBanner
+          href={companionSiteHref}
+          label={live.companionSiteLabel ?? "Visit the event website"}
+          eventTitle={live.title}
+        />
+      ) : null}
       <EventDetailHero
         eyebrow={
           featured
@@ -109,6 +122,11 @@ async function CuratedOrCalendarEventView({ event }: { event: EventItem }) {
         {heroCtaLabel ? (
           <Button href={rsvpHref} variant="primary">
             {heroCtaLabel}
+          </Button>
+        ) : null}
+        {companionSiteHref ? (
+          <Button href={companionSiteHref} variant="outlineOnDark">
+            {live.companionSiteLabel ?? "Event website"}
           </Button>
         ) : null}
         <Button href="/events" variant="outlineOnDark">

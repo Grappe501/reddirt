@@ -112,3 +112,13 @@ export function resolvePublicDonateHref(): string {
   if (ext) return ext;
   return DONATE_GOODCHANGE;
 }
+
+/** Grassroots & Guitar Strings companion microsite — override when Netlify URL is live. */
+export function getGrassrootsGuitarStringsSiteUrl(): string {
+  const fromEnv = process.env.NEXT_PUBLIC_GRASSROOTS_EVENT_SITE_URL?.trim().replace(/\/$/, "");
+  if (fromEnv) return fromEnv;
+  return "https://grassrootsguitarstrings.com";
+}
+
+/** GoodChange ticket page for Grassroots & Guitar Strings (Sep 17 Sherwood). */
+export const GRASSROOTS_GUITAR_STRINGS_TICKET_URL = "https://goodchange.app/donate/grass-ax" as const;
