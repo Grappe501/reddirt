@@ -117,7 +117,7 @@ export function resolvePublicDonateHref(): string {
 export function getGrassrootsGuitarStringsSiteUrl(): string {
   const fromEnv = process.env.NEXT_PUBLIC_GRASSROOTS_EVENT_SITE_URL?.trim().replace(/\/$/, "");
   if (fromEnv) return fromEnv;
-  return "https://grassrootsguitarstrings.com";
+  return "https://grassrootsguitarstrings.netlify.app";
 }
 
 /** GoodChange ticket page for Grassroots & Guitar Strings (Sep 17 Sherwood). */
