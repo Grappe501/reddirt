@@ -43,6 +43,10 @@
   --border-ui: var(--color-border-subtle);
   --border-on-navy: rgba(255, 255, 255, 0.2);
 
+  /** Brand typography — self-hosted via site-fonts.css (League Spartan + Raleway) */
+  --font-heading: "League Spartan", system-ui, sans-serif;
+  --font-body: "Raleway", system-ui, sans-serif;
+
   --max-content-width: 1280px;
   --section-padding-y: clamp(3rem, 6vw, 5.5rem);
   --section-padding-y-lg: clamp(4rem, 8vw, 7rem);

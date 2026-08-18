@@ -1,0 +1,12 @@
+/**
+ * Self-hosted brand fonts (no Google Fonts fetch at build time — Netlify-safe).
+ * Weights match public site usage: body UI + heading bold stacks.
+ */
+@import "@fontsource/league-spartan/latin-400.css";
+@import "@fontsource/league-spartan/latin-500.css";
+@import "@fontsource/league-spartan/latin-600.css";
+@import "@fontsource/league-spartan/latin-700.css";
+@import "@fontsource/raleway/latin-400.css";
+@import "@fontsource/raleway/latin-500.css";
+@import "@fontsource/raleway/latin-600.css";
+@import "@fontsource/raleway/latin-700.css";

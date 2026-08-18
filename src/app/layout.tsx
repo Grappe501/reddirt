@@ -1,22 +1,8 @@
 import type { Metadata } from "next";
-import { League_Spartan, Raleway } from "next/font/google";
 import { AnalyticsProvider } from "@/components/AnalyticsProvider";
 import { siteConfig } from "@/config/site";
+import "./site-fonts.css";
 import "./globals.css";
-
-/** Primary bold headings — official brand card (all-caps stack / display) */
-const leagueSpartan = League_Spartan({
-  subsets: ["latin"],
-  variable: "--font-heading",
-  display: "swap",
-});
-
-/** Secondary / body / UI — official brand card */
-const raleway = Raleway({
-  subsets: ["latin"],
-  variable: "--font-body",
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   title: {
@@ -33,7 +19,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${leagueSpartan.variable} ${raleway.variable}`}>
+    <html lang="en">
       <body className="flex min-h-screen flex-col">
         <AnalyticsProvider>{children}</AnalyticsProvider>
       </body>

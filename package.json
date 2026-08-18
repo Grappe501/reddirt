@@ -545,6 +545,8 @@
     "brain:ingest:tree:training": "tsx scripts/ingest-campaign-folder.ts --dir \"H:/SOSWebsite/campaign information for ingestion\" --include-zips --brain-governed --community-training"
   },
   "dependencies": {
+    "@fontsource/league-spartan": "^5.3.0",
+    "@fontsource/raleway": "^5.3.0",
     "@googleapis/calendar": "^12.0.0",
     "@googleapis/gmail": "^15.0.0",
     "@googleapis/people": "^6.0.0",
