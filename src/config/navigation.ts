@@ -4,6 +4,10 @@ import {
 } from "@/config/direct-democracy-links";
 import { getCampaignBlogSubscribeUrl } from "@/config/external-campaign";
 
+/** Featured Sep 17 Sherwood homecoming — public campaign event detail page. */
+export const grassrootsGuitarStringsEventHref =
+  "/events/grassroots-guitar-strings-sherwood-2026-09-17" as const;
+
 export type NavItem = {
   label: string;
   href: string;
@@ -111,6 +115,7 @@ export const primaryNavGroups: NavGroup[] = [
       { label: "From the Road", href: "/from-the-road" },
       { label: "Press Coverage", href: "/press-coverage" },
       { label: "Events", href: "/events" },
+      { label: "Grassroots & Guitar Strings", href: grassrootsGuitarStringsEventHref },
       { label: "Invite Kelly", href: "/events/request" },
       { label: "Listening Sessions", href: "/listening-sessions" },
     ],
@@ -157,6 +162,7 @@ export const footerNavGroups: { title: string; items: NavItem[] }[] = [
       { label: "Kelly’s Substack", href: "/from-the-road" },
       { label: "Subscribe to Kelly’s Substack", href: getCampaignBlogSubscribeUrl() },
       { label: "Events", href: "/events" },
+      { label: "Grassroots & Guitar Strings", href: grassrootsGuitarStringsEventHref },
       { label: "Invite Kelly", href: "/events/request" },
       { label: "Host a gathering", href: "/host-a-gathering" },
       { label: "Listening sessions", href: "/listening-sessions" },

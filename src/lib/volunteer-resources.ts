@@ -1,5 +1,3 @@
-import { VOLUNTEER_OS_DEMO_TEAM_SLUG } from "@/lib/team-naming";
-
 export type VolunteerResourceCategoryId =
   | "getting-started"
   | "team-building"
@@ -69,6 +67,16 @@ export type VolunteerResourceCategory = {
   title: string;
   description: string;
 };
+
+/** Operator / leadership lanes — hidden from the public resource library index. */
+export const INTERNAL_VOLUNTEER_RESOURCE_CATEGORY_IDS: VolunteerResourceCategoryId[] = [
+  "county-party-organizing",
+  "muslim-community-outreach",
+];
+
+export function isPublicVolunteerResourceCategory(id: VolunteerResourceCategoryId): boolean {
+  return !INTERNAL_VOLUNTEER_RESOURCE_CATEGORY_IDS.includes(id);
+}
 
 export const VOLUNTEER_RESOURCE_CATEGORIES: VolunteerResourceCategory[] = [
   {
@@ -312,8 +320,8 @@ export const VOLUNTEER_RESOURCES: VolunteerResource[] = [
     id: "local-post-ideas",
     category: "recruitment",
     title: "Local post ideas",
-    description: "Prompts for weekly local social posts (also on the team dashboard Resources tab).",
-    href: `/dashboard/team/${VOLUNTEER_OS_DEMO_TEAM_SLUG}/resources#local-post-ideas`,
+    description: "Prompts for weekly local social posts.",
+    href: "/volunteer/resources/messaging#captions",
     fileType: "Web",
   },
   {
@@ -680,9 +688,9 @@ export const VOLUNTEER_RESOURCES: VolunteerResource[] = [
   {
     id: "cd-county-dashboard-hub",
     category: "county-party-organizing",
-    title: "County Democrats · organizing dashboard",
-    description: "Per-county shell: monthly meeting, lanes, P5/VR, precinct builder, resources, messages, rollup KPIs.",
-    href: "/dashboard/community/county-democrats",
+    title: "County Democrats · organizing hub",
+    description: "Start a local team first — county leadership tools arrive after you are connected with a coordinator.",
+    href: "/start-a-local-team",
     fileType: "Web",
   },
   {
@@ -800,10 +808,10 @@ export const VOLUNTEER_RESOURCES: VolunteerResource[] = [
   {
     id: "mc-dashboard-live",
     category: "muslim-community-outreach",
-    title: "Muslim Community Region · Live dashboard",
+    title: "Muslim Community outreach (draft plan)",
     description:
-      "Partner-facing shell: Overview, lanes, mosque polling readiness, resources, messages, rollup — still labeled draft until leadership review.",
-    href: "/dashboard/community/muslim",
+      "Youth and Women’s civic organizing resources — draft pending Muslim community leadership review. Not final until reviewed.",
+    href: "/volunteer/resources/muslim-community",
     fileType: "Web",
   },
   {

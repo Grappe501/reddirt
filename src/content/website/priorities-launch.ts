@@ -318,7 +318,7 @@ export const prioritiesLaunchCopy = {
         },
       ],
       cta: {
-        href: "/volunteer-kickoff/youth",
+        href: "/get-involved#volunteer",
         label: "See How We’re Building Youth Civic Power →",
       },
     },

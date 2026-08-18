@@ -68,11 +68,11 @@ export default function EventsLaneResourceHubPage() {
         title="Events operating manual"
         subtitle="From “I want to help with events” to “I can host, train hosts, and stack a two-day city visit without HQ babysitting.” Use field playbooks for depth; this hub is your table of contents."
       >
-        <Button href="/field-playbook/roles/events-coordinator" variant="outline">
+        <Button href="/field-playbook" variant="outline">
           Events coordinator guide
         </Button>
-        <Button href="/field-playbook/roles/events-hosting-playbook" variant="outline">
-          Hosting playbook
+        <Button href="/field-playbook" variant="outline">
+          Field playbook
         </Button>
       </PageHero>
       <FullBleedSection padY variant="subtle">
@@ -82,14 +82,17 @@ export default function EventsLaneResourceHubPage() {
           <AnchorSection id="toolkits" title="Toolkits & planners">
             <p>Each item opens the canonical web playbook (print-friendly in the browser).</p>
             <ul className="mt-2 list-disc space-y-2 pl-5">
-              {items.map((r) => (
+              {items.map((r) => {
+                const href = r.href.startsWith("/field-playbook/") ? "/field-playbook" : r.href;
+                return (
                 <li key={r.id}>
-                  <Link href={r.href} className="font-semibold text-kelly-blue hover:underline">
+                  <Link href={href} className="font-semibold text-kelly-blue hover:underline">
                     {r.title}
                   </Link>
                   <span className="text-kelly-text/75"> — {r.description}</span>
                 </li>
-              ))}
+                );
+              })}
             </ul>
           </AnchorSection>
 
@@ -97,7 +100,7 @@ export default function EventsLaneResourceHubPage() {
             <p>
               Every county should aim for <strong>at least one</strong> fundraising event between now and September — more when
               hosts and compliance capacity allow. Track county, host, date, goal, invites, RSVP, raised, and follow-up in the{" "}
-              <Link href="/field-playbook/roles/fundraising-receptions-county" className="font-semibold text-kelly-blue underline">
+              <Link href="/field-playbook" className="font-semibold text-kelly-blue underline">
                 Fundraising Event Toolkit
               </Link>
               .
@@ -107,11 +110,11 @@ export default function EventsLaneResourceHubPage() {
           <AnchorSection id="weekend-immersion" title="Weekend Community Immersion (repeatable)">
             <p>
               Four to five ~45 minute home meet-and-greets anchored to a larger local event — see{" "}
-              <Link href="/field-playbook/roles/weekend-community-immersion" className="font-semibold text-kelly-blue underline">
+              <Link href="/field-playbook" className="font-semibold text-kelly-blue underline">
                 Weekend Community Immersion
               </Link>
               . Pair coffee, lunch, faith, and student blocks from the{" "}
-              <Link href="/field-playbook/roles/two-day-city-immersion" className="font-semibold text-kelly-blue underline">
+              <Link href="/field-playbook" className="font-semibold text-kelly-blue underline">
                 two-day city model
               </Link>
               .
@@ -121,7 +124,7 @@ export default function EventsLaneResourceHubPage() {
           <AnchorSection id="travel-rhythm" title="Travel rhythm">
             <p>
               Sustainable defaults for home nights and return buffers —{" "}
-              <Link href="/field-playbook/roles/travel-rhythm-model" className="font-semibold text-kelly-blue underline">
+              <Link href="/field-playbook" className="font-semibold text-kelly-blue underline">
                 Travel rhythm model
               </Link>
               .
@@ -131,7 +134,7 @@ export default function EventsLaneResourceHubPage() {
           <AnchorSection id="faith" title="Faith communities">
             <p>
               Checklist: leader ID → contact → request → scheduled → follow-up. Read{" "}
-              <Link href="/field-playbook/roles/faith-community-visits" className="font-semibold text-kelly-blue underline">
+              <Link href="/field-playbook" className="font-semibold text-kelly-blue underline">
                 Faith community visits
               </Link>
               .
@@ -159,28 +162,28 @@ export default function EventsLaneResourceHubPage() {
           <AnchorSection id="cross-lane" title="Other lanes (hardening pass)">
             <ul className="list-disc space-y-1 pl-5">
               <li>
-                <Link href="/field-playbook/roles/social-advanced-local-press" className="font-semibold text-kelly-blue underline">
+                <Link href="/field-playbook" className="font-semibold text-kelly-blue underline">
                   Social · local media & press graphics
                 </Link>
               </li>
               <li>
-                <Link href="/field-playbook/roles/p5-vr-event-operations" className="font-semibold text-kelly-blue underline">
+                <Link href="/field-playbook" className="font-semibold text-kelly-blue underline">
                   P5 / VR · registration events & polling readiness
                 </Link>
               </li>
               <li>
-                <Link href="/field-playbook/roles/youth-semester-campus-execution" className="font-semibold text-kelly-blue underline">
+                <Link href="/field-playbook" className="font-semibold text-kelly-blue underline">
                   Youth · semester & campus challenges
                 </Link>
               </li>
               <li>
-                <Link href="/field-playbook/roles/womens-outreach-execution" className="font-semibold text-kelly-blue underline">
+                <Link href="/field-playbook" className="font-semibold text-kelly-blue underline">
                   Women&apos;s Outreach · family & listening sessions
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/field-playbook/coordination/community-region-leadership"
+                  href="/field-playbook"
                   className="font-semibold text-kelly-blue underline"
                 >
                   Community region leadership training

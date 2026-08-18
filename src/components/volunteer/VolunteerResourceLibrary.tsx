@@ -11,7 +11,11 @@ import {
   presentVolunteerResource,
 } from "@/lib/volunteer-resource-publication";
 import type { VolunteerResource } from "@/lib/volunteer-resources";
-import { getVolunteerResourcesByCategory, VOLUNTEER_RESOURCE_CATEGORIES } from "@/lib/volunteer-resources";
+import {
+  getVolunteerResourcesByCategory,
+  isPublicVolunteerResourceCategory,
+  VOLUNTEER_RESOURCE_CATEGORIES,
+} from "@/lib/volunteer-resources";
 
 function ResourceRow({ resource }: { resource: VolunteerResource }) {
   const pres = presentVolunteerResource(resource);
@@ -140,7 +144,7 @@ export function VolunteerResourceLibrary() {
   return (
     <>
       <ResourceLibraryIntro />
-      {VOLUNTEER_RESOURCE_CATEGORIES.map((cat, index) => {
+      {VOLUNTEER_RESOURCE_CATEGORIES.filter((cat) => isPublicVolunteerResourceCategory(cat.id)).map((cat, index) => {
         const items = byCat.get(cat.id) ?? [];
         const variant = index % 2 === 0 ? "default" : "subtle";
         return (

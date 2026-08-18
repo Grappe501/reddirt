@@ -6,8 +6,6 @@ import { PageHero } from "@/components/blocks/PageHero";
 import { Button } from "@/components/ui/Button";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { FullBleedSection } from "@/components/layout/FullBleedSection";
-import { COUNTY_DEMOCRATS_DASHBOARD_ROUTE_PREFIX } from "@/lib/campaign-ops/county-democrats-dashboard-plan";
-
 import { VOLUNTEER_RESOURCES } from "@/lib/volunteer-resources";
 
 export const metadata: Metadata = {
@@ -56,8 +54,8 @@ export default function CountyPartyLaunchKitPage() {
         title="County Party Launch Kit"
         subtitle="Operating rhythm for county leadership: one strong monthly meeting, growing Power of 5 networks, precinct triads, and steady comms — same lane tools as campaign teams."
       >
-        <Button href={COUNTY_DEMOCRATS_DASHBOARD_ROUTE_PREFIX} variant="outline">
-          County Democrats hub
+        <Button href="/start-a-local-team" variant="outline">
+          Start a local team
         </Button>
         <Button href="/volunteer/resources" variant="outline">
           Full library

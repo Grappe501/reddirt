@@ -1,5 +1,4 @@
 import type { EventItem, EventType } from "@/content/types";
-import { ARKANSAS_YOUTH_COALITION_HREF } from "@/content/events/recurring-virtual-series";
 
 const TZ = "America/Chicago";
 const DETAILS_LATER =
@@ -583,11 +582,11 @@ export const august2026CampaignStops: EventItem[] = [
     featuredLabel: "Weekend highlight",
     featuredSummary:
       "Friday night training with the Arkansas Youth Coalition. Saturday is Chickin-n-Politikin at the Chicken Fry — practicing those skills and campaigning.",
-    primaryHref: ARKANSAS_YOUTH_COALITION_HREF,
+    primaryHref: "/get-involved#volunteer",
     primaryCtaLabel: "Ask about Retreat #2",
     relatedEventSlugs: ["chickin-n-politikin-mount-nebo-2026-08-29"],
     relatedResourceHrefs: [
-      { label: "Arkansas Youth Coalition", href: ARKANSAS_YOUTH_COALITION_HREF },
+      { label: "Volunteer", href: "/get-involved#volunteer" },
       { label: "Chickin-n-Politikin on Saturday", href: "/events/chickin-n-politikin-mount-nebo-2026-08-29" },
       { label: "Get involved", href: "/get-involved" },
     ],
@@ -633,7 +632,7 @@ export const august2026CampaignStops: EventItem[] = [
     ],
     relatedResourceHrefs: [
       { label: "Arkansas Youth Coalition Retreat #2", href: "/events/arkansas-youth-coalition-retreat-2026-08-28" },
-      { label: "Arkansas Youth Coalition", href: ARKANSAS_YOUTH_COALITION_HREF },
+      { label: "Volunteer", href: "/get-involved#volunteer" },
       { label: "Get involved", href: "/get-involved" },
     ],
   }),

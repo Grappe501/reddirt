@@ -20,7 +20,7 @@ export function HomeAcrossArkansasVoices() {
             Arkansas counties &amp; public briefings
           </h2>
           <p className="mt-5 font-body text-lg leading-relaxed text-kelly-slate md:text-xl">
-            Find your county and read public planning briefings as they roll out—written for voters, not insiders.
+            Find your county and see where Kelly is on the road — written for voters, not insiders.
             Verified neighbor stories appear on Stories when they’re ready to share.
           </p>
         </FadeInWhenVisible>
@@ -36,10 +36,10 @@ export function HomeAcrossArkansasVoices() {
           </FadeInWhenVisible>
           <FadeInWhenVisible delay={0.08}>
             <Link
-              href="/county-briefings"
+              href="/events"
               className="inline-flex min-h-[48px] flex-1 items-center justify-center rounded-btn border-2 border-kelly-gold/50 bg-kelly-gold/10 px-6 py-3 text-center text-sm font-bold uppercase tracking-wider text-kelly-navy transition hover:bg-kelly-gold/20 sm:min-w-[12rem]"
             >
-              County briefings
+              Events calendar
             </Link>
           </FadeInWhenVisible>
         </div>

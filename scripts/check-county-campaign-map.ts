@@ -5,7 +5,6 @@ import { august2026CampaignStops } from "../src/content/events/august-2026-campa
 import { september2026CampaignStops } from "../src/content/events/september-2026-campaign-stops";
 import { october2026CampaignStops } from "../src/content/events/october-2026-campaign-stops";
 import {
-  ARKANSAS_YOUTH_COALITION_HREF,
   FAITH_REFLECTION_FACEBOOK_HREF,
   recurringVirtualSeries,
 } from "../src/content/events/recurring-virtual-series";
@@ -305,8 +304,8 @@ if (arkansasCountyKey("Van Buren") !== "van-buren") fail("van-buren key");
   if (faith.rsvpHref !== FAITH_REFLECTION_FACEBOOK_HREF) fail("Faith series must use the specific Facebook event link");
   if (/facebook\.com\/events/i.test(faith.rsvpHref ?? "")) fail("Do not use generic Facebook Online Events discovery URL");
   const youth = virtual.find((e) => e.slug.startsWith("college-young-people-zoom-"))!;
-  if (youth.rsvpHref !== ARKANSAS_YOUTH_COALITION_HREF || youth.linkCardToPrimary !== true) {
-    fail("College Zoom must link to Arkansas Youth Coalition");
+  if (youth.rsvpHref !== "/get-involved#volunteer" || youth.linkCardToPrimary !== true) {
+    fail("College Zoom must link to the public volunteer form");
   }
   if (!youth.audienceTags?.includes("youth_college")) fail("College Zoom needs audience youth_college");
   if (!youth.opsFlags?.timeTbd) fail("College Zoom clock time is still TBA until Steve confirms it");

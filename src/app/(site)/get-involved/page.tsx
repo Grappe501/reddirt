@@ -456,8 +456,8 @@ export default async function GetInvolvedPage({
             <Button href="/start-a-local-team" variant="primary" className="min-h-[48px]">
               Start a local team
             </Button>
-            <Button href="/county-briefings" variant="outline" className="min-h-[48px]">
-              County briefings
+            <Button href="/counties" variant="outline" className="min-h-[48px]">
+              Find your county
             </Button>
           </div>
         </ContentContainer>

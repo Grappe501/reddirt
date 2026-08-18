@@ -89,6 +89,9 @@ const LEAK_PATTERNS = [
   { re: /\/dashboard\/team\b/, id: "leak-dashboard-team", rec: "Do not send public volunteers to /dashboard/team. Demo slugs 500 and are Oklahoma-named." },
   { re: /creek-county-liberty|sapulpa-beacon|drumright-torch|bristow-eagle|VOLUNTEER_OS_DEMO_TEAM_SLUG/, id: "leak-oklahoma-demo", rec: "Oklahoma volunteer-OS demo team slugs must not appear on the Arkansas public site." },
   { re: /\/organizing-intelligence\b/, id: "leak-oi", rec: "Organizing intelligence is not a public destination; keep it off marketing CTAs." },
+  { re: /\/volunteer-kickoff\b/, id: "leak-volunteer-kickoff", rec: "Volunteer kickoff deck is internal. Send public CTAs to /get-involved#volunteer." },
+  { re: /arkansasyouth\.netlify\.app/, id: "leak-ayc-external", rec: "Do not send public visitors to the Arkansas Youth Coalition microsite. Use /get-involved#volunteer or /voter-registration." },
+  { re: /\/dashboard\/community\b/, id: "leak-dashboard-community", rec: "Community dashboards are operator tools — not public volunteer destinations." },
   { re: /href=["'`]\/field-playbook\/[^"'`]+/, id: "leak-playbook-child", rec: "Field playbook child URLs 404 from public volunteer pages. Link only to pages that exist, or to /volunteer/resources." },
 ];
 

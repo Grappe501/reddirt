@@ -8,7 +8,6 @@ export const FAITH_REFLECTION_SERIES_ID = "faith-reflection-zoom";
 export const COLLEGE_YOUTH_SERIES_ID = "college-young-people-zoom";
 
 export const FAITH_REFLECTION_FACEBOOK_HREF = "https://www.facebook.com/share/1DSu83938s/";
-export const ARKANSAS_YOUTH_COALITION_HREF = "https://arkansasyouth.netlify.app";
 
 const FAITH_DESCRIPTION = [
   "My faith is important to me, and I know faith is an important part of life for many others, too. I also respect that faith and reflection look different for each of us.",
@@ -93,25 +92,26 @@ function collegeYouthOccurrence(ymd: string): EventItem {
     addressLine: "Online",
     city: "Online",
     summary:
-      "Every Thursday. Statewide Zoom for college students and young people. Learn more with the Arkansas Youth Coalition. Does not count as a county visit.",
+      "Every Thursday. Statewide Zoom for college students and young people — volunteer, register voters, and build civic power with Kelly’s campaign. Does not count as a county visit.",
     description:
-      "Each Thursday, Kelly’s campaign hosts a statewide Zoom for college students and young people. This is a virtual gathering — it never paints a county on the map and never changes the 51/75 county count.\n\nLearn more and get involved through the Arkansas Youth Coalition.",
+      "Each Thursday, Kelly’s campaign hosts a statewide Zoom for college students and young people. This is a virtual gathering — it never paints a county on the map and never changes the 51/75 county count.\n\nSign up to volunteer and we will send the Zoom link and next steps.",
     whatToExpect: [
       "Every Thursday · Time TBA",
       "Statewide / virtual — college students and young people",
-      "Learn more / get involved at the Arkansas Youth Coalition",
+      "Volunteer through Kelly’s campaign — we send the Zoom link",
       "Never counts as a county visit",
     ],
     whoItsFor: "College students, young people, and anyone who wants to help build youth civic power in Arkansas.",
     organizerNote: "Recurring statewide virtual series through Election Day. Time still to be posted. Does not qualify as a county visit.",
-    rsvpHref: ARKANSAS_YOUTH_COALITION_HREF,
-    primaryHref: ARKANSAS_YOUTH_COALITION_HREF,
-    primaryCtaLabel: "Learn more / Get involved → Arkansas Youth Coalition",
+    rsvpHref: "/get-involved#volunteer",
+    primaryHref: "/get-involved#volunteer",
+    primaryCtaLabel: "Volunteer / Get involved",
     linkCardToPrimary: true,
     audienceTags: ["Youth", "College", "youth_college", "Statewide", "Virtual"],
     relatedEventSlugs: [],
     relatedResourceHrefs: [
-      { label: "Arkansas Youth Coalition", href: ARKANSAS_YOUTH_COALITION_HREF },
+      { label: "Volunteer", href: "/get-involved#volunteer" },
+      { label: "Voter registration", href: "/voter-registration" },
       { label: "Events calendar", href: "/events" },
     ],
     fieldAttendance: "confirmed",

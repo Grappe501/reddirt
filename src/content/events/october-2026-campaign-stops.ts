@@ -1,6 +1,5 @@
 import type { EventItem, EventType } from "@/content/types";
 import { getMovementRegionForCountySlug, STATEWIDE_EVENT_REGION } from "@/content/arkansas-movement-regions";
-import { ARKANSAS_YOUTH_COALITION_HREF } from "@/content/events/recurring-virtual-series";
 
 const TZ = "America/Chicago";
 const DETAILS_LATER =
@@ -26,6 +25,8 @@ type StopDraft = {
   mapCoordinates?: { lat: number; lng: number };
   relatedEventSlugs: string[];
   relatedResourceHrefs?: Array<{ label: string; href: string }>;
+  primaryHref?: string;
+  primaryCtaLabel?: string;
   fieldAttendance?: "confirmed" | "tentative";
   whoItsFor?: string;
   organizerNote?: string;
@@ -71,6 +72,8 @@ function campaignStop(draft: StopDraft): EventItem {
       { label: "Events calendar", href: "/events" },
       { label: "Get involved", href: "/get-involved" },
     ],
+    primaryHref: draft.primaryHref,
+    primaryCtaLabel: draft.primaryCtaLabel,
     mapCoordinates: draft.mapCoordinates,
     fieldAttendance: draft.fieldAttendance ?? "confirmed",
     campaignTrail: true,
@@ -213,9 +216,11 @@ export const october2026CampaignStops: EventItem[] = [
     summary: "Sunday AYC karaoke event in Hot Springs. Time to be posted.",
     audienceTags: ["Hot Springs", "Garland County", "Youth", "College"],
     mapCoordinates: { lat: 34.5037, lng: -93.0552 },
+    primaryHref: "/get-involved#volunteer",
+    primaryCtaLabel: "Volunteer / Get involved",
     relatedEventSlugs: ["hot-springs-chili-cookoff-2026-10-11", "arkansas-tv-debates-2026-10-12"],
     relatedResourceHrefs: [
-      { label: "Arkansas Youth Coalition", href: ARKANSAS_YOUTH_COALITION_HREF },
+      { label: "Volunteer", href: "/get-involved#volunteer" },
       { label: "Events calendar", href: "/events" },
     ],
   }),

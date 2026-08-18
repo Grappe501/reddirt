@@ -24,7 +24,7 @@ export default function TeamLaunchKitPage() {
         title="Team Launch Kit"
         subtitle="Everything a triad needs to recruit, onboard, train, and hand off downstream teams without waiting on daily HQ babysitting."
       >
-        <Button href="/field-playbook/overview/self-building-team-system" variant="outline">
+        <Button href="/field-playbook" variant="outline">
           Self-Building doctrine
         </Button>
         <Button href="/volunteer/resources" variant="outline">

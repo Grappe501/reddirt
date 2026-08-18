@@ -190,14 +190,14 @@ export const DASHBOARD_PREVIEWS: DashboardPreview[] = [
     route: "/messages",
   },
   {
-    label: "Volunteer preview",
-    description: "Your five, your next step, your momentum — scoped to you (illustrative).",
-    route: "/dashboard",
+    label: "Volunteer next steps",
+    description: "Your five, your next step, your momentum — start on the public volunteer form.",
+    route: "/get-involved#volunteer",
   },
   {
-    label: "Leadership preview",
-    description: "Team completion, follow-up queue, celebration — no cruel rankings (illustrative).",
-    route: "/dashboard/leader",
+    label: "Events calendar",
+    description: "Find a stop near you or invite Kelly to your table.",
+    route: "/events",
   },
   {
     label: "Precinct view (future)",
@@ -212,14 +212,15 @@ export const DASHBOARD_PREVIEWS: DashboardPreview[] = [
     isFuture: true,
   },
   {
-    label: "County organizing preview",
-    description: "Gold-sample county briefing: Pope v2 (dense public preview).",
-    route: "/county-briefings/pope/v2",
+    label: "County pages",
+    description: "Find your county on the public map.",
+    route: "/counties",
   },
   {
     label: "Region & state organizing previews",
-    description: "Public organizing intelligence — state rollup and regional drills (demo/seed).",
+    description: "Future public organizing intelligence — state rollup and regional drills (not live yet).",
     route: "/organizing-intelligence",
+    isFuture: true,
   },
 ];
 

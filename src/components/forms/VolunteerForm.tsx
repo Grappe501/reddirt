@@ -182,11 +182,15 @@ export function VolunteerForm({
         </p>
         {successTeamSlug ? (
           <p className="mt-3">
-            Your team workspace is live — open your{" "}
-            <Link className="font-semibold text-kelly-navy underline" href={`/dashboard/team/${successTeamSlug}`}>
-              team dashboard
+            Thank you — a coordinator will follow up with your next step. Meanwhile, explore the{" "}
+            <Link className="font-semibold text-kelly-navy underline" href="/volunteer/resources">
+              volunteer resource library
             </Link>{" "}
-            to start organizing (you&apos;re the founding lead until you invite coordinators).
+            or start the{" "}
+            <Link className="font-semibold text-kelly-navy underline" href={powerOf5OnboardingHref}>
+              Power of 5 onboarding
+            </Link>{" "}
+            path when you are ready.
           </p>
         ) : (
           <p className="mt-3">

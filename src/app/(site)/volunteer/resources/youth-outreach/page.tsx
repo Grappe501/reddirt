@@ -24,8 +24,6 @@ import {
   YOUTH_SOCIAL_TASKS,
   YOUTH_CAMPUS_TEAM_RULE,
 } from "@/lib/volunteer-ops/youth-outreach-workspace";
-import { VOLUNTEER_OS_DEMO_TEAM_SLUG } from "@/lib/team-naming";
-
 export const metadata: Metadata = {
   title: "Youth Outreach (P5/VR) · Volunteer resources",
   description:
@@ -38,7 +36,7 @@ function StubSection({ id, title, body }: { id: string; title: string; body: str
       <h2 className="font-heading text-lg font-bold text-kelly-navy">{title}</h2>
       <p className="mt-2 font-body text-sm text-kelly-text/80">{body}</p>
       <p className="mt-3 rounded-lg bg-kelly-gold/15 px-3 py-2 font-body text-xs font-semibold text-kelly-deep">
-        Full asset in production backlog — use your team dashboard Youth (P5/VR) tab for live checklists today.
+        Full asset in production backlog — sign up to volunteer and we will match you with the right youth lane.
       </p>
     </section>
   );
@@ -55,8 +53,8 @@ export default function YouthOutreachResourcesPage() {
         <Button href="/volunteer/resources" variant="outline">
           Resource library
         </Button>
-        <Button href={`/dashboard/team/${VOLUNTEER_OS_DEMO_TEAM_SLUG}/youth-outreach`} variant="outline">
-          Demo team · Youth tab
+        <Button href="/get-involved#volunteer" variant="outline">
+          Volunteer
         </Button>
       </PageHero>
       <FullBleedSection padY variant="subtle">

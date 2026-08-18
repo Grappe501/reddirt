@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/Button";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { FullBleedSection } from "@/components/layout/FullBleedSection";
 import { KELLY_HEADSHOT_LIBRARY, KELLY_VOLUNTEER_GRAPHICS_CUTOUTS } from "@/lib/campaign-assets";
-import { VOLUNTEER_OS_DEMO_TEAM_SLUG } from "@/lib/team-naming";
 
 export const metadata: Metadata = {
   title: "Social media & design · Volunteer resources",
@@ -36,8 +35,8 @@ export default function SocialMediaDesignResourcesPage() {
         <Button href="/volunteer/resources" variant="outline">
           Resource library
         </Button>
-        <Button href={`/dashboard/team/${VOLUNTEER_OS_DEMO_TEAM_SLUG}/social-media`} variant="outline">
-          Demo team · Social tab
+        <Button href="/volunteer/resources/messaging#captions" variant="outline">
+          Social caption examples
         </Button>
       </PageHero>
       <FullBleedSection padY variant="subtle">
@@ -147,7 +146,7 @@ export default function SocialMediaDesignResourcesPage() {
           </section>
           <p className="font-body text-sm text-kelly-text/70">
             Field playbook social role:{" "}
-            <Link href="/field-playbook/roles/social-coordinator" className="font-semibold text-kelly-blue underline">
+            <Link href="/field-playbook" className="font-semibold text-kelly-blue underline">
               Social coordinator
             </Link>
             .

@@ -29,8 +29,8 @@ export default function MuslimCommunityDashboardPlanPage() {
         title="Muslim Community Civic Organizing"
         subtitle="Youth Outreach and Women’s Outreach are first-class lanes — they mirror real community structure and trusted relationship networks."
       >
-        <Button href="/dashboard/community/muslim" variant="primary">
-          Open community dashboard
+        <Button href="/get-involved#volunteer" variant="primary">
+          Volunteer
         </Button>
         <Button href="/volunteer/resources" variant="outline">
           Volunteer resources
