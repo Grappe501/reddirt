@@ -23,6 +23,7 @@ const chrome = {
   navOffice: loc("The Office", "La oficina"),
   navVoice: loc("The People's Voice", "La voz del pueblo"),
   navRoad: loc("From the Road", "From the Road", "approved"),
+  navEvents: loc("Events", "Eventos"),
   navInvolved: loc("Get Involved", "Participar"),
   itemMeetKelly: loc("Meet Kelly", "Conozca a Kelly"),
   itemExperience: loc("Professional experience", "Experiencia profesional"),
@@ -52,6 +53,8 @@ const chrome = {
   itemFromRoad: loc("From the Road", "From the Road", "approved"),
   itemPress: loc("Press Coverage", "Cobertura de prensa"),
   itemEvents: loc("Events", "Eventos"),
+  itemEventsCalendar: loc("Events calendar", "Calendario de eventos"),
+  itemHowToHost: loc("How to host", "Cómo organizar"),
   itemInvite: loc("Invite Kelly", "Invitar a Kelly"),
   itemListening: loc("Listening Sessions", "Sesiones de escucha"),
   itemPower5: loc("Power of 5", "Poder de 5"),
@@ -94,6 +97,7 @@ const NAV_GROUP_KEYS: Record<string, ChromeKey> = {
   office: "navOffice",
   "peoples-voice": "navVoice",
   road: "navRoad",
+  events: "navEvents",
   involved: "navInvolved",
 };
 
@@ -126,6 +130,8 @@ const NAV_ITEM_KEYS: Record<string, ChromeKey> = {
   "From the Road": "itemFromRoad",
   "Press Coverage": "itemPress",
   Events: "itemEvents",
+  "Events calendar": "itemEventsCalendar",
+  "How to host": "itemHowToHost",
   "Invite Kelly": "itemInvite",
   "Listening Sessions": "itemListening",
   "Power of 5": "itemPower5",

@@ -38,7 +38,7 @@ export const voterRegistrationHref = "/voter-registration";
 
 /**
  * Mobile drawer group order.
- * Desktop primary nav: Meet Kelly → My Plan → The Office → The People's Voice → From the Road → Get Involved.
+ * Desktop primary nav: Meet Kelly → My Plan → The Office → The People's Voice → From the Road → Events → Get Involved.
  */
 export const primaryNavMobileDrawerGroupOrder = [
   "meet",
@@ -46,12 +46,13 @@ export const primaryNavMobileDrawerGroupOrder = [
   "office",
   "peoples-voice",
   "road",
+  "events",
   "involved",
 ] as const;
 
 /**
  * Top nav — Kelly Grappe Website Master Direction:
- * Meet Kelly · My Plan · The Office · The People's Voice · From the Road · Get Involved
+ * Meet Kelly · My Plan · The Office · The People's Voice · From the Road · Events · Get Involved
  */
 export const primaryNavGroups: NavGroup[] = [
   {
@@ -114,9 +115,20 @@ export const primaryNavGroups: NavGroup[] = [
     items: [
       { label: "From the Road", href: "/from-the-road" },
       { label: "Press Coverage", href: "/press-coverage" },
-      { label: "Events", href: "/events" },
       { label: "Grassroots & Guitar Strings", href: grassrootsGuitarStringsEventHref },
       { label: "Invite Kelly", href: "/events/request" },
+      { label: "Listening Sessions", href: "/listening-sessions" },
+    ],
+  },
+  {
+    id: "events",
+    label: "Events",
+    groupLandingHref: "/events",
+    items: [
+      { label: "Events calendar", href: "/events" },
+      { label: "Grassroots & Guitar Strings", href: grassrootsGuitarStringsEventHref },
+      { label: "Invite Kelly", href: "/events/request" },
+      { label: "How to host", href: "/events/request/how-it-works" },
       { label: "Listening Sessions", href: "/listening-sessions" },
     ],
   },
@@ -127,6 +139,7 @@ export const primaryNavGroups: NavGroup[] = [
     items: [
       { label: "Power of 5", href: "/get-involved/bring-5" },
       { label: "Power of 5 Workshop Materials", href: "/volunteer/resources/power-of-5-workshop" },
+      { label: "Canvassing training", href: "/volunteer/resources/canvassing" },
       { label: "Volunteer", href: "/get-involved#volunteer" },
       { label: "Host Kelly", href: "/events/request" },
       { label: "Stay connected", href: "/get-involved#join" },

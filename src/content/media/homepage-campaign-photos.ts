@@ -16,6 +16,9 @@ import {
 
 /** Ordered curated set for Latest Campaign Photos (6–10 FEATURE stills). */
 export const HOMEPAGE_CAMPAIGN_PHOTO_IDS = [
+  "clark-county-clinton-day-kelly-speaking",
+  "clark-county-clinton-day-kelly-greeting",
+  "clark-county-clinton-day-banquet-hall",
   "afl-cio-pre-event-networking-20260629",
   "mena-polk-meet-greet-20260411",
   "war-memorial-stadium-concourse-20260320",
@@ -31,6 +34,9 @@ export const HOMEPAGE_CAMPAIGN_PHOTO_IDS = [
  * Prefer confirmed geography; include labor trail still with Unknown geo only when labeled honestly.
  */
 export const HOMEPAGE_ACROSS_ARKANSAS_PHOTO_IDS = [
+  "clark-county-clinton-day-kelly-speaking",
+  "clark-county-clinton-day-kelly-greeting",
+  "clark-county-clinton-day-banquet-hall",
   "mena-polk-meet-greet-20260411",
   "war-memorial-stadium-concourse-20260320",
   "toad-suck-daze-toad-race-20260501",
@@ -40,8 +46,8 @@ export const HOMEPAGE_ACROSS_ARKANSAS_PHOTO_IDS = [
 
 export type HomepageCampaignPhotoId = (typeof HOMEPAGE_CAMPAIGN_PHOTO_IDS)[number];
 
-/** Meet Kelly preview still — Mena/Polk meet-and-greet improves the concise bio band. */
-export const HOMEPAGE_MEET_KELLY_PHOTO_ID: HomepageCampaignPhotoId = "mena-polk-meet-greet-20260411";
+/** Meet Kelly preview still — Clinton Day speaking moment on the concise bio band. */
+export const HOMEPAGE_MEET_KELLY_PHOTO_ID: HomepageCampaignPhotoId = "clark-county-clinton-day-kelly-speaking";
 
 /** No curated still meets HERO quality for replacing the trust-funnel hero media. */
 export const HOMEPAGE_HERO_PHOTO_ID: HomepageCampaignPhotoId | null = null;

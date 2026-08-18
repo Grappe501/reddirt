@@ -3257,6 +3257,167 @@ export const CAMPAIGN_PHOTO_REGISTRY: CampaignPhotoRecord[] = [
     createdAt: "2026-07-28T06:15:00.000Z",
     updatedAt: "2026-07-28T06:15:00.000Z",
   },
+  {
+    id: "clark-county-clinton-day-kelly-speaking",
+    src: "/media/campaign-photos/clark-county-clinton-day-kelly-speaking.png",
+    heroLevel: "HERO",
+    publicationStatus: "PUBLISHED",
+    basic: {
+      originalFilename: "ND8_7373.png",
+      width: 1024,
+      height: 768,
+      orientation: "LANDSCAPE",
+      fileType: "image/png",
+      captureDateIso: UNKNOWN,
+      cameraDevice: UNKNOWN,
+    },
+    campaign: {
+      eventName: "Clark County Clinton Day Dinner",
+      county: "Clark",
+      city: "Arkadelphia",
+      venue: "Banquet hall",
+      eventDate: UNKNOWN,
+      photographer: UNKNOWN,
+      peopleVisible: ["Kelly Grappe"],
+      organizations: ["Clark County Democrats"],
+      campaignTheme: "Community Engagement",
+      relatedIssue: "Voter Outreach",
+      relatedSpeechVideoIds: [],
+      relatedBlogPaths: [],
+      relatedEventIds: [],
+      relatedPagePaths: [
+        "/about",
+        "/about/journey",
+        "/campaign-photos/clark-county",
+        "/from-the-road",
+        "/events",
+        "/get-involved",
+      ],
+      homepageCandidate: true,
+      featuredPhoto: true,
+      approvedForPublic: true,
+    },
+    accessibility: {
+      altText:
+        "Kelly Grappe speaks into a microphone at the Clark County Clinton Day Dinner, with an American flag behind her.",
+      caption:
+        "Kelly Grappe addresses neighbors at the Clark County Clinton Day Dinner in Arkadelphia.",
+      extendedDescription:
+        "Kelly Grappe in a navy blazer speaks at a podium with a handheld microphone at the Clark County Clinton Day Dinner. An American flag and projection screen sit behind her in a warmly lit banquet room.",
+      seoDescription:
+        "Kelly Grappe speaks at the Clark County Clinton Day Dinner in Arkadelphia, Arkansas.",
+    },
+    notes:
+      "Hero — confirmed Clark County Clinton Day Dinner still. Placement: homepage gallery, Meet Kelly, Across Arkansas, Clark County album.",
+    createdAt: "2026-08-18T21:40:00.000Z",
+    updatedAt: "2026-08-18T21:40:00.000Z",
+  },
+  {
+    id: "clark-county-clinton-day-kelly-greeting",
+    src: "/media/campaign-photos/clark-county-clinton-day-kelly-greeting.png",
+    heroLevel: "FEATURE",
+    publicationStatus: "PUBLISHED",
+    basic: {
+      originalFilename: "ND8_7262.png",
+      width: 768,
+      height: 1024,
+      orientation: "PORTRAIT",
+      fileType: "image/png",
+      captureDateIso: UNKNOWN,
+      cameraDevice: UNKNOWN,
+    },
+    campaign: {
+      eventName: "Clark County Clinton Day Dinner",
+      county: "Clark",
+      city: "Arkadelphia",
+      venue: "Banquet hall",
+      eventDate: UNKNOWN,
+      photographer: UNKNOWN,
+      peopleVisible: ["Kelly Grappe"],
+      organizations: ["Clark County Democrats"],
+      campaignTheme: "Community Engagement",
+      relatedIssue: "Voter Outreach",
+      relatedSpeechVideoIds: [],
+      relatedBlogPaths: [],
+      relatedEventIds: [],
+      relatedPagePaths: [
+        "/about/journey",
+        "/campaign-photos/clark-county",
+        "/from-the-road",
+        "/get-involved",
+      ],
+      homepageCandidate: true,
+      featuredPhoto: true,
+      approvedForPublic: true,
+    },
+    accessibility: {
+      altText:
+        "Kelly Grappe laughs while greeting neighbors at the Clark County Clinton Day Dinner, wearing a name tag.",
+      caption:
+        "Kelly Grappe connects with neighbors at the Clark County Clinton Day Dinner.",
+      extendedDescription:
+        "Kelly Grappe in a navy blazer with a Kelly Grappe name tag smiles and laughs amid a crowded Clark County Clinton Day Dinner banquet hall.",
+      seoDescription:
+        "Kelly Grappe greets neighbors at the Clark County Clinton Day Dinner in Arkadelphia.",
+    },
+    notes:
+      "Feature — warm greeting moment at Clinton Day Dinner. Placement: homepage gallery, Across Arkansas, Clark County album.",
+    createdAt: "2026-08-18T21:40:00.000Z",
+    updatedAt: "2026-08-18T21:40:00.000Z",
+  },
+  {
+    id: "clark-county-clinton-day-banquet-hall",
+    src: "/media/campaign-photos/clark-county-clinton-day-banquet-hall.png",
+    heroLevel: "FEATURE",
+    publicationStatus: "PUBLISHED",
+    basic: {
+      originalFilename: "ND8_7104.png",
+      width: 1024,
+      height: 768,
+      orientation: "LANDSCAPE",
+      fileType: "image/png",
+      captureDateIso: UNKNOWN,
+      cameraDevice: UNKNOWN,
+    },
+    campaign: {
+      eventName: "Clark County Clinton Day Dinner",
+      county: "Clark",
+      city: "Arkadelphia",
+      venue: "Banquet hall",
+      eventDate: UNKNOWN,
+      photographer: UNKNOWN,
+      peopleVisible: [],
+      organizations: ["Clark County Democrats"],
+      campaignTheme: "Community Engagement",
+      relatedIssue: "Voter Outreach",
+      relatedSpeechVideoIds: [],
+      relatedBlogPaths: [],
+      relatedEventIds: [],
+      relatedPagePaths: [
+        "/about/journey",
+        "/campaign-photos/clark-county",
+        "/from-the-road",
+        "/events",
+      ],
+      homepageCandidate: true,
+      featuredPhoto: true,
+      approvedForPublic: true,
+    },
+    accessibility: {
+      altText:
+        "A crowded banquet hall during the Clark County Clinton Day Dinner, with Clinton Day Dinner projected on screens at the front.",
+      caption:
+        "Neighbors gather for the Clark County Clinton Day Dinner in Arkadelphia.",
+      extendedDescription:
+        "A wide view of a banquet hall filled with round tables and attendees mingling before the Clark County Clinton Day Dinner program. Screens at the front display the Clinton Day Dinner title slide.",
+      seoDescription:
+        "Crowd at the Clark County Clinton Day Dinner in Arkadelphia, Arkansas.",
+    },
+    notes:
+      "Feature — room context for Clinton Day Dinner. No single candidate face dominant; use as scene-setter. Placement: homepage gallery, Across Arkansas, Clark County album cover candidate.",
+    createdAt: "2026-08-18T21:40:00.000Z",
+    updatedAt: "2026-08-18T21:40:00.000Z",
+  },
 ];
 
 export function listCampaignPhotos(): CampaignPhotoRecord[] {

@@ -119,19 +119,29 @@ async function CuratedOrCalendarEventView({ event }: { event: EventItem }) {
         title={live.title}
         subtitle={stripPublicMarkdown(live.summary)}
       >
+        {companionSiteHref ? (
+          <Button
+            href={companionSiteHref}
+            variant="primary"
+            className="min-h-[52px] px-7 text-base font-bold shadow-[0_8px_28px_rgba(202,145,61,0.45)]"
+          >
+            {live.companionSiteLabel ?? "Visit the event website"} →
+          </Button>
+        ) : null}
         {heroCtaLabel ? (
-          <Button href={rsvpHref} variant="primary">
+          <Button href={rsvpHref} variant={companionSiteHref ? "outlineOnDark" : "primary"}>
             {heroCtaLabel}
           </Button>
         ) : null}
-        {companionSiteHref ? (
-          <Button href={companionSiteHref} variant="outlineOnDark">
-            {live.companionSiteLabel ?? "Event website"}
+        {!companionSiteHref ? (
+          <Button href="/events" variant="outlineOnDark">
+            All events
           </Button>
-        ) : null}
-        <Button href="/events" variant="outlineOnDark">
-          All events
-        </Button>
+        ) : (
+          <Button href="/events" variant="ghostOnDark">
+            All events
+          </Button>
+        )}
       </EventDetailHero>
 
       <FullBleedSection padY>
@@ -153,6 +163,15 @@ async function CuratedOrCalendarEventView({ event }: { event: EventItem }) {
                       <p className="mt-2 font-body text-sm leading-relaxed text-kelly-text/80">
                         {live.featuredSummary}
                       </p>
+                    ) : null}
+                    {companionSiteHref ? (
+                      <Button
+                        href={companionSiteHref}
+                        variant="primary"
+                        className="mt-4 w-full justify-center min-h-[52px] text-base font-bold sm:w-auto"
+                      >
+                        {live.companionSiteLabel ?? "Visit the event website"} →
+                      </Button>
                     ) : null}
                   </div>
                 ) : null}
@@ -224,8 +243,21 @@ async function CuratedOrCalendarEventView({ event }: { event: EventItem }) {
                   <p className="mt-3 font-body text-sm leading-relaxed text-kelly-text/75">{attendance.note}</p>
                 ) : null}
               </div>
+              {companionSiteHref ? (
+                <Button
+                  href={companionSiteHref}
+                  variant="primary"
+                  className="w-full justify-center min-h-[52px] text-base font-bold"
+                >
+                  {live.companionSiteLabel ?? "Visit the event website"} →
+                </Button>
+              ) : null}
               {heroCtaLabel ? (
-                <Button href={rsvpHref} variant="primary" className="w-full justify-center">
+                <Button
+                  href={rsvpHref}
+                  variant={companionSiteHref ? "outline" : "primary"}
+                  className="w-full justify-center"
+                >
                   {heroCtaLabel}
                 </Button>
               ) : live.statewideVirtual ? (

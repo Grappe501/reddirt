@@ -18,6 +18,8 @@ export function homepagePhotoObjectPositionClass(photo: CampaignPhotoRecord): st
   // Slightly warmer upper bias for conversation faces (Meet Kelly band).
   if (photo.basic.orientation === "PORTRAIT") return "object-[50%_18%]";
   if (photo.id.includes("stadium") || photo.id.includes("concourse")) return "object-[50%_35%]";
+  if (photo.id.includes("clinton-day-kelly-speaking")) return "object-[50%_30%]";
+  if (photo.id.includes("clinton-day-banquet-hall")) return "object-[50%_42%]";
   return "object-center";
 }
 
@@ -26,6 +28,12 @@ export function homepagePhotoObjectPositionClass(photo: CampaignPhotoRecord): st
  * Unknown geography is not invented — fallback keeps the registry caption.
  */
 const HOMEPAGE_DECISIVE_CAPTIONS: Record<string, string> = {
+  "clark-county-clinton-day-kelly-speaking":
+    "Arkadelphia, Clark County — Kelly speaks at the Clinton Day Dinner.",
+  "clark-county-clinton-day-kelly-greeting":
+    "Clinton Day Dinner — Kelly greeting neighbors at the table.",
+  "clark-county-clinton-day-banquet-hall":
+    "Clinton Day Dinner — neighbors filling the banquet hall in Clark County.",
   "afl-cio-pre-event-networking-20260629":
     "Kelly talks with labor attendees before an Arkansas AFL-CIO gathering.",
   "mena-polk-meet-greet-20260411":

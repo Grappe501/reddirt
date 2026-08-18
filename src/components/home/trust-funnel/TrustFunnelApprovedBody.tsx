@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ContentContainer } from "@/components/layout/ContentContainer";
+import { HomeCampaignTrailMapTeaser } from "@/components/home/trust-funnel/HomeCampaignTrailMapTeaser";
 import { trustFunnelHomeCopy } from "@/content/home/trust-funnel-home";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { trustFunnelCardMutedClass } from "@/components/home/trust-funnel/trustFunnelChrome";
@@ -11,7 +12,7 @@ const copy = trustFunnelHomeCopy.approvedHome;
  * Approved homepage substance (Kelly Grappe Website Master Direction).
  * Photography, cards, and spacing stay in the existing trust-funnel chrome.
  */
-export function TrustFunnelApprovedBody() {
+export async function TrustFunnelApprovedBody() {
   return (
     <>
       <section
@@ -100,6 +101,7 @@ export function TrustFunnelApprovedBody() {
         aria-labelledby="arkansas-elections-heading"
       >
         <ContentContainer className="max-w-3xl">
+          <HomeCampaignTrailMapTeaser />
           <ScrollReveal yOffset={6}>
             <h2
               id="arkansas-elections-heading"

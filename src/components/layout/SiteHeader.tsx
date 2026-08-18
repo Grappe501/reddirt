@@ -150,7 +150,7 @@ export function SiteHeader() {
         >
           {/*
             Brand is shrink-0 + z-20. Nav lives in min-w-0 flex-1 so it cannot spill over the logo.
-            Desktop chrome starts at xl (1280px) — lg was too tight for six menus + CTAs.
+            Desktop chrome starts at xl (1280px) — lg was too tight for seven menus + CTAs.
           */}
           <div className="flex min-h-0 min-w-0 flex-1 items-center justify-end overflow-visible pr-0.5">
             <NavDesktop groups={localizedNavGroups} pathname={pathname} theme="dark" />

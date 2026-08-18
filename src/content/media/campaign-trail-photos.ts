@@ -11,6 +11,24 @@ export type CampaignTrailPhoto = {
 };
 
 export const campaignTrailPhotos: CampaignTrailPhoto[] = [
+  {
+    id: "clark-clinton-day-kelly-speaking",
+    src: "/media/campaign-photos/clark-county-clinton-day-kelly-speaking.png",
+    alt: "Kelly Grappe speaks at the Clark County Clinton Day Dinner in Arkadelphia.",
+    caption: "Clinton Day Dinner — Clark County",
+  },
+  {
+    id: "clark-clinton-day-kelly-greeting",
+    src: "/media/campaign-photos/clark-county-clinton-day-kelly-greeting.png",
+    alt: "Kelly Grappe greets neighbors at the Clark County Clinton Day Dinner.",
+    caption: "Clinton Day Dinner — greeting neighbors",
+  },
+  {
+    id: "clark-clinton-day-banquet-hall",
+    src: "/media/campaign-photos/clark-county-clinton-day-banquet-hall.png",
+    alt: "Banquet hall crowd at the Clark County Clinton Day Dinner.",
+    caption: "Clinton Day Dinner — the room fills up",
+  },
   { id: "001-img-2824", src: "/media/campaign-trail/001-img-2824.jpg", alt: "Campaign trail photo: IMG 2824" },
   { id: "002-img-4103", src: "/media/campaign-trail/002-img-4103.jpg", alt: "Campaign trail photo: IMG 4103" },
   { id: "003-img-6860", src: "/media/campaign-trail/003-img-6860.png", alt: "Campaign trail photo: IMG 6860" },

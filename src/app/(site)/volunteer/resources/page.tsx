@@ -18,6 +18,9 @@ export default function VolunteerResourcesPage() {
         title="Volunteer Resource Library"
         subtitle="Orientation tools, lane guides, and printables for building your local team."
       >
+        <Button href="/volunteer/resources/canvassing" variant="outline">
+          Canvassing training
+        </Button>
         <Button href="/volunteer/resources/glossary" variant="outline">
           Glossary
         </Button>

@@ -13,7 +13,8 @@ export type VolunteerResourceCategoryId =
   | "events-lane-toolkits"
   | "muslim-community-outreach"
   | "youth-p5-outreach"
-  | "social-media-design";
+  | "social-media-design"
+  | "canvassing";
 
 export type VolunteerResourcePublicationStatus =
   | "draft"
@@ -146,6 +147,11 @@ export const VOLUNTEER_RESOURCE_CATEGORIES: VolunteerResourceCategory[] = [
     title: "Social media & design",
     description: "Canva, local graphics, brand kit, and templates so teams ship visuals without waiting on HQ.",
   },
+  {
+    id: "canvassing",
+    title: "Canvassing",
+    description: "Door training with Sela Moser, clipboard sheet, and Kelly's stance on five kitchen-table issues.",
+  },
 ];
 
 export type VolunteerResource = {
@@ -216,6 +222,69 @@ export const VOLUNTEER_RESOURCES: VolunteerResource[] = [
     description: "Session flow, worksheet, and conversation practice for a 60–90 minute Power of 5 workshop.",
     href: "/volunteer/resources/power-of-5-workshop",
     fileType: "Web",
+  },
+  {
+    id: "canvassing-hub",
+    category: "canvassing",
+    title: "Canvassing training",
+    description: "Listen-first doors, field rules, training schedule, and links to issue drill-downs.",
+    href: "/volunteer/resources/canvassing",
+    fileType: "Web",
+    publicationStatus: "published",
+  },
+  {
+    id: "canvassing-clipboard",
+    category: "canvassing",
+    title: "Canvassing clipboard sheet (print / PDF)",
+    description: "Branded tally sheet — five issues from Sela Moser's standard door form.",
+    href: "/volunteer/resources/canvassing/clipboard-sheet",
+    fileType: "Print",
+    publicationStatus: "published",
+  },
+  {
+    id: "canvassing-environment",
+    category: "canvassing",
+    title: "Talking points · The Environment",
+    description: "Kelly's stance and door bridge for clipboard issue 1.",
+    href: "/volunteer/resources/canvassing/environment",
+    fileType: "Web",
+    publicationStatus: "published",
+  },
+  {
+    id: "canvassing-education",
+    category: "canvassing",
+    title: "Talking points · Education",
+    description: "Kelly's stance and door bridge for clipboard issue 2.",
+    href: "/volunteer/resources/canvassing/education",
+    fileType: "Web",
+    publicationStatus: "published",
+  },
+  {
+    id: "canvassing-jobs",
+    category: "canvassing",
+    title: "Talking points · Jobs",
+    description: "Kelly's stance and door bridge for clipboard issue 3.",
+    href: "/volunteer/resources/canvassing/jobs",
+    fileType: "Web",
+    publicationStatus: "published",
+  },
+  {
+    id: "canvassing-economy",
+    category: "canvassing",
+    title: "Talking points · The Economy",
+    description: "Kelly's stance and door bridge for clipboard issue 4.",
+    href: "/volunteer/resources/canvassing/economy",
+    fileType: "Web",
+    publicationStatus: "published",
+  },
+  {
+    id: "canvassing-healthcare",
+    category: "canvassing",
+    title: "Talking points · Healthcare",
+    description: "Kelly's stance and door bridge for clipboard issue 5.",
+    href: "/volunteer/resources/canvassing/healthcare",
+    fileType: "Web",
+    publicationStatus: "published",
   },
   {
     id: "build-team",
