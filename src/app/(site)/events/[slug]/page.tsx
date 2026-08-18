@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { PageHero } from "@/components/blocks/PageHero";
+import { EventDetailHero } from "@/components/organizing/EventDetailHero";
 import { FullBleedSection } from "@/components/layout/FullBleedSection";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { SectionHeading } from "@/components/blocks/SectionHeading";
@@ -25,6 +25,7 @@ import { getJoinCampaignHref, getVolunteerSignupHref } from "@/config/external-c
 import { siteConfig } from "@/config/site";
 import { isPrismaDatabaseUnavailable, logPrismaDatabaseUnavailable } from "@/lib/prisma-connectivity";
 import { pageMeta } from "@/lib/seo/metadata";
+import { resolveEventShareImageSrc } from "@/lib/seo/event-share-image";
 import { stripPublicMarkdown, withLiveEventStatus } from "@/lib/format/eventDisplay";
 import { publicCountyEyebrow, publicEventCityLine } from "@/lib/events/public-event-county";
 
@@ -43,7 +44,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: curated.title,
       description: stripPublicMarkdown(curated.summary),
       path: `/events/${slug}`,
-      imageSrc: curated.flyerSrc,
+      imageSrc: resolveEventShareImageSrc(curated.flyerSrc),
     });
   }
   try {
@@ -53,6 +54,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: t,
       description: `Campaign calendar event — ${t}.`,
       path: `/events/${slug}`,
+      imageSrc: resolveEventShareImageSrc(),
     });
   } catch (e) {
     if (isPrismaDatabaseUnavailable(e)) return { title: "Event" };
@@ -60,7 +62,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-function CuratedOrCalendarEventView({ event }: { event: EventItem }) {
+async function CuratedOrCalendarEventView({ event }: { event: EventItem }) {
   const live = withLiveEventStatus(event);
   const county = live.countySlug ? getRegionBySlug(live.countySlug) : undefined;
   const related = live.relatedEventSlugs
@@ -95,8 +97,7 @@ function CuratedOrCalendarEventView({ event }: { event: EventItem }) {
 
   return (
     <>
-      <PageHero
-        tone={featured ? "plan" : "default"}
+      <EventDetailHero
         eyebrow={
           featured
             ? `${live.featuredLabel ?? "Weekend highlight"} · ${publicCountyEyebrow(live)}`
@@ -110,10 +111,10 @@ function CuratedOrCalendarEventView({ event }: { event: EventItem }) {
             {heroCtaLabel}
           </Button>
         ) : null}
-        <Button href="/events" variant={featured ? "outlineOnDark" : "outline"}>
+        <Button href="/events" variant="outlineOnDark">
           All events
         </Button>
-      </PageHero>
+      </EventDetailHero>
 
       <FullBleedSection padY>
         <ContentContainer>

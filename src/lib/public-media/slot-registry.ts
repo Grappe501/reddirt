@@ -66,6 +66,7 @@ export const PUBLIC_MEDIA_INNER_SLOTS = [
   "road.hero",
   "press.hero",
   "events.hero",
+  "events.detail.hero",
   "events.been.graphic",
   "events.request.hero",
   "schedule.hero",
@@ -302,6 +303,12 @@ const INNER_SLOTS: Record<(typeof PUBLIC_MEDIA_INNER_SLOTS)[number], PublicMedia
   "road.hero": imageHero("from-the-road", "road.hero", "From the Road", "heroHome"),
   "press.hero": imageHero("press-coverage", "press.hero", "Press coverage forthcoming", "heroHome"),
   "events.hero": imageHero("events", "events.hero", "Events on the trail", "heroHome"),
+  "events.detail.hero": imageHero(
+    "events",
+    "events.detail.hero",
+    "Kelly Grappe — campaign event",
+    "heroHome",
+  ),
   "events.been.graphic": imageHero(
     "events",
     "events.been.graphic",
