@@ -17,7 +17,11 @@ import { TeamBuilderSection } from "@/components/volunteer/TeamBuilderSection";
 import { VolunteerSignupCta } from "@/components/volunteer/VolunteerSignupCta";
 import { VolunteerForm } from "@/components/forms/VolunteerForm";
 import { isNativeVolunteerFormEnabled } from "@/config/volunteer-signup";
-import { DISCORD_VOLUNTEER_BLURB } from "@/lib/volunteer-ops/discord-volunteer-copy";
+import { useLocale, useLocaleHref } from "@/i18n/client";
+import {
+  volunteerOnboardingCopy,
+  volunteerRoleWeeklyTasks,
+} from "@/i18n/pages/volunteer-onboarding";
 
 type Lane = "events" | "social" | "relational" | "unsure" | null;
 
@@ -37,12 +41,12 @@ function preferredRoleForLane(lane: Lane): VolunteerInput["preferredRole"] | nul
   return "power_of_five";
 }
 
-const LANE_MESSAGES: Record<Exclude<Lane, null>, string> = {
-  events: "Great — choose Events on the volunteer signup form when you get there.",
-  social: "Great — choose Social media on the volunteer signup form when you get there.",
-  relational: "Great — choose Power of 5 / voter registration on the volunteer signup form when you get there.",
-  unsure: "Great — mark “not sure yet” on the signup form and we’ll help you find the right fit.",
-};
+function laneMessageKey(lane: Exclude<Lane, null>): "laneEventsMsg" | "laneSocialMsg" | "laneRelationalMsg" | "laneUnsureMsg" {
+  if (lane === "events") return "laneEventsMsg";
+  if (lane === "social") return "laneSocialMsg";
+  if (lane === "relational") return "laneRelationalMsg";
+  return "laneUnsureMsg";
+}
 
 export function VolunteerOnboardingPage({
   campaignClock,
@@ -52,6 +56,9 @@ export function VolunteerOnboardingPage({
   /** `?role=` from `/volunteer` when using native signup deep links */
   initialSignupRole?: string | null;
 }) {
+  const locale = useLocale();
+  const localeHref = useLocaleHref();
+  const t = (key: Parameters<typeof volunteerOnboardingCopy>[0]) => volunteerOnboardingCopy(key, locale);
   const nativeVolunteerForm = isNativeVolunteerFormEnabled();
   const searchParams = useSearchParams();
   const [lane, setLane] = useState<Lane>(() => laneFromSignupRoleParam(initialSignupRole ?? undefined));
@@ -73,6 +80,8 @@ export function VolunteerOnboardingPage({
     [scrollToSignup],
   );
 
+  const weeklyTasksLabel = t("weeklyTasksLabel");
+
   return (
     <>
       {campaignClock ? (
@@ -86,35 +95,27 @@ export function VolunteerOnboardingPage({
           <SectionHeading
             id="how-this-works-heading"
             align="left"
-            eyebrow="Section 1"
-            title="How this works"
-            subtitle="Small teams, clear lanes, steady progress."
+            eyebrow={t("section1Eyebrow")}
+            title={t("section1Title")}
+            subtitle={t("section1Subtitle")}
           />
           <div className="mt-6 space-y-4 font-body text-base leading-relaxed text-kelly-text/85">
-            <p>We organize in small <strong>3-person teams</strong>. Each team has three coordinators:</p>
+            <p>{t("section1Intro")}</p>
             <ul className="list-disc space-y-2 pl-6">
-              <li>
-                <strong>Events</strong> — gatherings, tabling, and volunteer meetups.
-              </li>
-              <li>
-                <strong>Social media</strong> — sharing campaign-approved content and lifting up local activity.
-              </li>
-              <li>
-                <strong>Power of 5 / voter registration</strong> — relational organizing: people you know, respectful
-                follow-up, and connecting folks to registration when it fits.
-              </li>
+              <li>{t("section1EventsLane")}</li>
+              <li>{t("section1SocialLane")}</li>
+              <li>{t("section1RelationalLane")}</li>
             </ul>
-            <p>
-              Each person <strong>owns one lane</strong>. The goal isn’t to overwhelm volunteers — it’s to make{" "}
-              <strong>small weekly actions</strong> stack up across many people and many communities.
+            <p>{t("section1OwnLane")}</p>
+            <p className="rounded-lg border border-kelly-gold/30 bg-kelly-gold/[0.08] p-3 text-kelly-deep/95">
+              {t("discordBlurb")}
             </p>
-            <p className="rounded-lg border border-kelly-gold/30 bg-kelly-gold/[0.08] p-3 text-kelly-deep/95">{DISCORD_VOLUNTEER_BLURB}</p>
           </div>
         </ContentContainer>
       </FullBleedSection>
 
       <FullBleedSection variant="subtle" padY aria-labelledby="build-three-person-team-heading" id="build-three-person-team" className="scroll-mt-24">
-        <TeamBuilderSection />
+        <TeamBuilderSection locale={locale} />
       </FullBleedSection>
 
       <FullBleedSection padY aria-labelledby="three-roles-heading" id="three-roles" className="scroll-mt-24">
@@ -122,37 +123,28 @@ export function VolunteerOnboardingPage({
           <SectionHeading
             id="three-roles-heading"
             align="left"
-            eyebrow="Section 3"
-            title="The three roles"
-            subtitle="Pick the lane that fits your gifts — you can adjust later with your team."
+            eyebrow={t("section3Eyebrow")}
+            title={t("section3Title")}
+            subtitle={t("section3Subtitle")}
           />
           <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
             <RoleCard
-              title="Events Coordinator"
-              description="Helps identify, plan, and support small local gatherings, tabling opportunities, house meetings, community events, and volunteer meetups."
-              weeklyTasks={[
-                "Find or suggest one local event opportunity.",
-                "Help invite people to one gathering.",
-                "Report event needs back to the team.",
-              ]}
+              title={t("roleEventsTitle")}
+              description={t("roleEventsDesc")}
+              weeklyTasks={volunteerRoleWeeklyTasks("events", locale)}
+              weeklyTasksLabel={weeklyTasksLabel}
             />
             <RoleCard
-              title="Social Media Coordinator"
-              description="Helps amplify campaign-approved content and local volunteer activity online."
-              weeklyTasks={[
-                "Share approved campaign content.",
-                "Invite friends to follow campaign channels.",
-                "Capture photos or updates from local activity when appropriate.",
-              ]}
+              title={t("roleSocialTitle")}
+              description={t("roleSocialDesc")}
+              weeklyTasks={volunteerRoleWeeklyTasks("social", locale)}
+              weeklyTasksLabel={weeklyTasksLabel}
             />
             <RoleCard
-              title="Power of 5 / VR Coordinator"
-              description="Helps volunteers identify five people they personally know and move them toward support, signup, voter registration, or action."
-              weeklyTasks={[
-                "Ask each volunteer to choose five people.",
-                "Encourage one relational organizing touch per week.",
-                "Help connect voter registration opportunities to local activity.",
-              ]}
+              title={t("roleRelationalTitle")}
+              description={t("roleRelationalDesc")}
+              weeklyTasks={volunteerRoleWeeklyTasks("relational", locale)}
+              weeklyTasksLabel={weeklyTasksLabel}
             />
           </div>
         </ContentContainer>
@@ -163,12 +155,12 @@ export function VolunteerOnboardingPage({
           <SectionHeading
             id="first-15-heading"
             align="left"
-            eyebrow="Section 4"
-            title="Your first 15 minutes"
-            subtitle="A simple sequence anyone can finish today."
+            eyebrow={t("section4Eyebrow")}
+            title={t("section4Title")}
+            subtitle={t("section4Subtitle")}
           />
           <div className="mt-6 rounded-2xl border border-kelly-text/10 bg-white p-6 shadow-sm">
-            <OnboardingChecklist />
+            <OnboardingChecklist locale={locale} />
           </div>
         </ContentContainer>
       </FullBleedSection>
@@ -178,22 +170,22 @@ export function VolunteerOnboardingPage({
           <SectionHeading
             id="pick-lane-heading"
             align="left"
-            eyebrow="Section 5"
-            title="Pick your lane"
-            subtitle="No wrong answers — this just helps you orient before you sign up."
+            eyebrow={t("section5Eyebrow")}
+            title={t("section5Title")}
+            subtitle={t("section5Subtitle")}
           />
           <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <Button type="button" variant="outline" className="min-h-[48px] flex-1" onClick={() => pickLane("events")}>
-              I can help with events
+              {t("laneEventsBtn")}
             </Button>
             <Button type="button" variant="outline" className="min-h-[48px] flex-1" onClick={() => pickLane("social")}>
-              I can help with social media
+              {t("laneSocialBtn")}
             </Button>
             <Button type="button" variant="outline" className="min-h-[48px] flex-1" onClick={() => pickLane("relational")}>
-              I can help with Power of 5 / voter registration
+              {t("laneRelationalBtn")}
             </Button>
             <Button type="button" variant="outline" className="min-h-[48px] flex-1" onClick={() => pickLane("unsure")}>
-              I’m not sure yet
+              {t("laneUnsureBtn")}
             </Button>
           </div>
           {lane ? (
@@ -201,7 +193,7 @@ export function VolunteerOnboardingPage({
               className="mt-6 rounded-xl border border-kelly-gold/35 bg-kelly-gold/10 px-4 py-3 font-body text-sm font-medium text-kelly-deep"
               role="status"
             >
-              {LANE_MESSAGES[lane]}
+              {t(laneMessageKey(lane))}
             </p>
           ) : null}
         </ContentContainer>
@@ -212,18 +204,15 @@ export function VolunteerOnboardingPage({
           <SectionHeading
             id="playbook-preview-heading"
             align="left"
-            eyebrow="Section 6"
-            title="Want the full field guide?"
-            subtitle="The full playbook explains how county, city, precinct, and neighborhood teams work together."
+            eyebrow={t("section6Eyebrow")}
+            title={t("section6Title")}
+            subtitle={t("section6Subtitle")}
           />
           <div className="mt-6 rounded-2xl border border-kelly-navy/15 bg-kelly-navy/[0.03] p-6">
-            <p className="font-body text-sm leading-relaxed text-kelly-text/85">
-              When you are ready to go deeper, the field playbook walks through the same three roles at every level — so
-              you always know what “good” looks like.
-            </p>
+            <p className="font-body text-sm leading-relaxed text-kelly-text/85">{t("section6Body")}</p>
             <div className="mt-5">
-              <Button href="/field-playbook" variant="secondary">
-                Open field playbook
+              <Button href={localeHref("/field-playbook")} variant="secondary">
+                {t("openFieldPlaybook")}
               </Button>
             </div>
           </div>
@@ -235,16 +224,16 @@ export function VolunteerOnboardingPage({
           <SectionHeading
             id="signup-heading"
             align="left"
-            eyebrow="Section 7"
-            title="Ready to join?"
-            subtitle="Complete the volunteer signup form and someone from the campaign will be able to connect you to the right local team."
+            eyebrow={t("section7Eyebrow")}
+            title={t("section7Title")}
+            subtitle={t("section7Subtitle")}
           />
           <div className="mt-8 flex flex-col items-start gap-4">
             {nativeVolunteerForm ? (
               <>
                 <VolunteerForm presetPreferredRole={preferredRoleForLane(lane)} />
                 <div className="flex flex-wrap items-center gap-2 font-body text-xs text-kelly-text/60">
-                  <span>Prefer the legacy Squarespace form?</span>
+                  <span>{t("preferLegacyForm")}</span>
                   <VolunteerSignupCta
                     variant="outline"
                     forceExternal
@@ -256,15 +245,18 @@ export function VolunteerOnboardingPage({
               <VolunteerSignupCta roleQuery={resolveRoleQueryFromOnboardingLane(lane)} />
             )}
             <p className="font-body text-sm text-kelly-text/70">
-              After you sign up, use the{" "}
-              <Link href="/volunteer/resources" className="font-semibold text-kelly-navy underline hover:text-kelly-blue">
-                volunteer resource library
+              {t("afterSignupLead")}{" "}
+              <Link
+                href={localeHref("/volunteer/resources")}
+                className="font-semibold text-kelly-navy underline hover:text-kelly-blue"
+              >
+                {t("resourceLibraryLink")}
               </Link>
-              , bookmark this page, or open the{" "}
-              <Link href="/field-playbook" className="font-semibold text-kelly-navy underline hover:text-kelly-blue">
-                field playbook
+              {t("afterSignupMid")}{" "}
+              <Link href={localeHref("/field-playbook")} className="font-semibold text-kelly-navy underline hover:text-kelly-blue">
+                {t("fieldPlaybookLink")}
               </Link>{" "}
-              — your team can run the weekly rhythm there.
+              {t("afterSignupEnd")}
             </p>
           </div>
         </ContentContainer>
@@ -275,40 +267,38 @@ export function VolunteerOnboardingPage({
           <SectionHeading
             id="after-signup-heading"
             align="left"
-            eyebrow="After signup"
-            title="What happens after you sign up?"
-            subtitle="A simple picture of what comes next — details may vary as we finish moving tools onto this site."
+            eyebrow={t("afterSignupEyebrow")}
+            title={t("afterSignupTitle")}
+            subtitle={t("afterSignupSubtitle")}
           />
           <ol className="mt-8 list-decimal space-y-4 pl-6 font-body text-base leading-relaxed text-kelly-text/85">
-            <li className="pl-1">Your information is received by the campaign.</li>
+            <li className="pl-1">{t("afterSignup1")}</li>
+            <li className="pl-1">{t("afterSignup2")}</li>
+            <li className="pl-1">{t("afterSignup3")}</li>
+            <li className="pl-1">{t("afterSignup4")}</li>
+            <li className="pl-1">{t("afterSignup5")}</li>
             <li className="pl-1">
-              Automated emails begin <strong>once campaign email automation is live</strong>.
-            </li>
-            <li className="pl-1">You receive onboarding materials and next steps.</li>
-            <li className="pl-1">A coordinator may connect you with a local team.</li>
-            <li className="pl-1">If no team exists yet, you may be invited to help start one.</li>
-            <li className="pl-1">
-              You can <strong>immediately</strong> use the{" "}
-              <Link href="/field-playbook" className="font-semibold text-kelly-navy underline hover:text-kelly-blue">
-                field playbook
+              {t("afterSignup6Lead")}{" "}
+              <Link href={localeHref("/field-playbook")} className="font-semibold text-kelly-navy underline hover:text-kelly-blue">
+                {t("fieldPlaybookLink")}
               </Link>{" "}
-              and{" "}
-              <Link href="/volunteer/resources" className="font-semibold text-kelly-navy underline hover:text-kelly-blue">
-                resource library
+              {t("afterSignup6And")}{" "}
+              <Link
+                href={localeHref("/volunteer/resources")}
+                className="font-semibold text-kelly-navy underline hover:text-kelly-blue"
+              >
+                {t("resourceLibraryShort")}
               </Link>{" "}
-              to begin.
+              {t("afterSignup6End")}
             </li>
           </ol>
         </ContentContainer>
       </FullBleedSection>
 
-      <FullBleedSection variant="subtle" padY aria-label="Share this page">
+      <FullBleedSection variant="subtle" padY aria-label={t("shareAriaLabel")}>
         <ContentContainer className="max-w-3xl">
           <div className="rounded-2xl border border-kelly-text/10 bg-white px-5 py-6 text-center print:border-kelly-text/30">
-            <p className="font-body text-sm leading-relaxed text-kelly-text/85">
-              Share this page with a QR code, text message, or social post. A new volunteer can start here without needing a
-              long explanation.
-            </p>
+            <p className="font-body text-sm leading-relaxed text-kelly-text/85">{t("shareBlurb")}</p>
           </div>
         </ContentContainer>
       </FullBleedSection>
