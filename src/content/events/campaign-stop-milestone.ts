@@ -6,13 +6,13 @@
  * (or the as-of date moves). Increment `count` by the number of newly completed
  * confirmed trail stops since the previous as-of day.
  *
- * Last lock: Washington County Democrats meeting is scheduled stop 226.
+ * Last lock: NWA Senior Democrats meeting (Fayetteville) is scheduled stop 227.
  */
 export const CAMPAIGN_STOP_MILESTONE = {
-  count: 226,
-  asOfYmd: "2026-08-17",
-  asOfEventSlug: "washington-county-democrats-2026-08-17",
-  asOfEventTitle: "Washington County Democrats meeting",
+  count: 227,
+  asOfYmd: "2026-08-18",
+  asOfEventSlug: "nwa-senior-democrats-fayetteville-2026-08-18",
+  asOfEventTitle: "NWA Senior Democrats meeting — Fayetteville",
 } as const;
 
 export function formatCampaignStopAsOfDate(ymd: string = CAMPAIGN_STOP_MILESTONE.asOfYmd): string {

@@ -3327,11 +3327,11 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     publicTitle: "Washington County Democrats meeting",
     city: "Fayetteville",
     counties: ["Washington"],
-    status: "scheduled",
+    status: "completed",
     includeOnPublicPage: false,
     confidence: "confirmed",
     notes:
-      "Steve 2026-08-17: Washington County Democrats meeting is scheduled campaign stop 226. Public listing is washington-county-democrats-2026-08-17 at 6:00 p.m. Room still TBA. Public count lives in campaign-stop-milestone.ts. Host contact stays off the public page. includeOnPublicPage stays false so the movement event page is the single public listing.",
+      "Steve 2026-08-17: Washington County Democrats meeting is scheduled campaign stop 226. Public listing is washington-county-democrats-2026-08-17 at 6:00 p.m. Room still TBA. Public count lives in campaign-stop-milestone.ts. Host contact stays off the public page. includeOnPublicPage stays false so the movement event page is the single public listing. Completed Aug 17, 2026.",
     sourceType: "calendar",
   },
   {
@@ -3365,11 +3365,11 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     publicTitle: "NWA Senior Democrats meeting — Fayetteville",
     city: "Fayetteville",
     counties: ["Washington"],
-    status: "scheduled",
+    status: "completed",
     includeOnPublicPage: true,
     confidence: "confirmed",
     notes:
-      "Public listing is nwa-senior-democrats-fayetteville-2026-08-18. Butterfield Trail Village Lodge, 1923 E. Joyce Blvd. Kelly arrives 11:30 a.m. with yard signs and materials, speaks first in the program (before Bill), leaves by 12:45 p.m. Host Debby Winters confirmed Aug 17. Host contact stays off the public page. Same-day locked Hot Springs Village row is not the public stop.",
+      "Public listing is nwa-senior-democrats-fayetteville-2026-08-18. Butterfield Trail Village Lodge, 1923 E. Joyce Blvd. Kelly arrives 11:30 a.m. with yard signs and materials, speaks first in the program (before Bill), leaves by 12:45 p.m. Host Debby Winters confirmed Aug 17. Host contact stays off the public page. Same-day locked Hot Springs Village row is not the public stop. Scheduled campaign stop 227. Completed Aug 18, 2026.",
     sourceType: "calendar",
   },
   {

@@ -251,7 +251,7 @@ export const august2026CampaignStops: EventItem[] = [
       "Park in front of the Lodge or on Village streets — not on the mailbox side. Look for the EV charging station out front.",
     ],
     whoItsFor: "Members of the Northwest Arkansas Senior Democrats and guests at their monthly meeting.",
-    organizerNote: "Confirmed with the host on August 17, 2026. Public venue and schedule only. Host contact stays off the public page.",
+    organizerNote: "Confirmed with the host on August 17, 2026. Scheduled campaign stop 227. Public venue and schedule only. Host contact stays off the public page.",
     attendanceType: "CAMPAIGN_APPEARANCE",
     audienceTags: ["Democratic Party", "Washington County", "Fayetteville", "Northwest Arkansas"],
     mapCoordinates: { lat: 36.0994, lng: -94.1368 },
