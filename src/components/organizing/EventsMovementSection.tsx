@@ -52,7 +52,7 @@ export function EventsMovementSection({ events }: { events: EventItem[] }) {
                 "A special campaign weekend — details are on each event page."}
             </p>
           </div>
-          <ul className="grid list-none grid-cols-1 gap-4 md:grid-cols-2">
+          <ul className="grid list-none grid-cols-2 gap-2.5 sm:grid-cols-3 sm:gap-3 lg:grid-cols-4 xl:grid-cols-4">
             {featured.map((e) => (
               <li key={e.slug}>
                 <EventStopCard event={e} />
@@ -63,7 +63,7 @@ export function EventsMovementSection({ events }: { events: EventItem[] }) {
       ) : null}
 
       {rest.length ? (
-        <ul className="grid list-none grid-cols-1 gap-4 md:grid-cols-2">
+        <ul className="grid list-none grid-cols-2 gap-2.5 sm:grid-cols-3 sm:gap-3 lg:grid-cols-4 xl:grid-cols-4">
           {rest.map((e) => (
             <li key={e.slug}>
               <EventStopCard event={e} />

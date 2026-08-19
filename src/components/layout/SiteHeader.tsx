@@ -34,6 +34,7 @@ export function SiteHeader() {
   const localizedNavGroups = localizeNavGroups(primaryNavGroups, locale);
   const localizedMobileGroups = localizeNavGroups(navGroupsForMobileDrawer(), locale);
   const localizedVoteHref = withLocaleHref(voterRegistrationHref, locale);
+  const localizedEventsHref = withLocaleHref("/events", locale);
   const [open, setOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [compactHeader, setCompactHeader] = useState(false);
@@ -165,6 +166,15 @@ export function SiteHeader() {
             {chromeText("search", locale)}
           </Button>
           <Button
+            href={localizedEventsHref}
+            variant="outlineOnDark"
+            title={chromeText("navEvents", locale)}
+            className="hidden min-h-[44px] min-w-0 flex-shrink-0 border border-white/45 bg-transparent px-2.5 py-2 text-xs font-semibold uppercase tracking-wide text-white/95 transition hover:border-white/70 hover:bg-white/10 xl:inline-flex 2xl:min-h-[48px] 2xl:px-3.5 2xl:text-sm"
+            aria-label={`${chromeText("navEvents", locale)} — Kelly on the trail`}
+          >
+            {chromeText("navEvents", locale)}
+          </Button>
+          <Button
             href={localizedVoteHref}
             variant="outlineOnDark"
             title={chromeText("voteRegister", locale)}
@@ -196,6 +206,15 @@ export function SiteHeader() {
 
         <div className="ml-auto flex max-w-[min(100%,18rem)] flex-shrink-0 flex-wrap items-center justify-end gap-1.5 sm:max-w-none sm:gap-2 text-kelly-fog xl:hidden">
           <LanguageSwitcher className="order-first basis-full justify-end sm:order-none sm:basis-auto" tone="dark" />
+          <Button
+            href={localizedEventsHref}
+            variant="outlineOnDark"
+            title={chromeText("navEvents", locale)}
+            className="order-first min-h-[48px] border border-white/45 bg-transparent px-2.5 py-2 text-[10px] font-semibold uppercase tracking-wide text-white sm:px-3 sm:text-xs"
+            aria-label={`${chromeText("navEvents", locale)} — Kelly on the trail`}
+          >
+            {chromeText("navEvents", locale)}
+          </Button>
           <Button
             href={localizedVoteHref}
             variant="outlineOnDark"

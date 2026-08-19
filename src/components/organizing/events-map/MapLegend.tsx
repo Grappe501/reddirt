@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { CountyMapFeature } from "@/components/organizing/events-map/county-map-types";
 
 export function MapLegend() {
@@ -43,8 +44,13 @@ export function CountyTooltip({ feature }: { feature: CountyMapFeature }) {
           </p>
           <ul className="mt-1 space-y-1">
             {feature.upcomingLines.map((line) => (
-              <li key={line.href} className="font-body text-xs text-kelly-text/80">
-                {line.text}
+              <li key={line.href}>
+                <Link
+                  href={line.href}
+                  className="font-body text-xs font-semibold text-kelly-navy underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-kelly-navy/40"
+                >
+                  {line.text}
+                </Link>
               </li>
             ))}
           </ul>
