@@ -23,6 +23,22 @@ const HEIC_EXT = new Set([".heic", ".heif"]);
 const IMAGE_EXT = new Set([...WEB_IMAGE_EXT, ...HEIC_EXT]);
 const PHOTOS_DIR_REL = "public/media/campaign-photos";
 
+/** Nested paths never ingested — concert/DAB ops assets, credentials, riders, stage plots. */
+const INTAKE_SKIP_PATH_MARKERS = [
+  "grassroot and guitars/",
+  "dab tour assets/",
+  "credentials-security/",
+  "w9-wire info/",
+  "stage plot-input list/",
+  "/riders/",
+  "side byrnes w9",
+] as const;
+
+function shouldSkipIntakeRelativePath(relativePath: string): boolean {
+  const norm = relativePath.replace(/\\/g, "/").toLowerCase();
+  return INTAKE_SKIP_PATH_MARKERS.some((marker) => norm.includes(marker));
+}
+
 function photosDirAbs(): string {
   return path.join(process.cwd(), PHOTOS_DIR_REL);
 }
@@ -112,7 +128,10 @@ function walkRelativeImages(dirAbs: string, prefix = ""): string[] {
       continue;
     }
     const ext = path.extname(name).toLowerCase();
-    if (IMAGE_EXT.has(ext)) out.push(rel.split(path.sep).join("/"));
+    const relPosix = rel.split(path.sep).join("/");
+    if (IMAGE_EXT.has(ext) && !shouldSkipIntakeRelativePath(relPosix)) {
+      out.push(relPosix);
+    }
   }
   return out;
 }

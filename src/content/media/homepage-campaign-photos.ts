@@ -18,11 +18,15 @@ import {
 export const HOMEPAGE_CAMPAIGN_PHOTO_IDS = [
   "afl-cio-pre-event-networking-20260629",
   "mena-polk-meet-greet-20260411",
-  "war-memorial-stadium-concourse-20260320",
-  "toad-suck-daze-toad-race-20260501",
+  "soup-sunday-community-event-20260301",
+  "hot-springs-village-community-dinner-20260723",
+  "community-center-birthday-remarks-20260726",
   "johnson-county-peach-festival-parade-20260718",
+  "johnson-county-peach-festival-street-outreach-20260718",
   "watermelon-festival-booth-service-20260725",
-  "stone-porch-door-conversation-20260301",
+  "toad-suck-daze-toad-race-20260501",
+  "war-memorial-stadium-concourse-20260320",
+  "arkansas-rising-supporter-selfie-20251115",
   "elks-lodge-breakfast-table-20260228",
 ] as const;
 
@@ -32,10 +36,13 @@ export const HOMEPAGE_CAMPAIGN_PHOTO_IDS = [
  */
 export const HOMEPAGE_ACROSS_ARKANSAS_PHOTO_IDS = [
   "mena-polk-meet-greet-20260411",
-  "war-memorial-stadium-concourse-20260320",
-  "toad-suck-daze-toad-race-20260501",
+  "hot-springs-village-community-dinner-20260723",
   "johnson-county-peach-festival-parade-20260718",
+  "johnson-county-peach-festival-street-outreach-20260718",
   "watermelon-festival-booth-service-20260725",
+  "toad-suck-daze-toad-race-20260501",
+  "community-center-birthday-remarks-20260726",
+  "war-memorial-stadium-concourse-20260320",
 ] as const;
 
 export type HomepageCampaignPhotoId = (typeof HOMEPAGE_CAMPAIGN_PHOTO_IDS)[number];

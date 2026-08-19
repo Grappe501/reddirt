@@ -155,6 +155,15 @@ export function SiteHeader() {
             Search
           </Button>
           <Button
+            href="/events"
+            variant="outlineOnDark"
+            title="Events"
+            className="hidden min-h-[44px] min-w-0 flex-shrink-0 border border-white/45 bg-transparent px-2.5 py-2 text-xs font-semibold uppercase tracking-wide text-white/95 transition hover:border-white/70 hover:bg-white/10 xl:inline-flex 2xl:min-h-[48px] 2xl:px-3.5 2xl:text-sm"
+            aria-label="Events — Kelly on the trail"
+          >
+            Events
+          </Button>
+          <Button
             href={voterRegistrationHref}
             variant="outlineOnDark"
             title="Vote / Register"
@@ -186,10 +195,19 @@ export function SiteHeader() {
 
         <div className="ml-auto flex max-w-[min(100%,18rem)] flex-shrink-0 flex-wrap items-center justify-end gap-1.5 sm:max-w-none sm:gap-2 text-kelly-fog xl:hidden">
           <Button
+            href="/events"
+            variant="outlineOnDark"
+            title="Events"
+            className="order-first min-h-[48px] border border-white/45 bg-transparent px-2.5 py-2 text-[10px] font-semibold uppercase tracking-wide text-white sm:px-3 sm:text-xs"
+            aria-label="Events — Kelly on the trail"
+          >
+            Events
+          </Button>
+          <Button
             href={voterRegistrationHref}
             variant="outlineOnDark"
             title="Vote / Register"
-            className="order-first min-h-[48px] border border-white/45 bg-transparent px-2.5 py-2 text-[10px] font-semibold uppercase tracking-wide text-white sm:px-3 sm:text-xs"
+            className="min-h-[48px] border border-white/45 bg-transparent px-2.5 py-2 text-[10px] font-semibold uppercase tracking-wide text-white sm:px-3 sm:text-xs"
             aria-label="Vote / Register — voter registration center"
           >
             Vote

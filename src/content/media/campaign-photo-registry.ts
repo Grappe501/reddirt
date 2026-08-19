@@ -3257,6 +3257,726 @@ export const CAMPAIGN_PHOTO_REGISTRY: CampaignPhotoRecord[] = [
     createdAt: "2026-07-28T06:15:00.000Z",
     updatedAt: "2026-07-28T06:15:00.000Z",
   },
+  {
+    id: "arkansas-rising-supporter-selfie-20251115",
+    src: "/media/campaign-photos/20251115-105638.jpg",
+    heroLevel: "FEATURE",
+    publicationStatus: "DRAFT",
+    basic: {
+      originalFilename: "20251115_105638.jpg",
+      orientation: "PORTRAIT",
+      fileType: "image/jpeg",
+      captureDateIso: UNKNOWN,
+      cameraDevice: UNKNOWN,
+    },
+    campaign: {
+      eventName: "Arkansas Rising community gathering",
+      county: UNKNOWN,
+      city: UNKNOWN,
+      venue: "Community hall / Legion-style room",
+      eventDate: UNKNOWN,
+      photographer: UNKNOWN,
+      peopleVisible: ["Kelly Grappe"],
+      organizations: [],
+      campaignTheme: "Community Engagement",
+      relatedIssue: "Voter Outreach",
+      relatedSpeechVideoIds: [],
+      relatedBlogPaths: [],
+      relatedEventIds: [],
+      relatedPagePaths: ["/about/journey", "/about", "/get-involved"],
+      homepageCandidate: true,
+      featuredPhoto: true,
+    },
+    accessibility: {
+      altText:
+        "Kelly Grappe in an Arkansas Rising campaign shirt poses with a supporter inside a community hall decorated with American flags.",
+      caption:
+        "Kelly Grappe joins a supporter at an Arkansas Rising community gathering during her Secretary of State campaign.",
+      extendedDescription:
+        "Kelly Grappe, wearing a red Arkansas Rising shirt and Secretary of State name tag under a black blazer, smiles beside a supporter in a community hall with flag bunting along the counter.",
+      seoDescription:
+        "Kelly Grappe meets a supporter at an Arkansas Rising community event.",
+    },
+    notes:
+      "Feature — Website pics and speeches batch. City/county Unknown. Placement: Journey, Latest Campaign Photos.",
+    createdAt: "2026-08-19T06:30:00.000Z",
+    updatedAt: "2026-08-19T06:30:00.000Z",
+  },
+  {
+    id: "soup-sunday-community-event-20260301",
+    src: "/media/campaign-photos/20260301-162718.jpg",
+    heroLevel: "FEATURE",
+    publicationStatus: "DRAFT",
+    basic: {
+      originalFilename: "20260301_162718.jpg",
+      orientation: "PORTRAIT",
+      fileType: "image/jpeg",
+      captureDateIso: UNKNOWN,
+      cameraDevice: UNKNOWN,
+    },
+    campaign: {
+      eventName: "Soup Sunday (Arkansas Advocates for Children and Families)",
+      county: UNKNOWN,
+      city: UNKNOWN,
+      venue: "Indoor community venue",
+      eventDate: UNKNOWN,
+      photographer: UNKNOWN,
+      peopleVisible: ["Kelly Grappe"],
+      organizations: ["Arkansas Advocates for Children and Families"],
+      campaignTheme: "Community Engagement",
+      relatedIssue: "Voter Outreach",
+      relatedSpeechVideoIds: [],
+      relatedBlogPaths: [],
+      relatedEventIds: [],
+      relatedPagePaths: ["/about/journey", "/about", "/get-involved"],
+      homepageCandidate: true,
+      featuredPhoto: true,
+    },
+    accessibility: {
+      altText:
+        "Kelly Grappe smiles beside a volunteer in a Soup Sunday apron benefiting Arkansas Advocates for Children and Families.",
+      caption:
+        "Kelly Grappe visits Soup Sunday, a community meal supporting Arkansas Advocates for Children and Families.",
+      extendedDescription:
+        "Kelly Grappe, wearing a People Over Politics button, stands with a smiling volunteer in a blue Soup Sunday apron at an indoor community event benefiting Arkansas Advocates for Children and Families.",
+      seoDescription:
+        "Kelly Grappe attends Soup Sunday supporting Arkansas Advocates for Children and Families.",
+    },
+    notes:
+      "Feature — event name from volunteer apron. City/county Unknown. Placement: Journey, Latest Campaign Photos, Meet Kelly.",
+    createdAt: "2026-08-19T06:30:00.000Z",
+    updatedAt: "2026-08-19T06:30:00.000Z",
+  },
+  {
+    id: "brewery-crowd-wide-20260426",
+    src: "/media/campaign-photos/20260426-141555.jpg",
+    heroLevel: "FEATURE",
+    publicationStatus: "DRAFT",
+    basic: {
+      originalFilename: "20260426_141555.jpg",
+      orientation: "LANDSCAPE",
+      fileType: "image/jpeg",
+      captureDateIso: UNKNOWN,
+      cameraDevice: UNKNOWN,
+    },
+    campaign: {
+      eventName: "Brewery meet-and-greet",
+      county: UNKNOWN,
+      city: UNKNOWN,
+      venue: "Craft brewery / event hall",
+      eventDate: UNKNOWN,
+      photographer: UNKNOWN,
+      peopleVisible: ["Kelly Grappe"],
+      organizations: [],
+      campaignTheme: "Community Engagement",
+      relatedIssue: "Voter Outreach",
+      relatedSpeechVideoIds: [],
+      relatedBlogPaths: [],
+      relatedEventIds: [],
+      relatedPagePaths: ["/about/journey", "/about", "/get-involved"],
+      homepageCandidate: false,
+      featuredPhoto: true,
+    },
+    accessibility: {
+      altText:
+        "A large crowd fills folding chairs inside a colorful brewery hall during a Kelly Grappe campaign meet-and-greet.",
+      caption:
+        "Supporters pack a brewery hall for a campaign meet-and-greet — one stop on Kelly Grappe's Arkansas trail.",
+      extendedDescription:
+        "Dozens of attendees sit in rows of chairs inside a brewery with blue walls, patriotic ceiling bunting, and brewing tanks visible as Kelly Grappe's campaign hosts a packed community conversation.",
+      seoDescription:
+        "Crowd gathers at a brewery meet-and-greet during Kelly Grappe's Secretary of State campaign.",
+    },
+    notes:
+      "Feature — wide crowd shot; same-day set as brewery-meet-greet / USW handshake stills (20260426). City/county Unknown. Placement: Journey, Across Arkansas.",
+    createdAt: "2026-08-19T06:30:00.000Z",
+    updatedAt: "2026-08-19T06:30:00.000Z",
+  },
+  {
+    id: "good-things-grow-luncheon-table-20260613",
+    src: "/media/campaign-photos/20260613-122255.jpg",
+    heroLevel: "FEATURE",
+    publicationStatus: "DRAFT",
+    basic: {
+      originalFilename: "20260613_122255.jpg",
+      orientation: "PORTRAIT",
+      fileType: "image/jpeg",
+      captureDateIso: UNKNOWN,
+      cameraDevice: UNKNOWN,
+    },
+    campaign: {
+      eventName: "Good Things Grow Here community luncheon",
+      county: UNKNOWN,
+      city: UNKNOWN,
+      venue: "Community hall",
+      eventDate: UNKNOWN,
+      photographer: UNKNOWN,
+      peopleVisible: ["Kelly Grappe"],
+      organizations: [],
+      campaignTheme: "Listening",
+      relatedIssue: "Voter Outreach",
+      relatedSpeechVideoIds: [],
+      relatedBlogPaths: [],
+      relatedEventIds: [],
+      relatedPagePaths: ["/about/journey", "/about", "/get-involved"],
+      homepageCandidate: false,
+      featuredPhoto: true,
+    },
+    accessibility: {
+      altText:
+        "Kelly Grappe in a Good Things Grow Here shirt talks with seated seniors at a luncheon table covered with tomatoes and campaign cards.",
+      caption:
+        "Kelly Grappe listens to community members over lunch at a Good Things Grow Here gathering.",
+      extendedDescription:
+        "Kelly Grappe, wearing a tomato-themed Good Things Grow Here shirt and Kelly Grappe campaign button, leans toward seated seniors at a white-clothed table with fresh tomatoes and campaign literature.",
+      seoDescription:
+        "Kelly Grappe speaks with seniors at a Good Things Grow Here community luncheon.",
+    },
+    notes:
+      "Feature — same-day set as county-clerk tomato and good-things-grow stills (20260613). City/county Unknown. Placement: Journey.",
+    createdAt: "2026-08-19T06:30:00.000Z",
+    updatedAt: "2026-08-19T06:30:00.000Z",
+  },
+  {
+    id: "festival-booth-banner-outreach-20260619",
+    src: "/media/campaign-photos/20260619-194339.jpg",
+    heroLevel: "FEATURE",
+    publicationStatus: "DRAFT",
+    basic: {
+      originalFilename: "20260619_194339.jpg",
+      orientation: "PORTRAIT",
+      fileType: "image/jpeg",
+      captureDateIso: UNKNOWN,
+      cameraDevice: UNKNOWN,
+    },
+    campaign: {
+      eventName: "Outdoor festival / campaign booth",
+      county: UNKNOWN,
+      city: UNKNOWN,
+      venue: "Outdoor festival lot",
+      eventDate: UNKNOWN,
+      photographer: UNKNOWN,
+      peopleVisible: ["Kelly Grappe"],
+      organizations: [],
+      campaignTheme: "Community Engagement",
+      relatedIssue: "Voter Outreach",
+      relatedSpeechVideoIds: [],
+      relatedBlogPaths: [],
+      relatedEventIds: [],
+      relatedPagePaths: ["/about/journey", "/about", "/volunteer", "/get-involved"],
+      homepageCandidate: false,
+      featuredPhoto: true,
+    },
+    accessibility: {
+      altText:
+        "Campaign volunteers talk beside a People Over Politics banner and Kelly Grappe table at an outdoor community festival.",
+      caption:
+        "Volunteers staff a People Over Politics booth at an outdoor festival stop on the campaign trail.",
+      extendedDescription:
+        "Two supporters in Kelly Grappe campaign shirts converse beside a table and vertical People Over Politics banner listing Protect the Vote and Modernize Systems platform points at an outdoor festival.",
+      seoDescription:
+        "Kelly Grappe campaign volunteers at a People Over Politics festival booth.",
+    },
+    notes:
+      "Feature — strong branding; pairs with festival-booth-supporter-selfie-20260619. City/county Unknown. Placement: Journey, Volunteer.",
+    createdAt: "2026-08-19T06:30:00.000Z",
+    updatedAt: "2026-08-19T06:30:00.000Z",
+  },
+  {
+    id: "pavilion-cake-stand-handshake-20260620",
+    src: "/media/campaign-photos/20260620-161452.jpg",
+    heroLevel: "FEATURE",
+    publicationStatus: "DRAFT",
+    basic: {
+      originalFilename: "20260620_161452.jpg",
+      orientation: "PORTRAIT",
+      fileType: "image/jpeg",
+      captureDateIso: UNKNOWN,
+      cameraDevice: UNKNOWN,
+    },
+    campaign: {
+      eventName: "Community pavilion gathering",
+      county: UNKNOWN,
+      city: UNKNOWN,
+      venue: "Park pavilion (cake stand fundraiser)",
+      eventDate: UNKNOWN,
+      photographer: UNKNOWN,
+      peopleVisible: ["Kelly Grappe"],
+      organizations: [],
+      campaignTheme: "Community Engagement",
+      relatedIssue: "Voter Outreach",
+      relatedSpeechVideoIds: [],
+      relatedBlogPaths: [],
+      relatedEventIds: [],
+      relatedPagePaths: ["/about/journey", "/about", "/get-involved"],
+      homepageCandidate: false,
+      featuredPhoto: true,
+    },
+    accessibility: {
+      altText:
+        "Kelly Grappe shakes hands with a community member under a tent at a park pavilion with a cake-stand fundraiser sign.",
+      caption:
+        "Kelly Grappe greets a neighbor at a park pavilion community gathering.",
+      extendedDescription:
+        "Under a white canopy at a wooden park pavilion, Kelly Grappe in a light blue campaign shirt shakes hands with an older man while families gather nearby. A sign advertises a cake-stand fundraiser.",
+      seoDescription:
+        "Kelly Grappe shakes hands at a park pavilion community event.",
+    },
+    notes:
+      "Feature — same-day pair with stone-building stills (20260620). City/county Unknown. Placement: Journey, Across Arkansas.",
+    createdAt: "2026-08-19T06:30:00.000Z",
+    updatedAt: "2026-08-19T06:30:00.000Z",
+  },
+  {
+    id: "uams-health-meet-greet-group-20260626",
+    src: "/media/campaign-photos/20260626-121544.jpg",
+    heroLevel: "FEATURE",
+    publicationStatus: "DRAFT",
+    basic: {
+      originalFilename: "20260626_121544.jpg",
+      orientation: "PORTRAIT",
+      fileType: "image/jpeg",
+      captureDateIso: UNKNOWN,
+      cameraDevice: UNKNOWN,
+    },
+    campaign: {
+      eventName: "Community meet-and-greet",
+      county: UNKNOWN,
+      city: UNKNOWN,
+      venue: "Public building lobby",
+      eventDate: UNKNOWN,
+      photographer: UNKNOWN,
+      peopleVisible: ["Kelly Grappe"],
+      organizations: ["UAMS Health (attendee visible)"],
+      campaignTheme: "Community Engagement",
+      relatedIssue: "Voter Outreach",
+      relatedSpeechVideoIds: [],
+      relatedBlogPaths: [],
+      relatedEventIds: [],
+      relatedPagePaths: ["/about/journey", "/about", "/get-involved"],
+      homepageCandidate: false,
+      featuredPhoto: true,
+    },
+    accessibility: {
+      altText:
+        "Kelly Grappe in a white blazer poses with two community members inside a bright public building lobby.",
+      caption:
+        "Kelly Grappe visits with community members during a meet-and-greet in a public building.",
+      extendedDescription:
+        "Kelly Grappe, wearing a campaign name tag and holding a notebook, smiles between two men in a sunlit lobby overlooking a lower level with seating.",
+      seoDescription:
+        "Kelly Grappe meets community members at a public building campaign stop.",
+    },
+    notes:
+      "Feature — UAMS Health sling visible on attendee; not an endorsement claim. City/county Unknown. Placement: Journey.",
+    createdAt: "2026-08-19T06:30:00.000Z",
+    updatedAt: "2026-08-19T06:30:00.000Z",
+  },
+  {
+    id: "judge-griffen-town-hall-20260627",
+    src: "/media/campaign-photos/20260627-140824.jpg",
+    heroLevel: "FEATURE",
+    publicationStatus: "DRAFT",
+    basic: {
+      originalFilename: "20260627_140824.jpg",
+      orientation: "PORTRAIT",
+      fileType: "image/jpeg",
+      captureDateIso: UNKNOWN,
+      cameraDevice: UNKNOWN,
+    },
+    campaign: {
+      eventName: "Community town hall forum",
+      county: UNKNOWN,
+      city: UNKNOWN,
+      venue: "Modern community meeting room",
+      eventDate: UNKNOWN,
+      photographer: UNKNOWN,
+      peopleVisible: ["Wendell Griffen"],
+      organizations: [],
+      campaignTheme: "Civic Engagement",
+      relatedIssue: "Voter Outreach",
+      relatedSpeechVideoIds: [],
+      relatedBlogPaths: [],
+      relatedEventIds: [],
+      relatedPagePaths: ["/about/journey", "/about", "/get-involved"],
+      homepageCandidate: false,
+      featuredPhoto: true,
+    },
+    accessibility: {
+      altText:
+        "A packed community meeting room faces a welcome screen and speakers during a town hall forum.",
+      caption:
+        "Community members fill a meeting room for a town hall forum on the campaign trail.",
+      extendedDescription:
+        "Attendees sit in rows facing a projection screen and speakers at the front of a modern community room with wood-accent ceiling and carpeted floor.",
+      seoDescription:
+        "Community town hall forum during Kelly Grappe's Arkansas campaign.",
+    },
+    notes:
+      "Feature — welcome slide names Judge Wendell Griffen; Kelly presence in room not confirmed in this wide shot — do not claim she spoke from this frame alone. City/county Unknown. Placement: Journey.",
+    createdAt: "2026-08-19T06:30:00.000Z",
+    updatedAt: "2026-08-19T06:30:00.000Z",
+  },
+  {
+    id: "johnson-county-peach-festival-street-outreach-20260718",
+    src: "/media/campaign-photos/20260718-174651.jpg",
+    heroLevel: "FEATURE",
+    publicationStatus: "DRAFT",
+    basic: {
+      originalFilename: "20260718_174651.jpg",
+      orientation: "PORTRAIT",
+      fileType: "image/jpeg",
+      captureDateIso: UNKNOWN,
+      cameraDevice: UNKNOWN,
+    },
+    campaign: {
+      eventName: "85th Annual Johnson County Peach Festival",
+      county: "Johnson",
+      city: "Clarksville",
+      venue: "Festival street / parade route",
+      eventDate: UNKNOWN,
+      photographer: UNKNOWN,
+      peopleVisible: ["Kelly Grappe"],
+      organizations: [],
+      campaignTheme: "Community Engagement",
+      relatedIssue: "Voter Outreach",
+      relatedSpeechVideoIds: [],
+      relatedBlogPaths: [],
+      relatedEventIds: [],
+      relatedPagePaths: ["/about/journey", "/about", "/counties/johnson", "/get-involved"],
+      homepageCandidate: true,
+      featuredPhoto: true,
+    },
+    accessibility: {
+      altText:
+        "Kelly Grappe in a Vote Kelly Grappe for Secretary of State shirt talks with festival-goers in tie-dye along a sunny street.",
+      caption:
+        "Kelly Grappe greets Peach Festival-goers along the street in Johnson County.",
+      extendedDescription:
+        "From behind, Kelly Grappe in an orange Vote Kelly Grappe shirt speaks with women in colorful tie-dye beside a residential festival route lined with parked trucks.",
+      seoDescription:
+        "Kelly Grappe greets voters at the Johnson County Peach Festival in Clarksville.",
+    },
+    notes:
+      "Feature — same festival day as johnson-county-peach-festival-parade-20260718. Placement: Johnson County, Journey, Kelly Across Arkansas.",
+    createdAt: "2026-08-19T06:30:00.000Z",
+    updatedAt: "2026-08-19T06:30:00.000Z",
+  },
+  {
+    id: "johnson-county-peach-festival-curb-listening-20260718",
+    src: "/media/campaign-photos/20260718-182157.jpg",
+    heroLevel: "FEATURE",
+    publicationStatus: "DRAFT",
+    basic: {
+      originalFilename: "20260718_182157.jpg",
+      orientation: "PORTRAIT",
+      fileType: "image/jpeg",
+      captureDateIso: UNKNOWN,
+      cameraDevice: UNKNOWN,
+    },
+    campaign: {
+      eventName: "85th Annual Johnson County Peach Festival",
+      county: "Johnson",
+      city: "Clarksville",
+      venue: "Parade route curb",
+      eventDate: UNKNOWN,
+      photographer: UNKNOWN,
+      peopleVisible: ["Kelly Grappe"],
+      organizations: [],
+      campaignTheme: "Listening",
+      relatedIssue: "Voter Outreach",
+      relatedSpeechVideoIds: [],
+      relatedBlogPaths: [],
+      relatedEventIds: [],
+      relatedPagePaths: ["/about/journey", "/about", "/counties/johnson", "/get-involved"],
+      homepageCandidate: false,
+      featuredPhoto: true,
+    },
+    accessibility: {
+      altText:
+        "Kelly Grappe kneels to speak with children and families seated on a curb during a sunny community festival.",
+      caption:
+        "Kelly Grappe listens to families along the Peach Festival parade route in Johnson County.",
+      extendedDescription:
+        "Kelly Grappe in an orange campaign shirt bends toward children and adults sitting on a street curb in warm afternoon light during festival outreach.",
+      seoDescription:
+        "Kelly Grappe talks with families at the Johnson County Peach Festival.",
+    },
+    notes:
+      "Feature — intimate festival listening moment; same-day Johnson County set. Placement: Johnson County, Journey.",
+    createdAt: "2026-08-19T06:30:00.000Z",
+    updatedAt: "2026-08-19T06:30:00.000Z",
+  },
+  {
+    id: "hot-springs-village-community-dinner-20260723",
+    src: "/media/campaign-photos/20260723-162003.jpg",
+    heroLevel: "FEATURE",
+    publicationStatus: "DRAFT",
+    basic: {
+      originalFilename: "20260723_162003.jpg",
+      orientation: "PORTRAIT",
+      fileType: "image/jpeg",
+      captureDateIso: UNKNOWN,
+      cameraDevice: UNKNOWN,
+    },
+    campaign: {
+      eventName: "Hot Springs Village community dinner",
+      county: "Garland",
+      city: "Hot Springs Village",
+      venue: "Community banquet hall (HSV)",
+      eventDate: UNKNOWN,
+      photographer: UNKNOWN,
+      peopleVisible: ["Kelly Grappe"],
+      organizations: [],
+      campaignTheme: "Community Engagement",
+      relatedIssue: "Voter Outreach",
+      relatedSpeechVideoIds: [],
+      relatedBlogPaths: [],
+      relatedEventIds: [],
+      relatedPagePaths: ["/about/journey", "/about", "/counties/garland", "/get-involved"],
+      homepageCandidate: true,
+      featuredPhoto: true,
+    },
+    accessibility: {
+      altText:
+        "Community members line up at buffet tables and sit at round tables during a crowded Hot Springs Village dinner event.",
+      caption:
+        "A packed Hot Springs Village community dinner draws neighbors to tables and a buffet line.",
+      extendedDescription:
+        "In a wood-floored banquet hall with burgundy stage curtains and an HSV logo on screen, volunteers serve food while dozens of residents dine at round tables strung with lights.",
+      seoDescription:
+        "Hot Springs Village community dinner during Kelly Grappe's Arkansas campaign.",
+    },
+    notes:
+      "Feature — HSV logo on screen supports Hot Springs Village / Garland County; confirm with Steve if needed. Same-day set as community-dinner stills. Placement: Garland County, Journey, Kelly Across Arkansas.",
+    createdAt: "2026-08-19T06:30:00.000Z",
+    updatedAt: "2026-08-19T06:30:00.000Z",
+  },
+  {
+    id: "community-dinner-supporter-portrait-20260723",
+    src: "/media/campaign-photos/20260723-163553.jpg",
+    heroLevel: "FEATURE",
+    publicationStatus: "DRAFT",
+    basic: {
+      originalFilename: "20260723_163553.jpg",
+      orientation: "PORTRAIT",
+      fileType: "image/jpeg",
+      captureDateIso: UNKNOWN,
+      cameraDevice: UNKNOWN,
+    },
+    campaign: {
+      eventName: "Community dinner / political gathering",
+      county: UNKNOWN,
+      city: UNKNOWN,
+      venue: "Indoor banquet hall",
+      eventDate: UNKNOWN,
+      photographer: UNKNOWN,
+      peopleVisible: ["Kelly Grappe"],
+      organizations: [],
+      campaignTheme: "Community Engagement",
+      relatedIssue: "Voter Outreach",
+      relatedSpeechVideoIds: [],
+      relatedBlogPaths: [],
+      relatedEventIds: [],
+      relatedPagePaths: ["/about/journey", "/about", "/get-involved"],
+      homepageCandidate: false,
+      featuredPhoto: true,
+    },
+    accessibility: {
+      altText:
+        "Kelly Grappe in a navy blazer poses with a supporter wearing a People Over Politics campaign button at an indoor dinner event.",
+      caption:
+        "Kelly Grappe and a supporter share a moment at a community campaign dinner.",
+      extendedDescription:
+        "Kelly Grappe, in a navy double-breasted blazer, stands arm-in-arm with a supporter wearing a People Over Politics button and name tag inside a hall decorated with string lights.",
+      seoDescription:
+        "Kelly Grappe with a supporter at a community campaign dinner.",
+    },
+    notes:
+      "Feature — same-day pair with hot-springs-village-community-dinner and community-dinner-constituent-conversation stills. City/county Unknown on this portrait. Placement: Journey, Meet Kelly.",
+    createdAt: "2026-08-19T06:30:00.000Z",
+    updatedAt: "2026-08-19T06:30:00.000Z",
+  },
+  {
+    id: "people-over-politics-supporters-phone-20260725",
+    src: "/media/campaign-photos/20260725-091547.jpg",
+    heroLevel: "FEATURE",
+    publicationStatus: "DRAFT",
+    basic: {
+      originalFilename: "20260725_091547.jpg",
+      orientation: "PORTRAIT",
+      fileType: "image/jpeg",
+      captureDateIso: UNKNOWN,
+      cameraDevice: UNKNOWN,
+    },
+    campaign: {
+      eventName: "Community festival / supporter meetup",
+      county: UNKNOWN,
+      city: UNKNOWN,
+      venue: "Outdoor parking lot (community venue)",
+      eventDate: UNKNOWN,
+      photographer: UNKNOWN,
+      peopleVisible: ["Kelly Grappe"],
+      organizations: [],
+      campaignTheme: "Community Engagement",
+      relatedIssue: "Voter Outreach",
+      relatedSpeechVideoIds: [],
+      relatedBlogPaths: [],
+      relatedEventIds: [],
+      relatedPagePaths: ["/about/journey", "/about", "/volunteer", "/get-involved"],
+      homepageCandidate: false,
+      featuredPhoto: true,
+    },
+    accessibility: {
+      altText:
+        "Three supporters in People Over Politics shirts gather around a phone in a sunny parking lot during a community event.",
+      caption:
+        "Supporters in People Over Politics shirts connect during a festival stop on the campaign trail.",
+      extendedDescription:
+        "Three women in lime-green People Over Politics shirts stand in a parking lot, one wearing a Vote hat, looking at a phone together on a bright summer day.",
+      seoDescription:
+        "Kelly Grappe supporters in People Over Politics shirts at a community event.",
+    },
+    notes:
+      "Feature — supporter energy; same-day Cave City watermelon festival family. City/county Unknown. Placement: Journey, Volunteer.",
+    createdAt: "2026-08-19T06:30:00.000Z",
+    updatedAt: "2026-08-19T06:30:00.000Z",
+  },
+  {
+    id: "people-over-politics-group-selfie-wide-20260725",
+    src: "/media/campaign-photos/20260725-100256.jpg",
+    heroLevel: "FEATURE",
+    publicationStatus: "DRAFT",
+    basic: {
+      originalFilename: "20260725_100256.jpg",
+      orientation: "LANDSCAPE",
+      fileType: "image/jpeg",
+      captureDateIso: UNKNOWN,
+      cameraDevice: UNKNOWN,
+    },
+    campaign: {
+      eventName: "Community festival / supporter meetup",
+      county: UNKNOWN,
+      city: UNKNOWN,
+      venue: "Outdoor parking lot (community venue)",
+      eventDate: UNKNOWN,
+      photographer: UNKNOWN,
+      peopleVisible: ["Kelly Grappe"],
+      organizations: [],
+      campaignTheme: "Community Engagement",
+      relatedIssue: "Voter Outreach",
+      relatedSpeechVideoIds: [],
+      relatedBlogPaths: [],
+      relatedEventIds: [],
+      relatedPagePaths: ["/about/journey", "/about", "/volunteer", "/get-involved"],
+      homepageCandidate: false,
+      featuredPhoto: true,
+    },
+    accessibility: {
+      altText:
+        "Kelly Grappe and supporters in People Over Politics shirts pose for a wide group selfie in a parking lot.",
+      caption:
+        "Kelly Grappe joins supporters for a group photo in People Over Politics campaign shirts.",
+      extendedDescription:
+        "A wide group selfie shows Kelly Grappe among smiling supporters in matching lime-green People Over Politics shirts and campaign hats in a sunny parking lot beside community buildings.",
+      seoDescription:
+        "Kelly Grappe group selfie with supporters in People Over Politics shirts.",
+    },
+    notes:
+      "Feature — wider group than people-over-politics-supporter-selfie-20260725 PNG. Same-day festival set. Placement: Journey, Volunteer, gallery.",
+    createdAt: "2026-08-19T06:30:00.000Z",
+    updatedAt: "2026-08-19T06:30:00.000Z",
+  },
+  {
+    id: "community-center-birthday-remarks-20260726",
+    src: "/media/campaign-photos/20260726-180452.jpg",
+    heroLevel: "FEATURE",
+    publicationStatus: "DRAFT",
+    basic: {
+      originalFilename: "20260726_180452.jpg",
+      orientation: "PORTRAIT",
+      fileType: "image/jpeg",
+      captureDateIso: UNKNOWN,
+      cameraDevice: UNKNOWN,
+    },
+    campaign: {
+      eventName: "Community center gathering",
+      county: UNKNOWN,
+      city: UNKNOWN,
+      venue: "Youth / community center",
+      eventDate: UNKNOWN,
+      photographer: UNKNOWN,
+      peopleVisible: ["Kelly Grappe"],
+      organizations: [],
+      campaignTheme: "Community Engagement",
+      relatedIssue: "Voter Outreach",
+      relatedSpeechVideoIds: [],
+      relatedBlogPaths: [],
+      relatedEventIds: [],
+      relatedPagePaths: ["/about/journey", "/about", "/get-involved"],
+      homepageCandidate: true,
+      featuredPhoto: true,
+    },
+    accessibility: {
+      altText:
+        "Kelly Grappe speaks into a microphone at a community center counter while families and children listen from tables.",
+      caption:
+        "Kelly Grappe addresses neighbors at a community center gathering.",
+      extendedDescription:
+        "Kelly Grappe in a white blazer speaks at a lit counter beneath a birthday banner as a diverse group of children and adults seated at tables listen in a community center room.",
+      seoDescription:
+        "Kelly Grappe speaks at a community center event during her campaign.",
+    },
+    notes:
+      "Feature — strong diverse-community listening/speaking moment. City/county Unknown. Placement: Journey, Latest Campaign Photos, Kelly Across Arkansas.",
+    createdAt: "2026-08-19T06:30:00.000Z",
+    updatedAt: "2026-08-19T06:30:00.000Z",
+  },
+  {
+    id: "community-center-birthday-crowd-20260726",
+    src: "/media/campaign-photos/20260726-180547.jpg",
+    heroLevel: "SUPPORTING",
+    publicationStatus: "DRAFT",
+    basic: {
+      originalFilename: "20260726_180547.jpg",
+      orientation: "PORTRAIT",
+      fileType: "image/jpeg",
+      captureDateIso: UNKNOWN,
+      cameraDevice: UNKNOWN,
+    },
+    campaign: {
+      eventName: "Community center gathering",
+      county: UNKNOWN,
+      city: UNKNOWN,
+      venue: "Youth / community center",
+      eventDate: UNKNOWN,
+      photographer: UNKNOWN,
+      peopleVisible: ["Kelly Grappe"],
+      organizations: [],
+      campaignTheme: "Community Engagement",
+      relatedIssue: "Voter Outreach",
+      relatedSpeechVideoIds: [],
+      relatedBlogPaths: [],
+      relatedEventIds: [],
+      relatedPagePaths: ["/about/journey", "/about", "/get-involved"],
+      homepageCandidate: false,
+      featuredPhoto: false,
+    },
+    accessibility: {
+      altText:
+        "Families and children fill a community center room facing a speaker at the front during a neighborhood gathering.",
+      caption:
+        "Neighbors gather at a community center event on the campaign trail.",
+      extendedDescription:
+        "A crowd of children and adults sit at tables and stand along the walls of a community center, facing a speaker area decorated with a birthday banner and arcade-style monitors.",
+      seoDescription:
+        "Community center gathering during Kelly Grappe's Arkansas campaign.",
+    },
+    notes:
+      "Supporting — crowd context shot; pairs with community-center-birthday-remarks-20260726. City/county Unknown. Placement: Journey gallery.",
+    createdAt: "2026-08-19T06:30:00.000Z",
+    updatedAt: "2026-08-19T06:30:00.000Z",
+  },
 ];
 
 export function listCampaignPhotos(): CampaignPhotoRecord[] {
