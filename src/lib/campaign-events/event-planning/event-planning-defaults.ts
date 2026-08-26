@@ -74,6 +74,7 @@ export function emptyEventPlanningData(): EventPlanningData {
       receiptsPlaceholder: "",
       notes: "",
     },
+    taskPackages: [],
     sectionCompleted: {},
   };
 }
