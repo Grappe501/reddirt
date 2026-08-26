@@ -3,12 +3,13 @@ import "server-only";
 import { randomUUID } from "node:crypto";
 import { Prisma } from "@prisma/client";
 import { prisma } from "@/lib/db";
+import { KELLY_SOS_TENANT_ID } from "@/lib/campaign-tenancy/single-campaign-mode";
 import { createClient } from "@/utils/supabase/server";
 import { assertActorPermission, permissionsForRole, type Permission } from "./permissions";
 import type { CampaignRole, CurrentActor, MembershipStatus } from "./types";
 import { EventPmAuthError } from "./types";
 
-export const EVENT_PM_CAMPAIGN_KEY = "kelly-grappe-sos";
+export const EVENT_PM_CAMPAIGN_KEY = KELLY_SOS_TENANT_ID;
 
 type ActorRow = {
   userId: string;
@@ -31,13 +32,13 @@ async function loadByAuthUserId(tx: Tx, authUserId: string): Promise<ActorRow | 
       u."name" AS "displayName",
       u."supabaseUserId" AS "authUserId",
       m."id" AS "membershipId",
-      m."campaignKey" AS "campaignKey",
+      m."tenantId" AS "campaignKey",
       m."role"::text AS "role",
       m."status"::text AS "status"
     FROM "User" u
     JOIN "CampaignMembership" m ON m."userId" = u."id"
     WHERE u."supabaseUserId" = ${authUserId}
-      AND m."campaignKey" = ${EVENT_PM_CAMPAIGN_KEY}
+      AND m."tenantId" = ${EVENT_PM_CAMPAIGN_KEY}
     LIMIT 1
   `);
   return rows[0] ?? null;
@@ -51,13 +52,13 @@ async function bindVerifiedEmailIdentity(tx: Tx, authUserId: string, email: stri
       u."name" AS "displayName",
       u."supabaseUserId" AS "authUserId",
       m."id" AS "membershipId",
-      m."campaignKey" AS "campaignKey",
+      m."tenantId" AS "campaignKey",
       m."role"::text AS "role",
       m."status"::text AS "status"
     FROM "User" u
     JOIN "CampaignMembership" m ON m."userId" = u."id"
     WHERE lower(u."email") = lower(${email})
-      AND m."campaignKey" = ${EVENT_PM_CAMPAIGN_KEY}
+      AND m."tenantId" = ${EVENT_PM_CAMPAIGN_KEY}
     LIMIT 1
   `);
   const candidate = candidates[0];
@@ -134,7 +135,7 @@ export async function logEventPmAudit(
   const metadata = JSON.stringify(input.metadata ?? {});
   await prisma.$executeRaw(Prisma.sql`
     INSERT INTO "EventPmAuditLog" (
-      "id", "campaignKey", "actorUserId", "action", "entityType", "entityId", "metadataJson", "createdAt"
+      "id", "tenantId", "actorUserId", "action", "entityType", "entityId", "metadataJson", "createdAt"
     ) VALUES (
       ${id}, ${actor.campaignKey}, ${actor.userId}, ${input.action}, ${input.entityType}, ${input.entityId ?? null}, CAST(${metadata} AS jsonb), CURRENT_TIMESTAMP
     )

@@ -8,6 +8,9 @@ export const CAMPAIGN_ROLES = [
   "VOLUNTEER_COORDINATOR",
   "VOLUNTEER",
   "VIEWER",
+  // Existing canonical CampaignTenantRole compatibility roles.
+  "TREASURER",
+  "OPERATOR",
 ] as const;
 
 export type CampaignRole = (typeof CAMPAIGN_ROLES)[number];
