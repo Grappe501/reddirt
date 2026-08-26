@@ -19,6 +19,9 @@ export function parseEventPlanning(raw: unknown): EventPlanningData {
     candidateBrief: { ...base.candidateBrief, ...(o.candidateBrief as object) },
     cmBrief: { ...base.cmBrief, ...(o.cmBrief as object) },
     budget: { ...base.budget, ...(o.budget as object) },
+    taskPackages: Array.isArray(o.taskPackages)
+      ? (o.taskPackages as EventPlanningData["taskPackages"])
+      : base.taskPackages,
     sectionCompleted: { ...base.sectionCompleted, ...(o.sectionCompleted as object) },
     updatedAt: typeof o.updatedAt === "string" ? o.updatedAt : base.updatedAt,
   };
