@@ -1,4 +1,4 @@
-import { CampaignTaskStatus } from "@prisma/client";
+import { CampaignEventStatus, CampaignTaskStatus } from "@prisma/client";
 import { prisma } from "@/lib/db";
 import { readTaskPackageMetadata } from "@/lib/campaign-ops/task-packages";
 import { LAUNCH_OPERATIONS_VERSION, type OperationsWorkstream } from "@/lib/campaign-ops/launch-operations";
@@ -154,7 +154,7 @@ export async function getEventPmCommandCenter(eventId: string) {
 
 export async function listEventPmPortfolio(take = 100) {
   const events = await prisma.campaignEvent.findMany({
-    where: { isTravelLeg: false, status: { not: "CANCELED" }, startAt: { gte: new Date(Date.now() - 24 * 60 * 60 * 1000) }, tasks: { some: { sourceTemplateTaskKey: { startsWith: PREFIX } } } },
+    where: { isTravelLeg: false, status: { not: CampaignEventStatus.CANCELLED }, startAt: { gte: new Date(Date.now() - 24 * 60 * 60 * 1000) }, tasks: { some: { sourceTemplateTaskKey: { startsWith: PREFIX } } } },
     orderBy: { startAt: "asc" },
     take,
     select: { id: true, title: true, startAt: true, city: true, ownerUser: { select: { name: true, email: true } } },
