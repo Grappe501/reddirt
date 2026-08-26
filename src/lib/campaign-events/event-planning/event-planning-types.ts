@@ -83,6 +83,73 @@ export type EventBudget = {
   notes: string;
 };
 
+export type EventTaskPackageStatus =
+  | "OPEN"
+  | "CLAIMED"
+  | "IN_PROGRESS"
+  | "SUBMITTED"
+  | "CHANGES_REQUESTED"
+  | "VERIFIED";
+
+export type EventTaskPackagePriority = "LOW" | "MEDIUM" | "HIGH" | "URGENT";
+
+export type EventTaskPackageActor = {
+  userId: string;
+  label: string;
+};
+
+export type EventTaskPackageEvidence = {
+  id: string;
+  label: string;
+  url: string;
+  note: string;
+  addedAt: string;
+};
+
+export type EventTaskPackageTransition = {
+  id: string;
+  action:
+    | "CREATED"
+    | "CLAIMED"
+    | "STARTED"
+    | "EVIDENCE_ADDED"
+    | "SUBMITTED"
+    | "CHANGES_REQUESTED"
+    | "VERIFIED";
+  fromStatus: EventTaskPackageStatus | null;
+  toStatus: EventTaskPackageStatus;
+  actorUserId: string;
+  actorLabel: string;
+  note?: string;
+  at: string;
+};
+
+export type EventTaskPackage = {
+  id: string;
+  title: string;
+  description: string;
+  instructions: string[];
+  assignedRole: string;
+  priority: EventTaskPackagePriority;
+  dueAt?: string;
+  blocksReadiness: boolean;
+  status: EventTaskPackageStatus;
+  claimedByUserId?: string;
+  claimedByLabel?: string;
+  claimedAt?: string;
+  startedAt?: string;
+  evidence: EventTaskPackageEvidence[];
+  submissionNote?: string;
+  submittedAt?: string;
+  verificationNote?: string;
+  verifiedByUserId?: string;
+  verifiedByLabel?: string;
+  verifiedAt?: string;
+  history: EventTaskPackageTransition[];
+  createdAt: string;
+  updatedAt: string;
+};
+
 export type EventPlanningSectionId =
   | "overview"
   | "run_of_show"
@@ -91,7 +158,8 @@ export type EventPlanningSectionId =
   | "contacts"
   | "candidate_brief"
   | "cm_brief"
-  | "budget";
+  | "budget"
+  | "task_packages";
 
 export type EventPlanningData = {
   runOfShow: RunOfShowRow[];
@@ -101,6 +169,7 @@ export type EventPlanningData = {
   candidateBrief: CandidateBrief;
   cmBrief: CampaignManagerBrief;
   budget: EventBudget;
+  taskPackages: EventTaskPackage[];
   sectionCompleted: Partial<Record<EventPlanningSectionId, boolean>>;
   updatedAt?: string;
 };
