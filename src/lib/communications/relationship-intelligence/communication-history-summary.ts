@@ -1,19 +1,29 @@
 import type { CommunicationSendRecord } from "@/lib/campaign-events/communications/communications-types";
 
+/**
+ * Summarize the aggregate communications audit log.
+ *
+ * V1 send records are list/segment level and do not carry recipient identity. A
+ * previous implementation accepted contactEmail but then counted every campaign
+ * send for that contact, inflating engagement and burnout scores. Until the send
+ * ledger is recipient-addressable, contact-level history remains unknown rather
+ * than manufacturing precision.
+ */
 export function summarizeSendHistory(sends: CommunicationSendRecord[], contactEmail?: string): {
   sendCount: number;
   lastSendAt?: string;
   blockedCount: number;
 } {
-  const relevant = contactEmail
-    ? sends.filter((s) => s.status !== "draft")
-    : sends;
-  const sent = relevant.filter((s) => s.status === "sent" || s.status === "test_sent");
-  const last = sent.sort((a, b) => (b.createdAt > a.createdAt ? 1 : -1))[0];
+  if (contactEmail) {
+    return { sendCount: 0, blockedCount: 0 };
+  }
+
+  const sent = sends.filter((s) => s.status === "sent" || s.status === "test_sent");
+  const last = [...sent].sort((a, b) => (b.createdAt > a.createdAt ? 1 : -1))[0];
   return {
     sendCount: sent.length,
     lastSendAt: last?.createdAt,
-    blockedCount: relevant.filter((s) => s.status === "blocked").length,
+    blockedCount: sends.filter((s) => s.status === "blocked").length,
   };
 }
 

@@ -16,11 +16,12 @@ import {
 
 export function buildRelationshipGraph(persist = false): RelationshipGraph {
   const store = loadCommunicationsStore();
-  const history = summarizeSendHistory(store.sends);
 
   const nodes: RelationshipNode[] = store.contacts.map((c) => {
     const kinds = mapContactRoleToKinds(c.roleTags);
-    const sendMeta = summarizeSendHistory(store.sends);
+    // V1 sends are aggregate list/segment records. summarizeSendHistory deliberately
+    // returns unknown/zero at contact level until recipient-attributed telemetry lands.
+    const sendMeta = summarizeSendHistory(store.sends, c.email);
     const touchDays = daysSince(c.updatedAt);
     const engagementScore = scoreContactEngagement({
       contact: c,
@@ -99,14 +100,12 @@ export function buildRelationshipHealthBrief(graph = loadRelationshipGraph()): R
       : ["Relationship graph healthy — focus county comms gaps next"],
     relationshipWarnings: [
       ...burnout.map((n) => `Burnout risk: ${n.displayName} — reduce cadence`),
-      graph.summary.highBurnoutRisk > 0
-        ? `${graph.summary.highBurnoutRisk} contacts at high burnout risk`
-        : "No high burnout flags",
+      "Contact-level send telemetry is not yet available; burnout scoring does not infer recipient sends from aggregate campaigns.",
     ],
     engagementHighlights: [
       `${graph.summary.volunteers} volunteers tracked`,
       `${graph.summary.hosts} hosts tracked`,
-      `${sendSummary.sendCount} sends in audit log`,
+      `${sendSummary.sendCount} aggregate sends in audit log`,
     ],
   };
 }

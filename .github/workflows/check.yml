@@ -1,4 +1,4 @@
-# Quality gate — lint, typecheck, production build (with Postgres for Prisma SSG)
+# Quality gate — migrations, focused security integrity, lint, typecheck, production build
 # Does not deploy or touch production. RedDirt repo root must contain package-lock.json.
 
 name: Quality gate (npm run check)
@@ -56,6 +56,9 @@ jobs:
 
       - name: Prisma migrate
         run: npx prisma migrate deploy
+
+      - name: P0-S5 Event PM auth/RBAC integrity
+        run: npx tsx scripts/test-event-pm-auth-rbac.ts
 
       - name: Full check (lint + tsc + next build)
         run: npm run check
