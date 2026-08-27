@@ -24,7 +24,7 @@ export default async function LaunchOperationsPage() {
         <p className="text-sm font-semibold uppercase tracking-wide text-slate-500">Campaign Operations · P0-S3</p>
         <h1 className="text-3xl font-bold">Launch Operations</h1>
         <p className="max-w-4xl text-slate-600">Promote an existing canonical CampaignEvent into the volunteer operating system. Launching creates fresh, claimable Task Packages for Project Management, Communications and Event Operations. Running it again is safe: existing blueprint tasks are not duplicated.</p>
-        <div className="flex gap-4 text-sm"><Link className="underline" href="/admin/campaign-ops/task-packages">Task Package console</Link><Link className="underline" href="/admin/tasks">All campaign tasks</Link></div>
+        <div className="flex flex-wrap gap-4 text-sm"><Link className="underline" href="/admin/campaign-ops/events">Event PM Command Center</Link><Link className="underline" href="/admin/campaign-ops/task-packages">Task Package console</Link><Link className="underline" href="/admin/tasks">All campaign tasks</Link></div>
       </header>
 
       <section className="grid gap-4 sm:grid-cols-3">
@@ -41,12 +41,12 @@ export default async function LaunchOperationsPage() {
             <tbody>
               {events.map((event) => (
                 <tr className="border-t align-top" key={event.id}>
-                  <td className="p-3 font-medium">{event.title}</td>
+                  <td className="p-3 font-medium">{event.operationsLaunched ? <Link className="underline" href={`/admin/campaign-ops/events/${event.id}`}>{event.title}</Link> : event.title}</td>
                   <td className="p-3 whitespace-nowrap">{formatDate(event.startAt)}</td>
                   <td className="p-3">{[event.locationName, event.city].filter(Boolean).join(" · ") || "—"}</td>
                   <td className="p-3"><div className="font-semibold">{event.operationsTaskCount}/{event.expectedOperationsTaskCount} tasks</div><div className="text-xs text-slate-500">{event.operationsComplete ? "Package ready" : event.operationsLaunched ? "Partial — launch again to fill missing tasks" : "Not launched"}</div></td>
                   <td className="p-3">
-                    {!event.operationsComplete ? <form action={launchEventOperationsAction}><input type="hidden" name="eventId" value={event.id}/><button className="rounded bg-slate-900 px-3 py-2 font-semibold text-white" type="submit">{event.operationsLaunched ? "Fill missing tasks" : "Launch operations"}</button></form> : <span className="font-semibold text-emerald-700">Launched</span>}
+                    {!event.operationsComplete ? <form action={launchEventOperationsAction}><input type="hidden" name="eventId" value={event.id}/><button className="rounded bg-slate-900 px-3 py-2 font-semibold text-white" type="submit">{event.operationsLaunched ? "Fill missing tasks" : "Launch operations"}</button></form> : <Link className="font-semibold text-emerald-700 underline" href={`/admin/campaign-ops/events/${event.id}`}>Open cockpit</Link>}
                   </td>
                 </tr>
               ))}
