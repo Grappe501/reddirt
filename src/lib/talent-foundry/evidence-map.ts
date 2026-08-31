@@ -46,8 +46,12 @@ export function extractTalentFoundryBlob(metadata: unknown, structuredData: unkn
 
 export function organizeEvidence(blob: Record<string, unknown>): EvidenceBucket[] {
   const evidence = Array.isArray(blob.evidence) ? blob.evidence : [];
-  const buckets = EVIDENCE_CATEGORIES.map((cat) => ({ id: cat.id, label: cat.label, items: [] as EvidenceLine[] }));
-  const byId = new Map(buckets.map((b) => [b.id, b]));
+  const buckets: EvidenceBucket[] = EVIDENCE_CATEGORIES.map((cat) => ({
+    id: cat.id,
+    label: cat.label,
+    items: [],
+  }));
+  const byId = new Map<string, EvidenceBucket>(buckets.map((b) => [b.id, b]));
 
   for (const raw of evidence) {
     if (!isRecord(raw)) continue;

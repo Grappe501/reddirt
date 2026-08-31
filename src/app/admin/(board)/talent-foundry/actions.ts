@@ -137,7 +137,7 @@ export async function updateTalentFoundryStaffAction(fd: FormData): Promise<void
 
 export async function assignTalentFoundryOwnerAction(fd: FormData): Promise<void> {
   const id = trim(fd, "intakeId");
-  const row = await requireTfIntake(id);
+  await requireTfIntake(id);
   const email = trim(fd, "ownerEmail").toLowerCase();
   if (!email) redirect(`${PATH}/${id}?error=owner-email`);
 
