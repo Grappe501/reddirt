@@ -2,6 +2,7 @@
  * Netlify public-hub build: move App Router *route* files out of heavy trees so
  * `next build` does not compile those pages into ___netlify-server-handler.
  * Keep `src/app/election-plan` — kgrappe.netlify.app must serve the portal.
+ * Keep `src/app/admin/(board)/talent-foundry` — command center on the public hub.
  * Leave `*-actions.ts` and other modules in place — Next still typechecks
  * components that import them (see ApprovalPackageScaffold).
  * CI workspace only — not a repo move.
@@ -23,6 +24,9 @@ const APP_STASH_DIRS = [
   "src/app/admin/(board)",
 ];
 
+/** Keep these prefixes on the public hub (Talent Foundry command center). */
+const APP_STASH_KEEP_PREFIXES = ["src/app/admin/(board)/talent-foundry"];
+
 const API_KEEP = new Set(["forms", "election-plan"]);
 
 /** App Router files that create routes / pages. Everything else stays for typecheck. */
@@ -35,6 +39,10 @@ function isNetlifyBuild() {
 
 function isRouteFileName(name) {
   return ROUTE_FILE_RE.test(name);
+}
+
+function shouldKeepStashRel(relFile) {
+  return APP_STASH_KEEP_PREFIXES.some((prefix) => relFile === prefix || relFile.startsWith(`${prefix}/`));
 }
 
 function stashRouteFilesUnder(cwd, rel) {
@@ -56,6 +64,10 @@ function stashRouteFilesUnder(cwd, rel) {
       }
       if (!ent.isFile() || !isRouteFileName(ent.name)) continue;
       const relFile = path.relative(cwd, abs).split(path.sep).join("/");
+      if (shouldKeepStashRel(relFile)) {
+        console.log(`>>> public-hub: keep ${relFile}`);
+        continue;
+      }
       const dest = path.join(cwd, STASH_ROOT, relFile);
       fs.mkdirSync(path.dirname(dest), { recursive: true });
       fs.renameSync(abs, dest);
@@ -105,7 +117,9 @@ if (require.main === module) {
 module.exports = {
   stashPublicHubAppDirs,
   APP_STASH_DIRS,
+  APP_STASH_KEEP_PREFIXES,
   API_KEEP,
   STASH_ROOT,
   isRouteFileName,
+  shouldKeepStashRel,
 };
