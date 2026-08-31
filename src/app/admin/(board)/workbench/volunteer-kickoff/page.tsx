@@ -239,6 +239,12 @@ export default function AdminVolunteerKickoffTriagePage() {
               /admin/workbench/ask-kelly-beta
             </Link>
           </li>
+          <li>
+            Talent Foundry command center:{" "}
+            <Link className="font-semibold text-kelly-navy underline" href="/admin/talent-foundry">
+              /admin/talent-foundry
+            </Link>
+          </li>
         </ul>
       </div>
     </div>

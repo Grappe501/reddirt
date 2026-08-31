@@ -3,10 +3,13 @@ import { NextResponse } from "next/server";
 /** Origins allowed to POST public forms cross-origin (kickoff static site → RedDirt API). */
 const DEFAULT_FORM_ORIGINS = [
   "https://kelly-volunteer-kickoff.netlify.app",
+  "https://foundry-os.netlify.app",
   "http://localhost:5173",
   "http://127.0.0.1:5173",
   "http://localhost:4173",
   "http://127.0.0.1:4173",
+  "http://localhost:3000",
+  "http://127.0.0.1:3000",
 ];
 
 function allowedFormOrigins(): string[] {
