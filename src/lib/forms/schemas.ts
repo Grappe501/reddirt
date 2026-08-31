@@ -57,6 +57,23 @@ export const volunteerPreferredRoleValues = [
 
 export const volunteerPreferredLanguageValues = ["english", "spanish", "marshallese"] as const;
 
+export const TALENT_FOUNDRY_SOURCE = "talent-foundry-kelly-beta" as const;
+
+export const talentFoundryPayloadSchema = z
+  .object({
+    v: z.literal(1),
+    source: z.literal(TALENT_FOUNDRY_SOURCE),
+    campaignId: z.string().max(40),
+    phase: z.enum(["identify", "continue"]),
+    journeyVersion: z.number().int().min(1).max(20),
+    submissionId: z.string().max(64).optional(),
+    startWhen: z.string().max(120).optional(),
+    flags: z.record(z.unknown()).optional(),
+    evidence: z.array(z.unknown()).max(80).optional(),
+    routing: z.record(z.unknown()).optional(),
+  })
+  .optional();
+
 export const volunteerSchema = z.object({
   formType: z.literal("volunteer"),
   firstName: z.string().min(1, "First name is required.").max(80),
@@ -84,6 +101,7 @@ export const volunteerSchema = z.object({
   availability: z.string().max(500).optional(),
   skills: z.string().max(2000).optional(),
   website: honeypot,
+  talentFoundry: talentFoundryPayloadSchema,
   ...attributionFields,
 });
 

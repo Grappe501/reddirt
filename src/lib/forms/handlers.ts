@@ -10,7 +10,8 @@ import { sendVolunteerSignupOpsNotification } from "@/lib/campaign-ops/ops-notif
 import { applyPublicFormConsent } from "@/lib/forms/public-form-consent";
 import { recordPublicFormWorkflowAction } from "@/lib/forms/public-form-audit";
 import { normalizeVolunteerInterests } from "@/lib/forms/volunteer-interest-taxonomy";
-import type { AskKellyBetaFeedbackInput, FormSubmissionInput } from "./schemas";
+import type { AskKellyBetaFeedbackInput, FormSubmissionInput, VolunteerInput } from "./schemas";
+import { TALENT_FOUNDRY_SOURCE } from "./schemas";
 
 function buildSummary(data: FormSubmissionInput): string {
   switch (data.formType) {
@@ -259,6 +260,9 @@ function publicFormIntakeMetadata(
       discordInterest: data.discordInterest,
       hostingInterest: data.hostingInterest,
       fundraisingInterest: data.fundraisingInterest,
+      ...(data.talentFoundry
+        ? { talentFoundry: capTalentFoundry(data.talentFoundry), sourceCampaign: TALENT_FOUNDRY_SOURCE }
+        : {}),
     };
   }
 
@@ -427,6 +431,7 @@ export async function persistFormSubmission(data: FormSubmissionInput): Promise<
           new Set([
             ...normalizeVolunteerInterests([...(data.interests ?? []), data.preferredRole]).keys,
             `pref_role:${data.preferredRole}`,
+            ...(data.talentFoundry ? [TALENT_FOUNDRY_SOURCE] : []),
           ]),
         )
       : [];
@@ -489,6 +494,10 @@ export async function persistFormSubmission(data: FormSubmissionInput): Promise<
       interests: interests.length ? interests : undefined,
     },
   });
+
+  if (data.formType === "volunteer" && data.talentFoundry?.phase === "continue") {
+    return persistTalentFoundryContinue(user.id, data);
+  }
 
   if (data.formType === "volunteer") {
     const availabilityParts = [data.availability?.trim(), data.notes?.trim()].filter(Boolean) as string[];
@@ -641,6 +650,7 @@ export async function persistFormSubmission(data: FormSubmissionInput): Promise<
             fundraisingInterest: data.fundraisingInterest,
             notes: data.notes ? sanitizePlainText(data.notes, 3000) : null,
             raw: redactPII(summary),
+            ...(data.talentFoundry ? { talentFoundry: capTalentFoundry(data.talentFoundry) } : {}),
           }
         : data.formType === "volunteer_kickoff"
           ? {
@@ -752,4 +762,103 @@ export async function persistFormSubmission(data: FormSubmissionInput): Promise<
 
 function redactPII(text: string): string {
   return text.replace(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/gi, "[email]");
+}
+
+function capTalentFoundry(value: unknown): Prisma.InputJsonValue {
+  const raw = JSON.stringify(value ?? {});
+  if (raw.length <= 24_000) return JSON.parse(raw) as Prisma.InputJsonValue;
+  return {
+    v: 1,
+    source: TALENT_FOUNDRY_SOURCE,
+    truncated: true,
+  };
+}
+
+async function persistTalentFoundryContinue(userId: string, data: VolunteerInput): Promise<PersistResult> {
+  const submissionId = data.talentFoundry?.submissionId?.trim();
+  if (!submissionId) {
+    throw new Error("talent_foundry_continue_missing_submission");
+  }
+
+  const existing = await prisma.submission.findFirst({
+    where: { id: submissionId, userId },
+    include: { workflowIntake: { select: { id: true, metadata: true } } },
+  });
+  if (!existing) {
+    throw new Error("talent_foundry_continue_not_found");
+  }
+
+  const prior =
+    existing.structuredData && typeof existing.structuredData === "object" && !Array.isArray(existing.structuredData)
+      ? (existing.structuredData as Record<string, unknown>)
+      : {};
+  const priorTf =
+    prior.talentFoundry && typeof prior.talentFoundry === "object" && !Array.isArray(prior.talentFoundry)
+      ? (prior.talentFoundry as Record<string, unknown>)
+      : {};
+
+  const availabilityParts = [data.availability?.trim(), data.notes?.trim()].filter(Boolean) as string[];
+  const availabilityJoined = availabilityParts.length
+    ? sanitizePlainText(availabilityParts.join("\n\n"), 8000)
+    : null;
+
+  await prisma.volunteerProfile.upsert({
+    where: { userId },
+    create: {
+      userId,
+      availability: availabilityJoined,
+      skills: data.skills ? sanitizePlainText(data.skills, 2000) : null,
+      leadershipInterest: data.leadershipInterest,
+    },
+    update: {
+      availability: availabilityJoined ?? undefined,
+      skills: data.skills ? sanitizePlainText(data.skills, 2000) : undefined,
+      leadershipInterest: data.leadershipInterest,
+    },
+  });
+
+  const mergedTf = capTalentFoundry({
+    ...priorTf,
+    ...data.talentFoundry,
+    source: TALENT_FOUNDRY_SOURCE,
+    phase: "continue",
+  });
+
+  await prisma.submission.update({
+    where: { id: existing.id },
+    data: {
+      structuredData: {
+        ...prior,
+        talentFoundry: mergedTf,
+        preferredRole: data.preferredRole,
+        notes: data.notes ? sanitizePlainText(data.notes, 3000) : prior.notes ?? null,
+      } as object,
+    },
+  });
+
+  if (existing.workflowIntake) {
+    const meta =
+      existing.workflowIntake.metadata &&
+      typeof existing.workflowIntake.metadata === "object" &&
+      !Array.isArray(existing.workflowIntake.metadata)
+        ? (existing.workflowIntake.metadata as Record<string, unknown>)
+        : {};
+    await prisma.workflowIntake.update({
+      where: { id: existing.workflowIntake.id },
+      data: {
+        metadata: {
+          ...meta,
+          talentFoundry: mergedTf,
+          sourceCampaign: TALENT_FOUNDRY_SOURCE,
+        } as Prisma.InputJsonValue,
+      },
+    });
+  }
+
+  return {
+    submissionId: existing.id,
+    userId,
+    workflowIntakeId: existing.workflowIntake?.id ?? "",
+    volunteerTeamSlug: null,
+  };
 }
