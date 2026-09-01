@@ -1,0 +1,43 @@
+{
+  "system": "red_dirt_polling_intelligence",
+  "build_family": "POLL",
+  "status": "design_phase",
+  "current_phase": 0,
+  "current_slice": "POLL-0",
+  "current_slice_status": "complete",
+  "next_slice": "POLL-1",
+  "next_slice_title": "Existing Red Dirt Data/Schema Audit",
+  "repository": "Grappe501/reddirt",
+  "branch": "feature/polling-dashboard-spine",
+  "expected_local_path": "H:\\SOSWebsite\\RedDirt\\polling-dashboard\\",
+  "governing_files": [
+    "polling-dashboard/README.md",
+    "polling-dashboard/MASTER_BUILD_PLAN.md",
+    "polling-dashboard/architecture/SYSTEM_SPINE.md",
+    "polling-dashboard/methodology/POLLING_METHODOLOGY.md"
+  ],
+  "hard_gates": {
+    "reuse_existing_voter_spine": true,
+    "no_parallel_voter_database": true,
+    "no_polling_migration_before_schema_audit": true,
+    "statistical_sampler_not_llm_selector": true,
+    "raw_responses_preserved": true,
+    "individual_political_opinion_data_restricted": true,
+    "evidence_streams_labeled_separately": true,
+    "small_area_result_suppression_required": true,
+    "multi_caller_assignment_locking_required": true,
+    "compliance_review_required_before_live_calling": true
+  },
+  "phases": [
+    {"phase": 0, "name": "Governance and architecture", "status": "in_progress"},
+    {"phase": 1, "name": "Sampling foundation", "status": "queued"},
+    {"phase": 2, "name": "Survey research engine", "status": "queued"},
+    {"phase": 3, "name": "Volunteer calling center", "status": "queued"},
+    {"phase": 4, "name": "Statistical intelligence", "status": "queued"},
+    {"phase": 5, "name": "Polling Intelligence Command Center", "status": "queued"},
+    {"phase": 6, "name": "External polls and online surveys", "status": "queued"},
+    {"phase": 7, "name": "AI research layer", "status": "queued"},
+    {"phase": 8, "name": "Election simulation", "status": "queued"},
+    {"phase": 9, "name": "Production hardening and reusable Campaign OS module", "status": "queued"}
+  ]
+}
