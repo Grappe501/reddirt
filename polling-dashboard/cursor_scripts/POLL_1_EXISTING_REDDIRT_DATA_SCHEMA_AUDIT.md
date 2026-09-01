@@ -1,740 +1,355 @@
-# CURSOR MISSION — POLL-1 Existing Red Dirt Data / Schema Audit
+# BERT / CURSOR MISSION — POLL-1: RED DIRT ARCHITECTURE TRUTH AUDIT
 
-## Mission ID
-POLL-1
-
-## Parent system
-Red Dirt Polling Intelligence
-
-## Repository
-`H:\SOSWebsite\RedDirt`
-
-## GitHub
-`Grappe501/reddirt`
-
-## Working branch
-Use the current polling build branch if present:
-`feature/polling-dashboard-spine`
-
-If that branch has already been merged, create a new branch from current `main` named:
-`feature/poll-1-schema-audit`
-
-## Mission objective
-Perform a complete evidence-based audit of the existing Red Dirt codebase and database architecture so the polling system can reuse the current voter/person/contact/phone/geography/auth/analytics/OpenAI infrastructure instead of creating duplicate systems.
-
-This slice is AUDIT + DESIGN ONLY.
-
-Do not create database migrations.
-Do not alter Prisma schema.
-Do not create production tables.
-Do not create polling API routes.
-Do not build UI.
-Do not write to production voter data.
-Do not change live calling behavior.
-
-The output of this mission is a verified reuse map and proposed polling relational model grounded in what actually exists in Red Dirt.
+**Mission ID:** `POLL-1`  
+**Master plan:** `Red Dirt Polling Intelligence MASTER_BUILD_PLAN.md v2.0`  
+**Mission type:** READ-ONLY DISCOVERY + DOCUMENTATION  
+**Repository root:** `H:\SOSWebsite\RedDirt`  
+**GitHub:** `Grappe501/reddirt`  
+**Expected branch:** `feature/polling-dashboard-spine`  
 
 ---
 
-# 1. Read first — mandatory orientation
+# 0. AUTHORITY AND PURPOSE
 
-Before changing anything, inspect the repository and read the relevant architecture/governance files already present. At minimum inspect:
+This mission replaces every earlier POLL-1 instruction.
 
-- `README.md`
-- `START_HERE_FOR_AI.md` if present
-- `CURSOR_CODEX_COORDINATION_PROTOCOL.md` if present
-- `THREAD_HANDOFF_MASTER_MAP.md` if present
-- `BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md` if present
-- `DIVISION_MASTER_REGISTRY.md` if present
-- `PROJECT_MASTER_MAP.md` if present
-- `workbench-build-map.md` if present
+Governing authority, in order:
+1. `polling-dashboard/MASTER_BUILD_PLAN.md` v2.0
+2. `polling-dashboard/governance/ENGINEERING_INVARIANTS.md`
+3. `polling-dashboard/governance/SLICE_EXECUTION_STANDARD.md`
+4. `polling-dashboard/architecture/DEPENDENCY_AND_RELEASE_GATES.md`
+5. `polling-dashboard/quality/MASTER_ACCEPTANCE_MATRIX.md`
+6. `polling-dashboard/methodology/RESEARCH_AND_COMPLIANCE_SOURCE_LEDGER.md`
+7. this mission file
+
+If this mission conflicts with a higher governing document, the higher document wins.
+
+## Objective
+Replace architectural assumptions with verified facts from the actual Red Dirt repository before any polling schema, migration, API, queue, survey engine, dashboard, or production behavior is built.
+
+POLL-1 answers: **What exactly does Red Dirt already have, what is canonical, what is safe to reuse, what must be extended, and what truly must be polling-specific?**
+
+This is the Architecture Truth Gate. Bert is an auditor in this slice, not an implementer.
+
+---
+
+# 1. HARD READ-ONLY BOUNDARY
+
+## Allowed writes
+Only documentation/governance outputs under:
+- `polling-dashboard/audit/**`
+- `polling-dashboard/develop_notes/**`
+- `polling-dashboard/governance/POLL_1_AUDIT_RESULT.json`
+- `polling-dashboard/governance/BUILD_STATUS.json` only at closeout and only if the audit gate passes
+
+## Forbidden
+Do NOT edit Prisma schema; create/modify/apply migrations; alter database schema or records; create APIs/UI/sampling/calling/survey/AI functionality; invoke OpenAI; send outbound communications; add dependencies; alter auth/RBAC; alter env files; export/copy PII; create examples containing real voter data; change application behavior; perform unrelated cleanup; or discard unrelated work.
+
+Database access, if needed for runtime metadata, must be read-only. Prefer repository evidence first. Never print or commit secrets or PII.
+
+If completing the audit requires a prohibited write, stop and report the blocker.
+
+---
+
+# 2. PRE-FLIGHT
+
+Record:
+```bash
+cd /d H:\SOSWebsite\RedDirt
+git status --short
+git branch --show-current
+git log -8 --oneline
+```
+
+Leave unrelated local changes untouched.
+
+Confirm Master Plan v2.0 and the v2 governance files exist locally. If absent, STOP: the worktree/branch is stale.
+
+---
+
+# 3. READ FIRST
+
+Read completely:
 - `polling-dashboard/README.md`
 - `polling-dashboard/MASTER_BUILD_PLAN.md`
 - `polling-dashboard/architecture/SYSTEM_SPINE.md`
+- `polling-dashboard/architecture/DEPENDENCY_AND_RELEASE_GATES.md`
 - `polling-dashboard/methodology/POLLING_METHODOLOGY.md`
+- `polling-dashboard/methodology/RESEARCH_AND_COMPLIANCE_SOURCE_LEDGER.md`
+- `polling-dashboard/governance/ENGINEERING_INVARIANTS.md`
+- `polling-dashboard/governance/SLICE_EXECUTION_STANDARD.md`
 - `polling-dashboard/governance/BUILD_STATUS.json`
-- `prisma/schema.prisma`
-- `.env.example`
-- `package.json`
+- `polling-dashboard/quality/MASTER_ACCEPTANCE_MATRIX.md`
 
-Also inspect the current Git state before work:
+Then read repository orientation files that exist, including `START_HERE_FOR_AI.md`, `CURSOR_CODEX_COORDINATION_PROTOCOL.md`, `THREAD_HANDOFF_MASTER_MAP.md`, `BUILD_PROTOCOL_AND_BLUEPRINT_AUDIT.md`, `DIVISION_MASTER_REGISTRY.md`, `PROJECT_MASTER_MAP.md`, `workbench-build-map.md`, `README.md`, `package.json`, `.env.example`, and `prisma/schema.prisma`.
 
-```bash
-git status
-git branch --show-current
-git log -5 --oneline
-```
-
-Do not discard unrelated local changes.
-Do not reset, clean, or overwrite work from another lane.
+Documentation is not proof when implementation disagrees. Trace claims into schema/code/migrations/usages.
 
 ---
 
-# 2. Governing architectural rule
+# 4. AUDIT METHOD
 
-The existing Red Dirt voter/person database is the system of record.
+For every material finding capture:
+- exact model/service/function/component;
+- exact path;
+- active/legacy/partial/uncertain status;
+- evidence of usage/imports/relations;
+- canonical status/confidence;
+- polling relevance;
+- classification: `REUSE_AS_IS`, `EXTEND_EXISTING`, `CREATE_POLLING_SPECIFIC`, or `UNKNOWN_OPERATOR_DECISION`.
 
-The polling system must attach to that spine.
-
-Do NOT invent duplicate core entities unless the audit proves no suitable existing object exists.
-
-Examples of duplication to avoid:
-
-- `PollingVoter` when Red Dirt already has a voter/person entity
-- `PollingPhoneNumber` when Red Dirt already stores phones
-- `PollingCounty` when Red Dirt already models county geography
-- `PollingVolunteer` when Red Dirt already has users/volunteers/auth
-- `PollingContact` when a reusable contact-attempt model already exists
-
-For every polling need, classify the solution as exactly one of:
-
-1. REUSE AS-IS
-2. EXTEND EXISTING
-3. CREATE POLLING-SPECIFIC OBJECT
-4. UNKNOWN / REQUIRES OPERATOR DECISION
-
-Do not guess.
+Follow relationships/imports far enough to establish ownership. If competing implementations remain unresolved, classify them UNKNOWN. No silent redesign.
 
 ---
 
-# 3. Audit scope
+# 5. REQUIRED DISCOVERY DOMAINS
 
-Systematically inspect the codebase and identify the real implementation for every category below.
+## 5.1 Voter/person identity
+Identify canonical voter and CRM person/contact models, registration/source IDs, voter-file provenance, relations, active/inactive handling, household support, dedupe/entity resolution, and legacy duplicates. Polling must reference this spine, never create a duplicate voter universe.
 
-## A. Core voter / person identity
+## 5.2 Voter history
+Identify participation-history models, election representation, primary/general/runoff and party-primary history, derived turnout/propensity logic, ingest path, indexes/scale, and source-vs-derived boundaries. Keep public participation history separate from future self-reported answers.
 
-Find:
+## 5.3 Phone/contact points
+Determine field vs child-model architecture, multiple numbers, normalization, mobile/landline, provenance, confidence/validation, duplicate/shared numbers, bad/disconnected/wrong flags, DNC/opt-out, enrichment, freshness, and existing call logs. Identify how a callable frame can reference canonical records without copying them.
 
-- canonical voter entity
-- canonical person/contact entity
-- voter registration identifiers
-- voter-file source identifiers
-- relationships between voter and CRM person/contact records
-- dedupe/matching logic
-- source provenance fields
-- archival/inactive handling
-- any existing household model
+## 5.4 Frame-coverage readiness
+Determine whether current architecture can measure total eligible voters, voters with usable phones, statewide callable coverage, coverage by county/district and other reliable geography, missing geography, and shared/duplicate phone incidence. Weighting cannot be treated as a substitute for unknown frame coverage. If actual counts require a later safe aggregate query, specify it rather than guessing.
 
-Document exact model names, fields, relations, file paths, and relevant functions.
+## 5.5 Geography truth map
+Audit state, county, congressional district, city, ZIP, precinct, ward, state House/Senate, school district, and campaign regions. For each: stored/derived, normalized/free text, completeness, provenance, reliability, sampling readiness, dashboard readiness.
 
-## B. Voter history
+## 5.6 Auth/users/volunteers/RBAC
+Identify providers, user/volunteer models, roles/capabilities, route protection, server authorization, workbench patterns, and audit logging. Map—not implement—future capabilities for study administration, supervision, calling, respondent-level research access, aggregate analysis, estimate approval, and executive aggregate viewing.
 
-Find:
+## 5.7 Contact/field operations
+Audit phone banking, canvassing, attempts, dispositions, callbacks, retries, DNC, notes, sessions, queues/reservations/locks, concurrency, expiration, supervisor controls. Determine reusable operational primitives versus research-specific records.
 
-- election participation history tables/models
-- election/date/type representation
-- primary/general election indicators
-- party-primary history if present
-- turnout history calculations
-- vote propensity/scoring logic if present
-- any derived turnout fields
+## 5.8 Survey/form/question infrastructure
+Audit forms, surveys, questions/options, branching, drafts/publishing, versioning, responses, partials, online intake, experiments/randomization, validation, autosave/recovery. Explicitly assess whether existing infrastructure can enforce immutable field-active instrument versions.
 
-Important: distinguish actual public voter-history participation records from self-reported survey responses. Do not conflate them.
+## 5.9 Analytics/visualization
+Audit dashboard shells, KPI cards, chart/map libraries, Arkansas map assets, aggregate services, date windows, filters, caching, reporting tables/views, exports, and responsive/mobile patterns.
 
-## C. Phone infrastructure
+## 5.10 AI/OpenAI
+AUDIT ONLY. Find clients/wrappers, env conventions, AI/prompt registries, structured outputs, grounding/uncertainty rules, cost/logging controls, fallback behavior, and data-safety patterns. Map future aggregate-analysis/open-response reuse. Confirm AI is not the sampling selector.
 
-Find:
+## 5.11 Database/migrations/scale
+Determine provider/production architecture, Prisma conventions, DATABASE_URL/DIRECT_URL expectations without values, migration workflow, relevant indexes, large-table patterns, transaction/locking support, reporting views, jobs/cron/queues, caching, audit logs. Identify later scale risks; do not optimize.
 
-- phone number fields/models
-- mobile vs landline classification if present
-- multiple-number support
-- phone source/provenance
-- validation status
-- bad-number/disconnected flags
-- opt-out/DNC flags
-- phone normalization utilities
-- duplicate phone handling
-- phone enrichment imports
-- existing call/contact logs
+## 5.12 Privacy/sensitive research/exports
+Map PII controls, sensitive notes, exports, admin boundaries, audit logs, public/private APIs, retention/deletion, minimization. Define the safest future attachment point for respondent political opinions: expected direction is restricted research records linked to canonical identity, not ordinary voter tags.
 
-Determine how to define the future `callable voter universe` without copying the voter table.
+## 5.13 Calling/compliance infrastructure
+Inventory DNC, calling-hour controls, scripts, consent/recording, automated/prerecorded/artificial voice features, TCPA/FCC/Arkansas docs, and volunteer training. Make no legal conclusion; identify missing review gates.
 
-## D. Geography
-
-Find the canonical source for:
-
-- state
-- congressional district
-- county
-- city
-- ZIP
-- precinct
-- ward
-- school district if present
-- legislative district if present
-- other campaign geographic units
-
-Document whether each is stored directly, derived, normalized, or inconsistently represented.
-
-Identify which geography is reliable enough for sampling strata today.
-
-## E. Campaign users / volunteers / auth / RBAC
-
-Find:
-
-- authentication provider
-- user model
-- volunteer model if separate
-- admin roles
-- organizer roles
-- viewer/data-entry roles
-- permission helpers
-- admin route protection
-- server-side auth helpers
-
-Determine how future polling roles should attach to existing RBAC.
-
-Candidate future roles/capabilities to map, not necessarily create yet:
-
-- polling_admin
-- polling_supervisor
-- polling_caller
-- polling_analyst
-- polling_read_only
-
-Prefer capability mapping onto existing roles rather than role explosion.
-
-## F. Contact attempt / canvass / call history
-
-Search for existing reusable models and flows for:
-
-- phone banking
-- canvassing
-- contact attempts
-- call dispositions
-- callbacks
-- wrong number
-- refused
-- voicemail
-- completed conversation
-- contact notes
-- assignment queues
-- locks/leases/reservations
-
-Determine whether polling should reuse, extend, or remain isolated from ordinary campaign contact history.
-
-## G. Survey / forms / question systems
-
-Find any existing infrastructure for:
-
-- surveys
-- questionnaires
-- form builders
-- intake forms
-- questions
-- answer choices
-- branching
-- response storage
-- form versioning
-- online surveys
-
-Determine what can be reused for a scientifically controlled polling questionnaire and what cannot.
-
-## H. Analytics / dashboards / charts
-
-Find:
-
-- existing dashboard components
-- chart libraries
-- map libraries
-- county maps
-- data visualization helpers
-- KPI cards
-- date-range utilities
-- aggregate query patterns
-- reporting APIs
-- caching patterns
-
-Identify the best existing visual/component conventions for the future Polling Intelligence Command Center.
-
-## I. OpenAI / AI infrastructure
-
-Find:
-
-- OpenAI client setup
-- environment variable naming
-- API wrappers
-- model-selection utilities
-- prompt registries
-- AI role registries
-- structured JSON-output helpers
-- cost/logging controls
-- error/fallback handling
-- source-grounding rules
-
-Document what the polling AI layer can safely reuse later for:
-
-- open-ended response categorization
-- aggregate trend summaries
-- anomaly explanations
-- sample-coverage explanations
-- natural-language analyst queries
-
-Do NOT implement any AI logic in this slice.
-
-## J. Database / Prisma / migration conventions
-
-Audit:
-
-- Prisma provider and datasource
-- migration naming patterns
-- production deployment expectations
-- `DATABASE_URL`
-- `DIRECT_URL`
-- hosted database conventions
-- Supabase/Neon usage if applicable in current branch
-- indexes on major voter/person tables
-- any especially large tables
-- any existing materialized views or reporting tables
-
-Estimate which future polling queries may require new indexes, but DO NOT add them yet.
-
-## K. Privacy / sensitive data boundaries
-
-Identify current handling for:
-
-- voter PII
-- role-based access
-- audit logs
-- sensitive notes
-- private vs public routes
-- exports
-- admin-only analytics
-
-The proposed design must NOT casually attach sensitive survey opinion labels to ordinary voter-profile tags.
-
-Individual survey answers should be designed as restricted research records linked to the voter/person record through a controlled relation.
+## 5.14 Operational infrastructure
+Audit feature flags, kill switches, pause/resume, observability, structured logs, error monitoring, health checks, jobs, retries/idempotency, rate limiting, concurrency tests, deployment/Netlify patterns.
 
 ---
 
-# 4. Repository search expectations
+# 6. SEARCH COVERAGE
 
-Use broad code search. Do not only inspect Prisma.
+Search `prisma/**`, `src/**`, `scripts/**`, `netlify/**` if present, `data/**`, `develop_notes/**`, root docs, and relevant tests. Search variants of Voter, Person, Contact, Phone, VoterHistory, County, City, ZIP, Precinct, Ward, District, Volunteer, User, Role, Permission, PhoneBank, Canvass, ContactAttempt, Disposition, Callback, Survey, Question, Response, Form, OpenAI, Dashboard, Analytics, Map, Audit, DNC, OptOut, Lock, Lease, Queue, Cron, Job, FeatureFlag.
 
-At minimum search for terms comparable to:
-
-```text
-Voter
-Person
-Contact
-Phone
-PhoneNumber
-VoterHistory
-ElectionHistory
-County
-Precinct
-City
-Zip
-Ward
-District
-Volunteer
-User
-Role
-Permission
-Call
-PhoneBank
-Canvass
-ContactAttempt
-Disposition
-Survey
-Question
-Response
-Form
-Intake
-OpenAI
-AI
-Dashboard
-Chart
-Map
-Analytics
-```
-
-Search schema, `src/`, `scripts/`, `netlify/`, `data/`, `develop_notes/`, and docs as appropriate.
-
-Do not rely on filenames alone. Follow imports/usages far enough to identify which objects are canonical versus abandoned/legacy.
+Maintain a file-inspection/evidence ledger. Do not call the audit complete after inspecting only schema/docs.
 
 ---
 
-# 5. Deliverables
-
-Create the following artifacts under `polling-dashboard/audit/`.
-
-## 5.1 `POLL_1_EXISTING_SYSTEM_AUDIT.md`
-
-This is the primary human-readable audit.
-
-Required sections:
-
-1. Executive finding
-2. Canonical voter/person spine
-3. Voter history
-4. Phone architecture
-5. Geography architecture
-6. User/auth/RBAC architecture
-7. Existing contact/call infrastructure
-8. Existing survey/form infrastructure
-9. Analytics/dashboard infrastructure
-10. OpenAI infrastructure
-11. Database/migration conventions
-12. Privacy/security findings
-13. Legacy/duplicate systems discovered
-14. Risks/blockers
-15. Recommended polling attachment points
-16. Files inspected
-
-Every architectural claim should cite an exact repository path and preferably the model/function/component name.
-
-## 5.2 `POLL_1_REUSE_EXTEND_CREATE_MATRIX.md`
-
-Create a table with columns:
-
-| Polling Need | Existing Red Dirt Object | Exact Path | Classification | Proposed Use | Risk/Notes |
-
-Cover at minimum:
-
-- voter identity
-- person identity
-- voter registration ID
-- voter history
-- phone number
-- phone provenance
-- bad phone flag
-- opt-out/DNC
-- county
-- city
-- ZIP
-- precinct
-- congressional district
-- user identity
-- RBAC
-- caller assignment
-- contact attempt
-- disposition
-- callback
-- survey definition
-- survey version
-- question
-- answer option
-- survey response
-- open-ended response
-- candidate-order randomization
-- sample frame
-- sampling cell
-- sample selection event
-- weighting record
-- external poll
-- online survey
-- dashboard aggregate
-- AI analysis record
-- election simulation run
-
-## 5.3 `POLL_1_PROPOSED_DATA_MODEL.md`
-
-Design the proposed relational model AFTER the audit.
-
-Do not write Prisma syntax unless useful as pseudocode.
-
-Separate models into:
-
-### Existing objects reused
-
-List exact existing objects.
-
-### Existing objects requiring extension
-
-List proposed future additions without implementing them.
-
-### New polling-specific objects likely required
-
-Evaluate objects comparable to:
-
-- PollingProgram
-- PollingWave
-- PollingQuestionnaire
-- PollingQuestionnaireVersion
-- PollingQuestion
-- PollingAnswerOption
-- PollingSamplingFrame
-- PollingSamplingCell
-- PollingSelection
-- PollingAssignment
-- PollingContactAttempt
-- PollingInterview
-- PollingResponse
-- PollingOpenResponse
-- PollingWeight
-- PollingAggregateSnapshot
-- PollingExternalPoll
-- PollingExternalPollResult
-- PollingOnlineSurveySource
-- PollingAiAnalysis
-- PollingSimulationRun
-
-These names are NOT mandatory. Reconcile them with existing conventions.
-
-For every proposed new object include:
-
-- purpose
-- core fields
-- foreign keys
-- indexes likely needed
-- retention/privacy classification
-- whether it contains PII or political-opinion data
-
-## 5.4 `POLL_1_CALLABLE_UNIVERSE_DESIGN.md`
-
-Define exactly how future code should identify callable voters.
-
-Include:
-
-- source voter relation
-- phone eligibility rules
-- unusable phone conditions
-- dedupe behavior
-- DNC/opt-out behavior
-- repeat-contact cooldown concept
-- sampling eligibility state
-- no-data-copy rule
-
-No implementation yet.
-
-## 5.5 `POLL_1_GEOGRAPHY_READINESS.md`
-
-Create a readiness matrix:
-
-| Geography | Available? | Canonical Source | Coverage | Reliability | Sampling Ready? | Notes |
-
-Include:
-
-- statewide
-- congressional district
-- region if one exists
-- county
-- city
-- ZIP
-- precinct
-- ward
-- legislative district
-
-Do not claim city-level polling readiness if city data is incomplete or inconsistent.
-
-## 5.6 `POLL_1_RBAC_PRIVACY_PLAN.md`
-
-Design access boundaries for future polling.
-
-At minimum distinguish:
-
-- caller-visible data
-- supervisor-visible data
-- analyst-visible individual records
-- admin-only settings
-- aggregate dashboard data
-- prohibited public exposure
-
-Explicitly state that individual political-opinion survey responses are sensitive research data and should not become ordinary campaign profile tags by default.
-
-## 5.7 `POLL_1_NEXT_SLICE_RECOMMENDATION.md`
-
-Based on actual findings, recommend the exact scope for POLL-2.
-
-POLL-2 should normally be `Callable Universe + Sampling Frame Foundation`, but if the audit uncovers a blocking data-model problem, document the blocker and recommend the smallest foundational correction first.
-
----
-
-# 6. Machine-readable audit artifact
+# 7. REQUIRED DELIVERABLES
 
 Create:
 
-`polling-dashboard/governance/POLL_1_AUDIT_RESULT.json`
+### `polling-dashboard/audit/POLL_1_ARCHITECTURE_TRUTH_AUDIT.md`
+Sections: executive finding; method; voter/person; voter history; phones; frame coverage; geography; auth/RBAC; field operations; survey/forms; analytics; OpenAI; DB/scale; privacy; compliance inventory; operational infrastructure; legacy systems; Master Plan conflicts; blockers/decisions; recommended attachment architecture; files inspected.
 
-Suggested shape:
+### `polling-dashboard/audit/POLL_1_REUSE_EXTEND_CREATE_MATRIX.md`
+Table: `Polling Capability | Existing Object/Pattern | Exact Evidence | Classification | Future Attachment | Risk/Decision`. Cover identity, registration ID, history, phones/provenance/DNC/bad phone, geography, users/RBAC, sessions/leases/attempts/dispositions/callbacks, study/wave/instrument/version/questions/options/interviews/responses/open responses/randomization, sampling frame/cell/selection/probability, weighting/estimate runs, external/online surveys, AI, simulations, audit events, feature flags, kill switches.
+
+### `polling-dashboard/audit/POLL_1_CANONICAL_OBJECT_REGISTRY.md`
+For each reusable canonical object: name/type/path/domain/purpose/identifiers/relations/sensitivity/canonical confidence/legacy alternatives.
+
+### `polling-dashboard/audit/POLL_1_FRAME_AND_PHONE_READINESS.md`
+Callable attachment, eligibility signals, missing signals, duplicate/shared numbers, DNC, refresh when phone data changes, frame-coverage measurement, safe aggregate proof needed next, and explicit frame-coverage limitation doctrine.
+
+### `polling-dashboard/audit/POLL_1_GEOGRAPHY_READINESS.md`
+`Geography | Canonical Source | Stored/Derived | Completeness Evidence | Reliability | Sampling Ready | Dashboard Ready | Blocker`.
+
+### `polling-dashboard/audit/POLL_1_RBAC_PRIVACY_BOUNDARY.md`
+Map caller, supervisor, analyst, polling admin, executive aggregate user, and unauthenticated access. Respondent-level opinions are restricted research data.
+
+### `polling-dashboard/audit/POLL_1_OPERATIONAL_READINESS.md`
+Inventory transactions/atomic claims, jobs/queues, retries, feature flags, kill switches, logs, health, rate limits, concurrency tests, responsive workbench patterns.
+
+### `polling-dashboard/audit/POLL_1_PROPOSED_ATTACHMENT_MODEL.md`
+NOT a migration design. Show `existing canonical Red Dirt objects -> future polling-specific object families`; for each future family state responsibility, canonical attachment, why existing architecture is insufficient, sensitivity, lifecycle/state-machine ownership. Do not lock final Prisma fields/names until POLL-2.
+
+### `polling-dashboard/audit/POLL_1_RISK_AND_DECISION_REGISTER.md`
+IDs `POLL-RISK-###` and `POLL-DECISION-###`; include finding/evidence/impact/severity/POLL-2 blocker?/owner/next action.
+
+### `polling-dashboard/audit/POLL_1_MASTER_PLAN_RECONCILIATION.md`
+Compare repo truth to Master Plan v2.0. Classify each mismatch: plan valid; terminology; implementation detail; architecture change needing approval; blocker. Do NOT edit Master Plan in POLL-1.
+
+### `polling-dashboard/develop_notes/POLL_1_CLOSEOUT.md`
+Concise closeout with proof and next recommendation.
+
+---
+
+# 8. MACHINE-READABLE RESULT
+
+Create `polling-dashboard/governance/POLL_1_AUDIT_RESULT.json` with real values and at least:
 
 ```json
 {
   "slice": "POLL-1",
-  "status": "complete",
-  "audit_date": "YYYY-MM-DD",
-  "canonical_voter_model": null,
-  "canonical_person_model": null,
-  "phone_model": null,
-  "voter_history_model": null,
-  "geography_ready": {
-    "state": false,
-    "congressional_district": false,
-    "county": false,
-    "city": false,
-    "zip": false,
-    "precinct": false
-  },
-  "existing_survey_engine_reusable": false,
-  "existing_contact_attempt_model_reusable": false,
-  "existing_rbac_reusable": false,
-  "existing_openai_infrastructure_reusable": false,
-  "migration_created": false,
-  "schema_modified": false,
-  "production_data_modified": false,
+  "master_plan_version": "2.0",
+  "mission_type": "read_only_architecture_truth_audit",
+  "status": "complete|pass_with_blocker|fail",
+  "canonical_objects": {"voter": null, "person": null, "voter_history": null, "phone": null, "user": null},
+  "reuse_counts": {"reuse_as_is": 0, "extend_existing": 0, "create_polling_specific": 0, "unknown_operator_decision": 0},
+  "frame_coverage": {"measurable_now": false, "aggregate_proof_required": true},
+  "geography_sampling_readiness": {},
+  "rbac_reusable": false,
+  "contact_attempt_infrastructure_reusable": false,
+  "survey_infrastructure_reusable": false,
+  "openai_infrastructure_reusable": false,
+  "atomic_assignment_pattern_exists": false,
+  "kill_switch_pattern_exists": false,
+  "master_plan_conflicts": [],
   "blockers": [],
+  "operator_decisions": [],
+  "safety_proof": {
+    "prisma_schema_modified": false,
+    "migration_created_or_applied": false,
+    "database_records_modified": false,
+    "outbound_communications_sent": false,
+    "openai_invoked": false,
+    "pii_committed": false
+  },
   "recommended_next_slice": "POLL-2"
 }
 ```
 
-Use actual discovered model names/values.
+Recommend POLL-2 only if the Architecture Truth Gate passes. Otherwise identify the blocker/decision without inventing an unauthorized slice.
 
 ---
 
-# 7. Update polling build status
+# 9. EXIT GATE
 
-After the audit is complete, update:
+PASS requires: canonical identity attachment identified or explicitly unresolved; voter-history attachment identified; phone architecture sufficient for frame-contract design; geography graded; auth/RBAC understood; contact/survey/analytics/AI patterns inventoried; DB/migration conventions documented; respondent-opinion privacy boundary defined; operational primitives inventoried; legacy risks documented; Master Plan conflicts reconciled; all deliverables exist; no prohibited implementation; no PII/secrets committed.
 
-`polling-dashboard/governance/BUILD_STATUS.json`
-
-Mark POLL-1 complete only if all required audit artifacts exist and are internally consistent.
-
-Set the next slice based on findings.
-
-Do not falsely mark POLL-2 started.
+If canonical identity/phone architecture is unresolved, return `PASS WITH BLOCKER`; do not force POLL-2.
 
 ---
 
-# 8. Validation requirements
+# 10. VALIDATION
 
-Run appropriate non-destructive validation for this repository.
-
-At minimum:
+Capture `git status --short` before and after. Run:
 
 ```bash
 git diff --check
 npm run typecheck
 ```
 
-If repository conventions provide stronger safe validators such as `npm run check`, run them too.
+If available and safe, also `npm run check`.
 
-Do not run migration deployment.
-Do not run destructive seed/reset commands.
-Do not modify production data.
-
-If typecheck/check already fails on untouched code, document the pre-existing failure with exact output and prove your audit-only changes did not introduce code failures.
-
-Because this slice should contain documentation/governance artifacts only, application behavior must remain unchanged.
+Do not run migration/seed/reset/destructive DB/outbound commands. If checks already fail, document baseline failure and prove no application code changed. Validate `POLL_1_AUDIT_RESULT.json` parses.
 
 ---
 
-# 9. Git discipline
+# 11. GIT DISCIPLINE
 
-Before committing:
-
+Before commit:
 ```bash
-git status
+git status --short
 git diff --stat
 git diff --check
 ```
 
-Confirm that changes are limited to the polling audit/build-plan domain unless an unavoidable documentation link elsewhere is necessary.
+Commit only POLL-1 docs/governance and authorized BUILD_STATUS closeout. No unrelated changes.
 
-Expected changed paths should primarily be:
+Commit message:
+`POLL-1 complete read-only Red Dirt architecture truth audit`
 
-```text
-polling-dashboard/audit/**
-polling-dashboard/governance/**
-```
-
-Do NOT commit secrets, `.env`, database dumps, voter exports, phone-number exports, or PII samples.
-
-Commit with a clear message comparable to:
-
-```text
-POLL-1 audit existing Red Dirt data and schema architecture
-```
-
-Push the branch to GitHub.
-
-If working on an open polling PR branch, update that branch rather than opening unnecessary duplicate PRs.
+Push current polling branch. Do not merge the PR.
 
 ---
 
-# 10. Required final Cursor report
+# 12. BUILD STATUS
 
-Return a concise but substantive completion report containing:
+Only after the exit gate passes, update `polling-dashboard/governance/BUILD_STATUS.json`: mark POLL-1 complete; preserve v2.0 authority; record audit paths/blockers/decisions; set POLL-2 as next only if unblocked. Do not mark POLL-2 started. Do not modify `MASTER_BUILD_PLAN.md`.
 
-## POLL-1 RESULT
+---
+
+# 13. REQUIRED BERT RETURN
+
+## POLL-1 — ARCHITECTURE TRUTH AUDIT
 
 ### Status
-PASS / PASS WITH BLOCKERS / FAIL
+`PASS`, `PASS WITH BLOCKER`, or `FAIL`
 
-### Canonical objects discovered
+### Canonical architecture discovered
 - voter/person:
 - voter history:
-- phones:
+- phones/contact points:
 - geography:
-- users/RBAC:
-- contact attempts:
+- auth/RBAC:
+- contact attempts/field operations:
 - survey/forms:
+- analytics/maps:
 - OpenAI:
+- operational primitives:
 
-### Reuse summary
-- reuse as-is count:
-- extend-existing count:
-- new polling-specific object count:
-- unknown/operator-decision count:
+### Frame readiness
+- total voter universe measurable:
+- callable universe measurable:
+- geographic coverage measurable:
+- principal phone/frame gaps:
 
-### Critical findings
-List the most important architectural findings.
+### Reuse classification
+- REUSE AS-IS:
+- EXTEND EXISTING:
+- CREATE POLLING-SPECIFIC:
+- UNKNOWN / OPERATOR DECISION:
 
-### Privacy findings
-State where individual survey answers should live and who should be able to access them.
+### Master Plan v2.0 reconciliation
+List every material conflict or `NONE`.
 
-### Database safety proof
-- Prisma schema modified: YES/NO
-- migration created: YES/NO
-- production data modified: YES/NO
+### Critical risks / operator decisions
+List register IDs.
 
-All three should be NO for POLL-1.
+### Safety proof
+- Prisma schema modified: `NO`
+- migration created/applied: `NO`
+- DB records modified: `NO`
+- outbound communication sent: `NO`
+- OpenAI invoked: `NO`
+- PII/secrets committed: `NO`
 
 ### Validation
-Report exact command results.
+Exact command results.
+
+### Files created/updated
+List all.
 
 ### Git
 - branch:
 - commit SHA:
 - pushed: YES/NO
-- PR number if applicable:
+- PR:
 
-### Next slice
-Give the exact recommended POLL-2 mission.
+### Architecture Truth Gate
+`PASS` / `BLOCKED`
 
----
-
-# 11. Hard stop conditions
-
-STOP and report instead of improvising if any of these occur:
-
-- the apparent voter data exists in more than one competing canonical schema and authority cannot be determined
-- phone records appear to come from multiple incompatible systems without a clear source of truth
-- polling work would require exposing restricted PII to ordinary volunteers
-- current RBAC cannot safely isolate polling research
-- the working tree contains substantial unrelated uncommitted changes that would be endangered
-- the database target cannot be confidently identified
-- a proposed action would require destructive migration/reset behavior
-
-Do not solve ambiguity by inventing a new parallel architecture.
+### Next authorized action
+Either `POLL-2 — Domain Contracts + Migration Design` or the exact operator decision/blocker first.
 
 ---
 
-# 12. Definition of done
+# FINAL INSTRUCTION
 
-POLL-1 is done only when we can answer, with repository evidence:
+Do not build polling functionality. Do not improve unrelated Red Dirt code. Do not convert audit discoveries into implementation.
 
-1. What exact Red Dirt object represents a voter?
-2. What exact object stores voter history?
-3. Where do callable phone numbers come from?
-4. How are bad/duplicate/opted-out numbers handled today?
-5. Which geographic fields are reliable enough for sampling?
-6. How will callers authenticate and what can they see?
-7. What existing contact-attempt infrastructure can be reused?
-8. What existing survey/form infrastructure can be reused?
-9. What OpenAI infrastructure can later support aggregate analysis?
-10. Which new polling-specific tables are genuinely necessary?
-11. How will sensitive individual political-opinion responses be isolated?
-12. What exactly should POLL-2 build first?
+**Observe. Trace. Verify. Document. Reconcile. Stop.**
 
-No implementation beyond audit/design artifacts is authorized in this slice.
+POLL-1 exists to make every later Bert mission safer, faster, and deterministic.
