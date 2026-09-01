@@ -1,242 +1,469 @@
-# RED DIRT POLLING INTELLIGENCE — MASTER BUILD PLAN
+# RED DIRT POLLING INTELLIGENCE — MASTER BUILD PLAN v1.0
 
-Status: **SPINE ESTABLISHED / DESIGN PHASE**  
+Status: **DESIGN FROZEN / READY FOR REPO AUDIT**  
 Build family: `POLL`  
 Repository: `Grappe501/reddirt`  
-Expected local root: `H:\SOSWebsite\RedDirt\polling-dashboard\`
-
-## North Star
-
-Build a continuous, statewide Arkansas polling and public-opinion intelligence system inside Red Dirt that uses the campaign's existing voter-registration, voter-history, geography, phone, authentication, and analytics infrastructure. Multiple volunteers will work from shared authenticated calling dashboards while the system continuously measures sampling coverage, records standardized survey interviews, preserves research quality, and produces transparent statewide/regional estimates and simulations.
-
-The system is not a one-off Kelly poll. It must become a reusable Campaign OS polling subsystem whose election, office, candidates, questionnaires, geography, and study waves are configurable.
+Expected local root: `H:\SOSWebsite\RedDirt\polling-dashboard\`  
+Primary governing artifact: this file  
 
 ---
 
-# Governing product principles
+# 1. NORTH STAR
 
-1. **Existing voter database first.** Do not build a parallel voter universe.
-2. **Probability and auditability first.** Sampling logic is statistical code with saved metadata, not LLM judgment.
-3. **Fast volunteer workflow.** Caller signs in, receives the next assigned contact, follows the script, records disposition/answers, and advances.
-4. **One shared truth.** All callers use the same database and concurrency-safe queue.
-5. **Raw data remains raw.** Weighting/modeling never changes the original response.
-6. **Sensitive research is compartmentalized.** Individual political-opinion responses do not become casual CRM targeting tags.
-7. **Methodology is visible.** The dashboard shows sample size, effective sample, coverage, response quality, weighting status, and uncertainty.
-8. **Small-area restraint.** County/city results are suppressed until quality thresholds are met.
-9. **Evidence streams stay labeled.** Controlled phone samples, online opt-in surveys, external polls, and simulations remain distinguishable.
-10. **AI assists analysts.** OpenAI analyzes aggregate trends and open responses; it does not individually choose voters or invent data.
-11. **Mobile/iPad ready.** Volunteer and supervisor workbenches must work cleanly on phones, tablets, and desktop.
-12. **Human-controlled research changes.** Questionnaire, methodology, sampling, and release decisions are versioned and reviewable.
+Build a production-grade, continuous Arkansas polling and public-opinion research system inside Red Dirt. The system must use the campaign's existing voter-registration, voter-history, geography, phone, authentication, volunteer, and analytics infrastructure rather than create a parallel voter universe.
 
----
+Multiple authenticated volunteers must be able to call simultaneously from a shared statewide sample. The platform continuously evaluates where the achieved sample is strong or weak, assigns the next eligible respondent through auditable probability rules, records every contact attempt, conducts versioned surveys, computes defensible estimates, and presents statewide and geographic intelligence with visible uncertainty.
 
-# System spine
+This is not a one-off Kelly survey. It is a reusable Campaign OS research subsystem whose election, office, candidate field, questionnaire, study, wave, geography, sampling design, and reporting configuration can be changed without forking the application.
 
-`Red Dirt voter/person data`
-→ `Callable universe`
-→ `Sampling frame`
-→ `Sampling cells + targets`
-→ `Probability selector`
-→ `Assignment queue`
-→ `Volunteer caller workbench`
-→ `Survey/questionnaire engine`
-→ `Attempt/disposition ledger`
-→ `Interview/response store`
-→ `Quality + weighting engine`
-→ `Polling Intelligence Command Center`
-→ `External/online evidence lanes`
-→ `AI research layer`
-→ `Election simulation`
+The system exists to answer five questions:
+
+1. What are voters telling us?
+2. How much confidence should we place in the estimate?
+3. Where is our sample strong or weak?
+4. How is opinion changing over time and geography?
+5. What range of election outcomes is plausible under explicit assumptions?
 
 ---
 
-# Build phases and slices
+# 2. ENGINEERING DOCTRINE
 
-## PHASE 0 — Governance and architecture
+## 2.1 Existing Red Dirt data is canonical
 
-### POLL-0 — Repository + master spine
-**Status: COMPLETE / CURRENT COMMIT SERIES**
+Do not build a second voter table, second phone directory, second geography hierarchy, or second identity model if Red Dirt already has one. Polling-specific objects reference canonical Red Dirt entities.
 
-Deliverables:
-- canonical `polling-dashboard/` domain,
-- README and scope,
-- system spine,
-- governing methodology draft,
-- master build plan,
-- machine-readable build status.
+## 2.2 Probability selection is code, not AI judgment
 
-Exit gate:
-- project exists in GitHub and can be pulled into `H:\SOSWebsite\RedDirt\polling-dashboard\`.
+OpenAI may summarize, code open-ended answers, explain aggregate trends, and detect quality anomalies. It may not decide which individual voter should be selected because of inferred political characteristics or choose respondents in a way that cannot be reproduced and audited.
 
-### POLL-1 — Existing Red Dirt data/schema audit
-**Status: NEXT**
+The sampling engine uses explicit rules, deterministic randomization where useful, stored seeds/selection metadata, inclusion probabilities, and testable allocation logic.
 
-Goal: understand exactly what already exists before adding a single polling table.
+## 2.3 Raw research is immutable
 
-Audit:
-- Prisma schema and migrations,
-- voter/person models,
-- voter registration identifiers,
-- voting-history models,
-- phone/contact records and source/quality metadata,
-- county/city/precinct/district geography,
-- volunteer/user/auth/RBAC models,
-- existing admin route/workbench patterns,
-- AI registry/OpenAI patterns,
-- existing reporting/analytics utilities,
-- any prior survey/poll/contact-attempt models.
+Original answers, interview timestamps, question order, candidate order, dispositions, and verbatim text are never overwritten by weighting, recoding, modeling, or AI output. Every derived transformation is versioned.
 
-Deliverables:
-- `architecture/RED_DIRT_EXISTING_DATA_REUSE_MAP.md`
-- `architecture/POLLING_RELATIONAL_MODEL_PROPOSAL.md`
-- `data-contracts/polling-domain-v0.1.json`
-- `compliance/DATA_CLASSIFICATION_AND_ACCESS_PLAN.md`
-- explicit list of models/fields to reuse vs. create,
-- no migration yet unless separately approved after audit.
+## 2.4 Political opinions are restricted research data
 
-Exit gate:
-- no duplicated voter/person/phone/geography architecture,
-- relational model reviewed against real repo.
+Individual survey answers are stored in a compartmentalized research layer. They do not automatically become general CRM persuasion tags or individualized targeting profiles. Aggregate research may inform campaign strategy; respondent-level political opinions remain access-controlled.
 
----
+## 2.5 Evidence streams stay separate
 
-## PHASE 1 — Sampling foundation
+The platform must never silently blend:
 
-### POLL-2 — Callable universe
+- controlled phone samples,
+- online opt-in surveys,
+- external/public polls,
+- historical election data,
+- modeled estimates,
+- simulated outcomes.
 
-Build a versioned eligible sampling frame from existing voters with usable phone data.
+Every chart and number carries a source/methodology identity.
 
-Requirements:
-- eligibility rules,
-- phone availability/quality,
-- geography mapping,
-- exclusion/do-not-contact controls,
-- frame versioning,
-- counts by county/city/region/district,
-- frame-refresh process when new phone data arrives.
+## 2.6 Small samples do not become fake precision
 
-### POLL-3 — Sampling cells and targets
+City, county, regional, demographic, or subgroup estimates are hidden or explicitly marked insufficient until minimum statistical and methodological thresholds are met.
 
-Create target allocation architecture for statewide coverage.
+## 2.7 Every estimate carries its health information
 
-Support:
-- statewide population/sample targets,
-- region,
-- congressional district,
-- county,
-- city/local geography where defensible,
-- later demographic/turnout strata when validated.
+The executive result is never just `Kelly 43%`. It must be paired with the underlying evidence quality: completed interviews, effective sample size, field dates, weighting state, coverage health, uncertainty method, and warnings.
 
-Store:
-- target definition,
-- actual attempts,
-- completes,
-- deficits/surpluses,
-- selection probability metadata.
+## 2.8 Mobile is first-class
 
-### POLL-4 — Auditable probability selector
+Caller and supervisor workflows must work on phone, iPad/tablet, laptop, and desktop from the first production slice.
 
-Build deterministic/probability sampling service.
+## 2.9 Questionnaire changes are controlled changes
 
-Requirements:
-- randomness from application/statistical code,
-- reproducible seed/audit metadata where appropriate,
-- adaptive allocation toward under-covered cells,
-- random selection within eligible cells,
-- exclusion of currently locked/assigned/ineligible units,
-- no LLM voter-selection decisions,
-- simulation/test harness proving distribution behavior.
+Questions, wording, answer choices, order logic, candidate order logic, branching, and experimental forms are versioned and frozen per wave. Trend lines must know when comparability breaks.
 
-### POLL-5 — Atomic caller assignment queue
+## 2.10 Live calling requires a compliance gate
 
-Enable multiple callers concurrently.
-
-Requirements:
-- atomic claim/lease,
-- assignment expiration/recovery,
-- no duplicate simultaneous assignment,
-- caller permissions,
-- supervisor override,
-- callback queue separation,
-- audit ledger.
+No production calling launch occurs until applicable federal, Arkansas, voter-file contractual, privacy, recording/consent, opt-out, volunteer training, and campaign-law requirements have been reviewed and documented.
 
 ---
 
-## PHASE 2 — Survey research engine
+# 3. FINISHED PRODUCT
 
-### POLL-6 — Instrument/version manager
+At 100% completion, Red Dirt contains five coordinated workspaces.
 
-Create configurable:
-- studies,
-- waves,
-- questionnaires,
-- questions,
-- choices,
-- branching,
-- required/optional responses,
-- version locking,
-- form variants.
+## 3.1 Caller Workbench
 
-### POLL-7 — Secretary of State tracking instrument v1
+The volunteer experience is intentionally simple:
 
-Research, pretest, and freeze the first short core instrument.
+`Sign in → Start Session → Receive Assigned Voter → Call → Record Disposition → Run Survey if Answered → Save → Next`
 
-Planned domains:
-1. unprimed Secretary of State ballot preference,
-2. Arkansas direct democracy/citizen initiative attitude,
-3. confidence in Arkansas election security/accuracy,
-4. follow-up reason for low confidence,
-5. concise Secretary of State priorities/business-services item,
-6. previous presidential vote recall,
-7. party identification + strength/lean,
-8. post-battery ballot measure classified as post-context/experimental.
+The caller does not search the voter database, choose a county, cherry-pick contacts, calculate sample needs, or see campaign analytics that could bias interviewing.
 
-Candidate names/order must be rotated/randomized by software and stored.
+The workbench displays only the minimum information needed to complete the call. It supports:
 
-### POLL-8 — Experimental form engine
-
-Support randomized form assignment for:
-- candidate-order balance,
-- question-order experiments,
-- wording experiments,
-- future message/testing research.
-
-Never mix experimental post-treatment measures into baseline horse-race estimates without labeling.
-
-### POLL-9 — Open-ended research pipeline
-
-Store respondent language verbatim. Add analyst-reviewed coding taxonomy and optional OpenAI-assisted coding/summarization with:
-- original text preserved,
-- model/version logged,
-- confidence/uncertainty,
-- human review capability,
-- aggregate output by default.
-
----
-
-## PHASE 3 — Volunteer calling center
-
-### POLL-10 — Caller workbench
-
-Primary UX:
-
-`Sign in → Start calling → Assigned voter → Script → Disposition/Interview → Save → Next call`
-
-Requirements:
-- phone/tablet/desktop responsive,
-- minimal exposed voter information,
-- exact script display,
-- question branching,
-- progress counter,
+- exact interviewer introduction and script,
+- randomized candidate presentation order controlled by software,
+- branching questions,
 - callbacks,
+- refusal/no-answer/wrong-number/disconnected states,
+- language and accessibility flags,
 - pause/end session,
-- accessibility,
-- fast error recovery.
+- practice mode,
+- recovery if connection or browser state fails,
+- clear warning if an assignment lease expires.
 
-### POLL-11 — Disposition/contact-attempt system
+## 3.2 Supervisor Command Center
 
-Standard dispositions:
-- completed,
+Supervisors see operations rather than respondent opinions unless their role also authorizes research access.
+
+Core views:
+
+- callers currently active,
+- active assignment leases,
+- attempts and completes,
+- callback inventory,
+- disposition distributions,
+- completion times,
+- interviewer QA flags,
+- coverage deficits by sampling cell,
+- study/wave status,
+- pause/resume controls,
+- supervisor reassign/release controls,
+- training certification.
+
+## 3.3 Polling Analyst Workbench
+
+Analysts receive the research system:
+
+- raw/unweighted results,
+- weighted results,
+- question-level distributions,
+- crosstabs,
+- sample health,
+- coverage maps,
+- weighting diagnostics,
+- design effect/effective sample,
+- experimental form comparisons,
+- open-ended coding,
+- external-poll comparison,
+- methodology export,
+- longitudinal wave comparison.
+
+## 3.4 Executive Polling Intelligence Command Center
+
+The campaign manager/executive sees a concise decision surface:
+
+- current statewide estimate,
+- undecided share,
+- trend direction,
+- issue measures,
+- sample-health grade,
+- geographic coverage map,
+- regional/county drilldowns when supportable,
+- external polling average,
+- internal-vs-external comparison,
+- modeled election range,
+- methodology/change warnings.
+
+Every executive tile drills into evidence rather than hiding it.
+
+## 3.5 Research Administration
+
+Administrators manage:
+
+- studies,
+- elections,
+- candidate fields,
+- waves,
+- instruments,
+- experimental variants,
+- sample designs,
+- weighting configurations,
+- minimum display thresholds,
+- user roles,
+- methodology notes,
+- external poll sources,
+- data-retention policy,
+- launch gates.
+
+---
+
+# 4. SYSTEM ARCHITECTURE
+
+```text
+CANONICAL RED DIRT PERSON/VOTER DATA
+          │
+          ├── voter registration
+          ├── voter history
+          ├── phone/contact records
+          ├── geography
+          └── auth / users / volunteers
+          │
+          ▼
+CALLABLE UNIVERSE BUILDER
+          │
+          ▼
+VERSIONED SAMPLING FRAME
+          │
+          ▼
+SAMPLING CELLS + TARGETS
+          │
+          ▼
+PROBABILITY / ADAPTIVE ALLOCATION ENGINE
+          │
+          ▼
+ATOMIC ASSIGNMENT QUEUE
+          │
+          ▼
+CALLER WORKBENCH
+          │
+          ├── contact attempt ledger
+          └── survey interview engine
+          │
+          ▼
+IMMUTABLE RESPONSE STORE
+          │
+          ├── raw answers
+          ├── verbatim open text
+          ├── question/candidate order
+          └── interview metadata
+          │
+          ▼
+QUALITY + WEIGHTING + ESTIMATION
+          │
+          ├── raw estimate
+          ├── weighted estimate
+          ├── effective N / design effect
+          ├── suppression rules
+          └── uncertainty
+          │
+          ▼
+POLLING INTELLIGENCE COMMAND CENTER
+          │
+          ├── external polls
+          ├── online surveys
+          ├── AI aggregate analyst
+          └── turnout/election simulator
+```
+
+---
+
+# 5. CONCEPTUAL DATA MODEL
+
+Exact table/model names are not frozen until POLL-1 audits the real Prisma schema. The conceptual domain, however, is frozen.
+
+## 5.1 Reused canonical entities
+
+Expected references, subject to audit:
+
+- Person/Voter
+- VoterRegistration or voter identity key
+- VotingHistory
+- Phone/ContactMethod
+- County
+- City/Municipality
+- Precinct
+- Congressional/legislative geography
+- User
+- Role/Permission
+- Volunteer/Staff profile
+
+## 5.2 Polling-specific domain objects
+
+The final implementation must support equivalents of:
+
+- PollStudy
+- PollWave
+- PollInstrument
+- PollInstrumentVersion
+- PollQuestion
+- PollChoice
+- PollBranchRule
+- PollFormVariant
+- PollSamplingFrame
+- PollSamplingFrameMember/reference
+- PollSamplingCell
+- PollSamplingTarget
+- PollSelectionEvent
+- PollAssignment
+- PollCallerSession
+- PollContactAttempt
+- PollInterview
+- PollResponse
+- PollOpenResponseCode
+- PollWeightingRun
+- PollRespondentWeight
+- PollEstimateSnapshot
+- PollSuppressionRule
+- ExternalPoll
+- ExternalPollResult
+- OnlineSurveySubmission
+- PollModelRun
+- PollSimulationRun
+- PollAuditEvent
+
+These names are illustrative. POLL-1 determines which can reuse or extend existing Red Dirt models.
+
+---
+
+# 6. CALLABLE UNIVERSE AND SAMPLE DESIGN
+
+## 6.1 Callable universe
+
+The callable universe is a versioned view/derived set of eligible registered voters with a usable phone record.
+
+Eligibility must be rule-driven and reproducible. Possible exclusions include invalid phone, DNC/research opt-out where required, known bad contact, ineligible voter status where relevant to study definition, and active assignment lock.
+
+When new phone data is ingested into canonical Red Dirt records, eligible voters enter a future frame refresh automatically. No manual spreadsheet copy is required.
+
+## 6.2 Frame versioning
+
+Every sampling frame stores:
+
+- frame creation timestamp,
+- study/wave,
+- target population definition,
+- source data snapshot/version where available,
+- inclusion/exclusion rules,
+- total eligible count,
+- geography counts,
+- coverage limitations,
+- refresh lineage.
+
+Historical poll results always retain the frame used at collection time.
+
+## 6.3 Sampling hierarchy
+
+The engine must support nested coverage views:
+
+`State → Region → Congressional District → County → City/local geography`
+
+Additional strata may be added only when supported by reliable frame variables and benchmark data.
+
+## 6.4 Allocation strategy
+
+The system combines probability selection with controlled oversampling/stratification where necessary to ensure usable statewide coverage.
+
+A sampling cell has:
+
+- target share or target completes,
+- eligible frame count,
+- attempted count,
+- completed count,
+- deficit/surplus,
+- selection probability or allocation weight,
+- last completion time,
+- quality warnings.
+
+The allocation controller may increase the chance of drawing from an under-covered cell, but the actual respondent inside the selected cell is chosen randomly from eligible members.
+
+## 6.5 Adaptive coverage
+
+Adaptive sampling is based on sample-health variables, not individual political opinions.
+
+Valid inputs can include:
+
+- geography deficit,
+- attempt/completion deficit,
+- elapsed time since recent completes,
+- frame availability,
+- approved design strata.
+
+Invalid selection inputs include a respondent's prior candidate preference or sensitive survey answer for purposes of individualized persuasion or political targeting.
+
+## 6.6 Recontact policy
+
+The system differentiates:
+
+- fresh cross-sectional sample,
+- callback/retry,
+- deliberate panel/recontact study.
+
+A respondent cannot silently become a repeated panelist in a tracker. Recontact rules are explicit per study.
+
+---
+
+# 7. QUESTIONNAIRE ENGINE
+
+## 7.1 Instrument architecture
+
+A study contains waves. A wave points to an immutable instrument version. Instruments contain questions, choices, branching logic, validation rules, presentation instructions, and optional randomized variants.
+
+Publishing a wave freezes its instrument. Changes require a new version.
+
+## 7.2 Initial Secretary of State tracker
+
+The first production instrument should remain short enough for volunteer phone completion.
+
+Proposed sequence:
+
+1. Eligibility/introduction.
+2. **Unprimed ballot preference** for Arkansas Secretary of State.
+3. Direct-democracy / citizen-initiative measure using neutrally researched wording.
+4. Confidence in Arkansas election security/accuracy.
+5. If confidence is low, concise open-ended main reason.
+6. One concise Secretary of State responsibility/priorities item, including business-service responsibilities without turning the survey into a civics quiz.
+7. Prior presidential vote recall, with appropriate nonresponse options.
+8. Party identification followed by strength/lean where applicable.
+9. **Post-battery ballot preference**, explicitly stored as a post-context/experimental measure rather than substituted for baseline preference.
+
+Exact wording is not frozen by this master plan. It must pass instrument research and pretest before field launch.
+
+## 7.3 Candidate order
+
+Candidate names are rotated/randomized by software. The exact presented order is persisted per interview.
+
+The system should balance presentation positions over the sample and allow analysts to test whether order materially affected answers.
+
+## 7.4 Ordered scales
+
+Ordered response scales remain semantically ordered; where methodology calls for it, direction may be reversed across randomized forms rather than arbitrarily shuffled.
+
+## 7.5 Experimental forms
+
+The platform supports randomized assignment to form variants for legitimate survey-method experiments such as:
+
+- candidate-order balance,
+- question-order effects,
+- wording experiments,
+- issue framing research.
+
+Experimental results remain labeled separately from unprimed tracking measures.
+
+## 7.6 Open-ended answers
+
+Verbatim answers are preserved. AI may propose codes or summaries, but:
+
+- original text remains untouched,
+- model/version is logged,
+- code confidence can be stored,
+- humans can review/override coding,
+- aggregate reporting is the default surface.
+
+---
+
+# 8. MULTI-VOLUNTEER CALLING ENGINE
+
+## 8.1 Atomic assignments
+
+A caller requests the next assignment. The server atomically claims one eligible sampling unit and creates a lease.
+
+No two callers can hold the same voter simultaneously.
+
+Assignments contain:
+
+- caller/session,
+- voter reference,
+- wave/frame reference,
+- sampling cell,
+- selection event/probability metadata,
+- assigned timestamp,
+- lease expiry,
+- completion/release state.
+
+## 8.2 Assignment recovery
+
+If a browser closes or network fails, the system can recover or expire the lease without permanently losing that unit.
+
+## 8.3 Contact attempt ledger
+
+Every attempt is retained, including unsuccessful attempts. Standard states include:
+
+- complete,
 - partial,
 - refused,
 - no answer,
@@ -246,277 +473,513 @@ Standard dispositions:
 - disconnected,
 - language barrier,
 - ineligible,
-- do-not-contact,
-- other with controlled note.
+- do not contact/research opt-out where applicable,
+- other controlled note.
 
-All attempts remain part of quality measurement.
+Attempts are essential for response-rate and quality analysis.
 
-### POLL-12 — Supervisor command center
+## 8.4 Interviewer neutrality
 
-Show:
-- callers online,
-- active assignments,
-- attempts/completes,
-- response/disposition mix,
-- callback inventory,
-- suspicious/abnormal patterns,
-- training/quality flags,
-- sample coverage needs,
-- ability to pause a study/wave.
-
-### POLL-13 — Training + QA mode
-
-Add:
-- practice interviews,
-- script certification,
-- interviewer notes/rubric,
-- completion-quality checks,
-- speed/outlier flags,
-- supervisor review queue.
+The caller interface should not show live candidate polling results during an interview session. Interviewers receive the script, not strategic talking points. Training emphasizes consistent reading and neutral recording.
 
 ---
 
-## PHASE 4 — Statistical intelligence
+# 9. STATISTICAL INTELLIGENCE
 
-### POLL-14 — Raw polling dashboard
+## 9.1 Raw first
 
-First analyst dashboard:
+Every dashboard begins with the actual achieved sample. Analysts can inspect unweighted counts and distributions before adjustments.
+
+## 9.2 Weighting
+
+Weighting is introduced only after population benchmarks and frame variables are verified.
+
+Every weighting run stores:
+
+- version/method,
+- input frame/wave,
+- variables used,
+- benchmark source,
+- probability-of-selection adjustment,
+- nonresponse/post-stratification/raking/calibration steps as applicable,
+- trimming/capping rules,
+- weight distribution diagnostics,
+- design effect/effective-sample impact,
+- created timestamp and operator/version.
+
+## 9.3 Effective sample and uncertainty
+
+Headline results expose:
+
+- nominal completes,
+- weighted/unweighted status,
+- effective sample size where appropriate,
+- design effect where appropriate,
+- uncertainty method,
+- field dates,
+- coverage warnings.
+
+Nonprobability online samples do not receive a conventional probability-sample margin of error unless a defensible model-based precision method has been explicitly specified and disclosed.
+
+## 9.4 Suppression
+
+Subgroup/geographic output requires both sample-size and quality gates. The engine can return:
+
+- publishable,
+- directional/internal only,
+- insufficient sample,
+- suppressed.
+
+The UI must prefer `insufficient data` over a misleading percentage.
+
+## 9.5 Trend comparability
+
+Trend services know the instrument version. If a question changed materially, the system marks the historical series as a methodology break instead of drawing a continuous line without warning.
+
+---
+
+# 10. DASHBOARD FAMILY
+
+## 10.1 Sample Health Dashboard
+
+Shows:
+
+- frame size,
 - attempts,
 - completes,
-- raw candidate preference,
-- undecided,
-- issue responses,
-- response/disposition metrics,
-- geography coverage,
-- time trends.
+- response/disposition mix,
+- coverage by geography,
+- selection/allocation pressure,
+- weighting readiness,
+- effective sample,
+- interviewer QA,
+- under-covered cells.
 
-Raw numbers must be labeled unweighted.
+## 10.2 Statewide Tracker
 
-### POLL-15 — Weighting engine
+Shows baseline ballot preference, undecided, field window, raw/weighted toggle for authorized analysts, trend, and uncertainty/health.
 
-Implement only after methodological review.
+## 10.3 Geography Explorer
 
-Potential dimensions depend on verified frame/benchmark availability. Every weighting run stores:
-- method/version,
-- inputs/targets,
-- weights,
-- trimming/capping rules,
-- design effect/effective sample implications,
-- output timestamp.
+Interactive Arkansas map with state, region, district, county, and city/local drilldown when thresholds are met.
 
-### POLL-16 — Uncertainty + effective sample
+## 10.4 Issue Dashboard
 
-Dashboard shows:
-- nominal completes,
-- effective sample size,
-- design effect where applicable,
-- uncertainty interval/method,
-- sample/coverage warnings,
-- weighting warnings.
+Tracks direct democracy, election confidence, Secretary of State priorities, and future versioned issue measures.
 
-### POLL-17 — Arkansas geographic intelligence
+## 10.5 Movement Dashboard
 
-Map hierarchy:
-`State → Region → Congressional District → County → City/local area where supportable`
+Compares unprimed baseline ballot preference with post-battery experimental ballot preference without treating the latter as the normal horse-race estimate.
 
-Add hard suppression/insufficient-data states instead of fake precision.
+## 10.6 External Poll Center
 
-### POLL-18 — Continuous coverage controller
+Stores and compares pollster, sponsor, mode, sample population, sample size, field dates, methodology, reported uncertainty, candidate results, and source documentation.
 
-Use current completed/attempted sample against target cells to alter future allocation probabilities while maintaining documented selection rules.
-
-This is the adaptive statewide calling brain.
-
----
-
-## PHASE 5 — Polling Intelligence Command Center
-
-### POLL-19 — Executive dashboard
-
-Core surfaces:
-- current statewide estimate,
-- trend,
-- undecided,
-- favorability/issue metrics as instruments add them,
-- data quality,
-- coverage map,
-- regional/county drilldowns,
-- sample health,
-- methodology/version banner.
-
-### POLL-20 — Trend/wave analysis
-
-Support:
-- 7/14/30/60/90-day windows where sample supports them,
-- study waves,
-- before/after event comparisons,
-- stable-question longitudinal trends,
-- alerting when a questionnaire change breaks comparability.
-
-### POLL-21 — Campaign activity overlay
-
-Connect aggregate campaign activity to time/geography for research questions such as whether awareness/favorability changes after county visits or major events.
-
-This layer is observational and must not claim causal impact without an appropriate design.
-
----
-
-## PHASE 6 — External polls and online surveys
-
-### POLL-22 — External poll registry
-
-Store:
-- pollster,
-- sponsor,
-- field dates,
-- sample population,
-- sample size,
-- mode,
-- methodology notes,
-- reported margin of error,
-- candidate/issue results,
-- source URL/document,
-- quality assessment.
-
-### POLL-23 — External polling average
-
-Create transparent recency/sample/methodology-aware aggregation with published assumptions and source drilldown.
-
-### POLL-24 — Online survey engine
-
-Create Red Dirt-hosted survey forms with anti-abuse controls, source/campaign parameters, and explicit classification as probability or nonprobability/opt-in evidence.
-
-### POLL-25 — Evidence comparison dashboard
+## 10.7 Evidence Comparison
 
 Side-by-side:
-- internal controlled phone tracking,
-- external polling average,
-- online survey evidence,
-- model estimate.
 
-No silent blending.
+- internal controlled phone sample,
+- external polling average,
+- online opt-in evidence,
+- modeled estimate.
+
+No source is silently blended into another.
 
 ---
 
-## PHASE 7 — AI research layer
+# 11. ONLINE SURVEY LANE
 
-### POLL-26 — Polling analyst assistant
+Red Dirt may host online surveys, but the system classifies each recruitment source.
 
-OpenAI-powered aggregate analyst capable of answering:
-- what changed,
-- where sampling holes exist,
-- what respondents say in open answers,
-- where results disagree across evidence streams,
-- which estimates are currently weak.
+Possible source types:
 
-### POLL-27 — Data-quality/anomaly assistant
+- probability-recruited,
+- authenticated invited sample,
+- opt-in link,
+- event QR,
+- email/social campaign audience,
+- other nonprobability source.
 
-Detect/report—not autonomously delete—patterns such as:
-- abnormal interviewer completion times,
-- repeated response patterns,
-- sample-cell anomalies,
-- sudden disposition shifts,
-- suspicious online submissions.
+Anti-abuse and quality controls should include rate limiting, duplicate heuristics, completion-time checks, attention/consistency checks where methodologically justified, source parameters, and anomaly flags.
 
-### POLL-28 — Research memo generator
+Online opt-in results remain visibly distinct from probability-based telephone tracking.
 
-Produce versioned internal summaries grounded only in stored polling aggregates/methodology with uncertainty and source references.
+---
+
+# 12. OPENAI / AI RESEARCH LAYER
+
+AI is a research assistant operating over controlled data products.
+
+## Approved roles
+
+- summarize aggregate changes,
+- explain sample-health deficits,
+- cluster/code open-ended responses,
+- draft research memos from stored aggregates,
+- detect unusual interviewer or submission patterns,
+- identify conflicting evidence streams,
+- explain model assumptions,
+- answer natural-language questions about aggregate polling data.
+
+## Required controls
+
+- source-grounded prompts,
+- no invented observations,
+- uncertainty language,
+- model/version logging for persisted AI outputs,
+- human review for durable classifications,
+- no autonomous deletion or correction of raw data,
+- no AI-generated synthetic respondents mixed with human poll respondents,
+- no individualized political persuasion profile derived from protected survey answers.
+
+---
+
+# 13. ELECTION MODEL AND SIMULATION
+
+The election model is downstream of polling. It never overwrites or disguises observed data.
+
+## 13.1 Turnout model
+
+Uses voter-history data and approved benchmarks to define low/base/high or probabilistic turnout distributions.
+
+## 13.2 Monte Carlo engine
+
+Repeated simulations may incorporate:
+
+- polling estimate distributions,
+- turnout distributions,
+- geographic relationships,
+- undecided assumptions,
+- model uncertainty,
+- correlation assumptions where defensible.
+
+Outputs include:
+
+- median modeled result,
+- percentile intervals,
+- distribution of outcomes,
+- probability-style outputs,
+- assumptions and model version.
+
+## 13.3 Scenario laboratory
+
+Analysts may change assumptions without changing observed poll data. Scenarios are saved separately and compared side-by-side.
+
+---
+
+# 14. SECURITY, PRIVACY, AND ACCESS
+
+Expected role classes:
+
+- Polling Admin
+- Research Analyst
+- Polling Supervisor
+- Caller
+- Executive Read-Only
+
+RBAC must enforce least privilege.
+
+Caller access: minimum voter/contact data necessary for assigned call plus survey script.  
+Supervisor access: operational calling data and QA.  
+Analyst access: respondent-level research only where necessary and authorized.  
+Executive access: aggregate results by default.  
+Admin access: configuration and governance.
+
+Sensitive respondent opinions require access logging and must not be broadly exposed through ordinary voter-profile pages.
+
+---
+
+# 15. OBSERVABILITY AND AUDITABILITY
+
+Every critical action should be reconstructable.
+
+Audit classes include:
+
+- frame creation,
+- frame refresh,
+- sample target changes,
+- selection events,
+- assignment claims/releases,
+- contact attempts,
+- interview submission,
+- instrument publication,
+- weighting run,
+- estimate publication,
+- model run,
+- admin configuration changes,
+- access to restricted research where appropriate.
+
+Operational monitoring should detect assignment contention, database failures, abnormal queue latency, failed saves, unusual interviewer speeds, and dashboard-query degradation.
+
+---
+
+# 16. TESTING STRATEGY
+
+The polling system requires more than UI tests.
+
+## Statistical tests
+
+- uniform/random selection tests within cells,
+- allocation-target convergence tests,
+- deterministic seed/replay tests where used,
+- exclusion/recontact tests,
+- weighting fixture tests,
+- suppression-threshold tests,
+- simulation reproducibility tests.
+
+## Concurrency tests
+
+- multiple callers requesting next voter simultaneously,
+- lease expiry,
+- retry/recovery,
+- callback assignment,
+- duplicate-prevention proof.
+
+## Survey tests
+
+- branch logic,
+- instrument immutability,
+- candidate-order balancing,
+- form-variant assignment,
+- partial interview handling,
+- nonresponse vs `not sure` distinction.
+
+## Security tests
+
+- caller cannot browse respondent research,
+- unauthorized role cannot access respondent answers,
+- executive views return aggregates only,
+- admin mutations are permission-gated.
+
+## Performance tests
+
+- statewide callable universe scale,
+- concurrent caller sessions,
+- dashboard aggregations,
+- weighting/model jobs,
+- geographic drilldowns.
+
+---
+
+# 17. BUILD PHASES AND EXECUTION SLICES
+
+No implementation slice may redefine the doctrine above without updating this master plan and recording an architectural decision.
+
+## PHASE 0 — Governance, audit, and contracts
+
+### POLL-0 — Repository + master system plan
+**Status: COMPLETE**
+
+Creates canonical domain and v1.0 architecture.
+
+### POLL-1 — Existing Red Dirt schema/code audit
+**Status: NEXT AFTER MASTER-PLAN FREEZE**
+
+Read-only audit of Prisma, migrations, voter/person data, voter history, phone/contact data, geography, auth/RBAC, volunteers, contact attempts, surveys, analytics, OpenAI, admin/workbench patterns, and deployment conventions.
+
+**No migrations. No production data writes. No UI build.**
+
+Exit artifacts:
+- existing-data reuse map,
+- canonical identity/key map,
+- phone-source map,
+- geography map,
+- RBAC/auth map,
+- survey/contact overlap inventory,
+- proposed relational model mapped to actual Red Dirt objects,
+- migration impact forecast,
+- POLL-2 implementation recommendation.
+
+### POLL-2 — Domain contracts + migration design
+
+Turn POLL-1 findings into reviewed schema contracts, table/model ownership, indexes, retention classes, permissions, and migration plan. Still no production migration until gate approval.
+
+### POLL-3 — Polling database foundation
+
+Create only the approved polling-specific domain objects and relations. Add migrations, seed/config scaffolding, repository/service boundaries, and database tests.
+
+---
+
+## PHASE 1 — Callable universe and sampling
+
+### POLL-4 — Callable universe builder
+### POLL-5 — Sampling-frame versioning
+### POLL-6 — Sampling cells + statewide target model
+### POLL-7 — Probability selector
+### POLL-8 — Adaptive allocation controller
+### POLL-9 — Selection audit + simulation harness
+
+Exit gate: statistical test suite demonstrates expected selection behavior and no LLM-driven individual selection.
+
+---
+
+## PHASE 2 — Assignment and calling operations
+
+### POLL-10 — Atomic assignment/lease service
+### POLL-11 — Contact-attempt/disposition ledger
+### POLL-12 — Caller session service
+### POLL-13 — Caller workbench shell
+### POLL-14 — Callback/retry workflow
+### POLL-15 — Supervisor command center
+### POLL-16 — Caller training + QA mode
+
+Exit gate: many callers can operate concurrently without duplicate assignment.
+
+---
+
+## PHASE 3 — Survey research engine
+
+### POLL-17 — Study/wave/instrument manager
+### POLL-18 — Question/choice/branching engine
+### POLL-19 — Randomized form + candidate-order engine
+### POLL-20 — Secretary of State tracker research/pretest
+### POLL-21 — Secretary of State tracker v1 freeze
+### POLL-22 — Interview execution + immutable response store
+### POLL-23 — Open-ended coding pipeline
+
+Exit gate: instrument version is frozen, tested, neutrally reviewed, and reproducible.
+
+---
+
+## PHASE 4 — Statistical engine
+
+### POLL-24 — Raw aggregation service
+### POLL-25 — Sample-health metrics
+### POLL-26 — Weighting benchmark/contract design
+### POLL-27 — Weighting engine
+### POLL-28 — Design effect/effective-N/uncertainty
+### POLL-29 — Small-area suppression engine
+### POLL-30 — Trend comparability/version engine
+
+Exit gate: every published estimate has traceable inputs and methodology metadata.
+
+---
+
+## PHASE 5 — Dashboard family
+
+### POLL-31 — Analyst raw-results dashboard
+### POLL-32 — Sample Health Dashboard
+### POLL-33 — Statewide Tracker
+### POLL-34 — Geography Explorer
+### POLL-35 — Issue + experimental-movement dashboards
+### POLL-36 — Executive Polling Intelligence Command Center
+
+Exit gate: executive view cannot display an estimate without evidence-health context.
+
+---
+
+## PHASE 6 — External and online evidence
+
+### POLL-37 — External poll registry
+### POLL-38 — External polling average
+### POLL-39 — Online survey engine
+### POLL-40 — Online quality/anti-abuse controls
+### POLL-41 — Evidence Comparison dashboard
+
+---
+
+## PHASE 7 — AI research
+
+### POLL-42 — Aggregate Polling Analyst
+### POLL-43 — Open-response coding assistant
+### POLL-44 — Quality/anomaly assistant
+### POLL-45 — Research memo generator
+
+Exit gate: AI outputs are source-grounded, versioned when persisted, and cannot alter raw research.
 
 ---
 
 ## PHASE 8 — Election simulation
 
-### POLL-29 — Turnout scenario engine
-
-Build low/base/high or probabilistic turnout assumptions using voter history and approved external benchmarks.
-
-### POLL-30 — Monte Carlo election simulator
-
-Run repeated election simulations using:
-- polling distributions,
-- turnout distributions,
-- geographic relationships,
-- undecided assumptions,
-- model uncertainty.
-
-Outputs:
-- outcome distribution,
-- median result,
-- percentile bands,
-- probability-style model outputs with assumptions clearly displayed.
-
-### POLL-31 — Scenario laboratory
-
-Allow analysts to alter assumptions without changing observed poll data and compare scenarios side by side.
+### POLL-46 — Turnout scenario engine
+### POLL-47 — Monte Carlo simulator
+### POLL-48 — Scenario laboratory
+### POLL-49 — Model explanation + audit view
 
 ---
 
-## PHASE 9 — Production hardening and reusable Campaign OS module
+## PHASE 9 — Compliance, security, and production hardening
 
-### POLL-32 — Compliance/privacy launch gate
+### POLL-50 — Federal/Arkansas calling + campaign compliance review
+### POLL-51 — Data classification/retention/privacy implementation
+### POLL-52 — RBAC/security audit
+### POLL-53 — Load/concurrency/failure testing
+### POLL-54 — Methodology disclosure/export package
+### POLL-55 — Production operator runbook
+### POLL-56 — Launch-readiness gate
 
-Complete documented review of:
-- federal/Arkansas calling rules,
-- campaign restrictions,
-- voter-file terms,
-- privacy/access,
-- recording/consent where relevant,
-- opt-outs,
-- retention/deletion,
-- volunteer training,
-- methodology disclosure.
-
-### POLL-33 — Security/RBAC audit
-
-Roles may include:
-- polling admin,
-- research analyst,
-- supervisor,
-- caller,
-- read-only executive.
-
-Protect individual contact/research data from unnecessary exposure.
-
-### POLL-34 — Scale/concurrency/load proof
-
-Test large callable frame, many concurrent callers, assignment contention, dashboard queries, weighting jobs, and failures.
-
-### POLL-35 — Reusable election configuration
-
-Prove the system can create a new election/study/candidate field without code forks or hard-coded Kelly-specific assumptions.
-
-### POLL-36 — Production launch
-
-Launch only after statistical, compliance, security, and operator gates pass.
+No live statewide operation before this phase's required launch gates are complete.
 
 ---
 
-# Master dashboard target
+## PHASE 10 — Campaign OS generalization
 
-The mature Polling Intelligence Command Center should answer five questions immediately:
+### POLL-57 — Election/candidate configuration generalization
+### POLL-58 — Reusable study templates
+### POLL-59 — Cross-election archive and historical comparison
+### POLL-60 — Campaign OS polling module certification
 
-1. **What are voters telling us?**
-2. **How much confidence should we place in that estimate?**
-3. **Where is our sample strong or weak?**
-4. **How is opinion changing over time and geography?**
-5. **What range of election outcomes is plausible under explicit assumptions?**
-
----
-
-# Initial questionnaire research target
-
-The initial survey should be intentionally short. Baseline candidate preference occurs before the issue battery. Candidate ordering is balanced/randomized. Direct-democracy and election-confidence items use neutral language. Low-confidence election responses may branch to a concise open-ended reason. Political baselines come near the end. A second ballot question after the issue battery is stored as a post-context measure rather than substituted for the unprimed baseline.
-
-Exact wording remains a future research deliverable and must be frozen/versioned before trend reporting.
+Exit gate: a new race can be configured without Kelly-specific schema forks or hard-coded candidate logic.
 
 ---
 
-# Immediate next slice
+# 18. SLICE COMPLETION STANDARD
 
-## POLL-1 — Existing Red Dirt Data/Schema Audit
+Every build slice must return:
 
-Do **not** start by creating polling migrations.
+1. scope completed,
+2. files changed,
+3. schema/migration impact,
+4. privacy/security impact,
+5. methodology impact,
+6. tests run and results,
+7. typecheck/build/check results as applicable,
+8. screenshots or route proof for UI slices,
+9. unresolved blockers,
+10. explicit next slice,
+11. Git commit SHA,
+12. push/PR status.
 
-The next Cursor/build pass should read the actual repository, enumerate the existing voter/person/phone/history/geography/auth structures, search for any existing polling/survey/call-attempt functionality, and map the proposed polling objects onto what already exists.
+A slice is not complete because code exists. Its stated exit gate must pass.
 
-Only after that audit should POLL-2+ schema implementation be designed.
+---
+
+# 19. MASTER PLAN GOVERNANCE
+
+This document is the governing product/build contract.
+
+Changes that alter any of the following require a recorded architecture decision and master-plan update:
+
+- canonical voter identity,
+- political-opinion data exposure,
+- sampling philosophy,
+- AI's role in individual selection,
+- source blending,
+- raw-data immutability,
+- weighting methodology ownership,
+- suppression rules,
+- production compliance gate,
+- core role/access boundaries.
+
+Cursor implementation scripts are generated **from this plan**, not the other way around.
+
+---
+
+# 20. FIRST EXECUTION SEQUENCE
+
+With v1.0 frozen, the correct immediate sequence is:
+
+`POLL-1 repo/schema audit`
+→ `POLL-2 domain contracts + migration design`
+→ operator review
+→ `POLL-3 database foundation`
+→ callable-universe/sampling implementation.
+
+The existing POLL-1 Cursor script may now be revised against this v1.0 plan before execution. It is not the governing artifact; this master plan is.
+
+---
+
+# 21. EXTERNAL METHODOLOGY BASELINE
+
+Engineering and methodology should remain aligned with current professional survey-research norms, including transparent sampling-frame definition, probability/nonprobability labeling, question/order controls, weighting disclosure, uncertainty limitations, and explicit reporting of methodology changes. The project's methodology documentation should be reviewed against current AAPOR/Pew guidance before each major production release.
