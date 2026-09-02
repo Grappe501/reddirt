@@ -16,6 +16,9 @@ import {
 } from "@/data/kelly-county-visits";
 import { pageMeta } from "@/lib/seo/metadata";
 
+/** Visit totals must not freeze at last `next build`. */
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = pageMeta({
   title: "Kelly Across Arkansas",
   description:
