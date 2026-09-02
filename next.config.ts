@@ -106,7 +106,17 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/events/fayetteville-visit-2026-10-08",
-        destination: "/events/bella-vista-meet-2026-10-08",
+        destination: "/events/lwv-fayetteville-library-oct-8-2026",
+        permanent: true,
+      },
+      {
+        source: "/events/bella-vista-meet-2026-10-08",
+        destination: "/events/hob-nob-bentonville-2026",
+        permanent: true,
+      },
+      {
+        source: "/events/bella-vista-meet-2026-10-15",
+        destination: "/events/hob-nob-bentonville-2026",
         permanent: true,
       },
       {

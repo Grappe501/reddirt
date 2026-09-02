@@ -3638,7 +3638,7 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     includeOnPublicPage: true,
     confidence: "confirmed",
     notes:
-      "Promoted to public calendar 2026-09-02 from campaign schedule. Same day: Sharp County Democrats HQ opening Highland (time TBA) — merch ask; Kelly attend tentative.",
+      "Promoted to public calendar 2026-09-02 from campaign schedule. /events/dallas-county-fair-fordyce-2026-09-11 Same day: Sharp County Democrats HQ opening Highland (time TBA) — merch ask; Kelly attend tentative.",
     sourceType: "calendar",
   },
   {
@@ -3666,7 +3666,7 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     status: "scheduled",
     includeOnPublicPage: true,
     confidence: "likely",
-    notes: "Seeded from locked-events-steve.json",
+    notes: "Seeded from locked-events-steve.json /events/conway-county-fair-2026-09-12",
     sourceType: "local-file",
   },
   {
@@ -3694,7 +3694,7 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     status: "scheduled",
     includeOnPublicPage: true,
     confidence: "confirmed",
-    notes: "Promoted to public calendar 2026-09-02 from campaign schedule.",
+    notes: "Promoted to public calendar 2026-09-02 from campaign schedule. /events/harrison-hot-air-balloon-festival-2026-09-12",
     sourceType: "calendar",
   },
 
@@ -3737,7 +3737,7 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     status: "scheduled",
     includeOnPublicPage: true,
     confidence: "likely",
-    notes: "Seeded from locked-events-steve.json",
+    notes: "Seeded from locked-events-steve.json /events/pope-county-fair-2026-09-15",
     sourceType: "local-file",
   },
   {
@@ -3886,7 +3886,7 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     includeOnPublicPage: true,
     confidence: "likely",
     notes:
-      "Seeded from locked-events-steve.json. Same evening: Garland County Candidates Forum Hot Springs 6:00 p.m. (county offices, not SOS) — Nashville to Hot Springs is a drive if both stay booked. Campaign calendar also has Howard County 5:30 Nashville on Tue Sep 8 — confirm whether Sep 8 replaced this Sep 22 hold.",
+      "Seeded from locked-events-steve.json. /events/howard-county-visit-2026-09-22 Same evening: Garland County Candidates Forum Hot Springs 6:00 p.m. (county offices, not SOS) — Nashville to Hot Springs is a drive if both stay booked. Campaign calendar also has Howard County 5:30 Nashville on Tue Sep 8 — confirm whether Sep 8 replaced this Sep 22 hold.",
     sourceType: "local-file",
   },
   {
@@ -3912,7 +3912,7 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     status: "scheduled",
     includeOnPublicPage: true,
     confidence: "confirmed",
-    notes: "Promoted to public calendar 2026-09-02 from campaign schedule.",
+    notes: "Promoted to public calendar 2026-09-02 from campaign schedule. /events/crittenden-prairie-arkansas-swing-2026-09-23",
     sourceType: "calendar",
   },
 
@@ -3925,7 +3925,7 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     status: "scheduled",
     includeOnPublicPage: true,
     confidence: "likely",
-    notes: "Seeded from locked-events-steve.json",
+    notes: "Seeded from locked-events-steve.json /events/hot-springs-forum-2026-09-25",
     sourceType: "local-file",
   },
   {
@@ -3967,7 +3967,7 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     includeOnPublicPage: true,
     confidence: "likely",
     notes:
-      "Seeded from locked-events-steve.json. Same evening: DPPC rally Gigi’s on Main 5:00 p.m. — Harrison to Pulaski County is a long drive.",
+      "Seeded from locked-events-steve.json. /events/harrison-balloon-fest-2026-09-28 Same evening: DPPC rally Gigi’s on Main 5:00 p.m. — Harrison to Pulaski County is a long drive.",
     sourceType: "local-file",
   },
   {
@@ -4102,7 +4102,7 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     includeOnPublicPage: true,
     confidence: "likely",
     notes:
-      "Seeded from locked-events-steve.json. Same date: women-in-democracy-jonesboro-2026, razorback-touchdown-club-2026 (city TBA), and rison-in-the-fall-2026.",
+      "Seeded from locked-events-steve.json. /events/saline-county-gotv-2026-10-12 Same date: women-in-democracy-jonesboro-2026, razorback-touchdown-club-2026 (city TBA), and rison-in-the-fall-2026.",
     sourceType: "local-file",
   },
   {
@@ -4114,7 +4114,7 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     status: "scheduled",
     includeOnPublicPage: true,
     confidence: "confirmed",
-    notes: "Promoted to public calendar 2026-09-02 from campaign schedule.",
+    notes: "Promoted to public calendar 2026-09-02 from campaign schedule. /events/logan-scott-immersion-2026-10-18",
     sourceType: "calendar",
   },
 
@@ -4153,7 +4153,7 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     status: "scheduled",
     includeOnPublicPage: true,
     confidence: "likely",
-    notes: "Seeded from locked-events-steve.json",
+    notes: "Seeded from locked-events-steve.json /events/early-voting-launch-2026-10-20",
     sourceType: "local-file",
   },
   {
@@ -4793,7 +4793,7 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
   },
   {
     id: "manual-2026-10-15-hob-nob-bentonville",
-    publicTitle: "Hob Nob at Joint Business After Hours — Bentonville",
+    publicTitle: "Hob Nob at Joint Business After Hours — Bentonville / Bella Vista",
     date: "2026-10-15",
     title: "Rogers Lowell Chamber Hob Nob",
     city: "Bentonville",
@@ -4802,7 +4802,7 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     includeOnPublicPage: true,
     confidence: "likely",
     notes:
-      "Sara Lynn Geiger / Rogers Lowell Chamber. Thu Oct 15 5:00-7:00 p.m., booth setup 4:15. NWACC Walmart Auditorium, 1000 SE Eagle Way, Bentonville. With Bentonville Area Chamber and media partners. Candidate booth optional; register by Tue Oct 13 5:00 p.m. Invite link was not in the paste — use rogerslowell.com. Keep sara@ and amy@ off the public card; Chamber 479-636-1240 is on the signature. /events/hob-nob-bentonville-2026 Same morning: arkansas-tv-sos-debate-oct-15-2026 Conway 10:00 confirmed. Same evening: hardy-candidate-forum-2026 — cannot do both.",
+      "Steve 2026-09-02: Hob Nob IS the Bella Vista event — do not add a second Bella Vista row. Sara Lynn Geiger / Rogers Lowell Chamber. Thu Oct 15 5:00-7:00 p.m., booth setup 4:15. NWACC Walmart Auditorium, 1000 SE Eagle Way, Bentonville. With Bentonville Area Chamber and media partners. Candidate booth optional; register by Tue Oct 13 5:00 p.m. Invite link was not in the paste — use rogerslowell.com. Keep sara@ and amy@ off the public card; Chamber 479-636-1240 is on the signature. /events/hob-nob-bentonville-2026 Same morning: arkansas-tv-sos-debate-oct-15-2026 Conway 10:00 confirmed. Same evening: hardy-candidate-forum-2026 — cannot do both.",
     sourceType: "manual",
   },
   {

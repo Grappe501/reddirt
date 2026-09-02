@@ -2057,7 +2057,7 @@ export const calendarIngest20260902: EventItem[] = [
   },
 {
     slug: "hob-nob-bentonville-2026",
-    title: "Hob Nob at Joint Business After Hours — Bentonville",
+    title: "Hob Nob at Joint Business After Hours — Bentonville / Bella Vista",
     type: "Community Conversation",
     region: "Northwest Arkansas",
     countySlug: "benton-county",
@@ -2068,9 +2068,9 @@ export const calendarIngest20260902: EventItem[] = [
     locationLabel: "NWACC Walmart Auditorium — Bentonville",
     addressLine: "1000 SE Eagle Way, Bentonville, AR 72712",
     summary:
-      "Thursday, October 15, 2026, **5:00–7:00 p.m. Central** at **NWACC Walmart Auditorium**: Rogers Lowell Chamber and Bentonville Area Chamber **Hob Nob** at Joint Business After Hours. Candidate booths and media. Chamber-hosted — not a campaign rally.",
+      "Thursday, October 15, 2026, **5:00–7:00 p.m. Central** at **NWACC Walmart Auditorium** in Bentonville: this is the campaign’s **Bella Vista / Benton County** stop that day — Rogers Lowell Chamber and Bentonville Area Chamber **Hob Nob** at Joint Business After Hours. Candidate booths and media. Chamber-hosted — not a campaign rally.",
     description:
-      "**Sara Lynn Geiger** of the **Rogers Lowell Chamber** invited candidates to **Hob Nob at Joint Business After Hours** on **Thursday, October 15**, **5:00–7:00 p.m.**, at the **NWACC Walmart Auditorium**, **1000 SE Eagle Way, Bentonville**. Booth setup starts at **4:15 p.m.**\n\nThe Rogers Lowell Chamber, the Bentonville Area Chamber of Commerce, and media partners are running this for a second year. Candidates can take an optional **booth** for supporters while they mingle, sit for **media interviews**, and meet business and community leaders over appetizers and conversation.\n\nThis is a **Chamber mixer**, not a Grappe-hosted event. Reserve a booth by **Tuesday, October 13, 5:00 p.m.** The invite’s registration link was not in the note we received — use [rogerslowell.com](https://www.rogerslowell.com) or call the Chamber at **479-636-1240**.\n\nThe same Thursday morning, Kelly is confirmed for the **Arkansas TV Secretary of State debate** in **Conway at 10:00 a.m.** Conway to Bentonville after a 10:00 a.m. taping can fit a 5:00 p.m. start if she leaves soon after. The same evening, Sharp County hosts a **candidate forum in Hardy**. Bentonville and Hardy do not pair.",
+      "**Sara Lynn Geiger** of the **Rogers Lowell Chamber** invited candidates to **Hob Nob at Joint Business After Hours** on **Thursday, October 15**, **5:00–7:00 p.m.**, at the **NWACC Walmart Auditorium**, **1000 SE Eagle Way, Bentonville**. Booth setup starts at **4:15 p.m.** This is the campaign calendar’s **Bella Vista** stop — not a second Benton County event that day.\n\nThe Rogers Lowell Chamber, the Bentonville Area Chamber of Commerce, and media partners are running this for a second year. Candidates can take an optional **booth** for supporters while they mingle, sit for **media interviews**, and meet business and community leaders over appetizers and conversation.\n\nThis is a **Chamber mixer**, not a Grappe-hosted event. Reserve a booth by **Tuesday, October 13, 5:00 p.m.** The invite’s registration link was not in the note we received — use [rogerslowell.com](https://www.rogerslowell.com) or call the Chamber at **479-636-1240**.\n\nThe same Thursday morning, Kelly is confirmed for the **Arkansas TV Secretary of State debate** in **Conway at 10:00 a.m.** Conway to Bentonville after a 10:00 a.m. taping can fit a 5:00 p.m. start if she leaves soon after. The same evening, Sharp County hosts a **candidate forum in Hardy**. Bentonville and Hardy do not pair.",
     whatToExpect: [
       "5:00–7:00 p.m. Central; booth setup from 4:15 p.m.",
       "Optional candidate table; media availability; Chamber networking",
@@ -2081,7 +2081,7 @@ export const calendarIngest20260902: EventItem[] = [
     organizerNote:
       "Sara Lynn Geiger Rogers Lowell Chamber invite. fieldAttendance tentative until booth RSVP. Keep sara@rogerslowell.com and amy@rogerslowell.com off the public card. 479-636-1240 is the Chamber line on the signature. Registration URL was not in the paste. Same morning: arkansas-tv-sos-debate-oct-15-2026 confirmed Conway 10:00. Same evening: hardy-candidate-forum-2026 — cannot do both.",
     rsvpHref: "https://www.rogerslowell.com",
-    audienceTags: ["Bentonville", "Rogers", "Lowell", "Benton County", "Chamber", "Northwest Arkansas"],
+    audienceTags: ["Bentonville", "Bella Vista", "Rogers", "Lowell", "Benton County", "Chamber", "Northwest Arkansas"],
     relatedEventSlugs: [
       "arkansas-tv-sos-debate-oct-15-2026",
       "hardy-candidate-forum-2026",
