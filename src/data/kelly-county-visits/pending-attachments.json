@@ -1,0 +1,41 @@
+{
+  "updatedAt": "2026-09-02",
+  "items": [
+    {
+      "id": "attach-klek-jonesboro-interview",
+      "status": "attached",
+      "title": "KLEK 102.5 FM political candidate interview",
+      "match": {
+        "cities": [
+          "jonesboro"
+        ],
+        "counties": [
+          "Craighead"
+        ]
+      },
+      "requireUpcoming": true,
+      "skipIfPrivate": true,
+      "skipIfTitleIncludes": [
+        "klek"
+      ],
+      "attachMode": "companion-stop",
+      "companion": {
+        "id": "manual-{date}-klek-jonesboro-interview",
+        "title": "KLEK 102.5 FM political candidate interview",
+        "publicTitle": "KLEK 102.5 FM — candidate interview",
+        "city": "Jonesboro",
+        "counties": [
+          "Craighead"
+        ],
+        "includeOnPublicPage": true,
+        "confidence": "likely",
+        "notes": "Attached from pending queue. Invite: LaGanzie Kale, GM, KLEK-LP 102.5 FM (Arkansas Minority Advocacy Council). Book Political Candidate Interview at http://klekfm.biz or https://tidycal.com/klekfm/political. Studio 1411 Franklin Street, Jonesboro; in person or Zoom; pre-record if no live slot. Do not publish campaign email. /events/klek-jonesboro-candidate-interview-2026"
+      },
+      "eventPageHint": "/events/klek-jonesboro-candidate-interview-2026 — update when a tidycal slot is booked.",
+      "sourceNotes": "KLEK invite for November 2026 general election. Attach to the next public Jonesboro / Craighead stop. Station: 1411 Franklin St, Jonesboro AR 72401. Phone 870-203-9951 (station line). Live on FM and Facebook.",
+      "attachedToStopId": "manual-2026-09-19-rally-for-hallie-jonesboro",
+      "attachedCompanionId": "manual-2026-09-19-klek-jonesboro-interview",
+      "attachedOn": "2026-09-02"
+    }
+  ]
+}

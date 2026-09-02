@@ -608,7 +608,7 @@ const guides: ToolkitGuide[] = [
           "Before you send a single assigned text, set up a separate number. Google Voice is a common free option on Android and iOS; other VoIP and second-line services work too. Use that number only for this work so replies and opt-outs do not follow you home.",
         ],
         bullets: [
-          "Never paste the voter file into a personal group chat or a for-profit blast tool. Stay inside the workflow we give you.",
+          "Never paste campaign contact lists into a personal group chat or a for-profit blast tool. Stay inside the workflow we give you.",
           "If someone says stop, you stop and mark it in the system—no debate, no second message from another number.",
         ],
         callout: "We will walk through the setup in training. If a tool changes, the principle does not: one campaign-facing line, not your family cell.",
@@ -631,23 +631,25 @@ const guides: ToolkitGuide[] = [
     title: "Secretary of State 101",
     tag: "Civic",
     shortDescription:
-      "What the office actually runs: elections, business and commercial filings, and public records access—stated without campaign spin so you can explain it in a breakroom or a church lobby.",
+      "What the office actually runs: elections, business filings, notaries, public records, and the Capitol—stated as duties, not campaign spin.",
     intro:
-      "Voters are asked to care about a job that touches almost every part of public life, often without a clear picture of what the Secretary of State can and cannot do. This guide gives you a stable outline; pair it with the priorities page for Kelly’s plan.",
+      "This is a factual outline of the job. Pair it with the office pages for more detail, and with My Plan only when someone asks what Kelly would change.",
     anyOneCan: [
       "You are allowed to point to official .gov pages when someone drifts into myths—politeness and accuracy go together.",
       "It is fine to say “I’m going to look that up and get back to you” about a detail. That is how trust is built.",
     ],
     sections: [
       {
-        heading: "Core buckets (simplified)",
+        heading: "What the office actually runs",
         paragraphs: [
-          "Elections and voting infrastructure: support for fair administration, public information, and accurate election-related materials within the office’s role.",
-          "Business services: corporations, UCC, and commercial filings that keep the public record legible for small business owners.",
-          "Records and access: the office touches how many documents are filed and found; transparency expectations are part of a modern standard.",
+          "Elections: statewide voter registration, candidate and petition filings, ballot certification, compiling county returns, voting-equipment training, and chairing the State Board of Election Commissioners. County clerks still run Election Day.",
+          "Business filings: corporations, LLCs, partnerships, nonprofits, annual reports, franchise tax, UCC, and trademarks through Business and Commercial Services.",
+          "Notaries: commissions, eNotary, the public notary search, and apostilles for documents used abroad.",
+          "Records: Administrative Code and Register, legislative acts, city boundary filings, precinct maps, and the public ethics-filing search.",
+          "Capitol: building and grounds, Capitol Police, tours and civics programs, and internal operations.",
         ],
         bullets: [
-          "The Secretary of State is not a legislature—big policy still runs through the General Assembly. The office is where professionalism and public trust in the system show up day to day.",
+          "The Secretary of State is not the legislature. Big policy still goes through the General Assembly. This job is administration of the systems listed above.",
         ],
       },
       {
@@ -659,8 +661,9 @@ const guides: ToolkitGuide[] = [
       },
     ],
     goDeeper: [
-      { label: "Office priorities (campaign)", href: "/priorities" },
-      { label: "Direct democracy (why ballots matter here)", href: "/direct-democracy" },
+      { label: "What the office does", href: "/understand" },
+      { label: "Elections duties", href: "/office/elections" },
+      { label: "Official SOS duties page", href: "https://www.sos.arkansas.gov/about-the-office/duties-of-the-office" },
     ],
   },
 ];

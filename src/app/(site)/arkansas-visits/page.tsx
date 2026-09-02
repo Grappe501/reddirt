@@ -36,7 +36,7 @@ export default function ArkansasVisitsPage() {
         layout="split"
         eyebrow="Kelly Across Arkansas"
         title="Showing up in every corner of the state"
-        subtitle={`Kelly listens in person, travels county to county, and is building a campaign rooted in the whole of Arkansas. ${summary.visitedCounties} counties visited so far · ${summary.scheduledStopCount} public stops still ahead through Election Day season.`}
+        subtitle={`Kelly listens in person, travels county to county, and is building a campaign rooted in the whole of Arkansas. ${summary.visitedCounties} counties visited so far · ${summary.totalPublicStopCount} scheduled stops · ${summary.scheduledStopCount} still ahead through Election Day.`}
       >
         <Button href="/events/request" variant="primary">
           Invite Kelly

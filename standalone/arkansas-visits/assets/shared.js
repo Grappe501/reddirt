@@ -92,6 +92,13 @@
     return r.json();
   }
 
+  async function fetchPendingAttachments() {
+    const r = await fetch("/api/pending-attachments", { cache: "no-store" });
+    const j = await r.json().catch(() => ({}));
+    if (!r.ok) throw new Error(j.error || `Pending attachments failed (${r.status})`);
+    return j;
+  }
+
   async function fetchStop(id) {
     const r = await fetch(`/api/stops/${encodeURIComponent(id)}`, { cache: "no-store" });
     const j = await r.json().catch(() => ({}));
@@ -141,6 +148,7 @@
     checkEditor,
     loadPayload,
     fetchStop,
+    fetchPendingAttachments,
     countyChecklistHtml,
     wireCountySearch,
   };

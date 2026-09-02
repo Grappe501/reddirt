@@ -106,6 +106,9 @@ if (errors.length) {
   process.exit(1);
 }
 
+const { openItems, loadQueue } = require("./pending-visit-attachments.cjs");
+const pendingOpen = openItems(loadQueue());
+
 const pub = stops.filter((s) => s.includeOnPublicPage);
 console.log(
   JSON.stringify(
@@ -117,6 +120,7 @@ console.log(
       completed: pub.filter((s) => s.status === "completed").length,
       scheduled: pub.filter((s) => s.status === "scheduled").length,
       needsReview: pub.filter((s) => s.status === "needs-review" || s.counties.length === 0).length,
+      openAttachments: pendingOpen.map((item) => item.id),
     },
     null,
     2,

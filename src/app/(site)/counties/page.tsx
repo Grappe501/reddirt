@@ -22,7 +22,7 @@ export default async function CountiesIndexPage() {
       <PageHero
         eyebrow="Arkansas field"
         title="County command pages"
-        subtitle="Pick a county for registration goals, field metrics, and local ways to help—grounded in trusted public data and campaign-run organizing tools."
+        subtitle="Pick a county for local ways to help, field notes, and upcoming events."
       />
       <FullBleedSection className="border-b border-kelly-text/10 py-6">
         <ContentContainer>
@@ -30,7 +30,7 @@ export default async function CountiesIndexPage() {
             <Link className="font-semibold text-kelly-navy underline-offset-2 hover:underline" href={getVoterRegistrationCenterHref()}>
               Voter registration center
             </Link>{" "}
-            — help, official lookup handoff, and how we count new registrations.
+            — help finding the official lookup, paper registration, and a volunteer when you need a hand.
           </p>
         </ContentContainer>
       </FullBleedSection>

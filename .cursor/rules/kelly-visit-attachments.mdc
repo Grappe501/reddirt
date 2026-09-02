@@ -1,0 +1,16 @@
+---
+description: Attach queued extras (e.g. KLEK interview) when adding a Jonesboro / Craighead stop.
+globs: src/data/kelly-county-visits/**,scripts/apply-kelly-visit-edits.cjs,scripts/pending-visit-attachments.cjs
+alwaysApply: false
+---
+
+# Kelly visit attach-queue
+
+Before adding or promoting a public stop, read `src/data/kelly-county-visits/pending-attachments.json`.
+
+If the new stop’s `city` or `counties` matches an `open` item, attach it in the same edit:
+
+- Prefer `addStop` in `scripts/apply-kelly-visit-edits.cjs` (it consumes the queue automatically).
+- If you edit the ledger by hand, create the companion stop (or notes) and set that queue item to `attached` with `attachedToStopId`.
+
+Do not invent a booked KLEK air time. Use the station booking links. Do not publish campaign email addresses.

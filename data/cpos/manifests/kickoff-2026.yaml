@@ -47,7 +47,7 @@ coreNumbers:
     value: "76"
   - key: campaign_stops
     label: Campaign stops
-    value: "220"
+    value: "241"
   - key: miles
     label: Miles traveled
     value: "20,000+"

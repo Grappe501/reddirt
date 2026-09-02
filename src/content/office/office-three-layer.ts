@@ -41,31 +41,31 @@ export const officeUnderstandTeasers: Record<
   elections: {
     headline: "Elections",
     blurb:
-      "Clear rules, steady county partnership, and systems Arkansans can trust—start with what election administration actually means.",
+      "Chief election official: statewide voter registration, candidate and petition filings, ballot certification, returns, voting-equipment training, and chair of the State Board of Election Commissioners.",
     href: "/office/elections",
   },
   business: {
     headline: "Business & Filings",
     blurb:
-      "Registrations, filings, and searchable records that keep commerce legible—economic infrastructure that should feel clear, not like a second job.",
+      "Business and Commercial Services: entity name search, corporations and LLCs, annual reports, franchise tax, UCC, trademarks, and the public business-entity search.",
     href: "/office/business",
   },
   notaries: {
     headline: "Notaries",
     blurb:
-      "Commission standards, training, and public trust in everyday legal acknowledgments—the Secretary of State’s role in Arkansas’s notary infrastructure.",
+      "Commissioning notaries and eNotaries, the public notary search, and apostilles so notarized documents can be used in other countries.",
     href: "/office/notaries",
   },
   records: {
     headline: "Transparency & Records",
     blurb:
-      "You shouldn’t need an advanced degree to read what your government owes you in public—clear paths to records and systems this Secretary of State actually maintains.",
+      "Administrative Code and Register, legislative acts, city boundary filings, precinct maps, ethics-filing search, and the state seal on official commissions.",
     href: "/office/records",
   },
   capitol: {
     headline: "Capitol & Public Safety",
     blurb:
-      "The State Capitol is a working public space—grounds, facilities, and professional coordination with Capitol Police, stewarded so Arkansans can visit and work with calm, competent standards.",
+      "Capitol building and grounds, Capitol Police, public tours and civics programs, and day-to-day operations of the people’s house.",
     href: "/office/capitol",
   },
 };

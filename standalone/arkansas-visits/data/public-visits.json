@@ -1,12 +1,13 @@
 {
-  "generatedAt": "2026-08-07T04:40:04.379Z",
+  "generatedAt": "2026-09-02T18:54:25.835Z",
   "siteUrl": "https://kgrappe.netlify.app",
   "summary": {
-    "visitedCounties": 55,
+    "visitedCounties": 58,
     "totalCounties": 75,
-    "percentVisited": 73.3,
-    "completedStopCount": 189,
-    "scheduledStopCount": 16,
+    "percentVisited": 77.3,
+    "completedStopCount": 213,
+    "scheduledStopCount": 49,
+    "totalPublicStopCount": 262,
     "needsReviewCount": 0,
     "buckets": {
       "visited": [
@@ -38,6 +39,7 @@
         "Howard",
         "Independence",
         "Izard",
+        "Jackson",
         "Jefferson",
         "Johnson",
         "Lafayette",
@@ -54,6 +56,7 @@
         "Polk",
         "Pope",
         "Pulaski",
+        "St. Francis",
         "Saline",
         "Searcy",
         "Sebastian",
@@ -64,30 +67,29 @@
         "Van Buren",
         "Washington",
         "White",
+        "Woodruff",
         "Yell"
       ],
-      "scheduled": [],
-      "undocumented": [
+      "scheduled": [
         "Ashley",
         "Calhoun",
-        "Chicot",
         "Crittenden",
         "Dallas",
-        "Jackson",
-        "Lawrence",
-        "Lincoln",
         "Logan",
         "Madison",
-        "Miller",
         "Monroe",
         "Newton",
-        "Perry",
         "Phillips",
         "Prairie",
         "Randolph",
-        "St. Francis",
-        "Scott",
-        "Woodruff"
+        "Scott"
+      ],
+      "undocumented": [
+        "Chicot",
+        "Lawrence",
+        "Lincoln",
+        "Miller",
+        "Perry"
       ]
     }
   },
@@ -170,6 +172,206 @@
   ],
   "completed": [
     {
+      "id": "presence-2026-08-29-marion-county-visit-dem-party-meeting",
+      "date": "2026-08-29",
+      "endDate": null,
+      "title": "Marion County Democrats meeting",
+      "city": null,
+      "counties": [
+        "Marion"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "locked-2026-08-29-mt-nebo-chicken-fry",
+      "date": "2026-08-29",
+      "endDate": null,
+      "title": "Mt Nebo Chicken Fry",
+      "city": "Dardanelle",
+      "counties": [
+        "Yell"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "manual-2026-08-27-bryant-summer-nights",
+      "date": "2026-08-27",
+      "endDate": null,
+      "title": "Bryant Summer Nights",
+      "city": "Bryant",
+      "counties": [
+        "Saline"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "presence-2026-08-23-3-county-immersion-jackson-woodruff-st-francis",
+      "date": "2026-08-23",
+      "endDate": null,
+      "title": "Jackson, Woodruff, and St. Francis immersion",
+      "city": null,
+      "counties": [
+        "Jackson",
+        "Woodruff",
+        "St. Francis"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "presence-2026-08-22-3-county-fair-and-rodeo-mccrory",
+      "date": "2026-08-22",
+      "endDate": null,
+      "title": "Three-County Fair and Rodeo — McCrory",
+      "city": "McCrory",
+      "counties": [
+        "Woodruff"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "manual-2026-08-22-alread-eh-club",
+      "date": "2026-08-22",
+      "endDate": null,
+      "title": "Alread Extension Homemakers",
+      "city": "Alread",
+      "counties": [
+        "Van Buren"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "locked-2026-08-22-cave-city",
+      "date": "2026-08-22",
+      "endDate": null,
+      "title": "Cave City",
+      "city": "Cave City",
+      "counties": [
+        "Sharp"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "presence-2026-08-20-benton-county",
+      "date": "2026-08-20",
+      "endDate": null,
+      "title": "Benton County visit",
+      "city": null,
+      "counties": [
+        "Benton"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "presence-2026-08-19-benton-county",
+      "date": "2026-08-19",
+      "endDate": null,
+      "title": "Benton County visit",
+      "city": null,
+      "counties": [
+        "Benton"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "presence-2026-08-18-benton-county",
+      "date": "2026-08-18",
+      "endDate": null,
+      "title": "Benton County visit",
+      "city": null,
+      "counties": [
+        "Benton"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "locked-2026-08-18-hot-springs-village",
+      "date": "2026-08-18",
+      "endDate": null,
+      "title": "Hot Springs Village",
+      "city": "Hot Springs Village",
+      "counties": [
+        "Garland"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "presence-2026-08-17-washington-county-dem-kelly-is-speaking-6-pm",
+      "date": "2026-08-17",
+      "endDate": null,
+      "title": "Washington County Democrats — Kelly speaking",
+      "city": null,
+      "counties": [
+        "Washington"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "locked-2026-08-12-arkadelphia-visit",
+      "date": "2026-08-12",
+      "endDate": null,
+      "title": "Arkadelphia visit",
+      "city": "Arkadelphia",
+      "counties": [
+        "Clark"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "presence-2026-08-12-jefferson-co-immersion",
+      "date": "2026-08-12",
+      "endDate": null,
+      "title": "Jefferson County immersion",
+      "city": null,
+      "counties": [
+        "Jefferson"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "presence-2026-08-11-jefferson-co-immersion",
+      "date": "2026-08-11",
+      "endDate": null,
+      "title": "Jefferson County immersion",
+      "city": null,
+      "counties": [
+        "Jefferson"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "presence-2026-08-10-6pm-franklin-county",
+      "date": "2026-08-10",
+      "endDate": null,
+      "title": "Franklin County evening visit",
+      "city": null,
+      "counties": [
+        "Franklin"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "presence-2026-08-08-hempstead-county-clerk-invite",
+      "date": "2026-08-08",
+      "endDate": null,
+      "title": "Hempstead County clerk visit",
+      "city": null,
+      "counties": [
+        "Hempstead"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "presence-2026-08-06-400-pope-county-hq-opening",
+      "date": "2026-08-06",
+      "endDate": null,
+      "title": "Pope County HQ opening",
+      "city": "Russellville",
+      "counties": [
+        "Pope"
+      ],
+      "status": "completed"
+    },
+    {
       "id": "locked-2026-08-05-nwa-senior-dems",
       "date": "2026-08-05",
       "endDate": null,
@@ -177,6 +379,17 @@
       "city": "Fayetteville",
       "counties": [
         "Washington"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "presence-2026-08-02-faulkner-county-event",
+      "date": "2026-08-02",
+      "endDate": null,
+      "title": "Faulkner County event",
+      "city": null,
+      "counties": [
+        "Faulkner"
       ],
       "status": "completed"
     },
@@ -396,6 +609,17 @@
       "status": "completed"
     },
     {
+      "id": "presence-2026-07-07-hot-spring-county-meeting-malvern",
+      "date": "2026-07-07",
+      "endDate": null,
+      "title": "Hot Spring County meeting — Malvern",
+      "city": "Malvern",
+      "counties": [
+        "Hot Spring"
+      ],
+      "status": "completed"
+    },
+    {
       "id": "locked-2026-07-04-clay-county-july-4-corridor",
       "date": "2026-07-04",
       "endDate": null,
@@ -440,6 +664,17 @@
       "status": "completed"
     },
     {
+      "id": "presence-2026-06-29-pulaski-county-dems",
+      "date": "2026-06-29",
+      "endDate": null,
+      "title": "Pulaski County Democrats",
+      "city": null,
+      "counties": [
+        "Pulaski"
+      ],
+      "status": "completed"
+    },
+    {
       "id": "locked-2026-06-28-pulaski-county-dems",
       "date": "2026-06-28",
       "endDate": null,
@@ -458,6 +693,17 @@
       "city": null,
       "counties": [
         "Pulaski"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "presence-2026-06-27-pioneer-heritage-day-searcy-county",
+      "date": "2026-06-27",
+      "endDate": null,
+      "title": "Pioneer Heritage Day — Searcy County",
+      "city": null,
+      "counties": [
+        "Searcy"
       ],
       "status": "completed"
     },
@@ -662,6 +908,18 @@
       "status": "completed"
     },
     {
+      "id": "item-2026-06-11-pink-tomato-south-ar-visit-mountain-view-q-a-at-9-am",
+      "date": "2026-06-11",
+      "endDate": null,
+      "title": "Pink Tomato & South AR visit; Mountain View Q&A at 9 AM",
+      "city": null,
+      "counties": [
+        "Bradley",
+        "Stone"
+      ],
+      "status": "completed"
+    },
+    {
       "id": "item-2026-06-11-pink-tomato-festival-south-ar-visit",
       "date": "2026-06-11",
       "endDate": null,
@@ -679,6 +937,17 @@
       "endDate": null,
       "title": "Greene County Democrats meeting — Kelly speaking",
       "city": null,
+      "counties": [
+        "Greene"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "presence-2026-06-08-greene-county-democratic-meeting",
+      "date": "2026-06-08",
+      "endDate": null,
+      "title": "Greene County Democrats meeting",
+      "city": "Paragould",
       "counties": [
         "Greene"
       ],
@@ -2264,46 +2533,46 @@
   ],
   "upcoming": [
     {
-      "id": "locked-2026-08-12-arkadelphia-visit",
-      "date": "2026-08-12",
-      "endDate": null,
-      "title": "Arkadelphia visit",
-      "city": "Arkadelphia",
+      "id": "manual-2026-09-02-aac-county-judges",
+      "date": "2026-09-02",
+      "endDate": "2026-09-04",
+      "title": "County Judges Association — fall meeting",
+      "city": "Benton",
       "counties": [
-        "Clark"
+        "Saline"
       ],
       "status": "scheduled"
     },
     {
-      "id": "locked-2026-08-18-hot-springs-village",
-      "date": "2026-08-18",
+      "id": "presence-2026-09-03-conway-county-fair-opening-night-spend-the-night",
+      "date": "2026-09-03",
       "endDate": null,
-      "title": "Hot Springs Village",
-      "city": "Hot Springs Village",
+      "title": "Conway County Fair — opening night",
+      "city": "Morrilton",
       "counties": [
-        "Garland"
+        "Conway"
       ],
       "status": "scheduled"
     },
     {
-      "id": "locked-2026-08-22-cave-city",
-      "date": "2026-08-22",
+      "id": "presence-2026-09-03-madison-county",
+      "date": "2026-09-03",
       "endDate": null,
-      "title": "Cave City",
-      "city": "Cave City",
+      "title": "Madison County Democrats meeting — Kelly speaking",
+      "city": "Huntsville",
       "counties": [
-        "Sharp"
+        "Madison"
       ],
       "status": "scheduled"
     },
     {
-      "id": "locked-2026-08-29-mt-nebo-chicken-fry",
-      "date": "2026-08-29",
+      "id": "presence-2026-09-04-ashley-county-fair-6pm-a",
+      "date": "2026-09-04",
       "endDate": null,
-      "title": "Mt Nebo Chicken Fry",
-      "city": "Dardanelle",
+      "title": "Ashley County Fair",
+      "city": null,
       "counties": [
-        "Yell"
+        "Ashley"
       ],
       "status": "scheduled"
     },
@@ -2319,6 +2588,83 @@
       "status": "scheduled"
     },
     {
+      "id": "manual-2026-09-06-rector-labor-day-pageants",
+      "date": "2026-09-06",
+      "endDate": null,
+      "title": "Rector Labor Day pageants — Petite, Preteen, and Junior Miss",
+      "city": "Rector",
+      "counties": [
+        "Clay"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "manual-2026-09-07-rector-labor-day-parade",
+      "date": "2026-09-07",
+      "endDate": null,
+      "title": "Rector Labor Day Parade and Picnic",
+      "city": "Rector",
+      "counties": [
+        "Clay"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "manual-2026-09-09-aac-county-clerks",
+      "date": "2026-09-09",
+      "endDate": "2026-09-11",
+      "title": "County Clerks Association — fall meeting",
+      "city": "Benton",
+      "counties": [
+        "Saline"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "manual-2026-09-10-ame-west-conference",
+      "date": "2026-09-10",
+      "endDate": null,
+      "title": "AME West Conference — politics and the church",
+      "city": "Magnolia",
+      "counties": [
+        "Columbia"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "presence-2026-09-10-johnson-county-roosevelt-dinner-6pm",
+      "date": "2026-09-10",
+      "endDate": null,
+      "title": "Johnson County Roosevelt Dinner",
+      "city": null,
+      "counties": [
+        "Johnson"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "presence-2026-09-11-fordyce-dallas-county-fair-6pm",
+      "date": "2026-09-11",
+      "endDate": null,
+      "title": "Dallas County Fair — Fordyce",
+      "city": "Fordyce",
+      "counties": [
+        "Dallas"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "presence-2026-09-12-cleveland-county-forum-jametta-harper",
+      "date": "2026-09-12",
+      "endDate": null,
+      "title": "Cleveland County forum",
+      "city": null,
+      "counties": [
+        "Cleveland"
+      ],
+      "status": "scheduled"
+    },
+    {
       "id": "locked-2026-09-12-conway-county-fair",
       "date": "2026-09-12",
       "endDate": "2026-09-14",
@@ -2326,6 +2672,28 @@
       "city": "Morrilton",
       "counties": [
         "Conway"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "presence-2026-09-12-harrison-hot-air-balloon-festival",
+      "date": "2026-09-12",
+      "endDate": null,
+      "title": "Harrison Hot Air Balloon Festival",
+      "city": "Harrison",
+      "counties": [
+        "Boone"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "presence-2026-09-14-mt-home-candidate-forum",
+      "date": "2026-09-14",
+      "endDate": null,
+      "title": "Mountain Home candidate forum",
+      "city": "Mountain Home",
+      "counties": [
+        "Baxter"
       ],
       "status": "scheduled"
     },
@@ -2341,6 +2709,17 @@
       "status": "scheduled"
     },
     {
+      "id": "presence-2026-09-16-hsv-candidate-forum",
+      "date": "2026-09-16",
+      "endDate": null,
+      "title": "Hot Springs Village candidate forum",
+      "city": "Hot Springs Village",
+      "counties": [
+        "Garland"
+      ],
+      "status": "scheduled"
+    },
+    {
       "id": "locked-2026-09-18-arkansas-comic-con",
       "date": "2026-09-18",
       "endDate": "2026-09-20",
@@ -2348,6 +2727,39 @@
       "city": "Little Rock",
       "counties": [
         "Pulaski"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "presence-2026-09-18-calhoun-county-fair-evening",
+      "date": "2026-09-18",
+      "endDate": null,
+      "title": "Calhoun County Fair",
+      "city": null,
+      "counties": [
+        "Calhoun"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "manual-2026-09-19-klek-jonesboro-interview",
+      "date": "2026-09-19",
+      "endDate": null,
+      "title": "KLEK 102.5 FM — candidate interview",
+      "city": "Jonesboro",
+      "counties": [
+        "Craighead"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "manual-2026-09-19-rally-for-hallie-jonesboro",
+      "date": "2026-09-19",
+      "endDate": null,
+      "title": "Rally for Hallie — Jonesboro",
+      "city": "Jonesboro",
+      "counties": [
+        "Craighead"
       ],
       "status": "scheduled"
     },
@@ -2374,6 +2786,30 @@
       "status": "scheduled"
     },
     {
+      "id": "presence-2026-09-23-crittenden-prairie-arkansas-county-swing",
+      "date": "2026-09-23",
+      "endDate": null,
+      "title": "Crittenden, Prairie, and Arkansas County swing",
+      "city": null,
+      "counties": [
+        "Crittenden",
+        "Prairie",
+        "Arkansas"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "manual-2026-09-24-ame-east-conference",
+      "date": "2026-09-24",
+      "endDate": null,
+      "title": "AME East Conference — politics and the church",
+      "city": "Pine Bluff",
+      "counties": [
+        "Jefferson"
+      ],
+      "status": "scheduled"
+    },
+    {
       "id": "locked-2026-09-25-hot-springs-forum",
       "date": "2026-09-25",
       "endDate": null,
@@ -2381,6 +2817,17 @@
       "city": "Hot Springs",
       "counties": [
         "Garland"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "presence-2026-09-26-paragould-candidate-forum-2pm-til-5",
+      "date": "2026-09-26",
+      "endDate": null,
+      "title": "Paragould candidate forum",
+      "city": "Paragould",
+      "counties": [
+        "Greene"
       ],
       "status": "scheduled"
     },
@@ -2396,6 +2843,72 @@
       "status": "scheduled"
     },
     {
+      "id": "manual-2026-09-29-evening-with-acasa",
+      "date": "2026-09-29",
+      "endDate": null,
+      "title": "An Evening with ACASA",
+      "city": "Little Rock",
+      "counties": [
+        "Pulaski"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "manual-2026-09-29-eddie-mae-herron-pocahontas",
+      "date": "2026-09-29",
+      "endDate": null,
+      "title": "Eddie Mae Herron Center — candidate speaking and pie auction",
+      "city": "Pocahontas",
+      "counties": [
+        "Randolph"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "manual-2026-10-01-berryville-meet-the-candidates",
+      "date": "2026-10-01",
+      "endDate": null,
+      "title": "Berryville Chamber — Meet the Candidates: Reloaded",
+      "city": "Berryville",
+      "counties": [
+        "Carroll"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "manual-2026-10-03-people-over-politics-back-forty",
+      "date": "2026-10-03",
+      "endDate": null,
+      "title": "People Over Politics conversation — Back Forty",
+      "city": "Mountain Home",
+      "counties": [
+        "Baxter"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "presence-2026-10-03-moonshine-and-music-festival-at-fairgrounds-vbco",
+      "date": "2026-10-03",
+      "endDate": null,
+      "title": "Moonshine and Music Festival — Van Buren County",
+      "city": null,
+      "counties": [
+        "Van Buren"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "manual-2026-10-03-ozark-forward-fundraiser",
+      "date": "2026-10-03",
+      "endDate": null,
+      "title": "Ozark Forward fundraiser (hold — if available)",
+      "city": "Mountain Home",
+      "counties": [
+        "Baxter"
+      ],
+      "status": "scheduled"
+    },
+    {
       "id": "locked-2026-10-04-air-show",
       "date": "2026-10-04",
       "endDate": null,
@@ -2403,6 +2916,63 @@
       "city": "Little Rock",
       "counties": [
         "Pulaski"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "manual-2026-10-06-people-over-politics-vfw",
+      "date": "2026-10-06",
+      "endDate": null,
+      "title": "Candidate forum — People Over Politics (VFW)",
+      "city": "Mountain Home",
+      "counties": [
+        "Baxter"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "presence-2026-10-07-phillips-lee-monroe-immersion-anchor-is-king-bisquit-blues-festival",
+      "date": "2026-10-07",
+      "endDate": null,
+      "title": "Phillips, Lee, and Monroe immersion — King Biscuit weekend",
+      "city": null,
+      "counties": [
+        "Phillips",
+        "Lee",
+        "Monroe"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "manual-2026-10-08-ame-arkansas-conference",
+      "date": "2026-10-08",
+      "endDate": null,
+      "title": "AME Arkansas Conference — politics and the church",
+      "city": "Little Rock",
+      "counties": [
+        "Pulaski"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "manual-2026-10-08-fayetteville-library-league",
+      "date": "2026-10-08",
+      "endDate": null,
+      "title": "League of Women Voters — Secretary of State forum",
+      "city": "Fayetteville",
+      "counties": [
+        "Washington"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "manual-2026-10-10-october-daze-booneville",
+      "date": "2026-10-10",
+      "endDate": null,
+      "title": "October Daze — Booneville",
+      "city": "Booneville",
+      "counties": [
+        "Logan"
       ],
       "status": "scheduled"
     },
@@ -2418,6 +2988,17 @@
       "status": "scheduled"
     },
     {
+      "id": "manual-2026-10-12-women-in-democracy-jonesboro",
+      "date": "2026-10-12",
+      "endDate": null,
+      "title": "Women in Democracy — Jonesboro (confirm host)",
+      "city": "Jonesboro",
+      "counties": [
+        "Craighead"
+      ],
+      "status": "scheduled"
+    },
+    {
       "id": "locked-2026-10-12-saline-county-gotv-push",
       "date": "2026-10-12",
       "endDate": null,
@@ -2429,6 +3010,29 @@
       "status": "scheduled"
     },
     {
+      "id": "manual-2026-10-15-arkansas-tv-sos-debate",
+      "date": "2026-10-15",
+      "endDate": null,
+      "title": "Arkansas TV — Secretary of State debate",
+      "city": "Conway",
+      "counties": [
+        "Faulkner"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "presence-2026-10-18-logan-and-scott-immersion",
+      "date": "2026-10-18",
+      "endDate": null,
+      "title": "Logan and Scott immersion",
+      "city": null,
+      "counties": [
+        "Logan",
+        "Scott"
+      ],
+      "status": "scheduled"
+    },
+    {
       "id": "locked-2026-10-20-early-voting-launch",
       "date": "2026-10-20",
       "endDate": "2026-11-03",
@@ -2436,6 +3040,40 @@
       "city": "Little Rock",
       "counties": [
         "Pulaski"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "manual-2026-10-22-berryville-chamber-awards",
+      "date": "2026-10-22",
+      "endDate": null,
+      "title": "Berryville Chamber — Annual Awards Banquet",
+      "city": "Berryville",
+      "counties": [
+        "Carroll"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "presence-2026-10-25-madison-and-newton-county-immersion-ponca-color-fest",
+      "date": "2026-10-25",
+      "endDate": null,
+      "title": "Madison and Newton immersion — Ponca Color Fest",
+      "city": "Ponca",
+      "counties": [
+        "Madison",
+        "Newton"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "manual-2026-10-31-sheridan-immersion",
+      "date": "2026-10-31",
+      "endDate": null,
+      "title": "Sheridan immersion — Grant County",
+      "city": "Sheridan",
+      "counties": [
+        "Grant"
       ],
       "status": "scheduled"
     }

@@ -64,6 +64,11 @@ export const ARKANSAS_CITY_CENTER: Record<string, { lat: number; lng: number }> 
   greenwood: { lat: 35.2015, lng: -94.2558 },
   gravette: { lat: 36.4215, lng: -94.4527 },
   "rose bud": { lat: 35.3215, lng: -92.0816 },
+  rector: { lat: 36.2631, lng: -90.2926 },
+  piggott: { lat: 36.3828, lng: -90.1907 },
+  huntsville: { lat: 36.0862, lng: -93.7363 },
+  pocahontas: { lat: 36.2612, lng: -90.9709 },
+  "mountain home": { lat: 36.3354, lng: -92.3851 },
 };
 
 export function getArkansasCityCenter(city: string): { lat: number; lng: number } | null {

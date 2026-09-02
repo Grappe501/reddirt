@@ -17,29 +17,34 @@ export const recordsAreaConfig: OfficeAreaConfig = {
   shortTitle: "Transparency & Records",
   navLabel: "Transparency & Records",
   metaDescription:
-    "Transparency and public records under the Secretary of State's authority—plain language and useful paths so Arkansans are not expected to be experts to understand their own government.",
+    "Public records kept by the Arkansas Secretary of State: Administrative Code and Register, legislative acts, city boundary filings, precinct maps, ethics-filing search, and the state seal.",
   layerOne: {
     eyebrow: OFFICE_LAYER_EYEBROWS[1],
     title: "Transparency & Records",
     intro:
-      "Public records are part of public trust. You should not need to be an expert to understand your own government. Arkansans ought to find official information within this office's authority, understand what it means, and know it is kept clearly and responsibly.",
+      "Besides elections and business filings, the Secretary of State is the filing office for a set of statewide public records. People use those records to check rules, city boundaries, precinct lines, and ethics reports.",
     sections: [
       {
-        heading: "What this office touches",
+        heading: "Rules, acts, and maps",
         paragraphs: [
-          "Public-facing records the Secretary of State publishes, maintains, or indexes under law.",
-          "Official filings and state information systems assigned to this office.",
-          "Searchable public-facing systems where the office provides them.",
-          "Election- and business-related public information where applicable—released and organized lawfully.",
+          "The office files the Arkansas Administrative Code and publishes the Arkansas Register. State agencies also file administrative rules here, and the office hosts a public-meeting calendar for agencies.",
+          "The Elections Division library keeps the journals and acts of the Legislature, along with incorporations and annexations of cities and towns.",
+          "The office publishes state precinct maps and files municipal boundary changes and related local documents assigned by law.",
         ],
       },
       {
-        heading: "What people should expect",
+        heading: "Ethics filings and official acts",
         paragraphs: [
-          "Clear access points: a front door you can find on the first try.",
-          "Plain-language guidance that says what to do next.",
-          "Records organized so lawful disclosure actually helps someone.",
-          "Public systems that do not feel hidden behind bureaucracy.",
+          "Candidates and public officials file financial-interest and related ethics forms through a portal this office hosts. The public can search those filings here. The Arkansas Ethics Commission remains the ethics regulator.",
+          "The Secretary of State attests official acts and affixes the state seal to commissions and other official acts of the Governor. The office also files facsimile signature certificates.",
+          "Oaths of office, official acts of the Governor, and other state records assigned by statute are filed or maintained here.",
+        ],
+      },
+      {
+        heading: "What this page is not",
+        paragraphs: [
+          "County clerks, circuit clerks, and other agencies keep many local records this office does not hold.",
+          "A Freedom of Information Act request still goes to the public body that owns the record. This office’s job is the record series the law assigns to the Secretary of State.",
         ],
       },
     ],
@@ -108,8 +113,9 @@ export const recordsAreaConfig: OfficeAreaConfig = {
   },
   layerTwoNextLabel: "What Kelly brings",
   relatedLinks: [
+    { label: "Duties of the office (official)", href: "https://www.sos.arkansas.gov/about-the-office/duties-of-the-office" },
+    { label: "Search administrative rules", href: "https://www.sos.arkansas.gov/elections" },
     { label: "Understand the Office", href: "/understand" },
     { label: "Meet Kelly", href: "/about" },
-    { label: "Office priorities", href: "/priorities" },
   ],
 };

@@ -10,6 +10,7 @@ const fs = require("node:fs");
 const path = require("node:path");
 const { spawnSync } = require("node:child_process");
 const { updateStop, addStop, getStop } = require("./apply-kelly-visit-edits.cjs");
+const { loadQueue, openItems } = require("./pending-visit-attachments.cjs");
 
 const root = path.resolve(__dirname, "..");
 const staticRoot = path.join(root, "standalone", "arkansas-visits");
@@ -93,6 +94,14 @@ function safeJoin(urlPath) {
 async function handleApi(req, res, url) {
   if (req.method === "GET" && url.pathname === "/api/health") {
     return sendJson(res, 200, { ok: true, editor: true });
+  }
+
+  if (req.method === "GET" && url.pathname === "/api/pending-attachments") {
+    const queue = loadQueue();
+    return sendJson(res, 200, {
+      updatedAt: queue.updatedAt,
+      open: openItems(queue),
+    });
   }
 
   if (req.method === "GET" && url.pathname === "/api/stops") {

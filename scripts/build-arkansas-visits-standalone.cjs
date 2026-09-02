@@ -45,6 +45,7 @@ const payload = {
     percentVisited: summary.percentVisited,
     completedStopCount: summary.completedStopCount,
     scheduledStopCount: summary.scheduledStopCount,
+    totalPublicStopCount: summary.totalPublicStopCount,
     needsReviewCount: summary.needsReviewCount,
     buckets: summary.buckets,
   },

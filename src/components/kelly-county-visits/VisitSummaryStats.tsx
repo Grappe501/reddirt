@@ -12,6 +12,11 @@ export function VisitSummaryStats({ summary }: Props) {
       hint: `${summary.percentVisited}% of Arkansas`,
     },
     {
+      label: "Scheduled stops",
+      value: String(summary.totalPublicStopCount),
+      hint: "Completed plus upcoming through Election Day",
+    },
+    {
       label: "Completed stops",
       value: String(summary.completedStopCount),
       hint: "Published past visits",
@@ -36,7 +41,7 @@ export function VisitSummaryStats({ summary }: Props) {
       <p className="mt-2 max-w-2xl font-body text-base leading-relaxed text-kelly-text/80">
         Totals update from the campaign stop ledger — not hardcoded claims.
       </p>
-      <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4" role="list">
+      <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-5" role="list">
         {items.map((item) => (
           <li
             key={item.label}

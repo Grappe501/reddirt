@@ -95,5 +95,29 @@
     },
     "id": "uxo_ms6ncxlx",
     "at": "2026-07-29T22:19:07.173Z"
+  },
+  {
+    "event": "page_viewed",
+    "actor": "admin",
+    "role": "operator",
+    "pathname": "/admin",
+    "recordId": null,
+    "meta": {
+      "month": "2026-03"
+    },
+    "id": "uxo_mtbmgg5v",
+    "at": "2026-08-27T14:32:24.787Z"
+  },
+  {
+    "event": "page_viewed",
+    "actor": "admin",
+    "role": "operator",
+    "pathname": "/admin",
+    "recordId": null,
+    "meta": {
+      "month": "2026-03"
+    },
+    "id": "uxo_mtbmgkgy",
+    "at": "2026-08-27T14:32:30.370Z"
   }
 ]

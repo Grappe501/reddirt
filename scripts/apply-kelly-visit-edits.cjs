@@ -14,6 +14,8 @@ const ledgerPath = path.join(
   "kelly-county-visits.ts",
 );
 
+const { matchingOpenItems, markAttached } = require("./pending-visit-attachments.cjs");
+
 const VALID_STATUSES = new Set([
   "completed",
   "scheduled",
@@ -272,19 +274,75 @@ function updateStop(id, patch) {
   return { id, ...existing, ...normalized };
 }
 
+function insertStopRecord(stop) {
+  const text = readLedger();
+  if (findStopRange(text, stop.id)) {
+    const err = new Error(`Stop id already exists: ${stop.id}`);
+    err.code = "CONFLICT";
+    throw err;
+  }
+
+  const insertAt = text.lastIndexOf("\n];");
+  if (insertAt < 0) throw new Error("Could not locate end of kellyCampaignStops array");
+
+  let before = text.slice(0, insertAt).replace(/\s+$/, "");
+  // Last array element may omit a trailing comma; required once we append another stop.
+  if (!before.endsWith(",")) {
+    if (!before.endsWith("}")) {
+      throw new Error("Unexpected ledger ending before array close");
+    }
+    before = `${before},`;
+  }
+
+  const block = formatNewStop(stop);
+  writeLedger(`${before}\n${block}${text.slice(insertAt)}`);
+  return stop;
+}
+
+function attachPendingItems(hostStop) {
+  const matches = matchingOpenItems(hostStop);
+  const attached = [];
+  for (const item of matches) {
+    let companion = null;
+    if (item.attachMode === "companion-stop" && item.companion) {
+      const companionId = item.companion.id
+        ? String(item.companion.id).replaceAll("{date}", hostStop.date)
+        : `manual-${hostStop.date}-${slugify(item.companion.title || item.id)}`;
+      const companionInput = {
+        ...item.companion,
+        id: companionId,
+        date: hostStop.date,
+        status: item.companion.status || hostStop.status || "scheduled",
+        skipPendingAttachments: true,
+      };
+      companion = addStop(companionInput);
+    }
+    const attachLine = `Attached pending: ${item.title} (${item.id}${
+      companion ? `; companion ${companion.id}` : ""
+    }).`;
+    const nextNotes = [hostStop.notes, attachLine].filter(Boolean).join(" ");
+    updateStop(hostStop.id, { notes: nextNotes });
+    hostStop.notes = nextNotes;
+    markAttached(item.id, {
+      hostStopId: hostStop.id,
+      companionStopId: companion ? companion.id : null,
+    });
+    attached.push({
+      id: item.id,
+      title: item.title,
+      companionId: companion ? companion.id : null,
+    });
+  }
+  return attached;
+}
+
 function addStop(input) {
   if (!input || !input.date || !input.title) {
     throw new Error("New stops require date and title");
   }
-  const text = readLedger();
   const id =
     input.id ||
     `manual-${input.date}-${slugify(input.title)}-${Date.now().toString(36).slice(-4)}`;
-  if (findStopRange(text, id)) {
-    const err = new Error(`Stop id already exists: ${id}`);
-    err.code = "CONFLICT";
-    throw err;
-  }
 
   const asOf = process.env.KELLY_VISITS_AS_OF?.trim() || new Date().toISOString().slice(0, 10);
   const counties = Array.isArray(input.counties)
@@ -300,29 +358,23 @@ function addStop(input) {
     date: input.date,
     title: String(input.title).trim(),
     city: input.city ? String(input.city).trim() : undefined,
+    endDate: input.endDate || undefined,
+    publicTitle: input.publicTitle || undefined,
     counties,
     status,
     includeOnPublicPage: input.includeOnPublicPage !== false,
     confidence: input.confidence || (counties.length ? "confirmed" : "uncertain"),
     notes: input.notes || "Added via local arkansas-visits editor",
-    sourceType: "manual",
+    sourceType: input.sourceType || "manual",
   };
 
-  const insertAt = text.lastIndexOf("\n];");
-  if (insertAt < 0) throw new Error("Could not locate end of kellyCampaignStops array");
+  insertStopRecord(stop);
 
-  let before = text.slice(0, insertAt).replace(/\s+$/, "");
-  // Last array element may omit a trailing comma; required once we append another stop.
-  if (!before.endsWith(",")) {
-    if (!before.endsWith("}")) {
-      throw new Error("Unexpected ledger ending before array close");
-    }
-    before = `${before},`;
+  if (!input.skipPendingAttachments) {
+    stop.attachedPending = attachPendingItems(stop);
+  } else {
+    stop.attachedPending = [];
   }
-
-  const block = formatNewStop(stop);
-  const next = `${before}\n${block}${text.slice(insertAt)}`;
-  writeLedger(next);
   return stop;
 }
 
@@ -354,4 +406,5 @@ module.exports = {
   getStop,
   findStopRange,
   readLedger,
+  attachPendingItems,
 };

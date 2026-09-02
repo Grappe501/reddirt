@@ -13,8 +13,7 @@ export function OfficeUnderstandGateway() {
           What the Secretary of State does—in plain language
         </h2>
         <p className="mt-5 font-body text-lg leading-relaxed text-kelly-text/85">
-          Elections, business filings, notaries, public records, and Capitol stewardship. Each area starts with civic
-          education, then why it matters to real Arkansans and what Kelly brings—with verified credentials only.
+          Each area starts with the actual job duties, then why it matters and what Kelly brings.
         </p>
       </div>
       <div className="mt-12 md:mt-14">

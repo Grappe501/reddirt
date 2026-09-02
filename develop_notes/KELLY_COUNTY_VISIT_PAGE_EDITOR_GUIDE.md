@@ -1,6 +1,23 @@
 # Kelly Across Arkansas — Editor Guide (Steve)
 
-Pass 1 editing is done by changing **one typed data file**. No admin dashboard.
+Preferred path: use the **local Edit mode UI**. You can still edit the typed ledger file directly if needed.
+
+## 0. Local Edit mode (recommended)
+
+```powershell
+cd H:\SOSWebsite\RedDirt
+npm run visits:edit
+```
+
+Open http://127.0.0.1:8765/
+
+1. Review **Counties visited vs not visited** at the top
+2. Open **Needs attention** for stops missing counties
+3. **Click any stop** to open its drill-down page (`/stop/<id>`)
+4. On the stop page: edit date/title/city/status/counties/notes, save, or **Add related stop** if the trip covered more places than the calendar
+5. Use **Add stop** for a brand-new ledger row
+
+The editor only listens on `127.0.0.1` (this machine). It is not a public admin page.
 
 ## 1. Canonical data file
 
@@ -56,6 +73,20 @@ Copy the template at the bottom of `kelly-county-visits.ts` (`// COPY THIS BLOCK
 ```
 
 Use a unique `id`. Keep `title` as the original calendar heading.
+
+## 4b. Attach queue (next Jonesboro, etc.)
+
+Some extras wait for a city or county before they should appear. They live in:
+
+```text
+src/data/kelly-county-visits/pending-attachments.json
+```
+
+Open items attach automatically when you **Add stop** in the local editor (`npm run visits:edit`) or via `addStop` in `scripts/apply-kelly-visit-edits.cjs` — if the new stop’s `city` or `counties` matches.
+
+Example: **KLEK 102.5 FM interview** waits for the next public **Jonesboro** / **Craighead** stop, then creates a same-day companion row.
+
+If you paste a stop into the ledger by hand, either use `addStop` or mark the queue item `attached` yourself so it does not fire twice.
 
 ## 5. Change scheduled → completed
 

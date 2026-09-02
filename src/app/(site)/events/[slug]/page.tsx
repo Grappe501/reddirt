@@ -88,6 +88,21 @@ function CuratedOrCalendarEventView({ event }: { event: EventItem }) {
                 <EventMeta event={event} />
               </div>
 
+              {event.description ? (
+                <>
+                  <SectionHeading
+                    className="mt-14"
+                    align="left"
+                    as="h3"
+                    eyebrow="About this stop"
+                    title="The full picture"
+                  />
+                  <p className="mt-6 whitespace-pre-line font-body text-base leading-relaxed text-kelly-text/85">
+                    {event.description}
+                  </p>
+                </>
+              ) : null}
+
               <SectionHeading
                 className="mt-14"
                 align="left"

@@ -45,7 +45,6 @@ const teamRoles: { title: string; blurb: string }[] = [
 const crossLinks: { label: string; href: string }[] = [
   { label: "Bring 5 Friends", href: "/get-involved/bring-5" },
   { label: "Invite Kelly", href: "/events/request" },
-  { label: "County Fairs", href: "/events/county-fairs" },
   { label: "Community Election Integrity Tour", href: "/events/community-election-integrity-tour" },
   { label: "From the Road", href: "/from-the-road" },
 ];

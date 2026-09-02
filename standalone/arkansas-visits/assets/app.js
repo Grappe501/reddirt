@@ -5,6 +5,7 @@
     editorAvailable: false,
     mode: "pending",
     countyFilter: "",
+    pendingAttachments: [],
   };
 
   function groupStops(stops, newestFirst) {
@@ -163,9 +164,9 @@
               <p class="hint">${math.total} − ${math.visited} completed</p>
             </li>
             <li class="stat-scheduled">
-              <p class="label">Scheduled only</p>
-              <p class="value">${math.scheduled}</p>
-              <p class="hint">On calendar, not completed yet</p>
+              <p class="label">Scheduled stops</p>
+              <p class="value">${s.totalPublicStopCount ?? data.completed.length + data.upcoming.length}</p>
+              <p class="hint">${data.upcoming.length} still ahead · ${math.scheduled} counties scheduled only</p>
             </li>
             <li class="stat-attention">
               <p class="label">Needs attention</p>
@@ -181,6 +182,19 @@
                      <p>Open a stop to assign counties or split multi-place trips.</p>
                    </div>
                    <button type="button" class="btn btn-navy btn-small" id="jump-needs-attention">Review needs attention</button>
+                 </div>`
+              : ""
+          }
+          ${
+            state.editorAvailable && state.pendingAttachments.length
+              ? `<div class="needs-attention-banner" role="status">
+                   <div>
+                     <strong>Attach queue (${state.pendingAttachments.length})</strong>
+                     <p>${state.pendingAttachments
+                       .map((item) => K.escapeHtml(item.title))
+                       .join(" · ")} — these attach automatically when you add a matching city or county.</p>
+                   </div>
+                   <a class="btn btn-navy btn-small" href="/stop.html?id=new">Add matching stop</a>
                  </div>`
               : ""
           }
@@ -269,6 +283,14 @@
   async function boot() {
     state.editorAvailable = await K.checkEditor();
     state.data = await K.loadPayload(state.editorAvailable);
+    if (state.editorAvailable) {
+      try {
+        const q = await K.fetchPendingAttachments();
+        state.pendingAttachments = q.open || [];
+      } catch {
+        state.pendingAttachments = [];
+      }
+    }
     mount(state.data);
   }
 

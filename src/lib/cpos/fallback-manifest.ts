@@ -27,7 +27,7 @@ export const FALLBACK_KICKOFF_MANIFEST: MeetingManifest = {
   coreNumbers: [
     { key: "campaign_stop_counties", label: "Counties", value: "47" },
     { key: "cities", label: "Cities", value: "76" },
-    { key: "campaign_stops", label: "Stops", value: "220" },
+    { key: "campaign_stops", label: "Stops", value: "241" },
     { key: "miles", label: "Miles", value: "20,000+" },
     { key: "conversations", label: "Conversations", value: "15,000" },
     { key: "registration_goal", label: "Registration goal", value: "50,000" },

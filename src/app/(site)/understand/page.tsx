@@ -12,7 +12,7 @@ import { pageMeta } from "@/lib/seo/metadata";
 export const metadata: Metadata = pageMeta({
   title: "What the office does",
   description:
-    "Plain-language explainer of the Arkansas Secretary of State: elections, business services, initiatives and referenda, public records, and the State Capitol.",
+    "What the Arkansas Secretary of State does: elections, business filings, notaries, initiatives, public records, and the State Capitol—plain-language duties from official sources.",
   path: "/understand",
 });
 

@@ -58,6 +58,8 @@ export type VisitSummary = {
   percentVisited: number;
   completedStopCount: number;
   scheduledStopCount: number;
+  /** Lifetime public stops (completed + upcoming through Election Day). */
+  totalPublicStopCount: number;
   needsReviewCount: number;
   buckets: Record<CountyVisitBucket, string[]>;
 };
@@ -76,6 +78,7 @@ export function getVisitSummary(): VisitSummary {
     percentVisited: Math.round((visitedCount / ARKANSAS_COUNTY_COUNT) * 1000) / 10,
     completedStopCount: completedStops.length,
     scheduledStopCount: upcomingStops.length,
+    totalPublicStopCount: completedStops.length + upcomingStops.length,
     needsReviewCount: needsReview.length,
     buckets,
   };

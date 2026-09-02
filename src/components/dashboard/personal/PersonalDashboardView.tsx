@@ -21,8 +21,8 @@ export function PersonalDashboardView() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-8 text-kelly-text md:py-10">
       <div className="rounded-2xl border border-amber-200/80 bg-amber-50/90 px-4 py-3 text-sm text-amber-950 dark:border-amber-500/35 dark:bg-amber-950/45 dark:text-amber-50">
-        <strong>Demo mode:</strong> All names, counts, and dates are synthetic — safe for screenshots and reviews. Nothing here reads from accounts,
-        voter files, or production <GlossaryTerm term="powerOf5">Power of 5</GlossaryTerm> data.
+        <strong>Demo mode:</strong> All names, counts, and dates are synthetic — safe for screenshots and reviews. Nothing here reads from live accounts
+        or production <GlossaryTerm term="powerOf5">Power of 5</GlossaryTerm> data.
       </div>
 
       <header className="mt-8 border-b border-kelly-navy/10 pb-6">

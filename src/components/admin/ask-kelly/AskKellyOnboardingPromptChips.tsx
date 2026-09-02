@@ -34,7 +34,7 @@ export function AskKellyOnboardingPromptChips({
   intro = (
     <>
       Open <strong className="text-kelly-text">Ask Kelly</strong> on the public site (bottom-right), then paste a line
-      below—or use them in conversation with staff. The guide covers routing and process, not donor or voter files.
+      below—or use them in conversation with staff. The guide covers routing and process, not donor lists or private campaign databases.
     </>
   ),
 }: AskKellyOnboardingPromptChipsProps) {

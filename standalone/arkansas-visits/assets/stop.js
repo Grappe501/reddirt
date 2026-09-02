@@ -6,6 +6,7 @@
     stop: null,
     isNew: false,
     saving: false,
+    pendingAttachments: [],
   };
 
   function parseStopId() {
@@ -108,6 +109,21 @@
                   : "Public view of this campaign stop. Staff edit the ledger locally, then republish."
               }
             </p>
+            ${
+              state.isNew && state.pendingAttachments.length
+                ? `<p class="modal-note"><strong>Attach queue:</strong> ${state.pendingAttachments
+                    .map((item) => {
+                      const places = [
+                        ...(item.match?.cities || []),
+                        ...(item.match?.counties || []),
+                      ].join(" / ");
+                      return `${K.escapeHtml(item.title)}${places ? ` (${K.escapeHtml(places)})` : ""}`;
+                    })
+                    .join("; ")}. Matching city or county on this new stop will attach ${
+                    state.pendingAttachments.length === 1 ? "it" : "them"
+                  } automatically.</p>`
+                : ""
+            }
             ${
               stop.id
                 ? `<p class="modal-note">Ledger id: <code>${K.escapeHtml(stop.id)}</code></p>`
@@ -371,6 +387,14 @@
       state.editorAvailable = await K.checkEditor();
     }
     state.payload = await K.loadPayload(state.editorAvailable);
+    if (state.editorAvailable) {
+      try {
+        const q = await K.fetchPendingAttachments();
+        state.pendingAttachments = q.open || [];
+      } catch {
+        state.pendingAttachments = [];
+      }
+    }
 
     if (state.isNew) {
       const fromId = new URLSearchParams(window.location.search).get("from");

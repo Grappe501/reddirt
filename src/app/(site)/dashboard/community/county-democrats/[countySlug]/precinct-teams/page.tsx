@@ -28,8 +28,7 @@ export default async function CountyDemocratsPrecinctPage({ params }: Props) {
         <p className="mt-3 font-body text-sm text-kelly-text/85">
           Identify open precincts, existing captains, triads needed, and volunteers ready to place for{" "}
           {reg?.displayName ?? "your county"}. Each active precinct uses the same <span className="font-semibold">3-person</span>{" "}
-          model: Events · Social · Power of 5 / VR. Data below is illustrative until voter-file and volunteer placement tools feed
-          this view.
+          model: Events · Social · Power of 5 / VR. Data below is illustrative until volunteer placement tools feed this view.
         </p>
       </div>
 
