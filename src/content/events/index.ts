@@ -9,6 +9,7 @@ import {
   recurringVirtualSeries,
 } from "@/content/events/recurring-virtual-series";
 import { calendarIngest20260902 } from "@/content/events/calendar-ingest-2026-09-02";
+import { ledgerPublicGaps2026 } from "@/content/events/ledger-public-gaps-2026";
 
 /** Dated slugs on main that the Sep 2 audit replaced with fuller pages. */
 const CALENDAR_INGEST_REPLACES: Record<string, string> = {
@@ -36,6 +37,8 @@ const CALENDAR_INGEST_REPLACES: Record<string, string> = {
   "mountain-view-outhouse-races-2026-10-24": "mountain-view-bean-fest-outhouse-races-2026",
   "quendy-event-scott-2026-08-30": "guandy-event-scott-2026",
   "pope-county-registration-event-2026-09-15": "russellville-mary-ella-voter-registration-2026",
+  "bella-vista-meet-2026-10-08": "hob-nob-bentonville-2026",
+  "bella-vista-meet-2026-10-15": "hob-nob-bentonville-2026",
 };
 
 /** Old public slugs that still resolve to a canonical event page. */
@@ -655,6 +658,7 @@ export const events: EventItem[] = markSuggestedFestivalPath(
       ...august2026CampaignStops,
       ...september2026CampaignStops,
       ...october2026CampaignStops,
+      ...ledgerPublicGaps2026,
       ...recurringVirtualSeries,
     ],
     calendarIngest20260902,

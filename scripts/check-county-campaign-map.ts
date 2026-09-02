@@ -402,8 +402,11 @@ if (events.some((e) => /paragould/i.test(e.slug) && e.startsAt.startsWith("2026-
   if (events.some((e) => /debate week|campaign block/i.test(e.title))) {
     fail("Internal October blocks must not be published");
   }
-  if (!events.some((e) => e.slug === "bella-vista-meet-2026-10-08") || !events.some((e) => e.slug === "bella-vista-meet-2026-10-15")) {
-    fail("Bella Vista Oct 8 and Oct 15 are separate confirmed stops");
+  if (events.some((e) => e.slug === "bella-vista-meet-2026-10-08" || e.slug === "bella-vista-meet-2026-10-15")) {
+    fail("Bella Vista Meet placeholders must be removed — Hob Nob is the Bella Vista event");
+  }
+  if (!events.some((e) => e.slug === "hob-nob-bentonville-2026")) {
+    fail("Hob Nob must remain as the Bella Vista / Benton County October 15 stop");
   }
   const twoCounty = events.find((e) => e.slug === "madison-newton-county-day-2026-10-26");
   if (!twoCounty) fail("Madison / Newton County Day missing");
@@ -472,4 +475,4 @@ console.log("  unvisited confirmed upcoming: Woodruff (McCrory Aug 22), Clay (Re
 console.log("  tentative: Calhoun County (sky fill, dashed outline → fair Sep 18); Greers Ferry Oct 23 on Cleburne; Mountain View Outhouse Races Oct 24 on Stone");
 console.log("  neutral: Chicot County (gray, no click)");
 console.log("  statewide / virtual: Faith & Reflection Zoom (Wed 7:30 AM) + College & Young People Zoom (Thu, time TBA) — calendar only, never the visited county count");
-console.log("  October: no Rice Festival / Weiner; Flat Rock = Johnson County; Bella Vista Oct 8 and Oct 15 both public");
+console.log("  October: no Rice Festival / Weiner; Flat Rock = Johnson County; Hob Nob Oct 15 is the Bella Vista event");
