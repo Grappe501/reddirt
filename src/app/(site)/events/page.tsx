@@ -25,8 +25,8 @@ export const metadata: Metadata = pageMeta({
   imageSrc: brandMediaFromLegacySite.statewideBanner,
 });
 
-/** Netlify builds re-evaluate ended appearances in America/Chicago. */
-export const revalidate = 3600;
+/** Visit totals and the event list must not freeze at last `next build`. */
+export const dynamic = "force-dynamic";
 
 function pickParam(sp: Record<string, string | string[] | undefined>, key: string): string | undefined {
   const v = sp[key];

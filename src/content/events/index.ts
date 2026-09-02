@@ -8,12 +8,53 @@ import {
   RECURRING_VIRTUAL_SLUG_ALIASES,
   recurringVirtualSeries,
 } from "@/content/events/recurring-virtual-series";
+import { calendarIngest20260902 } from "@/content/events/calendar-ingest-2026-09-02";
+
+/** Dated slugs on main that the Sep 2 audit replaced with fuller pages. */
+const CALENDAR_INGEST_REPLACES: Record<string, string> = {
+  "madison-county-meeting-2026-09-03": "madison-county-democrats-meeting-2026",
+  "hispanic-heritage-festival-conway-2026-09-05": "paloma-hispanic-festival-2026",
+  "rector-labor-day-2026-09-06": "rector-labor-day-parade-picnic-2026",
+  "roosevelt-dinner-2026-09-10": "johnson-county-roosevelt-dinner-2026",
+  "lafayette-county-softball-2026-09-11": "lafayette-county-sep-2026",
+  "cleveland-county-candidate-forum": "cleveland-county-meet-and-greet-2026",
+  "river-valley-candidate-rally-fort-smith-2026-09-13": "fort-smith-river-valley-choice-2026",
+  "faulkner-dems-hq-opening-2026-09-14": "faulkner-dems-hq-opening-2026",
+  "hsv-candidate-forum-2026-09-16": "hsv-candidate-forum-2026",
+  "grassroots-guitar-strings-sherwood-2026-09-17": "grassroots-guitar-strings-2026",
+  "hot-spring-county-cookout-2026-09-19": "hot-spring-county-cookout-2026",
+  "little-river-county-stop-2026-09-21": "little-river-charlotte-sep-21-2026",
+  "press-freedom-gala-2026-09-22": "press-freedom-gala-2026",
+  "little-flock-2026-09-27": "little-flock-embed-2026",
+  "garland-county-library-candidate-forum-2026-09-29": "garland-library-state-federal-candidates-forum-2026",
+  "perry-county-goat-festival-2026-10-03": "goat-fest-oct-2026",
+  "mountain-home-immersion-2026-10-04": "mountain-home-oct-4-5-2026",
+  "mountain-home-farm-bureau-forum-2026-10-06": "people-over-politics-vfw-mountain-home-2026",
+  "hot-springs-chili-cookoff-2026-10-11": "hot-springs-chili-cookout-2026",
+  "stuttgart-event-2026-10-17": "stuttgart-oct-17-2026",
+  "flat-rock-fish-fry-2026-10-17": "flat-rock-fish-fry-2026",
+  "mountain-view-outhouse-races-2026-10-24": "mountain-view-bean-fest-outhouse-races-2026",
+  "quendy-event-scott-2026-08-30": "guandy-event-scott-2026",
+  "pope-county-registration-event-2026-09-15": "russellville-mary-ella-voter-registration-2026",
+};
 
 /** Old public slugs that still resolve to a canonical event page. */
 const EVENT_SLUG_ALIASES: Record<string, string> = {
   ...RECURRING_VIRTUAL_SLUG_ALIASES,
   "mt-nebo-chicken-fry-2026-08-29": "chickin-n-politikin-mount-nebo-2026-08-29",
+  ...CALENDAR_INGEST_REPLACES,
 };
+
+function mergeEventsPreferIngest(base: EventItem[], overlay: EventItem[]): EventItem[] {
+  const drop = new Set(Object.keys(CALENDAR_INGEST_REPLACES));
+  const map = new Map<string, EventItem>();
+  for (const event of base) {
+    if (drop.has(event.slug)) continue;
+    map.set(event.slug, event);
+  }
+  for (const event of overlay) map.set(event.slug, event);
+  return [...map.values()];
+}
 
 /** Fair research dump — operator/Evidence only; not merged into the public `/events` hub (Phase 1). */
 export { ARKANSAS_FESTIVAL_EVENTS_2026 } from "./arkansas-festivals-2026";
@@ -601,14 +642,19 @@ const movementEventsCore: EventItem[] = [
 ];
 
 /** Public curated movement events only. Published CampaignOS rows merge on `/events` at request time. */
-export const events: EventItem[] = markSuggestedFestivalPath([
-  ...movementEventsCore,
-  ...july2026CampaignStops,
-  ...august2026CampaignStops,
-  ...september2026CampaignStops,
-  ...october2026CampaignStops,
-  ...recurringVirtualSeries,
-]);
+export const events: EventItem[] = markSuggestedFestivalPath(
+  mergeEventsPreferIngest(
+    [
+      ...movementEventsCore,
+      ...july2026CampaignStops,
+      ...august2026CampaignStops,
+      ...september2026CampaignStops,
+      ...october2026CampaignStops,
+      ...recurringVirtualSeries,
+    ],
+    calendarIngest20260902,
+  ),
+);
 
 export const eventTypes = [
   "Town Hall",

@@ -1,4 +1,5 @@
 import { ARKANSAS_COUNTIES, ARKANSAS_COUNTY_COUNT } from "./arkansas-counties";
+import { UNPOSTED_COMPLETED_STOPS_PENDING_RECONCILE } from "./field-totals";
 import { kellyCampaignStops } from "./kelly-county-visits";
 import type { KellyCampaignStop } from "./types";
 
@@ -56,8 +57,15 @@ export type VisitSummary = {
   visitedCounties: number;
   totalCounties: number;
   percentVisited: number;
+  /** Dated public ledger rows counted as completed. */
+  completedLedgerCount: number;
+  /** Same-day / unposted completed stops still waiting on a ledger row. */
+  completedUnpostedCount: number;
+  /** Field total: dated ledger + unposted pending reconcile. */
   completedStopCount: number;
   scheduledStopCount: number;
+  /** Lifetime public stops (completed + upcoming through Election Day). */
+  totalPublicStopCount: number;
   needsReviewCount: number;
   buckets: Record<CountyVisitBucket, string[]>;
 };
@@ -70,12 +78,18 @@ export function getVisitSummary(): VisitSummary {
     (s) => s.status === "needs-review" || s.counties.length === 0,
   );
   const visitedCount = buckets.visited.length;
+  const completedLedgerCount = completedStops.length;
+  const completedUnpostedCount = UNPOSTED_COMPLETED_STOPS_PENDING_RECONCILE;
+  const completedStopCount = completedLedgerCount + completedUnpostedCount;
   return {
     visitedCounties: visitedCount,
     totalCounties: ARKANSAS_COUNTY_COUNT,
     percentVisited: Math.round((visitedCount / ARKANSAS_COUNTY_COUNT) * 1000) / 10,
-    completedStopCount: completedStops.length,
+    completedLedgerCount,
+    completedUnpostedCount,
+    completedStopCount,
     scheduledStopCount: upcomingStops.length,
+    totalPublicStopCount: completedStopCount + upcomingStops.length,
     needsReviewCount: needsReview.length,
     buckets,
   };

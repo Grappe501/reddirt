@@ -1,21 +1,40 @@
 /**
- * Steve-locked running total of scheduled campaign stops (appearances).
- * This is not the 51/75 county map.
- *
- * Bump `count` and `asOfYmd` whenever a later confirmed stop is posted as completed
- * (or the as-of date moves). Increment `count` by the number of newly completed
- * confirmed trail stops since the previous as-of day.
- *
- * Last lock: NWA Senior Democrats meeting (Fayetteville) is scheduled stop 227.
+ * Public campaign-stop total. Reads the live visit ledger so the homepage
+ * and /events no longer freeze on a hand-locked number (was 227 as of Aug 18).
  */
-export const CAMPAIGN_STOP_MILESTONE = {
-  count: 227,
-  asOfYmd: "2026-08-18",
-  asOfEventSlug: "nwa-senior-democrats-fayetteville-2026-08-18",
-  asOfEventTitle: "NWA Senior Democrats meeting — Fayetteville",
-} as const;
+import { getVisitSummary } from "@/data/kelly-county-visits";
 
-export function formatCampaignStopAsOfDate(ymd: string = CAMPAIGN_STOP_MILESTONE.asOfYmd): string {
+const MILESTONE_AS_OF_YMD = "2026-09-02";
+
+export function getCampaignStopMilestone() {
+  const summary = getVisitSummary();
+  return {
+    count: summary.totalPublicStopCount,
+    completedCount: summary.completedStopCount,
+    upcomingCount: summary.scheduledStopCount,
+    asOfYmd: MILESTONE_AS_OF_YMD,
+    asOfEventSlug: "arkansas-visits",
+    asOfEventTitle: "Kelly Across Arkansas visit ledger",
+  };
+}
+
+/** Same shape existing homepage / events cards already read. */
+export const CAMPAIGN_STOP_MILESTONE = {
+  get count() {
+    return getCampaignStopMilestone().count;
+  },
+  get asOfYmd() {
+    return MILESTONE_AS_OF_YMD;
+  },
+  get asOfEventSlug() {
+    return "arkansas-visits";
+  },
+  get asOfEventTitle() {
+    return getCampaignStopMilestone().asOfEventTitle;
+  },
+};
+
+export function formatCampaignStopAsOfDate(ymd: string = MILESTONE_AS_OF_YMD): string {
   const [y, m, d] = ymd.split("-").map(Number);
   return new Intl.DateTimeFormat("en-US", {
     month: "long",
@@ -26,9 +45,10 @@ export function formatCampaignStopAsOfDate(ymd: string = CAMPAIGN_STOP_MILESTONE
 }
 
 export function campaignStopMilestoneLine(): string {
-  return `${CAMPAIGN_STOP_MILESTONE.count} scheduled campaign stops as of ${formatCampaignStopAsOfDate()}`;
+  const m = getCampaignStopMilestone();
+  return `${m.count} campaign stops as of ${formatCampaignStopAsOfDate()} (${m.completedCount} completed, ${m.upcomingCount} upcoming)`;
 }
 
 export function campaignStopMilestoneAsOfHref(): string {
-  return `/events/${CAMPAIGN_STOP_MILESTONE.asOfEventSlug}`;
+  return "/arkansas-visits";
 }
