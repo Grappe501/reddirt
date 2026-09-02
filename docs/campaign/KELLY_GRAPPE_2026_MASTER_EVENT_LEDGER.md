@@ -2392,21 +2392,6 @@ SOURCE/NOTES:
 - manual
 - Official LWV Washington County invite (Michelle Wolchok): Thu Oct 8 5:30-7:30 p.m., Walker Community Room, Fayettevil
 ### Thursday, October 8, 2026
-COUNTY: Benton
-CITY: Bella Vista
-EVENT: Bella Vista event
-TIME: VERIFY
-STATUS: NEEDS VERIFICATION
-TYPE: PUBLIC CAMPAIGN EVENT
-PUBLIC: Yes
-COUNTY VISIT QUALIFYING: Yes
-MAP IMPACT: Yes (if completed)
-EXISTING LEDGER ID: steve-2026-10-08-bella-vista
-SOURCE/NOTES:
-- steve-correction
-- Steve explicit correction (overrides earlier transcription where they conflict; other same-day rows were not deleted)
-- Steve operator correction: Benton County Bella Vista event on October 8. Time/details unresolved. Same day Fayetteville LWV 5:30 p.m. Do not treat as the October 15 Bella Vista calendar entry.
-### Thursday, October 8, 2026
 COUNTY: —
 CITY: VERIFY
 EVENT: College & Young People Zoom Call
@@ -2649,8 +2634,8 @@ SOURCE/NOTES:
 ### Thursday, October 15, 2026
 COUNTY: Benton
 CITY: Bentonville
-EVENT: Hob Nob at Joint Business After Hours — Bentonville
-TIME: 7:00 p.m.
+EVENT: Hob Nob at Joint Business After Hours — Bentonville / Bella Vista
+TIME: 5:00–7:00 p.m.
 STATUS: TENTATIVE
 TYPE: PARTY / ORGANIZATION MEETING
 PUBLIC: Yes
@@ -2659,22 +2644,8 @@ MAP IMPACT: Yes (if completed)
 EXISTING LEDGER ID: manual-2026-10-15-hob-nob-bentonville
 SOURCE/NOTES:
 - manual
+- Steve 2026-09-02: this IS the Bella Vista event. Do not publish a second Bella Vista card.
 - Sara Lynn Geiger / Rogers Lowell Chamber. Thu Oct 15 5:00-7:00 p.m., booth setup 4:15. NWACC Walmart Auditorium, 1000
-### Thursday, October 15, 2026
-COUNTY: Benton
-CITY: Bella Vista
-EVENT: Bella Vista (calendar entry)
-TIME: VERIFY
-STATUS: NEEDS VERIFICATION
-TYPE: CANDIDATE FORUM
-PUBLIC: Yes
-COUNTY VISIT QUALIFYING: Yes
-MAP IMPACT: Yes (if completed)
-EXISTING LEDGER ID: steve-2026-10-15-bella-vista
-SOURCE/NOTES:
-- steve-correction
-- Steve explicit correction (overrides earlier transcription where they conflict; other same-day rows were not deleted)
-- Steve: a Bella Vista entry exists on the calendar October 15. Do not assume it is a duplicate of October 8. Repository same day: Arkansas TV SOS debate Conway 10:00 a.m.; Hardy forum evening; Hob Nob Bentonville 5:00–7:00 p.m.
 ### Thursday, October 15, 2026
 COUNTY: —
 CITY: VERIFY
@@ -3043,6 +3014,19 @@ PUBLIC: No
 SOURCE/NOTES:
 - Official invite is Thursday October 8, 5:30–7:30 p.m., Fayetteville Public Library.
 - Repository row `manual-2026-10-06-lwv-sos-forum-fayetteville` is canceled / superseded.
+
+### Thursday, October 8, 2026 — Bella Vista Meet placeholder
+STATUS: CANCELLED / REMOVED  
+PUBLIC: No  
+SOURCE/NOTES:
+- Steve 2026-09-02: Hob Nob IS the Bella Vista event. Remove any other Bella Vista listing.
+- October 8 public Benton/Washington stop that remains: LWV Fayetteville 5:30 p.m.
+
+### Thursday, October 15, 2026 — Bella Vista calendar entry (duplicate of Hob Nob)
+STATUS: CANCELLED / REMOVED  
+PUBLIC: No  
+SOURCE/NOTES:
+- Steve 2026-09-02: the October 15 Bella Vista calendar line is Hob Nob at Joint Business After Hours (NWACC Bentonville, 5:00–7:00 p.m.). Do not publish a second Bella Vista card.
 
 ### Friday, October 10, 2026 — Poinsett County / Arkansas Rice Festival / Weiner
 STATUS: CANCELLED / REMOVED  
