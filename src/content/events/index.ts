@@ -52,7 +52,12 @@ function mergeEventsPreferIngest(base: EventItem[], overlay: EventItem[]): Event
     if (drop.has(event.slug)) continue;
     map.set(event.slug, event);
   }
-  for (const event of overlay) map.set(event.slug, event);
+  for (const event of overlay) {
+    map.set(event.slug, {
+      ...event,
+      campaignTrail: event.campaignTrail ?? true,
+    });
+  }
   return [...map.values()];
 }
 

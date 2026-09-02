@@ -6,10 +6,11 @@ import { compareEventsForHub, resolveEventStatus } from "@/lib/format/eventDispl
 
 function isMovementListEvent(event: EventItem, now: Date): boolean {
   if (resolveEventStatus(event, now) !== "upcoming") return false;
-  if (event.fieldAttendance === "tentative" || event.fieldAttendance === "suggested" || event.fieldAttendance === "unscheduled") {
+  // Research-only fair coverage — not a dated campaign-calendar stop.
+  if (event.fieldAttendance === "suggested" || event.fieldAttendance === "unscheduled") {
     return false;
   }
-  return event.campaignTrail === true || event.eventSource === "calendar" || event.statewideVirtual === true;
+  return true;
 }
 
 export function EventsMovementSection({ events }: { events: EventItem[] }) {
@@ -29,7 +30,7 @@ export function EventsMovementSection({ events }: { events: EventItem[] }) {
           Where Kelly will be next
         </h2>
         <p className="mt-2 max-w-2xl font-body text-kelly-text/75">
-          Confirmed public stops. Invite Kelly to bring one to your community.
+          Public stops still ahead on the campaign calendar, including dated asks that are not locked yet. Invite Kelly to bring one to your community.
         </p>
       </div>
 
