@@ -15,15 +15,18 @@ import { safePublishedCountyOptions } from "@/lib/county/safe-published-county-o
 
 import { pageMeta } from "@/lib/seo/metadata";
 import { brandMediaFromLegacySite } from "@/config/brand-media";
-import { campaignStopMilestoneLine } from "@/content/events/campaign-stop-milestone";
+import { campaignStopMilestoneLine, getCampaignStopMilestoneAsync } from "@/content/events/campaign-stop-milestone";
 
-export const metadata: Metadata = pageMeta({
-  title: "Events",
-  description:
-    `${campaignStopMilestoneLine()}. Where Kelly has been and where she will be next — county visits plus confirmed stops in Arkansas Central Time.`,
-  path: "/events",
-  imageSrc: brandMediaFromLegacySite.statewideBanner,
-});
+export async function generateMetadata(): Promise<Metadata> {
+  const milestone = await getCampaignStopMilestoneAsync();
+  return pageMeta({
+    title: "Events",
+    description:
+      `${campaignStopMilestoneLine(milestone)}. Where Kelly has been and where she will be next — county visits plus confirmed stops in Arkansas Central Time.`,
+    path: "/events",
+    imageSrc: brandMediaFromLegacySite.statewideBanner,
+  });
+}
 
 /** Visit totals and the event list must not freeze at last `next build`. */
 export const dynamic = "force-dynamic";
@@ -42,10 +45,11 @@ export default async function EventsPage({
 }) {
   const sp = (await searchParams) ?? {};
   const suggestOk = pickParam(sp, "ok");
-  const [counties, calendarRows, suppressedSlugs] = await Promise.all([
+  const [counties, calendarRows, suppressedSlugs, milestone] = await Promise.all([
     safePublishedCountyOptions(),
     queryPublicCampaignEvents({ range: "all" }, { take: 200 }),
     listPubliclySuppressedEventSlugs(events.map((event) => event.slug)),
+    getCampaignStopMilestoneAsync(),
   ]);
   const mergedEvents = mergeMovementAndCalendarEvents(events, calendarRows, suppressedSlugs);
   const ledger = await loadCountyVisitLedger(mergedEvents);
@@ -58,7 +62,7 @@ export default async function EventsPage({
         layout="split"
         eyebrow="Events"
         title="Where Kelly will be next"
-        subtitle={`${campaignStopMilestoneLine()}. From county fairs and community meetings to cookouts, candidate forums, and front porches — see where Kelly is headed next.`}
+        subtitle={`${campaignStopMilestoneLine(milestone)}. From county fairs and community meetings to cookouts, candidate forums, and front porches — see where Kelly is headed next.`}
       >
         <Button href="/events/request" variant="primary">
           Invite Kelly
@@ -70,7 +74,7 @@ export default async function EventsPage({
 
       <FullBleedSection padY aria-labelledby="events-proof-heading">
         <ContentContainer>
-          <EventsProofSection features={features} />
+          <EventsProofSection features={features} milestone={milestone} />
         </ContentContainer>
       </FullBleedSection>
 

@@ -4,10 +4,11 @@ import { formatCampaignStopAsOfDate, getCampaignStopMilestone } from "@/content/
 
 export function EventsProofSection({
   features,
+  milestone = getCampaignStopMilestone(),
 }: {
   features: CountyMapFeature[];
+  milestone?: ReturnType<typeof getCampaignStopMilestone>;
 }) {
-  const milestone = getCampaignStopMilestone();
   const asOfDate = formatCampaignStopAsOfDate();
 
   return (

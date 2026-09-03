@@ -2,12 +2,25 @@
  * Public campaign-stop total. Reads the live visit ledger so the homepage
  * and /events no longer freeze on a hand-locked number (was 227 as of Aug 18).
  */
-import { getVisitSummary } from "@/data/kelly-county-visits";
+import { getVisitSummary, type PublicStopFilter } from "@/data/kelly-county-visits";
+import { loadPublicVisitSummary } from "@/lib/events/load-public-visit-summary";
 
 const MILESTONE_AS_OF_YMD = "2026-09-02";
 
-export function getCampaignStopMilestone() {
-  const summary = getVisitSummary();
+export function getCampaignStopMilestone(filter?: PublicStopFilter) {
+  const summary = getVisitSummary(filter);
+  return {
+    count: summary.totalPublicStopCount,
+    completedCount: summary.completedStopCount,
+    upcomingCount: summary.scheduledStopCount,
+    asOfYmd: MILESTONE_AS_OF_YMD,
+    asOfEventSlug: "arkansas-visits",
+    asOfEventTitle: "Kelly Across Arkansas visit ledger",
+  };
+}
+
+export async function getCampaignStopMilestoneAsync() {
+  const summary = await loadPublicVisitSummary();
   return {
     count: summary.totalPublicStopCount,
     completedCount: summary.completedStopCount,
@@ -44,9 +57,10 @@ export function formatCampaignStopAsOfDate(ymd: string = MILESTONE_AS_OF_YMD): s
   }).format(new Date(Date.UTC(y, m - 1, d, 12)));
 }
 
-export function campaignStopMilestoneLine(): string {
-  const m = getCampaignStopMilestone();
-  return `${m.count} campaign stops as of ${formatCampaignStopAsOfDate()} (${m.completedCount} completed, ${m.upcomingCount} upcoming)`;
+export function campaignStopMilestoneLine(
+  milestone: ReturnType<typeof getCampaignStopMilestone> = getCampaignStopMilestone(),
+): string {
+  return `${milestone.count} campaign stops as of ${formatCampaignStopAsOfDate()} (${milestone.completedCount} completed, ${milestone.upcomingCount} upcoming)`;
 }
 
 export function campaignStopMilestoneAsOfHref(): string {
