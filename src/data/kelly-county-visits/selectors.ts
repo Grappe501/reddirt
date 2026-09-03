@@ -5,6 +5,30 @@ import type { KellyCampaignStop } from "./types";
 
 const PUBLIC_STATUSES = new Set(["completed", "scheduled", "needs-review"]);
 
+export type PublicStopFilter = {
+  /** Event slugs unpublished or archived on the Scheduler. Upcoming rows only. */
+  hiddenUpcomingSlugs?: Iterable<string>;
+};
+
+export function visitsAsOfYmd(): string {
+  return process.env.KELLY_VISITS_AS_OF?.trim() || new Date().toISOString().slice(0, 10);
+}
+
+export function eventSlugFromCampaignStop(stop: KellyCampaignStop): string | null {
+  const match = stop.notes?.match(/\/events\/([a-z0-9-]+)/i);
+  return match?.[1] ?? null;
+}
+
+function hiddenUpcomingSet(filter?: PublicStopFilter): Set<string> {
+  return new Set(filter?.hiddenUpcomingSlugs ?? []);
+}
+
+function isRemovedUpcomingStop(stop: KellyCampaignStop, hidden: Set<string>, asOfYmd: string): boolean {
+  if (hidden.size === 0 || stop.date < asOfYmd) return false;
+  const slug = eventSlugFromCampaignStop(stop);
+  return Boolean(slug && hidden.has(slug));
+}
+
 export function getPublicStops(): KellyCampaignStop[] {
   return kellyCampaignStops.filter(
     (s) => s.includeOnPublicPage && PUBLIC_STATUSES.has(s.status),
@@ -13,32 +37,39 @@ export function getPublicStops(): KellyCampaignStop[] {
 
 export function getCompletedPublicStops(): KellyCampaignStop[] {
   return getPublicStops()
-    .filter((s) => s.status === "completed" || (s.status === "needs-review" && s.date < todayIso()))
+    .filter((s) => s.status === "completed" || (s.status === "needs-review" && s.date < visitsAsOfYmd()))
     .sort((a, b) => b.date.localeCompare(a.date) || a.title.localeCompare(b.title));
 }
 
-export function getUpcomingPublicStops(): KellyCampaignStop[] {
+export function getUpcomingPublicStops(filter?: PublicStopFilter): KellyCampaignStop[] {
+  const hidden = hiddenUpcomingSet(filter);
+  const asOfYmd = visitsAsOfYmd();
   return getPublicStops()
-    .filter((s) => s.status === "scheduled" || (s.status === "needs-review" && s.date >= todayIso()))
+    .filter((s) => s.status === "scheduled" || (s.status === "needs-review" && s.date >= asOfYmd))
     .filter((s) => s.date <= "2026-11-03")
+    .filter((s) => !isRemovedUpcomingStop(s, hidden, asOfYmd))
     .sort((a, b) => a.date.localeCompare(b.date) || a.title.localeCompare(b.title));
 }
 
 function todayIso(): string {
-  // Campaign reference day for Pass 1 status display; override via env if needed.
-  return process.env.KELLY_VISITS_AS_OF?.trim() || new Date().toISOString().slice(0, 10);
+  return visitsAsOfYmd();
 }
 
 export type CountyVisitBucket = "visited" | "scheduled" | "undocumented";
 
-export function getCountyBuckets(): Record<CountyVisitBucket, string[]> {
+export function getCountyBuckets(filter?: PublicStopFilter): Record<CountyVisitBucket, string[]> {
+  const hidden = hiddenUpcomingSet(filter);
+  const asOfYmd = visitsAsOfYmd();
   const visited = new Set<string>();
   const scheduled = new Set<string>();
   for (const s of getPublicStops()) {
     for (const c of s.counties) {
-      if (s.status === "completed" || (s.status === "needs-review" && s.date < todayIso())) {
+      if (s.status === "completed" || (s.status === "needs-review" && s.date < asOfYmd)) {
         visited.add(c);
-      } else if (s.status === "scheduled" || s.status === "needs-review") {
+      } else if (
+        (s.status === "scheduled" || s.status === "needs-review") &&
+        !isRemovedUpcomingStop(s, hidden, asOfYmd)
+      ) {
         scheduled.add(c);
       }
     }
@@ -70,10 +101,10 @@ export type VisitSummary = {
   buckets: Record<CountyVisitBucket, string[]>;
 };
 
-export function getVisitSummary(): VisitSummary {
-  const buckets = getCountyBuckets();
+export function getVisitSummary(filter?: PublicStopFilter): VisitSummary {
+  const buckets = getCountyBuckets(filter);
   const completedStops = getCompletedPublicStops();
-  const upcomingStops = getUpcomingPublicStops();
+  const upcomingStops = getUpcomingPublicStops(filter);
   const needsReview = getPublicStops().filter(
     (s) => s.status === "needs-review" || s.counties.length === 0,
   );

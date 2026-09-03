@@ -22,7 +22,11 @@ import {
   isSameCalendarMonthInZone,
   ymdInTimeZone,
 } from "@/lib/calendar/public-event-format";
-import { isPrismaDatabaseUnavailable, logPrismaDatabaseUnavailable } from "@/lib/prisma-connectivity";
+import {
+  isPrismaDatabaseUnavailable,
+  isPrismaLiveDataUnavailable,
+  logPrismaDatabaseUnavailable,
+} from "@/lib/prisma-connectivity";
 import { attendanceCtaLabel } from "@/lib/events/public-event-kind";
 
 const JOIN = () => getJoinCampaignHref();
@@ -58,6 +62,46 @@ export function whereLivePublicOnWebsite(): Prisma.CampaignEventWhereInput {
     eventWorkflowState: EventWorkflowState.PUBLISHED,
     status: { notIn: [CampaignEventStatus.CANCELLED, CampaignEventStatus.TENTATIVE, CampaignEventStatus.DRAFT] },
   };
+}
+
+/** Operator archive, cancel, or Unpublish — drop curated + snapshot copies from the public site. */
+export function whereOperatorTookPublicEventDown(): Prisma.CampaignEventWhereInput {
+  return {
+    OR: [
+      { schedulerArchivedAt: { not: null } },
+      { status: CampaignEventStatus.CANCELLED },
+      { eventWorkflowState: EventWorkflowState.CANCELED },
+      {
+        isPublicOnWebsite: false,
+        eventWorkflowState: EventWorkflowState.PUBLISHED,
+      },
+    ],
+  };
+}
+
+/**
+ * Slugs the Scheduler took off the public calendar. Fail open (empty set) if the DB is down
+ * so a connectivity blip does not hide the whole /events list.
+ */
+export async function listPubliclySuppressedEventSlugs(slugs: readonly string[]): Promise<Set<string>> {
+  const unique = [...new Set(slugs.filter(Boolean))];
+  if (unique.length === 0) return new Set();
+  try {
+    const rows = await prisma.campaignEvent.findMany({
+      where: {
+        slug: { in: unique },
+        ...whereOperatorTookPublicEventDown(),
+      },
+      select: { slug: true },
+    });
+    return new Set(rows.map((r) => r.slug));
+  } catch (e) {
+    if (isPrismaLiveDataUnavailable(e)) {
+      logPrismaDatabaseUnavailable("listPubliclySuppressedEventSlugs", e);
+      return new Set();
+    }
+    throw e;
+  }
 }
 
 function snapshotToPublicDto(
@@ -343,7 +387,12 @@ export async function queryPublicCampaignEvents(
       );
     });
 
-    return mergeDbAndSnapshot(mapped, snapshot).slice(0, opts.take);
+    const merged = mergeDbAndSnapshot(mapped, snapshot);
+    const snapshotOnlySlugs = snapshot
+      .map((e) => e.slug)
+      .filter((slug) => !mapped.some((row) => row.slug === slug));
+    const hidden = await listPubliclySuppressedEventSlugs(snapshotOnlySlugs);
+    return merged.filter((e) => !hidden.has(e.slug)).slice(0, opts.take);
   } catch (e) {
     if (isPrismaDatabaseUnavailable(e)) {
       logPrismaDatabaseUnavailable("queryPublicCampaignEvents", e);
@@ -396,6 +445,8 @@ export async function getPublicCampaignEventBySlug(slug: string): Promise<Public
     select: publicCampaignEventSelect,
   });
   if (row) return toPublicDto(row, joinHref);
+  const hidden = await listPubliclySuppressedEventSlugs([slug]);
+  if (hidden.has(slug)) return null;
   return loadSnapshotPublicEvents().find((e) => e.slug === slug) ?? null;
 }
 
@@ -403,8 +454,7 @@ export async function getPublicCanceledTombstoneBySlug(slug: string): Promise<{ 
   const row = await prisma.campaignEvent.findFirst({
     where: {
       slug,
-      isPublicOnWebsite: true,
-      eventWorkflowState: EventWorkflowState.CANCELED,
+      ...whereOperatorTookPublicEventDown(),
     },
     select: { title: true, slug: true },
   });

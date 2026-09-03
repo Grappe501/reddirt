@@ -1,13 +1,18 @@
 import { CampaignJourneyMap } from "@/components/organizing/events-map/CampaignJourneyMap";
 import type { CountyMapFeature } from "@/components/organizing/events-map/county-map-types";
+import { EventsMonthCalendar } from "@/components/organizing/EventsMonthCalendar";
 import { formatCampaignStopAsOfDate, getCampaignStopMilestone } from "@/content/events/campaign-stop-milestone";
+import type { EventsMonthPin } from "@/lib/events/events-month-pins";
 
 export function EventsProofSection({
   features,
+  milestone = getCampaignStopMilestone(),
+  monthPins,
 }: {
   features: CountyMapFeature[];
+  milestone?: ReturnType<typeof getCampaignStopMilestone>;
+  monthPins: EventsMonthPin[];
 }) {
-  const milestone = getCampaignStopMilestone();
   const asOfDate = formatCampaignStopAsOfDate();
 
   return (
@@ -43,6 +48,16 @@ export function EventsProofSection({
             </div>
           </div>
           <p className="mt-3 font-body text-sm text-kelly-text/70">Through Election Day.</p>
+        </div>
+      </div>
+
+      <div>
+        <p className="font-body text-xs font-bold uppercase tracking-wider text-kelly-navy">This month</p>
+        <p className="mt-1 font-body text-sm text-kelly-text/70">
+          Locations on the day. Tap a town to open that event. Next month is ahead; this month is as far back as it goes.
+        </p>
+        <div className="mt-4">
+          <EventsMonthCalendar pins={monthPins} />
         </div>
       </div>
     </section>

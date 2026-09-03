@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { unpublishSchedulerEventAction } from "@/app/scheduler/actions";
 import { loadSchedulerQueue, type SchedulerQueueTab } from "@/lib/scheduler/load-queue";
 
 function tabFromQuery(raw: string | undefined): SchedulerQueueTab {
@@ -9,7 +10,7 @@ function tabFromQuery(raw: string | undefined): SchedulerQueueTab {
 export default async function SchedulerQueuePage({
   searchParams,
 }: {
-  searchParams?: Promise<{ tab?: string }>;
+  searchParams?: Promise<{ tab?: string; unpublished?: string }>;
 }) {
   const sp = (await searchParams) ?? {};
   const tab = tabFromQuery(sp.tab);
@@ -51,6 +52,9 @@ export default async function SchedulerQueuePage({
           </Link>
         ))}
       </div>
+      {sp.unpublished ? (
+        <p className="font-body text-sm text-kelly-navy">Taken off /events. It is still in Needs publish if you want it back.</p>
+      ) : null}
       {rows.length === 0 ? (
         <p className="rounded-card border border-dashed border-kelly-text/20 px-4 py-6 font-body text-sm text-kelly-text/70">
           {tab === "live"
@@ -60,11 +64,11 @@ export default async function SchedulerQueuePage({
       ) : (
         <ul className="space-y-3">
           {rows.map((row) => (
-            <li key={row.id}>
-              <Link
-                href={row.href}
-                className="block rounded-card border border-kelly-navy/15 bg-white px-4 py-4 hover:border-kelly-navy/40"
-              >
+            <li
+              key={row.id}
+              className="flex flex-wrap items-center gap-3 rounded-card border border-kelly-navy/15 bg-white px-4 py-4"
+            >
+              <Link href={row.href} className="min-w-0 flex-1 hover:underline">
                 <p className="font-heading font-bold text-kelly-text">{row.title}</p>
                 <p className="mt-1 font-body text-sm text-kelly-text/70">
                   {row.startAt.toISOString().slice(0, 10)}
@@ -77,6 +81,18 @@ export default async function SchedulerQueuePage({
                   <p className="mt-1 font-body text-sm text-kelly-text/60">{row.archiveReason}</p>
                 ) : null}
               </Link>
+              {tab === "live" && row.isLive && !row.isArchived ? (
+                <form action={unpublishSchedulerEventAction}>
+                  <input type="hidden" name="id" value={row.id} />
+                  <input type="hidden" name="returnTo" value="queue" />
+                  <button
+                    type="submit"
+                    className="rounded-btn border-2 border-kelly-navy/25 bg-white px-4 py-2 font-body text-sm font-semibold text-kelly-text hover:border-kelly-navy/45"
+                  >
+                    Unpublish
+                  </button>
+                </form>
+              ) : null}
             </li>
           ))}
         </ul>

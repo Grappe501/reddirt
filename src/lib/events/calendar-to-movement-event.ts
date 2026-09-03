@@ -111,10 +111,14 @@ export function publicCampaignEventToEventItem(ev: PublicCampaignEvent): EventIt
 export function mergeMovementAndCalendarEvents(
   movement: EventItem[],
   calendar: PublicCampaignEvent[],
+  suppressedSlugs: Iterable<string> = [],
 ): EventItem[] {
-  const taken = new Set(movement.map((e) => e.slug));
-  const overlaid = applyPublishedCalendarOverlay(movement, calendar);
-  const synthetic = calendar.filter((c) => !taken.has(c.slug)).map(publicCampaignEventToEventItem);
+  const hidden = new Set(suppressedSlugs);
+  const visibleMovement = movement.filter((e) => !hidden.has(e.slug));
+  const visibleCalendar = calendar.filter((c) => !hidden.has(c.slug));
+  const taken = new Set(visibleMovement.map((e) => e.slug));
+  const overlaid = applyPublishedCalendarOverlay(visibleMovement, visibleCalendar);
+  const synthetic = visibleCalendar.filter((c) => !taken.has(c.slug)).map(publicCampaignEventToEventItem);
   const now = new Date();
   return [...overlaid, ...synthetic].map((e) => withLiveEventStatus(e, now));
 }

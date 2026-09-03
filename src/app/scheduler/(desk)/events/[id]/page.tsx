@@ -64,7 +64,7 @@ export default async function SchedulerEventEditorPage({
           {ymdInTimeZone(row.startAt, tz)} · /events/{row.slug}
         </p>
         <p className="mt-2 max-w-2xl font-body text-sm text-kelly-text/70">
-          These boxes are the public /events card. Publish writes them live.
+          These boxes are the public /events card. Publish puts it on the site. Unpublish takes it off. Archive keeps a reason in the record.
         </p>
       </div>
       {sp.saved ? <p className="font-body text-sm text-kelly-navy">Draft saved.</p> : null}

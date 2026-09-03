@@ -189,8 +189,10 @@ fi
 #   - deploy previews where schema changes are not required for static/page validation
 #   - emergency frontend hotfix deploys while DB networking is being repaired
 # Keep this OFF for strict production migration guarantees.
+NETLIFY_BUILD_CONTEXT="${CONTEXT:-${NETLIFY_CONTEXT:-}}"
+
 if [ -z "${ALLOW_PRISMA_P1001_BYPASS:-}" ]; then
-  if [ "${NETLIFY_CONTEXT:-}" = "deploy-preview" ] && [ "${PRISMA_MIGRATE_OPTIONAL_IN_DEPLOY_PREVIEW:-1}" = "1" ]; then
+  if [ "${NETLIFY_BUILD_CONTEXT}" = "deploy-preview" ] && [ "${PRISMA_MIGRATE_OPTIONAL_IN_DEPLOY_PREVIEW:-1}" = "1" ]; then
     ALLOW_PRISMA_P1001_BYPASS="1"
   else
     ALLOW_PRISMA_P1001_BYPASS="0"
@@ -199,7 +201,7 @@ fi
 
 # Deploy previews share the production migrate lock. Do not spend 90s losing
 # that race when schema apply is already optional for this context.
-if [ "${NETLIFY_CONTEXT:-}" = "deploy-preview" ] && [ "${PRISMA_MIGRATE_OPTIONAL_IN_DEPLOY_PREVIEW:-1}" = "1" ]; then
+if [ "${NETLIFY_BUILD_CONTEXT}" = "deploy-preview" ] && [ "${PRISMA_MIGRATE_OPTIONAL_IN_DEPLOY_PREVIEW:-1}" = "1" ]; then
   echo ">>> prisma migrate deploy skipped (deploy-preview; production migrate owns the lock)"
   MIGRATE_SKIPPED=1
 fi

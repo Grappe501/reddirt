@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/Button";
 import { EventStopCard } from "@/components/organizing/EventStopCard";
 import { events } from "@/content/events";
 import { ARKANSAS_COUNTY_SVG_PATHS } from "@/data/kelly-county-visits/arkansas-county-svg-paths";
-import { queryPublicCampaignEvents } from "@/lib/calendar/public-events";
+import { listPubliclySuppressedEventSlugs, queryPublicCampaignEvents } from "@/lib/calendar/public-events";
 import { mergeMovementAndCalendarEvents } from "@/lib/events/calendar-to-movement-event";
 import { drivesPublicCountyMap } from "@/lib/events/county-campaign-summary";
 import { countyNameFromKey, eventCountySlugs, formatCountyEyebrow, normalizeArkansasCountyKey } from "@/lib/events/county-key";
@@ -35,7 +35,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   });
 }
 
-export const revalidate = 3600;
+export const dynamic = "force-dynamic";
 
 export default async function CountyEventsPage({ params }: Props) {
   const { slug } = await params;
@@ -43,8 +43,11 @@ export default async function CountyEventsPage({ params }: Props) {
   const name = countyNameFromKey(key);
   if (!key || !name) notFound();
 
-  const calendarRows = await queryPublicCampaignEvents({ range: "all" }, { take: 200 });
-  const merged = mergeMovementAndCalendarEvents(events, calendarRows);
+  const [calendarRows, suppressedSlugs] = await Promise.all([
+    queryPublicCampaignEvents({ range: "all" }, { take: 200 }),
+    listPubliclySuppressedEventSlugs(events.map((event) => event.slug)),
+  ]);
+  const merged = mergeMovementAndCalendarEvents(events, calendarRows, suppressedSlugs);
   const now = new Date();
   const upcoming = merged
     .filter((e) => drivesPublicCountyMap(e))

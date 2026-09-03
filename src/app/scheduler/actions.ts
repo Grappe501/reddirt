@@ -21,6 +21,7 @@ import {
   type PublicTabling,
   type PublicVolunteers,
 } from "@/lib/scheduler/public-card-fields";
+import { ensureSchedulerEventFromPublicSlug } from "@/lib/scheduler/ensure-from-public";
 import { requireSchedulerPage } from "@/lib/scheduler/require-scheduler";
 import { uniqueEventSlug } from "@/lib/scheduler/slug";
 
@@ -186,7 +187,14 @@ export async function publishSchedulerEventAction(formData: FormData) {
 
 export async function unpublishSchedulerEventAction(formData: FormData) {
   await requireSchedulerPage();
-  const id = String(formData.get("id") ?? "");
+  const rawId = String(formData.get("id") ?? "");
+  const returnTo = String(formData.get("returnTo") ?? "");
+  let id = rawId;
+  if (rawId.startsWith("public:")) {
+    const ensured = await ensureSchedulerEventFromPublicSlug(rawId.slice("public:".length));
+    if (!ensured) redirect("/scheduler");
+    id = ensured;
+  }
   if (!id) redirect("/scheduler");
   const updated = await prisma.campaignEvent.update({
     where: { id },
@@ -194,6 +202,7 @@ export async function unpublishSchedulerEventAction(formData: FormData) {
     select: { slug: true },
   });
   revalidateEventPaths(id, updated.slug);
+  if (returnTo === "queue") redirect("/scheduler?unpublished=1");
   redirect(`/scheduler/events/${id}?unpublished=1`);
 }
 

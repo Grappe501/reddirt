@@ -14,6 +14,7 @@ import {
   getUpcomingPublicStops,
   getVisitSummary,
 } from "@/data/kelly-county-visits";
+import { loadPublicVisitFilter } from "@/lib/events/load-public-visit-summary";
 import { pageMeta } from "@/lib/seo/metadata";
 
 /** Visit totals must not freeze at last `next build`. */
@@ -27,10 +28,11 @@ export const metadata: Metadata = pageMeta({
   imageSrc: "/media/placeholders/hero-arkansas-warm.svg",
 });
 
-export default function ArkansasVisitsPage() {
-  const summary = getVisitSummary();
+export default async function ArkansasVisitsPage() {
+  const filter = await loadPublicVisitFilter();
+  const summary = getVisitSummary(filter);
   const completed = getCompletedPublicStops();
-  const upcoming = getUpcomingPublicStops();
+  const upcoming = getUpcomingPublicStops(filter);
 
   return (
     <>

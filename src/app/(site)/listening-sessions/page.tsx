@@ -16,7 +16,7 @@ import {
 import { cn } from "@/lib/utils";
 import { events } from "@/content/events";
 import { listListeningSessionSeriesEvents } from "@/content/events/listening-session-series";
-import { queryPublicCampaignEvents } from "@/lib/calendar/public-events";
+import { listPubliclySuppressedEventSlugs, queryPublicCampaignEvents } from "@/lib/calendar/public-events";
 import { mergeMovementAndCalendarEvents } from "@/lib/events/calendar-to-movement-event";
 import { representLocalEventVolunteerHref } from "@/config/navigation";
 
@@ -62,11 +62,11 @@ const flowSteps = [
 ];
 
 export default async function ListeningSessionsPage() {
-  const calendarRows = await queryPublicCampaignEvents(
-    { range: "all_upcoming" },
-    { take: 200 },
-  );
-  const mergedEvents = mergeMovementAndCalendarEvents(events, calendarRows);
+  const [calendarRows, suppressedSlugs] = await Promise.all([
+    queryPublicCampaignEvents({ range: "all_upcoming" }, { take: 200 }),
+    listPubliclySuppressedEventSlugs(events.map((event) => event.slug)),
+  ]);
+  const mergedEvents = mergeMovementAndCalendarEvents(events, calendarRows, suppressedSlugs);
   const plannedListeningEvents = listListeningSessionSeriesEvents(mergedEvents);
   const hasFloatingStops = plannedListeningEvents.length > 0;
 
