@@ -3,16 +3,21 @@ import { redirect } from "next/navigation";
 import { isLocalAdminHost } from "@/lib/admin/local-admin-host";
 import {
   SCHEDULER_SESSION_COOKIE,
+  getSchedulerOperatorName,
   isSchedulerConfigured,
   schedulerSessionSecret,
   verifySchedulerSessionToken,
 } from "@/lib/scheduler/session";
 
-export type SchedulerActor = { email: string };
+export type SchedulerActor = { email: string; name: string };
+
+function actorFromEmail(email: string): SchedulerActor {
+  return { email, name: getSchedulerOperatorName() || email };
+}
 
 export async function requireSchedulerPage(): Promise<SchedulerActor> {
   if (await isLocalAdminHost()) {
-    return { email: getLocalActorEmail() };
+    return actorFromEmail(getLocalActorEmail());
   }
   if (!isSchedulerConfigured()) {
     redirect("/scheduler/login?error=config");
@@ -31,7 +36,7 @@ export async function requireSchedulerPage(): Promise<SchedulerActor> {
     }
     redirect("/scheduler/login");
   }
-  return { email: verified.email };
+  return actorFromEmail(verified.email);
 }
 
 function getLocalActorEmail(): string {

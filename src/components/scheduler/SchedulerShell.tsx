@@ -3,9 +3,11 @@ import { schedulerLogoutAction } from "@/lib/scheduler/auth-actions";
 
 export function SchedulerShell({
   email,
+  name,
   children,
 }: {
   email: string;
+  name?: string;
   children: React.ReactNode;
 }) {
   return (
@@ -26,7 +28,7 @@ export function SchedulerShell({
             <Link href="/events" className="text-kelly-text/70 underline-offset-4 hover:underline">
               Public /events
             </Link>
-            <span className="text-kelly-text/55">{email}</span>
+            <span className="text-kelly-text/55">{name && name !== email ? `${name} · ${email}` : email}</span>
             <form action={schedulerLogoutAction}>
               <button type="submit" className="text-kelly-text/70 underline-offset-4 hover:underline">
                 Sign out

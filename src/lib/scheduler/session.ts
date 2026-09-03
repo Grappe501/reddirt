@@ -4,6 +4,11 @@ export const SCHEDULER_SESSION_COOKIE = "reddirt_scheduler_session";
 
 type Payload = { exp: number; email: string };
 
+export function getSchedulerOperatorName(): string | undefined {
+  const s = process.env.SCHEDULER_OPERATOR_NAME?.trim();
+  return s || undefined;
+}
+
 export function getSchedulerOperatorEmail(): string | undefined {
   const s = process.env.SCHEDULER_OPERATOR_EMAIL?.trim().toLowerCase();
   return s || undefined;

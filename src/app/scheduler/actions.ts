@@ -121,7 +121,7 @@ export async function publishSchedulerEventAction(formData: FormData) {
       isPublicOnWebsite: true,
       eventWorkflowState: EventWorkflowState.PUBLISHED,
       status: CampaignEventStatus.SCHEDULED,
-      schedulerPublishedBy: actor.email,
+      schedulerPublishedBy: actor.name || actor.email,
       schedulerPublishedAt: new Date(),
     },
   });

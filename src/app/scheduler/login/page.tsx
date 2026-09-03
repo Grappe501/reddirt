@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { schedulerLoginAction } from "@/lib/scheduler/auth-actions";
-import { isSchedulerConfigured } from "@/lib/scheduler/session";
+import { getSchedulerOperatorEmail, isSchedulerConfigured } from "@/lib/scheduler/session";
 import { CampaignPaidForBar } from "@/components/layout/CampaignPaidForBar";
 
 export const metadata: Metadata = {
@@ -18,6 +18,7 @@ export default async function SchedulerLoginPage({
 }) {
   const sp = (await searchParams) ?? {};
   const configured = isSchedulerConfigured();
+  const operatorEmail = getSchedulerOperatorEmail() ?? "";
   const nextPath = sp.next?.trim();
   const redirectTo =
     nextPath && nextPath.startsWith("/scheduler") && !nextPath.startsWith("//") ? nextPath : "/scheduler";
@@ -53,6 +54,7 @@ export default async function SchedulerLoginPage({
                 type="email"
                 name="email"
                 required
+                defaultValue={operatorEmail}
                 autoComplete="username"
                 className="mt-2 w-full rounded-md border-2 border-[#8eb6dc] bg-white px-3 py-2.5 font-body text-[#12124a]"
               />
