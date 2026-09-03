@@ -36,6 +36,7 @@ export default async function SchedulerEventEditorPage({
     published?: string;
     unpublished?: string;
     archived?: string;
+    graphic?: string;
     error?: string;
   }>;
 }) {
@@ -76,6 +77,20 @@ export default async function SchedulerEventEditorPage({
       {sp.error === "archive_reason" ? (
         <p className="font-body text-sm text-red-700">A reason of at least 8 characters is required to archive.</p>
       ) : null}
+      {sp.graphic === "1" ? <p className="font-body text-sm text-kelly-navy">Social graphic saved.</p> : null}
+      {sp.graphic === "0" ? <p className="font-body text-sm text-kelly-navy">Social graphic removed.</p> : null}
+      {sp.error === "graphic_type" ? (
+        <p className="font-body text-sm text-red-700">Use a JPG, PNG, or WebP image.</p>
+      ) : null}
+      {sp.error === "graphic_size" ? (
+        <p className="font-body text-sm text-red-700">Keep the graphic under 3 MB.</p>
+      ) : null}
+      {sp.error === "graphic_storage" ? (
+        <p className="font-body text-sm text-red-700">Upload storage is not available. Paste a public image URL instead.</p>
+      ) : null}
+      {sp.error === "graphic_empty" ? (
+        <p className="font-body text-sm text-red-700">Choose a file or paste a public image URL.</p>
+      ) : null}
       <EventFieldEditor
         id={row.id}
         title={row.title}
@@ -84,6 +99,7 @@ export default async function SchedulerEventEditorPage({
         city={row.city || curated?.city || null}
         countyName={countySelectValue(row.county?.displayName, curated?.countySlug)}
         publicContact={row.publicContact || curated?.publicContact || null}
+        socialGraphicUrl={row.publicSocialGraphicUrl || curated?.flyerSrc || null}
         publicSummary={row.publicSummary || curated?.summary || null}
         dateYmd={ymdInTimeZone(row.startAt, tz)}
         startTime={clockInZone(row.startAt, tz)}

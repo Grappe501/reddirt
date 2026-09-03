@@ -20,6 +20,7 @@ export function overlayPublishedCalendarEvent(base: EventItem, pub: PublicCampai
     description: pub.publicSummary?.trim() || base.description,
     fieldAttendance: attendance ?? base.fieldAttendance,
     publicContact: pub.publicContact?.trim() || base.publicContact,
+    flyerSrc: pub.publicSocialGraphicUrl?.trim() || base.flyerSrc,
     primaryHref: card.mobilizeHref || card.volunteerHref || base.primaryHref,
     eventSource: "calendar",
     opsFlags: {

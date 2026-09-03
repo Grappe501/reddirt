@@ -213,6 +213,7 @@ export async function loadSchedulerEvent(id: string) {
         address: true,
         city: true,
         publicContact: true,
+        publicSocialGraphicUrl: true,
         timezone: true,
         endAt: true,
         eventType: true,
