@@ -1192,22 +1192,6 @@
       }
     },
     {
-      "id": "snap-fair-a9c2bbe56f939da4c7898261",
-      "slug": "ashley-county-fair-2026-09-04",
-      "title": "Ashley County Fair",
-      "publicSummary": null,
-      "startAt": "2026-09-04T15:00:00.000Z",
-      "endAt": "2026-09-04T23:00:00.000Z",
-      "timezone": "America/Chicago",
-      "locationName": "Ashley",
-      "address": null,
-      "eventType": "FESTIVAL",
-      "county": {
-        "displayName": "Ashley County",
-        "slug": "ashley-county"
-      }
-    },
-    {
       "id": "snap-fest-2026-09-05-mount-vernon-arkansas-labor-day-renaissance-festival",
       "slug": "arkansas-labor-day-renaissance-festival-2026-09-05",
       "title": "Arkansas Labor Day Renaissance Festival",
@@ -1410,22 +1394,6 @@
       "county": {
         "displayName": "Clay County",
         "slug": "clay-county"
-      }
-    },
-    {
-      "id": "snap-lock-conway-county-fair",
-      "slug": "conway-county-fair-2026-09-12",
-      "title": "Conway County Fair",
-      "publicSummary": null,
-      "startAt": "2026-09-12T15:00:00.000Z",
-      "endAt": "2026-09-14T23:00:00.000Z",
-      "timezone": "America/Chicago",
-      "locationName": "Morrilton · Conway",
-      "address": null,
-      "eventType": "FESTIVAL",
-      "county": {
-        "displayName": "Conway County",
-        "slug": "conway-county"
       }
     },
     {
