@@ -3661,12 +3661,14 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     date: "2026-09-12",
     endDate: "2026-09-14",
     title: "Conway County Fair",
+    publicTitle: "Conway County Fair — Morrilton",
     city: "Morrilton",
     counties: ["Conway"],
     status: "scheduled",
     includeOnPublicPage: false,
     confidence: "likely",
-    notes: "Seeded from locked-events-steve.json",
+    notes:
+      "Steve 2026-09-03: Kelly window Sat Sep 12 4:00-7:00 p.m. on the way to Harrison. Contact Conway County volunteers to meet up. Fair also runs through Mon Sep 14. Do not publish lodging. /events/conway-county-fair-2026-09-12 Distinct from opening night Sep 3.",
     sourceType: "local-file",
   },
   {
