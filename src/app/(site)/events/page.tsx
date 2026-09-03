@@ -11,6 +11,7 @@ import { listPubliclySuppressedEventSlugs, queryPublicCampaignEvents } from "@/l
 import { mergeMovementAndCalendarEvents } from "@/lib/events/calendar-to-movement-event";
 import { loadCountyVisitLedger } from "@/lib/events/load-county-visit-ledger";
 import { buildEventsMapModel } from "@/lib/events/events-map-model";
+import { eventsToMonthPins } from "@/lib/events/events-month-pins";
 import { safePublishedCountyOptions } from "@/lib/county/safe-published-county-options";
 
 import { pageMeta } from "@/lib/seo/metadata";
@@ -74,7 +75,11 @@ export default async function EventsPage({
 
       <FullBleedSection padY aria-labelledby="events-proof-heading">
         <ContentContainer>
-          <EventsProofSection features={features} milestone={milestone} />
+          <EventsProofSection
+            features={features}
+            milestone={milestone}
+            monthPins={eventsToMonthPins(mergedEvents)}
+          />
         </ContentContainer>
       </FullBleedSection>
 
