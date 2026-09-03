@@ -16,12 +16,19 @@ function pinLocation(event: EventItem): string {
 }
 
 export function eventsToMonthPins(events: EventItem[]): EventsMonthPin[] {
-  return events
-    .filter((event) => event.fieldAttendance !== "suggested" && event.fieldAttendance !== "unscheduled")
-    .map((event) => ({
-      slug: event.slug,
-      href: event.detailHref || `/events/${event.slug}`,
-      ymd: eventCalendarDayKey(event),
-      location: pinLocation(event),
-    }));
+  const pins: EventsMonthPin[] = [];
+  for (const event of events) {
+    if (event.fieldAttendance === "suggested" || event.fieldAttendance === "unscheduled") continue;
+    try {
+      pins.push({
+        slug: event.slug,
+        href: event.detailHref || `/events/${event.slug}`,
+        ymd: eventCalendarDayKey(event),
+        location: pinLocation(event),
+      });
+    } catch {
+      // Skip a bad clock rather than take down /events.
+    }
+  }
+  return pins;
 }

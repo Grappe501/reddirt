@@ -5,7 +5,7 @@ export function isPrismaDatabaseUnavailable(err: unknown): boolean {
   if (rec.name === "PrismaClientInitializationError") return true;
   if (rec.code === "P1001" || rec.code === "P1000") return true;
   const msg = typeof rec.message === "string" ? rec.message : "";
-  return /Can't reach database server|ECONNREFUSED|connection refused|P1001|P1000/i.test(msg);
+  return /Can't reach database server|ECONNREFUSED|connection refused|P1001|P1000|EMAXCONNSESSION|max clients reached|too many connections/i.test(msg);
 }
 
 /**

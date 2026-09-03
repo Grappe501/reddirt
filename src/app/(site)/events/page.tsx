@@ -16,15 +16,15 @@ import { safePublishedCountyOptions } from "@/lib/county/safe-published-county-o
 
 import { pageMeta } from "@/lib/seo/metadata";
 import { brandMediaFromLegacySite } from "@/config/brand-media";
-import { campaignStopMilestoneLine } from "@/content/events/campaign-stop-milestone";
+import { campaignStopMilestoneLine, getCampaignStopMilestone } from "@/content/events/campaign-stop-milestone";
 import { getCampaignStopMilestoneAsync } from "@/lib/events/load-public-visit-summary";
+import type { CountyMapFeature } from "@/components/organizing/events-map/county-map-types";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const milestone = await getCampaignStopMilestoneAsync();
   return pageMeta({
     title: "Events",
     description:
-      `${campaignStopMilestoneLine(milestone)}. Where Kelly has been and where she will be next — county visits plus confirmed stops in Arkansas Central Time.`,
+      `${campaignStopMilestoneLine()}. Where Kelly has been and where she will be next — county visits plus confirmed stops in Arkansas Central Time.`,
     path: "/events",
     imageSrc: brandMediaFromLegacySite.statewideBanner,
   });
@@ -47,15 +47,31 @@ export default async function EventsPage({
 }) {
   const sp = (await searchParams) ?? {};
   const suggestOk = pickParam(sp, "ok");
-  const [counties, calendarRows, suppressedSlugs, milestone] = await Promise.all([
-    safePublishedCountyOptions(),
-    queryPublicCampaignEvents({ range: "all" }, { take: 200 }),
-    listPubliclySuppressedEventSlugs(events.map((event) => event.slug)),
-    getCampaignStopMilestoneAsync(),
-  ]);
-  const mergedEvents = mergeMovementAndCalendarEvents(events, calendarRows, suppressedSlugs);
-  const ledger = await loadCountyVisitLedger(mergedEvents);
-  const { features } = buildEventsMapModel(ledger, mergedEvents);
+  let counties: Awaited<ReturnType<typeof safePublishedCountyOptions>> = [];
+  let mergedEvents = events;
+  let milestone = getCampaignStopMilestone();
+  let features: CountyMapFeature[] = [];
+  try {
+    const [countyRows, calendarRows, suppressedSlugs, liveMilestone] = await Promise.all([
+      safePublishedCountyOptions().catch(() => []),
+      queryPublicCampaignEvents({ range: "all" }, { take: 200 }).catch(() => []),
+      listPubliclySuppressedEventSlugs(events.map((event) => event.slug)),
+      getCampaignStopMilestoneAsync(),
+    ]);
+    counties = countyRows;
+    milestone = liveMilestone;
+    mergedEvents = mergeMovementAndCalendarEvents(events, calendarRows, suppressedSlugs);
+    const ledger = await loadCountyVisitLedger(mergedEvents);
+    features = buildEventsMapModel(ledger, mergedEvents).features;
+  } catch (e) {
+    console.error("[EventsPage]", e instanceof Error ? e.message : e);
+    try {
+      const ledger = await loadCountyVisitLedger([]);
+      features = buildEventsMapModel(ledger, events).features;
+    } catch {
+      features = [];
+    }
+  }
 
   return (
     <>

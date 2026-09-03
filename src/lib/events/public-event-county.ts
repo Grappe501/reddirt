@@ -36,43 +36,55 @@ export function publicEventCityLine(event: EventItem): string {
 /** County-first meta: `Paragould · September 26 · 2:00 PM` */
 export function formatCountyFirstMeta(event: EventItem): string {
   const city = publicEventCityLine(event);
-  const start = parseEventInstant(event.startsAt, event.timezone);
-  const dateFmt = new Intl.DateTimeFormat("en-US", {
-    month: "long",
-    day: "numeric",
-    timeZone: event.timezone,
-  });
-  const timeFmt = new Intl.DateTimeFormat("en-US", {
-    hour: "numeric",
-    minute: "2-digit",
-    timeZone: event.timezone,
-  });
-  const date = dateFmt.format(start);
-  if (event.opsFlags?.timeTbd) return `${city} · ${date} · Time TBA`;
-  if (event.endsAt) {
-    const end = parseEventInstant(event.endsAt, event.timezone);
-    const startDay = new Intl.DateTimeFormat("en-CA", { timeZone: event.timezone }).format(start);
-    const endDay = new Intl.DateTimeFormat("en-CA", { timeZone: event.timezone }).format(end);
-    if (startDay === endDay) {
-      return `${city} · ${date} · ${timeFmt.format(start)}–${timeFmt.format(end)}`;
+  try {
+    const tz = event.timezone || "America/Chicago";
+    const start = parseEventInstant(event.startsAt, tz);
+    if (Number.isNaN(start.getTime())) return city || event.locationLabel || "Arkansas";
+    const dateFmt = new Intl.DateTimeFormat("en-US", {
+      month: "long",
+      day: "numeric",
+      timeZone: tz,
+    });
+    const timeFmt = new Intl.DateTimeFormat("en-US", {
+      hour: "numeric",
+      minute: "2-digit",
+      timeZone: tz,
+    });
+    const date = dateFmt.format(start);
+    if (event.opsFlags?.timeTbd) return `${city} · ${date} · Time TBA`;
+    if (event.endsAt) {
+      const end = parseEventInstant(event.endsAt, tz);
+      const startDay = new Intl.DateTimeFormat("en-CA", { timeZone: tz }).format(start);
+      const endDay = new Intl.DateTimeFormat("en-CA", { timeZone: tz }).format(end);
+      if (startDay === endDay) {
+        return `${city} · ${date} · ${timeFmt.format(start)}–${timeFmt.format(end)}`;
+      }
     }
+    return `${city} · ${date} · ${timeFmt.format(start)}`;
+  } catch {
+    return city || event.locationLabel || "Arkansas";
   }
-  return `${city} · ${date} · ${timeFmt.format(start)}`;
 }
 
 export function formatMapEventLine(event: Pick<EventItem, "title" | "startsAt" | "timezone" | "opsFlags">): string {
-  const start = parseEventInstant(event.startsAt, event.timezone);
-  const dateFmt = new Intl.DateTimeFormat("en-US", {
-    month: "short",
-    day: "numeric",
-    timeZone: event.timezone,
-  });
-  const timeFmt = new Intl.DateTimeFormat("en-US", {
-    hour: "numeric",
-    minute: "2-digit",
-    timeZone: event.timezone,
-  });
-  const date = dateFmt.format(start);
-  if (event.opsFlags?.timeTbd) return `${date} — ${event.title}`;
-  return `${date} — ${event.title} · ${timeFmt.format(start)}`;
+  try {
+    const tz = event.timezone || "America/Chicago";
+    const start = parseEventInstant(event.startsAt, tz);
+    if (Number.isNaN(start.getTime())) return event.title;
+    const dateFmt = new Intl.DateTimeFormat("en-US", {
+      month: "short",
+      day: "numeric",
+      timeZone: tz,
+    });
+    const timeFmt = new Intl.DateTimeFormat("en-US", {
+      hour: "numeric",
+      minute: "2-digit",
+      timeZone: tz,
+    });
+    const date = dateFmt.format(start);
+    if (event.opsFlags?.timeTbd) return `${date} — ${event.title}`;
+    return `${date} — ${event.title} · ${timeFmt.format(start)}`;
+  } catch {
+    return event.title;
+  }
 }

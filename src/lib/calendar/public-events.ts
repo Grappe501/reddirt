@@ -96,11 +96,9 @@ export async function listPubliclySuppressedEventSlugs(slugs: readonly string[])
     });
     return new Set(rows.map((r) => r.slug));
   } catch (e) {
-    if (isPrismaLiveDataUnavailable(e)) {
-      logPrismaDatabaseUnavailable("listPubliclySuppressedEventSlugs", e);
-      return new Set();
-    }
-    throw e;
+    logPrismaDatabaseUnavailable("listPubliclySuppressedEventSlugs", e);
+    console.error("[listPubliclySuppressedEventSlugs]", e instanceof Error ? e.message : e);
+    return new Set();
   }
 }
 

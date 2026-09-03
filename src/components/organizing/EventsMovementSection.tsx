@@ -4,7 +4,11 @@ import { collapseRecurringSeriesToNextOccurrence } from "@/lib/events/collapse-r
 import { compareEventsForHub, resolveEventStatus } from "@/lib/format/eventDisplay";
 
 function isMovementListEvent(event: EventItem, now: Date): boolean {
-  if (resolveEventStatus(event, now) !== "upcoming") return false;
+  try {
+    if (resolveEventStatus(event, now) !== "upcoming") return false;
+  } catch {
+    return false;
+  }
   // Research-only fair coverage — not a dated campaign-calendar stop.
   if (event.fieldAttendance === "suggested" || event.fieldAttendance === "unscheduled") {
     return false;
