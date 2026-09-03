@@ -2,8 +2,8 @@ import Link from "next/link";
 import { loadSchedulerQueue, type SchedulerQueueTab } from "@/lib/scheduler/load-queue";
 
 function tabFromQuery(raw: string | undefined): SchedulerQueueTab {
-  if (raw === "live" || raw === "needs_info" || raw === "archive") return raw;
-  return "needs_publish";
+  if (raw === "needs_publish" || raw === "needs_info" || raw === "archive") return raw;
+  return "live";
 }
 
 export default async function SchedulerQueuePage({
@@ -20,8 +20,7 @@ export default async function SchedulerQueuePage({
       <div>
         <h1 className="font-heading text-2xl font-bold text-kelly-text">Event queue</h1>
         <p className="mt-2 max-w-2xl font-body text-sm text-kelly-text/75">
-          Upcoming stops only. Edit fields, then publish. Add a stop from scratch or let OSCAR prefill from an email or
-          flyer.
+          Live is the public calendar. Needs publish is new drafts. Archive keeps anything taken off.
         </p>
         <p className="mt-3">
           <Link
@@ -43,7 +42,7 @@ export default async function SchedulerQueuePage({
         ).map(([id, label]) => (
           <Link
             key={id}
-            href={id === "needs_publish" ? "/scheduler" : `/scheduler?tab=${id}`}
+            href={id === "live" ? "/scheduler" : `/scheduler?tab=${id}`}
             className={`rounded-full border px-3 py-1.5 font-body text-sm font-semibold ${
               tab === id ? "border-kelly-navy bg-kelly-navy text-white" : "border-kelly-navy/20 bg-white"
             }`}
@@ -54,14 +53,16 @@ export default async function SchedulerQueuePage({
       </div>
       {rows.length === 0 ? (
         <p className="rounded-card border border-dashed border-kelly-text/20 px-4 py-6 font-body text-sm text-kelly-text/70">
-          No upcoming events in this queue. Add a new event or open the OSCAR inbox.
+          {tab === "live"
+            ? "Nothing upcoming on the public calendar."
+            : "No upcoming events in this queue. Add a new event or open the OSCAR inbox."}
         </p>
       ) : (
         <ul className="space-y-3">
           {rows.map((row) => (
             <li key={row.id}>
               <Link
-                href={`/scheduler/events/${row.id}`}
+                href={row.href}
                 className="block rounded-card border border-kelly-navy/15 bg-white px-4 py-4 hover:border-kelly-navy/40"
               >
                 <p className="font-heading font-bold text-kelly-text">{row.title}</p>
