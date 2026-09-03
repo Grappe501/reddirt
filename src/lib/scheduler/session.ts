@@ -15,6 +15,15 @@ export function getSchedulerOperatorEmail(): string | undefined {
 }
 
 export function getSchedulerOperatorPassword(): string | undefined {
+  const encoded = process.env.SCHEDULER_OPERATOR_PASSWORD_B64?.trim();
+  if (encoded) {
+    try {
+      const decoded = Buffer.from(encoded, "base64").toString("utf8").trim();
+      if (decoded) return decoded;
+    } catch {
+      // fall through to plaintext
+    }
+  }
   const s = process.env.SCHEDULER_OPERATOR_PASSWORD?.trim();
   return s || undefined;
 }
