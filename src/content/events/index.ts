@@ -888,6 +888,12 @@ const movementEventsCore: EventItem[] = [
     mapCoordinates: { lat: 36.2695, lng: -91.5221 },
     mapPinQuality: "region",
     fieldAttendance: "surrogate",
+    marks: {
+      kellyRole: "not_attending",
+      tabling: "no",
+      volunteers: "needed",
+      mobilize: "needed",
+    },
   },
   {
     slug: "cleveland-county-meet-and-greet-2026",
@@ -961,6 +967,12 @@ const movementEventsCore: EventItem[] = [
     mapCoordinates: { lat: 36.2298, lng: -93.1077 },
     mapPinQuality: "region",
     fieldAttendance: "confirmed",
+    marks: {
+      kellyRole: "present",
+      tabling: "yes",
+      volunteers: "needed",
+      mobilize: "needed",
+    },
   },
   {
     slug: "sheridan-immersion-justin-wise-2026",
@@ -2854,6 +2866,12 @@ const movementEventsCore: EventItem[] = [
     mapCoordinates: { lat: 35.1501, lng: -92.7444 },
     mapPinQuality: "region",
     fieldAttendance: "caution",
+    marks: {
+      kellyRole: "present",
+      tabling: "planned",
+      volunteers: "needed",
+      mobilize: "needed",
+    },
   },
   {
     slug: "fort-smith-river-valley-choice-2026",

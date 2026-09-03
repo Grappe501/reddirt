@@ -8,6 +8,7 @@ import { SectionHeading } from "@/components/blocks/SectionHeading";
 import { Button } from "@/components/ui/Button";
 import { EventMeta } from "@/components/organizing/EventMeta";
 import { EventCard } from "@/components/organizing/EventCard";
+import { EventMarksChips } from "@/components/organizing/EventMarksChips";
 import { RelatedLinksSection } from "@/components/organizing/RelatedLinksSection";
 import { events as curatedEvents, getEventBySlug, listEventSlugs } from "@/content/events";
 import { publicEventConflictSlugs } from "@/lib/events/public-event-conflicts";
@@ -22,6 +23,7 @@ import { publicCampaignEventToEventItem } from "@/lib/events/calendar-to-movemen
 import { getJoinCampaignHref } from "@/config/external-campaign";
 import { isPrismaDatabaseUnavailable, logPrismaDatabaseUnavailable } from "@/lib/prisma-connectivity";
 import { pageMeta } from "@/lib/seo/metadata";
+import { eventMarksCta } from "@/lib/events/event-marks";
 import {
   CAUTION_HOLD_COPY,
   eventBoardChromeClass,
@@ -77,23 +79,18 @@ function CuratedOrCalendarEventView({ event }: { event: EventItem }) {
     event.rsvpHref ??
     `/get-involved?intent=rsvp&event=${encodeURIComponent(event.slug)}`;
   const coverHref = `/get-involved?intent=cover&event=${encodeURIComponent(event.slug)}`;
+  const marksCta = eventMarksCta(event);
+  const primaryHref = kellyNotAttending ? coverHref : marksCta?.href ?? (caution ? "/events" : rsvpHref);
+  const primaryLabel = kellyNotAttending
+    ? "Volunteer to cover this stop"
+    : marksCta?.label ?? (caution ? "Need more information" : "RSVP or raise your hand");
 
   return (
     <>
       <PageHero eyebrow={event.type} title={event.title} subtitle={event.summary}>
-        {kellyNotAttending ? (
-          <Button href={coverHref} variant="primary">
-            Volunteer to cover this stop
-          </Button>
-        ) : caution ? (
-          <Button href="/events" variant="primary">
-            Need more information
-          </Button>
-        ) : (
-          <Button href={rsvpHref} variant="primary">
-            RSVP or raise your hand
-          </Button>
-        )}
+        <Button href={primaryHref} variant="primary">
+          {primaryLabel}
+        </Button>
         <Button href="/events" variant="outline">
           All events
         </Button>
@@ -110,6 +107,7 @@ function CuratedOrCalendarEventView({ event }: { event: EventItem }) {
               />
               <div className={`mt-8 rounded-card p-6 shadow-[var(--shadow-soft)] md:p-8 ${eventBoardChromeClass(event, scheduleConflict)}`}>
                 <EventMeta event={event} />
+                <EventMarksChips event={event} className="mt-4" />
                 {kellyNotAttending ? (
                   <p className="mt-4 font-body text-sm text-kelly-text/75">{KELLY_NOT_ATTENDING_COPY}</p>
                 ) : null}
@@ -185,15 +183,11 @@ function CuratedOrCalendarEventView({ event }: { event: EventItem }) {
                 {caution ? <p className="mt-3 font-body text-sm text-kelly-text/70">{CAUTION_HOLD_COPY}</p> : null}
               </div>
               <Button
-                href={kellyNotAttending ? coverHref : caution ? "/events" : rsvpHref}
+                href={primaryHref}
                 variant="primary"
                 className="w-full justify-center"
               >
-                {kellyNotAttending
-                  ? "Volunteer to cover this stop"
-                  : caution
-                    ? "Need more information"
-                    : "RSVP or raise your hand"}
+                {primaryLabel}
               </Button>
               {county ? (
                 <Link

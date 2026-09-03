@@ -27,6 +27,19 @@ export type EventStatus = "upcoming" | "past";
  */
 export type FieldAttendance = "unscheduled" | "suggested" | "tentative" | "confirmed" | "surrogate" | "caution";
 
+/**
+ * Public card marks. Unset means not reviewed yet — no chip.
+ * Copy is attendee-safe; operators still create Mobilize events by hand.
+ */
+export type EventMarks = {
+  kellyRole?: "speaking" | "present" | "not_attending" | "tba";
+  tabling?: "yes" | "planned" | "no";
+  volunteers?: "needed" | "shifts_open" | "none";
+  mobilize?: "live" | "needed" | "none";
+  mobilizeHref?: string;
+  volunteerHref?: string;
+};
+
 export type EventType =
   | "Town Hall"
   | "Community Conversation"
@@ -102,6 +115,10 @@ export type EventItem = {
    * election & ballot-access tour but use another `type` (e.g. Town Hall).
    */
   listeningSessionSeries?: boolean;
+  /** Public Mobilize / table / volunteer / Kelly-role chips. Omit until reviewed. */
+  marks?: EventMarks;
+  /** Collapse weekly series to the next occurrence on Movement lists. */
+  recurringSeriesId?: string;
 };
 
 export type ResourceItem = {

@@ -4,6 +4,8 @@ import Link from "next/link";
 import type { EventItem } from "@/content/types";
 import { formatCountyFirstMeta, publicCountyEyebrow } from "@/lib/events/public-event-county";
 import { resolveEventStatus, stripPublicMarkdown } from "@/lib/format/eventDisplay";
+import { EventMarksChips } from "@/components/organizing/EventMarksChips";
+import { eventMarksCta } from "@/lib/events/event-marks";
 import {
   attendanceIsOpenInvite,
   eventBoardChromeClass,
@@ -49,7 +51,9 @@ export function EventStopCard({
 }) {
   const status = resolveEventStatus(event);
   const titleHref = eventCardTitleHref(event);
-  const actionHref = eventCardActionHref(event);
+  const marksCta = eventMarksCta(event);
+  const actionHref = marksCta?.href ?? eventCardActionHref(event);
+  const ctaLabel = marksCta?.label ?? eventCardCtaLabel(event);
   const open = attendanceIsOpenInvite(event.attendanceType);
   const summary = stripPublicMarkdown(event.summary).split(/(?<=\.)\s/)[0] ?? stripPublicMarkdown(event.summary);
   const tentative = event.fieldAttendance === "tentative";
@@ -82,6 +86,7 @@ export function EventStopCard({
         </EventHref>
       </h3>
       <p className="mt-1 font-body text-sm font-semibold text-kelly-text/75">{formatCountyFirstMeta(event)}</p>
+      <EventMarksChips event={event} className="mt-3" />
       <p className="mt-3 font-body text-sm leading-relaxed text-kelly-text/75">{summary}</p>
       {kellyNotAttending ? (
         <p className="mt-3 font-body text-sm text-kelly-text/70">{KELLY_NOT_ATTENDING_COPY}</p>
@@ -93,7 +98,7 @@ export function EventStopCard({
         <p className="mt-3 font-body text-sm text-kelly-text/70">Kelly will be in {event.city?.trim() || event.locationLabel}.</p>
       ) : null}
       <EventHref href={actionHref} className="mt-4 inline-flex font-body text-sm font-semibold text-kelly-navy">
-        {eventCardCtaLabel(event)} →
+        {ctaLabel} →
       </EventHref>
     </article>
   );

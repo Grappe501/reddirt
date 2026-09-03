@@ -3,6 +3,8 @@
 import Link from "next/link";
 import type { EventItem } from "@/content/types";
 import { formatEventWhen } from "@/lib/format/eventDisplay";
+import { EventMarksChips } from "@/components/organizing/EventMarksChips";
+import { eventMarksCta } from "@/lib/events/event-marks";
 import {
   CAUTION_HOLD_COPY,
   eventBoardChromeClass,
@@ -11,6 +13,7 @@ import {
   KELLY_NOT_ATTENDING_COPY,
   SCHEDULE_CONFLICT_COPY,
 } from "@/lib/events/public-event-kind";
+import { isExternalHref } from "@/lib/href";
 import { cn } from "@/lib/utils";
 
 type EventCardProps = {
@@ -32,6 +35,9 @@ function locationIsTba(event: EventItem): boolean {
 export function EventCard({ event, className, highlighted, onActivate, scheduleConflict = false }: EventCardProps) {
   const when = formatEventWhen(event);
   const detailHref = event.detailHref ?? `/events/${event.slug}`;
+  const marksCta = eventMarksCta(event);
+  const actionHref = marksCta?.href ?? detailHref;
+  const ctaLabel = marksCta?.label ?? "View details";
   const tba = locationIsTba(event);
   const kellyNotAttending = isKellyNotAttending(event);
   const caution = isCautionHold(event);
@@ -106,6 +112,7 @@ export function EventCard({ event, className, highlighted, onActivate, scheduleC
           <p className="mt-0.5 font-body text-sm text-kelly-text/70">{when.secondary}</p>
         ) : null}
         <p className="mt-1 font-body text-sm text-kelly-text/60">{event.locationLabel}</p>
+        <EventMarksChips event={event} className="mt-3" />
         <p className="mt-4 font-body text-base leading-relaxed text-kelly-text/75">{event.summary}</p>
         {kellyNotAttending ? (
           <p className="mt-3 font-body text-sm text-kelly-text/70">{KELLY_NOT_ATTENDING_COPY}</p>
@@ -116,10 +123,12 @@ export function EventCard({ event, className, highlighted, onActivate, scheduleC
         {caution && !scheduleConflict ? <p className="mt-3 font-body text-sm text-kelly-text/70">{CAUTION_HOLD_COPY}</p> : null}
       </div>
       <Link
-        href={detailHref}
+        href={actionHref}
         className="mt-6 inline-flex items-center gap-2 font-body text-sm font-semibold text-kelly-navy"
+        target={isExternalHref(actionHref) ? "_blank" : undefined}
+        rel={isExternalHref(actionHref) ? "noopener noreferrer" : undefined}
       >
-        View details
+        {ctaLabel}
         <span aria-hidden>→</span>
       </Link>
     </article>

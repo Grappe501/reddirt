@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import type { EventItem } from "@/content/types";
 import { EventStopCard } from "@/components/organizing/EventStopCard";
+import { publicEventConflictSlugs } from "@/lib/events/public-event-conflicts";
 import { Button } from "@/components/ui/Button";
 import {
   compareEventsForHub,
@@ -12,7 +13,6 @@ import {
 } from "@/lib/format/eventDisplay";
 import { eventMatchesSchedulePreset } from "@/lib/format/event-schedule-in-zone";
 import { publicLaneForMovementType, type PublicEventLane } from "@/lib/events/public-event-kind";
-import { kellyNextStopsRoute } from "@/lib/events/kelly-next-stops-route";
 import { cn } from "@/lib/utils";
 import dynamic from "next/dynamic";
 
@@ -42,7 +42,7 @@ const LANES: Array<{ id: LaneChip; label: string }> = [
 function applyLane(events: EventItem[], lane: LaneChip): EventItem[] {
   if (lane === "all") return events;
   if (lane === "this_week") {
-    return events.filter((e) => eventMatchesSchedulePreset(e.startsAt, e.endsAt, "this_week", e.timezone));
+    return events.filter((e) => eventMatchesSchedulePreset(e.startsAt, e.endsAt, "this_week"));
   }
   return events.filter((e) => publicLaneForMovementType(e.type) === lane);
 }
@@ -146,7 +146,7 @@ export function EventsSurface({
   const mapEvents = mapMode === "upcoming" ? upcomingAll : pastAll;
   const next = upcoming[0];
   const rest = upcoming.slice(1);
-  const routeLine = kellyNextStopsRoute(upcoming);
+  const conflictSlugs = useMemo(() => publicEventConflictSlugs(upcomingAll, now), [upcomingAll, now]);
   const pastWithCounty = pastAll.filter((e) => e.countySlug);
   const countyCount = new Set(pastWithCounty.map((e) => e.countySlug)).size;
 
@@ -206,7 +206,7 @@ export function EventsSurface({
             <div>
               <p className="font-body text-xs font-bold uppercase tracking-wider text-kelly-navy">Next stop</p>
               <div className="mt-3">
-                <EventStopCard event={next} />
+                <EventStopCard event={next} scheduleConflict={conflictSlugs.has(next.slug)} />
               </div>
             </div>
           ) : (
@@ -214,17 +214,11 @@ export function EventsSurface({
               No confirmed upcoming stops in this view. Invite Kelly or host a gathering.
             </p>
           )}
-          {routeLine ? (
-            <aside className="rounded-card border border-kelly-text/10 bg-kelly-text/[0.03] p-5">
-              <h3 className="font-heading text-base font-bold text-kelly-text">Kelly’s Next Stops</h3>
-              <p className="mt-2 font-body text-sm leading-relaxed text-kelly-text/80">{routeLine}</p>
-            </aside>
-          ) : null}
           {rest.length ? (
             <ul className="grid list-none grid-cols-1 gap-4 md:grid-cols-2">
               {rest.map((e) => (
                 <li key={e.slug}>
-                  <EventStopCard event={e} />
+                  <EventStopCard event={e} scheduleConflict={conflictSlugs.has(e.slug)} />
                 </li>
               ))}
             </ul>
@@ -238,7 +232,7 @@ export function EventsSurface({
             {past.length ? (
               past.map((e) => (
                 <li key={e.slug}>
-                  <EventStopCard event={e} />
+                  <EventStopCard event={e} scheduleConflict={conflictSlugs.has(e.slug)} />
                 </li>
               ))
             ) : (
@@ -295,7 +289,7 @@ export function EventsSurface({
               ) : null}
             </div>
           ) : null}
-          <MovementFairsMap events={mapEvents} pinMode={mapMode} />
+          <MovementFairsMap events={mapEvents} />
           <Button href="/events/request" variant="outline">
             Invite Kelly
           </Button>
