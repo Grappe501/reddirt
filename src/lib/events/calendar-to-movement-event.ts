@@ -77,6 +77,7 @@ export function publicCampaignEventToEventItem(ev: PublicCampaignEvent): EventIt
     locationLabel: ev.city?.trim() || venue || "Unknown",
     addressLine: ev.address ?? undefined,
     publicContact: ev.publicContact?.trim() || undefined,
+    flyerSrc: ev.publicSocialGraphicUrl?.trim() || undefined,
     summary,
     description: ev.publicSummary?.trim() || ev.title,
     whatToExpect: [],

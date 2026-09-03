@@ -142,6 +142,7 @@ function toPublicDto(
     address: string | null;
     city?: string | null;
     publicContact?: string | null;
+    publicSocialGraphicUrl?: string | null;
     attendanceType?: CampaignEventAttendanceType;
     eventType: CampaignEventType;
     county: { displayName: string; slug: string } | null;
@@ -174,6 +175,7 @@ function toPublicDto(
     address: row.address,
     city: row.city ?? null,
     publicContact: row.publicContact ?? null,
+    publicSocialGraphicUrl: row.publicSocialGraphicUrl ?? null,
     attendanceType,
     eventType: row.eventType,
     eventTypeLabel: formatPublicEventType(row.eventType),

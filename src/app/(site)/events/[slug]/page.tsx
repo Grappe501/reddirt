@@ -9,6 +9,8 @@ import { Button } from "@/components/ui/Button";
 import { EventMeta } from "@/components/organizing/EventMeta";
 import { EventCard } from "@/components/organizing/EventCard";
 import { EventShareActions } from "@/components/organizing/EventShareActions";
+import { EventSocialGraphic } from "@/components/organizing/EventSocialGraphic";
+import { resolvePublicEventItemBySlug } from "@/lib/events/resolve-public-event-item";
 import { EventCompanionSiteBanner } from "@/components/organizing/EventCompanionSiteBanner";
 import { EventFlyerGallery } from "@/components/organizing/EventFlyer";
 import { getGrassrootsGuitarStringsSiteUrl } from "@/config/external-campaign";
@@ -17,10 +19,7 @@ import { getEventBySlug, listEventSlugs } from "@/content/events";
 import type { EventItem } from "@/content/types";
 import { getRegionBySlug } from "@/content/local/regions";
 import { skipPublicStaticGenerationForNetlifyLaunch } from "@/lib/intelligence/intelligenceLaunchMode";
-import {
-  resolvePublicEventPageBySlug,
-  resolvePublicEventTitleForMetadata,
-} from "@/lib/calendar/public-events";
+import { resolvePublicEventPageBySlug } from "@/lib/calendar/public-events";
 import { publicCampaignEventToEventItem } from "@/lib/events/calendar-to-movement-event";
 import { attendanceDetailCopy, eventCardCtaLabel } from "@/lib/events/public-event-kind";
 import { getJoinCampaignHref, getVolunteerSignupHref } from "@/config/external-campaign";
@@ -40,23 +39,14 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const curated = getEventBySlug(slug);
-  if (curated) {
-    return pageMeta({
-      title: curated.title,
-      description: stripPublicMarkdown(curated.summary),
-      path: `/events/${slug}`,
-      imageSrc: resolveEventShareImageSrc(curated.flyerSrc),
-    });
-  }
   try {
-    const t = await resolvePublicEventTitleForMetadata(slug);
-    if (!t) return { title: "Event" };
+    const event = await resolvePublicEventItemBySlug(slug);
+    if (!event) return { title: "Event" };
     return pageMeta({
-      title: t,
-      description: `Campaign calendar event — ${t}.`,
+      title: event.title,
+      description: stripPublicMarkdown(event.summary),
       path: `/events/${slug}`,
-      imageSrc: resolveEventShareImageSrc(),
+      imageSrc: resolveEventShareImageSrc(event.flyerSrc),
     });
   } catch (e) {
     if (isPrismaDatabaseUnavailable(e)) return { title: "Event" };
@@ -144,6 +134,14 @@ async function CuratedOrCalendarEventView({ event }: { event: EventItem }) {
         )}
       </EventDetailHero>
 
+      {live.flyerSrc ? (
+        <FullBleedSection padY className="!pt-0">
+          <ContentContainer>
+            <EventSocialGraphic src={live.flyerSrc} title={live.title} />
+          </ContentContainer>
+        </FullBleedSection>
+      ) : null}
+
       <FullBleedSection padY>
         <ContentContainer>
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1fr)_320px] lg:gap-14">
@@ -202,7 +200,9 @@ async function CuratedOrCalendarEventView({ event }: { event: EventItem }) {
                 ) : null}
               </div>
 
-              {flyers.length ? <EventFlyerGallery items={flyers} /> : null}
+              {flyers.filter((item) => item.src !== live.flyerSrc).length ? (
+                <EventFlyerGallery items={flyers.filter((item) => item.src !== live.flyerSrc)} />
+              ) : null}
 
               <SectionHeading
                 className="mt-14"
@@ -267,7 +267,7 @@ async function CuratedOrCalendarEventView({ event }: { event: EventItem }) {
               ) : null}
               <div>
                 <p className="mb-2 font-body text-xs font-bold uppercase tracking-wider text-kelly-navy">Share</p>
-                <EventShareActions title={live.title} url={`${siteConfig.url}${sharePath}`} />
+                <EventShareActions title={live.title} url={`${siteConfig.url}${sharePath}`} graphicUrl={live.flyerSrc} />
               </div>
               <Button href={volunteerHref} variant="outline" className="w-full justify-center">
                 Volunteer
@@ -369,9 +369,12 @@ function CanceledEventTombstone({ title }: { title: string }) {
 export default async function EventDetailPage({ params }: Props) {
   const { slug } = await params;
 
-  const curated = getEventBySlug(slug);
-  if (curated) {
-    return <CuratedOrCalendarEventView event={curated} />;
+  const overlaid = await resolvePublicEventItemBySlug(slug).catch((e) => {
+    if (isPrismaDatabaseUnavailable(e)) return getEventBySlug(slug) ?? null;
+    throw e;
+  });
+  if (overlaid) {
+    return <CuratedOrCalendarEventView event={overlaid} />;
   }
 
   let resolved: Awaited<ReturnType<typeof resolvePublicEventPageBySlug>>;

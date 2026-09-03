@@ -10,9 +10,11 @@ import {
 } from "@/lib/scheduler/public-card-fields";
 import {
   archiveSchedulerEventAction,
+  clearSchedulerSocialGraphicAction,
   publishSchedulerEventAction,
   saveSchedulerEventAction,
   unpublishSchedulerEventAction,
+  uploadSchedulerSocialGraphicAction,
 } from "@/app/scheduler/actions";
 
 const SELECT_CLASS =
@@ -61,6 +63,7 @@ export function EventFieldEditor({
   city,
   countyName,
   publicContact,
+  socialGraphicUrl,
   publicSummary,
   dateYmd,
   startTime,
@@ -82,6 +85,7 @@ export function EventFieldEditor({
   city: string | null;
   countyName: string | null;
   publicContact: string | null;
+  socialGraphicUrl: string | null;
   publicSummary: string | null;
   dateYmd: string;
   startTime: string;
@@ -192,6 +196,43 @@ export function EventFieldEditor({
           </div>
         )}
       </form>
+      {isArchived ? null : (
+        <form
+          action={uploadSchedulerSocialGraphicAction}
+          className="space-y-4 rounded-card border border-kelly-navy/15 bg-white p-5"
+        >
+          <input type="hidden" name="id" value={id} />
+          <p className="font-heading text-lg font-bold text-kelly-text">Social graphic</p>
+          <p className="font-body text-sm text-kelly-text/70">
+            This image shows near the top of the event page and is the Facebook share preview. Instagram has no web post
+            button — use Save for Instagram on the event page to download it.
+          </p>
+          {socialGraphicUrl ? (
+            <p>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={socialGraphicUrl} alt="Current social graphic" className="max-h-64 w-auto rounded-md border border-kelly-navy/15" />
+            </p>
+          ) : null}
+          <label className="block">
+            <span className="font-body text-xs font-semibold uppercase tracking-wider text-kelly-muted">Upload JPG, PNG, or WebP</span>
+            <input name="graphic" type="file" accept="image/jpeg,image/png,image/webp" className={SELECT_CLASS} />
+          </label>
+          <label className="block">
+            <span className="font-body text-xs font-semibold uppercase tracking-wider text-kelly-muted">Or paste image URL</span>
+            <input name="graphicUrl" defaultValue="" className={SELECT_CLASS} placeholder="https://" />
+          </label>
+          <div className="flex flex-wrap gap-3">
+            <Button type="submit" variant="primary">
+              Save graphic
+            </Button>
+            {socialGraphicUrl ? (
+              <Button type="submit" formAction={clearSchedulerSocialGraphicAction} variant="outline">
+                Remove graphic
+              </Button>
+            ) : null}
+          </div>
+        </form>
+      )}
       {isArchived ? (
         <div className="rounded-card border border-kelly-navy/20 bg-kelly-navy/[0.04] p-5">
           <p className="font-body text-[10px] font-bold uppercase tracking-[0.22em] text-kelly-navy">Archive record</p>

@@ -3313,6 +3313,8 @@ model CampaignEvent {
   city                     String?
   /// Public host/venue contact line on /events cards (name, phone, or email).
   publicContact            String?
+  /// Public social/event graphic. Shown near the top of /events/[slug] and used as the Facebook share image.
+  publicSocialGraphicUrl   String?
   /// Internal travel/repositioning — never public, never a visited-county appearance.
   isTravelLeg              Boolean                 @default(false)
   /// Who may attend if the event is published.
