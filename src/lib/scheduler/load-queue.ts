@@ -1,7 +1,12 @@
 import { CampaignEventStatus, EventWorkflowState } from "@prisma/client";
+import { events } from "@/content/events";
+import { queryPublicCampaignEvents } from "@/lib/calendar/public-events";
+import { mergeMovementAndCalendarEvents } from "@/lib/events/calendar-to-movement-event";
+import { collapseRecurringSeriesToNextOccurrence } from "@/lib/events/collapse-recurring-series";
+import { parseEventInstant, resolveEventStatus } from "@/lib/format/eventDisplay";
 import { prisma } from "@/lib/db";
 import { isPrismaLiveDataUnavailable, logPrismaDatabaseUnavailable } from "@/lib/prisma-connectivity";
-import { cardFromRow, type SchedulerPublicCard } from "@/lib/scheduler/public-card-fields";
+import { cardFromRow, emptyCard, type SchedulerPublicCard } from "@/lib/scheduler/public-card-fields";
 
 export type SchedulerQueueTab = "needs_publish" | "live" | "needs_info" | "archive";
 
@@ -9,6 +14,7 @@ export type SchedulerQueueRow = {
   id: string;
   slug: string;
   title: string;
+  href: string;
   startAt: Date;
   locationName: string | null;
   countyName: string | null;
@@ -77,6 +83,7 @@ function toRow(r: {
     id: r.id,
     slug: r.slug,
     title: r.title,
+    href: `/scheduler/events/${r.id}`,
     startAt: r.startAt,
     locationName: r.locationName,
     countyName: r.county?.displayName ?? null,
@@ -92,7 +99,59 @@ function toRow(r: {
   };
 }
 
+async function loadSchedulerLiveQueue(): Promise<SchedulerQueueRow[]> {
+  const now = new Date();
+  const calendarRows = await queryPublicCampaignEvents({}, { take: 200 });
+  const merged = collapseRecurringSeriesToNextOccurrence(
+    mergeMovementAndCalendarEvents(events, calendarRows)
+      .filter((event) => resolveEventStatus(event, now) === "upcoming")
+      .filter((event) => event.fieldAttendance !== "suggested" && event.fieldAttendance !== "unscheduled"),
+  );
+  const slugs = merged.map((event) => event.slug);
+  const dbRows =
+    slugs.length === 0
+      ? []
+      : await prisma.campaignEvent.findMany({
+          where: { slug: { in: slugs } },
+          select: SELECT,
+        });
+  const bySlug = new Map(dbRows.map((row) => [row.slug, row]));
+  return merged.map((event) => {
+    const db = bySlug.get(event.slug);
+    if (db) return { ...toRow(db), isLive: true };
+    return {
+      id: `public:${event.slug}`,
+      slug: event.slug,
+      title: event.title,
+      href: `/scheduler/open/${encodeURIComponent(event.slug)}`,
+      startAt: parseEventInstant(event.startsAt, event.timezone),
+      locationName: event.locationLabel ?? null,
+      countyName: event.countySlug ? event.countySlug.replace(/-/g, " ") : null,
+      isLive: true,
+      isArchived: false,
+      card: emptyCard(),
+      publishedBy: "Public calendar",
+      publishedAt: null,
+      archivedBy: null,
+      archivedAt: null,
+      archiveReason: null,
+      archivePlace: null,
+    };
+  });
+}
+
 export async function loadSchedulerQueue(tab: SchedulerQueueTab): Promise<SchedulerQueueRow[]> {
+  if (tab === "live") {
+    try {
+      return await loadSchedulerLiveQueue();
+    } catch (e) {
+      if (isPrismaLiveDataUnavailable(e)) {
+        logPrismaDatabaseUnavailable("loadSchedulerLiveQueue", e);
+        return [];
+      }
+      throw e;
+    }
+  }
   try {
     const upcoming = { endAt: { gte: new Date() } };
     const rows = await prisma.campaignEvent.findMany({
@@ -103,16 +162,14 @@ export async function loadSchedulerQueue(tab: SchedulerQueueTab): Promise<Schedu
           : {
               schedulerArchivedAt: null,
               status: { not: CampaignEventStatus.CANCELLED },
-              ...(tab === "live"
-                ? { isPublicOnWebsite: true, eventWorkflowState: EventWorkflowState.PUBLISHED }
-                : tab === "needs_info"
-                  ? { OR: [{ schedulerNeedsMoreInfo: true }, { publicFieldAttendance: "caution" }] }
-                  : {
-                      OR: [
-                        { isPublicOnWebsite: false },
-                        { eventWorkflowState: { not: EventWorkflowState.PUBLISHED } },
-                      ],
-                    }),
+              ...(tab === "needs_info"
+                ? { OR: [{ schedulerNeedsMoreInfo: true }, { publicFieldAttendance: "caution" }] }
+                : {
+                    OR: [
+                      { isPublicOnWebsite: false },
+                      { eventWorkflowState: { not: EventWorkflowState.PUBLISHED } },
+                    ],
+                  }),
             }),
       },
       select: SELECT,
