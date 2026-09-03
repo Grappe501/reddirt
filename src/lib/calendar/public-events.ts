@@ -94,6 +94,13 @@ function snapshotToPublicDto(
     joinCampaignHref: joinHref,
     primaryAction: { label: attendanceCtaLabel(CampaignEventAttendanceType.CAMPAIGN_APPEARANCE), href: detailHref },
     secondaryAction: { label: "Volunteer", href: joinHref },
+    publicFieldAttendance: null,
+    publicKellyRole: null,
+    publicTabling: null,
+    publicVolunteers: null,
+    publicMobilize: null,
+    publicMobilizeHref: null,
+    publicVolunteerHref: null,
   };
 }
 
@@ -137,6 +144,13 @@ function toPublicDto(
     attendanceType?: CampaignEventAttendanceType;
     eventType: CampaignEventType;
     county: { displayName: string; slug: string } | null;
+    publicFieldAttendance?: string | null;
+    publicKellyRole?: string | null;
+    publicTabling?: string | null;
+    publicVolunteers?: string | null;
+    publicMobilize?: string | null;
+    publicMobilizeHref?: string | null;
+    publicVolunteerHref?: string | null;
   },
   joinHref: string
 ): PublicCampaignEvent {
@@ -169,6 +183,13 @@ function toPublicDto(
     joinCampaignHref: joinHref,
     primaryAction: { label: attendanceCtaLabel(attendanceType), href: detailHref },
     secondaryAction: { label: "Volunteer", href: joinHref },
+    publicFieldAttendance: row.publicFieldAttendance ?? null,
+    publicKellyRole: row.publicKellyRole ?? null,
+    publicTabling: row.publicTabling ?? null,
+    publicVolunteers: row.publicVolunteers ?? null,
+    publicMobilize: row.publicMobilize ?? null,
+    publicMobilizeHref: row.publicMobilizeHref ?? null,
+    publicVolunteerHref: row.publicVolunteerHref ?? null,
   };
 }
 

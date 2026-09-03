@@ -3,6 +3,7 @@ import { getMovementRegionForCountySlug, STATEWIDE_EVENT_REGION } from "@/conten
 import type { EventItem, EventType } from "@/content/types";
 import type { PublicCampaignEvent } from "@/lib/calendar/public-event-types";
 import { withLiveEventStatus } from "@/lib/format/eventDisplay";
+import { cardFromRow, cardToFieldAttendance } from "@/lib/scheduler/public-card-fields";
 
 /** Map CampaignOS types into movement /events filter buckets (approximate but useful). */
 export function campaignEventTypeToMovementEventType(t: CampaignEventType): EventType {
@@ -89,6 +90,7 @@ export function publicCampaignEventToEventItem(ev: PublicCampaignEvent): EventIt
     mapPinQuality: undefined,
     detailHref: ev.detailHref,
     eventSource: "calendar",
+    fieldAttendance: cardToFieldAttendance(cardFromRow(ev)),
     attendanceType: ev.attendanceType,
     city: ev.city?.trim() || undefined,
     campaignTrail: true,
