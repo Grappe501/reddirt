@@ -55,6 +55,16 @@ async function resolveCountyId(countyName: string | null | undefined): Promise<s
 }
 
 function cardFromForm(formData: FormData) {
+  const date = String(formData.get("date") ?? "").slice(0, 10);
+  const startTime = String(formData.get("startTime") ?? "") || undefined;
+  const endTime = String(formData.get("endTime") ?? "") || undefined;
+  const timed = /^\d{4}-\d{2}-\d{2}$/.test(date)
+    ? (() => {
+        const startAt = chicagoAt(date, startTime, 12);
+        const endAt = chicagoAt(date, endTime || startTime, 13);
+        return { startAt, endAt: endAt > startAt ? endAt : new Date(startAt.getTime() + 60 * 60 * 1000) };
+      })()
+    : {};
   return {
     publicFieldAttendance: pickAllowed(formData.get("fieldAttendance"), FIELD_ATTENDANCE_VALUES),
     publicKellyRole: pickAllowed(formData.get("kellyRole"), KELLY_ROLE_VALUES),
@@ -66,8 +76,21 @@ function cardFromForm(formData: FormData) {
     schedulerNeedsMoreInfo: String(formData.get("needsMoreInfo") ?? "") === "on",
     publicSummary: String(formData.get("publicSummary") ?? "").trim().slice(0, 800) || null,
     locationName: String(formData.get("locationName") ?? "").trim().slice(0, 160) || null,
+    address: String(formData.get("address") ?? "").trim().slice(0, 240) || null,
+    city: String(formData.get("city") ?? "").trim().slice(0, 80) || null,
+    publicContact: String(formData.get("publicContact") ?? "").trim().slice(0, 160) || null,
+    countyName: String(formData.get("county") ?? "").trim() || null,
     title: String(formData.get("title") ?? "").trim().slice(0, 160),
+    ...timed,
   };
+}
+
+function revalidateEventPaths(id: string, slug?: string | null) {
+  revalidatePath("/scheduler");
+  revalidatePath("/events");
+  revalidatePath(`/scheduler/events/${id}`);
+  revalidatePath("/scheduler/calendar");
+  if (slug) revalidatePath(`/events/${slug}`);
 }
 
 export async function saveSchedulerEventAction(formData: FormData) {
@@ -76,11 +99,15 @@ export async function saveSchedulerEventAction(formData: FormData) {
   if (!id) redirect("/scheduler");
   const patch = cardFromForm(formData);
   if (!patch.title) redirect(`/scheduler/events/${id}?error=title`);
-  await prisma.campaignEvent.update({
+  const countyId = await resolveCountyId(patch.countyName);
+  const updated = await prisma.campaignEvent.update({
     where: { id },
     data: {
       title: patch.title,
       locationName: patch.locationName,
+      address: patch.address,
+      city: patch.city,
+      publicContact: patch.publicContact,
       publicSummary: patch.publicSummary,
       publicFieldAttendance: patch.publicFieldAttendance,
       publicKellyRole: patch.publicKellyRole,
@@ -90,11 +117,12 @@ export async function saveSchedulerEventAction(formData: FormData) {
       publicMobilizeHref: patch.publicMobilizeHref,
       publicVolunteerHref: patch.publicVolunteerHref,
       schedulerNeedsMoreInfo: patch.schedulerNeedsMoreInfo,
+      countyId,
+      ...(patch.startAt ? { startAt: patch.startAt, endAt: patch.endAt } : {}),
     },
+    select: { slug: true },
   });
-  revalidatePath("/scheduler");
-  revalidatePath("/events");
-  revalidatePath(`/scheduler/events/${id}`);
+  revalidateEventPaths(id, updated.slug);
   redirect(`/scheduler/events/${id}?saved=1`);
 }
 
@@ -104,11 +132,15 @@ export async function publishSchedulerEventAction(formData: FormData) {
   if (!id) redirect("/scheduler");
   const patch = cardFromForm(formData);
   if (!patch.title) redirect(`/scheduler/events/${id}?error=title`);
-  await prisma.campaignEvent.update({
+  const countyId = await resolveCountyId(patch.countyName);
+  const updated = await prisma.campaignEvent.update({
     where: { id },
     data: {
       title: patch.title,
       locationName: patch.locationName,
+      address: patch.address,
+      city: patch.city,
+      publicContact: patch.publicContact,
       publicSummary: patch.publicSummary,
       publicFieldAttendance: patch.publicFieldAttendance,
       publicKellyRole: patch.publicKellyRole,
@@ -118,16 +150,17 @@ export async function publishSchedulerEventAction(formData: FormData) {
       publicMobilizeHref: patch.publicMobilizeHref,
       publicVolunteerHref: patch.publicVolunteerHref,
       schedulerNeedsMoreInfo: patch.schedulerNeedsMoreInfo,
+      countyId,
+      ...(patch.startAt ? { startAt: patch.startAt, endAt: patch.endAt } : {}),
       isPublicOnWebsite: true,
       eventWorkflowState: EventWorkflowState.PUBLISHED,
       status: CampaignEventStatus.SCHEDULED,
       schedulerPublishedBy: actor.name || actor.email,
       schedulerPublishedAt: new Date(),
     },
+    select: { slug: true },
   });
-  revalidatePath("/scheduler");
-  revalidatePath("/events");
-  revalidatePath(`/scheduler/events/${id}`);
+  revalidateEventPaths(id, updated.slug);
   redirect(`/scheduler/events/${id}?published=1`);
 }
 
@@ -135,13 +168,12 @@ export async function unpublishSchedulerEventAction(formData: FormData) {
   await requireSchedulerPage();
   const id = String(formData.get("id") ?? "");
   if (!id) redirect("/scheduler");
-  await prisma.campaignEvent.update({
+  const updated = await prisma.campaignEvent.update({
     where: { id },
     data: { isPublicOnWebsite: false },
+    select: { slug: true },
   });
-  revalidatePath("/scheduler");
-  revalidatePath("/events");
-  revalidatePath(`/scheduler/events/${id}`);
+  revalidateEventPaths(id, updated.slug);
   redirect(`/scheduler/events/${id}?unpublished=1`);
 }
 
@@ -157,7 +189,7 @@ export async function archiveSchedulerEventAction(formData: FormData) {
   });
   if (!row) redirect("/scheduler");
   const place = [row.locationName?.trim(), row.county?.displayName?.trim()].filter(Boolean).join(" · ") || "Place not set";
-  await prisma.campaignEvent.update({
+  const updated = await prisma.campaignEvent.update({
     where: { id },
     data: {
       isPublicOnWebsite: false,
@@ -168,10 +200,9 @@ export async function archiveSchedulerEventAction(formData: FormData) {
       schedulerArchiveReason: reason,
       schedulerArchivePlace: place.slice(0, 240),
     },
+    select: { slug: true },
   });
-  revalidatePath("/scheduler");
-  revalidatePath("/events");
-  revalidatePath(`/scheduler/events/${id}`);
+  revalidateEventPaths(id, updated.slug);
   redirect(`/scheduler/events/${id}?archived=1`);
 }
 
@@ -216,6 +247,9 @@ export async function createSchedulerEventAction(formData: FormData) {
       endAt: endAt > startAt ? endAt : new Date(startAt.getTime() + 60 * 60 * 1000),
       timezone: PUBLIC_CALENDAR_DEFAULT_TZ,
       locationName,
+      address: String(formData.get("address") ?? "").trim().slice(0, 240) || null,
+      city: String(formData.get("city") ?? "").trim().slice(0, 80) || null,
+      publicContact: String(formData.get("publicContact") ?? "").trim().slice(0, 160) || null,
       countyId,
       publicSummary: String(formData.get("publicSummary") ?? "").trim().slice(0, 800) || null,
     },

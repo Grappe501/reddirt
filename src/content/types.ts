@@ -69,6 +69,8 @@ export type EventItem = {
   /** City line for public cards when it is shorter than `locationLabel`. */
   city?: string;
   addressLine?: string;
+  /** Public host/venue contact line on /events cards. */
+  publicContact?: string;
   summary: string;
   description: string;
   whatToExpect: string[];

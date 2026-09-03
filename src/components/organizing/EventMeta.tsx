@@ -33,6 +33,9 @@ export function EventMeta({
         {event.addressLine ? (
           <dd className="mt-1 text-kelly-text/75">{event.addressLine}</dd>
         ) : null}
+        {event.publicContact ? (
+          <dd className="mt-2 text-kelly-text/75">Contact: {event.publicContact}</dd>
+        ) : null}
       </div>
       <div className="flex flex-wrap gap-2">
         <span className="rounded-full border border-kelly-navy/25 bg-kelly-navy/10 px-3 py-1 text-xs font-semibold text-kelly-text">

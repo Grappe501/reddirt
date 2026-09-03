@@ -72,6 +72,8 @@ export async function ensureSchedulerEventFromPublicSlug(slug: string): Promise<
         timezone: item.timezone || PUBLIC_CALENDAR_DEFAULT_TZ,
         locationName: item.locationLabel?.slice(0, 160) || null,
         address: item.addressLine?.slice(0, 240) || null,
+        city: item.city?.slice(0, 80) || null,
+        publicContact: item.publicContact?.slice(0, 160) || null,
         countyId: await resolveCountyIdFromSlug(item.countySlug),
         publicSummary: stripPublicMarkdown(item.summary || item.title).slice(0, 800) || null,
         publicFieldAttendance,

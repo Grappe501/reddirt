@@ -3279,6 +3279,10 @@ model CampaignEvent {
   countyId                 String?
   county                   County?                 @relation(fields: [countyId], references: [id], onDelete: SetNull)
   locationName             String?
+  /// City/town for public cards (county stays on countyId).
+  city                     String?
+  /// Public host/venue contact line on /events cards (name, phone, or email).
+  publicContact            String?
   address                  String?                 @db.Text
   startAt                  DateTime
   endAt                    DateTime

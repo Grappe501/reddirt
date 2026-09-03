@@ -2,6 +2,7 @@ import type { CampaignEventType } from "@prisma/client";
 import { getMovementRegionForCountySlug, STATEWIDE_EVENT_REGION } from "@/content/arkansas-movement-regions";
 import type { EventItem, EventType } from "@/content/types";
 import type { PublicCampaignEvent } from "@/lib/calendar/public-event-types";
+import { applyPublishedCalendarOverlay } from "@/lib/scheduler/overlay-public-card";
 import { cardFromRow, cardToEventMarks, cardToFieldAttendance } from "@/lib/scheduler/public-card-fields";
 
 /** Map CampaignOS types into movement /events filter buckets (approximate but useful). */
@@ -61,7 +62,9 @@ export function publicCampaignEventToEventItem(ev: PublicCampaignEvent): EventIt
     endsAt: ev.endAt.toISOString(),
     timezone: ev.timezone,
     locationLabel: venue || "Unknown",
+    city: ev.city?.trim() || undefined,
     addressLine: ev.address ?? undefined,
+    publicContact: ev.publicContact?.trim() || undefined,
     summary,
     description: ev.publicSummary?.trim() || ev.title,
     whatToExpect: [],
@@ -93,6 +96,7 @@ export function mergeMovementAndCalendarEvents(
   calendar: PublicCampaignEvent[],
 ): EventItem[] {
   const taken = new Set(movement.map((e) => e.slug));
+  const overlaid = applyPublishedCalendarOverlay(movement, calendar);
   const synthetic = calendar.filter((c) => !taken.has(c.slug)).map(publicCampaignEventToEventItem);
-  return [...movement, ...synthetic];
+  return [...overlaid, ...synthetic];
 }

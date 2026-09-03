@@ -76,6 +76,8 @@ export function EventStopCard({
         <p className="mt-1 font-body text-[11px] font-bold uppercase tracking-wider text-amber-800">Caution</p>
       ) : tentative ? (
         <p className="mt-1 font-body text-[11px] font-bold uppercase tracking-wider text-orange-800">Tentative</p>
+      ) : event.fieldAttendance === "confirmed" ? (
+        <p className="mt-1 font-body text-[11px] font-bold uppercase tracking-wider text-kelly-navy">Confirmed</p>
       ) : null}
       <h3 className="mt-2 font-heading text-xl font-bold text-kelly-text">
         <EventHref
@@ -86,6 +88,8 @@ export function EventStopCard({
         </EventHref>
       </h3>
       <p className="mt-1 font-body text-sm font-semibold text-kelly-text/75">{formatCountyFirstMeta(event)}</p>
+      {event.addressLine ? <p className="mt-1 font-body text-sm text-kelly-text/65">{event.addressLine}</p> : null}
+      {event.publicContact ? <p className="mt-1 font-body text-sm text-kelly-text/65">Contact: {event.publicContact}</p> : null}
       <EventMarksChips event={event} className="mt-3" />
       <p className="mt-3 font-body text-sm leading-relaxed text-kelly-text/75">{summary}</p>
       {kellyNotAttending ? (

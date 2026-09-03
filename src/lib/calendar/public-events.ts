@@ -134,6 +134,8 @@ function toPublicDto(
     timezone: string;
     locationName: string | null;
     address: string | null;
+    city?: string | null;
+    publicContact?: string | null;
     eventType: CampaignEventType;
     county: { displayName: string; slug: string } | null;
     publicFieldAttendance?: string | null;
@@ -162,6 +164,8 @@ function toPublicDto(
     timezone: row.timezone,
     locationName: row.locationName,
     address: row.address,
+    city: row.city ?? null,
+    publicContact: row.publicContact ?? null,
     eventType: row.eventType,
     eventTypeLabel: formatPublicEventType(row.eventType),
     county: row.county,
