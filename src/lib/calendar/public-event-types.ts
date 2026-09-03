@@ -21,6 +21,7 @@ export type PublicCampaignEvent = {
   address: string | null;
   city?: string | null;
   publicContact?: string | null;
+  publicSocialGraphicUrl?: string | null;
   eventType: CampaignEventType;
   eventTypeLabel: string;
   county: { displayName: string; slug: string } | null;
@@ -71,6 +72,7 @@ export const publicCampaignEventSelect = {
   address: true,
   city: true,
   publicContact: true,
+  publicSocialGraphicUrl: true,
   eventType: true,
   county: { select: { displayName: true, slug: true } },
   publicFieldAttendance: true,

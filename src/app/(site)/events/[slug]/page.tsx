@@ -15,14 +15,15 @@ import { publicEventConflictSlugs } from "@/lib/events/public-event-conflicts";
 import type { EventItem } from "@/content/types";
 import { getRegionBySlug } from "@/content/local/regions";
 import { skipPublicStaticGenerationForNetlifyLaunch } from "@/lib/intelligence/intelligenceLaunchMode";
-import {
-  resolvePublicEventPageBySlug,
-  resolvePublicEventTitleForMetadata,
-} from "@/lib/calendar/public-events";
+import { resolvePublicEventPageBySlug } from "@/lib/calendar/public-events";
 import { publicCampaignEventToEventItem } from "@/lib/events/calendar-to-movement-event";
 import { getJoinCampaignHref } from "@/config/external-campaign";
 import { isPrismaDatabaseUnavailable, logPrismaDatabaseUnavailable } from "@/lib/prisma-connectivity";
 import { pageMeta } from "@/lib/seo/metadata";
+import { EventSocialGraphic } from "@/components/organizing/EventSocialGraphic";
+import { EventShareActions } from "@/components/organizing/EventShareActions";
+import { resolvePublicEventItemBySlug } from "@/lib/events/resolve-public-event-item";
+import { siteConfig } from "@/config/site";
 import { eventMarksCta } from "@/lib/events/event-marks";
 import {
   CAUTION_HOLD_COPY,
@@ -42,21 +43,14 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const curated = getEventBySlug(slug);
-  if (curated) {
-    return pageMeta({
-      title: curated.title,
-      description: curated.summary,
-      path: `/events/${slug}`,
-    });
-  }
   try {
-    const t = await resolvePublicEventTitleForMetadata(slug);
-    if (!t) return { title: "Event" };
+    const event = await resolvePublicEventItemBySlug(slug);
+    if (!event) return { title: "Event" };
     return pageMeta({
-      title: t,
-      description: `Campaign calendar event — ${t}.`,
+      title: event.title,
+      description: event.summary,
       path: `/events/${slug}`,
+      imageSrc: event.flyerSrc,
     });
   } catch (e) {
     if (isPrismaDatabaseUnavailable(e)) return { title: "Event" };
@@ -95,6 +89,14 @@ function CuratedOrCalendarEventView({ event }: { event: EventItem }) {
           All events
         </Button>
       </PageHero>
+
+      {event.flyerSrc ? (
+        <FullBleedSection padY className="!pt-0">
+          <ContentContainer>
+            <EventSocialGraphic src={event.flyerSrc} title={event.title} />
+          </ContentContainer>
+        </FullBleedSection>
+      ) : null}
 
       <FullBleedSection padY>
         <ContentContainer>
@@ -189,6 +191,14 @@ function CuratedOrCalendarEventView({ event }: { event: EventItem }) {
               >
                 {primaryLabel}
               </Button>
+              <div>
+                <p className="mb-2 font-body text-xs font-bold uppercase tracking-wider text-kelly-navy">Share</p>
+                <EventShareActions
+                  title={event.title}
+                  url={`${siteConfig.url}/events/${event.slug}`}
+                  graphicUrl={event.flyerSrc}
+                />
+              </div>
               {county ? (
                 <Link
                   href="/start-a-local-team"
@@ -286,9 +296,12 @@ function CanceledEventTombstone({ title }: { title: string }) {
 export default async function EventDetailPage({ params }: Props) {
   const { slug } = await params;
 
-  const curated = getEventBySlug(slug);
-  if (curated) {
-    return <CuratedOrCalendarEventView event={curated} />;
+  const overlaid = await resolvePublicEventItemBySlug(slug).catch((e) => {
+    if (isPrismaDatabaseUnavailable(e)) return getEventBySlug(slug) ?? null;
+    throw e;
+  });
+  if (overlaid) {
+    return <CuratedOrCalendarEventView event={overlaid} />;
   }
 
   let resolved: Awaited<ReturnType<typeof resolvePublicEventPageBySlug>>;

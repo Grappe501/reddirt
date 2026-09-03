@@ -206,6 +206,49 @@ export async function archiveSchedulerEventAction(formData: FormData) {
   redirect(`/scheduler/events/${id}?archived=1`);
 }
 
+export async function uploadSchedulerSocialGraphicAction(formData: FormData) {
+  await requireSchedulerPage();
+  const id = String(formData.get("id") ?? "");
+  if (!id) redirect("/scheduler");
+  const row = await prisma.campaignEvent.findUnique({ where: { id }, select: { slug: true } });
+  if (!row) redirect("/scheduler");
+  const file = formData.get("graphic");
+  const pasted = String(formData.get("graphicUrl") ?? "");
+  if (file instanceof File && file.size > 0) {
+    const { uploadSchedulerSocialGraphic } = await import("@/lib/scheduler/social-graphic");
+    const result = await uploadSchedulerSocialGraphic(row.slug, file);
+    if ("error" in result) redirect(`/scheduler/events/${id}?error=graphic_${result.error}`);
+    await prisma.campaignEvent.update({
+      where: { id },
+      data: { publicSocialGraphicUrl: result.url },
+    });
+    revalidateEventPaths(id, row.slug);
+    redirect(`/scheduler/events/${id}?graphic=1`);
+  }
+  const { parseSocialGraphicUrl } = await import("@/lib/scheduler/social-graphic");
+  const url = parseSocialGraphicUrl(pasted);
+  if (!url) redirect(`/scheduler/events/${id}?error=graphic_empty`);
+  await prisma.campaignEvent.update({
+    where: { id },
+    data: { publicSocialGraphicUrl: url },
+  });
+  revalidateEventPaths(id, row.slug);
+  redirect(`/scheduler/events/${id}?graphic=1`);
+}
+
+export async function clearSchedulerSocialGraphicAction(formData: FormData) {
+  await requireSchedulerPage();
+  const id = String(formData.get("id") ?? "");
+  if (!id) redirect("/scheduler");
+  const updated = await prisma.campaignEvent.update({
+    where: { id },
+    data: { publicSocialGraphicUrl: null },
+    select: { slug: true },
+  });
+  revalidateEventPaths(id, updated.slug);
+  redirect(`/scheduler/events/${id}?graphic=0`);
+}
+
 const NEW_EVENT_TYPES = [
   "APPEARANCE",
   "RALLY",

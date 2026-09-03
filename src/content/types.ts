@@ -71,6 +71,9 @@ export type EventItem = {
   addressLine?: string;
   /** Public host/venue contact line on /events cards. */
   publicContact?: string;
+  /** Social/event graphic shown on the event page and used for Facebook share preview. */
+  flyerSrc?: string;
+  flyerAlt?: string;
   summary: string;
   description: string;
   whatToExpect: string[];
