@@ -193,6 +193,11 @@ export function EventFieldEditor({
             <Button type="submit" formAction={publishSchedulerEventAction} variant="primary">
               Publish to /events
             </Button>
+            {isLive ? (
+              <Button type="submit" formAction={unpublishSchedulerEventAction} variant="outline">
+                Unpublish
+              </Button>
+            ) : null}
           </div>
         )}
       </form>
@@ -247,19 +252,12 @@ export function EventFieldEditor({
       ) : (
         <>
           {isLive ? (
-            <form action={unpublishSchedulerEventAction} className="rounded-card border border-kelly-navy/15 bg-kelly-navy/[0.04] p-5">
-              <input type="hidden" name="id" value={id} />
-              <p className="font-body text-sm text-kelly-text/80">
-                Live on the public site
-                {publishedBy ? ` · published by ${publishedBy}` : ""}
-                {publishedAt ? ` · ${publishedAt.toISOString().slice(0, 16).replace("T", " ")} UTC` : ""}.
-              </p>
-              <div className="mt-3">
-                <Button type="submit" variant="outline">
-                  Unpublish
-                </Button>
-              </div>
-            </form>
+            <p className="rounded-card border border-kelly-navy/15 bg-kelly-navy/[0.04] px-5 py-4 font-body text-sm text-kelly-text/80">
+              Live on /events
+              {publishedBy ? ` · published by ${publishedBy}` : ""}
+              {publishedAt ? ` · ${publishedAt.toISOString().slice(0, 16).replace("T", " ")} UTC` : ""}.
+              Use Unpublish above to take it off the site.
+            </p>
           ) : null}
           <form action={archiveSchedulerEventAction} className="rounded-card border border-[#8a2b2b]/25 bg-white p-5">
             <input type="hidden" name="id" value={id} />

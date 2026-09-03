@@ -64,13 +64,17 @@ export function whereLivePublicOnWebsite(): Prisma.CampaignEventWhereInput {
   };
 }
 
-/** Operator archive / cancel — drop curated + snapshot copies from the public site. */
+/** Operator archive, cancel, or Unpublish — drop curated + snapshot copies from the public site. */
 export function whereOperatorTookPublicEventDown(): Prisma.CampaignEventWhereInput {
   return {
     OR: [
       { schedulerArchivedAt: { not: null } },
       { status: CampaignEventStatus.CANCELLED },
       { eventWorkflowState: EventWorkflowState.CANCELED },
+      {
+        isPublicOnWebsite: false,
+        eventWorkflowState: EventWorkflowState.PUBLISHED,
+      },
     ],
   };
 }
