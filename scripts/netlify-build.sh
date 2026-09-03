@@ -139,15 +139,25 @@ if [ -n "${PRISMA_RESOLVE_ROLLED_BACK:-}" ]; then
 fi
 
 MIGRATE_SKIPPED=0
-MIGRATE_RETRIES="${PRISMA_MIGRATE_RETRIES:-3}"
+MIGRATE_RETRIES="${PRISMA_MIGRATE_RETRIES:-5}"
 MIGRATE_RETRY_DELAY_SECONDS="${PRISMA_MIGRATE_RETRY_DELAY_SECONDS:-8}"
+MIGRATE_LOCK_RETRY_DELAY_SECONDS="${PRISMA_MIGRATE_LOCK_RETRY_DELAY_SECONDS:-25}"
 
 # Transient migrate failures: retry instead of failing the build immediately.
 is_transient_migrate_error() {
   local out="$1"
   [[ "$out" == *"P1001"* ]] && return 0
+  [[ "$out" == *"P1002"* ]] && return 0
+  [[ "$out" == *"advisory lock"* ]] && return 0
   [[ "$out" == *"EMAXCONNSESSION"* ]] && return 0
   [[ "$out" == *"max clients reached"* ]] && return 0
+  return 1
+}
+
+is_migrate_lock_error() {
+  local out="$1"
+  [[ "$out" == *"P1002"* ]] && return 0
+  [[ "$out" == *"advisory lock"* ]] && return 0
   return 1
 }
 
@@ -218,18 +228,22 @@ while [ "$attempt" -le "$MIGRATE_RETRIES" ]; do
   fi
 
   if [ "$attempt" -lt "$MIGRATE_RETRIES" ]; then
-    if [[ "$MIGRATE_OUTPUT" == *"EMAXCONNSESSION"* ]] || [[ "$MIGRATE_OUTPUT" == *"max clients reached"* ]]; then
-      echo ">>> prisma migrate deploy hit session pool exhaustion; retrying in ${MIGRATE_RETRY_DELAY_SECONDS}s..."
+    retry_wait="$MIGRATE_RETRY_DELAY_SECONDS"
+    if is_migrate_lock_error "$MIGRATE_OUTPUT"; then
+      retry_wait="$MIGRATE_LOCK_RETRY_DELAY_SECONDS"
+      echo ">>> prisma migrate deploy hit a migrate advisory lock (P1002); retrying in ${retry_wait}s..."
+    elif [[ "$MIGRATE_OUTPUT" == *"EMAXCONNSESSION"* ]] || [[ "$MIGRATE_OUTPUT" == *"max clients reached"* ]]; then
+      echo ">>> prisma migrate deploy hit session pool exhaustion; retrying in ${retry_wait}s..."
     else
-      echo ">>> prisma migrate deploy hit P1001; retrying in ${MIGRATE_RETRY_DELAY_SECONDS}s..."
+      echo ">>> prisma migrate deploy hit a transient DB error; retrying in ${retry_wait}s..."
     fi
-    sleep "$MIGRATE_RETRY_DELAY_SECONDS"
+    sleep "$retry_wait"
   else
     if [ "$ALLOW_PRISMA_P1001_BYPASS" = "1" ] || [ "$ALLOW_PRISMA_P1001_BYPASS" = "true" ] || [ "$ALLOW_PRISMA_P1001_BYPASS" = "yes" ]; then
       echo ""
       echo "========================================================================"
       echo "  WARNING: prisma migrate deploy failed after ${MIGRATE_RETRIES} attempts"
-      echo "  (transient DB reachability or pool exhaustion)."
+      echo "  (transient DB reachability, migrate lock, or pool exhaustion)."
       echo "  Continuing build because ALLOW_PRISMA_P1001_BYPASS is enabled."
       echo "  Database migration + seed were skipped for this deploy."
       echo "========================================================================"
@@ -308,7 +322,7 @@ else
   fi
 fi
 
-echo ">>> public-hub stash (keep election-plan; do not compile admin boards into Lambda)"
+echo ">>> public-hub stash (do not compile election-plan/admin boards into Lambda)"
 node scripts/stash-netlify-public-hub-app.cjs
 
 if [ -n "${NETLIFY:-}" ] || [ -n "${NETLIFY_BUILD_BASE:-}" ]; then
