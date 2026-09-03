@@ -211,6 +211,8 @@ export async function loadSchedulerEvent(id: string) {
         ...SELECT,
         publicSummary: true,
         address: true,
+        city: true,
+        publicContact: true,
         timezone: true,
         endAt: true,
         eventType: true,

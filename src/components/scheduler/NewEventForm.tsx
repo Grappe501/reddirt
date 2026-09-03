@@ -49,8 +49,20 @@ export function NewEventForm() {
         </select>
       </label>
       <label className="block">
+        <span className="font-body text-xs font-semibold uppercase tracking-wider text-kelly-muted">City</span>
+        <input name="city" className={SELECT_CLASS} placeholder="Morrilton" />
+      </label>
+      <label className="block">
         <span className="font-body text-xs font-semibold uppercase tracking-wider text-kelly-muted">Location</span>
-        <input name="locationName" className={SELECT_CLASS} placeholder="Venue or city" />
+        <input name="locationName" className={SELECT_CLASS} placeholder="Venue or place name" />
+      </label>
+      <label className="block">
+        <span className="font-body text-xs font-semibold uppercase tracking-wider text-kelly-muted">Address</span>
+        <input name="address" className={SELECT_CLASS} placeholder="Street, city, AR" />
+      </label>
+      <label className="block">
+        <span className="font-body text-xs font-semibold uppercase tracking-wider text-kelly-muted">Contact</span>
+        <input name="publicContact" className={SELECT_CLASS} placeholder="Host name, phone, or email" />
       </label>
       <label className="block">
         <span className="font-body text-xs font-semibold uppercase tracking-wider text-kelly-muted">County</span>

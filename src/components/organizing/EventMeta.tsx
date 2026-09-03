@@ -42,6 +42,9 @@ export function EventMeta({
         {event.addressLine ? (
           <dd className="mt-1 text-kelly-text/75">{event.addressLine}</dd>
         ) : null}
+        {event.publicContact ? (
+          <dd className="mt-2 text-kelly-text/75">Contact: {event.publicContact}</dd>
+        ) : null}
         {joinHref || zoomHref ? (
           <dd className="mt-2">
             <a

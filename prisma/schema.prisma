@@ -3311,6 +3311,8 @@ model CampaignEvent {
   county                   County?                 @relation(fields: [countyId], references: [id], onDelete: SetNull)
   /// City/town for public cards (county stays on countyId).
   city                     String?
+  /// Public host/venue contact line on /events cards (name, phone, or email).
+  publicContact            String?
   /// Internal travel/repositioning — never public, never a visited-county appearance.
   isTravelLeg              Boolean                 @default(false)
   /// Who may attend if the event is published.

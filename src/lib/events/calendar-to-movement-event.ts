@@ -3,6 +3,7 @@ import { getMovementRegionForCountySlug, STATEWIDE_EVENT_REGION } from "@/conten
 import type { EventItem, EventType } from "@/content/types";
 import type { PublicCampaignEvent } from "@/lib/calendar/public-event-types";
 import { withLiveEventStatus } from "@/lib/format/eventDisplay";
+import { applyPublishedCalendarOverlay } from "@/lib/scheduler/overlay-public-card";
 import { cardFromRow, cardToFieldAttendance } from "@/lib/scheduler/public-card-fields";
 
 /** Map CampaignOS types into movement /events filter buckets (approximate but useful). */
@@ -75,6 +76,7 @@ export function publicCampaignEventToEventItem(ev: PublicCampaignEvent): EventIt
     timezone: ev.timezone,
     locationLabel: ev.city?.trim() || venue || "Unknown",
     addressLine: ev.address ?? undefined,
+    publicContact: ev.publicContact?.trim() || undefined,
     summary,
     description: ev.publicSummary?.trim() || ev.title,
     whatToExpect: [],
@@ -110,7 +112,8 @@ export function mergeMovementAndCalendarEvents(
   calendar: PublicCampaignEvent[],
 ): EventItem[] {
   const taken = new Set(movement.map((e) => e.slug));
+  const overlaid = applyPublishedCalendarOverlay(movement, calendar);
   const synthetic = calendar.filter((c) => !taken.has(c.slug)).map(publicCampaignEventToEventItem);
   const now = new Date();
-  return [...movement, ...synthetic].map((e) => withLiveEventStatus(e, now));
+  return [...overlaid, ...synthetic].map((e) => withLiveEventStatus(e, now));
 }
