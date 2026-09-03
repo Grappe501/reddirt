@@ -20,7 +20,8 @@ export default async function SchedulerQueuePage({
       <div>
         <h1 className="font-heading text-2xl font-bold text-kelly-text">Event queue</h1>
         <p className="mt-2 max-w-2xl font-body text-sm text-kelly-text/75">
-          Edit fields, then publish. Add a stop from scratch or let OSCAR prefill from an email or flyer.
+          Upcoming stops only. Edit fields, then publish. Add a stop from scratch or let OSCAR prefill from an email or
+          flyer.
         </p>
         <p className="mt-3">
           <Link
@@ -53,7 +54,7 @@ export default async function SchedulerQueuePage({
       </div>
       {rows.length === 0 ? (
         <p className="rounded-card border border-dashed border-kelly-text/20 px-4 py-6 font-body text-sm text-kelly-text/70">
-          Nothing in this queue. Add a new event or open the OSCAR inbox.
+          No upcoming events in this queue. Add a new event or open the OSCAR inbox.
         </p>
       ) : (
         <ul className="space-y-3">

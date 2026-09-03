@@ -94,8 +94,10 @@ function toRow(r: {
 
 export async function loadSchedulerQueue(tab: SchedulerQueueTab): Promise<SchedulerQueueRow[]> {
   try {
+    const upcoming = { endAt: { gte: new Date() } };
     const rows = await prisma.campaignEvent.findMany({
       where: {
+        ...upcoming,
         ...(tab === "archive"
           ? { schedulerArchivedAt: { not: null } }
           : {
