@@ -556,7 +556,7 @@ const movementEventsCore: EventItem[] = [
     summary:
       "Thursday, September 3, 2026, **6:30 p.m. Central** at the **Basham Building on Huntsville Square**: Madison County Democrats meeting with **Kelly Grappe** as guest speaker. Open to neighbors who are not regular attendees.",
     description:
-      "Madison County Democrats Chair **Brandi Solorzano** announced the next county meeting: **Thursday, September 3, 6:30 p.m.**, at the **Basham Building – Huntsville Square**. **Kelly Grappe**, candidate for Arkansas Secretary of State, is the **guest speaker**.\n\nThis is a **county Democratic Party** meeting, not a campaign-hosted rally. The chair’s note says you do not have to be a regular attendee — neighbors, family, and colleagues are welcome to meet Kelly, hear why she is running, learn what the Secretary of State’s office does, and ask questions.\n\nThe chair quotes Kelly: “Leadership in this role isn’t about headlines or ideology—it’s about steady, transparent administration and respect for the law.”\n\nThere will be a **donation area** at the meeting. Donations may go to Kelly’s campaign or to the Madison County Democrats advertising and building-rental fund (meetings, candidate visits, and voter information). Campaign gifts: use the donate page on this site.\n\nLocal news places the Basham Building on **Polk Square** (Huntsville’s downtown square). The party invite does not list a street number.\n\nKelly is traveling from nearby Eureka Springs for this Huntsville meeting. Lodging is private and is not listed as a public stop.\n\nThe same Thursday, the campaign asked to stop by the **Madison County Senior Center** around lunch — that visit is not confirmed yet.",
+      "Madison County Democrats Chair **Brandi Solorzano** announced the next county meeting: **Thursday, September 3, 6:30 p.m.**, at the **Basham Building – Huntsville Square**. **Kelly Grappe**, candidate for Arkansas Secretary of State, is the **guest speaker**.\n\nThis is a **county Democratic Party** meeting, not a campaign-hosted rally. The chair’s note says you do not have to be a regular attendee — neighbors, family, and colleagues are welcome to meet Kelly, hear why she is running, learn what the Secretary of State’s office does, and ask questions.\n\nThe chair quotes Kelly: “Leadership in this role isn’t about headlines or ideology—it’s about steady, transparent administration and respect for the law.”\n\nThere will be a **donation area** at the meeting. Donations may go to Kelly’s campaign or to the Madison County Democrats advertising and building-rental fund (meetings, candidate visits, and voter information). Campaign gifts: use the donate page on this site.\n\nLocal news places the Basham Building on **Polk Square** (Huntsville’s downtown square). The party invite does not list a street number.\n\nKelly is traveling from nearby Eureka Springs for this Huntsville meeting. Lodging is private and is not listed as a public stop.",
     whatToExpect: [
       "6:30 p.m. Central start at the Basham Building on Huntsville Square (end time not posted — typical county-meeting evening)",
       "Kelly speaking, then questions — follow the chair and county party agenda",
@@ -566,16 +566,12 @@ const movementEventsCore: EventItem[] = [
     whoItsFor:
       "Madison County neighbors, Democrats, and anyone who wants to meet Kelly. Regular attendance is not required.",
     organizerNote:
-      "Updated from Brandi Solorzano (Chair, Madison County Democrats) meeting notice. Guest speaker: Kelly. Venue: Basham Building – Huntsville Square. Ledger id presence-2026-09-03-madison-county. Lodging is Eureka Springs, not Huntsville — do not publish hotel details. Same day lunch ask: madison-county-senior-center-2026 (not confirmed). Same evening: fred-love-fundraiser-conway-2026 The Max — cannot do Huntsville and Conway. Polk Fair Mena 4:00-9:00 p.m. — Huntsville to Mena is not realistic.",
+      "Updated from Brandi Solorzano (Chair, Madison County Democrats) meeting notice. Guest speaker: Kelly. Venue: Basham Building – Huntsville Square. Ledger id presence-2026-09-03-madison-county. Lodging is Eureka Springs, not Huntsville — do not publish hotel details. Lunch ask madison-county-senior-center-2026 archived 2026-09-03: campaign did not attend. Same evening: fred-love-fundraiser-conway-2026 The Max — cannot do Huntsville and Conway. Polk Fair Mena 4:00-9:00 p.m. — Huntsville to Mena is not realistic.",
     rsvpHref: "https://www.arkdems.org/county/madison/",
     audienceTags: ["Democratic Party", "Madison County", "Huntsville", "Northwest Arkansas"],
-    relatedEventSlugs: [
-      "democratic-party-montgomery-county-meeting-2026",
-      "madison-county-senior-center-2026",
-    ],
+    relatedEventSlugs: ["democratic-party-montgomery-county-meeting-2026"],
     relatedResourceHrefs: [
       { label: "Democratic Party of Madison County — ArkDems", href: "https://www.arkdems.org/county/madison/" },
-      { label: "Senior Center lunch stop (ask)", href: "/events/madison-county-senior-center-2026" },
       { label: "Donate", href: "/donate" },
       { label: "Get involved", href: "/get-involved" },
     ],
@@ -585,41 +581,35 @@ const movementEventsCore: EventItem[] = [
   },
   {
     slug: "madison-county-senior-center-2026",
-    title: "Madison County Senior Center — lunch stop (ask)",
+    title: "Madison County Senior Center — lunch stop (archived)",
     type: "Listening Session",
-    listeningSessionSeries: true,
     region: "Northwest Arkansas",
     countySlug: "madison-county",
-    status: "upcoming",
+    status: "past",
     startsAt: "2026-09-03T11:30:00",
     endsAt: "2026-09-03T13:00:00",
     timezone: "America/Chicago",
     locationLabel: "Madison County Senior Activity & Wellness Center — Huntsville",
     addressLine: "903 N. College Street, Huntsville, AR 72740 (Area Agency on Aging listing)",
     summary:
-      "Thursday, September 3, 2026, **around lunch** in Huntsville: the campaign asked to stop by the **Madison County Senior Center** to listen. The center has not confirmed. Informal visit — not a rally.",
+      "This lunch stop is off the public calendar. The campaign did not attend.",
     description:
-      "Steve Grappe wrote the Madison County Senior Center asking whether Kelly and a couple of campaign staff may stop by **Thursday, September 3**, around lunch, while she is in the county for the evening Democrats meeting.\n\nThe ask is to meet people, visit a little while, and hear what is on their minds — without interfering with lunch service or the day’s program. Time follows whatever works for the center. The **11:30 a.m.–1:00 p.m.** window on this page is only a placeholder.\n\nThe public name of the Huntsville site is the **Madison County Senior Activity & Wellness Center**, **903 N. College Street**, listed by the Area Agency on Aging of Northwest Arkansas (479-738-2750). This is a **center-hosted** lunch hour if they say yes, not a campaign event.\n\n**This stop is not confirmed.** Do not treat it as a public walk-in until the center replies.\n\nThursday evening is the Madison County Democrats meeting, 6:30 p.m., Basham Building on Huntsville Square.",
-    whatToExpect: [
-      "Lunch-hour listen if the center says yes — clock TBA",
-      "Informal conversation; follow meal and program rules",
-      "Not a speech or rally",
-    ],
-    whoItsFor:
-      "Seniors and staff at the Huntsville center if the visit is approved. Neighbors looking for a public Kelly event Thursday should use the 6:30 p.m. Democrats meeting unless the center posts otherwise.",
+      "The campaign had asked to stop by the **Madison County Senior Activity & Wellness Center** in Huntsville around lunch. **The campaign did not attend.** This listing is kept as an archive record only — it is not a public walk-in and is not a past campaign stop.\n\nThursday evening remains the Madison County Democrats meeting, 6:30 p.m., Basham Building on Huntsville Square.",
+    whatToExpect: ["Not attended — off the public calendar"],
+    whoItsFor: "Archive only. Neighbors looking for Kelly in Huntsville should use the 6:30 p.m. Democrats meeting.",
     organizerNote:
-      "Steve Grappe outreach letter 2026-09-02. Ask only — fieldAttendance tentative until the center replies. Do not publish campaign email. Same evening: madison-county-democrats-meeting-2026. Lodging Eureka Springs private.",
+      "Archived 2026-09-03 by Steve Grappe. Reason: campaign did not attend (operator: Madison County lunch / nursing home visit). Place snapshot: Madison County Senior Activity & Wellness Center — Huntsville · Madison County. Outreach letter was 2026-09-02; published window was Thu Sep 3 11:30 a.m.–1:00 p.m. Ledger id manual-2026-09-03-madison-senior-center. Same evening: madison-county-democrats-meeting-2026.",
     rsvpHref: undefined,
-    audienceTags: ["Huntsville", "Madison County", "Seniors", "Listening Session", "Northwest Arkansas"],
+    audienceTags: ["Huntsville", "Madison County", "Seniors", "Archive"],
     relatedEventSlugs: ["madison-county-democrats-meeting-2026"],
     relatedResourceHrefs: [
       { label: "Madison County Democrats meeting — 6:30 p.m.", href: "/events/madison-county-democrats-meeting-2026" },
-      { label: "Area Agency on Aging — Madison County center", href: "https://www.aaanwar.org/locations/detail/1432" },
       { label: "Get involved", href: "/get-involved" },
     ],
     mapCoordinates: { lat: 36.0862, lng: -93.7363 },
     mapPinQuality: "region",
-    fieldAttendance: "tentative",
+    fieldAttendance: "unscheduled",
+    marks: { kellyRole: "not_attending" },
   },
   {
     slug: "rector-labor-day-parade-picnic-2026",

@@ -3515,7 +3515,7 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     includeOnPublicPage: true,
     confidence: "confirmed",
     notes:
-      "Updated 2026-09-02 from Brandi Solorzano (Madison County Democrats chair): Thu Sep 3 6:30 p.m., Basham Building – Huntsville Square. Kelly is guest speaker. Donation table for campaign or county party ad/rental fund. Traveling from Eureka Springs lodging (private). /events/madison-county-democrats-meeting-2026 Same day lunch ask: Madison County Senior Center (not confirmed). Same evening Conway: Fred Love fundraiser at The Max — cannot do Huntsville and Conway.",
+      "Updated 2026-09-02 from Brandi Solorzano (Madison County Democrats chair): Thu Sep 3 6:30 p.m., Basham Building – Huntsville Square. Kelly is guest speaker. Donation table for campaign or county party ad/rental fund. Traveling from Eureka Springs lodging (private). /events/madison-county-democrats-meeting-2026 Same-day lunch ask archived 2026-09-03: campaign did not attend. Same evening Conway: Fred Love fundraiser at The Max — cannot do Huntsville and Conway.",
     sourceType: "calendar",
   },
   {
@@ -3534,16 +3534,16 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
   },
   {
     id: "manual-2026-09-03-madison-senior-center",
-    publicTitle: "Madison County Senior Center — lunch stop (ask)",
+    publicTitle: "Madison County Senior Center — lunch stop (archived)",
     date: "2026-09-03",
     title: "Madison County Senior Center lunch",
     city: "Huntsville",
     counties: ["Madison"],
-    status: "scheduled",
-    includeOnPublicPage: true,
-    confidence: "uncertain",
+    status: "canceled",
+    includeOnPublicPage: false,
+    confidence: "confirmed",
     notes:
-      "Steve Grappe outreach letter asking to stop by around lunch Thu Sep 3. Not confirmed. AAA listing: Madison County Senior Activity & Wellness Center, 903 N College, Huntsville. /events/madison-county-senior-center-2026 Same evening: Madison Dems 6:30 Basham Building. Do not publish campaign email.",
+      "Archived 2026-09-03 by Steve Grappe. Reason: campaign did not attend (operator: Madison County lunch / nursing home visit). Place: Madison County Senior Activity & Wellness Center — Huntsville · Madison County. Outreach letter 2026-09-02; published window Thu Sep 3 lunch. /events/madison-county-senior-center-2026 kept as archive only. Same evening: Madison Dems 6:30 Basham Building.",
     sourceType: "manual",
   },
 

@@ -10,5 +10,6 @@ import type { EventItem } from "@/content/types";
 export function listListeningSessionSeriesEvents(mergedEvents: EventItem[]): EventItem[] {
   return [...mergedEvents]
     .filter((e) => e.type === "Listening Session" || e.listeningSessionSeries === true)
+    .filter((e) => e.fieldAttendance !== "suggested" && e.fieldAttendance !== "unscheduled")
     .sort((a, b) => a.startsAt.localeCompare(b.startsAt));
 }
