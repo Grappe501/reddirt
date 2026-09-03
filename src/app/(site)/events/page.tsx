@@ -69,7 +69,7 @@ export default async function EventsPage({
 
       <FullBleedSection padY aria-labelledby="events-proof-heading">
         <ContentContainer>
-          <EventsProofSection ledger={ledger} features={features} />
+          <EventsProofSection features={features} />
         </ContentContainer>
       </FullBleedSection>
 
