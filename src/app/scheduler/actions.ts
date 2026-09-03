@@ -54,11 +54,31 @@ async function resolveCountyId(countyName: string | null | undefined): Promise<s
   return row?.id ?? null;
 }
 
-function cardFromForm(formData: FormData) {
+type SchedulerCardPatch = {
+  publicFieldAttendance: PublicFieldAttendance | null;
+  publicKellyRole: PublicKellyRole | null;
+  publicTabling: PublicTabling | null;
+  publicVolunteers: PublicVolunteers | null;
+  publicMobilize: PublicMobilize | null;
+  publicMobilizeHref: string | null;
+  publicVolunteerHref: string | null;
+  schedulerNeedsMoreInfo: boolean;
+  publicSummary: string | null;
+  locationName: string | null;
+  address: string | null;
+  city: string | null;
+  publicContact: string | null;
+  countyName: string | null;
+  title: string;
+  startAt?: Date;
+  endAt?: Date;
+};
+
+function cardFromForm(formData: FormData): SchedulerCardPatch {
   const date = String(formData.get("date") ?? "").slice(0, 10);
   const startTime = String(formData.get("startTime") ?? "") || undefined;
   const endTime = String(formData.get("endTime") ?? "") || undefined;
-  const timed = /^\d{4}-\d{2}-\d{2}$/.test(date)
+  const timed: Pick<SchedulerCardPatch, "startAt" | "endAt"> = /^\d{4}-\d{2}-\d{2}$/.test(date)
     ? (() => {
         const startAt = chicagoAt(date, startTime, 12);
         const endAt = chicagoAt(date, endTime || startTime, 13);

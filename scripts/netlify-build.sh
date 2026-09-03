@@ -197,8 +197,15 @@ if [ -z "${ALLOW_PRISMA_P1001_BYPASS:-}" ]; then
   fi
 fi
 
+# Deploy previews share the production migrate lock. Do not spend 90s losing
+# that race when schema apply is already optional for this context.
+if [ "${NETLIFY_CONTEXT:-}" = "deploy-preview" ] && [ "${PRISMA_MIGRATE_OPTIONAL_IN_DEPLOY_PREVIEW:-1}" = "1" ]; then
+  echo ">>> prisma migrate deploy skipped (deploy-preview; production migrate owns the lock)"
+  MIGRATE_SKIPPED=1
+fi
+
 attempt=1
-while [ "$attempt" -le "$MIGRATE_RETRIES" ]; do
+while [ "$MIGRATE_SKIPPED" != "1" ] && [ "$attempt" -le "$MIGRATE_RETRIES" ]; do
   echo ">>> prisma migrate deploy (attempt ${attempt}/${MIGRATE_RETRIES})"
 
   set +e
