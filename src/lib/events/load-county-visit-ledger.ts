@@ -1,7 +1,7 @@
 import { CampaignEventStatus, CampaignEventType } from "@prisma/client";
 import { kellyCampaignStops } from "@/data/kelly-county-visits/kelly-county-visits";
 import { prisma } from "@/lib/db";
-import { isPrismaLiveDataUnavailable, logPrismaDatabaseUnavailable } from "@/lib/prisma-connectivity";
+import { logPrismaDatabaseUnavailable } from "@/lib/prisma-connectivity";
 import {
   buildCountyVisitLedger,
   type CampaignAppearanceRow,
@@ -59,11 +59,9 @@ async function loadCampaignAppearanceRows(): Promise<CampaignAppearanceRow[]> {
       countySlug: r.county?.slug ?? null,
     }));
   } catch (e) {
-    if (isPrismaLiveDataUnavailable(e)) {
-      logPrismaDatabaseUnavailable("loadCampaignAppearanceRows", e);
-      return [];
-    }
-    throw e;
+    logPrismaDatabaseUnavailable("loadCampaignAppearanceRows", e);
+    console.error("[loadCampaignAppearanceRows]", e instanceof Error ? e.message : e);
+    return [];
   }
 }
 

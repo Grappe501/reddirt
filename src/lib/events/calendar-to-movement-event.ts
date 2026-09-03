@@ -120,5 +120,11 @@ export function mergeMovementAndCalendarEvents(
   const overlaid = applyPublishedCalendarOverlay(visibleMovement, visibleCalendar);
   const synthetic = visibleCalendar.filter((c) => !taken.has(c.slug)).map(publicCampaignEventToEventItem);
   const now = new Date();
-  return [...overlaid, ...synthetic].map((e) => withLiveEventStatus(e, now));
+  return [...overlaid, ...synthetic].map((e) => {
+    try {
+      return withLiveEventStatus(e, now);
+    } catch {
+      return e;
+    }
+  });
 }

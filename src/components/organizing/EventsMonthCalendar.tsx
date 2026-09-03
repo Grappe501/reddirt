@@ -7,10 +7,9 @@ import {
   weekday0SundayYmd,
   ymdInTimeZone,
 } from "@/lib/calendar/public-event-format";
-import { PUBLIC_CALENDAR_DEFAULT_TZ } from "@/lib/calendar/public-event-types";
 import type { EventsMonthPin } from "@/lib/events/events-month-pins";
 
-const TZ = PUBLIC_CALENDAR_DEFAULT_TZ;
+const TZ = "America/Chicago";
 const WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 const LAST_MONTH = { year: 2026, month: 11 };
 
@@ -57,7 +56,7 @@ export function EventsMonthCalendar({ pins }: { pins: EventsMonthPin[] }) {
     const byDay = new Map<string, EventsMonthPin[]>();
     const prefix = monthKey(view);
     for (const pin of pins) {
-      if (!pin.ymd.startsWith(prefix)) continue;
+      if (!pin.ymd || !pin.ymd.startsWith(prefix)) continue;
       const list = byDay.get(pin.ymd) ?? [];
       list.push(pin);
       byDay.set(pin.ymd, list);

@@ -14,7 +14,19 @@ export function countySummariesToMapFeatures(summaries: CountyCampaignSummary[])
   return ARKANSAS_COUNTY_SVG_PATHS.map((path) => {
     const summary = byKey.get(path.key);
     if (!summary) {
-      throw new Error(`Missing county summary for SVG key ${path.key}`);
+      return {
+        key: path.key,
+        name: path.name,
+        d: path.d,
+        publicState: "neutral" as const,
+        upcomingIndicator: null,
+        visited: false,
+        href: null,
+        ariaLabel: `${path.name} County — not yet visited`,
+        visitedLabel: "Not yet visited",
+        upcomingHeading: null,
+        upcomingLines: [],
+      };
     }
     const upcoming = [...summary.confirmedUpcomingEvents, ...summary.tentativeUpcomingEvents];
     const upcomingHeading = summary.confirmedUpcomingEvents.length

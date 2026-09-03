@@ -28,5 +28,10 @@ export async function loadPublicVisitSummary(): Promise<VisitSummary> {
 }
 
 export async function getCampaignStopMilestoneAsync() {
-  return getCampaignStopMilestone(await loadPublicVisitFilter());
+  try {
+    return getCampaignStopMilestone(await loadPublicVisitFilter());
+  } catch (e) {
+    console.error("[getCampaignStopMilestoneAsync]", e instanceof Error ? e.message : e);
+    return getCampaignStopMilestone();
+  }
 }

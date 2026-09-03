@@ -97,5 +97,6 @@ export function formatEventWhen(ev: EventItem): { primary: string; secondary?: s
 
 /** YYYY-MM-DD in the event timezone — for grouping trail days. */
 export function eventCalendarDayKey(ev: Pick<EventItem, "startsAt" | "timezone">): string {
-  return calendarDayInZone(parseEventInstant(ev.startsAt, ev.timezone), ev.timezone);
+  const tz = ev.timezone || "America/Chicago";
+  return calendarDayInZone(parseEventInstant(ev.startsAt, tz), tz);
 }
