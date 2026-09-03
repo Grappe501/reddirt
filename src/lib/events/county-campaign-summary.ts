@@ -57,7 +57,8 @@ export function drivesPublicCountyMap(event: EventItem): boolean {
   if (
     event.fieldAttendance === "unscheduled" ||
     event.fieldAttendance === "suggested" ||
-    event.fieldAttendance === "surrogate"
+    event.fieldAttendance === "surrogate" ||
+    event.fieldAttendance === "caution"
   ) {
     return false;
   }

@@ -2803,23 +2803,22 @@ const movementEventsCore: EventItem[] = [
     locationLabel: "Stuttgart (venue TBA)",
     addressLine: "Stuttgart, AR (building not on the calendar block)",
     summary:
-      "Saturday, September 12, 2026, **11:00 a.m.–1:00 p.m. Central** in Stuttgart. Venue TBA. Kelly will not attend. This is not a speaking engagement. The campaign will send someone if we can.",
+      "Saturday, September 12, 2026, **11:00 a.m.–1:00 p.m. Central** in Stuttgart. Venue TBA. Caution — we need more information before this is a locked stop.",
     description:
-      "Steve’s Google Calendar listed **Stuttgart 11am - 1** on Saturday, **September 12**.\n\n**Kelly will not attend.** This is **not a speaking engagement**. If the campaign can send someone, we will.\n\nNo building was on the block. This is not the October 17 Stuttgart hour — that is a separate calendar row.\n\nSaturday is already stacked with Cleveland County in Rison, Harrison Balloon Fest, and a Lafayette County hold.",
+      "Steve’s Google Calendar listed **Stuttgart 11am - 1** on Saturday, **September 12**.\n\n**Caution.** Venue, host, and whether Kelly is expected are not locked. We need more information before treating this as a confirmed stop.\n\nThis is not the October 17 Stuttgart hour — that is a separate calendar row.\n\nSaturday is already stacked with Cleveland County in Rison and Harrison balloon Sunday morning.",
     whatToExpect: [
-      "11:00 a.m.–1:00 p.m. Central",
+      "11:00 a.m.–1:00 p.m. Central on the calendar",
       "Venue TBA",
-      "Kelly will not attend — this is not a speaking engagement",
-      "The campaign will send someone if we can",
+      "Caution — more information needed before this is locked",
     ],
-    whoItsFor: "Arkansas County neighbors once a room is posted.",
+    whoItsFor: "Arkansas County neighbors once a room and host are posted.",
     organizerNote:
-      "Kelly not attending. Surrogate if we can staff it — not a speaking engagement. Distinct from stuttgart-oct-17-2026. Same day: cleveland-county-meet-and-greet-2026; Harrison balloon.",
+      "Yellow caution hold 2026-09-03 — need venue/host/Kelly yes-no. Distinct from stuttgart-oct-17-2026. Same day: cleveland-county-meet-and-greet-2026; Harrison balloon is Sunday 7am.",
     relatedEventSlugs: ["stuttgart-oct-17-2026", "cleveland-county-meet-and-greet-2026"],
     relatedResourceHrefs: [{ label: "Get involved", href: "/get-involved" }],
     mapCoordinates: { lat: 34.5004, lng: -91.5526 },
     mapPinQuality: "region",
-    fieldAttendance: "surrogate",
+    fieldAttendance: "caution",
   },
   {
     slug: "fort-smith-river-valley-choice-2026",

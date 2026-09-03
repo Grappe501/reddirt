@@ -171,7 +171,8 @@ export function isQualifyingMovementAppearance(event: EventItem, now: Date): boo
     event.fieldAttendance === "tentative" ||
     event.fieldAttendance === "suggested" ||
     event.fieldAttendance === "unscheduled" ||
-    event.fieldAttendance === "surrogate"
+    event.fieldAttendance === "surrogate" ||
+    event.fieldAttendance === "caution"
   ) {
     return false;
   }

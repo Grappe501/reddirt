@@ -135,7 +135,7 @@ export function computeSuggestedFestivalSlugs(fairs: EventItem[]): Set<string> {
 }
 
 function isManualAttendance(a: FieldAttendance | undefined): boolean {
-  return a === "tentative" || a === "confirmed" || a === "surrogate";
+  return a === "tentative" || a === "confirmed" || a === "surrogate" || a === "caution";
 }
 
 /**

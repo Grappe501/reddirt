@@ -23,8 +23,9 @@ export type EventStatus = "upcoming" | "past";
  * Movement calendar: coverage suggestion vs. human confirmation (fairs & festivals).
  * `surrogate` = stay on the public calendar; Kelly will not attend; red border;
  * send someone if we can; not a speaking engagement.
+ * `caution` = stay on the public calendar; yellow border; we need more information.
  */
-export type FieldAttendance = "unscheduled" | "suggested" | "tentative" | "confirmed" | "surrogate";
+export type FieldAttendance = "unscheduled" | "suggested" | "tentative" | "confirmed" | "surrogate" | "caution";
 
 export type EventType =
   | "Town Hall"

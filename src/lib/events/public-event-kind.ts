@@ -105,9 +105,16 @@ export function isKellyNotAttending(event: { fieldAttendance?: string }): boolea
   return event.fieldAttendance === "surrogate";
 }
 
+export function isCautionHold(event: { fieldAttendance?: string }): boolean {
+  return event.fieldAttendance === "caution";
+}
+
 /** Public line for red-border stops: Kelly is not going; send someone if we can. */
 export const KELLY_NOT_ATTENDING_COPY =
   "Kelly will not attend. If we can send someone, we will. This is not a speaking engagement.";
+
+/** Public line for yellow-border stops: date is on the calendar; details are incomplete. */
+export const CAUTION_HOLD_COPY = "Caution — we need more information before this is a locked stop.";
 
 export function eventCardCtaLabel(event: {
   primaryCtaLabel?: string;
@@ -117,6 +124,7 @@ export function eventCardCtaLabel(event: {
 }): string {
   if (event.primaryCtaLabel) return event.primaryCtaLabel;
   if (event.fieldAttendance === "surrogate") return "View details";
+  if (event.fieldAttendance === "caution") return "Need more information";
   if (event.fieldAttendance === "tentative") return "View tentative date";
   return attendanceCtaLabel(event.attendanceType);
 }

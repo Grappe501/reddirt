@@ -21,7 +21,12 @@ import { publicCampaignEventToEventItem } from "@/lib/events/calendar-to-movemen
 import { getJoinCampaignHref } from "@/config/external-campaign";
 import { isPrismaDatabaseUnavailable, logPrismaDatabaseUnavailable } from "@/lib/prisma-connectivity";
 import { pageMeta } from "@/lib/seo/metadata";
-import { isKellyNotAttending, KELLY_NOT_ATTENDING_COPY } from "@/lib/events/public-event-kind";
+import {
+  CAUTION_HOLD_COPY,
+  isCautionHold,
+  isKellyNotAttending,
+  KELLY_NOT_ATTENDING_COPY,
+} from "@/lib/events/public-event-kind";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -61,6 +66,7 @@ function CuratedOrCalendarEventView({ event }: { event: EventItem }) {
     .filter((e): e is NonNullable<typeof e> => Boolean(e))
     .filter((e) => e.slug !== event.slug);
   const kellyNotAttending = isKellyNotAttending(event);
+  const caution = isCautionHold(event);
 
   const rsvpHref =
     event.rsvpHref ??
@@ -73,6 +79,10 @@ function CuratedOrCalendarEventView({ event }: { event: EventItem }) {
         {kellyNotAttending ? (
           <Button href={coverHref} variant="primary">
             Volunteer to cover this stop
+          </Button>
+        ) : caution ? (
+          <Button href="/events" variant="primary">
+            Need more information
           </Button>
         ) : (
           <Button href={rsvpHref} variant="primary">
@@ -97,6 +107,8 @@ function CuratedOrCalendarEventView({ event }: { event: EventItem }) {
                 className={
                   kellyNotAttending
                     ? "mt-8 rounded-card border-2 border-red-600 bg-[var(--color-surface-elevated)] p-6 shadow-[var(--shadow-soft)] md:p-8"
+                    : caution
+                      ? "mt-8 rounded-card border-2 border-yellow-400 bg-yellow-50/40 p-6 shadow-[var(--shadow-soft)] md:p-8"
                     : "mt-8 rounded-card border border-kelly-text/10 bg-[var(--color-surface-elevated)] p-6 shadow-[var(--shadow-soft)] md:p-8"
                 }
               >
@@ -104,6 +116,7 @@ function CuratedOrCalendarEventView({ event }: { event: EventItem }) {
                 {kellyNotAttending ? (
                   <p className="mt-4 font-body text-sm text-kelly-text/75">{KELLY_NOT_ATTENDING_COPY}</p>
                 ) : null}
+                {caution ? <p className="mt-4 font-body text-sm text-kelly-text/75">{CAUTION_HOLD_COPY}</p> : null}
               </div>
 
               {event.description ? (
@@ -154,11 +167,13 @@ function CuratedOrCalendarEventView({ event }: { event: EventItem }) {
                 className={
                   kellyNotAttending
                     ? "rounded-card border-2 border-red-600 bg-[var(--color-surface-elevated)] p-6 shadow-[var(--shadow-soft)]"
+                    : caution
+                      ? "rounded-card border-2 border-yellow-400 bg-yellow-50/40 p-6 shadow-[var(--shadow-soft)]"
                     : "rounded-card border border-kelly-text/10 bg-[var(--color-surface-elevated)] p-6 shadow-[var(--shadow-soft)]"
                 }
               >
                 <h2 className="font-heading text-lg font-bold text-kelly-text">
-                  {kellyNotAttending ? "Campaign coverage" : "Join this stop"}
+                  {kellyNotAttending ? "Campaign coverage" : caution ? "Needs more information" : "Join this stop"}
                 </h2>
                 <p className="mt-3 font-body text-sm leading-relaxed text-kelly-text/75">{event.locationLabel}</p>
                 {event.addressLine ? (
@@ -167,9 +182,18 @@ function CuratedOrCalendarEventView({ event }: { event: EventItem }) {
                 {kellyNotAttending ? (
                   <p className="mt-3 font-body text-sm text-kelly-text/70">{KELLY_NOT_ATTENDING_COPY}</p>
                 ) : null}
+                {caution ? <p className="mt-3 font-body text-sm text-kelly-text/70">{CAUTION_HOLD_COPY}</p> : null}
               </div>
-              <Button href={kellyNotAttending ? coverHref : rsvpHref} variant="primary" className="w-full justify-center">
-                {kellyNotAttending ? "Volunteer to cover this stop" : "RSVP or raise your hand"}
+              <Button
+                href={kellyNotAttending ? coverHref : caution ? "/events" : rsvpHref}
+                variant="primary"
+                className="w-full justify-center"
+              >
+                {kellyNotAttending
+                  ? "Volunteer to cover this stop"
+                  : caution
+                    ? "Need more information"
+                    : "RSVP or raise your hand"}
               </Button>
               {county ? (
                 <Link

@@ -3,7 +3,12 @@
 import Link from "next/link";
 import type { EventItem } from "@/content/types";
 import { formatEventWhen } from "@/lib/format/eventDisplay";
-import { isKellyNotAttending, KELLY_NOT_ATTENDING_COPY } from "@/lib/events/public-event-kind";
+import {
+  CAUTION_HOLD_COPY,
+  isCautionHold,
+  isKellyNotAttending,
+  KELLY_NOT_ATTENDING_COPY,
+} from "@/lib/events/public-event-kind";
 import { cn } from "@/lib/utils";
 
 type EventCardProps = {
@@ -26,12 +31,17 @@ export function EventCard({ event, className, highlighted, onActivate }: EventCa
   const detailHref = event.detailHref ?? `/events/${event.slug}`;
   const tba = locationIsTba(event);
   const kellyNotAttending = isKellyNotAttending(event);
+  const caution = isCautionHold(event);
   return (
     <article
       id={`event-card-${event.slug}`}
       className={cn(
         "flex h-full flex-col justify-between rounded-card bg-[var(--color-surface-elevated)] p-6 shadow-[var(--shadow-soft)] md:p-7 scroll-mt-28",
-        kellyNotAttending ? "border-2 border-red-600" : "border border-kelly-text/10",
+        kellyNotAttending
+          ? "border-2 border-red-600"
+          : caution
+            ? "border-2 border-yellow-400"
+            : "border border-kelly-text/10",
         highlighted && "ring-2 ring-kelly-navy/50 ring-offset-2 ring-offset-kelly-page",
         onActivate && "cursor-pointer",
         className,
@@ -67,6 +77,11 @@ export function EventCard({ event, className, highlighted, onActivate }: EventCa
               Kelly not attending
             </span>
           ) : null}
+          {caution ? (
+            <span className="rounded-full border-2 border-yellow-400 bg-yellow-50 px-2.5 py-0.5 font-body text-[11px] font-bold uppercase tracking-wider text-yellow-800">
+              Caution
+            </span>
+          ) : null}
         </div>
         <h3 className="mt-4 font-heading text-xl font-bold text-kelly-text lg:text-2xl">
           <Link
@@ -85,6 +100,7 @@ export function EventCard({ event, className, highlighted, onActivate }: EventCa
         {kellyNotAttending ? (
           <p className="mt-3 font-body text-sm text-kelly-text/70">{KELLY_NOT_ATTENDING_COPY}</p>
         ) : null}
+        {caution ? <p className="mt-3 font-body text-sm text-kelly-text/70">{CAUTION_HOLD_COPY}</p> : null}
       </div>
       <Link
         href={detailHref}
