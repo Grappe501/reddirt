@@ -1,24 +1,14 @@
-import Link from "next/link";
-import { Button } from "@/components/ui/Button";
 import { CampaignJourneyMap } from "@/components/organizing/events-map/CampaignJourneyMap";
 import type { CountyMapFeature } from "@/components/organizing/events-map/county-map-types";
-import type { CountyVisitLedger } from "@/lib/events/county-visit-ledger";
-import {
-  CAMPAIGN_STOP_MILESTONE,
-  campaignStopMilestoneAsOfHref,
-  formatCampaignStopAsOfDate,
-} from "@/content/events/campaign-stop-milestone";
+import { formatCampaignStopAsOfDate, getCampaignStopMilestone } from "@/content/events/campaign-stop-milestone";
 
 export function EventsProofSection({
-  ledger,
   features,
 }: {
-  ledger: CountyVisitLedger;
   features: CountyMapFeature[];
 }) {
-  const n = ledger.visited.length;
+  const milestone = getCampaignStopMilestone();
   const asOfDate = formatCampaignStopAsOfDate();
-  const asOfHref = campaignStopMilestoneAsOfHref();
 
   return (
     <section aria-labelledby="events-proof-heading" className="space-y-8">
@@ -37,42 +27,23 @@ export function EventsProofSection({
 
       <div className="grid gap-4 sm:grid-cols-2">
         <div className="rounded-card border border-kelly-navy/15 bg-kelly-navy/[0.04] px-5 py-6">
-          <p className="font-heading text-4xl font-bold text-kelly-navy md:text-5xl">{CAMPAIGN_STOP_MILESTONE.count}</p>
+          <p className="font-heading text-4xl font-bold text-kelly-navy md:text-5xl">{milestone.count}</p>
           <p className="mt-2 font-body text-sm font-semibold text-kelly-text">Scheduled campaign stops</p>
-          <p className="mt-1 font-body text-sm text-kelly-text/70">
-            As of {asOfDate} —{" "}
-            <Link href={asOfHref} className="font-semibold text-kelly-navy underline-offset-4 hover:underline">
-              {CAMPAIGN_STOP_MILESTONE.asOfEventTitle}
-            </Link>
-            .
-          </p>
+          <p className="mt-1 font-body text-sm text-kelly-text/70">As of {asOfDate} through Election Day.</p>
         </div>
         <div className="rounded-card border border-kelly-navy/15 bg-kelly-navy/[0.04] px-5 py-6">
-          <p className="font-heading text-4xl font-bold text-kelly-navy md:text-5xl">
-            {n} of {ledger.totalCounties}
-          </p>
-          <p className="mt-2 font-body text-sm font-semibold text-kelly-text">Arkansas counties visited</p>
+          <div className="flex flex-wrap gap-8">
+            <div>
+              <p className="font-heading text-4xl font-bold text-kelly-navy md:text-5xl">{milestone.completedCount}</p>
+              <p className="mt-2 font-body text-sm font-semibold text-kelly-text">Stops completed</p>
+            </div>
+            <div>
+              <p className="font-heading text-4xl font-bold text-kelly-navy md:text-5xl">{milestone.upcomingCount}</p>
+              <p className="mt-2 font-body text-sm font-semibold text-kelly-text">Stops remaining</p>
+            </div>
+          </div>
+          <p className="mt-3 font-body text-sm text-kelly-text/70">Through Election Day.</p>
         </div>
-      </div>
-
-      <div>
-        <h3 className="font-heading text-lg font-bold text-kelly-text">Counties visited</h3>
-        <ul className="mt-4 columns-2 gap-x-8 sm:columns-3 md:columns-4" aria-label="Visited Arkansas counties">
-          {ledger.visited.map((row) => (
-            <li key={row.countyName} className="break-inside-avoid py-1 font-body text-sm text-kelly-text">
-              {row.countyName}
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      <div className="flex flex-wrap gap-3">
-        <Button href="/events/request" variant="primary">
-          Invite Kelly
-        </Button>
-        <Button href="/events" variant="outline">
-          Campaign calendar
-        </Button>
       </div>
     </section>
   );
