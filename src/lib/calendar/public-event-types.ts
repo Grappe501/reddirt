@@ -31,6 +31,13 @@ export type PublicCampaignEvent = {
   primaryAction: { label: string; href: string };
   /** “Volunteer / join” — campaign-wide join touchpoint. */
   secondaryAction: { label: string; href: string };
+  publicFieldAttendance?: string | null;
+  publicKellyRole?: string | null;
+  publicTabling?: string | null;
+  publicVolunteers?: string | null;
+  publicMobilize?: string | null;
+  publicMobilizeHref?: string | null;
+  publicVolunteerHref?: string | null;
 };
 
 export type PublicEventRangePreset = "all_upcoming" | "this_week" | "this_month";
@@ -62,6 +69,13 @@ export const publicCampaignEventSelect = {
   address: true,
   eventType: true,
   county: { select: { displayName: true, slug: true } },
+  publicFieldAttendance: true,
+  publicKellyRole: true,
+  publicTabling: true,
+  publicVolunteers: true,
+  publicMobilize: true,
+  publicMobilizeHref: true,
+  publicVolunteerHref: true,
 } as const;
 
 export type PublicCampaignEventRow = Prisma.CampaignEventGetPayload<{

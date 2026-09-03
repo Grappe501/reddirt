@@ -3345,6 +3345,17 @@ model CampaignEvent {
   lastAttendeeNoticeAt     DateTime?
   lastCancellationNoticeAt DateTime?
   thankYouQueuedAt         DateTime?
+  /// Scheduler Dashboard public card (validated in app; not Prisma enums).
+  publicFieldAttendance    String?
+  publicKellyRole          String?
+  publicTabling            String?
+  publicVolunteers         String?
+  publicMobilize           String?
+  publicMobilizeHref       String?
+  publicVolunteerHref      String?
+  schedulerNeedsMoreInfo   Boolean                  @default(false)
+  schedulerPublishedBy     String?
+  schedulerPublishedAt     DateTime?
   createdAt                DateTime                @default(now())
   updatedAt                DateTime                @updatedAt
 

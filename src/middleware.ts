@@ -31,8 +31,9 @@ export function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    /** Only election-plan + legacy volunteers — skip public site to avoid edge timeouts. */
+    /** Only election-plan + legacy volunteers + scheduler — skip public site to avoid edge timeouts. */
     "/election-plan/:path*",
     "/volunteers/:path*",
+    "/scheduler/:path*",
   ],
 };

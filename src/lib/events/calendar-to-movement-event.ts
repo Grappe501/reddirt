@@ -2,6 +2,7 @@ import type { CampaignEventType } from "@prisma/client";
 import { getMovementRegionForCountySlug, STATEWIDE_EVENT_REGION } from "@/content/arkansas-movement-regions";
 import type { EventItem, EventType } from "@/content/types";
 import type { PublicCampaignEvent } from "@/lib/calendar/public-event-types";
+import { cardFromRow, cardToEventMarks, cardToFieldAttendance } from "@/lib/scheduler/public-card-fields";
 
 /** Map CampaignOS types into movement /events filter buckets (approximate but useful). */
 export function campaignEventTypeToMovementEventType(t: CampaignEventType): EventType {
@@ -76,6 +77,8 @@ export function publicCampaignEventToEventItem(ev: PublicCampaignEvent): EventIt
     mapPinQuality: undefined,
     detailHref: ev.detailHref,
     eventSource: "calendar",
+    fieldAttendance: cardToFieldAttendance(cardFromRow(ev)),
+    marks: cardToEventMarks(cardFromRow(ev)),
     opsFlags: {
       missingPublicSummary: !hasSummary,
       missingCounty: !ev.county,
