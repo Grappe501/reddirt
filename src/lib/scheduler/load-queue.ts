@@ -1,4 +1,5 @@
 import { CampaignEventStatus, EventWorkflowState } from "@prisma/client";
+import type { EventItem } from "@/content/types";
 import { events } from "@/content/events";
 import { queryPublicCampaignEvents } from "@/lib/calendar/public-events";
 import { mergeMovementAndCalendarEvents } from "@/lib/events/calendar-to-movement-event";
@@ -99,6 +100,51 @@ function toRow(r: {
   };
 }
 
+function syntheticPublicRow(event: EventItem): SchedulerQueueRow {
+  return {
+    id: `public:${event.slug}`,
+    slug: event.slug,
+    title: event.title,
+    href: `/scheduler/open/${encodeURIComponent(event.slug)}`,
+    startAt: parseEventInstant(event.startsAt, event.timezone),
+    locationName: event.locationLabel ?? null,
+    countyName: event.countySlug ? event.countySlug.replace(/-/g, " ") : null,
+    isLive: true,
+    isArchived: false,
+    card: emptyCard(),
+    publishedBy: "Public calendar",
+    publishedAt: null,
+    archivedBy: null,
+    archivedAt: null,
+    archiveReason: null,
+    archivePlace: null,
+  };
+}
+
+export async function hydrateSchedulerRowsFromEvents(items: EventItem[]): Promise<SchedulerQueueRow[]> {
+  try {
+    const slugs = items.map((event) => event.slug);
+    const dbRows =
+      slugs.length === 0
+        ? []
+        : await prisma.campaignEvent.findMany({
+            where: { slug: { in: slugs } },
+            select: SELECT,
+          });
+    const bySlug = new Map(dbRows.map((row) => [row.slug, row]));
+    return items.map((event) => {
+      const db = bySlug.get(event.slug);
+      return db ? { ...toRow(db), isLive: true } : syntheticPublicRow(event);
+    });
+  } catch (e) {
+    if (isPrismaLiveDataUnavailable(e)) {
+      logPrismaDatabaseUnavailable("hydrateSchedulerRowsFromEvents", e);
+      return items.map(syntheticPublicRow);
+    }
+    throw e;
+  }
+}
+
 async function loadSchedulerLiveQueue(): Promise<SchedulerQueueRow[]> {
   const now = new Date();
   const calendarRows = await queryPublicCampaignEvents({}, { take: 200 });
@@ -108,37 +154,7 @@ async function loadSchedulerLiveQueue(): Promise<SchedulerQueueRow[]> {
       .filter((event) => event.fieldAttendance !== "suggested" && event.fieldAttendance !== "unscheduled")
       .sort((a, b) => compareEventsForHub(a, b, now)),
   );
-  const slugs = merged.map((event) => event.slug);
-  const dbRows =
-    slugs.length === 0
-      ? []
-      : await prisma.campaignEvent.findMany({
-          where: { slug: { in: slugs } },
-          select: SELECT,
-        });
-  const bySlug = new Map(dbRows.map((row) => [row.slug, row]));
-  return merged.map((event) => {
-    const db = bySlug.get(event.slug);
-    if (db) return { ...toRow(db), isLive: true };
-    return {
-      id: `public:${event.slug}`,
-      slug: event.slug,
-      title: event.title,
-      href: `/scheduler/open/${encodeURIComponent(event.slug)}`,
-      startAt: parseEventInstant(event.startsAt, event.timezone),
-      locationName: event.locationLabel ?? null,
-      countyName: event.countySlug ? event.countySlug.replace(/-/g, " ") : null,
-      isLive: true,
-      isArchived: false,
-      card: emptyCard(),
-      publishedBy: "Public calendar",
-      publishedAt: null,
-      archivedBy: null,
-      archivedAt: null,
-      archiveReason: null,
-      archivePlace: null,
-    };
-  });
+  return hydrateSchedulerRowsFromEvents(merged);
 }
 
 export async function loadSchedulerQueue(tab: SchedulerQueueTab): Promise<SchedulerQueueRow[]> {
