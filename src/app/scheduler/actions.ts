@@ -6,7 +6,7 @@ import { redirect } from "next/navigation";
 import { prisma } from "@/lib/db";
 import { findInstantOnYmd } from "@/lib/calendar/public-event-format";
 import { PUBLIC_CALENDAR_DEFAULT_TZ } from "@/lib/calendar/public-event-types";
-import type { IngestImage } from "@/lib/calendar-admin/ingest";
+import type { IngestImage } from "@/lib/scheduler/ingest";
 import { runOscarIngest, type OscarDraft } from "@/lib/scheduler/oscar";
 import {
   FIELD_ATTENDANCE_VALUES,

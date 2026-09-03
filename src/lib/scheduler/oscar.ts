@@ -1,7 +1,6 @@
 import "server-only";
 import { ARKANSAS_COUNTIES } from "@/data/kelly-county-visits";
-import { extractCalendarIngest, type IngestImage } from "@/lib/calendar-admin/ingest";
-import type { ProposedStop } from "@/lib/calendar-admin/types";
+import { extractOscarStops, type IngestImage, type OscarProposedStop } from "@/lib/scheduler/ingest";
 import {
   formatOpenAIErrorForClient,
   getOpenAIClient,
@@ -19,7 +18,7 @@ import {
 } from "@/lib/scheduler/public-card-fields";
 
 export type OscarDraft = {
-  proposal: ProposedStop;
+  proposal: OscarProposedStop;
   card: SchedulerPublicCard;
   publicSummary: string;
   weakFields: string[];
@@ -30,12 +29,12 @@ function asAllowed<T extends string>(raw: unknown, allowed: readonly T[]): T | n
   return (allowed as readonly string[]).includes(raw) ? (raw as T) : null;
 }
 
-function neighborSummary(stop: ProposedStop): string {
+function neighborSummary(stop: OscarProposedStop): string {
   const place = stop.city?.trim() || (stop.counties[0] ? `${stop.counties[0]} County` : "Arkansas");
   return `Kelly will be in ${place}. Details will be posted here when they are locked.`;
 }
 
-async function prefillPublicCard(stop: ProposedStop, sourceText: string): Promise<{
+async function prefillPublicCard(stop: OscarProposedStop, sourceText: string): Promise<{
   card: SchedulerPublicCard;
   publicSummary: string;
   weakFields: string[];
@@ -135,10 +134,9 @@ export async function runOscarIngest(input: { text: string; images: IngestImage[
   ignored: Array<{ title: string; reason: string }>;
   warning?: string;
 }> {
-  const extracted = await extractCalendarIngest({
+  const extracted = await extractOscarStops({
     text: input.text,
     images: input.images,
-    existing: [],
   });
   const drafts: OscarDraft[] = [];
   for (const proposal of extracted.items.filter((item) => !item.skipAsPublic && item.includeOnPublicPage)) {
