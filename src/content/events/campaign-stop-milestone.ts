@@ -3,24 +3,11 @@
  * and /events no longer freeze on a hand-locked number (was 227 as of Aug 18).
  */
 import { getVisitSummary, type PublicStopFilter } from "@/data/kelly-county-visits";
-import { loadPublicVisitSummary } from "@/lib/events/load-public-visit-summary";
 
-const MILESTONE_AS_OF_YMD = "2026-09-02";
+export const MILESTONE_AS_OF_YMD = "2026-09-02";
 
 export function getCampaignStopMilestone(filter?: PublicStopFilter) {
   const summary = getVisitSummary(filter);
-  return {
-    count: summary.totalPublicStopCount,
-    completedCount: summary.completedStopCount,
-    upcomingCount: summary.scheduledStopCount,
-    asOfYmd: MILESTONE_AS_OF_YMD,
-    asOfEventSlug: "arkansas-visits",
-    asOfEventTitle: "Kelly Across Arkansas visit ledger",
-  };
-}
-
-export async function getCampaignStopMilestoneAsync() {
-  const summary = await loadPublicVisitSummary();
   return {
     count: summary.totalPublicStopCount,
     completedCount: summary.completedStopCount,

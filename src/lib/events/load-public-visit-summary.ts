@@ -1,3 +1,4 @@
+import { getCampaignStopMilestone } from "@/content/events/campaign-stop-milestone";
 import {
   eventSlugFromCampaignStop,
   getUpcomingPublicStops,
@@ -24,4 +25,8 @@ export async function loadPublicVisitFilter(): Promise<PublicStopFilter> {
 
 export async function loadPublicVisitSummary(): Promise<VisitSummary> {
   return getVisitSummary(await loadPublicVisitFilter());
+}
+
+export async function getCampaignStopMilestoneAsync() {
+  return getCampaignStopMilestone(await loadPublicVisitFilter());
 }

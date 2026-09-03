@@ -16,7 +16,8 @@ import { safePublishedCountyOptions } from "@/lib/county/safe-published-county-o
 
 import { pageMeta } from "@/lib/seo/metadata";
 import { brandMediaFromLegacySite } from "@/config/brand-media";
-import { campaignStopMilestoneLine, getCampaignStopMilestoneAsync } from "@/content/events/campaign-stop-milestone";
+import { campaignStopMilestoneLine } from "@/content/events/campaign-stop-milestone";
+import { getCampaignStopMilestoneAsync } from "@/lib/events/load-public-visit-summary";
 
 export async function generateMetadata(): Promise<Metadata> {
   const milestone = await getCampaignStopMilestoneAsync();
