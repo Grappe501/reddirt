@@ -21,10 +21,9 @@ async function loadCampaignAppearanceRows(): Promise<CampaignAppearanceRow[]> {
   try {
     const rows = await prisma.campaignEvent.findMany({
       where: {
-        isTravelLeg: false,
         countyId: { not: null },
         status: {
-          notIn: [CampaignEventStatus.TENTATIVE, CampaignEventStatus.DRAFT, CampaignEventStatus.CANCELLED],
+          notIn: [CampaignEventStatus.DRAFT, CampaignEventStatus.CANCELLED],
         },
         eventType: { notIn: [...NON_APPEARANCE] },
       },
@@ -35,8 +34,6 @@ async function loadCampaignAppearanceRows(): Promise<CampaignAppearanceRow[]> {
         endAt: true,
         timezone: true,
         eventType: true,
-        attendanceType: true,
-        isTravelLeg: true,
         status: true,
         locationName: true,
         address: true,
@@ -50,8 +47,6 @@ async function loadCampaignAppearanceRows(): Promise<CampaignAppearanceRow[]> {
       endAt: r.endAt,
       timezone: r.timezone,
       eventType: r.eventType,
-      attendanceType: r.attendanceType,
-      isTravelLeg: r.isTravelLeg,
       status: r.status,
       locationName: r.locationName,
       address: r.address,

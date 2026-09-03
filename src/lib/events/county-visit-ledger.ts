@@ -1,4 +1,4 @@
-import type { CampaignEventAttendanceType, CampaignEventType } from "@prisma/client";
+import type { CampaignEventType } from "@prisma/client";
 import {
   ARKANSAS_COUNTIES,
   ARKANSAS_COUNTY_COUNT,
@@ -61,7 +61,7 @@ export type CampaignAppearanceRow = {
   endAt: Date;
   timezone?: string | null;
   eventType: CampaignEventType;
-  attendanceType?: CampaignEventAttendanceType | null;
+  attendanceType?: string | null;
   isTravelLeg?: boolean | null;
   status?: string | null;
   locationName?: string | null;

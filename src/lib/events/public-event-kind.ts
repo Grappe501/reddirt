@@ -1,5 +1,12 @@
-import type { CampaignEventAttendanceType, CampaignEventType } from "@prisma/client";
+import type { CampaignEventType } from "@prisma/client";
 import type { EventType } from "@/content/types";
+
+/** Public calendar attendance kind. Not a Prisma enum on the Netlify-generated schema. */
+export type CampaignEventAttendanceKind =
+  | "PUBLIC_OPEN"
+  | "PUBLIC_REGISTRATION"
+  | "INVITATION"
+  | "PRIVATE";
 
 export type PublicEventLane = "community" | "civic" | "campaign";
 
@@ -56,7 +63,7 @@ export function publicLaneForMovementType(t: EventType): PublicEventLane {
   }
 }
 
-export function attendanceCtaLabel(kind: CampaignEventAttendanceType | string | undefined): string {
+export function attendanceCtaLabel(kind: CampaignEventAttendanceKind | string | undefined): string {
   switch (kind) {
     case "PUBLIC_OPEN":
     case "PUBLIC_REGISTRATION":
@@ -146,12 +153,12 @@ export function eventCardCtaLabel(event: {
   return attendanceCtaLabel(event.attendanceType);
 }
 
-export function attendanceIsOpenInvite(kind: CampaignEventAttendanceType | string | undefined): boolean {
+export function attendanceIsOpenInvite(kind: CampaignEventAttendanceKind | string | undefined): boolean {
   return kind === "PUBLIC_OPEN" || kind === "PUBLIC_REGISTRATION";
 }
 
 export function attendanceDetailCopy(
-  kind: CampaignEventAttendanceType | string | undefined,
+  kind: CampaignEventAttendanceKind | string | undefined,
   city: string,
 ): { headline: string; rsvpLabel: string | null; note: string | null } {
   if (kind === "PUBLIC_OPEN" || kind === "PUBLIC_REGISTRATION") {
