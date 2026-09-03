@@ -19,8 +19,21 @@ export type RegionPage = {
 
 export type EventStatus = "upcoming" | "past";
 
-/** Movement calendar: coverage suggestion vs. human confirmation (fairs & festivals). */
-export type FieldAttendance = "unscheduled" | "suggested" | "tentative" | "confirmed";
+/**
+ * Movement calendar: coverage suggestion vs. human confirmation (fairs & festivals).
+ * `surrogate` = stay on the public calendar; Kelly will not attend.
+ * `caution` = stay on the public calendar; we need more information.
+ */
+export type FieldAttendance = "unscheduled" | "suggested" | "tentative" | "confirmed" | "surrogate" | "caution";
+
+export type EventMarks = {
+  kellyRole?: "speaking" | "present" | "not_attending" | "tba";
+  tabling?: "yes" | "planned" | "no";
+  volunteers?: "needed" | "shifts_open" | "none";
+  mobilize?: "live" | "needed" | "none";
+  mobilizeHref?: string;
+  volunteerHref?: string;
+};
 
 export type EventType =
   | "Town Hall"

@@ -48,6 +48,7 @@ export const config = {
   matcher: [
     "/election-plan/:path*",
     "/volunteers/:path*",
+    "/scheduler/:path*",
     "/es",
     "/es/:path*",
   ],
