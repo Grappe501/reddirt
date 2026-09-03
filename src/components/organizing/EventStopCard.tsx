@@ -6,6 +6,7 @@ import { formatCountyFirstMeta, publicCountyEyebrow } from "@/lib/events/public-
 import { resolveEventStatus, stripPublicMarkdown } from "@/lib/format/eventDisplay";
 import {
   attendanceIsOpenInvite,
+  eventBoardChromeClass,
   eventCardActionHref,
   eventCardCtaLabel,
   eventCardTitleHref,
@@ -13,6 +14,7 @@ import {
   isKellyNotAttending,
   CAUTION_HOLD_COPY,
   KELLY_NOT_ATTENDING_COPY,
+  SCHEDULE_CONFLICT_COPY,
 } from "@/lib/events/public-event-kind";
 import { isExternalHref } from "@/lib/href";
 
@@ -38,7 +40,13 @@ function EventHref({
   );
 }
 
-export function EventStopCard({ event }: { event: EventItem }) {
+export function EventStopCard({
+  event,
+  scheduleConflict = false,
+}: {
+  event: EventItem;
+  scheduleConflict?: boolean;
+}) {
   const status = resolveEventStatus(event);
   const titleHref = eventCardTitleHref(event);
   const actionHref = eventCardActionHref(event);
@@ -49,17 +57,7 @@ export function EventStopCard({ event }: { event: EventItem }) {
   const caution = isCautionHold(event);
 
   return (
-    <article
-      className={
-        kellyNotAttending
-          ? "rounded-card border-2 border-red-600 bg-[var(--color-surface-elevated)] p-5 shadow-[var(--shadow-soft)]"
-          : caution
-            ? "rounded-card border-2 border-yellow-400 bg-yellow-50/40 p-5 shadow-[var(--shadow-soft)]"
-          : event.featured
-            ? "rounded-card border-2 border-kelly-gold/55 bg-[var(--color-surface-elevated)] p-5 shadow-[var(--shadow-soft)]"
-            : "rounded-card border border-kelly-text/10 bg-[var(--color-surface-elevated)] p-5 shadow-[var(--shadow-soft)]"
-      }
-    >
+    <article className={`rounded-card p-5 shadow-[var(--shadow-soft)] ${eventBoardChromeClass(event, scheduleConflict)}`}>
       <p className="font-body text-xs font-bold uppercase tracking-wider text-kelly-navy">{publicCountyEyebrow(event)}</p>
       {event.featured ? (
         <p className="mt-1 font-body text-[11px] font-bold uppercase tracking-wider text-kelly-navy">
@@ -68,10 +66,12 @@ export function EventStopCard({ event }: { event: EventItem }) {
       ) : null}
       {kellyNotAttending ? (
         <p className="mt-1 font-body text-[11px] font-bold uppercase tracking-wider text-red-700">Kelly not attending</p>
+      ) : scheduleConflict ? (
+        <p className="mt-1 font-body text-[11px] font-bold uppercase tracking-wider text-yellow-950">Conflict</p>
       ) : caution ? (
-        <p className="mt-1 font-body text-[11px] font-bold uppercase tracking-wider text-yellow-800">Caution</p>
+        <p className="mt-1 font-body text-[11px] font-bold uppercase tracking-wider text-amber-800">Caution</p>
       ) : tentative ? (
-        <p className="mt-1 font-body text-[11px] font-bold uppercase tracking-wider text-kelly-text/60">Tentative</p>
+        <p className="mt-1 font-body text-[11px] font-bold uppercase tracking-wider text-orange-800">Tentative</p>
       ) : null}
       <h3 className="mt-2 font-heading text-xl font-bold text-kelly-text">
         <EventHref
@@ -85,6 +85,8 @@ export function EventStopCard({ event }: { event: EventItem }) {
       <p className="mt-3 font-body text-sm leading-relaxed text-kelly-text/75">{summary}</p>
       {kellyNotAttending ? (
         <p className="mt-3 font-body text-sm text-kelly-text/70">{KELLY_NOT_ATTENDING_COPY}</p>
+      ) : scheduleConflict ? (
+        <p className="mt-3 font-body text-sm text-yellow-950">{SCHEDULE_CONFLICT_COPY}</p>
       ) : caution ? (
         <p className="mt-3 font-body text-sm text-kelly-text/70">{CAUTION_HOLD_COPY}</p>
       ) : !open && status === "upcoming" && !event.statewideVirtual ? (

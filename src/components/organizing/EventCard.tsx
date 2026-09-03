@@ -5,9 +5,11 @@ import type { EventItem } from "@/content/types";
 import { formatEventWhen } from "@/lib/format/eventDisplay";
 import {
   CAUTION_HOLD_COPY,
+  eventBoardChromeClass,
   isCautionHold,
   isKellyNotAttending,
   KELLY_NOT_ATTENDING_COPY,
+  SCHEDULE_CONFLICT_COPY,
 } from "@/lib/events/public-event-kind";
 import { cn } from "@/lib/utils";
 
@@ -16,6 +18,7 @@ type EventCardProps = {
   className?: string;
   highlighted?: boolean;
   onActivate?: () => void;
+  scheduleConflict?: boolean;
 };
 
 function locationIsTba(event: EventItem): boolean {
@@ -26,22 +29,19 @@ function locationIsTba(event: EventItem): boolean {
   return label === "unknown" || label === "location tba" || label.includes("venue tba");
 }
 
-export function EventCard({ event, className, highlighted, onActivate }: EventCardProps) {
+export function EventCard({ event, className, highlighted, onActivate, scheduleConflict = false }: EventCardProps) {
   const when = formatEventWhen(event);
   const detailHref = event.detailHref ?? `/events/${event.slug}`;
   const tba = locationIsTba(event);
   const kellyNotAttending = isKellyNotAttending(event);
   const caution = isCautionHold(event);
+  const tentative = event.fieldAttendance === "tentative";
   return (
     <article
       id={`event-card-${event.slug}`}
       className={cn(
-        "flex h-full flex-col justify-between rounded-card bg-[var(--color-surface-elevated)] p-6 shadow-[var(--shadow-soft)] md:p-7 scroll-mt-28",
-        kellyNotAttending
-          ? "border-2 border-red-600"
-          : caution
-            ? "border-2 border-yellow-400"
-            : "border border-kelly-text/10",
+        "flex h-full flex-col justify-between rounded-card p-6 shadow-[var(--shadow-soft)] md:p-7 scroll-mt-28",
+        eventBoardChromeClass(event, scheduleConflict),
         highlighted && "ring-2 ring-kelly-navy/50 ring-offset-2 ring-offset-kelly-page",
         onActivate && "cursor-pointer",
         className,
@@ -77,9 +77,19 @@ export function EventCard({ event, className, highlighted, onActivate }: EventCa
               Kelly not attending
             </span>
           ) : null}
-          {caution ? (
-            <span className="rounded-full border-2 border-yellow-400 bg-yellow-50 px-2.5 py-0.5 font-body text-[11px] font-bold uppercase tracking-wider text-yellow-800">
+          {scheduleConflict ? (
+            <span className="rounded-full border-2 border-yellow-600 bg-yellow-300 px-2.5 py-0.5 font-body text-[11px] font-bold uppercase tracking-wider text-yellow-950">
+              Conflict
+            </span>
+          ) : null}
+          {caution && !scheduleConflict ? (
+            <span className="rounded-full border-2 border-amber-500 bg-amber-50 px-2.5 py-0.5 font-body text-[11px] font-bold uppercase tracking-wider text-amber-800">
               Caution
+            </span>
+          ) : null}
+          {tentative && !scheduleConflict && !kellyNotAttending ? (
+            <span className="rounded-full border-2 border-orange-300 bg-orange-100 px-2.5 py-0.5 font-body text-[11px] font-bold uppercase tracking-wider text-orange-800">
+              Tentative
             </span>
           ) : null}
         </div>
@@ -100,7 +110,10 @@ export function EventCard({ event, className, highlighted, onActivate }: EventCa
         {kellyNotAttending ? (
           <p className="mt-3 font-body text-sm text-kelly-text/70">{KELLY_NOT_ATTENDING_COPY}</p>
         ) : null}
-        {caution ? <p className="mt-3 font-body text-sm text-kelly-text/70">{CAUTION_HOLD_COPY}</p> : null}
+        {scheduleConflict ? (
+          <p className="mt-3 font-body text-sm text-yellow-950">{SCHEDULE_CONFLICT_COPY}</p>
+        ) : null}
+        {caution && !scheduleConflict ? <p className="mt-3 font-body text-sm text-kelly-text/70">{CAUTION_HOLD_COPY}</p> : null}
       </div>
       <Link
         href={detailHref}

@@ -6,7 +6,7 @@ import type { CampaignEventLedgerRecord } from "@prisma/client";
 export type CalendarEventAlert = {
   key: string;
   label: string;
-  tone: "red" | "amber" | "blue" | "slate" | "navy" | "green";
+  tone: "red" | "yellow" | "amber" | "orange" | "blue" | "slate" | "navy" | "green";
 };
 
 export type CalendarEventSurfaceMeta = {
@@ -37,13 +37,13 @@ export function buildCalendarEventFlags(
     !row.sections.find((s) => s.id === "who")?.fields.some((f) => f.key === "hostName" && f.status === "known");
   const missingTravel = row.roundTripMiles == null && row.rawEventStatus !== "CANCELLED";
 
-  if (row.hasConflictWarning) alerts.push({ key: "conflict", label: "Conflict", tone: "red" });
+  if (row.hasConflictWarning) alerts.push({ key: "conflict", label: "Conflict", tone: "yellow" });
   if (row.hasWorkHoursWarning) alerts.push({ key: "work_hours", label: "Work hours", tone: "amber" });
   if (missingApproval) alerts.push({ key: "approval", label: "Needs approval", tone: "amber" });
   if (missingLocation) alerts.push({ key: "location", label: "Missing location", tone: "amber" });
   if (missingHost) alerts.push({ key: "host", label: "Missing host", tone: "amber" });
   if (missingTravel) alerts.push({ key: "travel", label: "Travel TBD", tone: "blue" });
-  if (isTentative) alerts.push({ key: "tentative", label: "Tentative", tone: "slate" });
+  if (isTentative) alerts.push({ key: "tentative", label: "Tentative", tone: "orange" });
   if (row.calendarTruthStatus === "WEBSITE_ENTRY_ONLY") {
     alerts.push({ key: "website_only", label: "Website only", tone: "navy" });
   }

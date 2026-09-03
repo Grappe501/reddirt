@@ -7,7 +7,9 @@ import { cal } from "./calendar-ui/calendar-design-tokens";
 
 const ALERT_TONE: Record<string, string> = {
   red: "bg-red-100 text-red-800",
+  yellow: "bg-yellow-400 text-yellow-950",
   amber: "bg-amber-100 text-amber-900",
+  orange: "bg-orange-100 text-orange-800",
   blue: "bg-sky-100 text-sky-900",
   green: "bg-emerald-100 text-emerald-800",
   slate: "bg-zinc-100 text-zinc-700",
@@ -25,10 +27,15 @@ export function CalendarEventChip({
 }) {
   const typeStyle = cal.eventType[row.classification] ?? cal.eventType.default;
   const countyBundle = buildCountyEventLinkBundle(row.county);
+  const boardStyle = row.hasConflictWarning
+    ? "border-yellow-500 bg-yellow-400"
+    : row.surface.isTentative
+      ? "border-orange-300 bg-orange-100"
+      : typeStyle;
 
   const inner = (
     <div
-      className={`group/chip rounded-lg border border-kelly-text/8 border-l-[3px] px-2 py-1.5 font-body shadow-sm transition hover:-translate-y-px hover:shadow-md ${typeStyle} ${compact ? "text-[10px]" : "text-xs"} ${row.surface.isPast ? "opacity-65" : ""}`}
+      className={`group/chip rounded-lg border border-l-[3px] px-2 py-1.5 font-body shadow-sm transition hover:-translate-y-px hover:shadow-md ${boardStyle} ${compact ? "text-[10px]" : "text-xs"} ${row.surface.isPast ? "opacity-65" : ""}`}
     >
       <div className="flex flex-wrap items-center gap-1">
         {!compact ? <span className="font-bold tabular-nums text-kelly-navy/80">{row.timeLabel}</span> : null}

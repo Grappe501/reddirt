@@ -65,7 +65,7 @@ export function WeekCalendarView() {
                     <p className="mt-0.5 font-body text-[9px] text-kelly-subtle">
                       {r.lanes.sourceLabel} → {r.lanes.targetLabel}
                     </p>
-                    {r.hasConflictWarning ? <p className="text-[9px] font-bold text-red-700">Conflict</p> : null}
+                    {r.hasConflictWarning ? <p className="text-[9px] font-bold text-yellow-950">Conflict</p> : null}
                   </div>
                 ))}
               </div>

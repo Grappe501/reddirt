@@ -9,7 +9,8 @@ import { Button } from "@/components/ui/Button";
 import { EventMeta } from "@/components/organizing/EventMeta";
 import { EventCard } from "@/components/organizing/EventCard";
 import { RelatedLinksSection } from "@/components/organizing/RelatedLinksSection";
-import { getEventBySlug, listEventSlugs } from "@/content/events";
+import { events as curatedEvents, getEventBySlug, listEventSlugs } from "@/content/events";
+import { publicEventConflictSlugs } from "@/lib/events/public-event-conflicts";
 import type { EventItem } from "@/content/types";
 import { getRegionBySlug } from "@/content/local/regions";
 import { skipPublicStaticGenerationForNetlifyLaunch } from "@/lib/intelligence/intelligenceLaunchMode";
@@ -23,9 +24,11 @@ import { isPrismaDatabaseUnavailable, logPrismaDatabaseUnavailable } from "@/lib
 import { pageMeta } from "@/lib/seo/metadata";
 import {
   CAUTION_HOLD_COPY,
+  eventBoardChromeClass,
   isCautionHold,
   isKellyNotAttending,
   KELLY_NOT_ATTENDING_COPY,
+  SCHEDULE_CONFLICT_COPY,
 } from "@/lib/events/public-event-kind";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -67,6 +70,8 @@ function CuratedOrCalendarEventView({ event }: { event: EventItem }) {
     .filter((e) => e.slug !== event.slug);
   const kellyNotAttending = isKellyNotAttending(event);
   const caution = isCautionHold(event);
+  const conflictSlugs = publicEventConflictSlugs(curatedEvents);
+  const scheduleConflict = conflictSlugs.has(event.slug);
 
   const rsvpHref =
     event.rsvpHref ??
@@ -103,20 +108,15 @@ function CuratedOrCalendarEventView({ event }: { event: EventItem }) {
                 eyebrow="Details"
                 title="When, where, and what"
               />
-              <div
-                className={
-                  kellyNotAttending
-                    ? "mt-8 rounded-card border-2 border-red-600 bg-[var(--color-surface-elevated)] p-6 shadow-[var(--shadow-soft)] md:p-8"
-                    : caution
-                      ? "mt-8 rounded-card border-2 border-yellow-400 bg-yellow-50/40 p-6 shadow-[var(--shadow-soft)] md:p-8"
-                    : "mt-8 rounded-card border border-kelly-text/10 bg-[var(--color-surface-elevated)] p-6 shadow-[var(--shadow-soft)] md:p-8"
-                }
-              >
+              <div className={`mt-8 rounded-card p-6 shadow-[var(--shadow-soft)] md:p-8 ${eventBoardChromeClass(event, scheduleConflict)}`}>
                 <EventMeta event={event} />
                 {kellyNotAttending ? (
                   <p className="mt-4 font-body text-sm text-kelly-text/75">{KELLY_NOT_ATTENDING_COPY}</p>
                 ) : null}
-                {caution ? <p className="mt-4 font-body text-sm text-kelly-text/75">{CAUTION_HOLD_COPY}</p> : null}
+                {scheduleConflict ? (
+                  <p className="mt-4 font-body text-sm text-yellow-950">{SCHEDULE_CONFLICT_COPY}</p>
+                ) : null}
+                {caution && !scheduleConflict ? <p className="mt-4 font-body text-sm text-kelly-text/75">{CAUTION_HOLD_COPY}</p> : null}
               </div>
 
               {event.description ? (
@@ -234,7 +234,7 @@ function CuratedOrCalendarEventView({ event }: { event: EventItem }) {
             <ul className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2">
               {related.map((e) => (
                 <li key={e.slug}>
-                  <EventCard event={e} />
+                  <EventCard event={e} scheduleConflict={conflictSlugs.has(e.slug)} />
                 </li>
               ))}
             </ul>
