@@ -1,6 +1,6 @@
 "use server";
 
-import { CampaignEventStatus, CampaignEventType, EventWorkflowState } from "@prisma/client";
+import { CampaignEventStatus, CampaignEventType, EventWorkflowState, type Prisma } from "@prisma/client";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { prisma } from "@/lib/db";
@@ -106,11 +106,58 @@ function cardFromForm(formData: FormData): SchedulerCardPatch {
 }
 
 function revalidateEventPaths(id: string, slug?: string | null) {
-  revalidatePath("/scheduler");
-  revalidatePath("/events");
+  revalidatePath("/scheduler", "layout");
+  revalidatePath("/events", "layout");
   revalidatePath(`/scheduler/events/${id}`);
   revalidatePath("/scheduler/calendar");
   if (slug) revalidatePath(`/events/${slug}`);
+}
+
+function prismaErrorCode(error: unknown): string {
+  if (error && typeof error === "object" && "code" in error) return String((error as { code: unknown }).code);
+  return "";
+}
+
+async function persistSchedulerCard(
+  id: string,
+  patch: SchedulerCardPatch,
+  extra: Prisma.CampaignEventUpdateInput = {},
+): Promise<{ slug: string | null }> {
+  const countyId = await resolveCountyId(patch.countyName);
+  const data: Prisma.CampaignEventUpdateInput = {
+    title: patch.title,
+    locationName: patch.locationName,
+    address: patch.address,
+    city: patch.city,
+    publicContact: patch.publicContact,
+    publicSummary: patch.publicSummary,
+    publicFieldAttendance: patch.publicFieldAttendance,
+    publicKellyRole: patch.publicKellyRole,
+    publicTabling: patch.publicTabling,
+    publicVolunteers: patch.publicVolunteers,
+    publicMobilize: patch.publicMobilize,
+    publicMobilizeHref: patch.publicMobilizeHref,
+    publicVolunteerHref: patch.publicVolunteerHref,
+    schedulerNeedsMoreInfo: patch.schedulerNeedsMoreInfo,
+    county: countyId ? { connect: { id: countyId } } : { disconnect: true },
+    ...(patch.startAt ? { startAt: patch.startAt, endAt: patch.endAt } : {}),
+    ...extra,
+  };
+  try {
+    return await prisma.campaignEvent.update({
+      where: { id },
+      data,
+      select: { slug: true },
+    });
+  } catch (error) {
+    if (prismaErrorCode(error) !== "P2022") throw error;
+    const { city: _city, publicContact: _contact, ...fallback } = data;
+    return await prisma.campaignEvent.update({
+      where: { id },
+      data: fallback,
+      select: { slug: true },
+    });
+  }
 }
 
 export async function saveSchedulerEventAction(formData: FormData) {
@@ -119,30 +166,12 @@ export async function saveSchedulerEventAction(formData: FormData) {
   if (!id) redirect("/scheduler");
   const patch = cardFromForm(formData);
   if (!patch.title) redirect(`/scheduler/events/${id}?error=title`);
-  const countyId = await resolveCountyId(patch.countyName);
-  const updated = await prisma.campaignEvent.update({
-    where: { id },
-    data: {
-      title: patch.title,
-      locationName: patch.locationName,
-      address: patch.address,
-      city: patch.city,
-      publicContact: patch.publicContact,
-      publicSummary: patch.publicSummary,
-      publicFieldAttendance: patch.publicFieldAttendance,
-      publicKellyRole: patch.publicKellyRole,
-      publicTabling: patch.publicTabling,
-      publicVolunteers: patch.publicVolunteers,
-      publicMobilize: patch.publicMobilize,
-      publicMobilizeHref: patch.publicMobilizeHref,
-      publicVolunteerHref: patch.publicVolunteerHref,
-      schedulerNeedsMoreInfo: patch.schedulerNeedsMoreInfo,
-      countyId,
-      ...(patch.startAt ? { startAt: patch.startAt, endAt: patch.endAt } : {}),
-    },
-    select: { slug: true },
-  });
-  revalidateEventPaths(id, updated.slug);
+  try {
+    const updated = await persistSchedulerCard(id, patch);
+    revalidateEventPaths(id, updated.slug);
+  } catch {
+    redirect(`/scheduler/events/${id}?error=save`);
+  }
   redirect(`/scheduler/events/${id}?saved=1`);
 }
 
@@ -152,35 +181,18 @@ export async function publishSchedulerEventAction(formData: FormData) {
   if (!id) redirect("/scheduler");
   const patch = cardFromForm(formData);
   if (!patch.title) redirect(`/scheduler/events/${id}?error=title`);
-  const countyId = await resolveCountyId(patch.countyName);
-  const updated = await prisma.campaignEvent.update({
-    where: { id },
-    data: {
-      title: patch.title,
-      locationName: patch.locationName,
-      address: patch.address,
-      city: patch.city,
-      publicContact: patch.publicContact,
-      publicSummary: patch.publicSummary,
-      publicFieldAttendance: patch.publicFieldAttendance,
-      publicKellyRole: patch.publicKellyRole,
-      publicTabling: patch.publicTabling,
-      publicVolunteers: patch.publicVolunteers,
-      publicMobilize: patch.publicMobilize,
-      publicMobilizeHref: patch.publicMobilizeHref,
-      publicVolunteerHref: patch.publicVolunteerHref,
-      schedulerNeedsMoreInfo: patch.schedulerNeedsMoreInfo,
-      countyId,
-      ...(patch.startAt ? { startAt: patch.startAt, endAt: patch.endAt } : {}),
+  try {
+    const updated = await persistSchedulerCard(id, patch, {
       isPublicOnWebsite: true,
       eventWorkflowState: EventWorkflowState.PUBLISHED,
       status: CampaignEventStatus.SCHEDULED,
       schedulerPublishedBy: actor.name || actor.email,
       schedulerPublishedAt: new Date(),
-    },
-    select: { slug: true },
-  });
-  revalidateEventPaths(id, updated.slug);
+    });
+    revalidateEventPaths(id, updated.slug);
+  } catch {
+    redirect(`/scheduler/events/${id}?error=save`);
+  }
   redirect(`/scheduler/events/${id}?published=1`);
 }
 

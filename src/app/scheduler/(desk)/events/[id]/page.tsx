@@ -1,12 +1,12 @@
 import { notFound } from "next/navigation";
 import { EventWorkflowState } from "@prisma/client";
-import { getEventBySlug } from "@/content/events";
 import { EventFieldEditor } from "@/components/scheduler/EventFieldEditor";
 import { PUBLIC_CALENDAR_DEFAULT_TZ } from "@/lib/calendar/public-event-types";
 import { ymdInTimeZone } from "@/lib/calendar/public-event-format";
-import { countyNameFromAnySlug } from "@/lib/events/county-key";
 import { loadSchedulerEvent } from "@/lib/scheduler/load-queue";
 import { cardFromRow } from "@/lib/scheduler/public-card-fields";
+
+export const dynamic = "force-dynamic";
 
 function clockInZone(at: Date, timeZone: string): string {
   const parts = new Intl.DateTimeFormat("en-GB", {
@@ -20,10 +20,8 @@ function clockInZone(at: Date, timeZone: string): string {
   return `${hour}:${minute}`;
 }
 
-function countySelectValue(displayName: string | null | undefined, countySlug?: string): string {
-  const fromName = (displayName ?? "").replace(/\s+County$/i, "").trim();
-  if (fromName) return fromName;
-  return countyNameFromAnySlug(countySlug ?? "")?.replace(/\s+County$/i, "") ?? "";
+function countySelectValue(displayName: string | null | undefined): string {
+  return (displayName ?? "").replace(/\s+County$/i, "").trim();
 }
 
 export default async function SchedulerEventEditorPage({
@@ -44,11 +42,7 @@ export default async function SchedulerEventEditorPage({
   const sp = (await searchParams) ?? {};
   const row = await loadSchedulerEvent(id);
   if (!row) notFound();
-  const curated = getEventBySlug(row.slug);
-  const card = cardFromRow({
-    ...row,
-    publicFieldAttendance: row.publicFieldAttendance || curated?.fieldAttendance || null,
-  });
+  const card = cardFromRow(row);
   const isArchived = Boolean(row.schedulerArchivedAt);
   const isLive =
     row.isPublicOnWebsite && row.eventWorkflowState === EventWorkflowState.PUBLISHED && !isArchived;
@@ -64,7 +58,7 @@ export default async function SchedulerEventEditorPage({
           {ymdInTimeZone(row.startAt, tz)} · /events/{row.slug}
         </p>
         <p className="mt-2 max-w-2xl font-body text-sm text-kelly-text/70">
-          These boxes are the public /events card. Publish writes them live.
+          Save draft writes the Scheduler calendar. Publish writes the public /events page.
         </p>
       </div>
       {sp.saved ? <p className="font-body text-sm text-kelly-navy">Draft saved.</p> : null}
@@ -74,6 +68,9 @@ export default async function SchedulerEventEditorPage({
         <p className="font-body text-sm text-kelly-navy">Archived. It is off the public calendar and kept in the record.</p>
       ) : null}
       {sp.error === "title" ? <p className="font-body text-sm text-red-700">Title is required.</p> : null}
+      {sp.error === "save" ? (
+        <p className="font-body text-sm text-red-700">The save did not write. Stay signed in and try again.</p>
+      ) : null}
       {sp.error === "archive_reason" ? (
         <p className="font-body text-sm text-red-700">A reason of at least 8 characters is required to archive.</p>
       ) : null}
@@ -94,13 +91,13 @@ export default async function SchedulerEventEditorPage({
       <EventFieldEditor
         id={row.id}
         title={row.title}
-        locationName={row.locationName || curated?.locationLabel || null}
-        address={row.address || curated?.addressLine || null}
-        city={row.city || curated?.city || null}
-        countyName={countySelectValue(row.county?.displayName, curated?.countySlug)}
-        publicContact={row.publicContact || curated?.publicContact || null}
-        socialGraphicUrl={row.publicSocialGraphicUrl || curated?.flyerSrc || null}
-        publicSummary={row.publicSummary || curated?.summary || null}
+        locationName={row.locationName}
+        address={row.address}
+        city={row.city}
+        countyName={countySelectValue(row.county?.displayName)}
+        publicContact={row.publicContact}
+        socialGraphicUrl={row.publicSocialGraphicUrl}
+        publicSummary={row.publicSummary}
         dateYmd={ymdInTimeZone(row.startAt, tz)}
         startTime={clockInZone(row.startAt, tz)}
         endTime={clockInZone(row.endAt, tz)}
