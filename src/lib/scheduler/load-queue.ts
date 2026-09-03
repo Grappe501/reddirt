@@ -3,7 +3,7 @@ import { events } from "@/content/events";
 import { queryPublicCampaignEvents } from "@/lib/calendar/public-events";
 import { mergeMovementAndCalendarEvents } from "@/lib/events/calendar-to-movement-event";
 import { collapseRecurringSeriesToNextOccurrence } from "@/lib/events/collapse-recurring-series";
-import { parseEventInstant, resolveEventStatus } from "@/lib/format/eventDisplay";
+import { compareEventsForHub, parseEventInstant, resolveEventStatus } from "@/lib/format/eventDisplay";
 import { prisma } from "@/lib/db";
 import { isPrismaLiveDataUnavailable, logPrismaDatabaseUnavailable } from "@/lib/prisma-connectivity";
 import { cardFromRow, emptyCard, type SchedulerPublicCard } from "@/lib/scheduler/public-card-fields";
@@ -105,7 +105,8 @@ async function loadSchedulerLiveQueue(): Promise<SchedulerQueueRow[]> {
   const merged = collapseRecurringSeriesToNextOccurrence(
     mergeMovementAndCalendarEvents(events, calendarRows)
       .filter((event) => resolveEventStatus(event, now) === "upcoming")
-      .filter((event) => event.fieldAttendance !== "suggested" && event.fieldAttendance !== "unscheduled"),
+      .filter((event) => event.fieldAttendance !== "suggested" && event.fieldAttendance !== "unscheduled")
+      .sort((a, b) => compareEventsForHub(a, b, now)),
   );
   const slugs = merged.map((event) => event.slug);
   const dbRows =
