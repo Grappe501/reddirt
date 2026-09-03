@@ -5,12 +5,17 @@ import { useEffect } from "react";
 function sessionId(): string {
   if (typeof window === "undefined") return "";
   const key = "reddirt_sid";
-  let id = window.localStorage.getItem(key);
-  if (!id) {
-    id = `${Date.now()}-${Math.random().toString(36).slice(2)}`;
-    window.localStorage.setItem(key, id);
+  try {
+    let id = window.localStorage.getItem(key);
+    if (!id) {
+      id = `${Date.now()}-${Math.random().toString(36).slice(2)}`;
+      window.localStorage.setItem(key, id);
+    }
+    return id;
+  } catch {
+    // Safari private / ITP can throw on localStorage. Do not blank the page.
+    return `ephemeral-${Date.now()}`;
   }
-  return id;
 }
 
 export async function trackEvent(
