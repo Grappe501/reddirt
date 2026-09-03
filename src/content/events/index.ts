@@ -2767,18 +2767,23 @@ const movementEventsCore: EventItem[] = [
     locationLabel: "Stuttgart (venue TBA)",
     addressLine: "Stuttgart, AR (building not on the calendar block)",
     summary:
-      "Saturday, September 12, 2026, **11:00 a.m.–1:00 p.m. Central** in Stuttgart. Venue TBA. Same day: Rison forum, Harrison Balloon Fest, Lafayette hold.",
+      "Saturday, September 12, 2026, **11:00 a.m.–1:00 p.m. Central** in Stuttgart. Venue TBA. Kelly will not attend. This is not a speaking engagement. The campaign will send someone if we can.",
     description:
-      "Steve’s Google Calendar listed **Stuttgart 11am - 1** on Saturday, **September 12**.\n\nNo building was on the block. This is not the October 17 Stuttgart hour — that is a separate calendar row.\n\nSaturday is already stacked with Cleveland County in Rison, Harrison Balloon Fest, and a Lafayette County hold.",
-    whatToExpect: ["11:00 a.m.–1:00 p.m. Central", "Venue TBA"],
+      "Steve’s Google Calendar listed **Stuttgart 11am - 1** on Saturday, **September 12**.\n\n**Kelly will not attend.** This is **not a speaking engagement**. If the campaign can send someone, we will.\n\nNo building was on the block. This is not the October 17 Stuttgart hour — that is a separate calendar row.\n\nSaturday is already stacked with Cleveland County in Rison, Harrison Balloon Fest, and a Lafayette County hold.",
+    whatToExpect: [
+      "11:00 a.m.–1:00 p.m. Central",
+      "Venue TBA",
+      "Kelly will not attend — this is not a speaking engagement",
+      "The campaign will send someone if we can",
+    ],
     whoItsFor: "Arkansas County neighbors once a room is posted.",
     organizerNote:
-      "Google Calendar audit 2026-09-02. Distinct from stuttgart-oct-17-2026. Same day: cleveland-county-meet-and-greet-2026; Harrison balloon.",
+      "Kelly not attending. Surrogate if we can staff it — not a speaking engagement. Distinct from stuttgart-oct-17-2026. Same day: cleveland-county-meet-and-greet-2026; Harrison balloon.",
     relatedEventSlugs: ["stuttgart-oct-17-2026", "cleveland-county-meet-and-greet-2026"],
     relatedResourceHrefs: [{ label: "Get involved", href: "/get-involved" }],
     mapCoordinates: { lat: 34.5004, lng: -91.5526 },
     mapPinQuality: "region",
-    fieldAttendance: "tentative",
+    fieldAttendance: "surrogate",
   },
   {
     slug: "fort-smith-river-valley-choice-2026",
