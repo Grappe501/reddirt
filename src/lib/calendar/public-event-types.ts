@@ -20,6 +20,7 @@ export type PublicCampaignEvent = {
   locationName: string | null;
   address: string | null;
   city: string | null;
+  publicContact?: string | null;
   attendanceType: CampaignEventAttendanceType;
   eventType: CampaignEventType;
   /** Public-facing kind (Community Event, Festival/Fair, …) — never staff purpose. */
@@ -72,6 +73,7 @@ export const publicCampaignEventSelect = {
   locationName: true,
   address: true,
   city: true,
+  publicContact: true,
   attendanceType: true,
   eventType: true,
   county: { select: { displayName: true, slug: true } },

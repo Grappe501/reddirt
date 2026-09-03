@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/Button";
+import { ARKANSAS_COUNTIES } from "@/data/kelly-county-visits";
 import {
   FIELD_ATTENDANCE_VALUES,
   KELLY_ROLE_VALUES,
@@ -17,16 +18,25 @@ import {
 const SELECT_CLASS =
   "mt-1 w-full rounded-md border border-kelly-navy/20 bg-white px-3 py-2 font-body text-sm text-kelly-text";
 
+const ATTENDANCE_LABELS: Record<(typeof FIELD_ATTENDANCE_VALUES)[number], string> = {
+  tentative: "Tentative",
+  confirmed: "Confirmed",
+  surrogate: "Kelly not attending",
+  caution: "Caution — need more info",
+};
+
 function SelectField({
   name,
   label,
   value,
   options,
+  labels,
 }: {
   name: string;
   label: string;
   value: string | null;
   options: readonly string[];
+  labels?: Record<string, string>;
 }) {
   return (
     <label className="block">
@@ -35,7 +45,7 @@ function SelectField({
         <option value="">Not set</option>
         {options.map((opt) => (
           <option key={opt} value={opt}>
-            {opt.replace(/_/g, " ")}
+            {labels?.[opt] ?? opt.replace(/_/g, " ")}
           </option>
         ))}
       </select>
@@ -47,7 +57,14 @@ export function EventFieldEditor({
   id,
   title,
   locationName,
+  address,
+  city,
+  countyName,
+  publicContact,
   publicSummary,
+  dateYmd,
+  startTime,
+  endTime,
   card,
   isLive,
   isArchived,
@@ -61,7 +78,14 @@ export function EventFieldEditor({
   id: string;
   title: string;
   locationName: string | null;
+  address: string | null;
+  city: string | null;
+  countyName: string | null;
+  publicContact: string | null;
   publicSummary: string | null;
+  dateYmd: string;
+  startTime: string;
+  endTime: string;
   card: SchedulerPublicCard;
   isLive: boolean;
   isArchived: boolean;
@@ -76,20 +100,70 @@ export function EventFieldEditor({
     <div className="space-y-6">
       <form action={saveSchedulerEventAction} className="space-y-5 rounded-card border border-kelly-navy/15 bg-white p-5">
         <input type="hidden" name="id" value={id} />
+        <SelectField
+          name="fieldAttendance"
+          label="Tentative or confirmed"
+          value={card.fieldAttendance}
+          options={FIELD_ATTENDANCE_VALUES}
+          labels={ATTENDANCE_LABELS}
+        />
         <label className="block">
           <span className="font-body text-xs font-semibold uppercase tracking-wider text-kelly-muted">Title</span>
           <input name="title" required defaultValue={title} className={SELECT_CLASS} />
         </label>
         <label className="block">
-          <span className="font-body text-xs font-semibold uppercase tracking-wider text-kelly-muted">Location</span>
-          <input name="locationName" defaultValue={locationName ?? ""} className={SELECT_CLASS} />
+          <span className="font-body text-xs font-semibold uppercase tracking-wider text-kelly-muted">County</span>
+          <select name="county" defaultValue={countyName ?? ""} className={SELECT_CLASS}>
+            <option value="">Not set</option>
+            {ARKANSAS_COUNTIES.map((county) => (
+              <option key={county} value={county}>
+                {county}
+              </option>
+            ))}
+          </select>
+        </label>
+        <div className="grid gap-4 sm:grid-cols-2">
+          <label className="block">
+            <span className="font-body text-xs font-semibold uppercase tracking-wider text-kelly-muted">City</span>
+            <input name="city" defaultValue={city ?? ""} className={SELECT_CLASS} placeholder="Morrilton" />
+          </label>
+          <label className="block">
+            <span className="font-body text-xs font-semibold uppercase tracking-wider text-kelly-muted">Location</span>
+            <input name="locationName" defaultValue={locationName ?? ""} className={SELECT_CLASS} placeholder="Venue or place name" />
+          </label>
+        </div>
+        <label className="block">
+          <span className="font-body text-xs font-semibold uppercase tracking-wider text-kelly-muted">Address</span>
+          <input name="address" defaultValue={address ?? ""} className={SELECT_CLASS} placeholder="Street, city, AR" />
+        </label>
+        <div className="grid gap-4 sm:grid-cols-3">
+          <label className="block">
+            <span className="font-body text-xs font-semibold uppercase tracking-wider text-kelly-muted">Date</span>
+            <input name="date" type="date" required defaultValue={dateYmd} className={SELECT_CLASS} />
+          </label>
+          <label className="block">
+            <span className="font-body text-xs font-semibold uppercase tracking-wider text-kelly-muted">Start</span>
+            <input name="startTime" type="time" defaultValue={startTime} className={SELECT_CLASS} />
+          </label>
+          <label className="block">
+            <span className="font-body text-xs font-semibold uppercase tracking-wider text-kelly-muted">End</span>
+            <input name="endTime" type="time" defaultValue={endTime} className={SELECT_CLASS} />
+          </label>
+        </div>
+        <label className="block">
+          <span className="font-body text-xs font-semibold uppercase tracking-wider text-kelly-muted">Contact</span>
+          <input
+            name="publicContact"
+            defaultValue={publicContact ?? ""}
+            className={SELECT_CLASS}
+            placeholder="Host name, phone, or email"
+          />
         </label>
         <label className="block">
           <span className="font-body text-xs font-semibold uppercase tracking-wider text-kelly-muted">Public summary</span>
           <textarea name="publicSummary" rows={3} defaultValue={publicSummary ?? ""} className={SELECT_CLASS} />
         </label>
         <div className="grid gap-4 sm:grid-cols-2">
-          <SelectField name="fieldAttendance" label="Attendance" value={card.fieldAttendance} options={FIELD_ATTENDANCE_VALUES} />
           <SelectField name="kellyRole" label="Kelly role" value={card.kellyRole} options={KELLY_ROLE_VALUES} />
           <SelectField name="tabling" label="Table" value={card.tabling} options={TABLING_VALUES} />
           <SelectField name="volunteers" label="Volunteers" value={card.volunteers} options={VOLUNTEERS_VALUES} />

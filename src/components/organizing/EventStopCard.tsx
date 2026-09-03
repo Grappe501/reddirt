@@ -53,6 +53,8 @@ export function EventStopCard({ event }: { event: EventItem }) {
       ) : null}
       {tentative ? (
         <p className="mt-1 font-body text-[11px] font-bold uppercase tracking-wider text-kelly-text/60">Tentative</p>
+      ) : event.fieldAttendance === "confirmed" ? (
+        <p className="mt-1 font-body text-[11px] font-bold uppercase tracking-wider text-kelly-navy">Confirmed</p>
       ) : null}
       <h3 className="mt-2 font-heading text-xl font-bold text-kelly-text">
         <EventHref
@@ -63,6 +65,8 @@ export function EventStopCard({ event }: { event: EventItem }) {
         </EventHref>
       </h3>
       <p className="mt-1 font-body text-sm font-semibold text-kelly-text/75">{formatCountyFirstMeta(event)}</p>
+      {event.addressLine ? <p className="mt-1 font-body text-sm text-kelly-text/65">{event.addressLine}</p> : null}
+      {event.publicContact ? <p className="mt-1 font-body text-sm text-kelly-text/65">Contact: {event.publicContact}</p> : null}
       <p className="mt-3 font-body text-sm leading-relaxed text-kelly-text/75">{summary}</p>
       {!open && status === "upcoming" && !event.statewideVirtual ? (
         <p className="mt-3 font-body text-sm text-kelly-text/70">Kelly will be in {event.city?.trim() || event.locationLabel}.</p>

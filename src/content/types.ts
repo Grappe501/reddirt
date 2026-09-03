@@ -64,6 +64,8 @@ export type EventItem = {
   timezone: string;
   locationLabel: string;
   addressLine?: string;
+  /** Public host/venue contact line on /events cards. */
+  publicContact?: string;
   summary: string;
   description: string;
   whatToExpect: string[];
