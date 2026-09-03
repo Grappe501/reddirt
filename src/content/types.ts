@@ -53,6 +53,8 @@ export type EventItem = {
   endsAt?: string;
   timezone: string;
   locationLabel: string;
+  /** City line for public cards when it is shorter than `locationLabel`. */
+  city?: string;
   addressLine?: string;
   summary: string;
   description: string;
@@ -74,6 +76,17 @@ export type EventItem = {
   fieldAttendance?: FieldAttendance;
   /** Default `/events/{slug}`. */
   detailHref?: string;
+  primaryHref?: string;
+  primaryCtaLabel?: string;
+  linkCardToPrimary?: boolean;
+  /** CampaignOS attendance kind when merged from the public calendar. */
+  attendanceType?: string;
+  featured?: boolean;
+  featuredLabel?: string;
+  featuredSummary?: string;
+  statewideVirtual?: boolean;
+  qualifiesAsVisit?: boolean;
+  campaignTrail?: boolean;
   /** `calendar` when merged from CampaignOS public query; omit for static movement content. */
   eventSource?: "movement" | "calendar";
   /** Prefer Unknown flags — public cards may show Location TBA when coords/county are missing. */
@@ -81,6 +94,7 @@ export type EventItem = {
     missingPublicSummary?: boolean;
     missingCounty?: boolean;
     missingCoordinates?: boolean;
+    timeTbd?: boolean;
   };
   /**
    * When true, this event is listed on `/listening-sessions` under “Events planned,” alongside every
