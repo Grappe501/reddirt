@@ -1,4 +1,4 @@
-import type { EventItem } from "@/content/types";
+import type { EventItem, EventStatus } from "@/content/types";
 
 function calendarDayInZone(iso: Date, timeZone: string): string {
   return new Intl.DateTimeFormat("en-CA", {
@@ -42,4 +42,26 @@ export function formatEventWhen(ev: EventItem): { primary: string; secondary?: s
     secondary = `${monthShortDay.format(start)}, ${timeWithZone.format(start)} – ${monthShortDay.format(end)}, ${timeWithZone.format(end)}`;
   }
   return { primary, secondary };
+}
+
+export function parseEventInstant(iso: string, _timeZone?: string): Date {
+  return new Date(iso);
+}
+
+export function resolveEventStatus(event: EventItem, now: Date = new Date()): EventStatus {
+  const end = parseEventInstant(event.endsAt ?? event.startsAt, event.timezone);
+  if (Number.isNaN(end.getTime())) return event.status;
+  return end.getTime() < now.getTime() ? "past" : "upcoming";
+}
+
+export function stripPublicMarkdown(text: string): string {
+  return text.replace(/\*\*([^*]+)\*\*/g, "$1").replace(/\*([^*]+)\*/g, "$1");
+}
+
+export function eventCalendarDayKey(event: EventItem): string {
+  return calendarDayInZone(parseEventInstant(event.startsAt, event.timezone), event.timezone || "America/Chicago");
+}
+
+export function compareEventsForHub(a: EventItem, b: EventItem, _now?: Date): number {
+  return a.startsAt.localeCompare(b.startsAt) || a.title.localeCompare(b.title);
 }

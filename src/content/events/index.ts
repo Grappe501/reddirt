@@ -926,6 +926,42 @@ const movementEventsCore: EventItem[] = [
     fieldAttendance: "confirmed",
   },
   {
+    slug: "harrison-hot-air-balloon-festival-2026",
+    title: "Harrison Hot Air Balloon Festival",
+    type: "Fairs and Festivals",
+    region: "North Central Arkansas",
+    countySlug: "boone-county",
+    status: "upcoming",
+    startsAt: "2026-09-13T07:00:00",
+    endsAt: "2026-09-13T11:00:00",
+    timezone: "America/Chicago",
+    locationLabel: "Anstaff Soccer Complex — Harrison",
+    addressLine: "202 Old Stonewall Rd, Harrison, AR",
+    summary:
+      "Sunday, September 13, 2026, **7:00 a.m. Central** at the **Anstaff Soccer Complex**: Kelly will be at the **31st Annual Arkansas Hot Air Balloon State Championship**. Festival weekend is September 11–13. Admission to the grounds is free.",
+    description:
+      "The **31st Annual Arkansas Hot Air Balloon State Championship** runs **September 11–13, 2026**, at the **Anstaff Soccer Complex**, **202 Old Stonewall Road**, Harrison.\n\n**Kelly will be on the grounds Sunday morning, September 13, at 7:00 a.m. Central.** The campaign overnight is in Harrison Saturday night so she can be there for the Sunday morning flight window.\n\nThis is a **community festival**, not a Grappe-hosted rally. Hosts list balloon competitions, evening balloon glows, weather-permitting tethered rides, live music, food and retail vendors, and a kids’ zone. Confirm the daily clock and weather holds with the Harrison Convention & Visitors Bureau or the Arkansas Hot Air Balloon Festival Facebook page.\n\nSaturday midday the public calendar also has the Cleveland County Democrats meet and greet in Rison — Harrison to Rison that noon is a long drive. Kelly’s public stop here is **Sunday morning**.",
+    whatToExpect: [
+      "Kelly on the grounds Sunday, September 13, 7:00 a.m. Central",
+      "Festival weekend September 11–13 at Anstaff Soccer Complex",
+      "Free admission to the festival grounds",
+      "Balloon flights and glows are weather-dependent — check the host pages day-of",
+    ],
+    whoItsFor: "Boone County neighbors, festival guests, and anyone who wants to see Kelly at a community weekend — not a speaking engagement.",
+    organizerNote:
+      "Steve 2026-09-03: sleep Harrison Saturday; attend Sunday 7am. Public card is Sunday morning, not Saturday TBA. Venue from Harrison CVB / championship invite: Anstaff Soccer Complex, 202 Old Stonewall Rd. Do not publish lodging. Distinct from locked-2026-09-28-harrison-balloon-fest.",
+    rsvpHref: undefined,
+    audienceTags: ["Harrison", "Boone County", "Fairs and Festivals", "North Central Arkansas"],
+    relatedEventSlugs: ["cleveland-county-meet-and-greet-2026"],
+    relatedResourceHrefs: [
+      { label: "Cleveland County meet and greet — Saturday", href: "/events/cleveland-county-meet-and-greet-2026" },
+      { label: "Get involved", href: "/get-involved" },
+    ],
+    mapCoordinates: { lat: 36.2298, lng: -93.1077 },
+    mapPinQuality: "region",
+    fieldAttendance: "confirmed",
+  },
+  {
     slug: "sheridan-immersion-justin-wise-2026",
     title: "Sheridan immersion — Grant County (with Justin Wise)",
     type: "Immersion",

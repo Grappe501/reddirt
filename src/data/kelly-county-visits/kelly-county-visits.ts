@@ -3688,13 +3688,14 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     id: "presence-2026-09-12-harrison-hot-air-balloon-festival",
     city: "Harrison",
     publicTitle: "Harrison Hot Air Balloon Festival",
-    date: "2026-09-12",
+    date: "2026-09-13",
     title: "Harrison Hot Air Balloon Festival",
     counties: ["Boone"],
     status: "scheduled",
     includeOnPublicPage: true,
     confidence: "confirmed",
-    notes: "Promoted to public calendar 2026-09-02 from campaign schedule.",
+    notes:
+      "Festival weekend Sep 11-13 at Anstaff Soccer Complex, 202 Old Stonewall Rd, Harrison. Steve 2026-09-03: overnight Harrison Saturday; public stop Sunday 7:00 a.m. Do not publish lodging. /events/harrison-hot-air-balloon-festival-2026 Distinct from locked-2026-09-28-harrison-balloon-fest.",
     sourceType: "calendar",
   },
 
@@ -5016,7 +5017,7 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     city: "Arkadelphia",
     counties: ["Clark"],
     status: "scheduled",
-    includeOnPublicPage: true,
+    includeOnPublicPage: false,
     confidence: "likely",
     notes:
       "Steve Google Calendar Sun Sep 20 all-day. Same date ledger: Jacksonville Festiville — cannot assume both. Time/venue TBA. /events/arkadelphia-sep-20-2026",

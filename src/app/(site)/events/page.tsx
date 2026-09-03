@@ -44,7 +44,7 @@ export default async function EventsPage({
   const suggestOk = pickParam(sp, "ok");
   const [counties, calendarRows] = await Promise.all([
     safePublishedCountyOptions(),
-    queryPublicCampaignEvents({ range: "all" }, { take: 200 }),
+    queryPublicCampaignEvents({ range: "all_upcoming" }, { take: 200 }),
   ]);
   const mergedEvents = mergeMovementAndCalendarEvents(events, calendarRows);
   const ledger = await loadCountyVisitLedger(mergedEvents);

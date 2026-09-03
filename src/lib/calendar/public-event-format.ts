@@ -14,6 +14,13 @@ const TYPE_LABEL: Record<CampaignEventType, string> = {
   ORIENTATION: "Orientation",
   FESTIVAL: "Fair / festival",
   OTHER: "Event",
+  COMMUNITY: "Community event",
+  COUNTY_PARTY: "County / party meeting",
+  FORUM: "Candidate forum",
+  YOUTH: "Youth event",
+  CIVIC: "Civic / voter registration",
+  SPEAKING: "Speaking engagement",
+  LISTENING: "Listening event",
 };
 
 export function formatPublicEventType(t: CampaignEventType): string {
