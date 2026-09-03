@@ -21,6 +21,7 @@ import { publicCampaignEventToEventItem } from "@/lib/events/calendar-to-movemen
 import { getJoinCampaignHref } from "@/config/external-campaign";
 import { isPrismaDatabaseUnavailable, logPrismaDatabaseUnavailable } from "@/lib/prisma-connectivity";
 import { pageMeta } from "@/lib/seo/metadata";
+import { isKellyNotAttending, KELLY_NOT_ATTENDING_COPY } from "@/lib/events/public-event-kind";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -59,17 +60,25 @@ function CuratedOrCalendarEventView({ event }: { event: EventItem }) {
     .map((s) => getEventBySlug(s))
     .filter((e): e is NonNullable<typeof e> => Boolean(e))
     .filter((e) => e.slug !== event.slug);
+  const kellyNotAttending = isKellyNotAttending(event);
 
   const rsvpHref =
     event.rsvpHref ??
     `/get-involved?intent=rsvp&event=${encodeURIComponent(event.slug)}`;
+  const coverHref = `/get-involved?intent=cover&event=${encodeURIComponent(event.slug)}`;
 
   return (
     <>
       <PageHero eyebrow={event.type} title={event.title} subtitle={event.summary}>
-        <Button href={rsvpHref} variant="primary">
-          RSVP or raise your hand
-        </Button>
+        {kellyNotAttending ? (
+          <Button href={coverHref} variant="primary">
+            Volunteer to cover this stop
+          </Button>
+        ) : (
+          <Button href={rsvpHref} variant="primary">
+            RSVP or raise your hand
+          </Button>
+        )}
         <Button href="/events" variant="outline">
           All events
         </Button>
@@ -84,8 +93,17 @@ function CuratedOrCalendarEventView({ event }: { event: EventItem }) {
                 eyebrow="Details"
                 title="When, where, and what"
               />
-              <div className="mt-8 rounded-card border border-kelly-text/10 bg-[var(--color-surface-elevated)] p-6 shadow-[var(--shadow-soft)] md:p-8">
+              <div
+                className={
+                  kellyNotAttending
+                    ? "mt-8 rounded-card border-2 border-red-600 bg-[var(--color-surface-elevated)] p-6 shadow-[var(--shadow-soft)] md:p-8"
+                    : "mt-8 rounded-card border border-kelly-text/10 bg-[var(--color-surface-elevated)] p-6 shadow-[var(--shadow-soft)] md:p-8"
+                }
+              >
                 <EventMeta event={event} />
+                {kellyNotAttending ? (
+                  <p className="mt-4 font-body text-sm text-kelly-text/75">{KELLY_NOT_ATTENDING_COPY}</p>
+                ) : null}
               </div>
 
               {event.description ? (
@@ -132,15 +150,26 @@ function CuratedOrCalendarEventView({ event }: { event: EventItem }) {
             </div>
 
             <aside className="space-y-6 lg:sticky lg:top-28">
-              <div className="rounded-card border border-kelly-text/10 bg-[var(--color-surface-elevated)] p-6 shadow-[var(--shadow-soft)]">
-                <h2 className="font-heading text-lg font-bold text-kelly-text">Join this stop</h2>
+              <div
+                className={
+                  kellyNotAttending
+                    ? "rounded-card border-2 border-red-600 bg-[var(--color-surface-elevated)] p-6 shadow-[var(--shadow-soft)]"
+                    : "rounded-card border border-kelly-text/10 bg-[var(--color-surface-elevated)] p-6 shadow-[var(--shadow-soft)]"
+                }
+              >
+                <h2 className="font-heading text-lg font-bold text-kelly-text">
+                  {kellyNotAttending ? "Campaign coverage" : "Join this stop"}
+                </h2>
                 <p className="mt-3 font-body text-sm leading-relaxed text-kelly-text/75">{event.locationLabel}</p>
                 {event.addressLine ? (
                   <p className="mt-2 font-body text-sm text-kelly-text/65">{event.addressLine}</p>
                 ) : null}
+                {kellyNotAttending ? (
+                  <p className="mt-3 font-body text-sm text-kelly-text/70">{KELLY_NOT_ATTENDING_COPY}</p>
+                ) : null}
               </div>
-              <Button href={rsvpHref} variant="primary" className="w-full justify-center">
-                RSVP or raise your hand
+              <Button href={kellyNotAttending ? coverHref : rsvpHref} variant="primary" className="w-full justify-center">
+                {kellyNotAttending ? "Volunteer to cover this stop" : "RSVP or raise your hand"}
               </Button>
               {county ? (
                 <Link

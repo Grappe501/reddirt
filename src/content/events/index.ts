@@ -865,18 +865,19 @@ const movementEventsCore: EventItem[] = [
     locationLabel: "Sharp County Democratic Headquarters — Highland (street TBA)",
     addressLine: "Highland, AR (street address not in the note — confirm with Chair PattyAnn Peal)",
     summary:
-      "Friday, September 11, 2026: Sharp County Democrats open a headquarters in **Highland**. The chair would like Kelly there if possible and needs campaign merch (pickup OK). Time and street TBA. Evening window is a placeholder.",
+      "Friday, September 11, 2026: Sharp County Democrats open a headquarters in **Highland**. Kelly will not attend. This is not a speaking engagement. The campaign will send someone if we can.",
     description:
-      "A supporter wrote that Sharp County’s party had gone dormant and is back. Newly elected chair **PattyAnn Peal** is opening a **Democratic Headquarters in Highland** on **Friday, September 11** (“next Friday” from the September 2 note).\n\nShe would love Kelly to attend and knows the calendar is full. The urgent ask is **merch with no county funds**: signs, shirts/hats, buttons, and push cards. Pickup can be arranged. Take her call or text.\n\nThis is a **county party** opening, not a Grappe-hosted rally. Street and clock are not on the note — 4:00–7:00 p.m. is only a calendar pin.\n\nThe same Friday is the Dallas County Fair evening in Fordyce and the end of the AAC County Clerks meeting in Benton.",
+      "A supporter wrote that Sharp County’s party had gone dormant and is back. Newly elected chair **PattyAnn Peal** is opening a **Democratic Headquarters in Highland** on **Friday, September 11**.\n\n**Kelly will not attend.** This is **not a speaking engagement**. If the campaign can send someone, we will.\n\nThe urgent ask is still **merch with no county funds**: signs, shirts/hats, buttons, and push cards. Pickup can be arranged.\n\nThis is a **county party** opening, not a Grappe-hosted rally. Street is TBA — 4:00–7:00 p.m. is the calendar window.\n\nThe same Friday is the Dallas County Fair evening in Fordyce and the end of the AAC County Clerks meeting in Benton.",
     whatToExpect: [
-      "Headquarters opening in Highland — time and street TBA",
-      "County party rebirth event; Kelly attendance not confirmed",
-      "Merch support is the main ask if she cannot be there",
+      "Headquarters opening in Highland — 4:00–7:00 p.m. Central (street TBA)",
+      "Kelly will not attend — this is not a speaking engagement",
+      "The campaign will send someone if we can",
+      "Merch support is still the main ask: signs, shirts/hats, buttons, push cards",
     ],
     whoItsFor:
-      "Sharp County Democrats and neighbors in Highland / Ash Flat. Confirm the hour and address with the chair before sharing as a walk-in open house.",
+      "Sharp County Democrats and neighbors in Highland / Ash Flat. Confirm the hour and address with the chair before treating this as a walk-in open house.",
     organizerNote:
-      "Ops: get merch to Sharp County — signs, shirts/hats, buttons, push cards; PattyAnn Peal can arrange pickup; 0 county funds. Phone not in the pasted note — do not invent. Kelly attend tentative. Same day: Dallas County Fair Fordyce 6pm; AAC Clerks Benton through Sept 11 10am.",
+      "Kelly not attending. Surrogate if we can staff it — not a speaking engagement. Ops: get merch to Sharp County — signs, shirts/hats, buttons, push cards; PattyAnn Peal can arrange pickup; 0 county funds. Phone not in the pasted note — do not invent. Same day: Dallas County Fair Fordyce 6pm; AAC Clerks Benton through Sept 11 10am.",
     rsvpHref: undefined,
     audienceTags: ["Sharp County", "Highland", "Democratic Party", "North Central Arkansas"],
     relatedEventSlugs: ["hardy-candidate-forum-2026"],
@@ -886,7 +887,7 @@ const movementEventsCore: EventItem[] = [
     ],
     mapCoordinates: { lat: 36.2695, lng: -91.5221 },
     mapPinQuality: "region",
-    fieldAttendance: "tentative",
+    fieldAttendance: "surrogate",
   },
   {
     slug: "cleveland-county-meet-and-greet-2026",
@@ -2893,32 +2894,6 @@ const movementEventsCore: EventItem[] = [
       { label: "Get involved", href: "/get-involved" },
     ],
     mapCoordinates: { lat: 36.0684, lng: -90.9559 },
-    mapPinQuality: "region",
-    fieldAttendance: "tentative",
-  },
-  {
-    slug: "arkadelphia-sep-20-2026",
-    title: "Arkadelphia",
-    type: "Community Conversation",
-    region: "Southwest Arkansas",
-    countySlug: "clark-county",
-    status: "upcoming",
-    startsAt: "2026-09-20T10:00:00",
-    endsAt: "2026-09-20T16:00:00",
-    timezone: "America/Chicago",
-    locationLabel: "Arkadelphia (stop TBA)",
-    addressLine: "Arkadelphia, AR (clock and street not on the all-day block)",
-    summary:
-      "Sunday, September 20, 2026: **Arkadelphia** all-day hold. Same date the ledger already has Jacksonville Festiville — confirm which stop is real.",
-    description:
-      "Steve’s Google Calendar listed **Arkadelphia** all day Sunday, **September 20**.\n\nThe campaign ledger already has **Jacksonville Festiville** on that Sunday. Those are different cities. Do not assume she is in both.\n\nThe calendar also showed Festiville on **Saturday, September 5**. Confirm the Festiville weekend before promising Arkadelphia.",
-    whatToExpect: ["All-day hold", "Town stop TBA"],
-    whoItsFor: "Clark County neighbors once a clock is posted.",
-    organizerNote:
-      "Google Calendar audit 2026-09-02. Conflict check: locked-2026-09-20-jacksonville-festiville. Festiville also appears on the calendar Sat Sep 5.",
-    relatedEventSlugs: [],
-    relatedResourceHrefs: [{ label: "Get involved", href: "/get-involved" }],
-    mapCoordinates: { lat: 34.1209, lng: -93.0538 },
     mapPinQuality: "region",
     fieldAttendance: "tentative",
   },

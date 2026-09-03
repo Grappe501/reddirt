@@ -19,8 +19,12 @@ export type RegionPage = {
 
 export type EventStatus = "upcoming" | "past";
 
-/** Movement calendar: coverage suggestion vs. human confirmation (fairs & festivals). */
-export type FieldAttendance = "unscheduled" | "suggested" | "tentative" | "confirmed";
+/**
+ * Movement calendar: coverage suggestion vs. human confirmation (fairs & festivals).
+ * `surrogate` = stay on the public calendar; Kelly will not attend; red border;
+ * send someone if we can; not a speaking engagement.
+ */
+export type FieldAttendance = "unscheduled" | "suggested" | "tentative" | "confirmed" | "surrogate";
 
 export type EventType =
   | "Town Hall"

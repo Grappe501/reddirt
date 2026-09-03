@@ -5,6 +5,7 @@ export const FIELD_PIN = {
   suggested: "#ca913d",
   tentative: "#2563eb",
   confirmed: "#4a6b55",
+  surrogate: "#dc2626",
 } as const satisfies Record<FieldAttendance, string>;
 
 export function getFieldAttendance(e: EventItem): FieldAttendance {
@@ -21,6 +22,8 @@ export function fairFieldCardClass(att: FieldAttendance): string {
       return "border-blue-600/40 bg-blue-50/40 shadow-[0_0_0_1px_rgba(37,99,235,0.1)]";
     case "confirmed":
       return "border-kelly-success/50 bg-kelly-success/10 shadow-[0_0_0_1px_rgba(74,107,85,0.15)]";
+    case "surrogate":
+      return "border-2 border-red-600 bg-red-50/40 shadow-[0_0_0_1px_rgba(220,38,38,0.15)]";
     default:
       return "border-kelly-text/10 bg-[var(--color-surface-elevated)]";
   }
