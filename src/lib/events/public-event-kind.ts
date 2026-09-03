@@ -3,7 +3,7 @@ import type { EventType } from "@/content/types";
 
 export type PublicEventLane = "community" | "civic" | "campaign";
 
-const TYPE_LABEL: Record<CampaignEventType, string> = {
+const TYPE_LABEL: Partial<Record<CampaignEventType, string>> = {
   RALLY: "Community Event",
   APPEARANCE: "Speaking Engagement",
   TRAINING: "Volunteer Training",
@@ -16,13 +16,6 @@ const TYPE_LABEL: Record<CampaignEventType, string> = {
   ORIENTATION: "Volunteer Training",
   FESTIVAL: "Festival/Fair",
   OTHER: "Community Event",
-  COMMUNITY: "Community Event",
-  COUNTY_PARTY: "County/Party Meeting",
-  FORUM: "Candidate Forum",
-  YOUTH: "Youth Event",
-  CIVIC: "Civic/Voter Registration",
-  SPEAKING: "Speaking Engagement",
-  LISTENING: "Listening Event",
 };
 
 export function formatPublicEventKind(t: CampaignEventType): string {
@@ -31,8 +24,6 @@ export function formatPublicEventKind(t: CampaignEventType): string {
 
 export function publicLaneForCampaignType(t: CampaignEventType): PublicEventLane {
   switch (t) {
-    case "CIVIC":
-    case "LISTENING":
     case "TRAINING":
     case "ORIENTATION":
     case "DEADLINE":
@@ -41,10 +32,6 @@ export function publicLaneForCampaignType(t: CampaignEventType): PublicEventLane
       return "civic";
     case "FUNDRAISER":
     case "PRESS":
-    case "COUNTY_PARTY":
-    case "FORUM":
-    case "SPEAKING":
-    case "YOUTH":
     case "FESTIVAL":
       return "campaign";
     default:

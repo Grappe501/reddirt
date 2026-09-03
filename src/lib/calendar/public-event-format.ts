@@ -1,7 +1,7 @@
 import type { CampaignEventType } from "@prisma/client";
 import { PUBLIC_CALENDAR_DEFAULT_TZ, type PublicVenueMode } from "@/lib/calendar/public-event-types";
 
-const TYPE_LABEL: Record<CampaignEventType, string> = {
+const TYPE_LABEL: Partial<Record<CampaignEventType, string>> = {
   RALLY: "Rally",
   APPEARANCE: "Appearance",
   TRAINING: "Training",
@@ -14,13 +14,6 @@ const TYPE_LABEL: Record<CampaignEventType, string> = {
   ORIENTATION: "Orientation",
   FESTIVAL: "Fair / festival",
   OTHER: "Event",
-  COMMUNITY: "Community event",
-  COUNTY_PARTY: "County / party meeting",
-  FORUM: "Candidate forum",
-  YOUTH: "Youth event",
-  CIVIC: "Civic / voter registration",
-  SPEAKING: "Speaking engagement",
-  LISTENING: "Listening event",
 };
 
 export function formatPublicEventType(t: CampaignEventType): string {
