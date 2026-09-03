@@ -22,6 +22,9 @@ export function SchedulerShell({
             <Link href="/scheduler" className="text-kelly-navy underline-offset-4 hover:underline">
               Queue
             </Link>
+            <Link href="/scheduler/new" className="text-kelly-navy underline-offset-4 hover:underline">
+              New event
+            </Link>
             <Link href="/scheduler/inbox" className="text-kelly-navy underline-offset-4 hover:underline">
               OSCAR inbox
             </Link>

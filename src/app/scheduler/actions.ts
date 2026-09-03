@@ -145,6 +145,86 @@ export async function unpublishSchedulerEventAction(formData: FormData) {
   redirect(`/scheduler/events/${id}?unpublished=1`);
 }
 
+export async function archiveSchedulerEventAction(formData: FormData) {
+  const actor = await requireSchedulerPage();
+  const id = String(formData.get("id") ?? "");
+  if (!id) redirect("/scheduler");
+  const reason = String(formData.get("archiveReason") ?? "").trim().slice(0, 800);
+  if (reason.length < 8) redirect(`/scheduler/events/${id}?error=archive_reason`);
+  const row = await prisma.campaignEvent.findUnique({
+    where: { id },
+    select: { locationName: true, county: { select: { displayName: true } } },
+  });
+  if (!row) redirect("/scheduler");
+  const place = [row.locationName?.trim(), row.county?.displayName?.trim()].filter(Boolean).join(" · ") || "Place not set";
+  await prisma.campaignEvent.update({
+    where: { id },
+    data: {
+      isPublicOnWebsite: false,
+      status: CampaignEventStatus.CANCELLED,
+      eventWorkflowState: EventWorkflowState.CANCELED,
+      schedulerArchivedAt: new Date(),
+      schedulerArchivedBy: actor.name || actor.email,
+      schedulerArchiveReason: reason,
+      schedulerArchivePlace: place.slice(0, 240),
+    },
+  });
+  revalidatePath("/scheduler");
+  revalidatePath("/events");
+  revalidatePath(`/scheduler/events/${id}`);
+  redirect(`/scheduler/events/${id}?archived=1`);
+}
+
+const NEW_EVENT_TYPES = [
+  "APPEARANCE",
+  "RALLY",
+  "MEETING",
+  "FESTIVAL",
+  "TRAINING",
+  "CANVASS",
+  "FUNDRAISER",
+  "PRESS",
+  "OTHER",
+] as const;
+
+export async function createSchedulerEventAction(formData: FormData) {
+  await requireSchedulerPage();
+  const title = String(formData.get("title") ?? "").trim().slice(0, 160);
+  const date = String(formData.get("date") ?? "").slice(0, 10);
+  if (!title || !/^\d{4}-\d{2}-\d{2}$/.test(date)) redirect("/scheduler/new?error=required");
+  const startTime = String(formData.get("startTime") ?? "") || undefined;
+  const endTime = String(formData.get("endTime") ?? "") || undefined;
+  const locationName = String(formData.get("locationName") ?? "").trim().slice(0, 160) || null;
+  const countyName = String(formData.get("county") ?? "").trim() || null;
+  const rawType = String(formData.get("eventType") ?? "APPEARANCE");
+  const eventType = (NEW_EVENT_TYPES as readonly string[]).includes(rawType)
+    ? (rawType as (typeof NEW_EVENT_TYPES)[number])
+    : "APPEARANCE";
+  const slug = await uniqueEventSlug(title, date);
+  const countyId = await resolveCountyId(countyName);
+  const startAt = chicagoAt(date, startTime, 12);
+  const endAt = chicagoAt(date, endTime || startTime, 13);
+  const created = await prisma.campaignEvent.create({
+    data: {
+      slug,
+      title,
+      eventType: eventType as CampaignEventType,
+      status: CampaignEventStatus.SCHEDULED,
+      eventWorkflowState: EventWorkflowState.DRAFT,
+      isPublicOnWebsite: false,
+      startAt,
+      endAt: endAt > startAt ? endAt : new Date(startAt.getTime() + 60 * 60 * 1000),
+      timezone: PUBLIC_CALENDAR_DEFAULT_TZ,
+      locationName,
+      countyId,
+      publicSummary: String(formData.get("publicSummary") ?? "").trim().slice(0, 800) || null,
+    },
+    select: { id: true },
+  });
+  revalidatePath("/scheduler");
+  redirect(`/scheduler/events/${created.id}`);
+}
+
 export type OscarIngestState = {
   drafts: OscarDraft[];
   ignored: Array<{ title: string; reason: string }>;

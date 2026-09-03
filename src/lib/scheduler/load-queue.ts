@@ -3,7 +3,7 @@ import { prisma } from "@/lib/db";
 import { isPrismaLiveDataUnavailable, logPrismaDatabaseUnavailable } from "@/lib/prisma-connectivity";
 import { cardFromRow, type SchedulerPublicCard } from "@/lib/scheduler/public-card-fields";
 
-export type SchedulerQueueTab = "needs_publish" | "live" | "needs_info";
+export type SchedulerQueueTab = "needs_publish" | "live" | "needs_info" | "archive";
 
 export type SchedulerQueueRow = {
   id: string;
@@ -13,9 +13,14 @@ export type SchedulerQueueRow = {
   locationName: string | null;
   countyName: string | null;
   isLive: boolean;
+  isArchived: boolean;
   card: SchedulerPublicCard;
   publishedBy: string | null;
   publishedAt: Date | null;
+  archivedBy: string | null;
+  archivedAt: Date | null;
+  archiveReason: string | null;
+  archivePlace: string | null;
 };
 
 const SELECT = {
@@ -36,6 +41,10 @@ const SELECT = {
   schedulerNeedsMoreInfo: true,
   schedulerPublishedBy: true,
   schedulerPublishedAt: true,
+  schedulerArchivedAt: true,
+  schedulerArchivedBy: true,
+  schedulerArchiveReason: true,
+  schedulerArchivePlace: true,
   county: { select: { displayName: true } },
 } as const;
 
@@ -57,6 +66,10 @@ function toRow(r: {
   schedulerNeedsMoreInfo: boolean;
   schedulerPublishedBy: string | null;
   schedulerPublishedAt: Date | null;
+  schedulerArchivedAt: Date | null;
+  schedulerArchivedBy: string | null;
+  schedulerArchiveReason: string | null;
+  schedulerArchivePlace: string | null;
   county: { displayName: string } | null;
 }): SchedulerQueueRow {
   const card = cardFromRow(r);
@@ -67,10 +80,15 @@ function toRow(r: {
     startAt: r.startAt,
     locationName: r.locationName,
     countyName: r.county?.displayName ?? null,
-    isLive: r.isPublicOnWebsite && r.eventWorkflowState === EventWorkflowState.PUBLISHED,
+    isLive: r.isPublicOnWebsite && r.eventWorkflowState === EventWorkflowState.PUBLISHED && !r.schedulerArchivedAt,
+    isArchived: Boolean(r.schedulerArchivedAt),
     card,
     publishedBy: r.schedulerPublishedBy,
     publishedAt: r.schedulerPublishedAt,
+    archivedBy: r.schedulerArchivedBy,
+    archivedAt: r.schedulerArchivedAt,
+    archiveReason: r.schedulerArchiveReason,
+    archivePlace: r.schedulerArchivePlace,
   };
 }
 
@@ -78,17 +96,22 @@ export async function loadSchedulerQueue(tab: SchedulerQueueTab): Promise<Schedu
   try {
     const rows = await prisma.campaignEvent.findMany({
       where: {
-        status: { not: CampaignEventStatus.CANCELLED },
-        ...(tab === "live"
-          ? { isPublicOnWebsite: true, eventWorkflowState: EventWorkflowState.PUBLISHED }
-          : tab === "needs_info"
-            ? { OR: [{ schedulerNeedsMoreInfo: true }, { publicFieldAttendance: "caution" }] }
-            : {
-                OR: [
-                  { isPublicOnWebsite: false },
-                  { eventWorkflowState: { not: EventWorkflowState.PUBLISHED } },
-                ],
-              }),
+        ...(tab === "archive"
+          ? { schedulerArchivedAt: { not: null } }
+          : {
+              schedulerArchivedAt: null,
+              status: { not: CampaignEventStatus.CANCELLED },
+              ...(tab === "live"
+                ? { isPublicOnWebsite: true, eventWorkflowState: EventWorkflowState.PUBLISHED }
+                : tab === "needs_info"
+                  ? { OR: [{ schedulerNeedsMoreInfo: true }, { publicFieldAttendance: "caution" }] }
+                  : {
+                      OR: [
+                        { isPublicOnWebsite: false },
+                        { eventWorkflowState: { not: EventWorkflowState.PUBLISHED } },
+                      ],
+                    }),
+            }),
       },
       select: SELECT,
       orderBy: { startAt: "asc" },
