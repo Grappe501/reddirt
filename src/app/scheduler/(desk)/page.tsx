@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { loadSchedulerQueue, type SchedulerQueueTab } from "@/lib/scheduler/load-queue";
 
+export const dynamic = "force-dynamic";
+
 function tabFromQuery(raw: string | undefined): SchedulerQueueTab {
   if (raw === "needs_publish" || raw === "needs_info" || raw === "archive") return raw;
   return "live";

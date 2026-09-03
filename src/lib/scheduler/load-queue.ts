@@ -1,10 +1,7 @@
 import { CampaignEventStatus, EventWorkflowState } from "@prisma/client";
 import type { EventItem } from "@/content/types";
 import { events } from "@/content/events";
-import { queryPublicCampaignEvents } from "@/lib/calendar/public-events";
-import { mergeMovementAndCalendarEvents } from "@/lib/events/calendar-to-movement-event";
-import { collapseRecurringSeriesToNextOccurrence } from "@/lib/events/collapse-recurring-series";
-import { compareEventsForHub, parseEventInstant, resolveEventStatus } from "@/lib/format/eventDisplay";
+import { parseEventInstant, resolveEventStatus } from "@/lib/format/eventDisplay";
 import { prisma } from "@/lib/db";
 import { isPrismaLiveDataUnavailable, logPrismaDatabaseUnavailable } from "@/lib/prisma-connectivity";
 import { cardFromRow, emptyCard, type SchedulerPublicCard } from "@/lib/scheduler/public-card-fields";
@@ -100,7 +97,7 @@ function toRow(r: {
   };
 }
 
-function syntheticPublicRow(event: EventItem): SchedulerQueueRow {
+export function syntheticPublicRow(event: EventItem): SchedulerQueueRow {
   return {
     id: `public:${event.slug}`,
     slug: event.slug,
@@ -119,6 +116,29 @@ function syntheticPublicRow(event: EventItem): SchedulerQueueRow {
     archiveReason: null,
     archivePlace: null,
   };
+}
+
+export async function listSchedulerOwnedSlugs(slugs: string[]): Promise<Set<string>> {
+  if (slugs.length === 0) return new Set();
+  const rows = await prisma.campaignEvent.findMany({
+    where: { slug: { in: slugs } },
+    select: { slug: true },
+  });
+  return new Set(rows.map((row) => row.slug));
+}
+
+export async function loadSchedulerDbRowsBetween(from: Date, toExclusive: Date): Promise<SchedulerQueueRow[]> {
+  const rows = await prisma.campaignEvent.findMany({
+    where: {
+      schedulerArchivedAt: null,
+      status: { not: CampaignEventStatus.CANCELLED },
+      startAt: { gte: from, lt: toExclusive },
+    },
+    select: SELECT,
+    orderBy: { startAt: "asc" },
+    take: 400,
+  });
+  return rows.map(toRow);
 }
 
 export async function hydrateSchedulerRowsFromEvents(items: EventItem[]): Promise<SchedulerQueueRow[]> {
@@ -147,14 +167,23 @@ export async function hydrateSchedulerRowsFromEvents(items: EventItem[]): Promis
 
 async function loadSchedulerLiveQueue(): Promise<SchedulerQueueRow[]> {
   const now = new Date();
-  const calendarRows = await queryPublicCampaignEvents({}, { take: 200 });
-  const merged = collapseRecurringSeriesToNextOccurrence(
-    mergeMovementAndCalendarEvents(events, calendarRows)
-      .filter((event) => resolveEventStatus(event, now) === "upcoming")
-      .filter((event) => event.fieldAttendance !== "suggested" && event.fieldAttendance !== "unscheduled")
-      .sort((a, b) => compareEventsForHub(a, b, now)),
-  );
-  return hydrateSchedulerRowsFromEvents(merged);
+  const dbRows = await prisma.campaignEvent.findMany({
+    where: {
+      schedulerArchivedAt: null,
+      status: { not: CampaignEventStatus.CANCELLED },
+      endAt: { gte: now },
+    },
+    select: SELECT,
+    orderBy: { startAt: "asc" },
+    take: 200,
+  });
+  const owned = await listSchedulerOwnedSlugs(events.map((event) => event.slug));
+  const leftover = events
+    .filter((event) => !owned.has(event.slug))
+    .filter((event) => resolveEventStatus(event, now) === "upcoming")
+    .filter((event) => event.fieldAttendance !== "suggested" && event.fieldAttendance !== "unscheduled")
+    .map(syntheticPublicRow);
+  return [...dbRows.map(toRow), ...leftover].sort((a, b) => a.startAt.getTime() - b.startAt.getTime());
 }
 
 export async function loadSchedulerQueue(tab: SchedulerQueueTab): Promise<SchedulerQueueRow[]> {
