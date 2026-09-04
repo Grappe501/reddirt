@@ -4606,10 +4606,10 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     city: "Pine Bluff",
     counties: ["Jefferson"],
     status: "scheduled",
-    includeOnPublicPage: true,
+    includeOnPublicPage: false,
     confidence: "likely",
     notes:
-      "Dr. Mary Liddell letter + 8/20/26 order form: 34th Annual Dove Freedom Fund Banquet, Fri Oct 9. Prince Hall Grand Lodge, 2906 East Harding. Doors 5:30 p.m., program 6:30 p.m. Guest speaker Congressman Bennie Thompson. Tickets $50; payment due Oct 2. Kelly invited as supporter — tentative. /events/naacp-pine-bluff-dove-banquet-2026 Same morning: olli-for-coffee-2026 Fayetteville 10:30 a.m. (confirmed) — Fayetteville to Pine Bluff is a long afternoon drive. Prior evening: AME LR and LWV Fayetteville. Next day: October Daze Booneville.",
+      "Off the public /events list 2026-09-04. Kelly not attending. /events/naacp-pine-bluff-dove-banquet-2026",
     sourceType: "manual",
   },
   {
