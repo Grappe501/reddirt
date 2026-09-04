@@ -302,7 +302,7 @@ export const calendarIngest20260902: EventItem[] = [
     whoItsFor:
       "Conway and Faulkner County neighbors, and anyone Paloma welcomes. Confirm with the hosts if you need a table.",
     organizerNote:
-      "Teresa Huff candidate FYI. Do not publish 501-733-0186. fieldAttendance tentative. Same day: locked-2026-09-05-marion-county-visit Yellville; Polk Fair Mena; private birthday dinner Russellville.",
+      "Off the public /events list 2026-09-04. Kelly not attending. Teresa Huff candidate FYI. Do not publish the chair phone. Same day: locked-2026-09-05-marion-county-visit Yellville; Polk Fair Mena; private birthday dinner Russellville.",
     rsvpHref: "https://www.facebook.com/share/1BrC5Bgiwb/?mibextid=wwXlfr",
     audienceTags: ["Conway", "Faulkner County", "Festival", "Hispanic", "Central Arkansas"],
     relatedEventSlugs: ["faulkner-dems-hq-opening-2026", "polk-county-fair-mena-2026"],
@@ -313,7 +313,7 @@ export const calendarIngest20260902: EventItem[] = [
     ],
     mapCoordinates: { lat: 35.0917, lng: -92.4438 },
     mapPinQuality: "region",
-    fieldAttendance: "tentative",
+    fieldAttendance: "unscheduled",
   },
 {
     slug: "faulkner-dems-hq-opening-2026",
