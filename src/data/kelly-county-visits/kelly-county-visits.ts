@@ -5016,10 +5016,10 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     city: "Arkadelphia",
     counties: ["Clark"],
     status: "scheduled",
-    includeOnPublicPage: true,
+    includeOnPublicPage: false,
     confidence: "likely",
     notes:
-      "Steve Google Calendar Sun Sep 20 all-day. Same date ledger: Jacksonville Festiville — cannot assume both. Time/venue TBA. /events/arkadelphia-sep-20-2026",
+      "Off the public /events list 2026-09-04. Kelly not attending. /events/arkadelphia-sep-20-2026",
     sourceType: "calendar",
   },
   {
