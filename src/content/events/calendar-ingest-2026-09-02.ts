@@ -2650,12 +2650,12 @@ export const calendarIngest20260902: EventItem[] = [
     whatToExpect: ["All-day festival hold", "Street TBA"],
     whoItsFor: "Desha County neighbors and festival guests.",
     organizerNote:
-      "Google Calendar audit 2026-09-02. Same day: paragould forum; marche-day-2026.",
+      "Off the public /events list 2026-09-04. Kelly not attending. Same day: paragould forum; marche-day-2026.",
     relatedEventSlugs: ["marche-day-2026"],
     relatedResourceHrefs: [{ label: "Marche Day — same day", href: "/events/marche-day-2026" }, { label: "Get involved", href: "/get-involved" }],
     mapCoordinates: { lat: 33.6282, lng: -91.3946 },
     mapPinQuality: "region",
-    fieldAttendance: "tentative",
+    fieldAttendance: "unscheduled",
   },
 {
     slug: "lpga-northwest-arkansas-2026",

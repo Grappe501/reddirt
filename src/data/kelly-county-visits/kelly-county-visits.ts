@@ -5071,10 +5071,10 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     city: "McGehee",
     counties: ["Desha"],
     status: "scheduled",
-    includeOnPublicPage: true,
+    includeOnPublicPage: false,
     confidence: "likely",
     notes:
-      "Steve Google Calendar Sat Sep 26 all-day. Calendar spelling McGhee; city is McGehee. Same day: Paragould forum 2-5; Marche Day NLR. /events/owlfest-mcgehee-2026",
+      "Off the public /events list 2026-09-04. Kelly not attending. /events/owlfest-mcgehee-2026",
     sourceType: "calendar",
   },
   {
