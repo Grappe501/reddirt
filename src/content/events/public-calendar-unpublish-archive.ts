@@ -41,4 +41,5 @@ export const PUBLIC_CALENDAR_UNPUBLISH_ARCHIVE: UnpublishedPublicCard[] = [
   { slug: "naacp-pine-bluff-dove-banquet-2026", ledgerId: "manual-2026-10-09-naacp-pine-bluff-dove-banquet", title: "NAACP Pine Bluff Dove Freedom Fund Banquet", date: "2026-10-09", restoreAttendance: "tentative" },
   { slug: "saline-old-fashioned-2026", ledgerId: "manual-2026-10-10-saline-old-fashioned", title: "Saline County Old Fashioned", date: "2026-10-10", restoreAttendance: "tentative" },
   { slug: "montgomery-county-oct-10-2026", ledgerId: "presence-2026-10-10-montgomery-county", title: "Montgomery County hold", date: "2026-10-10", restoreAttendance: "tentative" },
+  { slug: "saline-county-gotv-2026-10-12", ledgerId: "locked-2026-10-12-saline-county-gotv-push", title: "Saline County GOTV push — Benton", date: "2026-10-12", restoreAttendance: "tentative" },
 ];

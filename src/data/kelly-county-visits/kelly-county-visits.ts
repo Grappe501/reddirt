@@ -4101,10 +4101,10 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     city: "Benton",
     counties: ["Saline"],
     status: "scheduled",
-    includeOnPublicPage: true,
+    includeOnPublicPage: false,
     confidence: "likely",
     notes:
-      "Seeded from locked-events-steve.json. /events/saline-county-gotv-2026-10-12 Same date: women-in-democracy-jonesboro-2026, razorback-touchdown-club-2026 (city TBA), and rison-in-the-fall-2026.",
+      "Off the public /events list 2026-09-04. Kelly not attending. /events/saline-county-gotv-2026-10-12",
     sourceType: "local-file",
   },
   {
