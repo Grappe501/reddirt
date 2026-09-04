@@ -2864,12 +2864,12 @@ export const calendarIngest20260902: EventItem[] = [
     whatToExpect: ["1:00–2:30 p.m. Central", "Fairgrounds TBA"],
     whoItsFor: "Baxter County neighbors at the fair.",
     organizerNote:
-      "Campaign calendar audit 2026-09-02. Same evening: grassroots-guitar-strings-2026; iclr-sep-18-2026.",
+      "Off the public /events list 2026-09-04. Kelly not attending. Same evening: grassroots-guitar-strings-2026; iclr-sep-18-2026.",
     relatedEventSlugs: ["grassroots-guitar-strings-2026"],
     relatedResourceHrefs: [{ label: "Get involved", href: "/get-involved" }],
     mapCoordinates: { lat: 36.3354, lng: -92.3851 },
     mapPinQuality: "region",
-    fieldAttendance: "tentative",
+    fieldAttendance: "unscheduled",
   },
 {
     slug: "dequeen-sep-20-2026",

@@ -5191,10 +5191,10 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     city: "Mountain Home",
     counties: ["Baxter"],
     status: "scheduled",
-    includeOnPublicPage: true,
+    includeOnPublicPage: false,
     confidence: "likely",
     notes:
-      "Campaign calendar Fri Sep 18 1:00-2:30 p.m. Baxter fair. City inferred Mountain Home (fairgrounds not on the block). Same evening: Grassroots Woody’s 6:30; Calhoun Fair 6:30-9:00; ICLR 7:30. /events/baxter-fair-sep-18-2026",
+      "Off the public /events list 2026-09-04. Kelly not attending. /events/baxter-fair-sep-18-2026",
     sourceType: "calendar",
   },
   {
