@@ -3649,10 +3649,10 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     city: "Highland",
     counties: ["Sharp"],
     status: "scheduled",
-    includeOnPublicPage: true,
+    includeOnPublicPage: false,
     confidence: "likely",
     notes:
-      "Next Friday from Sept 2 note = Sep 11. Chair PattyAnn Peal. HQ opening Highland; street/time TBA. Wants Kelly if possible; needs merch (signs, shirts/hats, buttons, push cards), pickup OK, 0 funds. Phone not in paste — do not invent. /events/sharp-county-hq-highland-2026 Same day: Dallas County Fair Fordyce 6pm.",
+      "Off the public /events list 2026-09-04. Kelly not attending. Chair PattyAnn Peal. HQ opening Highland. Merch ask still internal. /events/sharp-county-hq-highland-2026 Same day: Dallas County Fair Fordyce 6pm.",
     sourceType: "manual",
   },
 
@@ -4368,9 +4368,9 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     city: "Benton",
     counties: ["Saline"],
     status: "scheduled",
-    includeOnPublicPage: true,
+    includeOnPublicPage: false,
     confidence: "confirmed",
-    notes: "AAC County Clerks Fall 2026 Meeting. Benton Event Center. AAC: Sept 9 noon-Sept 11 10am. FYI said Sept 10-11. /events/aac-county-clerks-fall-meeting-2026",
+    notes: "Off the public /events list 2026-09-04. Clerks association conference, not a campaign stop. AAC: Sept 9 noon-Sept 11 10am. /events/aac-county-clerks-fall-meeting-2026",
     sourceType: "manual",
   },
   {
@@ -4867,10 +4867,10 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     title: "Labor event in Washington County",
     counties: ["Washington"],
     status: "scheduled",
-    includeOnPublicPage: true,
+    includeOnPublicPage: false,
     confidence: "likely",
     notes:
-      "Steve Google Calendar Mon Sep 7 all-day. Time/city/street not on the block. Same day public: Rector Labor Day Parade 9:00 a.m. — cannot do Rector and a Washington County labor event the same day without a clock. /events/washington-county-labor-event-2026",
+      "Kelly not attending. Off the public /events list 2026-09-04. Same day public: Rector Labor Day Parade 9:00 a.m. /events/washington-county-labor-event-2026",
     sourceType: "calendar",
   },
   {
