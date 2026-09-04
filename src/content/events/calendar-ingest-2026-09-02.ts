@@ -2291,12 +2291,6 @@ export const calendarIngest20260902: EventItem[] = [
     mapCoordinates: { lat: 36.0617, lng: -94.1608 },
     mapPinQuality: "region",
     fieldAttendance: "unscheduled",
-    marks: {
-      kellyRole: "not_attending",
-      tabling: "no",
-      volunteers: "none",
-      mobilize: "none",
-    },
   },
 {
     slug: "cocktails-with-kelly-sep-2026",
