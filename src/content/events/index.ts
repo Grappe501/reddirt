@@ -39,6 +39,7 @@ const CALENDAR_INGEST_REPLACES: Record<string, string> = {
   "pope-county-registration-event-2026-09-15": "russellville-mary-ella-voter-registration-2026",
   "bella-vista-meet-2026-10-08": "hob-nob-bentonville-2026",
   "bella-vista-meet-2026-10-15": "hob-nob-bentonville-2026",
+  "arkansas-tv-debates-2026-10-12": "arkansas-tv-sos-debate-oct-15-2026",
 };
 
 /** Old public slugs that still resolve to a canonical event page. */
