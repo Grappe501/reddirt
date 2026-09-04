@@ -3593,10 +3593,10 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     city: "Conway",
     counties: ["Faulkner"],
     status: "scheduled",
-    includeOnPublicPage: true,
+    includeOnPublicPage: false,
     confidence: "likely",
     notes:
-      "Updated from Teresa Huff month note. Sat Sep 5 4:00-9:00 p.m. Laurel Park, Conway. County party applied for a table (not confirmed); will register voters (50+ last year). Do not publish 501-733-0186. /events/paloma-hispanic-festival-2026 Same day: Marion County Yellville (public); Kelly birthday dinner Russellville (private); Polk Fair Mena last day.",
+      "Off the public /events list 2026-09-04. Kelly not attending. Laurel Park Conway 4:00-9:00 p.m. /events/paloma-hispanic-festival-2026 Same day: Marion County Yellville (public); Kelly birthday dinner Russellville (private); Polk Fair Mena last day.",
     sourceType: "manual",
   },
   {
