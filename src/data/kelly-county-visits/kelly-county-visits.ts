@@ -4453,10 +4453,10 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     city: "Little Rock",
     counties: ["Pulaski"],
     status: "scheduled",
-    includeOnPublicPage: true,
+    includeOnPublicPage: false,
     confidence: "confirmed",
     notes:
-      "RSVP https://evening-with-acasa.rsvpify.com 5:30-7:30 p.m. Gibb-Altheimer House. Officials briefing. /events/evening-with-acasa-2026 Same evening: JCDW Meet the Candidates Pine Bluff 5:30; Garland Library State & Federal Hot Springs 6:00; Eddie Mae Herron Pocahontas. ACASA is confirmed — cannot do Pine Bluff or Hot Springs at the same hour.",
+      "Off the public /events list 2026-09-04. Kelly not attending. /events/evening-with-acasa-2026",
     sourceType: "manual",
   },
   {

@@ -860,8 +860,7 @@ export const calendarIngest20260902: EventItem[] = [
     ],
     whoItsFor:
       "Invited elected officials and their listed guests. This is not a general-public campaign gathering.",
-    organizerNote:
-      "Invite from Kenny Smith, ACASA (ksmith@arkcasa.org). RSVP: https://evening-with-acasa.rsvpify.com. Office: 300 West Capitol Avenue, Little Rock. Do not put the personal cell on the public card if the RSVP link is enough. Same evening: jcdw-meet-the-candidates-2026 Pine Bluff 5:30 (clock overlap); Eddie Mae Herron Pocahontas; Garland Library State & Federal forum Hot Springs 6:00 p.m.",
+    organizerNote: "Off the public /events list 2026-09-04. Kelly not attending.",
     rsvpHref: "https://evening-with-acasa.rsvpify.com",
     audienceTags: ["Little Rock", "Pulaski County", "ACASA", "Elected officials", "Central Arkansas"],
     relatedEventSlugs: [
@@ -877,7 +876,7 @@ export const calendarIngest20260902: EventItem[] = [
     ],
     mapCoordinates: { lat: 34.736, lng: -92.276 },
     mapPinQuality: "exact",
-    fieldAttendance: "confirmed",
+    fieldAttendance: "unscheduled",
   },
 {
     slug: "jcdw-meet-the-candidates-2026",
