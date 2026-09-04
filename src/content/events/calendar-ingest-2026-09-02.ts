@@ -2551,12 +2551,12 @@ export const calendarIngest20260902: EventItem[] = [
     whatToExpect: ["All-day hold", "Town stop TBA"],
     whoItsFor: "Clark County neighbors once a clock is posted.",
     organizerNote:
-      "Google Calendar audit 2026-09-02. Conflict check: locked-2026-09-20-jacksonville-festiville. Festiville also appears on the calendar Sat Sep 5.",
+      "Off the public /events list 2026-09-04. Kelly not attending. Conflict check: locked-2026-09-20-jacksonville-festiville.",
     relatedEventSlugs: [],
     relatedResourceHrefs: [{ label: "Get involved", href: "/get-involved" }],
     mapCoordinates: { lat: 34.1209, lng: -93.0538 },
     mapPinQuality: "region",
-    fieldAttendance: "tentative",
+    fieldAttendance: "unscheduled",
   },
 {
     slug: "press-freedom-gala-2026",
