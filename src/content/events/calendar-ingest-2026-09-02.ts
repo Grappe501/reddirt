@@ -1433,8 +1433,7 @@ export const calendarIngest20260902: EventItem[] = [
     ],
     whoItsFor:
       "NAACP members, Pine Bluff and Jefferson County neighbors, scholarship supporters, and invited guests with tickets. Confirm reservations with the branch before treating this as a walk-in dinner.",
-    organizerNote:
-      "Sourced from Dr. Mary Liddell supporter letter and 8/20/26 sponsorship order form. Branch 6028B, P.O. Box 9064, Pine Bluff 71611, 870-643-2383 (on the letter). Do not publish 15graydon@gmail.com from the Word file unless the branch confirms it as the public ad inbox. Kelly invited as supporter — fieldAttendance tentative. Same morning: olli-for-coffee-2026 Fayetteville 10:30 (confirmed) — Fayetteville to Pine Bluff is a long afternoon drive. Same week: ame-arkansas-conference-little-rock-2026 and lwv-fayetteville-library-oct-8-2026 (Oct 8); october-daze-booneville-2026 (Oct 10).",
+    organizerNote: "Off the public /events list 2026-09-04. Kelly not attending.",
     rsvpHref: undefined,
     audienceTags: ["NAACP", "Pine Bluff", "Jefferson County", "Banquet", "Central Arkansas"],
     relatedEventSlugs: ["ame-east-conference-pine-bluff-2026", "olli-for-coffee-2026"],
@@ -1446,7 +1445,7 @@ export const calendarIngest20260902: EventItem[] = [
     ],
     mapCoordinates: { lat: 34.2209, lng: -92.0036 },
     mapPinQuality: "region",
-    fieldAttendance: "tentative",
+    fieldAttendance: "unscheduled",
   },
 {
     slug: "olli-for-coffee-2026",
