@@ -653,8 +653,7 @@ export const calendarIngest20260902: EventItem[] = [
     ],
     whoItsFor:
       "Carroll County voters, Chamber members, and anyone who wants to hear local candidates in Berryville before Election Day.",
-    organizerNote:
-      "Sources: Berryville Chamber save-the-date flyer; Chamber email; Jean Reed 4:00–7:00 p.m. and registration forthcoming. Chamber calendar: Berryville Chamber Presents: Meet the Candidates - Reloaded, Thu Oct 1, 2026. Not campaign-hosted. Same morning: siloam-springs-chamber-forum-2026 11:30-1:00. Same evening: ballots-blue-jeans-bbq-2026 dinner 6:30 Venue at Westwind NLR — cannot do Siloam, Berryville, and NLR.",
+    organizerNote: "Off the public /events list 2026-09-04. Kelly not attending.",
     rsvpHref: "https://www.berryvillechamber.com/events/",
     audienceTags: ["Berryville", "Carroll County", "Chamber", "Town hall", "Northwest Arkansas"],
     relatedEventSlugs: [
@@ -671,7 +670,7 @@ export const calendarIngest20260902: EventItem[] = [
     ],
     mapCoordinates: { lat: 36.3654, lng: -93.5646 },
     mapPinQuality: "region",
-    fieldAttendance: "confirmed",
+    fieldAttendance: "unscheduled",
   },
 {
     slug: "ballots-blue-jeans-bbq-2026",

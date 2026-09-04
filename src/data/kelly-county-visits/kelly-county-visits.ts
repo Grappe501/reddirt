@@ -4396,10 +4396,10 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     city: "Berryville",
     counties: ["Carroll"],
     status: "scheduled",
-    includeOnPublicPage: true,
+    includeOnPublicPage: false,
     confidence: "confirmed",
     notes:
-      "4:00-7:00 p.m. Jean Reed. Chamber-hosted. /events/berryville-meet-the-candidates-reloaded-2026 Same morning: siloam-springs-chamber-forum-2026 11:30-1:00 — Siloam to Berryville is a doable afternoon drive. Same evening: Ballots, Blue Jeans & BBQ dinner 6:30 p.m. Venue at Westwind NLR — cannot do Siloam, Berryville, and NLR.",
+      "Off the public /events list 2026-09-04. Kelly not attending. /events/berryville-meet-the-candidates-reloaded-2026",
     sourceType: "manual",
   },
   {
