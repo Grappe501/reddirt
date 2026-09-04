@@ -3064,10 +3064,10 @@ export const calendarIngest20260902: EventItem[] = [
       "The campaign calendar listed **Montgomery county** all day Saturday, **October 10**.\n\nNo town was on the block. This page uses 9:00 a.m.–5:00 p.m. so the day appears.",
     whatToExpect: ["All-day hold", "Town TBA"],
     whoItsFor: "Montgomery County neighbors once a town is posted.",
-    organizerNote: "Campaign calendar audit 2026-09-02. Promoted from a hidden presence row.",
+    organizerNote: "Off the public /events list 2026-09-04. Kelly not attending.",
     relatedEventSlugs: ["saline-old-fashioned-2026", "october-daze-booneville-2026"],
     relatedResourceHrefs: [{ label: "Get involved", href: "/get-involved" }],
-    fieldAttendance: "tentative",
+    fieldAttendance: "unscheduled",
   },
 {
     slug: "hot-springs-chili-cookout-2026",
