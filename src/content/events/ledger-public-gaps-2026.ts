@@ -24,7 +24,7 @@ type StopDraft = {
   audienceTags: string[];
   mapCoordinates?: { lat: number; lng: number };
   relatedEventSlugs: string[];
-  fieldAttendance?: "confirmed" | "tentative";
+  fieldAttendance?: "confirmed" | "tentative" | "unscheduled";
   whoItsFor?: string;
   organizerNote?: string;
 };
@@ -99,7 +99,8 @@ export const ledgerPublicGaps2026: EventItem[] = [
     audienceTags: ["Fordyce", "Dallas County", "Fair"],
     mapCoordinates: { lat: 33.8153, lng: -92.4121 },
     relatedEventSlugs: ["lafayette-county-sep-2026", "sharp-county-hq-highland-2026"],
-    fieldAttendance: "confirmed",
+    fieldAttendance: "unscheduled",
+    organizerNote: "Off the public /events list 2026-09-04. Kelly not attending.",
   }),
   campaignStop({
     slug: "conway-county-fair-2026-09-12",

@@ -3635,10 +3635,10 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     title: "Fordyce Dallas County fair 6pm",
     counties: ["Dallas"],
     status: "scheduled",
-    includeOnPublicPage: true,
+    includeOnPublicPage: false,
     confidence: "confirmed",
     notes:
-      "Promoted to public calendar 2026-09-02 from campaign schedule. /events/dallas-county-fair-fordyce-2026-09-11 Same day: Sharp County Democrats HQ opening Highland (time TBA) — merch ask; Kelly attend tentative.",
+      "Off the public /events list 2026-09-04. Kelly not attending. /events/dallas-county-fair-fordyce-2026-09-11",
     sourceType: "calendar",
   },
   {
