@@ -27,7 +27,7 @@ type StopDraft = {
   relatedResourceHrefs?: Array<{ label: string; href: string }>;
   primaryHref?: string;
   primaryCtaLabel?: string;
-  fieldAttendance?: "confirmed" | "tentative";
+  fieldAttendance?: "confirmed" | "tentative" | "unscheduled";
   whoItsFor?: string;
   organizerNote?: string;
   attendanceType?: EventItem["attendanceType"];
@@ -161,6 +161,8 @@ export const october2026CampaignStops: EventItem[] = [
     audienceTags: ["Helena-West Helena", "Phillips County", "Festival"],
     mapCoordinates: { lat: 34.5293, lng: -90.5901 },
     relatedEventSlugs: ["lwv-fayetteville-library-oct-8-2026", "yellville-turkey-trot-2026-10-10"],
+    fieldAttendance: "unscheduled",
+    organizerNote: "Off the public /events list 2026-09-04. Kelly not attending.",
   }),
   campaignStop({
     slug: "yellville-turkey-trot-2026-10-10",

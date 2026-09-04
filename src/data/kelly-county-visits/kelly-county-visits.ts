@@ -4051,9 +4051,10 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     title: "Phillips, Lee, Monroe Immersion anchor is King Bisquit Blues festival",
     counties: ["Phillips", "Lee", "Monroe"],
     status: "scheduled",
-    includeOnPublicPage: true,
+    includeOnPublicPage: false,
     confidence: "confirmed",
-    notes: "Promoted to public calendar 2026-09-02 from campaign schedule.",
+    notes:
+      "Off the public /events list 2026-09-04. Kelly not attending. /events/king-biscuit-blues-festival-2026-10-09",
     sourceType: "calendar",
   },
 
