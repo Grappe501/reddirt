@@ -3979,10 +3979,10 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     city: "North Little Rock",
     counties: ["Pulaski"],
     status: "scheduled",
-    includeOnPublicPage: true,
+    includeOnPublicPage: false,
     confidence: "likely",
     notes:
-      "DPPC Countdown to Victory. Mon Sep 28 5:00 p.m. Gigi’s on Main Street (regular meeting spot). City inferred North Little Rock / Argenta — street number not in the note. Table, merch, Adopt a Candidate. RSVP by Fri Sep 18. Do not publish Chad Rodgers or Mary Richardson Comcast or cells. /events/dppc-gigis-rally-2026 Same day: Harrison Balloon Fest. Next evening: ACASA / JCDW / Garland / Herron four-way.",
+      "Off the public /events list 2026-09-04. Kelly not attending. /events/dppc-gigis-rally-2026",
     sourceType: "manual",
   },
   {

@@ -819,8 +819,7 @@ export const calendarIngest20260902: EventItem[] = [
     ],
     whoItsFor:
       "Pulaski County Democrats, volunteers, and neighbors the county party welcomes. Confirm the Main Street address with the hosts before travel.",
-    organizerNote:
-      "DPPC Countdown to Victory. RSVP by Sep 18. Do not publish drchadinlr@comcast.net, marymelr@comcast.net, or 501 cells. City inferred NLR/Argenta Gigi’s — do not invent a street number. fieldAttendance tentative until RSVP. Same day: Harrison Balloon Fest. Next evening four-way: ACASA / JCDW / Garland / Herron.",
+    organizerNote: "Off the public /events list 2026-09-04. Kelly not attending.",
     rsvpHref: undefined,
     audienceTags: ["Pulaski County", "Democratic Party", "North Little Rock", "Rally", "Central Arkansas"],
     relatedEventSlugs: [
@@ -834,7 +833,7 @@ export const calendarIngest20260902: EventItem[] = [
     ],
     mapCoordinates: { lat: 34.7553, lng: -92.2666 },
     mapPinQuality: "region",
-    fieldAttendance: "tentative",
+    fieldAttendance: "unscheduled",
   },
 {
     slug: "evening-with-acasa-2026",
