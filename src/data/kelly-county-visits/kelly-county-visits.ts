@@ -3828,10 +3828,10 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     title: "Calhoun county fair evening",
     counties: ["Calhoun"],
     status: "scheduled",
-    includeOnPublicPage: true,
+    includeOnPublicPage: false,
     confidence: "confirmed",
     notes:
-      "Promoted to public calendar 2026-09-02 from campaign schedule. Campaign calendar Fri Sep 18 6:30-9:00 p.m. Same evening: Grassroots & Guitar Strings Woody’s 6:30; Cynthia Nations The Max — Calhoun to Conway/Sherwood is a drive.",
+      "Off the public /events list 2026-09-04. Kelly not attending. /events/calhoun-county-fair-2026-09-18",
     sourceType: "calendar",
   },
 

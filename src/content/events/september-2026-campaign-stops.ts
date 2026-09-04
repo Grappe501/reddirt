@@ -457,7 +457,8 @@ export const september2026CampaignStops: EventItem[] = [
     audienceTags: ["Calhoun County", "Festival"],
     mapCoordinates: { lat: 33.5379, lng: -92.4696 },
     relatedEventSlugs: ["little-rock-comic-con-2026-09-19", "hot-spring-county-cookout-2026-09-19"],
-    fieldAttendance: "tentative",
+    fieldAttendance: "unscheduled",
+    organizerNote: "Off the public /events list 2026-09-04. Kelly not attending.",
   }),
   campaignStop({
     slug: "little-rock-comic-con-2026-09-19",
