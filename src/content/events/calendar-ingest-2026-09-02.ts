@@ -612,8 +612,7 @@ export const calendarIngest20260902: EventItem[] = [
     ],
     whoItsFor:
       "Siloam Springs and Benton County neighbors, Chamber members, and Facebook Live viewers. Confirm the roster with the Chamber if you are coming to hear a specific candidate.",
-    organizerNote:
-      "Randy Torres Chamber invite. fieldAttendance tentative — in person or video. Keep randy@siloamchamber.com off the public card. Same afternoon: berryville-meet-the-candidates-reloaded-2026 4:00-7:00 (confirmed). Same evening: ballots-blue-jeans-bbq-2026 dinner 6:30 Venue at Westwind NLR.",
+    organizerNote: "Off the public /events list 2026-09-04. Kelly not attending.",
     rsvpHref: "https://www.siloamchamber.com",
     audienceTags: ["Siloam Springs", "Benton County", "Chamber", "Town hall", "Northwest Arkansas"],
     relatedEventSlugs: [
@@ -627,7 +626,7 @@ export const calendarIngest20260902: EventItem[] = [
     ],
     mapCoordinates: { lat: 36.1882, lng: -94.5404 },
     mapPinQuality: "region",
-    fieldAttendance: "tentative",
+    fieldAttendance: "unscheduled",
   },
 {
     slug: "berryville-meet-the-candidates-reloaded-2026",
