@@ -476,7 +476,7 @@ export const calendarIngest20260902: EventItem[] = [
     ],
     mapCoordinates: { lat: 34.5645, lng: -92.5868 },
     mapPinQuality: "exact",
-    fieldAttendance: "confirmed",
+    fieldAttendance: "unscheduled",
   },
 {
     slug: "sharp-county-hq-highland-2026",
@@ -512,7 +512,7 @@ export const calendarIngest20260902: EventItem[] = [
     ],
     mapCoordinates: { lat: 36.2695, lng: -91.5221 },
     mapPinQuality: "region",
-    fieldAttendance: "tentative",
+    fieldAttendance: "unscheduled",
   },
 {
     slug: "cleveland-county-meet-and-greet-2026",
@@ -2282,7 +2282,7 @@ export const calendarIngest20260902: EventItem[] = [
     whatToExpect: ["All-day hold on the campaign calendar", "City and hour TBA", "Hard same-day conflict with Rector Labor Day"],
     whoItsFor: "Washington County labor neighbors once a city and time are published.",
     organizerNote:
-      "Google Calendar audit 2026-09-02. Same day: rector-labor-day-parade-picnic-2026 confirmed. Internal team Zoom that evening is not on the public calendar.",
+      "Kelly not attending. Off the public /events list. Google Calendar audit 2026-09-02. Same day: rector-labor-day-parade-picnic-2026 confirmed.",
     relatedEventSlugs: ["rector-labor-day-parade-picnic-2026"],
     relatedResourceHrefs: [
       { label: "Rector Labor Day Parade — same morning", href: "/events/rector-labor-day-parade-picnic-2026" },
@@ -2290,7 +2290,13 @@ export const calendarIngest20260902: EventItem[] = [
     ],
     mapCoordinates: { lat: 36.0617, lng: -94.1608 },
     mapPinQuality: "region",
-    fieldAttendance: "tentative",
+    fieldAttendance: "unscheduled",
+    marks: {
+      kellyRole: "not_attending",
+      tabling: "no",
+      volunteers: "none",
+      mobilize: "none",
+    },
   },
 {
     slug: "cocktails-with-kelly-sep-2026",
