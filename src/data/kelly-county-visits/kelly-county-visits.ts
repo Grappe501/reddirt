@@ -3910,9 +3910,10 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     title: "Crittenden, Prairie, Arkansas county swing",
     counties: ["Crittenden", "Prairie", "Arkansas"],
     status: "scheduled",
-    includeOnPublicPage: true,
+    includeOnPublicPage: false,
     confidence: "confirmed",
-    notes: "Promoted to public calendar 2026-09-02 from campaign schedule. /events/crittenden-prairie-arkansas-swing-2026-09-23",
+    notes:
+      "Off the public /events list 2026-09-04. Kelly not attending. /events/crittenden-prairie-arkansas-swing-2026-09-23",
     sourceType: "calendar",
   },
 

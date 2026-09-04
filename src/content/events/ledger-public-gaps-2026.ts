@@ -213,7 +213,8 @@ export const ledgerPublicGaps2026: EventItem[] = [
     ],
     audienceTags: ["Crittenden County", "Prairie County", "Arkansas County"],
     relatedEventSlugs: ["stuttgart-oct-17-2026"],
-    fieldAttendance: "confirmed",
+    fieldAttendance: "unscheduled",
+    organizerNote: "Off the public /events list 2026-09-04. Kelly not attending.",
   }),
   campaignStop({
     slug: "hot-springs-forum-2026-09-25",
