@@ -4701,10 +4701,10 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     city: "Mountain Home",
     counties: ["Baxter"],
     status: "scheduled",
-    includeOnPublicPage: true,
+    includeOnPublicPage: false,
     confidence: "confirmed",
     notes:
-      "Host reserved Back Forty Oct 3 2:00-5:00 p.m. People Over Politics conversation. Earlier Steven Grappe note was 3-4pm. 1400 Hwy 62 E, Mountain Home. Glenda Huffine — do not publish Yahoo. /events/people-over-politics-back-forty-2026 Same-day: Ozark Forward hold; Moonshine Van Buren; Fun on 31 Romance-Lonoke.",
+      "Off the public /events list 2026-09-04. Kelly not attending. /events/people-over-politics-back-forty-2026",
     sourceType: "manual",
   },
   {

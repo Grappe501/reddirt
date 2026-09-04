@@ -1821,8 +1821,7 @@ export const calendarIngest20260902: EventItem[] = [
     ],
     whoItsFor:
       "Baxter County neighbors of any party, and anyone who wants a short, public conversation — not a closed meeting.",
-    organizerNote:
-      "Updated 2026-09-02: host reserved Back Forty Oct 3 2:00-5:00 p.m. Earlier Steven Grappe note was 3:00-4:00 p.m. Contact: Glenda Huffine (do not publish Yahoo). Same-day: Ozark Forward hold; Moonshine and Music Festival Van Buren County; Fun on 31 Romance–Lonoke.",
+    organizerNote: "Off the public /events list 2026-09-04. Kelly not attending.",
     rsvpHref: undefined,
     audienceTags: ["Mountain Home", "Baxter County", "People Over Politics", "Bipartisan", "North Central Arkansas"],
     relatedEventSlugs: [
@@ -1837,7 +1836,7 @@ export const calendarIngest20260902: EventItem[] = [
     ],
     mapCoordinates: { lat: 36.336, lng: -92.365 },
     mapPinQuality: "region",
-    fieldAttendance: "confirmed",
+    fieldAttendance: "unscheduled",
     listeningSessionSeries: true,
   },
 {
