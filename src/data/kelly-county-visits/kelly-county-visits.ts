@@ -4382,10 +4382,10 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     city: "Siloam Springs",
     counties: ["Benton"],
     status: "scheduled",
-    includeOnPublicPage: true,
+    includeOnPublicPage: false,
     confidence: "likely",
     notes:
-      "Rep. Randy Torres (Siloam Springs Chamber). Thu Oct 1 11:30 a.m.-1:00 p.m. Siloam Springs Public Library, 205 E Jefferson St. Full ballot including SOS. Video option if she cannot attend. Keep randy@siloamchamber.com off the public card — phone 479-524-6466 and siloamchamber.com are on the letter. /events/siloam-springs-chamber-forum-2026 Same afternoon: Berryville Meet the Candidates 4:00-7:00 (confirmed) — Siloam to Berryville is doable. Same evening: Ballots Blue Jeans BBQ dinner 6:30 p.m. Venue at Westwind NLR.",
+      "Off the public /events list 2026-09-04. Kelly not attending. /events/siloam-springs-chamber-forum-2026",
     sourceType: "manual",
   },
   {
