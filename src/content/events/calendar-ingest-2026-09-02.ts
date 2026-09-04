@@ -1204,7 +1204,7 @@ export const calendarIngest20260902: EventItem[] = [
     whoItsFor:
       "Ouachita County neighbors and anyone who wants to hear Camden-ballot candidates before November. Confirm details with the host if you need accessibility or timing notes.",
     organizerNote:
-      "Sourced from Reese Broadnax Meet the Candidates Forum flyer. Prior campaign contact: item-2026-01-22-camden-candidate-meeting-at-6-contacted-reese-broadnax. Kelly not named on this flyer — fieldAttendance tentative. Host phone 870-898-0896 is on the public flyer. Same week: HSV forum Sept 16; Calhoun County Fair Sept 18 (adjacent county).",
+      "Off the public /events list 2026-09-04. Kelly not attending. Sourced from Reese Broadnax flyer. Same week: HSV forum Sept 16; Calhoun County Fair Sept 18.",
     rsvpHref: undefined,
     audienceTags: ["Camden", "Ouachita County", "Town hall", "Southwest Arkansas"],
     relatedEventSlugs: [],
@@ -1214,7 +1214,7 @@ export const calendarIngest20260902: EventItem[] = [
     ],
     mapCoordinates: { lat: 33.5846, lng: -92.8343 },
     mapPinQuality: "region",
-    fieldAttendance: "tentative",
+    fieldAttendance: "unscheduled",
   },
 {
     slug: "rogers-roundabout-crew-2026",

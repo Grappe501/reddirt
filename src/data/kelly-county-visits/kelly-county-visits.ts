@@ -3801,10 +3801,10 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     city: "Camden",
     counties: ["Ouachita"],
     status: "scheduled",
-    includeOnPublicPage: true,
+    includeOnPublicPage: false,
     confidence: "likely",
     notes:
-      "Flyer: Meet the Candidates Forum, Thu Sep 17 6:30 p.m. (candidates arrive 6:00 for instructions). Zion Hill Conference Center, 117 Maul Road, Camden. Host R. Reese Broadnax, 870-898-0896 (on flyer). Camden November ballot candidates. Kelly not named — tentative. /events/camden-meet-the-candidates-forum-2026 Same week: HSV forum Sept 16; Calhoun County Fair Sept 18.",
+      "Off the public /events list 2026-09-04. Kelly not attending. Zion Hill Conference Center, Camden. /events/camden-meet-the-candidates-forum-2026",
     sourceType: "manual",
   },
 
