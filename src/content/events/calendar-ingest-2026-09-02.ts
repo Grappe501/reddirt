@@ -1627,8 +1627,7 @@ export const calendarIngest20260902: EventItem[] = [
     ],
     whoItsFor:
       "Rison and Cleveland County neighbors, vendors, and anyone the festival welcomes. Confirm hours and the downtown layout before travel.",
-    organizerNote:
-      "Jam Harp email 2026-08-06 (same note as cleveland-county-meet-and-greet-2026). fieldAttendance tentative until a booth or appearance is locked. Do not invent a square, park, or concert bill. Same day: women-in-democracy-jonesboro-2026, razorback-touchdown-club-2026, locked-2026-10-12-saline-county-gotv-push.",
+    organizerNote: "Off the public /events list 2026-09-04. Kelly not attending.",
     rsvpHref: undefined,
     audienceTags: ["Rison", "Cleveland County", "Festival", "Southwest Arkansas"],
     relatedEventSlugs: [
@@ -1643,7 +1642,7 @@ export const calendarIngest20260902: EventItem[] = [
     ],
     mapCoordinates: { lat: 33.9584, lng: -92.1901 },
     mapPinQuality: "region",
-    fieldAttendance: "tentative",
+    fieldAttendance: "unscheduled",
   },
 {
     slug: "women-in-democracy-jonesboro-2026",

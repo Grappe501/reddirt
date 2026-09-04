@@ -4674,10 +4674,10 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     city: "Rison",
     counties: ["Cleveland"],
     status: "scheduled",
-    includeOnPublicPage: true,
+    includeOnPublicPage: false,
     confidence: "likely",
     notes:
-      "Jam Harp / Jametta Harper email 2026-08-06: Mon Oct 12 all-day Rison in the Fall — vendors during the day, concert in the evening. Street/hours not in the note — do not invent a square or stage. Attendance not confirmed. /events/rison-in-the-fall-2026 Same day: Women in Democracy Jonesboro, Razorback Touchdown Club (city TBA), Saline GOTV Benton.",
+      "Off the public /events list 2026-09-04. Kelly not attending. /events/rison-in-the-fall-2026",
     sourceType: "manual",
   },
   {
