@@ -5042,10 +5042,10 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     title: "Rodeo event rally Washington Co",
     counties: ["Washington"],
     status: "scheduled",
-    includeOnPublicPage: true,
+    includeOnPublicPage: false,
     confidence: "likely",
     notes:
-      "Steve Google Calendar Tue Sep 22 all-day. City/fairgrounds/clock not on the block. Same day: Howard County; Garland library forum; press freedom gala. /events/washington-county-rodeo-rally-2026",
+      "Off the public /events list 2026-09-04. Kelly not attending. /events/washington-county-rodeo-rally-2026",
     sourceType: "calendar",
   },
   {

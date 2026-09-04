@@ -2598,12 +2598,13 @@ export const calendarIngest20260902: EventItem[] = [
       "Steve’s Google Calendar listed **Rodeo event rally Washington Co** all day Tuesday, **September 22**.\n\nNo city or grounds were on the block. This page uses noon–8:00 p.m. so the day appears.\n\nThe same Tuesday already has Howard County, the Garland County library forum, and a press-freedom gala with no city.",
     whatToExpect: ["All-day hold", "Grounds TBA"],
     whoItsFor: "Washington County neighbors once a grounds is posted.",
-    organizerNote: "Google Calendar audit 2026-09-02. Same day: press-freedom-gala-2026; Howard County; Garland county forum.",
+    organizerNote:
+      "Off the public /events list 2026-09-04. Kelly not attending. Same day: press-freedom-gala-2026; Howard County; Garland county forum.",
     relatedEventSlugs: ["press-freedom-gala-2026"],
     relatedResourceHrefs: [{ label: "Get involved", href: "/get-involved" }],
     mapCoordinates: { lat: 36.0617, lng: -94.1608 },
     mapPinQuality: "region",
-    fieldAttendance: "tentative",
+    fieldAttendance: "unscheduled",
   },
 {
     slug: "leslie-karaoke-2026",
