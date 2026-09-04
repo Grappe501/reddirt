@@ -26,7 +26,7 @@ type StopDraft = {
   audienceTags: string[];
   mapCoordinates?: { lat: number; lng: number };
   relatedEventSlugs: string[];
-  fieldAttendance?: "confirmed" | "tentative";
+  fieldAttendance?: "confirmed" | "tentative" | "unscheduled";
   statewideVirtual?: boolean;
   missingCounty?: boolean;
   whoItsFor?: string;
@@ -325,6 +325,8 @@ export const september2026CampaignStops: EventItem[] = [
     audienceTags: ["Mountain Home", "Baxter County", "Candidate Forum"],
     mapCoordinates: { lat: 36.3353, lng: -92.3851 },
     relatedEventSlugs: ["pope-county-registration-event-2026-09-15", "faulkner-dems-hq-opening-2026-09-14"],
+    fieldAttendance: "unscheduled",
+    organizerNote: "Off the public /events list 2026-09-04. Kelly not attending.",
   }),
   campaignStop({
     slug: "faulkner-dems-hq-opening-2026-09-14",

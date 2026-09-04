@@ -3706,10 +3706,10 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     title: "Mt home candidate forum",
     counties: ["Baxter"],
     status: "scheduled",
-    includeOnPublicPage: true,
+    includeOnPublicPage: false,
     confidence: "confirmed",
     notes:
-      "Promoted to public calendar 2026-09-02 from campaign schedule. Same day: Faulkner County Dems HQ grand opening / town hall Conway 1151 Markham — Mountain Home to Conway is a long drive; this forum is confirmed.",
+      "Off the public /events list 2026-09-04. Kelly not attending. Same day: Faulkner County Dems HQ grand opening Conway.",
     sourceType: "calendar",
   },
 
