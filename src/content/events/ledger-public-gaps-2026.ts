@@ -284,7 +284,8 @@ export const ledgerPublicGaps2026: EventItem[] = [
     audienceTags: ["Benton", "Saline County", "GOTV"],
     mapCoordinates: { lat: 34.5645, lng: -92.5868 },
     relatedEventSlugs: ["women-in-democracy-jonesboro-2026", "rison-in-the-fall-2026"],
-    fieldAttendance: "tentative",
+    fieldAttendance: "unscheduled",
+    organizerNote: "Off the public /events list 2026-09-04. Kelly not attending.",
   }),
   campaignStop({
     slug: "logan-scott-immersion-2026-10-18",
