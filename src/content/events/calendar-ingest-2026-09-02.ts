@@ -2987,13 +2987,12 @@ export const calendarIngest20260902: EventItem[] = [
       "The campaign calendar listed **Mountain Home** all day Sunday, **October 4**, and Monday, **October 5**.\n\nNo venues were on the blocks. Tuesday, October 6 already has the **VFW candidate forum** at 2:00 p.m. and a **Baxter County Farm Bureau** evening.\n\nSunday also has a locked **Air Show** in Little Rock — confirm whether she stays in Mountain Home.",
     whatToExpect: ["Two-day hold", "Stops TBA"],
     whoItsFor: "Baxter County neighbors during that window.",
-    organizerNote:
-      "Campaign calendar audit 2026-09-02. Next day: people-over-politics-vfw-mountain-home-2026; baxter-farm-bureau-oct-6-2026.",
+    organizerNote: "Off the public /events list 2026-09-04. Kelly not attending.",
     relatedEventSlugs: ["people-over-politics-vfw-mountain-home-2026", "baxter-farm-bureau-oct-6-2026"],
     relatedResourceHrefs: [{ label: "Get involved", href: "/get-involved" }],
     mapCoordinates: { lat: 36.3354, lng: -92.3851 },
     mapPinQuality: "region",
-    fieldAttendance: "tentative",
+    fieldAttendance: "unscheduled",
   },
 {
     slug: "baxter-farm-bureau-oct-6-2026",
