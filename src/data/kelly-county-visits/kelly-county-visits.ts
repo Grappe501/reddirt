@@ -5301,10 +5301,10 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     title: "Saline County Old Fashioned",
     counties: ["Saline"],
     status: "scheduled",
-    includeOnPublicPage: true,
+    includeOnPublicPage: false,
     confidence: "uncertain",
     notes:
-      "Campaign calendar Sat Oct 10 all-day Saline County Old Fashioned (title truncated). Town and street TBA. Same day: Montgomery County; October Daze Booneville; Turkey Drop Yellville; +6 hidden blocks not readable. /events/saline-old-fashioned-2026",
+      "Off the public /events list 2026-09-04. Kelly not attending. /events/saline-old-fashioned-2026",
     sourceType: "calendar",
   },
   {

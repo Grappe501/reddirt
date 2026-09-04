@@ -3039,13 +3039,12 @@ export const calendarIngest20260902: EventItem[] = [
       "The campaign calendar listed **Saline County Old Fashioned** (title truncated) as an all-day Saturday, **October 10** block.\n\nNo town or street was readable. This page uses 9:00 a.m.–5:00 p.m. so the day appears.\n\nThe same Saturday already has **October Daze** in Booneville, **Turkey Drop** in Yellville, and a **Montgomery County** hold. The week header also showed **+6** hidden blocks.",
     whatToExpect: ["All-day hold", "Town TBA"],
     whoItsFor: "Saline County neighbors once a town is posted.",
-    organizerNote:
-      "Campaign calendar audit 2026-09-02. Same day: october-daze-booneville-2026; montgomery-county-oct-10-2026.",
+    organizerNote: "Off the public /events list 2026-09-04. Kelly not attending.",
     relatedEventSlugs: ["october-daze-booneville-2026", "montgomery-county-oct-10-2026"],
     relatedResourceHrefs: [{ label: "Get involved", href: "/get-involved" }],
     mapCoordinates: { lat: 34.5645, lng: -92.5868 },
     mapPinQuality: "region",
-    fieldAttendance: "tentative",
+    fieldAttendance: "unscheduled",
   },
 {
     slug: "montgomery-county-oct-10-2026",
