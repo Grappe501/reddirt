@@ -261,7 +261,8 @@ export const ledgerPublicGaps2026: EventItem[] = [
     audienceTags: ["Harrison", "Boone County", "Festival"],
     mapCoordinates: { lat: 36.2298, lng: -93.1077 },
     relatedEventSlugs: ["harrison-hot-air-balloon-festival-2026-09-12", "dppc-gigis-rally-2026"],
-    fieldAttendance: "tentative",
+    fieldAttendance: "unscheduled",
+    organizerNote: "Off the public /events list 2026-09-04. Kelly not attending.",
   }),
   campaignStop({
     slug: "saline-county-gotv-2026-10-12",

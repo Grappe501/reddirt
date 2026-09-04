@@ -3965,10 +3965,10 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     city: "Harrison",
     counties: ["Boone"],
     status: "scheduled",
-    includeOnPublicPage: true,
+    includeOnPublicPage: false,
     confidence: "likely",
     notes:
-      "Seeded from locked-events-steve.json. /events/harrison-balloon-fest-2026-09-28 Same evening: DPPC rally Gigi’s on Main 5:00 p.m. — Harrison to Pulaski County is a long drive.",
+      "Off the public /events list 2026-09-04. Kelly not attending. /events/harrison-balloon-fest-2026-09-28",
     sourceType: "local-file",
   },
   {
