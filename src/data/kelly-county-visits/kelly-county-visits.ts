@@ -5247,10 +5247,10 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     city: "North Little Rock",
     counties: ["Pulaski"],
     status: "scheduled",
-    includeOnPublicPage: true,
+    includeOnPublicPage: false,
     confidence: "likely",
     notes:
-      "Campaign calendar Sat Oct 3 4:00-7:00 p.m. Grounds not on the block. Same afternoon reserved Back Forty Mountain Home 2:00-5:00; calendar also says Leave for mt home 7pm — cannot do NLR 4:00-7:00 and Mountain Home. Locked ledger also has Air Show Sun Oct 4 Little Rock. /events/nlr-air-show-oct-3-2026",
+      "Off the public /events list 2026-09-04. Kelly not attending. /events/nlr-air-show-oct-3-2026",
     sourceType: "calendar",
   },
   {

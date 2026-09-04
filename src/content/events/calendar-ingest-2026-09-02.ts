@@ -2959,8 +2959,7 @@ export const calendarIngest20260902: EventItem[] = [
       "The campaign calendar listed **North Little Rock Air Show** on Saturday, **October 3**, **4:00–7:00 p.m.** Grounds were not on the block.\n\nThe same Saturday is already reserved **2:00–5:00 p.m.** at The Back Forty in Mountain Home, and the calendar also says **Leave for mt home 7pm**. Those do not pair with a 4:00 p.m. NLR show.\n\nA locked row still lists an **Air Show** on **Sunday, October 4** in Little Rock — confirm whether that is a second day or the old date.",
     whatToExpect: ["4:00–7:00 p.m. Central", "Grounds TBA", "Hard conflict with Mountain Home 2:00–5:00"],
     whoItsFor: "Neighbors at the air show if this hold stays.",
-    organizerNote:
-      "Campaign calendar audit 2026-09-02. Conflict: people-over-politics-back-forty-2026. Locked Sun: locked-2026-10-04-air-show.",
+    organizerNote: "Off the public /events list 2026-09-04. Kelly not attending.",
     relatedEventSlugs: ["people-over-politics-back-forty-2026"],
     relatedResourceHrefs: [
       { label: "Back Forty conversation — same afternoon", href: "/events/people-over-politics-back-forty-2026" },
@@ -2968,7 +2967,7 @@ export const calendarIngest20260902: EventItem[] = [
     ],
     mapCoordinates: { lat: 34.7553, lng: -92.2666 },
     mapPinQuality: "region",
-    fieldAttendance: "tentative",
+    fieldAttendance: "unscheduled",
   },
 {
     slug: "mountain-home-oct-4-5-2026",
