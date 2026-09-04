@@ -4577,10 +4577,10 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     city: "Wynne",
     counties: ["Cross"],
     status: "scheduled",
-    includeOnPublicPage: true,
+    includeOnPublicPage: false,
     confidence: "likely",
     notes:
-      "YF&R letter (Madisyn Witcher): Thu Oct 8 Technology Center for the Delta, Wynne. Doors 6:00, check-in 6:30, program 6:45. Five minutes; no Q; opponents out of room. RSVP to speak by Oct 1: 870-238-7953. /events/cross-county-farm-bureau-meet-the-candidates-2026 Hard conflict: LWV Fayetteville 5:30-7:30. Afternoon: AME Little Rock.",
+      "Off the public /events list 2026-09-04. Kelly not attending. /events/cross-county-farm-bureau-meet-the-candidates-2026",
     sourceType: "manual",
   },
   {

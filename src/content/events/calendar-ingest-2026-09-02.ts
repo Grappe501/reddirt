@@ -1989,8 +1989,7 @@ export const calendarIngest20260902: EventItem[] = [
     ],
     whoItsFor:
       "Cross County neighbors and candidates who RSVP. If you are coming to hear Kelly, confirm she is on the speaking list after October 1.",
-    organizerNote:
-      "Letter from Madisyn Witcher, Cross County Farm Bureau YF&R. RSVP Peggy Smith / 870-238-7953 by Oct 1. Host email is on the candidate letter — keep it off the public card if the phone is enough. fieldAttendance tentative until RSVP. Hard conflict: lwv-fayetteville-library-oct-8-2026 5:30-7:30. Afternoon: ame-arkansas-conference-little-rock-2026. LR to Wynne after 3:30 is possible; Fayetteville is not.",
+    organizerNote: "Off the public /events list 2026-09-04. Kelly not attending.",
     rsvpHref: undefined,
     audienceTags: ["Wynne", "Cross County", "Farm Bureau", "Town hall", "Upper Delta"],
     relatedEventSlugs: [
@@ -2004,7 +2003,7 @@ export const calendarIngest20260902: EventItem[] = [
     ],
     mapCoordinates: { lat: 35.2506, lng: -90.7898 },
     mapPinQuality: "region",
-    fieldAttendance: "tentative",
+    fieldAttendance: "unscheduled",
   },
 {
     slug: "arkansas-tv-sos-debate-oct-15-2026",
