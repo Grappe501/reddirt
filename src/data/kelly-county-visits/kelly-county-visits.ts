@@ -5104,15 +5104,16 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
   },
   {
     id: "manual-2026-10-03-goat-fest",
-    publicTitle: "Goat fest — Patty Brazil chair",
+    publicTitle: "Goat Festival — Perryville",
     date: "2026-10-03",
     title: "Goat fest - patty brazil chair",
-    counties: [],
+    city: "Perryville",
+    counties: ["Perry"],
     status: "scheduled",
     includeOnPublicPage: true,
-    confidence: "uncertain",
+    confidence: "confirmed",
     notes:
-      "Steve Google Calendar Sat Oct 3 all-day. City/street not on the block. Same day: Moonshine Van Buren; People Over Politics Back Forty Mountain Home; Ozark Forward hold. /events/goat-fest-oct-2026",
+      "Steve 2026-09-04: Perry County Goatfest is scheduled — county paints gold. Chair Patty Brazil. Street TBA. Same day: Moonshine Van Buren; People Over Politics Back Forty Mountain Home. /events/goat-fest-oct-2026",
     sourceType: "calendar",
   },
   {
