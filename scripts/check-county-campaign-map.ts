@@ -378,7 +378,7 @@ if (events.some((e) => /paragould/i.test(e.slug) && e.startsAt.startsWith("2026-
   ]);
   if (ledger.visited.length !== 56) fail("October public stops must not change the visited county count before they end");
   if (summaryByName(summaries, "Perry").publicState !== "confirmed_upcoming") fail("Perry Goat Festival confirmed upcoming");
-  if (summaryByName(summaries, "Phillips").publicState !== "confirmed_upcoming") fail("Phillips King Biscuit confirmed upcoming");
+  if (summaryByName(summaries, "Phillips").publicState !== "neutral") fail("Phillips King Biscuit is off the public list");
   if (summaryByName(summaries, "Madison").publicState !== "visited") fail("Madison should be visited / blue");
   if (summaryByName(summaries, "Madison").upcomingIndicator !== "confirmed") fail("Madison keeps Oct 26 as confirmed upcoming");
   if (!summaryByName(summaries, "Johnson").confirmedUpcomingEvents.some((e) => e.slug === "flat-rock-fish-fry-2026-10-17")) {
