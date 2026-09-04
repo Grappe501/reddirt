@@ -4077,10 +4077,10 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     title: "Montgomery county",
     counties: ["Montgomery"],
     status: "scheduled",
-    includeOnPublicPage: true,
+    includeOnPublicPage: false,
     confidence: "likely",
     notes:
-      "Campaign calendar Sat Oct 10 all-day. Town and clock TBA. Same Saturday: October Daze Booneville; Turkey Drop Yellville; Saline County Old Fashioned. /events/montgomery-county-oct-10-2026",
+      "Off the public /events list 2026-09-04. Kelly not attending. /events/montgomery-county-oct-10-2026",
     sourceType: "calendar",
   },
   {
