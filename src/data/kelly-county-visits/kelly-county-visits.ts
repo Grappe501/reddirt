@@ -5273,10 +5273,10 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     city: "Mountain Home",
     counties: ["Baxter"],
     status: "scheduled",
-    includeOnPublicPage: true,
+    includeOnPublicPage: false,
     confidence: "likely",
     notes:
-      "Campaign calendar Sun-Mon Oct 4-5 all-day Mountain Home. Clock and venue TBA. Tue Oct 6 is Baxter Dem / VFW forum 2:00 and Farm Bureau evening. Same Sunday locked Air Show Little Rock. /events/mountain-home-oct-4-5-2026",
+      "Off the public /events list 2026-09-04. Kelly not attending. /events/mountain-home-oct-4-5-2026",
     sourceType: "calendar",
   },
   {
