@@ -47,4 +47,5 @@ export const PUBLIC_CALENDAR_UNPUBLISH_ARCHIVE: UnpublishedPublicCard[] = [
   { slug: "hardy-candidate-forum-2026", ledgerId: "manual-2026-10-15-hardy-candidate-forum", title: "Sharp County candidate forum — Hardy", date: "2026-10-15", restoreAttendance: "tentative" },
   { slug: "rocky-comfort-pecan-festival-2026", ledgerId: "manual-2026-10-17-rocky-comfort-pecan-festival", title: "Rocky Comfort Pecan Festival — Foreman", date: "2026-10-17", restoreAttendance: "tentative" },
   { slug: "flat-rock-fish-fry-2026", ledgerId: "manual-2026-10-17-flat-rock-fish-fry", title: "Flat Rock Hwy 359 fire department fish fry", date: "2026-10-17", restoreAttendance: "tentative" },
+  { slug: "logan-scott-immersion-2026-10-18", ledgerId: "presence-2026-10-18-logan-and-scott-immersion", title: "Logan and Scott immersion", date: "2026-10-18", restoreAttendance: "confirmed" },
 ];
