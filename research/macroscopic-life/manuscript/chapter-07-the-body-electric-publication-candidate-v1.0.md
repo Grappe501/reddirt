@@ -16,7 +16,7 @@ An **ion** is an atom or molecule with a net electric charge. Ions move through 
 
 Put a thin biological membrane between two solutions, control which ions can cross it, and something remarkable becomes possible.
 
-A living cell can maintain an electrical difference across its boundary.
+A living cell can maintain differences in ion concentration across its membrane, and those gradients—together with selective permeability—can contribute to a measurable difference in electric potential across that boundary.
 
 **Electricity in the body is ordinary physics organized by living systems.**
 
@@ -66,17 +66,15 @@ They do not violate physics to do this.
 
 They use physics.
 
-Chemical reactions release usable free energy. Molecular machinery couples that energy to transport, synthesis, motion, signaling, and other cellular work. Gradients are established, used, altered, and rebuilt.
+Cells couple energetically favorable reactions and electrochemical processes to transport, synthesis, motion, signaling, and other forms of cellular work. Gradients are established, used, altered, and rebuilt.
 
-A living organism is therefore an **open system**. Matter and energy cross its boundaries. Molecules enter and leave. Chemical bonds are made and broken. Heat is released. Structures are repaired. Concentration differences are maintained.
+A living organism is an **open system**. Matter and energy cross its boundaries. Molecules enter and leave. Chemical bonds are made and broken. Heat is released. Structures are repaired. Concentration differences are maintained.
 
-This is part of what scientists mean when they describe living systems as operating **far from thermodynamic equilibrium** or in **nonequilibrium states**.
+Living systems persist in maintained **nonequilibrium states**. They continuously transform energy and exchange matter while sustaining gradients and structures that would not persist indefinitely without ongoing processes.
 
-The word *entropy* is sometimes translated casually as *disorder*. That shortcut can create more confusion than understanding. For our purposes, we need a narrower lesson: organized biological gradients and structures persist only because physical processes continually maintain them while energy is transformed and dissipated.
+The word *entropy* is sometimes translated casually as *disorder*. That shortcut can create more confusion than understanding. For our purposes, we need a narrower lesson: organized biological gradients and structures persist because physical processes continually maintain them while energy is transformed and dissipated.
 
-Stop maintaining the gradients and they tend to decay.
-
-Stop maintaining the organization permanently and the living state does not remain indefinitely.
+Stop maintaining a gradient and it tends to decay.
 
 But this gives us another place to be careful.
 
@@ -106,7 +104,9 @@ But a neuron did not invent membrane potential.
 
 Non-neural cells maintain electrical states too.
 
-Changes in ion-channel activity and membrane voltage can interact with intracellular calcium, secretion, contraction, migration, metabolism, signaling pathways, and gene regulation. Which effects occur depends on the cell, tissue, developmental state, and physiological context.
+Membrane voltage and ion flux are integral to familiar excitable processes such as neuronal signaling and muscle contraction. In non-neural cells, changes in membrane voltage or ion-channel state can also interact with calcium signaling, secretion, migration, proliferation, metabolism, and gene regulation in cell- and context-dependent ways.
+
+These effects do not imply one universal voltage code. Different tissues use different channels, coupling mechanisms, downstream pathways, and timescales.
 
 This broader territory is often described with the word **bioelectricity**.
 
@@ -152,7 +152,7 @@ Picture something more interesting.
 
 Local cells possess electrical states. Some neighboring cells can influence one another through defined physical connections. Those interactions occur alongside chemical signaling, mechanical forces, metabolism, gene regulation, extracellular structure, circulation, and other processes.
 
-Coordination can therefore propagate without requiring one cell to know what the organism is doing as a whole.
+Local state changes can influence neighboring cells through defined coupling mechanisms, allowing coordinated tissue behavior to arise without requiring any cell to represent the organism as a whole.
 
 That principle matters enormously for this book.
 
@@ -194,8 +194,6 @@ No membrane potential needs consciousness.
 
 There are local physical conditions, local biological mechanisms, interactions among cells, and consequences that become meaningful at larger levels of organization.
 
-That is enough to produce a profound result.
-
 The part can participate in a function of the whole without representing the whole.
 
 ## A Wound Changes the Local Environment
@@ -216,21 +214,23 @@ Cells are broken or displaced. Barriers are interrupted. Ions move differently. 
 
 In some epithelial systems, measurable endogenous electric fields occur around wounds. Under experimental and physiological conditions, some cell types can migrate directionally in response to electric fields. This directional response is often called **electrotaxis** or **galvanotaxis**.
 
+The existence of wound-associated electric fields and experimentally observed electrotaxis is well established. How much those electrical cues contribute relative to chemical, mechanical, structural, immune, and other guidance mechanisms varies by tissue and remains an active area of research.
+
 An electric field is not the same thing as an electric current.
 
 An **electric field** describes how electric force would act on charge at different locations. An **electric current** is a net movement of electric charge. In biological tissue the two can be related, but they are not interchangeable terms.
 
 More importantly, the electrical cue is not alone.
 
-A wounded tissue presents cells with a changing combination of electrical, chemical, mechanical, structural, and metabolic conditions.
+A wounded tissue presents cells with a changing combination of electrical, chemical, mechanical, structural, immune, and metabolic conditions.
 
-Responsive cells integrate those local conditions through the molecular machinery they possess.
+Cellular behavior depends on the combined effects of those local conditions acting through molecular and mechanical pathways.
 
-Some move.
+Some cells move.
 
 Some alter adhesion.
 
-Some change secretion or signaling.
+Some change secretion or established signaling processes.
 
 Some proliferate or change state, depending on the biological context.
 
@@ -238,7 +238,9 @@ Together, those local responses can contribute to tissue repair.
 
 Notice what just happened conceptually.
 
-At the organismal level, the function is **repair the wound**.
+At the organismal level, we describe the coordinated outcome as **wound repair**.
+
+That functional description does not require a cell-level representation of the goal.
 
 At the cellular level, there need not be a command that says those words.
 
@@ -267,6 +269,8 @@ Whether it is useful to call some part of that chain a **signal** or **informati
 The distinctions matter:
 
 **ELECTRICAL STATE ≠ SIGNAL ≠ INFORMATION ≠ INTEGRATION ≠ INTELLIGENCE ≠ AGENCY ≠ CONSCIOUSNESS**
+
+The symbol **≠** does not mean these categories can never be related. It means that evidence for one category does not automatically establish the next.
 
 A measurable voltage is evidence for a measurable voltage.
 
@@ -310,6 +314,8 @@ An **oscillation** is a variable changing repeatedly over time.
 
 **Resonance** refers to conditions in which a system responds strongly to forcing because of the relationship among the forcing, the system's characteristic dynamics, coupling, and damping.
 
+Synchronization, entrainment, and resonance describe different dynamical relationships and should not be treated as interchangeable words.
+
 Biology is full of rhythms.
 
 Heartbeats repeat. Circadian systems oscillate. Neural activity can exhibit oscillatory patterns. Biochemical networks can oscillate.
@@ -334,7 +340,7 @@ What response should occur?
 
 How will it be measured?
 
-Does it reproduce?
+Can independent measurements reproduce the predicted effect?
 
 Without those answers, *resonance* is a word looking for a mechanism.
 
@@ -342,35 +348,13 @@ Without those answers, *resonance* is a word looking for a mechanism.
 
 ## The Aura Boundary
 
-Human bodies produce measurable physical effects beyond the skin.
+Bodies produce measurable heat, chemical emissions, mechanical vibration, electrical activity, and associated electromagnetic effects.
 
-They radiate heat.
+Those measurements establish those phenomena. They do not establish a personality-bearing aura, telepathy, or emotional information carried by an unspecified frequency.
 
-They emit chemicals.
+**Existence is not interpretation. A shared word is not a shared mechanism.**
 
-They generate sound and mechanical vibration.
-
-Electrical currents associated with physiology can have measurable electromagnetic consequences.
-
-Those phenomena are real.
-
-Their existence does not automatically establish a personality-bearing aura, telepathy, emotional information transmitted through an unspecified frequency, or a hidden energetic body.
-
-Chapter 2 gave us the rule already.
-
-**Existence is not interpretation.**
-
-Chapter 7 adds another.
-
-**A shared word is not a shared mechanism.**
-
-A measurable biological field establishes that field.
-
-It does not transfer evidence to another proposed phenomenon merely because both are described with words such as *energy*, *field*, *vibration*, or *frequency*.
-
-That distinction does not make biology less extraordinary.
-
-It lets us see what is actually extraordinary.
+A measurable field establishes that field. It does not transfer evidence to another proposed phenomenon merely because both are described with words such as *energy*, *field*, *vibration*, or *frequency*.
 
 ## The Whole Without a Little Commander
 
@@ -392,7 +376,7 @@ Cells exchange molecules.
 
 Some cells couple directly through gap junctions.
 
-Chemical signals move.
+Established chemical signaling processes transmit effects among cells.
 
 Mechanical forces propagate.
 
@@ -406,17 +390,17 @@ None of these is the organism's tiny commander.
 
 Together they form interacting regulatory processes distributed across cells and tissues.
 
-Organism-level function can emerge from those interactions.
+Within an already established organism, distributed interactions among cells and tissues can produce coordinated organism-level functions.
 
 This is not evidence that every connected network is an organism.
-
-It is not evidence that civilization possesses a bioelectric field analogous to a body.
 
 It is not evidence that electrical coordination produces consciousness.
 
 It establishes something narrower and more useful.
 
-Known biology already contains mechanisms through which components responding to local physical conditions participate in functions that belong to a larger biological individual.
+Known biology already contains mechanisms through which components responding to local physical conditions participate in coordinated functions of a larger biological individual.
+
+No cell requires a representation of the whole organism in order to participate in organism-level regulation.
 
 The cell does not need to understand the body.
 
@@ -430,17 +414,11 @@ Cells do not merely maintain a body that already exists.
 
 They build one.
 
-They do it without seeing the finished form.
+Cells divide, migrate, adhere, signal, push, pull, change electrical state, alter gene expression, and modify the environments encountered by neighboring cells.
 
-They divide, migrate, adhere, signal, push, pull, change electrical state, change gene expression, and alter the environment encountered by neighboring cells.
+No individual cell needs to see the finished body.
 
-From those local interactions, anatomy appears.
-
-**Cells do not need to see the body they are building.**
-
-They respond to local conditions—chemical, mechanical, electrical, spatial, and historical.
-
-Yet from those local interactions, anatomy appears.
+Yet anatomy emerges from those local interactions.
 
 How?
 
