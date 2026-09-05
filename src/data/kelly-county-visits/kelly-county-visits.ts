@@ -4815,10 +4815,10 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     city: "Hardy",
     counties: ["Sharp"],
     status: "scheduled",
-    includeOnPublicPage: true,
+    includeOnPublicPage: false,
     confidence: "likely",
     notes:
-      "Save-the-date: three candidates confirmed, Thu Oct 15 evening locked, time/location coming. Later follow-up: Hardy, promoting beyond Sharp County, notify if TV conflicts. Do not assume Kelly is one of the three. Street/clock TBA. Hosts heard TV is typically morning Little Rock; campaign has confirmed SOS debate 10:00 a.m. Conway that day. Conway to Hardy after a morning taping is possible if the forum stays evening. /events/hardy-candidate-forum-2026 Same morning: arkansas-tv-sos-debate-oct-15-2026 (confirmed). Same 5:00-7:00 window: hob-nob-bentonville-2026 NWACC — cannot do Bentonville and Hardy.",
+      "Off the public /events list 2026-09-04. Kelly not attending. /events/hardy-candidate-forum-2026",
     sourceType: "manual",
   },
   {
