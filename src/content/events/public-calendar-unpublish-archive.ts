@@ -51,4 +51,5 @@ export const PUBLIC_CALENDAR_UNPUBLISH_ARCHIVE: UnpublishedPublicCard[] = [
   { slug: "petit-jean-meat-festival-2026", ledgerId: "presence-2026-10-18-petit-jean-meat-festival", title: "Petit Jean Meat Festival", date: "2026-10-18", restoreAttendance: "tentative" },
   { slug: "early-voting-launch-2026-10-20", ledgerId: "locked-2026-10-20-early-voting-launch", title: "Early Voting launch — Little Rock", date: "2026-10-20", restoreAttendance: "tentative" },
   { slug: "berryville-chamber-awards-banquet-2026", ledgerId: "manual-2026-10-22-berryville-chamber-awards", title: "Berryville Chamber Annual Awards Banquet", date: "2026-10-22", restoreAttendance: "tentative" },
+  { slug: "cindy-nations-rally-2026", ledgerId: "manual-2026-10-22-cindy-nations-rally", title: "Cindy Nations rally", date: "2026-10-22", restoreAttendance: "tentative" },
 ];
