@@ -5355,10 +5355,10 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     title: "Flat rock hwy 359 fire dept red #5 fish fries",
     counties: [],
     status: "scheduled",
-    includeOnPublicPage: true,
+    includeOnPublicPage: false,
     confidence: "uncertain",
     notes:
-      "Campaign calendar Sat Oct 17 5:30-7:00 p.m. Red #5 on the title. County and street not on the block — do not invent. /events/flat-rock-fish-fry-2026",
+      "Off the public /events list 2026-09-04. Kelly not attending. /events/flat-rock-fish-fry-2026",
     sourceType: "calendar",
   },
 

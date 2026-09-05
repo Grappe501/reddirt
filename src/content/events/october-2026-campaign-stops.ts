@@ -267,6 +267,8 @@ export const october2026CampaignStops: EventItem[] = [
     audienceTags: ["Lamar", "Johnson County", "Flat Rock"],
     mapCoordinates: { lat: 35.4406, lng: -93.388 },
     relatedEventSlugs: ["stuttgart-event-2026-10-17", "greers-ferry-event-2026-10-23"],
+    fieldAttendance: "unscheduled",
+    organizerNote: "Off the public /events list 2026-09-04. Kelly not attending.",
   }),
   campaignStop({
     slug: "greers-ferry-event-2026-10-23",

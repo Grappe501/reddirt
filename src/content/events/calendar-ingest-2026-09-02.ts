@@ -3133,10 +3133,10 @@ export const calendarIngest20260902: EventItem[] = [
       "The campaign calendar listed **Flat rock hwy 359 fire dept red #5 fish fries** on Saturday, **October 17**, **5:30–7:00 p.m.**\n\nDo not invent a county. Confirm the station before travel.\n\nThe same Saturday already has UAPB Homecoming, Stuttgart, and Rocky Comfort.",
     whatToExpect: ["5:30–7:00 p.m. Central", "County TBA"],
     whoItsFor: "Neighbors the fire department welcomes.",
-    organizerNote: "Campaign calendar audit 2026-09-02. Empty counties until a county is named.",
+    organizerNote: "Off the public /events list 2026-09-04. Kelly not attending.",
     relatedEventSlugs: ["uapb-homecoming-2026", "stuttgart-oct-17-2026"],
     relatedResourceHrefs: [{ label: "Get involved", href: "/get-involved" }],
-    fieldAttendance: "tentative",
+    fieldAttendance: "unscheduled",
   },
 {
     slug: "petit-jean-meat-festival-2026",

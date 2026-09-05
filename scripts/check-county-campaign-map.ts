@@ -381,8 +381,8 @@ if (events.some((e) => /paragould/i.test(e.slug) && e.startsAt.startsWith("2026-
   if (summaryByName(summaries, "Phillips").publicState !== "neutral") fail("Phillips King Biscuit is off the public list");
   if (summaryByName(summaries, "Madison").publicState !== "visited") fail("Madison should be visited / blue");
   if (summaryByName(summaries, "Madison").upcomingIndicator !== "confirmed") fail("Madison keeps Oct 26 as confirmed upcoming");
-  if (!summaryByName(summaries, "Johnson").confirmedUpcomingEvents.some((e) => e.slug === "flat-rock-fish-fry-2026-10-17")) {
-    fail("Flat Rock fish fry must map to Johnson County");
+  if (summaryByName(summaries, "Johnson").confirmedUpcomingEvents.some((e) => e.slug === "flat-rock-fish-fry-2026-10-17")) {
+    fail("Flat Rock fish fry is off the public list");
   }
   const cleburne = summaryByName(summaries, "Cleburne");
   if (!cleburne.visited || !cleburne.tentativeUpcomingEvents.some((e) => e.slug === "greers-ferry-event-2026-10-23")) {
