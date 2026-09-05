@@ -306,7 +306,8 @@ export const ledgerPublicGaps2026: EventItem[] = [
     ],
     audienceTags: ["Logan County", "Scott County"],
     relatedEventSlugs: ["petit-jean-meat-festival-2026"],
-    fieldAttendance: "confirmed",
+    fieldAttendance: "unscheduled",
+    organizerNote: "Off the public /events list 2026-09-04. Kelly not attending.",
   }),
   campaignStop({
     slug: "early-voting-launch-2026-10-20",

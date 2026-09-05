@@ -4114,9 +4114,10 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     title: "Logan and Scott Immersion",
     counties: ["Logan", "Scott"],
     status: "scheduled",
-    includeOnPublicPage: true,
+    includeOnPublicPage: false,
     confidence: "confirmed",
-    notes: "Promoted to public calendar 2026-09-02 from campaign schedule. /events/logan-scott-immersion-2026-10-18",
+    notes:
+      "Off the public /events list 2026-09-04. Kelly not attending. /events/logan-scott-immersion-2026-10-18",
     sourceType: "calendar",
   },
 
