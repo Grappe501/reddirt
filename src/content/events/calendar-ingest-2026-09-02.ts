@@ -2070,8 +2070,7 @@ export const calendarIngest20260902: EventItem[] = [
     ],
     whoItsFor:
       "Candidates on the ballot in Rogers, Lowell, and greater Bentonville, plus Chamber members and neighbors the hosts welcome. Reserve a booth before treating a table as held.",
-    organizerNote:
-      "Sara Lynn Geiger Rogers Lowell Chamber invite. fieldAttendance tentative until booth RSVP. Keep sara@rogerslowell.com and amy@rogerslowell.com off the public card. 479-636-1240 is the Chamber line on the signature. Registration URL was not in the paste. Same morning: arkansas-tv-sos-debate-oct-15-2026 confirmed Conway 10:00. Same evening: hardy-candidate-forum-2026 — cannot do both.",
+    organizerNote: "Off the public /events list 2026-09-04. Kelly not attending.",
     rsvpHref: "https://www.rogerslowell.com",
     audienceTags: ["Bentonville", "Bella Vista", "Rogers", "Lowell", "Benton County", "Chamber", "Northwest Arkansas"],
     relatedEventSlugs: [
@@ -2087,7 +2086,7 @@ export const calendarIngest20260902: EventItem[] = [
     ],
     mapCoordinates: { lat: 36.3595, lng: -94.1724 },
     mapPinQuality: "exact",
-    fieldAttendance: "tentative",
+    fieldAttendance: "unscheduled",
   },
 {
     slug: "hardy-candidate-forum-2026",

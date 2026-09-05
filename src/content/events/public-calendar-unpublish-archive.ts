@@ -43,4 +43,5 @@ export const PUBLIC_CALENDAR_UNPUBLISH_ARCHIVE: UnpublishedPublicCard[] = [
   { slug: "montgomery-county-oct-10-2026", ledgerId: "presence-2026-10-10-montgomery-county", title: "Montgomery County hold", date: "2026-10-10", restoreAttendance: "tentative" },
   { slug: "saline-county-gotv-2026-10-12", ledgerId: "locked-2026-10-12-saline-county-gotv-push", title: "Saline County GOTV push — Benton", date: "2026-10-12", restoreAttendance: "tentative" },
   { slug: "rison-in-the-fall-2026", ledgerId: "manual-2026-10-12-rison-in-the-fall", title: "Rison in the Fall", date: "2026-10-12", restoreAttendance: "tentative" },
+  { slug: "hob-nob-bentonville-2026", ledgerId: "manual-2026-10-15-hob-nob-bentonville", title: "Hob Nob at Joint Business After Hours", date: "2026-10-15", restoreAttendance: "tentative" },
 ];

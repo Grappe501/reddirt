@@ -4801,10 +4801,10 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     city: "Bentonville",
     counties: ["Benton"],
     status: "scheduled",
-    includeOnPublicPage: true,
+    includeOnPublicPage: false,
     confidence: "likely",
     notes:
-      "Steve 2026-09-02: Hob Nob IS the Bella Vista event — do not add a second Bella Vista row. Sara Lynn Geiger / Rogers Lowell Chamber. Thu Oct 15 5:00-7:00 p.m., booth setup 4:15. NWACC Walmart Auditorium, 1000 SE Eagle Way, Bentonville. With Bentonville Area Chamber and media partners. Candidate booth optional; register by Tue Oct 13 5:00 p.m. Invite link was not in the paste — use rogerslowell.com. Keep sara@ and amy@ off the public card; Chamber 479-636-1240 is on the signature. /events/hob-nob-bentonville-2026 Same morning: arkansas-tv-sos-debate-oct-15-2026 Conway 10:00 confirmed. Same evening: hardy-candidate-forum-2026 — cannot do both.",
+      "Off the public /events list 2026-09-04. Kelly not attending. /events/hob-nob-bentonville-2026",
     sourceType: "manual",
   },
   {
