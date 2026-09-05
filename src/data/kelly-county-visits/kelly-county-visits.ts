@@ -4154,9 +4154,10 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     city: "Little Rock",
     counties: ["Pulaski"],
     status: "scheduled",
-    includeOnPublicPage: true,
+    includeOnPublicPage: false,
     confidence: "likely",
-    notes: "Seeded from locked-events-steve.json /events/early-voting-launch-2026-10-20",
+    notes:
+      "Off the public /events list 2026-09-04. Kelly not attending. /events/early-voting-launch-2026-10-20",
     sourceType: "local-file",
   },
   {

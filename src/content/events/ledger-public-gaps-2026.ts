@@ -331,6 +331,7 @@ export const ledgerPublicGaps2026: EventItem[] = [
     audienceTags: ["Little Rock", "Pulaski County", "Early Voting"],
     mapCoordinates: { lat: 34.7465, lng: -92.2896 },
     relatedEventSlugs: ["nlr-veterans-car-show-2026"],
-    fieldAttendance: "tentative",
+    fieldAttendance: "unscheduled",
+    organizerNote: "Off the public /events list 2026-09-04. Kelly not attending.",
   }),
 ];

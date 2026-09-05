@@ -49,4 +49,5 @@ export const PUBLIC_CALENDAR_UNPUBLISH_ARCHIVE: UnpublishedPublicCard[] = [
   { slug: "flat-rock-fish-fry-2026", ledgerId: "manual-2026-10-17-flat-rock-fish-fry", title: "Flat Rock Hwy 359 fire department fish fry", date: "2026-10-17", restoreAttendance: "tentative" },
   { slug: "logan-scott-immersion-2026-10-18", ledgerId: "presence-2026-10-18-logan-and-scott-immersion", title: "Logan and Scott immersion", date: "2026-10-18", restoreAttendance: "confirmed" },
   { slug: "petit-jean-meat-festival-2026", ledgerId: "presence-2026-10-18-petit-jean-meat-festival", title: "Petit Jean Meat Festival", date: "2026-10-18", restoreAttendance: "tentative" },
+  { slug: "early-voting-launch-2026-10-20", ledgerId: "locked-2026-10-20-early-voting-launch", title: "Early Voting launch — Little Rock", date: "2026-10-20", restoreAttendance: "tentative" },
 ];
