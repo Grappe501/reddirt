@@ -777,8 +777,7 @@ export const calendarIngest20260902: EventItem[] = [
     ],
     whoItsFor:
       "Neighbors following the District 55 race. Wait for a room before treating this as a public ticketed event.",
-    organizerNote:
-      "Calendar snippet: Cindy Nations Rally 6:00-7:00 p.m. Thu Oct 22 2026. City inferred Conway from District 55 / March kickoff — do not invent a venue. Do not publish nations4ar@gmail.com. Same evening: berryville-chamber-awards-banquet-2026. fieldAttendance tentative.",
+    organizerNote: "Off the public /events list 2026-09-04. Kelly not attending.",
     rsvpHref: "https://www.nationsforarkansas.com/",
     audienceTags: ["Conway", "Faulkner County", "House District 55", "Central Arkansas"],
     relatedEventSlugs: ["berryville-chamber-awards-banquet-2026", "cynthia-nations-fundraiser-sept-2026"],
@@ -790,7 +789,7 @@ export const calendarIngest20260902: EventItem[] = [
     ],
     mapCoordinates: { lat: 35.0917, lng: -92.4438 },
     mapPinQuality: "region",
-    fieldAttendance: "tentative",
+    fieldAttendance: "unscheduled",
   },
 {
     slug: "dppc-gigis-rally-2026",

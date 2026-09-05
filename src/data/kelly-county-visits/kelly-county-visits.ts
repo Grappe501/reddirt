@@ -4442,10 +4442,10 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     city: "Conway",
     counties: ["Faulkner"],
     status: "scheduled",
-    includeOnPublicPage: true,
+    includeOnPublicPage: false,
     confidence: "likely",
     notes:
-      "Calendar: Cindy Nations Rally Thu Oct 22 6:00-7:00 p.m. City inferred Conway from House District 55 / March kickoff — venue TBA. /events/cindy-nations-rally-2026 Same evening: Berryville Chamber Awards. Do not publish campaign gmail.",
+      "Off the public /events list 2026-09-04. Kelly not attending. /events/cindy-nations-rally-2026",
     sourceType: "manual",
   },
   {
