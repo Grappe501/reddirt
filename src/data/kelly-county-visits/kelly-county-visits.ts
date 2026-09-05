@@ -4129,10 +4129,10 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     city: "Petit Jean",
     counties: ["Conway"],
     status: "scheduled",
-    includeOnPublicPage: true,
+    includeOnPublicPage: false,
     confidence: "likely",
     notes:
-      "Campaign calendar Sun Oct 18 all-day. Street and clock TBA — do not invent a park gate. Same day: Logan and Scott immersion. /events/petit-jean-meat-festival-2026",
+      "Off the public /events list 2026-09-04. Kelly not attending. /events/petit-jean-meat-festival-2026",
     sourceType: "calendar",
   },
   {
