@@ -4829,10 +4829,10 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     city: "Foreman",
     counties: ["Little River"],
     status: "scheduled",
-    includeOnPublicPage: true,
+    includeOnPublicPage: false,
     confidence: "likely",
     notes:
-      "Vendor flyer: 5th Annual Rocky Comfort Pecan Festival Sat Oct 17 9:00 a.m.-5:30 p.m. Downtown Schuman Street, Foreman. 12x12 $35; premium $50. Coordinator Brianna Segraves (phone on flyer). Kelly not named — tentative. /events/rocky-comfort-pecan-festival-2026 Same Saturday: UAPB Homecoming 8:00; Stuttgart 10:30-2:00; Flat Rock fish fry 5:30. Weekend: Arkansas TV debate Oct 15 Conway; Logan/Scott immersion Oct 18.",
+      "Off the public /events list 2026-09-04. Kelly not attending. /events/rocky-comfort-pecan-festival-2026",
     sourceType: "manual",
   },
   {
