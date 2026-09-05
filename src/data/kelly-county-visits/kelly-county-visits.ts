@@ -4428,10 +4428,10 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     city: "Berryville",
     counties: ["Carroll"],
     status: "scheduled",
-    includeOnPublicPage: true,
+    includeOnPublicPage: false,
     confidence: "likely",
     notes:
-      "Evening TBA. Chamber banquet. /events/berryville-chamber-awards-banquet-2026 Same evening: Cindy Nations Rally 6:00-7:00 p.m. (city inferred Conway) — long drive.",
+      "Off the public /events list 2026-09-04. Kelly not attending. /events/berryville-chamber-awards-banquet-2026",
     sourceType: "manual",
   },
   {

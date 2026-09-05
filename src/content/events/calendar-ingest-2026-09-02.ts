@@ -739,8 +739,7 @@ export const calendarIngest20260902: EventItem[] = [
     ],
     whoItsFor:
       "Chamber members, honorees, and invited guests. Confirm ticket rules before sharing as a walk-in event.",
-    organizerNote:
-      "Sources: Berryville Chamber save-the-date flyer and Chamber email (Jean Reed thread). Evening placeholder until the host publishes a schedule. Not campaign-hosted. Same evening: cindy-nations-rally-2026 6:00-7:00 p.m. (Conway inferred) — Berryville to Conway is a long drive.",
+    organizerNote: "Off the public /events list 2026-09-04. Kelly not attending.",
     rsvpHref: "https://www.berryvillechamber.com/events/",
     audienceTags: ["Berryville", "Carroll County", "Chamber", "Banquet", "Northwest Arkansas"],
     relatedEventSlugs: ["berryville-meet-the-candidates-reloaded-2026", "cindy-nations-rally-2026"],
@@ -752,7 +751,7 @@ export const calendarIngest20260902: EventItem[] = [
     ],
     mapCoordinates: { lat: 36.3654, lng: -93.5646 },
     mapPinQuality: "region",
-    fieldAttendance: "tentative",
+    fieldAttendance: "unscheduled",
   },
 {
     slug: "cindy-nations-rally-2026",
