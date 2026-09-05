@@ -46,4 +46,5 @@ export const PUBLIC_CALENDAR_UNPUBLISH_ARCHIVE: UnpublishedPublicCard[] = [
   { slug: "hob-nob-bentonville-2026", ledgerId: "manual-2026-10-15-hob-nob-bentonville", title: "Hob Nob at Joint Business After Hours", date: "2026-10-15", restoreAttendance: "tentative" },
   { slug: "hardy-candidate-forum-2026", ledgerId: "manual-2026-10-15-hardy-candidate-forum", title: "Sharp County candidate forum — Hardy", date: "2026-10-15", restoreAttendance: "tentative" },
   { slug: "rocky-comfort-pecan-festival-2026", ledgerId: "manual-2026-10-17-rocky-comfort-pecan-festival", title: "Rocky Comfort Pecan Festival — Foreman", date: "2026-10-17", restoreAttendance: "tentative" },
+  { slug: "flat-rock-fish-fry-2026", ledgerId: "manual-2026-10-17-flat-rock-fish-fry", title: "Flat Rock Hwy 359 fire department fish fry", date: "2026-10-17", restoreAttendance: "tentative" },
 ];
