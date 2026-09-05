@@ -45,4 +45,5 @@ export const PUBLIC_CALENDAR_UNPUBLISH_ARCHIVE: UnpublishedPublicCard[] = [
   { slug: "rison-in-the-fall-2026", ledgerId: "manual-2026-10-12-rison-in-the-fall", title: "Rison in the Fall", date: "2026-10-12", restoreAttendance: "tentative" },
   { slug: "hob-nob-bentonville-2026", ledgerId: "manual-2026-10-15-hob-nob-bentonville", title: "Hob Nob at Joint Business After Hours", date: "2026-10-15", restoreAttendance: "tentative" },
   { slug: "hardy-candidate-forum-2026", ledgerId: "manual-2026-10-15-hardy-candidate-forum", title: "Sharp County candidate forum — Hardy", date: "2026-10-15", restoreAttendance: "tentative" },
+  { slug: "rocky-comfort-pecan-festival-2026", ledgerId: "manual-2026-10-17-rocky-comfort-pecan-festival", title: "Rocky Comfort Pecan Festival — Foreman", date: "2026-10-17", restoreAttendance: "tentative" },
 ];

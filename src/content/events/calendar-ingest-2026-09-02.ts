@@ -2152,8 +2152,7 @@ export const calendarIngest20260902: EventItem[] = [
     ],
     whoItsFor:
       "Little River County neighbors, vendors, and candidates who reserve a space. Confirm a booth before treating this as a reserved campaign table.",
-    organizerNote:
-      "Sourced from Rocky Comfort Pecan Festival vendor flyer. Brianna Segraves 903-278-7502 is on the public flyer. fieldAttendance tentative. Same weekend: arkansas-tv-sos-debate-oct-15-2026 (Conway); Logan/Scott immersion Oct 18.",
+    organizerNote: "Off the public /events list 2026-09-04. Kelly not attending.",
     rsvpHref: undefined,
     audienceTags: ["Foreman", "Little River County", "Festival", "Southwest Arkansas"],
     relatedEventSlugs: ["arkansas-tv-sos-debate-oct-15-2026"],
@@ -2163,7 +2162,7 @@ export const calendarIngest20260902: EventItem[] = [
     ],
     mapCoordinates: { lat: 33.7218, lng: -94.3966 },
     mapPinQuality: "region",
-    fieldAttendance: "tentative",
+    fieldAttendance: "unscheduled",
   },
 {
     slug: "mountain-view-bean-fest-outhouse-races-2026",
