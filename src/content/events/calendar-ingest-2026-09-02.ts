@@ -2111,8 +2111,7 @@ export const calendarIngest20260902: EventItem[] = [
     ],
     whoItsFor:
       "Sharp County neighbors and anyone the hosts have invited from nearby towns. Confirm the hour and address before travel.",
-    organizerNote:
-      "Save-the-date: three candidates confirmed, Oct 15 evening locked, time/location coming. Later follow-up placed it in Hardy and asked for TV-conflict notice. Do not assume Kelly is one of the three. fieldAttendance tentative. Same morning: arkansas-tv-sos-debate-oct-15-2026 confirmed 10:00 a.m. Conway — not Little Rock. Same 5:00-7:00: hob-nob-bentonville-2026 — cannot do both. Do not invent a civic center or library. Earlier Sharp date: sharp-county-hq-highland-2026.",
+    organizerNote: "Off the public /events list 2026-09-04. Kelly not attending.",
     rsvpHref: undefined,
     audienceTags: ["Hardy", "Sharp County", "Town hall", "North Central Arkansas"],
     relatedEventSlugs: [
@@ -2128,7 +2127,7 @@ export const calendarIngest20260902: EventItem[] = [
     ],
     mapCoordinates: { lat: 36.3159, lng: -91.4826 },
     mapPinQuality: "region",
-    fieldAttendance: "tentative",
+    fieldAttendance: "unscheduled",
   },
 {
     slug: "rocky-comfort-pecan-festival-2026",
