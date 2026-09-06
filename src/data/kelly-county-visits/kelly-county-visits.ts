@@ -4870,7 +4870,7 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     title: "Labor event in Washington County",
     counties: ["Washington"],
     status: "scheduled",
-    includeOnPublicPage: false,
+    includeOnPublicPage: true,
     confidence: "likely",
     notes:
       "Steve Google Calendar Mon Sep 7 all-day. Time/city/street not on the block. Same day public: Rector Labor Day Parade 9:00 a.m. — cannot do Rector and a Washington County labor event the same day without a clock. /events/washington-county-labor-event-2026",
@@ -5019,7 +5019,7 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     city: "Arkadelphia",
     counties: ["Clark"],
     status: "scheduled",
-    includeOnPublicPage: false,
+    includeOnPublicPage: true,
     confidence: "likely",
     notes:
       "Steve Google Calendar Sun Sep 20 all-day. Same date ledger: Jacksonville Festiville — cannot assume both. Time/venue TBA. /events/arkadelphia-sep-20-2026",

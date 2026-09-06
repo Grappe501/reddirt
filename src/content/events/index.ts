@@ -1,8 +1,21 @@
 import type { EventItem } from "@/content/types";
 import { markSuggestedFestivalPath } from "@/lib/festivals/suggest-coverage-path";
+import {
+  RECURRING_VIRTUAL_SLUG_ALIASES,
+  recurringVirtualSeries,
+} from "@/content/events/recurring-virtual-series";
+import { restoredUpcomingFromSeptCuts } from "@/content/events/restored-upcoming-from-sept-cuts";
 
 /** Fair research dump — operator/Evidence only; not merged into the public `/events` hub (Phase 1). */
 export { ARKANSAS_FESTIVAL_EVENTS_2026 } from "./arkansas-festivals-2026";
+
+function mergeRestoredUpcoming(base: EventItem[], extra: EventItem[]): EventItem[] {
+  const map = new Map(base.map((event) => [event.slug, event]));
+  for (const event of extra) {
+    if (!map.has(event.slug)) map.set(event.slug, event);
+  }
+  return [...map.values()];
+}
 
 const movementEventsCore: EventItem[] = [
   {
@@ -3647,7 +3660,9 @@ const movementEventsCore: EventItem[] = [
 ];
 
 /** Public curated movement events only. Published CampaignOS rows merge on `/events` at request time. */
-export const events: EventItem[] = markSuggestedFestivalPath([...movementEventsCore]);
+export const events: EventItem[] = markSuggestedFestivalPath(
+  mergeRestoredUpcoming(movementEventsCore, [...restoredUpcomingFromSeptCuts, ...recurringVirtualSeries]),
+);
 
 export const eventTypes = [
   "Town Hall",
@@ -3673,9 +3688,10 @@ export function listMovementEventAudienceOptions(): string[] {
 }
 
 export function getEventBySlug(slug: string): EventItem | undefined {
-  return events.find((e) => e.slug === slug);
+  const canonical = RECURRING_VIRTUAL_SLUG_ALIASES[slug] ?? slug;
+  return events.find((e) => e.slug === canonical);
 }
 
 export function listEventSlugs(): string[] {
-  return events.map((e) => e.slug);
+  return [...events.map((e) => e.slug), ...Object.keys(RECURRING_VIRTUAL_SLUG_ALIASES)];
 }
