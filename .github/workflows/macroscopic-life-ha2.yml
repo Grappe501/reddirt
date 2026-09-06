@@ -40,20 +40,11 @@ jobs:
           python - <<'PY'
           from pathlib import Path
           p=Path('research/macroscopic-life/scripts/promote-hostile-audit-remediation-pass-02.mjs')
-          lines=p.read_text().splitlines()
-          hits=[i for i,line in enumerate(lines) if "P1-11 collective intelligence brake" in line]
-          if len(hits)!=1: raise SystemExit(f'Expected one promoter call, found {len(hits)}')
-          i=hits[0]
-          lines[i]="""{
-  const chapterStart = act4.indexOf('# Chapter 12 —');
-  const chapterEnd = act4.indexOf('# Chapter 13 —', chapterStart);
-  if (chapterStart < 0 || chapterEnd < 0) throw new Error('P1-11 collective intelligence brake: Chapter 12 scope not found');
-  const before = act4.slice(0, chapterStart);
-  const chapter = act4.slice(chapterStart, chapterEnd);
-  const after = act4.slice(chapterEnd);
-  act4 = before + insertAfterPartialLock(chapter, '> **THE WHOLE CAN SOLVE A PROBLEM THAT NO SINGLE COMPONENT SOLVES ALONE.**', 'THAT DOES NOT BY ITSELF ESTABLISH ONE AGENT.', '> **THE WHOLE CAN SOLVE A PROBLEM NO COMPONENT SOLVES ALONE; THAT DOES NOT BY ITSELF ESTABLISH ONE AGENT.**', 'P1-11 collective intelligence brake') + after;
-}"""
-          p.write_text('\n'.join(lines)+'\n')
+          s=p.read_text()
+          old="act4 = insertAfterPartialLock(act4, '> **THE WHOLE CAN SOLVE A PROBLEM THAT NO SINGLE COMPONENT SOLVES ALONE.**', 'THAT DOES NOT BY ITSELF ESTABLISH ONE AGENT.', '> **THE WHOLE CAN SOLVE A PROBLEM NO COMPONENT SOLVES ALONE; THAT DOES NOT BY ITSELF ESTABLISH ONE AGENT.**', 'P1-11 collective intelligence brake');"
+          replacement="{\n  const chapterStart = act4.indexOf('# Chapter 12 —');\n  const chapterEnd = act4.indexOf('# Chapter 13 —', chapterStart);\n  if (chapterStart < 0 || chapterEnd < 0) throw new Error('P1-11 collective intelligence brake: Chapter 12 scope not found');\n  const before = act4.slice(0, chapterStart);\n  const chapter = act4.slice(chapterStart, chapterEnd);\n  const after = act4.slice(chapterEnd);\n  act4 = before + insertAfterPartialLock(chapter, '> **THE WHOLE CAN SOLVE A PROBLEM THAT NO SINGLE COMPONENT SOLVES ALONE.**', 'THAT DOES NOT BY ITSELF ESTABLISH ONE AGENT.', '> **THE WHOLE CAN SOLVE A PROBLEM NO COMPONENT SOLVES ALONE; THAT DOES NOT BY ITSELF ESTABLISH ONE AGENT.**', 'P1-11 collective intelligence brake') + after;\n}"
+          if s.count(old)!=1: raise SystemExit(f'Expected one promoter call, found {s.count(old)}')
+          p.write_text(s.replace(old,replacement))
           PY
       - name: Generate HA2 derivatives
         run: node research/macroscopic-life/scripts/promote-hostile-audit-remediation-pass-02.mjs
