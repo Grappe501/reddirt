@@ -2,7 +2,7 @@
 
 ## PUB-7L R1 — Act II Redundancy-Cut Reader Manuscript
 
-**Status: READER-LAYER REDUNDANCY CUT — SCIENTIFIC FREEZE PRESERVED**
+**Status: READER-LAYER REDUNDANCY CUT — SCIENTIFIC FREEZE PRESERVED — PUB-7M APPLIED**
 
 ---
 
@@ -92,7 +92,7 @@ Multicellular integration demonstrates that higher-order biological individualit
 
 Your body proves that many living components can form one higher-order biological individual.
 
-The next question is how such transitions happen.
+That is precedent, not diagnosis. The next question is what mechanisms make such transitions possible.
 
 ---
 
@@ -206,8 +206,6 @@ Cultural inheritance deserves analysis on its own terms; it cannot be silently s
 
 The mechanisms differ among transitions, but the questions now have shape: Does specialization reduce lower-level independence? Does interdependence deepen? Are destructive conflicts constrained? Does the collective reproduce or transmit organization at its own level? Is relevant organization inherited? Do boundaries and membership become biologically consequential?
 
-These are mechanism questions.
-
 Individuality is not defined by size. It can be constructed by integration.
 
 Which raises the next problem:
@@ -310,11 +308,9 @@ One perturbation cannot prove organismhood, and causal coupling alone does not e
 
 A biological individual is not defined merely by enclosure, connection, complexity, or influence. Its individuality is maintained through measurable relationships.
 
-The boundary can be permeable and multidimensional without becoming meaningless.
-
 > **BOUNDARIES CAN BE PERMEABLE WITHOUT BEING MEANINGLESS.**
 
-Act II has established three things.
+Act II has earned three propositions:
 
 Higher-order biological individuality exists.
 
@@ -324,10 +320,32 @@ Biological boundaries can be dynamic without being arbitrary.
 
 > **Known biology shows that higher-order individuality can exist. It does not follow that every higher-order organization is an individual.**
 
-That is enough to make the next question legitimate:
+Those propositions now generate experimental questions. If a candidate whole is real, can its boundary be perturbed? Can its integration be disrupted? Does it suppress destructive lower-level conflict? Can it preserve organization through turnover, damage, and exchange?
 
-**Could a system above familiar organismal scale satisfy sufficiently strong criteria for higher-order individuality?**
+We are not scoring an organism yet. We are learning what kinds of mechanisms a stronger claim would eventually have to survive.
 
-It is not enough to answer yes.
+The next act turns from precedent to mechanism:
 
-The next act turns from precedent to mechanism.
+**coordination, form, repair, persistence, and anticipation.**
+
+---
+
+# PUB-7L R1 — ACT II IMPLEMENTATION NOTES
+
+**Controlling directives:** PUB-7J redundancy audit; PUB-7K cut architecture; PUB-7M MIT-style ten-pass hostile-review implementation directive.
+
+## Implemented
+
+- preserved Chapter 4 as biological precedent rather than diagnosis;
+- kept the strongest precedent firewall once rather than repeatedly defending the analogy;
+- preserved mitochondrial/endosymbiotic integration, cellular conflict, turnover, and microbiome nuance;
+- preserved Chapter 5 ownership of `INDIVIDUALITY CAN EVOLVE. COOPERATION IS NOT ENOUGH.`;
+- preserved bottleneck non-universality, eusocial criterion dependence, selection-level caution, and civilization's reproduction/heredity failure;
+- preserved the positive middle category of real macroscopic organization without higher-order individuality;
+- preserved all six Chapter 6 boundary dimensions;
+- retained immune, symbiotic, turnover, extended-function, and perturbation distinctions without adding a second boundary taxonomy;
+- strengthened the Act II handoff so the reader now sees biological precedent turning into future experimental questions without prematurely listing the Eleven Tests;
+- explicitly hands Act III five mechanism problems: coordination, form, repair, persistence, anticipation;
+- scientific freeze preserved.
+
+**ACT II R1 + PUB-7M IMPLEMENTATION: PASS**
