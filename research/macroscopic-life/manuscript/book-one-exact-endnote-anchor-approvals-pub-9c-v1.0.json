@@ -1,5 +1,5 @@
 {
-  "status": "PASS-03 SCHOLARLY REQUALIFICATION IN PROGRESS — 35/46 APPROVED",
+  "status": "PASS-03 SCHOLARLY REQUALIFICATION IN PROGRESS — 42/46 APPROVED",
   "instructions": "Each APPROVE decision records a sentence-level scholarly review against the physical PUB-9C master and assigned authority burden. Never approve by proximity alone. Unreviewed notes remain REVIEW.",
   "lockedMasterSha256": "3416c4aabbaabfef8a7263104fc23a36f8e482e6a7d2c4197329296f20635708",
   "approvals": [
@@ -38,6 +38,13 @@
     {"note":33,"decision":"APPROVE","exactAnchor":"Swarms, teams, institutions, and other systems can display coherent performance through interactions among components. Similar task performance does not imply identical architecture.","reviewBatch":"HA3-B06","authorityIds":["BIB-006"]},
     {"note":34,"decision":"APPROVE","exactAnchor":"Human cognition also depends causally on structures outside the biological brain: writing, maps, instruments, calculators, databases, software, and other external resources. Whether some of those resources are constitutive parts of cognition is a philosophical and scientific dispute this book need not settle.","reviewBatch":"HA3-B06","authorityIds":["BIB-007"]},
     {"note":35,"decision":"APPROVE","exactAnchor":"Relations among physical states can matter: timing, topology, spatial configuration, correlation structure, interaction history, or distributed state.","reviewBatch":"HA3-B06","authorityIds":["BIB-008"]},
-    {"note":36,"decision":"REVIEW"},{"note":37,"decision":"REVIEW"},{"note":38,"decision":"REVIEW"},{"note":39,"decision":"REVIEW"},{"note":40,"decision":"REVIEW"},{"note":41,"decision":"REVIEW"},{"note":42,"decision":"REVIEW"},{"note":43,"decision":"REVIEW"},{"note":44,"decision":"REVIEW"},{"note":45,"decision":"REVIEW"},{"note":46,"decision":"REVIEW"}
+    {"note":36,"decision":"APPROVE","exactAnchor":"Human action therefore depends on structures extending beyond individual nervous systems.","reviewBatch":"HA3-B07","authorityIds":["BIB-007"]},
+    {"note":37,"decision":"APPROVE","exactAnchor":"Endpoints contain independent agents with conflicting goals. Networks fragment. Data can be hidden, encrypted, falsified, censored, duplicated, attacked, or ignored.","reviewBatch":"HA3-B07","authorityIds":["BIB-009"]},
+    {"note":38,"decision":"APPROVE","exactAnchor":"Biology gives us reason to take upward transitions in individuality seriously. It does not give this project permission to skip an evidentiary barrier.","reviewBatch":"HA3-B07","authorityIds":["BIB-001"]},
+    {"note":39,"decision":"APPROVE","exactAnchor":"Conflict does not automatically rule out individuality; organisms also contain internal conflict. But a higher-order claim must show whether civilization-scale mechanisms constrain component behavior in ways that protect the persistence or function of the proposed whole.","reviewBatch":"HA3-B07","authorityIds":["BIB-002"]},
+    {"note":40,"decision":"APPROVE","exactAnchor":"Civilization-scale whole-only information requires an explicit boundary, component baseline, out-of-sample improvement, and physical implementation.","reviewBatch":"HA3-B07","authorityIds":["BIB-008","PROJECT-CRITERION"]},
+    {"note":41,"decision":"APPROVE","exactAnchor":"The civilization-scale question is analogous but harder: do candidate whole-level variables add reproducible intervention, explanatory, or predictive power beyond strong lower-level alternatives?","reviewBatch":"HA3-B07","authorityIds":["BIB-010","PROJECT-SYNTHESIS"]},
+    {"note":42,"decision":"APPROVE","exactAnchor":"The Eleven Tests are a proposed synthesis for model comparison in this project. They are not a consensus definition of life or biological individuality. Different tests draw on different research traditions, several tests may depend on overlapping mechanisms, and positive results must not be added into an organism score. Their purpose is to make a stronger higher-order-individual hypothesis compete against serious lower-level alternatives and risk failure.","reviewBatch":"HA3-B07","authorityIds":["PROJECT-SYNTHESIS"]},
+    {"note":43,"decision":"REVIEW"},{"note":44,"decision":"REVIEW"},{"note":45,"decision":"REVIEW"},{"note":46,"decision":"REVIEW"}
   ]
 }
