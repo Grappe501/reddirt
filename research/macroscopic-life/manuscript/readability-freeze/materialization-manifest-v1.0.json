@@ -1,0 +1,36 @@
+{
+  "project": "Macroscopic Life",
+  "scope": "Book One Chapters 1-6 opening movement",
+  "branch": "macroscopic-life/ch1-6-readability-freeze-7i",
+  "freeze_status": "PROSE_ARCHITECTURE_FROZEN",
+  "opening_movement_readiness_percent": 99,
+  "source_of_truth_status": {
+    "repository_main": "pre-readability-reconstruction publication lineage",
+    "conversation": "contains reconstructed prose and freeze decisions",
+    "branch": "controlled reconciliation workspace"
+  },
+  "chapters": [
+    {"chapter": 1, "title": "The Window", "exact_latest_text_available_in_current_thread": true, "materialized_on_branch": false},
+    {"chapter": 2, "title": "The Search", "exact_latest_text_available_in_current_thread": true, "materialized_on_branch": false},
+    {"chapter": 3, "title": "The Boundary", "exact_latest_text_available_in_current_thread": false, "materialized_on_branch": false},
+    {"chapter": 4, "title": "The Choice", "exact_latest_text_available_in_current_thread": false, "materialized_on_branch": false},
+    {"chapter": 5, "title": "The Level", "exact_latest_text_available_in_current_thread": true, "materialized_on_branch": false},
+    {"chapter": 6, "title": "The Experiment", "exact_latest_text_available_in_current_thread": false, "materialized_on_branch": false}
+  ],
+  "protected_existing_artifacts": [
+    "research/macroscopic-life/manuscript/book-one-publication-candidate-v1.0-chapters-1-6.md",
+    "research/macroscopic-life/manuscript/book-one-master-pub-9c-reader-materialized.md",
+    "research/macroscopic-life/release/BOOK-ONE-PUBLICATION-FREEZE-POLICY.md"
+  ],
+  "required_before_canonical_promotion": [
+    "materialize exact frozen prose for all six chapters",
+    "diff against existing chapters 1-6 publication candidate",
+    "reconcile sentence-level citations and endnote anchors",
+    "verify figure references remain valid",
+    "run beginning-to-end continuity check on materialized files",
+    "create explicit promotion manifest",
+    "only then update canonical pointer or release candidate"
+  ],
+  "netlify_status": "NOT_VERIFIED_FOR_READABILITY_REVISION",
+  "notes": "Do not claim the reconstructed prose is deployed until materialization and the relevant Netlify build/deploy path are independently verified."
+}
