@@ -60,6 +60,16 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        source: "/ml",
+        destination: "/macroscopic-life",
+        permanent: false,
+      },
+      {
+        source: "/ml/:path*",
+        destination: "/macroscopic-life/:path*",
+        permanent: false,
+      },
+      {
         source: "/about/stand-up-arkansas",
         destination: "/about",
         permanent: true,
