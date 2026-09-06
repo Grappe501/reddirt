@@ -1,0 +1,33 @@
+{
+  "status": "CONTROLLED REMAINING AUTHORITY SWEEP — OPEN SLOTS ONLY",
+  "policy": "Resolve each slot against an authoritative record. Prefer review literature for broad framing and primary literature for narrow empirical mechanisms. Never fabricate metadata or overclaim a source beyond the sentence it supports.",
+  "openSlots": [
+    {"endnote":2,"chapter":2,"claim":"many bees detect ultraviolet wavelengths and may use polarization cues","preferredAuthority":"comparative vision review or authoritative entomology review"},
+    {"endnote":3,"chapter":2,"claim":"pit organs detect infrared radiation associated with temperature differences","preferredAuthority":"sensory physiology review or primary pit-organ physiology"},
+    {"endnote":4,"chapter":2,"claim":"bat echolocation uses emitted high-frequency calls and returning echoes to extract spatial information","preferredAuthority":"echolocation review"},
+    {"endnote":5,"chapter":2,"claim":"sharks and related elasmobranchs use ampullae of Lorenzini for electroreception","preferredAuthority":"electroreception review"},
+    {"endnote":6,"chapter":2,"claim":"many migratory birds use geomagnetic information while receptor mechanisms remain an active research area","preferredAuthority":"magnetoreception review emphasizing behavioral evidence and mechanistic uncertainty"},
+    {"endnote":7,"chapter":3,"claim":"observation windows can systematically miss processes occurring outside sampled temporal scales","preferredAuthority":"time-series/sampling methodology authority"},
+    {"endnote":8,"chapter":3,"claim":"biological and physical processes span characteristic timescales far beyond human unaided observation","preferredAuthority":"biological scaling or temporal scaling review"},
+    {"endnote":9,"chapter":4,"claim":"multicellular organisms arose through evolutionary transitions in which formerly independent units became integrated wholes","preferredAuthority":"major transitions/multicellularity review"},
+    {"endnote":10,"chapter":4,"claim":"somatic cooperation depends on mechanisms that constrain destructive component-level conflict","preferredAuthority":"cancer/somatic conflict or major-transitions review"},
+    {"endnote":11,"chapter":4,"claim":"host-associated microbial communities complicate simple physical-boundary accounts of biological individuality","preferredAuthority":"microbiome/holobiont or biological-individuality review"},
+    {"endnote":14,"chapter":5,"claim":"major-transition theory links individuality to cooperation, conflict mediation, and fitness alignment","preferredAuthority":"Michod lineage source PMCID PMC1688438"},
+    {"endnote":15,"chapter":5,"claim":"evolutionary transitions in individuality require conditions stronger than aggregation alone","preferredAuthority":"Michod 2007 source PMCID PMC1876437"},
+    {"endnote":16,"chapter":6,"claim":"biological individuality has multiple non-equivalent criteria including physiological, developmental, genetic, evolutionary, and ecological dimensions","preferredAuthority":"plural-individuality philosophy/biology review"},
+    {"endnote":17,"chapter":6,"claim":"immune and symbiotic relations can make organismal boundaries functionally permeable without erasing them","preferredAuthority":"immunological individuality/symbiosis review"},
+    {"endnote":19,"chapter":7,"claim":"membrane potentials and ion gradients are ordinary physiological mechanisms broadly distributed across living cells","preferredAuthority":"independent membrane-physiology review/textbook-level review"},
+    {"endnote":20,"chapter":7,"claim":"endogenous electric fields occur in wounds and can guide cell migration/electrotaxis","preferredAuthority":"wound electric field/electrotaxis review or primary literature"},
+    {"endnote":22,"chapter":8,"claim":"reaction-diffusion is one established mechanism class for developmental pattern formation","preferredAuthority":"reaction-diffusion/developmental patterning review"},
+    {"endnote":23,"chapter":8,"claim":"developmental robustness emerges from interacting gene-regulatory, signaling, mechanical, and geometric processes","preferredAuthority":"developmental robustness/gene-regulatory network review"},
+    {"endnote":24,"chapter":9,"claim":"salamander limb regeneration involves wound epithelium, blastema formation, positional information, and innervation","preferredAuthority":"PMCID PMC4036467"},
+    {"endnote":25,"chapter":9,"claim":"modern salamander regeneration research supports distributed local mechanisms rather than a conscious target representation","preferredAuthority":"PMCID PMC9898764"},
+    {"endnote":26,"chapter":9,"claim":"nerve dependence and local signaling are major mechanistic features of appendage regeneration","preferredAuthority":"PMCID PMC6679358"},
+    {"endnote":28,"chapter":10,"claim":"trained immunity provides additional evidence that innate immune systems can retain functionally consequential prior-state information","preferredAuthority":"independent trained-immunity review among PMCID PMC7186935/PMC8982914"},
+    {"endnote":29,"chapter":10,"claim":"plants can exhibit persistent physiological or epigenetic consequences of prior stress that affect later responses","preferredAuthority":"plant stress-memory review PMCID PMC11016036 or PMC4788475"},
+    {"endnote":30,"chapter":11,"claim":"circadian systems organize physiology around endogenous approximately daily oscillations","preferredAuthority":"circadian review PMCID PMC3378387 or equivalent"},
+    {"endnote":31,"chapter":11,"claim":"entrainment synchronizes endogenous oscillators to environmental timing cues","preferredAuthority":"entrainment/circadian oscillator review"},
+    {"endnote":32,"chapter":11,"claim":"a strong prediction claim requires prospective specification and the possibility of measurable error before the outcome","preferredAuthority":"predictive processing/forecast verification or anticipatory-systems authority chosen to match exact manuscript claim"}
+  ],
+  "completionRule": "A slot leaves OPEN only when exact metadata and claim fit are verified. If no source cleanly supports the sentence, narrow the sentence or keep the slot open."
+}
