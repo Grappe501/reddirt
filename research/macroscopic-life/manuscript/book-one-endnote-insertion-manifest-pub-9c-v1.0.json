@@ -1,0 +1,32 @@
+{
+  "status": "PUB-9C CONTROLLED INSERTION MANIFEST — 46 SLOTS",
+  "policy": "Insert only into the physical PUB-9C materialized master. Every marker must attach to an exact supporting sentence or immediately following claim cluster. Never reuse a pre-PUB-9C anchor hash after reader revisions.",
+  "slotCount": 46,
+  "classes": {
+    "externalAuthority": "Verified BIB record(s) support an empirical or scholarly claim.",
+    "projectSynthesis": "Author/project synthesis; do not fabricate an external source.",
+    "recordCallback": "Reuses earlier established record; add a local callback only if needed for reader traceability."
+  },
+  "chapterSlots": {
+    "1":[1],"2":[2,3,4,5,6],"3":[7,8],"4":[9,10,11],"5":[12,13,14,15],"6":[16,17],"7":[18,19,20],"8":[21,22,23],"9":[24,25,26],"10":[27,28,29],"11":[30,31,32],"12":[33,34,35,46],"13":[36,37],"14":[38,39,40,41,42],"15":[43],"16":[44,45]
+  },
+  "amendment": {
+    "note": 46,
+    "chapter": 12,
+    "noteClass": "externalAuthority",
+    "authorityIds": ["BIB-032","BIB-033"],
+    "claimBurden": "Contemporary consciousness science contains competing theories with empirically distinguishable predictions; this does not establish civilization-scale consciousness.",
+    "stagedReaderMarker": "[12.4]"
+  },
+  "hardStops": [
+    "Do not insert into a non-materialized PUB-9C master.",
+    "Do not convert PROJECT SYNTHESIS into a literature citation.",
+    "Do not let a citation imply that civilization is an organism.",
+    "Do not let consciousness citations imply that civilization is conscious.",
+    "Do not let anticipation literature imply prophecy or conscious foresight.",
+    "Do not let frequency language imply mechanism.",
+    "Do not let analogy become evidence.",
+    "Test 11 Model Competition remains mandatory.",
+    "Do not reuse legacy 45-slot exact-anchor hashes."
+  ]
+}
