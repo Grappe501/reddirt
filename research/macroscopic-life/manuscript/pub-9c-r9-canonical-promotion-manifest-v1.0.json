@@ -1,0 +1,83 @@
+{
+  "status": "CANONICAL PROMOTION AUTHORIZED — SOURCE-SAFE PATCH REQUIRED",
+  "promotionVersion": "PUB-9C-R9",
+  "sourcePolicy": "Preserve PUB-7L R1 as frozen historical source. Promote revised reader text as the next controlled reader layer rather than silently rewriting the historical R1 files.",
+  "affectedActs": [2,4,5],
+  "changes": [
+    {
+      "chapter": 5,
+      "operation": "INSERT",
+      "anchor": "### Civilization Meets Reproduction",
+      "position": "before",
+      "purpose": "Install four-stage evidentiary ladder after Levels of Selection and the Middle Category.",
+      "requiredLock": "MACROSCOPIC PATTERN → MACROSCOPIC ORGANIZATION → INTEGRATION → HIGHER-ORDER INDIVIDUALITY"
+    },
+    {
+      "chapter": 6,
+      "operation": "INSERT",
+      "anchor": "### What We Have Earned",
+      "position": "inside section after opening synthesis sentence",
+      "purpose": "Install compact operational ladder rule.",
+      "requiredLock": "DETECT THE PATTERN. PROVE THE ORGANIZATION. PERTURB THE INTEGRATION. MAKE INDIVIDUALITY COMPETE."
+    },
+    {
+      "chapter": 12,
+      "operation": "INSERT",
+      "anchor": "## Who Owns the Capability?",
+      "position": "before",
+      "purpose": "Install information/consciousness boundary and Endnote 46 burden.",
+      "requiredLocks": [
+        "SIGNAL ≠ INFORMATION ≠ INTEGRATION ≠ INTELLIGENCE ≠ AGENCY ≠ CONSCIOUSNESS",
+        "HIGHER-ORDER INDIVIDUALITY ≠ HIGHER-ORDER CONSCIOUSNESS.",
+        "DO NOT ASK WHETHER THE WHOLE IS CONSCIOUS UNTIL YOU HAVE FIRST EARNED THE RIGHT TO CALL IT A WHOLE."
+      ]
+    },
+    {
+      "chapter": 13,
+      "operation": "INSERT",
+      "anchor": "## Functions Move Outside Bodies",
+      "position": "before",
+      "purpose": "Carry ordinary-complex-organization rival before analogy accumulation."
+    },
+    {
+      "chapter": 14,
+      "operation": "REPLACE_SECTION",
+      "startAnchor": "## Pattern, Organization, Individual",
+      "endAnchor": "## Four Models Enter",
+      "purpose": "Replace three-stage ladder with one four-stage canonical evidentiary hierarchy."
+    },
+    {
+      "chapter": 14,
+      "operation": "INSERT",
+      "anchor": "## The Eleven Tests",
+      "position": "before",
+      "purpose": "Install model-discrimination rule and Now Try to Kill It transition.",
+      "requiredLock": "RESEMBLANCE GENERATES HYPOTHESES. MECHANISM GENERATES EVIDENCE. PREDICTION SEPARATES MODELS."
+    },
+    {
+      "chapter": 16,
+      "operation": "INSERT",
+      "anchor": "## The Hypothesis Without the Imagery",
+      "position": "before",
+      "purpose": "Define Macroscopic Life as research program and civilization as a candidate allowed to fail."
+    }
+  ],
+  "scholarlyChange": {
+    "oldSlots": 45,
+    "newSlots": 46,
+    "newSlot": 46,
+    "newAuthorities": ["BIB-032","BIB-033"],
+    "rule": "Endnote 46 supports consciousness-theory plurality and adversarial theory comparison only; it is not evidence for higher-order consciousness."
+  },
+  "mustNotChange": [
+    "Eleven canonical Test names",
+    "Test 11 Model Competition always required",
+    "Model C current verdict",
+    "Figure locks",
+    "Chapter 16 synthesis verdict",
+    "MEASURE. PERTURB. COMPARE MODELS. ALLOW FAILURE.",
+    "WE ARE THE MICROBE."
+  ],
+  "promotionSource": "manuscript/pub-9c-r6-sentence-burden-and-canonical-replacement-v1.0.md",
+  "citationSource": "manuscript/pub-9c-r7-zero-guess-citation-reconciliation-v1.0.json"
+}
