@@ -8,6 +8,8 @@
 
 This book does not assume that a larger organism exists. It asks what evidence could distinguish higher-order individuality from an extraordinarily complex organized world.
 
+`Macroscopic Life` is the umbrella question. The experimentally tractable core is narrower: **can individuality emerge at organizational scales above familiar organisms, and what evidence would distinguish that transition from complex organization without a new individual?**
+
 Biology does not provide one universally sufficient definition of individuality for every research question. In this book, *organism*, *biological individual*, *evolutionary individual*, and *higher-order individual* overlap in some contexts but are not automatic synonyms. *Macroscopic organization* is broader: a system can possess real higher-scale organization without qualifying as one biological individual.
 
 The question is not whether the world can be made to resemble a body.
@@ -106,6 +108,10 @@ It gives us a candidate system whose properties can eventually be tested.
 
 That middle category matters. Size, complexity, connection, and resemblance are not enough. Later chapters will ask whether a proposed whole has mechanisms of integration, regulation, repair, persistence, heredity, and selection that are better explained at the higher level than as a loose collection of parts.
 
+Eventually the question will become experimental: **if a larger individual existed, what measurements would distinguish it from an extraordinarily complicated network of independent agents?**
+
+We will not answer that by resemblance. We will force the stronger hypothesis to compete against the strongest simpler explanation we can build.
+
 ### A Theory That Can Lose
 
 There is an easy way to make this idea meaningless: explain every observation as evidence for it.
@@ -148,7 +154,7 @@ Sensory access is not.
 
 > **A SIGNAL'S ABSENCE FROM UNAIDED PERCEPTION IS A REASON TO MEASURE — NOT EVIDENCE THAT AN UNSUPPORTED HIDDEN PHENOMENON EXISTS.**
 
-Every sensory system is selective. Human perception is one biological sampling system among many.
+Human perception is one biological sampling system among many.
 
 ### Perception Is an Interface
 
@@ -168,7 +174,7 @@ Change the window and a different portion of reality becomes measurable.
 
 ### Instruments as Extended Observation
 
-Microscopes reveal structures too small for unaided eyes. Telescopes collect light from distant or faint objects. Radio antennas detect electromagnetic signals outside visible light. Infrared cameras translate measured infrared radiation into images humans can interpret. Seismometers measure ground motion. Magnetometers measure magnetic fields. Electrocardiograms record aspects of cardiac electrical activity.
+Microscopes, telescopes, radio antennas, infrared cameras, seismometers, magnetometers, and electrocardiograms convert otherwise inaccessible signals or scales into measurable records.
 
 Technology does not create the phenomena.
 
@@ -310,51 +316,21 @@ From this point forward, the argument must come from known organization and disc
 
 ---
 
-# PUB-7L R1 — ACT I CUT NOTES
+# PUB-7L R1 — ACT I IMPLEMENTATION NOTES
 
 **Reader-facing source:** `pub-7c-front-matter-chapters-1-3-controlled-editorial-hardening.md`
 
-**Cut principle:** teach once, trust thereafter.
+**Controlling directives:** PUB-7J redundancy audit; PUB-7K cut architecture; PUB-7M MIT-style ten-pass hostile-review implementation directive.
 
-## Redundancy removed
+## Implemented
 
-- removed duplicate `you do not see / you have never seen` emphasis while preserving the opening device;
-- compressed repeated invisibility/science explanations in Chapter 1 into one operational rule;
-- collapsed multiple `failure counts` examples into the strongest representative set;
-- shortened sensory examples without dropping any of the five canonical cases or magnetoreception uncertainty;
-- removed the second explanation that every sensory system is selective;
-- compressed instrumentation inventory language while preserving the concept;
-- removed repeated `automatic belief / automatic ridicule` framing after the test questions do the work;
-- retained Aura Test once and did not re-explain invisibility after it;
-- retained frequency/resonance teaching once and removed the redundant `description looking for mechanism` sentence;
-- removed the Chapter 2 civilization-scale firewall list because Chapter 1 already established the middle category and later acts own the classification problem;
-- compressed Chapter 3's multiple restatements of fast/slow invisibility;
-- removed one repeated life/intelligence/agency disclaimer where the Figure 3 caption and `Slow Does Not Mean Alive` section already carry it;
-- compressed the final Act I recap into one paragraph plus the canonical skim-layer firewall.
+- made higher-scale individuality the experimentally tractable core without changing the title or umbrella question;
+- added the early promise that the stronger hypothesis will face experimental comparison against a serious organized-network alternative;
+- did not front-load or name the Eleven Tests;
+- modestly compressed Chapter 2 instrumentation prose after the Observer Window is established;
+- retained all five canonical sensory examples and magnetoreception uncertainty;
+- retained Aura Test and the frequency/resonance operational questions;
+- preserved the Act I stop condition: perceptual limitation is an observational-design issue, not positive evidence;
+- preserved the scientific freeze.
 
-## Protected content
-
-- front-matter microbe brake;
-- individuality/macroscopic-organization terminology distinction;
-- Three Questions architecture;
-- early Model C seed;
-- falsifiability doctrine;
-- all five sensory examples;
-- magnetoreception uncertainty;
-- Figure 2 insertion and deterministic caption;
-- Observer Window;
-- Aura Test;
-- frequency/resonance operational discipline;
-- process timescale / temporal resolution / observation duration distinction;
-- physical-record discussion;
-- Figure 3 insertion and deterministic caption;
-- three kinds of scale;
-- Act I final scientific firewall.
-
-## Editorial result
-
-**ACT I R1 REDUNDANCY CUT: PASS**
-
-The reader is taught perceptual limitation once, instrumentation once, and timescale mismatch once. Later acts should now assume those concepts are understood.
-
-**Scientific freeze remains preserved.**
+**ACT I R1 + PUB-7M IMPLEMENTATION: PASS**
