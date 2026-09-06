@@ -3,7 +3,35 @@
   "name": "Macroscopic Life Research-Facing Source Ancestry Contract",
   "pass": "HOSTILE-AUDIT-REMEDIATION-PASS-02",
   "status": "ACTIVE_CONTRACT",
-  "relationshipTypes": ["ANCESTRY","DIRECT_SUPPORT","CALIBRATION","COUNTERMODEL","PROJECT_SYNTHESIS","SPECULATIVE_QUESTION"],
-  "requiredVisibleFields": ["relationshipToMacroscopicLife","whatThisSourceSupports","whatThisSourceDoesNotSupport","whereMacroscopicLifeGoesBeyondIt"],
-  "rules": ["ANCESTRY does not mean endorsement of the Macroscopic Life hypothesis.","DIRECT_SUPPORT is limited to the proposition actually supported by the source.","PROJECT_SYNTHESIS identifies a Macroscopic Life framework rather than field consensus.","SPECULATIVE_QUESTION carries no positive evidentiary weight by itself."]
+  "relationshipTypes": [
+    "ANCESTRY",
+    "DIRECT_SUPPORT",
+    "CALIBRATION",
+    "COUNTERMODEL",
+    "PROJECT_SYNTHESIS",
+    "SPECULATIVE_QUESTION"
+  ],
+  "requiredVisibleFields": [
+    "relationshipToMacroscopicLife",
+    "whatThisSourceSupports",
+    "whatThisSourceDoesNotSupport",
+    "whereMacroscopicLifeGoesBeyondIt"
+  ],
+  "rules": [
+    "A source may carry more than one relationship type only when each relationship is separately explained.",
+    "ANCESTRY means the source belongs to an intellectual tradition used by the project; it does not mean the source endorses the Macroscopic Life hypothesis.",
+    "DIRECT_SUPPORT is limited to the proposition actually supported by the source.",
+    "CALIBRATION sources constrain definitions, thresholds, baselines, or evidence standards and must not be presented as direct evidence for civilization-scale individuality.",
+    "COUNTERMODEL sources strengthen alternative explanations and must remain visible when they compete with Model D.",
+    "PROJECT_SYNTHESIS identifies a Macroscopic Life framework, operational definition, or evidentiary rule rather than field consensus.",
+    "SPECULATIVE_QUESTION must be visibly hypothetical and carries no positive evidentiary weight by itself.",
+    "No source card, citation bubble, or deep dive may imply that an ancestry source establishes civilization as a higher-order individual unless the source itself directly supports that exact claim."
+  ],
+  "example": {
+    "topic": "major evolutionary transitions",
+    "relationshipToMacroscopicLife": ["ANCESTRY", "CALIBRATION"],
+    "whatThisSourceSupports": "Higher-order individuality can arise in evolution, and conflict control, specialization, reproduction/heredity, and integration can matter when studying transitions in individuality.",
+    "whatThisSourceDoesNotSupport": "It does not establish that contemporary civilization is undergoing or has completed such a transition.",
+    "whereMacroscopicLifeGoesBeyondIt": "Macroscopic Life adds an explicit evidence-barrier, dependence-aware, model-competition program for testing a civilization-scale candidate against lower-level alternatives."
+  }
 }
