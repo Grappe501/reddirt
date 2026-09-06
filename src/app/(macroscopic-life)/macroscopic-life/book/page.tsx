@@ -1,6 +1,7 @@
 import Link from "next/link";
 
-import { ACTS, CHAPTERS, ML_BASE } from "@/content/macroscopic-life/catalog";
+import { CHAPTERS, ML_BASE } from "@/content/macroscopic-life/catalog";
+import { PUBLICATION_ACTS } from "@/content/macroscopic-life/publication-canon";
 import { loadFrontMatter } from "@/lib/macroscopic-life/load-manuscript";
 import { MarkdownBody } from "@/components/macroscopic-life/MarkdownBody";
 
@@ -39,7 +40,7 @@ export default function BookAtlasPage() {
       <MarkdownBody markdown={frontMatter} />
 
       <div className="ml-grid" style={{ marginTop: "2rem" }}>
-        {ACTS.map((act) => (
+        {PUBLICATION_ACTS.map((act) => (
           <section key={act.id} className="ml-card">
             <p className="ml-kicker">Act {act.roman}</p>
             <h2 className="ml-display" style={{ fontSize: "1.6rem", margin: "0.35rem 0 0.5rem" }}>
