@@ -1,0 +1,32 @@
+{
+  "status": "P1 REMEDIATION MATRIX — 14/14 MAPPED — PROMOTION NOT YET CLAIMED",
+  "goal": "Close every Phase-8 P1 through surgical edits without reopening global architecture or redesigning approved figures.",
+  "items": [
+    {"id":"P1-01","finding":"Capability ownership language","primaryLocations":["Chapter 13","Chapter 14","Chapter 16","Figure 13","Figure 14"],"repair":"Replace upward ownership verbs with contains/supports/distributed/exhibits-at-system-scale unless O5 ownership is explicitly earned.","closureProof":"No unqualified civilization remembers/predicts/repairs/thinks/acts language in high-burden passages."},
+    {"id":"P1-02","finding":"Repair language","primaryLocations":["Chapter 14 Test 7","Chapter 16 callbacks","Figure 9","Figure 14"],"repair":"Use maintenance/recovery/restoration for civilization; reserve Repair Autonomy for the formal test and state that current civilization evidence does not establish autonomous whole-level repair.","closureProof":"Civilization-scale repair claims cannot be read as already passing Test 7."},
+    {"id":"P1-03","finding":"Prediction burden","primaryLocations":["Chapter 11","Chapter 14 Test 6","Chapter 16","Figure 11"],"repair":"Require named predictor substrate/model, prospective target, error metric, and lower-level/null baseline.","closureProof":"Prediction Advantage is prospective and comparative, never retrospective pattern fit."},
+    {"id":"P1-04","finding":"Information specificity","primaryLocations":["Chapter 10","Chapter 12","Chapter 14 Test 8","Figure 10","Figure 12"],"repair":"Specify statistical information, stored state, functionally available information, semantic information, or Whole-Only Information as appropriate.","closureProof":"No high-burden claim depends on bare information as an explanatory substance."},
+    {"id":"P1-05","finding":"Agency definition","primaryLocations":["Chapter 12","Chapter 14","consciousness research module"],"repair":"Define operational agency as persistent goal-directed regulation/action under specified state variables and distinguish it from conscious intentional agency.","closureProof":"Agency cannot silently upgrade intelligence into consciousness/personhood."},
+    {"id":"P1-06","finding":"Test dependence disclosure","primaryLocations":["Chapter 14 before Eleven Tests","tests site","method site","Figure 14/15 companion copy"],"repair":"State tests are distinct questions, not independent votes; define evidence units and dependence families.","closureProof":"No pass-count interpretation such as 7/11=individual is allowed."},
+    {"id":"P1-07","finding":"Integration worked example","primaryLocations":["Chapter 5","Chapter 14 ladder","method site"],"repair":"Add one ordinary network example showing connection without integration and perturbation revealing integration.","closureProof":"Reader can explain why connectivity/correlation/synchrony are insufficient."},
+    {"id":"P1-08","finding":"Evidence-dependence worked example","primaryLocations":["Chapter 14","tests site"],"repair":"Show one perturbation experiment informing Integration Ablation, Prediction Advantage, and Higher-Level Intervention while remaining one partially dependent evidence unit.","closureProof":"Reader can distinguish number of tests informed from number of independent observations."},
+    {"id":"P1-09","finding":"Macro-causation worked example","primaryLocations":["Chapter 14 Test 9","method site"],"repair":"Use a nonmystical thermostat/traffic-control/organism-level intervention example to show macro-variable usefulness without a new force.","closureProof":"Higher-Level Intervention cannot reasonably be read as supernatural top-down causation."},
+    {"id":"P1-10","finding":"Model C elevation","primaryLocations":["Chapter 14 verdict","Chapter 15","Chapter 16","Figure 14","Figure 15"],"repair":"Explicitly describe Model C as a substantive positive scientific result: real macroscopic organization without established higher-order individuality.","closureProof":"Model C reads as discovery, not failure to reach Model D."},
+    {"id":"P1-11","finding":"Local screenshot brakes","primaryLocations":["Figures 2,7,9,11,12,13,14,15,16","bioelectricity/resonance/consciousness/recurrence/theology web modules"],"repair":"Keep brake on same page/section/figure as attraction claim for ten risk zones.","closureProof":"Isolated screenshot cannot fairly support civilization-alive, frequency-mysticism, consciousness, DNA, prophecy, or God-proof claims."},
+    {"id":"P1-12","finding":"Originality language","primaryLocations":["method site","sources site","research overview","future preface/backmatter"],"repair":"Claim novelty primarily in assembly, evidence barriers, dependence-aware adversarial framework, and research program; avoid first-ever claims absent priority proof.","closureProof":"Every originality statement survives the Phase-4 prior-art doctrine."},
+    {"id":"P1-13","finding":"Prior-art ancestry visibility","primaryLocations":["citation bubble architecture","deep source pages","method site","chapter source links"],"repair":"Expose ancestry/support/calibration/countermodel/project-synthesis labels and What it supports / What it does not support.","closureProof":"Readers can distinguish ancestor ideas from Macroscopic Life synthesis at point of use."},
+    {"id":"P1-14","finding":"Early ladder foreshadow","primaryLocations":["Act I close or Act II opening","Chapter 5 full formalization"],"repair":"Foreshadow four questions early without prematurely teaching the full formal test architecture.","closureProof":"Expert reader knows the book will distinguish pattern, organization, integration, and individuality before Act IV."}
+  ],
+  "hardBoundaries": [
+    "No new act or chapter.",
+    "No figure redesign.",
+    "No change to the canonical Eleven Test names.",
+    "Test 11 Model Competition remains mandatory.",
+    "No weakening of Model C.",
+    "No consciousness test inserted into the Eleven Tests.",
+    "No Generative Recurrence promotion to Test 12 in this pass.",
+    "No new speculative factual claims.",
+    "Citation burdens must be rechecked after prose promotion."
+  ],
+  "target": "14/14 P1 closed; 0 open P1; intellectual readiness >=98/100 before R16"
+}
