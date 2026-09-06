@@ -1,0 +1,61 @@
+{
+  "status": "AUTHORIZED SURGICAL REVISION MAP",
+  "maximumNetNewWords": 2500,
+  "preferredNetNewWords": "1500-2000",
+  "architectureMutable": false,
+  "figuresMutable": false,
+  "targets": [
+    {
+      "area": "Chapters 5-6",
+      "purpose": "Make the ladder from pattern to organization to integration to individuality explicit.",
+      "action": "tighten-and-add",
+      "requiredConcept": "A useful higher-level description is not by itself evidence of a higher-order individual."
+    },
+    {
+      "area": "Chapters 5-6 and later callback",
+      "purpose": "Strengthen evolutionary individuality as the biological precedent for the question.",
+      "action": "add-brief-explanation",
+      "requiredConcept": "Cooperation is insufficient; conflict suppression, specialization, dependency, reproduction and selection-level questions matter."
+    },
+    {
+      "area": "Act III to early Act IV transition",
+      "purpose": "Prevent information/intelligence/agency/consciousness collapse.",
+      "action": "add-compact-ladder",
+      "requiredText": "SIGNAL ≠ INFORMATION ≠ INTEGRATION ≠ INTELLIGENCE ≠ AGENCY ≠ CONSCIOUSNESS"
+    },
+    {
+      "area": "Early civilization discussion, before final model comparison",
+      "purpose": "Introduce the null/ordinary-complex-organization explanation early enough to compete throughout the argument.",
+      "action": "add-null-model",
+      "requiredConcept": "Billions of organisms may construct highly integrated systems without producing an additional individual."
+    },
+    {
+      "area": "Brakes across Acts II-IV",
+      "purpose": "Replace some repetitive disclaimers with progressively stronger scientific discrimination rules.",
+      "action": "replace-not-stack",
+      "requiredText": "Resemblance generates hypotheses. Mechanism generates evidence. Prediction separates models."
+    },
+    {
+      "area": "Immediately before Eleven Tests",
+      "purpose": "Turn reader from audience into adversarial investigator.",
+      "action": "add-transition",
+      "requiredConcept": "Assume the hypothesis is wrong; ask what would make it lose and what would discriminate it from the simpler rival model."
+    }
+  ],
+  "mustPreserve": [
+    "Model C remains the evidence-supported civilization model.",
+    "Test 11 is Model Competition and remains required.",
+    "No target-state language may imply conscious target representation.",
+    "Frequency remains measurement, not explanation.",
+    "Analogy never outranks mechanism.",
+    "WE ARE THE MICROBE remains the closing phrase."
+  ],
+  "postRevisionGates": [
+    "citation burden review for every changed scientific sentence",
+    "45-slot endnote reconciliation",
+    "exact-anchor regeneration/reconciliation",
+    "post-injection round-trip integrity proof",
+    "reader verdict-lock proof",
+    "then resume RC1 freeze and PUB-9D"
+  ]
+}
