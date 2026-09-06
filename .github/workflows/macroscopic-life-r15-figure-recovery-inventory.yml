@@ -24,8 +24,6 @@ jobs:
         with:
           node-version: '20'
       - name: Inventory current and historical figure production assets
-        id: inventory
-        continue-on-error: true
         run: node research/macroscopic-life/scripts/inventory-figure-r3-production-assets.mjs
       - name: Commit recovery inventory
         run: |
@@ -34,10 +32,10 @@ jobs:
           git add -f research/macroscopic-life/visuals/figure-r3-recovery-inventory-v1.json research/macroscopic-life/visuals/figure-r3-recovery-control.md
           if ! git diff --cached --quiet; then
             git commit -m 'PUB-9C R15: record figure production recovery inventory [skip ci]'
+            git pull --rebase origin main
             git push origin HEAD:main
           fi
-      - name: Enforce figure production closure gate
-        if: steps.inventory.outcome != 'success'
+      - name: Confirm inventory does not authorize production closure
         run: |
-          echo 'R15 Figure Rail remains gated. Recover exact approved production binaries; do not redesign figures.'
-          exit 1
+          grep -q 'Figure R3 closure | NOT YET AUTHORIZED' research/macroscopic-life/visuals/figure-r3-recovery-control.md
+          echo 'Inventory recorded. Exact approved production-binary recovery remains a separate R15 gate.'
