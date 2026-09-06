@@ -1,0 +1,86 @@
+{
+  "status": "RECONCILED — ONE NEW AUTHORITY FAMILY REQUIRED BEFORE PROMOTION",
+  "policy": "Reuse an existing verified authority only when it supports the exact new burden. Do not attach an approximate citation to avoid opening a new source burden.",
+  "reconciliations": [
+    {
+      "section": "Chapter 5 — evolutionary individuality",
+      "burden": "Evolution can produce transitions in individuality involving cooperation/conflict control and changing higher-level organization.",
+      "existingAuthorities": ["BIB-001","BIB-002","BIB-017","BIB-018","BIB-029"],
+      "decision": "REUSE",
+      "notes": "These authorities establish major transitions/individuality and conflict-resolution ancestry. They do not establish the Macroscopic Life four-stage ladder or civilization-scale individuality."
+    },
+    {
+      "section": "Chapter 6 — useful higher-level description",
+      "burden": "Higher-level explanatory variables can be scientifically useful without automatically establishing biological individuality.",
+      "existingAuthorities": ["BIB-010"],
+      "decision": "REUSE_WITH_NARROW_WORDING",
+      "notes": "BIB-010 supports high-level explanation/interventionist variable issues. The Pattern→Organization→Integration→Individuality hierarchy remains project synthesis."
+    },
+    {
+      "section": "Chapter 12 — collective/distributed capability",
+      "burden": "Cognition/intelligent performance can be distributed across people, artifacts, and systems; group-level information aggregation can produce collective capability.",
+      "existingAuthorities": ["BIB-006","BIB-007"],
+      "decision": "REUSE",
+      "notes": "Use as ancestry/calibration only. Neither source supports civilization-scale consciousness or higher-order organismhood."
+    },
+    {
+      "section": "Chapter 12 — information decomposition",
+      "burden": "Information attributed to relationships or combinations of variables can require multivariate treatment rather than being identified with one component.",
+      "existingAuthorities": ["BIB-008"],
+      "decision": "OPTIONAL_REUSE",
+      "notes": "Do not use BIB-008 as a consciousness authority. It is relevant only to information decomposition/whole-only-information ancestry."
+    },
+    {
+      "section": "Chapter 12 — consciousness theory plurality and phenomenal-experience boundary",
+      "burden": "Contemporary consciousness science contains competing theories with differing proposed mechanisms/signatures, and intelligent/integrated processing does not by itself settle phenomenal consciousness.",
+      "existingAuthorities": [],
+      "decision": "NEW_AUTHORITY_REQUIRED",
+      "notes": "The existing BIB-001–031 spine does not contain a verified consciousness-theory authority. Do not force collective-intelligence or information-decomposition sources to carry this burden. Add a small verified consciousness authority family before promotion."
+    },
+    {
+      "section": "Chapter 13 — ordinary-complex-organization rival",
+      "burden": "Civilization may possess large-scale networked organization without the text inferring a new biological individual.",
+      "existingAuthorities": ["BIB-007","BIB-009"],
+      "decision": "REUSE_AS_ANCESTRY_PLUS_PROJECT_SYNTHESIS",
+      "notes": "Distributed cognition/networked-risk sources can establish real distributed/networked organization. The no-higher-order-individual conclusion is the project rival model, not something attributed to these sources."
+    },
+    {
+      "section": "Chapter 14 — high-level intervention",
+      "burden": "Higher-level explanatory variables can be assessed interventionally.",
+      "existingAuthorities": ["BIB-010"],
+      "decision": "REUSE",
+      "notes": "The requirement that Model D defeat Models A–C remains Macroscopic Life methodology."
+    },
+    {
+      "section": "Chapter 14 — model discrimination/falsifiability language",
+      "burden": "Competing models gain discriminatory value when they make distinguishable predictions and risk failure.",
+      "existingAuthorities": [],
+      "decision": "PROJECT_METHOD_WITH_OPTIONAL_GENERAL_ANCESTRY",
+      "notes": "No new citation is required merely to state the project's methodological rule. If a philosophy-of-science ancestry note is later desired, verify it separately rather than fabricating a slot."
+    },
+    {
+      "section": "Chapter 16 — research-program scope",
+      "burden": "Civilization is one candidate; failure of a candidate can refine a broader test program.",
+      "existingAuthorities": [],
+      "decision": "PROJECT_SYNTHESIS",
+      "notes": "No external authority should be attached as though this were established consensus."
+    }
+  ],
+  "existingSpineImpact": {
+    "oldSlotCount": 45,
+    "oldExternalAuthorityCount": 41,
+    "oldProjectSynthesisCount": 2,
+    "oldRecordCallbackCount": 2,
+    "newBurdenFamilies": 1,
+    "promotionBlockedUntil": "consciousness authority family is verified and endnote architecture is explicitly revised or the reader consciousness prose is narrowed to claims already supported"
+  },
+  "hardRules": [
+    "BIB-006 collective intelligence is not evidence of consciousness.",
+    "BIB-007 distributed cognition is not evidence of consciousness.",
+    "BIB-008 information decomposition is not evidence of consciousness.",
+    "BIB-010 high-level explanation is not evidence of higher-order individuality.",
+    "Major-transition sources are ancestry for evolutionary individuality, not evidence that civilization is undergoing a transition.",
+    "No citation may cross the individuality/consciousness boundary by proximity."
+  ],
+  "nextAction": "Verify a minimal consciousness authority family, then revise the stable endnote map explicitly before canonical R1 mutation."
+}
