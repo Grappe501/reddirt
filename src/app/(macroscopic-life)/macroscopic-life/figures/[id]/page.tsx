@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import { FigureObject } from "@/components/macroscopic-life/figures";
+import { PublicationFigure } from "@/components/macroscopic-life/PublicationFigure";
 import { CHAPTERS, FIGURES, ML_BASE, figureById } from "@/content/macroscopic-life/catalog";
 import { isFrozenPublicationFigure, publicationFigure } from "@/content/macroscopic-life/publication-canon";
 
@@ -37,7 +37,7 @@ export default async function FigureTheaterPage({ params }: { params: Promise<{ 
       <h1 className="ml-display" style={{ fontSize: "2.4rem", margin: "0.4rem 0 1rem" }}>
         {figure.title}
       </h1>
-      <FigureObject figure={figure} />
+      <PublicationFigure id={figure.id} />
       <p style={{ marginTop: "1rem", color: "var(--ml-mute)" }}>{figure.treatment}</p>
       {figure.id === "fig-16" ? (
         <div className="ml-card" style={{ marginTop: "1rem" }}>
