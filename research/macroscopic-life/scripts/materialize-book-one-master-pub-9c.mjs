@@ -6,11 +6,11 @@ const manuscriptDir = path.join(root, 'manuscript');
 const output = path.join(manuscriptDir, 'book-one-master-pub-9c-reader-materialized.md');
 
 const sources = [
-  'pub-7l-r1-act-i-redundancy-cut-reader-manuscript.md',
-  'pub-9c-r9-act-ii-reader-manuscript.md',
-  'pub-7l-r1-act-iii-redundancy-cut-reader-manuscript.md',
-  'pub-9c-r9-act-iv-reader-manuscript.md',
-  'pub-9c-r9-act-v-reader-manuscript.md',
+  'pub-9c-ha2-act-i-reader-manuscript.md',
+  'pub-9c-ha2-act-ii-reader-manuscript.md',
+  'pub-9c-ha2-act-iii-reader-manuscript.md',
+  'pub-9c-ha2-act-iv-reader-manuscript.md',
+  'pub-9c-ha2-act-v-reader-manuscript.md',
 ];
 
 function readerLayer(text) {
@@ -24,7 +24,7 @@ function readerLayer(text) {
 
 const parts = sources.map((file) => {
   const full = path.join(manuscriptDir, file);
-  if (!fs.existsSync(full)) throw new Error(`Missing revised reader source: ${file}. Run promote-pub-9c-r9-reader-revisions.mjs first.`);
+  if (!fs.existsSync(full)) throw new Error(`Missing revised reader source: ${file}. Run promote-hostile-audit-remediation-pass-02.mjs first.`);
   return readerLayer(fs.readFileSync(full, 'utf8'));
 });
 
@@ -57,8 +57,29 @@ for (const lock of revisionLocks) if (!materialized.includes(lock)) throw new Er
 const finalLocks=['ON THE EVIDENCE REVIEWED IN THIS BOOK, CIVILIZATION IS NOT ESTABLISHED AS A HIGHER-ORDER INDIVIDUAL.','CURRENT WINNER: MODEL C.','MEASURE. PERTURB. COMPARE MODELS. ALLOW FAILURE.','WE ARE THE MICROBE.'];
 for (const lock of finalLocks) if (!materialized.includes(lock)) throw new Error(`Missing final lock: ${lock}`);
 
+const hostileLocks=[
+  'A FUNCTION CAN EXIST INSIDE A SYSTEM BEFORE THE SYSTEM OWNS THE FUNCTION.',
+  'MAINTENANCE INSIDE A SYSTEM ≠ REPAIR AUTONOMY OF THE SYSTEM AS A WHOLE.',
+  'NO PROSPECTIVE TARGET + NO ERROR METRIC + NO BASELINE = NO PREDICTION ADVANTAGE.',
+  'INFORMATION IS NOT A SUBSTANCE. NAME THE RELATIONSHIP OR FUNCTION YOU MEAN.',
+  'GOAL-DIRECTED REGULATION ≠ CONSCIOUS INTENTION.',
+  'TESTS ARE QUESTIONS. EVIDENCE UNITS ARE OBSERVATIONS. DEPENDENCE MUST BE DISCLOSED.',
+  'CONNECTED IS NOT INTEGRATED. INTEGRATION HAS TO SURVIVE PERTURBATION AS A CAUSAL CLAIM.',
+  'HIGHER-LEVEL CAUSAL EFFICACY ≠ A NEW FORCE.',
+  'MODEL C IS A DISCOVERY, NOT A CONSOLATION PRIZE.',
+  'REAL MACROSCOPIC ORGANIZATION CAN EXIST WITHOUT A NEW HIGHER-ORDER INDIVIDUAL.',
+  'EPISTEMIC HUMILITY IS NOT POSITIVE EVIDENCE.',
+  'ORDINARY BIOPHYSICS CAN IMPLEMENT EXTRAORDINARY ORGANIZATION; ELECTRICITY IS NOT A MYSTICAL EXPLANATION.',
+  'TARGET-STATE LANGUAGE DOES NOT REQUIRE CONSCIOUS REPRESENTATION OF A TARGET.',
+  'SYNCHRONY IS A RELATIONSHIP, NOT AN IDENTITY CLAIM.',
+  'THE WHOLE CAN SOLVE A PROBLEM NO COMPONENT SOLVES ALONE; THAT DOES NOT BY ITSELF ESTABLISH ONE AGENT.',
+  'CONVERGENCE IS A HYPOTHESIS TO EXPLAIN, NOT EVIDENCE OF A HIDDEN GENOME.',
+  'HIGHER-LEVEL CAUSAL EFFICACY ≠ SUPERNATURAL CAUSATION.'
+];
+for (const lock of hostileLocks) if (!materialized.includes(lock)) throw new Error(`Missing hostile-audit closure lock: ${lock}`);
+
 if (!materialized.includes('[12.4]')) throw new Error('Missing staged consciousness endnote marker [12.4].');
 
 fs.writeFileSync(output, materialized.trimEnd()+'\n','utf8');
 console.log(`PASS: materialized revised reader master: ${output}`);
-console.log(`Acts: ${sources.length}; Chapters: ${chapters.length}; Eleven Tests: ${tests.length}; consciousness slot marker: 1`);
+console.log(`Acts: ${sources.length}; Chapters: ${chapters.length}; Eleven Tests: ${tests.length}; hostile locks: ${hostileLocks.length}; consciousness slot marker: 1`);
