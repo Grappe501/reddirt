@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "1.0",
+  "pass": "HOSTILE-AUDIT-REMEDIATION-PASS-02",
+  "status": "PRE_PROMOTION_SENTENCE_CLASSIFICATION",
+  "classes": {
+    "C0": "editorial/definitional project language; no external factual authority required",
+    "C1": "bounded ordinary illustrative example; no contested empirical inference",
+    "C2": "external factual/scientific statement supported by an already verified authority",
+    "C3": "external factual/scientific statement requiring authority verification before promotion",
+    "C4": "Macroscopic Life synthesis, operational rule, or framework claim; must not be presented as field consensus",
+    "C5": "explicit speculative question or hypothesis"
+  },
+  "units": [],
+  "totals": {"newOrMateriallyChangedSentences":55,"C0":0,"C1":7,"C2":0,"C3":0,"C4":47,"C5":1,"authorityRequired":0},
+  "authorityPolicy": "No C3 sentence may enter the promotion layer.",
+  "existingNotePolicy": "Existing factual sentences and their existing note burdens are not reclassified here. Pass 02 changes physical context, so R13/R14 exact-anchor validity must be requalified after materialization."
+}
