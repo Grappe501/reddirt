@@ -1,0 +1,25 @@
+{
+  "status": "STAGED — NOT PROMOTED",
+  "source": "manuscript/pub-9c-r2-intelligent-reader-reconciled-insertions.md",
+  "insertions": [
+    {"id":"A","target":"Chapter 5","anchor":"Levels of Selection and the Middle Category","burden":"external biology + project synthesis"},
+    {"id":"B","target":"Chapter 6","anchor":"What We Have Earned","burden":"project synthesis with examples"},
+    {"id":"C","target":"Act III/IV bridge","anchor":"before Chapter 12 operational intelligence argument","burden":"information/cognition distinctions + project synthesis"},
+    {"id":"D","target":"Chapter 13","anchor":"before strongest civilization analogy accumulation","burden":"null-model project synthesis"},
+    {"id":"E","target":"late Chapter 13 / Chapter 14 opening","anchor":"before civilization model trial","burden":"project methodology"},
+    {"id":"F","target":"Chapter 14","anchor":"immediately before The Eleven Tests","burden":"project methodology"},
+    {"id":"G","target":"late Chapter 15 / early Chapter 16","anchor":"research-program handoff","burden":"project synthesis"}
+  ],
+  "promotionRequires": [
+    "exact target anchor verified in canonical R1 source",
+    "sentence-level citation burden classified",
+    "no unsupported strengthening of scientific claim",
+    "no duplicate brake introduced where existing prose already does the job",
+    "net-new word count remains <=2500",
+    "affected act reader files rematerialize cleanly",
+    "45-slot scholarly apparatus reconciled",
+    "exact endnote anchors regenerated after text mutation",
+    "post-injection integrity PASS"
+  ],
+  "rule": "Stage prose first. Prove burden and placement. Promote only after the manuscript can still lose scientifically."
+}
