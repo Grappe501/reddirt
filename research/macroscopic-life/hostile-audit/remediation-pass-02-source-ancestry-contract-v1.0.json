@@ -1,0 +1,9 @@
+{
+  "schemaVersion": "1.0",
+  "name": "Macroscopic Life Research-Facing Source Ancestry Contract",
+  "pass": "HOSTILE-AUDIT-REMEDIATION-PASS-02",
+  "status": "ACTIVE_CONTRACT",
+  "relationshipTypes": ["ANCESTRY","DIRECT_SUPPORT","CALIBRATION","COUNTERMODEL","PROJECT_SYNTHESIS","SPECULATIVE_QUESTION"],
+  "requiredVisibleFields": ["relationshipToMacroscopicLife","whatThisSourceSupports","whatThisSourceDoesNotSupport","whereMacroscopicLifeGoesBeyondIt"],
+  "rules": ["ANCESTRY does not mean endorsement of the Macroscopic Life hypothesis.","DIRECT_SUPPORT is limited to the proposition actually supported by the source.","PROJECT_SYNTHESIS identifies a Macroscopic Life framework rather than field consensus.","SPECULATIVE_QUESTION carries no positive evidentiary weight by itself."]
+}
