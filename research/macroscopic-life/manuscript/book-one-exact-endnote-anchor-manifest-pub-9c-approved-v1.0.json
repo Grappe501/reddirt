@@ -1,0 +1,562 @@
+{
+  "status": "PASS",
+  "generation": "PUB-9C-R14-READY",
+  "masterPath": "research/macroscopic-life/manuscript/book-one-master-pub-9c-reader-materialized.md",
+  "masterSha256": "3416c4aabbaabfef8a7263104fc23a36f8e482e6a7d2c4197329296f20635708",
+  "slotCount": 46,
+  "verifiedExactAnchors": 46,
+  "sourceApprovalsPath": "research/macroscopic-life/manuscript/book-one-exact-endnote-anchor-approvals-pub-9c-v1.0.json",
+  "sourceApprovalStatus": "PASS-03 SCHOLARLY REQUALIFICATION COMPLETE — 46/46 APPROVED",
+  "exactAnchorNormalizations": 2,
+  "slots": [
+    {
+      "note": 1,
+      "state": "EXACT-ANCHOR-VERIFIED",
+      "approvedAnchor": "Again, yes. Evolutionary history contains strong examples.",
+      "exactAnchor": "Again, yes. Evolutionary history contains strong examples.",
+      "exactOccurrenceCount": 1,
+      "anchorSha256": "72abeca44f664afe2f8a6b57a8c4ccf16fff1796cf6833bec4222cc9a8146ff3",
+      "reviewBatch": "HA3-B01",
+      "authorityIds": []
+    },
+    {
+      "note": 2,
+      "state": "EXACT-ANCHOR-VERIFIED",
+      "approvedAnchor": "Many bees can detect ultraviolet wavelengths unavailable to ordinary human vision, and polarization cues can contribute to orientation and navigation in relevant contexts.[2.1]",
+      "exactAnchor": "Many bees can detect ultraviolet wavelengths unavailable to ordinary human vision, and polarization cues can contribute to orientation and navigation in relevant contexts.[2.1]",
+      "exactOccurrenceCount": 1,
+      "anchorSha256": "9f2a4cdf825020fb2542441959bdb2126e2e71ebd472f506d1e264bbad444f4f",
+      "reviewBatch": "HA3-B01",
+      "authorityIds": []
+    },
+    {
+      "note": 3,
+      "state": "EXACT-ANCHOR-VERIFIED",
+      "approvedAnchor": "Pit vipers possess specialized infrared-sensitive pit organs that detect thermal radiation associated with warm objects.[2.2]",
+      "exactAnchor": "Pit vipers possess specialized infrared-sensitive pit organs that detect thermal radiation associated with warm objects.[2.2]",
+      "exactOccurrenceCount": 1,
+      "anchorSha256": "00bb7847828137e87196a0117840f9d3018ac9a4d9d3e22d223376c69e31a2c0",
+      "reviewBatch": "HA3-B01",
+      "authorityIds": []
+    },
+    {
+      "note": 4,
+      "state": "EXACT-ANCHOR-VERIFIED",
+      "approvedAnchor": "Many bats emit sound and analyze returning echoes to extract information about objects and space.[2.3]",
+      "exactAnchor": "Many bats emit sound and analyze returning echoes to extract information about objects and space.[2.3]",
+      "exactOccurrenceCount": 1,
+      "anchorSha256": "f84d7826e07cba1f1e3688d71fad29ab876389bc200b3fe062f90e7a1881cca8",
+      "reviewBatch": "HA3-B01",
+      "authorityIds": []
+    },
+    {
+      "note": 5,
+      "state": "EXACT-ANCHOR-VERIFIED",
+      "approvedAnchor": "Sharks and rays possess electroreceptive systems capable of detecting weak electric fields.[2.4]",
+      "exactAnchor": "Sharks and rays possess electroreceptive systems capable of detecting weak electric fields.[2.4]",
+      "exactOccurrenceCount": 1,
+      "anchorSha256": "b67268c640373aafb99320ba5635ba0dbfe41ead3e039fb148224b2c5e523eae",
+      "reviewBatch": "HA3-B01",
+      "authorityIds": []
+    },
+    {
+      "note": 6,
+      "state": "EXACT-ANCHOR-VERIFIED",
+      "approvedAnchor": "Several bird species use information associated with Earth's magnetic field for orientation or navigation.",
+      "exactAnchor": "Several bird species use information associated with Earth's magnetic field for orientation or navigation.",
+      "exactOccurrenceCount": 1,
+      "anchorSha256": "25d153ea15dd4d2309b56f8b8655edcdf05991d1ccae62bc09c8207b446f31da",
+      "reviewBatch": "HA3-B01",
+      "authorityIds": []
+    },
+    {
+      "note": 7,
+      "state": "EXACT-ANCHOR-VERIFIED",
+      "approvedAnchor": "A **process timescale** describes how quickly a process meaningfully changes. **Temporal resolution** or **sampling interval** concerns how finely or frequently we observe. **Observation duration** is how long the record continues.",
+      "exactAnchor": "A **process timescale** describes how quickly a process meaningfully changes. **Temporal resolution** or **sampling interval** concerns how finely or frequently we observe. **Observation duration** is how long the record continues.",
+      "exactOccurrenceCount": 1,
+      "anchorSha256": "dea64c2912c5e2c8d66d2cf5d4775239c2936b64e7d9dc83f8c549dfd129dfd2",
+      "reviewBatch": "HA3-B02",
+      "authorityIds": [
+        "BIB-026"
+      ]
+    },
+    {
+      "note": 8,
+      "state": "EXACT-ANCHOR-VERIFIED",
+      "approvedAnchor": "Biological rhythms add another dimension: some processes recur with characteristic timing. Lifespan adds another: an organism's lifetime limits what it can personally observe without records inherited from others.",
+      "exactAnchor": "Biological rhythms add another dimension: some processes recur with characteristic timing. Lifespan adds another: an organism's lifetime limits what it can personally observe without records inherited from others.",
+      "exactOccurrenceCount": 1,
+      "anchorSha256": "5556759cbe32b9012036d71a742f4059e1d78656868a0676a010454ee2ee4a96",
+      "reviewBatch": "HA3-B02",
+      "authorityIds": [
+        "BIB-027"
+      ]
+    },
+    {
+      "note": 9,
+      "state": "EXACT-ANCHOR-VERIFIED",
+      "approvedAnchor": "Mitochondria descend from bacteria involved in an ancient endosymbiotic relationship with the lineage ancestral to modern eukaryotes. Over evolutionary time, extensive metabolic and genetic integration transformed that relationship.[4.2]",
+      "exactAnchor": "Mitochondria descend from bacteria involved in an ancient endosymbiotic relationship with the lineage ancestral to modern eukaryotes. Over evolutionary time, extensive metabolic and genetic integration transformed that relationship.[4.2]",
+      "exactOccurrenceCount": 1,
+      "anchorSha256": "3f901eb48d5e58553a63cc635d89dc751c4e8b1dd18394a746fe57deaeafd195",
+      "reviewBatch": "HA3-B02",
+      "authorityIds": [
+        "BIB-028"
+      ]
+    },
+    {
+      "note": 10,
+      "state": "EXACT-ANCHOR-VERIFIED",
+      "approvedAnchor": "Multicellular organisms therefore do more than connect cells. Development, tissue architecture, regulatory signaling, immune processes, cell-death mechanisms, reproductive organization, and other constraints help limit lower-level conflict.",
+      "exactAnchor": "Multicellular organisms therefore do more than connect cells. Development, tissue architecture, regulatory signaling, immune processes, cell-death mechanisms, reproductive organization, and other constraints help limit lower-level conflict.",
+      "exactOccurrenceCount": 1,
+      "anchorSha256": "006609642b23da4b491c36b7015417bad07122e1b31fe090cc191c47e5d233a7",
+      "reviewBatch": "HA3-B02",
+      "authorityIds": [
+        "BIB-029"
+      ]
+    },
+    {
+      "note": 11,
+      "state": "EXACT-ANCHOR-VERIFIED",
+      "approvedAnchor": "Human-associated microbial communities influence physiology. They occupy body surfaces and cavities, metabolize compounds, interact with host tissues, and can affect immune and digestive processes.[4.3]",
+      "exactAnchor": "Human-associated microbial communities influence physiology. They occupy body surfaces and cavities, metabolize compounds, interact with host tissues, and can affect immune and digestive processes.[4.3]",
+      "exactOccurrenceCount": 1,
+      "anchorSha256": "d97cd926c5c14f7a3a1177d7bf9bd7ffcc7b712f2b3bca0e4e027a47903465e7",
+      "reviewBatch": "HA3-B02",
+      "authorityIds": [
+        "BIB-030"
+      ]
+    },
+    {
+      "note": 12,
+      "state": "EXACT-ANCHOR-VERIFIED",
+      "approvedAnchor": "Biology does not give us one universal switch. It gives us evolutionary transitions, and they do not all work the same way.[5.1]",
+      "exactAnchor": "Biology does not give us one universal switch. It gives us evolutionary transitions, and they do not all work the same way.[5.1]",
+      "exactOccurrenceCount": 1,
+      "anchorSha256": "909eae784af66e8a15af688a3fb4d746a5fa0a54eb485e22ed19c4b8bea0bffa",
+      "reviewBatch": "HA3-B03",
+      "authorityIds": [
+        "BIB-001"
+      ]
+    },
+    {
+      "note": 13,
+      "state": "EXACT-ANCHOR-VERIFIED",
+      "approvedAnchor": "Evolutionary transitions can be stabilized by mechanisms that reduce conflict, prevent some conflicts from arising, or increase alignment among levels of selection.[5.2]",
+      "exactAnchor": "Evolutionary transitions can be stabilized by mechanisms that reduce conflict, prevent some conflicts from arising, or increase alignment among levels of selection.[5.2]",
+      "exactOccurrenceCount": 1,
+      "anchorSha256": "0fa1f2a4763c99057ae9e7464c6fdad3e9127f5e5418fa3c4574d53737eb974a",
+      "reviewBatch": "HA3-B03",
+      "authorityIds": [
+        "BIB-002"
+      ]
+    },
+    {
+      "note": 14,
+      "state": "EXACT-ANCHOR-VERIFIED",
+      "approvedAnchor": "Many multicellular organisms begin from one cell or a small propagule. Such bottlenecks can increase genetic similarity among components and reduce opportunities for competing lineages to transmit independently into the next generation.[5.3]",
+      "exactAnchor": "Many multicellular organisms begin from one cell or a small propagule. Such bottlenecks can increase genetic similarity among components and reduce opportunities for competing lineages to transmit independently into the next generation.[5.3]",
+      "exactOccurrenceCount": 1,
+      "anchorSha256": "d5f28703aa2431c8f0a861a0bde296b33dca4f84a76b358cb5abb87db0344586",
+      "reviewBatch": "HA3-B03",
+      "authorityIds": [
+        "BIB-017"
+      ]
+    },
+    {
+      "note": 15,
+      "state": "EXACT-ANCHOR-VERIFIED",
+      "approvedAnchor": "Multicellularity evolved repeatedly in different lineages through different evolutionary routes.[5.5]",
+      "exactAnchor": "Multicellularity evolved repeatedly in different lineages through different evolutionary routes.[5.5]",
+      "exactOccurrenceCount": 1,
+      "anchorSha256": "2993cc439683af8901e1db4a2148ce50d4ff5b3dffb4e0f3281ff2812c9fa9e1",
+      "reviewBatch": "HA3-B03",
+      "authorityIds": [
+        "BIB-018"
+      ]
+    },
+    {
+      "note": 16,
+      "state": "EXACT-ANCHOR-VERIFIED",
+      "approvedAnchor": "One organism can therefore support several measurable boundary maps.",
+      "exactAnchor": "One organism can therefore support several measurable boundary maps.",
+      "exactOccurrenceCount": 1,
+      "anchorSha256": "118784382d9dfa03e92a1968e643393a3d4fd032d452782a8dc9ddec568b3c16",
+      "reviewBatch": "HA3-B03",
+      "authorityIds": [
+        "BIB-031"
+      ]
+    },
+    {
+      "note": 17,
+      "state": "EXACT-ANCHOR-VERIFIED",
+      "approvedAnchor": "Immune behavior provides evidence about biological relationships. It does not settle membership alone.",
+      "exactAnchor": "Immune behavior provides evidence about biological relationships. It does not settle membership alone.",
+      "exactOccurrenceCount": 1,
+      "anchorSha256": "f89336a29ff57a9ddc4c5acb531a517895222651283596c6abca19d60091d2cb",
+      "reviewBatch": "HA3-B03",
+      "authorityIds": [
+        "BIB-031"
+      ]
+    },
+    {
+      "note": 18,
+      "state": "EXACT-ANCHOR-VERIFIED",
+      "approvedAnchor": "This broader territory is **bioelectricity**: electrical properties and processes in living systems, including membrane voltages, ionic currents, electrical coupling, and endogenous electric fields.",
+      "exactAnchor": "This broader territory is **bioelectricity**: electrical properties and processes in living systems, including membrane voltages, ionic currents, electrical coupling, and endogenous electric fields.",
+      "exactOccurrenceCount": 1,
+      "anchorSha256": "476321f2bd781ef5c3cae10dfa24a9702a685db6860e52c416f4b19bd92cd114",
+      "reviewBatch": "HA3-B04",
+      "authorityIds": [
+        "BIB-003"
+      ]
+    },
+    {
+      "note": 19,
+      "state": "EXACT-ANCHOR-VERIFIED",
+      "approvedAnchor": "Non-neural cells also maintain electrical states, and voltage or ion-channel changes can interact with calcium signaling, secretion, migration, proliferation, metabolism, and gene regulation in context-dependent ways.",
+      "exactAnchor": "Non-neural cells also maintain electrical states, and voltage or ion-channel changes can interact with calcium signaling, secretion, migration, proliferation, metabolism, and gene regulation in context-dependent ways.",
+      "exactOccurrenceCount": 1,
+      "anchorSha256": "c26dc1f063b3ef1c14a7c97efb01bb5349842670417cc2c7d10818cfe78cf738",
+      "reviewBatch": "HA3-B04",
+      "authorityIds": [
+        "BIB-034"
+      ]
+    },
+    {
+      "note": 20,
+      "state": "EXACT-ANCHOR-VERIFIED",
+      "approvedAnchor": "In some epithelial systems, endogenous electric fields occur around wounds, and some cell types migrate directionally in response to electric fields under experimental and physiological conditions.",
+      "exactAnchor": "In some epithelial systems, endogenous electric fields occur around wounds, and some cell types migrate directionally in response to electric fields under experimental and physiological conditions.",
+      "exactOccurrenceCount": 1,
+      "anchorSha256": "d22269db1d83d614c7ad649a9f19bf1ad680fadceef452ce55726e5c752300c1",
+      "reviewBatch": "HA3-B04",
+      "authorityIds": [
+        "BIB-019"
+      ]
+    },
+    {
+      "note": 21,
+      "state": "EXACT-ANCHOR-VERIFIED",
+      "approvedAnchor": "Form requires mechanics. Tubes bend. Tissues rearrange. Cells divide, migrate, contract, adhere, and push. Material properties and geometry feed back into signaling and gene regulation.",
+      "exactAnchor": "Form requires mechanics. Tubes bend. Tissues rearrange. Cells divide, migrate, contract, adhere, and push. Material properties and geometry feed back into signaling and gene regulation.",
+      "exactOccurrenceCount": 1,
+      "anchorSha256": "4f9ffa4236fcbcd71557d96fa8b90b1d727cce9ccf785e66a80a979688038af4",
+      "reviewBatch": "HA3-B04",
+      "authorityIds": [
+        "BIB-004"
+      ]
+    },
+    {
+      "note": 22,
+      "state": "EXACT-ANCHOR-VERIFIED",
+      "approvedAnchor": "Turing's reaction–diffusion work demonstrated mathematically that local reaction and transport can, under specified conditions, generate spatial pattern. Whether a particular biological pattern uses such a mechanism is an empirical question.",
+      "exactAnchor": "Turing's reaction–diffusion work demonstrated mathematically that local reaction and transport can, under specified conditions, generate spatial pattern. Whether a particular biological pattern uses such a mechanism is an empirical question.",
+      "exactOccurrenceCount": 1,
+      "anchorSha256": "59124a73fe90054771d3a30b084a693fec880dd591ab627bf7460a849d6838d4",
+      "reviewBatch": "HA3-B04",
+      "authorityIds": [
+        "BIB-035"
+      ]
+    },
+    {
+      "note": 23,
+      "state": "EXACT-ANCHOR-VERIFIED",
+      "approvedAnchor": "Reliable large-scale form can emerge because cells inherit and respond to local states embedded in a structured developmental process.",
+      "exactAnchor": "Reliable large-scale form can emerge because cells inherit and respond to local states embedded in a structured developmental process.",
+      "exactOccurrenceCount": 1,
+      "anchorSha256": "db21ba04407401c6c4801f2c3151305c263740419f46fa2624b12563ac6d5135",
+      "reviewBatch": "HA3-B04",
+      "authorityIds": [
+        "BIB-036"
+      ]
+    },
+    {
+      "note": 24,
+      "state": "EXACT-ANCHOR-VERIFIED",
+      "approvedAnchor": "Persistent position-related states are sometimes described as positional identity or positional memory. Here that means physically instantiated differences associated with prior anatomical position that alter later behavior—not recollection or a stored picture of the limb.",
+      "exactAnchor": "Persistent position-related states are sometimes described as positional identity or positional memory. Here that means physically instantiated differences associated with prior anatomical position that alter later behavior—not recollection or a stored picture of the limb.",
+      "exactOccurrenceCount": 1,
+      "anchorSha256": "599d91904a87c3607539a6f5776fc4fccc6fe3126a91cbf61eaa8716b5229a18",
+      "reviewBatch": "HA3-B05",
+      "authorityIds": [
+        "BIB-020"
+      ]
+    },
+    {
+      "note": 25,
+      "state": "EXACT-ANCHOR-VERIFIED",
+      "approvedAnchor": "In salamander limb regeneration, a wound epidermis forms and a heterogeneous blastema develops beneath it. Blastema cells are not a miniature limb and are not universally pluripotent.",
+      "exactAnchor": "In salamander limb regeneration, a wound epidermis forms and a heterogeneous blastema develops beneath it. Blastema cells are not a miniature limb and are not universally pluripotent.",
+      "exactOccurrenceCount": 1,
+      "anchorSha256": "e2f925bab507409c4fbc88bed8e2ae81ee892915931e103bc60ea4ea8f65c8f4",
+      "reviewBatch": "HA3-B05",
+      "authorityIds": [
+        "BIB-021"
+      ]
+    },
+    {
+      "note": 26,
+      "state": "EXACT-ANCHOR-VERIFIED",
+      "approvedAnchor": "Salamanders such as the axolotl can do something much stronger: after amputation, multiple tissues and anatomical relationships can be reconstructed. Capacity varies across species, life stages, injuries, and experimental conditions, but the phenomenon is real.",
+      "exactAnchor": "Salamanders such as the axolotl can do something much stronger: after amputation, multiple tissues and anatomical relationships can be reconstructed. Capacity varies across species, life stages, injuries, and experimental conditions, but the phenomenon is real.",
+      "exactOccurrenceCount": 1,
+      "anchorSha256": "47250777088798db423d0f1529c1d013f01b1afcbce0318efb2a9f34ca2e7bfb",
+      "reviewBatch": "HA3-B05",
+      "authorityIds": [
+        "BIB-022"
+      ]
+    },
+    {
+      "note": 27,
+      "state": "EXACT-ANCHOR-VERIFIED",
+      "approvedAnchor": "Trained-immunity research examines persistent changes in innate-system responses.",
+      "exactAnchor": "Trained-immunity research examines persistent changes in innate-system responses.",
+      "exactOccurrenceCount": 1,
+      "anchorSha256": "20ab21dfa59d1cbfcac4374268a08a2b3dde6c2db2edce00008b111bfb46c11a",
+      "reviewBatch": "HA3-B05",
+      "authorityIds": [
+        "BIB-005"
+      ]
+    },
+    {
+      "note": 28,
+      "state": "EXACT-ANCHOR-VERIFIED",
+      "approvedAnchor": "Plants can show persistent physiological or regulatory consequences of prior stress.",
+      "exactAnchor": "Plants can show persistent physiological or regulatory consequences of prior stress.",
+      "exactOccurrenceCount": 1,
+      "anchorSha256": "56940b62516cbf4b8a20bc3775e5dd7793d669f368036374ec1b923fe37c7eb1",
+      "reviewBatch": "HA3-B05",
+      "authorityIds": [
+        "BIB-037"
+      ]
+    },
+    {
+      "note": 29,
+      "state": "EXACT-ANCHOR-VERIFIED",
+      "approvedAnchor": "The comparative point is narrower: biological systems can preserve causally relevant history without conscious recollection and without preserving every original component.",
+      "exactAnchor": "The comparative point is narrower: biological systems can preserve causally relevant history without conscious recollection and without preserving every original component.",
+      "exactOccurrenceCount": 1,
+      "anchorSha256": "4095bf4b64b1ba7a928acb84fc0ac26210e0b0a0d9230e28d574b8ace02a860f",
+      "reviewBatch": "HA3-B05",
+      "authorityIds": [
+        "BIB-005",
+        "BIB-037",
+        "PROJECT-SYNTHESIS"
+      ]
+    },
+    {
+      "note": 30,
+      "state": "EXACT-ANCHOR-VERIFIED",
+      "approvedAnchor": "Circadian systems provide a clean biological example. Endogenous oscillators can persist under constant conditions and become entrained by environmental cues such as light-dark cycles. They allow physiology and behavior to be organized relative to recurring daily structure.",
+      "exactAnchor": "Circadian systems provide a clean biological example. Endogenous oscillators can persist under constant conditions and become entrained by environmental cues such as light-dark cycles. They allow physiology and behavior to be organized relative to recurring daily structure.",
+      "exactOccurrenceCount": 1,
+      "anchorSha256": "79117d948fbb819c7be301a6495ec86b9baa8874f28466b5b475270070d3a423",
+      "reviewBatch": "HA3-B06",
+      "authorityIds": [
+        "BIB-023"
+      ]
+    },
+    {
+      "note": 31,
+      "state": "EXACT-ANCHOR-VERIFIED",
+      "approvedAnchor": "Preparation can be produced by fixed response, entrainment, learning, or regulation.",
+      "exactAnchor": "Preparation can be produced by fixed response, entrainment, learning, or regulation.",
+      "exactOccurrenceCount": 1,
+      "anchorSha256": "8c2856b6d0371a2ea45bafd7f88b4c0aad09b9fa5573a9e650cbb204c6b09dd9",
+      "reviewBatch": "HA3-B06",
+      "authorityIds": [
+        "BIB-024"
+      ]
+    },
+    {
+      "note": 32,
+      "state": "EXACT-ANCHOR-VERIFIED",
+      "approvedAnchor": "For a **Prediction Advantage** claim, name four things before looking at the result: the physical predictor or measured macro-state, the prospective target, the error measure, and the strongest fair lower-level, null, or simpler baseline.",
+      "exactAnchor": "For a **Prediction Advantage** claim, name four things before looking at the result: the physical predictor or measured macro-state, the prospective target, the error measure, and the strongest fair lower-level, null, or simpler baseline.",
+      "exactOccurrenceCount": 1,
+      "anchorSha256": "08c51943e9838ad9e8af51c50500fdd74d0cdd44a2f6cf019b77d0c46a6afaea",
+      "reviewBatch": "HA3-B06",
+      "authorityIds": [
+        "BIB-025",
+        "PROJECT-CRITERION"
+      ]
+    },
+    {
+      "note": 33,
+      "state": "EXACT-ANCHOR-VERIFIED",
+      "approvedAnchor": "Swarms, teams, institutions, and other systems can display coherent performance through interactions among components. Similar task performance does not imply identical architecture.",
+      "exactAnchor": "Swarms, teams, institutions, and other systems can display coherent performance through interactions among components. Similar task performance does not imply identical architecture.",
+      "exactOccurrenceCount": 1,
+      "anchorSha256": "1fe0328f22affd416f862927deeb3af8ac831ce7ccbcda90a575d9ace4856c01",
+      "reviewBatch": "HA3-B06",
+      "authorityIds": [
+        "BIB-006"
+      ]
+    },
+    {
+      "note": 34,
+      "state": "EXACT-ANCHOR-VERIFIED",
+      "approvedAnchor": "Human cognition also depends causally on structures outside the biological brain: writing, maps, instruments, calculators, databases, software, and other external resources. Whether some of those resources are constitutive parts of cognition is a philosophical and scientific dispute this book need not settle.",
+      "exactAnchor": "Human cognition also depends causally on structures outside the biological brain: writing, maps, instruments, calculators, databases, software, and other external resources. Whether some of those resources are constitutive parts of cognition is a philosophical and scientific dispute this book need not settle.",
+      "exactOccurrenceCount": 1,
+      "anchorSha256": "45feb50125d916aa2d0866514c206a5f1b5fb9ce05f776fe027f74a923a5392c",
+      "reviewBatch": "HA3-B06",
+      "authorityIds": [
+        "BIB-007"
+      ]
+    },
+    {
+      "note": 35,
+      "state": "EXACT-ANCHOR-VERIFIED",
+      "approvedAnchor": "Relations among physical states can matter: timing, topology, spatial configuration, correlation structure, interaction history, or distributed state.",
+      "exactAnchor": "Relations among physical states can matter: timing, topology, spatial configuration, correlation structure, interaction history, or distributed state.",
+      "exactOccurrenceCount": 1,
+      "anchorSha256": "1f2eacdc7ab2237283ff8db2673e5b4cf4d1c5103173ecb602ce8d73976f635a",
+      "reviewBatch": "HA3-B06",
+      "authorityIds": [
+        "BIB-008"
+      ]
+    },
+    {
+      "note": 36,
+      "state": "EXACT-ANCHOR-VERIFIED",
+      "approvedAnchor": "Human action therefore depends on structures extending beyond individual nervous systems.",
+      "exactAnchor": "Human action therefore depends on structures extending beyond individual nervous systems.",
+      "exactOccurrenceCount": 1,
+      "anchorSha256": "150ffd15025017f699ff7f413964842995983bad3f5017650b62ee0c273808c7",
+      "reviewBatch": "HA3-B07",
+      "authorityIds": [
+        "BIB-007"
+      ]
+    },
+    {
+      "note": 37,
+      "state": "EXACT-ANCHOR-VERIFIED",
+      "approvedAnchor": "Endpoints contain independent agents with conflicting goals. Networks fragment. Data can be hidden, encrypted, falsified, censored, duplicated, attacked, or ignored.",
+      "exactAnchor": "Endpoints contain independent agents with conflicting goals. Networks fragment. Data can be hidden, encrypted, falsified, censored, duplicated, attacked, or ignored.",
+      "exactOccurrenceCount": 1,
+      "anchorSha256": "175f0a32ed71f24e92f2b51d24ac3bb961cebad29003267764a8799826bbab8a",
+      "reviewBatch": "HA3-B07",
+      "authorityIds": [
+        "BIB-009"
+      ]
+    },
+    {
+      "note": 38,
+      "state": "EXACT-ANCHOR-VERIFIED",
+      "approvedAnchor": "Biology gives us reason to take upward transitions in individuality seriously. It does not give this project permission to skip an evidentiary barrier.",
+      "exactAnchor": "Biology gives us reason to take upward transitions in individuality seriously. It does not give this project permission to skip an evidentiary barrier.",
+      "exactOccurrenceCount": 1,
+      "anchorSha256": "ae5b8684f7755181b472efc29ea32ec944e949ae740e6bad492b44bef6c4ca7c",
+      "reviewBatch": "HA3-B07",
+      "authorityIds": [
+        "BIB-001"
+      ]
+    },
+    {
+      "note": 39,
+      "state": "EXACT-ANCHOR-VERIFIED",
+      "approvedAnchor": "Conflict does not automatically rule out individuality; organisms also contain internal conflict. But a higher-order claim must show whether civilization-scale mechanisms constrain component behavior in ways that protect the persistence or function of the proposed whole.",
+      "exactAnchor": "Conflict does not automatically rule out individuality; organisms also contain internal conflict. But a higher-order claim must show whether civilization-scale mechanisms constrain component behavior in ways that protect the persistence or function of the proposed whole.",
+      "exactOccurrenceCount": 1,
+      "anchorSha256": "5b946fb86453dc9d9de7829e70a23ed047d5830a5c3a9d5c9b15ed0aa7456d7b",
+      "reviewBatch": "HA3-B07",
+      "authorityIds": [
+        "BIB-002"
+      ]
+    },
+    {
+      "note": 40,
+      "state": "EXACT-ANCHOR-VERIFIED",
+      "approvedAnchor": "Civilization-scale whole-only information requires an explicit boundary, component baseline, out-of-sample improvement, and physical implementation.",
+      "exactAnchor": "Civilization-scale whole-only information requires an explicit boundary, component baseline, out-of-sample improvement, and physical implementation.",
+      "exactOccurrenceCount": 1,
+      "anchorSha256": "9f0f66717860f08ac87e9385a07da3add6d533aebb59cd9c5db1bb96317e8c42",
+      "reviewBatch": "HA3-B07",
+      "authorityIds": [
+        "BIB-008",
+        "PROJECT-CRITERION"
+      ]
+    },
+    {
+      "note": 41,
+      "state": "EXACT-ANCHOR-VERIFIED",
+      "approvedAnchor": "The civilization-scale question is analogous but harder: do candidate whole-level variables add reproducible intervention, explanatory, or predictive power beyond strong lower-level alternatives?",
+      "exactAnchor": "The civilization-scale question is analogous but harder: do candidate whole-level variables add reproducible intervention, explanatory, or predictive power beyond strong lower-level alternatives?",
+      "exactOccurrenceCount": 1,
+      "anchorSha256": "41e3eb1fa55e8002861d51c3f7e596a8dacea1c680a65470573d30979a21533a",
+      "reviewBatch": "HA3-B07",
+      "authorityIds": [
+        "BIB-010",
+        "PROJECT-SYNTHESIS"
+      ]
+    },
+    {
+      "note": 42,
+      "state": "EXACT-ANCHOR-VERIFIED",
+      "approvedAnchor": "The Eleven Tests are a proposed synthesis for model comparison in this project. They are not a consensus definition of life or biological individuality. Different tests draw on different research traditions, several tests may depend on overlapping mechanisms, and positive results must not be added into an organism score. Their purpose is to make a stronger higher-order-individual hypothesis compete against serious lower-level alternatives and risk failure.",
+      "exactAnchor": "The Eleven Tests are a proposed synthesis for model comparison in this project. They are not a consensus definition of life or biological individuality. Different tests draw on different research traditions, several tests may depend on overlapping mechanisms, and positive results must not be added into an organism score. Their purpose is to make a stronger higher-order-individual hypothesis compete against serious lower-level alternatives and risk failure.",
+      "exactOccurrenceCount": 1,
+      "anchorSha256": "f01f260e2f760876111e5c9306ba697ef4a3621d94d5ff6ed6e5002aed3bfb49",
+      "reviewBatch": "HA3-B07",
+      "authorityIds": [
+        "PROJECT-SYNTHESIS"
+      ]
+    },
+    {
+      "note": 43,
+      "state": "EXACT-ANCHOR-VERIFIED",
+      "approvedAnchor": "THE STRONGEST SKEPTICAL POSITION IS NOT THAT NOTHING MACROSCOPIC EXISTS. IT IS THAT MACROSCOPIC ORGANIZATION IS REAL AND HIGHER-ORDER INDIVIDUALITY IS UNNECESSARY.",
+      "exactAnchor": "THE STRONGEST SKEPTICAL POSITION IS NOT THAT NOTHING MACROSCOPIC EXISTS. IT IS THAT MACROSCOPIC ORGANIZATION IS REAL AND HIGHER-ORDER INDIVIDUALITY IS UNNECESSARY.",
+      "exactOccurrenceCount": 1,
+      "anchorSha256": "cb1a2d140a000f1bd5548872580220f2c9c6fd1cd40f566dc46d7d204ef95724",
+      "reviewBatch": "HA3-B08",
+      "authorityIds": [
+        "PROJECT-SYNTHESIS"
+      ]
+    },
+    {
+      "note": 44,
+      "state": "EXACT-ANCHOR-VERIFIED",
+      "approvedAnchor": "MACROSCOPIC LIFE HYPOTHESIS: Some systems composed of living and/or technical components may, under particular conditions, develop sufficiently integrated higher-level organization that variables associated with individuality become scientifically useful at a scale above the familiar organism. Whether any contemporary civilization has crossed, is crossing, or will cross such a transition is an empirical question requiring model competition against lower-level alternatives.",
+      "exactAnchor": "MACROSCOPIC LIFE HYPOTHESIS:** Some systems composed of living and/or technical components may, under particular conditions, develop sufficiently integrated higher-level organization that variables associated with individuality become scientifically useful at a scale above the familiar organism. Whether any contemporary civilization has crossed, is crossing, or will cross such a transition is an empirical question requiring model competition against lower-level alternatives.",
+      "exactOccurrenceCount": 1,
+      "anchorSha256": "b6d06bc507e38501e67417545a3d03be1e4c5e89c13207d58ac5643871577f2b",
+      "reviewBatch": "HA3-B08",
+      "authorityIds": [
+        "PROJECT-SYNTHESIS"
+      ],
+      "normalization": "MARKDOWN_CLOSE_BOLD_TOKEN_ONLY"
+    },
+    {
+      "note": 45,
+      "state": "EXACT-ANCHOR-VERIFIED",
+      "approvedAnchor": "THE MICROBE IS A PERSPECTIVE, NOT A DIAGNOSIS.",
+      "exactAnchor": "THE MICROBE IS A PERSPECTIVE, NOT A DIAGNOSIS.**\n\n`We are the microbe` does not mean humans are literally microbes inside a larger body.",
+      "exactOccurrenceCount": 1,
+      "anchorSha256": "b3f9e25941eaffcc5d840d493c9543d9b896298dd3cc76b21c26707ab194683c",
+      "reviewBatch": "HA3-B08",
+      "authorityIds": [
+        "PROJECT-SYNTHESIS"
+      ],
+      "normalization": "CONTEXT_EXTENSION_TO_UNIQUE_CH16_OPENING"
+    },
+    {
+      "note": 46,
+      "state": "EXACT-ANCHOR-VERIFIED",
+      "approvedAnchor": "Consciousness creates a separate problem from intelligence and a separate problem from individuality. Contemporary consciousness science contains competing theories emphasizing different mechanisms or signatures, and this book does not infer subjective experience merely from complexity, information processing, intelligence, self-regulation, or organismhood.[12.4]",
+      "exactAnchor": "Consciousness creates a separate problem from intelligence and a separate problem from individuality. Contemporary consciousness science contains competing theories emphasizing different mechanisms or signatures, and this book does not infer subjective experience merely from complexity, information processing, intelligence, self-regulation, or organismhood.[12.4]",
+      "exactOccurrenceCount": 1,
+      "anchorSha256": "aec4934c22fb2750653ac7bc1f9ae5c0935066aa33db15a6c40af713d842064c",
+      "reviewBatch": "HA3-B08",
+      "authorityIds": [
+        "BIB-032",
+        "BIB-033",
+        "PROJECT-SYNTHESIS"
+      ]
+    }
+  ]
+}
