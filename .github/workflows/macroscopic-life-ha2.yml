@@ -35,14 +35,14 @@ jobs:
           if old not in s: raise SystemExit('Expected R9 validator line not found')
           p.write_text(s.replace(old,new))
           PY
-      - name: Scope duplicated Chapter 12 collective-intelligence anchor
+      - name: Deterministically select first duplicate collective-intelligence anchor
         run: |
           python - <<'PY'
           from pathlib import Path
           p=Path('research/macroscopic-life/scripts/promote-hostile-audit-remediation-pass-02.mjs')
           s=p.read_text()
           old="act4 = insertAfterPartialLock(act4, '> **THE WHOLE CAN SOLVE A PROBLEM THAT NO SINGLE COMPONENT SOLVES ALONE.**', 'THAT DOES NOT BY ITSELF ESTABLISH ONE AGENT.', '> **THE WHOLE CAN SOLVE A PROBLEM NO COMPONENT SOLVES ALONE; THAT DOES NOT BY ITSELF ESTABLISH ONE AGENT.**', 'P1-11 collective intelligence brake');"
-          replacement="{\n  const chapterStart = act4.indexOf('# Chapter 12 —');\n  const chapterEnd = act4.indexOf('# Chapter 13 —', chapterStart);\n  if (chapterStart < 0 || chapterEnd < 0) throw new Error('P1-11 collective intelligence brake: Chapter 12 scope not found');\n  const before = act4.slice(0, chapterStart);\n  const chapter = act4.slice(chapterStart, chapterEnd);\n  const after = act4.slice(chapterEnd);\n  act4 = before + insertAfterPartialLock(chapter, '> **THE WHOLE CAN SOLVE A PROBLEM THAT NO SINGLE COMPONENT SOLVES ALONE.**', 'THAT DOES NOT BY ITSELF ESTABLISH ONE AGENT.', '> **THE WHOLE CAN SOLVE A PROBLEM NO COMPONENT SOLVES ALONE; THAT DOES NOT BY ITSELF ESTABLISH ONE AGENT.**', 'P1-11 collective intelligence brake') + after;\n}"
+          replacement="{\n  const anchor = '> **THE WHOLE CAN SOLVE A PROBLEM THAT NO SINGLE COMPONENT SOLVES ALONE.**';\n  const insertion = '> **THE WHOLE CAN SOLVE A PROBLEM NO COMPONENT SOLVES ALONE; THAT DOES NOT BY ITSELF ESTABLISH ONE AGENT.**';\n  const matches = count(act4, anchor);\n  if (matches !== 2) throw new Error(`P1-11 collective intelligence brake: expected known duplicate anchor twice, found ${matches}`);\n  if (!act4.includes('THAT DOES NOT BY ITSELF ESTABLISH ONE AGENT.')) act4 = act4.replace(anchor, `${anchor}\\n\\n${insertion}`);\n}"
           if s.count(old)!=1: raise SystemExit(f'Expected one promoter call, found {s.count(old)}')
           p.write_text(s.replace(old,replacement))
           PY
