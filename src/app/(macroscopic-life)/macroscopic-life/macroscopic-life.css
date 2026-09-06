@@ -369,6 +369,11 @@
   padding: 1.15rem 1.2rem 1.3rem;
 }
 
+.ml-article .ml-card {
+  background: #efe6d2;
+  border-color: #d7ccb4;
+}
+
 .ml-reader {
   display: grid;
   grid-template-columns: minmax(0, 1fr);

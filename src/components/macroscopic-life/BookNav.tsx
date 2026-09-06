@@ -10,6 +10,7 @@ const NAV = [
   { href: `${ML_BASE}/figures`, label: "Figures" },
   { href: `${ML_BASE}/tests`, label: "Tests" },
   { href: `${ML_BASE}/models`, label: "Models" },
+  { href: `${ML_BASE}/sources`, label: "Sources" },
   { href: `${ML_BASE}/method`, label: "Method" },
   { href: `${ML_BASE}/listen`, label: "Listen" },
 ];
