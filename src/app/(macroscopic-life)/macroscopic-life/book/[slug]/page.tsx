@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import { FigureById } from "@/components/macroscopic-life/figures";
+import { PublicationFigure } from "@/components/macroscopic-life/PublicationFigure";
 import { MarkdownBody } from "@/components/macroscopic-life/MarkdownBody";
 import {
   adjacentChapters,
@@ -116,7 +116,7 @@ export default async function ChapterPage({ params }: { params: Promise<{ slug: 
         </article>
 
         <aside>
-          {primaryFigure ? <FigureById id={primaryFigure} href={`${ML_BASE}/figures/${primaryFigure}`} /> : null}
+          {primaryFigure ? <PublicationFigure id={primaryFigure} href={`${ML_BASE}/figures/${primaryFigure}`} /> : null}
           {chapter.figureIds.length > 1 ? (
             <p style={{ marginTop: "0.8rem", fontSize: "0.82rem" }}>Also in this chapter:{" "}{chapter.figureIds.slice(1).map((id) => <Link key={id} href={`${ML_BASE}/figures/${id}`} style={{ marginRight: "0.7rem" }}>{id}</Link>)}</p>
           ) : null}
