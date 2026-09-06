@@ -1,0 +1,9 @@
+{
+  "schemaVersion":"1.0",
+  "pass":"HOSTILE-AUDIT-REMEDIATION-PASS-02",
+  "status":"PLACEMENT_MAPPED_NOT_YET_PHYSICALLY_PROMOTED",
+  "startingCommit":"4567ccde5673f7894430036cffdd3a33226d1cd9",
+  "operationCount":14,
+  "sourceOfTruth":"research/macroscopic-life/hostile-audit/remediation-pass-02-exact-placement-review.md",
+  "hardBoundaries":{"newActs":0,"newChapters":0,"figureRedesignsAllowed":0,"pub7lMutationsAllowed":0,"elevenTestRenameAllowed":false,"modelCompetitionMandatory":true,"consciousnessAsNewTestAllowed":false,"generativeRecurrenceAsTest12Allowed":false,"modelCMayBeWeakened":false}
+}
