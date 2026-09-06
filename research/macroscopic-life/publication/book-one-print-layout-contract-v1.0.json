@@ -1,0 +1,16 @@
+{
+  "status": "LAYOUT CONTRACT — EXPORT GATED",
+  "trim": {"widthIn": 6, "heightIn": 9, "provisional": true},
+  "canonicalInput": "publication/book-one-publication-source-bundle-v1.0.json",
+  "contentRules": {
+    "chapterCount": 16,
+    "endnoteCount": 45,
+    "coreFigures": {"first": 2, "last": 16, "count": 15},
+    "readerProseMutable": false,
+    "figureScientificCopyMutable": false
+  },
+  "pageClasses": ["half-title", "title", "copyright-placeholder", "method-note", "contents", "act-opening", "chapter-opening", "body", "figure", "endnotes", "bibliography", "project-backmatter"],
+  "figureRules": ["verified R3 only", "no scientific-label cropping", "caption stays with figure", "grayscale proof required", "minimum rendered size determined by deterministic-copy legibility"],
+  "proofRules": ["16 chapters", "45 note markers", "45 note definitions", "15 core figures", "canonical act/chapter titles", "Eleven Test names intact", "verdict locks intact", "no editorial leakage", "reader prose parity with frozen source"],
+  "openProductionChoices": ["printer/distributor", "paper stock", "binding", "bleed specification", "exact margins/gutter", "production font families", "running-head placement", "final front/back matter metadata"]
+}
