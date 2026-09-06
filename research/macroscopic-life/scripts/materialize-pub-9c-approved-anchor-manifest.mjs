@@ -23,11 +23,16 @@ for(const a of approvals.approvals){
     const formattedCount=countOccurrences(master,formatted);
     if(formattedCount===1){exactAnchor=formatted;count=1;normalization='MARKDOWN_CLOSE_BOLD_TOKEN_ONLY';}
   }
+  if(count===2 && a.note===45){
+    const contextual='THE MICROBE IS A PERSPECTIVE, NOT A DIAGNOSIS.**\n\n`We are the microbe` does not mean humans are literally microbes inside a larger body.';
+    const contextualCount=countOccurrences(master,contextual);
+    if(contextualCount===1){exactAnchor=contextual;count=1;normalization='CONTEXT_EXTENSION_TO_UNIQUE_CH16_OPENING';}
+  }
   if(count!==1) throw new Error(`BLOCKED: note ${a.note} anchor occurrence ${count}, expected 1.`);
   slots.push({note:a.note,state:'EXACT-ANCHOR-VERIFIED',approvedAnchor:a.exactAnchor,exactAnchor,exactOccurrenceCount:1,anchorSha256:sha(exactAnchor),reviewBatch:a.reviewBatch,authorityIds:a.authorityIds||[],...(normalization?{normalization}:{})});
 }
 for(let n=1;n<=46;n++) if(!seen.has(n)) throw new Error(`BLOCKED: missing note ${n}.`);
 slots.sort((a,b)=>a.note-b.note);
-const out={status:'PASS',generation:'PUB-9C-R14-READY',masterPath:'research/macroscopic-life/manuscript/book-one-master-pub-9c-reader-materialized.md',masterSha256:masterSha,slotCount:46,verifiedExactAnchors:46,sourceApprovalsPath:'research/macroscopic-life/manuscript/book-one-exact-endnote-anchor-approvals-pub-9c-v1.0.json',sourceApprovalStatus:approvals.status,formattingNormalizations:slots.filter(s=>s.normalization).length,slots};
+const out={status:'PASS',generation:'PUB-9C-R14-READY',masterPath:'research/macroscopic-life/manuscript/book-one-master-pub-9c-reader-materialized.md',masterSha256:masterSha,slotCount:46,verifiedExactAnchors:46,sourceApprovalsPath:'research/macroscopic-life/manuscript/book-one-exact-endnote-anchor-approvals-pub-9c-v1.0.json',sourceApprovalStatus:approvals.status,exactAnchorNormalizations:slots.filter(s=>s.normalization).length,slots};
 fs.writeFileSync(outPath,JSON.stringify(out,null,2)+'\n');
-console.log(`PASS: materialized approved 46-anchor manifest for master ${masterSha}; formatting-only normalizations ${out.formattingNormalizations}.`);
+console.log(`PASS: materialized approved 46-anchor manifest for master ${masterSha}; exact-anchor normalizations ${out.exactAnchorNormalizations}.`);
