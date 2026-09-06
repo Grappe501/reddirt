@@ -1,0 +1,32 @@
+{
+  "status": "PUB-8R BATCH 1 — VERIFIED AUTHORITY EXPANSION",
+  "policy": "Verified against PubMed/PMC or publisher-level records. No invented metadata.",
+  "records": [
+    {"id":"BIB-011","chapters":[2],"citation":"Cronin, Thomas W., and Michael J. Bok. 2016. ‘Photoreception and Vision in the Ultraviolet.’ Journal of Experimental Biology 219 (18): 2790–2801. https://doi.org/10.1242/jeb.128769.","pmid":"27655820","doi":"10.1242/jeb.128769"},
+    {"id":"BIB-012","chapters":[2],"citation":"Wehner, Rüdiger. 2001. ‘Polarization Vision—A Uniform Sensory Capacity?’ Journal of Experimental Biology 204 (14): 2589–2596. https://doi.org/10.1242/jeb.204.14.2589.","pmid":"11511675","doi":"10.1242/jeb.204.14.2589"},
+    {"id":"BIB-013","chapters":[2],"citation":"Bakken, George S. 2026. ‘Is Thermal Radiation a Visual Color for Pitvipers? A Review of Crotalid Ecology, Neurophysiology, Behavior and Image Processing.’ Journal of Experimental Biology. https://doi.org/10.1242/jeb.250661.","pmid":"41668656","doi":"10.1242/jeb.250661"},
+    {"id":"BIB-014","chapters":[2],"citation":"Yovel, Yossi, Maya Geva-Sagiv, and Nachum Ulanovsky. 2011. ‘Click-Based Echolocation in Bats: Not So Primitive After All.’ Journal of Comparative Physiology A 197 (5): 515–530. https://doi.org/10.1007/s00359-011-0639-4.","pmid":"21465138","doi":"10.1007/s00359-011-0639-4"},
+    {"id":"BIB-015","chapters":[2],"citation":"Wueringer, Barbara E. 2012. ‘Electroreception in Elasmobranchs: Sawfish as a Case Study.’ Brain, Behavior and Evolution 80 (2): 97–107. https://doi.org/10.1159/000339873.","pmid":"22986826","doi":"10.1159/000339873"},
+    {"id":"BIB-016","chapters":[2],"citation":"Wiltschko, Roswitha, and Wolfgang Wiltschko. 2019. ‘Magnetoreception in Birds.’ Journal of the Royal Society Interface 16 (158): 20190295. https://doi.org/10.1098/rsif.2019.0295.","pmid":"31480921","pmcid":"PMC6769297","doi":"10.1098/rsif.2019.0295"},
+    {"id":"BIB-017","chapters":[5],"citation":"Michod, Richard E., and Denis Roze. 1997. ‘Transitions in Individuality.’ Proceedings of the Royal Society B: Biological Sciences 264 (1383): 853–857. https://doi.org/10.1098/rspb.1997.0119.","pmid":"9225477","pmcid":"PMC1688438","doi":"10.1098/rspb.1997.0119"},
+    {"id":"BIB-018","chapters":[5],"citation":"Michod, Richard E. 2007. ‘Evolution of Individuality during the Transition from Unicellular to Multicellular Life.’ Proceedings of the National Academy of Sciences 104 (Suppl. 1): 8613–8618. https://doi.org/10.1073/pnas.0701489104.","pmid":"17494748","pmcid":"PMC1876437","doi":"10.1073/pnas.0701489104"},
+    {"id":"BIB-019","chapters":[7],"citation":"Reid, Brian, and Min Zhao. 2014. ‘The Electrical Response to Injury: Molecular Mechanisms and Wound Healing.’ Advances in Wound Care 3 (2): 184–201. https://doi.org/10.1089/wound.2013.0442.","pmid":"24761358","pmcid":"PMC3928722","doi":"10.1089/wound.2013.0442"},
+    {"id":"BIB-020","chapters":[9],"citation":"McCusker, Catherine D., and David M. Gardiner. 2014. ‘Understanding Positional Cues in Salamander Limb Regeneration: Implications for Optimizing Cell-Based Regenerative Therapies.’ Disease Models & Mechanisms 7 (6): 593–599. https://doi.org/10.1242/dmm.013359.","pmid":"24872456","pmcid":"PMC4036467","doi":"10.1242/dmm.013359"},
+    {"id":"BIB-021","chapters":[9],"citation":"Min, Sangwon, and Jessica L. Whited. 2023. ‘Limb Blastema Formation: How Much Do We Know at a Genetic and Epigenetic Level?’ Journal of Biological Chemistry 299 (2): 102858. https://doi.org/10.1016/j.jbc.2022.102858.","pmid":"36596359","pmcid":"PMC9898764","doi":"10.1016/j.jbc.2022.102858"},
+    {"id":"BIB-022","chapters":[9],"citation":"Joven, Alberto, Ahmed Elewa, and András Simon. 2019. ‘Model Systems for Regeneration: Salamanders.’ Development 146 (14): dev167700. https://doi.org/10.1242/dev.167700.","pmid":"31332037","pmcid":"PMC6679358","doi":"10.1242/dev.167700"},
+    {"id":"BIB-023","chapters":[11],"citation":"Silver, Rae, Peter D. Balsam, and Matthew P. Butler. 2011. ‘Food Anticipation Depends on Oscillators and Memories in Both Body and Brain.’ Physiology & Behavior 104 (4): 562–571. https://doi.org/10.1016/j.physbeh.2011.05.034.","pmid":"21664916","pmcid":"PMC3378387","doi":"10.1016/j.physbeh.2011.05.034"},
+    {"id":"BIB-024","chapters":[11],"citation":"Carneiro, Breno T. S., and John F. Araujo. 2012. ‘Food Entrainment: Major and Recent Findings.’ Frontiers in Behavioral Neuroscience 6: 83. https://doi.org/10.3389/fnbeh.2012.00083.","pmid":"23205007","pmcid":"PMC3506962","doi":"10.3389/fnbeh.2012.00083"},
+    {"id":"BIB-025","chapters":[11],"citation":"Deans, Carrie. 2021. ‘Biological Prescience: The Role of Anticipation in Organismal Processes.’ Frontiers in Physiology 12: 672457. https://doi.org/10.3389/fphys.2021.672457.","pmid":"34975512","pmcid":"PMC8719636","doi":"10.3389/fphys.2021.672457"}
+  ],
+  "slot_resolution": {
+    "2":["BIB-011","BIB-012"],"3":["BIB-013"],"4":["BIB-014"],"5":["BIB-015"],"6":["BIB-016"],
+    "14":["BIB-017"],"15":["BIB-018"],"20":["BIB-019"],"24":["BIB-020"],"25":["BIB-021"],"26":["BIB-022"],
+    "30":["BIB-023"],"31":["BIB-024"],"32":["BIB-025","PROJECT-CRITERION"]
+  },
+  "cautions": {
+    "chapter2":"Behavioral evidence for sensory access does not imply human-like phenomenology. Magnetoreception mechanism remains a more contested layer than behavioral use.",
+    "chapter7":"Endogenous wound electric fields and electrotaxis are ordinary biophysics; they do not imply a hidden life force, consciousness, or higher-order organismhood.",
+    "chapter9":"Regeneration supports distributed restoration mechanisms; it does not establish explicit target representation or conscious intention.",
+    "chapter11":"Circadian and anticipatory responses support preparation/prediction distinctions. The project’s prospective-error criterion is an analytical requirement, not something attributed wholesale to Deans 2021."
+  }
+}
