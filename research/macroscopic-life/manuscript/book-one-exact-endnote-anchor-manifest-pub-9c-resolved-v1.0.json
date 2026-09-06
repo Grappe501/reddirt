@@ -1,0 +1,1051 @@
+{
+  "status": "REVIEW-REQUIRED",
+  "sourceMaster": "book-one-master-pub-9c-reader-materialized.md",
+  "masterSha256": "3416c4aabbaabfef8a7263104fc23a36f8e482e6a7d2c4197329296f20635708",
+  "slotCount": 46,
+  "uniqueCandidateCount": 11,
+  "policy": "Candidate generation is deterministic but does not constitute scholarly approval. Human/operator review must promote each accepted record to EXACT-ANCHOR-VERIFIED before injection.",
+  "slots": [
+    {
+      "note": 1,
+      "chapter": 1,
+      "state": "REVIEW-REQUIRED",
+      "searchTerms": [
+        "major transition",
+        "individuality"
+      ],
+      "exactAnchor": null,
+      "exactOccurrenceCount": 0,
+      "anchorSha256": null,
+      "candidateAlternatives": [
+        {
+          "score": 1,
+          "text": "Second: **Can biological individuality move upward in scale, so that living units with greater prior independence become parts of a more integrated living individual?** Again, yes."
+        }
+      ]
+    },
+    {
+      "note": 2,
+      "chapter": 2,
+      "state": "REVIEW-REQUIRED",
+      "searchTerms": [
+        "ultraviolet",
+        "polarization"
+      ],
+      "exactAnchor": null,
+      "exactOccurrenceCount": 1,
+      "anchorSha256": null,
+      "candidateAlternatives": [
+        {
+          "score": 2,
+          "text": "Examples include ultraviolet sensitivity and polarization cues in many bees, infrared-sensitive pit organs in pit vipers, echolocation in many bats, electroreception in sharks and rays, and magnetic orientation cues in several bird species."
+        },
+        {
+          "score": 2,
+          "text": "Many bees can detect ultraviolet wavelengths unavailable to ordinary human vision, and polarization cues can contribute to orientation and navigation in relevant contexts.[2.1] Pit vipers possess specialized infrared-sensitive pit organs that detect thermal radiation associated with warm objects.[2.2] Many bats emit sound and analyze returning echoes to extract information about objects and space.[2.3] Sharks and rays possess electroreceptive systems capable of detecting weak electric fields.[2.4] Several bird species use information associated with Earth's magnetic field for orientation or navigation."
+        }
+      ]
+    },
+    {
+      "note": 3,
+      "chapter": 2,
+      "state": "REVIEW-REQUIRED",
+      "searchTerms": [
+        "infrared"
+      ],
+      "exactAnchor": null,
+      "exactOccurrenceCount": 1,
+      "anchorSha256": null,
+      "candidateAlternatives": [
+        {
+          "score": 1,
+          "text": "We radiate infrared energy as heat."
+        },
+        {
+          "score": 1,
+          "text": "Microscopes, telescopes, radio antennas, infrared cameras, seismometers, magnetometers, and electrocardiograms convert otherwise inaccessible signals or scales into measurable records."
+        },
+        {
+          "score": 1,
+          "text": "Examples include ultraviolet sensitivity and polarization cues in many bees, infrared-sensitive pit organs in pit vipers, echolocation in many bats, electroreception in sharks and rays, and magnetic orientation cues in several bird species."
+        }
+      ]
+    },
+    {
+      "note": 4,
+      "chapter": 2,
+      "state": "CANDIDATE-UNIQUE",
+      "searchTerms": [
+        "echolocation"
+      ],
+      "exactAnchor": "Examples include ultraviolet sensitivity and polarization cues in many bees, infrared-sensitive pit organs in pit vipers, echolocation in many bats, electroreception in sharks and rays, and magnetic orientation cues in several bird species.",
+      "exactOccurrenceCount": 1,
+      "anchorSha256": "827d5b01392de1b14f0ce75d69e771e1f54f70b19de77c7b696cae3d873fef18",
+      "candidateAlternatives": [
+        {
+          "score": 1,
+          "text": "Examples include ultraviolet sensitivity and polarization cues in many bees, infrared-sensitive pit organs in pit vipers, echolocation in many bats, electroreception in sharks and rays, and magnetic orientation cues in several bird species."
+        }
+      ]
+    },
+    {
+      "note": 5,
+      "chapter": 2,
+      "state": "CANDIDATE-UNIQUE",
+      "searchTerms": [
+        "electroreception"
+      ],
+      "exactAnchor": "Examples include ultraviolet sensitivity and polarization cues in many bees, infrared-sensitive pit organs in pit vipers, echolocation in many bats, electroreception in sharks and rays, and magnetic orientation cues in several bird species.",
+      "exactOccurrenceCount": 1,
+      "anchorSha256": "827d5b01392de1b14f0ce75d69e771e1f54f70b19de77c7b696cae3d873fef18",
+      "candidateAlternatives": [
+        {
+          "score": 1,
+          "text": "Examples include ultraviolet sensitivity and polarization cues in many bees, infrared-sensitive pit organs in pit vipers, echolocation in many bats, electroreception in sharks and rays, and magnetic orientation cues in several bird species."
+        }
+      ]
+    },
+    {
+      "note": 6,
+      "chapter": 2,
+      "state": "REVIEW-REQUIRED",
+      "searchTerms": [
+        "magnet"
+      ],
+      "exactAnchor": null,
+      "exactOccurrenceCount": 1,
+      "anchorSha256": null,
+      "candidateAlternatives": [
+        {
+          "score": 1,
+          "text": "Electrical currents have electromagnetic consequences."
+        },
+        {
+          "score": 1,
+          "text": "Human eyes detect only part of the electromagnetic radiation around us."
+        },
+        {
+          "score": 1,
+          "text": "Microscopes, telescopes, radio antennas, infrared cameras, seismometers, magnetometers, and electrocardiograms convert otherwise inaccessible signals or scales into measurable records."
+        }
+      ]
+    },
+    {
+      "note": 7,
+      "chapter": 3,
+      "state": "REVIEW-REQUIRED",
+      "searchTerms": [
+        "time",
+        "sampling"
+      ],
+      "exactAnchor": null,
+      "exactOccurrenceCount": 1,
+      "anchorSha256": null,
+      "candidateAlternatives": [
+        {
+          "score": 1,
+          "text": "Time-lapse can compress slow changes into a viewable interval."
+        },
+        {
+          "score": 1,
+          "text": "A timescale mismatch can explain why a process is difficult to observe."
+        },
+        {
+          "score": 1,
+          "text": "A **process timescale** describes how quickly a process meaningfully changes."
+        }
+      ]
+    },
+    {
+      "note": 8,
+      "chapter": 3,
+      "state": "CANDIDATE-UNIQUE",
+      "searchTerms": [
+        "scal",
+        "duration"
+      ],
+      "exactAnchor": "**Temporal scale** concerns duration and rate.",
+      "exactOccurrenceCount": 1,
+      "anchorSha256": "70cbd5006d27425186aafb70784e172ca9f46e2a4c73101c1aed5bcca9141e69",
+      "candidateAlternatives": [
+        {
+          "score": 2,
+          "text": "**Temporal scale** concerns duration and rate."
+        },
+        {
+          "score": 1,
+          "text": "**Spatial scale** concerns size and distance."
+        },
+        {
+          "score": 1,
+          "text": "Geological cycles can unfold over immense durations."
+        }
+      ]
+    },
+    {
+      "note": 9,
+      "chapter": 4,
+      "state": "REVIEW-REQUIRED",
+      "searchTerms": [
+        "endosymbios",
+        "multicell"
+      ],
+      "exactAnchor": null,
+      "exactOccurrenceCount": 1,
+      "anchorSha256": null,
+      "candidateAlternatives": [
+        {
+          "score": 1,
+          "text": "Multicellular organisms therefore do more than connect cells."
+        },
+        {
+          "score": 1,
+          "text": "Multicellular integration demonstrates that higher-order biological individuality exists."
+        },
+        {
+          "score": 1,
+          "text": "Multicellular organisms demonstrate genuine higher-order biological individuality, but this fact alone does not establish organismhood for other kinds of collectives."
+        }
+      ]
+    },
+    {
+      "note": 10,
+      "chapter": 4,
+      "state": "REVIEW-REQUIRED",
+      "searchTerms": [
+        "cooperation",
+        "conflict"
+      ],
+      "exactAnchor": null,
+      "exactOccurrenceCount": 1,
+      "anchorSha256": null,
+      "candidateAlternatives": [
+        {
+          "score": 1,
+          "text": "It is conflict between success measured at different biological levels."
+        },
+        {
+          "score": 1,
+          "text": "Development, tissue architecture, regulatory signaling, immune processes, cell-death mechanisms, reproductive organization, and other constraints help limit lower-level conflict."
+        },
+        {
+          "score": 1,
+          "text": "The Civilization Inside Your Skin.** A human organism contains specialized living cells organized through tissues, organs, organ systems, signaling, transport, feedback, developmental constraints, turnover, and conflict-control mechanisms."
+        }
+      ]
+    },
+    {
+      "note": 11,
+      "chapter": 4,
+      "state": "CANDIDATE-UNIQUE",
+      "searchTerms": [
+        "symbios",
+        "microbiome"
+      ],
+      "exactAnchor": "The microbiome complicates the boundary of the individual.",
+      "exactOccurrenceCount": 1,
+      "anchorSha256": "2ee816d5b146fad29779773d76506224d004ad9662e60f094b1e29981f5c9407",
+      "candidateAlternatives": [
+        {
+          "score": 1,
+          "text": "The microbiome complicates the boundary of the individual."
+        }
+      ]
+    },
+    {
+      "note": 12,
+      "chapter": 5,
+      "state": "REVIEW-REQUIRED",
+      "searchTerms": [
+        "transition",
+        "individuality"
+      ],
+      "exactAnchor": null,
+      "exactOccurrenceCount": 1,
+      "anchorSha256": null,
+      "candidateAlternatives": [
+        {
+          "score": 1,
+          "text": "Individuality is not defined by size."
+        },
+        {
+          "score": 1,
+          "text": "**Higher-order individuality** is stronger still."
+        },
+        {
+          "score": 1,
+          "text": "The examples differ, but each shows how division of labor and dependence can matter when individuality shifts scale."
+        }
+      ]
+    },
+    {
+      "note": 13,
+      "chapter": 5,
+      "state": "REVIEW-REQUIRED",
+      "searchTerms": [
+        "conflict"
+      ],
+      "exactAnchor": null,
+      "exactOccurrenceCount": 1,
+      "anchorSha256": null,
+      "candidateAlternatives": [
+        {
+          "score": 1,
+          "text": "Are destructive conflicts constrained?"
+        },
+        {
+          "score": 1,
+          "text": "COOPERATION IS NOT ENOUGH.** The harder problem is conflict."
+        },
+        {
+          "score": 1,
+          "text": "Conflict need not disappear completely; cancer shows that even highly integrated organisms remain vulnerable."
+        }
+      ]
+    },
+    {
+      "note": 14,
+      "chapter": 5,
+      "state": "CANDIDATE-UNIQUE",
+      "searchTerms": [
+        "cooperation",
+        "individual"
+      ],
+      "exactAnchor": "The sequence is not a universal ladder, and cooperation or complexity alone does not establish a new evolutionary individual.",
+      "exactOccurrenceCount": 1,
+      "anchorSha256": "d8a0015533df2ea69f084408be61b7e62933035fb9e499f7d525cd666e752743",
+      "candidateAlternatives": [
+        {
+          "score": 2,
+          "text": "The sequence is not a universal ladder, and cooperation or complexity alone does not establish a new evolutionary individual."
+        },
+        {
+          "score": 1,
+          "text": "Individuality is not defined by size."
+        },
+        {
+          "score": 1,
+          "text": "**Higher-order individuality** is stronger still."
+        }
+      ]
+    },
+    {
+      "note": 15,
+      "chapter": 5,
+      "state": "REVIEW-REQUIRED",
+      "searchTerms": [
+        "individuality"
+      ],
+      "exactAnchor": null,
+      "exactOccurrenceCount": 1,
+      "anchorSha256": null,
+      "candidateAlternatives": [
+        {
+          "score": 1,
+          "text": "Individuality is not defined by size."
+        },
+        {
+          "score": 1,
+          "text": "**Higher-order individuality** is stronger still."
+        },
+        {
+          "score": 1,
+          "text": "The examples differ, but each shows how division of labor and dependence can matter when individuality shifts scale."
+        }
+      ]
+    },
+    {
+      "note": 16,
+      "chapter": 6,
+      "state": "CANDIDATE-UNIQUE",
+      "searchTerms": [
+        "boundary",
+        "individual"
+      ],
+      "exactAnchor": "Where Does the Individual End?** A single human organism can be mapped using several biologically meaningful boundary relationships, including physical enclosure, physiological regulation, immune interaction, developmental lineage, ecological or symbiotic interfaces, and functional effects beyond the body.",
+      "exactOccurrenceCount": 1,
+      "anchorSha256": "81298a1aa3f705ac56844ee1d770409d3a3f9ad256d97e56660edd97de1e028d",
+      "candidateAlternatives": [
+        {
+          "score": 2,
+          "text": "Where Does the Individual End?** A single human organism can be mapped using several biologically meaningful boundary relationships, including physical enclosure, physiological regulation, immune interaction, developmental lineage, ecological or symbiotic interfaces, and functional effects beyond the body."
+        },
+        {
+          "score": 1,
+          "text": "Exchange does not erase a boundary."
+        },
+        {
+          "score": 1,
+          "text": "A living boundary is not a sealed wall."
+        }
+      ]
+    },
+    {
+      "note": 17,
+      "chapter": 6,
+      "state": "CANDIDATE-UNIQUE",
+      "searchTerms": [
+        "immune",
+        "symbio"
+      ],
+      "exactAnchor": "Where Does the Individual End?** A single human organism can be mapped using several biologically meaningful boundary relationships, including physical enclosure, physiological regulation, immune interaction, developmental lineage, ecological or symbiotic interfaces, and functional effects beyond the body.",
+      "exactOccurrenceCount": 1,
+      "anchorSha256": "81298a1aa3f705ac56844ee1d770409d3a3f9ad256d97e56660edd97de1e028d",
+      "candidateAlternatives": [
+        {
+          "score": 2,
+          "text": "Where Does the Individual End?** A single human organism can be mapped using several biologically meaningful boundary relationships, including physical enclosure, physiological regulation, immune interaction, developmental lineage, ecological or symbiotic interfaces, and functional effects beyond the body."
+        },
+        {
+          "score": 1,
+          "text": "Symbiotic organisms occupy body-associated environments."
+        },
+        {
+          "score": 1,
+          "text": "Immune behavior provides evidence about biological relationships."
+        }
+      ]
+    },
+    {
+      "note": 18,
+      "chapter": 7,
+      "state": "CANDIDATE-UNIQUE",
+      "searchTerms": [
+        "bioelectric"
+      ],
+      "exactAnchor": "This broader territory is **bioelectricity**: electrical properties and processes in living systems, including membrane voltages, ionic currents, electrical coupling, and endogenous electric fields.",
+      "exactOccurrenceCount": 1,
+      "anchorSha256": "476321f2bd781ef5c3cae10dfa24a9702a685db6860e52c416f4b19bd92cd114",
+      "candidateAlternatives": [
+        {
+          "score": 1,
+          "text": "This broader territory is **bioelectricity**: electrical properties and processes in living systems, including membrane voltages, ionic currents, electrical coupling, and endogenous electric fields."
+        }
+      ]
+    },
+    {
+      "note": 19,
+      "chapter": 7,
+      "state": "REVIEW-REQUIRED",
+      "searchTerms": [
+        "membrane",
+        "voltage"
+      ],
+      "exactAnchor": null,
+      "exactOccurrenceCount": 1,
+      "anchorSha256": null,
+      "candidateAlternatives": [
+        {
+          "score": 2,
+          "text": "Neurons use rapid changes in membrane voltage in signaling."
+        },
+        {
+          "score": 2,
+          "text": "This broader territory is **bioelectricity**: electrical properties and processes in living systems, including membrane voltages, ionic currents, electrical coupling, and endogenous electric fields."
+        },
+        {
+          "score": 1,
+          "text": "A measurable voltage establishes a measurable voltage."
+        }
+      ]
+    },
+    {
+      "note": 20,
+      "chapter": 7,
+      "state": "REVIEW-REQUIRED",
+      "searchTerms": [
+        "wound",
+        "electric"
+      ],
+      "exactAnchor": null,
+      "exactOccurrenceCount": 1,
+      "anchorSha256": null,
+      "candidateAlternatives": [
+        {
+          "score": 2,
+          "text": "In some epithelial systems, endogenous electric fields occur around wounds, and some cell types migrate directionally in response to electric fields under experimental and physiological conditions."
+        },
+        {
+          "score": 2,
+          "text": "**[FIGURE 7 — THE BODY ELECTRIC — INSERT HERE]** **A mechanism can be entirely local while the function it implements belongs to a larger organizational level.** Cut a continuous sheet of epithelial cells and the organism-level description is simple: the tissue is wounded."
+        },
+        {
+          "score": 1,
+          "text": "Electrical and chemical states change."
+        }
+      ]
+    },
+    {
+      "note": 21,
+      "chapter": 8,
+      "state": "REVIEW-REQUIRED",
+      "searchTerms": [
+        "mechanical",
+        "force"
+      ],
+      "exactAnchor": null,
+      "exactOccurrenceCount": 1,
+      "anchorSha256": null,
+      "candidateAlternatives": [
+        {
+          "score": 1,
+          "text": "Then cells divide, differentiate, communicate, migrate, adhere, change shape, exert forces, remodel extracellular material, and sometimes die in regulated developmental processes."
+        },
+        {
+          "score": 1,
+          "text": "Adhesion, repulsion, migration, differentiation, cell-shape change, force generation, extracellular remodeling, signaling, and regulated cell death can also contribute to morphogenesis."
+        }
+      ]
+    },
+    {
+      "note": 22,
+      "chapter": 8,
+      "state": "REVIEW-REQUIRED",
+      "searchTerms": [
+        "reaction",
+        "diffusion"
+      ],
+      "exactAnchor": null,
+      "exactOccurrenceCount": 1,
+      "anchorSha256": null,
+      "candidateAlternatives": [
+        {
+          "score": 2,
+          "text": "Turing's reaction–diffusion work demonstrated mathematically that local reaction and transport can, under specified conditions, generate spatial pattern."
+        },
+        {
+          "score": 2,
+          "text": "**Local interactions can generate spatial organization that exists at a scale larger than the interacting components.** Reaction–diffusion is one mechanism, not a universal explanation."
+        }
+      ]
+    },
+    {
+      "note": 23,
+      "chapter": 8,
+      "state": "REVIEW-REQUIRED",
+      "searchTerms": [
+        "robust"
+      ],
+      "exactAnchor": null,
+      "exactOccurrenceCount": 0,
+      "anchorSha256": null,
+      "candidateAlternatives": []
+    },
+    {
+      "note": 24,
+      "chapter": 9,
+      "state": "REVIEW-REQUIRED",
+      "searchTerms": [
+        "regener"
+      ],
+      "exactAnchor": null,
+      "exactOccurrenceCount": 0,
+      "anchorSha256": null,
+      "candidateAlternatives": [
+        {
+          "score": 1,
+          "text": "**TARGET-STATE LANGUAGE DOES NOT REQUIRE CONSCIOUS REPRESENTATION OF A TARGET.** Successful regeneration also requires appropriate termination."
+        },
+        {
+          "score": 1,
+          "text": "Planarian regeneration offers another implementation of the broader problem: proliferative cell sources interact with position-control and signaling systems to restore body organization."
+        },
+        {
+          "score": 1,
+          "text": "**Surviving biological state can influence what is reconstructed after damage.** Control theory gives useful language for regulated return after perturbation, but a regenerating limb is not a thermostat."
+        }
+      ]
+    },
+    {
+      "note": 25,
+      "chapter": 9,
+      "state": "REVIEW-REQUIRED",
+      "searchTerms": [
+        "regener"
+      ],
+      "exactAnchor": null,
+      "exactOccurrenceCount": 0,
+      "anchorSha256": null,
+      "candidateAlternatives": [
+        {
+          "score": 1,
+          "text": "**TARGET-STATE LANGUAGE DOES NOT REQUIRE CONSCIOUS REPRESENTATION OF A TARGET.** Successful regeneration also requires appropriate termination."
+        },
+        {
+          "score": 1,
+          "text": "Planarian regeneration offers another implementation of the broader problem: proliferative cell sources interact with position-control and signaling systems to restore body organization."
+        },
+        {
+          "score": 1,
+          "text": "**Surviving biological state can influence what is reconstructed after damage.** Control theory gives useful language for regulated return after perturbation, but a regenerating limb is not a thermostat."
+        }
+      ]
+    },
+    {
+      "note": 26,
+      "chapter": 9,
+      "state": "REVIEW-REQUIRED",
+      "searchTerms": [
+        "regener"
+      ],
+      "exactAnchor": null,
+      "exactOccurrenceCount": 0,
+      "anchorSha256": null,
+      "candidateAlternatives": [
+        {
+          "score": 1,
+          "text": "**TARGET-STATE LANGUAGE DOES NOT REQUIRE CONSCIOUS REPRESENTATION OF A TARGET.** Successful regeneration also requires appropriate termination."
+        },
+        {
+          "score": 1,
+          "text": "Planarian regeneration offers another implementation of the broader problem: proliferative cell sources interact with position-control and signaling systems to restore body organization."
+        },
+        {
+          "score": 1,
+          "text": "**Surviving biological state can influence what is reconstructed after damage.** Control theory gives useful language for regulated return after perturbation, but a regenerating limb is not a thermostat."
+        }
+      ]
+    },
+    {
+      "note": 27,
+      "chapter": 10,
+      "state": "REVIEW-REQUIRED",
+      "searchTerms": [
+        "trained immunity"
+      ],
+      "exactAnchor": null,
+      "exactOccurrenceCount": 0,
+      "anchorSha256": null,
+      "candidateAlternatives": []
+    },
+    {
+      "note": 28,
+      "chapter": 10,
+      "state": "CANDIDATE-UNIQUE",
+      "searchTerms": [
+        "immune",
+        "memory"
+      ],
+      "exactAnchor": "Adaptive immune memory can persist through altered cell populations and states.",
+      "exactOccurrenceCount": 1,
+      "anchorSha256": "758a87d15580180c9b158475aad14d10e61e92dd0e93b97c37e9f95dc9277cb8",
+      "candidateAlternatives": [
+        {
+          "score": 2,
+          "text": "Adaptive immune memory can persist through altered cell populations and states."
+        },
+        {
+          "score": 1,
+          "text": "Earlier exposure can alter later immune response."
+        },
+        {
+          "score": 1,
+          "text": "Conscious recollection is the memory humans know from the inside."
+        }
+      ]
+    },
+    {
+      "note": 29,
+      "chapter": 10,
+      "state": "REVIEW-REQUIRED",
+      "searchTerms": [
+        "plant",
+        "memory"
+      ],
+      "exactAnchor": null,
+      "exactOccurrenceCount": 1,
+      "anchorSha256": null,
+      "candidateAlternatives": [
+        {
+          "score": 1,
+          "text": "Conscious recollection is the memory humans know from the inside."
+        },
+        {
+          "score": 1,
+          "text": "Functional memory requires a retained state to alter a later response."
+        },
+        {
+          "score": 1,
+          "text": "This motivates **Memory Turnover** later in the experimental framework."
+        }
+      ]
+    },
+    {
+      "note": 30,
+      "chapter": 11,
+      "state": "CANDIDATE-UNIQUE",
+      "searchTerms": [
+        "circadian"
+      ],
+      "exactAnchor": "Circadian systems provide a clean biological example.",
+      "exactOccurrenceCount": 1,
+      "anchorSha256": "6192e00b24a1331d10e76000e2b3d002762592b467659b9407e4d3c6dc43ff6e",
+      "candidateAlternatives": [
+        {
+          "score": 1,
+          "text": "Circadian systems provide a clean biological example."
+        }
+      ]
+    },
+    {
+      "note": 31,
+      "chapter": 11,
+      "state": "REVIEW-REQUIRED",
+      "searchTerms": [
+        "entrain"
+      ],
+      "exactAnchor": null,
+      "exactOccurrenceCount": 1,
+      "anchorSha256": null,
+      "candidateAlternatives": [
+        {
+          "score": 1,
+          "text": "Endogenous oscillators can persist under constant conditions and become entrained by environmental cues such as light-dark cycles."
+        },
+        {
+          "score": 1,
+          "text": "But several different ideas hide inside the word `anticipation.` **PREPARATION ≠ PREDICTION ≠ FORESIGHT ≠ PROPHECY** Preparation can be produced by fixed response, entrainment, learning, or regulation."
+        }
+      ]
+    },
+    {
+      "note": 32,
+      "chapter": 11,
+      "state": "REVIEW-REQUIRED",
+      "searchTerms": [
+        "prediction",
+        "error"
+      ],
+      "exactAnchor": null,
+      "exactOccurrenceCount": 1,
+      "anchorSha256": null,
+      "candidateAlternatives": [
+        {
+          "score": 2,
+          "text": "Prospective error gives prediction scientific teeth."
+        },
+        {
+          "score": 2,
+          "text": "For a **Prediction Advantage** claim, name four things before looking at the result: the physical predictor or measured macro-state, the prospective target, the error measure, and the strongest fair lower-level, null, or simpler baseline."
+        },
+        {
+          "score": 2,
+          "text": "**NO PROSPECTIVE TARGET + NO ERROR METRIC + NO BASELINE = NO PREDICTION ADVANTAGE.** Civilization builds weather forecasts, epidemic models, financial forecasts, early-warning systems, scientific models, calendars, inventories, insurance, reservoirs, and contingency plans."
+        }
+      ]
+    },
+    {
+      "note": 33,
+      "chapter": 12,
+      "state": "REVIEW-REQUIRED",
+      "searchTerms": [
+        "collective intelligence"
+      ],
+      "exactAnchor": null,
+      "exactOccurrenceCount": 0,
+      "anchorSha256": null,
+      "candidateAlternatives": []
+    },
+    {
+      "note": 34,
+      "chapter": 12,
+      "state": "REVIEW-REQUIRED",
+      "searchTerms": [
+        "distributed",
+        "cognition"
+      ],
+      "exactAnchor": null,
+      "exactOccurrenceCount": 1,
+      "anchorSha256": null,
+      "candidateAlternatives": [
+        {
+          "score": 1,
+          "text": "That is genuine distributed capability."
+        },
+        {
+          "score": 1,
+          "text": "Whether some of those resources are constitutive parts of cognition is a philosophical and scientific dispute this book need not settle."
+        },
+        {
+          "score": 1,
+          "text": "Relations among physical states can matter: timing, topology, spatial configuration, correlation structure, interaction history, or distributed state."
+        }
+      ]
+    },
+    {
+      "note": 35,
+      "chapter": 12,
+      "state": "REVIEW-REQUIRED",
+      "searchTerms": [
+        "information"
+      ],
+      "exactAnchor": null,
+      "exactOccurrenceCount": 1,
+      "anchorSha256": null,
+      "candidateAlternatives": [
+        {
+          "score": 1,
+          "text": "The word *information* can hide several different claims."
+        },
+        {
+          "score": 1,
+          "text": "A physical signal can carry information without being consciously understood."
+        },
+        {
+          "score": 1,
+          "text": "A positive result establishes organization-dependent information at the tested level."
+        }
+      ]
+    },
+    {
+      "note": 46,
+      "chapter": 12,
+      "state": "REVIEW-REQUIRED",
+      "authorityIds": [
+        "BIB-032",
+        "BIB-033"
+      ],
+      "preferredAnchorSeed": "Contemporary consciousness science contains competing theories emphasizing different mechanisms or signatures",
+      "searchTerms": [
+        "Contemporary consciousness science contains competing theories"
+      ],
+      "exactAnchor": null,
+      "exactOccurrenceCount": 0,
+      "anchorSha256": null,
+      "candidateAlternatives": [
+        {
+          "score": 1,
+          "text": "Contemporary consciousness science contains competing theories emphasizing different mechanisms or signatures, and this book does not infer subjective experience merely from complexity, information processing, intelligence, self-regulation, or organismhood.[12.4] **HIGHER-ORDER INDIVIDUALITY ≠ HIGHER-ORDER CONSCIOUSNESS.** A component can participate in a conscious system without containing a representation of the whole system's experience."
+        }
+      ]
+    },
+    {
+      "note": 36,
+      "chapter": 13,
+      "state": "REVIEW-REQUIRED",
+      "searchTerms": [
+        "distributed",
+        "cognition"
+      ],
+      "exactAnchor": null,
+      "exactOccurrenceCount": 1,
+      "anchorSha256": null,
+      "candidateAlternatives": [
+        {
+          "score": 1,
+          "text": "Distributed observing systems can sense across planetary distances."
+        },
+        {
+          "score": 1,
+          "text": "WE HAVE NOT YET SHOWN THAT THE INDIVIDUAL DOES.** Humans have built distributed technical-social systems extending sensing, memory, communication, calculation, prediction, and control beyond the reach of any individual human."
+        }
+      ]
+    },
+    {
+      "note": 37,
+      "chapter": 13,
+      "state": "REVIEW-REQUIRED",
+      "searchTerms": [
+        "network"
+      ],
+      "exactAnchor": null,
+      "exactOccurrenceCount": 0,
+      "anchorSha256": null,
+      "candidateAlternatives": [
+        {
+          "score": 1,
+          "text": "**A NETWORK DOES NOT BECOME A NERVOUS SYSTEM MERELY BECAUSE INFORMATION MOVES THROUGH IT.** The analogy becomes useful after it stops pretending to be identity."
+        },
+        {
+          "score": 1,
+          "text": "Buoys, stations, aircraft, radar, satellites, communications networks, numerical models, computing infrastructure, forecasters, and institutions can participate in one forecasting architecture."
+        },
+        {
+          "score": 1,
+          "text": "**[FIGURE 13 — THE NERVOUS SYSTEM WE BUILT OUTSIDE OURSELVES — INSERT HERE]** **FUNCTIONAL ANALOGY ≠ BIOLOGICAL IDENTITY** **A NETWORK DOES NOT BECOME A NERVOUS SYSTEM MERELY BECAUSE INFORMATION MOVES THROUGH IT.** **SHARED FUNCTION ≠ SHARED MECHANISM ≠ SHARED IDENTITY** **THE INTERNET IS NOT INTERESTING BECAUSE IT LOOKS LIKE A BRAIN."
+        }
+      ]
+    },
+    {
+      "note": 38,
+      "chapter": 14,
+      "state": "REVIEW-REQUIRED",
+      "searchTerms": [
+        "individuality"
+      ],
+      "exactAnchor": null,
+      "exactOccurrenceCount": 1,
+      "anchorSha256": null,
+      "candidateAlternatives": [
+        {
+          "score": 1,
+          "text": "Macroscopic organization is deliberately broader than individuality."
+        },
+        {
+          "score": 1,
+          "text": "They are not a consensus definition of life or biological individuality."
+        },
+        {
+          "score": 1,
+          "text": "Biology gives us reason to take upward transitions in individuality seriously."
+        }
+      ]
+    },
+    {
+      "note": 39,
+      "chapter": 14,
+      "state": "REVIEW-REQUIRED",
+      "searchTerms": [
+        "conflict"
+      ],
+      "exactAnchor": null,
+      "exactOccurrenceCount": 0,
+      "anchorSha256": null,
+      "candidateAlternatives": [
+        {
+          "score": 1,
+          "text": "**MODEL D — EMERGING HIGHER-ORDER INDIVIDUAL** Civilization has developed enough boundary, integration, conflict control, persistence, information, regulation, repair, and perhaps reproductive properties to justify treating it as one emerging individual."
+        },
+        {
+          "score": 1,
+          "text": "INTEGRATION HAS TO SURVIVE PERTURBATION AS A CAUSAL CLAIM.** **State: STRONG FOR MANY BOUNDED SUBSYSTEMS; MODERATE FOR CIVILIZATION-SCALE ORGANIZATION; INSUFFICIENT FOR INDIVIDUALITY.** Law, governance, standards, diplomacy, cybersecurity, and other mechanisms constrain some conflict while war, sabotage, fraud, arms races, collective-action failure, and competing interests remain pervasive."
+        },
+        {
+          "score": 1,
+          "text": "Useful dependence clusters include: - **Cluster A:** Boundary Perturbation / Integration Ablation / Repair Autonomy - **Cluster B:** Conflict Suppression / Reproduction-Heredity - **Cluster C:** Memory Turnover / Prediction Advantage - **Cluster D:** Whole-Only Information / Higher-Level Intervention / Model Competition - **Cluster E:** Energetic Organization **DEPENDENT TESTS MAY STRENGTHEN A MECHANISTIC STORY WITHOUT MULTIPLYING THE EVIDENCE AS IF EACH WERE AN INDEPENDENT OBSERVATION.** No organism score is permitted."
+        }
+      ]
+    },
+    {
+      "note": 40,
+      "chapter": 14,
+      "state": "REVIEW-REQUIRED",
+      "searchTerms": [
+        "information"
+      ],
+      "exactAnchor": null,
+      "exactOccurrenceCount": 1,
+      "anchorSha256": null,
+      "candidateAlternatives": [
+        {
+          "score": 1,
+          "text": "Civilization-scale whole-only information requires an explicit boundary, component baseline, out-of-sample improvement, and physical implementation."
+        },
+        {
+          "score": 1,
+          "text": "**MODEL C — DISTRIBUTED TECHNICAL-SOCIAL MACROSCOPIC ORGANIZATION** Relationships among humans, institutions, infrastructure, and information systems create reproducible system-level organization."
+        },
+        {
+          "score": 1,
+          "text": "**State: STRONG FOR BOUNDED SUBSYSTEMS / MODERATE AT CIVILIZATION SCALE / ORGANISMAL IDENTITY NOT ESTABLISHED.** Information remains causally available across turnover of people and technical carriers."
+        }
+      ]
+    },
+    {
+      "note": 41,
+      "chapter": 14,
+      "state": "REVIEW-REQUIRED",
+      "searchTerms": [
+        "intervention"
+      ],
+      "exactAnchor": null,
+      "exactOccurrenceCount": 1,
+      "anchorSha256": null,
+      "candidateAlternatives": [
+        {
+          "score": 1,
+          "text": "The higher-level variable is useful because an implemented control relation makes interventions on it predict consequences."
+        },
+        {
+          "score": 1,
+          "text": "DEPENDENCE MUST BE DISCLOSED.** A single perturbation experiment might inform **Integration Ablation**, **Prediction Advantage**, and **Higher-Level Intervention**."
+        },
+        {
+          "score": 1,
+          "text": "The civilization-scale question is analogous but harder: do candidate whole-level variables add reproducible intervention, explanatory, or predictive power beyond strong lower-level alternatives?"
+        }
+      ]
+    },
+    {
+      "note": 42,
+      "chapter": 14,
+      "state": "CANDIDATE-UNIQUE",
+      "searchTerms": [
+        "Eleven Tests"
+      ],
+      "exactAnchor": "**The Eleven Tests are a proposed synthesis for model comparison in this project.",
+      "exactOccurrenceCount": 1,
+      "anchorSha256": "2e03b4704af39bfccf30622a27e91f128b67ff7a6d74f360f2054d3fb59f7545",
+      "candidateAlternatives": [
+        {
+          "score": 1,
+          "text": "**The Eleven Tests are a proposed synthesis for model comparison in this project."
+        }
+      ]
+    },
+    {
+      "note": 43,
+      "chapter": 15,
+      "state": "REVIEW-REQUIRED",
+      "searchTerms": [
+        "Model C",
+        "organization"
+      ],
+      "exactAnchor": null,
+      "exactOccurrenceCount": 0,
+      "anchorSha256": null,
+      "candidateAlternatives": [
+        {
+          "score": 2,
+          "text": "**REAL ORGANIZATION DOES NOT REQUIRE A NEW ORGANISM.** This is Model C."
+        },
+        {
+          "score": 2,
+          "text": "**MODEL C IS A DISCOVERY, NOT A CONSOLATION PRIZE.** **REAL MACROSCOPIC ORGANIZATION CAN EXIST WITHOUT A NEW HIGHER-ORDER INDIVIDUAL.** It may be the right answer."
+        },
+        {
+          "score": 2,
+          "text": "IT IS THAT MACROSCOPIC ORGANIZATION IS REAL AND HIGHER-ORDER INDIVIDUALITY IS UNNECESSARY.** **CURRENT WINNER: MODEL C.** Model D should be rejected, narrowed, or retained only as metaphor if candidate boundaries cannot be specified independently of desired results; component agents and their interactions explain the proposed capabilities; higher-level variables add no reproducible predictive or causal advantage; memory reduces to storage; prediction belongs to identifiable predictors; repair reduces to rebuilding by components; required conflict control is absent; required reproduction and heredity cannot be specified; or criteria move whenever the hypothesis loses."
+        }
+      ]
+    },
+    {
+      "note": 44,
+      "chapter": 16,
+      "state": "REVIEW-REQUIRED",
+      "searchTerms": [
+        "Macroscopic Life Hypothesis"
+      ],
+      "exactAnchor": null,
+      "exactOccurrenceCount": 0,
+      "anchorSha256": null,
+      "candidateAlternatives": [
+        {
+          "score": 1,
+          "text": "Only the hypothesis: **MACROSCOPIC LIFE HYPOTHESIS:** Some systems composed of living and/or technical components may, under particular conditions, develop sufficiently integrated higher-level organization that variables associated with individuality become scientifically useful at a scale above the familiar organism."
+        }
+      ]
+    },
+    {
+      "note": 45,
+      "chapter": 16,
+      "state": "REVIEW-REQUIRED",
+      "searchTerms": [
+        "WE ARE THE MICROBE"
+      ],
+      "exactAnchor": null,
+      "exactOccurrenceCount": 0,
+      "anchorSha256": null,
+      "candidateAlternatives": [
+        {
+          "score": 1,
+          "text": "ALLOW FAILURE.** **WE ARE THE MICROBE.** ---"
+        },
+        {
+          "score": 1,
+          "text": "**THE MICROBE IS A PERSPECTIVE, NOT A DIAGNOSIS.** `We are the microbe` does not mean humans are literally microbes inside a larger body."
+        }
+      ]
+    }
+  ]
+}
