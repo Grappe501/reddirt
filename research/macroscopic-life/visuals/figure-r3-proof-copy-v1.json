@@ -1,0 +1,118 @@
+{
+  "version": "PUB-8L-v1",
+  "doctrine": "This register contains deterministic publication-proof text only. It does not authorize redesign or replace figure-specific composite locks.",
+  "figures": {
+    "02": {
+      "frozenVersion": "V4",
+      "lockCommit": "786b9dec0e763906198954c8b6b5b2b723321730",
+      "requiredBrakes": [
+        "A signal's absence from unaided perception is a reason to measure — not evidence that an unsupported hidden phenomenon exists."
+      ]
+    },
+    "03": {
+      "frozenVersion": "V4",
+      "lockCommit": "681159c5f3cc2b988c58d52627b48d749e695027",
+      "requiredBrakes": [
+        "Temporal mismatch can hide a process; slowness, speed, or duration is not evidence of life, intelligence, or agency."
+      ]
+    },
+    "04": {
+      "frozenVersion": "V4",
+      "lockCommit": "ce516935f999e52decc3e2561a048f5896e5383c",
+      "requiredBrakes": [
+        "Multicellular integration is a precedent for higher-order organization — not evidence that every group, network, ecosystem, or civilization is an organism."
+      ]
+    },
+    "05": {
+      "frozenVersion": "V3",
+      "lockCommit": "90e4dccf0e90471190b73968634df982b6ddde73",
+      "requiredBrakes": [
+        "INDIVIDUALITY CAN EVOLVE. COOPERATION IS NOT ENOUGH."
+      ]
+    },
+    "06": {
+      "frozenVersion": "V3",
+      "lockCommit": "c276a9e9ba211a07c487d70379625b734898780a",
+      "requiredBrakes": [
+        "BOUNDARIES CAN BE PERMEABLE WITHOUT BEING MEANINGFUL."
+      ]
+    },
+    "07": {
+      "frozenVersion": "V3",
+      "lockCommit": "76149c8c8ce1ee9c61fb2cb03ee9e925a57de9bc",
+      "requiredBrakes": [
+        "A mechanism can be entirely local while the function it implements belongs to a larger organizational level.",
+        "FREQUENCY IS A MEASUREMENT, NOT AN EXPLANATION.",
+        "A SHARED WORD IS NOT A SHARED MECHANISM."
+      ]
+    },
+    "08": {
+      "frozenVersion": "V2",
+      "lockCommit": "30885f9e1980cc32075f1d42b3edf9196a24cfac",
+      "requiredBrakes": [
+        "NO INDIVIDUAL CELL NEEDS TO CONTAIN THE FINISHED BODY FOR THE BODY TO BE RELIABLY BUILT."
+      ]
+    },
+    "09": {
+      "frozenVersion": "V2",
+      "lockCommit": "7cbf92241d851e08a6ddf0e18f00660f86587de0",
+      "requiredBrakes": [
+        "Restored outcome is not explicit target representation, goal awareness, or conscious intention."
+      ]
+    },
+    "10": {
+      "frozenVersion": "V3",
+      "lockCommit": "7350f0edfe7817fb969796c5150b604dd693a9ab",
+      "requiredBrakes": [
+        "THE PAST MATTERS LATER ONLY IF SOMETHING PHYSICAL PERSISTS AND CAN RE-ENTER CAUSAL PROCESSING."
+      ]
+    },
+    "11": {
+      "frozenVersion": "V2",
+      "lockCommit": "e0c839a341759bbab894f6ce3442d004915fe0b3",
+      "requiredBrakes": [
+        "PREPARATION ≠ PREDICTION ≠ FORESIGHT ≠ PROPHECY"
+      ]
+    },
+    "12": {
+      "frozenVersion": "V3",
+      "lockCommit": "51fe578231eb0a70960b4c29c8106b90a37c2584",
+      "requiredBrakes": [
+        "THE WHOLE CAN SOLVE A PROBLEM THAT NO SINGLE COMPONENT SOLVES ALONE."
+      ]
+    },
+    "13": {
+      "frozenVersion": "V3",
+      "lockCommit": "8834c60209e50e88febb48dabe77007a8b291830",
+      "requiredBrakes": [
+        "FUNCTIONAL ANALOGY ≠ BIOLOGICAL IDENTITY",
+        "WE HAVE SHOWN THAT THE FUNCTIONS CAN SCALE. WE HAVE NOT YET SHOWN THAT THE INDIVIDUAL DOES."
+      ]
+    },
+    "14": {
+      "frozenVersion": "V3",
+      "lockCommit": "97007d01dcdc8aaf2cd2a287a81e8204736688d3",
+      "requiredBrakes": [
+        "COMPLEXITY ≠ INTEGRATION ≠ INDIVIDUALITY",
+        "Current evidence supports Model C, not Model D."
+      ]
+    },
+    "15": {
+      "frozenVersion": "V3",
+      "lockCommit": "69f59749f701213f4ee63c7c98b8b49578debbcf",
+      "requiredBrakes": [
+        "REAL ORGANIZATION DOES NOT REQUIRE A NEW ORGANISM.",
+        "A THEORY THAT CANNOT LOSE IS NOT A SCIENTIFIC THEORY."
+      ]
+    },
+    "16": {
+      "frozenVersion": "FROZEN",
+      "lockCommit": "3178eaf81abd53c42ab613316e144907c6736b65",
+      "requiredBrakes": [
+        "LOCAL SIGNALS CAN BE REAL WITHOUT CONTAINING A PICTURE OF THE WHOLE.",
+        "EPISTEMIC HUMILITY IS NOT POSITIVE EVIDENCE.",
+        "MEASURE. PERTURB. COMPARE MODELS. ALLOW FAILURE."
+      ]
+    }
+  }
+}
