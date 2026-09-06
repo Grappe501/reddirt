@@ -2,307 +2,249 @@
 
 ## PUB-7L R1 — Act III Redundancy-Cut Reader Manuscript
 
-**Status: READER-LAYER REDUNDANCY CUT — SCIENTIFIC FREEZE PRESERVED**
+**Status: READER-LAYER REDUNDANCY CUT — SCIENTIFIC FREEZE PRESERVED — PUB-7M APPLIED**
 
 ---
 
 # ACT III — THE BODY KNOWS MORE THAN THE CELL
 
-Act III examines five mechanism problems: how distributed components coordinate, how large-scale form is produced, how organization responds to damage, how the past remains causally available, and how present organization can exploit recurring structure before an event is fully realized.
+Act II established that individuality can move upward in scale. That precedent is not enough. A candidate whole must be physically organized.
+
+Act III follows five mechanism problems:
 
 > **COORDINATION → FORM → REPAIR → PERSISTENCE → ANTICIPATION**
 
-These are mechanism problems, not five pieces of evidence for a hidden mind or larger organism.
+These are not five proofs of a hidden organism. They show how local mechanisms can participate in functions whose meaningful description belongs at a larger organizational level.
 
 ---
 
-## Chapter 7 — The Body Electric
+# Chapter 7 — The Body Electric
 
-Dissolve table salt in water and the crystal disappears, but its charged components do not. Sodium and chloride become ions moving in a watery environment.
+Dissolve table salt in water and the crystal disappears, but its charged components do not. Sodium and chloride become ions. Your cells also live among charged particles: sodium, potassium, chloride, calcium, and others.
 
-Your cells live in such an environment.
+This is where the body's electricity begins—not with a mysterious force, but with ordinary matter.
 
-Put a selective membrane between solutions with different ion concentrations and a measurable electrical potential can develop across that boundary. Cells maintain these gradients using channels, pumps, transporters, and energy-dependent processes.
-
-That voltage difference is the **membrane potential**.
-
-The bulk fluids inside and outside a cell remain close to electrically neutral overall; a comparatively small separation of charge near the membrane is enough to produce the voltage.
+A cell membrane separates chemically different environments. Ion channels, pumps, and transporters regulate movement across that boundary. Concentration differences and electrical forces create electrochemical gradients, and a comparatively small separation of charge near the membrane can produce a measurable membrane potential.
 
 > **Electricity in the body is ordinary physics organized by living systems.**
 
-### Life Maintains Gradients
+Maintaining those gradients requires ongoing work. Living systems remain far from equilibrium by transforming energy and exchanging matter while maintaining structures and gradients that would otherwise dissipate.
 
-Biological gradients do not persist for free. Cells continually establish, use, alter, and rebuild them while exchanging matter and energy with their surroundings.
+> **Nonequilibrium thermodynamics helps explain the energetic cost of biological organization. It does not define life by itself.**
 
-Living organisms are open systems maintained away from equilibrium through ongoing physical processes.
+Flames and hurricanes also require continuing energy flow.
 
-This explains energetic cost, not life itself. Flames and hurricanes also depend on continuing energy flow.
+## Electrical Biology Is Not Just Neurons
 
-### Beyond Neurons
+Neurons use rapid changes in membrane voltage in signaling. Muscle and cardiac cells use electrical activity in contraction and coordinated heartbeat. Non-neural cells also maintain electrical states, and voltage or ion-channel changes can interact with calcium signaling, secretion, migration, proliferation, metabolism, and gene regulation in context-dependent ways.
 
-Neurons use rapid voltage changes in signaling, muscle cells use electrical activity in contraction, and cardiac tissue coordinates electrically. Non-neural cells maintain electrical states too.
+This broader territory is **bioelectricity**: electrical properties and processes in living systems, including membrane voltages, ionic currents, electrical coupling, and endogenous electric fields.
 
-Changes in membrane voltage and ion-channel state can interact with calcium signaling, secretion, migration, proliferation, metabolism, and gene regulation in context-dependent ways.
+Electrical state does not operate alone. It interacts with biochemical signaling, gene regulation, mechanics, metabolism, extracellular structure, and tissue geometry.
 
-This broader territory is **bioelectricity**: electrical properties and processes in living systems, including membrane voltages, ionic currents, coupling, and endogenous fields.
+In many animal tissues, neighboring cells can also connect through **gap junctions**, which permit ions and some small molecules to pass directly between cells. Coupling varies by tissue and physiological state; the body is not one uniform electrical wire.
 
-Bioelectricity is not a separate layer floating above biology. Electrical state interacts with chemistry, gene regulation, mechanics, metabolism, tissue geometry, and extracellular structure.
-
-### Cells Can Couple
-
-In many animal tissues, neighboring cells connect through **gap junctions**, channels that permit ions and some small molecules to pass directly between cells.
-
-Coupling varies by tissue and state. The body is not one uniform electrical wire.
-
-Local cells with local states interact through defined physical pathways. Coordinated tissue behavior can emerge without any cell representing the organism as a whole.
+Local electrical states can therefore participate in coordinated tissue behavior through defined physical mechanisms.
 
 **[FIGURE 7 — THE BODY ELECTRIC — INSERT HERE]**
 
 > **A mechanism can be entirely local while the function it implements belongs to a larger organizational level.**
 
-*Scientific brake:* **Bioelectricity is ordinary biophysics used by living systems. Electrical coordination does not by itself establish intelligence, consciousness, organismhood at another scale, or a hidden life force.**
+## A Wound Changes the Local World
 
-### A Wound Changes the Local World
+Cut a continuous sheet of epithelial cells and the organism-level description is simple: the tissue is wounded.
 
-Cut a continuous epithelial sheet and the cells that remain encounter changed conditions: disrupted barriers, altered neighbors, released chemicals, changed mechanical tension, exposed surfaces, ionic shifts, and sometimes altered endogenous electrical fields.
+At cellular scale, the injury changes physical conditions. Barriers break. Cells lose neighbors. Ions move differently. Chemical contents are released. Mechanical tension and geometry change. Electrical conditions can change.
 
-Some cell types migrate directionally in electric fields under experimental and physiological conditions, a response called **electrotaxis** or **galvanotaxis**. How much electrical cues contribute relative to chemical, mechanical, structural, immune, and other guidance mechanisms varies by tissue.
+In some epithelial systems, endogenous electric fields occur around wounds, and some cell types migrate directionally in response to electric fields under experimental and physiological conditions. The contribution of electrical cues relative to chemical, mechanical, structural, immune, and other mechanisms varies by tissue and remains an active research question.
 
-An electric field and an electric current are related but distinct physical quantities.
+The cells do not need a representation of `wound repair.` They respond through local molecular and physical mechanisms. Together, those responses can produce repair at tissue scale.
 
-At organism scale we say *wound repair*. At cellular scale there are local mechanisms responding to local changes.
+## Keep the Ladder Straight
 
-The same event can therefore have a local mechanism and a larger-level function.
-
-### From Electrical State to Stronger Claims
-
-A membrane-voltage change establishes an electrical state. If that state alters a voltage-sensitive channel, changes intracellular conditions, and causes secretion, we have a causal chain.
-
-Whether part of that chain should be called a signal or information depends on the system and question.
+A measurable voltage establishes a measurable voltage. A reproducible response establishes a response. Coordination establishes coordination.
 
 > **ELECTRICAL STATE ≠ SIGNAL ≠ INFORMATION ≠ INTEGRATION ≠ INTELLIGENCE ≠ AGENCY ≠ CONSCIOUSNESS**
 
-We will use that ladder rather than re-argue it every time these words appear later.
+This distinction is taught here. Later chapters will use it without rebuilding it.
 
-### Rhythms Without Magic
+## Frequency Without Magic
 
-Biology is full of oscillations and rhythms. **Frequency** measures repetition rate. **Phase** describes position within a cycle. **Coupling** means systems physically affect one another. **Synchronization**, **entrainment**, and **resonance** describe more specific dynamical relationships.
+Biology contains oscillations, rhythms, synchronization, entrainment, and sometimes resonance. These words describe distinct dynamical relationships.
+
+**Frequency** is the rate of a repeating cycle. **Coupling** requires one system physically to affect another. **Synchronization** concerns coordinated timing. **Entrainment** occurs when a rhythm aligns with another rhythm or periodic forcing. **Resonance** requires a defined system whose response depends on forcing, characteristic dynamics, coupling, and damping.
 
 > **FREQUENCY IS A MEASUREMENT, NOT AN EXPLANATION.**
 
-A scientific resonance claim requires a defined oscillator, physical coupling, predicted response, and reproducible measurement.
+A scientific resonance claim therefore requires a defined oscillator, physical coupling mechanism, predicted response, and reproducible measurement.
 
 > **A SHARED WORD IS NOT A SHARED MECHANISM.**
 
-The body also produces measurable heat, chemical emissions, vibration, electrical activity, and electromagnetic effects. Those measurements establish those phenomena—not an unspecified personality-bearing aura or telepathic frequency.
+Bodies produce measurable heat, chemical emissions, mechanical vibration, electrical activity, and associated electromagnetic effects. Those observations establish those phenomena—not an unspecified personality-bearing aura, telepathy, or emotional information carried by an undefined frequency.
 
-### What Coordination Earns
+## Coordination
 
-Within an already established organism, distributed cellular interactions can produce coordinated organism-level functions without a tiny commander.
+Cells maintain gradients. Membranes regulate exchange. Electrical and chemical states change. Mechanical forces propagate. Genes change activity. Metabolism changes what is possible. Geometry constrains what happens next.
 
-The cell does not need to understand the body. It needs mechanisms connecting its local state to the system around it.
+No tiny commander is required.
+
+Within an established organism, distributed local mechanisms can produce coordinated organism-level function.
 
 Coordination is the first problem.
 
-Now: how does distributed activity build form?
+The second is harder.
+
+Cells do not merely maintain a body.
+
+They build one.
 
 ---
 
-## Chapter 8 — The Body Builds Itself
+# Chapter 8 — The Body Builds Itself
 
 Every human body begins without a finished human shape.
 
-There is no miniature heart, hand, or skeleton waiting inside the fertilized egg. There is inherited molecular and cellular organization, followed by division, differentiation, movement, signaling, force, and changing geometry.
+There is no miniature heart waiting to inflate, no tiny hand folded inside the fertilized egg. The egg contains inherited molecular organization, but not a miniature adult.
+
+Then cells divide, differentiate, communicate, migrate, adhere, change shape, exert forces, remodel extracellular material, and sometimes die in regulated developmental processes.
 
 A body appears where no body-shaped object existed before.
 
-### No Tiny Animal Inside the Egg
-
-Modern developmental biology replaced old preformationist pictures with a process view.
-
-A fertilized egg contains DNA, RNA, proteins, membranes, organelles, molecular gradients, cytoplasmic structure, and—in many organisms—maternal molecules and spatial asymmetries that influence early development.
-
-It does not contain a miniature adult.
-
 > **What distributed processes make reliable form possible?**
 
-Cells divide, change state, alter gene expression, communicate, adhere, migrate, change shape, exert forces, modify extracellular material, and sometimes die. Each event changes the conditions for the next.
+## Same Genome, Different Cells
 
-### Same Inheritance, Different Cells
+Many cells inherit substantially the same genomic sequence yet become neurons, muscle cells, epithelial cells, and many other types.
 
-Many cells inherit substantially the same genomic sequence yet become dramatically different.
-
-DNA is indispensable, but shared sequence participates in different outcomes depending on gene activity, chromatin state, lineage, neighboring signals, mechanics, metabolism, position, and prior state.
+DNA is indispensable. But gene activity, chromatin state, lineage, prior state, neighboring signals, mechanics, metabolism, and position all contribute to developmental outcomes.
 
 > **The genome is indispensable to development. It is not a tiny anatomical picture.**
 
-No single regulatory layer—genetic, chemical, electrical, or mechanical—is the whole explanation.
+Nor does replacing `genes` with `bioelectricity`, `chemical gradients`, or `mechanics` solve the problem. Morphogenesis emerges from interacting regulatory layers whose importance varies across systems and stages.
 
-### Position Changes Response
+## Position Changes Response
 
-Spatially distributed signals can expose cells to different local conditions. **Positional information** describes ways those conditions influence cellular responses in relation to position within a developing system.
+Cells can encounter different signaling conditions depending on position. Morphogens are one class of signaling factors whose spatial distribution can contribute to different cellular responses in appropriate developmental contexts.
 
-**Morphogens** are one mechanism: signaling factors whose spatial distributions can contribute to different responses in an appropriate developmental context.
-
-Molecules bind receptors. Regulatory pathways change. Gene expression and behavior change.
+Molecules bind receptors. Regulatory pathways change. Gene expression changes. Cellular behavior changes.
 
 > **A gradient is not a little ruler read by a conscious cell.**
 
-Local response can create organization at a larger scale.
+Neighbor relationships, extracellular structure, mechanics, electrical state, geometry, and developmental history can also provide spatial context.
 
-### Pattern Without a Planner
+The cell responds locally. The result can be organized at a much larger scale.
 
-Turing showed mathematically that interacting reaction and diffusion processes can generate spatial pattern under appropriate conditions. Particular biological cases still require empirical demonstration.
+## Pattern Without a Planner
+
+Turing's reaction–diffusion work demonstrated mathematically that local reaction and transport can, under specified conditions, generate spatial pattern. Whether a particular biological pattern uses such a mechanism is an empirical question.
 
 > **Local interactions can generate spatial organization that exists at a scale larger than the interacting components.**
 
-Reaction–diffusion is one pattern-forming mechanism, not a universal theory of morphogenesis. Adhesion, migration, differentiation, cell shape, extracellular remodeling, force generation, regulated cell death, signaling, and other mechanisms also contribute.
+Reaction–diffusion is one mechanism, not a universal explanation. Adhesion, repulsion, migration, differentiation, cell-shape change, force generation, extracellular remodeling, signaling, and regulated cell death can also contribute to morphogenesis.
 
-### The Embryo Is Physical
+> **SPONTANEOUS PATTERN FORMATION ≠ COMPLETE ORGANISMAL BLUEPRINT**
 
-To build a tube, cells must bend. To separate tissues, cells rearrange or change adhesion. To lengthen structures, cells divide, migrate, intercalate, and generate force.
+## The Embryo Is Physical
 
-Mechanical forces alter cell behavior through **mechanotransduction**. Cells change tissues, and changing tissues change the forces experienced by cells.
+Form requires mechanics. Tubes bend. Tissues rearrange. Cells divide, migrate, contract, adhere, and push. Material properties and geometry feed back into signaling and gene regulation.
 
-Development is therefore reciprocal: cells do not simply receive instructions; their actions continually alter the environment in which later development occurs.
+Development is not software executing independently of matter. The developing organism is a physical dynamical system whose current state changes what can happen next.
 
-**[FIGURE 8 — HOW A BODY BUILDS ITSELF — INSERT HERE]**
+No individual cell needs to contain the finished body.
+
+**[FIGURE 8 — THE BODY BUILDS ITSELF — INSERT HERE]**
 
 > **NO INDIVIDUAL CELL NEEDS TO CONTAIN THE FINISHED BODY FOR THE BODY TO BE RELIABLY BUILT.**
 
-*Scientific brake:* Distributed morphogenesis shows that local interactions can generate large-scale biological form. These mechanisms do not require a complete blueprint inside any individual cell, a conscious cellular target, or a universal morphogenetic field—and they do not establish organismhood at another scale.
+Reliable large-scale form can emerge because cells inherit and respond to local states embedded in a structured developmental process.
 
-### Robust Form
+That gives us the second mechanism problem: **form**.
 
-Development can be surprisingly robust to variation, but robustness is not perfection. Biologists use concepts such as **canalization** to describe reduced phenotypic sensitivity to some perturbations or variation.
+But development starts from an organized beginning.
 
-Reliable outcomes can arise because interacting mechanisms constrain trajectories and compensate for some disturbances.
-
-Reliable form does not imply a conscious blueprint.
-
-> **DNA SEQUENCE ≠ CELL STATE ≠ POSITIONAL CUE ≠ TISSUE PATTERN ≠ EXPLICIT BLUEPRINT ≠ CONSCIOUS REPRESENTATION**
-
-### What Form Earns
-
-The body is built from inside the process.
-
-Distributed local interactions can generate reproducible large-scale form without any individual component containing the finished body.
-
-That establishes no hidden higher organism. It removes one possible objection to higher-level organization: a component need not contain a complete representation of the whole.
-
-The next problem is harder.
-
-What happens after established form is damaged?
+A harsher test is to damage an already formed body and ask what it can reconstruct.
 
 ---
 
-## Chapter 9 — The Missing Limb
+# Chapter 9 — The Missing Limb
 
-A human wound can heal without reconstructing a missing complex appendage. Some salamanders, including well-studied axolotls, can regenerate complex limb structures after amputation.
+After loss of a human appendage, a wound can close while the missing complex structure ordinarily does not return.
 
-The important fact is narrow: some vertebrates can rebuild complex anatomical organization after major loss.
+Salamanders such as the axolotl can do something much stronger: after amputation, multiple tissues and anatomical relationships can be reconstructed. Capacity varies across species, life stages, injuries, and experimental conditions, but the phenomenon is real.
 
-At our scale, injury creates an absence.
+At organism scale, the limb is missing.
 
-At cellular scale, injury changes the physical conditions of what remains.
+At cellular scale, surviving tissue encounters changed conditions: new wound edges, lost neighbors, disrupted nerves and vessels, altered extracellular structure, inflammatory signals, mechanics, ionic conditions, electrical states, and geometry.
 
 > **A MACROSCOPIC ABSENCE CAN BECOME MICROSCOPIC ACTIONABLE SIGNALS.**
 
-The absence itself is not a signal. The changed tissue is.
+The absence itself is not a signal. Injury changes what remains.
 
-### Healing Is Not Regeneration
-
-Repair can mean very different things: restoring a barrier, replacing cells, increasing surviving tissue mass, or rebuilding missing spatial pattern.
-
-> **WOUND CLOSURE ≠ TISSUE REPLACEMENT ≠ COMPENSATORY GROWTH ≠ PATTERN REGENERATION**
-
-The useful question is not merely whether a system repaired itself, but what returned.
-
-### What Remains After Injury
-
-Amputation changes neighbors, geometry, nerves, vessels, extracellular structure, mechanical tension, inflammatory signals, ionic conditions, and electrical state. Surviving tissue responds to these present conditions.
-
-That can help explain how repair begins. It does not by itself explain how complex anatomy is reconstructed.
-
-So separate two questions:
+Two questions must remain separate:
 
 **What starts repair?**
 
 **What constrains what repair becomes?**
 
+## Healing Is Not Regeneration
+
+> **WOUND CLOSURE ≠ TISSUE REPLACEMENT ≠ COMPENSATORY GROWTH ≠ PATTERN REGENERATION**
+
+When a system `repairs` itself, ask what actually returned: barrier function, cell number, tissue mass, tissue type, shape, position, connections, or larger anatomical pattern.
+
 **[FIGURE 9 — THE MISSING LIMB — INSERT HERE]**
 
-`PERTURBATION → CHANGED CONDITIONS IN WHAT REMAINS → REGENERATIVE RESPONSE → PATTERN + INTEGRATION → APPROPRIATE TERMINATION`
-
-> **RESTORATION IS EVIDENCE OF REGULATION. WHAT KIND OF REGULATION IS A SEPARATE QUESTION.**
-
-### The Blastema Is Not a Tiny Limb
-
-In well-studied salamander limbs, a specialized wound epidermis forms and a **blastema** develops beneath it. The blastema is a heterogeneous regeneration-associated cell population; origins and lineage restrictions differ among tissues and systems.
-
-Cells proliferate, change state, signal, interact with nerves and surrounding tissues, and contribute to rebuilding.
-
-> **A BLASTEMA IS NOT A MINIATURE LIMB OR COMPLETE ANATOMICAL BLUEPRINT.**
-
-### Position Matters Again
-
-Mature tissue has history. Cells have lineages and regulatory states. Tissues occupy positions.
-
-In experimentally studied salamander systems, persistent position-related cellular properties can influence regenerative patterning. Here **positional memory** means physically instantiated differences related to prior anatomical position that alter later behavior—not recollection or a stored image of the limb.
-
-> **Past developmental history can remain physically represented in surviving tissue and alter what that tissue does after injury.**
-
-Planarians provide another route to the same broad problem: proliferative cell sources interact with position-control and signaling systems to restore axes and tissue organization. No single pathway constitutes a complete body-plan mechanism.
-
-### Regulation and Stopping
-
-Control theory gives us useful language for return after perturbation without requiring biology to contain one scalar error gauge.
-
-For this book, a **target state** is a measurable state, range, geometry, relationship, or functional condition toward which system dynamics reproducibly return after a defined perturbation.
-
-That is a behavioral description, not a claim of conscious intention.
-
-Successful regeneration requires more than growth. Pattern must organize, new structures must integrate, and reconstruction must terminate appropriately.
+> **RESTORED OUTCOME ≠ EXPLICIT TARGET REPRESENTATION ≠ GOAL AWARENESS ≠ CONSCIOUS INTENTION**
 
 > **GROWTH ≠ SUCCESSFUL REGENERATION**
 
-### Test the Repair
+## What Persists in What Remains
 
-**TEST 7 — REPAIR AUTONOMY** asks how strongly a proposed individual can detect consequences of damage, mobilize internal resources, coordinate restoration, and recover characteristic organization or function without an external engineer manually specifying each step.
+In salamander limb regeneration, a wound epidermis forms and a heterogeneous blastema develops beneath it. Blastema cells are not a miniature limb and are not universally pluripotent. Lineage, position-related cellular properties, signaling, innervation, mechanics, and tissue interactions constrain reconstruction.
 
-**TEST 1 — BOUNDARY PERTURBATION** asks what happens when a proposed boundary is disturbed.
+Persistent position-related states are sometimes described as positional identity or positional memory. Here that means physically instantiated differences associated with prior anatomical position that alter later behavior—not recollection or a stored picture of the limb.
 
-**TEST 9 — HIGHER-LEVEL INTERVENTION** asks whether interventions defined at the proposed higher level improve causal prediction or control.
+Planarian regeneration offers another implementation of the broader problem: proliferative cell sources interact with position-control and signaling systems to restore body organization. No one pathway constitutes the body plan.
 
-**TEST 11 — MODEL COMPETITION** asks which model best predicts the perturbation and restoration data.
+> **Surviving biological state can influence what is reconstructed after damage.**
 
-These tests matter later. Here they establish a discipline: measure what returns, identify candidate mechanisms, perturb them, and let competing explanations win.
+## Target State Without a Mind
 
-### The Civilization Trap
+Control theory gives useful language for regulated return after perturbation, but a regenerating limb is not a thermostat. Biology need not contain one scalar error signal labeled `percent limb missing.`
 
-Cities rebuild after storms. Grids reroute. Institutions mobilize. People intentionally reconstruct infrastructure.
+For this book, a **target state** is a measurable state, range, geometry, relationship, or functional condition toward which system dynamics reproducibly return after a defined perturbation.
 
-That is real repair in an ordinary engineering and social sense. It is not automatically regeneration by a higher-order individual.
+That definition describes behavior, not awareness.
 
-Humans and institutions already provide a strong component-level explanation. A higher-level repair model must add predictive or causal value.
+Successful regeneration also requires appropriate termination. Excess growth, wrong patterning, failed integration, fibrosis, or premature stopping can all constitute failure.
 
-### Repair Reveals What Is Maintained
+> **RESTORATION IS EVIDENCE OF REGULATION. WHAT KIND OF REGULATION IS A SEPARATE QUESTION.**
 
-Barrier restoration is evidence. Tissue-mass restoration is evidence. Reconstruction of spatial relationships is evidence. Failure is evidence.
+## Perturb Repair
 
-What returns after damage tells us something about what a system regulates.
+Change a signal. Alter innervation. Move tissue. Change positional relationships. Modify a regulatory pathway.
 
-And that raises the next question: what physically persists in surviving tissue that makes later restoration possible?
+Then compare the result with prediction.
 
-Repair reveals a problem of memory.
+This logic will later become part of **Repair Autonomy**, **Boundary Perturbation**, **Higher-Level Intervention**, and **Model Competition**. Here the lesson is simpler: measure what returns, identify candidate mechanisms, perturb them, and let competing explanations win.
+
+For systems built from intelligent agents, the burden is especially high. Cities rebuild because people detect damage, choose goals, allocate resources, and coordinate labor. A higher-level repair model must explain or predict something beyond that component-agent account.
+
+Macroscopic Life cannot win because `healing` is a beautiful analogy.
+
+Repair gives us the third mechanism problem.
+
+It also reveals the fourth.
+
+What physically persists in what remains that makes later restoration possible?
 
 ---
 
-## Chapter 10 — Memory Without a Brain
+# Chapter 10 — Memory Without a Brain
 
-Conscious recollection is the memory we know from the inside. Biology contains other ways for the past to remain causally active.
+Conscious recollection is the memory humans know from the inside. Biology contains other ways for the past to remain causally active.
 
-Earlier exposure can alter later immune response. Regulatory states can persist. Surviving tissue can retain position-related properties. Experience can physically alter nervous systems.
+Earlier exposure can alter later immune response. Regulatory states can persist. Surviving tissue can retain position-related properties. Experience can physically alter nervous systems so later cues produce different responses.
 
 Different mechanisms can perform a comparable temporal function.
 
@@ -310,196 +252,152 @@ For this book:
 
 > **Memory is information from the past retained in a physical form and later made causally available in a way that changes a future behavior or state.**
 
-History dependence alone is not enough. We need a retained physical state, later causal access, and a demonstrable change in response.
+This is a comparative analytical definition, not a universal definition for every discipline.
 
-### Trace, Storage, Memory, Recollection
+History dependence alone is not enough. Hysteresis, material fatigue, and environmental alteration can all make the present depend on the past.
+
+To earn the comparative term, identify the retained physical state, show how it re-enters causal processing, and demonstrate that relevant history improves explanation or prediction.
+
+## Trace, Storage, Memory, Recollection
 
 > **TRACE ≠ STORAGE ≠ FUNCTIONAL MEMORY ≠ CONSCIOUS RECOLLECTION**
 
-A trace shows that something happened. Storage preserves a potentially usable record. Functional memory requires retained state to alter later processing. Conscious recollection is a stronger, more specific phenomenon.
+A trace shows that something happened. Storage preserves a potentially usable record. Functional memory requires a retained state to alter a later response. Conscious recollection is stronger and more specific.
 
-> **A TRACE SHOWS THAT THE PAST HAPPENED. MEMORY REQUIRES THE PAST TO MATTER LATER.**
-
-### The Past Must Leave Something Present
-
-The past cannot act as a ghost. It leaves present physical consequences: changed neural circuits, immune populations, regulatory states, documents, databases, trained people, or institutional procedures.
+The past cannot act as a ghost.
 
 > **THE PAST MATTERS LATER ONLY IF SOMETHING PHYSICAL PERSISTS AND CAN RE-ENTER CAUSAL PROCESSING.**
 
-The carrier can change. Information can move among media, degrade, transform, compress, or be reconstructed. Wherever it does causal work, however, some physical difference must remain available.
+The carrier can change. Information can move among media or be reconstructed in new components. Persistence across turnover therefore does not require persistence of every original component.
 
 **[FIGURE 10 — HOW THE PAST STAYS ACTIVE — INSERT HERE]**
 
 `PAST EVENT / STATE → PHYSICAL CHANGE → PERSISTENCE → LATER CAUSAL AVAILABILITY → ALTERED LATER RESPONSE`
 
-> **THE WORD `MEMORY` DOES NOT CREATE A COMMON SUBSTRATE.**
+## Different Ways to Carry the Past
 
-### Different Mechanisms Carry the Past
+Neural plasticity can alter cells, synapses, circuits, and network dynamics. Adaptive immune memory can persist through altered cell populations and states. Trained-immunity research examines persistent changes in innate-system responses. Development and regeneration can preserve regulatory or positional states. Plants can show persistent physiological or regulatory consequences of prior stress.
 
-Neural plasticity changes nervous systems. Adaptive immune memory changes later immune dynamics. Trained immunity involves persistent innate-system changes through different mechanisms. Cellular states can persist or be re-established through chromatin-associated and regulatory processes in particular systems. Regenerative tissues can retain position-related states.
+These mechanisms should not be collapsed into one substrate merely because the word `memory` is useful across them.
 
-These mechanisms are not one thing simply because we compare them using the word *memory*.
+The comparative point is narrower: biological systems can preserve causally relevant history without conscious recollection and without preserving every original component.
 
-Likewise, persistence across cell division is not automatically transgenerational inheritance across organisms.
+Civilization plainly preserves records through books, archives, databases, institutions, artifacts, trained successors, and communication networks. That establishes civilization-scale storage and transmission.
 
-### Turnover
+It does not establish a civilization-scale mind.
 
-Biological organization can persist while molecules and cells turn over. Human organizations can move records among paper, servers, software, procedures, and people.
+The future question is whether candidate-level organization persists through component turnover and whether that retained state changes later candidate-level behavior in a way a lower-level model does not already explain.
 
-> **PERSISTENCE THROUGH COMPONENT TURNOVER IS A PROPERTY TO EXPLAIN, NOT A VERDICT OF ORGANISMHOOD.**
+This motivates **Memory Turnover** later in the experimental framework.
 
-**TEST 5 — MEMORY TURNOVER** asks whether information relevant to a proposed individual's organization, identity, or behavior remains causally available after substantial turnover of the components that originally carried it.
+Persistence gives us the fourth mechanism problem.
 
-The useful follow-up is experimental: identify the carrier or access pathway and perturb it. If the claimed memory is real, the later effect should change predictably.
+Now ask something harder.
 
-### Memory Outside the Skull
-
-Humans externalize memory-related functions into speech, writing, libraries, maps, papers, databases, laws, software, procedures, and institutions.
-
-People create records; artifacts preserve them; rules structure access; later people use them. That sequence does not require a conscious institutional rememberer.
-
-Organizational memory can nevertheless be a useful level of analysis when routines, roles, archives, and distributed access preserve relevant information across personnel turnover.
-
-For this book, **supra-component memory** means functionally relevant information from the past remaining available at a larger organizational level despite turnover of some or all particular components that first carried it.
-
-It is a functional description, not a claim of a larger mind.
-
-### Competing Explanations
-
-For a human organization or civilization-scale system, ask which level owns the memory:
-
-**Model A — Component Memory:** individual agents remember.
-
-**Model B — Artifact Storage:** records preserve information.
-
-**Model C — Organizational Memory:** routines, roles, archives, and distributed access preserve function across turnover.
-
-**Model D — Higher-Order Individual Memory:** higher-level variables predict something A through C do not.
-
-Do not invoke D until it earns that difference.
-
-### Forgetting Matters Too
-
-Brains forget. Immune states change. Cell states are overwritten. Records decay. Expertise disappears. Archives burn. Databases corrupt. Languages die.
-
-A serious memory model measures loss and transformation as well as persistence.
-
-Chapter 6 asked where an individual ends in space. Memory asks how organization persists through time.
-
-What Chapter 10 earns is narrow: a component need not survive forever for physically retained history to remain causally available to a larger organization.
-
-> **PREPARATION IS NOT PROPHECY, AND MEMORY IS NOT PREDICTION.**
+Can a system use the past not merely after an event, but before a recurring event arrives?
 
 ---
 
-## Chapter 11 — Living Ahead of Now
+# Chapter 11 — Living Ahead of Now
 
-Before you wake, physiological systems have already begun changing.
+A sunflower does not need to imagine tomorrow for present behavior to depend on recurring structure in the environment.
 
-But occurring before an event is not enough to establish prediction.
+Organisms can use clocks, learned cues, seasonal signals, internal states, and inherited regulatory mechanisms so that current activity is better matched to conditions that have not yet fully arrived.
 
-A reactive system waits:
-
-`EVENT → DETECTION → RESPONSE → PERFORMANCE`
-
-An anticipatory system can begin earlier because something physically present now bears a testable relationship to what tends to happen next.
-
-> **A FUTURE EVENT DOES NOT CAUSE THE PRESENT FROM THE FUTURE.**
-
-### The Clock Inside
-
-Circadian systems provide a clean example. Many organisms contain endogenous timing mechanisms with periods near twenty-four hours, while environmental cues—especially light—can entrain or reset phase.
-
-Under constant conditions rhythms can free-run, drift, or damp. Mammalian timing also involves distributed clocks and oscillatory processes rather than one tiny commander.
-
-Physical state can carry phase, and phase can matter before an environmental transition occurs.
-
-### Reaction, Anticipation, Prediction
-
-Anticipatory preparation can be represented as:
-
-`PRESENT PREDICTIVE CUE / INTERNAL STATE → ADVANCE PREPARATION → EVENT → PERFORMANCE`
-
-Different mechanisms can fill this role: endogenous phase, learned association, inherited timing, environmental cues, or explicit technological models.
+But several different ideas hide inside the word `anticipation.`
 
 > **PREPARATION ≠ PREDICTION ≠ FORESIGHT ≠ PROPHECY**
 
-Prediction is the stronger claim. It commits prospectively to an expected future state, event, timing, or probability strongly enough that later outcomes can count for or against it.
+Preparation can be produced by fixed response, entrainment, learning, or regulation. Prediction requires a stronger claim: present information should improve prospective performance relative to an appropriate nonpredictive alternative. Foresight usually implies richer internal capacities. Prophecy is not a scientific category.
 
-That means prediction can be wrong.
+## Circadian Systems
 
-`PRESENT PREDICTIVE CUE / INTERNAL STATE → PREPARATION → EVENT ABSENT OR SHIFTED → ERROR / COST`
+Circadian systems provide a clean biological example. Endogenous oscillators can persist under constant conditions and become entrained by environmental cues such as light-dark cycles. They allow physiology and behavior to be organized relative to recurring daily structure.
 
-> **IF IT CANNOT BE WRONG BEFORE THE OUTCOME, IT IS NOT A STRONG PREDICTION CLAIM.**
+This is not evidence that the organism consciously knows tomorrow. It is evidence that present internal state can be structured by regularities in the environment.
 
-**[FIGURE 11 — LIVING AHEAD OF NOW — INSERT HERE]**
+## Prediction Must Be Allowed to Fail
 
-### Test 6 — Prediction Advantage
+If a system is genuinely exploiting predictive information, the claim should survive prospective testing.
 
-> **Does advance preparation based on present information about recurring structure improve performance compared with an otherwise appropriate system that reacts only after the event occurs?**
+Define the information available at time *t*. Define the future event or state. Define the outcome measure. Compare against serious baselines. Then test on events not used to construct the prediction.
 
-Define the event, what is available beforehand, the physical carrier, causal mechanism, reactive baseline, and performance measure before seeing the outcome.
+> **A PATTERN BECOMES EVIDENCE FOR PREDICTION ONLY WHEN IT EARNS PROSPECTIVE ADVANTAGE.**
 
-Then perturb the mechanism: shift the cue, disrupt the clock, break the association, remove the forecast, or change the communication link.
+Retrospective storytelling is cheap. Prospective error gives prediction scientific teeth.
 
-Prediction Advantage is a performance claim.
+## Civilization and Anticipation
 
-### Memory Is Not Prediction
+Civilization builds weather forecasts, epidemic models, financial forecasts, early-warning systems, scientific models, calendars, inventories, insurance, reservoirs, and contingency plans.
 
-Prior exposure can alter later immune response. Plants can respond differently after stress. Regenerating tissue can behave differently because surviving cells retain position-related states.
+These are real civilization-scale predictive capacities in a functional sense. But the components doing the work include humans, institutions, sensors, computers, models, and communication systems.
 
-Those may establish memory or priming without satisfying Test 6.
+The capability can be distributed across the system without automatically belonging to civilization as one agent.
 
-> **MEMORY CAN SHAPE A RESPONSE WITHOUT PREDICTING THE EVENT THAT TRIGGERS IT.**
+That ownership problem is deferred to the next act.
 
-Learned associations and evolutionary adaptation can also produce anticipatory mechanisms without requiring conscious foresight.
+For now, the experimental question is simpler: does candidate-level information improve prospective prediction or control beyond fair lower-level alternatives?
 
-### Civilization Predicts — But Who Owns It?
-
-Human societies build forecasting systems from sensors, records, models, computers, specialists, institutions, communication, and action.
-
-The ordinary explanation is already powerful: people and machines sense, model, communicate, decide, and act through institutions.
-
-So distinguish:
-
-**Model A — Component Prediction**
-
-**Model B — Institutional Prediction**
-
-**Model C — Networked Multi-Institution Prediction**
-
-**Model D — Higher-Order Individual Prediction**
-
-The fourth model must predict beyond the first three.
-
-### The Cost of Being Early
-
-Anticipation creates vulnerability. Clocks misalign. Learned cues stop predicting. Forecasts fail. Preparation consumes resources.
-
-That vulnerability makes the mechanism testable.
-
-> **PAST EVENTS CAN LEAVE PRESENT PHYSICAL STRUCTURE THAT IMPROVES LATER PERFORMANCE.**
-
-The past matters later through what remains physically present now.
+This motivates **Prediction Advantage**.
 
 ## What Act III Earned
 
-Act III began with five mechanism problems:
+We began with five mechanism problems.
 
-> **COORDINATION → FORM → REPAIR → PERSISTENCE → ANTICIPATION**
+**Coordination:** local electrical, chemical, mechanical, metabolic, and regulatory mechanisms can participate in larger-scale function.
 
-Known biology shows that local mechanisms can coordinate larger functions, build form, restore organization, preserve causally useful history, and prepare for recurring events.
+**Form:** distributed interactions can reliably build anatomy no individual cell contains as a miniature plan.
 
-These are five lessons about how system-level functions can arise.
+**Repair:** perturbation can reveal what organization is regulated and restored.
 
-They are not five votes for Macroscopic Life.
+**Persistence:** past states can remain causally available through physical carriers even as components turn over.
 
-> **LOCAL MECHANISMS CAN PRODUCE, MAINTAIN, RESTORE, PRESERVE, AND PREPARE FUNCTIONS AT A LARGER ORGANIZATIONAL LEVEL WITHOUT REQUIRING EACH COMPONENT TO REPRESENT THE WHOLE.**
+**Anticipation:** systems can exploit recurring structure, but prediction must earn prospective advantage.
 
-Now the question changes.
+None of those results establishes civilization as a higher-order individual.
 
-Can a capability legitimately belong to an organized system when no component possesses that capability alone?
+They establish something we need in order to ask the question correctly:
 
-And what additional evidence would be required before calling that system one cognitive or biological individual?
+> **LOCAL MECHANISMS CAN PRODUCE REAL SYSTEM-LEVEL FUNCTIONS WITHOUT ANY COMPONENT CONTAINING A COMPLETE REPRESENTATION OF THE WHOLE.**
 
-That is where intelligence begins.
+The next problem is ownership.
+
+When a capability is distributed across many components, under what conditions does it make sense to say that the **system** has the capability?
+
+That is where Act IV begins.
+
+---
+
+# PUB-7L R1 — ACT III IMPLEMENTATION NOTES
+
+**Reader-facing sources:** `pub-7e-act-iii-opening-chapters-7-8-controlled-editorial-hardening.md` and `pub-7f-chapters-9-11-controlled-editorial-hardening.md`.
+
+**Controlling directives:** PUB-7J redundancy audit; PUB-7K cut architecture; PUB-7M MIT-style ten-pass hostile-review implementation directive.
+
+## Implemented
+
+- reorganized the act as one mechanism progression: coordination → form → repair → persistence → anticipation;
+- removed repeated full-book firewalls once Chapter 7 establishes the signal/information/integration/intelligence ladder;
+- compressed repeated local-mechanism/system-level-function explanations after their first full teaching;
+- compressed bioelectric inventory while preserving ions, gradients, membrane potential, gap junctions, wound fields, electrotaxis uncertainty, nonequilibrium thermodynamics, and ordinary-biophysics framing;
+- preserved frequency/resonance operational discipline and `A SHARED WORD IS NOT A SHARED MECHANISM.`;
+- compressed morphogenesis while preserving genome limits, positional information, morphogens, Turing/reaction-diffusion caveat, mechanics, and no-blueprint conclusion;
+- compressed regeneration without removing wound-closure/regeneration distinctions, positional state, target-state language, termination, or the intelligent-component civilization problem;
+- converted repeated early Eleven-Test mini-sections into forward references so Chapter 14 can own the experimental architecture;
+- compressed memory taxonomy while preserving physical-carrier and later-causal-use requirements;
+- preserved neural, immune, trained-immunity, developmental/regenerative, and plant examples as distinct mechanisms;
+- preserved prospective error as the requirement for prediction and `PREPARATION ≠ PREDICTION ≠ FORESIGHT ≠ PROPHECY`;
+- preserved civilization's distributed predictive capacity while deferring capability ownership to Act IV;
+- scientific freeze preserved.
+
+## Result
+
+Act III now behaves as one argument rather than a cabinet of biological wonders:
+
+> **COORDINATION → FORM → REPAIR → PERSISTENCE → ANTICIPATION → OWNERSHIP**
+
+The reader has been shown that functions can scale.
+
+The book has still not shown that the individual does.
+
+**ACT III R1 + PUB-7M IMPLEMENTATION: PASS**
