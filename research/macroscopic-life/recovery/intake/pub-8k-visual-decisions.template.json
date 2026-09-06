@@ -1,0 +1,14 @@
+[
+  {
+    "figure": 2,
+    "sha256": "PASTE-CANDIDATE-SHA256-HERE",
+    "reviewer": "Steve Grappe",
+    "reviewDate": "YYYY-MM-DD",
+    "approvedComposition": false,
+    "frozenVersionMatch": false,
+    "panelArchitectureMatch": false,
+    "noRejectedVisualLanguage": false,
+    "screenshotSafetyAcceptable": false,
+    "notes": "Compare candidate against FIG-02 V4 final hostile review. Do not approve until the visual composition clearly matches the frozen master."
+  }
+]
