@@ -35,6 +35,26 @@ jobs:
           if old not in s: raise SystemExit('Expected R9 validator line not found')
           p.write_text(s.replace(old,new))
           PY
+      - name: Scope duplicated Chapter 12 collective-intelligence anchor
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('research/macroscopic-life/scripts/promote-hostile-audit-remediation-pass-02.mjs')
+          lines=p.read_text().splitlines()
+          hits=[i for i,line in enumerate(lines) if "P1-11 collective intelligence brake" in line]
+          if len(hits)!=1: raise SystemExit(f'Expected one promoter call, found {len(hits)}')
+          i=hits[0]
+          lines[i]="""{
+  const chapterStart = act4.indexOf('# Chapter 12 —');
+  const chapterEnd = act4.indexOf('# Chapter 13 —', chapterStart);
+  if (chapterStart < 0 || chapterEnd < 0) throw new Error('P1-11 collective intelligence brake: Chapter 12 scope not found');
+  const before = act4.slice(0, chapterStart);
+  const chapter = act4.slice(chapterStart, chapterEnd);
+  const after = act4.slice(chapterEnd);
+  act4 = before + insertAfterPartialLock(chapter, '> **THE WHOLE CAN SOLVE A PROBLEM THAT NO SINGLE COMPONENT SOLVES ALONE.**', 'THAT DOES NOT BY ITSELF ESTABLISH ONE AGENT.', '> **THE WHOLE CAN SOLVE A PROBLEM NO COMPONENT SOLVES ALONE; THAT DOES NOT BY ITSELF ESTABLISH ONE AGENT.**', 'P1-11 collective intelligence brake') + after;
+}"""
+          p.write_text('\n'.join(lines)+'\n')
+          PY
       - name: Generate HA2 derivatives
         run: node research/macroscopic-life/scripts/promote-hostile-audit-remediation-pass-02.mjs
       - name: Materialize PUB-9C master
@@ -46,7 +66,7 @@ jobs:
           git checkout -- research/macroscopic-life/scripts/promote-pub-9c-r9-reader-revisions.mjs
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -f research/macroscopic-life/manuscript/pub-9c-r9-act-ii-reader-manuscript.md research/macroscopic-life/manuscript/pub-9c-r9-act-iv-reader-manuscript.md research/macroscopic-life/manuscript/pub-9c-r9-act-v-reader-manuscript.md research/macroscopic-life/manuscript/pub-9c-ha2-act-i-reader-manuscript.md research/macroscopic-life/manuscript/pub-9c-ha2-act-ii-reader-manuscript.md research/macroscopic-life/manuscript/pub-9c-ha2-act-iii-reader-manuscript.md research/macroscopic-life/manuscript/pub-9c-ha2-act-iv-reader-manuscript.md research/macroscopic-life/manuscript/pub-9c-ha2-act-v-reader-manuscript.md research/macroscopic-life/manuscript/book-one-master-pub-9c-reader-materialized.md
+          git add -f research/macroscopic-life/scripts/promote-hostile-audit-remediation-pass-02.mjs research/macroscopic-life/manuscript/pub-9c-r9-act-ii-reader-manuscript.md research/macroscopic-life/manuscript/pub-9c-r9-act-iv-reader-manuscript.md research/macroscopic-life/manuscript/pub-9c-r9-act-v-reader-manuscript.md research/macroscopic-life/manuscript/pub-9c-ha2-act-i-reader-manuscript.md research/macroscopic-life/manuscript/pub-9c-ha2-act-ii-reader-manuscript.md research/macroscopic-life/manuscript/pub-9c-ha2-act-iii-reader-manuscript.md research/macroscopic-life/manuscript/pub-9c-ha2-act-iv-reader-manuscript.md research/macroscopic-life/manuscript/pub-9c-ha2-act-v-reader-manuscript.md research/macroscopic-life/manuscript/book-one-master-pub-9c-reader-materialized.md
           if ! git diff --cached --quiet; then
             git commit -m 'Hostile audit remediation pass 2: materialize HA2 physical reader master [skip ci]'
             git push origin HEAD:main
