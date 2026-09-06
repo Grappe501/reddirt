@@ -1,0 +1,103 @@
+{
+  "status": "CONTROLLED AUTHORITY REGISTER — VERIFIED ANCHORS + OPEN QUEUE",
+  "policy": "Only metadata verified against authoritative publisher, PubMed/PMC, or equivalent bibliographic records may be marked verified. Missing metadata remains open; never infer or fabricate fields.",
+  "records": [
+    {
+      "id": "BIB-001",
+      "chapters": [1,5,14],
+      "status": "verified",
+      "citation": "West, Stuart A., Roberta M. Fisher, Andy Gardner, and E. Toby Kiers. 2015. ‘Major Evolutionary Transitions in Individuality.’ Proceedings of the National Academy of Sciences of the United States of America 112 (33): 10112–10119. https://doi.org/10.1073/pnas.1421402112.",
+      "pmid": "25964342",
+      "pmcid": "PMC4547252",
+      "doi": "10.1073/pnas.1421402112"
+    },
+    {
+      "id": "BIB-002",
+      "chapters": [5,14],
+      "status": "verified",
+      "citation": "Bourke, Andrew F. G. 2023. ‘Conflict and Conflict Resolution in the Major Transitions.’ Proceedings of the Royal Society B: Biological Sciences 290 (2008): 20231420. https://doi.org/10.1098/rspb.2023.1420.",
+      "pmid": "37817595",
+      "pmcid": "PMC10565403",
+      "doi": "10.1098/rspb.2023.1420"
+    },
+    {
+      "id": "BIB-003",
+      "chapters": [7],
+      "status": "verified",
+      "citation": "Harris, Matthew P. 2021. ‘Bioelectric Signaling as a Unique Regulator of Development and Regeneration.’ Development 148 (10): dev180794. https://doi.org/10.1242/dev.180794.",
+      "pmid": "33999994",
+      "pmcid": "PMC8180260",
+      "doi": "10.1242/dev.180794"
+    },
+    {
+      "id": "BIB-004",
+      "chapters": [8],
+      "status": "verified",
+      "citation": "Hernández-Hernández, Valeria, Denisse Rueda, Lorena Caballero, Elena R. Alvarez-Buylla, and Mariana Benítez. 2014. ‘Mechanical Forces as Information: An Integrated Approach to Plant and Animal Development.’ Frontiers in Plant Science 5: 265. https://doi.org/10.3389/fpls.2014.00265.",
+      "pmid": "24959170",
+      "pmcid": "PMC4051191",
+      "doi": "10.3389/fpls.2014.00265"
+    },
+    {
+      "id": "BIB-005",
+      "chapters": [10],
+      "status": "verified",
+      "citation": "Netea, Mihai G., Leo A. B. Joosten, Eicke Latz, Kingston H. G. Mills, Gioacchino Natoli, Hendrik G. Stunnenberg, Luke A. J. O’Neill, and Ramnik J. Xavier. 2016. ‘Trained Immunity: A Program of Innate Immune Memory in Health and Disease.’ Science 352 (6284): aaf1098. https://doi.org/10.1126/science.aaf1098.",
+      "pmid": "27102489",
+      "pmcid": "PMC5087274",
+      "doi": "10.1126/science.aaf1098"
+    },
+    {
+      "id": "BIB-006",
+      "chapters": [12],
+      "status": "verified",
+      "citation": "Kameda, Tatsuya, Wataru Toyokawa, and R. Scott Tindale. 2022. ‘Information Aggregation and Collective Intelligence beyond the Wisdom of Crowds.’ Nature Reviews Psychology 1: 345–357. https://doi.org/10.1038/s44159-022-00054-y.",
+      "doi": "10.1038/s44159-022-00054-y"
+    },
+    {
+      "id": "BIB-007",
+      "chapters": [12,13],
+      "status": "verified",
+      "citation": "Hutchins, Edwin. 1995. Cognition in the Wild. Cambridge, MA: MIT Press. https://doi.org/10.7551/mitpress/1881.001.0001.",
+      "doi": "10.7551/mitpress/1881.001.0001",
+      "isbn_hardcover": "9780262082310"
+    },
+    {
+      "id": "BIB-008",
+      "chapters": [12,14],
+      "status": "verified",
+      "citation": "Dutta, Sanghamitra, and Faisal Hamman. 2023. ‘A Review of Partial Information Decomposition in Algorithmic Fairness and Explainability.’ Entropy 25 (5): 795. https://doi.org/10.3390/e25050795.",
+      "pmid": "37238550",
+      "pmcid": "PMC10217569",
+      "doi": "10.3390/e25050795"
+    },
+    {
+      "id": "BIB-009",
+      "chapters": [13],
+      "status": "verified",
+      "citation": "Helbing, Dirk. 2013. ‘Globally Networked Risks and How to Respond.’ Nature 497 (7447): 51–59. https://doi.org/10.1038/nature12047.",
+      "pmid": "23636396",
+      "doi": "10.1038/nature12047"
+    },
+    {
+      "id": "BIB-010",
+      "chapters": [14],
+      "status": "verified",
+      "citation": "Franklin-Hall, L. R. 2016. ‘High-Level Explanation and the Interventionist’s “Variables Problem”.’ The British Journal for the Philosophy of Science 67 (2): 553–577. https://doi.org/10.1093/bjps/axu040.",
+      "doi": "10.1093/bjps/axu040"
+    }
+  ],
+  "open_authority_queue": [
+    "Michod PMCID PMC1688438",
+    "Michod 2007 PMCID PMC1876437",
+    "remaining Chapter 7 independent bioelectricity source family",
+    "remaining Chapter 8 morphogenesis source family",
+    "Chapter 9 regeneration anchors PMC4036467, PMC9898764, PMC6679358",
+    "additional Chapter 10 trained-immunity and plant-stress-memory anchors",
+    "Chapter 11 circadian source family",
+    "Chapter 2 sensory-system source family",
+    "Chapter 3 sampling/scaling sources",
+    "Chapter 4 multicellularity/endosymbiosis/microbiome sources",
+    "Chapter 6 plural-individuality/boundary sources"
+  ]
+}
