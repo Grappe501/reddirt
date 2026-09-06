@@ -1,0 +1,63 @@
+{
+  "status": "VERIFIED ANCESTRY SEED — DEEP-DIVE READY",
+  "topic": "consciousness",
+  "projectDoctrine": [
+    "SIGNAL ≠ INFORMATION ≠ INTEGRATION ≠ INTELLIGENCE ≠ AGENCY ≠ CONSCIOUSNESS",
+    "HIGHER-ORDER INDIVIDUALITY ≠ HIGHER-ORDER CONSCIOUSNESS",
+    "DO NOT ASK WHETHER THE WHOLE IS CONSCIOUS UNTIL YOU HAVE FIRST EARNED THE RIGHT TO CALL IT A WHOLE"
+  ],
+  "sources": [
+    {
+      "id": "CONSC-001",
+      "citation": "Cogitate Consortium et al. Adversarial testing of global neuronal workspace and integrated information theories of consciousness. Nature 642, 133–142 (2025).",
+      "doi": "10.1038/s41586-025-08888-1",
+      "url": "https://www.nature.com/articles/s41586-025-08888-1",
+      "relationship": ["DIRECT_METHODOLOGICAL_ANCESTRY", "MODEL_COMPETITION"],
+      "bubbleSummary": "A large preregistered adversarial collaboration directly compared divergent predictions of Global Neuronal Workspace Theory and Integrated Information Theory using fMRI, MEG and intracranial EEG. It demonstrates how competing consciousness theories can be forced into differential empirical tests.",
+      "supports": ["consciousness science contains competing mechanistic theories", "adversarial model comparison is feasible", "theory-specific predictions can be preregistered and tested"],
+      "doesNotSupport": ["GNWT finally proven", "IIT finally proven", "civilization is conscious", "integration alone proves consciousness"]
+    },
+    {
+      "id": "CONSC-002",
+      "citation": "Seth A.K. & Bayne T. Theories of consciousness. Nature Reviews Neuroscience (2022).",
+      "doi": "10.1038/s41583-022-00587-4",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/35505255/",
+      "relationship": ["FIELD_MAP", "IDEA_ANCESTRY"],
+      "bubbleSummary": "A major review compares prominent consciousness theories including higher-order, global workspace, re-entry/predictive-processing and integrated-information approaches, emphasizing unresolved relationships and empirical discriminability.",
+      "supports": ["the field is theoretically plural", "different theories propose different explanatory architectures", "empirical discrimination remains an active problem"],
+      "doesNotSupport": ["one settled theory of consciousness", "Macroscopic Life's downstream dimensions as consensus criteria"]
+    },
+    {
+      "id": "CONSC-003",
+      "citation": "Webb T.W. & Graziano M.S.A. The attention schema theory: a mechanistic account of subjective awareness. Frontiers in Psychology 6:500 (2015).",
+      "pmcid": "PMC4407481",
+      "pmid": "25954242",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4407481/",
+      "relationship": ["SELF_MODEL_ANCESTRY", "CONTROL_MODEL_ANCESTRY"],
+      "bubbleSummary": "Attention Schema Theory proposes that the brain constructs a simplified internal model of attention that helps control attention and contributes to subjective awareness reports. The theory is framed mechanistically and generates testable predictions.",
+      "supports": ["self-model/control-model mechanisms are legitimate consciousness research targets", "attention and awareness can be experimentally distinguished"],
+      "doesNotSupport": ["any self-description is conscious", "civilization possesses an attention schema", "attention equals consciousness"]
+    },
+    {
+      "id": "CONSC-004",
+      "citation": "Lau H. & Rosenthal D. Empirical support for higher-order theories of conscious awareness. Trends in Cognitive Sciences (2011).",
+      "pmid": "21737339",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/21737339/",
+      "relationship": ["HIGHER_ORDER_THEORY_ANCESTRY"],
+      "bubbleSummary": "A review arguing that higher-order approaches to conscious awareness make empirically testable claims and can be compared with first-order, global-workspace and recurrent-processing alternatives.",
+      "supports": ["higher-order representation is an established theoretical family", "higher-order theories can be empirically evaluated"],
+      "doesNotSupport": ["higher-order consciousness above organisms", "civilization-scale metacognition"]
+    },
+    {
+      "id": "CONSC-005",
+      "citation": "Doerig A. et al. The unfolding argument: Why IIT and other causal structure theories cannot explain consciousness. Consciousness and Cognition (2019).",
+      "doi": "10.1016/j.concog.2019.04.002",
+      "pmid": "31078047",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/31078047/",
+      "relationship": ["COUNTERMODEL", "THEORY_CAUTION"],
+      "bubbleSummary": "A prominent critique argues that identifying particular causal structures directly with consciousness faces serious theoretical problems. It is useful as a warning against treating integration or recurrence as an automatic consciousness detector.",
+      "supports": ["causal-structure consciousness theories face substantive criticism", "integration metrics should not be treated as unquestioned consciousness meters"],
+      "doesNotSupport": ["all causal/integrative theories are definitively false", "consciousness cannot depend on causal organization"]
+    }
+  ]
+}
