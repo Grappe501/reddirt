@@ -1,0 +1,58 @@
+{
+  "status": "VERIFIED CONSCIOUSNESS AUTHORITY MICRO-SWEEP — SCHOLARLY SPINE AMENDMENT STAGED",
+  "policy": "These sources support consciousness-theory plurality, theory discrimination, and empirical uncertainty. They do not support civilization-scale consciousness.",
+  "records": [
+    {
+      "id": "BIB-032",
+      "chapters": [12],
+      "status": "verified",
+      "citation": "Seth, Anil K., and Tim Bayne. 2022. ‘Theories of Consciousness.’ Nature Reviews Neuroscience 23 (7): 439–452. https://doi.org/10.1038/s41583-022-00587-4.",
+      "pmid": "35505255",
+      "doi": "10.1038/s41583-022-00587-4",
+      "supports": [
+        "contemporary consciousness science contains multiple prominent theoretical approaches",
+        "theories differ in proposed biological/physical bases and can be compared through empirical predictions",
+        "the relationship among current theories and their empirical discriminability remains an active scientific problem"
+      ],
+      "doesNotSupport": [
+        "civilization is conscious",
+        "integration alone proves consciousness",
+        "intelligence alone proves consciousness",
+        "higher-order individuality entails phenomenal consciousness"
+      ],
+      "role": "ANCESTRY + FIELD CALIBRATION"
+    },
+    {
+      "id": "BIB-033",
+      "chapters": [12,14],
+      "status": "verified",
+      "citation": "Cogitate Consortium, Oscar Ferrante, Urszula Gorska-Klimowska, Simon Henin, Rony Hirschhorn, Aya Khalaf, Alex Lepauvre, et al. 2025. ‘Adversarial Testing of Global Neuronal Workspace and Integrated Information Theories of Consciousness.’ Nature 642: 133–142. https://doi.org/10.1038/s41586-025-08888-1.",
+      "doi": "10.1038/s41586-025-08888-1",
+      "supports": [
+        "major consciousness theories can be made to generate divergent preregistered empirical predictions",
+        "direct adversarial comparison can challenge important tenets of more than one theory",
+        "consciousness science benefits from quantitative, systematic theory testing rather than confirmation-only evidence"
+      ],
+      "doesNotSupport": [
+        "IIT or GNWT has been decisively proven",
+        "a generic integrated system is conscious",
+        "a society or civilization is conscious",
+        "Macroscopic Life's Eleven Tests are validated by consciousness science"
+      ],
+      "role": "DIRECT METHODOLOGICAL ANCESTRY + CONSCIOUSNESS CALIBRATION"
+    }
+  ],
+  "proposedSpineAmendment": {
+    "previousSlots": 45,
+    "newSlots": 1,
+    "proposedSlot": 46,
+    "chapter": 12,
+    "authorities": ["BIB-032","BIB-033"],
+    "claimBurden": "Consciousness is scientifically distinct from intelligence/individuality; contemporary consciousness science contains competing theories whose predictions can be compared empirically.",
+    "state": "STAGED_FOR_ENDNOTE_MAP_AMENDMENT"
+  },
+  "crossChapterReuse": {
+    "chapter14": "BIB-033 may be cited as methodological ancestry for adversarial theory comparison if needed, but Macroscopic Life's Model A–D competition and Eleven Tests remain project methodology."
+  },
+  "hardBrake": "No result in BIB-032 or BIB-033 is evidence that civilization, a technological network, or any proposed macroscopic entity is phenomenally conscious."
+}
