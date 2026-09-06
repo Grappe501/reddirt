@@ -1,6 +1,6 @@
 {
-  "status": "PASS-03 SCHOLARLY REQUALIFICATION IN PROGRESS — 42/46 APPROVED",
-  "instructions": "Each APPROVE decision records a sentence-level scholarly review against the physical PUB-9C master and assigned authority burden. Never approve by proximity alone. Unreviewed notes remain REVIEW.",
+  "status": "PASS-03 SCHOLARLY REQUALIFICATION COMPLETE — 46/46 APPROVED",
+  "instructions": "Each APPROVE decision records a sentence-level scholarly review against the physical PUB-9C master and assigned authority burden. Never approve by proximity alone.",
   "lockedMasterSha256": "3416c4aabbaabfef8a7263104fc23a36f8e482e6a7d2c4197329296f20635708",
   "approvals": [
     {"note":1,"decision":"APPROVE","exactAnchor":"Again, yes. Evolutionary history contains strong examples.","reviewBatch":"HA3-B01"},
@@ -45,6 +45,9 @@
     {"note":40,"decision":"APPROVE","exactAnchor":"Civilization-scale whole-only information requires an explicit boundary, component baseline, out-of-sample improvement, and physical implementation.","reviewBatch":"HA3-B07","authorityIds":["BIB-008","PROJECT-CRITERION"]},
     {"note":41,"decision":"APPROVE","exactAnchor":"The civilization-scale question is analogous but harder: do candidate whole-level variables add reproducible intervention, explanatory, or predictive power beyond strong lower-level alternatives?","reviewBatch":"HA3-B07","authorityIds":["BIB-010","PROJECT-SYNTHESIS"]},
     {"note":42,"decision":"APPROVE","exactAnchor":"The Eleven Tests are a proposed synthesis for model comparison in this project. They are not a consensus definition of life or biological individuality. Different tests draw on different research traditions, several tests may depend on overlapping mechanisms, and positive results must not be added into an organism score. Their purpose is to make a stronger higher-order-individual hypothesis compete against serious lower-level alternatives and risk failure.","reviewBatch":"HA3-B07","authorityIds":["PROJECT-SYNTHESIS"]},
-    {"note":43,"decision":"REVIEW"},{"note":44,"decision":"REVIEW"},{"note":45,"decision":"REVIEW"},{"note":46,"decision":"REVIEW"}
+    {"note":43,"decision":"APPROVE","exactAnchor":"THE STRONGEST SKEPTICAL POSITION IS NOT THAT NOTHING MACROSCOPIC EXISTS. IT IS THAT MACROSCOPIC ORGANIZATION IS REAL AND HIGHER-ORDER INDIVIDUALITY IS UNNECESSARY.","reviewBatch":"HA3-B08","authorityIds":["PROJECT-SYNTHESIS"]},
+    {"note":44,"decision":"APPROVE","exactAnchor":"MACROSCOPIC LIFE HYPOTHESIS: Some systems composed of living and/or technical components may, under particular conditions, develop sufficiently integrated higher-level organization that variables associated with individuality become scientifically useful at a scale above the familiar organism. Whether any contemporary civilization has crossed, is crossing, or will cross such a transition is an empirical question requiring model competition against lower-level alternatives.","reviewBatch":"HA3-B08","authorityIds":["PROJECT-SYNTHESIS"]},
+    {"note":45,"decision":"APPROVE","exactAnchor":"THE MICROBE IS A PERSPECTIVE, NOT A DIAGNOSIS.","reviewBatch":"HA3-B08","authorityIds":["PROJECT-SYNTHESIS"]},
+    {"note":46,"decision":"APPROVE","exactAnchor":"Consciousness creates a separate problem from intelligence and a separate problem from individuality. Contemporary consciousness science contains competing theories emphasizing different mechanisms or signatures, and this book does not infer subjective experience merely from complexity, information processing, intelligence, self-regulation, or organismhood.[12.4]","reviewBatch":"HA3-B08","authorityIds":["BIB-032","BIB-033","PROJECT-SYNTHESIS"]}
   ]
 }
