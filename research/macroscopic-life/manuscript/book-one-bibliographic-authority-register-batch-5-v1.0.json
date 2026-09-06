@@ -1,0 +1,37 @@
+{
+  "status": "PUB-9C PASS-03 BATCH 5 — VERIFIED AUTHORITY EXPANSION",
+  "policy": "Authorities support retained physical state and altered later response only. Memory terminology does not imply awareness, recollection, intelligence, or consciousness.",
+  "records": [
+    {
+      "id": "BIB-005",
+      "chapters": [10],
+      "citation": "Netea, Mihai G., Leo A. B. Joosten, Eicke Latz, Kingston H. G. Mills, Gioacchino Natoli, Hendrik G. Stunnenberg, Luke A. J. O’Neill, and Ramnik J. Xavier. 2016. ‘Trained Immunity: A Program of Innate Immune Memory in Health and Disease.’ Science 352 (6284): aaf1098. https://doi.org/10.1126/science.aaf1098.",
+      "pmid": "27102489",
+      "pmcid": "PMC5087274",
+      "doi": "10.1126/science.aaf1098",
+      "relationshipToMacroscopicLife": "CALIBRATION",
+      "whatThisSourceSupports": "Innate immune systems can exhibit history-dependent altered responses associated with persistent functional, metabolic, and epigenetic reprogramming, conventionally termed trained immunity.",
+      "whatThisSourceDoesNotSupport": "It does not establish conscious recollection, semantic memory, a mind outside nervous systems, or civilization-scale memory as an organism-level property.",
+      "whereMacroscopicLifeGoesBeyondIt": "Macroscopic Life uses trained immunity as a calibration case for physically retained state becoming causally available later, while requiring separate evidence for candidate-level Memory Turnover."
+    },
+    {
+      "id": "BIB-037",
+      "chapters": [10],
+      "citation": "Liu, Ning, and Caroline Dean. 2018. ‘Epigenetic Environmental Memories in Plants: Establishment, Maintenance, and Reprogramming.’ Trends in Genetics 34 (11): 856–866. https://doi.org/10.1016/j.tig.2018.07.006.",
+      "pmid": "30144941",
+      "doi": "10.1016/j.tig.2018.07.006",
+      "relationshipToMacroscopicLife": "CALIBRATION",
+      "whatThisSourceSupports": "Some environmental exposures in plants can induce chromatin-associated states that persist after the initiating signal and alter later gene expression or response; maintenance and reprogramming are part of the phenomenon.",
+      "whatThisSourceDoesNotSupport": "It does not establish conscious memory, plant phenomenology, universal inheritance of acquired states, or a single substrate shared by plant, immune, neural, and civilizational memory.",
+      "whereMacroscopicLifeGoesBeyondIt": "Macroscopic Life abstracts the narrower comparative requirement that a physically retained state must later re-enter causal processing and alter a response."
+    }
+  ],
+  "slot_resolution": {
+    "27": ["BIB-005"],
+    "28": ["BIB-037"],
+    "29": ["BIB-005", "BIB-037", "PROJECT-SYNTHESIS"]
+  },
+  "cautions": {
+    "chapter10": "TRACE ≠ STORAGE ≠ FUNCTIONAL MEMORY ≠ CONSCIOUS RECOLLECTION. Cross-system comparison is functional and mechanistic, not a claim of substrate identity or awareness."
+  }
+}
