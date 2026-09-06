@@ -1,0 +1,68 @@
+{
+  "status": "PUB-9C PASS-03 BATCH 2 — VERIFIED AUTHORITY EXPANSION",
+  "policy": "Metadata verified against PubMed, PMC, Nature, Annual Reviews, or equivalent publisher-level records. These authorities support only the exact burdens identified below; they do not establish civilization-scale organismhood.",
+  "records": [
+    {
+      "id": "BIB-026",
+      "chapters": [3],
+      "citation": "Estes, Lyndon, Paul R. Elsen, Timothy Treuer, Labeeb Ahmed, Kelly Caylor, Jason Chang, Jonathan J. Choi, and Erle C. Ellis. 2018. ‘The Spatial and Temporal Domains of Modern Ecology.’ Nature Ecology & Evolution 2: 819–826. https://doi.org/10.1038/s41559-018-0524-4.",
+      "pmid": "29610472",
+      "doi": "10.1038/s41559-018-0524-4",
+      "relationshipToMacroscopicLife": "CALIBRATION",
+      "whatThisSourceSupports": "Observation scale must distinguish temporal resolution/interval from observation duration/extent; phenomena can be mischaracterized when observed over inappropriate scales.",
+      "whatThisSourceDoesNotSupport": "It does not support the existence of a hidden organism or imply that scale mismatch is evidence of life.",
+      "whereMacroscopicLifeGoesBeyondIt": "Macroscopic Life turns scale mismatch into a methodological caution inside a larger adversarial test architecture."
+    },
+    {
+      "id": "BIB-027",
+      "chapters": [3],
+      "citation": "Glazier, Douglas S. 2023. ‘The Relevance of Time in Biological Scaling.’ Biology 12 (8): 1084. https://doi.org/10.3390/biology12081084.",
+      "pmid": "37626969",
+      "pmcid": "PMC10452035",
+      "doi": "10.3390/biology12081084",
+      "relationshipToMacroscopicLife": "CALIBRATION",
+      "whatThisSourceSupports": "Biological rates and durations occur across different temporal scales, and no single universal biological clock should be assumed.",
+      "whatThisSourceDoesNotSupport": "It does not establish any universal scaling exponent, hidden macroscopic life cycle, or civilization-scale organism.",
+      "whereMacroscopicLifeGoesBeyondIt": "Macroscopic Life uses temporal scale as one observer-window dimension while explicitly refusing to infer life from slowness alone."
+    },
+    {
+      "id": "BIB-028",
+      "chapters": [4],
+      "citation": "Gabaldón, Toni. 2021. ‘Origin and Early Evolution of the Eukaryotic Cell.’ Annual Review of Microbiology 75: 631–647. https://doi.org/10.1146/annurev-micro-090817-062213.",
+      "doi": "10.1146/annurev-micro-090817-062213",
+      "relationshipToMacroscopicLife": "ANCESTRY",
+      "whatThisSourceSupports": "The origin of mitochondria from alphaproteobacterial endosymbiosis is a robustly established event in eukaryotic evolution, while important details of timing, host identity, and early interaction remain debated.",
+      "whatThisSourceDoesNotSupport": "It does not imply that modern social or technological integration follows the mitochondrial route or that endosymbiosis is a universal transition template.",
+      "whereMacroscopicLifeGoesBeyondIt": "Macroscopic Life uses mitochondrial integration as a precedent and calibration case, not as a diagnosis of civilization."
+    },
+    {
+      "id": "BIB-029",
+      "chapters": [4],
+      "citation": "Rainey, Paul B., and Silvia De Monte. 2014. ‘Resolving Conflicts During the Evolutionary Transition to Multicellular Life.’ Annual Review of Ecology, Evolution, and Systematics 45: 599–620. https://doi.org/10.1146/annurev-ecolsys-120213-091740.",
+      "doi": "10.1146/annurev-ecolsys-120213-091740",
+      "relationshipToMacroscopicLife": "ANCESTRY",
+      "whatThisSourceSupports": "Conflict among lower-level units is central to transitions in individuality, and mechanisms that alter or resolve conflict can contribute to higher-level Darwinian organization.",
+      "whatThisSourceDoesNotSupport": "It does not establish that every cooperative collective becomes an individual or that social conflict-control mechanisms are biologically equivalent to multicellular mechanisms.",
+      "whereMacroscopicLifeGoesBeyondIt": "Macroscopic Life converts conflict-control precedent into one component of a multi-test, dependence-aware higher-order individuality framework."
+    },
+    {
+      "id": "BIB-030",
+      "chapters": [4],
+      "citation": "Xiao, Yang, Tijs Louwies, Ruben A. T. Mars, and Purna C. Kashyap. 2024. ‘The Human Microbiome—A Physiologic Perspective.’ Comprehensive Physiology 14 (3): 5491–5519. https://doi.org/10.1002/cphy.c230013.",
+      "pmid": "39109977",
+      "pmcid": "PMC12919717",
+      "doi": "10.1002/cphy.c230013",
+      "relationshipToMacroscopicLife": "CALIBRATION",
+      "whatThisSourceSupports": "Human-associated microbes occupy multiple body systems, their metabolites and interactions can shape host physiological functions, and microbiome composition is dynamic and context-dependent.",
+      "whatThisSourceDoesNotSupport": "It does not settle the philosophical or evolutionary boundary of the human individual and does not imply that all host-associated microbes form one evolutionary individual with the host.",
+      "whereMacroscopicLifeGoesBeyondIt": "Macroscopic Life uses the microbiome to show that biologically meaningful boundaries can be relational and plural without treating that complexity as proof of higher-order individuality elsewhere."
+    }
+  ],
+  "slot_resolution": {
+    "7": ["BIB-026"],
+    "8": ["BIB-027"],
+    "9": ["BIB-028"],
+    "10": ["BIB-029"],
+    "11": ["BIB-030"]
+  }
+}
