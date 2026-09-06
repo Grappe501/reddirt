@@ -5,38 +5,39 @@ export const metadata = { title: "Eleven Tests" };
 export default function TestsPage() {
   return (
     <div className="ml-page">
-      <p className="ml-kicker">Research program</p>
-      <h1 className="ml-display" style={{ fontSize: "2.5rem", margin: "0.4rem 0 0.8rem" }}>
-        Eleven ways to break Macroscopic Life
-      </h1>
+      <p className="ml-kicker">Falsification lab</p>
+      <h1 className="ml-display ml-page-title">Eleven ways to break it</h1>
       <p className="ml-line">
         Current evidence strongly supports macroscopic organization. It does not yet require
         higher-order individuality.
       </p>
-      <p style={{ color: "var(--ml-mute)", maxWidth: "38rem", marginBottom: "1.5rem" }}>
-        These tests are a proposed synthesis for this project. They are not a consensus definition of
-        life. Do not add them into an organism score.
+      <p className="ml-lede">
+        A proposed synthesis for this project — not a consensus definition of life. There is no
+        organism score. Test 11 is always required.
       </p>
-      <div className="ml-grid">
+      <div className="ml-lab">
         {TESTS.map((test) => (
-          <article key={test.number} className="ml-card" id={`test-${test.number}`}>
-            <p className="ml-kicker">Test {String(test.number).padStart(2, "0")}</p>
-            <h2 className="ml-display" style={{ fontSize: "1.45rem", margin: "0.35rem 0 0.6rem" }}>
-              {test.name}
-            </h2>
-            <p>{test.question}</p>
-            <p style={{ color: "var(--ml-mute)", marginTop: "0.6rem" }}>
-              <strong>Perturb / measure. </strong>
+          <article key={test.number} id={`test-${test.number}`} data-required={test.number === 11 ? "true" : "false"}>
+            <p className="ml-kicker">
+              Test {String(test.number).padStart(2, "0")}
+              {test.number === 11 ? " · always required" : ""}
+            </p>
+            <h2 className="ml-display ml-card-title">{test.name}</h2>
+            <p className="ml-question">{test.question}</p>
+            <p className="ml-brake">
+              <strong>Perturb. </strong>
               {test.perturbation}
             </p>
-            <p style={{ marginTop: "0.45rem" }}>
-              <strong>Strengthens D. </strong>
-              {test.strengthens}
-            </p>
-            <p style={{ marginTop: "0.45rem" }}>
-              <strong>Weakens D. </strong>
-              {test.weakens}
-            </p>
+            <div className="ml-verdict">
+              <div className="ml-plus">
+                <p className="ml-kicker">Strengthens D</p>
+                <p>{test.strengthens}</p>
+              </div>
+              <div className="ml-minus">
+                <p className="ml-kicker">Weakens D</p>
+                <p>{test.weakens}</p>
+              </div>
+            </div>
             <p className="ml-brake">{test.caveat}</p>
           </article>
         ))}

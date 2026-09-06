@@ -24,14 +24,12 @@ export default async function FigureTheaterPage({ params }: { params: Promise<{ 
   const next = index < FIGURES.length - 1 ? FIGURES[index + 1] : undefined;
 
   return (
-    <div className="ml-page" style={{ maxWidth: "46rem" }}>
+    <div className="ml-page ml-theater">
       <p className="ml-kicker">Figure theater</p>
-      <h1 className="ml-display" style={{ fontSize: "2.4rem", margin: "0.4rem 0 1rem" }}>
-        {figure.title}
-      </h1>
+      <h1 className="ml-display ml-page-title">{figure.title}</h1>
       <FigureObject figure={figure} />
-      <p style={{ marginTop: "1rem", color: "var(--ml-mute)" }}>{figure.treatment}</p>
-      <p style={{ marginTop: "0.8rem" }}>
+      <p className="ml-treatment">{figure.treatment}</p>
+      <p className="ml-also">
         {chapter ? (
           <Link href={`${ML_BASE}/book/${chapter.slug}`}>Read Chapter {chapter.number}</Link>
         ) : null}

@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 
 import { FigureById } from "@/components/macroscopic-life/figures";
 import { MarkdownBody } from "@/components/macroscopic-life/MarkdownBody";
+import { WindowMeter } from "@/components/macroscopic-life/WindowMeter";
 import {
   adjacentChapters,
   ACTS,
@@ -32,7 +33,7 @@ export default async function ChapterPage({ params }: { params: Promise<{ slug: 
   const primaryFigure = chapter.figureIds[0];
 
   return (
-    <div className="ml-page">
+    <div className="ml-page" data-act={chapter.act}>
       <div className="ml-reader">
         <aside className="ml-index">
           <p className="ml-kicker">Act {act?.roman}</p>
@@ -46,20 +47,20 @@ export default async function ChapterPage({ params }: { params: Promise<{ slug: 
             </Link>
           ))}
         </aside>
-        <article>
+        <article className="ml-article">
+          <span className="ml-watermark" aria-hidden>
+            {String(chapter.number).padStart(2, "0")}
+          </span>
+          <WindowMeter chapter={chapter.number} />
           <p className="ml-kicker">
             Chapter {String(chapter.number).padStart(2, "0")} · {act?.title}
           </p>
-          <h1 className="ml-display" style={{ fontSize: "2.4rem", margin: "0.35rem 0 1rem" }}>
-            {chapter.title}
-          </h1>
+          <h1 className="ml-display ml-chapter-title">{chapter.title}</h1>
           <p className="ml-line">{chapter.displayLine}</p>
           <MarkdownBody markdown={markdown} />
           <div className="ml-pager">
             {prev ? (
-              <Link href={`${ML_BASE}/book/${prev.slug}`}>
-                Previous · {prev.title}
-              </Link>
+              <Link href={`${ML_BASE}/book/${prev.slug}`}>Prev · {prev.title}</Link>
             ) : (
               <Link href={`${ML_BASE}/book`}>Act atlas</Link>
             )}
@@ -70,15 +71,15 @@ export default async function ChapterPage({ params }: { params: Promise<{ slug: 
             )}
           </div>
         </article>
-        <aside>
+        <aside className="ml-plate-rail">
           {primaryFigure ? (
             <FigureById id={primaryFigure} href={`${ML_BASE}/figures/${primaryFigure}`} />
           ) : null}
           {chapter.figureIds.length > 1 ? (
-            <p style={{ marginTop: "0.8rem", fontSize: "0.82rem" }}>
+            <p className="ml-also">
               Also in this chapter:{" "}
               {chapter.figureIds.slice(1).map((id) => (
-                <Link key={id} href={`${ML_BASE}/figures/${id}`} style={{ marginRight: "0.7rem" }}>
+                <Link key={id} href={`${ML_BASE}/figures/${id}`}>
                   {id}
                 </Link>
               ))}

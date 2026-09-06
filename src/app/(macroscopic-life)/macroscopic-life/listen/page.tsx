@@ -9,23 +9,21 @@ export const metadata = { title: "Listen" };
 export default function ListenPage() {
   const opening = loadOpening();
   return (
-    <div className="ml-page" style={{ maxWidth: "42rem" }}>
+    <div className="ml-page ml-listen">
       <p className="ml-kicker">Spoken rhythm</p>
-      <h1 className="ml-display" style={{ fontSize: "2.5rem", margin: "0.4rem 0 1rem" }}>
-        Read it aloud from the openings
-      </h1>
-      <p style={{ color: "var(--ml-mute)", marginBottom: "1.4rem" }}>
-        The book was line-edited for spoken rhythm. This page is the opening plus the display line
-        from every chapter — the skim layer a listener should be able to reconstruct.
+      <h1 className="ml-display ml-page-title">Hear the skim layer first</h1>
+      <p className="ml-lede">
+        If you only keep the opening and the sixteen display lines, you should still reconstruct this:
+        organization can be real without a new organism.
       </p>
       <MarkdownBody markdown={opening} />
-      <ol style={{ paddingLeft: "1.2rem" }}>
+      <ol className="ml-recite">
         {CHAPTERS.map((chapter) => (
-          <li key={chapter.slug} style={{ margin: "1rem 0" }}>
+          <li key={chapter.slug}>
             <Link href={`${ML_BASE}/book/${chapter.slug}`}>
               Chapter {chapter.number}. {chapter.title}.
-            </Link>{" "}
-            {chapter.displayLine}
+            </Link>
+            <p className="ml-line">{chapter.displayLine}</p>
           </li>
         ))}
       </ol>

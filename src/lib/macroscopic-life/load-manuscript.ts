@@ -1,12 +1,10 @@
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
 
 import { CHAPTERS, type ChapterRecord } from "@/content/macroscopic-life/catalog";
 
-// The public Macroscopic Life reader now resolves directly from the canonical
-// research manuscript layer. This prevents the Netlify site from drifting behind
-// the publication-controlled manuscript as Book One moves through production.
-const MANUSCRIPT_DIR = path.join(process.cwd(), "research/macroscopic-life/manuscript");
+const RESEARCH_DIR = path.join(process.cwd(), "research/macroscopic-life/manuscript");
+const BUNDLED_DIR = path.join(process.cwd(), "src/content/macroscopic-life/manuscript");
 
 const ACT_SOURCE: Record<ChapterRecord["act"], string> = {
   i: "pub-7l-r1-act-i-redundancy-cut-reader-manuscript.md",
@@ -16,8 +14,17 @@ const ACT_SOURCE: Record<ChapterRecord["act"], string> = {
   v: "pub-7l-r1-act-v-redundancy-cut-reader-manuscript.md",
 };
 
+function manuscriptDir(): string {
+  return existsSync(RESEARCH_DIR) ? RESEARCH_DIR : BUNDLED_DIR;
+}
+
 function readSource(file: string): string {
-  return readFileSync(path.join(MANUSCRIPT_DIR, file), "utf8");
+  const primary = path.join(manuscriptDir(), file);
+  if (existsSync(primary)) {
+    return readFileSync(primary, "utf8");
+  }
+  const fallback = path.join(BUNDLED_DIR, file);
+  return readFileSync(fallback, "utf8");
 }
 
 function stripEditorialLog(markdown: string): string {

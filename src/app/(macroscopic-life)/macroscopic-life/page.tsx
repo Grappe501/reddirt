@@ -1,36 +1,39 @@
 import Link from "next/link";
 
+import { NestedInstrument } from "@/components/macroscopic-life/NestedInstrument";
 import { ML_BASE } from "@/content/macroscopic-life/catalog";
 
 export default function MacroscopicLifeThresholdPage() {
   return (
     <section className="ml-threshold">
-      <p className="ml-kicker">Book One</p>
-      <h1 className="ml-display" style={{ fontSize: "clamp(3rem, 9vw, 6.4rem)", margin: "0.6rem 0 1rem" }}>
-        Macroscopic Life
-      </h1>
-      <p style={{ fontFamily: "var(--ml-serif)", fontSize: "1.35rem", maxWidth: "28rem" }}>
-        What If We Are the Microbe?
-      </p>
-      <p className="ml-line" style={{ marginTop: "2rem" }}>
-        The microbe is a perspective, not a diagnosis.
-      </p>
-      <p style={{ color: "var(--ml-mute)", maxWidth: "34rem" }}>
-        This book does not assume that a larger organism exists. It asks what evidence could distinguish
-        higher-order individuality from an extraordinarily complex organized world.
-      </p>
-      <Link className="ml-btn" href={`${ML_BASE}/book`}>
-        Enter Book One
-      </Link>
-      <div className="ml-scale" aria-label="Observational scale">
-        <span>molecule</span>
-        <span>cell</span>
-        <span>tissue</span>
-        <span>organ</span>
-        <span>organism</span>
-        <span>network</span>
-        <span>civilization</span>
+      <div className="ml-threshold-copy">
+        <p className="ml-kicker">Observational instrument · Book One</p>
+        <h1 className="ml-display">Macroscopic Life</h1>
+        <p className="ml-threshold-sub">What if we are the microbe?</p>
+        <p className="ml-line">The microbe is a perspective, not a diagnosis.</p>
+        <p className="ml-lede">
+          Sixteen chapters. Eighteen figures. Eleven tests that can fail. The book does not ask you
+          to believe in a larger organism. It asks what evidence would be allowed to count.
+        </p>
+        <div className="ml-actions">
+          <Link className="ml-btn" href={`${ML_BASE}/book/01-the-microbe`}>
+            Open the first window
+          </Link>
+          <Link className="ml-btn ml-btn-ghost" href={`${ML_BASE}/book`}>
+            Enter the atlas
+          </Link>
+        </div>
+        <div className="ml-scale" aria-label="Observational scale, nested not ranked">
+          <span>molecule</span>
+          <span>cell</span>
+          <span>tissue</span>
+          <span>organ</span>
+          <span data-here="true">organism</span>
+          <span>network</span>
+          <span>civilization</span>
+        </div>
       </div>
+      <NestedInstrument />
     </section>
   );
 }

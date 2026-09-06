@@ -9,18 +9,16 @@ export default function FiguresIndexPage() {
   return (
     <div className="ml-page">
       <p className="ml-kicker">First-edition core</p>
-      <h1 className="ml-display" style={{ fontSize: "2.6rem", margin: "0.4rem 0 0.8rem" }}>
-        Eighteen figures. Each one is a scientific object.
-      </h1>
-      <p style={{ color: "var(--ml-mute)", maxWidth: "36rem", marginBottom: "1.5rem" }}>
+      <h1 className="ml-display ml-page-title">Eighteen figures. Each one is a scientific object.</h1>
+      <p className="ml-lede">
         Image, evidence class, takeaway, and brake travel together. If the brake cannot fit, the
         figure is not allowed to leave this page.
       </p>
-      <div className="ml-grid" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(17rem, 1fr))" }}>
+      <div className="ml-figure-grid">
         {FIGURES.map((figure) => (
-          <div key={figure.id}>
+          <div key={figure.id} className="ml-figure-cell">
             <FigureById id={figure.id} href={`${ML_BASE}/figures/${figure.id}`} />
-            <p style={{ marginTop: "0.45rem" }}>
+            <p className="ml-also">
               <Link href={`${ML_BASE}/book/${CHAPTERS.find((chapter) => chapter.number === figure.chapter)?.slug ?? ""}`}>
                 Chapter {figure.chapter}
               </Link>

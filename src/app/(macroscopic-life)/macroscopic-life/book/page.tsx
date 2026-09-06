@@ -10,28 +10,34 @@ export default function BookAtlasPage() {
   const frontMatter = loadFrontMatter();
   return (
     <div className="ml-page">
-      <p className="ml-kicker">Act atlas</p>
-      <h1 className="ml-display" style={{ fontSize: "2.6rem", margin: "0.4rem 0 1.2rem" }}>
-        Sixteen chapters. Five windows.
-      </h1>
-      <MarkdownBody markdown={frontMatter} />
-      <div className="ml-grid" style={{ marginTop: "2rem" }}>
-        {ACTS.map((act) => (
-          <section key={act.id} className="ml-card">
-            <p className="ml-kicker">Act {act.roman}</p>
-            <h2 className="ml-display" style={{ fontSize: "1.6rem", margin: "0.35rem 0 0.5rem" }}>
-              {act.title}
-            </h2>
-            <p style={{ color: "var(--ml-mute)", marginBottom: "0.8rem" }}>{act.feeling}</p>
-            {CHAPTERS.filter((chapter) => chapter.act === act.id).map((chapter) => (
-              <p key={chapter.slug} style={{ margin: "0.35rem 0" }}>
-                <Link href={`${ML_BASE}/book/${chapter.slug}`}>
-                  {String(chapter.number).padStart(2, "0")} {chapter.title}
-                </Link>
-              </p>
-            ))}
-          </section>
-        ))}
+      <p className="ml-kicker">Five nested windows</p>
+      <h1 className="ml-display ml-page-title">Enter at the scale you can stand.</h1>
+      <div className="ml-atlas-intro">
+        <MarkdownBody markdown={frontMatter} />
+      </div>
+      <div className="ml-windows">
+        {ACTS.map((act) => {
+          const chapters = CHAPTERS.filter((chapter) => chapter.act === act.id);
+          return (
+            <Link
+              key={act.id}
+              href={`${ML_BASE}/book/${chapters[0]?.slug ?? ""}`}
+              className="ml-window"
+              data-act={act.id}
+            >
+              <p className="ml-kicker">Act {act.roman}</p>
+              <strong>{act.title}</strong>
+              <em>{act.feeling}</em>
+              <ol>
+                {chapters.map((chapter) => (
+                  <li key={chapter.slug}>
+                    <span>{String(chapter.number).padStart(2, "0")}</span> {chapter.title}
+                  </li>
+                ))}
+              </ol>
+            </Link>
+          );
+        })}
       </div>
     </div>
   );
