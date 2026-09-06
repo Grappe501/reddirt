@@ -12,7 +12,7 @@
 | Exact-anchor slots regenerated | 46/46 |
 | Deterministic unique candidates | 11/46 |
 | Manual exact-anchor selections required | 35 |
-| Operator approval decisions still REVIEW | 11/46 |
+| Operator approval decisions still REVIEW | 4/46 |
 | Approved 46/46 manifest | NOT YET AUTHORIZED |
 | R14 integrity verifier | BLOCKED UNTIL 46/46 APPROVAL |
 | R15 RC1 merge gate | BLOCKED |
