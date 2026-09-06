@@ -1,0 +1,53 @@
+{
+  "status": "PUB-9C PASS-03 BATCH 4 — VERIFIED AUTHORITY EXPANSION",
+  "policy": "Authorities support ordinary bioelectric and developmental mechanisms only. They do not establish mystical energy, organism-scale cognition, target representation, or civilization-scale individuality.",
+  "records": [
+    {
+      "id": "BIB-034",
+      "chapters": [7],
+      "citation": "Yang, Min, and William J. Brackenbury. 2018. ‘Membrane Potential and Cancer Progression.’ Frontiers in Physiology 9: 1198. PMCID PMC6258788; PMID 30519193.",
+      "pmid": "30519193",
+      "pmcid": "PMC6258788",
+      "relationshipToMacroscopicLife": "CALIBRATION",
+      "whatThisSourceSupports": "Resting membrane potential is a general cellular property maintained through ion-channel activity and has biological roles outside classic excitable tissues.",
+      "whatThisSourceDoesNotSupport": "It does not establish a hidden life force, consciousness, agency, or higher-order organismhood.",
+      "whereMacroscopicLifeGoesBeyondIt": "Macroscopic Life uses membrane voltage as one ordinary physical mechanism that can participate in larger-scale coordination while keeping voltage distinct from intelligence or agency."
+    },
+    {
+      "id": "BIB-035",
+      "chapters": [8],
+      "citation": "Woolley, Thomas E., Ruth E. Baker, Eamonn A. Gaffney, and Philip K. Maini. 2021. ‘Introduction to Recent Progress and Open Frontiers in Turing’s Theory of Morphogenesis.’ Philosophical Transactions of the Royal Society A 379: 20200264. PMCID PMC8580473.",
+      "pmcid": "PMC8580473",
+      "relationshipToMacroscopicLife": "ANCESTRY",
+      "whatThisSourceSupports": "Reaction–diffusion and Turing-instability frameworks can generate spatial pattern from local interactions, while the biological applicability of particular mechanisms remains an empirical question.",
+      "whatThisSourceDoesNotSupport": "It does not establish that reaction–diffusion is a universal developmental mechanism, a complete organismal blueprint, or evidence of consciousness or organismhood.",
+      "whereMacroscopicLifeGoesBeyondIt": "Macroscopic Life uses reaction–diffusion as a calibration example showing that local interactions can generate higher-scale pattern without a central planner."
+    },
+    {
+      "id": "BIB-036",
+      "chapters": [8],
+      "citation": "Davidson, Eric H., and Michael S. Levine. 2008. ‘Properties of Developmental Gene Regulatory Networks.’ Proceedings of the National Academy of Sciences 105 (51): 20063–20066. https://doi.org/10.1073/pnas.0806007105.",
+      "pmid": "19104053",
+      "pmcid": "PMC2629280",
+      "doi": "10.1073/pnas.0806007105",
+      "relationshipToMacroscopicLife": "ANCESTRY",
+      "whatThisSourceSupports": "Developmental gene-regulatory networks contain causal subcircuits that execute reproducible developmental functions and help explain how cell states and patterning are generated.",
+      "whatThisSourceDoesNotSupport": "It does not imply that a genome contains a miniature anatomical blueprint, that development is controlled by one mechanism, or that reliable morphogenesis requires conscious target representation.",
+      "whereMacroscopicLifeGoesBeyondIt": "Macroscopic Life uses developmental regulatory architecture as a precedent for reliable higher-scale form arising from distributed local mechanisms."
+    }
+  ],
+  "slot_resolution": {
+    "18": ["BIB-003"],
+    "19": ["BIB-034"],
+    "20": ["BIB-019"],
+    "21": ["BIB-004"],
+    "22": ["BIB-035"],
+    "23": ["BIB-036"]
+  },
+  "hard_cautions": [
+    "ORDINARY BIOPHYSICS CAN IMPLEMENT EXTRAORDINARY ORGANIZATION; ELECTRICITY IS NOT A MYSTICAL EXPLANATION.",
+    "FREQUENCY IS A MEASUREMENT, NOT AN EXPLANATION.",
+    "SPONTANEOUS PATTERN FORMATION DOES NOT EQUAL A COMPLETE ORGANISMAL BLUEPRINT.",
+    "RELIABLE DEVELOPMENT DOES NOT REQUIRE CONSCIOUS REPRESENTATION OF A TARGET."
+  ]
+}
