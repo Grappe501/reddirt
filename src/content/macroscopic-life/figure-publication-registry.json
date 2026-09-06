@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "1.0",
+  "figures": {
+    "fig-02": { "status": "fallback-svg", "publicAssetPath": "/macroscopic-life/figures/fig-02.webp", "sha256": null, "proofManifest": null },
+    "fig-03": { "status": "fallback-svg", "publicAssetPath": "/macroscopic-life/figures/fig-03.webp", "sha256": null, "proofManifest": null },
+    "fig-04": { "status": "fallback-svg", "publicAssetPath": "/macroscopic-life/figures/fig-04.webp", "sha256": null, "proofManifest": null },
+    "fig-05": { "status": "fallback-svg", "publicAssetPath": "/macroscopic-life/figures/fig-05.webp", "sha256": null, "proofManifest": null },
+    "fig-06": { "status": "fallback-svg", "publicAssetPath": "/macroscopic-life/figures/fig-06.webp", "sha256": null, "proofManifest": null },
+    "fig-07": { "status": "fallback-svg", "publicAssetPath": "/macroscopic-life/figures/fig-07.webp", "sha256": null, "proofManifest": null },
+    "fig-08": { "status": "fallback-svg", "publicAssetPath": "/macroscopic-life/figures/fig-08.webp", "sha256": null, "proofManifest": null },
+    "fig-09": { "status": "fallback-svg", "publicAssetPath": "/macroscopic-life/figures/fig-09.webp", "sha256": null, "proofManifest": null },
+    "fig-10": { "status": "fallback-svg", "publicAssetPath": "/macroscopic-life/figures/fig-10.webp", "sha256": null, "proofManifest": null },
+    "fig-11": { "status": "fallback-svg", "publicAssetPath": "/macroscopic-life/figures/fig-11.webp", "sha256": null, "proofManifest": null },
+    "fig-12": { "status": "fallback-svg", "publicAssetPath": "/macroscopic-life/figures/fig-12.webp", "sha256": null, "proofManifest": null },
+    "fig-13": { "status": "fallback-svg", "publicAssetPath": "/macroscopic-life/figures/fig-13.webp", "sha256": null, "proofManifest": null },
+    "fig-14": { "status": "fallback-svg", "publicAssetPath": "/macroscopic-life/figures/fig-14.webp", "sha256": null, "proofManifest": null },
+    "fig-15": { "status": "fallback-svg", "publicAssetPath": "/macroscopic-life/figures/fig-15.webp", "sha256": null, "proofManifest": null },
+    "fig-16": { "status": "fallback-svg", "publicAssetPath": "/macroscopic-life/figures/fig-16.webp", "sha256": null, "proofManifest": null }
+  }
+}
