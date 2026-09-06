@@ -1,0 +1,43 @@
+name: Macroscopic Life R15 figure recovery inventory
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/macroscopic-life-r15-figure-recovery-inventory.yml'
+      - 'research/macroscopic-life/scripts/inventory-figure-r3-production-assets.mjs'
+      - 'research/macroscopic-life/visuals/figure-r3-proof-copy-v1.json'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  figure-recovery-inventory:
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Inventory current and historical figure production assets
+        id: inventory
+        continue-on-error: true
+        run: node research/macroscopic-life/scripts/inventory-figure-r3-production-assets.mjs
+      - name: Commit recovery inventory
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -f research/macroscopic-life/visuals/figure-r3-recovery-inventory-v1.json research/macroscopic-life/visuals/figure-r3-recovery-control.md
+          if ! git diff --cached --quiet; then
+            git commit -m 'PUB-9C R15: record figure production recovery inventory [skip ci]'
+            git push origin HEAD:main
+          fi
+      - name: Enforce figure production closure gate
+        if: steps.inventory.outcome != 'success'
+        run: |
+          echo 'R15 Figure Rail remains gated. Recover exact approved production binaries; do not redesign figures.'
+          exit 1
