@@ -6,6 +6,8 @@ on:
     paths:
       - '.github/workflows/macroscopic-life-ha3.yml'
       - 'research/macroscopic-life/scripts/run-hostile-audit-remediation-pass-03.mjs'
+      - 'research/macroscopic-life/scripts/materialize-pub-9c-approved-anchor-manifest.mjs'
+      - 'research/macroscopic-life/scripts/verify-pub-9c-approved-anchor-manifest.mjs'
       - 'research/macroscopic-life/scripts/populate-pub-9c-exact-endnote-anchors.mjs'
       - 'research/macroscopic-life/manuscript/book-one-exact-endnote-anchor-approvals-pub-9c-v1.0.json'
   workflow_dispatch:
@@ -24,21 +26,21 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - name: Run Pass-03 requalification
+      - name: Run Pass-03 requalification and R14 verifier
         id: requal
         continue-on-error: true
         run: node research/macroscopic-life/scripts/run-hostile-audit-remediation-pass-03.mjs
-      - name: Commit candidate and control artifacts
+      - name: Commit candidate, approved-anchor, and control artifacts
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -f research/macroscopic-life/manuscript/book-one-exact-endnote-anchor-manifest-pub-9c-resolved-v1.0.json research/macroscopic-life/manuscript/book-one-exact-endnote-anchor-review-pub-9c-v1.0.md research/macroscopic-life/hostile-audit/remediation-pass-03-control.md
+          git add -f research/macroscopic-life/manuscript/book-one-exact-endnote-anchor-manifest-pub-9c-resolved-v1.0.json research/macroscopic-life/manuscript/book-one-exact-endnote-anchor-review-pub-9c-v1.0.md research/macroscopic-life/manuscript/book-one-exact-endnote-anchor-manifest-pub-9c-approved-v1.0.json research/macroscopic-life/hostile-audit/remediation-pass-03-control.md
           if ! git diff --cached --quiet; then
-            git commit -m 'Hostile audit remediation pass 3: regenerate scholarly anchor candidates [skip ci]'
+            git commit -m 'Hostile audit remediation pass 3: materialize R14 scholarly proof [skip ci]'
             git push origin HEAD:main
           fi
       - name: Enforce scholarly gate
         if: steps.requal.outcome != 'success'
         run: |
-          echo 'Pass 03 remains correctly gated: candidate/manual review or operator approvals remain unresolved.'
+          echo 'Pass 03 remains correctly gated: scholarly approval or R14 exact-anchor integrity is unresolved.'
           exit 1
