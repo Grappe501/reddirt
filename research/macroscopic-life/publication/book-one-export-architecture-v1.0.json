@@ -1,0 +1,24 @@
+{
+  "status": "PRODUCTION ARCHITECTURE — REQUIRES RC1 FREEZE BEFORE EXPORT",
+  "canonicalInput": "release/book-one-rc1-freeze-record.json",
+  "canonicalReader": "manuscript/book-one-master-v1.0-reader-endnoted.md",
+  "principle": "One frozen text and one verified figure set feed every format. No format-specific scientific rewrite.",
+  "outputs": {
+    "printPdf": {
+      "purpose": "professional print/interior proof and distribution master",
+      "trim": "6 x 9 in provisional until publisher/distributor choice is locked",
+      "requirements": ["embedded fonts", "print-safe figure resolution", "widow/orphan review", "figure/caption integrity", "endnote and bibliography proof", "page-number and running-head proof", "grayscale legibility check"]
+    },
+    "epub": {
+      "purpose": "reflowable digital edition",
+      "requirements": ["semantic headings", "linked table of contents", "linked endnotes/backlinks", "alt text for figures", "no information conveyed by color alone", "responsive images", "metadata validation"]
+    },
+    "web": {
+      "purpose": "canonical public reading experience",
+      "requirements": ["chapter deep links", "figure deep links", "source/endnote navigation", "mobile proof", "keyboard navigation", "reduced-motion respect", "share metadata", "canonical publication version displayed"]
+    }
+  },
+  "frontMatterSlots": ["half-title", "title-page", "copyright", "edition/version statement", "scientific-method note", "contents"],
+  "backMatterSlots": ["endnotes", "bibliography", "figure/source acknowledgments", "about-the-project"],
+  "hardStops": ["No export before RC1 freeze PASS.", "No figure substitution outside verified R3 registry.", "No silent prose edits during layout.", "No invented ISBN, publisher, copyright owner, price, or distribution metadata."]
+}
