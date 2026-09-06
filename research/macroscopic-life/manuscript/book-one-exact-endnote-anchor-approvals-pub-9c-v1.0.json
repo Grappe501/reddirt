@@ -1,5 +1,5 @@
 {
-  "status": "PASS-03 SCHOLARLY REQUALIFICATION IN PROGRESS — 29/46 APPROVED",
+  "status": "PASS-03 SCHOLARLY REQUALIFICATION IN PROGRESS — 35/46 APPROVED",
   "instructions": "Each APPROVE decision records a sentence-level scholarly review against the physical PUB-9C master and assigned authority burden. Never approve by proximity alone. Unreviewed notes remain REVIEW.",
   "lockedMasterSha256": "3416c4aabbaabfef8a7263104fc23a36f8e482e6a7d2c4197329296f20635708",
   "approvals": [
@@ -32,6 +32,12 @@
     {"note":27,"decision":"APPROVE","exactAnchor":"Trained-immunity research examines persistent changes in innate-system responses.","reviewBatch":"HA3-B05","authorityIds":["BIB-005"]},
     {"note":28,"decision":"APPROVE","exactAnchor":"Plants can show persistent physiological or regulatory consequences of prior stress.","reviewBatch":"HA3-B05","authorityIds":["BIB-037"]},
     {"note":29,"decision":"APPROVE","exactAnchor":"The comparative point is narrower: biological systems can preserve causally relevant history without conscious recollection and without preserving every original component.","reviewBatch":"HA3-B05","authorityIds":["BIB-005","BIB-037","PROJECT-SYNTHESIS"]},
-    {"note":30,"decision":"REVIEW"},{"note":31,"decision":"REVIEW"},{"note":32,"decision":"REVIEW"},{"note":33,"decision":"REVIEW"},{"note":34,"decision":"REVIEW"},{"note":35,"decision":"REVIEW"},{"note":36,"decision":"REVIEW"},{"note":37,"decision":"REVIEW"},{"note":38,"decision":"REVIEW"},{"note":39,"decision":"REVIEW"},{"note":40,"decision":"REVIEW"},{"note":41,"decision":"REVIEW"},{"note":42,"decision":"REVIEW"},{"note":43,"decision":"REVIEW"},{"note":44,"decision":"REVIEW"},{"note":45,"decision":"REVIEW"},{"note":46,"decision":"REVIEW"}
+    {"note":30,"decision":"APPROVE","exactAnchor":"Circadian systems provide a clean biological example. Endogenous oscillators can persist under constant conditions and become entrained by environmental cues such as light-dark cycles. They allow physiology and behavior to be organized relative to recurring daily structure.","reviewBatch":"HA3-B06","authorityIds":["BIB-023"]},
+    {"note":31,"decision":"APPROVE","exactAnchor":"Preparation can be produced by fixed response, entrainment, learning, or regulation.","reviewBatch":"HA3-B06","authorityIds":["BIB-024"]},
+    {"note":32,"decision":"APPROVE","exactAnchor":"For a **Prediction Advantage** claim, name four things before looking at the result: the physical predictor or measured macro-state, the prospective target, the error measure, and the strongest fair lower-level, null, or simpler baseline.","reviewBatch":"HA3-B06","authorityIds":["BIB-025","PROJECT-CRITERION"]},
+    {"note":33,"decision":"APPROVE","exactAnchor":"Swarms, teams, institutions, and other systems can display coherent performance through interactions among components. Similar task performance does not imply identical architecture.","reviewBatch":"HA3-B06","authorityIds":["BIB-006"]},
+    {"note":34,"decision":"APPROVE","exactAnchor":"Human cognition also depends causally on structures outside the biological brain: writing, maps, instruments, calculators, databases, software, and other external resources. Whether some of those resources are constitutive parts of cognition is a philosophical and scientific dispute this book need not settle.","reviewBatch":"HA3-B06","authorityIds":["BIB-007"]},
+    {"note":35,"decision":"APPROVE","exactAnchor":"Relations among physical states can matter: timing, topology, spatial configuration, correlation structure, interaction history, or distributed state.","reviewBatch":"HA3-B06","authorityIds":["BIB-008"]},
+    {"note":36,"decision":"REVIEW"},{"note":37,"decision":"REVIEW"},{"note":38,"decision":"REVIEW"},{"note":39,"decision":"REVIEW"},{"note":40,"decision":"REVIEW"},{"note":41,"decision":"REVIEW"},{"note":42,"decision":"REVIEW"},{"note":43,"decision":"REVIEW"},{"note":44,"decision":"REVIEW"},{"note":45,"decision":"REVIEW"},{"note":46,"decision":"REVIEW"}
   ]
 }
