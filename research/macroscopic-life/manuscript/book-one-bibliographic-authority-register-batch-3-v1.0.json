@@ -1,0 +1,20 @@
+{
+  "status": "PUB-9C PASS-03 BATCH 3 — VERIFIED AUTHORITY EXPANSION",
+  "policy": "Metadata verified against publisher/authoritative bibliographic records. This source supports plurality of biological individuality criteria and physiological/immune individuation; it does not establish a single universal boundary criterion or civilization-scale individuality.",
+  "records": [
+    {
+      "id": "BIB-031",
+      "chapters": [6],
+      "citation": "Pradeu, Thomas. 2016. ‘Organisms or Biological Individuals? Combining Physiological and Evolutionary Individuality.’ Biology & Philosophy 31 (6): 797–817. https://doi.org/10.1007/s10539-016-9551-1.",
+      "doi": "10.1007/s10539-016-9551-1",
+      "relationshipToMacroscopicLife": "CALIBRATION",
+      "whatThisSourceSupports": "Biological individuality is not exhausted by one criterion; physiological and evolutionary individuality must be distinguished, and immunological/physiological integration can contribute to organismal individuation.",
+      "whatThisSourceDoesNotSupport": "It does not make immune response a universal membership oracle, does not imply that all symbionts belong to one evolutionary individual, and does not establish civilization-scale organismhood.",
+      "whereMacroscopicLifeGoesBeyondIt": "Macroscopic Life operationalizes multiple boundary dimensions and uses perturbation plus model competition to test candidate higher-order boundaries rather than treating any one philosophical criterion as decisive."
+    }
+  ],
+  "slot_resolution": {
+    "16": ["BIB-031"],
+    "17": ["BIB-031"]
+  }
+}
