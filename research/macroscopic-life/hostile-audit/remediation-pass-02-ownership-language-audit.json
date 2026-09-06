@@ -1,0 +1,155 @@
+{
+  "schemaVersion": "1.0",
+  "pass": "HOSTILE-AUDIT-REMEDIATION-PASS-02",
+  "masterSha256": "3416c4aabbaabfef8a7263104fc23a36f8e482e6a7d2c4197329296f20635708",
+  "riskVerbs": [
+    "remembers",
+    "predicts",
+    "repairs",
+    "thinks",
+    "decides",
+    "wants",
+    "knows",
+    "learns",
+    "acts",
+    "senses",
+    "sees",
+    "hears",
+    "stores",
+    "controls",
+    "heals",
+    "reproduces",
+    "inherits",
+    "adapts"
+  ],
+  "totalRiskVerbOccurrences": 20,
+  "classifications": {
+    "SAFE_LITERAL": 17,
+    "SAFE_METAPHOR": 2,
+    "NEEDS_QUALIFICATION": 1,
+    "P1_VIOLATION": 0
+  },
+  "unresolvedP1Violations": 0,
+  "occurrences": [
+    {
+      "line": 43,
+      "verb": "senses",
+      "classification": "SAFE_LITERAL",
+      "text": "An **observational window** is the portion of reality an observer can access from its position, using the senses or instruments available to it, across the space and time it can observe."
+    },
+    {
+      "line": 121,
+      "verb": "predicts",
+      "classification": "SAFE_METAPHOR",
+      "text": "If civilization lacks a required form of integration, record the failure. If an electrical mystery turns out to be ordinary physiology, good. If a pattern is merely resemblance, discard it. If a higher-level description predicts nothing better than the behavior of its parts, the grander explanation may be unnecessary."
+    },
+    {
+      "line": 133,
+      "verb": "senses",
+      "classification": "SAFE_LITERAL",
+      "text": "## Chapter 2 — The World Your Senses Built"
+    },
+    {
+      "line": 299,
+      "verb": "acts",
+      "classification": "SAFE_LITERAL",
+      "text": "If someone says, `The larger organism acts too slowly to detect, leaves no measurable consequences, and every failed test merely proves it is harder to detect,` the idea has escaped empirical science."
+    },
+    {
+      "line": 387,
+      "verb": "controls",
+      "classification": "SAFE_LITERAL",
+      "text": "Cancer includes diseases in which genetic and cellular changes disrupt normal controls over proliferation, survival, movement, interaction, and tissue organization.[4.1]"
+    },
+    {
+      "line": 537,
+      "verb": "acts",
+      "classification": "SAFE_METAPHOR",
+      "text": "Those facts do not yet demonstrate civilization-level biological reproduction."
+    },
+    {
+      "line": 683,
+      "verb": "knows",
+      "classification": "SAFE_LITERAL",
+      "text": "# ACT III — THE BODY KNOWS MORE THAN THE CELL"
+    },
+    {
+      "line": 719,
+      "verb": "acts",
+      "classification": "SAFE_LITERAL",
+      "text": "Electrical state does not operate alone. It interacts with biochemical signaling, gene regulation, mechanics, metabolism, extracellular structure, and tissue geometry."
+    },
+    {
+      "line": 871,
+      "verb": "repairs",
+      "classification": "SAFE_LITERAL",
+      "text": "When a system `repairs` itself, ask what actually returned: barrier function, cell number, tissue mass, tissue type, shape, position, connections, or larger anatomical pattern."
+    },
+    {
+      "line": 969,
+      "verb": "acts",
+      "classification": "NEEDS_QUALIFICATION",
+      "text": "Civilization plainly preserves records through books, archives, databases, institutions, artifacts, trained successors, and communication networks. That establishes civilization-scale storage and transmission."
+    },
+    {
+      "line": 1001,
+      "verb": "knows",
+      "classification": "SAFE_LITERAL",
+      "text": "This is not evidence that the organism consciously knows tomorrow. It is evidence that present internal state can be structured by regularities in the environment."
+    },
+    {
+      "line": 1079,
+      "verb": "knows",
+      "classification": "SAFE_LITERAL",
+      "text": "No neuron in your brain knows your name."
+    },
+    {
+      "line": 1099,
+      "verb": "sees",
+      "classification": "SAFE_LITERAL",
+      "text": "What sees for the inner observer?"
+    },
+    {
+      "line": 1550,
+      "verb": "acts",
+      "classification": "SAFE_LITERAL",
+      "text": "Those facts establish distributed capability and macroscopic organization."
+    },
+    {
+      "line": 1649,
+      "verb": "acts",
+      "classification": "SAFE_LITERAL",
+      "text": "### 6 — Who, Exactly, Acts?"
+    },
+    {
+      "line": 1661,
+      "verb": "predicts",
+      "classification": "SAFE_LITERAL",
+      "text": "An ecology of cooperating and competing agents predicts this mixture comfortably."
+    },
+    {
+      "line": 1868,
+      "verb": "senses",
+      "classification": "SAFE_LITERAL",
+      "text": "Unseen forces, auras, spiritual realities, simulation arguments, and other metaphysical possibilities do not enter the scientific evidence ledger merely because human senses are limited."
+    },
+    {
+      "line": 1966,
+      "verb": "repairs",
+      "classification": "SAFE_LITERAL",
+      "text": "Measure what repairs itself."
+    },
+    {
+      "line": 1968,
+      "verb": "predicts",
+      "classification": "SAFE_LITERAL",
+      "text": "Measure what predicts before the event."
+    },
+    {
+      "line": 1990,
+      "verb": "senses",
+      "classification": "SAFE_LITERAL",
+      "text": "Disciplined enough to admit that neither our senses nor our scale are entitled to the last word."
+    }
+  ]
+}

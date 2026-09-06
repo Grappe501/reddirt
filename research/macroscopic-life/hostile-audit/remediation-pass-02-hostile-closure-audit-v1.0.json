@@ -1,0 +1,145 @@
+{
+  "schemaVersion": "1.0",
+  "pass": "HOSTILE-AUDIT-REMEDIATION-PASS-02",
+  "masterSha256": "3416c4aabbaabfef8a7263104fc23a36f8e482e6a7d2c4197329296f20635708",
+  "status": "PASS",
+  "passed": 16,
+  "total": 16,
+  "attacks": [
+    {
+      "id": "H01",
+      "attack": "civilization owns memory",
+      "required": [
+        "A FUNCTION CAN EXIST INSIDE A SYSTEM BEFORE THE SYSTEM OWNS THE FUNCTION.",
+        "GLOBAL MEMORY CAPACITY ≠ A GLOBAL REMEMBERER."
+      ],
+      "pass": true
+    },
+    {
+      "id": "H02",
+      "attack": "maintenance proves autonomous repair",
+      "required": [
+        "MAINTENANCE INSIDE A SYSTEM ≠ REPAIR AUTONOMY OF THE SYSTEM AS A WHOLE."
+      ],
+      "pass": true
+    },
+    {
+      "id": "H03",
+      "attack": "retrospective fit proves prediction",
+      "required": [
+        "NO PROSPECTIVE TARGET + NO ERROR METRIC + NO BASELINE = NO PREDICTION ADVANTAGE.",
+        "Hindsight fit is not foresight."
+      ],
+      "pass": true
+    },
+    {
+      "id": "H04",
+      "attack": "information is a substance",
+      "required": [
+        "INFORMATION IS NOT A SUBSTANCE. NAME THE RELATIONSHIP OR FUNCTION YOU MEAN."
+      ],
+      "pass": true
+    },
+    {
+      "id": "H05",
+      "attack": "agency means consciousness",
+      "required": [
+        "GOAL-DIRECTED REGULATION ≠ CONSCIOUS INTENTION.",
+        "HIGHER-ORDER INDIVIDUALITY ≠ HIGHER-ORDER CONSCIOUSNESS."
+      ],
+      "pass": true
+    },
+    {
+      "id": "H06",
+      "attack": "Eleven Tests are independent votes",
+      "required": [
+        "TESTS ARE QUESTIONS. EVIDENCE UNITS ARE OBSERVATIONS. DEPENDENCE MUST BE DISCLOSED.",
+        "A pass count is therefore forbidden"
+      ],
+      "pass": true
+    },
+    {
+      "id": "H07",
+      "attack": "connectivity proves integration",
+      "required": [
+        "CONNECTED IS NOT INTEGRATED. INTEGRATION HAS TO SURVIVE PERTURBATION AS A CAUSAL CLAIM."
+      ],
+      "pass": true
+    },
+    {
+      "id": "H08",
+      "attack": "one experiment equals three confirmations",
+      "required": [
+        "does not turn one experiment into three independent confirmations"
+      ],
+      "pass": true
+    },
+    {
+      "id": "H09",
+      "attack": "higher-level causation is a new force",
+      "required": [
+        "HIGHER-LEVEL CAUSAL EFFICACY ≠ A NEW FORCE."
+      ],
+      "pass": true
+    },
+    {
+      "id": "H10",
+      "attack": "Model C is scientific failure",
+      "required": [
+        "MODEL C IS A DISCOVERY, NOT A CONSOLATION PRIZE.",
+        "REAL MACROSCOPIC ORGANIZATION CAN EXIST WITHOUT A NEW HIGHER-ORDER INDIVIDUAL."
+      ],
+      "pass": true
+    },
+    {
+      "id": "H11",
+      "attack": "resonance implies mystical frequency",
+      "required": [
+        "FREQUENCY IS A MEASUREMENT, NOT AN EXPLANATION.",
+        "SYNCHRONY IS A RELATIONSHIP, NOT AN IDENTITY CLAIM."
+      ],
+      "pass": true
+    },
+    {
+      "id": "H12",
+      "attack": "bioelectricity is exotic energy",
+      "required": [
+        "ORDINARY BIOPHYSICS CAN IMPLEMENT EXTRAORDINARY ORGANIZATION; ELECTRICITY IS NOT A MYSTICAL EXPLANATION."
+      ],
+      "pass": true
+    },
+    {
+      "id": "H13",
+      "attack": "recurrence proves civilizational DNA",
+      "required": [
+        "CONVERGENCE IS A HYPOTHESIS TO EXPLAIN, NOT EVIDENCE OF A HIDDEN GENOME."
+      ],
+      "pass": true
+    },
+    {
+      "id": "H14",
+      "attack": "Macroscopic Life claims established fields as inventions",
+      "required": [
+        "does **not** claim to have invented emergence",
+        "Priority for any narrower subclaim would require a dedicated prior-art review."
+      ],
+      "pass": true
+    },
+    {
+      "id": "H15",
+      "attack": "higher-level efficacy proves theology",
+      "required": [
+        "HIGHER-LEVEL CAUSAL EFFICACY ≠ SUPERNATURAL CAUSATION."
+      ],
+      "pass": true
+    },
+    {
+      "id": "H16",
+      "attack": "We Are the Microbe is a diagnosis",
+      "required": [
+        "THE MICROBE IS A PERSPECTIVE, NOT A DIAGNOSIS."
+      ],
+      "pass": true
+    }
+  ]
+}

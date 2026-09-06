@@ -1,0 +1,297 @@
+{
+  "schemaVersion": "1.0",
+  "pass": "HOSTILE-AUDIT-REMEDIATION-PASS-02",
+  "masterSha256": "3416c4aabbaabfef8a7263104fc23a36f8e482e6a7d2c4197329296f20635708",
+  "baselineApprovedManifestPresent": false,
+  "baselineApprovedManifestIs46Pass": false,
+  "baselineStatus": "NO_PHYSICAL_46_46_APPROVED_BASELINE",
+  "policy": "The committed scholarly state has 46 open anchor slots and 46 REVIEW decisions. Because no physical 46/46 approved manifest exists, all slots require scholarly requalification; Pass 02 does not invent or silently approve exact anchors.",
+  "totalSlots": 46,
+  "impactedSlots": 46,
+  "regeneratedOrReviewed": 0,
+  "classificationCounts": {
+    "UNCHANGED_EXACT": 0,
+    "MOVED_TEXT_UNCHANGED": 0,
+    "ANCHOR_TEXT_CHANGED": 0,
+    "CONTEXT_CHANGED": 46,
+    "NEW_AUTHORITY_REVIEW_REQUIRED": 0
+  },
+  "slots": [
+    {
+      "note": 1,
+      "chapter": 1,
+      "classification": "CONTEXT_CHANGED",
+      "reason": "Physical Pass-02 master now exists/changed while committed exact-anchor slot remains OPEN and operator decision remains REVIEW; exact scholarly requalification is required."
+    },
+    {
+      "note": 2,
+      "chapter": 2,
+      "classification": "CONTEXT_CHANGED",
+      "reason": "Physical Pass-02 master now exists/changed while committed exact-anchor slot remains OPEN and operator decision remains REVIEW; exact scholarly requalification is required."
+    },
+    {
+      "note": 3,
+      "chapter": 2,
+      "classification": "CONTEXT_CHANGED",
+      "reason": "Physical Pass-02 master now exists/changed while committed exact-anchor slot remains OPEN and operator decision remains REVIEW; exact scholarly requalification is required."
+    },
+    {
+      "note": 4,
+      "chapter": 2,
+      "classification": "CONTEXT_CHANGED",
+      "reason": "Physical Pass-02 master now exists/changed while committed exact-anchor slot remains OPEN and operator decision remains REVIEW; exact scholarly requalification is required."
+    },
+    {
+      "note": 5,
+      "chapter": 2,
+      "classification": "CONTEXT_CHANGED",
+      "reason": "Physical Pass-02 master now exists/changed while committed exact-anchor slot remains OPEN and operator decision remains REVIEW; exact scholarly requalification is required."
+    },
+    {
+      "note": 6,
+      "chapter": 2,
+      "classification": "CONTEXT_CHANGED",
+      "reason": "Physical Pass-02 master now exists/changed while committed exact-anchor slot remains OPEN and operator decision remains REVIEW; exact scholarly requalification is required."
+    },
+    {
+      "note": 7,
+      "chapter": 3,
+      "classification": "CONTEXT_CHANGED",
+      "reason": "Physical Pass-02 master now exists/changed while committed exact-anchor slot remains OPEN and operator decision remains REVIEW; exact scholarly requalification is required."
+    },
+    {
+      "note": 8,
+      "chapter": 3,
+      "classification": "CONTEXT_CHANGED",
+      "reason": "Physical Pass-02 master now exists/changed while committed exact-anchor slot remains OPEN and operator decision remains REVIEW; exact scholarly requalification is required."
+    },
+    {
+      "note": 9,
+      "chapter": 4,
+      "classification": "CONTEXT_CHANGED",
+      "reason": "Physical Pass-02 master now exists/changed while committed exact-anchor slot remains OPEN and operator decision remains REVIEW; exact scholarly requalification is required."
+    },
+    {
+      "note": 10,
+      "chapter": 4,
+      "classification": "CONTEXT_CHANGED",
+      "reason": "Physical Pass-02 master now exists/changed while committed exact-anchor slot remains OPEN and operator decision remains REVIEW; exact scholarly requalification is required."
+    },
+    {
+      "note": 11,
+      "chapter": 4,
+      "classification": "CONTEXT_CHANGED",
+      "reason": "Physical Pass-02 master now exists/changed while committed exact-anchor slot remains OPEN and operator decision remains REVIEW; exact scholarly requalification is required."
+    },
+    {
+      "note": 12,
+      "chapter": 5,
+      "classification": "CONTEXT_CHANGED",
+      "reason": "Physical Pass-02 master now exists/changed while committed exact-anchor slot remains OPEN and operator decision remains REVIEW; exact scholarly requalification is required."
+    },
+    {
+      "note": 13,
+      "chapter": 5,
+      "classification": "CONTEXT_CHANGED",
+      "reason": "Physical Pass-02 master now exists/changed while committed exact-anchor slot remains OPEN and operator decision remains REVIEW; exact scholarly requalification is required."
+    },
+    {
+      "note": 14,
+      "chapter": 5,
+      "classification": "CONTEXT_CHANGED",
+      "reason": "Physical Pass-02 master now exists/changed while committed exact-anchor slot remains OPEN and operator decision remains REVIEW; exact scholarly requalification is required."
+    },
+    {
+      "note": 15,
+      "chapter": 5,
+      "classification": "CONTEXT_CHANGED",
+      "reason": "Physical Pass-02 master now exists/changed while committed exact-anchor slot remains OPEN and operator decision remains REVIEW; exact scholarly requalification is required."
+    },
+    {
+      "note": 16,
+      "chapter": 6,
+      "classification": "CONTEXT_CHANGED",
+      "reason": "Physical Pass-02 master now exists/changed while committed exact-anchor slot remains OPEN and operator decision remains REVIEW; exact scholarly requalification is required."
+    },
+    {
+      "note": 17,
+      "chapter": 6,
+      "classification": "CONTEXT_CHANGED",
+      "reason": "Physical Pass-02 master now exists/changed while committed exact-anchor slot remains OPEN and operator decision remains REVIEW; exact scholarly requalification is required."
+    },
+    {
+      "note": 18,
+      "chapter": 7,
+      "classification": "CONTEXT_CHANGED",
+      "reason": "Physical Pass-02 master now exists/changed while committed exact-anchor slot remains OPEN and operator decision remains REVIEW; exact scholarly requalification is required."
+    },
+    {
+      "note": 19,
+      "chapter": 7,
+      "classification": "CONTEXT_CHANGED",
+      "reason": "Physical Pass-02 master now exists/changed while committed exact-anchor slot remains OPEN and operator decision remains REVIEW; exact scholarly requalification is required."
+    },
+    {
+      "note": 20,
+      "chapter": 7,
+      "classification": "CONTEXT_CHANGED",
+      "reason": "Physical Pass-02 master now exists/changed while committed exact-anchor slot remains OPEN and operator decision remains REVIEW; exact scholarly requalification is required."
+    },
+    {
+      "note": 21,
+      "chapter": 8,
+      "classification": "CONTEXT_CHANGED",
+      "reason": "Physical Pass-02 master now exists/changed while committed exact-anchor slot remains OPEN and operator decision remains REVIEW; exact scholarly requalification is required."
+    },
+    {
+      "note": 22,
+      "chapter": 8,
+      "classification": "CONTEXT_CHANGED",
+      "reason": "Physical Pass-02 master now exists/changed while committed exact-anchor slot remains OPEN and operator decision remains REVIEW; exact scholarly requalification is required."
+    },
+    {
+      "note": 23,
+      "chapter": 8,
+      "classification": "CONTEXT_CHANGED",
+      "reason": "Physical Pass-02 master now exists/changed while committed exact-anchor slot remains OPEN and operator decision remains REVIEW; exact scholarly requalification is required."
+    },
+    {
+      "note": 24,
+      "chapter": 9,
+      "classification": "CONTEXT_CHANGED",
+      "reason": "Physical Pass-02 master now exists/changed while committed exact-anchor slot remains OPEN and operator decision remains REVIEW; exact scholarly requalification is required."
+    },
+    {
+      "note": 25,
+      "chapter": 9,
+      "classification": "CONTEXT_CHANGED",
+      "reason": "Physical Pass-02 master now exists/changed while committed exact-anchor slot remains OPEN and operator decision remains REVIEW; exact scholarly requalification is required."
+    },
+    {
+      "note": 26,
+      "chapter": 9,
+      "classification": "CONTEXT_CHANGED",
+      "reason": "Physical Pass-02 master now exists/changed while committed exact-anchor slot remains OPEN and operator decision remains REVIEW; exact scholarly requalification is required."
+    },
+    {
+      "note": 27,
+      "chapter": 10,
+      "classification": "CONTEXT_CHANGED",
+      "reason": "Physical Pass-02 master now exists/changed while committed exact-anchor slot remains OPEN and operator decision remains REVIEW; exact scholarly requalification is required."
+    },
+    {
+      "note": 28,
+      "chapter": 10,
+      "classification": "CONTEXT_CHANGED",
+      "reason": "Physical Pass-02 master now exists/changed while committed exact-anchor slot remains OPEN and operator decision remains REVIEW; exact scholarly requalification is required."
+    },
+    {
+      "note": 29,
+      "chapter": 10,
+      "classification": "CONTEXT_CHANGED",
+      "reason": "Physical Pass-02 master now exists/changed while committed exact-anchor slot remains OPEN and operator decision remains REVIEW; exact scholarly requalification is required."
+    },
+    {
+      "note": 30,
+      "chapter": 11,
+      "classification": "CONTEXT_CHANGED",
+      "reason": "Physical Pass-02 master now exists/changed while committed exact-anchor slot remains OPEN and operator decision remains REVIEW; exact scholarly requalification is required."
+    },
+    {
+      "note": 31,
+      "chapter": 11,
+      "classification": "CONTEXT_CHANGED",
+      "reason": "Physical Pass-02 master now exists/changed while committed exact-anchor slot remains OPEN and operator decision remains REVIEW; exact scholarly requalification is required."
+    },
+    {
+      "note": 32,
+      "chapter": 11,
+      "classification": "CONTEXT_CHANGED",
+      "reason": "Physical Pass-02 master now exists/changed while committed exact-anchor slot remains OPEN and operator decision remains REVIEW; exact scholarly requalification is required."
+    },
+    {
+      "note": 33,
+      "chapter": 12,
+      "classification": "CONTEXT_CHANGED",
+      "reason": "Physical Pass-02 master now exists/changed while committed exact-anchor slot remains OPEN and operator decision remains REVIEW; exact scholarly requalification is required."
+    },
+    {
+      "note": 34,
+      "chapter": 12,
+      "classification": "CONTEXT_CHANGED",
+      "reason": "Physical Pass-02 master now exists/changed while committed exact-anchor slot remains OPEN and operator decision remains REVIEW; exact scholarly requalification is required."
+    },
+    {
+      "note": 35,
+      "chapter": 12,
+      "classification": "CONTEXT_CHANGED",
+      "reason": "Physical Pass-02 master now exists/changed while committed exact-anchor slot remains OPEN and operator decision remains REVIEW; exact scholarly requalification is required."
+    },
+    {
+      "note": 46,
+      "chapter": 12,
+      "classification": "CONTEXT_CHANGED",
+      "reason": "Physical Pass-02 master now exists/changed while committed exact-anchor slot remains OPEN and operator decision remains REVIEW; exact scholarly requalification is required."
+    },
+    {
+      "note": 36,
+      "chapter": 13,
+      "classification": "CONTEXT_CHANGED",
+      "reason": "Physical Pass-02 master now exists/changed while committed exact-anchor slot remains OPEN and operator decision remains REVIEW; exact scholarly requalification is required."
+    },
+    {
+      "note": 37,
+      "chapter": 13,
+      "classification": "CONTEXT_CHANGED",
+      "reason": "Physical Pass-02 master now exists/changed while committed exact-anchor slot remains OPEN and operator decision remains REVIEW; exact scholarly requalification is required."
+    },
+    {
+      "note": 38,
+      "chapter": 14,
+      "classification": "CONTEXT_CHANGED",
+      "reason": "Physical Pass-02 master now exists/changed while committed exact-anchor slot remains OPEN and operator decision remains REVIEW; exact scholarly requalification is required."
+    },
+    {
+      "note": 39,
+      "chapter": 14,
+      "classification": "CONTEXT_CHANGED",
+      "reason": "Physical Pass-02 master now exists/changed while committed exact-anchor slot remains OPEN and operator decision remains REVIEW; exact scholarly requalification is required."
+    },
+    {
+      "note": 40,
+      "chapter": 14,
+      "classification": "CONTEXT_CHANGED",
+      "reason": "Physical Pass-02 master now exists/changed while committed exact-anchor slot remains OPEN and operator decision remains REVIEW; exact scholarly requalification is required."
+    },
+    {
+      "note": 41,
+      "chapter": 14,
+      "classification": "CONTEXT_CHANGED",
+      "reason": "Physical Pass-02 master now exists/changed while committed exact-anchor slot remains OPEN and operator decision remains REVIEW; exact scholarly requalification is required."
+    },
+    {
+      "note": 42,
+      "chapter": 14,
+      "classification": "CONTEXT_CHANGED",
+      "reason": "Physical Pass-02 master now exists/changed while committed exact-anchor slot remains OPEN and operator decision remains REVIEW; exact scholarly requalification is required."
+    },
+    {
+      "note": 43,
+      "chapter": 15,
+      "classification": "CONTEXT_CHANGED",
+      "reason": "Physical Pass-02 master now exists/changed while committed exact-anchor slot remains OPEN and operator decision remains REVIEW; exact scholarly requalification is required."
+    },
+    {
+      "note": 44,
+      "chapter": 16,
+      "classification": "CONTEXT_CHANGED",
+      "reason": "Physical Pass-02 master now exists/changed while committed exact-anchor slot remains OPEN and operator decision remains REVIEW; exact scholarly requalification is required."
+    },
+    {
+      "note": 45,
+      "chapter": 16,
+      "classification": "CONTEXT_CHANGED",
+      "reason": "Physical Pass-02 master now exists/changed while committed exact-anchor slot remains OPEN and operator decision remains REVIEW; exact scholarly requalification is required."
+    }
+  ]
+}
