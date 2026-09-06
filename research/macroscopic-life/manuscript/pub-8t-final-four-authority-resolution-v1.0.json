@@ -1,0 +1,64 @@
+{
+  "status": "FINAL FOUR AUTHORITY RESOLUTION — VERIFIED",
+  "policy": "Each record below was normalized from authoritative publisher, PubMed, or equivalent bibliographic metadata. No guessed fields are permitted.",
+  "records": [
+    {
+      "id": "BIB-026",
+      "slot": 7,
+      "chapters": [3],
+      "status": "verified",
+      "citation": "Shannon, Claude E. 1949. ‘Communication in the Presence of Noise.’ Proceedings of the IRE 37 (1): 10–21. https://doi.org/10.1109/JRPROC.1949.232969.",
+      "doi": "10.1109/JRPROC.1949.232969",
+      "claimBurden": "Sampling interval and temporal resolution can determine whether a time-varying signal is recoverable from observations. This is a signal-processing authority, not evidence of biological agency."
+    },
+    {
+      "id": "BIB-027",
+      "slot": 8,
+      "chapters": [3],
+      "status": "verified",
+      "citation": "West, Geoffrey B., and James H. Brown. 2005. ‘The Origin of Allometric Scaling Laws in Biology from Genomes to Ecosystems: Towards a Quantitative Unifying Theory of Biological Structure and Organization.’ Journal of Experimental Biology 208 (9): 1575–1592. https://doi.org/10.1242/jeb.01589.",
+      "pmid": "15855389",
+      "doi": "10.1242/jeb.01589",
+      "claimBurden": "Many biological rates and characteristic quantities vary systematically with organism size; scale changes can therefore alter the time window at which a process becomes visible. No universal exponent is asserted."
+    },
+    {
+      "id": "BIB-028",
+      "slot": 8,
+      "chapters": [3],
+      "status": "verified",
+      "citation": "Clutton-Brock, Tim, and Ben C. Sheldon. 2010. ‘Individuals and Populations: The Role of Long-Term, Individual-Based Studies of Animals in Ecology and Evolutionary Biology.’ Trends in Ecology & Evolution 25 (10): 562–573. https://doi.org/10.1016/j.tree.2010.08.002.",
+      "pmid": "20828863",
+      "doi": "10.1016/j.tree.2010.08.002",
+      "claimBurden": "Ecological and evolutionary processes may require observation over years or decades; short observation windows can fail to reveal important dynamics."
+    },
+    {
+      "id": "BIB-029",
+      "slot": 10,
+      "chapters": [4],
+      "status": "verified",
+      "citation": "Rainey, Paul B., and Silvia De Monte. 2014. ‘Resolving Conflicts During the Evolutionary Transition to Multicellular Life.’ Annual Review of Ecology, Evolution, and Systematics 45: 599–620. https://doi.org/10.1146/annurev-ecolsys-120213-091740.",
+      "doi": "10.1146/annurev-ecolsys-120213-091740",
+      "claimBurden": "Multicellular individuality depends not merely on cooperation but on mechanisms that mediate or suppress conflict among lower-level units."
+    },
+    {
+      "id": "BIB-030",
+      "slot": 22,
+      "chapters": [8],
+      "status": "verified",
+      "citation": "Turing, A. M. 1952. ‘The Chemical Basis of Morphogenesis.’ Philosophical Transactions of the Royal Society of London. Series B, Biological Sciences 237 (641): 37–72. https://doi.org/10.1098/rstb.1952.0012.",
+      "doi": "10.1098/rstb.1952.0012",
+      "claimBurden": "Reaction-diffusion is a mathematically explicit mechanism class by which initially homogeneous systems can generate spatial pattern. It is not presented as the sole mechanism of morphogenesis."
+    },
+    {
+      "id": "BIB-031",
+      "slot": 22,
+      "chapters": [8],
+      "status": "verified",
+      "citation": "Milinkovitch, Michel C., Ebrahim Jahanbakhsh, and Szabolcs Zakany. 2023. ‘The Unreasonable Effectiveness of Reaction Diffusion in Vertebrate Skin Color Patterning.’ Annual Review of Cell and Developmental Biology 39: 145–174. https://doi.org/10.1146/annurev-cellbio-120319-024414.",
+      "doi": "10.1146/annurev-cellbio-120319-024414",
+      "claimBurden": "Modern review support for reaction-diffusion as a useful and empirically relevant patterning framework in vertebrate skin, while preserving the chapter’s caution that development is mechanistically plural."
+    }
+  ],
+  "resolvedSlots": [7,8,10,22],
+  "openSlotsAfterThisBatch": 0
+}
