@@ -1,0 +1,93 @@
+{
+  "status": "PLACEMENT VERIFIED — PROMOTION STILL GATED",
+  "purpose": "Map the intelligent-reader and consciousness additions onto exact canonical R1 reader locations without yet mutating the frozen source files.",
+  "placements": [
+    {
+      "id": "A",
+      "file": "manuscript/pub-7l-r1-act-ii-redundancy-cut-reader-manuscript.md",
+      "chapter": 5,
+      "placement": "after the existing levels-of-selection/evolutionary-individuality discussion and before the chapter handoff",
+      "content": "Pattern → Organization → Integration → Individuality evidence-barrier ladder",
+      "promotionAction": "MERGE_WITH_EXISTING",
+      "reason": "Act IV already contains a three-stage Pattern → Organization → Individuality ladder. Promotion must reconcile the book to one four-stage canonical ladder rather than create competing ladders."
+    },
+    {
+      "id": "B",
+      "file": "manuscript/pub-7l-r1-act-ii-redundancy-cut-reader-manuscript.md",
+      "chapter": 6,
+      "placement": "near What We Have Earned / final boundary synthesis",
+      "content": "Useful higher-level variable does not automatically establish a new individual",
+      "promotionAction": "TIGHTEN_EXISTING_NOT_STACK",
+      "reason": "Chapter 14 and Chapter 15 already make the useful-level/non-individual distinction. Chapter 6 should seed it compactly, not repeat the later prosecution."
+    },
+    {
+      "id": "C",
+      "file": "manuscript/pub-7l-r1-act-iv-redundancy-cut-reader-manuscript.md",
+      "chapter": 12,
+      "placement": "immediately after Operational Definition and before Who Owns the Capability?",
+      "content": "SIGNAL ≠ INFORMATION ≠ INTEGRATION ≠ INTELLIGENCE ≠ AGENCY ≠ CONSCIOUSNESS plus compact consciousness boundary",
+      "promotionAction": "ADD_COMPACT_SECTION",
+      "reason": "The existing text says intelligence is not consciousness but does not yet give consciousness enough reader-facing space."
+    },
+    {
+      "id": "D",
+      "file": "manuscript/pub-7l-r1-act-iv-redundancy-cut-reader-manuscript.md",
+      "chapter": 13,
+      "placement": "after The Title Is Intentionally Dangerous and before Functions Move Outside Bodies",
+      "content": "ordinary-complex-organization rival explanation",
+      "promotionAction": "ADD_SHORT_NULL_MODEL",
+      "reason": "The null should compete before the strongest civilization analogy accumulates."
+    },
+    {
+      "id": "E",
+      "file": "manuscript/pub-7l-r1-act-iv-redundancy-cut-reader-manuscript.md",
+      "chapter": 14,
+      "placement": "after Four Models Enter and immediately before The Eleven Tests",
+      "content": "Resemblance generates hypotheses. Mechanism generates evidence. Prediction separates models.",
+      "promotionAction": "ADD_AS_MODEL_DISCRIMINATION_RULE",
+      "reason": "This is the point where analogy becomes explicit comparative model selection."
+    },
+    {
+      "id": "F",
+      "file": "manuscript/pub-7l-r1-act-iv-redundancy-cut-reader-manuscript.md",
+      "chapter": 14,
+      "placement": "immediately before The Eleven Tests",
+      "content": "Now Try to Kill It adversarial-reader transition",
+      "promotionAction": "ADD_AND_MERGE_WITH_E",
+      "reason": "The Eleven Tests should be introduced as attempts to defeat the stronger hypothesis, not as an organism checklist."
+    },
+    {
+      "id": "G",
+      "file": "manuscript/pub-7l-r1-act-v-redundancy-cut-reader-manuscript.md",
+      "chapter": 16,
+      "placement": "immediately before The Hypothesis Without the Imagery",
+      "content": "Macroscopic Life as research program; civilization as candidate rather than predetermined answer",
+      "promotionAction": "ADD_COMPACTLY",
+      "reason": "Chapter 16 already states the hypothesis conservatively; this insertion should clarify scope without delaying the final verdict."
+    },
+    {
+      "id": "H",
+      "file": "manuscript/pub-7l-r1-act-iv-redundancy-cut-reader-manuscript.md",
+      "chapter": 12,
+      "placement": "fold into placement C rather than create a second consciousness section",
+      "content": "Individuality ≠ consciousness; component epistemic asymmetry; consciousness is downstream and separately testable",
+      "promotionAction": "MERGE_WITH_C",
+      "reason": "One compact section is sufficient for Book One; the full consciousness module remains research-layer material."
+    }
+  ],
+  "canonicalReconciliation": {
+    "existingActIVLadder": "MACROSCOPIC PATTERN → MACROSCOPIC ORGANIZATION → HIGHER-ORDER INDIVIDUALITY",
+    "newCanonicalLadder": "MACROSCOPIC PATTERN → MACROSCOPIC ORGANIZATION → INTEGRATION → HIGHER-ORDER INDIVIDUALITY",
+    "rule": "There must be only one canonical evidentiary ladder in the reader manuscript after promotion."
+  },
+  "consciousnessBoundary": {
+    "insideElevenTests": false,
+    "requiredReaderDoctrine": [
+      "HIGHER-ORDER INDIVIDUALITY ≠ HIGHER-ORDER CONSCIOUSNESS.",
+      "A component may participate in a conscious whole without representing the whole's experience.",
+      "Epistemic asymmetry is not evidence that a higher-order consciousness exists.",
+      "Do not ask whether the whole is conscious until the evidence has first earned the right to treat it as a whole."
+    ]
+  },
+  "nextGate": "sentence-level burden matrix and exact replacement text for the affected R1 passages"
+}
