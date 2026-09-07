@@ -1,5 +1,6 @@
 triggered: 2026-09-06
 pass: 18I-D1
+attempt: 2
 base: BOOK-ONE-READER-MATERIALIZED-v0.2.md
 overlays:
   - PASS-18I-A-CHAPTERS-7-10-SURGICAL-COMPRESSION-OVERLAY.md
