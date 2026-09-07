@@ -1,0 +1,98 @@
+name: Macroscopic Life Pass 05D.2 Build v0.3
+
+on:
+  push:
+    paths:
+      - 'research/macroscopic-life/scripts/build-book-one-proof-v03-runner.py'
+      - '.github/workflows/macroscopic-life-pass05d2-build-v03.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-regress-render:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install production proof dependencies
+        run: pip install reportlab pypdf pymupdf pillow
+      - name: Build v0.3 through controlled runner
+        run: python research/macroscopic-life/scripts/build-book-one-proof-v03-runner.py
+      - name: Structural regression
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from pypdf import PdfReader
+          import json,re
+          root=Path('research/macroscopic-life/production/proofs')
+          pdf=root/'MACROSCOPIC-LIFE-BOOK-ONE-6x9-PROOF-v0.3.pdf'
+          anchors=root/'MACROSCOPIC-LIFE-BOOK-ONE-6x9-PROOF-v0.3-ANCHORS.json'
+          if not pdf.exists() or not anchors.exists(): raise SystemExit('v0.3 outputs missing')
+          pages=[(p.extract_text() or '') for p in PdfReader(str(pdf)).pages]
+          full='\n'.join(pages)
+          failures=[]
+          if not (170 <= len(pages) <= 190): failures.append(f'page_count:{len(pages)}')
+          for n in range(1,17):
+              if not re.search(rf'CHAPTER\s+{n}\b',full,re.I): failures.append(f'missing_chapter_{n}')
+          if re.search(r'CHAPTER\s+17\b',full,re.I): failures.append('chapter17_prohibited')
+          if 'If individuality can be reorganized across levels' not in full or 'where a new individual can' not in full:
+              failures.append('protected_final_aperture_missing')
+          leaked=[i for i,t in enumerate(pages,1) if re.search(r'#\s*PART\s+[IVXLC]+',t,re.I)]
+          if leaked: failures.append('raw_part_markup:'+','.join(map(str,leaked)))
+          data=json.loads(anchors.read_text(encoding='utf-8'))
+          placements={x['figure']:x for x in data['placements']}
+          expected={f'{n:02d}' for n in range(2,17)}
+          if set(placements) != expected: failures.append('figure_set_mismatch')
+          f7=placements.get('07')
+          hinge='Nothing about the machine changed while we were talking. Only the verbs did.'
+          if not f7: failures.append('figure07_missing')
+          else:
+              if f7.get('chapter') != 4: failures.append('figure07_wrong_chapter')
+              if not str(f7.get('source','')).startswith('after-substring:'): failures.append('figure07_wrong_source')
+              if hinge not in (f7.get('anchor_text') or ''): failures.append('figure07_hinge_changed')
+          report=root/'MACROSCOPIC-LIFE-BOOK-ONE-6x9-PROOF-v0.3-REGRESSION.txt'
+          report.write_text('\n'.join([
+              'proof=v0.3',f'page_count={len(pages)}',f'raw_part_markup_leaks={leaked}',
+              'chapters_1_16=PASS' if not any(x.startswith('missing_chapter') for x in failures) else 'chapters_1_16=FAIL',
+              'chapter17_absent=PASS' if 'chapter17_prohibited' not in failures else 'chapter17_absent=FAIL',
+              'protected_final_aperture=PASS' if 'protected_final_aperture_missing' not in failures else 'protected_final_aperture=FAIL',
+              'figure_set_02_16=PASS' if 'figure_set_mismatch' not in failures else 'figure_set_02_16=FAIL',
+              'figure07_frozen_hinge=PASS' if not any(x.startswith('figure07_') for x in failures) else 'figure07_frozen_hinge=FAIL',
+              'part_markup_suppression=PASS' if not leaked else 'part_markup_suppression=FAIL',
+              'overall_status=' + ('PASS' if not failures else 'FAIL'),
+              'failures=' + ('none' if not failures else ';'.join(failures)),
+          ])+'\n',encoding='utf-8')
+          print(report.read_text())
+          if failures: raise SystemExit('; '.join(failures))
+          PY
+      - name: Render repaired transitions and Figure 07
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import fitz
+          pdf=Path('research/macroscopic-life/production/proofs/MACROSCOPIC-LIFE-BOOK-ONE-6x9-PROOF-v0.3.pdf')
+          out=Path('pass05d2-v03-review'); out.mkdir(exist_ok=True)
+          doc=fitz.open(pdf)
+          targets=set()
+          for i,p in enumerate(doc):
+              t=p.get_text()
+              if 'FIGURE 07 - APPROVED POSITION' in t or any(f'PART {r}' in t for r in ['II','III','IV','V','VI']):
+                  targets.update(x for x in (i-1,i,i+1) if 0<=x<len(doc))
+          for i in sorted(targets):
+              pix=doc[i].get_pixmap(matrix=fitz.Matrix(1.5,1.5),alpha=False)
+              pix.save(out/f'page-{i+1:03d}.png')
+          print('rendered',len(targets),'review pages')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: macroscopic-life-pass05d2-v03-proof
+          path: |
+            research/macroscopic-life/production/proofs/MACROSCOPIC-LIFE-BOOK-ONE-6x9-PROOF-v0.3.pdf
+            research/macroscopic-life/production/proofs/MACROSCOPIC-LIFE-BOOK-ONE-6x9-PROOF-v0.3-ANCHORS.json
+            research/macroscopic-life/production/proofs/MACROSCOPIC-LIFE-BOOK-ONE-6x9-PROOF-v0.3-REGRESSION.txt
+            pass05d2-v03-review
+          retention-days: 7
