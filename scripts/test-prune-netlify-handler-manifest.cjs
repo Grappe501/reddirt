@@ -15,6 +15,8 @@ const {
 } = require("./prune-netlify-server-handler.cjs");
 const {
   APP_STASH_DIRS,
+  KGRAPPE_STASH_DIRS,
+  MACROSCOPIC_LIFE_STASH_DIRS,
   APP_STASH_KEEP_PREFIXES,
   API_KEEP,
   stashPublicHubAppDirs,
@@ -71,6 +73,10 @@ assert.deepEqual(
 );
 
 fs.rmSync(tmp, { recursive: true, force: true });
+assert.ok(KGRAPPE_STASH_DIRS.includes("src/app/(macroscopic-life)"), "kgrappe must stash Book One");
+assert.ok(!MACROSCOPIC_LIFE_STASH_DIRS.includes("src/app/(macroscopic-life)"), "ML site must compile Book One");
+assert.ok(MACROSCOPIC_LIFE_STASH_DIRS.includes("src/app/(site)"), "ML site must stash the campaign public hub");
+assert.ok(MACROSCOPIC_LIFE_STASH_DIRS.includes("src/app/election-plan"), "ML site must stash election-plan");
 assert.ok(!APP_STASH_DIRS.includes("src/app/election-plan"), "election-plan must ship on kgrappe.netlify.app");
 assert.ok(APP_STASH_DIRS.includes("src/app/(macroscopic-life)"), "Macroscopic Life must stay off the public-hub Lambda");
 assert.ok(APP_STASH_DIRS.includes("src/app/admin/(board)"));

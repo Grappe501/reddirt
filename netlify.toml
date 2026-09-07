@@ -1,4 +1,8 @@
 # Red Dirt — Netlify
+# Two sites share this file and the same GitHub repo (Grappe501/reddirt):
+#   kgrappe            — public campaign hub (needs DATABASE_URL / Neon)
+#   macroscopic-life   — Book One only; detected via SITE_NAME or NEXT_PUBLIC_MACROSCOPIC_LIFE_SITE=1
+#                        (no Kelly Lambda, no migrate). Same build command.
 # Production build: `scripts/netlify-build.sh` runs Prisma migrations then `next build`.
 # Prisma needs DATABASE_URL at build time. Set it in Netlify env, or rely on Neon’s
 # NETLIFY_DATABASE_URL (the script maps it to DATABASE_URL).

@@ -4,6 +4,7 @@
  */
 const fs = require("node:fs");
 const path = require("node:path");
+const { isMacroscopicLifeNetlifySite } = require("./netlify-site-mode.cjs");
 
 const HANDLER_DIRS = [
   ".netlify/functions-internal/___netlify-server-handler",
@@ -72,13 +73,17 @@ const LAUNCH_BOARD_KEEP = new Set(["intelligence"]);
 const KELLY_OPS_NETLIFY_BOARD_KEEP = new Set([]);
 const LAUNCH_API_ADMIN_KEEP = new Set(["intelligence"]);
 /** Public hub Lambda — site + election-plan portal. Ops admin boards stay stashed. */
-const LAUNCH_APP_TOP_KEEP = new Set([
+const KGRAPPE_APP_TOP_KEEP = new Set([
   "admin",
   "(site)",
   "(volunteer-kickoff)",
   "election-plan",
 ]);
-const LAUNCH_API_TOP_KEEP = new Set(["admin", "forms", "election-plan"]);
+const KGRAPPE_API_TOP_KEEP = new Set(["admin", "forms", "election-plan"]);
+const ML_APP_TOP_KEEP = new Set(["(macroscopic-life)"]);
+const ML_API_TOP_KEEP = new Set();
+const LAUNCH_APP_TOP_KEEP = isMacroscopicLifeNetlifySite() ? ML_APP_TOP_KEEP : KGRAPPE_APP_TOP_KEEP;
+const LAUNCH_API_TOP_KEEP = isMacroscopicLifeNetlifySite() ? ML_API_TOP_KEEP : KGRAPPE_API_TOP_KEEP;
 
 /** Standalone copy lands the whole repo in the handler — keep only these top-level names. */
 const LAUNCH_HANDLER_ROOT_KEEP = new Set([
@@ -291,7 +296,7 @@ function shouldPruneDirName(name, relFromHandler) {
     name === "field-structure" ||
     name === "campaign-media" ||
     name === "county-vault" ||
-    name === "research" ||
+    (name === "research" && !isMacroscopicLifeNetlifySite()) ||
     name === ".nightly-self-build"
   ) {
     return true;
@@ -432,7 +437,7 @@ function pruneLaunchHandlerRoot(handlerRoot) {
   }
   for (const ent of entries) {
     if (!ent.isDirectory() && !ent.isFile()) continue;
-    if (LAUNCH_HANDLER_ROOT_KEEP.has(ent.name)) {
+    if (LAUNCH_HANDLER_ROOT_KEEP.has(ent.name) || (isMacroscopicLifeNetlifySite() && ent.name === "research")) {
       if (ent.name === "data") removed.push(...pruneLaunchData(handlerRoot));
       if (ent.name === "docs") removed.push(...pruneLaunchDocs(handlerRoot));
       continue;
@@ -684,6 +689,7 @@ function pruneHandler(handlerRoot, repoRoot) {
   removed.push(...removeForbiddenBundlePaths(handlerRoot));
 
   for (const rel of TOP_LEVEL_DIR_PRUNE) {
+    if (isMacroscopicLifeNetlifySite() && (rel === "research" || rel.startsWith("research/"))) continue;
     if (rmrf(path.join(handlerRoot, rel))) removed.push(rel);
   }
 
@@ -702,7 +708,10 @@ function pruneHandler(handlerRoot, repoRoot) {
         boardKeep: boardKeep ?? LAUNCH_BOARD_KEEP,
       }),
     );
-    for (const rel of LAUNCH_PUBLIC_SERVER_DIRS) {
+    const publicServerDirs = isMacroscopicLifeNetlifySite()
+      ? LAUNCH_PUBLIC_SERVER_DIRS.filter((rel) => !rel.includes("macroscopic-life"))
+      : LAUNCH_PUBLIC_SERVER_DIRS;
+    for (const rel of publicServerDirs) {
       if (rmrf(path.join(handlerRoot, rel))) removed.push(rel);
     }
     for (const rel of LAUNCH_NODE_MODULES_DIRS) {

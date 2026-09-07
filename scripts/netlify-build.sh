@@ -4,6 +4,13 @@
 
 set -euo pipefail
 
+MACROSCOPIC_LIFE_SITE=0
+if [ "${SITE_NAME:-}" = "macroscopic-life" ] || [ "${NEXT_PUBLIC_MACROSCOPIC_LIFE_SITE:-}" = "1" ] || [ "${NEXT_PUBLIC_MACROSCOPIC_LIFE_SITE:-}" = "true" ]; then
+  MACROSCOPIC_LIFE_SITE=1
+  export NEXT_PUBLIC_MACROSCOPIC_LIFE_SITE=1
+  echo ">>> macroscopic-life Netlify site: Book One only (no Kelly public-hub Lambda)"
+fi
+
 if [ ! -f "package.json" ] || [ ! -f "netlify.toml" ]; then
   echo ""
   echo "========================================================================"
@@ -56,7 +63,13 @@ if [ -n "${NETLIFY:-}" ] || [ -n "${NETLIFY_BUILD_BASE:-}" ]; then
   esac
 fi
 
-if [ -z "${DATABASE_URL:-}" ]; then
+if [ "$MACROSCOPIC_LIFE_SITE" = "1" ]; then
+  echo ">>> skip DATABASE_URL (macroscopic-life site does not use Prisma at runtime)"
+  if [ -z "${DATABASE_URL:-}" ]; then
+    export DATABASE_URL="postgresql://build:build@127.0.0.1:5432/build"
+    export DIRECT_URL="$DATABASE_URL"
+  fi
+elif [ -z "${DATABASE_URL:-}" ]; then
   echo ""
   echo "========================================================================"
   echo "  Build failed: DATABASE_URL is not set."
@@ -71,6 +84,13 @@ if [ -z "${DATABASE_URL:-}" ]; then
   exit 1
 fi
 
+if [ "$MACROSCOPIC_LIFE_SITE" = "1" ]; then
+  echo ">>> prisma generate (leftover campaign imports only; no migrate)"
+  npx prisma generate || true
+  rm -f node_modules/.prisma/client/libquery_engine-rhel-openssl-1.0.x.so.node 2>/dev/null || true
+fi
+
+if [ "$MACROSCOPIC_LIFE_SITE" != "1" ]; then
 # Prisma `schema.prisma` uses `directUrl = env("DIRECT_URL")`. When the host uses a single URI (Neon, session pooler only), omit DIRECT_URL in Netlify and we mirror here.
 if [ -z "${DIRECT_URL:-}" ]; then
   export DIRECT_URL="$DATABASE_URL"
@@ -330,11 +350,12 @@ else
     fi
   fi
 fi
+fi
 
 echo ">>> public-hub stash (do not compile election-plan/admin boards into Lambda)"
 node scripts/stash-netlify-public-hub-app.cjs
 
-if [ -n "${NETLIFY:-}" ] || [ -n "${NETLIFY_BUILD_BASE:-}" ]; then
+if [ "$MACROSCOPIC_LIFE_SITE" = "1" ] || [ -n "${NETLIFY:-}" ] || [ -n "${NETLIFY_BUILD_BASE:-}" ]; then
   echo ">>> skip election-plan:build on Netlify public hub"
 else
   echo ">>> election plan workbench snapshot"

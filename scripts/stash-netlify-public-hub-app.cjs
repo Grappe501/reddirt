@@ -9,10 +9,12 @@
  */
 const fs = require("node:fs");
 const path = require("node:path");
+const { isMacroscopicLifeNetlifySite } = require("./netlify-site-mode.cjs");
 
 const STASH_ROOT = ".netlify-build-stash";
 
-const APP_STASH_DIRS = [
+/** kgrappe.netlify.app — stash the book so the campaign Lambda stays under 250 MB. */
+const KGRAPPE_STASH_DIRS = [
   "src/app/(macroscopic-life)",
   "src/app/volunteers",
   "src/app/campaign-events",
@@ -25,10 +27,30 @@ const APP_STASH_DIRS = [
   "src/app/admin/(board)",
 ];
 
-/** Keep these prefixes on the public hub (Talent Foundry command center). */
-const APP_STASH_KEEP_PREFIXES = ["src/app/admin/(board)/talent-foundry"];
+/** macroscopic-life.netlify.app — stash the campaign so only Book One compiles. */
+const MACROSCOPIC_LIFE_STASH_DIRS = [
+  "src/app/(site)",
+  "src/app/(volunteer-kickoff)",
+  "src/app/election-plan",
+  "src/app/admin",
+  "src/app/volunteers",
+  "src/app/campaign-events",
+  "src/app/commit",
+  "src/app/county-briefings",
+  "src/app/kelly",
+  "src/app/onboarding",
+  "src/app/organizing-intelligence",
+  "src/app/relational",
+];
 
-const API_KEEP = new Set(["forms", "election-plan"]);
+const APP_STASH_DIRS = isMacroscopicLifeNetlifySite() ? MACROSCOPIC_LIFE_STASH_DIRS : KGRAPPE_STASH_DIRS;
+
+/** Keep these prefixes on the public hub (Talent Foundry command center). */
+const APP_STASH_KEEP_PREFIXES = isMacroscopicLifeNetlifySite()
+  ? []
+  : ["src/app/admin/(board)/talent-foundry"];
+
+const API_KEEP = isMacroscopicLifeNetlifySite() ? new Set() : new Set(["forms", "election-plan"]);
 
 /** App Router files that create routes / pages. Everything else stays for typecheck. */
 const ROUTE_FILE_RE =
@@ -118,6 +140,8 @@ if (require.main === module) {
 module.exports = {
   stashPublicHubAppDirs,
   APP_STASH_DIRS,
+  KGRAPPE_STASH_DIRS,
+  MACROSCOPIC_LIFE_STASH_DIRS,
   APP_STASH_KEEP_PREFIXES,
   API_KEEP,
   STASH_ROOT,
