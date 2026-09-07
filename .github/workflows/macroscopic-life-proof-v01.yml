@@ -1,0 +1,46 @@
+name: Macroscopic Life 6x9 Proof v0.1
+
+on:
+  push:
+    paths:
+      - 'research/macroscopic-life/scripts/build-book-one-proof.py'
+      - 'research/macroscopic-life/production/PRODUCTION-PASS-04.trigger'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  compose:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install compositor
+        run: pip install reportlab
+      - name: Build 6x9 structural proof
+        run: python research/macroscopic-life/scripts/build-book-one-proof.py
+      - name: Verify PDF
+        run: |
+          test -s research/macroscopic-life/production/proofs/MACROSCOPIC-LIFE-BOOK-ONE-6x9-PROOF-v0.1.pdf
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('research/macroscopic-life/production/proofs/MACROSCOPIC-LIFE-BOOK-ONE-6x9-PROOF-v0.1.pdf')
+          b=p.read_bytes()
+          assert b.startswith(b'%PDF-')
+          assert len(b)>10000
+          print('proof bytes',len(b))
+          PY
+      - name: Commit proof
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/macroscopic-life/production/proofs/MACROSCOPIC-LIFE-BOOK-ONE-6x9-PROOF-v0.1.pdf
+          if git diff --cached --quiet; then
+            echo 'Proof unchanged.'
+          else
+            git commit -m 'Macroscopic Life: compose 6x9 structural proof v0.1 [skip proof-v01]'
+            git push
+          fi
