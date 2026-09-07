@@ -2,7 +2,7 @@
 
 ## Book One — Canonical Assembled Manuscript v0.1
 
-**Assembly status: PASS 18E continuous-read candidate. Canonical prose preserved except authorized heading normalization and Chapter 4 title-only repair.**
+**Assembly status: provenance-preserving canonical composition.**
 
 ---
 
