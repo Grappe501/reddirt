@@ -2,7 +2,7 @@
 from pathlib import Path
 import re, json, hashlib
 
-ROOT = Path(__file__).resolve().parents[2]
+ROOT = Path(__file__).resolve().parents[1]
 MAN = ROOT / 'manuscript'
 BASE = MAN / 'BOOK-ONE-READER-MATERIALIZED-v0.2.md'
 OUT = MAN / 'BOOK-ONE-READER-MATERIALIZED-v0.3.md'
@@ -26,7 +26,6 @@ for i, m in enumerate(matches):
     end = matches[i+1].start() if i+1 < len(matches) else len(body)
     seg = body[start:end]
     ch = int(m.group(1))
-    # Strip local notes/control tails while preserving chapter prose.
     nm = re.search(r'(?m)^## (?:Chapter \d+ Endnotes[^\n]*|Working Endnotes|Prefreeze Control|Prefreeze control notes)\s*$', seg)
     if nm:
         extracted[ch] = seg[nm.start():].strip()
@@ -37,7 +36,6 @@ for i, m in enumerate(matches):
 rebuilt.append(body[last:])
 body = ''.join(rebuilt)
 
-# --- exact surgical reader edits from Pass 18I overlays ---
 repls = {
     "Tomorrow is one problem.\n\nA preferred tomorrow is another.":
         "Tomorrow is one problem; a preferred tomorrow is another.",
@@ -71,25 +69,19 @@ for old, new in repls.items():
         body = body.replace(old, new)
         applied.append(old[:80])
 
-# Normalize a few repeated signature recurrences late in the book while retaining the concept.
-# Keep first bold Model B signature globally; later exact repetitions become normal prose.
 model_sig = '**MODEL B IS A DISCOVERY, NOT A CONSOLATION PRIZE.**'
 parts = body.split(model_sig)
 if len(parts) > 2:
     body = parts[0] + model_sig + 'Model B remains a discovery rather than a consolation prize.'.join(parts[1:])
 
-# Reader rhythm: eliminate a known cluster of stacked one-line rhetorical paragraphs.
 body = body.replace(
     "A goal tells us what counts as success.\n\nIt does not yet tell us who selects among possible paths.",
     "A goal tells us what counts as success, but it does not yet tell us who selects among possible paths."
 )
 
-# --- rebuild back matter with extracted local notes merged into chapter-keyed notes ---
 if back:
     for ch, raw in extracted.items():
-        # remove local heading, keep actual notes content only
         raw_body = re.sub(r'(?s)^## (?:Chapter \d+ Endnotes[^\n]*|Working Endnotes|Prefreeze Control|Prefreeze control notes)\s*\n+', '', raw).strip()
-        # strip obvious production-control tails from extracted notes
         raw_body = re.split(r'(?m)^## (?:Prefreeze Control|Prefreeze control notes)\s*$', raw_body)[0].strip()
         marker = f'## Notes to Chapter {ch} — '
         idx = back.find(marker)
@@ -105,7 +97,6 @@ if back:
 
 text = body.rstrip() + '\n\n# NOTES\n' + back.lstrip() if back else body.rstrip() + '\n'
 
-# --- validation gates ---
 chapter_heads = re.findall(r'(?m)^## Chapter (\d+) — ', text)
 assert chapter_heads == [str(i) for i in range(1,17)], chapter_heads
 assert '## Chapter 4 — The Verb' in text
