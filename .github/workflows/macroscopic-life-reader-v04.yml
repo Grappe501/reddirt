@@ -1,0 +1,45 @@
+name: Macroscopic Life Reader v0.4 Compression
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'research/macroscopic-life/scripts/compress-reader-v04.py'
+      - '.github/workflows/macroscopic-life-reader-v04.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  compress:
+    if: ${{ !contains(github.event.head_commit.message || '', '[reader-v04]') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Materialize final surgical reader overlay
+        run: python research/macroscopic-life/scripts/compress-reader-v04.py
+      - name: Verify reader v0.4
+        run: |
+          R='research/macroscopic-life/manuscript/BOOK-ONE-READER-MATERIALIZED-v0.4.md'
+          test -s "$R"
+          test "$(grep -Ec '^## Chapter [0-9]+ — ' "$R")" -eq 16
+          ! grep -Eq '^## Chapter 17 — ' "$R"
+          grep -q '^## Chapter 4 — The Verb$' "$R"
+          grep -q '^## Chapter 11 — The Choice$' "$R"
+          grep -q 'If individuality can be reorganized across levels, what determines where a new individual can—and cannot—emerge?' "$R"
+          grep -q '^# NOTES$' "$R"
+      - name: Commit v0.4 and report
+        run: |
+          R='research/macroscopic-life/manuscript/BOOK-ONE-READER-MATERIALIZED-v0.4.md'
+          P='research/macroscopic-life/manuscript/PASS-18I-E-FINAL-SURGICAL-COMPRESSION-REPORT.json'
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add "$R" "$P"
+          git commit -m 'Macroscopic Life: materialize reader v0.4 final surgical compression [reader-v04]'
+          git push
