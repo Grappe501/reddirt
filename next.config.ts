@@ -5,6 +5,13 @@ import { OWNED_MEDIA_SERVER_ACTION_BODY_LIMIT } from "./src/lib/owned-media/limi
 
 const tracingRoot = path.dirname(fileURLToPath(import.meta.url));
 
+/** Separate Netlify project `macroscopic-life` — Book One only. */
+const macroscopicLifeSite =
+  process.env.SITE_NAME === "macroscopic-life" ||
+  process.env.NETLIFY_SITE_NAME === "macroscopic-life" ||
+  process.env.NEXT_PUBLIC_MACROSCOPIC_LIFE_SITE === "1" ||
+  process.env.NEXT_PUBLIC_MACROSCOPIC_LIFE_SITE === "true";
+
 /** Netlify / opposition-debate — shrink traced server artifacts (see netlify.toml). */
 const oppositionDebateLaunch =
   process.env.NEXT_PUBLIC_INTELLIGENCE_LAUNCH_MODE === "opposition_debate";
@@ -59,6 +66,15 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      ...(macroscopicLifeSite
+        ? [
+            {
+              source: "/",
+              destination: "/macroscopic-life",
+              permanent: false,
+            },
+          ]
+        : []),
       {
         source: "/ml",
         destination: "/macroscopic-life",
@@ -392,6 +408,14 @@ const nextConfig: NextConfig = {
           "./data/campaign-brain/election-plan/page-briefs.source.json",
         ],
         "/api/cpos/**": ["./data/cpos/**"],
+        ...(macroscopicLifeSite
+          ? {
+              "/macroscopic-life/**": [
+                "./src/content/macroscopic-life/manuscript/**",
+                "./research/macroscopic-life/manuscript/**",
+              ],
+            }
+          : {}),
       },
   /**
    * Netlify `___netlify-server-handler` must stay under AWS Lambda’s 250 MB (unzipped) cap.
@@ -450,8 +474,7 @@ const nextConfig: NextConfig = {
       "**/.local/**",
       "**/npm-cache/**",
       "**/_cacache/**",
-      "research/**",
-      "src/content/macroscopic-life/**",
+      ...(macroscopicLifeSite ? [] : ["research/**", "src/content/macroscopic-life/**"]),
     ],
     "/api/owned-campaign-media/**": ["data/owned-campaign-media/**"],
   },
