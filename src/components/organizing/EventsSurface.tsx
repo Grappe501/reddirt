@@ -11,6 +11,7 @@ import {
   resolveEventStatus,
 } from "@/lib/format/eventDisplay";
 import { eventMatchesSchedulePreset } from "@/lib/format/event-schedule-in-zone";
+import { isPublicCalendarEvent } from "@/lib/events/campaign-approach";
 import { publicLaneForMovementType, type PublicEventLane } from "@/lib/events/public-event-kind";
 import { kellyNextStopsRoute } from "@/lib/events/kelly-next-stops-route";
 import { cn } from "@/lib/utils";
@@ -133,11 +134,17 @@ export function EventsSurface({
 
   const now = useMemo(() => new Date(), []);
   const upcomingAll = useMemo(
-    () => events.filter((e) => resolveEventStatus(e, now) === "upcoming").sort((a, b) => compareEventsForHub(a, b, now)),
+    () =>
+      events
+        .filter((e) => isPublicCalendarEvent(e) && resolveEventStatus(e, now) === "upcoming")
+        .sort((a, b) => compareEventsForHub(a, b, now)),
     [events, now],
   );
   const pastAll = useMemo(
-    () => events.filter((e) => resolveEventStatus(e, now) === "past").sort((a, b) => compareEventsForHub(a, b, now)),
+    () =>
+      events
+        .filter((e) => isPublicCalendarEvent(e) && resolveEventStatus(e, now) === "past")
+        .sort((a, b) => compareEventsForHub(a, b, now)),
     [events, now],
   );
   const upcoming = useMemo(() => applyLane(upcomingAll, lane), [upcomingAll, lane]);

@@ -4,6 +4,7 @@ import type { EventItem, EventType } from "@/content/types";
 import type { PublicCampaignEvent } from "@/lib/calendar/public-event-types";
 import { withLiveEventStatus } from "@/lib/format/eventDisplay";
 import { applyPublishedCalendarOverlay } from "@/lib/scheduler/overlay-public-card";
+import { applyCampaignApproach } from "@/lib/events/campaign-approach";
 import { cardFromRow, cardToFieldAttendance } from "@/lib/scheduler/public-card-fields";
 
 /** Map CampaignOS types into movement /events filter buckets (approximate but useful). */
@@ -122,9 +123,9 @@ export function mergeMovementAndCalendarEvents(
   const now = new Date();
   return [...overlaid, ...synthetic].map((e) => {
     try {
-      return withLiveEventStatus(e, now);
+      return applyCampaignApproach(withLiveEventStatus(e, now));
     } catch {
-      return e;
+      return applyCampaignApproach(e);
     }
   });
 }

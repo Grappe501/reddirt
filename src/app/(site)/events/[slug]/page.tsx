@@ -11,6 +11,7 @@ import { EventCard } from "@/components/organizing/EventCard";
 import { EventShareActions } from "@/components/organizing/EventShareActions";
 import { EventSocialGraphic } from "@/components/organizing/EventSocialGraphic";
 import { resolvePublicEventItemBySlug } from "@/lib/events/resolve-public-event-item";
+import { isPublicCalendarEvent } from "@/lib/events/campaign-approach";
 import { EventCompanionSiteBanner } from "@/components/organizing/EventCompanionSiteBanner";
 import { EventFlyerGallery } from "@/components/organizing/EventFlyer";
 import { getGrassrootsGuitarStringsSiteUrl } from "@/config/external-campaign";
@@ -374,6 +375,9 @@ export default async function EventDetailPage({ params }: Props) {
     throw e;
   });
   if (overlaid) {
+    if (!isPublicCalendarEvent(overlaid)) {
+      return <CanceledEventTombstone title={overlaid.title} />;
+    }
     return <CuratedOrCalendarEventView event={overlaid} />;
   }
 

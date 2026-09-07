@@ -9,6 +9,7 @@ import type { EventType } from "@/content/types";
 import { Button } from "@/components/ui/Button";
 import { eventMatchesSchedulePreset } from "@/lib/format/event-schedule-in-zone";
 import { compareEventsForHub, resolveEventStatus } from "@/lib/format/eventDisplay";
+import { isPublicCalendarEvent } from "@/lib/events/campaign-approach";
 
 const MovementFairsMap = dynamic(
   () => import("@/components/organizing/MovementFairsMap").then((m) => m.MovementFairsMap),
@@ -50,6 +51,7 @@ export function EventsHub({ events, types, regions, audienceTags, initialFilters
     const now = new Date();
     return events
       .filter((e) => {
+        if (!isPublicCalendarEvent(e)) return false;
         const liveStatus = resolveEventStatus(e, now);
         if (filters.type !== "all" && e.type !== filters.type) return false;
         if (filters.region !== "all" && e.region !== filters.region) return false;

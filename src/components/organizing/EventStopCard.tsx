@@ -4,7 +4,8 @@ import Link from "next/link";
 import type { EventItem } from "@/content/types";
 import { formatCountyFirstMeta, publicCountyEyebrow } from "@/lib/events/public-event-county";
 import { resolveEventStatus, stripPublicMarkdown } from "@/lib/format/eventDisplay";
-import { attendanceIsOpenInvite, eventCardActionHref, eventCardCtaLabel, eventCardTitleHref } from "@/lib/events/public-event-kind";
+import { attendanceIsOpenInvite, eventBoardChromeClass, eventCardActionHref, eventCardCtaLabel, eventCardTitleHref } from "@/lib/events/public-event-kind";
+import { EventOpsLetters } from "@/components/organizing/EventOpsLetters";
 import { isExternalHref } from "@/lib/href";
 
 function EventHref({
@@ -29,7 +30,7 @@ function EventHref({
   );
 }
 
-export function EventStopCard({ event }: { event: EventItem }) {
+export function EventStopCard({ event, scheduleConflict = false }: { event: EventItem; scheduleConflict?: boolean }) {
   const status = resolveEventStatus(event);
   const titleHref = eventCardTitleHref(event);
   const actionHref = eventCardActionHref(event);
@@ -39,12 +40,9 @@ export function EventStopCard({ event }: { event: EventItem }) {
 
   return (
     <article
-      className={
-        event.featured
-          ? "rounded-card border-2 border-kelly-gold/55 bg-[var(--color-surface-elevated)] p-5 shadow-[var(--shadow-soft)]"
-          : "rounded-card border border-kelly-text/10 bg-[var(--color-surface-elevated)] p-5 shadow-[var(--shadow-soft)]"
-      }
+      className={`relative rounded-card p-5 pr-16 shadow-[var(--shadow-soft)] ${eventBoardChromeClass(event, scheduleConflict)}`}
     >
+      <EventOpsLetters event={event} />
       <p className="font-body text-xs font-bold uppercase tracking-wider text-kelly-navy">{publicCountyEyebrow(event)}</p>
       {event.featured ? (
         <p className="mt-1 font-body text-[11px] font-bold uppercase tracking-wider text-kelly-navy">

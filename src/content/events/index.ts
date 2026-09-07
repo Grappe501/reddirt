@@ -10,6 +10,16 @@ import {
 } from "@/content/events/recurring-virtual-series";
 import { calendarIngest20260902 } from "@/content/events/calendar-ingest-2026-09-02";
 import { ledgerPublicGaps2026 } from "@/content/events/ledger-public-gaps-2026";
+import { restoredUpcomingFromSeptCuts } from "@/content/events/restored-upcoming-from-sept-cuts";
+import { applyCampaignApproach } from "@/lib/events/campaign-approach";
+
+function mergeRestoredUpcoming(base: EventItem[], extra: EventItem[]): EventItem[] {
+  const map = new Map(base.map((event) => [event.slug, event]));
+  for (const event of extra) {
+    if (!map.has(event.slug)) map.set(event.slug, event);
+  }
+  return [...map.values()];
+}
 
 /** Dated slugs on main that the Sep 2 audit replaced with fuller pages. */
 const CALENDAR_INGEST_REPLACES: Record<string, string> = {
@@ -652,18 +662,21 @@ const movementEventsCore: EventItem[] = [
 
 /** Public curated movement events only. Published CampaignOS rows merge on `/events` at request time. */
 export const events: EventItem[] = markSuggestedFestivalPath(
-  mergeEventsPreferIngest(
-    [
-      ...movementEventsCore,
-      ...july2026CampaignStops,
-      ...august2026CampaignStops,
-      ...september2026CampaignStops,
-      ...october2026CampaignStops,
-      ...ledgerPublicGaps2026,
-      ...recurringVirtualSeries,
-    ],
-    calendarIngest20260902,
-  ),
+  mergeRestoredUpcoming(
+    mergeEventsPreferIngest(
+      [
+        ...movementEventsCore,
+        ...july2026CampaignStops,
+        ...august2026CampaignStops,
+        ...september2026CampaignStops,
+        ...october2026CampaignStops,
+        ...ledgerPublicGaps2026,
+        ...recurringVirtualSeries,
+      ],
+      calendarIngest20260902,
+    ),
+    restoredUpcomingFromSeptCuts,
+  ).map(applyCampaignApproach),
 );
 
 export const eventTypes = [

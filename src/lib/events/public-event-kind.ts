@@ -116,6 +116,54 @@ export function attendanceIsOpenInvite(kind: CampaignEventAttendanceType | strin
   return kind === "PUBLIC_OPEN" || kind === "PUBLIC_REGISTRATION";
 }
 
+export function isKellyNotAttending(event: { fieldAttendance?: string }): boolean {
+  return event.fieldAttendance === "surrogate";
+}
+
+export function isCautionHold(event: { fieldAttendance?: string }): boolean {
+  return event.fieldAttendance === "caution";
+}
+
+export const KELLY_NOT_ATTENDING_COPY =
+  "Kelly will not attend. If we can send someone, we will. This is not a speaking engagement.";
+
+export const CAUTION_HOLD_COPY = "Caution — we need more information before this is a locked stop.";
+
+export const SCHEDULE_CONFLICT_COPY =
+  "This date has more than one public stop. Confirm which one Kelly is making.";
+
+export function eventBoardChromeClass(
+  event: {
+    fieldAttendance?: string;
+    featured?: boolean;
+    campaignApproach?: string;
+  },
+  scheduleConflict = false,
+): string {
+  if (event.campaignApproach === "archive" || event.campaignApproach === "removed") {
+    return "border-2 border-slate-300 bg-slate-100 text-slate-700";
+  }
+  if (event.fieldAttendance === "surrogate") {
+    return "border-2 border-red-600 bg-[var(--color-surface-elevated)]";
+  }
+  if (scheduleConflict) {
+    return "border-2 border-yellow-500 bg-yellow-400";
+  }
+  if (event.fieldAttendance === "tentative") {
+    return "border-2 border-orange-300 bg-orange-100";
+  }
+  if (event.fieldAttendance === "caution") {
+    return "border-2 border-amber-500 bg-amber-50";
+  }
+  if (event.fieldAttendance === "confirmed") {
+    return "border-2 border-kelly-navy/70 bg-kelly-navy/[0.06]";
+  }
+  if (event.featured) {
+    return "border-2 border-kelly-gold/55 bg-[var(--color-surface-elevated)]";
+  }
+  return "border border-kelly-text/10 bg-[var(--color-surface-elevated)]";
+}
+
 export function attendanceDetailCopy(
   kind: CampaignEventAttendanceType | string | undefined,
   city: string,

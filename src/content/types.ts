@@ -26,11 +26,16 @@ export type EventStatus = "upcoming" | "past";
  */
 export type FieldAttendance = "unscheduled" | "suggested" | "tentative" | "confirmed" | "surrogate" | "caution";
 
+/** How the campaign is treating this stop after Steve's pass. */
+export type CampaignApproach = "attend" | "surrogate" | "archive" | "removed";
+export type ArchiveReason = "never_confirmed" | "conflict" | "redundant" | "did_not_attend";
+
 export type EventMarks = {
   kellyRole?: "speaking" | "present" | "not_attending" | "tba";
   tabling?: "yes" | "planned" | "no";
   volunteers?: "needed" | "shifts_open" | "none";
   mobilize?: "live" | "needed" | "none";
+  driver?: "needed" | "assigned" | "none";
   mobilizeHref?: string;
   volunteerHref?: string;
 };
@@ -135,6 +140,11 @@ export type EventItem = {
    * election & ballot-access tour but use another `type` (e.g. Town Hall).
    */
   listeningSessionSeries?: boolean;
+  /** Public Mobilize / table / volunteer / Kelly-role chips. Omit until reviewed. */
+  marks?: EventMarks;
+  /** Steve pass: attend, send someone, archive, or take off the calendar. */
+  campaignApproach?: CampaignApproach;
+  archiveReason?: ArchiveReason;
 };
 
 export type ResourceItem = {
