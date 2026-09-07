@@ -1,0 +1,31 @@
+MACROSCOPIC LIFE BOOK ONE — 6x9 STRUCTURAL PROOF v0.2 INSPECTION
+pages=180
+chapter_starts=1:6,2:15,3:23,4:29,5:36,6:43,7:53,8:64,9:76,10:87,11:100,12:110,13:124,14:135,15:145,16:155
+part_pages=I:5,II:21,II:22,III:35,III:51,IV:52,V:99,VI:123,IV:173
+figure_pages=02:8,03:9,04:14,05:18,06:25,07:29,08:37,09:43,10:68,11:85,12:91,13:109,14:113,15:153,16:165
+blank_or_near_blank_pages=none
+missing_chapters=none
+missing_expected_figures=none
+duplicate_figure_slots=none
+anchor_gate_02=PASS anchor_page=7 figure_page=8 chapter=1 source=after-substring:one evolved observational window among many. probe=None of these animals occupies a more real universe than we 
+anchor_gate_03=PASS anchor_page=9 figure_page=9 chapter=1 source=after-substring:Time-lapse changes the observer, not the process. probe=If we are going to ask whether meaningful organization can e
+anchor_gate_04=PASS anchor_page=14 figure_page=14 chapter=1 source=after-substring:The possibility is that important organization may exist outside the scales at which human intuition naturally recognizes individuals. probe=That leaves us with a possibility worth investigating and a 
+anchor_gate_05=PASS anchor_page=18 figure_page=18 chapter=2 source=after-substring:The next task is to determine whether the apparent whole was discovered or drawn. probe=The next task is to determine whether the apparent whole was
+anchor_gate_06=PASS anchor_page=25 figure_page=25 chapter=3 source=after-substring:The candidate individual is not whatever survives our prose. It is whatever survives perturbation and comparison. probe=A boundary should therefore be allowed to fail. The candidat
+anchor_gate_07=PASS anchor_page=29 figure_page=29 chapter=4 source=after-substring:Nothing about the machine changed while we were talking. Only the verbs did. probe=Nothing about the machine changed while we were talking. Onl
+anchor_gate_08=PASS anchor_page=37 figure_page=37 chapter=5 source=after-substring:Stability across implementation is not proof of causation, but it is one reason higher-level models can generalize. probe=The higher level may therefore capture patterns that are sta
+anchor_gate_09=PASS anchor_page=43 figure_page=43 chapter=6 source=first-match:\b(recover|recovery|restor|regulat) probe=We begin before the drought. The candidate property is not c
+anchor_gate_10=PASS anchor_page=67 figure_page=68 chapter=8 source=canonical-reader-marker probe=terious return of the past, but an intervention-sensitive ro
+anchor_gate_11=PASS anchor_page=85 figure_page=85 chapter=9 source=canonical-reader-marker probe=That is scientific progress.
+anchor_gate_12=PASS anchor_page=90 figure_page=91 chapter=10 source=canonical-reader-marker probe=That restraint does not make regeneration less astonishing. 
+anchor_gate_13=PASS anchor_page=109 figure_page=109 chapter=11 source=canonical-reader-marker probe=The swarm shows why this can be useful. A distributed collec
+anchor_gate_14=PASS anchor_page=113 figure_page=113 chapter=12 source=before-heading:Many Becoming One probe=Macroscopic Life therefore cannot ask whether a candidate sy
+anchor_gate_15=PASS anchor_page=152 figure_page=153 chapter=15 source=before-heading:Building the Individual probe=If higher-level selection were demonstrated, we still could 
+anchor_gate_16=PASS anchor_page=164 figure_page=165 chapter=16 source=before-heading:No Staircase to Earth probe=Association Sufficiency remains Model A: lower-level evoluti
+lowest_text_density_pages=1:16,4:64,2:97,99:104,22:107,52:111,35:121,5:131,134:138,3:142,21:151,123:155,122:184,51:264,180:536,166:649,63:785,75:785,42:815,86:865
+highest_text_density_pages=171:2253,65:2160,174:2141,179:2133,157:2081,30:2077,158:2068,11:2066,27:2066,32:2064,56:2063,57:2057,54:2049,12:2047,177:2045,119:2035,59:2032,10:2030,55:2019,66:2018
+final_aperture_present=True
+chapter17_present=False
+chapter16_tail=tion operate through a life cycle that cannot be understood by treating every somatic cell as an independent organism. That history teaches something profound but narrower than the grandest version of Macroscopic Life. It does not show that every 165 collection can become an individual, that larger systems are climbing toward life, or that Earth is becoming an organism. It shows that individuality itself can have an evolutionary history. The organisms we know cannot therefore serve as timeless templates for every form an individual must take. Evolution did not discover a final size, shape, or architecture for individuality. Under some conditions, it changed the organization through which individuality could emerge. Scale alone cannot tell us where that process is possible. If individuality can be reorganized across levels, what determines where a new individual can-and cannot-emerge? 166
+failures=none
+overall_status=PASS

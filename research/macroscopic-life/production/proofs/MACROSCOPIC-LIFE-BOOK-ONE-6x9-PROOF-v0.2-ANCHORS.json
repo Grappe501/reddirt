@@ -1,0 +1,113 @@
+{
+  "proof_version": "v0.2",
+  "reader": "manuscript/BOOK-ONE-READER-MATERIALIZED-v0.4.md",
+  "expected_figures": {
+    "02": 1,
+    "03": 1,
+    "04": 1,
+    "05": 2,
+    "06": 3,
+    "07": 4,
+    "08": 5,
+    "09": 6,
+    "10": 8,
+    "11": 9,
+    "12": 10,
+    "13": 11,
+    "14": 12,
+    "15": 15,
+    "16": 16
+  },
+  "placements": [
+    {
+      "figure": "02",
+      "chapter": 1,
+      "source": "after-substring:one evolved observational window among many.",
+      "anchor_text": "None of these animals occupies a more real universe than we do. They occupy the same physical world while sampling different portions of it. What exists and what an organism can naturally detect are therefore two different questions. Once that distinction becomes obvious, human perception stops looking like the reference standard for reality and starts looking like what it actually is: one evolved observational window among many."
+    },
+    {
+      "figure": "03",
+      "chapter": 1,
+      "source": "after-substring:Time-lapse changes the observer, not the process.",
+      "anchor_text": "If we are going to ask whether meaningful organization can exist at scales larger than familiar organisms, then our clock cannot automatically be the clock of the system. A process that matters over a century may look like background noise across a week. A process that matters over ten thousand years may look almost motionless across a human lifetime. Time-lapse changes the observer, not the process."
+    },
+    {
+      "figure": "04",
+      "chapter": 1,
+      "source": "after-substring:The possibility is that important organization may exist outside the scales at which human intuition naturally recognizes individuals.",
+      "anchor_text": "That leaves us with a possibility worth investigating and a warning worth carrying with us. The possibility is that important organization may exist outside the scales at which human intuition naturally recognizes individuals. The warning is that perceptual limitation provides no positive evidence that such organization exists. It tells us only that looking with unaided human senses is not enough."
+    },
+    {
+      "figure": "05",
+      "chapter": 2,
+      "source": "after-substring:The next task is to determine whether the apparent whole was discovered or drawn.",
+      "anchor_text": "The next task is to determine whether the apparent whole was discovered or drawn."
+    },
+    {
+      "figure": "06",
+      "chapter": 3,
+      "source": "after-substring:The candidate individual is not whatever survives our prose. It is whatever survives perturbation and comparison.",
+      "anchor_text": "A boundary should therefore be allowed to fail. The candidate individual is not whatever survives our prose. It is whatever survives perturbation and comparison."
+    },
+    {
+      "figure": "07",
+      "chapter": 4,
+      "source": "after-substring:Nothing about the machine changed while we were talking. Only the verbs did.",
+      "anchor_text": "Nothing about the machine changed while we were talking. Only the verbs did."
+    },
+    {
+      "figure": "08",
+      "chapter": 5,
+      "source": "after-substring:Stability across implementation is not proof of causation, but it is one reason higher-level models can generalize.",
+      "anchor_text": "The higher level may therefore capture patterns that are stable across many lower-level configurations. Stability across implementation is not proof of causation, but it is one reason higher-level models can generalize."
+    },
+    {
+      "figure": "09",
+      "chapter": 6,
+      "source": "first-match:\\b(recover|recovery|restor|regulat)",
+      "anchor_text": "We begin before the drought. The candidate property is not consciousness, intelligence, or even agency. Those claims are too strong. We begin with something narrower: integrated regulation at the forest level."
+    },
+    {
+      "figure": "10",
+      "chapter": 8,
+      "source": "canonical-reader-marker",
+      "anchor_text": "What we cannot accept as an explanation is *the information is stored somewhere* when neither the somewhere nor the mechanism can be defended. If a past condition matters later, some physical difference must survive or be reconstructed. For the stronger causal claim, we should be able to identify a later condition under which changing that retained state changes a specified downstream response while relevant rivals are controlled. That is what *re-entry* will mean here: not a mysterious return of the past, but an intervention-sensitive role for a physically retained difference."
+    },
+    {
+      "figure": "11",
+      "chapter": 9,
+      "source": "canonical-reader-marker",
+      "anchor_text": "That is scientific progress."
+    },
+    {
+      "figure": "12",
+      "chapter": 10,
+      "source": "canonical-reader-marker",
+      "anchor_text": "That restraint does not make regeneration less astonishing. No individual cell need contain a literal, complete spatial description of the finished anatomy for distributed processes to build or restore coherent form. Different local mechanisms can contribute to a large-scale outcome. The causal organization can be real while the strongest interpretation remains unsettled."
+    },
+    {
+      "figure": "13",
+      "chapter": 11,
+      "source": "canonical-reader-marker",
+      "anchor_text": "The swarm shows why this can be useful. A distributed collective can gather information, support competing alternatives, cross decision-related thresholds, and produce coordinated movement. Those functions can be investigated without first settling whether the swarm, colony, or another boundary should count as one biological individual."
+    },
+    {
+      "figure": "14",
+      "chapter": 12,
+      "source": "before-heading:Many Becoming One",
+      "anchor_text": "Macroscopic Life therefore cannot ask whether a candidate system is simply “an individual” and leave the term undefined. We must state which individuality claim is being tested. At larger scales that discipline becomes essential, because ambiguity otherwise favors whatever conclusion we already wanted."
+    },
+    {
+      "figure": "15",
+      "chapter": 15,
+      "source": "before-heading:Building the Individual",
+      "anchor_text": "If higher-level selection were demonstrated, we still could not slide from “this organization affected descendant success” to “the whole evolved in order to achieve something.” Function remains separate from goal. Goal remains separate from purpose. Selection remains separate from agency."
+    },
+    {
+      "figure": "16",
+      "chapter": 16,
+      "source": "before-heading:No Staircase to Earth",
+      "anchor_text": "Association Sufficiency remains Model A: lower-level evolution, mutualism, ecology, composition, environmental filtering, and ordinary selection explain the organization without a transition at the proposed level. Model B is Higher-Level Organizational Utility: the higher level does scientific work now while the historical transition remains unearned—and that is still a discovery. Model C is the property-specific historical claim: converging evidence supports an S0→S1 shift in which inherited organizational changes altered specified dimensions of reproduction, heredity, conflict, dependence, selection, and lineage structure, while the derived higher-level unit gains relevant causal or evolutionary leverage. The models remain reversible, and none establishes progress."
+    }
+  ]
+}
