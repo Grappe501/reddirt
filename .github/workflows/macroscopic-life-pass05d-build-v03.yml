@@ -1,0 +1,113 @@
+name: Macroscopic Life Pass 05D Build v0.3
+
+on:
+  push:
+    paths:
+      - 'research/macroscopic-life/production/PRODUCTION-PASS-05D.trigger'
+      - '.github/workflows/macroscopic-life-pass05d-build-v03.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-repair-regress:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install compositor and inspector
+        run: pip install reportlab pypdf pymupdf pillow
+      - name: Build v0.3 from frozen v0.2 compositor with surgical Part-marker filter
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          src=Path('research/macroscopic-life/scripts/build-book-one-proof-v02.py')
+          text=src.read_text(encoding='utf-8')
+          needle="        stripped = line.strip()\n        if re.match(r'^#{1,2}\\s+NOTES\\s*$', stripped, re.I):"
+          replacement="        stripped = line.strip()\n        # Pass 05D: Reader part headings are source structure only. The compositor\n        # creates designed part-divider pages from PARTS; never leak raw '# PART'\n        # markdown into the preceding chapter's reading stream.\n        if re.match(r'^#\\s+PART\\s+[IVXLC]+\\b', stripped, re.I):\n            continue\n        if re.match(r'^#{1,2}\\s+NOTES\\s*$', stripped, re.I):"
+          if needle not in text:
+              raise SystemExit('Pass 05D patch point not found; refusing unsafe compositor mutation')
+          text=text.replace(needle,replacement,1)
+          text=text.replace('v0.2','v0.3').replace('v02','v03')
+          out=Path('research/macroscopic-life/scripts/build-book-one-proof-v03.generated.py')
+          out.write_text(text,encoding='utf-8')
+          PY
+          python research/macroscopic-life/scripts/build-book-one-proof-v03.generated.py
+      - name: Structural regression and raw-control-markup gate
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from pypdf import PdfReader
+          import json,re
+          root=Path('research/macroscopic-life/production/proofs')
+          pdf=root/'MACROSCOPIC-LIFE-BOOK-ONE-6x9-PROOF-v0.3.pdf'
+          anchors=root/'MACROSCOPIC-LIFE-BOOK-ONE-6x9-PROOF-v0.3-ANCHORS.json'
+          if not pdf.exists() or not anchors.exists(): raise SystemExit('v0.3 outputs missing')
+          r=PdfReader(str(pdf)); pages=[(p.extract_text() or '') for p in r.pages]
+          full='\n'.join(pages)
+          failures=[]
+          if len(pages) < 170 or len(pages) > 190: failures.append(f'page_count_out_of_guardrail:{len(pages)}')
+          for n in range(1,17):
+              if not re.search(rf'CHAPTER\s+{n}\b',full,re.I): failures.append(f'missing_chapter_{n}')
+          if re.search(r'CHAPTER\s+17\b',full,re.I): failures.append('chapter17_prohibited')
+          protected='If individuality can be reorganized across levels, what determines where a new individual can—and cannot—emerge?'
+          # Extraction may normalize the em dash; use distinctive fragments.
+          if 'If individuality can be reorganized across levels' not in full or 'where a new individual can' not in full:
+              failures.append('protected_final_aperture_missing')
+          leaked=[]
+          for i,t in enumerate(pages,1):
+              if re.search(r'#\s*PART\s+[IVXLC]+',t,re.I): leaked.append(i)
+          if leaked: failures.append('raw_part_markup_leak_pages:'+','.join(map(str,leaked)))
+          # Designed part pages must still exist exactly once each in extracted text.
+          for roman,name in [('I','THE OBSERVER'),('II','THE WHOLE'),('III','THE TEST'),('IV','THE FUNCTIONS'),('V','THE INDIVIDUAL'),('VI','THE LINEAGE')]:
+              if full.upper().count(f'PART {roman}\n{name}') != 1:
+                  failures.append(f'part_divider_count_{roman}')
+          data=json.loads(anchors.read_text(encoding='utf-8'))
+          if set(x['figure'] for x in data['placements']) != {f'{n:02d}' for n in range(2,17)}:
+              failures.append('figure_set_mismatch')
+          report=root/'MACROSCOPIC-LIFE-BOOK-ONE-6x9-PROOF-v0.3-REGRESSION.txt'
+          report.write_text('\n'.join([
+              'proof=v0.3',f'page_count={len(pages)}',f'raw_part_markup_leaks={leaked}',
+              'chapters_1_16=PASS' if not any(x.startswith('missing_chapter') for x in failures) else 'chapters_1_16=FAIL',
+              'chapter17_absent=PASS' if 'chapter17_prohibited' not in failures else 'chapter17_absent=FAIL',
+              'protected_final_aperture=PASS' if 'protected_final_aperture_missing' not in failures else 'protected_final_aperture=FAIL',
+              'figure_set_02_16=PASS' if 'figure_set_mismatch' not in failures else 'figure_set_02_16=FAIL',
+              'overall_status=' + ('PASS' if not failures else 'FAIL'),
+              'failures=' + ('none' if not failures else ';'.join(failures)),
+          ])+'\n',encoding='utf-8')
+          print(report.read_text())
+          if failures: raise SystemExit('Structural regression failed: '+'; '.join(failures))
+          PY
+      - name: Render repaired transitions for visual confirmation
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import fitz
+          pdf=Path('research/macroscopic-life/production/proofs/MACROSCOPIC-LIFE-BOOK-ONE-6x9-PROOF-v0.3.pdf')
+          out=Path('pass05d-v03-review'); out.mkdir(exist_ok=True)
+          doc=fitz.open(pdf)
+          # Render all pages containing designed PART II-VI dividers plus neighbors.
+          targets=set()
+          for i,p in enumerate(doc):
+              text=p.get_text()
+              if any(f'PART {r}' in text for r in ['II','III','IV','V','VI']):
+                  targets.update(x for x in (i,i+1,i+2) if 0<=x<len(doc))
+          for i in sorted(targets):
+              pix=doc[i].get_pixmap(matrix=fitz.Matrix(1.5,1.5),alpha=False)
+              pix.save(out/f'page-{i+1:03d}.png')
+          (out/'README.txt').write_text('Pass 05D v0.3 repaired part-transition pages and immediate neighbors.\n',encoding='utf-8')
+          print('rendered',len(targets),'transition review pages')
+          PY
+      - name: Upload v0.3 proof and regression package
+        uses: actions/upload-artifact@v4
+        with:
+          name: macroscopic-life-pass05d-v03-proof
+          path: |
+            research/macroscopic-life/production/proofs/MACROSCOPIC-LIFE-BOOK-ONE-6x9-PROOF-v0.3.pdf
+            research/macroscopic-life/production/proofs/MACROSCOPIC-LIFE-BOOK-ONE-6x9-PROOF-v0.3-ANCHORS.json
+            research/macroscopic-life/production/proofs/MACROSCOPIC-LIFE-BOOK-ONE-6x9-PROOF-v0.3-REGRESSION.txt
+            pass05d-v03-review
+          retention-days: 7
