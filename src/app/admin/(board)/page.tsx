@@ -2,6 +2,11 @@ import Link from "next/link";
 
 const cards = [
   {
+    href: "/admin/calendar-admin",
+    title: "Calendar Admin (public ledger)",
+    body: "Team workbench for the Kelly Across Arkansas calendar: ingest screenshots and emails, list conflicts, edit stops, publish or hide. Separate from the public /events page.",
+  },
+  {
     href: "/admin/calendar-command-center",
     title: "Kelly Calendar Command Center",
     body: "Candidate cockpit, schedule settlement, coverage plans, event staffing, route planning, GOTV goals, and AI readiness.",

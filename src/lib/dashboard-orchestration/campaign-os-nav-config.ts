@@ -53,6 +53,7 @@ export function buildCampaignOsNavGroups(activeMonth = "2026-03"): CampaignOsNav
       id: "calendar",
       label: "Campaign Calendar",
       links: [
+        { href: "/admin/calendar-admin", label: "Calendar admin" },
         { href: `/admin/campaign-calendar/month?month=${month}`, label: "Calendar home" },
         { href: "/admin/campaign-calendar/timeline", label: "Path to Election Day" },
         { href: "/admin/campaign-calendar/week", label: "Week view" },
@@ -82,6 +83,7 @@ export function buildCampaignOsNavGroups(activeMonth = "2026-03"): CampaignOsNav
       id: "calendar_ops",
       label: "Calendar ops",
       links: [
+        { href: "/admin/calendar-admin", label: "Public calendar admin" },
         { href: "/admin/campaign-events/calendar-promotion", label: "Calendar promotion" },
         { href: `/admin/campaign-events/review?month=${month}&mode=chronological`, label: "Month review", badgeKey: "approvals" },
       ],

@@ -43,11 +43,14 @@ const payload = {
     visitedCounties: summary.visitedCounties,
     totalCounties: summary.totalCounties,
     percentVisited: summary.percentVisited,
+    completedLedgerCount: summary.completedLedgerCount,
+    completedUnpostedCount: summary.completedUnpostedCount,
     completedStopCount: summary.completedStopCount,
     scheduledStopCount: summary.scheduledStopCount,
     totalPublicStopCount: summary.totalPublicStopCount,
     needsReviewCount: summary.needsReviewCount,
     buckets: summary.buckets,
+    returningCounties: summary.returningCounties,
   },
   counties: [...ARKANSAS_COUNTIES],
   completed: getCompletedPublicStops().map(slim),
@@ -91,7 +94,7 @@ fs.writeFileSync(
 );
 
 console.log(
-  `>>> arkansas-visits standalone: ${payload.completed.length} completed, ${payload.upcoming.length} upcoming → ${path.relative(root, outFile)}`,
+  `>>> arkansas-visits standalone: ${payload.summary.completedStopCount} completed (${payload.completed.length} dated + ${payload.summary.completedUnpostedCount} unposted), ${payload.upcoming.length} upcoming → ${path.relative(root, outFile)}`,
 );
 console.log(`>>> embedded data: ${path.relative(root, visitsDataJs)}`);
 console.log(`>>> publish folder: ${path.relative(root, outDir)}`);

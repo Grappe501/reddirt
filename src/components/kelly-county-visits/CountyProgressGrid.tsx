@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils";
 import type { VisitSummary } from "@/data/kelly-county-visits";
+import { getCountyPaintMap } from "@/data/kelly-county-visits";
 
 type Props = {
   summary: VisitSummary;
@@ -13,6 +14,11 @@ const legend = [
     className: "border-kelly-gold/40 bg-kelly-gold/15 text-kelly-navy",
   },
   {
+    key: "visited-scheduled" as const,
+    label: "Visited + upcoming",
+    className: "border-2 border-kelly-gold bg-kelly-navy/10 text-kelly-navy",
+  },
+  {
     key: "undocumented" as const,
     label: "Not yet documented",
     className: "border-kelly-text/10 bg-kelly-text/[0.04] text-kelly-text/55",
@@ -20,12 +26,14 @@ const legend = [
 ];
 
 export function CountyProgressGrid({ summary }: Props) {
-  const { buckets } = summary;
-  const rows = [
-    ...buckets.visited.map((name) => ({ name, bucket: "visited" as const })),
-    ...buckets.scheduled.map((name) => ({ name, bucket: "scheduled" as const })),
-    ...buckets.undocumented.map((name) => ({ name, bucket: "undocumented" as const })),
-  ].sort((a, b) => a.name.localeCompare(b.name));
+  const { buckets, returningCounties } = summary;
+  const paint = getCountyPaintMap();
+  const rows = [...buckets.visited, ...buckets.scheduled, ...buckets.undocumented]
+    .filter((name, i, all) => all.indexOf(name) === i)
+    .sort((a, b) => a.localeCompare(b))
+    .map((name) => ({ name, bucket: paint[name] ?? "undocumented" }));
+
+  const returningCount = returningCounties.length;
 
   return (
     <section aria-labelledby="arkansas-visits-counties">
@@ -33,18 +41,26 @@ export function CountyProgressGrid({ summary }: Props) {
         All 75 counties
       </h2>
       <p className="mt-2 max-w-2xl font-body text-base leading-relaxed text-kelly-text/80">
-        A county counts as visited once a completed public stop lists it. Scheduled stops show separately until
-        completed.
+        Navy is a completed public stop. Gold is an upcoming stop. A gold outline on navy means she has already been
+        there and is scheduled to return.
       </p>
 
       <div className="mt-6 flex flex-wrap gap-4 font-body text-xs text-kelly-muted">
-        {legend.map((item) => (
-          <span key={item.key} className="inline-flex items-center gap-2">
-            <span className={cn("h-3 w-3 rounded-sm border", item.className)} aria-hidden />
-            {item.label}
-            <span className="text-kelly-text/45">({buckets[item.key].length})</span>
-          </span>
-        ))}
+        {legend.map((item) => {
+          const count =
+            item.key === "visited-scheduled"
+              ? returningCount
+              : item.key === "visited"
+                ? buckets.visited.length
+                : buckets[item.key].length;
+          return (
+            <span key={item.key} className="inline-flex items-center gap-2">
+              <span className={cn("h-3 w-3 rounded-sm border", item.className)} aria-hidden />
+              {item.label}
+              <span className="text-kelly-text/45">({count})</span>
+            </span>
+          );
+        })}
       </div>
 
       <ul
@@ -53,7 +69,7 @@ export function CountyProgressGrid({ summary }: Props) {
         aria-label="Arkansas counties by visit status"
       >
         {rows.map((row) => {
-          const style = legend.find((l) => l.key === row.bucket)!;
+          const style = legend.find((l) => l.key === row.bucket) ?? legend[3];
           return (
             <li key={row.name}>
               <div

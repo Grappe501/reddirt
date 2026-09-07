@@ -9,6 +9,8 @@ import { TrustFunnelHero } from "@/components/home/trust-funnel/TrustFunnelHero"
 import { TrustFunnelPrimaryMessageSection } from "@/components/home/trust-funnel/TrustFunnelPrimaryMessageSection";
 import { TrustFunnelFinalActionSection } from "@/components/home/trust-funnel/TrustFunnelFinalActionSection";
 import { PublicMediaSlotFrame } from "@/components/media/PublicMediaSlotFrame";
+import { KellyAcrossArkansasStatsBand } from "@/components/kelly-county-visits/KellyAcrossArkansasStatsBand";
+import { ContentContainer } from "@/components/layout/ContentContainer";
 import { trustFunnelHomeCopy } from "@/content/home/trust-funnel-home";
 import { resolveSiteCopy } from "@/lib/site-edit/copy-overrides";
 import { isSiteEditMode } from "@/lib/site-edit/edit-mode";
@@ -58,6 +60,15 @@ export async function HomeTrustFunnelWireframe() {
       <TrustFunnelPrimaryMessageSection />
 
       <HomePersonalityMediaBridge />
+
+      <section
+        className="border-t border-kelly-ink/10 bg-kelly-wash/40 py-section-y lg:py-section-y-lg"
+        aria-label="Kelly Across Arkansas totals"
+      >
+        <ContentContainer>
+          <KellyAcrossArkansasStatsBand />
+        </ContentContainer>
+      </section>
 
       <TrustFunnelFinalActionSection />
     </div>

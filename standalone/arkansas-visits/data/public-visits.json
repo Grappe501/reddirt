@@ -1,14 +1,16 @@
 {
-  "generatedAt": "2026-09-02T18:54:25.835Z",
+  "generatedAt": "2026-09-02T21:45:25.948Z",
   "siteUrl": "https://kgrappe.netlify.app",
   "summary": {
     "visitedCounties": 58,
     "totalCounties": 75,
     "percentVisited": 77.3,
-    "completedStopCount": 213,
-    "scheduledStopCount": 49,
-    "totalPublicStopCount": 262,
-    "needsReviewCount": 0,
+    "completedLedgerCount": 215,
+    "completedUnpostedCount": 27,
+    "completedStopCount": 242,
+    "scheduledStopCount": 116,
+    "totalPublicStopCount": 358,
+    "needsReviewCount": 8,
     "buckets": {
       "visited": [
         "Arkansas",
@@ -73,8 +75,11 @@
       "scheduled": [
         "Ashley",
         "Calhoun",
+        "Chicot",
         "Crittenden",
         "Dallas",
+        "Lawrence",
+        "Lincoln",
         "Logan",
         "Madison",
         "Monroe",
@@ -85,13 +90,53 @@
         "Scott"
       ],
       "undocumented": [
-        "Chicot",
-        "Lawrence",
-        "Lincoln",
         "Miller",
         "Perry"
       ]
-    }
+    },
+    "returningCounties": [
+      "Arkansas",
+      "Baxter",
+      "Benton",
+      "Boone",
+      "Carroll",
+      "Clark",
+      "Clay",
+      "Cleveland",
+      "Columbia",
+      "Conway",
+      "Craighead",
+      "Cross",
+      "Desha",
+      "Drew",
+      "Faulkner",
+      "Garland",
+      "Grant",
+      "Greene",
+      "Hot Spring",
+      "Howard",
+      "Jefferson",
+      "Johnson",
+      "Lafayette",
+      "Lee",
+      "Little River",
+      "Lonoke",
+      "Marion",
+      "Montgomery",
+      "Ouachita",
+      "Polk",
+      "Pope",
+      "Pulaski",
+      "Saline",
+      "Searcy",
+      "Sebastian",
+      "Sevier",
+      "Sharp",
+      "Stone",
+      "Van Buren",
+      "Washington",
+      "White"
+    ]
   },
   "counties": [
     "Arkansas",
@@ -171,6 +216,26 @@
     "Yell"
   ],
   "completed": [
+    {
+      "id": "manual-2026-09-01-hdqt-opening-cocktails",
+      "date": "2026-09-01",
+      "endDate": null,
+      "title": "Headquarters opening cocktails",
+      "city": null,
+      "counties": [],
+      "status": "needs-review"
+    },
+    {
+      "id": "manual-2026-08-30-guandy-event-scott",
+      "date": "2026-08-30",
+      "endDate": null,
+      "title": "Quendy event — Scott",
+      "city": "Scott",
+      "counties": [
+        "Pulaski"
+      ],
+      "status": "completed"
+    },
     {
       "id": "presence-2026-08-29-marion-county-visit-dem-party-meeting",
       "date": "2026-08-29",
@@ -2544,6 +2609,17 @@
       "status": "scheduled"
     },
     {
+      "id": "manual-2026-09-02-polk-county-fair-mena",
+      "date": "2026-09-02",
+      "endDate": "2026-09-05",
+      "title": "Polk County Fair — Mena",
+      "city": "Mena",
+      "counties": [
+        "Polk"
+      ],
+      "status": "scheduled"
+    },
+    {
       "id": "presence-2026-09-03-conway-county-fair-opening-night-spend-the-night",
       "date": "2026-09-03",
       "endDate": null,
@@ -2555,10 +2631,32 @@
       "status": "scheduled"
     },
     {
+      "id": "manual-2026-09-03-fred-love-fundraiser-conway",
+      "date": "2026-09-03",
+      "endDate": null,
+      "title": "Fred Love for Governor — fundraiser at The Max",
+      "city": "Conway",
+      "counties": [
+        "Faulkner"
+      ],
+      "status": "scheduled"
+    },
+    {
       "id": "presence-2026-09-03-madison-county",
       "date": "2026-09-03",
       "endDate": null,
       "title": "Madison County Democrats meeting — Kelly speaking",
+      "city": "Huntsville",
+      "counties": [
+        "Madison"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "manual-2026-09-03-madison-senior-center",
+      "date": "2026-09-03",
+      "endDate": null,
+      "title": "Madison County Senior Center — lunch stop (ask)",
       "city": "Huntsville",
       "counties": [
         "Madison"
@@ -2588,6 +2686,17 @@
       "status": "scheduled"
     },
     {
+      "id": "manual-2026-09-05-paloma-hispanic-festival",
+      "date": "2026-09-05",
+      "endDate": null,
+      "title": "Paloma Community Hispanic Festival — Conway",
+      "city": "Conway",
+      "counties": [
+        "Faulkner"
+      ],
+      "status": "scheduled"
+    },
+    {
       "id": "manual-2026-09-06-rector-labor-day-pageants",
       "date": "2026-09-06",
       "endDate": null,
@@ -2595,6 +2704,17 @@
       "city": "Rector",
       "counties": [
         "Clay"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "manual-2026-09-07-washington-county-labor-event",
+      "date": "2026-09-07",
+      "endDate": null,
+      "title": "Labor event — Washington County",
+      "city": null,
+      "counties": [
+        "Washington"
       ],
       "status": "scheduled"
     },
@@ -2607,6 +2727,26 @@
       "counties": [
         "Clay"
       ],
+      "status": "scheduled"
+    },
+    {
+      "id": "manual-2026-09-08-howard-county-nashville",
+      "date": "2026-09-08",
+      "endDate": null,
+      "title": "Howard County — Nashville 5:30 p.m.",
+      "city": "Nashville",
+      "counties": [
+        "Howard"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "manual-2026-09-09-cocktails-with-kelly",
+      "date": "2026-09-09",
+      "endDate": null,
+      "title": "Cocktails with Kelly",
+      "city": null,
+      "counties": [],
       "status": "scheduled"
     },
     {
@@ -2636,10 +2776,30 @@
       "date": "2026-09-10",
       "endDate": null,
       "title": "Johnson County Roosevelt Dinner",
-      "city": null,
+      "city": "Clarksville",
       "counties": [
         "Johnson"
       ],
+      "status": "scheduled"
+    },
+    {
+      "id": "manual-2026-09-10-sherwood-chamber-military",
+      "date": "2026-09-10",
+      "endDate": null,
+      "title": "Sherwood Chamber — Military Relations",
+      "city": "Sherwood",
+      "counties": [
+        "Pulaski"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "manual-2026-09-11-le-vs-fire-softball",
+      "date": "2026-09-11",
+      "endDate": null,
+      "title": "Law enforcement vs. fire softball",
+      "city": null,
+      "counties": [],
       "status": "scheduled"
     },
     {
@@ -2654,11 +2814,33 @@
       "status": "scheduled"
     },
     {
+      "id": "manual-2026-09-11-lafayette-county",
+      "date": "2026-09-11",
+      "endDate": "2026-09-12",
+      "title": "Lafayette County",
+      "city": null,
+      "counties": [
+        "Lafayette"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "manual-2026-09-11-sharp-county-hq-highland",
+      "date": "2026-09-11",
+      "endDate": null,
+      "title": "Sharp County Democrats HQ opening — Highland",
+      "city": "Highland",
+      "counties": [
+        "Sharp"
+      ],
+      "status": "scheduled"
+    },
+    {
       "id": "presence-2026-09-12-cleveland-county-forum-jametta-harper",
       "date": "2026-09-12",
       "endDate": null,
-      "title": "Cleveland County forum",
-      "city": null,
+      "title": "Cleveland County Democrats — meet and greet",
+      "city": "Rison",
       "counties": [
         "Cleveland"
       ],
@@ -2687,6 +2869,39 @@
       "status": "scheduled"
     },
     {
+      "id": "manual-2026-09-12-stuttgart",
+      "date": "2026-09-12",
+      "endDate": null,
+      "title": "Stuttgart — 11:00 a.m. to 1:00 p.m.",
+      "city": "Stuttgart",
+      "counties": [
+        "Arkansas"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "manual-2026-09-13-fort-smith-river-valley",
+      "date": "2026-09-13",
+      "endDate": null,
+      "title": "The River Valley Has a Choice — Fort Smith",
+      "city": "Fort Smith",
+      "counties": [
+        "Sebastian"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "manual-2026-09-14-faulkner-dems-hq-opening",
+      "date": "2026-09-14",
+      "endDate": null,
+      "title": "Faulkner County Democrats headquarters opening — Conway",
+      "city": "Conway",
+      "counties": [
+        "Faulkner"
+      ],
+      "status": "scheduled"
+    },
+    {
       "id": "presence-2026-09-14-mt-home-candidate-forum",
       "date": "2026-09-14",
       "endDate": null,
@@ -2694,6 +2909,17 @@
       "city": "Mountain Home",
       "counties": [
         "Baxter"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "manual-2026-09-15-garden-party-dunbar",
+      "date": "2026-09-15",
+      "endDate": null,
+      "title": "Garden Party — Dunbar Gardens",
+      "city": "Little Rock",
+      "counties": [
+        "Pulaski"
       ],
       "status": "scheduled"
     },
@@ -2709,6 +2935,26 @@
       "status": "scheduled"
     },
     {
+      "id": "manual-2026-09-15-count-me-in-dreami-tea",
+      "date": "2026-09-15",
+      "endDate": null,
+      "title": "Count Me In / ¡Me Apunto! — Dreami Tea",
+      "city": "Russellville",
+      "counties": [
+        "Pope"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "manual-2026-09-16-karaoke",
+      "date": "2026-09-16",
+      "endDate": null,
+      "title": "Karaoke — 7:00 p.m.",
+      "city": null,
+      "counties": [],
+      "status": "scheduled"
+    },
+    {
       "id": "presence-2026-09-16-hsv-candidate-forum",
       "date": "2026-09-16",
       "endDate": null,
@@ -2716,6 +2962,39 @@
       "city": "Hot Springs Village",
       "counties": [
         "Garland"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "manual-2026-09-16-rogers-roundabout-crew",
+      "date": "2026-09-16",
+      "endDate": null,
+      "title": "Roundabout Crew — Rogers (date ask)",
+      "city": "Rogers",
+      "counties": [
+        "Benton"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "manual-2026-09-17-camden-meet-the-candidates",
+      "date": "2026-09-17",
+      "endDate": null,
+      "title": "Meet the Candidates Forum — Camden",
+      "city": "Camden",
+      "counties": [
+        "Ouachita"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "manual-2026-09-18-iclr",
+      "date": "2026-09-18",
+      "endDate": null,
+      "title": "ICLR — 7:30 (Muslim community)",
+      "city": "Little Rock",
+      "counties": [
+        "Pulaski"
       ],
       "status": "scheduled"
     },
@@ -2731,6 +3010,17 @@
       "status": "scheduled"
     },
     {
+      "id": "manual-2026-09-18-baxter-fair",
+      "date": "2026-09-18",
+      "endDate": null,
+      "title": "Baxter County Fair",
+      "city": "Mountain Home",
+      "counties": [
+        "Baxter"
+      ],
+      "status": "scheduled"
+    },
+    {
       "id": "presence-2026-09-18-calhoun-county-fair-evening",
       "date": "2026-09-18",
       "endDate": null,
@@ -2738,6 +3028,50 @@
       "city": null,
       "counties": [
         "Calhoun"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "manual-2026-09-18-cynthia-nations-fundraiser",
+      "date": "2026-09-18",
+      "endDate": null,
+      "title": "Cynthia Nations — fundraiser at The Max",
+      "city": "Conway",
+      "counties": [
+        "Faulkner"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "manual-2026-09-18-grassroots-guitar-strings",
+      "date": "2026-09-18",
+      "endDate": null,
+      "title": "Grassroots & Guitar Strings — Woody’s Sherwood Forest",
+      "city": "Sherwood",
+      "counties": [
+        "Pulaski"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "presence-2026-09-19-4pm-hot-spring-dems-picnic-tentative",
+      "date": "2026-09-19",
+      "endDate": null,
+      "title": "Hot Spring County Democrats — community cookout",
+      "city": "Malvern",
+      "counties": [
+        "Hot Spring"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "manual-2026-09-19-beatles-on-the-ridge",
+      "date": "2026-09-19",
+      "endDate": null,
+      "title": "Beatles on the Ridge — Walnut Ridge",
+      "city": "Walnut Ridge",
+      "counties": [
+        "Lawrence"
       ],
       "status": "scheduled"
     },
@@ -2764,6 +3098,28 @@
       "status": "scheduled"
     },
     {
+      "id": "manual-2026-09-20-arkadelphia",
+      "date": "2026-09-20",
+      "endDate": null,
+      "title": "Arkadelphia",
+      "city": "Arkadelphia",
+      "counties": [
+        "Clark"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "manual-2026-09-20-dequeen",
+      "date": "2026-09-20",
+      "endDate": null,
+      "title": "De Queen — 4:00 to 6:00 p.m.",
+      "city": "De Queen",
+      "counties": [
+        "Sevier"
+      ],
+      "status": "scheduled"
+    },
+    {
       "id": "locked-2026-09-20-jacksonville-festiville",
       "date": "2026-09-20",
       "endDate": null,
@@ -2775,6 +3131,28 @@
       "status": "scheduled"
     },
     {
+      "id": "manual-2026-09-21-little-river-charlotte",
+      "date": "2026-09-21",
+      "endDate": null,
+      "title": "Little River County — Charlotte",
+      "city": null,
+      "counties": [
+        "Little River"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "manual-2026-09-22-garland-library-county-forum",
+      "date": "2026-09-22",
+      "endDate": null,
+      "title": "Garland County Candidates Forum — library",
+      "city": "Hot Springs",
+      "counties": [
+        "Garland"
+      ],
+      "status": "scheduled"
+    },
+    {
       "id": "locked-2026-09-22-howard-county-visit",
       "date": "2026-09-22",
       "endDate": null,
@@ -2782,6 +3160,26 @@
       "city": "Nashville",
       "counties": [
         "Howard"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "manual-2026-09-22-press-freedom-gala",
+      "date": "2026-09-22",
+      "endDate": null,
+      "title": "Press freedom gala",
+      "city": null,
+      "counties": [],
+      "status": "scheduled"
+    },
+    {
+      "id": "manual-2026-09-22-rodeo-rally-washington",
+      "date": "2026-09-22",
+      "endDate": null,
+      "title": "Rodeo event rally — Washington County",
+      "city": null,
+      "counties": [
+        "Washington"
       ],
       "status": "scheduled"
     },
@@ -2821,6 +3219,39 @@
       "status": "scheduled"
     },
     {
+      "id": "manual-2026-09-25-leslie-karaoke",
+      "date": "2026-09-25",
+      "endDate": null,
+      "title": "Leslie karaoke — 7:00 p.m.",
+      "city": "Leslie",
+      "counties": [
+        "Searcy"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "manual-2026-09-26-marche-day",
+      "date": "2026-09-26",
+      "endDate": null,
+      "title": "Marche Day",
+      "city": "North Little Rock",
+      "counties": [
+        "Pulaski"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "manual-2026-09-26-owlfest-mcgehee",
+      "date": "2026-09-26",
+      "endDate": null,
+      "title": "Owl Fest — McGehee",
+      "city": "McGehee",
+      "counties": [
+        "Desha"
+      ],
+      "status": "scheduled"
+    },
+    {
       "id": "presence-2026-09-26-paragould-candidate-forum-2pm-til-5",
       "date": "2026-09-26",
       "endDate": null,
@@ -2828,6 +3259,50 @@
       "city": "Paragould",
       "counties": [
         "Greene"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "manual-2026-09-27-little-flock-embed",
+      "date": "2026-09-27",
+      "endDate": null,
+      "title": "Little Flock — Benton County embed",
+      "city": "Little Flock",
+      "counties": [
+        "Benton"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "manual-2026-09-27-lpga-nwa",
+      "date": "2026-09-27",
+      "endDate": null,
+      "title": "LPGA Northwest Arkansas",
+      "city": null,
+      "counties": [
+        "Benton"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "manual-2026-09-28-dppc-gigis-rally",
+      "date": "2026-09-28",
+      "endDate": null,
+      "title": "Pulaski County Democrats — Countdown to Victory rally",
+      "city": "North Little Rock",
+      "counties": [
+        "Pulaski"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "manual-2026-09-28-drew-county-dems-peggy",
+      "date": "2026-09-28",
+      "endDate": null,
+      "title": "Drew County Democrats meeting — Peggy",
+      "city": null,
+      "counties": [
+        "Drew"
       ],
       "status": "scheduled"
     },
@@ -2865,6 +3340,50 @@
       "status": "scheduled"
     },
     {
+      "id": "manual-2026-09-29-jcdw-meet-the-candidates",
+      "date": "2026-09-29",
+      "endDate": null,
+      "title": "Jefferson County Democratic Women — Meet the Candidates",
+      "city": "Pine Bluff",
+      "counties": [
+        "Jefferson"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "manual-2026-09-29-garland-library-state-federal-forum",
+      "date": "2026-09-29",
+      "endDate": null,
+      "title": "State & Federal Candidates Forum — Hot Springs",
+      "city": "Hot Springs",
+      "counties": [
+        "Garland"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "manual-2026-09-30-garland-library-city-forum",
+      "date": "2026-09-30",
+      "endDate": null,
+      "title": "Hot Springs City Candidates Forum — library",
+      "city": "Hot Springs",
+      "counties": [
+        "Garland"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "manual-2026-10-01-ballots-blue-jeans-bbq",
+      "date": "2026-10-01",
+      "endDate": null,
+      "title": "Ballots, Blue Jeans & BBQ — North Little Rock",
+      "city": "North Little Rock",
+      "counties": [
+        "Pulaski"
+      ],
+      "status": "scheduled"
+    },
+    {
       "id": "manual-2026-10-01-berryville-meet-the-candidates",
       "date": "2026-10-01",
       "endDate": null,
@@ -2873,6 +3392,38 @@
       "counties": [
         "Carroll"
       ],
+      "status": "scheduled"
+    },
+    {
+      "id": "manual-2026-10-01-siloam-springs-chamber-forum",
+      "date": "2026-10-01",
+      "endDate": null,
+      "title": "Siloam Springs Chamber — candidate forum",
+      "city": "Siloam Springs",
+      "counties": [
+        "Benton"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "manual-2026-10-02-fun-on-31",
+      "date": "2026-10-02",
+      "endDate": "2026-10-04",
+      "title": "Fun on 31 — miles of yard sales",
+      "city": "Romance",
+      "counties": [
+        "White",
+        "Lonoke"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "manual-2026-10-03-goat-fest",
+      "date": "2026-10-03",
+      "endDate": null,
+      "title": "Goat fest — Patty Brazil chair",
+      "city": null,
+      "counties": [],
       "status": "scheduled"
     },
     {
@@ -2898,6 +3449,17 @@
       "status": "scheduled"
     },
     {
+      "id": "manual-2026-10-03-nlr-air-show",
+      "date": "2026-10-03",
+      "endDate": null,
+      "title": "North Little Rock Air Show",
+      "city": "North Little Rock",
+      "counties": [
+        "Pulaski"
+      ],
+      "status": "scheduled"
+    },
+    {
       "id": "manual-2026-10-03-ozark-forward-fundraiser",
       "date": "2026-10-03",
       "endDate": null,
@@ -2916,6 +3478,28 @@
       "city": "Little Rock",
       "counties": [
         "Pulaski"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "manual-2026-10-04-mountain-home-hold",
+      "date": "2026-10-04",
+      "endDate": "2026-10-05",
+      "title": "Mountain Home",
+      "city": "Mountain Home",
+      "counties": [
+        "Baxter"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "manual-2026-10-06-baxter-farm-bureau",
+      "date": "2026-10-06",
+      "endDate": null,
+      "title": "Baxter County Farm Bureau annual convention",
+      "city": "Mountain Home",
+      "counties": [
+        "Baxter"
       ],
       "status": "scheduled"
     },
@@ -2955,6 +3539,17 @@
       "status": "scheduled"
     },
     {
+      "id": "manual-2026-10-08-cross-county-farm-bureau",
+      "date": "2026-10-08",
+      "endDate": null,
+      "title": "Cross County Farm Bureau — Meet the Candidates",
+      "city": "Wynne",
+      "counties": [
+        "Cross"
+      ],
+      "status": "scheduled"
+    },
+    {
       "id": "manual-2026-10-08-fayetteville-library-league",
       "date": "2026-10-08",
       "endDate": null,
@@ -2962,6 +3557,39 @@
       "city": "Fayetteville",
       "counties": [
         "Washington"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "manual-2026-10-09-naacp-pine-bluff-dove-banquet",
+      "date": "2026-10-09",
+      "endDate": null,
+      "title": "NAACP Pine Bluff — Dove Freedom Fund Banquet",
+      "city": "Pine Bluff",
+      "counties": [
+        "Jefferson"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "manual-2026-10-09-olli-for-coffee",
+      "date": "2026-10-09",
+      "endDate": null,
+      "title": "OLLI for Coffee — Jimmy’s Egg (Fayetteville)",
+      "city": "Fayetteville",
+      "counties": [
+        "Washington"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "presence-2026-10-10-montgomery-county",
+      "date": "2026-10-10",
+      "endDate": null,
+      "title": "Montgomery County",
+      "city": null,
+      "counties": [
+        "Montgomery"
       ],
       "status": "scheduled"
     },
@@ -2977,6 +3605,17 @@
       "status": "scheduled"
     },
     {
+      "id": "manual-2026-10-10-saline-old-fashioned",
+      "date": "2026-10-10",
+      "endDate": null,
+      "title": "Saline County Old Fashioned",
+      "city": null,
+      "counties": [
+        "Saline"
+      ],
+      "status": "scheduled"
+    },
+    {
       "id": "locked-2026-10-10-turkey-drop-yellville",
       "date": "2026-10-10",
       "endDate": null,
@@ -2988,6 +3627,17 @@
       "status": "scheduled"
     },
     {
+      "id": "manual-2026-10-11-hot-springs-chili",
+      "date": "2026-10-11",
+      "endDate": null,
+      "title": "Hot Springs chili cookout",
+      "city": "Hot Springs",
+      "counties": [
+        "Garland"
+      ],
+      "status": "scheduled"
+    },
+    {
       "id": "manual-2026-10-12-women-in-democracy-jonesboro",
       "date": "2026-10-12",
       "endDate": null,
@@ -2995,6 +3645,26 @@
       "city": "Jonesboro",
       "counties": [
         "Craighead"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "manual-2026-10-12-razorback-touchdown-club",
+      "date": "2026-10-12",
+      "endDate": null,
+      "title": "Razorback Touchdown Club (city TBA)",
+      "city": null,
+      "counties": [],
+      "status": "scheduled"
+    },
+    {
+      "id": "manual-2026-10-12-rison-in-the-fall",
+      "date": "2026-10-12",
+      "endDate": null,
+      "title": "Rison in the Fall",
+      "city": "Rison",
+      "counties": [
+        "Cleveland"
       ],
       "status": "scheduled"
     },
@@ -3021,6 +3691,70 @@
       "status": "scheduled"
     },
     {
+      "id": "manual-2026-10-15-hardy-candidate-forum",
+      "date": "2026-10-15",
+      "endDate": null,
+      "title": "Sharp County candidate forum — Hardy",
+      "city": "Hardy",
+      "counties": [
+        "Sharp"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "manual-2026-10-15-hob-nob-bentonville",
+      "date": "2026-10-15",
+      "endDate": null,
+      "title": "Hob Nob at Joint Business After Hours — Bentonville",
+      "city": "Bentonville",
+      "counties": [
+        "Benton"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "manual-2026-10-17-flat-rock-fish-fry",
+      "date": "2026-10-17",
+      "endDate": null,
+      "title": "Flat Rock Hwy 359 fire department fish fry",
+      "city": null,
+      "counties": [],
+      "status": "scheduled"
+    },
+    {
+      "id": "manual-2026-10-17-rocky-comfort-pecan-festival",
+      "date": "2026-10-17",
+      "endDate": null,
+      "title": "Rocky Comfort Pecan Festival — Foreman",
+      "city": "Foreman",
+      "counties": [
+        "Little River"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "manual-2026-10-17-stuttgart",
+      "date": "2026-10-17",
+      "endDate": null,
+      "title": "Stuttgart — 10:00 a.m. to 1:00 p.m.",
+      "city": "Stuttgart",
+      "counties": [
+        "Arkansas"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "manual-2026-10-17-uapb-homecoming",
+      "date": "2026-10-17",
+      "endDate": null,
+      "title": "UAPB Homecoming",
+      "city": "Pine Bluff",
+      "counties": [
+        "Jefferson"
+      ],
+      "status": "scheduled"
+    },
+    {
       "id": "presence-2026-10-18-logan-and-scott-immersion",
       "date": "2026-10-18",
       "endDate": null,
@@ -3029,6 +3763,17 @@
       "counties": [
         "Logan",
         "Scott"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "presence-2026-10-18-petit-jean-meat-festival",
+      "date": "2026-10-18",
+      "endDate": null,
+      "title": "Petit Jean Meat Festival",
+      "city": "Petit Jean",
+      "counties": [
+        "Conway"
       ],
       "status": "scheduled"
     },
@@ -3055,6 +3800,41 @@
       "status": "scheduled"
     },
     {
+      "id": "manual-2026-10-22-cindy-nations-rally",
+      "date": "2026-10-22",
+      "endDate": null,
+      "title": "Cindy Nations rally (confirm city)",
+      "city": "Conway",
+      "counties": [
+        "Faulkner"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "presence-2026-10-23-lake-chipotle-fall-fest-3-county-immersion-chipotle-despair-lincoln",
+      "date": "2026-10-23",
+      "endDate": "2026-10-26",
+      "title": "Lake Chicot Fall Fest — Chicot, Desha, Lincoln immersion",
+      "city": "Lake Village",
+      "counties": [
+        "Chicot",
+        "Desha",
+        "Lincoln"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "manual-2026-10-24-mountain-view-outhouse-races",
+      "date": "2026-10-24",
+      "endDate": null,
+      "title": "Bean Fest and Championship Outhouse Races — Mountain View",
+      "city": "Mountain View",
+      "counties": [
+        "Stone"
+      ],
+      "status": "scheduled"
+    },
+    {
       "id": "presence-2026-10-25-madison-and-newton-county-immersion-ponca-color-fest",
       "date": "2026-10-25",
       "endDate": null,
@@ -3074,6 +3854,17 @@
       "city": "Sheridan",
       "counties": [
         "Grant"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "presence-2026-11-01-central-arkansas-veterans-car-show-and-parade-north-little-rock",
+      "date": "2026-11-01",
+      "endDate": null,
+      "title": "Central Arkansas Veterans Car Show and Parade — North Little Rock",
+      "city": "North Little Rock",
+      "counties": [
+        "Pulaski"
       ],
       "status": "scheduled"
     }

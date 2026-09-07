@@ -1,17 +1,50 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useRef } from "react";
-import { MapContainer, Marker, Popup, TileLayer, useMap } from "react-leaflet";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { GeoJSON as LeafletGeoJSON, MapContainer, Marker, Popup, TileLayer, useMap } from "react-leaflet";
 import L from "leaflet";
 import type { LatLngExpression } from "leaflet";
 import type { EventItem } from "@/content/types";
 import { formatEventWhen } from "@/lib/format/eventDisplay";
+import { getCountyPaintMap, type CountyVisitPaint } from "@/data/kelly-county-visits";
 
 import "leaflet/dist/leaflet.css";
 
 const ARK_CENTER: LatLngExpression = [34.75, -92.35];
 const DEFAULT_ZOOM = 6.7;
+
+const NAVY = "#000066";
+const GOLD = "#c9a227";
+
+type CountyFeatureCollection = {
+  type: "FeatureCollection";
+  features: Array<{
+    type: "Feature";
+    properties: { fips: string; name: string };
+    geometry: { type: string; coordinates: unknown };
+  }>;
+};
+
+function countyPathStyle(paint: CountyVisitPaint): L.PathOptions {
+  if (paint === "visited-scheduled") {
+    return { color: GOLD, weight: 2.4, fillColor: NAVY, fillOpacity: 0.48, opacity: 1 };
+  }
+  if (paint === "visited") {
+    return { color: NAVY, weight: 1, fillColor: NAVY, fillOpacity: 0.42, opacity: 0.85 };
+  }
+  if (paint === "scheduled") {
+    return { color: GOLD, weight: 1.1, fillColor: GOLD, fillOpacity: 0.42, opacity: 0.95 };
+  }
+  return { color: "#9ca3af", weight: 0.6, fillColor: "#e7e5e4", fillOpacity: 0.18, opacity: 0.7 };
+}
+
+function paintLabel(paint: CountyVisitPaint): string {
+  if (paint === "visited-scheduled") return "Visited — upcoming stop also scheduled";
+  if (paint === "visited") return "Visited";
+  if (paint === "scheduled") return "Scheduled";
+  return "Not yet on the public calendar";
+}
 
 /** Single public pin color — Phase 2 (no HQ/Movement/fair palette). */
 const PUBLIC_EVENT_PIN = "#000066";
@@ -80,20 +113,11 @@ function makeDivIcon(): L.DivIcon {
   });
 }
 
-function FitMap({ pins, boundsKey }: { pins: MapPin[]; boundsKey: string }) {
+function KeepArkansasView() {
   const map = useMap();
   useEffect(() => {
-    if (pins.length === 0) {
-      map.setView(ARK_CENTER, DEFAULT_ZOOM);
-      return;
-    }
-    if (pins.length === 1) {
-      map.setView(pins[0].position, 9);
-      return;
-    }
-    const b = L.latLngBounds(pins.map((p) => L.latLng(p.position)));
-    map.fitBounds(b, { padding: [48, 48], maxZoom: 11 });
-  }, [map, boundsKey, pins]);
+    map.setView(ARK_CENTER, DEFAULT_ZOOM);
+  }, [map]);
   return null;
 }
 
@@ -156,16 +180,22 @@ type MovementFairsMapProps = {
 
 export function MovementFairsMap({ events, selectedSlug = null, onSelectSlug }: MovementFairsMapProps) {
   const pins = useMemo(() => buildPins(events), [events]);
-  const boundsKey = useMemo(
-    () =>
-      pins
-        .map((p) => {
-          const [lat, lng] = p.position as [number, number];
-          return `${p.slug}:${lat},${lng}`;
-        })
-        .join("|"),
-    [pins],
-  );
+  const paintMap = useMemo(() => getCountyPaintMap(), []);
+  const [counties, setCounties] = useState<CountyFeatureCollection | null>(null);
+  useEffect(() => {
+    let cancelled = false;
+    fetch("/maps/arkansas-counties.geojson")
+      .then((r) => (r.ok ? r.json() : Promise.reject(new Error(String(r.status)))))
+      .then((geo: CountyFeatureCollection) => {
+        if (!cancelled) setCounties(geo);
+      })
+      .catch(() => {
+        if (!cancelled) setCounties(null);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
   const markerIcon = useMemo(() => makeDivIcon(), []);
 
   const onSelect = (slug: string) => {
@@ -183,13 +213,29 @@ export function MovementFairsMap({ events, selectedSlug = null, onSelectSlug }: 
   return (
     <div className="space-y-3">
       <div className="flex flex-col gap-2 text-sm text-kelly-text/85 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-4 sm:gap-y-2">
-        <span className="font-body font-semibold">Map</span>
+        <span className="font-body font-semibold">Counties</span>
+        <span className="inline-flex items-center gap-2">
+          <span className="inline-block h-3 w-3 shrink-0 rounded-sm" style={{ background: NAVY }} aria-hidden />
+          <span className="font-body">Visited</span>
+        </span>
+        <span className="inline-flex items-center gap-2">
+          <span className="inline-block h-3 w-3 shrink-0 rounded-sm" style={{ background: GOLD }} aria-hidden />
+          <span className="font-body">Scheduled</span>
+        </span>
+        <span className="inline-flex items-center gap-2">
+          <span
+            className="inline-block h-3 w-3 shrink-0 rounded-sm"
+            style={{ background: NAVY, boxShadow: `inset 0 0 0 2px ${GOLD}` }}
+            aria-hidden
+          />
+          <span className="font-body">Visited + upcoming (gold outline)</span>
+        </span>
         <span className="inline-flex items-center gap-2">
           <span
             className="inline-block h-3 w-3 shrink-0 rounded-full border border-white shadow-sm"
             style={{ background: PUBLIC_EVENT_PIN }}
           />
-          <span className="font-body">Published stops with a known location</span>
+          <span className="font-body">Event pin</span>
         </span>
       </div>
       <div className="overflow-hidden rounded-2xl border border-kelly-text/10 shadow-[var(--shadow-soft)]">
@@ -205,7 +251,22 @@ export function MovementFairsMap({ events, selectedSlug = null, onSelectSlug }: 
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
-          <FitMap pins={pins} boundsKey={boundsKey} />
+          <KeepArkansasView />
+          {counties ? (
+            <LeafletGeoJSON
+              key="county-visit-paint"
+              data={counties as never}
+              style={(feature) => {
+                const name = String(feature?.properties && (feature.properties as { name?: string }).name || "");
+                return countyPathStyle(paintMap[name] ?? "undocumented");
+              }}
+              onEachFeature={(feature, layer) => {
+                const name = String((feature.properties as { name?: string } | null)?.name || "County");
+                const paint = paintMap[name] ?? "undocumented";
+                layer.bindTooltip(`${name} County — ${paintLabel(paint)}`, { sticky: true });
+              }}
+            />
+          ) : null}
           <PanToSelected selectedSlug={selectedSlug} pins={pins} />
           {pins.map((p) => (
             <MapPinMarker

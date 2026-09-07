@@ -164,7 +164,16 @@
               <p class="hint">${math.total} − ${math.visited} completed</p>
             </li>
             <li class="stat-scheduled">
-              <p class="label">Scheduled stops</p>
+              <p class="label">Completed stops</p>
+              <p class="value">${s.completedStopCount ?? data.completed.length}</p>
+              <p class="hint">${
+                s.completedUnpostedCount
+                  ? `${s.completedLedgerCount ?? data.completed.length} dated · ${s.completedUnpostedCount} same-day / unposted to backfill`
+                  : "Published past visits"
+              }</p>
+            </li>
+            <li class="stat-scheduled">
+              <p class="label">Lifetime stops</p>
               <p class="value">${s.totalPublicStopCount ?? data.completed.length + data.upcoming.length}</p>
               <p class="hint">${data.upcoming.length} still ahead · ${math.scheduled} counties scheduled only</p>
             </li>
@@ -204,10 +213,11 @@
       <section class="band alt" aria-labelledby="counties-title">
         <div class="wrap">
           <h2 id="counties-title">All 75 counties</h2>
-          <p class="lede">Navy = visited · Gold = scheduled only · Light = not yet documented.</p>
+          <p class="lede">Navy = visited · Gold = scheduled · Gold outline on navy = visited and going back · Light = not yet documented.</p>
           <div class="legend">
             <span><i class="swatch visited" aria-hidden="true"></i>Visited (${math.visited})</span>
             <span><i class="swatch scheduled" aria-hidden="true"></i>Scheduled (${math.scheduled})</span>
+            <span><i class="swatch returning" aria-hidden="true"></i>Visited + upcoming (${(s.returningCounties || []).length})</span>
             <span><i class="swatch undocumented" aria-hidden="true"></i>Not visited (${math.undocumented})</span>
           </div>
           <ul class="county-grid" id="county-grid" aria-label="Arkansas counties by visit status"></ul>
@@ -267,8 +277,12 @@
     }
 
     const grid = document.getElementById("county-grid");
+    const returning = new Set(s.returningCounties || []);
     const rows = [
-      ...s.buckets.visited.map((name) => ({ name, bucket: "visited" })),
+      ...s.buckets.visited.map((name) => ({
+        name,
+        bucket: returning.has(name) ? "visited-scheduled" : "visited",
+      })),
       ...s.buckets.scheduled.map((name) => ({ name, bucket: "scheduled" })),
       ...s.buckets.undocumented.map((name) => ({ name, bucket: "undocumented" })),
     ].sort((a, b) => a.name.localeCompare(b.name));

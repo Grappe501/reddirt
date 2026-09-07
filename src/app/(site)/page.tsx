@@ -11,6 +11,9 @@ import { siteConfig } from "@/config/site";
 import { pageMeta } from "@/lib/seo/metadata";
 import { brandMediaFromLegacySite } from "@/config/brand-media";
 
+/** Visit totals on this page come from the live ledger. */
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = pageMeta({
   title: "Home",
   description: siteConfig.description,

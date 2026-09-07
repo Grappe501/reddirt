@@ -19,7 +19,10 @@ export function VisitSummaryStats({ summary }: Props) {
     {
       label: "Completed stops",
       value: String(summary.completedStopCount),
-      hint: "Published past visits",
+      hint:
+        summary.completedUnpostedCount > 0
+          ? `${summary.completedLedgerCount} dated on the ledger · ${summary.completedUnpostedCount} same-day or unposted still to backfill`
+          : "Published past visits",
     },
     {
       label: "Upcoming stops",
@@ -39,7 +42,8 @@ export function VisitSummaryStats({ summary }: Props) {
         Statewide progress
       </h2>
       <p className="mt-2 max-w-2xl font-body text-base leading-relaxed text-kelly-text/80">
-        Totals update from the campaign stop ledger — not hardcoded claims.
+        Dated stops come from the campaign ledger. The completed total also includes same-day stops that have
+        not been split onto their own calendar line yet.
       </p>
       <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-5" role="list">
         {items.map((item) => (
