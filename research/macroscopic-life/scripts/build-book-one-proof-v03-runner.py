@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Build Book One proof v0.3 from the frozen v0.2 compositor.
 
-Pass 05D.2 changes production behavior only:
-- raw Reader # PART headings are removed from chapter reading streams;
+Pass 05D.3 changes production behavior only:
+- raw Reader # PART headings are removed from chapter reading streams and Notes;
 - output/version metadata targets v0.3;
 - the verified Figure 07 Chapter 4 hinge override is preserved exactly as in the
   frozen v0.2 runner.
@@ -29,14 +29,25 @@ FIGURE_07_HINGE = 'Nothing about the machine changed while we were talking. Only
 module.AFTER_SUBSTRING['07'] = FIGURE_07_HINGE
 module.MARKER_FIGURES.discard('07')
 
-# Remove only raw top-level PART source headings from parsed chapter streams.
+# Remove only raw top-level PART source headings from parsed chapter and Notes streams.
 _base_parse_reader = module.parse_reader
+PART_RE = re.compile(r'^#\s+PART\s+[IVXLC]+\b', re.I)
+
+def _strip_raw_part_markers(value):
+    """Recursively strip only raw '# PART ...' source-marker strings."""
+    if isinstance(value, str):
+        return '' if PART_RE.match(value.strip()) else value
+    if isinstance(value, list):
+        return [cleaned for item in value if (cleaned := _strip_raw_part_markers(item)) not in ('', None)]
+    if isinstance(value, dict):
+        return {key: _strip_raw_part_markers(item) for key, item in value.items()}
+    return value
 
 def parse_reader_v03(text):
     chapters, notes = _base_parse_reader(text)
-    part_re = re.compile(r'^#\s+PART\s+[IVXLC]+\b', re.I)
     for chapter in chapters:
-        chapter['lines'] = [line for line in chapter['lines'] if not part_re.match(line.strip())]
+        chapter['lines'] = [line for line in chapter['lines'] if not PART_RE.match(line.strip())]
+    notes = _strip_raw_part_markers(notes)
     return chapters, notes
 
 module.parse_reader = parse_reader_v03
