@@ -1,0 +1,55 @@
+name: Macroscopic Life 6x9 Proof v0.2
+
+on:
+  push:
+    paths:
+      - 'research/macroscopic-life/scripts/build-book-one-proof-v02.py'
+      - 'research/macroscopic-life/scripts/inspect-book-one-proof-v02.py'
+      - 'research/macroscopic-life/production/PRODUCTION-PASS-04-v02.trigger'
+      - '.github/workflows/macroscopic-life-proof-v02.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  compose:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install compositor and inspector
+        run: pip install reportlab pypdf
+      - name: Build anchor-aware 6x9 structural proof
+        run: python research/macroscopic-life/scripts/build-book-one-proof-v02.py
+      - name: Verify PDF bytes
+        run: |
+          test -s research/macroscopic-life/production/proofs/MACROSCOPIC-LIFE-BOOK-ONE-6x9-PROOF-v0.2.pdf
+          test -s research/macroscopic-life/production/proofs/MACROSCOPIC-LIFE-BOOK-ONE-6x9-PROOF-v0.2-ANCHORS.json
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('research/macroscopic-life/production/proofs/MACROSCOPIC-LIFE-BOOK-ONE-6x9-PROOF-v0.2.pdf')
+          b=p.read_bytes()
+          assert b.startswith(b'%PDF-')
+          assert len(b)>10000
+          print('proof bytes',len(b))
+          PY
+      - name: Inspect anchor-aware structural proof
+        run: python research/macroscopic-life/scripts/inspect-book-one-proof-v02.py
+      - name: Enforce hostile structural gates
+        run: grep -Fx 'overall_status=PASS' research/macroscopic-life/production/proofs/MACROSCOPIC-LIFE-BOOK-ONE-6x9-PROOF-v0.2-INSPECTION.txt
+      - name: Commit proof, anchors, and inspection
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/macroscopic-life/production/proofs/MACROSCOPIC-LIFE-BOOK-ONE-6x9-PROOF-v0.2.pdf
+          git add research/macroscopic-life/production/proofs/MACROSCOPIC-LIFE-BOOK-ONE-6x9-PROOF-v0.2-ANCHORS.json
+          git add research/macroscopic-life/production/proofs/MACROSCOPIC-LIFE-BOOK-ONE-6x9-PROOF-v0.2-INSPECTION.txt
+          if git diff --cached --quiet; then
+            echo 'Proof, anchors, and inspection unchanged.'
+          else
+            git commit -m 'Macroscopic Life: compose and inspect 6x9 structural proof v0.2 [skip proof-v02]'
+            git push
+          fi
