@@ -1,16 +1,13 @@
 import type { EventItem } from "@/content/types";
 import { EventStopCard } from "@/components/organizing/EventStopCard";
 import { collapseRecurringSeriesToNextOccurrence } from "@/lib/events/collapse-recurring-series";
+import { isPublicCalendarEvent } from "@/lib/events/campaign-approach";
 import { publicEventConflictSlugs } from "@/lib/events/public-event-conflicts";
 import { compareEventsForHub, resolveEventStatus } from "@/lib/format/eventDisplay";
 
 function isMovementListEvent(event: EventItem, now: Date): boolean {
   if (resolveEventStatus(event, now) !== "upcoming") return false;
-  // Research-only fair coverage — not a dated campaign-calendar stop.
-  if (event.fieldAttendance === "suggested" || event.fieldAttendance === "unscheduled") {
-    return false;
-  }
-  return true;
+  return isPublicCalendarEvent(event);
 }
 
 export function EventsMovementSection({ events }: { events: EventItem[] }) {
@@ -32,6 +29,11 @@ export function EventsMovementSection({ events }: { events: EventItem[] }) {
         <p className="mt-2 max-w-2xl font-body text-kelly-text/75">
           Public stops still ahead on the campaign calendar, including dated asks that are not locked yet. Invite Kelly to bring one to your community.
         </p>
+        <p className="mt-3 font-body text-xs text-kelly-text/65">
+          Color: navy confirmed · orange tentative · amber caution · red Kelly not attending · yellow same-day conflict.
+          Corner letters: <span className="font-bold">M</span> Mobilize · <span className="font-bold">V</span> volunteers ·{" "}
+          <span className="font-bold">D</span> driver · <span className="font-bold">T</span> table.
+        </p>
       </div>
 
       {featured.length ? (
@@ -40,7 +42,9 @@ export function EventsMovementSection({ events }: { events: EventItem[] }) {
             <p className="font-body text-xs font-bold uppercase tracking-wider text-kelly-navy">
               {featured[0]?.featuredLabel ?? "Weekend highlight"}
             </p>
-            <h3 className="mt-1 font-heading text-xl font-bold text-kelly-text">Chickin-n-Politikin at Mount Nebo</h3>
+            <h3 className="mt-1 font-heading text-xl font-bold text-kelly-text">
+              {featured[0]?.title ?? "Featured stop"}
+            </h3>
             <p className="mt-2 max-w-2xl font-body text-sm leading-relaxed text-kelly-text/80">
               {featured.find((e) => e.featuredSummary)?.featuredSummary ??
                 "A special campaign weekend — details are on each event page."}

@@ -27,6 +27,10 @@ export type EventStatus = "upcoming" | "past";
  */
 export type FieldAttendance = "unscheduled" | "suggested" | "tentative" | "confirmed" | "surrogate" | "caution";
 
+/** How the campaign is treating this stop after Steve's pass. */
+export type CampaignApproach = "attend" | "surrogate" | "archive" | "removed";
+export type ArchiveReason = "never_confirmed" | "conflict" | "redundant" | "did_not_attend";
+
 /**
  * Public card marks. Unset means not reviewed yet — no chip.
  * Copy is attendee-safe; operators still create Mobilize events by hand.
@@ -36,6 +40,7 @@ export type EventMarks = {
   tabling?: "yes" | "planned" | "no";
   volunteers?: "needed" | "shifts_open" | "none";
   mobilize?: "live" | "needed" | "none";
+  driver?: "needed" | "assigned" | "none";
   mobilizeHref?: string;
   volunteerHref?: string;
 };
@@ -122,6 +127,9 @@ export type EventItem = {
   listeningSessionSeries?: boolean;
   /** Public Mobilize / table / volunteer / Kelly-role chips. Omit until reviewed. */
   marks?: EventMarks;
+  /** Steve pass: attend, send someone, archive, or take off the calendar. */
+  campaignApproach?: CampaignApproach;
+  archiveReason?: ArchiveReason;
   /** Collapse weekly series to the next occurrence on Movement lists. */
   recurringSeriesId?: string;
 };

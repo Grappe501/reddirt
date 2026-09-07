@@ -4,7 +4,9 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import type { EventItem } from "@/content/types";
 import { EventStopCard } from "@/components/organizing/EventStopCard";
+import { isPublicCalendarEvent } from "@/lib/events/campaign-approach";
 import { publicEventConflictSlugs } from "@/lib/events/public-event-conflicts";
+import { eventBoardChromeClass } from "@/lib/events/public-event-kind";
 import { Button } from "@/components/ui/Button";
 import {
   compareEventsForHub,
@@ -96,7 +98,10 @@ function EventsMonthGrid({ events }: { events: EventItem[] }) {
                 <Link
                   key={e.slug}
                   href={e.detailHref ?? `/events/${e.slug}`}
-                  className="mt-0.5 block truncate font-body text-[11px] font-semibold text-kelly-navy"
+                  className={cn(
+                    "mt-0.5 block truncate rounded-sm px-0.5 font-body text-[11px] font-semibold",
+                    eventBoardChromeClass(e),
+                  )}
                 >
                   {e.title}
                 </Link>
@@ -133,11 +138,17 @@ export function EventsSurface({
 
   const now = useMemo(() => new Date(), []);
   const upcomingAll = useMemo(
-    () => events.filter((e) => resolveEventStatus(e, now) === "upcoming").sort((a, b) => compareEventsForHub(a, b, now)),
+    () =>
+      events
+        .filter((e) => isPublicCalendarEvent(e) && resolveEventStatus(e, now) === "upcoming")
+        .sort((a, b) => compareEventsForHub(a, b, now)),
     [events, now],
   );
   const pastAll = useMemo(
-    () => events.filter((e) => resolveEventStatus(e, now) === "past").sort((a, b) => compareEventsForHub(a, b, now)),
+    () =>
+      events
+        .filter((e) => isPublicCalendarEvent(e) && resolveEventStatus(e, now) === "past")
+        .sort((a, b) => compareEventsForHub(a, b, now)),
     [events, now],
   );
   const upcoming = useMemo(() => applyLane(upcomingAll, lane), [upcomingAll, lane]);

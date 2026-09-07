@@ -119,9 +119,13 @@ export function eventBoardChromeClass(
   event: {
     fieldAttendance?: string;
     featured?: boolean;
+    campaignApproach?: string;
   },
   scheduleConflict = false,
 ): string {
+  if (event.campaignApproach === "archive" || event.campaignApproach === "removed") {
+    return "border-2 border-slate-300 bg-slate-100 text-slate-700";
+  }
   if (event.fieldAttendance === "surrogate") {
     return "border-2 border-red-600 bg-[var(--color-surface-elevated)]";
   }
@@ -133,6 +137,9 @@ export function eventBoardChromeClass(
   }
   if (event.fieldAttendance === "caution") {
     return "border-2 border-amber-500 bg-amber-50";
+  }
+  if (event.fieldAttendance === "confirmed") {
+    return "border-2 border-kelly-navy/70 bg-kelly-navy/[0.06]";
   }
   if (event.featured) {
     return "border-2 border-kelly-gold/55 bg-[var(--color-surface-elevated)]";

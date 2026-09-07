@@ -3,6 +3,7 @@ import { getMovementRegionForCountySlug, STATEWIDE_EVENT_REGION } from "@/conten
 import type { EventItem, EventType } from "@/content/types";
 import type { PublicCampaignEvent } from "@/lib/calendar/public-event-types";
 import { applyPublishedCalendarOverlay } from "@/lib/scheduler/overlay-public-card";
+import { applyCampaignApproach } from "@/lib/events/campaign-approach";
 import { cardFromRow, cardToEventMarks, cardToFieldAttendance } from "@/lib/scheduler/public-card-fields";
 
 /** Map CampaignOS types into movement /events filter buckets (approximate but useful). */
@@ -99,5 +100,5 @@ export function mergeMovementAndCalendarEvents(
   const taken = new Set(movement.map((e) => e.slug));
   const overlaid = applyPublishedCalendarOverlay(movement, calendar);
   const synthetic = calendar.filter((c) => !taken.has(c.slug)).map(publicCampaignEventToEventItem);
-  return [...overlaid, ...synthetic];
+  return [...overlaid, ...synthetic].map(applyCampaignApproach);
 }

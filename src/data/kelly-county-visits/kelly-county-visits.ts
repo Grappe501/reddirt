@@ -1,3 +1,4 @@
+import { hideLedgerRowsForCampaignApproach } from "@/lib/events/campaign-approach";
 import type { KellyCampaignStop } from "./types";
 
 /**
@@ -9,7 +10,7 @@ import type { KellyCampaignStop } from "./types";
  * Field completed total is 240 (dated public rows plus unposted same-day stops — see field-totals.ts).
  * Window: 2025-11-01 → 2026-11-03. Reference "today" for status split: 2026-09-02.
  */
-export const kellyCampaignStops: KellyCampaignStop[] = [
+const kellyCampaignStopsSource: KellyCampaignStop[] = [
   {
     id: "xlsx-2025-11-03-faulkner-county-visit",
     date: "2025-11-03",
@@ -3834,7 +3835,7 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     includeOnPublicPage: true,
     confidence: "confirmed",
     notes:
-      "Promoted to public calendar 2026-09-02 from campaign schedule. Campaign calendar Fri Sep 18 6:30-9:00 p.m. Same evening: Grassroots & Guitar Strings Woody’s 6:30; Cynthia Nations The Max — Calhoun to Conway/Sherwood is a drive.",
+      "Promoted to public calendar 2026-09-02 from campaign schedule. Archived 2026-09-07 never confirmed. Grassroots & Guitar Strings is Thursday Sep 17, not this Friday.",
     sourceType: "calendar",
   },
 
@@ -4969,13 +4970,13 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     includeOnPublicPage: true,
     confidence: "likely",
     notes:
-      "Steve Google Calendar Fri Sep 18 all-day/header 730 Muslim ICLR. Read as 7:30 — a.m. or p.m. not marked. ICLR inferred Islamic Center of Little Rock; street not on the block. Same evening: Grassroots & Guitar Strings 5:30 Woody's Sherwood Forest. /events/iclr-sep-18-2026",
+      "Steve Google Calendar Fri Sep 18 all-day/header 730 Muslim ICLR. Read as 7:30 — a.m. or p.m. not marked. ICLR inferred Islamic Center of Little Rock; street not on the block. Grassroots & Guitar Strings is Thursday Sep 17, not this Friday. /events/iclr-sep-18-2026",
     sourceType: "calendar",
   },
   {
     id: "manual-2026-09-18-grassroots-guitar-strings",
     publicTitle: "Grassroots & Guitar Strings — Woody’s Sherwood Forest",
-    date: "2026-09-18",
+    date: "2026-09-17",
     title: "Grassroots & Guitar Strings Woody's Sherwood Forest",
     city: "Sherwood",
     counties: ["Pulaski"],
@@ -4983,7 +4984,7 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
     includeOnPublicPage: true,
     confidence: "confirmed",
     notes:
-      "Campaign calendar Fri Sep 18 6:30 p.m. Woody's Sherwood Forest (earlier week grid sat at 5:30). Kickoff copy on the volunteer site still says Thursday Sep 17 — calendar wins until Steve changes it. Same day: Baxter Fair 1:00-2:30; Calhoun Fair 6:30-9:00; Cynthia Nations The Max; ICLR 7:30. /events/grassroots-guitar-strings-2026",
+      "Steve 2026-09-07: Thursday Sep 17 6:30 p.m. Woody's Sherwood Forest. Earlier calendar hold said Fri Sep 18 — that date is wrong. /events/grassroots-guitar-strings-2026",
     sourceType: "calendar",
   },
   {
@@ -5363,6 +5364,8 @@ export const kellyCampaignStops: KellyCampaignStop[] = [
   },
 
 ];
+
+export const kellyCampaignStops: KellyCampaignStop[] = hideLedgerRowsForCampaignApproach(kellyCampaignStopsSource);
 
 // COPY THIS BLOCK TO ADD A STOP
 /*

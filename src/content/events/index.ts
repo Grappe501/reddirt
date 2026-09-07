@@ -5,6 +5,7 @@ import {
   recurringVirtualSeries,
 } from "@/content/events/recurring-virtual-series";
 import { restoredUpcomingFromSeptCuts } from "@/content/events/restored-upcoming-from-sept-cuts";
+import { applyCampaignApproach } from "@/lib/events/campaign-approach";
 
 /** Fair research dump — operator/Evidence only; not merged into the public `/events` hub (Phase 1). */
 export { ARKANSAS_FESTIVAL_EVENTS_2026 } from "./arkansas-festivals-2026";
@@ -2915,16 +2916,16 @@ const movementEventsCore: EventItem[] = [
     locationLabel: "ICLR (confirm a.m. or p.m. and the building)",
     addressLine: "Little Rock, AR. Calendar title: 730 Muslim ICLR — street not on the block.",
     summary:
-      "Friday, September 18, 2026: **730 Muslim ICLR** on Steve’s calendar. Read as 7:30. Confirm morning or evening. Same evening is Grassroots & Guitar Strings in Sherwood.",
+      "Friday, September 18, 2026: **730 Muslim ICLR** on Steve’s calendar. Read as 7:30. Confirm morning or evening.",
     description:
-      "Steve’s Google Calendar listed **730 Muslim ICLR** on Friday, **September 18**. ICLR is read as the Islamic Center of Little Rock. No street and no a.m./p.m. mark were on the block.\n\nThis page uses **7:30 p.m.** so the night appears — move it to morning if that is what the hosts meant.\n\nThe same evening the campaign calendar has **Grassroots & Guitar Strings** at **5:30 p.m.** at Woody’s Sherwood Forest. Sherwood and a 7:30 ICLR hour can pair if ICLR is in Little Rock and starts after the kickoff.",
+      "Steve’s Google Calendar listed **730 Muslim ICLR** on Friday, **September 18**. ICLR is read as the Islamic Center of Little Rock. No street and no a.m./p.m. mark were on the block.\n\nThis page uses **7:30 p.m.** so the night appears — move it to morning if that is what the hosts meant.\n\nGrassroots & Guitar Strings is Thursday, September 17 — not the same night.",
     whatToExpect: ["7:30 — confirm a.m. or p.m.", "Building not on the calendar block"],
     whoItsFor: "Invited guests of the host community. Confirm the hour before travel.",
     organizerNote:
-      "Google Calendar audit 2026-09-02. Do not invent a street. Same evening: grassroots-guitar-strings-2026 5:30 Woody's. Also Calhoun Fair and Cynthia Nations The Max.",
+      "Google Calendar audit 2026-09-02. Do not invent a street. Grassroots & Guitar Strings is Thursday Sep 17, not this Friday. Calhoun Fair and Cynthia Nations The Max are archived.",
     relatedEventSlugs: ["grassroots-guitar-strings-2026"],
     relatedResourceHrefs: [
-      { label: "Grassroots & Guitar Strings — same evening", href: "/events/grassroots-guitar-strings-2026" },
+      { label: "Grassroots & Guitar Strings — Thursday Sep 17", href: "/events/grassroots-guitar-strings-2026" },
       { label: "Get involved", href: "/get-involved" },
     ],
     mapCoordinates: { lat: 34.7465, lng: -92.2896 },
@@ -2938,28 +2939,34 @@ const movementEventsCore: EventItem[] = [
     region: "Central Arkansas",
     countySlug: "pulaski-county",
     status: "upcoming",
-    startsAt: "2026-09-18T18:30:00",
-    endsAt: "2026-09-18T21:30:00",
+    startsAt: "2026-09-17T18:30:00",
+    endsAt: "2026-09-17T21:30:00",
     timezone: "America/Chicago",
     locationLabel: "Woody’s Sherwood Forest — Sherwood",
     addressLine: "Woody’s Sherwood Forest, Sherwood, AR (street not on the calendar title)",
     summary:
-      "Friday, September 18, 2026, **6:30 p.m. Central** at **Woody’s Sherwood Forest**: campaign **Grassroots & Guitar Strings**. Volunteer kickoff copy still says September 17 — this page follows the campaign calendar.",
+      "Thursday, September 17, 2026, **6:30 p.m. Central** at **Woody’s Sherwood Forest**: campaign **Grassroots & Guitar Strings** GOTV kickoff.",
     description:
-      "The **Kelly Grappe for SOS** calendar lists **Grassroots & Guitar Strings** on Friday, **September 18**, starting **5:30 p.m.** at **Woody’s Sherwood Forest** in Sherwood.\n\nVolunteer-kickoff pages on this site still say **Thursday, September 17**. Until Steve changes one of those, the **Google Calendar date and room win** for the public campaign calendar.\n\nThis is a **campaign** GOTV kickoff, not a third-party fair. End time is not on the week grid — this page uses 5:30–9:30 p.m.\n\nThe same Friday the ledger also has Calhoun County Fair evening, a Cynthia Nations hour at The Max in Conway, and **730 Muslim ICLR**.",
+      "Steve locked **Grassroots & Guitar Strings** to **Thursday, September 17, 2026**, **6:30 p.m. Central** at **Woody’s Sherwood Forest** in Sherwood.\n\nThis is the campaign GOTV kickoff, not a third-party fair. End time is not posted — this page uses 6:30–9:30 p.m.",
     whatToExpect: [
-      "5:30 p.m. Central at Woody’s Sherwood Forest",
+      "6:30 p.m. Central at Woody’s Sherwood Forest",
       "Campaign GOTV kickoff — confirm tickets or doors when published",
-      "Volunteer materials may still say September 17; calendar is September 18",
     ],
     whoItsFor: "Volunteers, donors, and neighbors the campaign invites. Confirm doors and tickets before treating this as a walk-in.",
     organizerNote:
-      "Google Calendar audit 2026-09-02. Kickoff copy in volunteer-kickoff/calendar.ts still says Sep 17 — do not silently change that packet here. Same night: iclr-sep-18-2026; Calhoun Fair; cynthia-nations-fundraiser-sept-2026.",
-    relatedEventSlugs: ["iclr-sep-18-2026", "cynthia-nations-fundraiser-sept-2026"],
-    relatedResourceHrefs: [
-      { label: "ICLR — same evening hold", href: "/events/iclr-sep-18-2026" },
-      { label: "Get involved", href: "/get-involved" },
-    ],
+      "Steve pass 2026-09-07: public date is Thursday September 17, not Friday September 18. Align volunteer-kickoff, ledger, and /events to this clock.",
+    featured: true,
+    featuredLabel: "GOTV kickoff",
+    featuredSummary: "Thursday, September 17 at Woody’s Sherwood Forest — the campaign kickoff night.",
+    marks: {
+      kellyRole: "speaking",
+      volunteers: "needed",
+      mobilize: "needed",
+      driver: "needed",
+      tabling: "planned",
+    },
+    relatedEventSlugs: [],
+    relatedResourceHrefs: [{ label: "Get involved", href: "/get-involved" }],
     mapCoordinates: { lat: 34.8151, lng: -92.2243 },
     mapPinQuality: "region",
     fieldAttendance: "confirmed",
@@ -3288,14 +3295,14 @@ const movementEventsCore: EventItem[] = [
     locationLabel: "Baxter County Fair — Mountain Home",
     addressLine: "Mountain Home, AR (fairgrounds not on the calendar block)",
     summary:
-      "Friday, September 18, 2026, **1:00–2:30 p.m. Central**: Baxter County Fair hold. Same evening is Grassroots at Woody’s, Calhoun Fair, and ICLR.",
+      "Friday, September 18, 2026, **1:00–2:30 p.m. Central**: Baxter County Fair hold. Same evening is ICLR.",
     description:
-      "The campaign calendar listed **Baxter fair** on Friday, **September 18**, **1:00–2:30 p.m.** City is inferred as **Mountain Home**. Do not invent a fairgrounds gate.\n\nThis is a **county fair**, not a Grappe-hosted event.\n\nThe same evening already has **Grassroots & Guitar Strings** at 6:30 p.m. in Sherwood, **Calhoun County Fair** 6:30–9:00 p.m., and **ICLR** at 7:30.",
+      "The campaign calendar listed **Baxter fair** on Friday, **September 18**, **1:00–2:30 p.m.** City is inferred as **Mountain Home**. Do not invent a fairgrounds gate.\n\nThis is a **county fair**, not a Grappe-hosted event.\n\n**Grassroots & Guitar Strings** is Thursday, September 17 — not this Friday. The same Friday evening has **ICLR** at 7:30.",
     whatToExpect: ["1:00–2:30 p.m. Central", "Fairgrounds TBA"],
     whoItsFor: "Baxter County neighbors at the fair.",
     organizerNote:
-      "Campaign calendar audit 2026-09-02. Same evening: grassroots-guitar-strings-2026; iclr-sep-18-2026.",
-    relatedEventSlugs: ["grassroots-guitar-strings-2026"],
+      "Campaign calendar audit 2026-09-02. Archived 2026-09-07 never confirmed. Grassroots is Thu Sep 17. Same Friday: iclr-sep-18-2026.",
+    relatedEventSlugs: ["iclr-sep-18-2026"],
     relatedResourceHrefs: [{ label: "Get involved", href: "/get-involved" }],
     mapCoordinates: { lat: 36.3354, lng: -92.3851 },
     mapPinQuality: "region",
@@ -3661,7 +3668,9 @@ const movementEventsCore: EventItem[] = [
 
 /** Public curated movement events only. Published CampaignOS rows merge on `/events` at request time. */
 export const events: EventItem[] = markSuggestedFestivalPath(
-  mergeRestoredUpcoming(movementEventsCore, [...restoredUpcomingFromSeptCuts, ...recurringVirtualSeries]),
+  mergeRestoredUpcoming(movementEventsCore, [...restoredUpcomingFromSeptCuts, ...recurringVirtualSeries]).map(
+    applyCampaignApproach,
+  ),
 );
 
 export const eventTypes = [

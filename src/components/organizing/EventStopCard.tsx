@@ -5,6 +5,7 @@ import type { EventItem } from "@/content/types";
 import { formatCountyFirstMeta, publicCountyEyebrow } from "@/lib/events/public-event-county";
 import { resolveEventStatus, stripPublicMarkdown } from "@/lib/format/eventDisplay";
 import { EventMarksChips } from "@/components/organizing/EventMarksChips";
+import { EventOpsLetters } from "@/components/organizing/EventOpsLetters";
 import { eventMarksCta } from "@/lib/events/event-marks";
 import {
   attendanceIsOpenInvite,
@@ -61,7 +62,8 @@ export function EventStopCard({
   const caution = isCautionHold(event);
 
   return (
-    <article className={`rounded-card p-5 shadow-[var(--shadow-soft)] ${eventBoardChromeClass(event, scheduleConflict)}`}>
+    <article className={`relative rounded-card p-5 pr-16 shadow-[var(--shadow-soft)] ${eventBoardChromeClass(event, scheduleConflict)}`}>
+      <EventOpsLetters event={event} />
       <p className="font-body text-xs font-bold uppercase tracking-wider text-kelly-navy">{publicCountyEyebrow(event)}</p>
       {event.featured ? (
         <p className="mt-1 font-body text-[11px] font-bold uppercase tracking-wider text-kelly-navy">

@@ -23,6 +23,7 @@ import { pageMeta } from "@/lib/seo/metadata";
 import { EventSocialGraphic } from "@/components/organizing/EventSocialGraphic";
 import { EventShareActions } from "@/components/organizing/EventShareActions";
 import { resolvePublicEventItemBySlug } from "@/lib/events/resolve-public-event-item";
+import { isPublicCalendarEvent } from "@/lib/events/campaign-approach";
 import { siteConfig } from "@/config/site";
 import { eventMarksCta } from "@/lib/events/event-marks";
 import {
@@ -63,7 +64,8 @@ function CuratedOrCalendarEventView({ event }: { event: EventItem }) {
   const related = event.relatedEventSlugs
     .map((s) => getEventBySlug(s))
     .filter((e): e is NonNullable<typeof e> => Boolean(e))
-    .filter((e) => e.slug !== event.slug);
+    .filter((e) => e.slug !== event.slug)
+    .filter((e) => isPublicCalendarEvent(e));
   const kellyNotAttending = isKellyNotAttending(event);
   const caution = isCautionHold(event);
   const conflictSlugs = publicEventConflictSlugs(curatedEvents);
@@ -301,6 +303,9 @@ export default async function EventDetailPage({ params }: Props) {
     throw e;
   });
   if (overlaid) {
+    if (!isPublicCalendarEvent(overlaid)) {
+      return <CanceledEventTombstone title={overlaid.title} />;
+    }
     return <CuratedOrCalendarEventView event={overlaid} />;
   }
 

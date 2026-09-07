@@ -1,12 +1,13 @@
 import type { EventItem } from "@/content/types";
 import { eventCalendarDayKey, parseEventInstant, resolveEventStatus } from "@/lib/format/eventDisplay";
+import { isPublicCalendarEvent } from "@/lib/events/campaign-approach";
 import { isKellyNotAttending } from "@/lib/events/public-event-kind";
 
 function countsTowardKellyConflict(event: EventItem, now: Date): boolean {
   if (resolveEventStatus(event, now) !== "upcoming") return false;
   if (isKellyNotAttending(event)) return false;
   if (event.statewideVirtual) return false;
-  if (event.fieldAttendance === "suggested" || event.fieldAttendance === "unscheduled") return false;
+  if (!isPublicCalendarEvent(event)) return false;
   return true;
 }
 

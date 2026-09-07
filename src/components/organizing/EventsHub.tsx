@@ -8,6 +8,7 @@ import { EventFilterBar, type EventFiltersState } from "@/components/organizing/
 import type { EventType } from "@/content/types";
 import { Button } from "@/components/ui/Button";
 import { eventMatchesSchedulePreset } from "@/lib/format/event-schedule-in-zone";
+import { isPublicCalendarEvent } from "@/lib/events/campaign-approach";
 
 const MovementFairsMap = dynamic(
   () => import("@/components/organizing/MovementFairsMap").then((m) => m.MovementFairsMap),
@@ -47,7 +48,7 @@ export function EventsHub({ events, types, regions, audienceTags, initialFilters
 
   const filtered = useMemo(() => {
     return events.filter((e) => {
-      // Published calendar rows are always part of the hub merge (Phase 1–2).
+      if (!isPublicCalendarEvent(e)) return false;
       if (filters.type !== "all" && e.type !== filters.type) return false;
       if (filters.region !== "all" && e.region !== filters.region) return false;
       if (filters.status !== "all" && e.status !== filters.status) return false;
@@ -150,7 +151,8 @@ export function EventsHub({ events, types, regions, audienceTags, initialFilters
           <div className="mb-2">
             <h3 className="font-heading text-lg font-bold text-kelly-text">Event map</h3>
             <p className="mt-1 font-body text-sm text-kelly-text/70">
-              Click a pin or card to sync the view. Filters apply to both.
+              Navy counties are visited. Gold is scheduled. A gold outline on navy means she is going back. Pins mark
+              published stops with a known address.
             </p>
           </div>
           <MovementFairsMap

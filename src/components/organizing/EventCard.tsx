@@ -4,6 +4,7 @@ import Link from "next/link";
 import type { EventItem } from "@/content/types";
 import { formatEventWhen } from "@/lib/format/eventDisplay";
 import { EventMarksChips } from "@/components/organizing/EventMarksChips";
+import { EventOpsLetters } from "@/components/organizing/EventOpsLetters";
 import { eventMarksCta } from "@/lib/events/event-marks";
 import {
   CAUTION_HOLD_COPY,
@@ -46,7 +47,7 @@ export function EventCard({ event, className, highlighted, onActivate, scheduleC
     <article
       id={`event-card-${event.slug}`}
       className={cn(
-        "flex h-full flex-col justify-between rounded-card p-6 shadow-[var(--shadow-soft)] md:p-7 scroll-mt-28",
+        "relative flex h-full flex-col justify-between rounded-card p-6 pr-16 shadow-[var(--shadow-soft)] md:p-7 scroll-mt-28",
         eventBoardChromeClass(event, scheduleConflict),
         highlighted && "ring-2 ring-kelly-navy/50 ring-offset-2 ring-offset-kelly-page",
         onActivate && "cursor-pointer",
@@ -58,6 +59,7 @@ export function EventCard({ event, className, highlighted, onActivate, scheduleC
         onActivate();
       }}
     >
+      <EventOpsLetters event={event} />
       <div>
         <div className="flex flex-wrap items-center gap-2">
           <span className="rounded-full border border-kelly-navy/25 bg-kelly-navy/10 px-2.5 py-0.5 font-body text-[11px] font-bold uppercase tracking-wider text-kelly-text">

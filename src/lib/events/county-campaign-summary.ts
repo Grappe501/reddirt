@@ -54,6 +54,7 @@ export function drivesPublicCountyMap(event: EventItem): boolean {
   if (event.statewideVirtual) return false;
   if (event.qualifiesAsVisit === false) return false;
   if (event.opsFlags?.missingCounty) return false;
+  if (event.campaignApproach === "archive" || event.campaignApproach === "removed") return false;
   if (
     event.fieldAttendance === "unscheduled" ||
     event.fieldAttendance === "suggested" ||
