@@ -41,8 +41,19 @@ jobs:
           if re.search(r'CHAPTER\s+17\b',full,re.I): failures.append('chapter17_prohibited')
           if 'If individuality can be reorganized across levels' not in full or 'where a new individual can' not in full:
               failures.append('protected_final_aperture_missing')
-          leaked=[i for i,t in enumerate(pages,1) if re.search(r'#\s*PART\s+[IVXLC]+',t,re.I)]
+
+          leak_pattern=re.compile(r'#\s*PART\s+[IVXLC]+',re.I)
+          leaked=[]
+          leak_context=[]
+          for i,t in enumerate(pages,1):
+              m=leak_pattern.search(t)
+              if m:
+                  leaked.append(i)
+                  start=max(0,m.start()-180); end=min(len(t),m.end()+260)
+                  snippet=t[start:end].replace('\n',' | ')
+                  leak_context.append(f'page_{i}={snippet}')
           if leaked: failures.append('raw_part_markup:'+','.join(map(str,leaked)))
+
           data=json.loads(anchors.read_text(encoding='utf-8'))
           placements={x['figure']:x for x in data['placements']}
           expected={f'{n:02d}' for n in range(2,17)}
@@ -54,9 +65,11 @@ jobs:
               if f7.get('chapter') != 4: failures.append('figure07_wrong_chapter')
               if not str(f7.get('source','')).startswith('after-substring:'): failures.append('figure07_wrong_source')
               if hinge not in (f7.get('anchor_text') or ''): failures.append('figure07_hinge_changed')
+
           report=root/'MACROSCOPIC-LIFE-BOOK-ONE-6x9-PROOF-v0.3-REGRESSION.txt'
           report.write_text('\n'.join([
               'proof=v0.3',f'page_count={len(pages)}',f'raw_part_markup_leaks={leaked}',
+              *leak_context,
               'chapters_1_16=PASS' if not any(x.startswith('missing_chapter') for x in failures) else 'chapters_1_16=FAIL',
               'chapter17_absent=PASS' if 'chapter17_prohibited' not in failures else 'chapter17_absent=FAIL',
               'protected_final_aperture=PASS' if 'protected_final_aperture_missing' not in failures else 'protected_final_aperture=FAIL',
@@ -69,18 +82,21 @@ jobs:
           print(report.read_text())
           if failures: raise SystemExit('; '.join(failures))
           PY
-      - name: Render repaired transitions and Figure 07
+      - name: Render repaired transitions, Figure 07, and any leak-match pages
+        if: always()
         run: |
           python - <<'PY'
           from pathlib import Path
-          import fitz
+          import fitz,re
           pdf=Path('research/macroscopic-life/production/proofs/MACROSCOPIC-LIFE-BOOK-ONE-6x9-PROOF-v0.3.pdf')
+          if not pdf.exists(): raise SystemExit('v0.3 PDF missing; nothing to render')
           out=Path('pass05d2-v03-review'); out.mkdir(exist_ok=True)
           doc=fitz.open(pdf)
           targets=set()
+          leak_pattern=re.compile(r'#\s*PART\s+[IVXLC]+',re.I)
           for i,p in enumerate(doc):
               t=p.get_text()
-              if 'FIGURE 07 - APPROVED POSITION' in t or any(f'PART {r}' in t for r in ['II','III','IV','V','VI']):
+              if 'FIGURE 07 - APPROVED POSITION' in t or any(f'PART {r}' in t for r in ['II','III','IV','V','VI']) or leak_pattern.search(t):
                   targets.update(x for x in (i-1,i,i+1) if 0<=x<len(doc))
           for i in sorted(targets):
               pix=doc[i].get_pixmap(matrix=fitz.Matrix(1.5,1.5),alpha=False)
@@ -88,6 +104,7 @@ jobs:
           print('rendered',len(targets),'review pages')
           PY
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: macroscopic-life-pass05d2-v03-proof
           path: |
