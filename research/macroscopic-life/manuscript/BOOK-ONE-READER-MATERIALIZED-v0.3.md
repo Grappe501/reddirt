@@ -1,6 +1,6 @@
 # MACROSCOPIC LIFE
 
-## Book One — Reader Materialized Manuscript v0.2
+## Book One — Reader Materialized Manuscript v0.3
 
 *Sixteen-chapter continuous reader edition. Canonical science and prose preserved; production controls removed from the reading stream and chapter notes collected in back matter.*
 
