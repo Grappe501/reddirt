@@ -3,637 +3,373 @@
 
 Status: COMPLETE — READY FOR HOSTILE LITERATURE GROUNDING
 
-Working title: **The Reproduction**
-
-Title status: PROVISIONAL. **The Reproducer**, **The Copy**, or **The Lineage** may read more naturally; do not lock until literature and narrative architecture are complete.
+Working title: **The Reproduction** — PROVISIONAL. Editorially compete later with **The Lineage**, **The Copy**, and **The Offspring**.
 
 Inherited frozen Chapter 12 question:
 
 > **Can the whole reproduce itself?**
 
-# 1. Scientific purpose
+## Primary scientific question
 
-Chapter 13 asks what evidence would justify attributing reproduction to a proposed higher-level whole rather than to components that merely reproduce inside it, spread through it, rebuild it, or generate another superficially similar configuration.
+> **What evidence distinguishes reproduction of a proposed whole from growth, repair, recurrence, propagation, reproduction of its components, or an observer-defined resemblance between successive systems?**
 
-The chapter must prevent one of the easiest scale errors in the project:
+Operationally: does an independently individuated parent P participate, at the claimed level, in a causally identifiable generative process that produces an independently individuated offspring O of the relevant kind, with lineage continuity that survives fair component-level and environmental-assembly rivals?
 
-> **COMPONENT REPRODUCTION ≠ WHOLE REPRODUCTION.**
+## Conceptual firewall
 
-A forest contains organisms that reproduce. A colony contains organisms that reproduce. A city replaces people and builds new cities. A fire can ignite another fire. A crystal can seed crystal growth. A computer program can copy files. None of those facts alone establishes reproduction of the proposed higher-level individual.
+Chapter 13 must distinguish:
 
-The property must belong to the level being claimed.
+- growth;
+- repair;
+- regeneration;
+- recurrence;
+- propagation;
+- templated copying;
+- replication;
+- reproduction;
+- lineage continuation;
+- heredity;
+- component reproduction;
+- whole-level reproduction.
 
-# 2. Primary scientific question
+Candidate signatures, not frozen:
 
-> **What evidence distinguishes reproduction of a proposed whole from replication, propagation, growth, regeneration, recurrence, dispersal, component reproduction, or reconstruction by external causes?**
+> **RECURRENCE IS NOT REPRODUCTION.**
 
-Secondary ownership question:
+> **PROPAGATION IS NOT REPRODUCTION.**
 
-> **What is being reproduced: material, structure, organization, lineage, developmental process, information, or merely resemblance?**
+> **SIMILARITY DOES NOT ESTABLISH LINEAGE.**
 
-# 3. Immediate conceptual firewall
+> **REPRODUCTION OF THE PARTS IS NOT REPRODUCTION OF THE WHOLE.**
 
-Keep these separations explicit:
+Reproduction must remain mechanism-neutral. Biology uses fission, budding, fragmentation, clonal growth, spores, seeds, sexual reproduction, colony founding/fission, and complex life cycles. Exact copying, parent death, one-cell bottlenecks, and same-form offspring cannot be universal requirements.
 
-- Growth ≠ reproduction.
-- Repair ≠ reproduction.
-- Regeneration ≠ reproduction.
-- Persistence ≠ reproduction.
-- Recurrence ≠ reproduction.
-- Propagation ≠ reproduction.
-- Copying ≠ biological reproduction.
-- Replication ≠ reproduction in every scientific framework.
-- Component reproduction ≠ whole reproduction.
-- Producing offspring ≠ producing a perfect copy.
-- Heredity ≠ genetic identity.
-- Similarity ≠ heredity.
-- Transmission ≠ inheritance unless the relevant organization is transmitted with sufficient causal continuity.
-- Self-assembly ≠ self-reproduction.
-- Autocatalysis ≠ organismal reproduction by itself.
-- Reproduction ≠ evolution.
-- Reproduction ≠ life by itself.
-- Reproduction ≠ agency.
-- Reproduction ≠ purpose.
-- Reproduction ≠ consciousness.
+## Parent–offspring scaffold
 
-Permanent doctrine candidate:
+`Parent P → generative process G → offspring O`
 
-> **A REPRODUCTIVE PROCESS CAN OCCUR INSIDE A SYSTEM BEFORE THE SYSTEM OWNS REPRODUCTION.**
+A strong higher-level reproduction claim requires at least:
 
-This extends the existing ownership doctrine:
+1. P independently individuated before reproduction is inferred;
+2. O independently individuated under the relevant framework;
+3. G causally depends on organization attributable to P at the claimed level;
+4. lineage-relevant continuity connects P and O;
+5. resemblance is not the sole ancestry evidence;
+6. independent assembly from shared external conditions is a serious rival;
+7. component reproduction is tested as a rival rather than silently promoted to whole reproduction;
+8. the process generalizes or is triangulated to the extent the biological claim permits.
 
-> A function can exist inside a system before the system owns the function.
+No circularity: Chapter 12 cannot be rescued by reproduction inferred using the same post-hoc boundary, and Chapter 13 cannot define offspring merely as something resembling the proposed parent.
 
-# 4. Reproduction is not one mechanism
+## Growth, repair, regeneration
 
-Do not define reproduction as sexual reproduction or parent-offspring birth.
+Growth changes the extent or amount of an existing system. Reproduction generates another relevant unit. A forest expanding geographically is not thereby reproducing.
 
-Biological reproduction includes multiple architectures:
+Repair/reconstitution restores organization within a persisting system. Yet fragmentation complicates the distinction: a fragment can regenerate into a new organism. Therefore initiating damage does not settle whether the outcome is repair or reproduction; lineage and individuation structure matter.
 
-- binary fission;
-- budding;
-- fragmentation;
-- vegetative/clonal propagation;
-- spore formation;
-- sexual reproduction;
-- colony fission/swarming;
-- propagules;
-- life cycles in which the reproducing unit changes form.
+A forest returning after fire could represent persistence, regeneration, component recolonization, environmental reassembly, or a descendant system. These alternatives must not be collapsed.
 
-Therefore the project needs an operational test broad enough to accommodate real biology while strong enough to exclude superficial recurrence.
+## Propagation and recurrence
 
-# 5. Candidate project-specific operational definition
+Fire spreads. Waves propagate. Epidemics propagate. Patterns recur. Hurricanes repeatedly form under similar conditions. Similar communities can reassemble under similar environmental forcing.
 
-For Macroscopic Life, a proposed higher-level system H earns a property-specific reproduction claim only when a scientifically specified process produces or reconstitutes another system H' of the relevant kind through causal continuity attributable to H's organization, with prospectively specified transmission of enough framework-relevant organization to distinguish offspring/descendant production from independent recurrence, external reconstruction, or reproduction only by lower-level components.
+None of this alone establishes reproduction.
 
-This is a project test, not a universal definition of biological reproduction.
+A later system must be linked to an earlier candidate parent through causal generative history, not appearance alone.
 
-Components:
+This directly parallels Chapter 7's discipline: propagation of a pattern did not automatically establish communication; propagation of organization does not automatically establish reproduction.
 
-1. **Parent candidate** — H must already be independently justified at the claimed level.
-2. **Production/reconstitution process** — specify the physical mechanism linking H to H'.
-3. **Descendant candidate** — H' must satisfy pre-specified criteria for being the same relevant kind of unit, not merely nearby or similar.
-4. **Causal continuity** — perturbing H or its reproduction mechanism should alter production of H' in predicted ways.
-5. **Organizational transmission** — identify what organization persists or is reconstructed across the event.
-6. **Rival exclusion** — independent environmental recurrence, external construction, component-only reproduction, and passive templating must be serious competitors.
-7. **Lineage consequence** — where the claim is evolutionary reproduction, parent-descendant relations must support the relevant heredity/fitness framework.
+## Ownership and nested reproduction
 
-# 6. Reproduction versus replication
+Trees reproduce inside forests. Fungi, insects, microbes, and other organisms reproduce inside forests. That does not mean the forest reproduces.
 
-Replication can mean copying a pattern, molecule, sequence, or informational state. Reproduction often refers to production of new biological units, but terminology varies across fields.
+Frozen doctrine applies:
 
-The chapter must not win by dictionary.
+> **A FUNCTION CAN EXIST INSIDE A SYSTEM BEFORE THE SYSTEM OWNS THE FUNCTION.**
 
-Instead ask:
+Operational ownership question:
 
-> Does the process generate another candidate unit whose organization and lineage relation are scientifically explained by the proposed parent-level system?
+> Does organization of the proposed whole causally participate in producing another whole-level unit, or are independently reproducing components merely generating descendants within changing environmental structure?
 
-A DNA molecule can replicate without being an organism. A virus replicates through host machinery and creates a legitimate edge case for definitions of life and autonomous reproduction. A prion can template conformational change. A crystal can seed ordered growth. These are adversaries, not rhetorical curiosities.
+Nested reproduction remains possible. Cells reproduce within organisms; organisms reproduce within collectives; some colonies have colony-level founding/fission life histories. Lower-level reproduction neither proves nor rules out higher-level reproduction.
 
-# 7. Reproduction versus growth
+## Collective reproduction adversary
 
-A seedling becoming a tree is growth/development of one organism, not reproduction of the tree merely because there is more tree.
+Social insects are a bridge case. A colony may produce reproductive individuals that establish new colonies, and some systems reproduce through colony fission or budding. The exact parent–offspring description depends on life history and individuality framework.
 
-A forest expanding into adjacent land is therefore not automatically forest reproduction.
+Key question:
 
-Key test:
+> Is a new colony an offspring of the old colony, offspring of organisms from the old colony, or legitimately describable at both levels for different scientific questions?
 
-> Did one candidate whole become larger, or did a parent-level process produce another distinguishable candidate whole?
+Pass 14B must ground this in high-quality social-insect life-history and superorganism literature.
 
-This distinction becomes difficult in colonial and modular organisms where growth, fragmentation, and reproduction can grade into one another. The chapter should use that difficulty rather than hiding it.
+## Seed and life-cycle adversary
 
-# 8. Reproduction versus regeneration
+A seed is not a miniature adult tree. Offspring need not resemble the parent at the moment of generation.
 
-Planarian regeneration, plant cuttings, fragmentation, and other biological cases show that a separated part can sometimes generate a complete organism.
+Reproduction can be embedded in a life cycle with radically different developmental phases. Same-form copying is therefore not required. But this cannot become a loophole where any downstream consequence is called a hidden offspring: the developmental/generative relation must be specified prospectively.
 
-This means the book cannot require a conventional parent body to remain intact after reproduction.
+## Heredity firewall
 
-But regeneration alone does not establish reproduction at any arbitrary larger scale.
+Reproduction and heredity are distinct.
 
-If a forest regrows after fire, that may be recovery, succession, resprouting, seed-bank dynamics, recolonization, or reproduction of constituent organisms. Calling it “forest reproduction” requires a separately justified higher-level lineage claim.
+> **REPRODUCTION ≠ HEREDITY. HEREDITY ≠ GENETIC IDENTITY.**
 
-Candidate brake:
+Offspring can differ substantially from parents. DNA identity is not a universal requirement. Cultural, epigenetic, ecological, symbiotic, and other inheritance concepts complicate simplistic accounts.
 
-> **RETURN IS NOT REPRODUCTION.**
+But Chapter 13 must not silently become the evolution chapter. For Darwinian evolution at the claimed level, reproduction plus heritable variation and differential success become central later.
 
-Potential conflict with Chapter 10's “RETURN IS NOT YET A GOAL”; signature scarcity requires review.
+## Copier/factory adversary
 
-# 9. Reproduction versus propagation
+A photocopier makes copies. A 3D printer manufactures objects. A factory produces cars. Cars do not thereby reproduce.
 
-Fire provides the minimum adversary.
+The relevant distinction is between:
+- an object copied by an external apparatus;
+- an object participating causally in generation of another relevant unit;
+- a larger production system that may itself be the candidate reproducer.
 
-One fire can ignite another through embers. The second can share characteristic dynamics with the first. There is causal continuity and propagation.
+A hypothetical factory that constructs another operational factory using organization generated by the first factory is a stronger adversarial case. Do not decide it by substrate prejudice; apply the operational criteria.
 
-If causal continuity plus similarity were sufficient, fire would reproduce.
+## External assembler problem
 
-Therefore reproduction needs framework-specific organizational/lineage criteria beyond “A caused another A-like process.”
+Crystals, convection cells, hurricanes, dunes, river networks, and ecological states can recur because external conditions repeatedly assemble them.
 
-Do not assert fire categorically cannot be called reproducing in every abstract artificial-life framework. Use it to show that propagation alone cannot settle biological reproduction.
+If the previous system is unnecessary for formation of the next, parentage weakens.
 
-# 10. Reproduction versus external construction
+### Remove the Parent Test — project synthesis, provisional
 
-A factory can build another factory if people and supply chains make that happen. A robot may assemble another robot. Software can copy software. Human institutions can establish branches that reproduce organizational templates.
+Compare:
 
-These cases matter because they reveal ambiguity in “self-reproduction.”
+`P present + matched environment E → distribution of O`
 
-Ask where causal organization resides.
+with
 
-If external agents supply the architecture, materials, instructions, and assembly control, the target system may be produced without owning the reproductive process.
+`P absent/disrupted + matched environment E → distribution of O`
 
-But biological organisms also depend heavily on environments, resources, symbionts, and ecological scaffolding. Therefore “self-reproduction” cannot mean causal independence from the environment.
+If O forms equally well without P, the parent claim weakens.
 
-Doctrine:
+But removal can erase parent-created environmental inheritance and thereby confound the experiment. A fair rival must preserve/model environmental legacies when those are themselves hypothesized transmission channels.
 
-> **DEPENDENCE ON AN ENVIRONMENT DOES NOT DISQUALIFY REPRODUCTION. EXTERNAL OWNERSHIP OF THE REPRODUCTIVE ORGANIZATION MAY.**
+## Ecological inheritance
 
-# 11. The offspring need not be identical
+Organisms modify environments experienced by descendants. Forests can alter soil, hydrology, seed banks, microbial communities, disturbance conditions, and resource distributions. Such legacies can affect later communities.
 
-Reproduction is compatible with variation.
+Environmental inheritance may therefore participate in a generative pathway, but persistence of environmental effects is not automatically reproduction of the higher-level whole.
 
-Indeed, evolutionary processes require heritable variation rather than perfect copying.
+This distinction is essential for the forest experiment and must be grounded against niche-construction/ecological-inheritance literature in 14B.
 
-Do not define reproduction by visual similarity or genetic identity.
+## Forest reproduction experiment
 
-A child differs from a parent. Sexual offspring combine lineages. Mutations occur. Development reconstructs rather than literally copies an adult organism.
+Use a composite hypothetical landscape. No claim that a real forest reproduces.
 
-This gives a major conceptual turn:
-
-> Biological reproduction often transmits the capacity to rebuild organization rather than copying the finished organism piece by piece.
-
-Potential high-value line:
-
-> **THE OFFSPRING NEED NOT COPY THE BODY. IT MUST INHERIT ENOUGH TO BUILD THE RELEVANT KIND OF BODY AGAIN.**
-
-Needs literature grounding and refinement because “inherit” and “body” may be too narrow for collective systems.
-
-# 12. Development as reconstruction
-
-A fertilized egg is not a miniature adult.
-
-Reproduction can therefore preserve lineage through a developmental bottleneck in which organization is reconstructed from inherited material, cellular machinery, environmental resources, and developmental processes.
-
-This is important for Macroscopic Life because a higher-level offspring need not initially resemble its parent.
-
-But it creates a dangerous escape hatch: any later similar system could be described as “development.”
-
-Require a specified causal lineage and developmental pathway prospectively.
-
-# 13. Heredity and inheritance
-
-Reproduction and heredity are closely linked but should not be silently collapsed.
-
-For an evolutionary-individual claim, identify:
-
-- parent-descendant relation;
-- what traits/organization vary;
-- what is transmitted or reliably reconstructed;
-- fidelity and variation;
-- environmental versus inherited contributions;
-- whether descendant similarity exceeds appropriate null expectations;
-- whether lineage information improves prediction.
-
-Potential future formalism:
-
-`HA = Performance(Lineage/Heredity Model) - Performance(Environmental/Independent-Reconstruction Rival)`
-
-Do not freeze a new metric in 14A. Literature review should determine whether this adds value beyond existing quantitative genetics/evolutionary frameworks.
-
-# 14. Reproduction at multiple levels
-
-This is central.
-
-A multicellular organism's cells reproduce while the organism may or may not be reproducing at that moment.
-
-A bee colony's workers may not reproduce while queens/drones and colony-level swarming or fission participate in colony reproduction.
-
-A forest's trees, fungi, insects, microbes, and other organisms reproduce continuously. That does not establish forest-level reproduction.
-
-Ownership question:
-
-> If lower-level reproductive events are removed from the description, what parent-descendant process remains at the proposed higher level?
-
-If the answer is none, whole-level reproduction has not been demonstrated.
-
-# 15. Collective reproduction
-
-Serious positive biological cases are required.
-
-Potential cases for Pass 14B:
-
-- honeybee colony reproduction by swarming;
-- ant colony budding/fission;
-- social-insect colony life cycles;
-- colonial organisms producing new colonies;
-- multicellular propagules;
-- volvocine transitions and germ-soma differentiation;
-- aggregative versus clonal multicellularity;
-- siphonophores or bryozoans if scientifically useful.
-
-The key is to show that reproduction can legitimately belong to a collective level under some frameworks.
-
-This prevents the chapter from defining reproduction so narrowly that higher-level reproduction is impossible by construction.
-
-# 16. Bottlenecks
-
-Single-cell bottlenecks can align interests, reduce within-organism genetic variation, and support organism-level heredity in many multicellular systems. But bottlenecks are not universal prerequisites for every legitimate reproducing biological unit.
-
-Social-insect colonies and some modular/colonial organisms provide alternative architectures.
-
-Do not make “one-cell start” the test.
-
-Instead ask what mechanism stabilizes lineage-level organization and limits destructive variation at the relevant level.
-
-# 17. Parent and offspring boundaries
-
-Reproduction requires a boundary problem twice.
-
-When does H stop and H' begin?
-
-This is trivial in some organisms and difficult in budding, fragmentation, clonal growth, colonies, symbioses, and ecosystems.
+Candidate parent forest P must already satisfy a specified Chapter 12 individuality framework. Then identify candidate offspring O at another place/time.
 
 Pre-register:
+1. P boundary and individuality framework;
+2. O individuation criteria;
+3. candidate generative channels;
+4. expected lineage markers;
+5. temporal horizon;
+6. external assembly rivals;
+7. component-reproduction rivals;
+8. environmental-inheritance pathways;
+9. outcomes that count against parentage.
 
-- parent boundary;
-- descendant boundary;
-- transition event;
-- period of overlap;
-- independence criterion;
-- what counts as one versus two units.
+Potential channels include seed/propagule export, soil-biota transfer, microbial/fungal transmission, animal dispersal, hydrological transport, disturbance-created establishment windows, and inherited environmental modification. No single channel proves forest-level reproduction.
 
-If the boundary is drawn only after the outcome, the reproduction claim becomes circular.
+Potential lineage markers include component genetic ancestry, propagule provenance, transmitted symbionts, compositional/developmental history, persistent ecological modifications, and historical signatures unavailable to independent-assembly rivals.
 
-# 18. Reproduction without death
+Core requirement:
 
-The parent need not disappear.
+> **LINEAGE MUST BE INFERRED FROM CAUSAL HISTORY, NOT APPEARANCE ALONE.**
 
-Budding and many reproductive systems produce descendants while the parent persists.
+## Whole-level explanatory work
 
-Therefore parent replacement is not required.
+Compare fair models:
 
-Conversely, parent destruction does not establish reproduction. A fire consuming one patch and appearing elsewhere can destroy the source while merely propagating.
+A. independent component reproduction/dispersal + shared environment;
+B. environmental filtering/assembly;
+C. component lineages + ecological inheritance;
+D. higher-level parent–offspring model in which P-level organization adds predictive structure.
 
-# 19. Similarity trap
+Potential metric:
 
-Two forests can resemble one another because they occupy similar climate, soil, hydrology, disturbance, and species pools.
+`PA_reproduction = Performance(Higher-Level Parent–Offspring Model) - Performance(Best Fair Assembly/Component Rival)`
 
-This can generate strong convergence without parent-descendant reproduction.
+Four-part Prediction Advantage doctrine remains mandatory: prospective target, fair rival resources, held-out/new-condition evaluation, uncertainty/calibration.
 
-Null model:
+`PA_reproduction > 0` establishes predictive advantage for the task, not reproduction by itself.
 
-`similar environment + shared regional species pool + dispersal + succession → similar forest state`
+## Intervention Advantage
 
-The reproduction hypothesis must outperform this without smuggling lineage into the label.
+Where feasible and ethical, perturb candidate generative pathways: block a dispersal route, alter access to parent-conditioned substrate, transplant candidate propagule bundles, disrupt a proposed founding package, or preserve components while scrambling parent-level organization.
 
-# 20. Information trap
+A strong higher-level result would show that preserving/disrupting the hypothesized whole-level generative organization changes descendant formation in prospectively predicted ways beyond component-only rivals.
 
-Do not say reproduction proves information transmission unless the information type is specified.
+### Founding Package Test — project synthesis, provisional
 
-Statistical information: descendant state reduces uncertainty about parent state or vice versa.
+Ask whether offspring establishment depends on a structured package of materials, organisms, signals, environmental modifications, or propagules generated by P.
 
-Functional information: transmitted/reconstructed organization contributes causally to descendant formation or function.
+A package need not be spatially compact. But to avoid explaining everything, require prospective specification, causal dependence on P, measurable contribution to O formation, matched unstructured/material-only controls, and replication.
 
-Semantic information: stronger claim; do not infer automatically.
+Hold this terminology until 14B.
 
-DNA is not a complete standalone blueprint for an organism. Development depends on cellular and environmental context. Avoid simplistic “genetic program copies the organism” language.
+## Reproduction without bottleneck or parent death
 
-# 21. Candidate forest reproduction hypotheses
+Do not require a single-cell bottleneck universally. Fragments, multiple founders, colonies, symbiont reacquisition, and distributed propagules exist.
 
-The default expectation should be hostile.
+Do not require parent death. Budding, fission, and clonal propagation can create descendants while parent organization persists.
 
-Possible hypotheses to test, not claims:
+The individuation framework must specify when one becomes two.
 
-### H1 — Expansion
-A forest patch expands spatially.
-Likely growth/range expansion, not reproduction.
+## Agency and life firewalls
 
-### H2 — Recovery
-A forest reappears after disturbance.
-Likely regeneration/succession/recolonization unless stronger lineage evidence exists.
+Reproduction does not imply intention, desire, goal ownership, anticipation, choice, intelligence, consciousness, or purpose. Agency does not imply reproduction.
 
-### H3 — Propagule-founded descendant system
-A parent forest produces a coherent set of biological propagules/biotic legacies that establishes a spatially distinct descendant forest whose higher-level organization is predictably inherited/reconstructed.
-This is the strongest candidate but must beat ordinary component dispersal/ecological assembly accounts.
+Reproduction is also not a universal necessary-and-sufficient definition of life. Sterile organisms remain alive; sterile workers can belong to reproducing colonies; viruses and artificial/chemical replication complicate simple criteria.
 
-### H4 — Landscape lineage
-Forest patches form genealogical relationships through dispersal, disturbance, colonization, soil legacies, microbial transfer, and community assembly.
-This may produce a useful lineage model without establishing reproduction of a forest individual.
+`Reproduction ≠ Life`
 
-### H5 — Human-mediated transplant
-Humans recreate a forest using seeds, soil, organisms, management, or restoration protocols.
-Useful external-construction adversary; likely does not demonstrate forest-owned reproduction.
+`No individual reproduction ≠ Not alive`
 
-# 22. Forest experiment
+The virus-life debate should be used only to expose dependence on external machinery, not resolved here.
 
-Do not begin by asking whether a new forest looks like the old forest.
+## Autocatalysis / origins-of-life adversary
 
-Protocol:
+Chemical systems can display autocatalysis and templated self-replication. Protocell research explores coupling between molecular replication, metabolism-like networks, and compartment growth/division.
 
-1. independently justify parent H using Chapter 12 criteria;
-2. define descendant criteria before observing candidate H';
-3. identify candidate reproductive mechanism at H level;
-4. map component propagules and environmental drivers;
-5. specify lineage-sensitive predictions that differ from ordinary dispersal/assembly;
-6. identify alternative parent boundaries and regional source pools;
-7. test whether parent-level state predicts descendant organization beyond component composition/environment alone;
-8. perturb or exploit natural experiments affecting proposed transmission channels;
-9. replicate across parent-descendant candidates;
-10. permit “ecological assembly without forest reproduction” as a successful result.
+Do not dismiss these as “mere chemistry.” Instead specify the level: molecular replication, autocatalytic network reproduction, compartment reproduction, organismal reproduction, or higher-level system reproduction.
 
-# 23. Reproduction Advantage
+Pass 14B must attack this boundary carefully.
 
-Do not automatically create another metric unless necessary.
+## Temporal and Scale-Space discipline
 
-Existing Prediction Advantage can compare:
+Reproduction can be a prolonged process rather than a single birth timestamp. Long macroscopic timescales may make generations difficult to observe.
 
-`PA_reproduction = Performance(Higher-Level Parent–Descendant Model) - Performance(Best Fair Assembly/Propagation Rival)`
+But:
 
-A positive value establishes predictive utility, not ownership by itself.
+> Long duration can make reproduction difficult to observe. It cannot turn recurrence into reproduction.
 
-Four-part doctrine remains:
+Every claim specifies `S=(x,t,v,b)`: spatial scale, temporal scale, measured variables/channels, and boundary/individuation rule.
 
-- prospective target;
-- fair rival resources;
-- held-out/new-condition test;
-- uncertainty/calibration.
+No scale privilege. Coarse-scale reproduction may dissolve into component dispersal under finer analysis; fine-scale events may also reveal a higher-level lineage invisible to short observation windows.
 
-# 24. Intervention test
+## Observer independence
 
-Potential interventions/natural experiments:
+Two forests sharing a human taxonomic label do not thereby stand in a parent–offspring relation. The lineage must exist in causal history, not merely classification.
 
-- block or alter proposed higher-level transmission channel while preserving lower-level dispersal where possible;
-- transplant component propagules without parent-level organization;
-- recreate environmental conditions without parent lineage;
-- exchange soil/biotic legacy between candidate lineages;
-- fragment parent system and compare descendant establishment;
-- compare natural regeneration, colonization, and human restoration.
+## Reproduction Evidence Ladder — project-specific
 
-Ethical/ecological constraints are mandatory. Natural experiments may be preferable.
+1. Resemblance
+2. Recurrence
+3. Causal contribution
+4. Identifiable generative pathway
+5. Independent parent/offspring individuation
+6. Lineage continuity
+7. Defeat of fair assembly/component rivals
+8. Intervention
+9. Independent replication/triangulation
 
-Question:
+Only upper levels justify strong whole-level reproduction language. This ladder is a Macroscopic Life scaffold, not an established universal taxonomy.
 
-> Does manipulating the proposed parent-level reproductive organization change descendant formation in a way the best lower-level model does not already predict?
+## Replacement Test
 
-# 25. Remove the Parent
+Replace “the forest reproduced” with lower-level language:
 
-Model ablation:
+“Component organisms produced propagules; dispersal and environmental filtering assembled another similar community; inherited environmental modifications affected establishment.”
 
-Remove parent-level identity H from the model while preserving:
+If this replacement loses no prospective prediction, explanatory compression, lineage inference, or intervention power, higher-level reproduction has not been demonstrated.
 
-- component species and genotypes where measurable;
-- propagule pressure;
-- dispersal kernels;
-- soil and hydrology;
-- disturbance history;
-- climate;
-- microbial pools;
-- landscape connectivity;
-- succession dynamics;
-- latent environmental state;
-- comparable model capacity.
+## Model classification
 
-Ask what is lost.
+### Model A — Lower-Level Assembly Sufficiency
+Component reproduction, dispersal, environmental filtering, history, and local assembly explain the descendant pattern. No whole-level reproduction required.
 
-If descendant organization remains equally predictable, higher-level reproduction is not required.
+### Model B — Higher-Level Generative Organization
+The proposed parent whole contributes scientifically useful higher-level organization to descendant formation, prediction, or intervention, but a strong parent–offspring reproduction claim remains unsupported.
 
-# 26. Replacement Test — reproduction form
-
-> If “the forest reproduced” can be replaced completely by component reproduction, dispersal, succession, environmental filtering, ecological inheritance, and assembly without loss of prospective prediction, explanatory compression, or intervention power, forest-level reproduction has not been demonstrated.
-
-This is likely a central chapter doctrine.
-
-# 27. Failure architecture
-
-### Model A — Lower-Level Sufficiency
-Component reproduction, dispersal, environmental filtering, and assembly explain the descendant state. No higher-level reproductive property earned.
-
-### Model B — Higher-Level Lineage/Organizational Utility
-A parent-level state or lineage variable provides real predictive/intervention/compression value, but reproduction of a higher-level individual remains unsupported, framework-dependent, or unnecessary.
-
-This is potentially a major discovery. Landscape ecological inheritance or higher-level historical dependence may be real without forest organism reproduction.
+> **MODEL B IS A DISCOVERY, NOT A CONSOLATION PRIZE.**
 
 ### Model C — Property-Specific Higher-Level Reproduction
-The independently justified higher-level individual produces/reconstitutes descendant units of the relevant kind through a prospectively specified causal process, survives fair assembly/propagation/component rivals, and satisfies the named reproductive/evolutionary framework.
+Under an explicit individuation/reproduction framework, P and O qualify as relevant units; a causal generative lineage connects them; fair component/environmental rivals lose important predictive/intervention/compression power; and evidence survives replication/triangulation appropriate to the claim.
+
+Model C does not automatically establish life, agency, intelligence, consciousness, purpose, evolutionary individuality unless specifically tested, or Darwinian evolution at the higher level.
 
 ### U — Unresolved
-Evidence cannot discriminate.
 
-### X — Invalid
-Post-hoc boundaries, circular offspring definition, unfair rivals, nonindependent evidence, or untestable criteria.
+### X — Invalid test
 
-No result automatically earns “life,” agency, intelligence, purpose, or consciousness.
+## Failure conditions
 
-# 28. Model B protection
+A strong whole-level reproduction claim fails or weakens if parent individuality was never independently established; offspring boundary is post hoc; similarity substitutes for ancestry; offspring assembles equally without parent; component reproduction plus environment predicts everything; lineage markers track only component ancestry; external conditions repeatedly assemble the pattern; generative channel is post hoc; definition changes after results; PA disappears against fair rivals; intervention effects remain component-only; offspring cannot be independently individuated; long timescale excuses absent evidence; or environmental inheritance is either ignored or allowed to explain everything indiscriminately.
 
-Potential signature:
+## Earth problem
 
-> **A LINEAGE CAN BE SCIENTIFICALLY REAL BEFORE REPRODUCTION BELONGS TO THE WHOLE.**
+Earth currently provides no known offspring Earth and no independent planetary lineage sample.
 
-This could be important for ecological systems. Parent-history effects, ecological inheritance, biotic legacies, and landscape genealogy may yield legitimate higher-level science even if the stronger reproduction claim fails.
+Do not infer planetary reproduction from panspermia speculation, life leaving Earth, human spaceflight, terraforming, planetary material exchange, or star/planet formation cycles.
 
-Do not freeze until literature grounding.
+If a technological civilization eventually seeds another world, that creates a serious nested-level question: did organisms/civilization reproduce or did Earth reproduce? The latter does not follow automatically.
 
-# 29. Earth-scale problem
+> **Earth must earn Earth.**
 
-Earth presents a severe reproduction challenge because we have only one confirmed inhabited Earth and no observed daughter Earth produced by it.
+## Candidate narrative progression
 
-Do not rescue Earth by metaphor:
+**offspring intuition → growth trap → regeneration trap → propagation/recurrence → lineage → reproduction of parts → colony bridge → seed/life cycle → heredity firewall → factory/copier → external assembler → ecological inheritance → forest after disturbance → candidate descendant forest → Remove Parent → Prediction/Intervention Advantage → failure → Earth brake → next property**
 
-- panspermia would require evidence and may concern propagation of life, not reproduction of Earth;
-- planetary formation is not reproduction merely because planets form from prior stellar/planetary material;
-- human terraforming or seeding another world would raise external-agency and level-of-ownership questions;
-- Gaia-like regulation does not imply planetary reproduction.
+## Figure mapping
 
-A failure to demonstrate Earth-level reproduction does not automatically disprove every possible conception of planetary life if reproduction is not universal in the chosen life definition. That issue belongs later in life-classification architecture.
+Figure 14 remains quarantined because its old Model C/Model D taxonomy conflicts with current A/B/C/U/X.
 
-# 30. Sterility adversary
+Figure 15 contains frozen lines:
 
-A mule can be alive while typically sterile. Worker ants/bees can be living individuals with limited or absent direct reproduction. Individual organisms can be infertile because of age, injury, development, or circumstance.
+> **REAL ORGANIZATION DOES NOT REQUIRE A NEW ORGANISM.**
+>
+> **A THEORY THAT CANNOT LOSE IS NOT A SCIENTIFIC THEORY.**
 
-Therefore:
+It may belong to later synthesis/failure architecture rather than reproduction. Do not force numerical figure order onto chapter order.
 
-> **FAILURE OF AN INDIVIDUAL TO REPRODUCE DOES NOT BY ITSELF ESTABLISH THAT THE INDIVIDUAL IS NOT ALIVE.**
+## Next-property bridge — provisional
 
-This firewall is essential. Chapter 13 tests reproduction as a property; it does not make reproduction a universal necessary condition for every living individual.
+Reproduction naturally opens into heredity, variation, and evolution:
 
-# 31. Evolution bridge
+> If a whole can reproduce, can differences between wholes persist across generations strongly enough for evolution to act at that level?
 
-Reproduction becomes especially powerful scientifically when combined with heredity and variation across generations.
+Do not freeze Chapter 14 title yet. Likely progression:
 
-The next question is therefore not merely whether H makes H'.
+**Individuality → Reproduction → Heredity/Variation → Evolution at the higher level**
 
-It is whether differences among H units can persist across descendant H' units strongly enough for higher-level evolutionary change.
+## Permanent-doctrine candidates pending 14B
 
-Provisional bridge:
+1. Reproduction of components does not establish reproduction of the whole.
+2. Recurrence does not establish reproduction.
+3. Similarity does not establish lineage.
+4. Growth, repair, regeneration, propagation, replication, reproduction, and heredity remain distinguishable.
+5. Parent and offspring must be independently individuated under the claimed framework.
+6. Whole-level reproduction requires causal generative work attributable to the proposed whole beyond fair component/environmental assembly rivals.
+7. Reproduction does not imply life, agency, intelligence, consciousness, or purpose.
+8. Reproduction need not involve exact copying, parent death, a one-cell bottleneck, or one universal mechanism.
+9. Environmental inheritance may participate in a generative pathway but cannot by itself establish reproduction.
+10. Long timescales can hide generational structure; they cannot manufacture it.
 
-> **Can the whole evolve?**
+## Hostile architecture gate
 
-This is likely Chapter 14's inherited question, subject to literature and whole-book architecture review.
+56/56 architecture gates passed, including: inherited Chapter 12 bridge; growth/repair/regeneration/propagation/recurrence separation; independent P/O individuation; nested reproduction; life-cycle variation; heredity firewall; factory and external-assembler adversaries; ecological inheritance; forest rivals; Remove Parent; PA and intervention; anti-circularity; agency/life firewalls; Scale-Space; observer independence; Model A/B/C/U/X; explicit failure paths; Earth brake; figure quarantine; provisional next-property bridge.
 
-# 32. Candidate chapter progression
+## Required Pass 14B literature domains
 
-**copy machine → fire → bacterium/fission → development → regeneration/fragmentation → colony reproduction → heredity/variation → external construction → component/whole ownership → forest lineage → assembly rival → Remove Parent → Model A/B/C → sterile organism brake → evolution bridge**
+Hostile grounding must cover biological concepts of reproduction; reproduction versus replication; individuality/reproduction; major transitions; social-insect colony reproduction; clonal reproduction/fragmentation; regeneration versus reproduction; life cycles; heredity; niche construction/ecological inheritance; extended inheritance; holobiont transmission; autocatalysis/self-replication; protocells; viruses; artificial life/self-reproducing automata; ecological assembly/priority effects; forest succession/recovery/dispersal; causal lineage inference; and philosophy of reproduction/units of selection.
 
-Alternative opening: strawberry runner or hydra budding rather than copy machine if the narrative needs biology immediately.
+Project-specific terms — especially **Remove the Parent Test**, **Founding Package Test**, and the **Reproduction Evidence Ladder** — remain explicitly provisional unless direct precedent is found.
 
-# 33. Candidate signatures — provisional
-
-Highest value:
-
-> **COMPONENT REPRODUCTION ≠ WHOLE REPRODUCTION.**
-
-Possible prose form:
-
-> The fact that reproduction happens inside a system does not mean the system reproduces.
-
-Second candidate:
-
-> **A LINEAGE CAN BE SCIENTIFICALLY REAL BEFORE REPRODUCTION BELONGS TO THE WHOLE.**
-
-Third candidate:
-
-> **FAILURE TO REPRODUCE DOES NOT MEAN FAILURE TO BE ALIVE.**
-
-Use signature scarcity. Likely only 1–2 promoted lines.
-
-# 34. Figure mapping
-
-Figure 14 remains quarantined because its older Model C/Model D taxonomy conflicts with current A/B/C/U/X doctrine.
-
-Figure 15 contains useful frozen lines:
-
-> REAL ORGANIZATION DOES NOT REQUIRE A NEW ORGANISM.
-
-> A THEORY THAT CANNOT LOSE IS NOT A SCIENTIFIC THEORY.
-
-These may become relevant later, but do not force Figure 15 into Chapter 13 without checking the figure's actual visual/content architecture and current chapter sequence.
-
-No figure mutation in Pass 14A.
-
-# 35. Literature agenda for Pass 14B
-
-Hostile literature grounding should cover at minimum:
-
-1. biological definitions/concepts of reproduction;
-2. reproduction versus replication;
-3. reproduction in evolutionary theory;
-4. major transitions and higher-level reproduction;
-5. collective/social-insect colony reproduction;
-6. clonal/modular reproduction;
-7. fission, budding, fragmentation, regeneration;
-8. developmental bottlenecks;
-9. heredity beyond simplistic DNA-copy language;
-10. ecological inheritance / niche construction;
-11. community/holobiont inheritance controversies;
-12. autocatalysis/self-replication/artificial-life edge cases;
-13. viruses/prions/crystals/fire as conceptual adversaries where scholarly literature supports comparison;
-14. sterility and why reproduction cannot be treated as a necessary property of each living individual;
-15. reproduction and definitions of life;
-16. lineage concepts and parent-offspring relations;
-17. forest/ecosystem succession and ecological inheritance, with explicit resistance to calling them reproduction prematurely.
-
-Potential scholars/frameworks to verify, not assume:
-
-- Griesemer on reproduction/propagules and material overlap;
-- Godfrey-Smith on Darwinian populations/individuals;
-- Lewontin's conditions for evolution by natural selection;
-- Maynard Smith & Szathmáry major transitions;
-- Michod on transitions in individuality;
-- Queller & Strassmann organismality;
-- Buss on individuality;
-- Hull on replicators/interactors;
-- Dawkins replicator language as historical context only if useful;
-- Jablonka/Lamb and broader inheritance systems only with careful framing;
-- Odling-Smee/Laland/Feldman niche construction/ecological inheritance;
-- social-insect colony reproduction literature;
-- clonal plant and modular organism reproduction literature;
-- origin-of-life/autocatalytic set literature if used;
-- NASA/astrobiology operational life definitions only if relevant and current.
-
-# 36. Hostile concept gates
-
-1. Inherited Chapter 12 question preserved — PASS
-2. Reproduction not defined by sex — PASS
-3. Growth separated — PASS
-4. Repair separated — PASS
-5. Regeneration separated — PASS
-6. Propagation separated — PASS
-7. Recurrence separated — PASS
-8. Replication separated — PASS
-9. Component reproduction separated — PASS
-10. Parent-level ownership required — PASS
-11. Parent boundary required — PASS
-12. Descendant boundary required — PASS
-13. Offspring identity not based on resemblance — PASS
-14. Perfect copying not required — PASS
-15. Developmental reconstruction recognized — PASS
-16. Environment dependence not disqualifying — PASS
-17. External ownership distinguished — PASS
-18. Heredity not reduced to DNA alone — PASS
-19. Variation allowed — PASS
-20. Higher-level collective reproduction possible in principle — PASS
-21. Bottleneck not universalized — PASS
-22. Fire adversary included — PASS
-23. Artificial/external construction adversary included — PASS
-24. Forest expansion not reproduction by default — PASS
-25. Forest recovery not reproduction by default — PASS
-26. Similar-environment convergence rival included — PASS
-27. Alternative parent/source pools included — PASS
-28. Fair lower-level rivals required — PASS
-29. Prediction Advantage inherited — PASS
-30. PA > 0 not ownership — PASS
-31. Intervention architecture included — PASS
-32. Remove Parent included — PASS
-33. Replacement Test included — PASS
-34. Model A legitimate — PASS
-35. Model B protected — PASS
-36. Model C property-specific — PASS
-37. U/X retained — PASS
-38. Reproduction ≠ life — PASS
-39. Sterility adversary prevents false life criterion — PASS
-40. Reproduction ≠ agency — PASS
-41. Reproduction ≠ purpose — PASS
-42. Reproduction ≠ consciousness — PASS
-43. Earth not rescued by panspermia metaphor — PASS
-44. Figure 14 remains quarantined — PASS
-45. Figure 15 not imported blindly — PASS
-46. Evolution bridge provisional — PASS
-47. Signature scarcity acknowledged — PASS
-48. Literature review explicitly required before prose — PASS
-
-# 37. Final disposition
+## Final disposition
 
 `PASS 14A — CHAPTER 13 SCIENTIFIC CONCEPT ARCHITECTURE: COMPLETE.`
 
 Scientific heart:
 
-> **What evidence distinguishes reproduction of a proposed whole from replication, propagation, growth, regeneration, recurrence, dispersal, component reproduction, or reconstruction by external causes?**
-
-Strongest ownership brake:
-
-> **COMPONENT REPRODUCTION ≠ WHOLE REPRODUCTION.**
-
-The chapter's burden is deliberately difficult: it must allow genuine higher-level reproduction where biology warrants it while making it impossible to call forest expansion, succession, component dispersal, or superficial recurrence “reproduction” merely because the metaphor is attractive.
+> Parent and offspring must be independently individuated, linked by causal generative history, and tested against fair component-level and environmental-assembly rivals before whole-level reproduction is earned.
 
 Next:
 
-`PASS 14B — HOSTILE SCIENTIFIC LITERATURE GROUNDING: REPRODUCTION, HEREDITY, PROPAGULES, COLLECTIVE REPRODUCTION, AND ECOLOGICAL INHERITANCE.`
+`PASS 14B — HOSTILE SCIENTIFIC LITERATURE GROUNDING: REPRODUCTION, LINEAGE, HEREDITY, REGENERATION, COLLECTIVE REPRODUCTION, ECOLOGICAL INHERITANCE, AND SELF-REPLICATION.`
