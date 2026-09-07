@@ -1,0 +1,50 @@
+name: Macroscopic Life Book One Assembly
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'research/macroscopic-life/scripts/assemble-book-one.py'
+      - 'research/macroscopic-life/manuscript/book-one-opening-movement-v1.2-publication-proof.md'
+      - 'research/macroscopic-life/manuscript/chapter-*/CHAPTER-*-PREFREEZE-*.md'
+      - '.github/workflows/macroscopic-life-book-one-assemble.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  assemble:
+    if: ${{ !contains(github.event.head_commit.message || '', '[book-one-assembly]') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Assemble canonical Book One
+        run: python research/macroscopic-life/scripts/assemble-book-one.py
+
+      - name: Verify materialized manuscript
+        run: |
+          test -s research/macroscopic-life/manuscript/BOOK-ONE-CANONICAL-ASSEMBLED-v0.1.md
+          test "$(grep -Ec '^## Chapter [0-9]+ — ' research/macroscopic-life/manuscript/BOOK-ONE-CANONICAL-ASSEMBLED-v0.1.md)" -eq 16
+          ! grep -Eq '^## Chapter 17 — ' research/macroscopic-life/manuscript/BOOK-ONE-CANONICAL-ASSEMBLED-v0.1.md
+          grep -q '^## Chapter 4 — The Verb$' research/macroscopic-life/manuscript/BOOK-ONE-CANONICAL-ASSEMBLED-v0.1.md
+          grep -q '^## Chapter 11 — The Choice$' research/macroscopic-life/manuscript/BOOK-ONE-CANONICAL-ASSEMBLED-v0.1.md
+
+      - name: Commit materialized manuscript if changed
+        run: |
+          if git diff --quiet -- research/macroscopic-life/manuscript/BOOK-ONE-CANONICAL-ASSEMBLED-v0.1.md && git ls-files --error-unmatch research/macroscopic-life/manuscript/BOOK-ONE-CANONICAL-ASSEMBLED-v0.1.md >/dev/null 2>&1; then
+            echo 'Canonical assembled manuscript already current.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/macroscopic-life/manuscript/BOOK-ONE-CANONICAL-ASSEMBLED-v0.1.md
+          git commit -m 'Macroscopic Life: materialize canonical Book One [book-one-assembly]'
+          git push
