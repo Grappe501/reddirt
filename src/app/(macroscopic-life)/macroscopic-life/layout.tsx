@@ -28,6 +28,7 @@ const mono = IBM_Plex_Mono({
 
 export const metadata: Metadata = {
   title: {
+    absolute: "Macroscopic Life",
     default: "Macroscopic Life",
     template: "%s · Macroscopic Life",
   },

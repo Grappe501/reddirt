@@ -1,6 +1,14 @@
 import { resolvePublicDonateHref } from "@/config/external-campaign";
 
-const DEFAULT_SITE_URL = "https://kgrappe.netlify.app";
+const macroscopicLifeSite =
+  process.env.NEXT_PUBLIC_MACROSCOPIC_LIFE_SITE === "1" ||
+  process.env.NEXT_PUBLIC_MACROSCOPIC_LIFE_SITE === "true" ||
+  process.env.SITE_NAME === "macroscopic-life" ||
+  process.env.NETLIFY_SITE_NAME === "macroscopic-life";
+
+const DEFAULT_SITE_URL = macroscopicLifeSite
+  ? "https://macroscopic-life.netlify.app"
+  : "https://kgrappe.netlify.app";
 
 /** Netlify sometimes stores host-only; Next/metadata requires a full URL (new URL() must parse). */
 function normalizePublicSiteUrl(raw: string | undefined): string {

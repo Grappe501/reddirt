@@ -45,6 +45,9 @@ const nextConfig: NextConfig = {
   env: {
     NEXT_PUBLIC_GOOGLE_MAPS_API_KEY:
       process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY ?? process.env.GOOGLE_MAPS_API_KEY ?? "",
+    ...(macroscopicLifeSite && !process.env.NEXT_PUBLIC_SITE_URL
+      ? { NEXT_PUBLIC_SITE_URL: "https://macroscopic-life.netlify.app" }
+      : {}),
   },
   /** Hide the corner dev badge on a clean marketing hero; errors still surface in the overlay. */
   devIndicators: false,
