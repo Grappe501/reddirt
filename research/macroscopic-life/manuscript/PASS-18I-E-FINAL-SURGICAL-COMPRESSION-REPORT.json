@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "base": "BOOK-ONE-READER-MATERIALIZED-v0.3.md",
+  "output": "BOOK-ONE-READER-MATERIALIZED-v0.4.md",
+  "base_sha256": "4ce0ea0bb81cd9da50e054377e7f064ebcca104cba04a70838c9ff9ac08b4e3f",
+  "output_sha256": "daea18d0ee6b6ea149a9adb4782a76b1dfb73da3526f1eccdbe94158976954cd",
+  "base_words": 41350,
+  "output_words": 40765,
+  "additional_words_removed": 585,
+  "additional_reduction_pct": 1.415,
+  "replacements_applied": 15,
+  "chapters_1_8_byte_preserved": true,
+  "gates": {
+    "chapters_1_16": true,
+    "no_ch17": true,
+    "titles": true,
+    "final_aperture": true,
+    "protected_late_signatures": true
+  }
+}
