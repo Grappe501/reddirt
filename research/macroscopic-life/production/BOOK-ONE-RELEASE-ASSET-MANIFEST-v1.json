@@ -1,0 +1,123 @@
+{
+  "manifestVersion": "BOOK-ONE-RELEASE-ASSET-MANIFEST-v1",
+  "status": "PASS-06A-CANONICAL-INVENTORY",
+  "date": "2026-09-07",
+  "repository": "Grappe501/reddirt",
+  "productionBaseline": {
+    "version": "v0.3",
+    "pageCount": 182,
+    "freezeRecord": "research/macroscopic-life/production/PRODUCTION-PASS-05D-V03-FREEZE.md",
+    "freezeCommit": "583c9ba7d66d1912355faf25fd448eda7b2d534b",
+    "workflowRun": "34092195161",
+    "artifactId": "10007228165",
+    "artifactName": "macroscopic-life-pass05d2-v03-proof",
+    "artifactDigest": "sha256:d9c2b51075347e9b58eb8a4c4a49ea853880da8f9a965246071c44a0c5c0ec21",
+    "proofArtifactPath": "research/macroscopic-life/production/proofs/MACROSCOPIC-LIFE-BOOK-ONE-6x9-PROOF-v0.3.pdf",
+    "anchorArtifactPath": "research/macroscopic-life/production/proofs/MACROSCOPIC-LIFE-BOOK-ONE-6x9-PROOF-v0.3-ANCHORS.json",
+    "regressionArtifactPath": "research/macroscopic-life/production/proofs/MACROSCOPIC-LIFE-BOOK-ONE-6x9-PROOF-v0.3-REGRESSION.txt",
+    "repositoryPersistence": "workflow artifact; canonical freeze record preserves identity and digest"
+  },
+  "readerAuthority": {
+    "path": "research/macroscopic-life/manuscript/BOOK-ONE-READER-MATERIALIZED-v0.4.md",
+    "blob": "8c60c6f33b0f7dcfd8c1d68452809201155094ec",
+    "sha256": "daea18d0ee6b6ea149a9adb4782a76b1dfb73da3526f1eccdbe94158976954cd",
+    "wordCount": 40765,
+    "status": "FROZEN"
+  },
+  "sourceAuthority": {
+    "path": "research/macroscopic-life/manuscript/BOOK-ONE-16-CHAPTER-CANONICAL-SOURCE-MANIFEST-v1.0.md",
+    "blob": "235dd03c3ef95b0bdda2a3cb904a510926783c4c",
+    "status": "FROZEN PROVENANCE"
+  },
+  "apparatusAuthority": {
+    "path": "research/macroscopic-life/manuscript/PASS-18J-FINAL-APPARATUS-SOURCE-LOCK.md",
+    "blob": "ffaddb14c89f7cb638279c898a77bed579af6101",
+    "notesRule": "Reader v0.4 # NOTES back matter is primary publication source apparatus; chapter-specific numbering remains authoritative.",
+    "bibliographyRule": "A separate consolidated bibliography is optional unless required by publisher/style system."
+  },
+  "productionAuthority": {
+    "baseCompositor": {
+      "path": "research/macroscopic-life/scripts/build-book-one-proof-v02.py",
+      "blob": "c1c57fc868819d20a44a87432601e73292b92bb1"
+    },
+    "v03Runner": {
+      "path": "research/macroscopic-life/scripts/build-book-one-proof-v03-runner.py",
+      "blob": "6ce174b49a2b7748280dca0a79817ade6f476f71"
+    },
+    "figurePlacementMap": {
+      "path": "research/macroscopic-life/production/PRODUCTION-PASS-02-FIGURE-PLACEMENT-MAP.md",
+      "blob": "f6d1c61bf271e9125fce7fb7a1502d0ebb9d82b8"
+    },
+    "pass06Preflight": "research/macroscopic-life/production/PRODUCTION-PASS-06-PREFLIGHT-RELEASE-PACKAGE.md"
+  },
+  "figureAuthority": {
+    "publicationRegister": {
+      "path": "research/macroscopic-life/visuals/BOOK-ONE-PUBLICATION-FIGURE-REGISTER-v2.json",
+      "blob": "47f3540746611045bb65c82aa606b9d3119cc4f6",
+      "status": "PUBLICATION AUTHORITY"
+    },
+    "supersededProvenanceRegister": {
+      "path": "research/macroscopic-life/visuals/figure-r3-proof-copy-v1.json",
+      "blob": "42a4704e4831925d21d6da996b15dbe858d60e49",
+      "status": "PROVENANCE ONLY; NOT PUBLICATION ASSEMBLY AUTHORITY"
+    },
+    "figures": {
+      "02": {"version":"V4","chapter":1,"lockCommit":"786b9dec0e763906198954c8b6b5b2b723321730"},
+      "03": {"version":"V4","chapter":1,"lockCommit":"681159c5f3cc2b988c58d52627b48d749e695027"},
+      "04": {"version":"V4","chapter":1,"lockCommit":"ce516935f999e52decc3e2561a048f5896e5383c"},
+      "05": {"version":"V3","chapter":2,"lockCommit":"90e4dccf0e90471190b73968634df982b6ddde73"},
+      "06": {"version":"V3","chapter":3,"lockCommit":"c276a9e9ba211a07c487d70379625b734898780a"},
+      "07": {"version":"V3","chapter":4,"lockCommit":"76149c8c8ce1ee9c61fb2cb03ee9e925a57de9bc"},
+      "08": {"version":"V2","chapter":5,"lockCommit":"30885f9e1980cc32075f1d42b3edf9196a24cfac"},
+      "09": {"version":"V2","chapter":6,"lockCommit":"7cbf92241d851e08a6ddf0e18f00660f86587de0"},
+      "10": {"version":"V3","chapter":8,"lockCommit":"7350f0edfe7817fb969796c5150b604dd693a9ab"},
+      "11": {"version":"V2","chapter":9,"lockCommit":"e0c839a341759bbab894f6ce3442d004915fe0b3"},
+      "12": {"version":"V3","chapter":10,"lockCommit":"51fe578231eb0a70960b4c29c8106b90a37c2584"},
+      "13": {"version":"V3","chapter":11,"lockCommit":"8834c60209e50e88febb48dabe77007a8b291830"},
+      "14": {"version":"V8","chapter":12,"status":"FROZEN FOR PUBLICATION","hostileReviewCommit":"e7d60a4534bdb6cd343097a4af3e8038ff0d87f9","prohibited":"V3 and intermediate V4-V7"},
+      "15": {"version":"V3","chapter":15,"lockCommit":"69f59749f701213f4ee63c7c98b8b49578debbcf"},
+      "16": {"version":"FROZEN","chapter":16,"lockCommit":"3178eaf81abd53c42ab613316e144907c6736b65"}
+    }
+  },
+  "frozenRegression": {
+    "chapterStarts": {"1":6,"2":15,"3":23,"4":29,"5":36,"6":43,"7":53,"8":64,"9":76,"10":87,"11":100,"12":110,"13":124,"14":135,"15":145,"16":155},
+    "figurePages": {"02":8,"03":9,"04":14,"05":18,"06":25,"07":29,"08":37,"09":43,"10":68,"11":85,"12":91,"13":109,"14":113,"15":153,"16":165},
+    "chapter17": "ABSENT",
+    "protectedAperture": "If individuality can be reorganized across levels, what determines where a new individual can—and cannot—emerge?",
+    "figure07Hinge": "Nothing about the machine changed while we were talking. Only the verbs did."
+  },
+  "releaseGaps": [
+    {
+      "id": "GAP-06A-01",
+      "severity": "P1-RELEASE-PACKAGE",
+      "finding": "The frozen v0.3 PDF, anchor ledger, and regression report are identified by immutable successful workflow artifact and digest but are not yet established here as persistent repository release assets.",
+      "requiredAction": "During release-candidate assembly, materialize/copy the exact digest-verified v0.3 outputs into the controlled release package or generate an equivalently digest-controlled release candidate from the frozen authorities. Do not substitute a different proof silently."
+    },
+    {
+      "id": "GAP-06A-02",
+      "severity": "P1-RELEASE-PACKAGE",
+      "finding": "The v0.3 structural proof compositor uses figure placeholders rather than embedding publication-authority artwork.",
+      "requiredAction": "Pass 06B must resolve each Figure 02-16 publication-authority artwork asset and technical properties before final print/EPUB assembly."
+    },
+    {
+      "id": "GAP-06A-03",
+      "severity": "P1-AUTHORITY-DRIFT",
+      "finding": "Production Pass 02 still names the superseded figure-r3 proof-copy register and says Figure 14 render pending, while BOOK-ONE-PUBLICATION-FIGURE-REGISTER-v2 is now publication authority and freezes Figure 14 V8.",
+      "requiredAction": "Do not rewrite the historical Pass 02 record. Pass 06B must explicitly apply publication register v2 as the superseding assembly authority while retaining Pass 02 only for conceptual placement."
+    },
+    {
+      "id": "GAP-06A-04",
+      "severity": "P2-PUBLISHER-DECISION",
+      "finding": "Publisher-specific front-matter identity fields, final imprint/copyright data, ISBN, price, and distributor metadata are not production-authorized by the frozen manuscript apparatus.",
+      "requiredAction": "Keep placeholders or defer until publisher/release-channel decisions are supplied; do not invent metadata."
+    },
+    {
+      "id": "GAP-06A-05",
+      "severity": "P2-DIGITAL",
+      "finding": "No frozen EPUB transformation contract is yet part of the release authority chain.",
+      "requiredAction": "Build in Pass 06E from Reader v0.4 and this manifest rather than extracting structure from the PDF."
+    }
+  ],
+  "nextPass": "PRODUCTION PASS 06B — FIGURE TECHNICAL PREFLIGHT",
+  "freezeRule": "This manifest inventories authority; it does not authorize manuscript prose changes, figure-anchor movement, chapter reordering, or silent asset substitution."
+}
