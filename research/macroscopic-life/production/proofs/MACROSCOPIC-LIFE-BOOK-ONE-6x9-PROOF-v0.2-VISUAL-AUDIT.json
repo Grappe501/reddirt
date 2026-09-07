@@ -1,0 +1,3121 @@
+{
+  "proof": "production/proofs/MACROSCOPIC-LIFE-BOOK-ONE-6x9-PROOF-v0.2.pdf",
+  "pages": [
+    {
+      "page": 1,
+      "spread": "1",
+      "chapter": null,
+      "chars": 16,
+      "lines": 1,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [
+        "frontmatter",
+        "heading_text_present"
+      ],
+      "risks": [
+        "REVIEW_LOW_DENSITY_TOP20",
+        "REVIEW_SHORT_BOTTOM_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 2,
+      "spread": "2-3",
+      "chapter": null,
+      "chars": 97,
+      "lines": 6,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [
+        "frontmatter",
+        "heading_text_present"
+      ],
+      "risks": [
+        "REVIEW_LOW_DENSITY_TOP20",
+        "REVIEW_SHORT_BOTTOM_LINE",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 3,
+      "spread": "2-3",
+      "chapter": null,
+      "chars": 142,
+      "lines": 5,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [
+        "frontmatter"
+      ],
+      "risks": [
+        "REVIEW_LOW_DENSITY_TOP20",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 4,
+      "spread": "4-5",
+      "chapter": null,
+      "chars": 64,
+      "lines": 2,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [
+        "frontmatter"
+      ],
+      "risks": [
+        "REVIEW_LOW_DENSITY_TOP20",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 5,
+      "spread": "4-5",
+      "chapter": null,
+      "chars": 131,
+      "lines": 5,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [
+        "part_candidate",
+        "frontmatter",
+        "heading_text_present"
+      ],
+      "risks": [
+        "REVIEW_LOW_DENSITY_TOP20",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 6,
+      "spread": "6-7",
+      "chapter": 1,
+      "chars": 1591,
+      "lines": 28,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [
+        "chapter_open",
+        "heading_text_present"
+      ],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 7,
+      "spread": "6-7",
+      "chapter": 1,
+      "chars": 1687,
+      "lines": 29,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_SHORT_BOTTOM_LINE",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 8,
+      "spread": "8-9",
+      "chapter": 1,
+      "chars": 1794,
+      "lines": 31,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [
+        "figure_02",
+        "heading_text_present"
+      ],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 9,
+      "spread": "8-9",
+      "chapter": 1,
+      "chars": 1944,
+      "lines": 32,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [
+        "figure_03",
+        "heading_text_present"
+      ],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 10,
+      "spread": "10-11",
+      "chapter": 1,
+      "chars": 2030,
+      "lines": 34,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "P2_HIGH_DENSITY",
+        "REVIEW_HIGH_DENSITY_TOP20",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 11,
+      "spread": "10-11",
+      "chapter": 1,
+      "chars": 2066,
+      "lines": 34,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "P2_HIGH_DENSITY",
+        "REVIEW_HIGH_DENSITY_TOP20",
+        "REVIEW_SHORT_BOTTOM_LINE",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 12,
+      "spread": "12-13",
+      "chapter": 1,
+      "chars": 2047,
+      "lines": 34,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "P2_HIGH_DENSITY",
+        "REVIEW_HIGH_DENSITY_TOP20",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 13,
+      "spread": "12-13",
+      "chapter": 1,
+      "chars": 2012,
+      "lines": 34,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "P2_HIGH_DENSITY",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 14,
+      "spread": "14-15",
+      "chapter": 1,
+      "chars": 1461,
+      "lines": 25,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [
+        "figure_04",
+        "heading_text_present"
+      ],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 15,
+      "spread": "14-15",
+      "chapter": 2,
+      "chars": 1425,
+      "lines": 26,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [
+        "chapter_open",
+        "heading_text_present"
+      ],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 16,
+      "spread": "16-17",
+      "chapter": 2,
+      "chars": 1875,
+      "lines": 33,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 17,
+      "spread": "16-17",
+      "chapter": 2,
+      "chars": 1689,
+      "lines": 29,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 18,
+      "spread": "18-19",
+      "chapter": 2,
+      "chars": 1667,
+      "lines": 29,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [
+        "figure_05",
+        "heading_text_present"
+      ],
+      "risks": [
+        "REVIEW_SHORT_BOTTOM_LINE",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 19,
+      "spread": "18-19",
+      "chapter": 2,
+      "chars": 1843,
+      "lines": 33,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 20,
+      "spread": "20-21",
+      "chapter": 2,
+      "chars": 1654,
+      "lines": 31,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 21,
+      "spread": "20-21",
+      "chapter": 2,
+      "chars": 151,
+      "lines": 4,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [
+        "part_candidate",
+        "heading_text_present"
+      ],
+      "risks": [
+        "REVIEW_LOW_DENSITY_TOP20",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 22,
+      "spread": "22-23",
+      "chapter": 2,
+      "chars": 107,
+      "lines": 5,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [
+        "part_candidate",
+        "heading_text_present"
+      ],
+      "risks": [
+        "REVIEW_LOW_DENSITY_TOP20",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 23,
+      "spread": "22-23",
+      "chapter": 3,
+      "chars": 1554,
+      "lines": 27,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [
+        "chapter_open",
+        "heading_text_present"
+      ],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 24,
+      "spread": "24-25",
+      "chapter": 3,
+      "chars": 1949,
+      "lines": 33,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 25,
+      "spread": "24-25",
+      "chapter": 3,
+      "chars": 1838,
+      "lines": 32,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [
+        "figure_06",
+        "heading_text_present"
+      ],
+      "risks": [
+        "REVIEW_SHORT_BOTTOM_LINE",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 26,
+      "spread": "26-27",
+      "chapter": 3,
+      "chars": 1759,
+      "lines": 30,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_SHORT_BOTTOM_LINE",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 27,
+      "spread": "26-27",
+      "chapter": 3,
+      "chars": 2066,
+      "lines": 34,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "P2_HIGH_DENSITY",
+        "REVIEW_HIGH_DENSITY_TOP20",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 28,
+      "spread": "28-29",
+      "chapter": 3,
+      "chars": 1147,
+      "lines": 22,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_SHORT_BOTTOM_LINE",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 29,
+      "spread": "28-29",
+      "chapter": 4,
+      "chars": 1203,
+      "lines": 24,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [
+        "chapter_open",
+        "figure_07",
+        "heading_text_present"
+      ],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 30,
+      "spread": "30-31",
+      "chapter": 4,
+      "chars": 2077,
+      "lines": 34,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "P2_HIGH_DENSITY",
+        "REVIEW_HIGH_DENSITY_TOP20",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 31,
+      "spread": "30-31",
+      "chapter": 4,
+      "chars": 1901,
+      "lines": 33,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 32,
+      "spread": "32-33",
+      "chapter": 4,
+      "chars": 2064,
+      "lines": 34,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "P2_HIGH_DENSITY",
+        "REVIEW_HIGH_DENSITY_TOP20",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 33,
+      "spread": "32-33",
+      "chapter": 4,
+      "chars": 1744,
+      "lines": 31,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_SHORT_BOTTOM_LINE",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 34,
+      "spread": "34-35",
+      "chapter": 4,
+      "chars": 1454,
+      "lines": 27,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 35,
+      "spread": "34-35",
+      "chapter": 4,
+      "chars": 121,
+      "lines": 5,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [
+        "part_candidate",
+        "heading_text_present"
+      ],
+      "risks": [
+        "REVIEW_LOW_DENSITY_TOP20",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 36,
+      "spread": "36-37",
+      "chapter": 5,
+      "chars": 1368,
+      "lines": 26,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [
+        "chapter_open",
+        "heading_text_present"
+      ],
+      "risks": [
+        "REVIEW_SHORT_BOTTOM_LINE",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 37,
+      "spread": "36-37",
+      "chapter": 5,
+      "chars": 1533,
+      "lines": 27,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [
+        "figure_08",
+        "heading_text_present"
+      ],
+      "risks": [
+        "REVIEW_SHORT_BOTTOM_LINE",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 38,
+      "spread": "38-39",
+      "chapter": 5,
+      "chars": 1886,
+      "lines": 33,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 39,
+      "spread": "38-39",
+      "chapter": 5,
+      "chars": 1898,
+      "lines": 33,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 40,
+      "spread": "40-41",
+      "chapter": 5,
+      "chars": 1708,
+      "lines": 32,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_SHORT_BOTTOM_LINE",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 41,
+      "spread": "40-41",
+      "chapter": 5,
+      "chars": 1658,
+      "lines": 31,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_SHORT_BOTTOM_LINE",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 42,
+      "spread": "42-43",
+      "chapter": 5,
+      "chars": 815,
+      "lines": 16,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_LOW_DENSITY_TOP20",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 43,
+      "spread": "42-43",
+      "chapter": 6,
+      "chars": 1238,
+      "lines": 25,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [
+        "chapter_open",
+        "figure_09",
+        "heading_text_present"
+      ],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 44,
+      "spread": "44-45",
+      "chapter": 6,
+      "chars": 1436,
+      "lines": 28,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_SHORT_BOTTOM_LINE",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 45,
+      "spread": "44-45",
+      "chapter": 6,
+      "chars": 1593,
+      "lines": 31,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 46,
+      "spread": "46-47",
+      "chapter": 6,
+      "chars": 1861,
+      "lines": 32,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 47,
+      "spread": "46-47",
+      "chapter": 6,
+      "chars": 1513,
+      "lines": 31,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 48,
+      "spread": "48-49",
+      "chapter": 6,
+      "chars": 1635,
+      "lines": 30,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 49,
+      "spread": "48-49",
+      "chapter": 6,
+      "chars": 1768,
+      "lines": 31,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 50,
+      "spread": "50-51",
+      "chapter": 6,
+      "chars": 1553,
+      "lines": 31,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_SHORT_BOTTOM_LINE",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 51,
+      "spread": "50-51",
+      "chapter": 6,
+      "chars": 264,
+      "lines": 8,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [
+        "part_candidate",
+        "heading_text_present"
+      ],
+      "risks": [
+        "REVIEW_LOW_DENSITY_TOP20",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 52,
+      "spread": "52-53",
+      "chapter": 6,
+      "chars": 111,
+      "lines": 5,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [
+        "part_candidate",
+        "heading_text_present"
+      ],
+      "risks": [
+        "REVIEW_LOW_DENSITY_TOP20",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 53,
+      "spread": "52-53",
+      "chapter": 7,
+      "chars": 1459,
+      "lines": 26,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [
+        "chapter_open",
+        "heading_text_present"
+      ],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 54,
+      "spread": "54-55",
+      "chapter": 7,
+      "chars": 2049,
+      "lines": 34,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "P2_HIGH_DENSITY",
+        "REVIEW_HIGH_DENSITY_TOP20",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 55,
+      "spread": "54-55",
+      "chapter": 7,
+      "chars": 2019,
+      "lines": 33,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "P2_HIGH_DENSITY",
+        "REVIEW_HIGH_DENSITY_TOP20",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 56,
+      "spread": "56-57",
+      "chapter": 7,
+      "chars": 2063,
+      "lines": 34,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "P2_HIGH_DENSITY",
+        "REVIEW_HIGH_DENSITY_TOP20",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 57,
+      "spread": "56-57",
+      "chapter": 7,
+      "chars": 2057,
+      "lines": 34,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [
+        "heading_text_present"
+      ],
+      "risks": [
+        "P2_HIGH_DENSITY",
+        "REVIEW_HIGH_DENSITY_TOP20",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 58,
+      "spread": "58-59",
+      "chapter": 7,
+      "chars": 1980,
+      "lines": 33,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 59,
+      "spread": "58-59",
+      "chapter": 7,
+      "chars": 2032,
+      "lines": 34,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "P2_HIGH_DENSITY",
+        "REVIEW_HIGH_DENSITY_TOP20",
+        "REVIEW_SHORT_BOTTOM_LINE",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 60,
+      "spread": "60-61",
+      "chapter": 7,
+      "chars": 1987,
+      "lines": 33,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 61,
+      "spread": "60-61",
+      "chapter": 7,
+      "chars": 1789,
+      "lines": 29,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_SHORT_BOTTOM_LINE",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 62,
+      "spread": "62-63",
+      "chapter": 7,
+      "chars": 1924,
+      "lines": 33,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_SHORT_BOTTOM_LINE",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 63,
+      "spread": "62-63",
+      "chapter": 7,
+      "chars": 785,
+      "lines": 14,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_LOW_DENSITY_TOP20",
+        "REVIEW_SHORT_BOTTOM_LINE",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 64,
+      "spread": "64-65",
+      "chapter": 8,
+      "chars": 1290,
+      "lines": 25,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [
+        "chapter_open",
+        "heading_text_present"
+      ],
+      "risks": [
+        "REVIEW_SHORT_BOTTOM_LINE",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 65,
+      "spread": "64-65",
+      "chapter": 8,
+      "chars": 2160,
+      "lines": 34,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "P2_HIGH_DENSITY",
+        "REVIEW_HIGH_DENSITY_TOP20",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 66,
+      "spread": "66-67",
+      "chapter": 8,
+      "chars": 2018,
+      "lines": 34,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "P2_HIGH_DENSITY",
+        "REVIEW_HIGH_DENSITY_TOP20",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 67,
+      "spread": "66-67",
+      "chapter": 8,
+      "chars": 1866,
+      "lines": 32,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_SHORT_BOTTOM_LINE",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 68,
+      "spread": "68-69",
+      "chapter": 8,
+      "chars": 1839,
+      "lines": 30,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [
+        "figure_10",
+        "heading_text_present"
+      ],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 69,
+      "spread": "68-69",
+      "chapter": 8,
+      "chars": 1975,
+      "lines": 34,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 70,
+      "spread": "70-71",
+      "chapter": 8,
+      "chars": 1811,
+      "lines": 32,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [
+        "heading_text_present"
+      ],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 71,
+      "spread": "70-71",
+      "chapter": 8,
+      "chars": 2001,
+      "lines": 34,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "P2_HIGH_DENSITY",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 72,
+      "spread": "72-73",
+      "chapter": 8,
+      "chars": 1761,
+      "lines": 32,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 73,
+      "spread": "72-73",
+      "chapter": 8,
+      "chars": 1998,
+      "lines": 34,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 74,
+      "spread": "74-75",
+      "chapter": 8,
+      "chars": 1945,
+      "lines": 32,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 75,
+      "spread": "74-75",
+      "chapter": 8,
+      "chars": 785,
+      "lines": 15,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_LOW_DENSITY_TOP20",
+        "REVIEW_SHORT_BOTTOM_LINE",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 76,
+      "spread": "76-77",
+      "chapter": 9,
+      "chars": 1333,
+      "lines": 26,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [
+        "chapter_open",
+        "heading_text_present"
+      ],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 77,
+      "spread": "76-77",
+      "chapter": 9,
+      "chars": 1843,
+      "lines": 33,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [
+        "heading_text_present"
+      ],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 78,
+      "spread": "78-79",
+      "chapter": 9,
+      "chars": 1655,
+      "lines": 31,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 79,
+      "spread": "78-79",
+      "chapter": 9,
+      "chars": 1747,
+      "lines": 30,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 80,
+      "spread": "80-81",
+      "chapter": 9,
+      "chars": 1912,
+      "lines": 33,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 81,
+      "spread": "80-81",
+      "chapter": 9,
+      "chars": 1916,
+      "lines": 33,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [
+        "heading_text_present"
+      ],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 82,
+      "spread": "82-83",
+      "chapter": 9,
+      "chars": 1703,
+      "lines": 32,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 83,
+      "spread": "82-83",
+      "chapter": 9,
+      "chars": 1874,
+      "lines": 33,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_SHORT_BOTTOM_LINE",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 84,
+      "spread": "84-85",
+      "chapter": 9,
+      "chars": 1948,
+      "lines": 33,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 85,
+      "spread": "84-85",
+      "chapter": 9,
+      "chars": 1709,
+      "lines": 31,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [
+        "figure_11",
+        "heading_text_present"
+      ],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 86,
+      "spread": "86-87",
+      "chapter": 9,
+      "chars": 865,
+      "lines": 17,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_LOW_DENSITY_TOP20",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 87,
+      "spread": "86-87",
+      "chapter": 10,
+      "chars": 1344,
+      "lines": 26,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [
+        "chapter_open",
+        "heading_text_present"
+      ],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 88,
+      "spread": "88-89",
+      "chapter": 10,
+      "chars": 1930,
+      "lines": 33,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 89,
+      "spread": "88-89",
+      "chapter": 10,
+      "chars": 1678,
+      "lines": 32,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [
+        "heading_text_present"
+      ],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 90,
+      "spread": "90-91",
+      "chapter": 10,
+      "chars": 1930,
+      "lines": 33,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_SHORT_BOTTOM_LINE",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 91,
+      "spread": "90-91",
+      "chapter": 10,
+      "chars": 1543,
+      "lines": 29,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [
+        "figure_12",
+        "heading_text_present"
+      ],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 92,
+      "spread": "92-93",
+      "chapter": 10,
+      "chars": 1963,
+      "lines": 33,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [
+        "heading_text_present"
+      ],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 93,
+      "spread": "92-93",
+      "chapter": 10,
+      "chars": 1831,
+      "lines": 33,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_SHORT_BOTTOM_LINE",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 94,
+      "spread": "94-95",
+      "chapter": 10,
+      "chars": 1922,
+      "lines": 33,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 95,
+      "spread": "94-95",
+      "chapter": 10,
+      "chars": 1989,
+      "lines": 33,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 96,
+      "spread": "96-97",
+      "chapter": 10,
+      "chars": 1683,
+      "lines": 32,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 97,
+      "spread": "96-97",
+      "chapter": 10,
+      "chars": 1925,
+      "lines": 33,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 98,
+      "spread": "98-99",
+      "chapter": 10,
+      "chars": 1323,
+      "lines": 27,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_SHORT_BOTTOM_LINE",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 99,
+      "spread": "98-99",
+      "chapter": 10,
+      "chars": 104,
+      "lines": 5,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [
+        "part_candidate",
+        "heading_text_present"
+      ],
+      "risks": [
+        "REVIEW_LOW_DENSITY_TOP20",
+        "REVIEW_SHORT_BOTTOM_LINE",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 100,
+      "spread": "100-101",
+      "chapter": 11,
+      "chars": 1240,
+      "lines": 25,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [
+        "chapter_open",
+        "heading_text_present"
+      ],
+      "risks": [
+        "REVIEW_SHORT_BOTTOM_LINE",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 101,
+      "spread": "100-101",
+      "chapter": 11,
+      "chars": 1800,
+      "lines": 32,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 102,
+      "spread": "102-103",
+      "chapter": 11,
+      "chars": 1860,
+      "lines": 31,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [
+        "heading_text_present"
+      ],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 103,
+      "spread": "102-103",
+      "chapter": 11,
+      "chars": 1711,
+      "lines": 32,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [
+        "heading_text_present"
+      ],
+      "risks": [
+        "REVIEW_SHORT_BOTTOM_LINE",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 104,
+      "spread": "104-105",
+      "chapter": 11,
+      "chars": 1985,
+      "lines": 33,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [
+        "heading_text_present"
+      ],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 105,
+      "spread": "104-105",
+      "chapter": 11,
+      "chars": 1894,
+      "lines": 33,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 106,
+      "spread": "106-107",
+      "chapter": 11,
+      "chars": 1817,
+      "lines": 33,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 107,
+      "spread": "106-107",
+      "chapter": 11,
+      "chars": 1793,
+      "lines": 31,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 108,
+      "spread": "108-109",
+      "chapter": 11,
+      "chars": 1788,
+      "lines": 32,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 109,
+      "spread": "108-109",
+      "chapter": 11,
+      "chars": 1125,
+      "lines": 23,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [
+        "figure_13",
+        "heading_text_present"
+      ],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 110,
+      "spread": "110-111",
+      "chapter": 12,
+      "chars": 1359,
+      "lines": 25,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [
+        "chapter_open",
+        "heading_text_present"
+      ],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 111,
+      "spread": "110-111",
+      "chapter": 12,
+      "chars": 1740,
+      "lines": 32,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [
+        "heading_text_present"
+      ],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 112,
+      "spread": "112-113",
+      "chapter": 12,
+      "chars": 1707,
+      "lines": 30,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_SHORT_BOTTOM_LINE",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 113,
+      "spread": "112-113",
+      "chapter": 12,
+      "chars": 1638,
+      "lines": 31,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [
+        "figure_14",
+        "heading_text_present"
+      ],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 114,
+      "spread": "114-115",
+      "chapter": 12,
+      "chars": 1942,
+      "lines": 33,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [
+        "heading_text_present"
+      ],
+      "risks": [
+        "REVIEW_SHORT_BOTTOM_LINE",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 115,
+      "spread": "114-115",
+      "chapter": 12,
+      "chars": 1783,
+      "lines": 31,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 116,
+      "spread": "116-117",
+      "chapter": 12,
+      "chars": 1842,
+      "lines": 32,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 117,
+      "spread": "116-117",
+      "chapter": 12,
+      "chars": 1681,
+      "lines": 30,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 118,
+      "spread": "118-119",
+      "chapter": 12,
+      "chars": 1804,
+      "lines": 31,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 119,
+      "spread": "118-119",
+      "chapter": 12,
+      "chars": 2035,
+      "lines": 33,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "P2_HIGH_DENSITY",
+        "REVIEW_HIGH_DENSITY_TOP20",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 120,
+      "spread": "120-121",
+      "chapter": 12,
+      "chars": 1804,
+      "lines": 32,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 121,
+      "spread": "120-121",
+      "chapter": 12,
+      "chars": 1644,
+      "lines": 31,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_SHORT_BOTTOM_LINE",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 122,
+      "spread": "122-123",
+      "chapter": 12,
+      "chars": 184,
+      "lines": 5,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "P2_SPARSE_UNCLASSIFIED",
+        "REVIEW_LOW_DENSITY_TOP20",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 123,
+      "spread": "122-123",
+      "chapter": 12,
+      "chars": 155,
+      "lines": 6,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [
+        "part_candidate",
+        "heading_text_present"
+      ],
+      "risks": [
+        "REVIEW_LOW_DENSITY_TOP20",
+        "REVIEW_SHORT_BOTTOM_LINE",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 124,
+      "spread": "124-125",
+      "chapter": 13,
+      "chars": 1343,
+      "lines": 25,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [
+        "chapter_open",
+        "heading_text_present"
+      ],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 125,
+      "spread": "124-125",
+      "chapter": 13,
+      "chars": 1519,
+      "lines": 29,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [
+        "heading_text_present"
+      ],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 126,
+      "spread": "126-127",
+      "chapter": 13,
+      "chars": 1634,
+      "lines": 30,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [
+        "heading_text_present"
+      ],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 127,
+      "spread": "126-127",
+      "chapter": 13,
+      "chars": 1962,
+      "lines": 33,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_SHORT_BOTTOM_LINE",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 128,
+      "spread": "128-129",
+      "chapter": 13,
+      "chars": 1708,
+      "lines": 31,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_SHORT_BOTTOM_LINE",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 129,
+      "spread": "128-129",
+      "chapter": 13,
+      "chars": 1764,
+      "lines": 31,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [
+        "heading_text_present"
+      ],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 130,
+      "spread": "130-131",
+      "chapter": 13,
+      "chars": 1695,
+      "lines": 31,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_SHORT_BOTTOM_LINE",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 131,
+      "spread": "130-131",
+      "chapter": 13,
+      "chars": 1611,
+      "lines": 31,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 132,
+      "spread": "132-133",
+      "chapter": 13,
+      "chars": 1674,
+      "lines": 29,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_SHORT_BOTTOM_LINE",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 133,
+      "spread": "132-133",
+      "chapter": 13,
+      "chars": 1648,
+      "lines": 31,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 134,
+      "spread": "134-135",
+      "chapter": 13,
+      "chars": 138,
+      "lines": 4,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "P2_SPARSE_UNCLASSIFIED",
+        "REVIEW_LOW_DENSITY_TOP20",
+        "REVIEW_SHORT_BOTTOM_LINE",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 135,
+      "spread": "134-135",
+      "chapter": 14,
+      "chars": 1176,
+      "lines": 25,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [
+        "chapter_open",
+        "heading_text_present"
+      ],
+      "risks": [
+        "REVIEW_SHORT_BOTTOM_LINE",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 136,
+      "spread": "136-137",
+      "chapter": 14,
+      "chars": 1569,
+      "lines": 31,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [
+        "heading_text_present"
+      ],
+      "risks": [
+        "REVIEW_SHORT_BOTTOM_LINE",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 137,
+      "spread": "136-137",
+      "chapter": 14,
+      "chars": 1868,
+      "lines": 33,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_SHORT_BOTTOM_LINE",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 138,
+      "spread": "138-139",
+      "chapter": 14,
+      "chars": 1758,
+      "lines": 32,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 139,
+      "spread": "138-139",
+      "chapter": 14,
+      "chars": 1573,
+      "lines": 30,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [
+        "heading_text_present"
+      ],
+      "risks": [
+        "REVIEW_SHORT_BOTTOM_LINE",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 140,
+      "spread": "140-141",
+      "chapter": 14,
+      "chars": 1696,
+      "lines": 31,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 141,
+      "spread": "140-141",
+      "chapter": 14,
+      "chars": 1767,
+      "lines": 32,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [
+        "heading_text_present"
+      ],
+      "risks": [
+        "REVIEW_SHORT_BOTTOM_LINE",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 142,
+      "spread": "142-143",
+      "chapter": 14,
+      "chars": 1721,
+      "lines": 31,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_SHORT_BOTTOM_LINE",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 143,
+      "spread": "142-143",
+      "chapter": 14,
+      "chars": 1792,
+      "lines": 31,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 144,
+      "spread": "144-145",
+      "chapter": 14,
+      "chars": 1151,
+      "lines": 22,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 145,
+      "spread": "144-145",
+      "chapter": 15,
+      "chars": 1164,
+      "lines": 24,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [
+        "chapter_open",
+        "heading_text_present"
+      ],
+      "risks": [
+        "REVIEW_SHORT_BOTTOM_LINE",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 146,
+      "spread": "146-147",
+      "chapter": 15,
+      "chars": 1848,
+      "lines": 32,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 147,
+      "spread": "146-147",
+      "chapter": 15,
+      "chars": 1981,
+      "lines": 33,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [
+        "heading_text_present"
+      ],
+      "risks": [
+        "REVIEW_SHORT_BOTTOM_LINE",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 148,
+      "spread": "148-149",
+      "chapter": 15,
+      "chars": 1841,
+      "lines": 32,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [
+        "heading_text_present"
+      ],
+      "risks": [
+        "REVIEW_SHORT_BOTTOM_LINE",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 149,
+      "spread": "148-149",
+      "chapter": 15,
+      "chars": 1646,
+      "lines": 30,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_SHORT_BOTTOM_LINE",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 150,
+      "spread": "150-151",
+      "chapter": 15,
+      "chars": 1922,
+      "lines": 34,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_SHORT_BOTTOM_LINE",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 151,
+      "spread": "150-151",
+      "chapter": 15,
+      "chars": 1664,
+      "lines": 29,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 152,
+      "spread": "152-153",
+      "chapter": 15,
+      "chars": 1838,
+      "lines": 32,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_SHORT_BOTTOM_LINE",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 153,
+      "spread": "152-153",
+      "chapter": 15,
+      "chars": 1354,
+      "lines": 25,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [
+        "figure_15",
+        "heading_text_present"
+      ],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 154,
+      "spread": "154-155",
+      "chapter": 15,
+      "chars": 1705,
+      "lines": 31,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 155,
+      "spread": "154-155",
+      "chapter": 16,
+      "chars": 1604,
+      "lines": 28,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [
+        "chapter_open",
+        "heading_text_present"
+      ],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 156,
+      "spread": "156-157",
+      "chapter": 16,
+      "chars": 1801,
+      "lines": 32,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 157,
+      "spread": "156-157",
+      "chapter": 16,
+      "chars": 2081,
+      "lines": 34,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "P2_HIGH_DENSITY",
+        "REVIEW_HIGH_DENSITY_TOP20",
+        "REVIEW_SHORT_BOTTOM_LINE",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 158,
+      "spread": "158-159",
+      "chapter": 16,
+      "chars": 2068,
+      "lines": 34,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "P2_HIGH_DENSITY",
+        "REVIEW_HIGH_DENSITY_TOP20",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 159,
+      "spread": "158-159",
+      "chapter": 16,
+      "chars": 1614,
+      "lines": 28,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [
+        "heading_text_present"
+      ],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 160,
+      "spread": "160-161",
+      "chapter": 16,
+      "chars": 1918,
+      "lines": 33,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 161,
+      "spread": "160-161",
+      "chapter": 16,
+      "chars": 1797,
+      "lines": 33,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [
+        "heading_text_present"
+      ],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 162,
+      "spread": "162-163",
+      "chapter": 16,
+      "chars": 1940,
+      "lines": 33,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 163,
+      "spread": "162-163",
+      "chapter": 16,
+      "chars": 2008,
+      "lines": 33,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "P2_HIGH_DENSITY",
+        "REVIEW_SHORT_BOTTOM_LINE",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 164,
+      "spread": "164-165",
+      "chapter": 16,
+      "chars": 1639,
+      "lines": 29,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [],
+      "risks": [
+        "REVIEW_SHORT_BOTTOM_LINE",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 165,
+      "spread": "164-165",
+      "chapter": 16,
+      "chars": 1735,
+      "lines": 31,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [
+        "figure_16",
+        "heading_text_present"
+      ],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 166,
+      "spread": "166-167",
+      "chapter": 16,
+      "chars": 649,
+      "lines": 12,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [
+        "chapter16_tail_or_backmatter"
+      ],
+      "risks": [
+        "REVIEW_LOW_DENSITY_TOP20",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 167,
+      "spread": "166-167",
+      "chapter": 16,
+      "chars": 1574,
+      "lines": 28,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [
+        "chapter16_tail_or_backmatter",
+        "heading_text_present"
+      ],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 168,
+      "spread": "168-169",
+      "chapter": 16,
+      "chars": 1793,
+      "lines": 33,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [
+        "chapter16_tail_or_backmatter"
+      ],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 169,
+      "spread": "168-169",
+      "chapter": 16,
+      "chars": 1908,
+      "lines": 33,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [
+        "chapter16_tail_or_backmatter"
+      ],
+      "risks": [
+        "REVIEW_SHORT_BOTTOM_LINE",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 170,
+      "spread": "170-171",
+      "chapter": 16,
+      "chars": 1803,
+      "lines": 32,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [
+        "chapter16_tail_or_backmatter"
+      ],
+      "risks": [
+        "REVIEW_SHORT_BOTTOM_LINE",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 171,
+      "spread": "170-171",
+      "chapter": 16,
+      "chars": 2253,
+      "lines": 36,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [
+        "chapter16_tail_or_backmatter"
+      ],
+      "risks": [
+        "P2_HIGH_DENSITY",
+        "REVIEW_HIGH_DENSITY_TOP20",
+        "REVIEW_SHORT_BOTTOM_LINE",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 172,
+      "spread": "172-173",
+      "chapter": 16,
+      "chars": 1953,
+      "lines": 33,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [
+        "chapter16_tail_or_backmatter"
+      ],
+      "risks": [
+        "REVIEW_SHORT_BOTTOM_LINE",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 173,
+      "spread": "172-173",
+      "chapter": 16,
+      "chars": 1849,
+      "lines": 33,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [
+        "part_candidate",
+        "chapter16_tail_or_backmatter",
+        "heading_text_present"
+      ],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 174,
+      "spread": "174-175",
+      "chapter": 16,
+      "chars": 2141,
+      "lines": 35,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [
+        "chapter16_tail_or_backmatter"
+      ],
+      "risks": [
+        "P2_HIGH_DENSITY",
+        "REVIEW_HIGH_DENSITY_TOP20",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 175,
+      "spread": "174-175",
+      "chapter": 16,
+      "chars": 1335,
+      "lines": 25,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [
+        "chapter16_tail_or_backmatter"
+      ],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 176,
+      "spread": "176-177",
+      "chapter": 16,
+      "chars": 2014,
+      "lines": 35,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [
+        "chapter16_tail_or_backmatter"
+      ],
+      "risks": [
+        "P2_HIGH_DENSITY",
+        "REVIEW_SHORT_BOTTOM_LINE",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 177,
+      "spread": "176-177",
+      "chapter": 16,
+      "chars": 2045,
+      "lines": 35,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [
+        "chapter16_tail_or_backmatter",
+        "heading_text_present"
+      ],
+      "risks": [
+        "P2_HIGH_DENSITY",
+        "REVIEW_HIGH_DENSITY_TOP20",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 178,
+      "spread": "178-179",
+      "chapter": 16,
+      "chars": 1907,
+      "lines": 32,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [
+        "chapter16_tail_or_backmatter",
+        "heading_text_present"
+      ],
+      "risks": [
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 179,
+      "spread": "178-179",
+      "chapter": 16,
+      "chars": 2133,
+      "lines": 35,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [
+        "chapter16_tail_or_backmatter"
+      ],
+      "risks": [
+        "P2_HIGH_DENSITY",
+        "REVIEW_HIGH_DENSITY_TOP20",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "page": 180,
+      "spread": "180-181",
+      "chapter": 16,
+      "chars": 536,
+      "lines": 10,
+      "width_in": 6.0,
+      "height_in": 9.0,
+      "roles": [
+        "chapter16_tail_or_backmatter"
+      ],
+      "risks": [
+        "REVIEW_LOW_DENSITY_TOP20",
+        "REVIEW_SHORT_TOP_LINE"
+      ],
+      "status": "PENDING_VISUAL"
+    }
+  ],
+  "spread_risks": [
+    {
+      "spread": "10-11",
+      "pages": [
+        10,
+        11
+      ],
+      "risks": [
+        "WALL_OF_GRAY_CANDIDATE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "spread": "12-13",
+      "pages": [
+        12,
+        13
+      ],
+      "risks": [
+        "WALL_OF_GRAY_CANDIDATE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "spread": "20-21",
+      "pages": [
+        20,
+        21
+      ],
+      "risks": [
+        "DENSITY_DISCONTINUITY"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "spread": "30-31",
+      "pages": [
+        30,
+        31
+      ],
+      "risks": [
+        "WALL_OF_GRAY_CANDIDATE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "spread": "54-55",
+      "pages": [
+        54,
+        55
+      ],
+      "risks": [
+        "WALL_OF_GRAY_CANDIDATE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "spread": "56-57",
+      "pages": [
+        56,
+        57
+      ],
+      "risks": [
+        "WALL_OF_GRAY_CANDIDATE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "spread": "58-59",
+      "pages": [
+        58,
+        59
+      ],
+      "risks": [
+        "WALL_OF_GRAY_CANDIDATE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "spread": "80-81",
+      "pages": [
+        80,
+        81
+      ],
+      "risks": [
+        "WALL_OF_GRAY_CANDIDATE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "spread": "94-95",
+      "pages": [
+        94,
+        95
+      ],
+      "risks": [
+        "WALL_OF_GRAY_CANDIDATE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "spread": "162-163",
+      "pages": [
+        162,
+        163
+      ],
+      "risks": [
+        "WALL_OF_GRAY_CANDIDATE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "spread": "176-177",
+      "pages": [
+        176,
+        177
+      ],
+      "risks": [
+        "WALL_OF_GRAY_CANDIDATE"
+      ],
+      "status": "PENDING_VISUAL"
+    },
+    {
+      "spread": "178-179",
+      "pages": [
+        178,
+        179
+      ],
+      "risks": [
+        "WALL_OF_GRAY_CANDIDATE"
+      ],
+      "status": "PENDING_VISUAL"
+    }
+  ],
+  "chapter_openings": {
+    "1": {
+      "page": 6,
+      "status": "PENDING_VISUAL"
+    },
+    "2": {
+      "page": 15,
+      "status": "PENDING_VISUAL"
+    },
+    "3": {
+      "page": 23,
+      "status": "PENDING_VISUAL"
+    },
+    "4": {
+      "page": 29,
+      "status": "PENDING_VISUAL"
+    },
+    "5": {
+      "page": 36,
+      "status": "PENDING_VISUAL"
+    },
+    "6": {
+      "page": 43,
+      "status": "PENDING_VISUAL"
+    },
+    "7": {
+      "page": 53,
+      "status": "PENDING_VISUAL"
+    },
+    "8": {
+      "page": 64,
+      "status": "PENDING_VISUAL"
+    },
+    "9": {
+      "page": 76,
+      "status": "PENDING_VISUAL"
+    },
+    "10": {
+      "page": 87,
+      "status": "PENDING_VISUAL"
+    },
+    "11": {
+      "page": 100,
+      "status": "PENDING_VISUAL"
+    },
+    "12": {
+      "page": 110,
+      "status": "PENDING_VISUAL"
+    },
+    "13": {
+      "page": 124,
+      "status": "PENDING_VISUAL"
+    },
+    "14": {
+      "page": 135,
+      "status": "PENDING_VISUAL"
+    },
+    "15": {
+      "page": 145,
+      "status": "PENDING_VISUAL"
+    },
+    "16": {
+      "page": 155,
+      "status": "PENDING_VISUAL"
+    }
+  },
+  "figures": {
+    "02": {
+      "page": 8,
+      "status": "PENDING_VISUAL"
+    },
+    "03": {
+      "page": 9,
+      "status": "PENDING_VISUAL"
+    },
+    "04": {
+      "page": 14,
+      "status": "PENDING_VISUAL"
+    },
+    "05": {
+      "page": 18,
+      "status": "PENDING_VISUAL"
+    },
+    "06": {
+      "page": 25,
+      "status": "PENDING_VISUAL"
+    },
+    "07": {
+      "page": 29,
+      "status": "PENDING_VISUAL"
+    },
+    "08": {
+      "page": 37,
+      "status": "PENDING_VISUAL"
+    },
+    "09": {
+      "page": 43,
+      "status": "PENDING_VISUAL"
+    },
+    "10": {
+      "page": 68,
+      "status": "PENDING_VISUAL"
+    },
+    "11": {
+      "page": 85,
+      "status": "PENDING_VISUAL"
+    },
+    "12": {
+      "page": 91,
+      "status": "PENDING_VISUAL"
+    },
+    "13": {
+      "page": 109,
+      "status": "PENDING_VISUAL"
+    },
+    "14": {
+      "page": 113,
+      "status": "PENDING_VISUAL"
+    },
+    "15": {
+      "page": 153,
+      "status": "PENDING_VISUAL"
+    },
+    "16": {
+      "page": 165,
+      "status": "PENDING_VISUAL"
+    }
+  },
+  "summary": {
+    "page_count": 180,
+    "pages_with_deterministic_risk": 180,
+    "spreads_with_deterministic_risk": 12,
+    "visual_pages_approved": 0,
+    "visual_pages_pending": 180,
+    "p0_confirmed": 0,
+    "p1_confirmed": 0,
+    "overall_status": "PENDING_VISUAL_REVIEW"
+  }
+}
