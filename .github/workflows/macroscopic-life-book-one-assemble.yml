@@ -26,25 +26,41 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Assemble canonical Book One
+      - name: Assemble canonical and reader Book One
         run: python research/macroscopic-life/scripts/assemble-book-one.py
 
-      - name: Verify materialized manuscript
+      - name: Verify canonical assembly
         run: |
-          test -s research/macroscopic-life/manuscript/BOOK-ONE-CANONICAL-ASSEMBLED-v0.1.md
-          test "$(grep -Ec '^## Chapter [0-9]+ — ' research/macroscopic-life/manuscript/BOOK-ONE-CANONICAL-ASSEMBLED-v0.1.md)" -eq 16
-          ! grep -Eq '^## Chapter 17 — ' research/macroscopic-life/manuscript/BOOK-ONE-CANONICAL-ASSEMBLED-v0.1.md
-          grep -q '^## Chapter 4 — The Verb$' research/macroscopic-life/manuscript/BOOK-ONE-CANONICAL-ASSEMBLED-v0.1.md
-          grep -q '^## Chapter 11 — The Choice$' research/macroscopic-life/manuscript/BOOK-ONE-CANONICAL-ASSEMBLED-v0.1.md
+          CANON='research/macroscopic-life/manuscript/BOOK-ONE-CANONICAL-ASSEMBLED-v0.1.md'
+          test -s "$CANON"
+          test "$(grep -Ec '^## Chapter [0-9]+ — ' "$CANON")" -eq 16
+          ! grep -Eq '^## Chapter 17 — ' "$CANON"
+          grep -q '^## Chapter 4 — The Verb$' "$CANON"
+          grep -q '^## Chapter 11 — The Choice$' "$CANON"
 
-      - name: Commit materialized manuscript if changed
+      - name: Verify clean reader materialization
         run: |
-          if git diff --quiet -- research/macroscopic-life/manuscript/BOOK-ONE-CANONICAL-ASSEMBLED-v0.1.md && git ls-files --error-unmatch research/macroscopic-life/manuscript/BOOK-ONE-CANONICAL-ASSEMBLED-v0.1.md >/dev/null 2>&1; then
-            echo 'Canonical assembled manuscript already current.'
+          READER='research/macroscopic-life/manuscript/BOOK-ONE-READER-MATERIALIZED-v0.2.md'
+          test -s "$READER"
+          test "$(grep -Ec '^## Chapter [0-9]+ — ' "$READER")" -eq 16
+          test "$(grep -Ec '^# PART (I|II|III|IV) — ' "$READER")" -eq 4
+          ! grep -Eq '^## Chapter 17 — ' "$READER"
+          grep -q '^## Chapter 4 — The Verb$' "$READER"
+          grep -q '^## Chapter 11 — The Choice$' "$READER"
+          grep -q '^# NOTES$' "$READER"
+          for n in $(seq 7 16); do grep -q "^## Notes to Chapter ${n} — " "$READER"; done
+          ! grep -Eqi '^#{1,6} .*prefreeze control|^#{1,6} .*freeze control|required next gate|this manuscript is .*not frozen' "$READER"
+
+      - name: Commit materialized manuscripts if changed
+        run: |
+          CANON='research/macroscopic-life/manuscript/BOOK-ONE-CANONICAL-ASSEMBLED-v0.1.md'
+          READER='research/macroscopic-life/manuscript/BOOK-ONE-READER-MATERIALIZED-v0.2.md'
+          if git diff --quiet -- "$CANON" "$READER" && git ls-files --error-unmatch "$CANON" >/dev/null 2>&1 && git ls-files --error-unmatch "$READER" >/dev/null 2>&1; then
+            echo 'Canonical and reader manuscripts already current.'
             exit 0
           fi
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add research/macroscopic-life/manuscript/BOOK-ONE-CANONICAL-ASSEMBLED-v0.1.md
-          git commit -m 'Macroscopic Life: materialize canonical Book One [book-one-assembly]'
+          git add "$CANON" "$READER"
+          git commit -m 'Macroscopic Life: materialize canonical + clean reader Book One [book-one-assembly]'
           git push
