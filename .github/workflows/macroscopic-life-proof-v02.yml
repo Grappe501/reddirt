@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - 'research/macroscopic-life/scripts/build-book-one-proof-v02.py'
+      - 'research/macroscopic-life/scripts/build-book-one-proof-v02-runner.py'
       - 'research/macroscopic-life/scripts/inspect-book-one-proof-v02.py'
       - 'research/macroscopic-life/production/PRODUCTION-PASS-04-v02.trigger'
       - '.github/workflows/macroscopic-life-proof-v02.yml'
@@ -23,7 +24,7 @@ jobs:
       - name: Install compositor and inspector
         run: pip install reportlab pypdf
       - name: Build anchor-aware 6x9 structural proof
-        run: python research/macroscopic-life/scripts/build-book-one-proof-v02.py
+        run: python research/macroscopic-life/scripts/build-book-one-proof-v02-runner.py
       - name: Verify PDF bytes
         run: |
           test -s research/macroscopic-life/production/proofs/MACROSCOPIC-LIFE-BOOK-ONE-6x9-PROOF-v0.2.pdf
