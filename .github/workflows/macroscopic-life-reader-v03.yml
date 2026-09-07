@@ -1,0 +1,39 @@
+name: Macroscopic Life Reader v0.3
+
+on:
+  push:
+    paths:
+      - 'research/macroscopic-life/manuscript/reader-overlays/READER-V03-MATERIALIZE.trigger'
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Materialize Reader v0.3
+        run: python research/macroscopic-life/scripts/materialize-reader-v03.py
+
+      - name: Verify output exists
+        run: |
+          test -s research/macroscopic-life/manuscript/BOOK-ONE-READER-MATERIALIZED-v0.3.md
+          test -s research/macroscopic-life/manuscript/PASS-18I-D1-READER-v0.3-MATERIALIZATION-REPORT.json
+
+      - name: Commit generated reader
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add research/macroscopic-life/manuscript/BOOK-ONE-READER-MATERIALIZED-v0.3.md
+          git add research/macroscopic-life/manuscript/PASS-18I-D1-READER-v0.3-MATERIALIZATION-REPORT.json
+          if git diff --cached --quiet; then
+            echo 'No generated changes.'
+            exit 0
+          fi
+          git commit -m 'Macroscopic Life: materialize Reader v0.3'
+          git push
