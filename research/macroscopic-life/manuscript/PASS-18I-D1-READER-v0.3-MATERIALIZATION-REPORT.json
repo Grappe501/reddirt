@@ -1,0 +1,28 @@
+{
+  "status": "PASS",
+  "base": "manuscript/BOOK-ONE-READER-MATERIALIZED-v0.2.md",
+  "output": "manuscript/BOOK-ONE-READER-MATERIALIZED-v0.3.md",
+  "base_sha256": "4123f53b6920855d439fa9120b436c354a41de302b261eb78f4befe7b2d4a5de",
+  "output_sha256": "8a770b3d45a76bbb94456ec8aa008c99c65772e7eed8c354579c00e386f74c80",
+  "base_bytes": 293851,
+  "output_bytes": 291463,
+  "base_words": 41698,
+  "output_words": 41350,
+  "word_reduction": 348,
+  "word_reduction_pct": 0.835,
+  "exact_replacements_applied": 12,
+  "chapter_local_note_sections_moved": [
+    7,
+    8,
+    11
+  ],
+  "gates": {
+    "chapters_1_16_exact": true,
+    "chapter4_the_verb": true,
+    "chapter11_the_choice": true,
+    "no_chapter17": true,
+    "final_question_preserved": true,
+    "no_prefreeze_control_in_body": true,
+    "no_required_next_gate_in_body": true
+  }
+}
