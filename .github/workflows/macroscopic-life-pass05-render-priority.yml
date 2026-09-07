@@ -1,0 +1,81 @@
+name: Macroscopic Life Pass 05 Render Priority Pages
+
+on:
+  push:
+    paths:
+      - 'research/macroscopic-life/production/PRODUCTION-PASS-05-RENDER.trigger'
+      - '.github/workflows/macroscopic-life-pass05-render-priority.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install renderer
+        run: pip install pymupdf pillow
+      - name: Verify frozen proof
+        run: |
+          test -s research/macroscopic-life/production/proofs/MACROSCOPIC-LIFE-BOOK-ONE-6x9-PROOF-v0.2.pdf
+          grep -Fx 'overall_status=PASS' research/macroscopic-life/production/proofs/MACROSCOPIC-LIFE-BOOK-ONE-6x9-PROOF-v0.2-INSPECTION.txt
+      - name: Render priority review batch and contact sheets
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import fitz
+          from PIL import Image, ImageOps, ImageDraw
+
+          pdf=Path('research/macroscopic-life/production/proofs/MACROSCOPIC-LIFE-BOOK-ONE-6x9-PROOF-v0.2.pdf')
+          out=Path('pass05-render'); out.mkdir(exist_ok=True)
+          # Density extremes, suspicious sparse pages, every chapter opening, every figure page,
+          # front matter, Chapter 16 tail, and adjacent pages needed to judge page turns.
+          priority={1,2,3,4,5,6,8,9,10,11,12,13,14,15,18,21,22,23,25,27,29,30,32,35,36,37,42,43,51,52,53,54,55,56,57,59,63,64,65,66,67,68,75,76,85,86,87,90,91,97,99,100,109,110,113,119,122,123,124,134,135,145,152,153,154,155,156,157,158,164,165,166,171,174,177,179,180}
+          # Add immediate neighbors for visual continuity.
+          expanded=set()
+          for p in priority:
+              expanded.update(x for x in (p-1,p,p+1) if 1<=x<=180)
+          pages=sorted(expanded)
+          doc=fitz.open(pdf)
+          rendered=[]
+          for p in pages:
+              page=doc[p-1]
+              pix=page.get_pixmap(matrix=fitz.Matrix(1.35,1.35), alpha=False)
+              fn=out/f'page-{p:03d}.png'
+              pix.save(fn)
+              rendered.append((p,fn))
+
+          # Contact sheets in physical spread order, 8 pages per sheet.
+          thumb_w=330
+          for batch_i in range(0,len(rendered),8):
+              batch=rendered[batch_i:batch_i+8]
+              thumbs=[]
+              for p,fn in batch:
+                  im=Image.open(fn).convert('RGB')
+                  ratio=thumb_w/im.width
+                  im=im.resize((thumb_w,int(im.height*ratio)))
+                  canvas=Image.new('RGB',(thumb_w+20,im.height+48),'white')
+                  canvas.paste(im,(10,30))
+                  d=ImageDraw.Draw(canvas); d.text((10,8),f'PDF page {p}',fill='black')
+                  canvas=ImageOps.expand(canvas,border=1,fill='black')
+                  thumbs.append(canvas)
+              cols=4; rows=(len(thumbs)+cols-1)//cols
+              cell_w=max(x.width for x in thumbs); cell_h=max(x.height for x in thumbs)
+              sheet=Image.new('RGB',(cols*cell_w,rows*cell_h),'white')
+              for i,im in enumerate(thumbs):
+                  sheet.paste(im,((i%cols)*cell_w,(i//cols)*cell_h))
+              sheet.save(out/f'contact-{batch_i//8+1:02d}.jpg',quality=88,optimize=True)
+          (out/'README.txt').write_text('Rendered priority pages for Production Pass 05. Page images are authoritative for visual review; extraction heuristics are only suspicion generators.\n')
+          print('rendered pages',len(rendered),'contact sheets',(len(rendered)+7)//8)
+          PY
+      - name: Upload visual review artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: macroscopic-life-pass05-priority-renders
+          path: pass05-render
+          retention-days: 7
