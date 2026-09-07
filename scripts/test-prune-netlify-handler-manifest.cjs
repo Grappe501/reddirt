@@ -72,6 +72,7 @@ assert.deepEqual(
 
 fs.rmSync(tmp, { recursive: true, force: true });
 assert.ok(!APP_STASH_DIRS.includes("src/app/election-plan"), "election-plan must ship on kgrappe.netlify.app");
+assert.ok(APP_STASH_DIRS.includes("src/app/(macroscopic-life)"), "Macroscopic Life must stay off the public-hub Lambda");
 assert.ok(APP_STASH_DIRS.includes("src/app/admin/(board)"));
 assert.ok(APP_STASH_KEEP_PREFIXES.includes("src/app/admin/(board)/talent-foundry"));
 assert.ok(API_KEEP.has("forms"));
@@ -83,10 +84,14 @@ assert.ok(isRouteFileName("route.ts"));
 assert.ok(!isRouteFileName("approval-email-actions.ts"));
 
 const stashTmp = fs.mkdtempSync(path.join(tmpRoot, "public-hub-stash-"));
+const ml = path.join(stashTmp, "src/app/(macroscopic-life)/macroscopic-life");
 const board = path.join(stashTmp, "src/app/admin/(board)/campaign-events");
 const tf = path.join(stashTmp, "src/app/admin/(board)/talent-foundry");
+fs.mkdirSync(ml, { recursive: true });
 fs.mkdirSync(board, { recursive: true });
 fs.mkdirSync(tf, { recursive: true });
+fs.writeFileSync(path.join(ml, "page.tsx"), "export default function Page() { return null; }\n");
+fs.writeFileSync(path.join(ml, "layout.tsx"), "export default function Layout({ children }) { return children; }\n");
 fs.writeFileSync(path.join(board, "page.tsx"), "export default function Page() { return null; }\n");
 fs.writeFileSync(path.join(board, "approval-email-actions.ts"), "export async function loadApprovalPackageBundleAction() {}\n");
 fs.writeFileSync(path.join(tf, "page.tsx"), "export default function Page() { return null; }\n");
@@ -102,5 +107,7 @@ assert.ok(fs.existsSync(path.join(stashTmp, STASH_ROOT, "src/app/admin/(board)/c
 assert.ok(fs.existsSync(path.join(tf, "page.tsx")), "talent-foundry page must stay on the public hub");
 assert.ok(fs.existsSync(path.join(tf, "layout.tsx")), "talent-foundry layout must stay on the public hub");
 assert.ok(!fs.existsSync(path.join(stashTmp, STASH_ROOT, "src/app/admin/(board)/talent-foundry/page.tsx")));
+assert.ok(!fs.existsSync(path.join(ml, "page.tsx")), "macroscopic-life page must be stashed off the public hub");
+assert.ok(fs.existsSync(path.join(stashTmp, STASH_ROOT, "src/app/(macroscopic-life)/macroscopic-life/page.tsx")));
 fs.rmSync(stashTmp, { recursive: true, force: true });
 console.log("ok prune-netlify-handler-manifest");

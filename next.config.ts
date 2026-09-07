@@ -450,6 +450,8 @@ const nextConfig: NextConfig = {
       "**/.local/**",
       "**/npm-cache/**",
       "**/_cacache/**",
+      "research/**",
+      "src/content/macroscopic-life/**",
     ],
     "/api/owned-campaign-media/**": ["data/owned-campaign-media/**"],
   },

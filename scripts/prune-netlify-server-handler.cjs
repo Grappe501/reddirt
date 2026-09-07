@@ -38,6 +38,7 @@ const TOP_LEVEL_DIR_PRUNE = [
   "reports",
   "campaign-media",
   "county-vault",
+  "research",
   ".nightly-self-build",
   "out",
   ".local",
@@ -95,10 +96,11 @@ const HANDLER_SITE_INCLUDE_GLOBS = [
 
 /**
  * Pre-rendered / heavy public segments — drop from Lambda so unzipped upload stays under 250 MB.
- * Keep homepage + /arkansas-visits + thin CTA routes; static HTML is published via .next CDN assets.
+ * Keep homepage, /events (force-dynamic calendar), /arkansas-visits, and thin CTA routes.
  */
 const LAUNCH_PUBLIC_SERVER_DIRS = [
-  ".next/server/app/(site)/events",
+  ".next/server/app/(macroscopic-life)",
+  ".next/server/app/macroscopic-life",
   ".next/server/app/(site)/stories",
   ".next/server/app/(site)/resources",
   ".next/server/app/(site)/editorial",
@@ -289,6 +291,7 @@ function shouldPruneDirName(name, relFromHandler) {
     name === "field-structure" ||
     name === "campaign-media" ||
     name === "county-vault" ||
+    name === "research" ||
     name === ".nightly-self-build"
   ) {
     return true;

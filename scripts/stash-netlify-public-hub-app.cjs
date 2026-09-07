@@ -13,6 +13,7 @@ const path = require("node:path");
 const STASH_ROOT = ".netlify-build-stash";
 
 const APP_STASH_DIRS = [
+  "src/app/(macroscopic-life)",
   "src/app/volunteers",
   "src/app/campaign-events",
   "src/app/commit",
