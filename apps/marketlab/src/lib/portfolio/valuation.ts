@@ -58,7 +58,7 @@ export async function getPortfolioValuation(portfolioId: string): Promise<Portfo
       marketValue,
       costBasis,
       unrealizedPnL: marketValue - costBasis,
-      realizedPnL: Number(position.realizedPnL),
+      realizedPnL: Number(position.realizedPnl),
       quoteAsOf: quote.asOf,
       delayed: quote.delayed,
     };
@@ -66,7 +66,7 @@ export async function getPortfolioValuation(portfolioId: string): Promise<Portfo
 
   const positionsValue = positions.reduce((sum, p) => sum + p.marketValue, 0);
   const unrealizedPnL = positions.reduce((sum, p) => sum + p.unrealizedPnL, 0);
-  const realizedPnL = portfolio.positions.reduce((sum, p) => sum + Number(p.realizedPnL), 0);
+  const realizedPnL = portfolio.positions.reduce((sum, p) => sum + Number(p.realizedPnl), 0);
   const totalValue = cash + positionsValue;
   const startingCash = Number(portfolio.competition.startingCash);
   const totalReturn = totalValue - startingCash;
