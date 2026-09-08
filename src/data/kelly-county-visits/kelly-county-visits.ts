@@ -5134,15 +5134,16 @@ const kellyCampaignStopsSource: KellyCampaignStop[] = [
   },
   {
     id: "manual-2026-10-03-goat-fest",
-    publicTitle: "Goat fest — Patty Brazil chair",
+    publicTitle: "Goat fest — Perry County",
     date: "2026-10-03",
     title: "Goat fest - patty brazil chair",
-    counties: [],
+    city: "Perry County",
+    counties: ["Perry"],
     status: "scheduled",
     includeOnPublicPage: true,
-    confidence: "uncertain",
+    confidence: "confirmed",
     notes:
-      "Steve Google Calendar Sat Oct 3 all-day. City/street not on the block. Same day: Moonshine Van Buren; People Over Politics Back Forty Mountain Home; Ozark Forward hold. /events/goat-fest-oct-2026",
+      "Steve 2026-09-08: Perry County goatfest. Town/grounds TBA. Chair: Patty Brazil. Same day: Moonshine Van Buren; People Over Politics Back Forty Mountain Home; Ozark Forward hold. /events/goat-fest-oct-2026",
     sourceType: "calendar",
   },
   {
