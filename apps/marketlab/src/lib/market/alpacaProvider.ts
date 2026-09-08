@@ -4,8 +4,10 @@ const DATA_BASE = "https://data.alpaca.markets";
 const TRADING_BASE = "https://paper-api.alpaca.markets";
 
 function getCredentials() {
-  const key = process.env.MARKETLAB_ALPACA_API_KEY_ID?.trim();
-  const secret = process.env.MARKETLAB_ALPACA_API_SECRET_KEY?.trim();
+  const key =
+    process.env.MARKETLAB_ALPACA_API_KEY_ID?.trim() || process.env.MARKETLAB_MARKET_DATA_API_KEY?.trim();
+  const secret =
+    process.env.MARKETLAB_ALPACA_API_SECRET_KEY?.trim() || process.env.MARKETLAB_ALPACA_API_SECRET?.trim();
   if (!key || !secret) {
     throw new Error("MarketLab Alpaca credentials are not configured");
   }

@@ -22,8 +22,8 @@ export async function GET() {
   const marketProvider = (process.env.MARKETLAB_MARKET_DATA_PROVIDER || "").trim().toLowerCase() || null;
   const marketDataConfigured = Boolean(
     marketProvider === "alpaca" &&
-      process.env.MARKETLAB_MARKET_DATA_API_KEY?.trim() &&
-      process.env.MARKETLAB_ALPACA_API_SECRET?.trim(),
+      (process.env.MARKETLAB_ALPACA_API_KEY_ID?.trim() || process.env.MARKETLAB_MARKET_DATA_API_KEY?.trim()) &&
+      (process.env.MARKETLAB_ALPACA_API_SECRET_KEY?.trim() || process.env.MARKETLAB_ALPACA_API_SECRET?.trim()),
   );
 
   const healthy = database === "up" && authConfigured && marketDataConfigured;
