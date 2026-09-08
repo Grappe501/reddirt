@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { requireMarketLabUser } from "@/lib/auth/server";
 import { prisma } from "@/lib/db/prisma";
 import { ensureDefaultCompetition, DEFAULT_COMPETITION_SLUG } from "@/lib/competition/ensureDefaultCompetition";
@@ -29,7 +30,10 @@ export default async function DashboardPage() {
     <main className="dashboard-shell">
       <header className="market-header">
         <div><p className="eyebrow">MARKETLAB</p><h1>Your trading lab</h1></div>
-        <form action={signOut}><button className="secondary">Sign out</button></form>
+        <div className="headerActions">
+          <Link className="secondary buttonLink" href="/markets">Markets</Link>
+          <form action={signOut}><button className="secondary">Sign out</button></form>
+        </div>
       </header>
 
       <section className="hero-panel">
@@ -38,7 +42,7 @@ export default async function DashboardPage() {
           <h2>{portfolio ? "You are in." : "Your first $1,000 is ready."}</h2>
           <p>{portfolio ? "Your simulated cash is derived directly from the immutable ledger below." : "Join the default challenge to create your player portfolio and opening ledger entry."}</p>
         </div>
-        {!portfolio ? <form action={joinDefaultCompetition}><button>Join Six-Week Classic</button></form> : null}
+        {!portfolio ? <form action={joinDefaultCompetition}><button>Join Six-Week Classic</button></form> : <Link className="primaryButton buttonLink" href="/markets">Search the market</Link>}
       </section>
 
       <section className="metric-grid">
