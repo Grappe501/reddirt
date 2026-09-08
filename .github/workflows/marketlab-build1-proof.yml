@@ -1,0 +1,81 @@
+name: MarketLab Build 1 Proof
+
+on:
+  push:
+    branches: [feature/marketlab-foundation-1-0]
+    paths:
+      - "apps/marketlab/**"
+      - ".github/workflows/marketlab-build1-proof.yml"
+  pull_request:
+    paths:
+      - "apps/marketlab/**"
+      - ".github/workflows/marketlab-build1-proof.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: marketlab-build1-proof-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  proof:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:15-alpine
+        env:
+          POSTGRES_USER: marketlab
+          POSTGRES_PASSWORD: marketlab
+          POSTGRES_DB: marketlab
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U marketlab -d marketlab"
+          --health-interval 3s
+          --health-timeout 5s
+          --health-retries 20
+
+    defaults:
+      run:
+        working-directory: apps/marketlab
+
+    env:
+      DATABASE_URL: postgresql://marketlab:marketlab@127.0.0.1:5432/marketlab
+      DIRECT_URL: postgresql://marketlab:marketlab@127.0.0.1:5432/marketlab
+      NEXT_PUBLIC_MARKETLAB_SUPABASE_URL: https://example.supabase.co
+      NEXT_PUBLIC_MARKETLAB_SUPABASE_PUBLISHABLE_KEY: ci-placeholder
+      MARKETLAB_MARKET_DATA_PROVIDER: alpaca
+      MARKETLAB_MARKET_DATA_API_KEY: ci-placeholder
+      MARKETLAB_ALPACA_API_SECRET: ci-placeholder
+      MARKETLAB_ALPACA_FEED: iex
+      NODE_OPTIONS: --max-old-space-size=4096
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install MarketLab dependencies
+        run: npm install --no-audit --no-fund
+
+      - name: Hosted readiness contract
+        run: npm run hosted:readiness
+
+      - name: Prisma generate
+        run: npm run prisma:generate
+
+      - name: Apply MarketLab migrations
+        run: npm run prisma:migrate:deploy
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Production build
+        run: npm run build

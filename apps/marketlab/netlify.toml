@@ -1,0 +1,10 @@
+[build]
+  command = "npm run hosted:readiness && npm run prisma:generate && npm run prisma:migrate:deploy && npm run build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "22"
+  NPM_CONFIG_PRODUCTION = "false"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"

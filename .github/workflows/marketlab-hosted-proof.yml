@@ -1,0 +1,54 @@
+name: MarketLab Hosted Proof
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  hosted-proof:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/marketlab
+    env:
+      DATABASE_URL: ${{ secrets.MARKETLAB_DATABASE_URL }}
+      DIRECT_URL: ${{ secrets.MARKETLAB_DIRECT_URL }}
+      NEXT_PUBLIC_MARKETLAB_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_MARKETLAB_SUPABASE_URL }}
+      NEXT_PUBLIC_MARKETLAB_SUPABASE_PUBLISHABLE_KEY: ${{ secrets.NEXT_PUBLIC_MARKETLAB_SUPABASE_PUBLISHABLE_KEY }}
+      MARKETLAB_MARKET_DATA_PROVIDER: ${{ secrets.MARKETLAB_MARKET_DATA_PROVIDER }}
+      MARKETLAB_MARKET_DATA_API_KEY: ${{ secrets.MARKETLAB_MARKET_DATA_API_KEY }}
+      MARKETLAB_ALPACA_API_SECRET: ${{ secrets.MARKETLAB_ALPACA_API_SECRET }}
+      MARKETLAB_ALPACA_FEED: ${{ secrets.MARKETLAB_ALPACA_FEED }}
+      MARKETLAB_BASE_URL: ${{ secrets.MARKETLAB_BASE_URL }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+
+      - name: Hosted readiness
+        run: npm run hosted:readiness
+
+      - name: Prisma generate
+        run: npm run prisma:generate
+
+      - name: Apply hosted migrations
+        run: npm run prisma:migrate:deploy
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Production build
+        run: npm run build
+
+      - name: Hosted runtime smoke
+        run: npm run hosted:smoke
