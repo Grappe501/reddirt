@@ -1,3 +1,4 @@
+import { randomUUID } from "node:crypto";
 import Link from "next/link";
 import { requireMarketLabUser } from "@/lib/auth/server";
 import { prisma } from "@/lib/db/prisma";
@@ -36,6 +37,7 @@ export default async function TradePage({ searchParams }: { searchParams: Promis
   const symbol = typeof params.symbol === "string" ? params.symbol.toUpperCase() : "AAPL";
   const error = typeof params.error === "string" ? params.error : null;
   const filled = params.filled === "1";
+  const idempotencyKey = randomUUID();
   let quote: Awaited<ReturnType<ReturnType<typeof getMarketDataProvider>["getQuote"]>> | null = null;
   let quoteError: string | null = null;
   try {
@@ -62,11 +64,12 @@ export default async function TradePage({ searchParams }: { searchParams: Promis
             <p>{quote ? `${quote.delayed ? "Delayed" : "Live"} · ${quote.source} · ${new Date(quote.asOf).toLocaleString()}` : quoteError}</p>
           </div>
           <form action={placeMarketOrder} className="order-form">
+            <input type="hidden" name="idempotencyKey" value={idempotencyKey} />
             <label>Symbol<input name="symbol" defaultValue={symbol} required /></label>
             <label>Shares<input name="quantity" type="number" min="0.00000001" step="0.00000001" defaultValue="1" required /></label>
             <label>Side<select name="side" defaultValue="BUY"><option value="BUY">Buy</option><option value="SELL">Sell</option></select></label>
             <button className="primaryButton" type="submit" disabled={!quote}>Place simulated market order</button>
-            <small>No real brokerage order is created. Price is fetched again server-side at execution time.</small>
+            <small>No real brokerage order is created. Price is fetched again server-side at execution time. Repeated submission of this same ticket reuses one order idempotency token.</small>
           </form>
         </article>
 
