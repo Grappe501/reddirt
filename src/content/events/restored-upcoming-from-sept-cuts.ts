@@ -387,6 +387,7 @@ export const restoredUpcomingFromSeptCuts: EventItem[] = [
     primaryHref: "/get-involved#volunteer",
     primaryCtaLabel: "Volunteer / Get involved",
     relatedEventSlugs: ["hot-springs-chili-cookout-2026"],
+    organizerNote: "Steve 2026-09-08: AYC karaoke Oct 11 Hot Springs. Same evening Speakeasy at 626 Malvern Ave 5:30 p.m.",
     relatedResourceHrefs: [
       { label: "Volunteer", href: "/get-involved#volunteer" },
       { label: "Events calendar", href: "/events" },

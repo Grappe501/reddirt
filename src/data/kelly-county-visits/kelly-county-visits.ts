@@ -5394,16 +5394,16 @@ const kellyCampaignStopsSource: KellyCampaignStop[] = [
   },
   {
     id: "manual-2026-10-11-hot-springs-chili",
-    publicTitle: "Hot Springs chili cookout",
+    publicTitle: "Speakeasy — Hot Springs",
     date: "2026-10-11",
-    title: "Hot springs chili cookout",
+    title: "Speakeasy",
     city: "Hot Springs",
     counties: ["Garland"],
     status: "scheduled",
     includeOnPublicPage: true,
-    confidence: "likely",
+    confidence: "confirmed",
     notes:
-      "Campaign calendar Sun Oct 11 all-day. Venue and clock TBA. Same week banner: Debate week Oct 11-16 (private). /events/hot-springs-chili-cookout-2026",
+      "Steve 2026-09-08: Oct 11 Speakeasy confirmed. 626 Malvern Ave, 5:30 p.m. Replaces chili-cookout hold. /events/hot-springs-chili-cookout-2026",
     sourceType: "calendar",
   },
   {
