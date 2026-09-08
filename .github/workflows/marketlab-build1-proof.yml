@@ -65,6 +65,9 @@ jobs:
       - name: Install MarketLab dependencies
         run: npm install --no-audit --no-fund
 
+      - name: Hosted readiness contract
+        run: npm run hosted:readiness
+
       - name: Prisma generate
         run: npm run prisma:generate
 
