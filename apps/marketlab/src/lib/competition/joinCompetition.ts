@@ -1,6 +1,5 @@
-import { PrismaClient, CompetitionMemberRole, CashLedgerEntryType } from "@prisma/client";
-
-const prisma = new PrismaClient();
+import { CompetitionMemberRole, CashLedgerEntryType } from "@prisma/client";
+import { prisma } from "@/lib/db/prisma";
 
 export type JoinCompetitionInput = {
   authSubject: string;
@@ -20,10 +19,7 @@ export async function joinCompetition(input: JoinCompetitionInput) {
       where: { slug: input.competitionSlug },
     });
 
-    if (!competition) {
-      throw new Error("Competition not found");
-    }
-
+    if (!competition) throw new Error("Competition not found");
     if (!['OPEN', 'ACTIVE'].includes(competition.status)) {
       throw new Error("Competition is not open for player enrollment");
     }
@@ -67,13 +63,7 @@ export async function joinCompetition(input: JoinCompetitionInput) {
     });
 
     if (existingPortfolio) {
-      return {
-        player,
-        competition,
-        membership,
-        portfolio: existingPortfolio,
-        openingBalanceCreated: false,
-      };
+      return { player, competition, membership, portfolio: existingPortfolio, openingBalanceCreated: false };
     }
 
     const portfolio = await tx.portfolio.create({
@@ -95,12 +85,6 @@ export async function joinCompetition(input: JoinCompetitionInput) {
       include: { cashLedger: true },
     });
 
-    return {
-      player,
-      competition,
-      membership,
-      portfolio,
-      openingBalanceCreated: true,
-    };
+    return { player, competition, membership, portfolio, openingBalanceCreated: true };
   });
 }
