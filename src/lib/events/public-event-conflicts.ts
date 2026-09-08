@@ -32,13 +32,12 @@ const PLANNED_TRAVEL_DAYS: readonly ReadonlySet<string>[] = [
     "dequeen-sep-20-2026",
     "beckys-texarkana-2026-09-20",
   ]),
+  new Set(["marche-day-2026", "greene-county-candidate-forum-2026-09-26"]),
 ];
 
 function isPlannedTravelDay(dayEvents: EventItem[]): boolean {
   const slugs = new Set(dayEvents.map((e) => e.slug));
-  return PLANNED_TRAVEL_DAYS.some(
-    (planned) => slugs.size === planned.size && [...planned].every((slug) => slugs.has(slug)),
-  );
+  return PLANNED_TRAVEL_DAYS.some((planned) => [...planned].filter((slug) => slugs.has(slug)).length >= 2);
 }
 
 /** Same-day public stops Kelly might attend in more than one place, or overlapping clocks. */

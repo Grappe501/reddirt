@@ -3969,9 +3969,9 @@ const kellyCampaignStopsSource: KellyCampaignStop[] = [
     counties: ["Pulaski"],
     status: "scheduled",
     includeOnPublicPage: true,
-    confidence: "likely",
+    confidence: "confirmed",
     notes:
-      "Forwarded flyer + marcheday.org: Sat Sep 26 9:00 a.m.-7:00 p.m. 7520 Marche Lateral Rd, NLR 72118. Marche community / Maumelle area, District 71. Vendor booth $60; candidates apply — historically welcomed. /events/marche-day-2026 Same day: Paragould candidate forum 2-5 p.m.",
+      "Steve 2026-09-08: Marche Day morning, then Greene County / Paragould afternoon. 7520 Marche Lateral Rd. /events/marche-day-2026",
     sourceType: "manual",
   },
 
@@ -5114,9 +5114,9 @@ const kellyCampaignStopsSource: KellyCampaignStop[] = [
     counties: ["Benton"],
     status: "scheduled",
     includeOnPublicPage: true,
-    confidence: "likely",
+    confidence: "confirmed",
     notes:
-      "Steve Google Calendar Sun Sep 27 all-day. Course/city not on the block (often Rogers). Do not invent a club. /events/lpga-northwest-arkansas-2026",
+      "Steve 2026-09-08: LPGA Northwest Arkansas Sep 27 9:00 a.m.-6:00 p.m. Course TBA. /events/lpga-northwest-arkansas-2026",
     sourceType: "calendar",
   },
   {
@@ -5127,9 +5127,9 @@ const kellyCampaignStopsSource: KellyCampaignStop[] = [
     counties: ["Drew"],
     status: "scheduled",
     includeOnPublicPage: true,
-    confidence: "likely",
+    confidence: "confirmed",
     notes:
-      "Steve Google Calendar Mon Sep 28 all-day. Time/city/street not on the block. Same evening: DPPC Gigi's 5:00 NLR; Harrison Balloon Fest. Peggy is a host first name — do not invent a last name. /events/drew-county-dems-sep-28-2026",
+      "Steve 2026-09-08: Drew County meeting Sep 28 confirmed. Town TBA. Peggy is a first name only. /events/drew-county-dems-sep-28-2026",
     sourceType: "calendar",
   },
   {

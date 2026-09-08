@@ -294,10 +294,48 @@ export function campaignApproachForSlug(slug: string): CampaignApproachDecision 
 
 const DATE_LOCKS: Record<string, { startsAt: string; endsAt: string }> = {
   "grassroots-guitar-strings-2026": {
-    startsAt: "2026-09-17T18:30:00",
-    endsAt: "2026-09-17T21:30:00",
+    startsAt: "2026-09-17T18:30:00-05:00",
+    endsAt: "2026-09-17T21:30:00-05:00",
+  },
+  "beatles-on-the-ridge-2026": {
+    startsAt: "2026-09-19T09:00:00-05:00",
+    endsAt: "2026-09-19T12:00:00-05:00",
+  },
+  "hot-spring-county-cookout-2026": {
+    startsAt: "2026-09-19T17:00:00-05:00",
+    endsAt: "2026-09-19T19:00:00-05:00",
+  },
+  "marche-day-2026": {
+    startsAt: "2026-09-26T09:00:00-05:00",
+    endsAt: "2026-09-26T12:00:00-05:00",
+  },
+  "greene-county-candidate-forum-2026-09-26": {
+    startsAt: "2026-09-26T14:00:00-05:00",
+    endsAt: "2026-09-26T16:00:00-05:00",
+  },
+  "lpga-northwest-arkansas-2026": {
+    startsAt: "2026-09-27T09:00:00-05:00",
+    endsAt: "2026-09-27T18:00:00-05:00",
   },
 };
+
+/** Steve 2026-09-08: these public stops are locked confirmed. */
+const CONFIRMED_SLUGS = new Set([
+  "faulkner-dems-hq-opening-2026",
+  "russellville-mary-ella-voter-registration-2026",
+  "hsv-candidate-forum-2026",
+  "grassroots-guitar-strings-2026",
+  "iclr-sep-18-2026",
+  "beatles-on-the-ridge-2026",
+  "hot-spring-county-cookout-2026",
+  "clark-county-multi-church-tour-2026-09-20",
+  "dequeen-sep-20-2026",
+  "beckys-texarkana-2026-09-20",
+  "marche-day-2026",
+  "greene-county-candidate-forum-2026-09-26",
+  "lpga-northwest-arkansas-2026",
+  "drew-county-dems-sep-28-2026",
+]);
 
 function withSept29Caution(event: EventItem): EventItem {
   if (!CAUTION_SLUGS.has(event.slug)) return event;
@@ -308,11 +346,17 @@ function withSept29Caution(event: EventItem): EventItem {
   };
 }
 
+function withConfirmed(event: EventItem): EventItem {
+  if (!CONFIRMED_SLUGS.has(event.slug)) return event;
+  if (event.campaignApproach === "removed" || event.campaignApproach === "archive") return event;
+  return { ...event, fieldAttendance: "confirmed" };
+}
+
 export function applyCampaignApproach(event: EventItem): EventItem {
   const locked = DATE_LOCKS[event.slug];
   const next = locked ? { ...event, startsAt: locked.startsAt, endsAt: locked.endsAt } : event;
   const decision = CAMPAIGN_APPROACH_BY_SLUG[next.slug];
-  if (!decision) return withSept29Caution(next);
+  if (!decision) return withConfirmed(withSept29Caution(next));
   if (decision.approach === "removed") {
     return {
       ...next,
@@ -331,7 +375,7 @@ export function applyCampaignApproach(event: EventItem): EventItem {
       organizerNote: `${next.organizerNote}\n\nSteve pass 2026-09-07: archived. ${decision.note}`,
     };
   }
-  return withSept29Caution({ ...next, campaignApproach: decision.approach });
+  return withConfirmed(withSept29Caution({ ...next, campaignApproach: decision.approach }));
 }
 
 export function isPublicCalendarEvent(event: EventItem): boolean {
