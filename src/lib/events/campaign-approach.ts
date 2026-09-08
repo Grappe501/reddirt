@@ -40,12 +40,6 @@ export const CAMPAIGN_APPROACH_BY_SLUG: Record<string, CampaignApproachDecision>
     note: "Never confirmed.",
     ledgerIds: ["manual-2026-09-10-ame-west-conference"],
   },
-  "lafayette-county-sep-2026": {
-    approach: "removed",
-    reason: "redundant",
-    note: "Redundant.",
-    ledgerIds: ["manual-2026-09-11-lafayette-county"],
-  },
   "sharp-county-hq-highland-2026": {
     approach: "archive",
     reason: "conflict",

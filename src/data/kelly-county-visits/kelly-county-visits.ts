@@ -3697,7 +3697,7 @@ const kellyCampaignStopsSource: KellyCampaignStop[] = [
     includeOnPublicPage: true,
     confidence: "confirmed",
     notes:
-      "Updated from Jam Harp / Jametta Harper email 2026-08-06. Sat Sep 12 12:00 p.m. meet and greet. Venue/street not in the note — city is Rison (county seat). Host asked for bio + photo for Cleveland County Herald — operator follow-up, do not publish a campaign email. /events/cleveland-county-meet-and-greet-2026 Same day: Harrison Hot Air Balloon Festival; Conway County Fair Morrilton. Same host also flagged Rison in the Fall Oct 12.",
+      "Steve 2026-09-08: confirmed. Kelly at beginning of Stuttgart, then end of this Rison meet and greet. Jam Harp email 2026-08-06. Sat Sep 12 12:00 p.m. Venue/street not in the note — city is Rison. Host asked for bio + photo for Cleveland County Herald — operator follow-up, do not publish a campaign email. /events/cleveland-county-meet-and-greet-2026",
     sourceType: "calendar",
   },
 
@@ -4922,14 +4922,13 @@ const kellyCampaignStopsSource: KellyCampaignStop[] = [
     id: "manual-2026-09-11-lafayette-county",
     publicTitle: "Lafayette County",
     date: "2026-09-11",
-    endDate: "2026-09-12",
     title: "Lafayette county",
     counties: ["Lafayette"],
     status: "scheduled",
     includeOnPublicPage: true,
-    confidence: "likely",
+    confidence: "confirmed",
     notes:
-      "Steve Google Calendar Fri Sep 11 all-day Lafayette county and Sat Sep 12 Lafayette Country. City/street TBA. Same Friday evening: law-enforcement-vs-fire softball 7:00. Same Saturday: Cleveland forum Rison, Harrison Balloon Fest, Stuttgart 11:00-1:00 — cannot do Lafayette, Rison, Harrison, and Stuttgart. /events/lafayette-county-sep-2026",
+      "Steve 2026-09-08: Sep 11 Lafayette confirmed. Friday only — Saturday Lafayette hold dropped (Sat is Stuttgart start then Cleveland end). City/street TBA. /events/lafayette-county-sep-2026",
     sourceType: "calendar",
   },
   {
@@ -4954,9 +4953,9 @@ const kellyCampaignStopsSource: KellyCampaignStop[] = [
     counties: ["Arkansas"],
     status: "scheduled",
     includeOnPublicPage: true,
-    confidence: "likely",
+    confidence: "confirmed",
     notes:
-      "Steve Google Calendar Sat Sep 12 11:00 a.m.-1:00 p.m. Venue not on the block. Same day: Cleveland forum Rison, Harrison Balloon Fest, Lafayette hold. /events/stuttgart-sep-12-2026",
+      "Steve 2026-09-08: confirmed. Kelly at the beginning of Stuttgart 11:00 a.m.-1:00 p.m., then drive to the end of Cleveland County / Rison. Venue not on the block. /events/stuttgart-sep-12-2026",
     sourceType: "calendar",
   },
   {
@@ -4970,7 +4969,7 @@ const kellyCampaignStopsSource: KellyCampaignStop[] = [
     includeOnPublicPage: true,
     confidence: "confirmed",
     notes:
-      "Steve Google Calendar Sun Sep 13 2:00-4:00 p.m. Fort Smith Convention Center. Overlapping blocks: Fort Smith Candidate / The River Has A Choice / The River Valley Has A Choice. /events/fort-smith-river-valley-choice-2026",
+      "Steve 2026-09-08: River Valley Sep 13 confirmed. Sun 2:00-4:00 p.m. Fort Smith Convention Center. Overlapping blocks: Fort Smith Candidate / The River Has A Choice / The River Valley Has A Choice. /events/fort-smith-river-valley-choice-2026",
     sourceType: "calendar",
   },
   {

@@ -912,22 +912,23 @@ const movementEventsCore: EventItem[] = [
     locationLabel: "Cleveland County Democrats — meet and greet (Rison; venue TBA)",
     addressLine: "Rison, AR (street not in the host note — confirm with Cleveland County Democrats before travel)",
     summary:
-      "Saturday, September 12, 2026, **12:00 p.m. Central** in Rison: Cleveland County Democrats **meet and greet**. Host-run — not a campaign rally. End time and street TBA.",
+      "Saturday, September 12, 2026, **12:00 p.m. Central** in Rison: Cleveland County Democrats **meet and greet** — confirmed. Kelly arrives for the end of this hour after the start of Stuttgart. Host-run — not a campaign rally. Street TBA.",
     description:
-      "Jametta Harper (Jam Harp) wrote that Cleveland County Democrats look forward to seeing the campaign on **Saturday, September 12** at **12:00 noon** for a **meet and greet**.\n\nThe note does not name a building or street. This page places the gathering in **Rison**, the Cleveland County seat — confirm the room with the county party before treating it as a walk-in.\n\nThis is a **county Democratic Party** meet and greet, not a Grappe-hosted event. The host also asked for a **bio and photo** for the *Cleveland County Herald*; that is a campaign follow-up, not something neighbors need in order to attend.\n\nThe same Saturday the public calendar has the **Harrison Hot Air Balloon Festival**. Harrison to Rison that midday is a long drive.\n\nThe same host also flagged **Rison in the Fall** on October 12.",
+      "Jametta Harper (Jam Harp) wrote that Cleveland County Democrats look forward to seeing the campaign on **Saturday, September 12** at **12:00 noon** for a **meet and greet**. Steve confirmed this stop on **September 8**.\n\n**Kelly will be at the beginning of the Stuttgart hour, then drive to Rison for the end of this meet and greet.**\n\nThe host note does not name a building or street. This page places the gathering in **Rison**, the Cleveland County seat — confirm the room with the county party before treating it as a walk-in.\n\nThis is a **county Democratic Party** meet and greet, not a Grappe-hosted event. The host also asked for a **bio and photo** for the *Cleveland County Herald*; that is a campaign follow-up, not something neighbors need in order to attend.\n\nThe same host also flagged **Rison in the Fall** on October 12.",
     whatToExpect: [
-      "12:00 p.m. Central start — end time not in the host note (2:00 p.m. on this page is a calendar pin)",
+      "12:00 p.m. Central start — Kelly arrives for the end after Stuttgart",
       "County party meet and greet; follow the host for speaking order",
       "Street and building TBA",
     ],
     whoItsFor:
       "Cleveland County neighbors and anyone the county party welcomes. Confirm the address with the hosts before travel.",
     organizerNote:
-      "Jam Harp email 2026-08-06. Same contact as April beans-and-greens (Jametta Harper). Bio + photo for Cleveland County Herald ASAP — operator task; do not publish campaign email. Venue not given. Same day: Harrison balloon fest; Conway County Fair Morrilton. Later: rison-in-the-fall-2026.",
+      "Steve 2026-09-08: confirmed. Kelly at beginning of Stuttgart, then end of Cleveland. Jam Harp email 2026-08-06. Bio + photo for Cleveland County Herald ASAP — operator task; do not publish campaign email. Venue not given.",
     rsvpHref: undefined,
     audienceTags: ["Rison", "Cleveland County", "Democratic Party", "Southwest Arkansas"],
-    relatedEventSlugs: ["rison-in-the-fall-2026"],
+    relatedEventSlugs: ["stuttgart-sep-12-2026", "rison-in-the-fall-2026"],
     relatedResourceHrefs: [
+      { label: "Stuttgart — Saturday midday (start)", href: "/events/stuttgart-sep-12-2026" },
       { label: "Rison in the Fall — October 12", href: "/events/rison-in-the-fall-2026" },
       { label: "Get involved", href: "/get-involved" },
     ],
@@ -2769,21 +2770,21 @@ const movementEventsCore: EventItem[] = [
     countySlug: "lafayette-county",
     status: "upcoming",
     startsAt: "2026-09-11T09:00:00",
-    endsAt: "2026-09-12T17:00:00",
+    endsAt: "2026-09-11T17:00:00",
     timezone: "America/Chicago",
     locationLabel: "Lafayette County (city TBA)",
-    addressLine: "Lafayette County, AR. Calendar has Friday and Saturday holds — no town on the block.",
+    addressLine: "Lafayette County, AR (town not named — do not invent Lewisville or Stamps)",
     summary:
-      "Friday–Saturday, September 11–12, 2026: **Lafayette County** hold on Steve’s calendar. Town and clock TBA.",
+      "Friday, September 11, 2026: **Lafayette County** — confirmed. Town and street TBA.",
     description:
-      "Steve’s Google Calendar listed **Lafayette county** all day Friday, **September 11**, and **Lafayette Country** all day Saturday, **September 12**.\n\nThis is a two-day hold, not a named forum. Do not invent Lewisville or Stamps until a host names a stop.\n\nSaturday is already crowded: Cleveland County forum in Rison, Harrison Balloon Fest, and Stuttgart 11:00–1:00.",
-    whatToExpect: ["Friday–Saturday hold", "Town and hours TBA"],
+      "Steve confirmed **Friday, September 11, 2026** in **Lafayette County**.\n\nThis is a county day, not a named forum. Town and street are still TBA — do not invent Lewisville or Stamps until a host names a stop.\n\nSaturday, September 12 is **Stuttgart** at the start of that hour, then **Cleveland County in Rison** for the end of the meet and greet — not a second Lafayette day.",
+    whatToExpect: ["Confirmed Friday, September 11", "Town and hours TBA"],
     whoItsFor: "Lafayette County neighbors once a town is posted.",
     organizerNote:
-      "Google Calendar audit 2026-09-02. Same Friday: le-vs-fire-softball-2026 7:00; Dallas County Fair Fordyce; Sharp HQ Highland.",
-    relatedEventSlugs: ["cleveland-county-meet-and-greet-2026", "stuttgart-sep-12-2026"],
+      "Steve 2026-09-08: Sep 11 Lafayette confirmed. Saturday Lafayette hold dropped — Sat is Stuttgart start then Cleveland end. Same Friday: le-vs-fire-softball-2026 7:00 still tentative.",
+    relatedEventSlugs: ["stuttgart-sep-12-2026", "cleveland-county-meet-and-greet-2026"],
     relatedResourceHrefs: [{ label: "Get involved", href: "/get-involved" }],
-    fieldAttendance: "tentative",
+    fieldAttendance: "confirmed",
   },
   {
     slug: "le-vs-fire-softball-2026",
@@ -2820,22 +2821,25 @@ const movementEventsCore: EventItem[] = [
     locationLabel: "Stuttgart (venue TBA)",
     addressLine: "Stuttgart, AR (building not on the calendar block)",
     summary:
-      "Saturday, September 12, 2026, **11:00 a.m.–1:00 p.m. Central** in Stuttgart. Venue TBA. Caution — we need more information before this is a locked stop.",
+      "Saturday, September 12, 2026, **11:00 a.m.–1:00 p.m. Central** in Stuttgart — confirmed. Kelly will be at the beginning of this hour, then drive to the Cleveland County meet and greet in Rison. Venue TBA.",
     description:
-      "Steve’s Google Calendar listed **Stuttgart 11am - 1** on Saturday, **September 12**.\n\n**Caution.** Venue, host, and whether Kelly is expected are not locked. We need more information before treating this as a confirmed stop.\n\nThis is not the October 17 Stuttgart hour — that is a separate calendar row.\n\nSaturday is already stacked with Cleveland County in Rison and Harrison balloon Sunday morning.",
+      "Steve confirmed **Saturday, September 12, 2026**, **11:00 a.m.–1:00 p.m. Central** in **Stuttgart**.\n\n**Kelly will be at the beginning of this hour, then drive to Rison for the end of the Cleveland County Democrats meet and greet.**\n\nVenue and building are still TBA. This is not the October 17 Stuttgart hour — that is a separate calendar row.",
     whatToExpect: [
-      "11:00 a.m.–1:00 p.m. Central on the calendar",
+      "11:00 a.m.–1:00 p.m. Central — Kelly at the beginning",
+      "Then drive to Cleveland County / Rison for the end of that meet and greet",
       "Venue TBA",
-      "Caution — more information needed before this is locked",
     ],
     whoItsFor: "Arkansas County neighbors once a room and host are posted.",
     organizerNote:
-      "Yellow caution hold 2026-09-03 — need venue/host/Kelly yes-no. Distinct from stuttgart-oct-17-2026. Same day: cleveland-county-meet-and-greet-2026; Harrison balloon is Sunday 7am.",
-    relatedEventSlugs: ["stuttgart-oct-17-2026", "cleveland-county-meet-and-greet-2026"],
-    relatedResourceHrefs: [{ label: "Get involved", href: "/get-involved" }],
+      "Steve 2026-09-08: confirmed. Beginning of Stuttgart, then end of Cleveland. Distinct from stuttgart-oct-17-2026.",
+    relatedEventSlugs: ["cleveland-county-meet-and-greet-2026", "stuttgart-oct-17-2026"],
+    relatedResourceHrefs: [
+      { label: "Cleveland County meet and greet — same day", href: "/events/cleveland-county-meet-and-greet-2026" },
+      { label: "Get involved", href: "/get-involved" },
+    ],
     mapCoordinates: { lat: 34.5004, lng: -91.5526 },
     mapPinQuality: "region",
-    fieldAttendance: "caution",
+    fieldAttendance: "confirmed",
   },
   {
     slug: "conway-county-fair-2026-09-12",
@@ -2852,7 +2856,7 @@ const movementEventsCore: EventItem[] = [
     summary:
       "Saturday, September 12, 2026, **4:00–7:00 p.m. Central** at the **Conway County Fair** in Morrilton, on the way to Harrison. Caution — we need more information before this is a locked stop.",
     description:
-      "The **Conway County Fair** in Morrilton runs **Saturday, September 12 through Monday, September 14**.\n\n**Kelly’s public window is Saturday, 4:00–7:00 p.m. Central**, on the way to Harrison for the Sunday morning balloon festival. This is a **county fair** stop, not a Grappe-hosted rally. Gate and host table are TBA.\n\n**Caution.** We still need to reach Conway County volunteers to lock a meetup. Do not treat the Saturday window as a walk-in until that is confirmed.\n\nThe same Saturday the public calendar also has Stuttgart midday (caution) and Cleveland County in Rison at noon. Harrison’s public stop is **Sunday morning**.",
+      "The **Conway County Fair** in Morrilton runs **Saturday, September 12 through Monday, September 14**.\n\n**Kelly’s public window is Saturday, 4:00–7:00 p.m. Central**, on the way to Harrison for the Sunday morning balloon festival. This is a **county fair** stop, not a Grappe-hosted rally. Gate and host table are TBA.\n\n**Caution.** We still need to reach Conway County volunteers to lock a meetup. Do not treat the Saturday window as a walk-in until that is confirmed.\n\nThe same Saturday the public calendar has confirmed Stuttgart (beginning of that hour) and Cleveland County in Rison (end of the meet and greet). Harrison’s public stop is **Sunday morning**.",
     whatToExpect: [
       "Kelly window Saturday, September 12, 4:00–7:00 p.m. Central — on the way to Harrison",
       "Fair also runs through Monday, September 14",
@@ -2861,7 +2865,7 @@ const movementEventsCore: EventItem[] = [
     ],
     whoItsFor: "Conway County neighbors at the fair once a meetup and gate are posted.",
     organizerNote:
-      "Steve 2026-09-03: Sat 4:00-7:00 p.m. on the way to Harrison. Contact Conway County volunteers to meet up. Do not publish lodging. Distinct from opening night Sep 3. Same day: stuttgart-sep-12-2026 caution; cleveland-county-meet-and-greet-2026 noon. Harrison public stop is Sunday 7:00 a.m.",
+      "Steve 2026-09-03: Sat 4:00-7:00 p.m. on the way to Harrison. Contact Conway County volunteers to meet up. Do not publish lodging. Distinct from opening night Sep 3. Same day: stuttgart-sep-12-2026 confirmed (start) then cleveland-county-meet-and-greet-2026 (end). Harrison public stop is Sunday 7:00 a.m.",
     relatedEventSlugs: ["harrison-hot-air-balloon-festival-2026", "stuttgart-sep-12-2026", "cleveland-county-meet-and-greet-2026"],
     relatedResourceHrefs: [
       { label: "Harrison Hot Air Balloon Festival — Sunday morning", href: "/events/harrison-hot-air-balloon-festival-2026" },
@@ -2890,18 +2894,18 @@ const movementEventsCore: EventItem[] = [
     locationLabel: "Fort Smith Convention Center",
     addressLine: "Fort Smith Convention Center, Fort Smith, AR (street not typed on the week grid — confirm with the host)",
     summary:
-      "Sunday, September 13, 2026, **2:00–4:00 p.m. Central** at the **Fort Smith Convention Center**: **The River Valley Has a Choice** / Fort Smith candidate program.",
+      "Sunday, September 13, 2026, **2:00–4:00 p.m. Central** at the **Fort Smith Convention Center**: **The River Valley Has a Choice** — confirmed.",
     description:
-      "Steve’s Google Calendar stacked three overlapping Sunday, **September 13**, **2:00–4:00 p.m.** blocks: **Fort Smith Candidate**, **The River Has A Choice — The Fort Smith Convention Center**, and **The River Valley Has A Choice — Fort Smith**.\n\nTreat them as one host program at the **Fort Smith Convention Center**. This is a **host-run** candidate hour, not a Grappe rally. Confirm the hall name and whether Kelly is on the speaking list.\n\nThe street number was not on the week-grid title. Confirm with the host before travel.",
-    whatToExpect: ["2:00–4:00 p.m. Central", "Fort Smith Convention Center", "Host-run candidate program"],
+      "Steve confirmed **Sunday, September 13, 2026**, **2:00–4:00 p.m. Central** at the **Fort Smith Convention Center**: **The River Valley Has a Choice** / Fort Smith candidate program.\n\nThe calendar stacked three overlapping titles for this slot. Treat them as one host-run program. The street number was not on the week-grid title — confirm the hall name with the host before travel.",
+    whatToExpect: ["2:00–4:00 p.m. Central", "Fort Smith Convention Center", "Host-run candidate program — confirmed"],
     whoItsFor: "Fort Smith and River Valley neighbors the hosts welcome.",
     organizerNote:
-      "Google Calendar audit 2026-09-02. Three overlapping titles, one slot. Do not invent 55 S 7th unless the host prints it. fieldAttendance tentative until the roster is confirmed.",
+      "Steve 2026-09-08: River Valley Sep 13 confirmed. Three overlapping titles, one slot. Do not invent 55 S 7th unless the host prints it.",
     relatedEventSlugs: [],
     relatedResourceHrefs: [{ label: "Get involved", href: "/get-involved" }],
     mapCoordinates: { lat: 35.3859, lng: -94.3985 },
     mapPinQuality: "region",
-    fieldAttendance: "tentative",
+    fieldAttendance: "confirmed",
   },
   {
     slug: "iclr-sep-18-2026",
