@@ -3902,9 +3902,9 @@ const kellyCampaignStopsSource: KellyCampaignStop[] = [
     counties: ["Howard"],
     status: "scheduled",
     includeOnPublicPage: true,
-    confidence: "likely",
+    confidence: "confirmed",
     notes:
-      "Seeded from locked-events-steve.json. Same evening: Garland County Candidates Forum Hot Springs 6:00 p.m. (county offices, not SOS) — Nashville to Hot Springs is a drive if both stay booked. Campaign calendar also has Howard County 5:30 Nashville on Tue Sep 8 — confirm whether Sep 8 replaced this Sep 22 hold.",
+      "Steve 2026-09-08: Sep 22 Howard County Nashville confirmed. Time TBA. /events/howard-county-visit-nashville-2026-09-22",
     sourceType: "local-file",
   },
   {

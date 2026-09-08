@@ -148,6 +148,18 @@ export const CAMPAIGN_APPROACH_BY_SLUG: Record<string, CampaignApproachDecision>
     note: "Never confirmed.",
     ledgerIds: ["manual-2026-09-22-rodeo-rally-washington"],
   },
+  "press-freedom-gala-2026": {
+    approach: "removed",
+    reason: "conflict",
+    note: "Steve 2026-09-08: Sep 22 is Howard County in Nashville.",
+    ledgerIds: ["manual-2026-09-22-press-freedom-gala"],
+  },
+  "garland-library-county-candidates-forum-2026": {
+    approach: "removed",
+    reason: "conflict",
+    note: "Steve 2026-09-08: Sep 22 is Howard County in Nashville. Library county night is not the SOS forum (that is Sep 29).",
+    ledgerIds: ["manual-2026-09-22-garland-library-county-forum"],
+  },
   "crittenden-prairie-arkansas-swing-2026-09-23": {
     approach: "removed",
     reason: "never_confirmed",
@@ -340,6 +352,7 @@ const CONFIRMED_SLUGS = new Set([
   "lpga-northwest-arkansas-2026",
   "drew-county-dems-sep-28-2026",
   "le-vs-fire-softball-2026",
+  "howard-county-visit-nashville-2026-09-22",
 ]);
 
 function withSept29Caution(event: EventItem): EventItem {
