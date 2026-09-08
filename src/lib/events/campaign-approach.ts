@@ -272,6 +272,12 @@ export const CAMPAIGN_APPROACH_BY_SLUG: Record<string, CampaignApproachDecision>
     note: "Steve 2026-09-08: Oct 24 is Weston Colt birthday 2:00-6:00 p.m.",
     ledgerIds: ["manual-2026-10-24-mountain-view-outhouse-races"],
   },
+  "lafayette-county-sep-2026": {
+    approach: "removed",
+    reason: "redundant",
+    note: "Redundant county-day card. Removes the September 11 conflict.",
+    ledgerIds: ["manual-2026-09-11-lafayette-county"],
+  },
 };
 
 /** Steve 2026-09-08: September 29 four-way stays on the board as red caution. */
