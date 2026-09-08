@@ -178,6 +178,11 @@ export const CAMPAIGN_APPROACH_BY_SLUG: Record<string, CampaignApproachDecision>
     note: "Conflict.",
     ledgerIds: ["manual-2026-09-28-dppc-gigis-rally"],
   },
+  "cocktails-with-kelly-sep-2026": {
+    approach: "removed",
+    note: "Steve 2026-09-08: take off the public calendar.",
+    ledgerIds: ["manual-2026-09-09-cocktails-with-kelly"],
+  },
 };
 
 /** Steve 2026-09-08: September 29 four-way stays on the board as red caution. */
