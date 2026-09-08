@@ -63,7 +63,8 @@ async function loadCampaignAppearanceRows(): Promise<CampaignAppearanceRow[]> {
 }
 
 /**
- * Build-time county visit ledger: historical 51-county seed plus ended qualifying appearances.
+ * Build-time county visit ledger: historical visited seed, completed public
+ * stops through today, plus ended qualifying appearances.
  * Netlify rebuilds re-evaluate `endAt` in America/Chicago — no archive table.
  */
 export async function loadCountyVisitLedger(

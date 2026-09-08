@@ -208,11 +208,14 @@ export function buildCountyVisitLedger(input: {
   }
 
   for (const stop of input.historicalStops) {
-    if (!isQualifyingHistoricalStop(stop, HISTORICAL_VISIT_SNAPSHOT_AS_OF)) continue;
+    if (!isQualifyingHistoricalStop(stop, asOfYmd)) continue;
     const ymd = chicagoYmdFromStopDate(stop.date);
     for (const raw of stop.counties) {
       const name = normalizeArkansasCountyName(raw);
-      if (!name || !isHistoricalVisitedCounty(name)) continue;
+      if (!name) continue;
+      // Snapshot stays locked. Completed public rows after that day (e.g. Randolph
+      // confirmed 2026-09-08) still paint the county visited.
+      if (ymd <= HISTORICAL_VISIT_SNAPSHOT_AS_OF && !isHistoricalVisitedCounty(name)) continue;
       const rec = byCounty.get(name) ?? emptyRecord(name, "seed");
       addVisit(rec, stop.id, ymd, "seed");
       byCounty.set(name, rec);
