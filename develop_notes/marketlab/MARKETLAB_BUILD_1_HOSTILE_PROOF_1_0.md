@@ -1,12 +1,12 @@
 # MarketLab Build 1 — Hostile Proof 1.0
 
 ## Purpose
-Attack the Build 1 game loop before Build 2. This began as a source-level hostile review and now also includes a dedicated machine proof gate for the standalone MarketLab app.
+Attack the Build 1 game loop before Build 2. This began as a source-level hostile review and now also includes a dedicated machine proof gate plus hosted-deployment readiness checks for the standalone MarketLab app.
 
 ## Game loop under review
 `$1,000 opening ledger -> server quote -> simulated order -> execution -> cash ledger + position -> mark-to-market -> return -> leaderboard rank`
 
-## P0/P1 findings closed in this pass
+## P0/P1 findings closed
 
 ### 1. Concurrent overspend / oversell window — CLOSED
 The prior order transaction was atomic but used the database default isolation level. Two near-simultaneous orders could both read the same pre-settlement cash or share balance before either committed.
@@ -51,6 +51,17 @@ Repair:
 
 Invariant: MarketLab must compile as an independent Next application even though it lives inside the RedDirt repository.
 
+### 6. Hosted deployment could start with incomplete environment — CLOSED AT CONFIGURATION LAYER
+A Netlify build previously had no explicit preflight gate proving that MarketLab database, auth, and market-data configuration were all present before migrations/build began.
+
+Repair:
+- `apps/marketlab/scripts/hosted-readiness.mjs` validates the required MarketLab environment contract without printing secret values;
+- `npm run hosted:readiness` exposes the gate locally and in CI;
+- `apps/marketlab/netlify.toml` now runs the readiness gate before Prisma generation, migration deploy, and production build;
+- `/api/health` verifies database reachability and reports auth/market-data configuration state without exposing credentials.
+
+Invariant: a hosted MarketLab deployment should fail closed if its core external dependencies are structurally unconfigured.
+
 ## Existing invariants re-verified by source inspection
 - Browser price is never accepted for settlement.
 - Market status and quote are fetched server-side before settlement.
@@ -69,12 +80,13 @@ Workflow: `.github/workflows/marketlab-build1-proof.yml`
 
 The workflow runs MarketLab independently on Node 22 with a clean PostgreSQL 15 service and executes:
 1. MarketLab dependency install.
-2. Prisma client generation.
-3. MarketLab migration deploy.
-4. Strict TypeScript check.
-5. Production Next.js build.
+2. Hosted-readiness environment contract.
+3. Prisma client generation.
+4. MarketLab migration deploy.
+5. Strict TypeScript check.
+6. Production Next.js build.
 
-### Proof result — PASS
+### Baseline proof result — PASS
 GitHub Actions run `34197350532` completed successfully after the build-root repair.
 
 Passed gates:
@@ -86,24 +98,45 @@ Passed gates:
 
 The earlier proof run correctly failed production build and surfaced the root-isolation defect. That defect was repaired before this document was advanced.
 
+## Hosted deployment readiness layer
+MarketLab now exposes two independent checks:
+- build-time readiness: `npm run hosted:readiness`;
+- runtime readiness: `GET /api/health`.
+
+The runtime health route intentionally reports only coarse state:
+- database up/down;
+- auth configured true/false;
+- market-data configured true/false;
+- selected provider name;
+- request duration.
+
+It does not return database URLs, Supabase keys, market-data keys, secrets, tokens, or provider response bodies.
+
 ## Remaining proof gates
 These still require the independent hosted MarketLab environment and/or browser-level interaction:
-1. Migration deploy against the approved hosted Postgres target.
-2. Independent MarketLab Supabase sign-up/sign-in proof.
-3. Licensed market-data credential proof.
-4. Authenticated live simulated BUY fill.
-5. Authenticated live simulated SELL fill.
-6. Deliberate double-submit proof showing one execution only.
-7. Deliberate simultaneous-order contention proof showing no negative cash/shares.
-8. Mark-to-market change after quote movement.
-9. Two-player leaderboard rank change proof.
-10. Mobile/iPad hostile interaction review.
-11. Failure-path review for provider outage/rate limit/market closed.
+1. Create/connect the independent MarketLab Netlify site with base directory `apps/marketlab`.
+2. Supply approved hosted MarketLab database environment values.
+3. Migration deploy against the approved hosted Postgres target.
+4. Independent MarketLab Supabase sign-up/sign-in proof.
+5. Licensed market-data credential proof.
+6. `GET /api/health` returns `200 ready` in the hosted environment.
+7. Authenticated live simulated BUY fill.
+8. Authenticated live simulated SELL fill.
+9. Deliberate double-submit proof showing one execution only.
+10. Deliberate simultaneous-order contention proof showing no negative cash/shares.
+11. Mark-to-market change after quote movement.
+12. Two-player leaderboard rank change proof.
+13. Mobile/iPad hostile interaction review.
+14. Failure-path review for provider outage/rate limit/market closed.
+
+## Current external blocker
+The Netlify plugin was identified and suggested through ChatGPT, but it is not yet installed/connected in this conversation. Therefore no claim is made that an independent Netlify MarketLab site has been created or deployed.
 
 ## Build 1 status
 Source architecture/game loop: COMPLETE.
 Hostile source hardening: PASS.
 Local/CI dependency + migration + typecheck + production-build proof: PASS.
-Hosted/live product proof: PENDING.
+Hosted deployment readiness layer: COMPLETE IN CODE.
+Hosted/live product proof: PENDING EXTERNAL CONNECTION + CREDENTIALS.
 
 Do not label Build 1 production-proven until the remaining hosted/live proof gates are executed against the independent MarketLab environment.
