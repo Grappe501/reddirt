@@ -177,6 +177,47 @@ export const CAMPAIGN_APPROACH_BY_SLUG: Record<string, CampaignApproachDecision>
     note: "Steve 2026-09-08: take off the public calendar.",
     ledgerIds: ["manual-2026-09-09-cocktails-with-kelly"],
   },
+  "siloam-springs-chamber-forum-2026": {
+    approach: "removed",
+    reason: "conflict",
+    note: "Conflict.",
+    ledgerIds: ["manual-2026-10-01-siloam-springs-chamber-forum"],
+  },
+  "berryville-meet-the-candidates-reloaded-2026": {
+    approach: "removed",
+    reason: "conflict",
+    note: "Conflict.",
+    ledgerIds: ["manual-2026-10-01-berryville-meet-the-candidates"],
+  },
+  "nlr-air-show-oct-3-2026": {
+    approach: "removed",
+    reason: "never_confirmed",
+    note: "Never confirmed. Conflict.",
+    ledgerIds: ["manual-2026-10-03-nlr-air-show"],
+  },
+  "ame-arkansas-conference-little-rock-2026": {
+    approach: "removed",
+    reason: "conflict",
+    note: "Conflict.",
+    ledgerIds: ["manual-2026-10-08-ame-arkansas-conference"],
+  },
+  "cross-county-farm-bureau-meet-the-candidates-2026": {
+    approach: "removed",
+    reason: "conflict",
+    note: "Conflict.",
+    ledgerIds: ["manual-2026-10-08-cross-county-farm-bureau"],
+  },
+  "king-biscuit-blues-festival-2026-10-09": {
+    approach: "removed",
+    reason: "never_confirmed",
+    note: "Never confirmed.",
+  },
+  "hob-nob-bentonville-2026": {
+    approach: "removed",
+    reason: "conflict",
+    note: "Conflict.",
+    ledgerIds: ["manual-2026-10-15-hob-nob-bentonville"],
+  },
 };
 
 /** Steve 2026-09-08: September 29 four-way stays on the board as red caution. */

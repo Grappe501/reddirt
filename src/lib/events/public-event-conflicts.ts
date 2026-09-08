@@ -26,6 +26,12 @@ function windowsOverlap(a: EventItem, b: EventItem): boolean {
 /** Steve-locked same-day runs — not “pick one.” */
 const PLANNED_TRAVEL_DAYS: readonly ReadonlySet<string>[] = [
   new Set(["stuttgart-sep-12-2026", "cleveland-county-meet-and-greet-2026"]),
+  new Set(["beatles-on-the-ridge-2026", "hot-spring-county-cookout-2026"]),
+  new Set([
+    "clark-county-multi-church-tour-2026-09-20",
+    "dequeen-sep-20-2026",
+    "beckys-texarkana-2026-09-20",
+  ]),
 ];
 
 function isPlannedTravelDay(dayEvents: EventItem[]): boolean {

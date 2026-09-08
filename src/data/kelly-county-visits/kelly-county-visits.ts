@@ -3876,9 +3876,9 @@ const kellyCampaignStopsSource: KellyCampaignStop[] = [
     counties: ["Hot Spring"],
     status: "scheduled",
     includeOnPublicPage: true,
-    confidence: "likely",
+    confidence: "confirmed",
     notes:
-      "Updated from Taylor Jones email + cookout flyer. Sat Sep 19 5:00-7:00 p.m. Hot Spring Co. 4-H Center, 1407 US-270, Malvern. Free; $5 suggested per plate. SOS listed as expected guest — not confirmed. Do not publish Taylor cell. /events/hot-spring-county-cookout-2026 Same day: Rally for Hallie Jonesboro 4:00 p.m. — cannot do both evenings.",
+      "Steve 2026-09-08: Hot Spring cookout Sep 19 confirmed. Sat 5:00-7:00 p.m. 4-H Center, 1407 US-270, Malvern. Do not publish Taylor cell. /events/hot-spring-county-cookout-2026 Same day: Beatles on the Ridge confirmed.",
     sourceType: "calendar",
   },
   {
@@ -4567,9 +4567,9 @@ const kellyCampaignStopsSource: KellyCampaignStop[] = [
     counties: ["Jefferson"],
     status: "scheduled",
     includeOnPublicPage: true,
-    confidence: "confirmed",
+    confidence: "likely",
     notes:
-      "Thu Sep 24 1:00-3:30 p.m. Mt. Pleasant AME, 1201 N. Magnolia Street, Pine Bluff. Bishop Silvester S. Beaman. Church-hosted. /events/ame-east-conference-pine-bluff-2026",
+      "Steve 2026-09-08: Jefferson / AME East Sep 24 tentative. Thu 1:00-3:30 p.m. Mt. Pleasant AME, 1201 N. Magnolia Street, Pine Bluff. /events/ame-east-conference-pine-bluff-2026",
     sourceType: "manual",
   },
   {
@@ -5009,9 +5009,9 @@ const kellyCampaignStopsSource: KellyCampaignStop[] = [
     counties: ["Lawrence"],
     status: "scheduled",
     includeOnPublicPage: true,
-    confidence: "likely",
+    confidence: "confirmed",
     notes:
-      "Steve Google Calendar Sat Sep 19 all-day. Clock/street not on the block. Same day: Hot Spring cookout Malvern 5-7; Rally for Hallie Jonesboro 4:00; Leave for SW Arkansas (travel). Calendar showed +2 more not visible. /events/beatles-on-the-ridge-2026",
+      "Steve 2026-09-08: Beatles on the Ridge Sep 19 confirmed. Clock/street TBA. Same evening: Hot Spring cookout Malvern confirmed. /events/beatles-on-the-ridge-2026",
     sourceType: "calendar",
   },
   {
@@ -5224,7 +5224,7 @@ const kellyCampaignStopsSource: KellyCampaignStop[] = [
     includeOnPublicPage: true,
     confidence: "confirmed",
     notes:
-      "Campaign calendar Sun Sep 20 4:00-6:00 p.m. Dequeen. Venue not on the block. Same day all-day Arkadelphia hold and Jacksonville Festiville ledger date — confirm the afternoon stop. Evening travel: Becky's Texarkana 5:00 p.m. /events/dequeen-sep-20-2026",
+      "Steve 2026-09-08: De Queen Sep 20 confirmed with Multi-Church Tour and Becky's Texarkana. Venue TBA. /events/dequeen-sep-20-2026",
     sourceType: "calendar",
   },
   {

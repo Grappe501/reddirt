@@ -1768,7 +1768,7 @@ const movementEventsCore: EventItem[] = [
     locationLabel: "Mt. Pleasant AME Church — Pine Bluff",
     addressLine: "1201 N. Magnolia Street, Pine Bluff, AR 71601",
     summary:
-      "Thursday, September 24, 2026, **1:00–3:30 p.m. Central** at Mt. Pleasant AME Church in Pine Bluff: East Conference session on politics and the church, with candidate introductions and questions. Presided over by Bishop Silvester S. Beaman.",
+      "Thursday, September 24, 2026, **1:00–3:30 p.m. Central** at Mt. Pleasant AME Church in Pine Bluff: East Conference session on politics and the church — tentative.",
     description:
       "The African Methodist Episcopal Church’s **East Conference** hosts a session on a new approach to discussing **politics and the church**. Bishop **Silvester S. Beaman**, presiding prelate of the 12th Episcopal District (Arkansas and Oklahoma), presides.\n\nThe program is for introductions and questions about current issues and candidates. The host asks that **pastors and ministers know each candidate**. This is a **church-hosted** conference session, not a campaign rally.\n\nThe conferences are also asking churches for volunteer help with **voter registration**, **poll watching**, and **Souls to the Polls**. Neighbors who can help can start on this site’s volunteer and voter-registration pages.\n\nSame series: West Conference on September 10 in Magnolia, and Arkansas Conference on October 8 in Little Rock.",
     whatToExpect: [
@@ -1779,7 +1779,7 @@ const movementEventsCore: EventItem[] = [
     whoItsFor:
       "AME pastors, ministers, and invited conference guests. Confirm with the host church before treating it as a walk-in public forum.",
     organizerNote:
-      "Host brief for 2026 West / East / Arkansas Conference candidate sessions. Bishop Silvester S. Beaman. Venue matches Mt. Pleasant AME, 1201 N. Magnolia Street. Do not list as campaign-hosted.",
+      "Steve 2026-09-08: Jefferson / AME East Sep 24 is tentative. Bishop Silvester S. Beaman. Do not list as campaign-hosted.",
     rsvpHref: "https://www.mtpleasantamecpinebluff.com/",
     audienceTags: ["AME", "Faith", "Pine Bluff", "Jefferson County", "Central Arkansas", "Voter registration"],
     relatedEventSlugs: [
@@ -1796,7 +1796,7 @@ const movementEventsCore: EventItem[] = [
     ],
     mapCoordinates: { lat: 34.235, lng: -92.008 },
     mapPinQuality: "region",
-    fieldAttendance: "confirmed",
+    fieldAttendance: "tentative",
   },
   {
     slug: "ame-arkansas-conference-little-rock-2026",
@@ -1995,9 +1995,9 @@ const movementEventsCore: EventItem[] = [
     locationLabel: "Hot Spring County 4-H Center — Malvern",
     addressLine: "1407 US-270, Malvern, AR 72104",
     summary:
-      "Saturday, September 19, 2026, **5:00–7:00 p.m. Central** at the Hot Spring County 4-H Center: county party **community cookout**. Local candidates speak; statewide guests expected. Free admission; $5 suggested per plate. Host-run — not a campaign rally.",
+      "Saturday, September 19, 2026, **5:00–7:00 p.m. Central** at the Hot Spring County 4-H Center: county party **community cookout** — confirmed. Free admission; $5 suggested per plate. Host-run — not a campaign rally.",
     description:
-      "Taylor Jones (Hot Spring County Democrats) asked if Kelly can come to a cookout for state candidates. The flyer locks **Saturday, September 19**, **5:00–7:00 p.m.**, at the **Hot Spring County 4-H Center**, **1407 US-270**, Malvern.\n\nThe party invites friends and family for food and connection. They will hear from local county and city candidates, with expected guest appearances from candidates for **State Representative**, **Secretary of State**, and **U.S. Congress**. Kelly is an expected guest, not confirmed on a speaking list.\n\n**Free admission.** A suggested **$5 per plate** helps the county party’s candidates and programs. This is a **county Democratic Party** cookout, not a Grappe-hosted event.\n\nThe campaign calendar already had a “4 p.m. Hot Spring Dems picnic” hold — the flyer is the public time.\n\nThe same Saturday is **Rally for Hallie** in Jonesboro at 4:00 p.m. Those are different events; Jonesboro to Malvern that evening is a long drive.",
+      "Steve confirmed **Saturday, September 19, 2026**, **5:00–7:00 p.m.** at the **Hot Spring County 4-H Center**, **1407 US-270**, Malvern.\n\nThe party invites friends and family for food and connection. They will hear from local county and city candidates, with guest appearances from statewide races. **Free admission.** A suggested **$5 per plate** helps the county party.\n\nThis is a **county Democratic Party** cookout, not a Grappe-hosted event.\n\nThe same Saturday is **Beatles on the Ridge** in Walnut Ridge — also confirmed.",
     whatToExpect: [
       "5:00–7:00 p.m. Central at the 4-H Center",
       "Food, county and city candidates, expected statewide guests",
@@ -2006,17 +2006,17 @@ const movementEventsCore: EventItem[] = [
     whoItsFor:
       "Hot Spring County neighbors and anyone the party welcomes to the cookout. Confirm with the hosts if you need accessibility or to-go plates.",
     organizerNote:
-      "Taylor Jones email (availability ask) plus Community Cookout flyer. Do not publish Taylor’s personal cell. SOS is “expected guest” — fieldAttendance tentative. Replaces the 4pm picnic placeholder. Same day: rally-for-hallie-jonesboro-2026 4:00 p.m.",
+      "Steve 2026-09-08: Hot Spring cookout Sep 19 confirmed. Do not publish Taylor’s personal cell. Same day: beatles-on-the-ridge-2026 confirmed.",
     rsvpHref: undefined,
     audienceTags: ["Malvern", "Hot Spring County", "Democratic Party", "Cookout", "Southwest Arkansas"],
-    relatedEventSlugs: ["rally-for-hallie-jonesboro-2026"],
+    relatedEventSlugs: ["beatles-on-the-ridge-2026"],
     relatedResourceHrefs: [
-      { label: "Rally for Hallie — Jonesboro, same day", href: "/events/rally-for-hallie-jonesboro-2026" },
+      { label: "Beatles on the Ridge — same day", href: "/events/beatles-on-the-ridge-2026" },
       { label: "Get involved", href: "/get-involved" },
     ],
     mapCoordinates: { lat: 34.3623, lng: -92.8127 },
     mapPinQuality: "region",
-    fieldAttendance: "tentative",
+    fieldAttendance: "confirmed",
   },
   {
     slug: "klek-jonesboro-candidate-interview-2026",
@@ -2988,21 +2988,21 @@ const movementEventsCore: EventItem[] = [
     locationLabel: "Beatles on the Ridge — Walnut Ridge",
     addressLine: "Walnut Ridge, AR (clock and street not on the all-day calendar block)",
     summary:
-      "Saturday, September 19, 2026, in Walnut Ridge: **Beatles on the Ridge**. All-day hold. Same evening already has Hallie Jonesboro and the Hot Spring cookout.",
+      "Saturday, September 19, 2026, in Walnut Ridge: **Beatles on the Ridge** — confirmed. Clock and street TBA. Same evening is the Hot Spring County cookout in Malvern.",
     description:
-      "Steve’s Google Calendar listed **Beatles on the Ridge, Walnut Ridge** as an all-day Saturday, **September 19** block.\n\nThis is a **community festival**, not a Grappe-hosted event. Clock and street were not on the title. This page uses 10:00 a.m.–6:00 p.m. so the day appears.\n\nThe same Saturday already has **Rally for Hallie** in Jonesboro at **4:00 p.m.** and the **Hot Spring County cookout** in Malvern **5:00–7:00 p.m.** Walnut Ridge to Jonesboro is short; Malvern is not. The calendar also had **Leave for sw arkansas** (travel, not public) and two more blocks that were not visible in the screenshot.",
-    whatToExpect: ["All-day festival hold", "Clock and street TBA"],
+      "Steve confirmed **Saturday, September 19, 2026** at **Beatles on the Ridge** in Walnut Ridge.\n\nThis is a **community festival**, not a Grappe-hosted event. Clock and street were not on the calendar block. This page uses 10:00 a.m.–6:00 p.m. so the day appears.\n\nThe same evening is the **Hot Spring County cookout** in Malvern, **5:00–7:00 p.m.** — also confirmed.",
+    whatToExpect: ["Confirmed Saturday, September 19", "Clock and street TBA"],
     whoItsFor: "Lawrence County neighbors and festival guests.",
     organizerNote:
-      "Google Calendar audit 2026-09-02. Same day: rally-for-hallie-jonesboro-2026; hot-spring-county-cookout-2026. +2 more events not visible in the week header.",
-    relatedEventSlugs: ["rally-for-hallie-jonesboro-2026", "hot-spring-county-cookout-2026"],
+      "Steve 2026-09-08: Beatles on the Ridge Sep 19 confirmed. Same evening: hot-spring-county-cookout-2026 confirmed.",
+    relatedEventSlugs: ["hot-spring-county-cookout-2026"],
     relatedResourceHrefs: [
-      { label: "Rally for Hallie — Jonesboro, same afternoon", href: "/events/rally-for-hallie-jonesboro-2026" },
+      { label: "Hot Spring County cookout — same evening", href: "/events/hot-spring-county-cookout-2026" },
       { label: "Get involved", href: "/get-involved" },
     ],
     mapCoordinates: { lat: 36.0684, lng: -90.9559 },
     mapPinQuality: "region",
-    fieldAttendance: "tentative",
+    fieldAttendance: "confirmed",
   },
   {
     slug: "press-freedom-gala-2026",
@@ -3325,13 +3325,13 @@ const movementEventsCore: EventItem[] = [
     locationLabel: "De Queen (venue TBA)",
     addressLine: "De Queen, AR (building not on the calendar block)",
     summary:
-      "Sunday, September 20, 2026, **4:00–6:00 p.m. Central** in De Queen. Venue TBA. Same date already has Arkadelphia and Jacksonville Festiville holds.",
+      "Sunday, September 20, 2026, **4:00–6:00 p.m. Central** in De Queen — confirmed. Venue TBA. Same day: Clark County Multi-Church Tour, then travel to Becky's in Texarkana at 5:00 p.m.",
     description:
-      "The campaign calendar listed **Dequeen 4pm-6** on Sunday, **September 20**, **4:00–6:00 p.m.**\n\nNo building was on the block. The same Sunday already has an all-day **Arkadelphia** hold and the ledger date for **Jacksonville Festiville**. De Queen can pair with Arkadelphia that afternoon; Jacksonville cannot.",
-    whatToExpect: ["4:00–6:00 p.m. Central", "Venue TBA"],
+      "Steve confirmed **Sunday, September 20, 2026**, **4:00–6:00 p.m.** in **De Queen**.\n\nNo building was on the block. The same Sunday is the **Clark County Multi-Church Tour** (Gurdon / Arkadelphia) and **travel to Becky's in Texarkana at 5:00 p.m.** — all three confirmed.",
+    whatToExpect: ["4:00–6:00 p.m. Central — confirmed", "Venue TBA"],
     whoItsFor: "Sevier County neighbors once a room is posted.",
     organizerNote:
-      "Campaign calendar audit 2026-09-02. Same day: arkadelphia-sep-20-2026; locked-2026-09-20-jacksonville-festiville; travel to Becky's Texarkana 5:00 p.m. Next day: little-river-charlotte-sep-21-2026.",
+      "Steve 2026-09-08: De Queen Sep 20 confirmed with Multi-Church Tour and Becky's Texarkana the same day.",
     relatedEventSlugs: ["arkadelphia-sep-20-2026", "little-river-charlotte-sep-21-2026", "beckys-texarkana-2026-09-20"],
     relatedResourceHrefs: [{ label: "Get involved", href: "/get-involved" }],
     mapCoordinates: { lat: 34.0379, lng: -94.3413 },

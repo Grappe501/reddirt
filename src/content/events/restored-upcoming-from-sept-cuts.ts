@@ -192,9 +192,9 @@ export const restoredUpcomingFromSeptCuts: EventItem[] = [
     timeTbd: true,
     locationLabel: "Gurdon / Arkadelphia",
     city: "Gurdon / Arkadelphia",
-    summary: "Sunday Clark County Multi-Church Tour, with stops in Gurdon and Arkadelphia.",
+    summary: "Sunday Clark County Multi-Church Tour, with stops in Gurdon and Arkadelphia — confirmed.",
     description:
-      "Public listing for the September 20 Multi-Church Tour in Clark County. Gurdon and Arkadelphia are both in Clark County, so this is one county stop with two city visits — not two unrelated events.",
+      "Steve confirmed **Sunday, September 20, 2026** for the Clark County Multi-Church Tour. Gurdon and Arkadelphia are both in Clark County, so this is one county stop with two city visits — not two unrelated events.\n\nThe same Sunday is **De Queen 4:00–6:00 p.m.** and **travel to Becky's in Texarkana at 5:00 p.m.** — all three confirmed.",
     whatToExpect: [
       "Gurdon — church stop on the Multi-Church Tour",
       "Arkadelphia — church stop on the Multi-Church Tour",
@@ -223,7 +223,7 @@ export const restoredUpcomingFromSeptCuts: EventItem[] = [
     whatToExpect: ["5:00 p.m. Central arrival / travel window", "Private stop — not a public event"],
     whoItsFor: "Campaign travel only. Neighbors should use the De Queen listing if they want a public Sunday stop.",
     organizerNote:
-      "Steve pass 2026-09-08. Travel to Becky's, Texarkana, 5:00 p.m. Sunday Sep 20. Do not invent an address or last name. Same afternoon: dequeen-sep-20-2026 4:00-6:00 p.m.",
+      "Steve 2026-09-08: Becky's Texarkana Sep 20 confirmed with Multi-Church Tour and De Queen the same day. Do not invent an address or last name.",
     audienceTags: ["Texarkana", "Miller County", "Southwest Arkansas"],
     mapCoordinates: { lat: 33.4251, lng: -94.0477 },
     mapPinQuality: "region",
@@ -350,7 +350,7 @@ export const restoredUpcomingFromSeptCuts: EventItem[] = [
     audienceTags: ["Helena-West Helena", "Phillips County", "Festival"],
     mapCoordinates: { lat: 34.5293, lng: -90.5901 },
     relatedEventSlugs: ["olli-for-coffee-2026"],
-    fieldAttendance: "confirmed",
+    fieldAttendance: "tentative",
   }),
   campaignStop({
     slug: "yellville-turkey-trot-2026-10-10",
