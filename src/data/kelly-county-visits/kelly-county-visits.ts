@@ -5379,6 +5379,20 @@ const kellyCampaignStopsSource: KellyCampaignStop[] = [
     sourceType: "calendar",
   },
   {
+    id: "manual-2026-10-10-picklefest-texarkana",
+    publicTitle: "Picklefest — Texarkana",
+    date: "2026-10-10",
+    title: "Picklefest",
+    city: "Texarkana",
+    counties: ["Miller"],
+    status: "scheduled",
+    includeOnPublicPage: true,
+    confidence: "confirmed",
+    notes:
+      "Steve 2026-09-08: Oct 10 Picklefest Texarkana 10am-5pm Front Street. Kelly will NOT attend. Need volunteers in t-shirts mobilized. /events/picklefest-texarkana-2026-10-10",
+    sourceType: "manual",
+  },
+  {
     id: "manual-2026-10-11-hot-springs-chili",
     publicTitle: "Hot Springs chili cookout",
     date: "2026-10-11",

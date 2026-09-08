@@ -3681,6 +3681,50 @@ const movementEventsCore: EventItem[] = [
     mapPinQuality: "region",
     fieldAttendance: "confirmed",
   },
+  {
+    slug: "picklefest-texarkana-2026-10-10",
+    title: "Picklefest — Texarkana",
+    type: "Fairs and Festivals",
+    region: "Southwest Arkansas",
+    countySlug: "miller-county",
+    status: "upcoming",
+    startsAt: "2026-10-10T10:00:00-05:00",
+    endsAt: "2026-10-10T17:00:00-05:00",
+    timezone: "America/Chicago",
+    locationLabel: "Front Street — Texarkana",
+    city: "Texarkana",
+    addressLine: "Front Street, Texarkana",
+    summary:
+      "Kelly will not attend. Saturday, October 10, 2026, **10:00 a.m.–5:00 p.m. Central** on Front Street in Texarkana: **Picklefest**. Volunteers in campaign t-shirts needed. Mobilize signup coming.",
+    description:
+      "Saturday, **October 10, 2026**, **10:00 a.m.–5:00 p.m. Central** on **Front Street** in **Texarkana**: **Picklefest**.\n\n**Kelly will not attend.** This is **not a speaking engagement**. The campaign needs **volunteers in t-shirts**. A Mobilize signup is coming.\n\nThis is a **community festival**, not a Grappe-hosted rally. Building number is TBA — Front Street is the posted footprint.",
+    whatToExpect: [
+      "Kelly will not attend",
+      "10:00 a.m.–5:00 p.m. Central on Front Street",
+      "Volunteers in campaign t-shirts needed",
+      "Mobilize signup coming",
+    ],
+    whoItsFor: "Volunteers who can wear a campaign t-shirt and work Front Street. Neighbors at the festival.",
+    organizerNote:
+      "Steve 2026-09-08: Oct 10 Picklefest Texarkana 10am-5pm Front Street. Kelly will NOT attend. Need volunteers in t-shirts mobilized. Do not invent a street number.",
+    audienceTags: ["Texarkana", "Miller County", "Picklefest", "Festival", "Volunteers", "Southwest Arkansas"],
+    relatedEventSlugs: ["october-daze-booneville-2026"],
+    relatedResourceHrefs: [
+      { label: "Volunteer / Get involved", href: "/get-involved#volunteer" },
+      { label: "Events calendar", href: "/events" },
+    ],
+    mapCoordinates: { lat: 33.4251, lng: -94.0477 },
+    mapPinQuality: "region",
+    fieldAttendance: "surrogate",
+    publicAttendanceNote:
+      "Kelly will not attend. We need volunteers in campaign t-shirts. Mobilize signup is coming.",
+    marks: {
+      kellyRole: "not_attending",
+      volunteers: "needed",
+      mobilize: "needed",
+      volunteerHref: "/get-involved#volunteer",
+    },
+  },
 ];
 
 /** Public curated movement events only. Published CampaignOS rows merge on `/events` at request time. */
