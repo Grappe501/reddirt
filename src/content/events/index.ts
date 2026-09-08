@@ -677,9 +677,9 @@ const movementEventsCore: EventItem[] = [
     locationLabel: "Dreami Tea — Russellville",
     addressLine: "109 E. Parkway Drive, Russellville, AR 72801",
     summary:
-      "Tuesday, September 15, 2026, **12:00–7:00 p.m. Central** at Dreami Tea: **Count Me In / ¡Me Apunto!** voter registration and fund drive with Pope County Democrats. Kelly Grappe campaign table **3:00–7:00 p.m.**",
+      "Tuesday, September 15, 2026, **12:00–7:00 p.m. Central** at Dreami Tea: **Count Me In / ¡Me Apunto!** — confirmed. Campaign table **3:00–7:00 p.m.**",
     description:
-      "Pope County Democrats and Dreami Tea host **Count Me In / ¡Me Apunto!** — a voter registration and fund drive the flyer marks as **National Voter Registration Day**. Tuesday, **September 15**, **12:00–7:00 p.m.** at **Dreami Tea**, **109 E. Parkway Drive**, Russellville.\n\n**Representatives from the Kelly Grappe for Secretary of State campaign** will be there **3:00–7:00 p.m.** This is a **host-run** shop event, not a campaign rally. Bring ID rules from the county clerk / Arkansas Secretary of State if you are helping people register.\n\n**Boba for a Cause:** 25% of profit on three special drinks is split between the Democratic Party of Pope County and the Dreami Tea Scholarship — Septima Clark, John Lewis, and Dolores Huerta drinks on the flyer.\n\nThe campaign calendar once listed this day as “Russellville Mary Ella voter reg.” The flyer is the public detail. Pope County Fair is also on the public calendar this week.",
+      "Steve confirmed **Tuesday, September 15, 2026** at **Count Me In / ¡Me Apunto!** — a voter registration and fund drive the flyer marks as **National Voter Registration Day**. **12:00–7:00 p.m.** at **Dreami Tea**, **109 E. Parkway Drive**, Russellville, with Pope County Democrats.\n\nThe **Kelly Grappe for Secretary of State** campaign table is **3:00–7:00 p.m.** This is a **host-run** shop event, not a campaign rally. Bring ID rules from the county clerk / Arkansas Secretary of State if you are helping people register.\n\n**Boba for a Cause:** 25% of profit on three special drinks is split between the Democratic Party of Pope County and the Dreami Tea Scholarship — Septima Clark, John Lewis, and Dolores Huerta drinks on the flyer.",
     whatToExpect: [
       "12:00–7:00 p.m. at Dreami Tea; campaign table 3:00–7:00 p.m.",
       "Voter registration help — follow official Arkansas forms and ID rules",
@@ -688,7 +688,7 @@ const movementEventsCore: EventItem[] = [
     whoItsFor:
       "Pope County neighbors who need to register or update, and anyone who wants to stop by the shop. Spanish-language welcome on the flyer (¡Me Apunto!).",
     organizerNote:
-      "Updated from Pope County Democrats / Dreami Tea flyer. Replaces the Mary Ella placeholder (old calendar title kept in ledger). Same-week public: Pope County Fair. Flyer lists campaign representatives 3:00–7:00 p.m., not Kelly by name — fieldAttendance tentative until Kelly is confirmed.",
+      "Steve 2026-09-08: Pope County / Dreami Tea Sep 15 confirmed. Flyer: campaign table 3:00–7:00 p.m. Replaces the Mary Ella placeholder (old calendar title kept in ledger).",
     rsvpHref: "/voter-registration",
     audienceTags: ["Russellville", "Pope County", "Voter registration", "National Voter Registration Day", "Families"],
     relatedEventSlugs: ["river-valley-food-truck-russellville-2026"],
@@ -698,7 +698,7 @@ const movementEventsCore: EventItem[] = [
     ],
     mapCoordinates: { lat: 35.2784, lng: -93.1338 },
     mapPinQuality: "region",
-    fieldAttendance: "tentative",
+    fieldAttendance: "confirmed",
   },
   {
     slug: "paloma-hispanic-festival-2026",
@@ -750,9 +750,9 @@ const movementEventsCore: EventItem[] = [
     locationLabel: "Faulkner County Democratic Party Headquarters — Conway",
     addressLine: "1151 Markham Street, Conway, AR. Outside under a tent — Chamber ribbon cutting at 6:00 p.m.",
     summary:
-      "Monday, September 14, 2026, **6:00–7:30 p.m. Central** at **1151 Markham** in Conway: **Faulkner County Democratic Party Headquarters** grand opening. Chamber ribbon cutting at **6:00 p.m.** Candidates speak. Host-run — not a campaign rally.",
+      "Monday, September 14, 2026, **6:00–7:30 p.m. Central** at **1151 Markham** in Conway: **Faulkner County Democratic Party Headquarters** grand opening — confirmed. Chamber ribbon cutting at **6:00 p.m.** Candidates speak. Host-run — not a campaign rally.",
     description:
-      "Teresa Huff, chair of the **Faulkner County Democratic Party**, locked the **grand opening** at **1151 Markham** in Conway: **Monday, September 14**, **6:00–7:30 p.m.** Chamber of Commerce **ribbon cutting at 6:00 p.m.** Big tent, grand-opening cake, hot dogs, chips, drinks, music. **Candidates will speak.**\n\nThis is a **county Democratic Party** opening, not a Grappe-hosted event. Kelly is invited with the ticket; her speaking slot is not confirmed.\n\nHeadquarters **volunteer hours** start **Tuesday, September 15**: **11:00 a.m.–1:00 p.m.** and **4:00–6:00 p.m.**, Tuesday–Friday (hours may expand later). Two people on site. Sign up: [signup.com/go/aGxsPGf](https://signup.com/go/aGxsPGf). That is a staffing shift, not a Kelly appearance.\n\nThe same Monday the public calendar has a **Mountain Home candidate forum** (confirmed). Mountain Home to Conway is a long drive; she cannot do both evenings if both stay booked.",
+      "Steve confirmed **Monday, September 14, 2026** at the **Faulkner County Democratic Party Headquarters** grand opening, **1151 Markham**, Conway, **6:00–7:30 p.m.** Chamber of Commerce **ribbon cutting at 6:00 p.m.** Big tent, grand-opening cake, hot dogs, chips, drinks, music. **Candidates will speak.**\n\nThis is a **county Democratic Party** opening, not a Grappe-hosted event.\n\nHeadquarters **volunteer hours** start **Tuesday, September 15**: **11:00 a.m.–1:00 p.m.** and **4:00–6:00 p.m.**, Tuesday–Friday (hours may expand later). Two people on site. Sign up: [signup.com/go/aGxsPGf](https://signup.com/go/aGxsPGf). That is a staffing shift, not a Kelly appearance.",
     whatToExpect: [
       "6:00–7:30 p.m. Central; Chamber ribbon cutting at 6:00",
       "Tent, cake, hot dogs, chips, drinks, music; candidates speak",
@@ -761,7 +761,7 @@ const movementEventsCore: EventItem[] = [
     whoItsFor:
       "Faulkner County Democrats and neighbors the party welcomes. Volunteer shifts are a separate signup from this opening.",
     organizerNote:
-      "Updated from Teresa Huff month note. Clock locked 6:00-7:30; Chamber ribbon 6:00. Do not publish 501-733-0186. fieldAttendance tentative. HQ staffing Sep 15+ is volunteer, not a visit row. Same day: presence-2026-09-14-mt-home-candidate-forum (confirmed).",
+      "Steve 2026-09-08: Faulkner HQ Sep 14 confirmed. Clock 6:00-7:30; Chamber ribbon 6:00. Do not publish 501-733-0186. HQ staffing Sep 15+ is volunteer, not a visit row.",
     rsvpHref: "https://signup.com/go/aGxsPGf",
     audienceTags: ["Conway", "Faulkner County", "Democratic Party", "Town hall", "Central Arkansas"],
     relatedEventSlugs: [
@@ -776,7 +776,7 @@ const movementEventsCore: EventItem[] = [
     ],
     mapCoordinates: { lat: 35.0917, lng: -92.4438 },
     mapPinQuality: "region",
-    fieldAttendance: "tentative",
+    fieldAttendance: "confirmed",
   },
   {
     slug: "cynthia-nations-fundraiser-sept-2026",
@@ -1695,18 +1695,18 @@ const movementEventsCore: EventItem[] = [
     addressLine:
       "Hot Springs Village, AR. Building was not in the Democratic Club cover note — do not invent a POA hall.",
     summary:
-      "Wednesday, September 16, 2026, **2:00–4:00 p.m. Central**: Hot Springs Village **Property Owners Association** candidate forum. Democratic candidates must reserve a spot with the POA contact. Room TBA. Host-run — not a campaign rally.",
+      "Wednesday, September 16, 2026, **2:00–4:00 p.m. Central**: Hot Springs Village **Property Owners Association** candidate forum — confirmed. Room TBA. Host-run — not a campaign rally.",
     description:
-      "Deb Bryan, president of the **Democratic Club of Hot Springs Village**, forwarded a **Property Owners Association** invitation to Democratic candidates. Each candidate must contact the HSV POA point of contact, **Sam Sacco**, to reserve a spot.\n\nSteve’s Google Calendar now shows **HSV candidate forum** on Wednesday, **September 16**, **2:00–5:00 p.m.** The cover note did not include a building. Confirm the hall with the POA or the Democratic Club.\n\nThis is a **POA forum**, not a Grappe-hosted event. Kelly’s place is not reserved until the campaign books with Sam.\n\nThe same Wednesday is a Rogers Roundabout Crew date ask. Those are different events; HSV to Rogers is a long drive.",
+      "Steve confirmed **Wednesday, September 16, 2026**, **2:00–4:00 p.m. Central** at the Hot Springs Village **Property Owners Association** candidate forum.\n\nDeb Bryan, president of the **Democratic Club of Hot Springs Village**, forwarded the POA invitation. The cover note did not include a building — confirm the hall with the POA or the Democratic Club. Do not invent a POA hall.\n\nThis is a **POA forum**, not a Grappe-hosted event.",
     whatToExpect: [
-      "2:00–5:00 p.m. Central on the campaign Google Calendar — confirm the room with the POA",
-      "Candidates reserve a speaking spot with the POA contact before showing up to speak",
+      "2:00–4:00 p.m. Central — confirmed",
+      "Room TBA — confirm the hall with the POA",
       "POA / Democratic Club rules for order and time",
     ],
     whoItsFor:
       "Hot Springs Village property owners and neighbors the POA welcomes. Confirm the hour and hall before travel.",
     organizerNote:
-      "Deb Bryan (HSV Democratic Club president) forwarded POA invite. Reserve with Sam Sacco — do not publish AOL or Deb’s cell (512) on the public card. Google Calendar 2026-09-02 audit: 2:00-5:00 p.m. Building still TBA. fieldAttendance tentative until reserved. Same day: rogers-roundabout-crew-2026.",
+      "Steve 2026-09-08: HSV POA forum Sep 16 confirmed. Reserve with Sam Sacco — do not publish AOL or Deb’s cell on the public card. Building still TBA.",
     rsvpHref: undefined,
     audienceTags: ["Hot Springs Village", "Garland County", "Town hall", "POA", "Central Arkansas"],
     relatedEventSlugs: ["rogers-roundabout-crew-2026"],
@@ -1716,7 +1716,7 @@ const movementEventsCore: EventItem[] = [
     ],
     mapCoordinates: { lat: 34.655, lng: -93.021 },
     mapPinQuality: "region",
-    fieldAttendance: "tentative",
+    fieldAttendance: "confirmed",
   },
   {
     slug: "marche-day-2026",
@@ -2917,16 +2917,16 @@ const movementEventsCore: EventItem[] = [
     startsAt: "2026-09-18T19:30:00",
     endsAt: "2026-09-18T21:00:00",
     timezone: "America/Chicago",
-    locationLabel: "ICLR (confirm a.m. or p.m. and the building)",
+    locationLabel: "ICLR (building TBA)",
     addressLine: "Little Rock, AR. Calendar title: 730 Muslim ICLR — street not on the block.",
     summary:
-      "Friday, September 18, 2026: **730 Muslim ICLR** on Steve’s calendar. Read as 7:30. Confirm morning or evening.",
+      "Friday, September 18, 2026, **7:30 p.m. Central**: **ICLR** (Muslim community) — confirmed. Building TBA.",
     description:
-      "Steve’s Google Calendar listed **730 Muslim ICLR** on Friday, **September 18**. ICLR is read as the Islamic Center of Little Rock. No street and no a.m./p.m. mark were on the block.\n\nThis page uses **7:30 p.m.** so the night appears — move it to morning if that is what the hosts meant.\n\nGrassroots & Guitar Strings is Thursday, September 17 — not the same night.",
-    whatToExpect: ["7:30 — confirm a.m. or p.m.", "Building not on the calendar block"],
-    whoItsFor: "Invited guests of the host community. Confirm the hour before travel.",
+      "Steve confirmed **Friday, September 18, 2026** for **ICLR** (Islamic Center of Little Rock). The calendar listed **730 Muslim ICLR**. This page uses **7:30 p.m.** as the public pin. Street is still TBA — do not invent a building.\n\nThis is a **host-run** community hour, not a Grappe rally. Grassroots & Guitar Strings is Thursday, September 17 — not the same night.",
+    whatToExpect: ["7:30 p.m. Central — confirmed", "Building not on the calendar block"],
+    whoItsFor: "Invited guests of the host community.",
     organizerNote:
-      "Google Calendar audit 2026-09-02. Do not invent a street. Grassroots & Guitar Strings is Thursday Sep 17, not this Friday. Calhoun Fair and Cynthia Nations The Max are archived.",
+      "Steve 2026-09-08: ICLR Sep 18 confirmed. Do not invent a street. Grassroots & Guitar Strings is Thursday Sep 17.",
     relatedEventSlugs: ["grassroots-guitar-strings-2026"],
     relatedResourceHrefs: [
       { label: "Grassroots & Guitar Strings — Thursday Sep 17", href: "/events/grassroots-guitar-strings-2026" },
@@ -2934,7 +2934,7 @@ const movementEventsCore: EventItem[] = [
     ],
     mapCoordinates: { lat: 34.7465, lng: -92.2896 },
     mapPinQuality: "region",
-    fieldAttendance: "tentative",
+    fieldAttendance: "confirmed",
   },
   {
     slug: "grassroots-guitar-strings-2026",

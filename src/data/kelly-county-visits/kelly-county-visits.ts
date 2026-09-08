@@ -3740,9 +3740,9 @@ const kellyCampaignStopsSource: KellyCampaignStop[] = [
     counties: ["Faulkner"],
     status: "scheduled",
     includeOnPublicPage: true,
-    confidence: "likely",
+    confidence: "confirmed",
     notes:
-      "Updated from Teresa Huff month note. Mon Sep 14 6:00-7:30 p.m. 1151 Markham, Conway. Chamber ribbon cutting 6:00. Tent, cake, hot dogs, music; candidates speak. HQ volunteer hours start Sep 15 11-1 and 4-6 Tue-Fri: https://signup.com/go/aGxsPGf — staffing, not a Kelly visit. Do not publish 501-733-0186. /events/faulkner-dems-hq-opening-2026 Same day: Mountain Home candidate forum (confirmed) — cannot do both.",
+      "Steve 2026-09-08: Faulkner HQ Sep 14 confirmed. Mon 6:00-7:30 p.m. 1151 Markham, Conway. Chamber ribbon cutting 6:00. HQ volunteer hours start Sep 15 11-1 and 4-6 Tue-Fri: https://signup.com/go/aGxsPGf — staffing, not a Kelly visit. Do not publish 501-733-0186. /events/faulkner-dems-hq-opening-2026",
     sourceType: "manual",
   },
   {
@@ -3769,7 +3769,7 @@ const kellyCampaignStopsSource: KellyCampaignStop[] = [
     includeOnPublicPage: true,
     confidence: "confirmed",
     notes:
-      "Flyer: Count Me In / Me Apunto voter registration and fund drive. Tue Sep 15 12:00-7:00 p.m. Dreami Tea, 109 E Parkway Dr. Pope County Democrats and Dreami Tea. Campaign table 3:00-7:00 p.m. /events/russellville-mary-ella-voter-registration-2026 Same week: Pope County Fair.",
+      "Steve 2026-09-08: Pope County / Dreami Tea Sep 15 confirmed. Count Me In / Me Apunto. Tue 12:00-7:00 p.m. Dreami Tea, 109 E Parkway Dr. Campaign table 3:00-7:00 p.m. /events/russellville-mary-ella-voter-registration-2026",
     sourceType: "manual",
   },
   {
@@ -3794,7 +3794,7 @@ const kellyCampaignStopsSource: KellyCampaignStop[] = [
     includeOnPublicPage: true,
     confidence: "confirmed",
     notes:
-      "Deb Bryan (HSV Democratic Club) forwarded POA invite. Candidates reserve with Sam Sacco — do not publish AOL or Deb cell. Campaign calendar: 2:00-4:00 p.m. (earlier block was 2:00-5:00). Building still TBA. /events/hsv-candidate-forum-2026 Same evening: 7pm karaoke (city TBA). Same day: Roundabout Crew Rogers — HSV to Rogers is a long drive.",
+      "Steve 2026-09-08: HSV POA forum Sep 16 confirmed. Deb Bryan forwarded POA invite. Do not publish AOL or Deb cell. 2:00-4:00 p.m. Building still TBA. /events/hsv-candidate-forum-2026",
     sourceType: "calendar",
   },
   {
@@ -4981,9 +4981,9 @@ const kellyCampaignStopsSource: KellyCampaignStop[] = [
     counties: ["Pulaski"],
     status: "scheduled",
     includeOnPublicPage: true,
-    confidence: "likely",
+    confidence: "confirmed",
     notes:
-      "Steve Google Calendar Fri Sep 18 all-day/header 730 Muslim ICLR. Read as 7:30 — a.m. or p.m. not marked. ICLR inferred Islamic Center of Little Rock; street not on the block. Grassroots & Guitar Strings is Thursday Sep 17, not this Friday. /events/iclr-sep-18-2026",
+      "Steve 2026-09-08: ICLR Sep 18 confirmed. 7:30 p.m. pin. Street not on the block. Grassroots & Guitar Strings is Thursday Sep 17. /events/iclr-sep-18-2026",
     sourceType: "calendar",
   },
   {
