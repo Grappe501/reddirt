@@ -2787,6 +2787,20 @@ const kellyCampaignStopsSource: KellyCampaignStop[] = [
     sourceType: "local-file",
   },
   {
+    id: "manual-randolph-county-visited",
+    publicTitle: "Randolph County visit",
+    date: "2026-09-08",
+    title: "Randolph County visit",
+    city: "Pocahontas",
+    counties: ["Randolph"],
+    status: "completed",
+    includeOnPublicPage: true,
+    confidence: "confirmed",
+    notes:
+      "Steve 2026-09-08: Randolph has been visited. Navy on the public county map. Confirmation day, not a claimed event clock. Sep 29 Eddie Mae Herron in Pocahontas stays scheduled (navy fill, gold outline).",
+    sourceType: "manual",
+  },
+  {
     id: "locked-2026-07-04-heber-springs-freedom-fest-heber-fundraiser",
     date: "2026-07-04",
     title: "Heber Springs Freedom Fest / Heber fundraiser",
