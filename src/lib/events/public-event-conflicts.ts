@@ -23,6 +23,18 @@ function windowsOverlap(a: EventItem, b: EventItem): boolean {
   return aStart < bEnd && bStart < aEnd;
 }
 
+/** Steve-locked same-day runs — not “pick one.” */
+const PLANNED_TRAVEL_DAYS: readonly ReadonlySet<string>[] = [
+  new Set(["stuttgart-sep-12-2026", "cleveland-county-meet-and-greet-2026"]),
+];
+
+function isPlannedTravelDay(dayEvents: EventItem[]): boolean {
+  const slugs = new Set(dayEvents.map((e) => e.slug));
+  return PLANNED_TRAVEL_DAYS.some(
+    (planned) => slugs.size === planned.size && [...planned].every((slug) => slugs.has(slug)),
+  );
+}
+
 /** Same-day public stops Kelly might attend in more than one place, or overlapping clocks. */
 export function publicEventConflictSlugs(events: EventItem[], now: Date = new Date()): Set<string> {
   const byDay = new Map<string, EventItem[]>();
@@ -37,6 +49,7 @@ export function publicEventConflictSlugs(events: EventItem[], now: Date = new Da
   const out = new Set<string>();
   for (const dayEvents of byDay.values()) {
     if (dayEvents.length < 2) continue;
+    if (isPlannedTravelDay(dayEvents)) continue;
     const places = new Set(dayEvents.map(placeKey));
     const counties = new Set(dayEvents.map((e) => e.countySlug).filter(Boolean));
     const stackedPlaces = places.size >= 2 || counties.size >= 2;
