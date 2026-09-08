@@ -84,6 +84,10 @@ h1 { margin: 0; max-width: 760px; font-size: clamp(2.3rem, 7vw, 5.5rem); line-he
 .panel h2 { margin: 0 0 12px; font-size: 1.5rem; }
 .panel p:last-child { color: var(--muted); line-height: 1.65; }
 .truth-panel { margin-top: 16px; }
+.positionGrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; margin-top: 18px; }
+.positionCard { border: 1px solid var(--line); border-radius: 16px; padding: 16px; background: rgba(255,255,255,.025); }
+.positionCard strong, .positionCard span { display: block; }
+.positionCard span { margin-top: 5px; color: var(--muted); font-size: .9rem; }
 
 .searchBar { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 12px; margin-bottom: 16px; }
 .searchBar input { min-height: 52px; border-radius: 14px; border: 1px solid var(--line); background: var(--panel); color: var(--text); padding: 0 16px; outline: none; }
@@ -112,6 +116,14 @@ h1 { margin: 0; max-width: 760px; font-size: clamp(2.3rem, 7vw, 5.5rem); line-he
 .data-row { display: grid; grid-template-columns: 1.1fr 1.6fr 1.2fr 1.5fr; gap: 12px; align-items: center; padding: 12px 0; border-top: 1px solid var(--line); font-size: .9rem; }
 .data-row span { color: var(--muted); }
 
+.leaderboardTable { margin-top: 16px; border: 1px solid var(--line); border-radius: 22px; overflow: hidden; background: var(--panel); }
+.leaderboardHead, .leaderboardRow { display: grid; grid-template-columns: .55fr 1.5fr 1.2fr 1fr; gap: 16px; align-items: center; padding: 16px 20px; }
+.leaderboardHead { color: var(--muted); font-size: .78rem; text-transform: uppercase; letter-spacing: .09em; border-bottom: 1px solid var(--line); }
+.leaderboardRow + .leaderboardRow { border-top: 1px solid var(--line); }
+.leaderboardRow.isMe { background: rgba(116, 240, 181, .07); }
+.leaderboardRow strong, .leaderboardRow small { display: block; }
+.leaderboardRow small { margin-top: 4px; color: var(--muted); }
+
 .footer { padding: 28px 4px 0; color: var(--muted); font-size: .85rem; }
 
 @media (max-width: 780px) {
@@ -121,6 +133,9 @@ h1 { margin: 0; max-width: 760px; font-size: clamp(2.3rem, 7vw, 5.5rem); line-he
   .primaryButton, .buttonLink { width: 100%; }
   .marketRowMeta { text-align: left; }
   .data-row { grid-template-columns: 1fr 1fr; }
+  .leaderboardHead { display: none; }
+  .leaderboardRow { grid-template-columns: .45fr 1.25fr 1fr; }
+  .leaderboardRow > div:last-child { grid-column: 2 / -1; }
 }
 
 @media (max-width: 460px) {
@@ -131,4 +146,6 @@ h1 { margin: 0; max-width: 760px; font-size: clamp(2.3rem, 7vw, 5.5rem); line-he
   .searchBar { grid-template-columns: 1fr; }
   .headerActions, .inline-actions { width: 100%; flex-wrap: wrap; }
   .data-row { grid-template-columns: 1fr; }
+  .leaderboardRow { grid-template-columns: 44px 1fr; gap: 10px; }
+  .leaderboardRow > div:nth-child(3), .leaderboardRow > div:last-child { grid-column: 2; }
 }
