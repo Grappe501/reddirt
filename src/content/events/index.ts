@@ -631,7 +631,7 @@ const movementEventsCore: EventItem[] = [
     type: "Fairs and Festivals",
     region: "Northeast Arkansas",
     countySlug: "clay-county",
-    status: "upcoming",
+    status: "past",
     startsAt: "2026-09-07T08:45:00",
     endsAt: "2026-09-07T17:00:00",
     timezone: "America/Chicago",
