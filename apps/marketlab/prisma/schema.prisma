@@ -9,6 +9,35 @@ datasource db {
   schemas   = ["marketlab"]
 }
 
+enum CompetitionStatus {
+  DRAFT
+  OPEN
+  ACTIVE
+  CLOSED
+  ARCHIVED
+
+  @@schema("marketlab")
+}
+
+enum CompetitionMemberRole {
+  PLAYER
+  ADMIN
+  INSTRUCTOR
+
+  @@schema("marketlab")
+}
+
+enum CashLedgerEntryType {
+  OPENING_BALANCE
+  TRADE_SETTLEMENT
+  FEE
+  DIVIDEND
+  ADJUSTMENT
+  REVERSAL
+
+  @@schema("marketlab")
+}
+
 model MarketLabSystemRecord {
   id        String   @id @default(cuid())
   key       String   @unique
@@ -16,5 +45,88 @@ model MarketLabSystemRecord {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
+  @@schema("marketlab")
+}
+
+model Player {
+  id           String   @id @default(cuid())
+  authSubject  String   @unique
+  email        String?  @unique
+  displayName  String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  memberships  CompetitionMember[]
+  portfolios   Portfolio[]
+
+  @@schema("marketlab")
+}
+
+model Competition {
+  id                   String            @id @default(cuid())
+  slug                 String            @unique
+  name                 String
+  status               CompetitionStatus @default(DRAFT)
+  startingCash         Decimal           @default(1000) @db.Decimal(18, 2)
+  currencyCode         String            @default("USD")
+  startsAt             DateTime?
+  endsAt               DateTime?
+  createdAt            DateTime          @default(now())
+  updatedAt            DateTime          @updatedAt
+
+  memberships          CompetitionMember[]
+  portfolios           Portfolio[]
+
+  @@index([status])
+  @@schema("marketlab")
+}
+
+model CompetitionMember {
+  id             String                @id @default(cuid())
+  competitionId  String
+  playerId       String
+  role           CompetitionMemberRole @default(PLAYER)
+  joinedAt       DateTime              @default(now())
+
+  competition    Competition @relation(fields: [competitionId], references: [id], onDelete: Cascade)
+  player         Player      @relation(fields: [playerId], references: [id], onDelete: Cascade)
+
+  @@unique([competitionId, playerId])
+  @@index([playerId])
+  @@schema("marketlab")
+}
+
+model Portfolio {
+  id             String   @id @default(cuid())
+  competitionId  String
+  playerId       String
+  currencyCode   String   @default("USD")
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  competition    Competition      @relation(fields: [competitionId], references: [id], onDelete: Cascade)
+  player         Player           @relation(fields: [playerId], references: [id], onDelete: Cascade)
+  cashLedger     CashLedgerEntry[]
+
+  @@unique([competitionId, playerId])
+  @@index([playerId])
+  @@schema("marketlab")
+}
+
+model CashLedgerEntry {
+  id             String              @id @default(cuid())
+  portfolioId    String
+  entryType      CashLedgerEntryType
+  amount         Decimal             @db.Decimal(18, 2)
+  currencyCode   String              @default("USD")
+  memo           String?
+  sourceType     String?
+  sourceId       String?
+  createdAt      DateTime            @default(now())
+
+  portfolio      Portfolio @relation(fields: [portfolioId], references: [id], onDelete: Cascade)
+
+  @@index([portfolioId, createdAt])
+  @@index([sourceType, sourceId])
   @@schema("marketlab")
 }
