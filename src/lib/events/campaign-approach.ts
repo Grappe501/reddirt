@@ -207,6 +207,12 @@ export const CAMPAIGN_APPROACH_BY_SLUG: Record<string, CampaignApproachDecision>
     note: "Conflict.",
     ledgerIds: ["manual-2026-10-01-siloam-springs-chamber-forum"],
   },
+  "fun-on-31-yard-sales-2026": {
+    approach: "removed",
+    reason: "never_confirmed",
+    note: "Steve 2026-09-08: take Fun on 31 off the public calendar.",
+    ledgerIds: ["manual-2026-10-02-fun-on-31"],
+  },
   "berryville-meet-the-candidates-reloaded-2026": {
     approach: "removed",
     reason: "conflict",
