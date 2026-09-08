@@ -10,6 +10,7 @@
     "prisma:generate": "prisma generate --schema prisma/schema.prisma",
     "prisma:migrate:deploy": "prisma migrate deploy --schema prisma/schema.prisma",
     "hosted:readiness": "node scripts/hosted-readiness.mjs",
+    "hosted:smoke": "node scripts/hosted-smoke.mjs",
     "check": "npm run prisma:generate && npm run typecheck && npm run build"
   },
   "dependencies": {
