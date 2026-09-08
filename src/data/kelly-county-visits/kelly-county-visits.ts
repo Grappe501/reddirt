@@ -4560,6 +4560,34 @@ const kellyCampaignStopsSource: KellyCampaignStop[] = [
     sourceType: "manual",
   },
   {
+    id: "manual-2026-10-11-hot-springs-film-festival",
+    publicTitle: "Hot Springs Film Festival",
+    date: "2026-10-11",
+    title: "Hot Springs Film Festival",
+    city: "Hot Springs",
+    counties: ["Garland"],
+    status: "scheduled",
+    includeOnPublicPage: true,
+    confidence: "likely",
+    notes:
+      "Steve 2026-09-08: Oct 11 Hot Springs Film Festival 12:00-4:00 p.m. Venue TBA. /events/hot-springs-film-festival-2026-10-11",
+    sourceType: "manual",
+  },
+  {
+    id: "manual-2026-10-11-hot-springs-church-naacp-braver-angels",
+    publicTitle: "Church — Hot Springs (NAACP / Braver Angels)",
+    date: "2026-10-11",
+    title: "Church Hot Springs NAACP Braver Angels",
+    city: "Hot Springs",
+    counties: ["Garland"],
+    status: "scheduled",
+    includeOnPublicPage: true,
+    confidence: "uncertain",
+    notes:
+      "Steve 2026-09-08: Church in Hot Springs. NAACP and Braver Angels. Kathi Kindt is contact. Church name and clock TBA. /events/hot-springs-church-naacp-braver-angels-2026-10-11",
+    sourceType: "manual",
+  },
+  {
     id: "manual-2026-09-10-dems-of-state-secretaries-call",
     date: "2026-09-10",
     title: "Dems of State monthly Secretaries + Candidates meeting",
@@ -5403,7 +5431,7 @@ const kellyCampaignStopsSource: KellyCampaignStop[] = [
     includeOnPublicPage: true,
     confidence: "confirmed",
     notes:
-      "Steve 2026-09-08: Oct 11 Speakeasy confirmed. 626 Malvern Ave, 5:30 p.m. Replaces chili-cookout hold. /events/hot-springs-chili-cookout-2026",
+      "Steve 2026-09-08: Oct 11 Speakeasy confirmed. 626 Malvern Ave, 5:30 p.m. Replaces chili-cookout hold. Same day: film festival 12-4; church / NAACP / Braver Angels. /events/hot-springs-chili-cookout-2026",
     sourceType: "calendar",
   },
   {

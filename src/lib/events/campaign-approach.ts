@@ -160,6 +160,18 @@ export const CAMPAIGN_APPROACH_BY_SLUG: Record<string, CampaignApproachDecision>
     note: "Steve 2026-09-08: Sep 22 is Howard County in Nashville. Library county night is not the SOS forum (that is Sep 29).",
     ledgerIds: ["manual-2026-09-22-garland-library-county-forum"],
   },
+  "hot-springs-forum-2026-09-25": {
+    approach: "removed",
+    reason: "conflict",
+    note: "Steve 2026-09-08: take the Sep 25 Hot Springs Forum off the public calendar.",
+    ledgerIds: ["locked-2026-09-25-hot-springs-forum"],
+  },
+  "garland-library-hot-springs-city-forum-2026": {
+    approach: "removed",
+    reason: "never_confirmed",
+    note: "Steve 2026-09-08: take the Sep 30 Hot Springs city library forum off the public calendar.",
+    ledgerIds: ["manual-2026-09-30-garland-library-city-forum"],
+  },
   "crittenden-prairie-arkansas-swing-2026-09-23": {
     approach: "removed",
     reason: "never_confirmed",
