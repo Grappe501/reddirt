@@ -1,7 +1,7 @@
 # MarketLab Build 1 — Hostile Proof 1.0
 
 ## Purpose
-Attack the Build 1 game loop before Build 2. This pass is a source-level hostile review, not a claim of live production proof.
+Attack the Build 1 game loop before Build 2. This began as a source-level hostile review and now also includes a dedicated machine proof gate for the standalone MarketLab app.
 
 ## Game loop under review
 `$1,000 opening ledger -> server quote -> simulated order -> execution -> cash ledger + position -> mark-to-market -> return -> leaderboard rank`
@@ -42,6 +42,15 @@ Repair:
 - slippage must be >= 0 and < 100%;
 - calculated execution price must remain positive.
 
+### 5. Standalone build-root leakage into RedDirt — CLOSED
+The first dedicated MarketLab production build exposed a genuine isolation defect. Next/Turbopack inferred the RedDirt repository root because both the root app and `apps/marketlab` had lockfiles. That caused the standalone build to inherit root PostCSS/middleware concerns, including a missing Tailwind dependency and campaign middleware imports that do not belong in MarketLab.
+
+Repair:
+- `apps/marketlab/next.config.ts` now sets the Turbopack root to the MarketLab working directory;
+- the standalone build no longer traverses RedDirt root middleware/PostCSS as part of MarketLab compilation.
+
+Invariant: MarketLab must compile as an independent Next application even though it lives inside the RedDirt repository.
+
 ## Existing invariants re-verified by source inspection
 - Browser price is never accepted for settlement.
 - Market status and quote are fetched server-side before settlement.
@@ -55,27 +64,46 @@ Repair:
 - Leaderboard uses the same portfolio valuation service, not a separate mutable score.
 - No real brokerage execution integration exists.
 
+## Dedicated machine proof gate
+Workflow: `.github/workflows/marketlab-build1-proof.yml`
+
+The workflow runs MarketLab independently on Node 22 with a clean PostgreSQL 15 service and executes:
+1. MarketLab dependency install.
+2. Prisma client generation.
+3. MarketLab migration deploy.
+4. Strict TypeScript check.
+5. Production Next.js build.
+
+### Proof result — PASS
+GitHub Actions run `34197350532` completed successfully after the build-root repair.
+
+Passed gates:
+- dependency installation: PASS;
+- Prisma generate: PASS;
+- both MarketLab migrations on clean Postgres: PASS;
+- strict TypeScript (`tsc --noEmit`): PASS;
+- production Next build: PASS.
+
+The earlier proof run correctly failed production build and surfaced the root-isolation defect. That defect was repaired before this document was advanced.
+
 ## Remaining proof gates
-These cannot be honestly marked complete from repository inspection alone:
-1. `npm install`/lockfile resolution inside `apps/marketlab`.
-2. `npm run prisma:generate`.
-3. `npm run typecheck`.
-4. `npm run build`.
-5. Migration deploy against the approved hosted Postgres target.
-6. Independent MarketLab Supabase sign-up/sign-in proof.
-7. Licensed market-data credential proof.
-8. Authenticated live simulated BUY fill.
-9. Authenticated live simulated SELL fill.
-10. Deliberate double-submit proof showing one execution only.
-11. Deliberate simultaneous-order contention proof showing no negative cash/shares.
-12. Mark-to-market change after quote movement.
-13. Two-player leaderboard rank change proof.
-14. Mobile/iPad hostile interaction review.
-15. Failure-path review for provider outage/rate limit/market closed.
+These still require the independent hosted MarketLab environment and/or browser-level interaction:
+1. Migration deploy against the approved hosted Postgres target.
+2. Independent MarketLab Supabase sign-up/sign-in proof.
+3. Licensed market-data credential proof.
+4. Authenticated live simulated BUY fill.
+5. Authenticated live simulated SELL fill.
+6. Deliberate double-submit proof showing one execution only.
+7. Deliberate simultaneous-order contention proof showing no negative cash/shares.
+8. Mark-to-market change after quote movement.
+9. Two-player leaderboard rank change proof.
+10. Mobile/iPad hostile interaction review.
+11. Failure-path review for provider outage/rate limit/market closed.
 
 ## Build 1 status
 Source architecture/game loop: COMPLETE.
-Hostile source hardening: PASS WITH LIVE PROOF PENDING.
-Production/live proof: NOT YET CLAIMED.
+Hostile source hardening: PASS.
+Local/CI dependency + migration + typecheck + production-build proof: PASS.
+Hosted/live product proof: PENDING.
 
-Do not advance Build 1 to production-proven until the remaining proof gates are executed against the independent MarketLab environment.
+Do not label Build 1 production-proven until the remaining hosted/live proof gates are executed against the independent MarketLab environment.
