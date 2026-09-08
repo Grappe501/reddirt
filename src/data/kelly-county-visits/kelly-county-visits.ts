@@ -4175,6 +4175,20 @@ const kellyCampaignStopsSource: KellyCampaignStop[] = [
     sourceType: "local-file",
   },
   {
+    id: "manual-2026-10-20-vck-gotv-pep-rally",
+    publicTitle: "VCK Democratic Women GOTV pep rally — Hot Springs",
+    date: "2026-10-20",
+    title: "VCK Democratic Women GOTV pep rally",
+    city: "Hot Springs",
+    counties: ["Garland"],
+    status: "scheduled",
+    includeOnPublicPage: true,
+    confidence: "likely",
+    notes:
+      "Host letter 2026-09-05. Tue Oct 20 Jewish Center 300 Quapaw Ave. Social 5:30, program 6:00, intros about 6:30. Tentative until Kelly RSVPs. Keep host emails and 501 numbers off the public card. /events/vck-gotv-pep-rally-hot-springs-2026-10-20 Same day: early-voting-launch Little Rock.",
+    sourceType: "manual",
+  },
+  {
     id: "presence-cal_562t77_55",
     date: "2026-10-20",
     title: "Arkansas Democrats Present: The Hub",

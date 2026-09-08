@@ -465,7 +465,40 @@ export const restoredUpcomingFromSeptCuts: EventItem[] = [
     summary: "Tuesday, October 20, 2026: Early Voting launch in Little Rock.",
     audienceTags: ["Little Rock", "Pulaski County", "Early voting"],
     mapCoordinates: { lat: 34.7465, lng: -92.2896 },
-    relatedEventSlugs: [],
+    relatedEventSlugs: ["vck-gotv-pep-rally-hot-springs-2026-10-20"],
+    fieldAttendance: "tentative",
+  }),
+  campaignStop({
+    slug: "vck-gotv-pep-rally-hot-springs-2026-10-20",
+    title: "VCK Democratic Women GOTV pep rally — Hot Springs",
+    type: "Community Conversation",
+    countySlug: "garland-county",
+    startsAt: "2026-10-20T17:30:00-05:00",
+    endsAt: "2026-10-20T20:00:00-05:00",
+    locationLabel: "The Jewish Center — Hot Springs",
+    city: "Hot Springs",
+    addressLine: "300 Quapaw Avenue, Hot Springs, AR",
+    summary:
+      "Tuesday, October 20, 2026: **VCK Democratic Women** Get Out the Vote pep rally at **The Jewish Center**, **300 Quapaw Avenue**, Hot Springs — tentative. Social **5:30 p.m.**, program **6:00 p.m.**, candidate introductions about **6:30 p.m.**",
+    description:
+      "VCK Democratic Women invited Kelly to a **Get Out the Vote pep rally** on **Tuesday, October 20, 2026** — the day early voting begins.\n\n**The Jewish Center**, **300 Quapaw Avenue**, Hot Springs. Social gathering **5:30 p.m. Central**. Program **6:00 p.m.** Candidate 30-second introductions around **6:30 p.m.**\n\nThe host night includes tailgate food and drinks, door prizes, Human Bingo, skits, and cheers. Attendees will be asked to write down five people to contact about voting. Candidates may bring signs, buttons, and swag.\n\nThis is a **VCK Democratic Women** event, not a Grappe-hosted rally. Kelly’s attendance is **tentative** until she RSVPs.\n\nThe same Tuesday the public calendar also has an Early Voting launch hold in Little Rock.",
+    whatToExpect: [
+      "5:30 p.m. social · 6:00 p.m. program · candidate intros about 6:30 p.m.",
+      "Tailgate food, door prizes, Human Bingo, skits, and cheers",
+      "30-second candidate introductions — host-run program",
+    ],
+    whoItsFor:
+      "VCK Democratic Women, Hot Springs neighbors, and candidates the hosts invite. Confirm with the committee before treating this as a locked Kelly stop.",
+    organizerNote:
+      "Host letter dated 2026-09-05 from the VCK Democratic Women Pep Rally Planning Committee. fieldAttendance tentative. Keep host RSVP email and phone numbers off the public card.",
+    audienceTags: ["Hot Springs", "Garland County", "GOTV", "Democratic Women", "Early voting"],
+    mapCoordinates: { lat: 34.51, lng: -93.05 },
+    mapPinQuality: "exact",
+    relatedEventSlugs: ["early-voting-launch-2026-10-20"],
+    relatedResourceHrefs: [
+      { label: "Volunteer / Get involved", href: "/get-involved#volunteer" },
+      { label: "Events calendar", href: "/events" },
+    ],
     fieldAttendance: "tentative",
   }),
   campaignStop({
