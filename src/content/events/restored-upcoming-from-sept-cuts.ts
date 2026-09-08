@@ -484,6 +484,27 @@ export const restoredUpcomingFromSeptCuts: EventItem[] = [
     fieldAttendance: "tentative",
   }),
   campaignStop({
+    slug: "weston-colt-birthday-2026-10-24",
+    title: "Weston Colt birthday",
+    type: "House Gathering",
+    startsAt: "2026-10-24T14:00:00",
+    endsAt: "2026-10-24T18:00:00",
+    locationLabel: "Venue TBA",
+    city: "Venue TBA",
+    attendanceType: "PRIVATE",
+    summary:
+      "Saturday, October 24, 2026, **2:00–6:00 p.m. Central**: **Weston Colt birthday** — confirmed. Venue TBA. Not an open campaign event.",
+    description:
+      "Saturday, **October 24, 2026**, **2:00–6:00 p.m. Central**: **Weston Colt birthday**.\n\nThis is a **confirmed** hold. Venue TBA.\n\nThis listing shows the campaign is booked that afternoon. It is **not** an open neighbor event.",
+    whatToExpect: ["2:00–6:00 p.m. Central", "Venue TBA"],
+    whoItsFor: "Invited guests. This is not an open campaign event.",
+    organizerNote: "Steve 2026-09-08: Oct 24 Weston Colt birthday 2pm-6pm. Venue TBA.",
+    audienceTags: ["Birthday"],
+    relatedEventSlugs: [],
+    relatedResourceHrefs: [{ label: "Events calendar", href: "/events" }],
+    fieldAttendance: "confirmed",
+  }),
+  campaignStop({
     slug: "ponca-color-fest-2026-10-25",
     title: "Ponca Color Fest",
     type: "Fairs and Festivals",

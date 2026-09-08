@@ -4228,6 +4228,19 @@ const kellyCampaignStopsSource: KellyCampaignStop[] = [
       "Jan Misenheimer email 2026-08-12 (thread with Kelly and Steve). Sat Oct 24 Mountain View: check-in 11:00 a.m., rules 12:00, parade 1:00 p.m., first heat 1:15 p.m., then champion race. Large crowd expected. Steve: try to fit unless a candidate debate. Ozark Forward bake sale same Saturday for Kelly and Terri — venue TBA, do not invent. Street not in the note. Festival research already listed Bean Fest Oct 23-24. /events/mountain-view-bean-fest-outhouse-races-2026 Next day: Ponca Color Fest immersion. Do not publish personal emails.",
     sourceType: "manual",
   },
+  {
+    id: "manual-2026-10-24-weston-colt-birthday",
+    publicTitle: "Weston Colt birthday",
+    date: "2026-10-24",
+    title: "Weston Colt birthday",
+    counties: [],
+    status: "scheduled",
+    includeOnPublicPage: true,
+    confidence: "confirmed",
+    notes:
+      "Steve 2026-09-08: Oct 24 Weston Colt birthday 2:00-6:00 p.m. Venue TBA. Not an open campaign event. /events/weston-colt-birthday-2026-10-24",
+    sourceType: "manual",
+  },
 
   {
     id: "presence-2026-11-01-central-arkansas-veterans-car-show-and-parade-north-little-rock",

@@ -266,6 +266,12 @@ export const CAMPAIGN_APPROACH_BY_SLUG: Record<string, CampaignApproachDecision>
     note: "Conflict.",
     ledgerIds: ["manual-2026-10-22-cindy-nations-rally"],
   },
+  "mountain-view-bean-fest-outhouse-races-2026": {
+    approach: "removed",
+    reason: "conflict",
+    note: "Steve 2026-09-08: Oct 24 is Weston Colt birthday 2:00-6:00 p.m.",
+    ledgerIds: ["manual-2026-10-24-mountain-view-outhouse-races"],
+  },
 };
 
 /** Steve 2026-09-08: September 29 four-way stays on the board as red caution. */
