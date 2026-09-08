@@ -389,6 +389,40 @@ export const restoredUpcomingFromSeptCuts: EventItem[] = [
     fieldAttendance: "confirmed",
   }),
   campaignStop({
+    slug: "ayc-youth-retreat-little-rock-2026-10-16",
+    title: "AYC youth retreat weekend — Little Rock",
+    type: "Youth Civic Session",
+    countySlug: "pulaski-county",
+    startsAt: "2026-10-16T09:00:00",
+    endsAt: "2026-10-18T17:00:00",
+    timeTbd: true,
+    locationLabel: "Little Rock (AYC youth retreat — venue TBA)",
+    city: "Little Rock",
+    addressLine: "Little Rock, AR (venue TBA)",
+    summary:
+      "Friday, October 16 through Sunday, October 18, 2026: **Arkansas Youth Coalition** youth retreat weekend in Little Rock — confirmed. Venue TBA.",
+    description:
+      "The campaign is in **Little Rock** Friday, **October 16** through Sunday, **October 18, 2026** for the **Arkansas Youth Coalition** youth retreat weekend.\n\nBuilding and daily clock are still TBA. This is the public hold for that weekend.",
+    whatToExpect: [
+      "Friday through Sunday in Little Rock",
+      "AYC youth retreat — follow the coalition for the room and daily clock",
+    ],
+    whoItsFor: "AYC participants and invited campaign guests. Confirm the venue with the hosts before travel.",
+    organizerNote:
+      "Steve 2026-09-08: block Oct 16-18 AYC youth retreat weekend in Little Rock. Venue TBA.",
+    audienceTags: ["Little Rock", "Pulaski County", "Youth", "College", "AYC"],
+    mapCoordinates: { lat: 34.7465, lng: -92.2896 },
+    mapPinQuality: "region",
+    primaryHref: "/get-involved#volunteer",
+    primaryCtaLabel: "Volunteer / Get involved",
+    relatedEventSlugs: ["ayc-karaoke-hot-springs-2026-10-11"],
+    relatedResourceHrefs: [
+      { label: "Volunteer", href: "/get-involved#volunteer" },
+      { label: "Events calendar", href: "/events" },
+    ],
+    fieldAttendance: "confirmed",
+  }),
+  campaignStop({
     slug: "saline-county-gotv-2026-10-12",
     title: "Saline County GOTV push — Benton",
     type: "Community Conversation",

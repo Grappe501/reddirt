@@ -5145,6 +5145,21 @@ const kellyCampaignStopsSource: KellyCampaignStop[] = [
     sourceType: "calendar",
   },
   {
+    id: "manual-2026-10-16-ayc-youth-retreat",
+    publicTitle: "AYC youth retreat weekend — Little Rock",
+    date: "2026-10-16",
+    endDate: "2026-10-18",
+    title: "AYC youth retreat weekend",
+    city: "Little Rock",
+    counties: ["Pulaski"],
+    status: "scheduled",
+    includeOnPublicPage: true,
+    confidence: "confirmed",
+    notes:
+      "Steve 2026-09-08: block Oct 16-18 AYC youth retreat weekend in Little Rock. Venue TBA. /events/ayc-youth-retreat-little-rock-2026-10-16",
+    sourceType: "manual",
+  },
+  {
     id: "manual-2026-10-17-stuttgart",
     publicTitle: "Stuttgart — 10:00 a.m. to 1:00 p.m.",
     date: "2026-10-17",

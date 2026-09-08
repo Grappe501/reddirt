@@ -218,6 +218,54 @@ export const CAMPAIGN_APPROACH_BY_SLUG: Record<string, CampaignApproachDecision>
     note: "Conflict.",
     ledgerIds: ["manual-2026-10-15-hob-nob-bentonville"],
   },
+  "hardy-candidate-forum-2026": {
+    approach: "removed",
+    reason: "conflict",
+    note: "Conflict.",
+    ledgerIds: ["manual-2026-10-15-hardy-candidate-forum"],
+  },
+  "rocky-comfort-pecan-festival-2026": {
+    approach: "removed",
+    reason: "conflict",
+    note: "Steve 2026-09-08: Oct 16-18 is AYC youth retreat weekend in Little Rock.",
+    ledgerIds: ["manual-2026-10-17-rocky-comfort-pecan-festival"],
+  },
+  "stuttgart-oct-17-2026": {
+    approach: "removed",
+    reason: "conflict",
+    note: "Steve 2026-09-08: Oct 16-18 is AYC youth retreat weekend in Little Rock.",
+    ledgerIds: ["manual-2026-10-17-stuttgart"],
+  },
+  "flat-rock-fish-fry-2026": {
+    approach: "removed",
+    reason: "conflict",
+    note: "Steve 2026-09-08: Oct 16-18 is AYC youth retreat weekend in Little Rock.",
+    ledgerIds: ["manual-2026-10-17-flat-rock-fish-fry"],
+  },
+  "uapb-homecoming-2026": {
+    approach: "removed",
+    reason: "conflict",
+    note: "Steve 2026-09-08: Oct 16-18 is AYC youth retreat weekend in Little Rock.",
+    ledgerIds: ["manual-2026-10-17-uapb-homecoming"],
+  },
+  "logan-scott-immersion-2026-10-18": {
+    approach: "removed",
+    reason: "conflict",
+    note: "Steve 2026-09-08: Oct 16-18 is AYC youth retreat weekend in Little Rock.",
+    ledgerIds: ["presence-2026-10-18-logan-and-scott-immersion"],
+  },
+  "petit-jean-meat-festival-2026": {
+    approach: "removed",
+    reason: "conflict",
+    note: "Steve 2026-09-08: Oct 16-18 is AYC youth retreat weekend in Little Rock.",
+    ledgerIds: ["presence-2026-10-18-petit-jean-meat-festival"],
+  },
+  "cindy-nations-rally-2026": {
+    approach: "removed",
+    reason: "conflict",
+    note: "Conflict.",
+    ledgerIds: ["manual-2026-10-22-cindy-nations-rally"],
+  },
 };
 
 /** Steve 2026-09-08: September 29 four-way stays on the board as red caution. */
