@@ -1,6 +1,4 @@
-import { PrismaClient } from "@prisma/client";
-
-const prisma = new PrismaClient();
+import { prisma } from "@/lib/db/prisma";
 
 /**
  * Cash is always derived from the immutable ledger. No mutable portfolio.cash field
