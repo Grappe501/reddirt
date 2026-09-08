@@ -1768,10 +1768,11 @@ const movementEventsCore: EventItem[] = [
     locationLabel: "Mt. Pleasant AME Church — Pine Bluff",
     addressLine: "1201 N. Magnolia Street, Pine Bluff, AR 71601",
     summary:
-      "Thursday, September 24, 2026, **1:00–3:30 p.m. Central** at Mt. Pleasant AME Church in Pine Bluff: East Conference session on politics and the church — tentative.",
+      "Steve will attend. Thursday, September 24, 2026, **1:00–3:30 p.m. Central** at Mt. Pleasant AME Church in Pine Bluff: East Conference session on politics and the church. Kelly will not attend.",
     description:
-      "The African Methodist Episcopal Church’s **East Conference** hosts a session on a new approach to discussing **politics and the church**. Bishop **Silvester S. Beaman**, presiding prelate of the 12th Episcopal District (Arkansas and Oklahoma), presides.\n\nThe program is for introductions and questions about current issues and candidates. The host asks that **pastors and ministers know each candidate**. This is a **church-hosted** conference session, not a campaign rally.\n\nThe conferences are also asking churches for volunteer help with **voter registration**, **poll watching**, and **Souls to the Polls**. Neighbors who can help can start on this site’s volunteer and voter-registration pages.\n\nSame series: West Conference on September 10 in Magnolia, and Arkansas Conference on October 8 in Little Rock.",
+      "The African Methodist Episcopal Church’s **East Conference** hosts a session on a new approach to discussing **politics and the church**. Bishop **Silvester S. Beaman**, presiding prelate of the 12th Episcopal District (Arkansas and Oklahoma), presides.\n\n**Steve will attend. Kelly will not attend.** This is **not a speaking engagement**.\n\nThe program is for introductions and questions about current issues and candidates. The host asks that **pastors and ministers know each candidate**. This is a **church-hosted** conference session, not a campaign rally.\n\nThe conferences are also asking churches for volunteer help with **voter registration**, **poll watching**, and **Souls to the Polls**. Neighbors who can help can start on this site’s volunteer and voter-registration pages.\n\nSame series: West Conference on September 10 in Magnolia, and Arkansas Conference on October 8 in Little Rock.",
     whatToExpect: [
+      "Steve will attend — Kelly will not",
       "1:00–3:30 p.m. Central at Mt. Pleasant AME Church",
       "Candidate introductions and questions — follow the bishop and host pastors",
       "Church volunteer ask: voter registration, poll watching, and Souls to the Polls",
@@ -1779,7 +1780,7 @@ const movementEventsCore: EventItem[] = [
     whoItsFor:
       "AME pastors, ministers, and invited conference guests. Confirm with the host church before treating it as a walk-in public forum.",
     organizerNote:
-      "Steve 2026-09-08: Jefferson / AME East Sep 24 is tentative. Bishop Silvester S. Beaman. Do not list as campaign-hosted.",
+      "Steve 2026-09-08: Steve will attend AME East Sep 24. Kelly will not. Bishop Silvester S. Beaman. Do not list as campaign-hosted.",
     rsvpHref: "https://www.mtpleasantamecpinebluff.com/",
     audienceTags: ["AME", "Faith", "Pine Bluff", "Jefferson County", "Central Arkansas", "Voter registration"],
     relatedEventSlugs: [
@@ -1796,7 +1797,11 @@ const movementEventsCore: EventItem[] = [
     ],
     mapCoordinates: { lat: 34.235, lng: -92.008 },
     mapPinQuality: "region",
-    fieldAttendance: "tentative",
+    fieldAttendance: "surrogate",
+    publicAttendanceNote: "Steve will attend. Kelly will not attend. This is not a speaking engagement.",
+    marks: {
+      kellyRole: "not_attending",
+    },
   },
   {
     slug: "ame-arkansas-conference-little-rock-2026",

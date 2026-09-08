@@ -16,7 +16,7 @@ import {
   isCautionHold,
   isKellyNotAttending,
   CAUTION_HOLD_COPY,
-  KELLY_NOT_ATTENDING_COPY,
+  kellyNotAttendingCopy,
   SCHEDULE_CONFLICT_COPY,
 } from "@/lib/events/public-event-kind";
 import { isExternalHref } from "@/lib/href";
@@ -95,7 +95,7 @@ export function EventStopCard({
       <EventMarksChips event={event} className="mt-3" />
       <p className="mt-3 font-body text-sm leading-relaxed text-kelly-text/75">{summary}</p>
       {kellyNotAttending ? (
-        <p className="mt-3 font-body text-sm text-kelly-text/70">{KELLY_NOT_ATTENDING_COPY}</p>
+        <p className="mt-3 font-body text-sm text-kelly-text/70">{kellyNotAttendingCopy(event)}</p>
       ) : scheduleConflict ? (
         <p className="mt-3 font-body text-sm text-yellow-950">{SCHEDULE_CONFLICT_COPY}</p>
       ) : caution ? (

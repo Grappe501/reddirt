@@ -11,7 +11,7 @@ import {
   eventBoardChromeClass,
   isCautionHold,
   isKellyNotAttending,
-  KELLY_NOT_ATTENDING_COPY,
+  kellyNotAttendingCopy,
   SCHEDULE_CONFLICT_COPY,
 } from "@/lib/events/public-event-kind";
 import { isExternalHref } from "@/lib/href";
@@ -117,7 +117,7 @@ export function EventCard({ event, className, highlighted, onActivate, scheduleC
         <EventMarksChips event={event} className="mt-3" />
         <p className="mt-4 font-body text-base leading-relaxed text-kelly-text/75">{event.summary}</p>
         {kellyNotAttending ? (
-          <p className="mt-3 font-body text-sm text-kelly-text/70">{KELLY_NOT_ATTENDING_COPY}</p>
+          <p className="mt-3 font-body text-sm text-kelly-text/70">{kellyNotAttendingCopy(event)}</p>
         ) : null}
         {scheduleConflict ? (
           <p className="mt-3 font-body text-sm text-yellow-950">{SCHEDULE_CONFLICT_COPY}</p>

@@ -107,6 +107,11 @@ export function isCautionHold(event: { fieldAttendance?: string }): boolean {
 export const KELLY_NOT_ATTENDING_COPY =
   "Kelly will not attend. If we can send someone, we will. This is not a speaking engagement.";
 
+export function kellyNotAttendingCopy(event: { publicAttendanceNote?: string }): string {
+  const custom = event.publicAttendanceNote?.trim();
+  return custom || KELLY_NOT_ATTENDING_COPY;
+}
+
 /** Public line for caution holds: date is on the calendar; details are incomplete. */
 export const CAUTION_HOLD_COPY = "Caution — we need more information before this is a locked stop.";
 

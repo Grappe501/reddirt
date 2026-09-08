@@ -31,7 +31,7 @@ import {
   eventBoardChromeClass,
   isCautionHold,
   isKellyNotAttending,
-  KELLY_NOT_ATTENDING_COPY,
+  kellyNotAttendingCopy,
   SCHEDULE_CONFLICT_COPY,
 } from "@/lib/events/public-event-kind";
 
@@ -113,7 +113,7 @@ function CuratedOrCalendarEventView({ event }: { event: EventItem }) {
                 <EventMeta event={event} />
                 <EventMarksChips event={event} className="mt-4" />
                 {kellyNotAttending ? (
-                  <p className="mt-4 font-body text-sm text-kelly-text/75">{KELLY_NOT_ATTENDING_COPY}</p>
+                  <p className="mt-4 font-body text-sm text-kelly-text/75">{kellyNotAttendingCopy(event)}</p>
                 ) : null}
                 {scheduleConflict ? (
                   <p className="mt-4 font-body text-sm text-yellow-950">{SCHEDULE_CONFLICT_COPY}</p>
@@ -182,7 +182,7 @@ function CuratedOrCalendarEventView({ event }: { event: EventItem }) {
                   <p className="mt-2 font-body text-sm text-kelly-text/65">{event.addressLine}</p>
                 ) : null}
                 {kellyNotAttending ? (
-                  <p className="mt-3 font-body text-sm text-kelly-text/70">{KELLY_NOT_ATTENDING_COPY}</p>
+                  <p className="mt-3 font-body text-sm text-kelly-text/70">{kellyNotAttendingCopy(event)}</p>
                 ) : null}
                 {caution ? <p className="mt-3 font-body text-sm text-kelly-text/70">{CAUTION_HOLD_COPY}</p> : null}
               </div>

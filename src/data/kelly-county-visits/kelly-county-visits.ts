@@ -4596,7 +4596,7 @@ const kellyCampaignStopsSource: KellyCampaignStop[] = [
     includeOnPublicPage: true,
     confidence: "likely",
     notes:
-      "Steve 2026-09-08: Jefferson / AME East Sep 24 tentative. Thu 1:00-3:30 p.m. Mt. Pleasant AME, 1201 N. Magnolia Street, Pine Bluff. /events/ame-east-conference-pine-bluff-2026",
+      "Steve 2026-09-08: Steve will attend AME East Sep 24. Kelly will not. Thu 1:00-3:30 p.m. Mt. Pleasant AME, 1201 N. Magnolia Street, Pine Bluff. /events/ame-east-conference-pine-bluff-2026",
     sourceType: "manual",
   },
   {

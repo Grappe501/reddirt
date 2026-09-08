@@ -97,6 +97,8 @@ export type EventItem = {
    * Fairs & festivals research / coverage path only (operator). Not used on the public map/cards (Phase 2).
    */
   fieldAttendance?: FieldAttendance;
+  /** Public line when Kelly is not attending. Overrides the default surrogate sentence. */
+  publicAttendanceNote?: string;
   /** Default `/events/{slug}`. */
   detailHref?: string;
   primaryHref?: string;
