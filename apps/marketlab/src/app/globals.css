@@ -18,7 +18,7 @@ body {
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 a { color: inherit; }
-button, input { font: inherit; }
+button, input, select { font: inherit; }
 
 .shell, .dashboard-shell {
   width: min(1180px, calc(100% - 32px));
@@ -34,7 +34,7 @@ button, input { font: inherit; }
   padding: 24px 0 36px;
 }
 .compactTopbar { padding-bottom: 20px; }
-.headerActions { display: flex; gap: 10px; align-items: center; }
+.headerActions, .inline-actions { display: flex; gap: 10px; align-items: center; }
 
 .eyebrow, .label {
   margin: 0 0 8px;
@@ -70,6 +70,7 @@ h1 { margin: 0; max-width: 760px; font-size: clamp(2.3rem, 7vw, 5.5rem); line-he
   cursor: pointer;
 }
 .primaryButton { background: var(--accent); color: #04130d; }
+.primaryButton:disabled { opacity: .45; cursor: not-allowed; }
 .secondary { background: var(--panel-2); color: var(--text); border: 1px solid var(--line); }
 .buttonLink { display: inline-flex; align-items: center; justify-content: center; text-decoration: none; }
 
@@ -96,14 +97,30 @@ h1 { margin: 0; max-width: 760px; font-size: clamp(2.3rem, 7vw, 5.5rem); line-he
 .quoteHero { margin-bottom: 16px; }
 .searchEmpty { padding: 18px 2px; }
 
+.trade-layout { display: grid; grid-template-columns: minmax(0, 2fr) minmax(240px, .75fr); gap: 16px; }
+.trade-ticket { align-items: flex-start; }
+.order-form { min-width: min(100%, 360px); display: grid; gap: 14px; }
+.order-form label { display: grid; gap: 7px; color: var(--muted); font-size: .86rem; font-weight: 700; }
+.order-form input, .order-form select { width: 100%; min-height: 48px; border-radius: 12px; border: 1px solid var(--line); background: var(--bg); color: var(--text); padding: 0 12px; }
+.order-form small { color: var(--muted); line-height: 1.45; }
+.trade-summary { display: flex; flex-direction: column; justify-content: center; }
+.summary-number { font-size: clamp(2rem, 5vw, 3.4rem); letter-spacing: -.04em; }
+.success-banner, .error-banner { border-radius: 14px; padding: 14px 16px; margin: 0 0 16px; border: 1px solid var(--line); }
+.success-banner { background: rgba(116, 240, 181, .09); }
+.error-banner { background: rgba(255, 96, 96, .09); }
+.data-list { display: grid; gap: 10px; }
+.data-row { display: grid; grid-template-columns: 1.1fr 1.6fr 1.2fr 1.5fr; gap: 12px; align-items: center; padding: 12px 0; border-top: 1px solid var(--line); font-size: .9rem; }
+.data-row span { color: var(--muted); }
+
 .footer { padding: 28px 4px 0; color: var(--muted); font-size: .85rem; }
 
 @media (max-width: 780px) {
   .topbar, .market-header, .heroCard, .hero-panel, .marketRow { flex-direction: column; align-items: stretch; }
   .metrics, .metric-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .grid { grid-template-columns: 1fr; }
+  .grid, .trade-layout { grid-template-columns: 1fr; }
   .primaryButton, .buttonLink { width: 100%; }
   .marketRowMeta { text-align: left; }
+  .data-row { grid-template-columns: 1fr 1fr; }
 }
 
 @media (max-width: 460px) {
@@ -112,5 +129,6 @@ h1 { margin: 0; max-width: 760px; font-size: clamp(2.3rem, 7vw, 5.5rem); line-he
   .metricCard, .metric-grid article { padding: 16px; }
   .heroCard, .hero-panel, .truth-panel, .panel, .marketRow { border-radius: 18px; }
   .searchBar { grid-template-columns: 1fr; }
-  .headerActions { width: 100%; }
+  .headerActions, .inline-actions { width: 100%; flex-wrap: wrap; }
+  .data-row { grid-template-columns: 1fr; }
 }
