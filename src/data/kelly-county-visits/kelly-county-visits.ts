@@ -4966,9 +4966,9 @@ const kellyCampaignStopsSource: KellyCampaignStop[] = [
     counties: [],
     status: "scheduled",
     includeOnPublicPage: true,
-    confidence: "uncertain",
+    confidence: "confirmed",
     notes:
-      "Steve Google Calendar Fri Sep 11 7:00-8:00 p.m. City/field not on the block — do not invent. Same day: Lafayette County hold; Dallas County Fair Fordyce 6:00; Sharp HQ Highland. /events/le-vs-fire-softball-2026",
+      "Steve 2026-09-08: Sep 11 law enforcement vs fire softball confirmed. City/field TBA. /events/le-vs-fire-softball-2026",
     sourceType: "calendar",
   },
   {
