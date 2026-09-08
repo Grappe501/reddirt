@@ -202,7 +202,32 @@ export const restoredUpcomingFromSeptCuts: EventItem[] = [
     ],
     audienceTags: ["Clark County", "Gurdon", "Arkadelphia"],
     mapCoordinates: { lat: 34.1209, lng: -93.0538 },
-    relatedEventSlugs: ["arkadelphia-sep-20-2026", "dequeen-sep-20-2026"],
+    relatedEventSlugs: ["arkadelphia-sep-20-2026", "dequeen-sep-20-2026", "beckys-texarkana-2026-09-20"],
+    fieldAttendance: "confirmed",
+  }),
+  campaignStop({
+    slug: "beckys-texarkana-2026-09-20",
+    title: "Travel to Becky's — Texarkana",
+    type: "Community Conversation",
+    region: "Southwest Arkansas",
+    countySlug: "miller-county",
+    startsAt: "2026-09-20T17:00:00",
+    endsAt: "2026-09-20T19:00:00",
+    locationLabel: "Becky's — Texarkana",
+    city: "Texarkana",
+    addressLine: "Texarkana, AR (private destination — street not published)",
+    summary:
+      "Sunday, September 20, 2026, **5:00 p.m. Central**: travel to Becky's in Texarkana. This is travel, not a public gathering.",
+    description:
+      "Steve locked **travel to Becky's in Texarkana** for Sunday, **September 20**, **5:00 p.m. Central**.\n\nThis is **private travel**, not a walk-in campaign event. Do not publish a street.\n\nThe same afternoon is **De Queen 4:00–6:00 p.m.** De Queen to Texarkana is a southwest run that same evening.",
+    whatToExpect: ["5:00 p.m. Central arrival / travel window", "Private stop — not a public event"],
+    whoItsFor: "Campaign travel only. Neighbors should use the De Queen listing if they want a public Sunday stop.",
+    organizerNote:
+      "Steve pass 2026-09-08. Travel to Becky's, Texarkana, 5:00 p.m. Sunday Sep 20. Do not invent an address or last name. Same afternoon: dequeen-sep-20-2026 4:00-6:00 p.m.",
+    audienceTags: ["Texarkana", "Miller County", "Southwest Arkansas"],
+    mapCoordinates: { lat: 33.4251, lng: -94.0477 },
+    mapPinQuality: "region",
+    relatedEventSlugs: ["dequeen-sep-20-2026", "clark-county-multi-church-tour-2026-09-20"],
     fieldAttendance: "confirmed",
   }),
   campaignStop({

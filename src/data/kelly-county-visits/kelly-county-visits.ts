@@ -5211,8 +5211,22 @@ const kellyCampaignStopsSource: KellyCampaignStop[] = [
     includeOnPublicPage: true,
     confidence: "confirmed",
     notes:
-      "Campaign calendar Sun Sep 20 4:00-6:00 p.m. Dequeen. Venue not on the block. Same day all-day Arkadelphia hold and Jacksonville Festiville ledger date — confirm the afternoon stop. /events/dequeen-sep-20-2026",
+      "Campaign calendar Sun Sep 20 4:00-6:00 p.m. Dequeen. Venue not on the block. Same day all-day Arkadelphia hold and Jacksonville Festiville ledger date — confirm the afternoon stop. Evening travel: Becky's Texarkana 5:00 p.m. /events/dequeen-sep-20-2026",
     sourceType: "calendar",
+  },
+  {
+    id: "manual-2026-09-20-beckys-texarkana",
+    publicTitle: "Travel to Becky's — Texarkana",
+    date: "2026-09-20",
+    title: "Travel to Becky's Texarkana",
+    city: "Texarkana",
+    counties: ["Miller"],
+    status: "scheduled",
+    includeOnPublicPage: true,
+    confidence: "confirmed",
+    notes:
+      "Steve 2026-09-08: travel to Becky's in Texarkana Sunday 5:00 p.m. Private destination — do not invent a street. Same afternoon: De Queen 4:00-6:00 p.m. /events/beckys-texarkana-2026-09-20",
+    sourceType: "manual",
   },
   {
     id: "manual-2026-09-21-little-river-charlotte",

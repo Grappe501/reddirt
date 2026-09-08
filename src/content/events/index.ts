@@ -1306,7 +1306,7 @@ const movementEventsCore: EventItem[] = [
     ],
     mapCoordinates: { lat: 34.736, lng: -92.276 },
     mapPinQuality: "exact",
-    fieldAttendance: "confirmed",
+    fieldAttendance: "caution",
   },
   {
     slug: "jcdw-meet-the-candidates-2026",
@@ -1348,7 +1348,7 @@ const movementEventsCore: EventItem[] = [
     ],
     mapCoordinates: { lat: 34.2209, lng: -92.0036 },
     mapPinQuality: "region",
-    fieldAttendance: "tentative",
+    fieldAttendance: "caution",
   },
   {
     slug: "eddie-mae-herron-pocahontas-2026",
@@ -1389,7 +1389,7 @@ const movementEventsCore: EventItem[] = [
     ],
     mapCoordinates: { lat: 36.2602, lng: -90.9814 },
     mapPinQuality: "exact",
-    fieldAttendance: "confirmed",
+    fieldAttendance: "caution",
   },
   {
     slug: "garland-library-county-candidates-forum-2026",
@@ -1480,7 +1480,7 @@ const movementEventsCore: EventItem[] = [
     ],
     mapCoordinates: { lat: 34.507, lng: -93.056 },
     mapPinQuality: "exact",
-    fieldAttendance: "tentative",
+    fieldAttendance: "caution",
   },
   {
     slug: "garland-library-hot-springs-city-forum-2026",
@@ -3327,8 +3327,8 @@ const movementEventsCore: EventItem[] = [
     whatToExpect: ["4:00–6:00 p.m. Central", "Venue TBA"],
     whoItsFor: "Sevier County neighbors once a room is posted.",
     organizerNote:
-      "Campaign calendar audit 2026-09-02. Same day: arkadelphia-sep-20-2026; locked-2026-09-20-jacksonville-festiville. Next day: little-river-charlotte-sep-21-2026.",
-    relatedEventSlugs: ["arkadelphia-sep-20-2026", "little-river-charlotte-sep-21-2026"],
+      "Campaign calendar audit 2026-09-02. Same day: arkadelphia-sep-20-2026; locked-2026-09-20-jacksonville-festiville; travel to Becky's Texarkana 5:00 p.m. Next day: little-river-charlotte-sep-21-2026.",
+    relatedEventSlugs: ["arkadelphia-sep-20-2026", "little-river-charlotte-sep-21-2026", "beckys-texarkana-2026-09-20"],
     relatedResourceHrefs: [{ label: "Get involved", href: "/get-involved" }],
     mapCoordinates: { lat: 34.0379, lng: -94.3413 },
     mapPinQuality: "region",

@@ -148,7 +148,45 @@ export const CAMPAIGN_APPROACH_BY_SLUG: Record<string, CampaignApproachDecision>
     note: "Redundant with the Clark County Multi-Church Tour.",
     ledgerIds: ["manual-2026-09-20-arkadelphia"],
   },
+  "washington-county-rodeo-rally-2026": {
+    approach: "removed",
+    reason: "never_confirmed",
+    note: "Never confirmed.",
+    ledgerIds: ["manual-2026-09-22-rodeo-rally-washington"],
+  },
+  "crittenden-prairie-arkansas-swing-2026-09-23": {
+    approach: "removed",
+    reason: "never_confirmed",
+    note: "Never confirmed.",
+    ledgerIds: ["presence-2026-09-23-crittenden-prairie-arkansas-county-swing"],
+  },
+  "owlfest-mcgehee-2026": {
+    approach: "removed",
+    reason: "never_confirmed",
+    note: "Never confirmed.",
+    ledgerIds: ["manual-2026-09-26-owlfest-mcgehee"],
+  },
+  "harrison-balloon-fest-2026-09-28": {
+    approach: "removed",
+    reason: "never_confirmed",
+    note: "Bad information.",
+    ledgerIds: ["locked-2026-09-28-harrison-balloon-fest"],
+  },
+  "dppc-gigis-rally-2026": {
+    approach: "removed",
+    reason: "conflict",
+    note: "Conflict.",
+    ledgerIds: ["manual-2026-09-28-dppc-gigis-rally"],
+  },
 };
+
+/** Steve 2026-09-08: September 29 four-way stays on the board as red caution. */
+const CAUTION_SLUGS = new Set([
+  "eddie-mae-herron-pocahontas-2026",
+  "evening-with-acasa-2026",
+  "jcdw-meet-the-candidates-2026",
+  "garland-library-state-federal-candidates-forum-2026",
+]);
 
 export function campaignApproachForSlug(slug: string): CampaignApproachDecision | undefined {
   return CAMPAIGN_APPROACH_BY_SLUG[slug];
@@ -161,11 +199,20 @@ const DATE_LOCKS: Record<string, { startsAt: string; endsAt: string }> = {
   },
 };
 
+function withSept29Caution(event: EventItem): EventItem {
+  if (!CAUTION_SLUGS.has(event.slug)) return event;
+  return {
+    ...event,
+    fieldAttendance: "caution",
+    organizerNote: `${event.organizerNote}\n\nSteve pass 2026-09-08: red caution. Four public stops on September 29 — confirm which one Kelly makes.`,
+  };
+}
+
 export function applyCampaignApproach(event: EventItem): EventItem {
   const locked = DATE_LOCKS[event.slug];
   const next = locked ? { ...event, startsAt: locked.startsAt, endsAt: locked.endsAt } : event;
   const decision = CAMPAIGN_APPROACH_BY_SLUG[next.slug];
-  if (!decision) return next;
+  if (!decision) return withSept29Caution(next);
   if (decision.approach === "removed") {
     return {
       ...next,
@@ -184,7 +231,7 @@ export function applyCampaignApproach(event: EventItem): EventItem {
       organizerNote: `${next.organizerNote}\n\nSteve pass 2026-09-07: archived. ${decision.note}`,
     };
   }
-  return { ...next, campaignApproach: decision.approach };
+  return withSept29Caution({ ...next, campaignApproach: decision.approach });
 }
 
 export function isPublicCalendarEvent(event: EventItem): boolean {

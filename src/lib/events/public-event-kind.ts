@@ -136,7 +136,7 @@ export function eventBoardChromeClass(
     return "border-2 border-orange-300 bg-orange-100";
   }
   if (event.fieldAttendance === "caution") {
-    return "border-2 border-amber-500 bg-amber-50";
+    return "border-2 border-red-600 bg-red-50";
   }
   if (event.fieldAttendance === "confirmed") {
     return "border-2 border-kelly-navy/70 bg-kelly-navy/[0.06]";
