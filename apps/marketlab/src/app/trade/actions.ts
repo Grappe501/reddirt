@@ -1,6 +1,5 @@
 "use server";
 
-import { randomUUID } from "node:crypto";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { OrderSide } from "@prisma/client";
@@ -23,6 +22,7 @@ export async function placeMarketOrder(formData: FormData) {
   const quantity = String(formData.get("quantity") || "").trim();
   const sideRaw = String(formData.get("side") || "BUY").toUpperCase();
   const side = sideRaw === "SELL" ? OrderSide.SELL : OrderSide.BUY;
+  const idempotencyKey = String(formData.get("idempotencyKey") || "").trim();
 
   try {
     await executeMarketOrder({
@@ -30,7 +30,7 @@ export async function placeMarketOrder(formData: FormData) {
       symbol,
       quantity,
       side,
-      idempotencyKey: randomUUID(),
+      idempotencyKey,
     });
   } catch (error) {
     const message = error instanceof Error ? error.message : "Order failed";
@@ -39,5 +39,6 @@ export async function placeMarketOrder(formData: FormData) {
 
   revalidatePath("/dashboard");
   revalidatePath("/trade");
+  revalidatePath("/leaderboard");
   redirect(`/trade?symbol=${encodeURIComponent(symbol)}&filled=1&competition=${DEFAULT_COMPETITION_SLUG}`);
 }
