@@ -1,6 +1,7 @@
 import type { DecisionSimulationOpeningInput } from "./contracts";
 import type { DecisionSimulationActorContext } from "./actor-context";
 import { buildActorModelPromptContext } from "./actor-context";
+import { formatCorrespondenceIntakePacket } from "./correspondence-intake/compose";
 import { DECISION_SIMULATION_DOCTRINE } from "./doctrine";
 import { DECISION_SIMULATION_PROMPT_VERSION } from "./structured-output";
 
@@ -42,6 +43,7 @@ export function buildDecisionSimulationUserPrompt(
     `Stakes: ${input.stakes ?? "Not supplied"}`,
     `Urgency: ${input.urgency ?? "Not supplied"}`,
     `Additional context: ${input.context ?? "None supplied"}`,
+    formatCorrespondenceIntakePacket(input.intake),
     "",
     buildActorModelPromptContext(actorContext),
     "",

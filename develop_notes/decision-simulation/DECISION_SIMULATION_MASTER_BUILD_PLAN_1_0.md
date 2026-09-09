@@ -294,7 +294,7 @@ Updated 2026-09-09 from the live `dec-sim` product. Detail: `DEC_SIM_V1_V2_ROADM
 - Phase 3 OpenAI Intelligence: **functional**
 - Phase 4 Actor Modeling: **substantially built** (research catalog live; not V2 digital twins)
 - Phase 5 Six-Move Engine: **open / current** (queued ensembles, writing packets, Alternative Futures lanes, and Hill vote adapter are capabilities; phase not closed)
-- Phase 6 Correspondence Intake: **started, thin**
+- Phase 6 Correspondence Intake: **current capability** (`DEC-SIM-CORRESPONDENCE-INTAKE-1.0`); paste structure live; no connectors; phase not closed
 - Phase 7 Decision Dashboard: **preview capability pulled forward** (not closed)
 - Phase 8 Alternative Futures: **capability started inside Phase 5** (`DEC-SIM-ALTERNATIVE-FUTURES-1.0`); not a phase close
 - Phase 9 Memory & Evidence: **scaffold only**
@@ -306,4 +306,4 @@ V2 (voice engine, digital twins, multi-actor game theory, ensemble decision scie
 
 ## Next Build
 
-Phase 5 remains open. Alternative Futures lanes and a Hill vote-evidence adapter are live capabilities. They do not close Phase 5 or Phase 8. Next work stays on making 100/1,000-run jobs informative across the six futures once a real Hill vote corpus is attached. Then resume the V1 spine.
+Phase 5 remains open. Current named slice: `DEC-SIM-CORRESPONDENCE-INTAKE-1.0`. Paste-first channel structure is a Phase 6 capability, not a phase close. Next after this: Phase 7 dashboard intelligence. No mailbox connectors.

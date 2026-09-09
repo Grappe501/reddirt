@@ -10,6 +10,13 @@ import {
   mergePersonalityCatalog,
   personalityToOpeningActor,
 } from "@/lib/agents/decision-simulation/personality-catalog";
+import type { DecisionSimulationChannel } from "@/lib/agents/decision-simulation/contracts";
+import {
+  CHANNEL_INTAKE_FIELDS,
+  composeCorrespondenceOpening,
+  parseCorrespondencePaste,
+  type IntakeFieldKey,
+} from "@/lib/agents/decision-simulation/correspondence-intake";
 import { PersonalityIntelligence } from "./PersonalityIntelligence";
 import "./mission-lab.css";
 
@@ -92,7 +99,19 @@ type ApiResponse = {
 };
 
 const PRESETS: RunPreset[] = [1, 10, 100, 1000];
-const CHANNELS = ["EMAIL","SOCIAL","SMS","PRESS_STATEMENT","PUBLIC_STATEMENT","FUNDRAISING","DEBATE","SPEECH","MEMO","STRATEGIC_DECISION","CUSTOM"];
+const CHANNELS: DecisionSimulationChannel[] = [
+  "EMAIL",
+  "SOCIAL",
+  "SMS",
+  "PRESS_STATEMENT",
+  "PUBLIC_STATEMENT",
+  "FUNDRAISING",
+  "DEBATE",
+  "SPEECH",
+  "MEMO",
+  "STRATEGIC_DECISION",
+  "CUSTOM",
+];
 const CUSTOM_KEY = "dec-sim-custom-personalities-v1";
 const DEPTH_META: Record<RunPreset, { title: string; hint: string }> = {
   1: { title: "Quick look", hint: "Immediate" },
@@ -120,7 +139,10 @@ export function DecisionSimulatorClient() {
   const [message, setMessage] = useState("");
   const [objective, setObjective] = useState("");
   const [context, setContext] = useState("");
-  const [channel, setChannel] = useState("EMAIL");
+  const [channel, setChannel] = useState<DecisionSimulationChannel>("EMAIL");
+  const [intakeFields, setIntakeFields] = useState<Partial<Record<IntakeFieldKey, string>>>({});
+  const [stakes, setStakes] = useState<"LOW" | "MEDIUM" | "HIGH" | "CRITICAL">("HIGH");
+  const [urgency, setUrgency] = useState<"LOW" | "MEDIUM" | "HIGH">("MEDIUM");
   const [runs, setRuns] = useState<number>(10);
   const [customRuns, setCustomRuns] = useState("1000");
   const [loading, setLoading] = useState(false);
@@ -216,7 +238,13 @@ export function DecisionSimulatorClient() {
     try {
       const operatorActor = personalityToOpeningActor(operator);
       const counterpartyActor = personalityToOpeningActor(counterparty);
+      const composed = composeCorrespondenceOpening({
+        channel,
+        paste: message,
+        fieldOverrides: intakeFields,
+      });
       const dossier = [
+        composed.intakePacket,
         `OPERATOR PERSONALITY: ${operator.name} (${operator.version}, ${operator.badge}).`,
         operator.summary,
         `COUNTERPARTY PERSONALITY: ${counterparty.name} (${counterparty.version}, ${counterparty.badge}).`,
@@ -239,14 +267,15 @@ export function DecisionSimulatorClient() {
           confirmExpensive,
           confirmThousand,
           openingInput: {
-            message,
+            message: composed.message || message,
             channel,
             objective: objective || undefined,
             context: dossier,
             operatorActor,
             counterpartyActor,
-            stakes: "HIGH",
-            urgency: "MEDIUM",
+            stakes,
+            urgency,
+            intake: composed.intake,
           },
         }),
       });
@@ -298,18 +327,61 @@ export function DecisionSimulatorClient() {
         <div className="ml-grid">
           <section className="ml-panel">
             <h2 className="ml-h">01 Opening move</h2>
-            <p className="ml-copy">Nothing is sent. This is advisory simulation only.</p>
-            <label className="ml-label">Opening correspondence
-              <textarea className="ml-area" value={message} onChange={(e) => setMessage(e.target.value)} placeholder="Paste the statement, letter, debate line, or strategic move…" />
-            </label>
+            <p className="ml-copy">Paste-first intake. Nothing is sent. No mailbox connector. Unknown headers stay unknown.</p>
             <div className="ml-row">
               <label className="ml-label">Channel
-                <select className="ml-select" value={channel} onChange={(e) => setChannel(e.target.value)}>
+                <select
+                  className="ml-select"
+                  value={channel}
+                  onChange={(e) => {
+                    const next = e.target.value as DecisionSimulationChannel;
+                    setChannel(next);
+                    const parsed = parseCorrespondencePaste(message, next);
+                    setIntakeFields(parsed.fields);
+                  }}
+                >
                   {CHANNELS.map((item) => <option key={item}>{item}</option>)}
                 </select>
               </label>
               <label className="ml-label">Objective
                 <input className="ml-input" value={objective} onChange={(e) => setObjective(e.target.value)} placeholder="Decision to test" />
+              </label>
+            </div>
+            <label className="ml-label">Paste correspondence
+              <textarea
+                className="ml-area"
+                value={message}
+                onChange={(e) => {
+                  const next = e.target.value;
+                  setMessage(next);
+                  const parsed = parseCorrespondencePaste(next, channel);
+                  setIntakeFields((prev) => ({ ...prev, ...parsed.fields }));
+                }}
+                placeholder={channel === "EMAIL" ? "From:\nTo:\nSubject:\n\nPaste the letter…" : "Paste the statement, debate line, speech excerpt, or memo…"}
+              />
+            </label>
+            <div className="ml-row">
+              {CHANNEL_INTAKE_FIELDS[channel].map((field) => (
+                <label key={field.key} className="ml-label">{field.label}
+                  <input
+                    className="ml-input"
+                    value={intakeFields[field.key] ?? ""}
+                    onChange={(e) => setIntakeFields((prev) => ({ ...prev, [field.key]: e.target.value }))}
+                    placeholder="unknown unless pasted or typed"
+                  />
+                </label>
+              ))}
+            </div>
+            <div className="ml-row">
+              <label className="ml-label">Stakes
+                <select className="ml-select" value={stakes} onChange={(e) => setStakes(e.target.value as typeof stakes)}>
+                  {["LOW", "MEDIUM", "HIGH", "CRITICAL"].map((item) => <option key={item}>{item}</option>)}
+                </select>
+              </label>
+              <label className="ml-label">Urgency
+                <select className="ml-select" value={urgency} onChange={(e) => setUrgency(e.target.value as typeof urgency)}>
+                  {["LOW", "MEDIUM", "HIGH"].map((item) => <option key={item}>{item}</option>)}
+                </select>
               </label>
             </div>
             <label className="ml-label">Context

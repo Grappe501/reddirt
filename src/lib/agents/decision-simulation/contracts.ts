@@ -1,3 +1,5 @@
+import type { CorrespondenceIntake } from "./correspondence-intake/contracts";
+
 export type DecisionSimulationSide = "OPERATOR" | "COUNTERPARTY";
 
 export type DecisionSimulationMoveKind =
@@ -82,6 +84,7 @@ export interface DecisionSimulationOpeningInput {
   stakes?: "LOW" | "MEDIUM" | "HIGH" | "CRITICAL";
   urgency?: "LOW" | "MEDIUM" | "HIGH";
   context?: string;
+  intake?: CorrespondenceIntake;
 }
 
 export interface DecisionSimulationRun {

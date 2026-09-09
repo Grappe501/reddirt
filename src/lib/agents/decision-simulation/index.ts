@@ -33,6 +33,7 @@ export { scoreVoiceSimilarity } from "./writing-intelligence/similarity";
 export { assignAlternativeFuture } from "./alternative-futures/assign";
 export { ALTERNATIVE_FUTURES } from "./alternative-futures/contracts";
 export { scoreRobustnessAcrossFutures } from "./alternative-futures/robustness";
+export { parseCorrespondencePaste, composeCorrespondenceOpening, CHANNEL_INTAKE_FIELDS } from "./correspondence-intake";
 export {
   jobProgressPercent,
   planQueuedDecisionSimulationJob,
