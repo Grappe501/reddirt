@@ -300,10 +300,10 @@ Updated 2026-09-09 from the live `dec-sim` product. Detail: `DEC_SIM_V1_V2_ROADM
 - Phase 9 Memory & Evidence: **capability started** (campaign pages + media + `DEC-SIM-EVIDENCE-PROVENANCE-1.0`); no evidence graph yet
 - Phase 10 Outcome Learning: **capability started** (`DEC-SIM-OBSERVED-OUTCOME-1.0`); compare + unapplied proposal; not closed
 - Phase 11 Cross-Channel Command Center: **not started**
-- Phase 12 Hardening & Launch: **partial, pulled forward**
+- Phase 12 Hardening & Launch: **partial, pulled forward** (`DEC-SIM-WORKER-CONTINUITY-1.0` started; not closed)
 
 V2 (voice engine, digital twins, multi-actor game theory, ensemble decision science, counterfactual lab, strategic red team, evidence graph, calibration machine) is a shadow roadmap only. Do not derail remaining V1 phases.
 
 ## Next Build
 
-Phase 5 remains open. Phase 10 observed-outcome compare (`DEC-SIM-OBSERVED-OUTCOME-1.0`) is a capability, not a phase close. Named next V1 work is Phase 12 closed-tab worker continuity. No mailbox connectors. No silent outcome writeback.
+Phase 5 remains open. Phase 12 worker continuity (`DEC-SIM-WORKER-CONTINUITY-1.0`) is a capability, not a phase close. Named next V1 work is a hosted 100/1,000 proof. No mailbox connectors. No silent outcome writeback.

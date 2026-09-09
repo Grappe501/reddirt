@@ -11,7 +11,7 @@ const checks: Array<[string, boolean]> = [
   ["run presets include 1/10/100/1000", ["1, 10, 100, 1000"].every((value) => client.includes(value))],
   ["depth labels present", client.includes("QUICK LOOK") || client.includes("Quick look")],
   ["million-run ceiling visible", client.includes("1_000_000") || client.includes("1,000,000")],
-  ["opening correspondence input exists", client.includes("Opening correspondence")],
+  ["opening correspondence input exists", client.includes("Opening move") || client.includes("Opening correspondence")],
   ["counterparty input exists", client.includes("Counterparty")],
   ["actor model selector exists", client.includes("HYPOTHESIS MODEL") && client.includes("Add personality")],
   ["Jones/Hill research pair is defaultable", client.includes("chris-jones-ar02") && client.includes("french-hill-ar02")],

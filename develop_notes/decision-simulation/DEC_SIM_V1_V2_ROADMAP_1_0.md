@@ -3,7 +3,7 @@
 **Status:** Canonical from 2026-09-09. This is the **only** V2 shadow roadmap.  
 **Live product:** https://dec-sim.netlify.app  
 **Parent plan:** `DECISION_SIMULATION_MASTER_BUILD_PLAN_1_0.md`  
-**Next V1 slice:** Phase 12 closed-tab worker continuity / hosted 100/1,000 proof. Phase 10 observed-outcome compare is a started capability, not a phase close.  
+**Next V1 slice:** Hosted 100/1,000 proof on `dec-sim`. Phase 12 worker continuity is a started capability, not a phase close.  
 **Doctrine unchanged:** advisory only; no send; no post; evidence separated from inference; generated language labeled generated.
 
 V1 is no longer a theoretical sequence. We are learning from a live product while we finish the dependable operating system.
@@ -38,13 +38,13 @@ We are still in **Phase 5**. Burt pulled forward pieces of Phases 7, 9, and 12 b
 | 9 Memory & evidence | Provenance-backed recall | **Capability started** | `DEC-SIM-CAMPAIGN-PRIORITIES-1.0`, `DEC-SIM-MEDIA-RESEARCH-1.0`, and `DEC-SIM-EVIDENCE-PROVENANCE-1.0` (tagged claims + operator-attached prior letters). Still no evidence graph, stale-evidence decay, paid-archive completeness, or prior-sim retrieval |
 | 10 Outcome learning | Prediction vs reality | **Capability started** | `DEC-SIM-OBSERVED-OUTCOME-1.0`: attach a public reply, compare frame/future/lexical overlap, store an unapplied model-change proposal. No prompt rewrite. No DB outcome row yet |
 | 11 Cross-channel command | Same engine, many surfaces | **Not started** | Isolated `dec-sim` product. Must stay separate from Kelly send workflows |
-| 12 Hardening & launch | Production OS | **Partial, pulled forward** | Admin gate, rate limit, cost budget, isolation tests, hosted deploy. Remaining: RBAC, audit, privacy review, injection defenses, runbook, closed-tab worker continuity |
+| 12 Hardening & launch | Production OS | **Partial, pulled forward** | Admin gate, rate limit, cost budget, isolation tests, hosted deploy, `DEC-SIM-WORKER-CONTINUITY-1.0` (closed-tab chain + stale-chunk reclaim). Remaining: RBAC, audit, privacy review, injection defenses, runbook, hosted 100/1,000 proof |
 
 ## What Phase 5 still owes
 
 Phase 5 is more sophisticated than originally planned. It is not finished until a 1,000-run job is **informative**, not merely 1,000 slightly different linear conversations.
 
-**Named futures are assigned.** `DEC-SIM-ENSEMBLE-LANE-INTELLIGENCE-1.0` now reports within-lane n, modal share, and a typical sample. Remaining Phase 5 work is proving a hosted 100/1,000-run job is informative in production, plus closed-tab worker continuity (Phase 12). Dashboard intelligence is a Phase 7 capability started (`DEC-SIM-DASHBOARD-INTELLIGENCE-1.0`), not a Phase 5 close.
+**Named futures are assigned.** `DEC-SIM-ENSEMBLE-LANE-INTELLIGENCE-1.0` now reports within-lane n, modal share, and a typical sample. `DEC-SIM-WORKER-CONTINUITY-1.0` keeps queued jobs moving after the tab closes. Remaining Phase 5 work is proving a hosted 100/1,000-run job is informative in production. Dashboard intelligence is a Phase 7 capability started (`DEC-SIM-DASHBOARD-INTELLIGENCE-1.0`), not a Phase 5 close.
 
 Required futures:
 
@@ -68,7 +68,7 @@ Execute in this order. Do not reorder to chase V2.
 3. **Phase 9 — evidence / memory.** Campaign-site priorities, media research, provenance-tagged claims, and operator-attached prior correspondence are started. Still no clickable graph, stale-evidence decay, or prior-sim retrieval. Missing stays missing.
 4. **Phase 10 — observed-outcome learning.** Capability started (`DEC-SIM-OBSERVED-OUTCOME-1.0`). Compare and unapplied proposal are live. Remaining: persist to the ensemble job, operator-approved personality versioning. No silent prompt drift.
 5. **Phase 11 — cross-channel command center.** Same engine on email, text, social, press, debate, fundraising, and internal strategy. Simulation never sends.
-6. **Phase 12 — production hardening. Current named remainder.** Closed-tab worker continuity so a 100/1,000 job keeps moving after the tab closes. Then RBAC, audit log, privacy review, prompt-injection defenses, operator runbook, production readiness review.
+6. **Phase 12 — production hardening.** Capability started (`DEC-SIM-WORKER-CONTINUITY-1.0`). Remaining: hosted 100/1,000 proof, RBAC, audit log, privacy review, prompt-injection defenses, operator runbook, production readiness review.
 
 Phase 4 remains open for additional researched personalities. Adding a personality is a catalog update, not a V2 digital twin.
 
@@ -276,6 +276,10 @@ V1 reports first-response modal share inside each named future. Clustering full 
 
 V1 attaches one public reply and compares it to the predicted branch. Multi-outcome calibration, embeddings, accuracy-over-time charts, and automatic personality promotion remain V2-8 / V2-35. Do not auto-apply a model change here.
 
+### V2-36 Dedicated background worker
+
+V1 self-chains `/work` after each chunk and reclaims stale RUNNING rows. A 15-minute Netlify Background Function, a standing campaign-site cron, or a separate queue worker remains V2. Do not add a kgrappe cron here.
+
 ## Boundary rules (agents)
 
 1. If a request improves Alternative Futures, intake, dashboard intelligence, evidence, outcome attach, or hardening — it is V1.
@@ -288,4 +292,4 @@ V1 attaches one public reply and compares it to the predicted branch. Multi-outc
 
 ## Next operator click
 
-Phase 5 remains open. Alternative Futures, intake, dashboard intelligence, campaign-site priorities, media research, evidence provenance, ensemble-lane intelligence, and observed-outcome compare are capabilities, not phase closes. Named next V1 work is Phase 12 closed-tab worker continuity. Do not start V2-21+.
+Phase 5 remains open. Alternative Futures, intake, dashboard intelligence, campaign-site priorities, media research, evidence provenance, ensemble-lane intelligence, observed-outcome compare, and worker continuity are capabilities, not phase closes. Named next V1 work is a hosted 100/1,000 proof. Do not start V2-21+.

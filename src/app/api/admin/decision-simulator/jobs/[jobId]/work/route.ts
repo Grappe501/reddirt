@@ -1,6 +1,7 @@
-import { NextResponse } from "next/server";
+import { after, NextResponse } from "next/server";
 import { assertAdminApi } from "@/lib/admin/require-admin";
 import {
+  decisionSimWorkerOrigin,
   isDecisionSimWorkerAuthorized,
   kickDecisionSimulationWorker,
   processDecisionSimulationJobChunk,
@@ -20,8 +21,10 @@ export async function POST(request: Request, context: { params: Promise<{ jobId:
   try {
     const result = await processDecisionSimulationJobChunk(jobId);
     if (!result.done && result.job) {
-      const origin = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") || new URL(request.url).origin;
-      await kickDecisionSimulationWorker(jobId, origin);
+      const origin = decisionSimWorkerOrigin(request);
+      after(() => {
+        void kickDecisionSimulationWorker(jobId, origin);
+      });
     }
     return NextResponse.json({
       ok: result.ok,

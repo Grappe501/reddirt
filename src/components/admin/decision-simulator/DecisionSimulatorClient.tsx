@@ -200,7 +200,6 @@ export function DecisionSimulatorClient() {
     let cancelled = false;
     const tick = async () => {
       try {
-        void fetch(`/api/admin/decision-simulator/jobs/${job.id}/work`, { method: "POST" });
         const res = await fetch(`/api/admin/decision-simulator/jobs/${job.id}`);
         const data = (await res.json()) as { job?: JobView };
         if (!cancelled && data.job) {
@@ -520,7 +519,7 @@ export function DecisionSimulatorClient() {
               <input className="ml-input" value={customRuns} onChange={(e) => setCustomRuns(e.target.value)} inputMode="numeric" />
               <button type="button" className="ml-ghost" onClick={() => setRuns(Math.floor(Math.max(1, Math.min(1_000_000, Number(customRuns) || 1))))}>CUSTOM</button>
             </div>
-            <p className="ml-copy">1 and 10 execute live. 100 and 1,000 are queued jobs. Ceiling 1,000,000 is architecture only.</p>
+            <p className="ml-copy">1 and 10 execute live. 100 and 1,000 are queued jobs. Ceiling 1,000,000 is architecture only. Queued jobs keep moving after this tab closes. Stale chunks are reclaimed after two minutes.</p>
 
             {runs >= 100 && (
               <div className="ml-warn">

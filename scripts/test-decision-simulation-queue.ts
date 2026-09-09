@@ -7,6 +7,7 @@ import {
   buildInitialJobState,
   estimateDecisionSimulationCost,
   getDecisionSimulationQueueConfig,
+  isChunkClaimable,
   jobProgressPercent,
   mergeFrameCounts,
   planQueuedDecisionSimulationJob,
@@ -108,6 +109,17 @@ function main() {
   assert(cfg.maxLiveRuns === 10 && cfg.queueConcurrency === 1 && cfg.maxRunsPerJob === 1000, "conservative queue defaults");
   assert(cfg.chunkSize100 === 1 && cfg.chunkSize1000 === 1, "Netlify-safe chunk size defaults to 1");
   assert(cfg.jobBudgetUsd === 2, "default job budget is conservative");
+
+  const now = Date.parse("2026-09-09T16:00:00.000Z");
+  assert(isChunkClaimable({ status: "PENDING", claimedAt: null }, now), "pending chunks stay claimable");
+  assert(
+    isChunkClaimable({ status: "RUNNING", claimedAt: "2026-09-09T15:57:00.000Z" }, now),
+    "stale running chunks are reclaimed after two minutes",
+  );
+  assert(
+    !isChunkClaimable({ status: "RUNNING", claimedAt: "2026-09-09T15:59:00.000Z" }, now),
+    "fresh running chunks are not stolen",
+  );
 
   console.log("OK — Decision Simulator queue execution gates passed");
 }

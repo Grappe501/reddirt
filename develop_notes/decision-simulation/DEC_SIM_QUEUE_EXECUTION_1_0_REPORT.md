@@ -86,7 +86,7 @@ https://dec-sim.netlify.app
 
 ## Blockers
 
-- Worker progress on Netlify depends on create-time kick plus dashboard `/work` heartbeat. A closed tab can pause a long job until the next authenticated `/work` call.
+- Worker progress now self-chains after each chunk (`DEC-SIM-WORKER-CONTINUITY-1.0`). A closed tab should not pause a queued job. Stale RUNNING chunks are reclaimed after two minutes. Hosted 100/1,000 proof is still outstanding.
 - 10-run inline jobs can still approach the 26s function budget.
 - Hosted campaign seed remains skipped (`SKIP_DB_SEED=1`); do not “fix” `County.createdAt` from this slice.
 

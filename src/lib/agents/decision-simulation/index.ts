@@ -57,6 +57,7 @@ export {
   upsertOutcome,
   normalizeDashboardMember,
 } from "./dashboard-intelligence";
+export { isChunkClaimable, STALE_CHUNK_CLAIM_MINUTES, WORKER_CONTINUITY_VERSION } from "./worker-continuity";
 export {
   jobProgressPercent,
   planQueuedDecisionSimulationJob,

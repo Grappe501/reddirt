@@ -9,33 +9,26 @@ import {
   completeDecisionSimulationChunk,
   getDecisionSimulationJob,
   getDecisionSimulationJobSnapshot,
+  listActiveDecisionSimulationJobIds,
 } from "./jobs";
 import type { DecisionSimulationActorModel } from "./actor-model";
 import type { DecisionSimulationOpeningInput } from "./contracts";
+import { kickDecisionSimulationWorker } from "./worker-continuity/kick";
 
-export function resolveDecisionSimWorkerSecret(): string {
-  return process.env.DECISION_SIM_WORKER_SECRET?.trim() || process.env.ADMIN_SECRET?.trim() || "";
-}
+export {
+  decisionSimWorkerOrigin,
+  isDecisionSimWorkerAuthorized,
+  kickDecisionSimulationWorker,
+  resolveDecisionSimWorkerSecret,
+} from "./worker-continuity/kick";
 
-export function isDecisionSimWorkerAuthorized(request: Request): boolean {
-  const expected = resolveDecisionSimWorkerSecret();
-  if (!expected) return false;
-  const header = request.headers.get("x-decision-sim-worker")?.trim();
-  return Boolean(header && header === expected);
-}
-
-export async function kickDecisionSimulationWorker(jobId: string, origin: string) {
-  const secret = resolveDecisionSimWorkerSecret();
-  if (!secret) return;
-  const url = `${origin.replace(/\/$/, "")}/api/admin/decision-simulator/jobs/${jobId}/work`;
-  void fetch(url, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "x-decision-sim-worker": secret,
-    },
-    body: JSON.stringify({ jobId }),
-  }).catch(() => {});
+export async function sweepActiveDecisionSimulationWorkers(origin: string) {
+  const ids = await listActiveDecisionSimulationJobIds(4);
+  const kicks = [];
+  for (const jobId of ids) {
+    kicks.push(await kickDecisionSimulationWorker(jobId, origin));
+  }
+  return { jobIds: ids, kicks };
 }
 
 export async function processDecisionSimulationJobChunk(jobId: string) {

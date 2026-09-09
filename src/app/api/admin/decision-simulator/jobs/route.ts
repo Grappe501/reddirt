@@ -1,4 +1,4 @@
-import { NextResponse } from "next/server";
+import { after, NextResponse } from "next/server";
 import { assertAdminApi } from "@/lib/admin/require-admin";
 import { clientIp, rateLimit } from "@/lib/rate-limit";
 import { runDecisionSimulationEnsemble } from "@/lib/agents/decision-simulation";
@@ -125,7 +125,10 @@ export async function POST(request: Request) {
     }
 
     if (created.kickWorker && created.job) {
-      await kickDecisionSimulationWorker(created.job.id, requestOrigin(request));
+      const origin = requestOrigin(request);
+      after(() => {
+        void kickDecisionSimulationWorker(created.job.id, origin);
+      });
     }
 
     return NextResponse.json({

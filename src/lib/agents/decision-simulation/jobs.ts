@@ -182,6 +182,17 @@ export async function countActiveDecisionSimulationJobs(): Promise<number> {
   return Number(rows[0]?.n ?? 0);
 }
 
+export async function listActiveDecisionSimulationJobIds(limit = 4): Promise<string[]> {
+  const rows = await prisma.$queryRaw<Array<{ id: string }>>`
+    SELECT id
+    FROM public.decision_simulation_ensemble
+    WHERE status IN ('QUEUED', 'RUNNING', 'PARTIAL')
+    ORDER BY updated_at ASC
+    LIMIT ${Math.max(1, Math.min(8, Math.floor(limit)))}
+  `;
+  return rows.map((row) => row.id);
+}
+
 export async function createDecisionSimulationJob(input: JobCreateInput) {
   const cfg = getDecisionSimulationQueueConfig();
   const message = input.openingInput?.message?.trim();
@@ -399,8 +410,10 @@ export async function claimNextDecisionSimulationChunk(jobId: string, workerId: 
   const chunks = await prisma.$queryRaw<ChunkRow[]>`
     SELECT * FROM public.decision_simulation_ensemble_chunk
     WHERE ensemble_id = ${jobId}
-      AND status IN ('PENDING', 'FAILED')
-      AND (claimed_at IS NULL OR claimed_at < NOW() - INTERVAL '2 minutes')
+      AND (
+        (status IN ('PENDING', 'FAILED') AND (claimed_at IS NULL OR claimed_at < NOW() - INTERVAL '2 minutes'))
+        OR (status = 'RUNNING' AND claimed_at IS NOT NULL AND claimed_at < NOW() - INTERVAL '2 minutes')
+      )
     ORDER BY chunk_ordinal ASC
     LIMIT 1
   `;
@@ -411,7 +424,11 @@ export async function claimNextDecisionSimulationChunk(jobId: string, workerId: 
     UPDATE public.decision_simulation_ensemble_chunk
     SET status = 'RUNNING', claimed_at = NOW(), claimed_by = ${workerId},
         attempts = attempts + 1, started_at = COALESCE(started_at, NOW())
-    WHERE id = ${chunk.id} AND status IN ('PENDING', 'FAILED')
+    WHERE id = ${chunk.id}
+      AND (
+        status IN ('PENDING', 'FAILED')
+        OR (status = 'RUNNING' AND claimed_at IS NOT NULL AND claimed_at < NOW() - INTERVAL '2 minutes')
+      )
   `;
   await prisma.$executeRaw`
     UPDATE public.decision_simulation_ensemble
