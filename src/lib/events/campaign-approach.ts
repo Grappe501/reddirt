@@ -350,6 +350,11 @@ export const CAMPAIGN_APPROACH_BY_SLUG: Record<string, CampaignApproachDecision>
     note: "Steve 2026-09-08: take the Berryville Chamber awards banquet off the public calendar.",
     ledgerIds: ["manual-2026-10-22-berryville-chamber-awards"],
   },
+  "greers-ferry-event-2026-10-23": {
+    approach: "removed",
+    reason: "conflict",
+    note: "Steve 2026-09-08: Oct 22-24 is Lake Village / Lake Chicot Fall Fest.",
+  },
   "hob-nob-bentonville-2026": {
     approach: "removed",
     reason: "conflict",
@@ -482,6 +487,7 @@ const CONFIRMED_SLUGS = new Set([
   "olli-for-coffee-2026",
   "fayetteville-fundraiser-2026-10-09",
   "early-voting-begins-2026-10-19",
+  "lake-chicot-fall-fest-2026",
 ]);
 
 function withSept29Caution(event: EventItem): EventItem {

@@ -4201,17 +4201,17 @@ const kellyCampaignStopsSource: KellyCampaignStop[] = [
   },
   {
     id: "presence-2026-10-23-lake-chipotle-fall-fest-3-county-immersion-chipotle-despair-lincoln",
-    publicTitle: "Lake Chicot Fall Fest — Chicot, Desha, Lincoln immersion",
-    date: "2026-10-23",
-    endDate: "2026-10-26",
+    publicTitle: "Lake Chicot Fall Fest — Lake Village",
+    date: "2026-10-22",
+    endDate: "2026-10-24",
     title: "Lake Chipotle fall fest 3 county Immersion. Chipotle, Despair, Lincoln",
     city: "Lake Village",
-    counties: ["Chicot", "Desha", "Lincoln"],
+    counties: ["Chicot"],
     status: "scheduled",
     includeOnPublicPage: true,
-    confidence: "likely",
+    confidence: "confirmed",
     notes:
-      "Campaign calendar: Fri-Sat Oct 23-24 and again Sun-Mon Oct 25-26. Title misspells Chicot/Desha. Town and festival grounds TBA — Lake Village is a pin only. Same weekend: Kevin weekend in Greers (private); Bean Fest Mountain View Sat Oct 24; Ponca Color Fest Oct 25. /events/lake-chicot-fall-fest-2026",
+      "Steve 2026-09-08: travel to Lake Village Thursday night Oct 22, return Saturday morning Oct 24. Friday is Lake Chicot Fall Fest. Grounds TBA. Not the old Oct 23-26 Desha/Lincoln span. /events/lake-chicot-fall-fest-2026",
     sourceType: "calendar",
   },
   {
