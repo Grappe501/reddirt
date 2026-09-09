@@ -2,8 +2,13 @@ import { NextResponse } from "next/server";
 import { assertAdminApi } from "@/lib/admin/require-admin";
 import { clientIp, rateLimit } from "@/lib/rate-limit";
 import { runDecisionSimulationEnsemble } from "@/lib/agents/decision-simulation";
+import type { DecisionSimulationActorModel } from "@/lib/agents/decision-simulation/actor-model";
 import { buildGenericActorModel } from "@/lib/agents/decision-simulation/generic-actor";
-import { getSavedDecisionSimulationActor } from "@/lib/agents/decision-simulation/saved-actors";
+import {
+  GENERIC_PERSONALITY_ID,
+  getBuiltInPersonality,
+  resolvePersonality,
+} from "@/lib/agents/decision-simulation/personality-catalog";
 import { completeDecisionSimulationChunk, createDecisionSimulationJob, getDecisionSimulationJob } from "@/lib/agents/decision-simulation/jobs";
 import { prisma } from "@/lib/db";
 import { kickDecisionSimulationWorker } from "@/lib/agents/decision-simulation/worker";
@@ -37,24 +42,38 @@ export async function POST(request: Request) {
       openingInput: Parameters<typeof createDecisionSimulationJob>[0]["openingInput"];
       requestedRuns: number;
       actorModelId?: string;
+      actorModel?: DecisionSimulationActorModel;
+      operatorPersonalityId?: string;
+      counterpartyPersonalityId?: string;
       confirmExpensive?: boolean;
       confirmThousand?: boolean;
     };
 
-    let actorModel = buildGenericActorModel(body.openingInput);
-    if (body.actorModelId && body.actorModelId !== "generic") {
-      const saved = await getSavedDecisionSimulationActor(body.actorModelId);
-      if (saved) {
-        actorModel = {
-          ...actorModel,
-          actorId: saved.id,
-          actorName: saved.name,
-          version: saved.version ?? actorModel.version,
-          effectiveAt: saved.effectiveAt ?? actorModel.effectiveAt,
-          description:
-            "Saved actor model selected. Behavioral details remain a hypothesis unless a researched profile is attached to this record.",
-        };
-      }
+    const counterpartyId = body.counterpartyPersonalityId ?? body.actorModelId;
+    const builtInCounterparty = getBuiltInPersonality(counterpartyId);
+    const counterparty = resolvePersonality(counterpartyId);
+    const operator = resolvePersonality(body.operatorPersonalityId);
+    const actorModel =
+      builtInCounterparty && builtInCounterparty.id !== GENERIC_PERSONALITY_ID
+        ? { ...builtInCounterparty.model, actorId: builtInCounterparty.id }
+        : isUsableActorModel(body.actorModel)
+          ? {
+              ...body.actorModel,
+              actorId: counterpartyId || body.actorModel.actorId,
+              actorName: String(body.actorModel.actorName || counterparty.name).slice(0, 120),
+            }
+          : buildGenericActorModel(body.openingInput);
+    if (body.openingInput) {
+      body.openingInput.operatorActor = body.openingInput.operatorActor ?? {
+        name: operator.name,
+        actorType: "PERSON",
+        description: operator.office,
+      };
+      body.openingInput.counterpartyActor = body.openingInput.counterpartyActor ?? {
+        name: counterparty.name,
+        actorType: "PERSON",
+        description: counterparty.office,
+      };
     }
 
     const created = await createDecisionSimulationJob({
@@ -120,4 +139,14 @@ export async function POST(request: Request) {
     const message = error instanceof Error ? error.message : "Unable to create simulation job.";
     return NextResponse.json({ ok: false, error: message }, { status: 500 });
   }
+}
+
+function isUsableActorModel(value: DecisionSimulationActorModel | undefined): value is DecisionSimulationActorModel {
+  return Boolean(
+    value &&
+      typeof value.actorName === "string" &&
+      value.actorName.trim() &&
+      Array.isArray(value.preferredFrames) &&
+      Array.isArray(value.primaryIncentives),
+  );
 }

@@ -14,6 +14,15 @@ export * from "./queue-config";
 export * from "./cost-estimate";
 export * from "./generic-actor";
 export {
+  listBuiltInPersonalities,
+  getBuiltInPersonality,
+  mergePersonalityCatalog,
+  resolvePersonality,
+  personalityToOpeningActor,
+  GENERIC_PERSONALITY_ID,
+} from "./personality-catalog";
+export type { CatalogPersonality, PersonalityRole } from "./personality-catalog";
+export {
   jobProgressPercent,
   planQueuedDecisionSimulationJob,
   buildInitialJobState,

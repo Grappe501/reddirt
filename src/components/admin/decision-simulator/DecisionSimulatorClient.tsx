@@ -3,6 +3,14 @@
 import { useEffect, useMemo, useState } from "react";
 import { depthLabel } from "@/lib/agents/decision-simulation/queue-config";
 import { estimateDecisionSimulationCost, formatUsd } from "@/lib/agents/decision-simulation/cost-estimate";
+import {
+  BUILT_IN_PERSONALITIES,
+  type CatalogPersonality,
+  genericPersonality,
+  mergePersonalityCatalog,
+  personalityToOpeningActor,
+} from "@/lib/agents/decision-simulation/personality-catalog";
+import "./mission-lab.css";
 
 type RunPreset = 1 | 10 | 100 | 1000;
 type Move = {
@@ -21,12 +29,7 @@ type Member = {
   executiveSummary?: string;
   error?: string;
   moves?: Move[];
-  result?: {
-    run: { moves: Move[] };
-    executiveSummary?: string;
-    strongestRisk?: string;
-    strongestOpportunity?: string;
-  };
+  result?: { run: { moves: Move[] }; executiveSummary?: string };
 };
 type JobView = {
   id: string;
@@ -38,8 +41,6 @@ type JobView = {
   currentChunk: number;
   chunkCount: number;
   tokenUsage: { inputTokens: number; outputTokens: number; totalTokens: number };
-  estimatedCostUsd: number | null;
-  error: string | null;
   architectureOnly?: boolean;
   commandCenter?: {
     simulations: number;
@@ -68,38 +69,19 @@ type EnsembleResult = {
   dominantMove1Frames: Array<{ frame: string; count: number; share: number }>;
   dominantFinalRecommendations: Array<{ recommendation: string; count: number; share: number }>;
   averageConfidence?: number;
-  averageScenarioProbability?: number;
   tokenUsage: { inputTokens: number; outputTokens: number; totalTokens: number };
   representativeRuns: Array<{ ordinal: number; reason: string }>;
 };
-type CostEstimate = {
-  approximateCalls: number;
-  approximateGeneratedMoves: number;
-  tokenRange: { min: number; max: number };
-  costRangeUsd: { min: number; max: number };
-  exact: false;
-};
 type ApiResponse = {
   ok: boolean;
-  execution?: "COMPLETE" | "QUEUED" | "ARCHITECTURE";
   error?: string;
-  estimate?: CostEstimate;
-  needsConfirm?: boolean;
-  needsSecondConfirm?: boolean;
   job?: JobView;
   result?: EnsembleResult;
-};
-type SavedActor = {
-  id: string;
-  name: string;
-  version: string | null;
-  effectiveAt: string | null;
-  evidenceQuality: string;
-  uncertaintyLevel: string;
 };
 
 const PRESETS: RunPreset[] = [1, 10, 100, 1000];
 const CHANNELS = ["EMAIL","SOCIAL","SMS","PRESS_STATEMENT","PUBLIC_STATEMENT","FUNDRAISING","DEBATE","SPEECH","MEMO","STRATEGIC_DECISION","CUSTOM"];
+const CUSTOM_KEY = "dec-sim-custom-personalities-v1";
 const DEPTH_META: Record<RunPreset, { title: string; hint: string }> = {
   1: { title: "Quick look", hint: "Immediate" },
   10: { title: "Scenario set", hint: "Immediate" },
@@ -110,17 +92,22 @@ const DEPTH_META: Record<RunPreset, { title: string; hint: string }> = {
 function pct(value?: number | null) {
   return typeof value === "number" ? `${Math.round(value * 100)}%` : "—";
 }
-function moveLabel(move: Move) {
-  if (move.moveNumber === 0) return "Your opening move";
-  return move.side === "COUNTERPARTY" ? `Their response · Move ${move.moveNumber}` : `Your response · Move ${move.moveNumber}`;
+
+function loadCustom(): CatalogPersonality[] {
+  if (typeof window === "undefined") return [];
+  try {
+    const raw = window.localStorage.getItem(CUSTOM_KEY);
+    return raw ? (JSON.parse(raw) as CatalogPersonality[]) : [];
+  } catch {
+    return [];
+  }
 }
 
 export function DecisionSimulatorClient() {
+  const [custom, setCustom] = useState<CatalogPersonality[]>([]);
   const [message, setMessage] = useState("");
   const [objective, setObjective] = useState("");
   const [context, setContext] = useState("");
-  const [operatorName, setOperatorName] = useState("Campaign");
-  const [counterpartyName, setCounterpartyName] = useState("Counterparty");
   const [channel, setChannel] = useState("EMAIL");
   const [runs, setRuns] = useState<number>(10);
   const [customRuns, setCustomRuns] = useState("1000");
@@ -129,23 +116,21 @@ export function DecisionSimulatorClient() {
   const [job, setJob] = useState<JobView | null>(null);
   const [confirmExpensive, setConfirmExpensive] = useState(false);
   const [confirmThousand, setConfirmThousand] = useState(false);
-  const [actorMode, setActorMode] = useState<"generic" | "saved">("generic");
-  const [savedActors, setSavedActors] = useState<SavedActor[]>([]);
-  const [actorModelId, setActorModelId] = useState("generic");
+  const [operatorId, setOperatorId] = useState("chris-jones-ar02");
+  const [counterpartyId, setCounterpartyId] = useState("french-hill-ar02");
+  const [adding, setAdding] = useState(false);
+  const [draftName, setDraftName] = useState("");
+  const [draftOffice, setDraftOffice] = useState("");
+  const [draftNotes, setDraftNotes] = useState("");
+  const [draftSource, setDraftSource] = useState("");
 
-  useEffect(() => {
-    void fetch("/api/admin/decision-simulator/actors")
-      .then((res) => res.json())
-      .then((data: { ok?: boolean; actors?: SavedActor[] }) => {
-        if (data.ok) setSavedActors(data.actors ?? []);
-      })
-      .catch(() => {});
-  }, []);
+  useEffect(() => setCustom(loadCustom()), []);
 
+  const catalog = useMemo(() => mergePersonalityCatalog(custom), [custom]);
+  const operator = catalog.find((item) => item.id === operatorId) ?? genericPersonality;
+  const counterparty = catalog.find((item) => item.id === counterpartyId) ?? genericPersonality;
   const depth = depthLabel(runs);
   const estimate = useMemo(() => estimateDecisionSimulationCost(runs, 2), [runs]);
-  const queued = runs > 10 && runs <= 1000;
-  const architectureOnly = runs > 1000;
   const activeJob = job && ["QUEUED", "RUNNING", "PARTIAL"].includes(job.status);
 
   useEffect(() => {
@@ -155,13 +140,13 @@ export function DecisionSimulatorClient() {
       try {
         void fetch(`/api/admin/decision-simulator/jobs/${job.id}/work`, { method: "POST" });
         const res = await fetch(`/api/admin/decision-simulator/jobs/${job.id}`);
-        const data = (await res.json()) as { ok?: boolean; job?: JobView };
+        const data = (await res.json()) as { job?: JobView };
         if (!cancelled && data.job) {
           setJob(data.job);
           setResponse((prev) => ({ ...(prev ?? { ok: true }), ok: true, job: data.job }));
         }
       } catch {
-        /* keep last known job */
+        /* keep last known */
       }
     };
     const timer = window.setInterval(() => void tick(), 2500);
@@ -172,37 +157,82 @@ export function DecisionSimulatorClient() {
     };
   }, [job?.id, job?.status]);
 
-  function resetConfirms(nextRuns: number) {
-    setRuns(nextRuns);
-    setConfirmExpensive(false);
-    setConfirmThousand(false);
+  function persistCustom(next: CatalogPersonality[]) {
+    setCustom(next);
+    window.localStorage.setItem(CUSTOM_KEY, JSON.stringify(next));
   }
 
-  async function cancelJob() {
-    if (!job?.id) return;
-    const res = await fetch(`/api/admin/decision-simulator/jobs/${job.id}/cancel`, { method: "POST" });
-    const data = (await res.json()) as { job?: JobView };
-    if (data.job) setJob(data.job);
+  function addPersonality() {
+    const name = draftName.trim();
+    if (!name) return;
+    const id = `custom-${Date.now()}`;
+    const entry: CatalogPersonality = {
+      ...genericPersonality,
+      id,
+      name,
+      shortName: name,
+      office: draftOffice.trim() || "Operator-added personality",
+      custom: true,
+      badge: "CUSTOM MODEL",
+      evidenceQuality: "HYPOTHESIS",
+      uncertaintyLevel: "HIGH",
+      version: "custom-1.0",
+      summary: draftNotes.trim() || "Custom personality. Treat as HYPOTHESIS until sourced observations are attached.",
+      facts: draftNotes.trim() ? [draftNotes.trim()] : ["Operator-authored. No researched dossier yet."],
+      sources: draftSource.trim() ? [{ label: "Operator source", url: draftSource.trim(), accessed: new Date().toISOString().slice(0, 10) }] : [],
+      learningNote: "Attach observed outcomes from real public exchanges before raising evidence quality.",
+      observations: draftNotes.trim()
+        ? [{ at: new Date().toISOString(), note: draftNotes.trim(), sourceState: "HYPOTHESIS" }]
+        : [],
+      model: {
+        ...genericPersonality.model,
+        actorName: name,
+        description: draftNotes.trim() || "Custom hypothesis model.",
+      },
+    };
+    persistCustom([...custom, entry]);
+    setCounterpartyId(id);
+    setDraftName("");
+    setDraftOffice("");
+    setDraftNotes("");
+    setDraftSource("");
+    setAdding(false);
   }
 
-  async function launchJob(next = { confirmExpensive, confirmThousand }) {
+  async function launchJob() {
     setLoading(true);
     try {
+      const operatorActor = personalityToOpeningActor(operator);
+      const counterpartyActor = personalityToOpeningActor(counterparty);
+      const dossier = [
+        `OPERATOR PERSONALITY: ${operator.name} (${operator.version}, ${operator.badge}).`,
+        operator.summary,
+        `COUNTERPARTY PERSONALITY: ${counterparty.name} (${counterparty.version}, ${counterparty.badge}).`,
+        counterparty.summary,
+        context,
+      ].filter(Boolean).join("\n\n");
       const res = await fetch("/api/admin/decision-simulator/jobs", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           requestedRuns: runs,
-          actorModelId: actorMode === "saved" ? actorModelId : "generic",
-          confirmExpensive: next.confirmExpensive,
-          confirmThousand: next.confirmThousand,
+          actorModelId: counterparty.id,
+          actorModel: {
+            ...counterparty.model,
+            actorId: counterparty.id,
+            actorName: counterparty.name,
+          },
+          operatorPersonalityId: operator.id,
+          counterpartyPersonalityId: counterparty.id,
+          confirmExpensive,
+          confirmThousand,
           openingInput: {
             message,
             channel,
             objective: objective || undefined,
-            context: context || undefined,
-            operatorActor: { name: operatorName || "Operator", actorType: "CAMPAIGN" },
-            counterpartyActor: { name: counterpartyName || "Counterparty", actorType: "CAMPAIGN" },
+            context: dossier,
+            operatorActor,
+            counterpartyActor,
             stakes: "HIGH",
             urgency: "MEDIUM",
           },
@@ -218,266 +248,261 @@ export function DecisionSimulatorClient() {
     }
   }
 
+  async function cancelJob() {
+    if (!job?.id) return;
+    const res = await fetch(`/api/admin/decision-simulator/jobs/${job.id}/cancel`, { method: "POST" });
+    const data = (await res.json()) as { job?: JobView };
+    if (data.job) setJob(data.job);
+  }
+
   const result = response?.result;
   const command = job?.commandCenter;
-  const representativeMembers = (result?.representativeRuns ?? []).map((rep) => ({
-    ...rep,
-    member: result?.members.find((member) => member.ordinal === rep.ordinal),
-  })).filter((item) => item.member?.result);
+  const now = new Date().toISOString().replace(".000Z", "Z");
 
   return (
-    <div className="mx-auto max-w-7xl space-y-6">
-      <section className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm md:p-8">
-        <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+    <div className="ml-root">
+      <div className="ml-shell">
+        <header className="ml-topbar">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">Decision Simulator</p>
-            <h1 className="mt-2 text-3xl font-black tracking-tight text-slate-950 md:text-5xl">Decision Simulator</h1>
-            <p className="mt-3 max-w-3xl text-sm leading-6 text-slate-600 md:text-base">
-              Model the next six moves before you act.
-            </p>
+            <div className="ml-kicker">Decision Simulator · Mission lab</div>
+            <h1 className="ml-title">Decision Simulator</h1>
+            <p className="ml-sub">Model the next six moves before you act. Advisory only. No send. No post. Every actor weight is classified.</p>
           </div>
-          <div className="grid grid-cols-3 gap-2 text-center text-xs">
-            <Metric value={runs.toLocaleString()} label="runs" dark />
-            <Metric value={depth.mode} label={depth.label} />
-            <Metric value={queued ? "Queued" : architectureOnly ? "Architecture" : "Immediate"} label="posture" />
+          <div className="ml-telemetry">
+            <div className="ml-tel"><b>{runs.toLocaleString()}</b><span>Depth</span></div>
+            <div className="ml-tel"><b>{depth.mode}</b><span>{depth.label}</span></div>
+            <div className="ml-tel"><b>{operator.shortName}</b><span>Party</span></div>
+            <div className="ml-tel"><b>{counterparty.shortName}</b><span>Counterparty</span></div>
           </div>
-        </div>
-      </section>
+        </header>
+        <p className="ml-copy" style={{ marginTop: 0, fontFamily: "var(--ml-mono)", fontSize: 11 }}>
+          SYS {now} · catalog {BUILT_IN_PERSONALITIES.length}+{custom.length} · learning = operator-attached observations only
+        </p>
 
-      <div className="grid gap-6 xl:grid-cols-[0.9fr_1.1fr]">
-        <section className="space-y-5 rounded-3xl border border-slate-200 bg-white p-5 shadow-sm md:p-6">
-          <div>
-            <h2 className="text-lg font-bold text-slate-950">1. Opening Move</h2>
-            <p className="mt-1 text-sm text-slate-500">Nothing is sent. This is advisory simulation only.</p>
-          </div>
-          <label className="block text-sm font-semibold text-slate-700">Opening correspondence<textarea value={message} onChange={(e) => setMessage(e.target.value)} rows={8} placeholder="Paste the email, post, statement, text, debate line, memo, or strategic move…" className="mt-2 w-full rounded-2xl border border-slate-300 px-4 py-3 text-sm outline-none focus:border-slate-900" /></label>
-
-          <div>
-            <h2 className="text-lg font-bold text-slate-950">2. Counterparty</h2>
-            <div className="mt-3 grid gap-2 md:grid-cols-2">
-              <button type="button" onClick={() => { setActorMode("generic"); setActorModelId("generic"); }} className={`rounded-xl border px-3 py-3 text-left text-sm ${actorMode === "generic" ? "border-slate-950 bg-slate-950 text-white" : "border-slate-300"}`}>
-                Generic model
-                <div className={`mt-1 text-xs ${actorMode === "generic" ? "text-amber-200" : "text-amber-800"}`}>HYPOTHESIS MODEL</div>
-              </button>
-              <button type="button" onClick={() => setActorMode("saved")} className={`rounded-xl border px-3 py-3 text-left text-sm ${actorMode === "saved" ? "border-slate-950 bg-slate-950 text-white" : "border-slate-300"}`}>
-                Saved actor model
-                <div className="mt-1 text-xs opacity-70">{savedActors.length ? `${savedActors.length} available` : "None stored yet"}</div>
-              </button>
+        <div className="ml-grid">
+          <section className="ml-panel">
+            <h2 className="ml-h">01 Opening move</h2>
+            <p className="ml-copy">Nothing is sent. This is advisory simulation only.</p>
+            <label className="ml-label">Opening correspondence
+              <textarea className="ml-area" value={message} onChange={(e) => setMessage(e.target.value)} placeholder="Paste the statement, letter, debate line, or strategic move…" />
+            </label>
+            <div className="ml-row">
+              <label className="ml-label">Channel
+                <select className="ml-select" value={channel} onChange={(e) => setChannel(e.target.value)}>
+                  {CHANNELS.map((item) => <option key={item}>{item}</option>)}
+                </select>
+              </label>
+              <label className="ml-label">Objective
+                <input className="ml-input" value={objective} onChange={(e) => setObjective(e.target.value)} placeholder="Decision to test" />
+              </label>
             </div>
-            {actorMode === "saved" && savedActors.length > 0 && (
-              <select value={actorModelId} onChange={(e) => setActorModelId(e.target.value)} className="mt-3 w-full rounded-xl border border-slate-300 px-3 py-2 text-sm">
-                {savedActors.map((actor) => (
-                  <option key={actor.id} value={actor.id}>
-                    {actor.name} · {actor.version ?? "unversioned"} · {actor.uncertaintyLevel}
-                  </option>
-                ))}
-              </select>
+            <label className="ml-label">Context
+              <textarea className="ml-area" style={{ minHeight: 90 }} value={context} onChange={(e) => setContext(e.target.value)} placeholder="Known public facts, constraints, recent exchanges. No private data." />
+            </label>
+
+            <h2 className="ml-h" style={{ marginTop: 22 }}>02 Party / counterparty</h2>
+            <p className="ml-copy">Defaults: Dr. Chris Jones vs Rep. French Hill. Catalog is open. Custom personalities start as HYPOTHESIS MODEL until sourced.</p>
+            <div className="ml-row">
+              <PersonalityPicker label="Party" value={operatorId} onChange={setOperatorId} catalog={catalog} />
+              <PersonalityPicker label="Counterparty" value={counterpartyId} onChange={setCounterpartyId} catalog={catalog} />
+            </div>
+            <Dossier personality={operator} side="Party" />
+            <Dossier personality={counterparty} side="Counterparty" />
+
+            <button type="button" className="ml-ghost" style={{ marginTop: 12 }} onClick={() => setAdding((v) => !v)}>
+              {adding ? "Close add personality" : "Add personality"}
+            </button>
+            {adding && (
+              <div className="ml-actor">
+                <label className="ml-label">Name<input className="ml-input" value={draftName} onChange={(e) => setDraftName(e.target.value)} /></label>
+                <label className="ml-label">Office / role<input className="ml-input" value={draftOffice} onChange={(e) => setDraftOffice(e.target.value)} /></label>
+                <label className="ml-label">Source URL (optional)<input className="ml-input" value={draftSource} onChange={(e) => setDraftSource(e.target.value)} /></label>
+                <label className="ml-label">Notes / first observation<textarea className="ml-area" style={{ minHeight: 80 }} value={draftNotes} onChange={(e) => setDraftNotes(e.target.value)} /></label>
+                <button type="button" className="ml-btn" onClick={addPersonality}>Commit personality to local catalog</button>
+              </div>
             )}
-            {actorMode === "saved" && actorModelId !== "generic" && (
-              <p className="mt-2 text-xs text-slate-500">
-                {savedActors.find((actor) => actor.id === actorModelId)?.name} · evidence {savedActors.find((actor) => actor.id === actorModelId)?.evidenceQuality ?? "UNKNOWN"} · uncertainty {savedActors.find((actor) => actor.id === actorModelId)?.uncertaintyLevel ?? "HYPOTHESIS"}
-              </p>
-            )}
-            <div className="mt-4 grid gap-4 md:grid-cols-2">
-              <Field label="Your side" value={operatorName} setValue={setOperatorName} />
-              <Field label="Counterparty" value={counterpartyName} setValue={setCounterpartyName} />
-            </div>
-          </div>
 
-          <div>
-            <h2 className="text-lg font-bold text-slate-950">3. Context</h2>
-            <div className="mt-3 grid gap-4 md:grid-cols-2">
-              <label className="text-sm font-semibold text-slate-700">Channel<select value={channel} onChange={(e) => setChannel(e.target.value)} className="mt-2 w-full rounded-xl border border-slate-300 px-3 py-2 text-sm">{CHANNELS.map((item) => <option key={item}>{item}</option>)}</select></label>
-              <Field label="Objective" value={objective} setValue={setObjective} placeholder="What are you trying to accomplish?" />
-            </div>
-            <label className="mt-4 block text-sm font-semibold text-slate-700">Additional context<textarea value={context} onChange={(e) => setContext(e.target.value)} rows={4} placeholder="Known facts, constraints, recent exchanges, public context, or assumptions…" className="mt-2 w-full rounded-2xl border border-slate-300 px-4 py-3 text-sm" /></label>
-          </div>
-
-          <div>
-            <h2 className="text-lg font-bold text-slate-950">4. Simulation Depth</h2>
-            <div className="mt-3 grid grid-cols-2 gap-2 md:grid-cols-4">
+            <h2 className="ml-h" style={{ marginTop: 22 }}>03 Simulation depth</h2>
+            <div className="ml-depths">
               {PRESETS.map((preset) => (
-                <button key={preset} type="button" onClick={() => resetConfirms(preset)} className={`rounded-xl border px-3 py-3 text-left ${runs === preset ? "border-slate-950 bg-slate-950 text-white" : "border-slate-300 bg-white text-slate-700"}`}>
-                  <div className="text-lg font-black">{preset.toLocaleString()}</div>
-                  <div className="text-[10px] font-bold uppercase tracking-wider opacity-70">{DEPTH_META[preset].title}</div>
-                  <div className="text-[10px] opacity-70">{DEPTH_META[preset].hint}</div>
+                <button key={preset} type="button" className={`ml-depth${runs === preset ? " on" : ""}`} onClick={() => { setRuns(preset); setConfirmExpensive(false); setConfirmThousand(false); }}>
+                  <b>{preset.toLocaleString()}</b>
+                  <small>{DEPTH_META[preset].title}</small>
+                  <small>{DEPTH_META[preset].hint}</small>
                 </button>
               ))}
             </div>
-            <div className="mt-3 flex gap-2">
-              <input value={customRuns} onChange={(e) => setCustomRuns(e.target.value)} inputMode="numeric" className="min-w-0 flex-1 rounded-xl border border-slate-300 px-3 py-2 text-sm" />
-              <button type="button" onClick={() => resetConfirms(Math.floor(Math.max(1, Math.min(1_000_000, Number(customRuns) || 1))))} className="rounded-xl border border-slate-300 px-4 py-2 text-sm font-semibold">CUSTOM</button>
+            <div className="ml-row" style={{ marginTop: 10 }}>
+              <input className="ml-input" value={customRuns} onChange={(e) => setCustomRuns(e.target.value)} inputMode="numeric" />
+              <button type="button" className="ml-ghost" onClick={() => setRuns(Math.floor(Math.max(1, Math.min(1_000_000, Number(customRuns) || 1))))}>CUSTOM</button>
             </div>
-            <p className="mt-2 text-xs text-slate-500">1 and 10 run immediately. 100 and 1,000 become real queued jobs. Custom above 1,000 is accepted as architecture only, up to 1,000,000.</p>
-          </div>
+            <p className="ml-copy">1 and 10 execute live. 100 and 1,000 are queued jobs. Ceiling 1,000,000 is architecture only.</p>
 
-          {runs >= 100 && (
-            <div className="rounded-2xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-950">
-              <p className="font-bold">{runs.toLocaleString()} simulations</p>
-              <p className="mt-2">Estimated workload:</p>
-              <ul className="mt-1 list-disc pl-5 text-xs leading-5">
-                <li>{estimate.approximateCalls.toLocaleString()} model calls</li>
-                <li>~{estimate.approximateGeneratedMoves.toLocaleString()} generated moves</li>
-                <li>Estimated token range: {estimate.tokenRange.min.toLocaleString()}–{estimate.tokenRange.max.toLocaleString()}</li>
-                <li>Estimated cost range: {formatUsd(estimate.costRangeUsd.min)}–{formatUsd(estimate.costRangeUsd.max)}</li>
-              </ul>
-              <p className="mt-2 text-xs">This estimate is approximate, not a billing quote.</p>
-              <label className="mt-3 flex items-center gap-2 text-xs font-semibold">
-                <input type="checkbox" checked={confirmExpensive} onChange={(e) => setConfirmExpensive(e.target.checked)} />
-                I understand this is a queued paid analysis.
-              </label>
-              {runs >= 1000 && (
-                <label className="mt-2 flex items-center gap-2 text-xs font-semibold">
-                  <input type="checkbox" checked={confirmThousand} onChange={(e) => setConfirmThousand(e.target.checked)} />
-                  Second confirmation for a 1,000-run spend.
-                </label>
-              )}
-            </div>
-          )}
+            {runs >= 100 && (
+              <div className="ml-warn">
+                <b>{runs.toLocaleString()} simulations — estimated workload</b>
+                <div>{estimate.approximateCalls.toLocaleString()} model calls · ~{estimate.approximateGeneratedMoves.toLocaleString()} generated moves</div>
+                <div>Token range {estimate.tokenRange.min.toLocaleString()}–{estimate.tokenRange.max.toLocaleString()}</div>
+                <div>Cost range {formatUsd(estimate.costRangeUsd.min)}–{formatUsd(estimate.costRangeUsd.max)} (approximate)</div>
+                <label className="ml-label"><input type="checkbox" checked={confirmExpensive} onChange={(e) => setConfirmExpensive(e.target.checked)} /> Confirm queued paid analysis</label>
+                {runs >= 1000 && (
+                  <label className="ml-label"><input type="checkbox" checked={confirmThousand} onChange={(e) => setConfirmThousand(e.target.checked)} /> Second confirmation for a 1,000-run spend</label>
+                )}
+              </div>
+            )}
 
-          <button
-            disabled={loading || !message.trim() || Boolean(activeJob) || (runs >= 100 && !confirmExpensive) || (runs >= 1000 && !confirmThousand)}
-            onClick={() => void launchJob()}
-            className="w-full rounded-2xl bg-slate-950 px-5 py-4 text-base font-black text-white disabled:cursor-not-allowed disabled:opacity-40"
-          >
-            {loading ? "Working…" : depth.runVerb}
-          </button>
-        </section>
+            <button
+              className="ml-btn"
+              disabled={loading || !message.trim() || Boolean(activeJob) || (runs >= 100 && !confirmExpensive) || (runs >= 1000 && !confirmThousand)}
+              onClick={() => void launchJob()}
+            >
+              {loading ? "Working…" : depth.runVerb}
+            </button>
+          </section>
 
-        <section className="space-y-5">
-          <div className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm md:p-6">
-            <h2 className="text-lg font-bold text-slate-950">5. Run</h2>
-            {!response && !job && <div className="mt-6 rounded-2xl border border-dashed border-slate-300 p-10 text-center text-sm text-slate-500">Run a simulation to populate the intelligence picture.</div>}
-            {response && !response.ok && <div className="mt-4 rounded-2xl border border-red-200 bg-red-50 p-4 text-sm text-red-800">{response.error}</div>}
+          <section className="ml-panel">
+            <h2 className="ml-h">04 Run / intelligence</h2>
+            {!response && !job && <div className="ml-empty">Awaiting a run. Results privilege aggregate structure over anecdote.</div>}
+            {response && !response.ok && <div className="ml-error">{response.error}</div>}
 
             {job && ["QUEUED", "RUNNING", "PARTIAL"].includes(job.status) && (
-              <div className="mt-4 space-y-4">
-                <div className="flex items-center justify-between">
-                  <p className="text-xs font-black uppercase tracking-wider text-emerald-700">{job.status}</p>
-                  <button type="button" onClick={() => void cancelJob()} className="rounded-xl border border-red-300 px-3 py-1 text-xs font-bold text-red-700">Cancel Job</button>
+              <div>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                  <span className="ml-badge research">{job.status}</span>
+                  <button type="button" className="ml-ghost danger" onClick={() => void cancelJob()}>Cancel Job</button>
                 </div>
-                <p className="text-2xl font-black text-slate-950">{job.completed.toLocaleString()} / {job.requested.toLocaleString()} simulations complete</p>
-                <p className="text-sm text-slate-500">{job.percentComplete}%</p>
-                <div className="h-3 overflow-hidden rounded-full bg-slate-100">
-                  <div className="h-full bg-slate-950" style={{ width: `${Math.min(100, job.percentComplete)}%` }} />
-                </div>
-                <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
-                  <Stat label="Current" value={`Chunk ${job.currentChunk} of ${job.chunkCount}`} />
-                  <Stat label="Completed" value={job.completed.toLocaleString()} />
-                  <Stat label="Failed" value={job.failed.toLocaleString()} />
-                  <Stat label="Tokens" value={job.tokenUsage.totalTokens.toLocaleString()} />
+                <p style={{ fontSize: 28, margin: "12px 0 0", letterSpacing: "-0.03em" }}>
+                  {job.completed.toLocaleString()} / {job.requested.toLocaleString()} simulations complete
+                </p>
+                <p className="ml-copy">{job.percentComplete}%</p>
+                <div className="ml-bar"><i style={{ width: `${Math.min(100, job.percentComplete)}%` }} /></div>
+                <div className="ml-stats">
+                  <div className="ml-stat"><b>Chunk {job.currentChunk} of {job.chunkCount}</b><span>Current</span></div>
+                  <div className="ml-stat"><b>{job.completed.toLocaleString()}</b><span>Completed</span></div>
+                  <div className="ml-stat"><b>{job.failed.toLocaleString()}</b><span>Failed</span></div>
+                  <div className="ml-stat"><b>{job.tokenUsage.totalTokens.toLocaleString()}</b><span>Tokens</span></div>
                 </div>
               </div>
             )}
 
-            {job?.status === "CANCELLED" && (
-              <div className="mt-4 rounded-2xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-950">Job cancelled after {job.completed.toLocaleString()} completed runs.</div>
-            )}
-
-            {job?.architectureOnly && (
-              <div className="mt-4 rounded-2xl bg-slate-50 p-4 text-sm text-slate-700">Accepted as a distributed-study plan only. A million-run ceiling is architectural; this pass will not execute that volume.</div>
-            )}
+            {job?.architectureOnly && <div className="ml-warn">Accepted as a distributed-study plan only. A million-run ceiling will not execute in this runtime.</div>}
 
             {command && job?.status === "COMPLETE" && (
-              <div className="mt-4 space-y-4">
-                <div className="grid grid-cols-2 gap-3 md:grid-cols-5">
-                  <Stat label="Simulations" value={command.simulations.toLocaleString()} />
-                  <Stat label="Dominant response frame" value={command.dominantResponseFrame ?? "—"} hint={pct(command.dominantResponseShare)} />
-                  <Stat label="Strongest recommended counter" value={truncate(command.strongestRecommendedCounter)} hint={pct(command.strongestRecommendedShare)} />
-                  <Stat label="Model confidence" value={pct(command.modelConfidence)} />
-                  <Stat label="Outlier rate" value={pct(command.outlierRate)} />
+              <div>
+                <div className="ml-stats five">
+                  <div className="ml-stat"><b>{command.simulations.toLocaleString()}</b><span>Simulations</span></div>
+                  <div className="ml-stat"><b>{command.dominantResponseFrame ?? "—"}</b><span>Dominant response frame {pct(command.dominantResponseShare)}</span></div>
+                  <div className="ml-stat"><b>{truncate(command.strongestRecommendedCounter)}</b><span>Strongest recommended counter {pct(command.strongestRecommendedShare)}</span></div>
+                  <div className="ml-stat"><b>{pct(command.modelConfidence)}</b><span>Model confidence</span></div>
+                  <div className="ml-stat"><b>{pct(command.outlierRate)}</b><span>Outlier rate</span></div>
                 </div>
-                <div>
-                  <h3 className="text-sm font-bold text-slate-900">A. Response frame distribution</h3>
-                  <div className="mt-2 space-y-2">
+                <div className="ml-sec">
+                  <h3>A. Response frame distribution</h3>
+                  <div className="ml-list">
                     {command.frameDistribution.map((row) => (
-                      <div key={row.frame} className="flex justify-between rounded-xl bg-slate-50 px-3 py-2 text-xs">
-                        <span>{row.frame}</span>
-                        <span>{row.count} · {pct(row.share)}</span>
-                      </div>
+                      <div key={row.frame}><span>{row.frame}</span><span>{row.count} · {pct(row.share)}</span></div>
                     ))}
                   </div>
                 </div>
-                <div>
-                  <h3 className="text-sm font-bold text-slate-900">B. Move-by-move consensus</h3>
-                  <div className="mt-2 space-y-2">
-                    {command.moveConsensus.map((row) => (
-                      <div key={row.moveNumber} className="rounded-xl border border-slate-200 p-3 text-xs">
-                        <p className="font-bold">Move {row.moveNumber}</p>
-                        <p className="mt-1 text-slate-600">Top predicted responses: {row.topPredicted.join(" · ") || "—"}</p>
-                        <p className="text-slate-600">Top recommended counters: {row.topCounters.join(" · ") || "—"}</p>
-                      </div>
-                    ))}
+                <div className="ml-sec">
+                  <h3>B. Move-by-move consensus</h3>
+                  {command.moveConsensus.map((row) => (
+                    <div key={row.moveNumber} className="ml-actor">
+                      <b>Move {row.moveNumber}</b>
+                      <p>Predicted: {row.topPredicted.join(" · ") || "—"}</p>
+                      <p>Counters: {row.topCounters.join(" · ") || "—"}</p>
+                    </div>
+                  ))}
+                </div>
+                <div className="ml-sec">
+                  <h3>C. Representative futures</h3>
+                  <div className="ml-stats">
+                    <Rep title="Expected / median" member={command.representative.expected} />
+                    <Rep title="High-confidence" member={command.representative.highConfidence} />
+                    <Rep title="Hostile / outlier" member={command.representative.hostileOutlier} />
+                    <Rep title="Opportunity path" member={command.representative.opportunity} />
+                    <Rep title="Unusual but plausible" member={command.representative.unusual} />
                   </div>
                 </div>
-                <div>
-                  <h3 className="text-sm font-bold text-slate-900">C. Representative futures</h3>
-                  <div className="mt-2 grid gap-2 md:grid-cols-2">
-                    <RepCard title="Expected / median" member={command.representative.expected} />
-                    <RepCard title="High-confidence" member={command.representative.highConfidence} />
-                    <RepCard title="Hostile / outlier" member={command.representative.hostileOutlier} />
-                    <RepCard title="Opportunity path" member={command.representative.opportunity} />
-                    <RepCard title="Unusual but plausible" member={command.representative.unusual} />
-                  </div>
-                </div>
-                <div>
-                  <h3 className="text-sm font-bold text-slate-900">D. Uncertainty</h3>
-                  <ul className="mt-2 list-disc pl-5 text-xs text-slate-600">
-                    {command.uncertainty.map((item) => <li key={item}>{item}</li>)}
-                  </ul>
+                <div className="ml-sec">
+                  <h3>D. Uncertainty</h3>
+                  <ul className="ml-sources">{command.uncertainty.map((item) => <li key={item}>{item}</li>)}</ul>
                 </div>
               </div>
             )}
 
             {result && !command && (
-              <div className="mt-4 space-y-4">
-                <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
-                  <Stat label="Completed" value={result.completedRuns.toLocaleString()} />
-                  <Stat label="Failed" value={result.failedRuns.toLocaleString()} />
-                  <Stat label="Mean confidence" value={pct(result.averageConfidence)} />
-                  <Stat label="Mean probability" value={pct(result.averageScenarioProbability)} />
-                </div>
-                <div className="grid gap-4 md:grid-cols-2">
-                  <TopList title="Dominant first-response frames" items={result.dominantMove1Frames.map((x) => `${Math.round(x.share * 100)}% · ${x.frame}`)} />
-                  <TopList title="Dominant final recommendations" items={result.dominantFinalRecommendations.map((x) => `${Math.round(x.share * 100)}% · ${x.recommendation}`)} />
-                </div>
-                <p className="text-xs text-slate-500">Token usage: {result.tokenUsage.totalTokens.toLocaleString()} total · {result.tokenUsage.inputTokens.toLocaleString()} input · {result.tokenUsage.outputTokens.toLocaleString()} output</p>
+              <div className="ml-stats">
+                <div className="ml-stat"><b>{result.completedRuns}</b><span>Completed</span></div>
+                <div className="ml-stat"><b>{result.failedRuns}</b><span>Failed</span></div>
+                <div className="ml-stat"><b>{pct(result.averageConfidence)}</b><span>Mean confidence</span></div>
+                <div className="ml-stat"><b>{result.tokenUsage.totalTokens.toLocaleString()}</b><span>Tokens</span></div>
               </div>
             )}
-          </div>
-
-          {representativeMembers.map(({ ordinal, reason, member }) => {
-            const run = member!.result!;
-            return (
-              <div key={`${reason}-${ordinal}`} className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm md:p-6">
-                <div className="flex flex-wrap items-center justify-between gap-3">
-                  <div>
-                    <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">Representative path</p>
-                    <h3 className="text-xl font-black text-slate-950">{reason}</h3>
-                  </div>
-                  <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-600">Run #{ordinal}</span>
-                </div>
-                {run.executiveSummary && <p className="mt-4 rounded-2xl bg-slate-50 p-4 text-sm leading-6 text-slate-700">{run.executiveSummary}</p>}
-                <div className="mt-5 space-y-3">
-                  {run.run.moves.map((move) => (
-                    <div key={move.moveNumber} className={`rounded-2xl border p-4 ${move.side === "OPERATOR" ? "border-slate-200 bg-white" : "border-amber-200 bg-amber-50/60"}`}>
-                      <div className="flex items-start justify-between gap-3">
-                        <div>
-                          <p className="text-xs font-bold uppercase tracking-wider text-slate-500">{moveLabel(move)}</p>
-                          {move.predictedFrame && <p className="mt-1 text-xs font-semibold text-amber-800">Frame: {move.predictedFrame}</p>}
-                        </div>
-                        <span className="text-xs font-semibold text-slate-500">{pct(move.confidence?.estimatedProbability)}</span>
-                      </div>
-                      <p className="mt-3 whitespace-pre-wrap text-sm leading-6 text-slate-800">{move.message}</p>
-                      {move.rationaleSummary && <p className="mt-3 text-xs leading-5 text-slate-500">Why: {move.rationaleSummary}</p>}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            );
-          })}
-        </section>
+          </section>
+        </div>
       </div>
+    </div>
+  );
+}
+
+function PersonalityPicker({
+  label,
+  value,
+  onChange,
+  catalog,
+}: {
+  label: string;
+  value: string;
+  onChange: (id: string) => void;
+  catalog: CatalogPersonality[];
+}) {
+  return (
+    <label className="ml-label">{label}
+      <select className="ml-select" value={value} onChange={(e) => onChange(e.target.value)}>
+        {catalog.map((item) => (
+          <option key={item.id} value={item.id}>
+            {item.name} · {item.badge}
+          </option>
+        ))}
+      </select>
+    </label>
+  );
+}
+
+function Dossier({ personality, side }: { personality: CatalogPersonality; side: string }) {
+  const badgeClass = personality.badge === "RESEARCH MODEL" ? "research" : personality.badge === "CUSTOM MODEL" ? "custom" : "";
+  return (
+    <div className="ml-actor">
+      <div style={{ display: "flex", justifyContent: "space-between", gap: 8 }}>
+        <b>{side}: {personality.name}</b>
+        <span className={`ml-badge ${badgeClass}`}>{personality.badge}</span>
+      </div>
+      <p>{personality.office}</p>
+      <p>Evidence {personality.evidenceQuality} · Uncertainty {personality.uncertaintyLevel} · {personality.version}</p>
+      <p>{personality.summary}</p>
+      {personality.facts.length > 0 && (
+        <ul className="ml-sources">
+          {personality.facts.map((fact) => <li key={fact}>{fact}</li>)}
+        </ul>
+      )}
+      {personality.sources.length > 0 && (
+        <ul className="ml-sources">
+          {personality.sources.map((source) => (
+            <li key={source.url}><a href={source.url} target="_blank" rel="noreferrer">{source.label}</a> · {source.accessed}</li>
+          ))}
+        </ul>
+      )}
+      <p>{personality.learningNote}</p>
+    </div>
+  );
+}
+
+function Rep({ title, member }: { title: string; member: Member | null }) {
+  return (
+    <div className="ml-stat">
+      <b>{title}</b>
+      <span>{member ? `Run #${member.ordinal} · ${member.frame ?? "Unspecified"}` : "None yet"}</span>
     </div>
   );
 }
@@ -485,24 +510,4 @@ export function DecisionSimulatorClient() {
 function truncate(value?: string | null) {
   if (!value) return "—";
   return value.length > 42 ? `${value.slice(0, 39)}…` : value;
-}
-function Metric({ value, label, dark = false }: { value: string; label: string; dark?: boolean }) {
-  return <div className={`rounded-2xl px-4 py-3 ${dark ? "bg-slate-950 text-white" : "bg-slate-100 text-slate-700"}`}><div className="font-bold">{value}</div><div className={dark ? "opacity-70" : "text-slate-500"}>{label}</div></div>;
-}
-function Field({ label, value, setValue, placeholder }: { label: string; value: string; setValue: (value: string) => void; placeholder?: string }) {
-  return <label className="text-sm font-semibold text-slate-700">{label}<input value={value} onChange={(e) => setValue(e.target.value)} placeholder={placeholder} className="mt-2 w-full rounded-xl border border-slate-300 px-3 py-2 text-sm" /></label>;
-}
-function Stat({ label, value, hint }: { label: string; value: string; hint?: string }) {
-  return <div className="rounded-2xl bg-slate-50 p-4"><div className="text-xl font-black text-slate-950">{value}</div>{hint && <div className="text-xs font-semibold text-slate-700">{hint}</div>}<div className="mt-1 text-xs font-medium text-slate-500">{label}</div></div>;
-}
-function TopList({ title, items }: { title: string; items: string[] }) {
-  return <div className="rounded-2xl border border-slate-200 p-4"><h4 className="text-sm font-bold text-slate-900">{title}</h4><div className="mt-3 space-y-2">{items.length ? items.slice(0, 5).map((item) => <div key={item} className="rounded-xl bg-slate-50 px-3 py-2 text-xs text-slate-700">{item}</div>) : <p className="text-xs text-slate-400">No aggregate yet.</p>}</div></div>;
-}
-function RepCard({ title, member }: { title: string; member: Member | null }) {
-  return (
-    <div className="rounded-xl bg-slate-50 p-3 text-xs">
-      <p className="font-bold text-slate-900">{title}</p>
-      {member ? <p className="mt-1 text-slate-600">Run #{member.ordinal} · {member.frame ?? "Unspecified"}</p> : <p className="mt-1 text-slate-400">No representative yet.</p>}
-    </div>
-  );
 }
