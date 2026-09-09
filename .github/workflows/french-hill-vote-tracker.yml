@@ -1,0 +1,45 @@
+name: French Hill Vote Tracker
+
+on:
+  pull_request:
+    paths:
+      - "french-hill-vote-tracker/**"
+      - ".github/workflows/french-hill-vote-tracker.yml"
+  push:
+    branches:
+      - main
+      - feat/french-hill-vote-tracker-foundation
+    paths:
+      - "french-hill-vote-tracker/**"
+      - ".github/workflows/french-hill-vote-tracker.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  validate-and-build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: french-hill-vote-tracker
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Use portable npm cache
+        run: npm config set cache "$RUNNER_TEMP/npm-cache" --global
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tracker checks
+        run: npm run check
+
+      - name: Build production app
+        run: npm run build

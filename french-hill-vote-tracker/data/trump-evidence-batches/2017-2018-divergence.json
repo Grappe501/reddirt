@@ -1,0 +1,16 @@
+[
+  {
+    "congress": 115,
+    "rollCall": 413,
+    "position": "Support",
+    "preferredVote": "Yea",
+    "evidenceStatus": "verified",
+    "summary": "The Trump Administration supported the Russia, Iran, and North Korea sanctions legislation that became H.R. 3364, and President Trump ultimately signed it while criticizing provisions limiting executive flexibility. French Hill voted Yea with the overwhelming House majority.",
+    "effectiveDate": "2017-07-25",
+    "reviewNotes": "House Clerk Roll Call 413 records House passage of H.R. 3364 by 419-3, with Hill voting Yea. Trump's signing statement expressed serious objections to provisions limiting executive flexibility while he nevertheless signed the legislation; the source-level nuance is retained rather than treating the rhetoric as a separate vote position.",
+    "sources": [
+      {"label":"House Clerk Roll Call 413","url":"https://clerk.house.gov/Votes/2017413","sourceType":"house","primary":true,"publishedDate":"2017-07-25"},
+      {"label":"Trump White House statement on signing H.R. 3364","url":"https://trumpwhitehouse.archives.gov/briefings-statements/statement-president-donald-j-trump-signing-h-r-3364/","sourceType":"official-trump","primary":true,"publishedDate":"2017-08-02"}
+    ]
+  }
+]

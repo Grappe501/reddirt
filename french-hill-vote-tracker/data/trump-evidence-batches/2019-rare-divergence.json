@@ -1,0 +1,33 @@
+[
+  {
+    "congress": 116,
+    "rollCall": 42,
+    "position": "Oppose",
+    "preferredVote": "Nay",
+    "evidenceStatus": "verified",
+    "summary": "The Trump Administration proposed terminating sanctions on En+, Rusal, and EuroSibEnergo after Treasury concluded that restructuring severed Oleg Deripaska's control. H.J. Res. 30 disapproved that presidential proposal. French Hill voted Yea for the disapproval resolution, opposite the Administration's documented position while voting with the Republican majority.",
+    "effectiveDate": "2019-01-17",
+    "reviewNotes": "House Clerk Roll Call 42 records Hill voting Yea. Republicans split 136 Yea to 53 Nay, so the Republican majority supported the disapproval resolution. Treasury's December 19, 2018 notice to Congress documented the Administration's intent to terminate the sanctions, and Secretary Mnuchin defended the proposed delistings on January 10, 2019. Trump's preferred vote on the disapproval resolution was therefore Nay.",
+    "sources": [
+      {"label":"House Clerk Roll Call 42","url":"https://clerk.house.gov/Votes/201942","sourceType":"house","primary":true,"publishedDate":"2019-01-17"},
+      {"label":"Treasury: OFAC notifies Congress of intent to delist En+, Rusal, and EuroSibEnergo","url":"https://home.treasury.gov/news/press-releases/sm576","sourceType":"official-trump","primary":true,"publishedDate":"2018-12-19"},
+      {"label":"Treasury Secretary Mnuchin statement on Russia sanctions","url":"https://home.treasury.gov/news/press-releases/sm585","sourceType":"official-trump","primary":true,"publishedDate":"2019-01-10"}
+    ]
+  },
+  {
+    "congress": 116,
+    "rollCall": 560,
+    "position": "Oppose",
+    "preferredVote": "Nay",
+    "evidenceStatus": "verified",
+    "summary": "President Trump ordered U.S. forces pulled back from northern Syria, enabling Turkey to move against Syrian Kurdish forces. H.J. Res. 77 opposed that decision. French Hill voted Yea for the resolution and publicly criticized the withdrawal, opposite Trump's policy while again voting with the Republican majority.",
+    "effectiveDate": "2019-10-16",
+    "reviewNotes": "House Clerk Roll Call 560 records Hill voting Yea. Republicans voted 129 Yea to 60 Nay, so the Republican majority also opposed Trump's withdrawal decision. Hill separately issued a statement arguing that U.S. forces should remain and spoke on the House floor in support of H.J. Res. 77. Trump's preferred vote on the resolution opposing his policy was Nay.",
+    "sources": [
+      {"label":"House Clerk Roll Call 560","url":"https://clerk.house.gov/Votes/2019560","sourceType":"house","primary":true,"publishedDate":"2019-10-16"},
+      {"label":"French Hill statement on Syria withdrawal","url":"https://hill.house.gov/news/documentsingle.aspx?DocumentID=6093","sourceType":"other","primary":true,"publishedDate":"2019-10-07"},
+      {"label":"French Hill floor remarks supporting H.J. Res. 77","url":"https://hill.house.gov/news/documentsingle.aspx?DocumentID=6114","sourceType":"other","primary":true,"publishedDate":"2019-10-16"},
+      {"label":"Roll Call: House Republicans break 2-to-1 against Trump on Syria withdrawal","url":"https://rollcall.com/2019/10/16/house-republicans-break-2-to-1-against-trump-on-withdrawal-of-kurd-support/","sourceType":"news","primary":false,"publishedDate":"2019-10-16"}
+    ]
+  }
+]

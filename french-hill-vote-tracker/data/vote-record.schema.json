@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "French Hill Vote Record",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "congress",
+    "rollCall",
+    "date",
+    "measure",
+    "hillVote",
+    "republicanYea",
+    "republicanNay",
+    "democratYea",
+    "democratNay",
+    "partyMajorityPosition",
+    "democratMajorityPosition",
+    "republicanUnityPct",
+    "democratUnityPct",
+    "partiesOpposed",
+    "highPartisanship",
+    "partisanshipScore",
+    "hillAlignedWithGop",
+    "partyBreak",
+    "trumpPosition",
+    "trumpAligned",
+    "trumpBreak",
+    "doubleBreak",
+    "highlyPartisanGopAlignment",
+    "highlyPartisanTrumpAlignment",
+    "highlyPartisanDoubleAlignment",
+    "classificationConfidence",
+    "sources"
+  ],
+  "properties": {
+    "congress": { "type": "integer" },
+    "rollCall": { "type": "integer" },
+    "date": { "type": "string", "format": "date" },
+    "measure": { "type": "string" },
+    "question": { "type": "string" },
+    "issueArea": { "type": "string" },
+    "hillVote": { "enum": ["Yea", "Nay", "Present", "Not Voting"] },
+
+    "republicanYea": { "type": "integer", "minimum": 0 },
+    "republicanNay": { "type": "integer", "minimum": 0 },
+    "democratYea": { "type": "integer", "minimum": 0 },
+    "democratNay": { "type": "integer", "minimum": 0 },
+
+    "partyMajorityPosition": { "enum": ["Yea", "Nay", "Split", "Unknown"] },
+    "democratMajorityPosition": { "enum": ["Yea", "Nay", "Split", "Unknown"] },
+    "republicanUnityPct": { "type": ["number", "null"], "minimum": 0, "maximum": 100 },
+    "democratUnityPct": { "type": ["number", "null"], "minimum": 0, "maximum": 100 },
+    "partiesOpposed": { "type": "boolean" },
+    "highPartisanship": { "type": "boolean" },
+    "partisanshipScore": { "type": ["number", "null"], "minimum": 0, "maximum": 100 },
+    "hillAlignedWithGop": { "type": ["boolean", "null"] },
+    "partyBreak": { "type": "boolean" },
+
+    "trumpPosition": { "enum": ["Support", "Oppose", "Neutral", "Ambiguous", "No documented position"] },
+    "trumpAligned": { "type": ["boolean", "null"] },
+    "trumpBreak": { "type": "boolean" },
+    "doubleBreak": { "type": "boolean" },
+    "highlyPartisanGopAlignment": { "type": "boolean" },
+    "highlyPartisanTrumpAlignment": { "type": "boolean" },
+    "highlyPartisanDoubleAlignment": { "type": "boolean" },
+
+    "trumpEvidenceSummary": { "type": "string" },
+    "trumpEvidenceStatus": { "enum": ["verified", "provisional", "ambiguous", "rejected"] },
+    "trumpEvidenceSources": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/source" }
+    },
+    "plainLanguageSummary": { "type": "string" },
+    "classificationConfidence": { "enum": ["high", "medium", "low"] },
+    "notes": { "type": "string" },
+    "sources": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/source" }
+    }
+  },
+  "$defs": {
+    "source": {
+      "type": "object",
+      "required": ["label", "url", "sourceType"],
+      "properties": {
+        "label": { "type": "string" },
+        "url": { "type": "string", "format": "uri" },
+        "sourceType": { "type": "string" },
+        "primary": { "type": "boolean" },
+        "publishedDate": { "type": "string", "format": "date" }
+      }
+    }
+  }
+}

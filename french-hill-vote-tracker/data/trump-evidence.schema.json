@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Trump Position Evidence Record",
+  "type": "object",
+  "required": ["congress", "rollCall", "position", "evidenceStatus", "summary", "sources"],
+  "properties": {
+    "congress": { "type": "integer" },
+    "rollCall": { "type": "integer" },
+    "position": { "enum": ["Support", "Oppose", "Neutral", "Ambiguous"] },
+    "preferredVote": { "type": ["string", "null"], "enum": ["Yea", "Nay", null] },
+    "evidenceStatus": { "enum": ["verified", "provisional", "ambiguous", "rejected"] },
+    "summary": { "type": "string", "minLength": 1 },
+    "effectiveDate": { "type": "string", "format": "date" },
+    "reviewNotes": { "type": "string" },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["label", "url", "sourceType"],
+        "properties": {
+          "label": { "type": "string" },
+          "url": { "type": "string", "format": "uri" },
+          "sourceType": { "enum": ["official-trump", "archive", "news", "house", "other"] },
+          "primary": { "type": "boolean" },
+          "publishedDate": { "type": "string", "format": "date" }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "evidenceStatus": { "const": "verified" },
+          "position": { "enum": ["Support", "Oppose"] }
+        },
+        "required": ["evidenceStatus", "position"]
+      },
+      "then": {
+        "required": ["preferredVote"],
+        "properties": {
+          "preferredVote": { "enum": ["Yea", "Nay"] }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "position": { "enum": ["Neutral", "Ambiguous"] }
+        },
+        "required": ["position"]
+      },
+      "then": {
+        "properties": {
+          "preferredVote": { "type": "null" }
+        }
+      }
+    }
+  ],
+  "additionalProperties": false
+}
