@@ -26,6 +26,13 @@ function tendencies(items: Array<{ label: string; probabilityWeight: number; con
     .join("; ");
 }
 
+export function buildActorContextForPrompt(
+  model: DecisionSimulationActorModel,
+  variation?: DecisionSimulationActorVariation,
+): string {
+  return buildActorModelPromptContext({ model, variation });
+}
+
 export function buildActorModelPromptContext(context?: DecisionSimulationActorContext): string {
   if (!context) return "ACTOR MODEL: Not supplied.";
   const { model, variation } = context;
