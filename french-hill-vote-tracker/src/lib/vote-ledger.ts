@@ -1,34 +1,9 @@
 import fs from "node:fs";
 import path from "node:path";
-import { applyTrumpEvidence, loadTrumpEvidence, trumpEvidenceKey, type TrumpEvidenceRecord } from "./trump-evidence";
+import { applyTrumpEvidence, loadTrumpEvidence, trumpEvidenceKey } from "./trump-evidence";
+import type { VoteRecord } from "./vote-record";
 
-export type LedgerVote = {
-  congress: number;
-  rollCall: number;
-  date: string;
-  measure: string;
-  question?: string;
-  hillVote: string;
-  republicanYea: number;
-  republicanNay: number;
-  democratYea: number;
-  democratNay: number;
-  partyBreak: boolean;
-  hillAlignedWithGop: boolean | null;
-  highPartisanship: boolean;
-  partisanshipScore: number | null;
-  trumpPosition: string;
-  trumpAligned: boolean | null;
-  trumpBreak: boolean;
-  doubleBreak: boolean;
-  highlyPartisanGopAlignment: boolean;
-  highlyPartisanTrumpAlignment: boolean;
-  highlyPartisanDoubleAlignment: boolean;
-  trumpEvidenceSummary?: string;
-  trumpEvidenceStatus?: "verified" | "provisional" | "ambiguous" | "rejected";
-  trumpEvidenceSources?: TrumpEvidenceRecord["sources"];
-  sources: Array<{ label: string; url: string; sourceType: string; primary?: boolean; publishedDate?: string }>;
-};
+export type LedgerVote = VoteRecord;
 
 const GENERATED = path.join(process.cwd(), "data", "generated");
 
