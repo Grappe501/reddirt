@@ -8068,5 +8068,538 @@
       "political": 0,
       "abstraction": 0
     }
+  },
+  {
+    "source": {
+      "id": "chris-jones-ar02-src-9072e6d7",
+      "actorId": "chris-jones-ar02",
+      "canonicalUrl": "https://chrisjonesforcongress.com/",
+      "title": "Chris Jones for Congress",
+      "publishedAt": "2026-09-09",
+      "sourceType": "CAMPAIGN_ARTICLE",
+      "provenance": "FIRST_PARTY",
+      "authorshipConfidence": "ATTRIBUTED",
+      "retrievalDate": "2026-09-09",
+      "topicTags": [
+        "economy",
+        "affordability",
+        "housing",
+        "faith",
+        "workforce",
+        "elections",
+        "arkansas",
+        "national"
+      ],
+      "wordCountEstimate": 474,
+      "sourceFingerprint": "src-dbe8cf70",
+      "retrievalQuality": "FULL_PUBLIC",
+      "excerpt": "Chris Jones for Congress PREPARE FOR THE ELECTION Voting Begins in: Days Find helpful resources to make sure you&#8217;re ready for the General on November 3rd: REGISTER TO VOTE FIND YOUR POLLING PLACE APPLY TO VOTE…"
+    },
+    "issueVoices": [
+      "ECONOMIC",
+      "FAITH_VALUES",
+      "COMMUNITY",
+      "FUNDRAISING_CAMPAIGN",
+      "CALL_TO_ACTION"
+    ],
+    "features": {
+      "sentenceCount": 27,
+      "paragraphCount": 1,
+      "avgSentenceLength": 17.7,
+      "sentenceLengthVariance": 79.1,
+      "avgParagraphLength": 478,
+      "questionRate": 0,
+      "imperativeRate": 0.037,
+      "fragmentRate": 0,
+      "listMarkerRate": 0,
+      "shortPunchRate": 0.0741,
+      "repetitionRate": 0,
+      "parallelRate": 0.0741,
+      "threePartRate": 0.0741,
+      "longSetupShortCloseRate": 0.037
+    },
+    "rhetoric": {
+      "metaphor": 0,
+      "analogy": 0,
+      "anecdote": 0,
+      "statistics": 0,
+      "authority": 0.2963,
+      "moralFraming": 0.2963,
+      "personalNarrative": 0.2963,
+      "localExample": 0.5926,
+      "opponentContrast": 0,
+      "rhetoricalQuestion": 0,
+      "callToAction": 0.5926,
+      "optimismAfterDiagnosis": 0,
+      "institutionalProcess": 0
+    },
+    "structure": {
+      "jonesArc": 0,
+      "hillArc": 0
+    },
+    "motifs": [
+      {
+        "motif": "future",
+        "count": 6
+      },
+      {
+        "motif": "arkansas",
+        "count": 5
+      },
+      {
+        "motif": "community",
+        "count": 3
+      },
+      {
+        "motif": "building",
+        "count": 2
+      },
+      {
+        "motif": "families",
+        "count": 2
+      },
+      {
+        "motif": "science",
+        "count": 2
+      },
+      {
+        "motif": "people",
+        "count": 2
+      },
+      {
+        "motif": "faith",
+        "count": 1
+      },
+      {
+        "motif": "kitchen",
+        "count": 1
+      }
+    ],
+    "lexical": {
+      "technical": 0,
+      "religious": 0.0021,
+      "arkansas": 0.0084,
+      "political": 0.0042,
+      "abstraction": 0
+    }
+  },
+  {
+    "source": {
+      "id": "chris-jones-ar02-src-a0870491",
+      "actorId": "chris-jones-ar02",
+      "canonicalUrl": "https://chrisjonesforcongress.com/about/",
+      "title": "Meet Chris",
+      "publishedAt": "2026-09-09",
+      "sourceType": "CAMPAIGN_ARTICLE",
+      "provenance": "FIRST_PARTY",
+      "authorshipConfidence": "ATTRIBUTED",
+      "retrievalDate": "2026-09-09",
+      "topicTags": [
+        "affordability",
+        "housing",
+        "faith",
+        "workforce",
+        "elections",
+        "arkansas",
+        "national"
+      ],
+      "wordCountEstimate": 334,
+      "sourceFingerprint": "src-214ca1f",
+      "retrievalQuality": "FULL_PUBLIC",
+      "excerpt": "Meet Chris Meet Chris Faith, Family, and Hard Work. I’m Chris Jones, and I’m running for Congress in Arkansas’s 2nd District. I grew up in Pine Bluff, where my story began in a community that taught me the values of…"
+    },
+    "issueVoices": [
+      "FAITH_VALUES",
+      "COMMUNITY",
+      "FUNDRAISING_CAMPAIGN",
+      "CALL_TO_ACTION"
+    ],
+    "features": {
+      "sentenceCount": 18,
+      "paragraphCount": 1,
+      "avgSentenceLength": 19.11,
+      "sentenceLengthVariance": 70.99,
+      "avgParagraphLength": 344,
+      "questionRate": 0,
+      "imperativeRate": 0,
+      "fragmentRate": 0,
+      "listMarkerRate": 0,
+      "shortPunchRate": 0,
+      "repetitionRate": 0.0909,
+      "parallelRate": 0.3333,
+      "threePartRate": 0.2222,
+      "longSetupShortCloseRate": 0
+    },
+    "rhetoric": {
+      "metaphor": 0,
+      "analogy": 0,
+      "anecdote": 0,
+      "statistics": 0,
+      "authority": 0.3333,
+      "moralFraming": 1,
+      "personalNarrative": 0.3333,
+      "localExample": 0.6667,
+      "opponentContrast": 0,
+      "rhetoricalQuestion": 0,
+      "callToAction": 0.3333,
+      "optimismAfterDiagnosis": 0,
+      "institutionalProcess": 0
+    },
+    "structure": {
+      "jonesArc": 0.2,
+      "hillArc": 0
+    },
+    "motifs": [
+      {
+        "motif": "arkansas",
+        "count": 7
+      },
+      {
+        "motif": "people",
+        "count": 6
+      },
+      {
+        "motif": "faith",
+        "count": 3
+      },
+      {
+        "motif": "building",
+        "count": 2
+      },
+      {
+        "motif": "future",
+        "count": 2
+      },
+      {
+        "motif": "science",
+        "count": 2
+      },
+      {
+        "motif": "community",
+        "count": 1
+      },
+      {
+        "motif": "families",
+        "count": 1
+      },
+      {
+        "motif": "power",
+        "count": 1
+      }
+    ],
+    "lexical": {
+      "technical": 0,
+      "religious": 0.0029,
+      "arkansas": 0.0087,
+      "political": 0.0029,
+      "abstraction": 0.0029
+    }
+  },
+  {
+    "source": {
+      "id": "chris-jones-ar02-src-e809d0b5",
+      "actorId": "chris-jones-ar02",
+      "canonicalUrl": "https://chrisjonesforcongress.com/accountability/",
+      "title": "Accountability For All - Chris Jones for Congress",
+      "publishedAt": "2026-09-09",
+      "sourceType": "CAMPAIGN_ARTICLE",
+      "provenance": "FIRST_PARTY",
+      "authorshipConfidence": "ATTRIBUTED",
+      "retrievalDate": "2026-09-09",
+      "topicTags": [
+        "affordability",
+        "accountability",
+        "workforce",
+        "elections",
+        "arkansas",
+        "national"
+      ],
+      "wordCountEstimate": 199,
+      "sourceFingerprint": "src-87bf17ac",
+      "retrievalQuality": "FULL_PUBLIC",
+      "excerpt": "Accountability For All - Chris Jones for Congress ACCOUNTABILITY FOR ALL I believe accountability for all looks like a government that answers to the People. The current systems of government may be better suited to…"
+    },
+    "issueVoices": [
+      "ECONOMIC",
+      "CRISIS",
+      "FUNDRAISING_CAMPAIGN",
+      "CALL_TO_ACTION"
+    ],
+    "features": {
+      "sentenceCount": 12,
+      "paragraphCount": 1,
+      "avgSentenceLength": 16.58,
+      "sentenceLengthVariance": 22.08,
+      "avgParagraphLength": 199,
+      "questionRate": 0,
+      "imperativeRate": 0,
+      "fragmentRate": 0,
+      "listMarkerRate": 0,
+      "shortPunchRate": 0.0833,
+      "repetitionRate": 0,
+      "parallelRate": 0.0833,
+      "threePartRate": 0.0833,
+      "longSetupShortCloseRate": 0
+    },
+    "rhetoric": {
+      "metaphor": 0.3333,
+      "analogy": 0,
+      "anecdote": 0,
+      "statistics": 0,
+      "authority": 0.3333,
+      "moralFraming": 0.3333,
+      "personalNarrative": 0,
+      "localExample": 0.3333,
+      "opponentContrast": 0,
+      "rhetoricalQuestion": 0,
+      "callToAction": 0,
+      "optimismAfterDiagnosis": 0,
+      "institutionalProcess": 0
+    },
+    "structure": {
+      "jonesArc": 0.4,
+      "hillArc": 0
+    },
+    "motifs": [
+      {
+        "motif": "accountability",
+        "count": 3
+      },
+      {
+        "motif": "people",
+        "count": 3
+      },
+      {
+        "motif": "affordability",
+        "count": 1
+      },
+      {
+        "motif": "arkansas",
+        "count": 1
+      },
+      {
+        "motif": "families",
+        "count": 1
+      }
+    ],
+    "lexical": {
+      "technical": 0.005,
+      "religious": 0,
+      "arkansas": 0.005,
+      "political": 0.005,
+      "abstraction": 0.0101
+    }
+  },
+  {
+    "source": {
+      "id": "chris-jones-ar02-src-57a9342d",
+      "actorId": "chris-jones-ar02",
+      "canonicalUrl": "https://chrisjonesforcongress.com/opportunity/",
+      "title": "Opportunity For All - Chris Jones for Congress",
+      "publishedAt": "2026-09-09",
+      "sourceType": "CAMPAIGN_ARTICLE",
+      "provenance": "FIRST_PARTY",
+      "authorshipConfidence": "ATTRIBUTED",
+      "retrievalDate": "2026-09-09",
+      "topicTags": [
+        "affordability",
+        "accountability",
+        "workforce",
+        "arkansas",
+        "national"
+      ],
+      "wordCountEstimate": 199,
+      "sourceFingerprint": "src-f0049574",
+      "retrievalQuality": "FULL_PUBLIC",
+      "excerpt": "Opportunity For All - Chris Jones for Congress OPPORTUNITY FOR ALL I believe opportunity for all is the outcome of affordability and accountability. When families can afford a good life and the government is accountable…"
+    },
+    "issueVoices": [
+      "ECONOMIC",
+      "COMMUNITY",
+      "FUNDRAISING_CAMPAIGN",
+      "CALL_TO_ACTION"
+    ],
+    "features": {
+      "sentenceCount": 11,
+      "paragraphCount": 1,
+      "avgSentenceLength": 18.18,
+      "sentenceLengthVariance": 15.79,
+      "avgParagraphLength": 200,
+      "questionRate": 0,
+      "imperativeRate": 0,
+      "fragmentRate": 0,
+      "listMarkerRate": 0,
+      "shortPunchRate": 0,
+      "repetitionRate": 0,
+      "parallelRate": 0.0909,
+      "threePartRate": 0.3636,
+      "longSetupShortCloseRate": 0
+    },
+    "rhetoric": {
+      "metaphor": 0,
+      "analogy": 0,
+      "anecdote": 0,
+      "statistics": 0,
+      "authority": 0.3333,
+      "moralFraming": 0.3333,
+      "personalNarrative": 0,
+      "localExample": 0.3333,
+      "opponentContrast": 0,
+      "rhetoricalQuestion": 0,
+      "callToAction": 0,
+      "optimismAfterDiagnosis": 0,
+      "institutionalProcess": 0
+    },
+    "structure": {
+      "jonesArc": 0.4,
+      "hillArc": 0
+    },
+    "motifs": [
+      {
+        "motif": "accountability",
+        "count": 2
+      },
+      {
+        "motif": "affordability",
+        "count": 2
+      },
+      {
+        "motif": "arkansas",
+        "count": 2
+      },
+      {
+        "motif": "families",
+        "count": 2
+      },
+      {
+        "motif": "people",
+        "count": 2
+      },
+      {
+        "motif": "building",
+        "count": 1
+      },
+      {
+        "motif": "future",
+        "count": 1
+      }
+    ],
+    "lexical": {
+      "technical": 0.005,
+      "religious": 0,
+      "arkansas": 0.005,
+      "political": 0.005,
+      "abstraction": 0.01
+    }
+  },
+  {
+    "source": {
+      "id": "french-hill-ar02-src-e479e168",
+      "actorId": "french-hill-ar02",
+      "canonicalUrl": "https://www.electfrench.com/",
+      "title": "French Hill for Congress | Promises Made. Promises Kept.",
+      "publishedAt": "2026-09-09",
+      "sourceType": "CAMPAIGN_ARTICLE",
+      "provenance": "FIRST_PARTY",
+      "authorshipConfidence": "ATTRIBUTED",
+      "retrievalDate": "2026-09-09",
+      "topicTags": [
+        "economy",
+        "affordability",
+        "housing",
+        "faith",
+        "accountability",
+        "workforce",
+        "elections",
+        "arkansas",
+        "national",
+        "bipartisan",
+        "contrast"
+      ],
+      "wordCountEstimate": 1805,
+      "sourceFingerprint": "src-d533805f",
+      "retrievalQuality": "FULL_PUBLIC",
+      "excerpt": "French Hill for Congress | Promises Made. Promises Kept. Skip to content French Hill For Arkansas Promises Made. Promises Kept. Join the Fight — Get Updates From French French on the Issues TAXES, jobs & ECONOMIC…"
+    },
+    "issueVoices": [
+      "ECONOMIC",
+      "ATTACK_CONTRAST",
+      "BIPARTISAN",
+      "FAITH_VALUES",
+      "POLICY_EXPLANATION",
+      "COMMUNITY"
+    ],
+    "features": {
+      "sentenceCount": 86,
+      "paragraphCount": 1,
+      "avgSentenceLength": 21.26,
+      "sentenceLengthVariance": 270.77,
+      "avgParagraphLength": 1828,
+      "questionRate": 0,
+      "imperativeRate": 0.0116,
+      "fragmentRate": 0,
+      "listMarkerRate": 0,
+      "shortPunchRate": 0.1744,
+      "repetitionRate": 0.1463,
+      "parallelRate": 0.0349,
+      "threePartRate": 0.0698,
+      "longSetupShortCloseRate": 0.0581
+    },
+    "rhetoric": {
+      "metaphor": 0,
+      "analogy": 0,
+      "anecdote": 0,
+      "statistics": 0.5581,
+      "authority": 0.186,
+      "moralFraming": 0.186,
+      "personalNarrative": 0,
+      "localExample": 0.2791,
+      "opponentContrast": 0.2791,
+      "rhetoricalQuestion": 0,
+      "callToAction": 0.093,
+      "optimismAfterDiagnosis": 0,
+      "institutionalProcess": 0.3721
+    },
+    "structure": {
+      "jonesArc": 0.4,
+      "hillArc": 0.6
+    },
+    "motifs": [
+      {
+        "motif": "arkansas",
+        "count": 21
+      },
+      {
+        "motif": "committee",
+        "count": 9
+      },
+      {
+        "motif": "housing",
+        "count": 4
+      },
+      {
+        "motif": "bipartisan",
+        "count": 1
+      },
+      {
+        "motif": "workforce",
+        "count": 1
+      },
+      {
+        "motif": "small business",
+        "count": 1
+      },
+      {
+        "motif": "central arkansas",
+        "count": 1
+      }
+    ],
+    "lexical": {
+      "technical": 0,
+      "religious": 0,
+      "arkansas": 0.0016,
+      "political": 0.0022,
+      "abstraction": 0
+    }
   }
 ]

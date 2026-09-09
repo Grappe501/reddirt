@@ -1,3 +1,4 @@
+import { getCampaignPrioritySnapshot } from "@/lib/agents/decision-simulation/campaign-priorities";
 import type { CatalogPersonality } from "@/lib/agents/decision-simulation/personality-catalog";
 import { getHillLegislativeDashboard } from "@/lib/agents/decision-simulation/vote-intelligence/dashboard";
 import {
@@ -80,9 +81,39 @@ export function PersonalityIntelligence({
         <div key={item.id} className="ml-warn">Custom model {item.name} remains HYPOTHESIS until sources are attached.</div>
       ))}
       {researched.map((item) => (
-        <IntelCard key={item.id} intel={buildActorWritingIntelligence(item.id as "chris-jones-ar02" | "french-hill-ar02")} />
+        <div key={item.id}>
+          <CampaignPriorities actorId={item.id} />
+          <IntelCard intel={buildActorWritingIntelligence(item.id as "chris-jones-ar02" | "french-hill-ar02")} />
+        </div>
       ))}
       {counterparty.id === "french-hill-ar02" || operator.id === "french-hill-ar02" ? <LegislativeRecord /> : null}
+    </div>
+  );
+}
+
+function CampaignPriorities({ actorId }: { actorId: string }) {
+  const snap = getCampaignPrioritySnapshot(actorId);
+  if (!snap) return null;
+  return (
+    <div className="ml-actor">
+      <div style={{ display: "flex", justifyContent: "space-between", gap: 8 }}>
+        <b>Immediate campaign priorities</b>
+        <span className="ml-badge research">{snap.authorshipConfidence}</span>
+      </div>
+      <p>
+        First-party living pages accessed {snap.accessed}. Slogan: {snap.slogan}. Not a poll and not a send list.
+      </p>
+      <ul className="ml-sources">
+        {snap.priorities.map((priority) => (
+          <li key={priority.id}>
+            <b>{priority.label} [{priority.sourceState}]</b> — {priority.summary}{" "}
+            <a href={priority.sourceUrl} target="_blank" rel="noreferrer">{priority.sourceTitle}</a>
+          </li>
+        ))}
+      </ul>
+      <ul className="ml-sources">
+        {snap.uncertainty.map((item) => <li key={item}>{item}</li>)}
+      </ul>
     </div>
   );
 }

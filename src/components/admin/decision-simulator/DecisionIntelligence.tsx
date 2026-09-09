@@ -86,9 +86,11 @@ export function DecisionIntelligence({
   const evidence = useMemo(
     () => [
       "Personality sources stay on the left dossier. This drawer does not invent votes or private statements.",
+      "Jones and Hill immediate priorities are attached from first-party campaign pages accessed 2026-09-09.",
       "Hill legislative vote corpus is MISSING unless a first-party tracker is later attached.",
       "Unknown headers, venues, and recipients stay unknown.",
       "A generated six-move sequence is not evidence about a real person.",
+      "Campaign poll graphics are not treated as facts.",
     ],
     [],
   );

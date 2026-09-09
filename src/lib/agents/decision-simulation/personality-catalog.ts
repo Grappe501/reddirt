@@ -67,7 +67,7 @@ export const chrisJonesPersonality: CatalogPersonality = {
   office: "Democratic nominee, U.S. House Arkansas 2nd District (2026)",
   partyLabel: "Democratic",
   roleDefault: "OPERATOR",
-  version: "jones-ar02-research-1.0",
+  version: "jones-ar02-research-1.1",
   effectiveAt: `${TODAY}T00:00:00.000Z`,
   evidenceQuality: "MIXED",
   uncertaintyLevel: "MEDIUM",
@@ -83,12 +83,19 @@ export const chrisJonesPersonality: CatalogPersonality = {
     "Ordained minister; former executive director, Arkansas Regional Innovation Hub.",
     "Filed/launched 2026 AR-02 congressional bid; Democratic nominee vs incumbent French Hill. General election November 3, 2026.",
     "Stated 2026 campaign themes include affordability, accountability, opportunity, education/workforce, housing, healthcare, and childcare.",
+    "Campaign site (chrisjonesforcongress.com, accessed 2026-09-09) names three pillars: Affordability For All, Accountability For All, Opportunity For All.",
+    "Homepage commitment blocks: Jobs & Local Economy; Families & Health; Schools & Innovation; Democracy for the People.",
+    "About page: four legs of the table — justice, economy, democracy, innovation; headings Economy, Democracy, Growth, Entrepreneurship.",
   ],
   sources: [
     { label: "Ballotpedia — Chris Jones (AR congressional candidate)", url: "https://ballotpedia.org/Chris_Jones_(Arkansas_congressional_candidate)", accessed: TODAY },
     { label: "Wikipedia — Chris Jones (Arkansas politician)", url: "https://en.wikipedia.org/wiki/Chris_Jones_(Arkansas_politician)", accessed: TODAY },
     { label: "Talk Business & Politics — congressional launch, Oct 9 2025", url: "https://talkbusiness.net/2025/10/chris-jones-officially-launches-bid-for-congress/", accessed: TODAY },
+    { label: "Campaign site — home", url: "https://chrisjonesforcongress.com/", accessed: TODAY },
     { label: "Campaign site — Affordability For All", url: "https://chrisjonesforcongress.com/affordability/", accessed: TODAY },
+    { label: "Campaign site — Accountability For All", url: "https://chrisjonesforcongress.com/accountability/", accessed: TODAY },
+    { label: "Campaign site — Opportunity For All", url: "https://chrisjonesforcongress.com/opportunity/", accessed: TODAY },
+    { label: "Campaign site — Meet Chris", url: "https://chrisjonesforcongress.com/about/", accessed: TODAY },
     { label: "Ballotpedia — AR-02 2026", url: "https://ballotpedia.org/Arkansas%27_2nd_Congressional_District_election,_2026", accessed: TODAY },
   ],
   learningNote:
@@ -96,14 +103,15 @@ export const chrisJonesPersonality: CatalogPersonality = {
   model: {
     actorId: "chris-jones-ar02",
     actorName: "Dr. Chris Jones",
-    version: "jones-ar02-research-1.0",
+    version: "jones-ar02-research-1.1",
     effectiveAt: `${TODAY}T00:00:00.000Z`,
     description:
       "Research-bounded operator/challenger model for Arkansas's 2nd District. Use only public biographical and campaign-record facts. Do not invent private motives or unsourced attacks.",
     primaryIncentives: [
       "Affordability for working families (housing, healthcare, childcare, energy, retirement) — campaign site",
-      "Opportunity via education, workforce, infrastructure, and innovation — public bio and campaign themes",
-      "Present as a builder/scientist/minister with Arkansas roots — public biography",
+      "Accountability: ethics, public-funding answers, campaign-finance disclosure — campaign site",
+      "Opportunity: rural development, small business, workforce, broadband — campaign site",
+      "Democracy guardrails: fair maps, accessible elections, leaders who listen — campaign home",
     ],
     strategicConstraints: [
       "Challenger against a multi-term incumbent Financial Services chair",
@@ -112,9 +120,11 @@ export const chrisJonesPersonality: CatalogPersonality = {
     ],
     preferredFrames: [
       frame("Affordability for working families", 1, "HIGH", "OBSERVED", "chrisjonesforcongress.com/affordability"),
-      frame("Opportunity and STEAM / education investment", 0.9, "HIGH", "OBSERVED", "Public bio and 2022/2026 themes"),
-      frame("Scientist-minister-builder identity", 0.8, "MEDIUM", "OBSERVED", "NASA scholarship, MIT degrees, ordained minister"),
-      frame("Accountability and ethics in government", 0.7, "MEDIUM", "OBSERVED", "Campaign accountability theme"),
+      frame("Accountability and ethics in government", 0.9, "HIGH", "OBSERVED", "chrisjonesforcongress.com/accountability"),
+      frame("Opportunity via jobs, rural broadband, and small business", 0.9, "HIGH", "OBSERVED", "chrisjonesforcongress.com/opportunity"),
+      frame("Democracy for the people / fair maps", 0.8, "HIGH", "OBSERVED", "chrisjonesforcongress.com home commitment"),
+      frame("Families and health, including maternal health and food security", 0.8, "HIGH", "OBSERVED", "chrisjonesforcongress.com home"),
+      frame("Scientist-minister-builder identity", 0.75, "MEDIUM", "OBSERVED", "NASA scholarship, MIT degrees, ordained minister"),
     ],
     attackLanes: [
       frame("Incumbent distance from household costs", 0.7, "LOW", "HYPOTHESIS", "Not a documented Jones attack line; simulation-only"),
@@ -141,6 +151,7 @@ export const chrisJonesPersonality: CatalogPersonality = {
       "No private strategy documents were used.",
       "Response-style weights are HYPOTHESIS unless tagged otherwise.",
       "2022 gubernatorial loss is electoral context, not a personality diagnosis.",
+      "Campaign-site poll graphics were not ingested as facts.",
     ],
   },
 };
@@ -152,7 +163,7 @@ export const frenchHillPersonality: CatalogPersonality = {
   office: "U.S. Representative, Arkansas 2nd District (incumbent since 2015)",
   partyLabel: "Republican",
   roleDefault: "COUNTERPARTY",
-  version: "hill-ar02-research-1.0",
+  version: "hill-ar02-research-1.1",
   effectiveAt: `${TODAY}T00:00:00.000Z`,
   evidenceQuality: "MIXED",
   uncertaintyLevel: "MEDIUM",
@@ -167,8 +178,12 @@ export const frenchHillPersonality: CatalogPersonality = {
     "Founder/CEO, Delta Trust & Banking Corporation (1999–2014, sold to Simmons Bank).",
     "2024 general: 58.9% vs Marcus Jones. 2026 Republican primary winner vs Chase McDowell; general vs Chris Jones on November 3, 2026.",
     "Official communications emphasize financial regulation, capital access, waste/fraud (Golden Fleece), defense, and district casework.",
+    "2026 campaign site (electfrench.com, accessed 2026-09-09) slogan: Promises Made. Promises Kept.",
+    "Campaign issue blocks: taxes/jobs/economic prosperity; border; veterans; seniors; conservation; fiscal waste; conservative family values.",
+    "Campaign-stated economic examples include Working Families Tax Cut items, Price Stability Act, 21st Century Housing Bill, INVEST Act, and a stablecoin framework.",
   ],
   sources: [
+    { label: "Campaign site — French Hill for Congress", url: "https://www.electfrench.com/", accessed: TODAY },
     { label: "Official House biography", url: "https://hill.house.gov/biography/", accessed: TODAY },
     { label: "Wikipedia — James French Hill", url: "https://en.wikipedia.org/wiki/James_French_Hill", accessed: TODAY },
     { label: "Ballotpedia — AR-02 2026", url: "https://ballotpedia.org/Arkansas%27_2nd_Congressional_District_election,_2026", accessed: TODAY },
@@ -179,14 +194,16 @@ export const frenchHillPersonality: CatalogPersonality = {
   model: {
     actorId: "french-hill-ar02",
     actorName: "Rep. French Hill",
-    version: "hill-ar02-research-1.0",
+    version: "hill-ar02-research-1.1",
     effectiveAt: `${TODAY}T00:00:00.000Z`,
     description:
       "Research-bounded incumbent model. Grounded in official biography and public legislative/communications record. Do not use unsourced opponent claims.",
     primaryIncentives: [
+      "Taxes, jobs, and economic prosperity as the campaign lead issue — electfrench.com",
       "Financial-system and capital-access agenda (committee chair record)",
-      "Incumbent delivery: casework, district offices, institutional competence",
+      "Incumbent delivery: casework, district offices, veterans and senior service claims",
       "Fiscal-oversight / anti-waste public communications (Golden Fleece series)",
+      "Border security and fentanyl as named campaign issues — electfrench.com",
     ],
     strategicConstraints: [
       "Public record as multi-term incumbent and Financial Services chair",
@@ -194,10 +211,13 @@ export const frenchHillPersonality: CatalogPersonality = {
       "No private information; no autonomous contact or posting",
     ],
     preferredFrames: [
-      frame("Financial services and capital access", 1, "HIGH", "OBSERVED", "Committee chair; Main Street Capital Access Act"),
-      frame("Waste, fraud, and agency accountability", 0.85, "HIGH", "OBSERVED", "Golden Fleece awards on official site"),
-      frame("Banking/Treasury professional competence", 0.8, "HIGH", "OBSERVED", "Official biography"),
-      frame("National security and intelligence experience", 0.7, "MEDIUM", "OBSERVED", "Prior HPSCI and Foreign Affairs membership"),
+      frame("Taxes, jobs, and cost relief (tips, overtime, inflation)", 1, "HIGH", "OBSERVED", "electfrench.com Taxes, jobs & economic prosperity"),
+      frame("Housing supply and capital access", 0.9, "HIGH", "OBSERVED", "21st Century Housing Bill and INVEST Act on campaign site"),
+      frame("Financial services and digital-asset framework", 0.9, "HIGH", "OBSERVED", "Committee chair; campaign stablecoin / Clarity Act note"),
+      frame("Waste, fraud, and agency accountability", 0.85, "HIGH", "OBSERVED", "Golden Fleece on campaign and official sites"),
+      frame("Veterans and seniors service", 0.8, "HIGH", "OBSERVED", "electfrench.com heroes and seniors blocks"),
+      frame("Border security and fentanyl", 0.75, "HIGH", "OBSERVED", "electfrench.com border block"),
+      frame("Banking/Treasury professional competence", 0.75, "HIGH", "OBSERVED", "Official biography"),
     ],
     attackLanes: [
       frame("Challenger inexperience on financial regulation", 0.6, "LOW", "HYPOTHESIS", "Not cited from a Hill statement in this version"),
@@ -224,6 +244,7 @@ export const frenchHillPersonality: CatalogPersonality = {
       "Campaign-arm characterizations of the opponent are excluded from this model.",
       "Social-issue votes exist in the public record; they are not used here as simulated attack content unless the opening move raises them.",
       "Response-style weights are mostly HYPOTHESIS.",
+      "Campaign-stated casework totals and bill-outcome claims are ATTRIBUTED, not independently verified in this ingest.",
     ],
   },
 };

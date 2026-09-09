@@ -34,6 +34,14 @@ export const JONES_SEED_URLS: SeedWritingUrl[] = [
   { actorId: "chris-jones-ar02", url: "https://drchrisjones.substack.com/p/the-moral-arc-bending-toward-justice-bdc", sourceType: "SUBSTACK", authorshipConfidence: "DIRECT_AUTHOR" },
   { actorId: "chris-jones-ar02", url: "https://drchrisjones.substack.com/p/defend-the-first-use-it-or-lose-it", sourceType: "SUBSTACK", authorshipConfidence: "DIRECT_AUTHOR" },
   { actorId: "chris-jones-ar02", url: "https://chrisjonesforcongress.com/affordability/", sourceType: "CAMPAIGN_ARTICLE", authorshipConfidence: "ATTRIBUTED" },
+  { actorId: "chris-jones-ar02", url: "https://chrisjonesforcongress.com/", sourceType: "CAMPAIGN_ARTICLE", authorshipConfidence: "ATTRIBUTED" },
+  { actorId: "chris-jones-ar02", url: "https://chrisjonesforcongress.com/about/", sourceType: "CAMPAIGN_ARTICLE", authorshipConfidence: "ATTRIBUTED" },
+  { actorId: "chris-jones-ar02", url: "https://chrisjonesforcongress.com/accountability/", sourceType: "CAMPAIGN_ARTICLE", authorshipConfidence: "ATTRIBUTED" },
+  { actorId: "chris-jones-ar02", url: "https://chrisjonesforcongress.com/opportunity/", sourceType: "CAMPAIGN_ARTICLE", authorshipConfidence: "ATTRIBUTED" },
+];
+
+export const HILL_CAMPAIGN_SEED_URLS: SeedWritingUrl[] = [
+  { actorId: "french-hill-ar02", url: "https://www.electfrench.com/", sourceType: "CAMPAIGN_ARTICLE", authorshipConfidence: "ATTRIBUTED" },
 ];
 
 export const HILL_ARCHIVE_PAGES = [

@@ -1,3 +1,4 @@
+import { formatCampaignPrioritiesPromptLine } from "../campaign-priorities";
 import type { WritingPromptPacket } from "./contracts";
 import { buildActorWritingIntelligence } from "./catalog";
 import type { WritingActorId } from "./contracts";
@@ -16,12 +17,13 @@ export function buildWritingIntelligencePromptPacket(actorId?: string): WritingP
     `Actor: ${actorId}. Documents=${intel.documentCount}. Newest=${intel.newestSourceDate ?? "unknown"}.`,
     `Authorship mix: direct=${intel.authorship.DIRECT_AUTHOR}; official-office=${intel.authorship.OFFICIAL_OFFICE}; attributed=${intel.authorship.ATTRIBUTED}.`,
     `Current themes: ${intel.topThemes.slice(0, 5).join(", ") || "none"}.`,
+    formatCampaignPrioritiesPromptLine(actorId),
     structure,
     `Observed frames: ${intel.decisionTendencies.map((item) => `${item.label}=${item.value} [${item.sourceState}]`).join(" | ")}`,
     `Rhetoric rates (corpus means, not personality labels): analogy=${intel.fingerprint.rhetoric.analogy}; statistics=${intel.fingerprint.rhetoric.statistics}; local=${intel.fingerprint.rhetoric.localExample}; institutional=${intel.fingerprint.rhetoric.institutionalProcess}; contrast=${intel.fingerprint.rhetoric.opponentContrast}.`,
     "Generated replies are SIMULATED. Never present them as actual quotations.",
     `Evidence refs: ${refs.join(", ")}`,
-  ];
+  ].filter(Boolean);
   return { actorId, lines, sourceRefs: refs };
 }
 
