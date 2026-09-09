@@ -3465,19 +3465,20 @@ const movementEventsCore: EventItem[] = [
     region: "North Central Arkansas",
     countySlug: "baxter-county",
     status: "upcoming",
-    startsAt: "2026-10-06T18:00:00",
-    endsAt: "2026-10-06T19:00:00",
+    startsAt: "2026-10-06T18:00:00-05:00",
+    endsAt: "2026-10-06T19:00:00-05:00",
     timezone: "America/Chicago",
     locationLabel: "Baxter County Farm Bureau (venue TBA)",
-    addressLine: "Mountain Home, AR (building not on the calendar block)",
+    city: "Mountain Home",
+    addressLine: "Mountain Home, AR (building TBA)",
     summary:
-      "Tuesday, October 6, 2026, **6:00 p.m. Central**: Baxter County Farm Bureau **annual convention** (title also reads candidate). Same afternoon is the VFW forum at 2:00 p.m.",
+      "Tuesday, October 6, 2026, **6:00–7:00 p.m. Central**: Baxter County Farm Bureau **annual convention** — confirmed. Building TBA.",
     description:
-      "The campaign calendar listed **Baxter County Farm Bureau Annual Convention and Cand** on Tuesday, **October 6**, **6:00–7:00 p.m.** The last word is cut off — likely **candidate**.\n\nNo building was on the block. City is inferred **Mountain Home**.\n\nThe same afternoon is the **People Over Politics / VFW candidate forum** at 2:00 p.m. in Mountain Home. Those can pair in one town.",
-    whatToExpect: ["6:00 p.m. Central", "Venue TBA"],
+      "Steve confirmed **Tuesday, October 6, 2026**, **6:00–7:00 p.m. Central** for the Baxter County Farm Bureau **annual convention** in **Mountain Home**.\n\nBuilding is still TBA.\n\nThe same afternoon is the **People Over Politics / VFW candidate forum** at 2:00 p.m. in Mountain Home.",
+    whatToExpect: ["Confirmed Tuesday, October 6", "6:00–7:00 p.m. Central", "Building TBA"],
     whoItsFor: "Farm Bureau members and neighbors the hosts welcome.",
     organizerNote:
-      "Campaign calendar audit 2026-09-02. Same afternoon: people-over-politics-vfw-mountain-home-2026.",
+      "Steve 2026-09-08: Oct 6 Baxter Farm Bureau 6:00-7:00 p.m. confirmed. Building TBA. Same afternoon VFW forum.",
     relatedEventSlugs: ["people-over-politics-vfw-mountain-home-2026"],
     relatedResourceHrefs: [
       { label: "VFW candidate forum — same afternoon", href: "/events/people-over-politics-vfw-mountain-home-2026" },
@@ -3485,7 +3486,8 @@ const movementEventsCore: EventItem[] = [
     ],
     mapCoordinates: { lat: 36.3354, lng: -92.3851 },
     mapPinQuality: "region",
-    fieldAttendance: "tentative",
+    fieldAttendance: "confirmed",
+    campaignTrail: true,
   },
   {
     slug: "saline-old-fashioned-2026",

@@ -5401,9 +5401,9 @@ const kellyCampaignStopsSource: KellyCampaignStop[] = [
     counties: ["Baxter"],
     status: "scheduled",
     includeOnPublicPage: true,
-    confidence: "likely",
+    confidence: "confirmed",
     notes:
-      "Campaign calendar Tue Oct 6 6:00-7:00 p.m. Title cut off Annual Convention and Cand (candidate forum). Venue not on the block. Same afternoon: VFW candidate forum 2:00 Mountain Home — same town, doable. /events/baxter-farm-bureau-oct-6-2026",
+      "Steve 2026-09-08: Oct 6 Baxter Farm Bureau 6:00-7:00 p.m. confirmed. Building TBA. Same afternoon VFW forum. /events/baxter-farm-bureau-oct-6-2026",
     sourceType: "calendar",
   },
   {

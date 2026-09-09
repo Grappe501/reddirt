@@ -237,6 +237,18 @@ export const CAMPAIGN_APPROACH_BY_SLUG: Record<string, CampaignApproachDecision>
     note: "Steve 2026-09-08: take Oct 3 Back Forty off the public calendar.",
     ledgerIds: ["manual-2026-10-03-people-over-politics-back-forty"],
   },
+  "ozark-forward-fundraiser-oct-2026": {
+    approach: "removed",
+    reason: "conflict",
+    note: "Steve 2026-09-08: take the Oct 3 Ozark Forward fundraiser hold off the public calendar.",
+    ledgerIds: ["manual-2026-10-03-ozark-forward-fundraiser"],
+  },
+  "mountain-home-oct-4-5-2026": {
+    approach: "removed",
+    reason: "never_confirmed",
+    note: "Steve 2026-09-08: take the Oct 4-5 Mountain Home hold off the public calendar.",
+    ledgerIds: ["manual-2026-10-04-mountain-home-hold"],
+  },
   "van-buren-moonshine-music-festival-2026-10-03": {
     approach: "removed",
     reason: "conflict",
@@ -399,6 +411,7 @@ const CONFIRMED_SLUGS = new Set([
   "hot-springs-chili-cookout-2026",
   "little-river-charlotte-sep-21-2026",
   "october-2-blocked-2026",
+  "baxter-farm-bureau-oct-6-2026",
 ]);
 
 function withSept29Caution(event: EventItem): EventItem {
