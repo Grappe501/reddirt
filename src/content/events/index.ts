@@ -3181,12 +3181,12 @@ const movementEventsCore: EventItem[] = [
     summary:
       "Saturday, October 3, 2026: **Goat fest** in **Perry County** — confirmed. Grounds TBA. Chair: Patty Brazil.",
     description:
-      "Saturday, **October 3, 2026**: **Goat fest** in **Perry County**. Confirmed.\n\nTown and grounds are still TBA. Chair named on the calendar: **Patty Brazil**.\n\nThe same Saturday also has **Moonshine and Music** in Van Buren County and **People Over Politics** at The Back Forty in Mountain Home.",
+      "Saturday, **October 3, 2026**: **Goat fest** in **Perry County**. Confirmed.\n\nTown and grounds are still TBA. Chair named on the calendar: **Patty Brazil**.\n\nThe same Saturday evening is the **NAACP Freedom Fund Gala** at **5:00 p.m.** City for the gala is still TBA.",
     whatToExpect: ["All-day festival hold", "Town and grounds TBA"],
     whoItsFor: "Perry County neighbors and festival guests once a town is posted.",
     organizerNote:
-      "Steve 2026-09-08: Perry County goatfest — paint the county gold. Same day: moonshine Van Buren; people-over-politics-back-forty-2026.",
-    relatedEventSlugs: ["people-over-politics-back-forty-2026"],
+      "Steve 2026-09-08: Perry County goatfest — paint the county gold. Same evening: naacp-freedom-fund-gala-2026-10-03 at 5:00 p.m. City TBA.",
+    relatedEventSlugs: ["naacp-freedom-fund-gala-2026-10-03"],
     relatedResourceHrefs: [{ label: "Get involved", href: "/get-involved" }],
     mapCoordinates: { lat: 34.9965, lng: -92.8027 },
     mapPinQuality: "region",

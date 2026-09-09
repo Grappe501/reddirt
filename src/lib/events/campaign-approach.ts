@@ -231,6 +231,12 @@ export const CAMPAIGN_APPROACH_BY_SLUG: Record<string, CampaignApproachDecision>
     note: "Steve 2026-09-08: take Fun on 31 off the public calendar.",
     ledgerIds: ["manual-2026-10-02-fun-on-31"],
   },
+  "october-2-blocked-2026": {
+    approach: "removed",
+    reason: "redundant",
+    note: "Steve 2026-09-08: Oct 1-2 is NAACP Convention (Steve attending).",
+    ledgerIds: ["manual-2026-10-02-blocked"],
+  },
   "people-over-politics-back-forty-2026": {
     approach: "removed",
     reason: "conflict",
@@ -418,6 +424,7 @@ const CONFIRMED_SLUGS = new Set([
   "little-river-charlotte-sep-21-2026",
   "october-2-blocked-2026",
   "baxter-farm-bureau-oct-6-2026",
+  "naacp-freedom-fund-gala-2026-10-03",
   "olli-for-coffee-2026",
   "fayetteville-fundraiser-2026-10-09",
 ]);

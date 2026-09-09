@@ -5212,7 +5212,7 @@ const kellyCampaignStopsSource: KellyCampaignStop[] = [
     includeOnPublicPage: true,
     confidence: "confirmed",
     notes:
-      "Steve 2026-09-08: Perry County goatfest. Town/grounds TBA. Chair: Patty Brazil. Same day: Moonshine Van Buren; People Over Politics Back Forty Mountain Home; Ozark Forward hold. /events/goat-fest-oct-2026",
+      "Steve 2026-09-08: Perry County goatfest. Town/grounds TBA. Chair: Patty Brazil. Same evening: NAACP Freedom Fund Gala 5:00 p.m. city TBA. /events/goat-fest-oct-2026",
     sourceType: "calendar",
   },
   {
@@ -5500,6 +5500,33 @@ const kellyCampaignStopsSource: KellyCampaignStop[] = [
     notes:
       "Campaign calendar Sat Oct 17 5:30-7:00 p.m. Red #5 on the title. County and street not on the block — do not invent. /events/flat-rock-fish-fry-2026",
     sourceType: "calendar",
+  },
+  {
+    id: "manual-2026-10-01-naacp-convention",
+    publicTitle: "NAACP Convention",
+    date: "2026-10-01",
+    endDate: "2026-10-02",
+    title: "NAACP Convention",
+    counties: [],
+    status: "scheduled",
+    includeOnPublicPage: true,
+    confidence: "confirmed",
+    notes:
+      "Steve 2026-09-08: NAACP Convention Oct 1-3. Steve attends Oct 1 and 2. Kelly will not. City TBA. Do not invent a city. /events/naacp-convention-2026-10-01 Saturday Oct 3 5:00 p.m. is the Freedom Fund Gala.",
+    sourceType: "manual",
+  },
+  {
+    id: "manual-2026-10-03-naacp-freedom-fund-gala",
+    publicTitle: "NAACP Freedom Fund Gala",
+    date: "2026-10-03",
+    title: "NAACP Freedom Fund Gala",
+    counties: [],
+    status: "scheduled",
+    includeOnPublicPage: true,
+    confidence: "confirmed",
+    notes:
+      "Steve 2026-09-08: Freedom Fund Gala NAACP Oct 3 5:00 p.m. City TBA. Do not invent a city or end time. Same day: goat-fest-oct-2026 in Perry County. /events/naacp-freedom-fund-gala-2026-10-03",
+    sourceType: "manual",
   },
 
 ];
