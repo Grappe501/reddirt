@@ -213,6 +213,18 @@ export const CAMPAIGN_APPROACH_BY_SLUG: Record<string, CampaignApproachDecision>
     note: "Steve 2026-09-08: take Fun on 31 off the public calendar.",
     ledgerIds: ["manual-2026-10-02-fun-on-31"],
   },
+  "people-over-politics-back-forty-2026": {
+    approach: "removed",
+    reason: "conflict",
+    note: "Steve 2026-09-08: take Oct 3 Back Forty off the public calendar.",
+    ledgerIds: ["manual-2026-10-03-people-over-politics-back-forty"],
+  },
+  "van-buren-moonshine-music-festival-2026-10-03": {
+    approach: "removed",
+    reason: "conflict",
+    note: "Steve 2026-09-08: take Oct 3 Moonshine + Music Festival off the public calendar.",
+    ledgerIds: ["presence-2026-10-03-moonshine-and-music-festival-at-fairgrounds-vbco"],
+  },
   "berryville-meet-the-candidates-reloaded-2026": {
     approach: "removed",
     reason: "conflict",
