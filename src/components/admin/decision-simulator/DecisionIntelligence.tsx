@@ -12,6 +12,10 @@ import {
   type SavedScenario,
 } from "@/lib/agents/decision-simulation/dashboard-intelligence";
 import type { DashboardIntelligencePayload } from "@/lib/agents/decision-simulation/dashboard-intelligence";
+import {
+  getEvidenceProvenanceSnapshot,
+  type PriorCorrespondenceAttachment,
+} from "@/lib/agents/decision-simulation/evidence-provenance";
 
 type Props = {
   jobId?: string;
@@ -22,6 +26,7 @@ type Props = {
   operatorId: string;
   counterpartyId: string;
   dashboard: DashboardIntelligencePayload | null;
+  priorCorrespondence?: PriorCorrespondenceAttachment[];
   onApplyOpening: (text: string) => void;
   onLoadScenario: (scenario: SavedScenario) => void;
 };
@@ -53,6 +58,7 @@ export function DecisionIntelligence({
   operatorId,
   counterpartyId,
   dashboard,
+  priorCorrespondence = [],
   onApplyOpening,
   onLoadScenario,
 }: Props) {
@@ -83,18 +89,22 @@ export function DecisionIntelligence({
   const left = scenarios.find((item) => item.id === compareA);
   const right = scenarios.find((item) => item.id === compareB);
 
-  const evidence = useMemo(
-    () => [
+  const evidence = useMemo(() => {
+    const operatorSnap = getEvidenceProvenanceSnapshot(operatorId, priorCorrespondence);
+    const counterSnap = getEvidenceProvenanceSnapshot(counterpartyId, priorCorrespondence);
+    const claims = [...(operatorSnap?.claims ?? []), ...(counterSnap?.claims ?? [])]
+      .filter((item, index, all) => all.findIndex((row) => row.id === item.id) === index)
+      .slice(0, 12)
+      .map((item) => `${item.provenance} · ${item.sourceLabel}: ${item.claim}`);
+    return [
       "Personality sources stay on the left dossier. This drawer does not invent votes or private statements.",
-      "Jones and Hill immediate priorities are attached from first-party campaign pages accessed 2026-09-09.",
-      "Historic media clips are DISCOVERY_ONLY short excerpts from named outlets. Missing archives stay missing.",
+      `Operator-attached prior correspondence: ${priorCorrespondence.length}. No mailbox connector.`,
+      ...claims,
       "Hill legislative vote corpus is MISSING unless a first-party tracker is later attached.",
       "Unknown headers, venues, and recipients stay unknown.",
       "A generated six-move sequence is not evidence about a real person.",
-      "Campaign poll graphics are not treated as facts.",
-    ],
-    [],
-  );
+    ];
+  }, [operatorId, counterpartyId, priorCorrespondence]);
 
   function persistScenarios(next: SavedScenario[]) {
     setScenarios(next);

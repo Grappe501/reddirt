@@ -17,6 +17,11 @@ import {
   parseCorrespondencePaste,
   type IntakeFieldKey,
 } from "@/lib/agents/decision-simulation/correspondence-intake";
+import {
+  PRIOR_CORRESPONDENCE_LIBRARY_KEY,
+  attachPriorCorrespondence,
+  type PriorCorrespondenceAttachment,
+} from "@/lib/agents/decision-simulation/evidence-provenance";
 import { PersonalityIntelligence } from "./PersonalityIntelligence";
 import { DecisionIntelligence } from "./DecisionIntelligence";
 import type { DashboardIntelligencePayload, SavedScenario } from "@/lib/agents/decision-simulation/dashboard-intelligence";
@@ -162,8 +167,19 @@ export function DecisionSimulatorClient() {
   const [draftOffice, setDraftOffice] = useState("");
   const [draftNotes, setDraftNotes] = useState("");
   const [draftSource, setDraftSource] = useState("");
+  const [priorCorrespondence, setPriorCorrespondence] = useState<PriorCorrespondenceAttachment[]>([]);
+  const [priorDraft, setPriorDraft] = useState("");
+  const [priorTitle, setPriorTitle] = useState("");
 
   useEffect(() => setCustom(loadCustom()), []);
+  useEffect(() => {
+    try {
+      const raw = window.localStorage.getItem(PRIOR_CORRESPONDENCE_LIBRARY_KEY);
+      if (raw) setPriorCorrespondence(JSON.parse(raw) as PriorCorrespondenceAttachment[]);
+    } catch {
+      /* keep empty */
+    }
+  }, []);
 
   const catalog = useMemo(() => mergePersonalityCatalog(custom), [custom]);
   const operator = catalog.find((item) => item.id === operatorId) ?? genericPersonality;
@@ -281,6 +297,7 @@ export function DecisionSimulatorClient() {
             stakes,
             urgency,
             intake: composed.intake,
+            priorCorrespondence,
           },
         }),
       });
@@ -402,6 +419,62 @@ export function DecisionSimulatorClient() {
             <label className="ml-label">Context
               <textarea className="ml-area" style={{ minHeight: 90 }} value={context} onChange={(e) => setContext(e.target.value)} placeholder="Known public facts, constraints, recent exchanges. No private data." />
             </label>
+            <label className="ml-label">Attach prior correspondence as evidence
+              <textarea
+                className="ml-area"
+                style={{ minHeight: 90 }}
+                value={priorDraft}
+                onChange={(e) => setPriorDraft(e.target.value)}
+                placeholder="Paste an earlier letter, debate line, or memo. Short excerpt only. Not sent. Not a mailbox fetch."
+              />
+            </label>
+            <div className="ml-row">
+              <label className="ml-label">Attachment title
+                <input className="ml-input" value={priorTitle} onChange={(e) => setPriorTitle(e.target.value)} placeholder="optional" />
+              </label>
+              <label className="ml-label">
+                <span>&nbsp;</span>
+                <button
+                  type="button"
+                  className="ml-btn"
+                  onClick={() => {
+                    const next = attachPriorCorrespondence({
+                      paste: priorDraft,
+                      channel,
+                      title: priorTitle || undefined,
+                    });
+                    if (!next) return;
+                    const library = [next, ...priorCorrespondence].slice(0, 12);
+                    setPriorCorrespondence(library);
+                    window.localStorage.setItem(PRIOR_CORRESPONDENCE_LIBRARY_KEY, JSON.stringify(library));
+                    setPriorDraft("");
+                    setPriorTitle("");
+                  }}
+                >
+                  Attach excerpt
+                </button>
+              </label>
+            </div>
+            {priorCorrespondence.length > 0 && (
+              <ul className="ml-sources">
+                {priorCorrespondence.map((item) => (
+                  <li key={item.id}>
+                    <b>{item.channel} [{item.provenance}]</b> — {item.title}: {item.bodyExcerpt}{" "}
+                    <button
+                      type="button"
+                      className="ml-btn"
+                      onClick={() => {
+                        const library = priorCorrespondence.filter((row) => row.id !== item.id);
+                        setPriorCorrespondence(library);
+                        window.localStorage.setItem(PRIOR_CORRESPONDENCE_LIBRARY_KEY, JSON.stringify(library));
+                      }}
+                    >
+                      Remove
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            )}
 
             <h2 className="ml-h" style={{ marginTop: 22 }}>02 Party / counterparty</h2>
             <p className="ml-copy">Defaults: Dr. Chris Jones vs Rep. French Hill. Catalog is open. Custom personalities start as HYPOTHESIS MODEL until sourced.</p>
@@ -562,6 +635,7 @@ export function DecisionSimulatorClient() {
               operatorId={operatorId}
               counterpartyId={counterpartyId}
               dashboard={dashboard}
+              priorCorrespondence={priorCorrespondence}
               onApplyOpening={(text) => setMessage(text)}
               onLoadScenario={loadScenario}
             />

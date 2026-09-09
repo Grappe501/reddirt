@@ -297,7 +297,7 @@ Updated 2026-09-09 from the live `dec-sim` product. Detail: `DEC_SIM_V1_V2_ROADM
 - Phase 6 Correspondence Intake: **capability started** (`DEC-SIM-CORRESPONDENCE-INTAKE-1.0`); paste structure live; no connectors; phase not closed
 - Phase 7 Decision Dashboard: **capability started** (`DEC-SIM-DASHBOARD-INTELLIGENCE-1.0`); sequence, branches, scorecard, save/compare, outcome attach; not closed
 - Phase 8 Alternative Futures: **capability started inside Phase 5** (`DEC-SIM-ALTERNATIVE-FUTURES-1.0`); not a phase close
-- Phase 9 Memory & Evidence: **capability started** (`DEC-SIM-CAMPAIGN-PRIORITIES-1.0` + `DEC-SIM-MEDIA-RESEARCH-1.0`); no evidence graph yet
+- Phase 9 Memory & Evidence: **capability started** (campaign pages + media + `DEC-SIM-EVIDENCE-PROVENANCE-1.0`); no evidence graph yet
 - Phase 10 Outcome Learning: **not started**
 - Phase 11 Cross-Channel Command Center: **not started**
 - Phase 12 Hardening & Launch: **partial, pulled forward**
@@ -306,4 +306,4 @@ V2 (voice engine, digital twins, multi-actor game theory, ensemble decision scie
 
 ## Next Build
 
-Phase 5 remains open. Campaign-site priorities are a Phase 9 capability (`DEC-SIM-CAMPAIGN-PRIORITIES-1.0`), not a phase close. Remaining Phase 9: provenance and prior-correspondence attach. No mailbox connectors. No silent outcome writeback.
+Phase 5 remains open. Phase 9 provenance (`DEC-SIM-EVIDENCE-PROVENANCE-1.0`) is a capability, not a phase close. Named next V1 work is Phase 10 outcome learning. No mailbox connectors. No silent outcome writeback.

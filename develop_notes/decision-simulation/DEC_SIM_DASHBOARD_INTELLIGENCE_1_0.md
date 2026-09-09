@@ -26,4 +26,4 @@ Phase 7 operator surfaces now exist on the NASA lab:
 
 ## Next named V1 slice
 
-Phase 9 evidence / memory. Provenance on claims. Prior correspondence as operator-attached sources. Missing evidence stays missing.
+Phase 10 observed-outcome learning. Provenance and prior-correspondence attach are started (`DEC-SIM-EVIDENCE-PROVENANCE-1.0`). No silent model writeback.

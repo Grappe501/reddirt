@@ -37,6 +37,13 @@ export { parseCorrespondencePaste, composeCorrespondenceOpening, CHANNEL_INTAKE_
 export { getCampaignPrioritySnapshot, formatCampaignPrioritiesPromptLine } from "./campaign-priorities";
 export { getMediaResearchSnapshot, formatMediaResearchPromptLine } from "./media-research";
 export {
+  getEvidenceProvenanceSnapshot,
+  formatEvidenceProvenancePromptLine,
+  attachPriorCorrespondence,
+  formatPriorCorrespondencePromptBlock,
+  PRIOR_CORRESPONDENCE_LIBRARY_KEY,
+} from "./evidence-provenance";
+export {
   buildDashboardScorecard,
   buildDashboardIntelligencePayload,
   recommendOpeningRevision,

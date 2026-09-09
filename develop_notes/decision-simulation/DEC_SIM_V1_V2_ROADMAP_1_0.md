@@ -3,7 +3,7 @@
 **Status:** Canonical from 2026-09-09. This is the **only** V2 shadow roadmap.  
 **Live product:** https://dec-sim.netlify.app  
 **Parent plan:** `DECISION_SIMULATION_MASTER_BUILD_PLAN_1_0.md`  
-**Next V1 slice:** remaining Phase 9 evidence / memory (provenance on claims, prior-correspondence attach). Campaign-site priorities and first-pass media research are started capabilities, not a phase close.  
+**Next V1 slice:** Phase 10 observed-outcome learning. Phase 9 provenance and prior-correspondence attach are started capabilities, not a phase close.  
 **Doctrine unchanged:** advisory only; no send; no post; evidence separated from inference; generated language labeled generated.
 
 V1 is no longer a theoretical sequence. We are learning from a live product while we finish the dependable operating system.
@@ -35,7 +35,7 @@ We are still in **Phase 5**. Burt pulled forward pieces of Phases 7, 9, and 12 b
 | 6 Correspondence intake | Rich paste-first channels | **Capability started** | `DEC-SIM-CORRESPONDENCE-INTAKE-1.0`: channel-specific paste parse (email headers, debate question, memo Re, speech venue). No connectors. No attachment intelligence |
 | 7 Decision dashboard | Operator command surface | **Capability started** | `DEC-SIM-DASHBOARD-INTELLIGENCE-1.0`: six-move sequence, branch explorer, scorecard, hypothesis revision, local save/compare, outcome attach. Not a phase close |
 | 8 Alternative Futures | Branching scenario lanes | **Capability started; not closed** | `DEC-SIM-ALTERNATIVE-FUTURES-1.0` assigns six named futures per run. Robustness is measured across futures. Hill legislative evidence attaches when the vote corpus is found |
-| 9 Memory & evidence | Provenance-backed recall | **Capability started** | `DEC-SIM-CAMPAIGN-PRIORITIES-1.0` plus `DEC-SIM-MEDIA-RESEARCH-1.0` (named-outlet quotes). Still no evidence graph, stale-evidence decay, paid-archive completeness, or prior-sim retrieval |
+| 9 Memory & evidence | Provenance-backed recall | **Capability started** | `DEC-SIM-CAMPAIGN-PRIORITIES-1.0`, `DEC-SIM-MEDIA-RESEARCH-1.0`, and `DEC-SIM-EVIDENCE-PROVENANCE-1.0` (tagged claims + operator-attached prior letters). Still no evidence graph, stale-evidence decay, paid-archive completeness, or prior-sim retrieval |
 | 10 Outcome learning | Prediction vs reality | **Not started** | Custom notes can be attached locally. No observed-outcome writeback |
 | 11 Cross-channel command | Same engine, many surfaces | **Not started** | Isolated `dec-sim` product. Must stay separate from Kelly send workflows |
 | 12 Hardening & launch | Production OS | **Partial, pulled forward** | Admin gate, rate limit, cost budget, isolation tests, hosted deploy. Remaining: RBAC, audit, privacy review, injection defenses, runbook, closed-tab worker continuity |
@@ -65,8 +65,8 @@ Execute in this order. Do not reorder to chase V2.
 
 1. **Phase 6 — richer correspondence intake.** Paste-first remains the rule. Add structure per channel (email headers, speech excerpt, debate line, memo). No mailbox connectors until the core simulator is stable.
 2. **Phase 7 — dashboard intelligence.** Capability started (`DEC-SIM-DASHBOARD-INTELLIGENCE-1.0`). Sequence, branches, scorecard, hypothesis revision, local save/compare, and outcome attach are live. Keep the NASA lab. Do not turn it into a campaign site.
-3. **Phase 9 — evidence / memory. Current named remainder.** Campaign-site priorities and a first media-research pass are attached. Still owed: provenance on every evidence-backed claim, prior correspondence as operator-attached sources, and missing evidence staying missing. No clickable graph. No paid-archive crawl.
-4. **Phase 10 — observed-outcome learning.** After something is actually sent or said by a human, attach the real response. Compare to predicted branch. Version actor models only with operator approval. No silent prompt drift.
+3. **Phase 9 — evidence / memory.** Campaign-site priorities, media research, provenance-tagged claims, and operator-attached prior correspondence are started. Still no clickable graph, stale-evidence decay, or prior-sim retrieval. Missing stays missing.
+4. **Phase 10 — observed-outcome learning. Current named remainder.** After something is actually sent or said by a human, attach the real response. Compare to predicted branch. Version actor models only with operator approval. No silent prompt drift.
 5. **Phase 11 — cross-channel command center.** Same engine on email, text, social, press, debate, fundraising, and internal strategy. Simulation never sends.
 6. **Phase 12 — production hardening.** Closed-tab worker continuity, RBAC, audit log, privacy review, prompt-injection defenses, operator runbook, production readiness review.
 
@@ -264,6 +264,10 @@ A one-pass 2026-09-09 ingest of chrisjonesforcongress.com and electfrench.com is
 
 Lexis/Nexis, Democrat-Gazette full text, and television/radio transcripts are the rest of historic media. V1 keeps a first named-outlet pass with short excerpts. Do not buy or dump a copyrighted archive here.
 
+### V2-33 Stale-evidence decay and prior-simulation retrieval
+
+V1 tags each claim and lets an operator attach a prior letter. Automatic recency decay, retrieval of earlier simulation jobs as evidence, and a clickable graph remain V2. Do not implement a memory crawler here.
+
 ## Boundary rules (agents)
 
 1. If a request improves Alternative Futures, intake, dashboard intelligence, evidence, outcome attach, or hardening — it is V1.
@@ -276,4 +280,4 @@ Lexis/Nexis, Democrat-Gazette full text, and television/radio transcripts are th
 
 ## Next operator click
 
-Phase 5 remains open. Alternative Futures, intake, dashboard intelligence, and campaign-site priorities are capabilities, not phase closes. Remaining named V1 work inside Phase 9 is provenance, prior-correspondence attach, and keeping missing evidence missing. Do not start V2-21+.
+Phase 5 remains open. Alternative Futures, intake, dashboard intelligence, campaign-site priorities, media research, and evidence provenance are capabilities, not phase closes. Named next V1 work is Phase 10 outcome learning. Do not start V2-21+.

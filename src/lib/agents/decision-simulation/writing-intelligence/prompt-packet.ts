@@ -1,4 +1,5 @@
 import { formatCampaignPrioritiesPromptLine } from "../campaign-priorities";
+import { formatEvidenceProvenancePromptLine } from "../evidence-provenance";
 import { formatMediaResearchPromptLine } from "../media-research";
 import type { WritingPromptPacket } from "./contracts";
 import { buildActorWritingIntelligence } from "./catalog";
@@ -24,7 +25,7 @@ export function buildWritingIntelligencePromptPacket(actorId?: string): WritingP
     `Observed frames: ${intel.decisionTendencies.map((item) => `${item.label}=${item.value} [${item.sourceState}]`).join(" | ")}`,
     `Rhetoric rates (corpus means, not personality labels): analogy=${intel.fingerprint.rhetoric.analogy}; statistics=${intel.fingerprint.rhetoric.statistics}; local=${intel.fingerprint.rhetoric.localExample}; institutional=${intel.fingerprint.rhetoric.institutionalProcess}; contrast=${intel.fingerprint.rhetoric.opponentContrast}.`,
     "Generated replies are SIMULATED. Never present them as actual quotations.",
-    `Evidence refs: ${refs.join(", ")}`,
+    formatEvidenceProvenancePromptLine(actorId, [], refs),
   ].filter(Boolean);
   return { actorId, lines, sourceRefs: refs };
 }

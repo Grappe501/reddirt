@@ -85,6 +85,18 @@ export interface DecisionSimulationOpeningInput {
   urgency?: "LOW" | "MEDIUM" | "HIGH";
   context?: string;
   intake?: CorrespondenceIntake;
+  priorCorrespondence?: Array<{
+    id: string;
+    channel: DecisionSimulationChannel;
+    title: string;
+    bodyExcerpt: string;
+    occurredAt?: string;
+    sourceUrl?: string;
+    actorId?: string;
+    provenance: "OPERATOR_ATTACHED";
+    sourceState: "OBSERVED";
+    connectorsEnabled: false;
+  }>;
 }
 
 export interface DecisionSimulationRun {

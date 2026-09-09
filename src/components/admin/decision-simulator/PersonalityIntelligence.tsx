@@ -1,4 +1,5 @@
 import { getCampaignPrioritySnapshot } from "@/lib/agents/decision-simulation/campaign-priorities";
+import { getEvidenceProvenanceSnapshot } from "@/lib/agents/decision-simulation/evidence-provenance";
 import { getMediaResearchSnapshot } from "@/lib/agents/decision-simulation/media-research";
 import type { CatalogPersonality } from "@/lib/agents/decision-simulation/personality-catalog";
 import { getHillLegislativeDashboard } from "@/lib/agents/decision-simulation/vote-intelligence/dashboard";
@@ -85,6 +86,7 @@ export function PersonalityIntelligence({
         <div key={item.id}>
           <CampaignPriorities actorId={item.id} />
           <MediaResearch actorId={item.id} />
+          <EvidenceProvenance actorId={item.id} />
           <IntelCard intel={buildActorWritingIntelligence(item.id as "chris-jones-ar02" | "french-hill-ar02")} />
         </div>
       ))}
@@ -142,6 +144,34 @@ function MediaResearch({ actorId }: { actorId: string }) {
           </li>
         ))}
       </ul>
+      <ul className="ml-sources">
+        {snap.missing.map((item) => <li key={item}>{item}</li>)}
+      </ul>
+    </div>
+  );
+}
+
+function EvidenceProvenance({ actorId }: { actorId: string }) {
+  const snap = getEvidenceProvenanceSnapshot(actorId);
+  if (!snap) return null;
+  return (
+    <div className="ml-actor">
+      <div style={{ display: "flex", justifyContent: "space-between", gap: 8 }}>
+        <b>Evidence provenance</b>
+        <span className="ml-badge research">{snap.claimCount} claims</span>
+      </div>
+      <p>
+        Every stance claim keeps FIRST_PARTY, DISCOVERY_ONLY, OPERATOR_ATTACHED, or MISSING. Missing stays missing. Generated language is never a claim.
+      </p>
+      <ul className="ml-sources">
+        {snap.claims.slice(0, 16).map((item) => (
+          <li key={item.id}>
+            <b>{item.provenance} [{item.sourceState}]</b> — {item.claim}{" "}
+            {item.sourceUrl ? <a href={item.sourceUrl} target="_blank" rel="noreferrer">{item.sourceLabel}</a> : item.sourceLabel}
+          </li>
+        ))}
+      </ul>
+      {snap.claimCount > 16 ? <p>{snap.claimCount - 16} additional sourced claims are stored, not expanded here.</p> : null}
       <ul className="ml-sources">
         {snap.missing.map((item) => <li key={item}>{item}</li>)}
       </ul>
