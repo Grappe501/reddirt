@@ -14,7 +14,12 @@ import {
   planQueuedDecisionSimulationJob,
   type CommandCenterMember,
 } from "./job-lifecycle";
-import { scoreHostedEnsembleProof, type HostedEnsembleProof } from "./hosted-ensemble-proof";
+import {
+  mergeHostedProofIntoAggregate,
+  scoreHostedEnsembleProof,
+  type HostedEnsembleProof,
+} from "./hosted-ensemble-proof";
+import { isChunkClaimable } from "./worker-continuity";
 import { attachObservedOutcome } from "./observed-outcome/attach";
 import {
   mergeObservedOutcomeIntoAggregate,
@@ -97,6 +102,8 @@ export type DecisionSimulationJobView = {
     completedRuns: number;
     failedRuns: number;
     error: string | null;
+    claimedAt: string | null;
+    claimable: boolean;
   }>;
   tokenUsage: { inputTokens: number; outputTokens: number; totalTokens: number };
   estimatedCostUsd: number | null;
@@ -356,10 +363,11 @@ export async function getDecisionSimulationJob(jobId: string) {
       completed_runs: number;
       failed_runs: number;
       error: string | null;
+      claimed_at: Date | null;
       result_snapshot: unknown;
     }>
   >`
-    SELECT chunk_ordinal, status, start_run_ordinal, end_run_ordinal, completed_runs, failed_runs, error, result_snapshot
+    SELECT chunk_ordinal, status, start_run_ordinal, end_run_ordinal, completed_runs, failed_runs, error, claimed_at, result_snapshot
     FROM public.decision_simulation_ensemble_chunk
     WHERE ensemble_id = ${jobId}
     ORDER BY chunk_ordinal ASC
@@ -388,6 +396,8 @@ export async function getDecisionSimulationJob(jobId: string) {
       completedRuns: chunk.completed_runs,
       failedRuns: chunk.failed_runs,
       error: chunk.error,
+      claimedAt: chunk.claimed_at ? new Date(chunk.claimed_at).toISOString() : null,
+      claimable: isChunkClaimable({ status: chunk.status, claimedAt: chunk.claimed_at }),
     })),
     members,
     frames,
@@ -415,9 +425,11 @@ export async function retryFailedDecisionSimulationChunks(jobId: string) {
     UPDATE public.decision_simulation_ensemble_chunk
     SET status = 'PENDING', error = NULL, claimed_at = NULL, claimed_by = NULL
     WHERE ensemble_id = ${jobId}
-      AND status = 'FAILED'
-      AND attempts <= ${cfg.maxRetries}
       AND COALESCE(error, '') <> 'Cancelled'
+      AND (
+        (status = 'FAILED' AND attempts <= ${cfg.maxRetries})
+        OR (status = 'RUNNING' AND (claimed_at IS NULL OR claimed_at < NOW() - INTERVAL '2 minutes'))
+      )
   `;
   await prisma.$executeRaw`
     UPDATE public.decision_simulation_ensemble
@@ -440,10 +452,8 @@ export async function claimNextDecisionSimulationChunk(jobId: string, workerId: 
   const chunks = await prisma.$queryRaw<ChunkRow[]>`
     SELECT * FROM public.decision_simulation_ensemble_chunk
     WHERE ensemble_id = ${jobId}
-      AND (
-        (status IN ('PENDING', 'FAILED') AND (claimed_at IS NULL OR claimed_at < NOW() - INTERVAL '2 minutes'))
-        OR (status = 'RUNNING' AND claimed_at IS NOT NULL AND claimed_at < NOW() - INTERVAL '2 minutes')
-      )
+      AND status IN ('PENDING', 'FAILED', 'RUNNING')
+      AND (claimed_at IS NULL OR claimed_at < NOW() - INTERVAL '2 minutes')
     ORDER BY chunk_ordinal ASC
     LIMIT 1
   `;
@@ -456,8 +466,8 @@ export async function claimNextDecisionSimulationChunk(jobId: string, workerId: 
         attempts = attempts + 1, started_at = COALESCE(started_at, NOW())
     WHERE id = ${chunk.id}
       AND (
-        status IN ('PENDING', 'FAILED')
-        OR (status = 'RUNNING' AND claimed_at IS NOT NULL AND claimed_at < NOW() - INTERVAL '2 minutes')
+        status IN ('PENDING', 'FAILED', 'RUNNING')
+        AND (claimed_at IS NULL OR claimed_at < NOW() - INTERVAL '2 minutes')
       )
   `;
   await prisma.$executeRaw`
@@ -548,6 +558,19 @@ export async function completeDecisionSimulationChunk(input: {
           completed_at = NOW(), updated_at = NOW()
       WHERE id = ${input.jobId} AND status <> 'CANCELLED'
     `;
+    const finished = await getDecisionSimulationJob(input.jobId);
+    if (finished?.hostedProof) {
+      const rows = await prisma.$queryRaw<Array<{ summary: unknown }>>`
+        SELECT summary FROM public.decision_simulation_ensemble_aggregate WHERE ensemble_id = ${input.jobId} LIMIT 1
+      `;
+      const summary = mergeHostedProofIntoAggregate(rows[0]?.summary, finished.hostedProof);
+      await prisma.$executeRaw`
+        UPDATE public.decision_simulation_ensemble_aggregate
+        SET summary = ${JSON.stringify(summary)}::jsonb, updated_at = NOW()
+        WHERE ensemble_id = ${input.jobId}
+      `;
+    }
+    return finished;
   }
   return getDecisionSimulationJob(input.jobId);
 }

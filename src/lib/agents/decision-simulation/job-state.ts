@@ -15,6 +15,7 @@ export interface DecisionSimulationChunkState {
   attempts: number;
   completedRuns: number;
   failedRuns: number;
+  claimedAt?: string | null;
   error?: string;
 }
 

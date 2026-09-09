@@ -69,7 +69,7 @@ assert(!/mailto:|twitter\.com\/intent|send this/i.test(client), "proof UI has no
 
 const roadmap = readFileSync("develop_notes/decision-simulation/DEC_SIM_V1_V2_ROADMAP_1_0.md", "utf8");
 assert(roadmap.includes("DEC-SIM-HOSTED-ENSEMBLE-PROOF-1.0"), "hosted proof slice is named on the canonical roadmap");
-assert(roadmap.includes("DEC-SIM-WORKER-CONTINUITY-1.0") && roadmap.includes("DEC-SIM-OBSERVED-OUTCOME-1.0"), "prior capability names stay on the canonical roadmap");
+assert(roadmap.includes("DEC-SIM-WORKER-CONTINUITY-1.0") && roadmap.includes("DEC-SIM-OBSERVED-OUTCOME-1.0") && roadmap.includes("DEC-SIM-STALE-RUNNING-RECLAIM-1.0"), "prior capability names stay on the canonical roadmap");
 assert(roadmap.includes("V2-37"), "auto-canary 100-run deploys stay V2");
 assert(/Phase 5 remains open/i.test(roadmap), "the proof contract does not close Phase 5");
 

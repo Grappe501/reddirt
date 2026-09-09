@@ -14,6 +14,7 @@ const now = Date.parse("2026-09-09T16:00:00.000Z");
 assert(isChunkClaimable({ status: "PENDING" }, now), "unclaimed pending chunks are claimable");
 assert(isChunkClaimable({ status: "FAILED", claimedAt: "2026-09-09T15:50:00.000Z" }, now), "failed chunks can be retried after they go stale");
 assert(isChunkClaimable({ status: "RUNNING", claimedAt: "2026-09-09T15:57:00.000Z" }, now), "a two-minute-old running chunk is reclaimed");
+assert(isChunkClaimable({ status: "RUNNING", claimedAt: null }, now), "a running chunk with no claim timestamp is reclaimable");
 assert(!isChunkClaimable({ status: "RUNNING", claimedAt: "2026-09-09T15:59:30.000Z" }, now), "a live running chunk is not reclaimed");
 assert(!isChunkClaimable({ status: "COMPLETE", claimedAt: "2026-09-09T15:00:00.000Z" }, now), "complete chunks stay complete");
 
@@ -37,7 +38,10 @@ assert(
   jobs.includes("const jobId = created.job.id") && !jobs.includes("kickDecisionSimulationWorker(created.job.id"),
   "create kick captures job id so Netlify typecheck accepts the after() callback",
 );
-assert(claim.includes("status = 'RUNNING'") && claim.includes("INTERVAL '2 minutes'"), "claim SQL reclaims stale running chunks");
+assert(
+  claim.includes("status IN ('PENDING', 'FAILED', 'RUNNING')") && claim.includes("claimed_at IS NULL"),
+  "claim SQL reclaims running chunks with a null or stale claim",
+);
 assert(!/jobs\/\$\{job\.id\}\/work/.test(client), "the open tab is no longer the worker heartbeat");
 assert(client.includes("keep moving after this tab closes"), "dashboard names closed-tab continuity");
 assert(sweep.includes("isDecisionSimSite") && sweep.includes("isDecisionSimWorkerAuthorized"), "sweep stays on dec-sim and requires worker or admin");
@@ -45,7 +49,7 @@ assert(!work.includes("sendEmail") && !sweep.includes("publishPost"), "continuit
 
 const roadmap = readFileSync("develop_notes/decision-simulation/DEC_SIM_V1_V2_ROADMAP_1_0.md", "utf8");
 assert(roadmap.includes("DEC-SIM-WORKER-CONTINUITY-1.0"), "Phase 12 continuity slice is named on the canonical roadmap");
-assert(roadmap.includes("DEC-SIM-OBSERVED-OUTCOME-1.0") && roadmap.includes("DEC-SIM-ENSEMBLE-LANE-INTELLIGENCE-1.0"), "prior capability names stay on the canonical roadmap");
+assert(roadmap.includes("DEC-SIM-OBSERVED-OUTCOME-1.0") && roadmap.includes("DEC-SIM-ENSEMBLE-LANE-INTELLIGENCE-1.0") && roadmap.includes("DEC-SIM-STALE-RUNNING-RECLAIM-1.0"), "prior capability names stay on the canonical roadmap");
 assert(roadmap.includes("V2-36"), "dedicated background workers stay V2");
 assert(/Phase 12/i.test(roadmap) && /capability started/i.test(roadmap), "this slice does not close Phase 12");
 

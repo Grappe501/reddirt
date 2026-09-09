@@ -95,7 +95,11 @@ export function selectRetryableChunks(
   state: DecisionSimulationEnsembleJobState,
   maxRetries: number,
 ): DecisionSimulationChunkState[] {
-  return state.chunks.filter((chunk) => chunk.status === "FAILED" && chunk.attempts <= maxRetries);
+  return state.chunks.filter(
+    (chunk) =>
+      (chunk.status === "FAILED" && chunk.attempts <= maxRetries) ||
+      (chunk.status === "RUNNING" && chunk.claimedAt == null),
+  );
 }
 
 export function applyCancelledJob(state: DecisionSimulationEnsembleJobState): DecisionSimulationEnsembleJobState {

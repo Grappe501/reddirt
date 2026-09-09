@@ -11,7 +11,7 @@ export function isChunkClaimable(
     return claimedAt == null || stale;
   }
   if (chunk.status === "RUNNING") {
-    return Boolean(stale);
+    return claimedAt == null || stale;
   }
   return false;
 }

@@ -7,4 +7,4 @@ A queued 100/1,000 job is informative when it finishes with all six named future
 
 The dashboard scores every job against that contract. It does not start a paid run.
 
-Phase 5 stays open until a real hosted job on `dec-sim` reports `PROVEN`. Auto-canary 100-run deploys are **V2-37**.
+The first hosted 100 (`ce565e97-cd3d-48a6-9f53-d19cb6e12fb7`) finished 91 completed / 9 failed with six futures and min lane n of 12. That snapshot scores `PROVEN` in-repo. Phase 5 stays open until the live badge reports `PROVEN`. Auto-canary 100-run deploys are **V2-37**.

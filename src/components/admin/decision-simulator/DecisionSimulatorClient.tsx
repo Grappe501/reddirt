@@ -114,6 +114,13 @@ type JobView = {
     persistVersion?: string;
     storage?: string;
   } | null;
+  chunks?: Array<{
+    ordinal: number;
+    status: string;
+    claimedAt: string | null;
+    claimable: boolean;
+    error: string | null;
+  }>;
 };
 type EnsembleResult = {
   completedRuns: number;
@@ -342,6 +349,14 @@ export function DecisionSimulatorClient() {
     const res = await fetch(`/api/admin/decision-simulator/jobs/${job.id}/cancel`, { method: "POST" });
     const data = (await res.json()) as { job?: JobView };
     if (data.job) setJob(data.job);
+  }
+
+  async function retryStuckChunks() {
+    if (!job?.id) return;
+    const res = await fetch(`/api/admin/decision-simulator/jobs/${job.id}/retry`, { method: "POST" });
+    const data = (await res.json()) as { job?: JobView; error?: string };
+    if (data.job) setJob(data.job);
+    if (data.error) setResponse({ ok: false, error: data.error });
   }
 
   const result = response?.result;
@@ -575,9 +590,14 @@ export function DecisionSimulatorClient() {
 
             {job && ["QUEUED", "RUNNING", "PARTIAL"].includes(job.status) && (
               <div>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 12 }}>
                   <span className="ml-badge research">{job.status}</span>
-                  <button type="button" className="ml-ghost danger" onClick={() => void cancelJob()}>Cancel Job</button>
+                  <div style={{ display: "flex", gap: 8 }}>
+                    {(job.chunks ?? []).some((chunk) => chunk.status === "RUNNING" && chunk.claimable) && (
+                      <button type="button" className="ml-ghost" onClick={() => void retryStuckChunks()}>Return stuck chunk</button>
+                    )}
+                    <button type="button" className="ml-ghost danger" onClick={() => void cancelJob()}>Cancel Job</button>
+                  </div>
                 </div>
                 <p style={{ fontSize: 28, margin: "12px 0 0", letterSpacing: "-0.03em" }}>
                   {job.completed.toLocaleString()} / {job.requested.toLocaleString()} simulations complete

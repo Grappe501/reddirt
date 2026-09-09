@@ -74,7 +74,7 @@ assert(!/imap|gmail\.googleapis/i.test(ui), "thread UI does not add a mailbox co
 
 const roadmap = readFileSync("develop_notes/decision-simulation/DEC_SIM_V1_V2_ROADMAP_1_0.md", "utf8");
 assert(roadmap.includes("DEC-SIM-CORRESPONDENCE-THREAD-1.0"), "thread slice is named on the canonical roadmap");
-assert(roadmap.includes("DEC-SIM-CORRESPONDENCE-INTAKE-1.0") && roadmap.includes("DEC-SIM-HOSTED-ENSEMBLE-PROOF-1.0"), "prior capability names stay on the canonical roadmap");
+assert(roadmap.includes("DEC-SIM-CORRESPONDENCE-INTAKE-1.0") && roadmap.includes("DEC-SIM-HOSTED-ENSEMBLE-PROOF-1.0") && roadmap.includes("DEC-SIM-STALE-RUNNING-RECLAIM-1.0"), "prior capability names stay on the canonical roadmap");
 assert(roadmap.includes("V2-39"), "mailbox import and attachment intelligence stay V2");
 assert(/Phase 6/i.test(roadmap) && /capability started/i.test(roadmap), "this slice does not close Phase 6");
 assert(/Phase 5 remains open/i.test(roadmap), "this slice does not close Phase 5");

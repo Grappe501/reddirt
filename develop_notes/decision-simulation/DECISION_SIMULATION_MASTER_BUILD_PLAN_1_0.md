@@ -293,17 +293,17 @@ Updated 2026-09-09 from the live `dec-sim` product. Detail: `DEC_SIM_V1_V2_ROADM
 - Phase 2 Database & Schema: **largely complete**
 - Phase 3 OpenAI Intelligence: **functional**
 - Phase 4 Actor Modeling: **substantially built** (research catalog live; not V2 digital twins)
-- Phase 5 Six-Move Engine: **open / current** (queued ensembles, writing packets, Alternative Futures lanes, Hill vote adapter, and `DEC-SIM-HOSTED-ENSEMBLE-PROOF-1.0` contract; phase not closed)
+- Phase 5 Six-Move Engine: **open / current** (queued ensembles, writing packets, Alternative Futures lanes, Hill vote adapter, `DEC-SIM-HOSTED-ENSEMBLE-PROOF-1.0`, and `DEC-SIM-STALE-RUNNING-RECLAIM-1.0`; phase not closed)
 - Phase 6 Correspondence Intake: **capability started** (`DEC-SIM-CORRESPONDENCE-INTAKE-1.0` + `DEC-SIM-CORRESPONDENCE-THREAD-1.0`); paste structure and thread split live; no connectors; phase not closed
 - Phase 7 Decision Dashboard: **capability started** (`DEC-SIM-DASHBOARD-INTELLIGENCE-1.0`); sequence, branches, scorecard, save/compare, outcome attach; not closed
 - Phase 8 Alternative Futures: **capability started inside Phase 5** (`DEC-SIM-ALTERNATIVE-FUTURES-1.0`); not a phase close
 - Phase 9 Memory & Evidence: **capability started** (campaign pages + media + `DEC-SIM-EVIDENCE-PROVENANCE-1.0`); no evidence graph yet
 - Phase 10 Outcome Learning: **capability started** (`DEC-SIM-OBSERVED-OUTCOME-1.0` + `DEC-SIM-ENSEMBLE-OUTCOME-PERSIST-1.0`); compare + ensemble persist; not closed
 - Phase 11 Cross-Channel Command Center: **not started**
-- Phase 12 Hardening & Launch: **partial, pulled forward** (`DEC-SIM-WORKER-CONTINUITY-1.0` started; not closed)
+- Phase 12 Hardening & Launch: **partial, pulled forward** (`DEC-SIM-WORKER-CONTINUITY-1.0` + `DEC-SIM-STALE-RUNNING-RECLAIM-1.0` started; not closed)
 
 V2 (voice engine, digital twins, multi-actor game theory, ensemble decision science, counterfactual lab, strategic red team, evidence graph, calibration machine) is a shadow roadmap only. Do not derail remaining V1 phases.
 
 ## Next Build
 
-Phase 5 remains open. Hosted ensemble proof (`DEC-SIM-HOSTED-ENSEMBLE-PROOF-1.0`) is a contract, not a phase close. Named next V1 work is an operator-run hosted 100 until PROVEN. No mailbox connectors. No silent outcome writeback.
+Phase 5 remains open. Hosted ensemble proof (`DEC-SIM-HOSTED-ENSEMBLE-PROOF-1.0`) is a contract, not a phase close. Stale-running reclaim is live. Named next V1 work is a live badge that reads PROVEN. No mailbox connectors. No silent outcome writeback.
