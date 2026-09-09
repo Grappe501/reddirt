@@ -33,7 +33,13 @@ export { scoreVoiceSimilarity } from "./writing-intelligence/similarity";
 export { assignAlternativeFuture } from "./alternative-futures/assign";
 export { ALTERNATIVE_FUTURES } from "./alternative-futures/contracts";
 export { scoreRobustnessAcrossFutures } from "./alternative-futures/robustness";
-export { parseCorrespondencePaste, composeCorrespondenceOpening, CHANNEL_INTAKE_FIELDS } from "./correspondence-intake";
+export {
+  parseCorrespondencePaste,
+  composeCorrespondenceOpening,
+  CHANNEL_INTAKE_FIELDS,
+  splitCorrespondenceThread,
+  CORRESPONDENCE_THREAD_VERSION,
+} from "./correspondence-intake";
 export { getCampaignPrioritySnapshot, formatCampaignPrioritiesPromptLine } from "./campaign-priorities";
 export { getMediaResearchSnapshot, formatMediaResearchPromptLine } from "./media-research";
 export {

@@ -5,6 +5,7 @@ import {
   type CorrespondenceIntake,
   type IntakeFieldKey,
 } from "./contracts";
+import { splitCorrespondenceThread } from "./thread";
 
 const HEADER_LINE = /^([A-Za-z][A-Za-z0-9 /_-]{0,40})\s*:\s*(.*)$/;
 
@@ -45,7 +46,9 @@ export function parseCorrespondencePaste(raw: string, channel: DecisionSimulatio
     cursor += 1;
   }
 
-  const body = lines.slice(cursor).join("\n").trim();
+  const rawBody = lines.slice(cursor).join("\n").trim();
+  const fallback = rawBody || (!sawHeader ? text.trim() : "");
+  const { latest, thread } = splitCorrespondenceThread(fallback);
   const unknown: string[] = [];
   for (const def of defs) {
     if (!fields[def.key]) unknown.push(def.key);
@@ -54,11 +57,12 @@ export function parseCorrespondencePaste(raw: string, channel: DecisionSimulatio
   return {
     version: CORRESPONDENCE_INTAKE_VERSION,
     channel,
-    body: body || (!sawHeader ? text.trim() : ""),
+    body: latest || fallback,
     fields,
-    parsedFromPaste: sawHeader,
+    parsedFromPaste: sawHeader || thread.priorCount > 0 || thread.quotesStripped,
     connectorsEnabled: false,
     unknown,
+    thread,
   };
 }
 

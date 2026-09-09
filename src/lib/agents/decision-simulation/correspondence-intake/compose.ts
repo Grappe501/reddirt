@@ -1,6 +1,7 @@
 import type { DecisionSimulationChannel, DecisionSimulationOpeningInput } from "../contracts";
 import { CHANNEL_INTAKE_FIELDS, type CorrespondenceIntake, type IntakeFieldKey } from "./contracts";
 import { mergeIntakeFields, parseCorrespondencePaste } from "./parse";
+import { formatThreadIntakeLines } from "./thread";
 
 export function composeCorrespondenceOpening(input: {
   channel: DecisionSimulationChannel;
@@ -22,6 +23,7 @@ export function composeCorrespondenceOpening(input: {
     `Channel: ${parsed.channel}. Connectors=DISABLED. This is a pasted artifact, not a mailbox fetch.`,
     ...CHANNEL_INTAKE_FIELDS[parsed.channel].map((def) => `${def.label}: ${parsed.fields[def.key] ?? "unknown"}`),
     parsed.unknown.length ? `Unknown structured fields: ${parsed.unknown.join(", ")}.` : "All structured fields for this channel were supplied.",
+    ...formatThreadIntakeLines(parsed.thread),
     "Do not invent recipients, venues, questions, or headers that were not supplied.",
     "Do not send, schedule, or post this correspondence.",
   ];
@@ -37,6 +39,7 @@ export function formatCorrespondenceIntakePacket(intake?: CorrespondenceIntake |
     intake.unknown.length
       ? `Unknown structured fields: ${intake.unknown.join(", ")}.`
       : "All structured fields for this channel were supplied.",
+    ...formatThreadIntakeLines(intake.thread),
     "Do not invent recipients, venues, questions, or headers that were not supplied.",
     "Do not send, schedule, or post this correspondence.",
   ].join("\n");

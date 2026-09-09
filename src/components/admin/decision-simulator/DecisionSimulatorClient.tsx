@@ -235,6 +235,9 @@ export function DecisionSimulatorClient() {
     };
   }, [job?.id, job?.status]);
 
+  const intakePreview = parseCorrespondencePaste(message, channel);
+  const threadPriorCount = intakePreview.thread?.priorCount ?? 0;
+
   function persistCustom(next: CatalogPersonality[]) {
     setCustom(next);
     window.localStorage.setItem(CUSTOM_KEY, JSON.stringify(next));
@@ -415,6 +418,11 @@ export function DecisionSimulatorClient() {
                 placeholder={channel === "EMAIL" ? "From:\nTo:\nSubject:\n\nPaste the letter…" : "Paste the statement, debate line, speech excerpt, or memo…"}
               />
             </label>
+            {threadPriorCount > 0 && (
+              <p className="ml-copy">
+                Thread: {threadPriorCount} earlier pasted turn{threadPriorCount === 1 ? "" : "s"}. Latest is the opening move. Not a mailbox fetch.
+              </p>
+            )}
             <div className="ml-row">
               {CHANNEL_INTAKE_FIELDS[channel].map((field) => (
                 <label key={field.key} className="ml-label">{field.label}

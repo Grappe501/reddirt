@@ -1,4 +1,5 @@
 import type { DecisionSimulationChannel } from "../contracts";
+import type { CorrespondenceThread } from "./thread";
 
 export const CORRESPONDENCE_INTAKE_VERSION = "correspondence-intake-1.0" as const;
 
@@ -86,4 +87,5 @@ export type CorrespondenceIntake = {
   parsedFromPaste: boolean;
   connectorsEnabled: false;
   unknown: string[];
+  thread?: CorrespondenceThread;
 };
