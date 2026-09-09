@@ -58,26 +58,48 @@ The pipeline:
 
 Trump alignment is not inferred during House ingestion. It remains `No documented position` until a separate evidence workflow establishes a documented Trump position.
 
+## Trump position evidence workflow
+
+Trump-position evidence lives independently in `data/trump-evidence.json` and is governed by `data/trump-evidence.schema.json`.
+
+A record can be `verified`, `provisional`, `ambiguous`, or `rejected`. Only `verified` records are merged into the public vote ledger and allowed to create a `trump_break`, `trump_alignment`, `double_break`, or highly partisan Trump-alignment classification.
+
+A verified record must include:
+
+1. the exact Congress and House roll-call number;
+2. a Support or Oppose position tied to that vote or issue;
+3. a plain-language evidence summary;
+4. the official House vote source; and
+5. separate evidence documenting Trump's position, preferably an official statement or archive, otherwise high-quality contemporaneous reporting.
+
+The validator rejects duplicate vote keys, missing evidence summaries, missing source sets, invalid URLs, and verified records lacking either House evidence or Trump-position evidence.
+
+Run:
+
+```bash
+npm run validate:trump-evidence
+```
+
+The initial proof record is 117th Congress Roll Call 154, H.R. 3233, the National Commission to Investigate the January 6 Attack on the United States Capitol Complex Act. The House Clerk records Hill voting Yea while 175 Republicans voted Nay and 35 voted Yea. The Trump evidence record separately documents Trump's public opposition before the vote. The resulting classification is produced by the evidence merger rather than being hand-coded into the roll-call dataset.
+
 ## Evidence standard
 
 Prefer official House roll calls, Congress.gov, committee records, White House/official Trump statements where available, archived campaign statements, and high-quality contemporaneous reporting for contextual verification.
 
 Never infer a Trump position solely from the Republican vote split. Trump alignment and party alignment are separate fields. Likewise, a vote should not be labeled highly partisan based on topic or rhetoric; it must meet the numerical party-split standard.
 
-## Planned site
+## Public site
 
-The public site will include:
+The public site currently includes:
 
 - searchable vote ledger
-- filters by Congress, year, issue, vote type, party-break status, GOP-alignment status, Trump-break status, Trump-alignment status, and partisan intensity
-- dedicated views for highly partisan votes where Hill aligned with the GOP, Trump, or both
-- dedicated views for votes where Hill broke with the GOP, Trump, or both
-- vote detail pages with primary-source citations and raw party split
-- aggregate counts and trend charts
-- alignment/breakdown timelines by Congress and issue area
-- methodology and sourcing page
-- data-quality and ambiguity flags
-- exportable CSV/JSON datasets
+- filters by year and classification
+- dedicated views for GOP breaks, highly partisan GOP alignments, Trump breaks, and Trump alignments
+- permanent vote evidence pages
+- dashboard summaries and year-by-year breakdowns
+- primary-source links and Trump evidence source sets
+
+Planned additions include deeper trend charts, issue-area analysis, methodology pages, correction history, and CSV/JSON exports.
 
 ## Local development
 
