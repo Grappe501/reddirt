@@ -1,6 +1,6 @@
 # RedDirt Decision Simulation Engine — Master Build Plan 1.0
 
-**Status:** Canonical architecture / active build  
+**Status:** Canonical architecture / active build. Live-product status and V1/V2 split: `DEC_SIM_V1_V2_ROADMAP_1_0.md`.  
 **Repository:** `Grappe501/reddirt`  
 **Product boundary:** Internal RedDirt strategic-analysis capability  
 **AI provider:** OpenAI through server-side credentials only  
@@ -287,19 +287,23 @@ Deliverables:
 
 ## Overall Build Progress
 
-- Phase 1 Architecture & Doctrine: **in progress**
-- Phase 2 Database & Schema: **not started**
-- Phase 3 OpenAI Intelligence: **not started**
-- Phase 4 Actor Modeling: **not started**
-- Phase 5 Six-Move Engine: **not started**
-- Phase 6 Correspondence Intake: **not started**
-- Phase 7 Decision Dashboard: **not started**
-- Phase 8 Alternative Futures: **not started**
-- Phase 9 Memory & Evidence: **not started**
+Updated 2026-09-09 from the live `dec-sim` product. Detail: `DEC_SIM_V1_V2_ROADMAP_1_0.md`.
+
+- Phase 1 Architecture & Doctrine: **essentially complete**
+- Phase 2 Database & Schema: **largely complete**
+- Phase 3 OpenAI Intelligence: **functional**
+- Phase 4 Actor Modeling: **substantially built** (research catalog live; not V2 digital twins)
+- Phase 5 Six-Move Engine: **current phase** (queued ensembles live; Alternative Futures still missing)
+- Phase 6 Correspondence Intake: **started, thin**
+- Phase 7 Decision Dashboard: **preview pulled forward** (NASA lab live; scorecard / compare / outcome capture remain)
+- Phase 8 Alternative Futures: **next V1 intelligence jump**
+- Phase 9 Memory & Evidence: **scaffold only**
 - Phase 10 Outcome Learning: **not started**
 - Phase 11 Cross-Channel Command Center: **not started**
-- Phase 12 Hardening & Launch: **not started**
+- Phase 12 Hardening & Launch: **partial, pulled forward**
+
+V2 (voice engine, digital twins, multi-actor game theory, ensemble decision science, counterfactual lab, strategic red team, evidence graph, calibration machine) is a shadow roadmap only. Do not derail remaining V1 phases.
 
 ## Next Build
 
-Complete `DECISION-SIM-PHASE-1-FOUNDATION-1.0` by adding the typed engine contracts and deterministic canonical sequence builder under `src/lib/agents/decision-simulation/`, then add a RedDirt-native verification script before Phase 2 schema work begins.
+Stay on Phase 5. Next named slice is Alternative Futures (expected / hostile / opportunity / unusual / escalation) so 100- and 1,000-run jobs become informative. Then resume the V1 spine: intake, dashboard intelligence, evidence/memory, observed-outcome learning, cross-channel command, production hardening.

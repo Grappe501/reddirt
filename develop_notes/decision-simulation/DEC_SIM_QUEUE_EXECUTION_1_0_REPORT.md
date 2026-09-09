@@ -92,4 +92,4 @@ https://dec-sim.netlify.app
 
 ## Next slice recommendation
 
-Alternative Futures: hostile / best-case / expected branching so a 1,000-run ensemble is not 1,000 variations of one path.
+Alternative Futures remains the next V1 intelligence jump. Formal V1/V2 split: `DEC_SIM_V1_V2_ROADMAP_1_0.md`.
