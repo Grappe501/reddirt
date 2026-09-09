@@ -4,6 +4,7 @@ export * from "./sequence";
 export * from "./structured-output";
 export * from "./prompt";
 export * from "./openai-runtime";
+export * from "./scale";
 
 export {
   DECISION_SIMULATION_TABLES,
