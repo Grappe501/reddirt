@@ -1,4 +1,6 @@
 import { NextResponse } from "next/server";
+import { assertAdminApi } from "@/lib/admin/require-admin";
+import { clientIp, rateLimit } from "@/lib/rate-limit";
 import {
   planDecisionSimulationEnsemble,
   runDecisionSimulationEnsemble,
@@ -53,6 +55,18 @@ function buildGenericActorModel(input: DecisionSimulationOpeningInput): Decision
 }
 
 export async function POST(request: Request) {
+  const denied = await assertAdminApi();
+  if (denied) return denied;
+
+  const ip = clientIp(request);
+  const rl = rateLimit(`decision-simulator:${ip}`, 8, 60_000);
+  if (!rl.ok) {
+    return NextResponse.json(
+      { ok: false, error: "Too many simulation requests. Try again shortly.", retryAfterMs: rl.retryAfterMs },
+      { status: 429 },
+    );
+  }
+
   try {
     const body = (await request.json()) as RequestBody;
     const requestedRuns = Number(body.requestedRuns || 1);
