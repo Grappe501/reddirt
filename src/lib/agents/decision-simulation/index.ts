@@ -8,6 +8,8 @@ export * from "./scale";
 export * from "./actor-model";
 export * from "./actor-context";
 export * from "./actor-ensemble";
+export * from "./ensemble-orchestrator";
+export * from "./job-state";
 
 export {
   DECISION_SIMULATION_TABLES,
