@@ -2,6 +2,11 @@ import Link from "next/link";
 
 const cards = [
   {
+    href: "/fec-max-donors",
+    title: "FEC max donors (Jones / Shoffner)",
+    body: "Standalone OpenFEC list of 2026 individual donors who gave $3,000 or more to Chris Jones or Hallie Shoffner.",
+  },
+  {
     href: "/admin/calendar-admin",
     title: "Calendar Admin (public ledger)",
     body: "Team workbench for the Kelly Across Arkansas calendar: ingest screenshots and emails, list conflicts, edit stops, publish or hide. Separate from the public /events page.",
