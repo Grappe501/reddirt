@@ -14,6 +14,7 @@ import {
   planQueuedDecisionSimulationJob,
   type CommandCenterMember,
 } from "./job-lifecycle";
+import { scoreHostedEnsembleProof, type HostedEnsembleProof } from "./hosted-ensemble-proof";
 import { getDecisionSimulationQueueConfig } from "./queue-config";
 import { DECISION_SIMULATION_PROMPT_VERSION } from "./structured-output";
 import type { DecisionSimulationActorModel } from "./actor-model";
@@ -105,6 +106,7 @@ export type DecisionSimulationJobView = {
   members: CommandCenterMember[];
   opening: string;
   dashboard: DashboardIntelligencePayload | null;
+  hostedProof: HostedEnsembleProof;
 };
 
 function asJobView(
@@ -128,6 +130,21 @@ function asJobView(
       : null;
   const laneFrame = (futureId: string) =>
     commandCenter?.robustness.lanes.find((lane) => lane.futureId === futureId)?.modalFrame ?? null;
+  const architectureOnly =
+    row.execution_mode === "DISTRIBUTED" && row.requested_runs > getDecisionSimulationQueueConfig().maxRunsPerJob;
+  const dashboard = commandCenter
+    ? buildDashboardIntelligencePayload({
+        members,
+        opening,
+        modelConfidence: commandCenter.modelConfidence,
+        outlierRate: commandCenter.outlierRate,
+        robustnessScore: commandCenter.robustness.robustnessScore,
+        dominantFrame: commandCenter.dominantResponseFrame,
+        strongestCounter: commandCenter.strongestRecommendedCounter,
+        expectedFrame: laneFrame("EXPECTED") ?? commandCenter.representative.expected?.frame ?? null,
+        hostileFrame: laneFrame("HOSTILE") ?? commandCenter.representative.hostileOutlier?.frame ?? null,
+      })
+    : null;
   return {
     id: row.id,
     status: row.status,
@@ -146,7 +163,7 @@ function asJobView(
     },
     estimatedCostUsd: row.estimated_cost_usd,
     error: row.error_summary,
-    architectureOnly: row.execution_mode === "DISTRIBUTED" && row.requested_runs > getDecisionSimulationQueueConfig().maxRunsPerJob,
+    architectureOnly,
     createdAt: row.created_at.toISOString(),
     startedAt: row.started_at?.toISOString() ?? null,
     updatedAt: row.updated_at.toISOString(),
@@ -157,19 +174,17 @@ function asJobView(
     representativeRuns: members.slice(0, 5),
     members: selectDashboardMembers(members),
     opening,
-    dashboard: commandCenter
-      ? buildDashboardIntelligencePayload({
-          members,
-          opening,
-          modelConfidence: commandCenter.modelConfidence,
-          outlierRate: commandCenter.outlierRate,
-          robustnessScore: commandCenter.robustness.robustnessScore,
-          dominantFrame: commandCenter.dominantResponseFrame,
-          strongestCounter: commandCenter.strongestRecommendedCounter,
-          expectedFrame: laneFrame("EXPECTED") ?? commandCenter.representative.expected?.frame ?? null,
-          hostileFrame: laneFrame("HOSTILE") ?? commandCenter.representative.hostileOutlier?.frame ?? null,
-        })
-      : null,
+    dashboard,
+    hostedProof: scoreHostedEnsembleProof({
+      requested: row.requested_runs,
+      completed: row.completed_runs,
+      failed: row.failed_runs,
+      status: row.status,
+      executionMode: row.execution_mode,
+      architectureOnly,
+      commandCenter,
+      dashboard,
+    }),
   };
 }
 

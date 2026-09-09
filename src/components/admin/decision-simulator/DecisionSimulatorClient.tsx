@@ -97,6 +97,13 @@ type JobView = {
   members?: Member[];
   opening?: string;
   dashboard?: DashboardIntelligencePayload | null;
+  hostedProof?: {
+    status: string;
+    summary: string;
+    minLaneN: number;
+    futuresWithRuns: number;
+    checks: Array<{ id: string; label: string; pass: boolean; detail: string }>;
+  };
 };
 type EnsembleResult = {
   completedRuns: number;
@@ -559,6 +566,9 @@ export function DecisionSimulatorClient() {
                 </p>
                 <p className="ml-copy">{job.percentComplete}%</p>
                 <div className="ml-bar"><i style={{ width: `${Math.min(100, job.percentComplete)}%` }} /></div>
+                {job.hostedProof && (
+                  <p className="ml-copy">{job.hostedProof.status}: {job.hostedProof.summary}</p>
+                )}
                 <div className="ml-stats">
                   <div className="ml-stat"><b>Chunk {job.currentChunk} of {job.chunkCount}</b><span>Current</span></div>
                   <div className="ml-stat"><b>{job.completed.toLocaleString()}</b><span>Completed</span></div>
@@ -569,6 +579,19 @@ export function DecisionSimulatorClient() {
             )}
 
             {job?.architectureOnly && <div className="ml-warn">Accepted as a distributed-study plan only. A million-run ceiling will not execute in this runtime.</div>}
+
+            {job?.hostedProof && (
+              <div className="ml-sec">
+                <h3>Hosted ensemble proof</h3>
+                <span className="ml-badge">{job.hostedProof.status}</span>
+                <p className="ml-copy">{job.hostedProof.summary}</p>
+                <ul className="ml-sources">
+                  {job.hostedProof.checks.map((item) => (
+                    <li key={item.id}>{item.pass ? "Pass" : "Open"} — {item.label}. {item.detail}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
 
             {command && job?.status === "COMPLETE" && (
               <div>

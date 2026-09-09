@@ -293,7 +293,7 @@ Updated 2026-09-09 from the live `dec-sim` product. Detail: `DEC_SIM_V1_V2_ROADM
 - Phase 2 Database & Schema: **largely complete**
 - Phase 3 OpenAI Intelligence: **functional**
 - Phase 4 Actor Modeling: **substantially built** (research catalog live; not V2 digital twins)
-- Phase 5 Six-Move Engine: **open / current** (queued ensembles, writing packets, Alternative Futures lanes, and Hill vote adapter are capabilities; phase not closed)
+- Phase 5 Six-Move Engine: **open / current** (queued ensembles, writing packets, Alternative Futures lanes, Hill vote adapter, and `DEC-SIM-HOSTED-ENSEMBLE-PROOF-1.0` contract; phase not closed)
 - Phase 6 Correspondence Intake: **capability started** (`DEC-SIM-CORRESPONDENCE-INTAKE-1.0`); paste structure live; no connectors; phase not closed
 - Phase 7 Decision Dashboard: **capability started** (`DEC-SIM-DASHBOARD-INTELLIGENCE-1.0`); sequence, branches, scorecard, save/compare, outcome attach; not closed
 - Phase 8 Alternative Futures: **capability started inside Phase 5** (`DEC-SIM-ALTERNATIVE-FUTURES-1.0`); not a phase close
@@ -306,4 +306,4 @@ V2 (voice engine, digital twins, multi-actor game theory, ensemble decision scie
 
 ## Next Build
 
-Phase 5 remains open. Phase 12 worker continuity (`DEC-SIM-WORKER-CONTINUITY-1.0`) is a capability, not a phase close. Named next V1 work is a hosted 100/1,000 proof. No mailbox connectors. No silent outcome writeback.
+Phase 5 remains open. Hosted ensemble proof (`DEC-SIM-HOSTED-ENSEMBLE-PROOF-1.0`) is a contract, not a phase close. Named next V1 work is an operator-run hosted 100 until PROVEN. No mailbox connectors. No silent outcome writeback.

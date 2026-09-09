@@ -3,7 +3,7 @@
 **Status:** Canonical from 2026-09-09. This is the **only** V2 shadow roadmap.  
 **Live product:** https://dec-sim.netlify.app  
 **Parent plan:** `DECISION_SIMULATION_MASTER_BUILD_PLAN_1_0.md`  
-**Next V1 slice:** Hosted 100/1,000 proof on `dec-sim`. Phase 12 worker continuity is a started capability, not a phase close.  
+**Next V1 slice:** Operator-run hosted 100 on `dec-sim` until the proof badge reads PROVEN. The proof contract is live (`DEC-SIM-HOSTED-ENSEMBLE-PROOF-1.0`); Phase 5 is not closed.  
 **Doctrine unchanged:** advisory only; no send; no post; evidence separated from inference; generated language labeled generated.
 
 V1 is no longer a theoretical sequence. We are learning from a live product while we finish the dependable operating system.
@@ -31,7 +31,7 @@ We are still in **Phase 5**. Burt pulled forward pieces of Phases 7, 9, and 12 b
 | 2 Persistence | Auditable simulation records | **Largely complete** | Sessions, ensembles, chunks, job state. Branch / outcome / evaluation tables exist ahead of the loops that fill them |
 | 3 OpenAI intelligence | Structured six-move generation | **Functional** | Server-side OpenAI, structured output, retries, token accounting |
 | 4 Actor / personality | Versioned researched models | **Substantially built** | Research models for Jones / Hill, open catalog, custom hypothesis personalities, OBSERVED / INFERRED / HYPOTHESIS tags. Writing-intelligence packets are a Phase 5 capability, not a Phase 4 or 9 close |
-| 5 Ensemble / six-move execution | Primary line + ensemble | **Open / current** | Live 1–10, queued 100 / 1,000, cost gates, seeded personality variation, cancel / retry, Netlify worker, NASA dashboard, first-party writing packets, Alternative Futures lane assignment, Hill vote adapter (corpus not yet located), `DEC-SIM-ENSEMBLE-LANE-INTELLIGENCE-1.0` (within-lane n, modal share, typical sample). Not a phase close |
+| 5 Ensemble / six-move execution | Primary line + ensemble | **Open / current** | Live 1–10, queued 100 / 1,000, cost gates, seeded personality variation, cancel / retry, Netlify worker, NASA dashboard, first-party writing packets, Alternative Futures lane assignment, Hill vote adapter (corpus not yet located), `DEC-SIM-ENSEMBLE-LANE-INTELLIGENCE-1.0`, `DEC-SIM-HOSTED-ENSEMBLE-PROOF-1.0` (contract live; no hosted job marked PROVEN in-repo). Not a phase close |
 | 6 Correspondence intake | Rich paste-first channels | **Capability started** | `DEC-SIM-CORRESPONDENCE-INTAKE-1.0`: channel-specific paste parse (email headers, debate question, memo Re, speech venue). No connectors. No attachment intelligence |
 | 7 Decision dashboard | Operator command surface | **Capability started** | `DEC-SIM-DASHBOARD-INTELLIGENCE-1.0`: six-move sequence, branch explorer, scorecard, hypothesis revision, local save/compare, outcome attach. Not a phase close |
 | 8 Alternative Futures | Branching scenario lanes | **Capability started; not closed** | `DEC-SIM-ALTERNATIVE-FUTURES-1.0` assigns six named futures per run. Robustness is measured across futures. Hill legislative evidence attaches when the vote corpus is found |
@@ -44,7 +44,7 @@ We are still in **Phase 5**. Burt pulled forward pieces of Phases 7, 9, and 12 b
 
 Phase 5 is more sophisticated than originally planned. It is not finished until a 1,000-run job is **informative**, not merely 1,000 slightly different linear conversations.
 
-**Named futures are assigned.** `DEC-SIM-ENSEMBLE-LANE-INTELLIGENCE-1.0` now reports within-lane n, modal share, and a typical sample. `DEC-SIM-WORKER-CONTINUITY-1.0` keeps queued jobs moving after the tab closes. Remaining Phase 5 work is proving a hosted 100/1,000-run job is informative in production. Dashboard intelligence is a Phase 7 capability started (`DEC-SIM-DASHBOARD-INTELLIGENCE-1.0`), not a Phase 5 close.
+**Named futures are assigned.** `DEC-SIM-ENSEMBLE-LANE-INTELLIGENCE-1.0` now reports within-lane n, modal share, and a typical sample. `DEC-SIM-WORKER-CONTINUITY-1.0` keeps queued jobs moving after the tab closes. `DEC-SIM-HOSTED-ENSEMBLE-PROOF-1.0` scores a job against that bar. Remaining Phase 5 work is a real hosted 100/1,000 job that reports `PROVEN`. Dashboard intelligence is a Phase 7 capability started (`DEC-SIM-DASHBOARD-INTELLIGENCE-1.0`), not a Phase 5 close.
 
 Required futures:
 
@@ -68,7 +68,7 @@ Execute in this order. Do not reorder to chase V2.
 3. **Phase 9 — evidence / memory.** Campaign-site priorities, media research, provenance-tagged claims, and operator-attached prior correspondence are started. Still no clickable graph, stale-evidence decay, or prior-sim retrieval. Missing stays missing.
 4. **Phase 10 — observed-outcome learning.** Capability started (`DEC-SIM-OBSERVED-OUTCOME-1.0`). Compare and unapplied proposal are live. Remaining: persist to the ensemble job, operator-approved personality versioning. No silent prompt drift.
 5. **Phase 11 — cross-channel command center.** Same engine on email, text, social, press, debate, fundraising, and internal strategy. Simulation never sends.
-6. **Phase 12 — production hardening.** Capability started (`DEC-SIM-WORKER-CONTINUITY-1.0`). Remaining: hosted 100/1,000 proof, RBAC, audit log, privacy review, prompt-injection defenses, operator runbook, production readiness review.
+6. **Phase 12 — production hardening.** Capability started (`DEC-SIM-WORKER-CONTINUITY-1.0` + `DEC-SIM-HOSTED-ENSEMBLE-PROOF-1.0`). Remaining: a real hosted 100/1,000 PROVEN job, RBAC, audit log, privacy review, prompt-injection defenses, operator runbook, production readiness review.
 
 Phase 4 remains open for additional researched personalities. Adding a personality is a catalog update, not a V2 digital twin.
 
@@ -280,6 +280,10 @@ V1 attaches one public reply and compares it to the predicted branch. Multi-outc
 
 V1 self-chains `/work` after each chunk and reclaims stale RUNNING rows. A 15-minute Netlify Background Function, a standing campaign-site cron, or a separate queue worker remains V2. Do not add a kgrappe cron here.
 
+### V2-37 Auto-canary 100-run deploys
+
+V1 scores a hosted job after an operator launches it. Automatically spending a 100-run job on every production deploy is V2. Do not start a paid ensemble from a build.
+
 ## Boundary rules (agents)
 
 1. If a request improves Alternative Futures, intake, dashboard intelligence, evidence, outcome attach, or hardening — it is V1.
@@ -292,4 +296,4 @@ V1 self-chains `/work` after each chunk and reclaims stale RUNNING rows. A 15-mi
 
 ## Next operator click
 
-Phase 5 remains open. Alternative Futures, intake, dashboard intelligence, campaign-site priorities, media research, evidence provenance, ensemble-lane intelligence, observed-outcome compare, and worker continuity are capabilities, not phase closes. Named next V1 work is a hosted 100/1,000 proof. Do not start V2-21+.
+Phase 5 remains open. Alternative Futures, intake, dashboard intelligence, campaign-site priorities, media research, evidence provenance, ensemble-lane intelligence, observed-outcome compare, worker continuity, and the hosted-proof contract are capabilities, not phase closes. Named next V1 work is an operator-run hosted 100 until the badge reads PROVEN. Do not start V2-21+.

@@ -58,6 +58,7 @@ export {
   normalizeDashboardMember,
 } from "./dashboard-intelligence";
 export { isChunkClaimable, STALE_CHUNK_CLAIM_MINUTES, WORKER_CONTINUITY_VERSION } from "./worker-continuity";
+export { scoreHostedEnsembleProof, HOSTED_ENSEMBLE_PROOF_VERSION } from "./hosted-ensemble-proof";
 export {
   jobProgressPercent,
   planQueuedDecisionSimulationJob,
