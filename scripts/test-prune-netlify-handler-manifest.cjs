@@ -19,6 +19,7 @@ const {
   MACROSCOPIC_LIFE_STASH_DIRS,
   APP_STASH_KEEP_PREFIXES,
   API_KEEP,
+  API_NESTED_KEEP,
   stashPublicHubAppDirs,
   isRouteFileName,
   STASH_ROOT,
@@ -83,6 +84,7 @@ assert.ok(APP_STASH_DIRS.includes("src/app/admin/(board)"));
 assert.ok(APP_STASH_KEEP_PREFIXES.includes("src/app/admin/(board)/talent-foundry"));
 assert.ok(API_KEEP.has("forms"));
 assert.ok(API_KEEP.has("election-plan"));
+assert.ok(API_NESTED_KEEP.get("admin")?.has("decision-simulator"));
 assert.ok(LAUNCH_APP_TOP_KEEP.has("election-plan"));
 assert.ok(LAUNCH_API_TOP_KEEP.has("election-plan"));
 assert.ok(isRouteFileName("page.tsx"));
@@ -93,9 +95,15 @@ const stashTmp = fs.mkdtempSync(path.join(tmpRoot, "public-hub-stash-"));
 const ml = path.join(stashTmp, "src/app/(macroscopic-life)/macroscopic-life");
 const board = path.join(stashTmp, "src/app/admin/(board)/campaign-events");
 const tf = path.join(stashTmp, "src/app/admin/(board)/talent-foundry");
+const simApi = path.join(stashTmp, "src/app/api/admin/decision-simulator");
+const otherAdminApi = path.join(stashTmp, "src/app/api/admin/email-diagnostics");
 fs.mkdirSync(ml, { recursive: true });
 fs.mkdirSync(board, { recursive: true });
 fs.mkdirSync(tf, { recursive: true });
+fs.mkdirSync(simApi, { recursive: true });
+fs.mkdirSync(otherAdminApi, { recursive: true });
+fs.writeFileSync(path.join(simApi, "route.ts"), "export function POST() {}\n");
+fs.writeFileSync(path.join(otherAdminApi, "route.ts"), "export function GET() {}\n");
 fs.writeFileSync(path.join(ml, "page.tsx"), "export default function Page() { return null; }\n");
 fs.writeFileSync(path.join(ml, "layout.tsx"), "export default function Layout({ children }) { return children; }\n");
 fs.writeFileSync(path.join(board, "page.tsx"), "export default function Page() { return null; }\n");
@@ -115,5 +123,7 @@ assert.ok(fs.existsSync(path.join(tf, "layout.tsx")), "talent-foundry layout mus
 assert.ok(!fs.existsSync(path.join(stashTmp, STASH_ROOT, "src/app/admin/(board)/talent-foundry/page.tsx")));
 assert.ok(!fs.existsSync(path.join(ml, "page.tsx")), "macroscopic-life page must be stashed off the public hub");
 assert.ok(fs.existsSync(path.join(stashTmp, STASH_ROOT, "src/app/(macroscopic-life)/macroscopic-life/page.tsx")));
+assert.ok(fs.existsSync(path.join(simApi, "route.ts")), "decision-simulator API must stay on the public hub");
+assert.ok(!fs.existsSync(path.join(otherAdminApi, "route.ts")), "other admin APIs must be stashed");
 fs.rmSync(stashTmp, { recursive: true, force: true });
 console.log("ok prune-netlify-handler-manifest");

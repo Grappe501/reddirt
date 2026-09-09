@@ -75,7 +75,8 @@ async function main() {
     });
 
     const validation = validateDecisionSimulationSequence(result.run);
-    const textConfig = capturedBody?.text as { format?: { type?: string; strict?: boolean } } | undefined;
+    const rawText = capturedBody && typeof capturedBody === "object" ? capturedBody["text"] : undefined;
+    const textConfig = rawText as { format?: { type?: string; strict?: boolean } } | undefined;
     const strictSchema = textConfig?.format?.type === "json_schema" && textConfig?.format?.strict === true;
     const sevenNodes = result.run.moves.length === 7;
     const sixGenerated = result.run.moves.slice(1).every((move) => move.message.startsWith("Move "));

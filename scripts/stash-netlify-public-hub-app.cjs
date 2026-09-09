@@ -3,6 +3,7 @@
  * `next build` does not compile those pages into ___netlify-server-handler.
  * Keep `src/app/election-plan` — kgrappe.netlify.app must serve the portal.
  * Keep `src/app/admin/(board)/talent-foundry` — command center on the public hub.
+ * Keep `src/app/api/admin/decision-simulator` — Decision Simulator run API on dec-sim / kgrappe.
  * Leave `*-actions.ts` and other modules in place — Next still typechecks
  * components that import them (see ApprovalPackageScaffold).
  * CI workspace only — not a repo move.
@@ -51,6 +52,11 @@ const APP_STASH_KEEP_PREFIXES = isMacroscopicLifeNetlifySite()
   : ["src/app/admin/(board)/talent-foundry"];
 
 const API_KEEP = isMacroscopicLifeNetlifySite() ? new Set() : new Set(["forms", "election-plan"]);
+
+/** Nested routes kept under an otherwise-stashed API tree (Decision Simulator on dec-sim / kgrappe). */
+const API_NESTED_KEEP = isMacroscopicLifeNetlifySite()
+  ? new Map()
+  : new Map([["admin", new Set(["decision-simulator"])]]);
 
 /** App Router files that create routes / pages. Everything else stays for typecheck. */
 const ROUTE_FILE_RE =
@@ -112,6 +118,26 @@ function stashApiDir(cwd, rel, destName) {
   return 1;
 }
 
+function stashApiTree(cwd, rel, destName, keepChildren) {
+  if (!keepChildren || keepChildren.size === 0) {
+    return stashApiDir(cwd, rel, destName);
+  }
+  const src = path.join(cwd, rel);
+  if (!fs.existsSync(src)) return 0;
+  let n = 0;
+  for (const ent of fs.readdirSync(src, { withFileTypes: true })) {
+    const childRel = path.join(rel, ent.name).split(path.sep).join("/");
+    if (keepChildren.has(ent.name)) {
+      console.log(`>>> public-hub: keep ${childRel}`);
+      continue;
+    }
+    if (ent.isDirectory()) {
+      n += stashApiDir(cwd, childRel, `${destName}-${ent.name}`);
+    }
+  }
+  return n;
+}
+
 function stashPublicHubAppDirs(cwd = process.cwd()) {
   fs.mkdirSync(path.join(cwd, STASH_ROOT), { recursive: true });
   let n = 0;
@@ -122,7 +148,12 @@ function stashPublicHubAppDirs(cwd = process.cwd()) {
   if (fs.existsSync(apiRoot)) {
     for (const ent of fs.readdirSync(apiRoot, { withFileTypes: true })) {
       if (!ent.isDirectory() || API_KEEP.has(ent.name)) continue;
-      n += stashApiDir(cwd, path.join("src/app/api", ent.name), `api-${ent.name}`);
+      n += stashApiTree(
+        cwd,
+        path.join("src/app/api", ent.name),
+        `api-${ent.name}`,
+        API_NESTED_KEEP.get(ent.name),
+      );
     }
   }
   return n;
@@ -144,6 +175,7 @@ module.exports = {
   MACROSCOPIC_LIFE_STASH_DIRS,
   APP_STASH_KEEP_PREFIXES,
   API_KEEP,
+  API_NESTED_KEEP,
   STASH_ROOT,
   isRouteFileName,
   shouldKeepStashRel,
