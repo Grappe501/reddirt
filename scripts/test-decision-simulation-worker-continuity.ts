@@ -33,6 +33,10 @@ const claim = readFileSync("src/lib/agents/decision-simulation/jobs.ts", "utf8")
 const client = readFileSync("src/components/admin/decision-simulator/DecisionSimulatorClient.tsx", "utf8");
 const sweep = readFileSync("src/app/api/admin/decision-simulator/jobs/sweep/route.ts", "utf8");
 assert(work.includes("after(") && jobs.includes("after("), "create and work chain the next chunk after the response");
+assert(
+  jobs.includes("const jobId = created.job.id") && !jobs.includes("kickDecisionSimulationWorker(created.job.id"),
+  "create kick captures job id so Netlify typecheck accepts the after() callback",
+);
 assert(claim.includes("status = 'RUNNING'") && claim.includes("INTERVAL '2 minutes'"), "claim SQL reclaims stale running chunks");
 assert(!/jobs\/\$\{job\.id\}\/work/.test(client), "the open tab is no longer the worker heartbeat");
 assert(client.includes("keep moving after this tab closes"), "dashboard names closed-tab continuity");

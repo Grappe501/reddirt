@@ -126,8 +126,9 @@ export async function POST(request: Request) {
 
     if (created.kickWorker && created.job) {
       const origin = requestOrigin(request);
+      const jobId = created.job.id;
       after(() => {
-        void kickDecisionSimulationWorker(created.job.id, origin);
+        void kickDecisionSimulationWorker(jobId, origin);
       });
     }
 
