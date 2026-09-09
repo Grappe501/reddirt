@@ -27,6 +27,7 @@ type Props = {
   operatorId: string;
   counterpartyId: string;
   dashboard: DashboardIntelligencePayload | null;
+  persistedOutcome?: ObservedOutcome | null;
   priorCorrespondence?: PriorCorrespondenceAttachment[];
   onApplyOpening: (text: string) => void;
   onLoadScenario: (scenario: SavedScenario) => void;
@@ -59,6 +60,7 @@ export function DecisionIntelligence({
   operatorId,
   counterpartyId,
   dashboard,
+  persistedOutcome = null,
   priorCorrespondence = [],
   onApplyOpening,
   onLoadScenario,
@@ -78,6 +80,15 @@ export function DecisionIntelligence({
     setScenarios(loadJson<SavedScenario[]>(SCENARIO_LIBRARY_KEY, []));
     setOutcomes(loadJson<ObservedOutcome[]>(OUTCOME_LIBRARY_KEY, []));
   }, []);
+
+  useEffect(() => {
+    if (!persistedOutcome?.jobId) return;
+    setOutcomes((current) => {
+      const next = upsertOutcome(current, persistedOutcome);
+      window.localStorage.setItem(OUTCOME_LIBRARY_KEY, JSON.stringify(next));
+      return next;
+    });
+  }, [persistedOutcome]);
 
   useEffect(() => {
     if (dashboard?.branches.some((lane) => lane.futureId === "EXPECTED" && lane.moves.length)) {
@@ -139,26 +150,42 @@ export function DecisionIntelligence({
     setScenarioTitle("");
   }
 
-  function saveOutcome() {
+  async function saveOutcome() {
     if (!jobId) return;
-    persistOutcomes(
-      upsertOutcome(
-        outcomes,
-        attachObservedOutcome({
-          jobId,
-          actualResponse,
-          closestFuture,
-          observedFrame,
-          notes: outcomeNotes,
-          actorId: counterpartyId,
-          branches: (dashboard?.branches ?? []).map((lane) => ({
-            futureId: lane.futureId,
-            frame: lane.frame ?? lane.modalFrame,
-            firstMessage: lane.moves.find((move) => move.moveNumber === 1 && move.side === "COUNTERPARTY")?.message,
-          })),
-        }),
-      ),
-    );
+    const attached = attachObservedOutcome({
+      jobId,
+      actualResponse,
+      closestFuture,
+      observedFrame,
+      notes: outcomeNotes,
+      actorId: counterpartyId,
+      branches: (dashboard?.branches ?? []).map((lane) => ({
+        futureId: lane.futureId,
+        frame: lane.frame ?? lane.modalFrame,
+        firstMessage: lane.moves.find((move) => move.moveNumber === 1 && move.side === "COUNTERPARTY")?.message,
+      })),
+    });
+    persistOutcomes(upsertOutcome(outcomes, attached));
+    const res = await fetch(`/api/admin/decision-simulator/jobs/${jobId}/outcome`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        actualResponse,
+        closestFuture,
+        observedFrame,
+        notes: outcomeNotes,
+        actorId: counterpartyId,
+        branches: (dashboard?.branches ?? []).map((lane) => ({
+          futureId: lane.futureId,
+          frame: lane.frame ?? lane.modalFrame,
+          firstMessage: lane.moves.find((move) => move.moveNumber === 1 && move.side === "COUNTERPARTY")?.message,
+        })),
+      }),
+    });
+    const data = (await res.json()) as { ok?: boolean; job?: { observedOutcome?: ObservedOutcome | null } };
+    if (data.ok && data.job?.observedOutcome) {
+      persistOutcomes(upsertOutcome(outcomes, data.job.observedOutcome));
+    }
   }
 
   return (
@@ -318,7 +345,7 @@ export function DecisionIntelligence({
       <div className="ml-sec">
         <h3>L. Actual outcome</h3>
         <p className="ml-copy">
-          Attach what actually happened. Compare it to the predicted branch. This does not update actor models and does not write back into prompts. Writeback stays forbidden. A model-change proposal is stored as PENDING_OPERATOR_APPROVAL and is not applied.
+          Attach what actually happened. Compare it to the predicted branch. The compare is saved on this ensemble job, not only in this browser. This does not update actor models and does not write back into prompts. Writeback stays forbidden. A model-change proposal is stored as PENDING_OPERATOR_APPROVAL and is not applied.
         </p>
         <label className="ml-label">Observed public response
           <textarea className="ml-area" style={{ minHeight: 90 }} value={actualResponse} onChange={(e) => setActualResponse(e.target.value)} placeholder="Paste the real reply or public statement. No private data." />
@@ -334,10 +361,13 @@ export function DecisionIntelligence({
         <label className="ml-label">Notes
           <textarea className="ml-area" style={{ minHeight: 70 }} value={outcomeNotes} onChange={(e) => setOutcomeNotes(e.target.value)} />
         </label>
-        <button type="button" className="ml-ghost" disabled={!jobId || !actualResponse.trim()} onClick={saveOutcome}>Attach outcome to this job</button>
+        <button type="button" className="ml-ghost" disabled={!jobId || !actualResponse.trim()} onClick={() => void saveOutcome()}>Attach outcome to this job</button>
         {outcome && (
           <div>
-            <p className="ml-copy">Attached {outcome.recordedAt.slice(0, 16)} · closest {futureLabel(outcome.closestFuture)} · actor models unchanged</p>
+            <p className="ml-copy">
+              Attached {outcome.recordedAt.slice(0, 16)} · closest {futureLabel(outcome.closestFuture)} · actor models unchanged
+              {outcome.storage === "ENSEMBLE_AGGREGATE" ? " · saved on the ensemble job" : ""}
+            </p>
             {outcome.comparison && (
               <p className="ml-copy">
                 Frame {outcome.comparison.frameMatch == null ? "not scored" : outcome.comparison.frameMatch ? "match" : "miss"}

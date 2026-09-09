@@ -104,6 +104,16 @@ type JobView = {
     futuresWithRuns: number;
     checks: Array<{ id: string; label: string; pass: boolean; detail: string }>;
   };
+  observedOutcome?: {
+    jobId: string;
+    recordedAt: string;
+    actualResponse: string;
+    closestFuture: string;
+    notes: string;
+    predictedFrame: string | null;
+    persistVersion?: string;
+    storage?: string;
+  } | null;
 };
 type EnsembleResult = {
   completedRuns: number;
@@ -675,6 +685,7 @@ export function DecisionSimulatorClient() {
               operatorId={operatorId}
               counterpartyId={counterpartyId}
               dashboard={dashboard}
+              persistedOutcome={job?.observedOutcome ?? null}
               priorCorrespondence={priorCorrespondence}
               onApplyOpening={(text) => setMessage(text)}
               onLoadScenario={loadScenario}

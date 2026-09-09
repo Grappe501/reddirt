@@ -298,7 +298,7 @@ Updated 2026-09-09 from the live `dec-sim` product. Detail: `DEC_SIM_V1_V2_ROADM
 - Phase 7 Decision Dashboard: **capability started** (`DEC-SIM-DASHBOARD-INTELLIGENCE-1.0`); sequence, branches, scorecard, save/compare, outcome attach; not closed
 - Phase 8 Alternative Futures: **capability started inside Phase 5** (`DEC-SIM-ALTERNATIVE-FUTURES-1.0`); not a phase close
 - Phase 9 Memory & Evidence: **capability started** (campaign pages + media + `DEC-SIM-EVIDENCE-PROVENANCE-1.0`); no evidence graph yet
-- Phase 10 Outcome Learning: **capability started** (`DEC-SIM-OBSERVED-OUTCOME-1.0`); compare + unapplied proposal; not closed
+- Phase 10 Outcome Learning: **capability started** (`DEC-SIM-OBSERVED-OUTCOME-1.0` + `DEC-SIM-ENSEMBLE-OUTCOME-PERSIST-1.0`); compare + ensemble persist; not closed
 - Phase 11 Cross-Channel Command Center: **not started**
 - Phase 12 Hardening & Launch: **partial, pulled forward** (`DEC-SIM-WORKER-CONTINUITY-1.0` started; not closed)
 

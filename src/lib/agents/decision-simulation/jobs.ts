@@ -15,6 +15,13 @@ import {
   type CommandCenterMember,
 } from "./job-lifecycle";
 import { scoreHostedEnsembleProof, type HostedEnsembleProof } from "./hosted-ensemble-proof";
+import { attachObservedOutcome } from "./observed-outcome/attach";
+import {
+  mergeObservedOutcomeIntoAggregate,
+  readObservedOutcomeFromAggregate,
+  type PersistedObservedOutcome,
+} from "./observed-outcome/persist";
+import type { OutcomeCompareInput } from "./observed-outcome/contracts";
 import { getDecisionSimulationQueueConfig } from "./queue-config";
 import { DECISION_SIMULATION_PROMPT_VERSION } from "./structured-output";
 import type { DecisionSimulationActorModel } from "./actor-model";
@@ -107,6 +114,7 @@ export type DecisionSimulationJobView = {
   opening: string;
   dashboard: DashboardIntelligencePayload | null;
   hostedProof: HostedEnsembleProof;
+  observedOutcome: PersistedObservedOutcome | null;
 };
 
 function asJobView(
@@ -118,6 +126,7 @@ function asJobView(
     frames?: Array<{ frame: string; count: number; share?: number }>;
     finals?: Array<{ recommendation?: string; frame?: string; count: number; share?: number }>;
     opening?: string;
+    aggregateSummary?: unknown;
   } = {},
 ): DecisionSimulationJobView {
   const members = (extra.members ?? []).map(normalizeDashboardMember);
@@ -185,6 +194,12 @@ function asJobView(
       commandCenter,
       dashboard,
     }),
+    observedOutcome: readObservedOutcomeFromAggregate(
+      extra.aggregateSummary ??
+        (extra.aggregate && typeof extra.aggregate === "object" && extra.aggregate !== null && "summary" in extra.aggregate
+          ? (extra.aggregate as { summary: unknown }).summary
+          : extra.aggregate),
+    ),
   };
 }
 
@@ -535,6 +550,33 @@ export async function completeDecisionSimulationChunk(input: {
     `;
   }
   return getDecisionSimulationJob(input.jobId);
+}
+
+export async function persistObservedOutcomeOnJob(jobId: string, input: OutcomeCompareInput) {
+  const existing = await getDecisionSimulationJob(jobId);
+  if (!existing) return { ok: false as const, status: 404, error: "Job not found." };
+  const outcome = attachObservedOutcome({ ...input, jobId });
+  const rows = await prisma.$queryRaw<Array<{ summary: unknown }>>`
+    SELECT summary FROM public.decision_simulation_ensemble_aggregate WHERE ensemble_id = ${jobId} LIMIT 1
+  `;
+  const summary = mergeObservedOutcomeIntoAggregate(rows[0]?.summary, outcome);
+  if (!rows[0]) {
+    await prisma.$executeRaw`
+      INSERT INTO public.decision_simulation_ensemble_aggregate (
+        id, ensemble_id, summary, dominant_frames, dominant_recommendations, updated_at
+      ) VALUES (
+        ${randomUUID()}, ${jobId}, ${JSON.stringify(summary)}::jsonb, '[]'::jsonb, '[]'::jsonb, NOW()
+      )
+      ON CONFLICT (ensemble_id) DO UPDATE SET summary = ${JSON.stringify(summary)}::jsonb, updated_at = NOW()
+    `;
+  } else {
+    await prisma.$executeRaw`
+      UPDATE public.decision_simulation_ensemble_aggregate
+      SET summary = ${JSON.stringify(summary)}::jsonb, updated_at = NOW()
+      WHERE ensemble_id = ${jobId}
+    `;
+  }
+  return { ok: true as const, job: await getDecisionSimulationJob(jobId) };
 }
 
 export type { DecisionSimulationOpeningInput };

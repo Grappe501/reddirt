@@ -11,3 +11,11 @@ export type {
 export { compareObservedOutcome } from "./compare";
 export { proposeUnappliedModelChange } from "./proposal";
 export { attachObservedOutcome } from "./attach";
+export {
+  ENSEMBLE_OUTCOME_PERSIST_VERSION,
+  ENSEMBLE_OUTCOME_STORAGE,
+  mergeObservedOutcomeIntoAggregate,
+  readObservedOutcomeFromAggregate,
+  serializeObservedOutcomeForEnsemble,
+} from "./persist";
+export type { PersistedObservedOutcome } from "./persist";

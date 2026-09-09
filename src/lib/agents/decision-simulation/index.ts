@@ -47,6 +47,8 @@ export {
   attachObservedOutcome,
   compareObservedOutcome,
   OBSERVED_OUTCOME_VERSION,
+  ENSEMBLE_OUTCOME_PERSIST_VERSION,
+  mergeObservedOutcomeIntoAggregate,
 } from "./observed-outcome";
 export {
   buildDashboardScorecard,

@@ -42,6 +42,8 @@ export type ObservedOutcome = {
     actorId?: string;
     summary: string;
   };
+  persistVersion?: string;
+  storage?: "ENSEMBLE_AGGREGATE";
 };
 
 export function upsertScenario(library: SavedScenario[], scenario: SavedScenario): SavedScenario[] {

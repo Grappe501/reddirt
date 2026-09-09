@@ -8,6 +8,7 @@ const client = readFileSync("src/components/admin/decision-simulator/DecisionSim
 const page = readFileSync("src/app/admin/decision-simulator/page.tsx", "utf8");
 const home = readFileSync("src/content/home/trust-funnel-home.ts", "utf8");
 const jobsRoute = readFileSync("src/app/api/admin/decision-simulator/jobs/route.ts", "utf8");
+const outcomeRoute = readFileSync("src/app/api/admin/decision-simulator/jobs/[jobId]/outcome/route.ts", "utf8");
 const runRoute = readFileSync("src/app/api/admin/decision-simulator/run/route.ts", "utf8");
 const workRoute = readFileSync("src/app/api/admin/decision-simulator/jobs/[jobId]/work/route.ts", "utf8");
 const worker = readFileSync("src/lib/agents/decision-simulation/worker.ts", "utf8");
@@ -41,6 +42,7 @@ assert(!client.includes("Donate") || !/nav[\s\S]{0,40}Donate/.test(client), "dec
 assert(!client.includes("Meet Kelly"), "dec-sim dashboard does not render Meet Kelly");
 
 assert(jobsRoute.includes("assertAdminApi") && jobsRoute.includes("rateLimit"), "jobs API is admin-protected and rate-limited");
+assert(outcomeRoute.includes("assertAdminApi") && outcomeRoute.includes("rateLimit"), "outcome API is admin-protected and rate-limited");
 assert(runRoute.includes("assertAdminApi"), "legacy run API remains admin-protected");
 assert(workRoute.includes("isDecisionSimWorkerAuthorized") && workRoute.includes("assertAdminApi"), "worker route requires worker header or admin");
 assert(!jobsRoute.includes("sendEmail") && !runRoute.includes("sendEmail") && !worker.includes("publishPost"), "no send/post functionality");

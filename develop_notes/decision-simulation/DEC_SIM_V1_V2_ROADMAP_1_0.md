@@ -3,7 +3,7 @@
 **Status:** Canonical from 2026-09-09. This is the **only** V2 shadow roadmap.  
 **Live product:** https://dec-sim.netlify.app  
 **Parent plan:** `DECISION_SIMULATION_MASTER_BUILD_PLAN_1_0.md`  
-**Next V1 slice:** Operator-run hosted 100 on `dec-sim` until the proof badge reads PROVEN. The proof contract is live (`DEC-SIM-HOSTED-ENSEMBLE-PROOF-1.0`); Phase 5 is not closed.  
+**Next V1 slice:** Operator-run hosted 100 on `dec-sim` until the proof badge reads PROVEN. Outcome persist (`DEC-SIM-ENSEMBLE-OUTCOME-PERSIST-1.0`) is a Phase 10 capability, not a close. Phase 5 is not closed.  
 **Doctrine unchanged:** advisory only; no send; no post; evidence separated from inference; generated language labeled generated.
 
 V1 is no longer a theoretical sequence. We are learning from a live product while we finish the dependable operating system.
@@ -36,7 +36,7 @@ We are still in **Phase 5**. Burt pulled forward pieces of Phases 7, 9, and 12 b
 | 7 Decision dashboard | Operator command surface | **Capability started** | `DEC-SIM-DASHBOARD-INTELLIGENCE-1.0`: six-move sequence, branch explorer, scorecard, hypothesis revision, local save/compare, outcome attach. Not a phase close |
 | 8 Alternative Futures | Branching scenario lanes | **Capability started; not closed** | `DEC-SIM-ALTERNATIVE-FUTURES-1.0` assigns six named futures per run. Robustness is measured across futures. Hill legislative evidence attaches when the vote corpus is found |
 | 9 Memory & evidence | Provenance-backed recall | **Capability started** | `DEC-SIM-CAMPAIGN-PRIORITIES-1.0`, `DEC-SIM-MEDIA-RESEARCH-1.0`, and `DEC-SIM-EVIDENCE-PROVENANCE-1.0` (tagged claims + operator-attached prior letters). Still no evidence graph, stale-evidence decay, paid-archive completeness, or prior-sim retrieval |
-| 10 Outcome learning | Prediction vs reality | **Capability started** | `DEC-SIM-OBSERVED-OUTCOME-1.0`: attach a public reply, compare frame/future/lexical overlap, store an unapplied model-change proposal. No prompt rewrite. No DB outcome row yet |
+| 10 Outcome learning | Prediction vs reality | **Capability started** | `DEC-SIM-OBSERVED-OUTCOME-1.0` + `DEC-SIM-ENSEMBLE-OUTCOME-PERSIST-1.0`: attach a public reply, compare, store an unapplied proposal on the ensemble aggregate. No prompt rewrite. No `decision_simulation_outcome` write. Remaining: operator-approved personality versioning |
 | 11 Cross-channel command | Same engine, many surfaces | **Not started** | Isolated `dec-sim` product. Must stay separate from Kelly send workflows |
 | 12 Hardening & launch | Production OS | **Partial, pulled forward** | Admin gate, rate limit, cost budget, isolation tests, hosted deploy, `DEC-SIM-WORKER-CONTINUITY-1.0` (closed-tab chain + stale-chunk reclaim). Remaining: RBAC, audit, privacy review, injection defenses, runbook, hosted 100/1,000 proof |
 
@@ -66,7 +66,7 @@ Execute in this order. Do not reorder to chase V2.
 1. **Phase 6 — richer correspondence intake.** Paste-first remains the rule. Add structure per channel (email headers, speech excerpt, debate line, memo). No mailbox connectors until the core simulator is stable.
 2. **Phase 7 — dashboard intelligence.** Capability started (`DEC-SIM-DASHBOARD-INTELLIGENCE-1.0`). Sequence, branches, scorecard, hypothesis revision, local save/compare, and outcome attach are live. Keep the NASA lab. Do not turn it into a campaign site.
 3. **Phase 9 — evidence / memory.** Campaign-site priorities, media research, provenance-tagged claims, and operator-attached prior correspondence are started. Still no clickable graph, stale-evidence decay, or prior-sim retrieval. Missing stays missing.
-4. **Phase 10 — observed-outcome learning.** Capability started (`DEC-SIM-OBSERVED-OUTCOME-1.0`). Compare and unapplied proposal are live. Remaining: persist to the ensemble job, operator-approved personality versioning. No silent prompt drift.
+4. **Phase 10 — observed-outcome learning.** Capability started (`DEC-SIM-OBSERVED-OUTCOME-1.0` + `DEC-SIM-ENSEMBLE-OUTCOME-PERSIST-1.0`). Compare and ensemble persist are live. Remaining: operator-approved personality versioning. No silent prompt drift.
 5. **Phase 11 — cross-channel command center.** Same engine on email, text, social, press, debate, fundraising, and internal strategy. Simulation never sends.
 6. **Phase 12 — production hardening.** Capability started (`DEC-SIM-WORKER-CONTINUITY-1.0` + `DEC-SIM-HOSTED-ENSEMBLE-PROOF-1.0`). Remaining: a real hosted 100/1,000 PROVEN job, RBAC, audit log, privacy review, prompt-injection defenses, operator runbook, production readiness review.
 
@@ -284,6 +284,10 @@ V1 self-chains `/work` after each chunk and reclaims stale RUNNING rows. A 15-mi
 
 V1 scores a hosted job after an operator launches it. Automatically spending a 100-run job on every production deploy is V2. Do not start a paid ensemble from a build.
 
+### V2-38 Operator-approved personality versioning
+
+V1 persists one observed outcome on the ensemble job and keeps the model-change proposal unapplied. Creating a new personality version from that proposal, or writing the old `decision_simulation_outcome` table, remains V2. Do not auto-apply a model change here.
+
 ## Boundary rules (agents)
 
 1. If a request improves Alternative Futures, intake, dashboard intelligence, evidence, outcome attach, or hardening — it is V1.
@@ -296,4 +300,4 @@ V1 scores a hosted job after an operator launches it. Automatically spending a 1
 
 ## Next operator click
 
-Phase 5 remains open. Alternative Futures, intake, dashboard intelligence, campaign-site priorities, media research, evidence provenance, ensemble-lane intelligence, observed-outcome compare, worker continuity, and the hosted-proof contract are capabilities, not phase closes. Named next V1 work is an operator-run hosted 100 until the badge reads PROVEN. Do not start V2-21+.
+Phase 5 remains open. Alternative Futures, intake, dashboard intelligence, campaign-site priorities, media research, evidence provenance, ensemble-lane intelligence, observed-outcome compare, ensemble outcome persist, worker continuity, and the hosted-proof contract are capabilities, not phase closes. Named next V1 work is an operator-run hosted 100 until the badge reads PROVEN. Do not start V2-21+.
