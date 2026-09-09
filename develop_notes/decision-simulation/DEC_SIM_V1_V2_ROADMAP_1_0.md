@@ -82,6 +82,8 @@ An operator can:
 
 Until that is true, we are still in V1.
 
+V2 holding architecture (20 items): `DEC_SIM_V2_DECISION_INTELLIGENCE_OS_MASTER_PLAN.md`.
+
 ## V2 shadow roadmap
 
 Design against these requirements. File new V2 ideas under the matching number. Do not build them during a V1 slice unless Steve names an explicit V2 packet.
