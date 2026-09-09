@@ -9,9 +9,10 @@ import { loadWritingCorpus } from "../src/lib/agents/decision-simulation/writing
 import { buildWritingIntelligencePromptPacket } from "../src/lib/agents/decision-simulation/writing-intelligence/prompt-packet";
 import { chrisJonesPersonality, frenchHillPersonality } from "../src/lib/agents/decision-simulation/personality-catalog";
 
-function assert(ok: boolean, label: string) {
-  console.log(`  ${ok ? "PASS" : "FAIL"} — ${label}`);
-  if (!ok) throw new Error(label);
+function assert(ok: unknown, label: string) {
+  const pass = Boolean(ok);
+  console.log(`  ${pass ? "PASS" : "FAIL"} — ${label}`);
+  if (!pass) throw new Error(label);
 }
 
 console.log("Decision Simulator campaign-site priorities");
@@ -75,7 +76,11 @@ assert(
 );
 
 assert(
-  getCampaignPrioritySnapshot("french-hill-ar02")?.uncertainty.some((item) => /not audited|not independently verified/i.test(item)),
+  Boolean(
+    getCampaignPrioritySnapshot("french-hill-ar02")?.uncertainty.some((item) =>
+      /not audited|not independently verified/i.test(item),
+    ),
+  ),
   "Hill casework figures stay unverified",
 );
 
