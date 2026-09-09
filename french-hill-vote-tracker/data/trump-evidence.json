@@ -1,6 +1,70 @@
 [
   {
     "congress": 117,
+    "rollCall": 10,
+    "position": "Support",
+    "evidenceStatus": "verified",
+    "summary": "Donald Trump had publicly urged Republicans to object to Electoral College results from states that certified Joe Biden's victory. On the House objection to Arizona's electoral votes, French Hill voted Nay, opposite Trump's documented position.",
+    "effectiveDate": "2021-01-06",
+    "reviewNotes": "House Clerk Roll Call 10 records Hill voting Nay. Contemporaneous Roll Call reporting documented that Trump had for weeks called on Republicans to object to Electoral College results and, on January 6, continued pressuring Congress not to certify them.",
+    "sources": [
+      {
+        "label": "House Clerk Roll Call 10",
+        "url": "https://clerk.house.gov/Votes/202110",
+        "sourceType": "house",
+        "primary": true,
+        "publishedDate": "2021-01-06"
+      },
+      {
+        "label": "Roll Call: Republicans divided over Electoral College objections",
+        "url": "https://rollcall.com/2021/01/06/electoral-college-certification-republicans-trump-pence/",
+        "sourceType": "news",
+        "primary": false,
+        "publishedDate": "2021-01-06"
+      },
+      {
+        "label": "Roll Call: Election vote divides Republicans",
+        "url": "https://rollcall.com/2021/01/07/election-vote-divides-republicans-as-party-wrestles-with-post-trump-identity/",
+        "sourceType": "news",
+        "primary": false,
+        "publishedDate": "2021-01-07"
+      }
+    ]
+  },
+  {
+    "congress": 117,
+    "rollCall": 11,
+    "position": "Support",
+    "evidenceStatus": "verified",
+    "summary": "Donald Trump had publicly urged Republicans to object to Electoral College results from states that certified Joe Biden's victory. On the House objection to Pennsylvania's electoral votes, French Hill voted Nay, opposite Trump's documented position.",
+    "effectiveDate": "2021-01-07",
+    "reviewNotes": "House Clerk Roll Call 11 records Hill voting Nay. Contemporaneous reporting documented Trump's continuing effort to have congressional Republicans reject electoral votes and prevent certification of the Biden victory.",
+    "sources": [
+      {
+        "label": "House Clerk Roll Call 11",
+        "url": "https://clerk.house.gov/Votes/202111",
+        "sourceType": "house",
+        "primary": true,
+        "publishedDate": "2021-01-07"
+      },
+      {
+        "label": "Roll Call: Republicans divided over Electoral College objections",
+        "url": "https://rollcall.com/2021/01/06/electoral-college-certification-republicans-trump-pence/",
+        "sourceType": "news",
+        "primary": false,
+        "publishedDate": "2021-01-06"
+      },
+      {
+        "label": "Roll Call: Election vote divides Republicans",
+        "url": "https://rollcall.com/2021/01/07/election-vote-divides-republicans-as-party-wrestles-with-post-trump-identity/",
+        "sourceType": "news",
+        "primary": false,
+        "publishedDate": "2021-01-07"
+      }
+    ]
+  },
+  {
+    "congress": 117,
     "rollCall": 154,
     "position": "Oppose",
     "evidenceStatus": "verified",
@@ -16,15 +80,15 @@
         "publishedDate": "2021-05-19"
       },
       {
-        "label": "Washington Post: House Republicans and Jan. 6 commission vote",
-        "url": "https://www.washingtonpost.com/politics/2021/05/19/jan-6-commission-vote/",
-        "sourceType": "news",
-        "primary": false,
+        "label": "French Hill statement supporting bipartisan Jan. 6 commission",
+        "url": "https://hill.house.gov/news/documentsingle.aspx?DocumentID=8486",
+        "sourceType": "other",
+        "primary": true,
         "publishedDate": "2021-05-19"
       },
       {
-        "label": "Washington Post: Trump statement opposing Jan. 6 commission",
-        "url": "https://www.washingtonpost.com/politics/2021/05/19/power-up-house-gop-support-grows-jan-6-commission/",
+        "label": "Washington Post: House Republicans and Jan. 6 commission vote",
+        "url": "https://www.washingtonpost.com/politics/2021/05/19/jan-6-commission-vote/",
         "sourceType": "news",
         "primary": false,
         "publishedDate": "2021-05-19"
