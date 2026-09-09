@@ -314,6 +314,24 @@ export const CAMPAIGN_APPROACH_BY_SLUG: Record<string, CampaignApproachDecision>
     note: "Steve 2026-09-08: take Saline County Old Fashioned off the public calendar.",
     ledgerIds: ["manual-2026-10-10-saline-old-fashioned"],
   },
+  "women-in-democracy-jonesboro-2026": {
+    approach: "removed",
+    reason: "conflict",
+    note: "Steve 2026-09-08: take Women in Democracy Jonesboro off the public calendar.",
+    ledgerIds: ["manual-2026-10-12-women-in-democracy-jonesboro"],
+  },
+  "rison-in-the-fall-2026": {
+    approach: "removed",
+    reason: "conflict",
+    note: "Steve 2026-09-08: take Rison in the Fall off the public calendar.",
+    ledgerIds: ["manual-2026-10-12-rison-in-the-fall"],
+  },
+  "saline-county-gotv-2026-10-12": {
+    approach: "removed",
+    reason: "conflict",
+    note: "Steve 2026-09-08: take the Oct 12 Saline County GOTV Benton hold off the public calendar.",
+    ledgerIds: ["locked-2026-10-12-saline-county-gotv-push"],
+  },
   "hob-nob-bentonville-2026": {
     approach: "removed",
     reason: "conflict",
