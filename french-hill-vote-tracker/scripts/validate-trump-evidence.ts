@@ -40,6 +40,12 @@ for (const record of records) {
       console.error(`Verified record lacks Trump-position evidence: ${key}`);
       errors++;
     }
+    if (record.position === "Support" || record.position === "Oppose") {
+      if (record.preferredVote !== "Yea" && record.preferredVote !== "Nay") {
+        console.error(`Verified directional record lacks explicit preferredVote: ${key}`);
+        errors++;
+      }
+    }
     if ((record.position === "Neutral" || record.position === "Ambiguous") && record.preferredVote) {
       console.error(`Non-directional Trump position must not define preferredVote: ${key}`);
       errors++;
@@ -67,4 +73,4 @@ if (!fs.existsSync(evidencePath)) {
   process.exit(1);
 }
 
-console.log(`Trump evidence validation passed: ${records.length} record(s).`);
+console.log(`Trump evidence validation passed: ${records.length} unique record(s).`);
