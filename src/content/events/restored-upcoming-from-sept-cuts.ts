@@ -699,4 +699,42 @@ export const restoredUpcomingFromSeptCuts: EventItem[] = [
     eventSource: "movement",
     opsFlags: { missingCounty: true, missingCoordinates: true },
   },
+  {
+    slug: "early-voting-begins-2026-10-19",
+    title: "Early voting begins",
+    type: "Direct Democracy Briefing",
+    region: STATEWIDE_EVENT_REGION,
+    status: "upcoming",
+    startsAt: "2026-10-19T08:00:00-05:00",
+    timezone: TZ,
+    locationLabel: "Arkansas — county clerks",
+    city: "Arkansas",
+    addressLine: "Hours and sites are set by each county clerk.",
+    summary:
+      "Monday, October 19, 2026: **early voting begins** in Arkansas. Hours and sites are set by each county clerk.",
+    description:
+      "Monday, **October 19, 2026**: **early voting begins** for the November 3 general election.\n\nThis is a statewide civic date, not a Grappe rally and not a single building. Each **county clerk** sets early-voting hours and sites.\n\nNeighbors who need a ride, a reminder, or volunteer help can start on this site’s voter-registration and get-involved pages.",
+    whatToExpect: [
+      "First day of in-person early voting",
+      "Hours and sites from your county clerk",
+    ],
+    whoItsFor: "Registered Arkansas voters. Check your county clerk before you go.",
+    organizerNote:
+      "Steve 2026-09-08: card for October 19 — early voting begins. Do not invent clerk hours or a Little Rock launch site.",
+    audienceTags: ["Early voting", "GOTV", "Statewide"],
+    relatedEventSlugs: [],
+    relatedResourceHrefs: [
+      { label: "Voter registration", href: "/voter-registration" },
+      { label: "Get involved", href: "/get-involved" },
+      { label: "Events calendar", href: "/events" },
+    ],
+    primaryHref: "/voter-registration",
+    primaryCtaLabel: "Find voting information",
+    fieldAttendance: "confirmed",
+    campaignTrail: false,
+    statewideVirtual: true,
+    qualifiesAsVisit: false,
+    eventSource: "movement",
+    opsFlags: { timeTbd: true },
+  },
 ];

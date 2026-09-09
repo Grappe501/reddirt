@@ -332,6 +332,24 @@ export const CAMPAIGN_APPROACH_BY_SLUG: Record<string, CampaignApproachDecision>
     note: "Steve 2026-09-08: take the Oct 12 Saline County GOTV Benton hold off the public calendar.",
     ledgerIds: ["locked-2026-10-12-saline-county-gotv-push"],
   },
+  "vck-gotv-pep-rally-hot-springs-2026-10-20": {
+    approach: "removed",
+    reason: "conflict",
+    note: "Steve 2026-09-08: take the VCK GOTV pep rally off the public calendar.",
+    ledgerIds: ["manual-2026-10-20-vck-gotv-pep-rally"],
+  },
+  "early-voting-launch-2026-10-20": {
+    approach: "removed",
+    reason: "redundant",
+    note: "Steve 2026-09-08: early voting begins October 19, not a Little Rock launch on October 20.",
+    ledgerIds: ["locked-2026-10-20-early-voting-launch"],
+  },
+  "berryville-chamber-awards-banquet-2026": {
+    approach: "removed",
+    reason: "never_confirmed",
+    note: "Steve 2026-09-08: take the Berryville Chamber awards banquet off the public calendar.",
+    ledgerIds: ["manual-2026-10-22-berryville-chamber-awards"],
+  },
   "hob-nob-bentonville-2026": {
     approach: "removed",
     reason: "conflict",
@@ -463,6 +481,7 @@ const CONFIRMED_SLUGS = new Set([
   "naacp-freedom-fund-gala-2026-10-03",
   "olli-for-coffee-2026",
   "fayetteville-fundraiser-2026-10-09",
+  "early-voting-begins-2026-10-19",
 ]);
 
 function withSept29Caution(event: EventItem): EventItem {

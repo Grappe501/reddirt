@@ -5528,6 +5528,19 @@ const kellyCampaignStopsSource: KellyCampaignStop[] = [
       "Steve 2026-09-08: Freedom Fund Gala NAACP Oct 3 5:00 p.m. City TBA. Do not invent a city or end time. Same day: goat-fest-oct-2026 in Perry County. /events/naacp-freedom-fund-gala-2026-10-03",
     sourceType: "manual",
   },
+  {
+    id: "manual-2026-10-19-early-voting-begins",
+    publicTitle: "Early voting begins",
+    date: "2026-10-19",
+    title: "Early voting begins",
+    counties: [],
+    status: "virtual",
+    includeOnPublicPage: true,
+    confidence: "confirmed",
+    notes:
+      "Steve 2026-09-08: October 19 early voting begins. Statewide civic date, not a venue. Replaces the Oct 20 Little Rock launch card. /events/early-voting-begins-2026-10-19",
+    sourceType: "manual",
+  },
 
 ];
 
