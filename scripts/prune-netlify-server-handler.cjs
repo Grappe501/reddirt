@@ -4,7 +4,10 @@
  */
 const fs = require("node:fs");
 const path = require("node:path");
-const { isMacroscopicLifeNetlifySite } = require("./netlify-site-mode.cjs");
+const {
+  isMacroscopicLifeNetlifySite,
+  isDecisionSimNetlifySite,
+} = require("./netlify-site-mode.cjs");
 
 const HANDLER_DIRS = [
   ".netlify/functions-internal/___netlify-server-handler",
@@ -64,14 +67,18 @@ const LAUNCH_DATA_DIR_PRUNE = [
   "data/campaign-brain/operations-lock",
 ];
 
-const LAUNCH_ADMIN_TOP_KEEP = new Set(["login", "(board)", "opposition"]);
+const LAUNCH_ADMIN_TOP_KEEP = isDecisionSimNetlifySite()
+  ? new Set(["login", "decision-simulator"])
+  : new Set(["login", "(board)", "opposition"]);
 const LAUNCH_BOARD_KEEP = new Set(["intelligence"]);
 /**
  * Public-hub Netlify whitelist — kgrappe ships the voter site plus Election Plan.
  * Intelligence / volunteer boards stay local or satellite; they blow the 250 MB cap.
  */
 const KELLY_OPS_NETLIFY_BOARD_KEEP = new Set([]);
-const LAUNCH_API_ADMIN_KEEP = new Set(["intelligence"]);
+const LAUNCH_API_ADMIN_KEEP = isDecisionSimNetlifySite()
+  ? new Set(["decision-simulator"])
+  : new Set(["intelligence"]);
 /** Public hub Lambda — site + election-plan portal. Ops admin boards stay stashed. */
 const KGRAPPE_APP_TOP_KEEP = new Set([
   "admin",
@@ -82,8 +89,18 @@ const KGRAPPE_APP_TOP_KEEP = new Set([
 const KGRAPPE_API_TOP_KEEP = new Set(["admin", "forms", "election-plan"]);
 const ML_APP_TOP_KEEP = new Set(["(macroscopic-life)"]);
 const ML_API_TOP_KEEP = new Set();
-const LAUNCH_APP_TOP_KEEP = isMacroscopicLifeNetlifySite() ? ML_APP_TOP_KEEP : KGRAPPE_APP_TOP_KEEP;
-const LAUNCH_API_TOP_KEEP = isMacroscopicLifeNetlifySite() ? ML_API_TOP_KEEP : KGRAPPE_API_TOP_KEEP;
+const DEC_SIM_APP_TOP_KEEP = new Set(["admin"]);
+const DEC_SIM_API_TOP_KEEP = new Set(["admin"]);
+const LAUNCH_APP_TOP_KEEP = isDecisionSimNetlifySite()
+  ? DEC_SIM_APP_TOP_KEEP
+  : isMacroscopicLifeNetlifySite()
+    ? ML_APP_TOP_KEEP
+    : KGRAPPE_APP_TOP_KEEP;
+const LAUNCH_API_TOP_KEEP = isDecisionSimNetlifySite()
+  ? DEC_SIM_API_TOP_KEEP
+  : isMacroscopicLifeNetlifySite()
+    ? ML_API_TOP_KEEP
+    : KGRAPPE_API_TOP_KEEP;
 
 /** Standalone copy lands the whole repo in the handler — keep only these top-level names. */
 const LAUNCH_HANDLER_ROOT_KEEP = new Set([

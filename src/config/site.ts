@@ -1,4 +1,5 @@
 import { resolvePublicDonateHref } from "@/config/external-campaign";
+import { isDecisionSimSite } from "@/lib/site/decision-sim-site";
 
 const macroscopicLifeSite =
   process.env.NEXT_PUBLIC_MACROSCOPIC_LIFE_SITE === "1" ||
@@ -6,9 +7,13 @@ const macroscopicLifeSite =
   process.env.SITE_NAME === "macroscopic-life" ||
   process.env.NETLIFY_SITE_NAME === "macroscopic-life";
 
-const DEFAULT_SITE_URL = macroscopicLifeSite
-  ? "https://macroscopic-life.netlify.app"
-  : "https://kgrappe.netlify.app";
+const decisionSimSite = isDecisionSimSite();
+
+const DEFAULT_SITE_URL = decisionSimSite
+  ? "https://dec-sim.netlify.app"
+  : macroscopicLifeSite
+    ? "https://macroscopic-life.netlify.app"
+    : "https://kgrappe.netlify.app";
 
 /** Netlify sometimes stores host-only; Next/metadata requires a full URL (new URL() must parse). */
 function normalizePublicSiteUrl(raw: string | undefined): string {

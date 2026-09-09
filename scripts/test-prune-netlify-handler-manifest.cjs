@@ -3,6 +3,7 @@
  * A bare "**" re-inflates ___netlify-server-handler past 250 MB.
  */
 const assert = require("node:assert/strict");
+const { execFileSync } = require("node:child_process");
 const fs = require("node:fs");
 const path = require("node:path");
 const {
@@ -16,6 +17,7 @@ const {
 const {
   APP_STASH_DIRS,
   KGRAPPE_STASH_DIRS,
+  DEC_SIM_STASH_DIRS,
   MACROSCOPIC_LIFE_STASH_DIRS,
   APP_STASH_KEEP_PREFIXES,
   API_KEEP,
@@ -77,6 +79,9 @@ fs.rmSync(tmp, { recursive: true, force: true });
 assert.ok(KGRAPPE_STASH_DIRS.includes("src/app/(macroscopic-life)"), "kgrappe must stash Book One");
 assert.ok(!MACROSCOPIC_LIFE_STASH_DIRS.includes("src/app/(macroscopic-life)"), "ML site must compile Book One");
 assert.ok(MACROSCOPIC_LIFE_STASH_DIRS.includes("src/app/(site)"), "ML site must stash the campaign public hub");
+assert.ok(DEC_SIM_STASH_DIRS.includes("src/app/(site)"), "dec-sim must stash the campaign public hub");
+assert.ok(DEC_SIM_STASH_DIRS.includes("src/app/admin"), "dec-sim stashes admin except kept prefixes");
+assert.ok(!DEC_SIM_STASH_DIRS.includes("src/app/admin/decision-simulator"));
 assert.ok(MACROSCOPIC_LIFE_STASH_DIRS.includes("src/app/election-plan"), "ML site must stash election-plan");
 assert.ok(!APP_STASH_DIRS.includes("src/app/election-plan"), "election-plan must ship on kgrappe.netlify.app");
 assert.ok(APP_STASH_DIRS.includes("src/app/(macroscopic-life)"), "Macroscopic Life must stay off the public-hub Lambda");
@@ -126,4 +131,14 @@ assert.ok(fs.existsSync(path.join(stashTmp, STASH_ROOT, "src/app/(macroscopic-li
 assert.ok(fs.existsSync(path.join(simApi, "route.ts")), "decision-simulator API must stay on the public hub");
 assert.ok(!fs.existsSync(path.join(otherAdminApi, "route.ts")), "other admin APIs must be stashed");
 fs.rmSync(stashTmp, { recursive: true, force: true });
+
+const decSimMode = execFileSync(
+  process.execPath,
+  [
+    "-e",
+    'process.env.SITE_NAME="dec-sim"; const m=require("./stash-netlify-public-hub-app.cjs"); if (!m.APP_STASH_DIRS.includes("src/app/(site)")) process.exit(1); if (!m.APP_STASH_KEEP_PREFIXES.includes("src/app/admin/decision-simulator")) process.exit(2); if (m.API_KEEP.size !== 0) process.exit(3);',
+  ],
+  { cwd: __dirname },
+);
+assert.equal(decSimMode.status ?? 0, 0);
 console.log("ok prune-netlify-handler-manifest");

@@ -4,6 +4,7 @@ import { createHash, timingSafeEqual } from "crypto";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { ADMIN_SESSION_COOKIE, createAdminSessionToken, getAdminSecret } from "@/lib/admin/session";
+import { isDecisionSimSite } from "@/lib/site/decision-sim-site";
 
 function hashEqual(a: string, b: string): boolean {
   const ah = createHash("sha256").update(a, "utf8").digest();
@@ -12,6 +13,7 @@ function hashEqual(a: string, b: string): boolean {
 }
 
 function defaultAdminDestination(): string {
+  if (isDecisionSimSite()) return "/admin/decision-simulator";
   return process.env.NEXT_PUBLIC_INTELLIGENCE_LAUNCH_MODE === "opposition_debate"
     ? "/admin/intelligence"
     : "/admin/content";

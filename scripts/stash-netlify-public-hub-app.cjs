@@ -3,14 +3,18 @@
  * `next build` does not compile those pages into ___netlify-server-handler.
  * Keep `src/app/election-plan` — kgrappe.netlify.app must serve the portal.
  * Keep `src/app/admin/(board)/talent-foundry` — command center on the public hub.
- * Keep `src/app/api/admin/decision-simulator` — Decision Simulator run API on dec-sim / kgrappe.
+ * Keep `src/app/api/admin/decision-simulator` — Decision Simulator run API.
+ * dec-sim also stashes `src/app/(site)` so the campaign homepage never ships there.
  * Leave `*-actions.ts` and other modules in place — Next still typechecks
  * components that import them (see ApprovalPackageScaffold).
  * CI workspace only — not a repo move.
  */
 const fs = require("node:fs");
 const path = require("node:path");
-const { isMacroscopicLifeNetlifySite } = require("./netlify-site-mode.cjs");
+const {
+  isMacroscopicLifeNetlifySite,
+  isDecisionSimNetlifySite,
+} = require("./netlify-site-mode.cjs");
 
 const STASH_ROOT = ".netlify-build-stash";
 
@@ -26,6 +30,23 @@ const KGRAPPE_STASH_DIRS = [
   "src/app/organizing-intelligence",
   "src/app/relational",
   "src/app/admin/(board)",
+];
+
+/** dec-sim.netlify.app — stash the campaign public hub; keep only the simulator. */
+const DEC_SIM_STASH_DIRS = [
+  "src/app/(site)",
+  "src/app/(volunteer-kickoff)",
+  "src/app/(macroscopic-life)",
+  "src/app/election-plan",
+  "src/app/volunteers",
+  "src/app/campaign-events",
+  "src/app/commit",
+  "src/app/county-briefings",
+  "src/app/kelly",
+  "src/app/onboarding",
+  "src/app/organizing-intelligence",
+  "src/app/relational",
+  "src/app/admin",
 ];
 
 /** macroscopic-life.netlify.app — stash the campaign so only Book One compiles. */
@@ -44,19 +65,28 @@ const MACROSCOPIC_LIFE_STASH_DIRS = [
   "src/app/relational",
 ];
 
-const APP_STASH_DIRS = isMacroscopicLifeNetlifySite() ? MACROSCOPIC_LIFE_STASH_DIRS : KGRAPPE_STASH_DIRS;
+const APP_STASH_DIRS = isDecisionSimNetlifySite()
+  ? DEC_SIM_STASH_DIRS
+  : isMacroscopicLifeNetlifySite()
+    ? MACROSCOPIC_LIFE_STASH_DIRS
+    : KGRAPPE_STASH_DIRS;
 
 /** Keep these prefixes on the public hub (Talent Foundry command center). */
-const APP_STASH_KEEP_PREFIXES = isMacroscopicLifeNetlifySite()
-  ? []
-  : ["src/app/admin/(board)/talent-foundry"];
+const APP_STASH_KEEP_PREFIXES = isDecisionSimNetlifySite()
+  ? ["src/app/admin/decision-simulator", "src/app/admin/login"]
+  : isMacroscopicLifeNetlifySite()
+    ? []
+    : ["src/app/admin/(board)/talent-foundry"];
 
-const API_KEEP = isMacroscopicLifeNetlifySite() ? new Set() : new Set(["forms", "election-plan"]);
+const API_KEEP = isMacroscopicLifeNetlifySite() || isDecisionSimNetlifySite()
+  ? new Set()
+  : new Set(["forms", "election-plan"]);
 
-/** Nested routes kept under an otherwise-stashed API tree (Decision Simulator on dec-sim / kgrappe). */
-const API_NESTED_KEEP = isMacroscopicLifeNetlifySite()
-  ? new Map()
-  : new Map([["admin", new Set(["decision-simulator"])]]);
+/** Nested routes kept under an otherwise-stashed API tree (Decision Simulator). */
+const API_NESTED_KEEP =
+  isMacroscopicLifeNetlifySite()
+    ? new Map()
+    : new Map([["admin", new Set(["decision-simulator"])]]);
 
 /** App Router files that create routes / pages. Everything else stays for typecheck. */
 const ROUTE_FILE_RE =
@@ -172,6 +202,7 @@ module.exports = {
   stashPublicHubAppDirs,
   APP_STASH_DIRS,
   KGRAPPE_STASH_DIRS,
+  DEC_SIM_STASH_DIRS,
   MACROSCOPIC_LIFE_STASH_DIRS,
   APP_STASH_KEEP_PREFIXES,
   API_KEEP,

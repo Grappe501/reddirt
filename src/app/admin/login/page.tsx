@@ -6,12 +6,14 @@ import { CampaignPaidForBar } from "@/components/layout/CampaignPaidForBar";
 import { getAdminSecret } from "@/lib/admin/session";
 import { isLocalAdminHost } from "@/lib/admin/local-admin-host";
 import { isIntelligenceOppositionDebateLaunchMode } from "@/lib/intelligence/intelligenceLaunchMode";
+import { isDecisionSimSite } from "@/lib/site/decision-sim-site";
 import {
   CAMPAIGN_MANAGER_WORKBENCH_NAME,
   campaignManagerPageTitle,
 } from "@/lib/admin/campaign-manager-workbench-labels";
 
 function getAdminLoginDefaultPath(): string {
+  if (isDecisionSimSite()) return "/admin/decision-simulator";
   return process.env.NEXT_PUBLIC_INTELLIGENCE_LAUNCH_MODE === "opposition_debate"
     ? "/admin/intelligence"
     : "/admin/content";
@@ -38,6 +40,7 @@ export default async function AdminLoginPage({ searchParams }: Props) {
       ? nextPath
       : defaultPath;
   const debateLaunch = isIntelligenceOppositionDebateLaunchMode();
+  const decisionSim = isDecisionSimSite();
 
   // Local loop: skip the passphrase screen entirely.
   if (localHost) {
@@ -48,15 +51,21 @@ export default async function AdminLoginPage({ searchParams }: Props) {
     <div className="flex min-h-screen flex-col items-center justify-center bg-[#000066] px-4 py-16 text-white">
       <div className="w-full max-w-md rounded-card border border-white/25 bg-[#07074a] p-8 shadow-2xl">
         <p className="font-body text-[10px] font-bold uppercase tracking-[0.28em] text-[#c5d2ea]">
-          Kelly Grappe campaign
+          {decisionSim ? "Decision Simulator" : "Kelly Grappe campaign"}
         </p>
         <h1 className="mt-3 font-heading text-2xl font-bold text-white">
-          {debateLaunch ? "Debate intelligence workbench" : CAMPAIGN_MANAGER_WORKBENCH_NAME}
+          {decisionSim
+            ? "Sign in"
+            : debateLaunch
+              ? "Debate intelligence workbench"
+              : CAMPAIGN_MANAGER_WORKBENCH_NAME}
         </h1>
         <p className="mt-3 font-body text-sm leading-relaxed text-[#c5d2ea]">
-          {debateLaunch
-            ? "Sign in to access opposition research, debate prep, claims review, and action queues. Internal use only."
-            : "Sign in with your Campaign Manager passphrase. This is your statewide operations workbench—content, field, calendar, and fundraising."}
+          {decisionSim
+            ? "Internal advisory tool. Sign in to run simulations. This is not the campaign website."
+            : debateLaunch
+              ? "Sign in to access opposition research, debate prep, claims review, and action queues. Internal use only."
+              : "Sign in with your Campaign Manager passphrase. This is your statewide operations workbench—content, field, calendar, and fundraising."}
         </p>
 
         {sp.error === "config" ? (
@@ -96,20 +105,28 @@ export default async function AdminLoginPage({ searchParams }: Props) {
               type="submit"
               className="w-full rounded-btn bg-[#ca913d] px-4 py-3 font-body text-sm font-bold text-[#000066] shadow-soft transition hover:-translate-y-0.5 hover:brightness-105"
             >
-              {debateLaunch ? "Enter intelligence workbench" : `Enter ${CAMPAIGN_MANAGER_WORKBENCH_NAME}`}
+              {decisionSim
+                ? "Enter Decision Simulator"
+                : debateLaunch
+                  ? "Enter intelligence workbench"
+                  : `Enter ${CAMPAIGN_MANAGER_WORKBENCH_NAME}`}
             </button>
           </form>
         )}
 
-        <p className="mt-8 text-center font-body text-xs text-[#9eb4d8]">
-          <Link href="/" className="text-white underline-offset-2 hover:underline">
-            Back to site
-          </Link>
-        </p>
+        {decisionSim ? null : (
+          <p className="mt-8 text-center font-body text-xs text-[#9eb4d8]">
+            <Link href="/" className="text-white underline-offset-2 hover:underline">
+              Back to site
+            </Link>
+          </p>
+        )}
       </div>
-      <div className="mt-8 max-w-md px-2">
-        <CampaignPaidForBar variant="dark" />
-      </div>
+      {decisionSim ? null : (
+        <div className="mt-8 max-w-md px-2">
+          <CampaignPaidForBar variant="dark" />
+        </div>
+      )}
     </div>
   );
 }

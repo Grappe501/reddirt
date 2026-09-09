@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { AnalyticsProvider } from "@/components/AnalyticsProvider";
 import { siteConfig } from "@/config/site";
+import { isDecisionSimSite } from "@/lib/site/decision-sim-site";
 import "./site-fonts.css";
 import "./globals.css";
 
@@ -10,17 +11,24 @@ const macroscopicLifeSite =
   process.env.SITE_NAME === "macroscopic-life" ||
   process.env.NETLIFY_SITE_NAME === "macroscopic-life";
 
+const decisionSimSite = isDecisionSimSite();
+
 export const metadata: Metadata = {
-  title: macroscopicLifeSite
-    ? { default: "Macroscopic Life", template: "%s · Macroscopic Life" }
-    : {
-        default: siteConfig.name,
-        template: `%s · ${siteConfig.name}`,
-      },
-  description: macroscopicLifeSite
-    ? "Book One: What If We Are the Microbe? A reading instrument for nested scale, evidence, and a theory that can lose."
-    : siteConfig.description,
+  title: decisionSimSite
+    ? { default: "Decision Simulator", template: "%s · Decision Simulator" }
+    : macroscopicLifeSite
+      ? { default: "Macroscopic Life", template: "%s · Macroscopic Life" }
+      : {
+          default: siteConfig.name,
+          template: `%s · ${siteConfig.name}`,
+        },
+  description: decisionSimSite
+    ? "Advisory decision ensemble simulator. Not the campaign website."
+    : macroscopicLifeSite
+      ? "Book One: What If We Are the Microbe? A reading instrument for nested scale, evidence, and a theory that can lose."
+      : siteConfig.description,
   metadataBase: new URL(siteConfig.url),
+  ...(decisionSimSite ? { robots: { index: false, follow: false } } : {}),
 };
 
 export default function RootLayout({

@@ -12,6 +12,13 @@ const macroscopicLifeSite =
   process.env.NEXT_PUBLIC_MACROSCOPIC_LIFE_SITE === "1" ||
   process.env.NEXT_PUBLIC_MACROSCOPIC_LIFE_SITE === "true";
 
+/** Separate Netlify project `dec-sim` — Decision Simulator only, not the campaign site. */
+const decisionSimSite =
+  process.env.SITE_NAME === "dec-sim" ||
+  process.env.NETLIFY_SITE_NAME === "dec-sim" ||
+  process.env.NEXT_PUBLIC_DECISION_SIM_SITE === "1" ||
+  process.env.NEXT_PUBLIC_DECISION_SIM_SITE === "true";
+
 /** Netlify / opposition-debate — shrink traced server artifacts (see netlify.toml). */
 const oppositionDebateLaunch =
   process.env.NEXT_PUBLIC_INTELLIGENCE_LAUNCH_MODE === "opposition_debate";
@@ -74,6 +81,15 @@ const nextConfig: NextConfig = {
             {
               source: "/",
               destination: "/macroscopic-life",
+              permanent: false,
+            },
+          ]
+        : []),
+      ...(decisionSimSite
+        ? [
+            {
+              source: "/",
+              destination: "/admin/decision-simulator",
               permanent: false,
             },
           ]
