@@ -8,7 +8,7 @@ export const runtime = "nodejs";
 
 export const metadata: Metadata = {
   title: {
-    absolute: "FEC max donors · Chris Jones & Hallie Shoffner",
+    absolute: "FEC donor lists · Arkansas 2026",
   },
   robots: { index: false, follow: false },
 };

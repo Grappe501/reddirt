@@ -3,8 +3,8 @@ import Link from "next/link";
 const cards = [
   {
     href: "/fec-max-donors",
-    title: "FEC max donors (Jones / Shoffner)",
-    body: "Standalone OpenFEC list of 2026 individual donors who gave $3,000 or more to Chris Jones or Hallie Shoffner.",
+    title: "FEC donor lists (AR 2026)",
+    body: "Standalone OpenFEC lists: Jones/Shoffner and Russell/Ryerse/Green at $3,000+, plus a French Hill tab at $2,000+.",
   },
   {
     href: "/admin/calendar-admin",

@@ -1,6 +1,5 @@
 import {
   FEC_CYCLE,
-  FEC_MIN_AMOUNT,
   donorDisplayName,
   fetchIndividualReceiptsOverThreshold,
   getOpenFecApiKey,
@@ -8,31 +7,107 @@ import {
   type OpenFecScheduleA,
 } from "./openfec-client";
 
-export const ARKANSAS_2026_FEC_CANDIDATES = [
-  {
-    slug: "chris-jones",
-    label: "Chris Jones",
-    office: "U.S. House AR-02",
-    candidateId: "H6AR02286",
-    committeeId: "C00912899",
-    committeeName: "The Committee to Elect Chris Jones",
-    fecUrl: "https://www.fec.gov/data/candidate/H6AR02286/",
-  },
-  {
-    slug: "hallie-shoffner",
-    label: "Hallie Shoffner",
-    office: "U.S. Senate",
-    candidateId: "S6AR00199",
-    committeeId: "C00905471",
-    committeeName: "Hallie Shoffner for Arkansas",
-    fecUrl: "https://www.fec.gov/data/candidate/S6AR00199/",
-  },
-] as const;
+export type FecCandidate = {
+  slug: string;
+  label: string;
+  office: string;
+  candidateId: string;
+  committeeId: string;
+  committeeName: string;
+  fecUrl: string;
+};
 
-export type ArkansasFecCandidateSlug = (typeof ARKANSAS_2026_FEC_CANDIDATES)[number]["slug"];
+export type FecDonorTabId = "jones-shoffner" | "russell-ryerse-green" | "french-hill";
+
+export type FecDonorTab = {
+  id: FecDonorTabId;
+  label: string;
+  minAmount: number;
+  candidates: FecCandidate[];
+};
+
+export const FEC_DONOR_TABS: FecDonorTab[] = [
+  {
+    id: "jones-shoffner",
+    label: "Jones & Shoffner",
+    minAmount: 3000,
+    candidates: [
+      {
+        slug: "chris-jones",
+        label: "Chris Jones",
+        office: "U.S. House AR-02",
+        candidateId: "H6AR02286",
+        committeeId: "C00912899",
+        committeeName: "The Committee to Elect Chris Jones",
+        fecUrl: "https://www.fec.gov/data/candidate/H6AR02286/",
+      },
+      {
+        slug: "hallie-shoffner",
+        label: "Hallie Shoffner",
+        office: "U.S. Senate",
+        candidateId: "S6AR00199",
+        committeeId: "C00905471",
+        committeeName: "Hallie Shoffner for Arkansas",
+        fecUrl: "https://www.fec.gov/data/candidate/S6AR00199/",
+      },
+    ],
+  },
+  {
+    id: "russell-ryerse-green",
+    label: "Russell, Ryerse & Green",
+    minAmount: 3000,
+    candidates: [
+      {
+        slug: "james-russell",
+        label: "James Russell",
+        office: "U.S. House AR-04",
+        candidateId: "H6AR04084",
+        committeeId: "C00924621",
+        committeeName: "James Russell for Arkansas",
+        fecUrl: "https://www.fec.gov/data/candidate/H6AR04084/",
+      },
+      {
+        slug: "robb-ryerse",
+        label: "Robb Ryerse",
+        office: "U.S. House AR-03",
+        candidateId: "H6AR03128",
+        committeeId: "C00908400",
+        committeeName: "Robb for Congress",
+        fecUrl: "https://www.fec.gov/data/candidate/H6AR03128/",
+      },
+      {
+        slug: "terri-green",
+        label: "Terri Green",
+        office: "U.S. House AR-01",
+        candidateId: "H6AR01155",
+        committeeId: "C00930800",
+        committeeName: "Terri Green Election Campaign Committee",
+        fecUrl: "https://www.fec.gov/data/candidate/H6AR01155/",
+      },
+    ],
+  },
+  {
+    id: "french-hill",
+    label: "French Hill",
+    minAmount: 2000,
+    candidates: [
+      {
+        slug: "french-hill",
+        label: "French Hill",
+        office: "U.S. House AR-02",
+        candidateId: "H4AR02141",
+        committeeId: "C00551275",
+        committeeName: "French Hill for Arkansas",
+        fecUrl: "https://www.fec.gov/data/candidate/H4AR02141/",
+      },
+    ],
+  },
+];
+
+export const ARKANSAS_2026_FEC_CANDIDATES = FEC_DONOR_TABS.flatMap((tab) => tab.candidates);
 
 export type MaxDonorGift = {
-  candidateSlug: ArkansasFecCandidateSlug;
+  candidateSlug: string;
   candidateLabel: string;
   candidateOffice: string;
   name: string;
@@ -56,7 +131,7 @@ export type MaxDonor = {
   occupation: string;
   total: number;
   giftCount: number;
-  candidateSlugs: ArkansasFecCandidateSlug[];
+  candidateSlugs: string[];
   lastDate: string;
   gifts: MaxDonorGift[];
 };
@@ -69,6 +144,10 @@ export type MaxDonorReport = {
   error: string | null;
   giftCount: number;
   donors: MaxDonor[];
+};
+
+export type FecDonorTabView = FecDonorTab & {
+  report: MaxDonorReport;
 };
 
 function clean(value: string | null | undefined): string {
@@ -88,10 +167,7 @@ function donorKey(row: OpenFecScheduleA): string {
   return [name, (row.contributor_state ?? "").trim().toLowerCase(), zip5(row.contributor_zip)].join("|");
 }
 
-function toGift(
-  row: OpenFecScheduleA,
-  candidate: (typeof ARKANSAS_2026_FEC_CANDIDATES)[number],
-): MaxDonorGift {
+function toGift(row: OpenFecScheduleA, candidate: FecCandidate): MaxDonorGift {
   return {
     candidateSlug: candidate.slug,
     candidateLabel: candidate.label,
@@ -147,28 +223,43 @@ function aggregateDonors(gifts: MaxDonorGift[], keys: string[]): MaxDonor[] {
   return [...byKey.values()].sort((a, b) => b.total - a.total || a.name.localeCompare(b.name));
 }
 
-export async function loadArkansas2026MaxDonors(): Promise<MaxDonorReport> {
+function emptyReport(minAmount: number, error: string | null, missingKey: boolean): MaxDonorReport {
+  return {
+    cycle: FEC_CYCLE,
+    minAmount,
+    generatedAt: new Date().toISOString(),
+    missingKey,
+    error,
+    giftCount: 0,
+    donors: [],
+  };
+}
+
+export async function loadDonorReport(
+  candidates: FecCandidate[],
+  minAmount: number,
+): Promise<MaxDonorReport> {
   const apiKey = getOpenFecApiKey();
   if (!apiKey) {
-    return {
-      cycle: FEC_CYCLE,
-      minAmount: FEC_MIN_AMOUNT,
-      generatedAt: new Date().toISOString(),
-      missingKey: true,
-      error: "OPENFEC_API_KEY is not set.",
-      giftCount: 0,
-      donors: [],
-    };
+    return emptyReport(minAmount, "OPENFEC_API_KEY is not set.", true);
   }
 
   try {
     const gifts: MaxDonorGift[] = [];
     const keys: string[] = [];
 
-    for (const candidate of ARKANSAS_2026_FEC_CANDIDATES) {
-      const rows = await fetchIndividualReceiptsOverThreshold(apiKey, candidate.committeeId);
+    const rowSets = await Promise.all(
+      candidates.map((candidate) =>
+        fetchIndividualReceiptsOverThreshold(apiKey, candidate.committeeId, minAmount).then((rows) => ({
+          candidate,
+          rows,
+        })),
+      ),
+    );
+
+    for (const { candidate, rows } of rowSets) {
       for (const row of rows) {
-        if (!isCountableIndividualGift(row)) continue;
+        if (!isCountableIndividualGift(row, minAmount)) continue;
         gifts.push(toGift(row, candidate));
         keys.push(`${candidate.slug}|${donorKey(row)}`);
       }
@@ -176,7 +267,7 @@ export async function loadArkansas2026MaxDonors(): Promise<MaxDonorReport> {
 
     return {
       cycle: FEC_CYCLE,
-      minAmount: FEC_MIN_AMOUNT,
+      minAmount,
       generatedAt: new Date().toISOString(),
       missingKey: false,
       error: null,
@@ -184,14 +275,20 @@ export async function loadArkansas2026MaxDonors(): Promise<MaxDonorReport> {
       donors: aggregateDonors(gifts, keys),
     };
   } catch (error) {
-    return {
-      cycle: FEC_CYCLE,
-      minAmount: FEC_MIN_AMOUNT,
-      generatedAt: new Date().toISOString(),
-      missingKey: false,
-      error: error instanceof Error ? error.message : "OpenFEC request failed.",
-      giftCount: 0,
-      donors: [],
-    };
+    return emptyReport(minAmount, error instanceof Error ? error.message : "OpenFEC request failed.", false);
   }
+}
+
+export async function loadArkansas2026MaxDonors(): Promise<MaxDonorReport> {
+  const tab = FEC_DONOR_TABS[0];
+  return loadDonorReport(tab.candidates, tab.minAmount);
+}
+
+export async function loadFecDonorTabs(): Promise<FecDonorTabView[]> {
+  return Promise.all(
+    FEC_DONOR_TABS.map(async (tab) => ({
+      ...tab,
+      report: await loadDonorReport(tab.candidates, tab.minAmount),
+    })),
+  );
 }

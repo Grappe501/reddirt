@@ -2,14 +2,7 @@
 
 import { useMemo, useState } from "react";
 
-import type { ArkansasFecCandidateSlug, MaxDonor } from "@/lib/fec/arkansas-2026-max-donors";
-
-const FILTERS: Array<{ id: "all" | ArkansasFecCandidateSlug | "both"; label: string }> = [
-  { id: "all", label: "All donors" },
-  { id: "chris-jones", label: "Chris Jones" },
-  { id: "hallie-shoffner", label: "Hallie Shoffner" },
-  { id: "both", label: "Gave to both" },
-];
+import type { FecDonorTabId, FecDonorTabView, MaxDonor } from "@/lib/fec/arkansas-2026-max-donors";
 
 function money(value: number): string {
   return value.toLocaleString("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 });
@@ -21,7 +14,7 @@ function csvEscape(value: string | number): string {
   return text;
 }
 
-function downloadCsv(donors: MaxDonor[]) {
+function downloadCsv(donors: MaxDonor[], filename: string) {
   const header = [
     "Name",
     "City",
@@ -53,21 +46,30 @@ function downloadCsv(donors: MaxDonor[]) {
   const url = URL.createObjectURL(blob);
   const link = document.createElement("a");
   link.href = url;
-  link.download = "fec-max-donors-arkansas-2026.csv";
+  link.download = filename;
   link.click();
   URL.revokeObjectURL(url);
 }
 
-export function FecMaxDonorsClient({ donors }: { donors: MaxDonor[] }) {
+function DonorTable({
+  tab,
+  donors,
+  csvName,
+}: {
+  tab: FecDonorTabView;
+  donors: MaxDonor[];
+  csvName: string;
+}) {
   const [query, setQuery] = useState("");
-  const [filter, setFilter] = useState<(typeof FILTERS)[number]["id"]>("all");
+  const [filter, setFilter] = useState<string>("all");
   const [openKey, setOpenKey] = useState<string | null>(null);
+  const showFilters = tab.candidates.length > 1;
 
   const visible = useMemo(() => {
     const q = query.trim().toLowerCase();
     return donors.filter((donor) => {
-      if (filter === "both" && donor.candidateSlugs.length < 2) return false;
-      if (filter !== "all" && filter !== "both" && !donor.candidateSlugs.includes(filter)) return false;
+      if (filter === "multi" && donor.candidateSlugs.length < 2) return false;
+      if (filter !== "all" && filter !== "multi" && !donor.candidateSlugs.includes(filter)) return false;
       if (!q) return true;
       const hay = [donor.name, donor.city, donor.state, donor.employer, donor.occupation]
         .join(" ")
@@ -93,30 +95,56 @@ export function FecMaxDonorsClient({ donors }: { donors: MaxDonor[] }) {
         </label>
         <button
           type="button"
-          onClick={() => downloadCsv(visible)}
+          onClick={() => downloadCsv(visible, csvName)}
           className="rounded-lg bg-kelly-navy px-4 py-2 text-sm font-semibold text-white hover:bg-kelly-slate"
         >
           Download CSV
         </button>
       </div>
 
-      <div className="flex flex-wrap gap-2">
-        {FILTERS.map((item) => (
+      {showFilters ? (
+        <div className="flex flex-wrap gap-2">
           <button
-            key={item.id}
             type="button"
-            onClick={() => setFilter(item.id)}
+            onClick={() => setFilter("all")}
             className={`rounded-full px-3 py-1.5 text-xs font-semibold ${
-              filter === item.id
+              filter === "all"
                 ? "bg-kelly-navy text-white"
                 : "border border-kelly-text/15 bg-white text-kelly-text/80 hover:border-kelly-navy/30"
             }`}
           >
-            {item.label}
+            All donors
           </button>
-        ))}
-        <p className="self-center text-xs text-kelly-text/55">{visible.length} shown</p>
-      </div>
+          {tab.candidates.map((candidate) => (
+            <button
+              key={candidate.slug}
+              type="button"
+              onClick={() => setFilter(candidate.slug)}
+              className={`rounded-full px-3 py-1.5 text-xs font-semibold ${
+                filter === candidate.slug
+                  ? "bg-kelly-navy text-white"
+                  : "border border-kelly-text/15 bg-white text-kelly-text/80 hover:border-kelly-navy/30"
+              }`}
+            >
+              {candidate.label}
+            </button>
+          ))}
+          <button
+            type="button"
+            onClick={() => setFilter("multi")}
+            className={`rounded-full px-3 py-1.5 text-xs font-semibold ${
+              filter === "multi"
+                ? "bg-kelly-navy text-white"
+                : "border border-kelly-text/15 bg-white text-kelly-text/80 hover:border-kelly-navy/30"
+            }`}
+          >
+            Gave to more than one
+          </button>
+          <p className="self-center text-xs text-kelly-text/55">{visible.length} shown</p>
+        </div>
+      ) : (
+        <p className="text-xs text-kelly-text/55">{visible.length} shown</p>
+      )}
 
       <div className="overflow-hidden rounded-xl border border-kelly-text/10 bg-white">
         <table className="w-full min-w-[760px] border-collapse text-left text-sm">
@@ -133,7 +161,7 @@ export function FecMaxDonorsClient({ donors }: { donors: MaxDonor[] }) {
             {visible.length === 0 ? (
               <tr>
                 <td colSpan={5} className="px-3 py-8 text-center text-kelly-text/60">
-                  No donors match this search.
+                  No donors at this threshold in the current FEC filings.
                 </td>
               </tr>
             ) : (
@@ -194,6 +222,104 @@ export function FecMaxDonorsClient({ donors }: { donors: MaxDonor[] }) {
           </tbody>
         </table>
       </div>
+    </div>
+  );
+}
+
+function TabStats({ tab }: { tab: FecDonorTabView }) {
+  const { report } = tab;
+  const multiCount = report.donors.filter((donor) => donor.candidateSlugs.length > 1).length;
+
+  return (
+    <>
+      <dl className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
+        <div className="rounded-xl border border-kelly-text/10 bg-white px-4 py-3">
+          <dt className="text-xs uppercase tracking-wide text-kelly-text/50">Donors</dt>
+          <dd className="mt-1 text-2xl font-bold text-kelly-navy">{report.donors.length}</dd>
+        </div>
+        {tab.candidates.map((candidate) => (
+          <div key={candidate.slug} className="rounded-xl border border-kelly-text/10 bg-white px-4 py-3">
+            <dt className="text-xs uppercase tracking-wide text-kelly-text/50">{candidate.label}</dt>
+            <dd className="mt-1 text-2xl font-bold text-kelly-navy">
+              {report.donors.filter((donor) => donor.candidateSlugs.includes(candidate.slug)).length}
+            </dd>
+          </div>
+        ))}
+        {tab.candidates.length > 1 ? (
+          <div className="rounded-xl border border-kelly-text/10 bg-white px-4 py-3">
+            <dt className="text-xs uppercase tracking-wide text-kelly-text/50">Gave to more than one</dt>
+            <dd className="mt-1 text-2xl font-bold text-kelly-navy">{multiCount}</dd>
+          </div>
+        ) : null}
+      </dl>
+      <p className="mt-3 text-xs text-kelly-text/50">
+        {report.giftCount} countable gifts of {money(tab.minAmount)} or more ·{" "}
+        {money(report.donors.reduce((sum, donor) => sum + donor.total, 0))} combined · refreshed{" "}
+        {new Date(report.generatedAt).toLocaleString()}
+      </p>
+    </>
+  );
+}
+
+export function FecMaxDonorsClient({ tabs }: { tabs: FecDonorTabView[] }) {
+  const [tabId, setTabId] = useState<FecDonorTabId>(tabs[0]?.id ?? "jones-shoffner");
+  const tab = tabs.find((item) => item.id === tabId) ?? tabs[0];
+  if (!tab) return null;
+
+  return (
+    <div>
+      <div className="flex flex-wrap gap-2 border-b border-kelly-text/10 pb-3">
+        {tabs.map((item) => (
+          <button
+            key={item.id}
+            type="button"
+            onClick={() => setTabId(item.id)}
+            className={`rounded-t-lg px-4 py-2 text-sm font-semibold ${
+              item.id === tab.id
+                ? "bg-kelly-navy text-white"
+                : "border border-kelly-text/15 bg-white text-kelly-text/80 hover:border-kelly-navy/30"
+            }`}
+          >
+            {item.label}
+            <span className="ml-2 text-xs font-normal opacity-80">
+              {money(item.minAmount)}+
+            </span>
+          </button>
+        ))}
+      </div>
+
+      <ul className="mt-5 flex flex-wrap gap-3 text-sm">
+        {tab.candidates.map((candidate) => (
+          <li key={candidate.candidateId}>
+            <a
+              href={candidate.fecUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="font-semibold text-kelly-navy underline underline-offset-2"
+            >
+              {candidate.label} · {candidate.office}
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      {tab.report.missingKey || tab.report.error ? (
+        <p className="mt-8 rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-900">
+          {tab.report.error}
+        </p>
+      ) : (
+        <>
+          <TabStats tab={tab} />
+          <div className="mt-6">
+            <DonorTable
+              key={tab.id}
+              tab={tab}
+              donors={tab.report.donors}
+              csvName={`fec-donors-${tab.id}-2026.csv`}
+            />
+          </div>
+        </>
+      )}
     </div>
   );
 }

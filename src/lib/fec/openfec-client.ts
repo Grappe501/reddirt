@@ -1,5 +1,4 @@
 const OPENFEC_BASE = "https://api.open.fec.gov/v1";
-const MIN_AMOUNT = 3000;
 const CYCLE = 2026;
 
 type OpenFecPagination = {
@@ -63,12 +62,13 @@ async function fetchScheduleAPage(
   apiKey: string,
   committeeId: string,
   page: number,
+  minAmount: number,
 ): Promise<OpenFecList<OpenFecScheduleA>> {
   const params = new URLSearchParams({
     api_key: apiKey,
     committee_id: committeeId,
     two_year_transaction_period: String(CYCLE),
-    min_amount: String(MIN_AMOUNT),
+    min_amount: String(minAmount),
     is_individual: "true",
     per_page: "100",
     page: String(page),
@@ -90,30 +90,30 @@ async function fetchScheduleAPage(
 export async function fetchIndividualReceiptsOverThreshold(
   apiKey: string,
   committeeId: string,
+  minAmount: number,
 ): Promise<OpenFecScheduleA[]> {
-  const first = await fetchScheduleAPage(apiKey, committeeId, 1);
+  const first = await fetchScheduleAPage(apiKey, committeeId, 1, minAmount);
   const pages = Math.max(1, first.pagination?.pages ?? 1);
   const rows = [...(first.results ?? [])];
 
   for (let page = 2; page <= pages; page += 1) {
-    const next = await fetchScheduleAPage(apiKey, committeeId, page);
+    const next = await fetchScheduleAPage(apiKey, committeeId, page, minAmount);
     rows.push(...(next.results ?? []));
   }
 
   return rows;
 }
 
-export function isCountableIndividualGift(row: OpenFecScheduleA): boolean {
+export function isCountableIndividualGift(row: OpenFecScheduleA, minAmount: number): boolean {
   if (row.memoed_subtotal) return false;
   if (row.is_individual === false) return false;
   if (row.entity_type && row.entity_type !== "IND") return false;
   const amount = Number(row.contribution_receipt_amount ?? 0);
-  return amount >= MIN_AMOUNT;
+  return amount >= minAmount;
 }
 
 export function donorDisplayName(row: OpenFecScheduleA): string {
   return formatName(row);
 }
 
-export const FEC_MIN_AMOUNT = MIN_AMOUNT;
 export const FEC_CYCLE = CYCLE;
