@@ -24,7 +24,11 @@ import {
 } from "@/lib/agents/decision-simulation/evidence-provenance";
 import { PersonalityIntelligence } from "./PersonalityIntelligence";
 import { DecisionIntelligence } from "./DecisionIntelligence";
-import type { DashboardIntelligencePayload, SavedScenario } from "@/lib/agents/decision-simulation/dashboard-intelligence";
+import type {
+  DashboardIntelligencePayload,
+  ObservedOutcome,
+  SavedScenario,
+} from "@/lib/agents/decision-simulation/dashboard-intelligence";
 import "./mission-lab.css";
 
 type RunPreset = 1 | 10 | 100 | 1000;
@@ -104,16 +108,7 @@ type JobView = {
     futuresWithRuns: number;
     checks: Array<{ id: string; label: string; pass: boolean; detail: string }>;
   };
-  observedOutcome?: {
-    jobId: string;
-    recordedAt: string;
-    actualResponse: string;
-    closestFuture: string;
-    notes: string;
-    predictedFrame: string | null;
-    persistVersion?: string;
-    storage?: string;
-  } | null;
+  observedOutcome?: ObservedOutcome | null;
   chunks?: Array<{
     ordinal: number;
     status: string;

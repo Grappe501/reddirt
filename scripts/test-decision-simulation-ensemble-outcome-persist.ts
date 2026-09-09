@@ -48,6 +48,10 @@ assert(route.includes("assertAdminApi") && route.includes("rateLimit"), "outcome
 assert(route.includes("persistObservedOutcomeOnJob"), "outcome API writes the ensemble job");
 assert(!/sendEmail|publishPost|mailto:/.test(route), "outcome API has no send/post action");
 
+const client = readFileSync("src/components/admin/decision-simulator/DecisionSimulatorClient.tsx", "utf8");
+assert(client.includes("ObservedOutcome"), "job view uses ObservedOutcome so Netlify typecheck accepts persistedOutcome");
+assert(!client.includes("storage?: string"), "job view does not widen ensemble storage to a plain string");
+
 const ui = readFileSync("src/components/admin/decision-simulator/DecisionIntelligence.tsx", "utf8");
 assert(ui.includes("/api/admin/decision-simulator/jobs/${jobId}/outcome"), "dashboard posts the outcome to the ensemble job");
 assert(ui.includes("saved on this ensemble job") || ui.includes("saved on the ensemble job"), "dashboard names ensemble persist");
