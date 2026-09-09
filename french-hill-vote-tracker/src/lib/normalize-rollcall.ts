@@ -1,6 +1,7 @@
 import { isHillAlignedWithParty, scorePartisanship } from "./partisanship";
+import type { VoteRecord, VoteSource, VoteValue } from "./vote-record";
 
-export type VoteValue = "Yea" | "Nay" | "Present" | "Not Voting";
+export type { VoteValue } from "./vote-record";
 
 export interface RawRollCall {
   congress: number;
@@ -14,10 +15,10 @@ export interface RawRollCall {
   republicanNay: number;
   democratYea: number;
   democratNay: number;
-  sources: Array<{ label: string; url: string; sourceType: string; primary?: boolean }>;
+  sources: VoteSource[];
 }
 
-export function normalizeRollCall(raw: RawRollCall) {
+export function normalizeRollCall(raw: RawRollCall): VoteRecord {
   const partisan = scorePartisanship(raw);
   const hillAlignedWithGop = isHillAlignedWithParty(raw.hillVote, partisan.republicanMajorityPosition);
   const partyBreak = hillAlignedWithGop === null ? false : !hillAlignedWithGop;
