@@ -1,4 +1,5 @@
-import { loadVotes } from "../../src/lib/vote-ledger";
+import Link from "next/link";
+import { loadVotes, voteKey } from "../../src/lib/vote-ledger";
 
 export const dynamic = "force-static";
 
@@ -30,6 +31,7 @@ async function VoteLedger({ searchParams }: { searchParams: Promise<Record<strin
       <p className="eyebrow">Public vote ledger</p>
       <h1>Recorded Votes</h1>
       <p className="lede">Search and filter the official roll-call record. Classifications are calculated from recorded party splits; Trump classifications require separate documented evidence.</p>
+      <p><Link href="/dashboard">View analytical dashboard</Link></p>
 
       <form className="filters">
         <input name="q" defaultValue={query} placeholder="Search measure or question" aria-label="Search votes" />
@@ -53,8 +55,9 @@ async function VoteLedger({ searchParams }: { searchParams: Promise<Record<strin
           <article className="vote-row" key={`${vote.congress}-${vote.rollCall}`}>
             <div>
               <p className="vote-meta">{vote.date} · Congress {vote.congress} · Roll {vote.rollCall}</p>
-              <h2>{vote.measure || "House roll-call vote"}</h2>
+              <h2><Link href={`/votes/${voteKey(vote)}`}>{vote.measure || "House roll-call vote"}</Link></h2>
               {vote.question && <p>{vote.question}</p>}
+              <Link className="evidence-link" href={`/votes/${voteKey(vote)}`}>Open evidence page →</Link>
             </div>
             <div className="vote-facts">
               <strong>Hill: {vote.hillVote}</strong>
