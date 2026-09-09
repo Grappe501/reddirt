@@ -4666,7 +4666,7 @@ const kellyCampaignStopsSource: KellyCampaignStop[] = [
     includeOnPublicPage: true,
     confidence: "confirmed",
     notes:
-      "Karen follow-up after NWA Senior Dems said Fri Oct 9 10:30 a.m. Campaign calendar now shows OLLI for Coffee Jimmy’s Egg Fayetteville 1:00-3:00 p.m. plus all-day Fayetteville Karen Spencer. Private room; 2nd Friday monthly. Do not invent a Jimmy’s Egg street. Do not publish 479-866-9906 or ksmenner0119@gmail.com. /events/olli-for-coffee-2026 Same evening: NAACP Dove banquet Pine Bluff 5:30/6:30 — long drive.",
+      "Steve 2026-09-08: Oct 9 OLLI for Coffee 1:00-3:00 p.m. Fayetteville confirmed. Do not invent a Jimmy's Egg street. Do not publish host phone or email. /events/olli-for-coffee-2026",
     sourceType: "manual",
   },
   {

@@ -284,6 +284,12 @@ export const CAMPAIGN_APPROACH_BY_SLUG: Record<string, CampaignApproachDecision>
     reason: "never_confirmed",
     note: "Never confirmed.",
   },
+  "naacp-pine-bluff-dove-banquet-2026": {
+    approach: "removed",
+    reason: "conflict",
+    note: "Steve 2026-09-08: Oct 9 is OLLI for Coffee in Fayetteville.",
+    ledgerIds: ["manual-2026-10-09-naacp-pine-bluff-dove-banquet"],
+  },
   "hob-nob-bentonville-2026": {
     approach: "removed",
     reason: "conflict",
@@ -412,6 +418,7 @@ const CONFIRMED_SLUGS = new Set([
   "little-river-charlotte-sep-21-2026",
   "october-2-blocked-2026",
   "baxter-farm-bureau-oct-6-2026",
+  "olli-for-coffee-2026",
 ]);
 
 function withSept29Caution(event: EventItem): EventItem {

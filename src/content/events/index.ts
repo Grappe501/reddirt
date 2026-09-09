@@ -1893,25 +1893,26 @@ const movementEventsCore: EventItem[] = [
     region: "Northwest Arkansas",
     countySlug: "washington-county",
     status: "upcoming",
-    startsAt: "2026-10-09T13:00:00",
-    endsAt: "2026-10-09T15:00:00",
+    startsAt: "2026-10-09T13:00:00-05:00",
+    endsAt: "2026-10-09T15:00:00-05:00",
     timezone: "America/Chicago",
     locationLabel: "OLLI for Coffee — Jimmy’s Egg private room (Fayetteville)",
+    city: "Fayetteville",
     addressLine:
       "Jimmy’s Egg, Fayetteville area (private room). Street not in the host note — Osher Lifelong Learning Institute at the University of Arkansas. Confirm the restaurant with the host before travel.",
     summary:
-      "Friday, October 9, 2026, **1:00–3:00 p.m. Central**: **OLLI for Coffee** at Jimmy’s Egg in Fayetteville (campaign calendar). The host originally wrote 10:30 a.m. Kelly is the invited guest. Host-run — not a campaign rally.",
+      "Friday, October 9, 2026, **1:00–3:00 p.m. Central**: **OLLI for Coffee** at Jimmy’s Egg in Fayetteville — confirmed. Kelly is the invited guest. Host-run — not a campaign rally.",
     description:
       "Karen organized **OLLI for Coffee** through the **Osher Lifelong Learning Institute** at the University of Arkansas. She spoke with Kelly and Steve at **NWA Senior Democrats**, then wrote after she heard Kelly would be at Senior Dems and held the note.\n\nThe group meets the **second Friday** of each month at **10:30 a.m.** in a **private room at Jimmy’s Egg**. Tables are set in a square. About **24 members** sit, with more on a wait list. Each month they host someone from the community or a candidate. The host covers **brunch for Kelly and Steve**.\n\nKaren says **October 9, 10:30 a.m.** is on the campaign calendar. This page places the gathering in **Fayetteville** (U of A OLLI). The note does not name a Jimmy’s Egg street — confirm the room before treating it as a walk-in.\n\nThis is a **small OLLI discussion**, not a Grappe-hosted rally and not open enrollment.\n\nThe night before is the League of Women Voters Secretary of State forum in Fayetteville (if that booking holds). The same Friday evening is the **NAACP Dove Freedom Fund Banquet** in Pine Bluff (doors 5:30 p.m.). Fayetteville to Pine Bluff after brunch is a long drive.",
     whatToExpect: [
-      "10:30 a.m. Central in the Jimmy’s Egg private room — end time not posted (noon here is a calendar pin)",
+      "1:00–3:00 p.m. Central in the Jimmy’s Egg private room",
       "Small seated discussion; brunch for the guest and spouse is covered",
       "Not a public ticketed forum — members and wait list",
     ],
     whoItsFor:
       "OLLI for Coffee members. This is not a walk-in campaign event. Neighbors who want OLLI classes should go through the University of Arkansas OLLI program, not this page.",
     organizerNote:
-      "Karen (NWA Senior Dems conversation). Oct 9 10:30 worked into the calendar — fieldAttendance confirmed. Do not publish 479-866-9906 or ksmenner0119@gmail.com. City inferred Fayetteville from U of A OLLI; do not invent a Jimmy’s Egg address. Host pays brunch for Kelly and Steve. Same evening: naacp-pine-bluff-dove-banquet-2026. Night before: lwv-fayetteville-library-oct-8-2026.",
+      "Steve 2026-09-08: Oct 9 OLLI for Coffee 1:00-3:00 p.m. Fayetteville confirmed. Do not publish host phone or email. Do not invent a Jimmy’s Egg street. Host originally wrote 10:30 a.m.",
     rsvpHref: undefined,
     audienceTags: ["Fayetteville", "Washington County", "OLLI", "University of Arkansas", "Northwest Arkansas"],
     relatedEventSlugs: [
@@ -1926,6 +1927,7 @@ const movementEventsCore: EventItem[] = [
     mapCoordinates: { lat: 36.0617, lng: -94.1608 },
     mapPinQuality: "region",
     fieldAttendance: "confirmed",
+    campaignTrail: true,
   },
   {
     slug: "direct-democracy-briefing-statewide",
