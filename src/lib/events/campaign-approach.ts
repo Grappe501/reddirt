@@ -355,6 +355,11 @@ export const CAMPAIGN_APPROACH_BY_SLUG: Record<string, CampaignApproachDecision>
     reason: "conflict",
     note: "Steve 2026-09-08: Oct 22-24 is Lake Village / Lake Chicot Fall Fest.",
   },
+  "madison-newton-county-day-2026-10-26": {
+    approach: "removed",
+    reason: "never_confirmed",
+    note: "Steve 2026-09-08: take Madison / Newton County Day off the public calendar.",
+  },
   "hob-nob-bentonville-2026": {
     approach: "removed",
     reason: "conflict",
