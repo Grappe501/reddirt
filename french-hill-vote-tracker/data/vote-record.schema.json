@@ -2,15 +2,34 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "French Hill Vote Record",
   "type": "object",
+  "additionalProperties": true,
   "required": [
     "congress",
     "rollCall",
     "date",
     "measure",
     "hillVote",
+    "republicanYea",
+    "republicanNay",
+    "democratYea",
+    "democratNay",
+    "partyMajorityPosition",
+    "democratMajorityPosition",
+    "republicanUnityPct",
+    "democratUnityPct",
+    "partiesOpposed",
+    "highPartisanship",
+    "partisanshipScore",
+    "hillAlignedWithGop",
     "partyBreak",
+    "trumpPosition",
+    "trumpAligned",
     "trumpBreak",
-    "partisanIntensity",
+    "doubleBreak",
+    "highlyPartisanGopAlignment",
+    "highlyPartisanTrumpAlignment",
+    "highlyPartisanDoubleAlignment",
+    "classificationConfidence",
     "sources"
   ],
   "properties": {
@@ -22,27 +41,23 @@
     "issueArea": { "type": "string" },
     "hillVote": { "enum": ["Yea", "Nay", "Present", "Not Voting"] },
 
-    "republicanYea": { "type": ["integer", "null"] },
-    "republicanNay": { "type": ["integer", "null"] },
-    "democraticYea": { "type": ["integer", "null"] },
-    "democraticNay": { "type": ["integer", "null"] },
-    "republicanYeaPercent": { "type": ["number", "null"], "minimum": 0, "maximum": 100 },
-    "republicanNayPercent": { "type": ["number", "null"], "minimum": 0, "maximum": 100 },
-    "democraticYeaPercent": { "type": ["number", "null"], "minimum": 0, "maximum": 100 },
-    "democraticNayPercent": { "type": ["number", "null"], "minimum": 0, "maximum": 100 },
+    "republicanYea": { "type": "integer", "minimum": 0 },
+    "republicanNay": { "type": "integer", "minimum": 0 },
+    "democratYea": { "type": "integer", "minimum": 0 },
+    "democratNay": { "type": "integer", "minimum": 0 },
 
     "partyMajorityPosition": { "enum": ["Yea", "Nay", "Split", "Unknown"] },
+    "democratMajorityPosition": { "enum": ["Yea", "Nay", "Split", "Unknown"] },
+    "republicanUnityPct": { "type": ["number", "null"], "minimum": 0, "maximum": 100 },
+    "democratUnityPct": { "type": ["number", "null"], "minimum": 0, "maximum": 100 },
+    "partiesOpposed": { "type": "boolean" },
+    "highPartisanship": { "type": "boolean" },
+    "partisanshipScore": { "type": ["number", "null"], "minimum": 0, "maximum": 100 },
+    "hillAlignedWithGop": { "type": ["boolean", "null"] },
     "partyBreak": { "type": "boolean" },
-    "gopAlignment": { "type": "boolean" },
-
-    "partisanIntensity": { "enum": ["high", "medium", "low", "unscored"] },
-    "partisanIntensityScore": { "type": ["number", "null"], "minimum": 0, "maximum": 100 },
-    "highlyPartisan": { "type": "boolean" },
-    "partisanRuleVersion": { "type": "string" },
-    "partisanRuleExplanation": { "type": "string" },
 
     "trumpPosition": { "enum": ["Support", "Oppose", "Neutral", "Ambiguous", "No documented position"] },
-    "trumpAlignment": { "type": "boolean" },
+    "trumpAligned": { "type": ["boolean", "null"] },
     "trumpBreak": { "type": "boolean" },
     "doubleBreak": { "type": "boolean" },
     "highlyPartisanGopAlignment": { "type": "boolean" },
@@ -50,20 +65,29 @@
     "highlyPartisanDoubleAlignment": { "type": "boolean" },
 
     "trumpEvidenceSummary": { "type": "string" },
+    "trumpEvidenceStatus": { "enum": ["verified", "provisional", "ambiguous", "rejected"] },
+    "trumpEvidenceSources": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/source" }
+    },
     "plainLanguageSummary": { "type": "string" },
     "classificationConfidence": { "enum": ["high", "medium", "low"] },
     "notes": { "type": "string" },
     "sources": {
       "type": "array",
-      "items": {
-        "type": "object",
-        "required": ["label", "url", "sourceType"],
-        "properties": {
-          "label": { "type": "string" },
-          "url": { "type": "string", "format": "uri" },
-          "sourceType": { "enum": ["house", "congress", "official-trump", "archive", "news", "other"] },
-          "primary": { "type": "boolean" }
-        }
+      "items": { "$ref": "#/$defs/source" }
+    }
+  },
+  "$defs": {
+    "source": {
+      "type": "object",
+      "required": ["label", "url", "sourceType"],
+      "properties": {
+        "label": { "type": "string" },
+        "url": { "type": "string", "format": "uri" },
+        "sourceType": { "type": "string" },
+        "primary": { "type": "boolean" },
+        "publishedDate": { "type": "string", "format": "date" }
       }
     }
   }
