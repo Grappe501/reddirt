@@ -1,0 +1,34 @@
+[
+  {
+    "congress": 117,
+    "rollCall": 154,
+    "position": "Oppose",
+    "evidenceStatus": "verified",
+    "summary": "Donald Trump publicly opposed the proposed bipartisan January 6 commission before the House vote on H.R. 3233. French Hill voted Yea on final passage, opposite Trump's documented position.",
+    "effectiveDate": "2021-05-18",
+    "reviewNotes": "House Clerk roll call establishes Hill's vote and the party split. Contemporaneous reporting quotes Trump's opposition statement and identifies Hill among the 35 Republicans who voted for the commission.",
+    "sources": [
+      {
+        "label": "House Clerk Roll Call 154",
+        "url": "https://clerk.house.gov/Votes/2021154",
+        "sourceType": "house",
+        "primary": true,
+        "publishedDate": "2021-05-19"
+      },
+      {
+        "label": "Washington Post: House Republicans and Jan. 6 commission vote",
+        "url": "https://www.washingtonpost.com/politics/2021/05/19/jan-6-commission-vote/",
+        "sourceType": "news",
+        "primary": false,
+        "publishedDate": "2021-05-19"
+      },
+      {
+        "label": "Washington Post: Trump statement opposing Jan. 6 commission",
+        "url": "https://www.washingtonpost.com/politics/2021/05/19/power-up-house-gop-support-grows-jan-6-commission/",
+        "sourceType": "news",
+        "primary": false,
+        "publishedDate": "2021-05-19"
+      }
+    ]
+  }
+]
