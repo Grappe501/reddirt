@@ -296,6 +296,24 @@ export const CAMPAIGN_APPROACH_BY_SLUG: Record<string, CampaignApproachDecision>
     note: "Steve 2026-09-08: Oct 9 is OLLI for Coffee in Fayetteville.",
     ledgerIds: ["manual-2026-10-09-naacp-pine-bluff-dove-banquet"],
   },
+  "october-daze-booneville-2026": {
+    approach: "removed",
+    reason: "conflict",
+    note: "Steve 2026-09-08: take October Daze Booneville off the public calendar.",
+    ledgerIds: ["manual-2026-10-10-october-daze-booneville"],
+  },
+  "montgomery-county-oct-10-2026": {
+    approach: "removed",
+    reason: "conflict",
+    note: "Steve 2026-09-08: take the Oct 10 Montgomery County hold off the public calendar.",
+    ledgerIds: ["presence-2026-10-10-montgomery-county"],
+  },
+  "saline-old-fashioned-2026": {
+    approach: "removed",
+    reason: "conflict",
+    note: "Steve 2026-09-08: take Saline County Old Fashioned off the public calendar.",
+    ledgerIds: ["manual-2026-10-10-saline-old-fashioned"],
+  },
   "hob-nob-bentonville-2026": {
     approach: "removed",
     reason: "conflict",
