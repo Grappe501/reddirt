@@ -23,7 +23,11 @@ export async function POST(request: Request, context: { params: Promise<{ jobId:
       const origin = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") || new URL(request.url).origin;
       await kickDecisionSimulationWorker(jobId, origin);
     }
-    return NextResponse.json({ ok: true, ...result });
+    return NextResponse.json({
+      ok: result.ok,
+      done: result.done,
+      job: result.job ?? null,
+    });
   } catch (error) {
     const message = error instanceof Error ? error.message : "Worker failed.";
     return NextResponse.json({ ok: false, error: message }, { status: 500 });
