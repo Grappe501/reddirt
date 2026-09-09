@@ -1,0 +1,52 @@
+[
+  {
+    "congress": 116,
+    "rollCall": 155,
+    "position": "Support",
+    "evidenceStatus": "verified",
+    "summary": "President Trump publicly supported the Great American Outdoors Act and later signed it into law. French Hill voted Yea on House passage even though a majority of voting House Republicans voted Nay, making this a Trump alignment and Republican-majority break.",
+    "effectiveDate": "2020-07-22",
+    "reviewNotes": "House Clerk Roll Call 155 records Hill voting Yea. The Republican conference split 81 Yea to 104 Nay while Democrats voted 228 Yea to 2 Nay. Trump had publicly called for passage and signed the measure on August 4, 2020. This record is intentionally included in the divergence batch so the public dataset can surface Trump-aligned/GOP-break cases independently from ordinary Trump alignments.",
+    "sources": [
+      {
+        "label": "House Clerk Roll Call 155",
+        "url": "https://clerk.house.gov/Votes/2020155",
+        "sourceType": "house",
+        "primary": true,
+        "publishedDate": "2020-07-22"
+      },
+      {
+        "label": "Trump White House remarks at signing of the Great American Outdoors Act",
+        "url": "https://trumpwhitehouse.archives.gov/briefings-statements/remarks-president-trump-signing-h-r-1957-great-american-outdoors-act/",
+        "sourceType": "official-trump",
+        "primary": true,
+        "publishedDate": "2020-08-04"
+      }
+    ]
+  },
+  {
+    "congress": 116,
+    "rollCall": 253,
+    "position": "Oppose",
+    "evidenceStatus": "verified",
+    "summary": "President Trump vetoed the FY2021 National Defense Authorization Act. French Hill voted Yea to override that veto, opposite Trump's documented position, while a majority of voting House Republicans also supported the override.",
+    "effectiveDate": "2020-12-28",
+    "reviewNotes": "House Clerk Roll Call 253 records Hill voting Yea to override the President's veto of H.R. 6395. Republicans voted 109 Yea to 66 Nay and Democrats 212 Yea to 20 Nay. Trump's December 23 veto message returned H.R. 6395 without approval. This is therefore a Trump break but not a Republican-majority break.",
+    "sources": [
+      {
+        "label": "House Clerk Roll Call 253",
+        "url": "https://clerk.house.gov/Votes/2020253",
+        "sourceType": "house",
+        "primary": true,
+        "publishedDate": "2020-12-28"
+      },
+      {
+        "label": "Trump veto message for H.R. 6395",
+        "url": "https://trumpwhitehouse.archives.gov/briefings-statements/presidential-veto-message-house-representatives-h-r-6395/",
+        "sourceType": "official-trump",
+        "primary": true,
+        "publishedDate": "2020-12-23"
+      }
+    ]
+  }
+]
