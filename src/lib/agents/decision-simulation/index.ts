@@ -39,6 +39,8 @@ export {
   CHANNEL_INTAKE_FIELDS,
   splitCorrespondenceThread,
   CORRESPONDENCE_THREAD_VERSION,
+  inferNativeIntakeFields,
+  CHANNEL_NATIVE_PASTE_VERSION,
 } from "./correspondence-intake";
 export { getCampaignPrioritySnapshot, formatCampaignPrioritiesPromptLine } from "./campaign-priorities";
 export { getMediaResearchSnapshot, formatMediaResearchPromptLine } from "./media-research";

@@ -433,6 +433,11 @@ export function DecisionSimulatorClient() {
                 Thread: {threadPriorCount} earlier pasted turn{threadPriorCount === 1 ? "" : "s"}. Latest is the opening move. Not a mailbox fetch.
               </p>
             )}
+            {(intakePreview.inferred?.length ?? 0) > 0 && (
+              <p className="ml-copy">
+                Unlabeled paste filled {intakePreview.inferred.join(", ")}. Nothing was invented.
+              </p>
+            )}
             <div className="ml-row">
               {CHANNEL_INTAKE_FIELDS[channel].map((field) => (
                 <label key={field.key} className="ml-label">{field.label}

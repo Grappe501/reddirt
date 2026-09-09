@@ -3,7 +3,7 @@
 **Status:** Canonical from 2026-09-09. This is the **only** V2 shadow roadmap.  
 **Live product:** https://dec-sim.netlify.app  
 **Parent plan:** `DECISION_SIMULATION_MASTER_BUILD_PLAN_1_0.md`  
-**Next V1 slice:** Phase 6 remaining paste-first intake (no connectors). The hosted 100 live badge reads PROVEN. Phase 5 is not closed — a 1,000-run informative job and the Hill vote corpus remain.  
+**Next V1 slice:** Remaining Phase 6 paste-first depth after channel-native paste (`DEC-SIM-CHANNEL-NATIVE-PASTE-1.0`). No connectors. The hosted 100 live badge reads PROVEN. Phase 5 is not closed — a 1,000-run informative job and the Hill vote corpus remain.  
 **Doctrine unchanged:** advisory only; no send; no post; evidence separated from inference; generated language labeled generated.
 
 V1 is no longer a theoretical sequence. We are learning from a live product while we finish the dependable operating system.
@@ -32,7 +32,7 @@ We are still in **Phase 5**. Burt pulled forward pieces of Phases 7, 9, and 12 b
 | 3 OpenAI intelligence | Structured six-move generation | **Functional** | Server-side OpenAI, structured output, retries, token accounting |
 | 4 Actor / personality | Versioned researched models | **Substantially built** | Research models for Jones / Hill, open catalog, custom hypothesis personalities, OBSERVED / INFERRED / HYPOTHESIS tags. Writing-intelligence packets are a Phase 5 capability, not a Phase 4 or 9 close |
 | 5 Ensemble / six-move execution | Primary line + ensemble | **Open / current** | Live 1–10, queued 100 / 1,000, cost gates, seeded personality variation, cancel / retry, Netlify worker, NASA dashboard, first-party writing packets, Alternative Futures lane assignment, Hill vote adapter (corpus not yet located), `DEC-SIM-ENSEMBLE-LANE-INTELLIGENCE-1.0`, `DEC-SIM-HOSTED-ENSEMBLE-PROOF-1.0` (hosted 100 `ce565e97-cd3d-48a6-9f53-d19cb6e12fb7` live badge reads PROVEN), `DEC-SIM-STALE-RUNNING-RECLAIM-1.0`. Not a phase close |
-| 6 Correspondence intake | Rich paste-first channels | **Capability started** | `DEC-SIM-CORRESPONDENCE-INTAKE-1.0` + `DEC-SIM-CORRESPONDENCE-THREAD-1.0`: channel paste parse plus latest-vs-earlier thread split. No connectors. No attachment intelligence |
+| 6 Correspondence intake | Rich paste-first channels | **Capability started** | `DEC-SIM-CORRESPONDENCE-INTAKE-1.0` + `DEC-SIM-CORRESPONDENCE-THREAD-1.0` + `DEC-SIM-CHANNEL-NATIVE-PASTE-1.0`: labeled headers, thread split, and unlabeled social/SMS/press/debate cues. No connectors. No attachment intelligence |
 | 7 Decision dashboard | Operator command surface | **Capability started** | `DEC-SIM-DASHBOARD-INTELLIGENCE-1.0`: six-move sequence, branch explorer, scorecard, hypothesis revision, local save/compare, outcome attach. Not a phase close |
 | 8 Alternative Futures | Branching scenario lanes | **Capability started; not closed** | `DEC-SIM-ALTERNATIVE-FUTURES-1.0` assigns six named futures per run. Robustness is measured across futures. Hill legislative evidence attaches when the vote corpus is found |
 | 9 Memory & evidence | Provenance-backed recall | **Capability started** | `DEC-SIM-CAMPAIGN-PRIORITIES-1.0`, `DEC-SIM-MEDIA-RESEARCH-1.0`, and `DEC-SIM-EVIDENCE-PROVENANCE-1.0` (tagged claims + operator-attached prior letters). Still no evidence graph, stale-evidence decay, paid-archive completeness, or prior-sim retrieval |
@@ -63,7 +63,7 @@ Do not start V2 clustering, entropy dashboards, voice cloning, or multi-actor ga
 
 Execute in this order. Do not reorder to chase V2.
 
-1. **Phase 6 — richer correspondence intake.** Capability started (`DEC-SIM-CORRESPONDENCE-INTAKE-1.0` + `DEC-SIM-CORRESPONDENCE-THREAD-1.0`). Paste-first remains the rule. Latest thread turn is the opening. No mailbox connectors until the core simulator is stable.
+1. **Phase 6 — richer correspondence intake.** Capability started (`DEC-SIM-CORRESPONDENCE-INTAKE-1.0` + `DEC-SIM-CORRESPONDENCE-THREAD-1.0` + `DEC-SIM-CHANNEL-NATIVE-PASTE-1.0`). Paste-first remains the rule. Latest thread turn is the opening. No mailbox connectors until the core simulator is stable.
 2. **Phase 7 — dashboard intelligence.** Capability started (`DEC-SIM-DASHBOARD-INTELLIGENCE-1.0`). Sequence, branches, scorecard, hypothesis revision, local save/compare, and outcome attach are live. Keep the NASA lab. Do not turn it into a campaign site.
 3. **Phase 9 — evidence / memory.** Campaign-site priorities, media research, provenance-tagged claims, and operator-attached prior correspondence are started. Still no clickable graph, stale-evidence decay, or prior-sim retrieval. Missing stays missing.
 4. **Phase 10 — observed-outcome learning.** Capability started (`DEC-SIM-OBSERVED-OUTCOME-1.0` + `DEC-SIM-ENSEMBLE-OUTCOME-PERSIST-1.0`). Compare and ensemble persist are live. Remaining: operator-approved personality versioning. No silent prompt drift.
@@ -296,6 +296,10 @@ V1 parses pasted headers and splits a pasted thread. Fetching a mailbox, reading
 
 V1 reclaims a stuck RUNNING chunk and asks Netlify for a 60s worker window. Completing an OpenAI call after the function is killed, or refusing to claim when remaining duration is too short, remains V2. Do not add `waitUntil` OpenAI here.
 
+### V2-41 Channel auto-detect and live URL fetch
+
+V1 infers fields inside the channel the operator selected. Automatically switching the channel dropdown from a paste, or fetching a live social/press URL, remains V2. Do not add a scraper here.
+
 ## Boundary rules (agents)
 
 1. If a request improves Alternative Futures, intake, dashboard intelligence, evidence, outcome attach, or hardening — it is V1.
@@ -308,4 +312,4 @@ V1 reclaims a stuck RUNNING chunk and asks Netlify for a 60s worker window. Comp
 
 ## Next operator click
 
-Phase 5 remains open. Alternative Futures, intake, thread-aware paste, dashboard intelligence, campaign-site priorities, media research, evidence provenance, ensemble-lane intelligence, observed-outcome compare, ensemble outcome persist, worker continuity, hosted-proof scoring, and stale-running reclaim are capabilities, not phase closes. The hosted 100 live badge reads PROVEN. Named next V1 work is remaining Phase 6 paste-first intake. Do not start V2-21+.
+Phase 5 remains open. Alternative Futures, intake, thread-aware paste, channel-native paste, dashboard intelligence, campaign-site priorities, media research, evidence provenance, ensemble-lane intelligence, observed-outcome compare, ensemble outcome persist, worker continuity, hosted-proof scoring, and stale-running reclaim are capabilities, not phase closes. The hosted 100 live badge reads PROVEN. Named next V1 work is remaining Phase 6 paste-first depth. Do not start V2-21+.

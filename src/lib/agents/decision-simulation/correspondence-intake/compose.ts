@@ -23,6 +23,9 @@ export function composeCorrespondenceOpening(input: {
     `Channel: ${parsed.channel}. Connectors=DISABLED. This is a pasted artifact, not a mailbox fetch.`,
     ...CHANNEL_INTAKE_FIELDS[parsed.channel].map((def) => `${def.label}: ${parsed.fields[def.key] ?? "unknown"}`),
     parsed.unknown.length ? `Unknown structured fields: ${parsed.unknown.join(", ")}.` : "All structured fields for this channel were supplied.",
+    ...((parsed.inferred ?? []).length
+      ? [`Inferred from unlabeled paste: ${parsed.inferred.join(", ")}. Nothing was invented.`]
+      : []),
     ...formatThreadIntakeLines(parsed.thread),
     "Do not invent recipients, venues, questions, or headers that were not supplied.",
     "Do not send, schedule, or post this correspondence.",
@@ -39,6 +42,9 @@ export function formatCorrespondenceIntakePacket(intake?: CorrespondenceIntake |
     intake.unknown.length
       ? `Unknown structured fields: ${intake.unknown.join(", ")}.`
       : "All structured fields for this channel were supplied.",
+    ...((intake.inferred ?? []).length
+      ? [`Inferred from unlabeled paste: ${intake.inferred.join(", ")}. Nothing was invented.`]
+      : []),
     ...formatThreadIntakeLines(intake.thread),
     "Do not invent recipients, venues, questions, or headers that were not supplied.",
     "Do not send, schedule, or post this correspondence.",

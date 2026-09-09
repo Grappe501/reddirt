@@ -87,5 +87,6 @@ export type CorrespondenceIntake = {
   parsedFromPaste: boolean;
   connectorsEnabled: false;
   unknown: string[];
+  inferred: IntakeFieldKey[];
   thread?: CorrespondenceThread;
 };

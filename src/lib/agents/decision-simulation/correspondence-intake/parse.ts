@@ -5,6 +5,7 @@ import {
   type CorrespondenceIntake,
   type IntakeFieldKey,
 } from "./contracts";
+import { inferNativeIntakeFields } from "./native-fields";
 import { splitCorrespondenceThread } from "./thread";
 
 const HEADER_LINE = /^([A-Za-z][A-Za-z0-9 /_-]{0,40})\s*:\s*(.*)$/;
@@ -49,19 +50,21 @@ export function parseCorrespondencePaste(raw: string, channel: DecisionSimulatio
   const rawBody = lines.slice(cursor).join("\n").trim();
   const fallback = rawBody || (!sawHeader ? text.trim() : "");
   const { latest, thread } = splitCorrespondenceThread(fallback);
+  const native = inferNativeIntakeFields(channel, latest || fallback, fields);
   const unknown: string[] = [];
   for (const def of defs) {
-    if (!fields[def.key]) unknown.push(def.key);
+    if (!native.fields[def.key]) unknown.push(def.key);
   }
 
   return {
     version: CORRESPONDENCE_INTAKE_VERSION,
     channel,
-    body: latest || fallback,
-    fields,
-    parsedFromPaste: sawHeader || thread.priorCount > 0 || thread.quotesStripped,
+    body: native.body,
+    fields: native.fields,
+    parsedFromPaste: sawHeader || thread.priorCount > 0 || thread.quotesStripped || native.inferred.length > 0,
     connectorsEnabled: false,
     unknown,
+    inferred: native.inferred,
     thread,
   };
 }
@@ -79,5 +82,6 @@ export function mergeIntakeFields(
   const unknown = CHANNEL_INTAKE_FIELDS[intake.channel]
     .map((def) => def.key)
     .filter((key) => !fields[key]);
-  return { ...intake, fields, unknown };
+  const inferred = (intake.inferred ?? []).filter((key) => Boolean(fields[key]));
+  return { ...intake, fields, unknown, inferred };
 }
