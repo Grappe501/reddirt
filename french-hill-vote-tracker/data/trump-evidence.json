@@ -1,5 +1,69 @@
 [
   {
+    "congress": 115,
+    "rollCall": 480,
+    "position": "Support",
+    "evidenceStatus": "verified",
+    "summary": "President Trump backed the September 2017 package combining Hurricane Harvey relief with a short-term government funding measure and debt-limit extension. French Hill voted Nay on final House passage, opposite Trump's documented position.",
+    "effectiveDate": "2017-09-06",
+    "reviewNotes": "House Clerk Roll Call 480 records Hill voting Nay on the final House vote, which passed 316-90. Contemporaneous Roll Call reporting documented that Trump agreed to and publicly backed the three-month debt-limit and government-funding deal attached to disaster relief.",
+    "sources": [
+      {
+        "label": "House Clerk Roll Call 480",
+        "url": "https://clerk.house.gov/Votes/2017480",
+        "sourceType": "house",
+        "primary": true,
+        "publishedDate": "2017-09-08"
+      },
+      {
+        "label": "Roll Call: Trump sides with Democrats on debt and spending deal",
+        "url": "https://rollcall.com/2017/09/06/trump-sides-with-dems-as-debt-spending-deals-struck/",
+        "sourceType": "news",
+        "primary": false,
+        "publishedDate": "2017-09-06"
+      },
+      {
+        "label": "French Hill statement after voting against the package",
+        "url": "https://hill.house.gov/news/documentquery.aspx?DocumentTypeID=27&Month=9&Year=2017",
+        "sourceType": "other",
+        "primary": true,
+        "publishedDate": "2017-09-08"
+      }
+    ]
+  },
+  {
+    "congress": 115,
+    "rollCall": 699,
+    "position": "Support",
+    "evidenceStatus": "verified",
+    "summary": "President Trump strongly supported final passage of the Tax Cuts and Jobs Act. French Hill voted Yea on the final House vote, aligned with Trump's documented position.",
+    "effectiveDate": "2017-12-20",
+    "reviewNotes": "House Clerk Roll Call 699 records Hill voting Yea. The archived Trump White House issued a same-day statement praising final passage, and Hill later publicly thanked Trump for signing the measure into law.",
+    "sources": [
+      {
+        "label": "House Clerk Roll Call 699",
+        "url": "https://clerk.house.gov/Votes/2017699",
+        "sourceType": "house",
+        "primary": true,
+        "publishedDate": "2017-12-20"
+      },
+      {
+        "label": "Trump White House statement on final passage of tax legislation",
+        "url": "https://trumpwhitehouse.archives.gov/briefings-statements/statement-president-donald-j-trump-regarding-final-passage-tax-legislation/",
+        "sourceType": "official-trump",
+        "primary": true,
+        "publishedDate": "2017-12-20"
+      },
+      {
+        "label": "French Hill statement after Trump signed tax reform",
+        "url": "https://hill.house.gov/news/documentsingle.aspx?DocumentID=1520",
+        "sourceType": "other",
+        "primary": true,
+        "publishedDate": "2017-12-22"
+      }
+    ]
+  },
+  {
     "congress": 117,
     "rollCall": 10,
     "position": "Support",
