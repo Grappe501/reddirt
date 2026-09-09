@@ -6,6 +6,7 @@ export type TrumpEvidenceRecord = {
   congress: number;
   rollCall: number;
   position: "Support" | "Oppose" | "Neutral" | "Ambiguous";
+  preferredVote?: "Yea" | "Nay" | null;
   evidenceStatus: "verified" | "provisional" | "ambiguous" | "rejected";
   summary: string;
   effectiveDate?: string;
@@ -44,17 +45,23 @@ export function trumpEvidenceKey(record: Pick<TrumpEvidenceRecord, "congress" | 
   return `${record.congress}-${record.rollCall}`;
 }
 
-function hillAlignedWithPosition(hillVote: LedgerVote["hillVote"], position: TrumpEvidenceRecord["position"]): boolean | null {
-  if (hillVote !== "Yea" && hillVote !== "Nay") return null;
-  if (position === "Support") return hillVote === "Yea";
-  if (position === "Oppose") return hillVote === "Nay";
+function legacyPreferredVote(position: TrumpEvidenceRecord["position"]): "Yea" | "Nay" | null {
+  if (position === "Support") return "Yea";
+  if (position === "Oppose") return "Nay";
   return null;
+}
+
+function hillAlignedWithPosition(hillVote: LedgerVote["hillVote"], evidence: TrumpEvidenceRecord): boolean | null {
+  if (hillVote !== "Yea" && hillVote !== "Nay") return null;
+  const preferredVote = evidence.preferredVote ?? legacyPreferredVote(evidence.position);
+  if (!preferredVote) return null;
+  return hillVote === preferredVote;
 }
 
 export function applyTrumpEvidence(vote: LedgerVote, evidence?: TrumpEvidenceRecord): LedgerVote {
   if (!evidence || evidence.evidenceStatus !== "verified") return vote;
 
-  const trumpAligned = hillAlignedWithPosition(vote.hillVote, evidence.position);
+  const trumpAligned = hillAlignedWithPosition(vote.hillVote, evidence);
   const trumpBreak = trumpAligned === false;
   const mergedSources = [...(vote.sources ?? []), ...evidence.sources.filter((source) => !vote.sources?.some((existing) => existing.url === source.url))];
 
