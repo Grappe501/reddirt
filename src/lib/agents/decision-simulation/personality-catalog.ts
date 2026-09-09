@@ -67,13 +67,13 @@ export const chrisJonesPersonality: CatalogPersonality = {
   office: "Democratic nominee, U.S. House Arkansas 2nd District (2026)",
   partyLabel: "Democratic",
   roleDefault: "OPERATOR",
-  version: "jones-ar02-research-1.1",
+  version: "jones-ar02-research-1.2",
   effectiveAt: `${TODAY}T00:00:00.000Z`,
   evidenceQuality: "MIXED",
   uncertaintyLevel: "MEDIUM",
   badge: "RESEARCH MODEL",
   summary:
-    "Public biographical and campaign record only. Not a psychological profile. Frames below are tagged OBSERVED / INFERRED / HYPOTHESIS.",
+    "Public biographical, campaign, and named-outlet media record only. Not a psychological profile. Frames below are tagged OBSERVED / INFERRED / HYPOTHESIS.",
   facts: [
     "Pine Bluff native; 2022 Democratic nominee for Arkansas governor (lost to Sarah Huckabee Sanders).",
     "Morehouse College: B.S. mathematics and B.S. physics; NASA scholarship; summer NASA internships.",
@@ -86,6 +86,8 @@ export const chrisJonesPersonality: CatalogPersonality = {
     "Campaign site (chrisjonesforcongress.com, accessed 2026-09-09) names three pillars: Affordability For All, Accountability For All, Opportunity For All.",
     "Homepage commitment blocks: Jobs & Local Economy; Families & Health; Schools & Innovation; Democracy for the People.",
     "About page: four legs of the table — justice, economy, democracy, innovation; headings Economy, Democracy, Growth, Entrepreneurship.",
+    "Named-outlet interviews (2022–2026) repeatedly quote affordability, accountability, rural hospitals, housing/grocery/utility costs, and a public-school resource floor.",
+    "2022 gubernatorial media used PB&J (preschool, broadband, jobs) as the statewide investment frame.",
   ],
   sources: [
     { label: "Ballotpedia — Chris Jones (AR congressional candidate)", url: "https://ballotpedia.org/Chris_Jones_(Arkansas_congressional_candidate)", accessed: TODAY },
@@ -96,6 +98,9 @@ export const chrisJonesPersonality: CatalogPersonality = {
     { label: "Campaign site — Accountability For All", url: "https://chrisjonesforcongress.com/accountability/", accessed: TODAY },
     { label: "Campaign site — Opportunity For All", url: "https://chrisjonesforcongress.com/opportunity/", accessed: TODAY },
     { label: "Campaign site — Meet Chris", url: "https://chrisjonesforcongress.com/about/", accessed: TODAY },
+    { label: "Talk Business — congressional launch, Oct 9 2025", url: "https://talkbusiness.net/2025/10/chris-jones-officially-launches-bid-for-congress/", accessed: TODAY },
+    { label: "KATV — Jones accountability interview, Feb 11 2026", url: "https://katv.com/news/local/arkansas-2nd-district-showdown-as-march-3rd-nears-chris-jones-calls-for-accountability", accessed: TODAY },
+    { label: "Arkansas Money & Politics — Jones interview, Jul 16 2026", url: "https://armoneyandpolitics.com/chris-jones-back-in-political-saddle/", accessed: TODAY },
     { label: "Ballotpedia — AR-02 2026", url: "https://ballotpedia.org/Arkansas%27_2nd_Congressional_District_election,_2026", accessed: TODAY },
   ],
   learningNote:
@@ -103,7 +108,7 @@ export const chrisJonesPersonality: CatalogPersonality = {
   model: {
     actorId: "chris-jones-ar02",
     actorName: "Dr. Chris Jones",
-    version: "jones-ar02-research-1.1",
+    version: "jones-ar02-research-1.2",
     effectiveAt: `${TODAY}T00:00:00.000Z`,
     description:
       "Research-bounded operator/challenger model for Arkansas's 2nd District. Use only public biographical and campaign-record facts. Do not invent private motives or unsourced attacks.",
@@ -124,6 +129,9 @@ export const chrisJonesPersonality: CatalogPersonality = {
       frame("Opportunity via jobs, rural broadband, and small business", 0.9, "HIGH", "OBSERVED", "chrisjonesforcongress.com/opportunity"),
       frame("Democracy for the people / fair maps", 0.8, "HIGH", "OBSERVED", "chrisjonesforcongress.com home commitment"),
       frame("Families and health, including maternal health and food security", 0.8, "HIGH", "OBSERVED", "chrisjonesforcongress.com home"),
+      frame("Rural hospitals, Medicaid, and emergency-response time", 0.85, "HIGH", "OBSERVED", "KATV 2026-02-11; AR Money & Politics 2026-07-16"),
+      frame("Tariffs as taxes; Farm Bill and food security", 0.7, "HIGH", "OBSERVED", "KATV 2026-02-11"),
+      frame("Public-school resource floor", 0.7, "HIGH", "OBSERVED", "AR Money & Politics 2026-07-16"),
       frame("Scientist-minister-builder identity", 0.75, "MEDIUM", "OBSERVED", "NASA scholarship, MIT degrees, ordained minister"),
     ],
     attackLanes: [
@@ -163,13 +171,13 @@ export const frenchHillPersonality: CatalogPersonality = {
   office: "U.S. Representative, Arkansas 2nd District (incumbent since 2015)",
   partyLabel: "Republican",
   roleDefault: "COUNTERPARTY",
-  version: "hill-ar02-research-1.1",
+  version: "hill-ar02-research-1.2",
   effectiveAt: `${TODAY}T00:00:00.000Z`,
   evidenceQuality: "MIXED",
   uncertaintyLevel: "MEDIUM",
   badge: "RESEARCH MODEL",
   summary:
-    "Public office, career, and official-communications record only. Not a psychological profile. No opponent-campaign characterizations are treated as fact.",
+    "Public office, career, official-communications, and named-outlet media record only. Not a psychological profile. No opponent-campaign characterizations are treated as fact.",
   facts: [
     "Ninth-generation Arkansan; Little Rock resident; Vanderbilt B.A. Economics, magna cum laude.",
     "U.S. Representative for AR-02 since January 2015.",
@@ -181,9 +189,13 @@ export const frenchHillPersonality: CatalogPersonality = {
     "2026 campaign site (electfrench.com, accessed 2026-09-09) slogan: Promises Made. Promises Kept.",
     "Campaign issue blocks: taxes/jobs/economic prosperity; border; veterans; seniors; conservation; fiscal waste; conservative family values.",
     "Campaign-stated economic examples include Working Families Tax Cut items, Price Stability Act, 21st Century Housing Bill, INVEST Act, and a stablecoin framework.",
+    "Named-outlet 2026 interviews quote housing-supply law, HUD accountability, community-bank capital, a Fed inflation mandate, tax/border delivery, and veterans casework.",
   ],
   sources: [
     { label: "Campaign site — French Hill for Congress", url: "https://www.electfrench.com/", accessed: TODAY },
+    { label: "Arkansas Money & Politics — Hill interview, Aug 14 2026", url: "https://armoneyandpolitics.com/experience-matters-rep-french-hill/", accessed: TODAY },
+    { label: "Talk Business — housing law, Jul 11 2026", url: "https://talkbusiness.net/2026/07/rep-hill-says-president-administration-supportive-of-new-housing-law/", accessed: TODAY },
+    { label: "House Financial Services — ROAD to Housing Act becomes law", url: "https://financialservices.house.gov/news/documentsingle.aspx?DocumentID=411189", accessed: TODAY },
     { label: "Official House biography", url: "https://hill.house.gov/biography/", accessed: TODAY },
     { label: "Wikipedia — James French Hill", url: "https://en.wikipedia.org/wiki/James_French_Hill", accessed: TODAY },
     { label: "Ballotpedia — AR-02 2026", url: "https://ballotpedia.org/Arkansas%27_2nd_Congressional_District_election,_2026", accessed: TODAY },
@@ -194,7 +206,7 @@ export const frenchHillPersonality: CatalogPersonality = {
   model: {
     actorId: "french-hill-ar02",
     actorName: "Rep. French Hill",
-    version: "hill-ar02-research-1.1",
+    version: "hill-ar02-research-1.2",
     effectiveAt: `${TODAY}T00:00:00.000Z`,
     description:
       "Research-bounded incumbent model. Grounded in official biography and public legislative/communications record. Do not use unsourced opponent claims.",
@@ -212,7 +224,9 @@ export const frenchHillPersonality: CatalogPersonality = {
     ],
     preferredFrames: [
       frame("Taxes, jobs, and cost relief (tips, overtime, inflation)", 1, "HIGH", "OBSERVED", "electfrench.com Taxes, jobs & economic prosperity"),
-      frame("Housing supply and capital access", 0.9, "HIGH", "OBSERVED", "21st Century Housing Bill and INVEST Act on campaign site"),
+      frame("Housing supply and capital access", 0.9, "HIGH", "OBSERVED", "21st Century Housing Bill; AMP 2026-08-14; committee release 2026-07-11"),
+      frame("HUD accountability in Little Rock housing delivery", 0.8, "HIGH", "OBSERVED", "AR Money & Politics 2026-08-14"),
+      frame("Federal Reserve inflation mandate / Price Stability Act", 0.8, "HIGH", "OBSERVED", "AR Money & Politics 2026-08-14"),
       frame("Financial services and digital-asset framework", 0.9, "HIGH", "OBSERVED", "Committee chair; campaign stablecoin / Clarity Act note"),
       frame("Waste, fraud, and agency accountability", 0.85, "HIGH", "OBSERVED", "Golden Fleece on campaign and official sites"),
       frame("Veterans and seniors service", 0.8, "HIGH", "OBSERVED", "electfrench.com heroes and seniors blocks"),

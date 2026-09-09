@@ -87,6 +87,7 @@ export function DecisionIntelligence({
     () => [
       "Personality sources stay on the left dossier. This drawer does not invent votes or private statements.",
       "Jones and Hill immediate priorities are attached from first-party campaign pages accessed 2026-09-09.",
+      "Historic media clips are DISCOVERY_ONLY short excerpts from named outlets. Missing archives stay missing.",
       "Hill legislative vote corpus is MISSING unless a first-party tracker is later attached.",
       "Unknown headers, venues, and recipients stay unknown.",
       "A generated six-move sequence is not evidence about a real person.",

@@ -1,4 +1,5 @@
 import { getCampaignPrioritySnapshot } from "@/lib/agents/decision-simulation/campaign-priorities";
+import { getMediaResearchSnapshot } from "@/lib/agents/decision-simulation/media-research";
 import type { CatalogPersonality } from "@/lib/agents/decision-simulation/personality-catalog";
 import { getHillLegislativeDashboard } from "@/lib/agents/decision-simulation/vote-intelligence/dashboard";
 import {
@@ -76,13 +77,14 @@ export function PersonalityIntelligence({
   return (
     <div>
       <h2 className="ml-h" style={{ marginTop: 22 }}>Personality intelligence</h2>
-      <p className="ml-copy">First-party public writing only. Scores are corpus detector rates, not invented personality labels. Generated language is never a quote.</p>
+      <p className="ml-copy">First-party writing and campaign pages stay separate from media discovery clips. Scores are corpus detector rates. Generated language is never a quote.</p>
       {customMissing.map((item) => (
         <div key={item.id} className="ml-warn">Custom model {item.name} remains HYPOTHESIS until sources are attached.</div>
       ))}
       {researched.map((item) => (
         <div key={item.id}>
           <CampaignPriorities actorId={item.id} />
+          <MediaResearch actorId={item.id} />
           <IntelCard intel={buildActorWritingIntelligence(item.id as "chris-jones-ar02" | "french-hill-ar02")} />
         </div>
       ))}
@@ -113,6 +115,35 @@ function CampaignPriorities({ actorId }: { actorId: string }) {
       </ul>
       <ul className="ml-sources">
         {snap.uncertainty.map((item) => <li key={item}>{item}</li>)}
+      </ul>
+    </div>
+  );
+}
+
+function MediaResearch({ actorId }: { actorId: string }) {
+  const snap = getMediaResearchSnapshot(actorId);
+  if (!snap) return null;
+  return (
+    <div className="ml-actor">
+      <div style={{ display: "flex", justifyContent: "space-between", gap: 8 }}>
+        <b>Historic media research</b>
+        <span className="ml-badge research">{snap.clipCount} clips</span>
+      </div>
+      <p>
+        DISCOVERY_ONLY. Named outlets, short excerpts, accessed {snap.accessed}. Not a complete archive. Generated language is never one of these quotes.
+      </p>
+      <p>Topics: {snap.topics.join(" · ")}</p>
+      <ul className="ml-sources">
+        {snap.clips.map((item) => (
+          <li key={item.id}>
+            <b>{item.outlet} [{item.quoteKind}]</b> — “{item.quote}”{" "}
+            <a href={item.url} target="_blank" rel="noreferrer">{item.publishedAt}</a>
+            {item.notes ? ` ${item.notes}` : ""}
+          </li>
+        ))}
+      </ul>
+      <ul className="ml-sources">
+        {snap.missing.map((item) => <li key={item}>{item}</li>)}
       </ul>
     </div>
   );
