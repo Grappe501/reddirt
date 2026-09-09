@@ -8,7 +8,10 @@
     "start": "next start",
     "typecheck": "tsc --noEmit",
     "test:partisanship": "tsx scripts/test-partisanship.ts",
-    "check": "npm run typecheck && npm run test:partisanship"
+    "test:house-xml": "tsx scripts/test-house-xml.ts",
+    "ingest:house": "tsx scripts/ingest-house-rollcalls.ts",
+    "ingest:2015": "tsx scripts/ingest-house-rollcalls.ts 2015",
+    "check": "npm run typecheck && npm run test:partisanship && npm run test:house-xml"
   },
   "dependencies": {
     "next": "16.0.1",
