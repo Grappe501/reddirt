@@ -172,6 +172,24 @@ export const CAMPAIGN_APPROACH_BY_SLUG: Record<string, CampaignApproachDecision>
     note: "Steve 2026-09-08: take the Sep 30 Hot Springs city library forum off the public calendar.",
     ledgerIds: ["manual-2026-09-30-garland-library-city-forum"],
   },
+  "garland-library-state-federal-candidates-forum-2026": {
+    approach: "removed",
+    reason: "conflict",
+    note: "Steve 2026-09-08: take Sep 29 State & Federal library forum off the public calendar.",
+    ledgerIds: ["manual-2026-09-29-garland-library-state-federal-forum"],
+  },
+  "evening-with-acasa-2026": {
+    approach: "removed",
+    reason: "conflict",
+    note: "Steve 2026-09-08: take Sep 29 Evening with ACASA off the public calendar.",
+    ledgerIds: ["manual-2026-09-29-evening-with-acasa"],
+  },
+  "eddie-mae-herron-pocahontas-2026": {
+    approach: "removed",
+    reason: "conflict",
+    note: "Steve 2026-09-08: take Sep 29 Eddie Mae Herron off the public calendar.",
+    ledgerIds: ["manual-2026-09-29-eddie-mae-herron-pocahontas"],
+  },
   "crittenden-prairie-arkansas-swing-2026-09-23": {
     approach: "removed",
     reason: "never_confirmed",
@@ -322,13 +340,8 @@ export const CAMPAIGN_APPROACH_BY_SLUG: Record<string, CampaignApproachDecision>
   },
 };
 
-/** Steve 2026-09-08: September 29 four-way stays on the board as red caution. */
-const CAUTION_SLUGS = new Set([
-  "eddie-mae-herron-pocahontas-2026",
-  "evening-with-acasa-2026",
-  "jcdw-meet-the-candidates-2026",
-  "garland-library-state-federal-candidates-forum-2026",
-]);
+/** Empty — Steve 2026-09-08 took the September 29 four-way off except leftover cards he did not name. */
+const CAUTION_SLUGS = new Set<string>([]);
 
 export function campaignApproachForSlug(slug: string): CampaignApproachDecision | undefined {
   return CAMPAIGN_APPROACH_BY_SLUG[slug];
