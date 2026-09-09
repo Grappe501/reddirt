@@ -18,6 +18,8 @@ import {
   type IntakeFieldKey,
 } from "@/lib/agents/decision-simulation/correspondence-intake";
 import { PersonalityIntelligence } from "./PersonalityIntelligence";
+import { DecisionIntelligence } from "./DecisionIntelligence";
+import type { DashboardIntelligencePayload, SavedScenario } from "@/lib/agents/decision-simulation/dashboard-intelligence";
 import "./mission-lab.css";
 
 type RunPreset = 1 | 10 | 100 | 1000;
@@ -80,6 +82,9 @@ type JobView = {
     };
     uncertainty: string[];
   } | null;
+  members?: Member[];
+  opening?: string;
+  dashboard?: DashboardIntelligencePayload | null;
 };
 type EnsembleResult = {
   completedRuns: number;
@@ -298,7 +303,17 @@ export function DecisionSimulatorClient() {
 
   const result = response?.result;
   const command = job?.commandCenter;
+  const dashboard = job?.dashboard ?? null;
   const now = new Date().toISOString().replace(".000Z", "Z");
+
+  function loadScenario(scenario: SavedScenario) {
+    setMessage(scenario.opening);
+    setChannel((CHANNELS.includes(scenario.channel as DecisionSimulationChannel) ? scenario.channel : channel) as DecisionSimulationChannel);
+    setObjective(scenario.objective);
+    setContext(scenario.context);
+    setOperatorId(scenario.operatorId);
+    setCounterpartyId(scenario.counterpartyId);
+  }
 
   return (
     <div className="ml-root">
@@ -537,6 +552,19 @@ export function DecisionSimulatorClient() {
                 <div className="ml-stat"><b>{result.tokenUsage.totalTokens.toLocaleString()}</b><span>Tokens</span></div>
               </div>
             )}
+
+            <DecisionIntelligence
+              jobId={job?.id}
+              opening={job?.opening || message}
+              channel={channel}
+              objective={objective}
+              context={context}
+              operatorId={operatorId}
+              counterpartyId={counterpartyId}
+              dashboard={dashboard}
+              onApplyOpening={(text) => setMessage(text)}
+              onLoadScenario={loadScenario}
+            />
           </section>
         </div>
       </div>

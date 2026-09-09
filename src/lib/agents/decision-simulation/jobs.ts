@@ -3,6 +3,12 @@ import { prisma } from "@/lib/db";
 import { DECISION_SIMULATION_DOCTRINE_VERSION } from "./doctrine";
 import { estimateDecisionSimulationCost } from "./cost-estimate";
 import {
+  buildDashboardIntelligencePayload,
+  normalizeDashboardMember,
+  selectDashboardMembers,
+  type DashboardIntelligencePayload,
+} from "./dashboard-intelligence";
+import {
   buildDecisionSimulationCommandCenter,
   jobProgressPercent,
   planQueuedDecisionSimulationJob,
@@ -96,6 +102,9 @@ export type DecisionSimulationJobView = {
   aggregate: unknown;
   commandCenter: ReturnType<typeof buildDecisionSimulationCommandCenter> | null;
   representativeRuns: unknown[];
+  members: CommandCenterMember[];
+  opening: string;
+  dashboard: DashboardIntelligencePayload | null;
 };
 
 function asJobView(
@@ -106,11 +115,19 @@ function asJobView(
     members?: CommandCenterMember[];
     frames?: Array<{ frame: string; count: number; share?: number }>;
     finals?: Array<{ recommendation?: string; frame?: string; count: number; share?: number }>;
+    opening?: string;
   } = {},
 ): DecisionSimulationJobView {
-  const members = extra.members ?? [];
+  const members = (extra.members ?? []).map(normalizeDashboardMember);
   const frames = extra.frames ?? [];
   const finals = extra.finals ?? [];
+  const opening = extra.opening ?? "";
+  const commandCenter =
+    members.length || frames.length
+      ? buildDecisionSimulationCommandCenter(row.requested_runs, members, frames, finals)
+      : null;
+  const laneFrame = (futureId: string) =>
+    commandCenter?.robustness.lanes.find((lane) => lane.futureId === futureId)?.modalFrame ?? null;
   return {
     id: row.id,
     status: row.status,
@@ -136,11 +153,23 @@ function asJobView(
     completedAt: row.completed_at?.toISOString() ?? null,
     cancelledAt: row.cancelled_at?.toISOString() ?? null,
     aggregate: extra.aggregate ?? null,
-    commandCenter:
-      members.length || frames.length
-        ? buildDecisionSimulationCommandCenter(row.requested_runs, members, frames, finals)
-        : null,
+    commandCenter,
     representativeRuns: members.slice(0, 5),
+    members: selectDashboardMembers(members),
+    opening,
+    dashboard: commandCenter
+      ? buildDashboardIntelligencePayload({
+          members,
+          opening,
+          modelConfidence: commandCenter.modelConfidence,
+          outlierRate: commandCenter.outlierRate,
+          robustnessScore: commandCenter.robustness.robustnessScore,
+          dominantFrame: commandCenter.dominantResponseFrame,
+          strongestCounter: commandCenter.strongestRecommendedCounter,
+          expectedFrame: laneFrame("EXPECTED") ?? commandCenter.representative.expected?.frame ?? null,
+          hostileFrame: laneFrame("HOSTILE") ?? commandCenter.representative.hostileOutlier?.frame ?? null,
+        })
+      : null,
   };
 }
 
@@ -306,8 +335,10 @@ export async function getDecisionSimulationJob(jobId: string) {
       count: number;
       share?: number;
     }>) ?? [];
+  const snapshot = (row.input_snapshot ?? {}) as { openingInput?: { message?: string } };
   return asJobView(row, {
     aggregate: agg[0] ?? null,
+    opening: snapshot.openingInput?.message ?? "",
     chunks: chunkRows.map((chunk) => ({
       ordinal: chunk.chunk_ordinal,
       status: chunk.status,

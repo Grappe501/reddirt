@@ -35,6 +35,15 @@ export { ALTERNATIVE_FUTURES } from "./alternative-futures/contracts";
 export { scoreRobustnessAcrossFutures } from "./alternative-futures/robustness";
 export { parseCorrespondencePaste, composeCorrespondenceOpening, CHANNEL_INTAKE_FIELDS } from "./correspondence-intake";
 export {
+  buildDashboardScorecard,
+  buildDashboardIntelligencePayload,
+  recommendOpeningRevision,
+  upsertScenario,
+  duplicateScenario,
+  upsertOutcome,
+  normalizeDashboardMember,
+} from "./dashboard-intelligence";
+export {
   jobProgressPercent,
   planQueuedDecisionSimulationJob,
   buildInitialJobState,

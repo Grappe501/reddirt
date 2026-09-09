@@ -157,6 +157,7 @@ export type CommandCenterMember = {
     side: string;
     message: string;
     predictedFrame?: string;
+    rationaleSummary?: string;
   }>;
 };
 

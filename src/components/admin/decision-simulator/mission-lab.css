@@ -243,3 +243,53 @@
   margin-right: 8px;
 }
 .ml-meter > i { display: block; height: 100%; background: var(--ml-cyan); }
+
+.ml-ply { display: grid; gap: 8px; margin-top: 8px; }
+.ml-ply-item {
+  border: 1px solid var(--ml-line);
+  background: var(--ml-panel-2);
+  padding: 10px 12px;
+}
+.ml-ply-item.operator { border-left: 3px solid var(--ml-cyan); }
+.ml-ply-item.counter { border-left: 3px solid var(--ml-amber); }
+.ml-ply-item header {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  font-family: var(--ml-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ml-dim);
+}
+.ml-ply-item p { margin: 8px 0 0; font-size: 13px; line-height: 1.45; }
+
+.ml-branches {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 8px;
+}
+.ml-branch {
+  border: 1px solid var(--ml-line);
+  background: var(--ml-panel-2);
+  color: var(--ml-text);
+  text-align: left;
+  padding: 10px;
+  cursor: pointer;
+}
+.ml-branch.on { border-color: var(--ml-cyan); background: #10202b; }
+.ml-branch b { display: block; font-size: 12px; }
+.ml-branch small { color: var(--ml-dim); font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; }
+
+.ml-revision {
+  white-space: pre-wrap;
+  margin: 10px 0;
+  padding: 10px 12px;
+  background: var(--ml-panel-2);
+  border: 1px solid var(--ml-line);
+  color: var(--ml-text);
+  font-size: 13px;
+  line-height: 1.45;
+  font-family: var(--ml-sans);
+}

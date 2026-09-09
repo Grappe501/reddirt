@@ -3,7 +3,7 @@
 **Status:** Canonical from 2026-09-09. This is the **only** V2 shadow roadmap.  
 **Live product:** https://dec-sim.netlify.app  
 **Parent plan:** `DECISION_SIMULATION_MASTER_BUILD_PLAN_1_0.md`  
-**Next V1 slice:** `DEC-SIM-CORRESPONDENCE-INTAKE-1.0`  
+**Next V1 slice:** Phase 9 evidence / memory. Dashboard intelligence is a started capability, not a phase close.  
 **Doctrine unchanged:** advisory only; no send; no post; evidence separated from inference; generated language labeled generated.
 
 V1 is no longer a theoretical sequence. We are learning from a live product while we finish the dependable operating system.
@@ -32,8 +32,8 @@ We are still in **Phase 5**. Burt pulled forward pieces of Phases 7, 9, and 12 b
 | 3 OpenAI intelligence | Structured six-move generation | **Functional** | Server-side OpenAI, structured output, retries, token accounting |
 | 4 Actor / personality | Versioned researched models | **Substantially built** | Research models for Jones / Hill, open catalog, custom hypothesis personalities, OBSERVED / INFERRED / HYPOTHESIS tags. Writing-intelligence packets are a Phase 5 capability, not a Phase 4 or 9 close |
 | 5 Ensemble / six-move execution | Primary line + ensemble | **Open / current** | Live 1–10, queued 100 / 1,000, cost gates, seeded personality variation, cancel / retry, Netlify worker, NASA dashboard, first-party writing packets, Alternative Futures lane assignment, Hill vote adapter (corpus not yet located) |
-| 6 Correspondence intake | Rich paste-first channels | **Current / capability started** | Channel-specific paste parse (email headers, debate question, memo Re, speech venue). No connectors. No attachment intelligence |
-| 7 Decision dashboard | Operator command surface | **Preview pulled forward** | Mission-lab UI, depth, cost, progress, aggregate command center. Missing branch explorer, scorecard, compare-openings, outcome capture |
+| 6 Correspondence intake | Rich paste-first channels | **Capability started** | `DEC-SIM-CORRESPONDENCE-INTAKE-1.0`: channel-specific paste parse (email headers, debate question, memo Re, speech venue). No connectors. No attachment intelligence |
+| 7 Decision dashboard | Operator command surface | **Capability started** | `DEC-SIM-DASHBOARD-INTELLIGENCE-1.0`: six-move sequence, branch explorer, scorecard, hypothesis revision, local save/compare, outcome attach. Not a phase close |
 | 8 Alternative Futures | Branching scenario lanes | **Capability started; not closed** | `DEC-SIM-ALTERNATIVE-FUTURES-1.0` assigns six named futures per run. Robustness is measured across futures. Hill legislative evidence attaches when the vote corpus is found |
 | 9 Memory & evidence | Provenance-backed recall | **Scaffold only** | Source links on researched personalities. No evidence graph, no stale-evidence decay, no prior-sim retrieval |
 | 10 Outcome learning | Prediction vs reality | **Not started** | Custom notes can be attached locally. No observed-outcome writeback |
@@ -44,7 +44,7 @@ We are still in **Phase 5**. Burt pulled forward pieces of Phases 7, 9, and 12 b
 
 Phase 5 is more sophisticated than originally planned. It is not finished until a 1,000-run job is **informative**, not merely 1,000 slightly different linear conversations.
 
-**Named futures are assigned.** Remaining Phase 5 work is making 100/1,000-run jobs informative. Current named slice: `DEC-SIM-CORRESPONDENCE-INTAKE-1.0`.
+**Named futures are assigned.** Remaining Phase 5 work is making 100/1,000-run jobs informative. Dashboard intelligence is a Phase 7 capability started (`DEC-SIM-DASHBOARD-INTELLIGENCE-1.0`), not a Phase 5 close.
 
 Required futures:
 
@@ -64,8 +64,8 @@ Do not start V2 clustering, entropy dashboards, voice cloning, or multi-actor ga
 Execute in this order. Do not reorder to chase V2.
 
 1. **Phase 6 — richer correspondence intake.** Paste-first remains the rule. Add structure per channel (email headers, speech excerpt, debate line, memo). No mailbox connectors until the core simulator is stable.
-2. **Phase 7 — dashboard intelligence.** Six-move visual sequence, branch explorer, scorecard, recommended opening revision, save / duplicate / rerun, actual-outcome capture. Keep the NASA lab. Do not turn it into a campaign site.
-3. **Phase 9 — evidence / memory.** Provenance on every evidence-backed claim. Prior correspondence and public statements as operator-attached sources. Missing evidence stays missing.
+2. **Phase 7 — dashboard intelligence.** Capability started (`DEC-SIM-DASHBOARD-INTELLIGENCE-1.0`). Sequence, branches, scorecard, hypothesis revision, local save/compare, and outcome attach are live. Keep the NASA lab. Do not turn it into a campaign site.
+3. **Phase 9 — evidence / memory. Current named slice.** Provenance on every evidence-backed claim. Prior correspondence and public statements as operator-attached sources. Missing evidence stays missing.
 4. **Phase 10 — observed-outcome learning.** After something is actually sent or said by a human, attach the real response. Compare to predicted branch. Version actor models only with operator approval. No silent prompt drift.
 5. **Phase 11 — cross-channel command center.** Same engine on email, text, social, press, debate, fundraising, and internal strategy. Simulation never sends.
 6. **Phase 12 — production hardening.** Closed-tab worker continuity, RBAC, audit log, privacy review, prompt-injection defenses, operator runbook, production readiness review.
@@ -248,6 +248,14 @@ ACTOR → VOTE → BILL → ISSUE → PARTY/ADMIN POSITION → STATEMENT → NEW
 
 OCR, forwarded chains, and multi-message thread graphs. Phase 6 stays paste-first text. Do not add mailbox connectors here.
 
+### V2-29 Ranked opening compare-lab
+
+Side-by-side robustness of two saved openings is V1. Ranking three or more openings, counterfactual “which opening wins,” and an interactive ply tree are V2. Do not implement here.
+
+### V2-30 Clickable dashboard evidence graph
+
+The Phase 7 drawer lists missing evidence in prose. A clickable ACTOR → VOTE → STATEMENT → SIMULATION → OUTCOME graph remains V2-27 / V2-30. Do not implement the graph UI now.
+
 ## Boundary rules (agents)
 
 1. If a request improves Alternative Futures, intake, dashboard intelligence, evidence, outcome attach, or hardening — it is V1.
@@ -260,4 +268,4 @@ OCR, forwarded chains, and multi-message thread graphs. Phase 6 stays paste-firs
 
 ## Next operator click
 
-Phase 5 remains open. Alternative Futures and paste-first intake are capabilities, not phase closes. After this intake slice, the next named V1 work is Phase 7 dashboard intelligence. Do not start V2-21+.
+Phase 5 remains open. Alternative Futures, paste-first intake, and dashboard intelligence are capabilities, not phase closes. After this dashboard slice, the next named V1 work is Phase 9 evidence / memory. Do not start V2-21+.
