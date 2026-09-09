@@ -306,4 +306,4 @@ V2 (voice engine, digital twins, multi-actor game theory, ensemble decision scie
 
 ## Next Build
 
-Phase 5 remains open. Hosted ensemble proof (`DEC-SIM-HOSTED-ENSEMBLE-PROOF-1.0`) is a contract, not a phase close. Stale-running reclaim is live. Named next V1 work is a live badge that reads PROVEN. No mailbox connectors. No silent outcome writeback.
+Phase 5 remains open. Hosted ensemble proof (`DEC-SIM-HOSTED-ENSEMBLE-PROOF-1.0`) is live PROVEN on the hosted 100. Named next V1 work is remaining Phase 6 paste-first intake. No mailbox connectors. No silent outcome writeback.

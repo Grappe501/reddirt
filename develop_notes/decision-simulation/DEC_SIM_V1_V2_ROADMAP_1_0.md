@@ -3,7 +3,7 @@
 **Status:** Canonical from 2026-09-09. This is the **only** V2 shadow roadmap.  
 **Live product:** https://dec-sim.netlify.app  
 **Parent plan:** `DECISION_SIMULATION_MASTER_BUILD_PLAN_1_0.md`  
-**Next V1 slice:** Operator-run hosted 100 on `dec-sim` until the proof badge reads PROVEN. Stale-running reclaim (`DEC-SIM-STALE-RUNNING-RECLAIM-1.0`) unsticks a queued chunk left RUNNING. Phase 5 is not closed.  
+**Next V1 slice:** Phase 6 remaining paste-first intake (no connectors). The hosted 100 live badge reads PROVEN. Phase 5 is not closed — a 1,000-run informative job and the Hill vote corpus remain.  
 **Doctrine unchanged:** advisory only; no send; no post; evidence separated from inference; generated language labeled generated.
 
 V1 is no longer a theoretical sequence. We are learning from a live product while we finish the dependable operating system.
@@ -31,20 +31,20 @@ We are still in **Phase 5**. Burt pulled forward pieces of Phases 7, 9, and 12 b
 | 2 Persistence | Auditable simulation records | **Largely complete** | Sessions, ensembles, chunks, job state. Branch / outcome / evaluation tables exist ahead of the loops that fill them |
 | 3 OpenAI intelligence | Structured six-move generation | **Functional** | Server-side OpenAI, structured output, retries, token accounting |
 | 4 Actor / personality | Versioned researched models | **Substantially built** | Research models for Jones / Hill, open catalog, custom hypothesis personalities, OBSERVED / INFERRED / HYPOTHESIS tags. Writing-intelligence packets are a Phase 5 capability, not a Phase 4 or 9 close |
-| 5 Ensemble / six-move execution | Primary line + ensemble | **Open / current** | Live 1–10, queued 100 / 1,000, cost gates, seeded personality variation, cancel / retry, Netlify worker, NASA dashboard, first-party writing packets, Alternative Futures lane assignment, Hill vote adapter (corpus not yet located), `DEC-SIM-ENSEMBLE-LANE-INTELLIGENCE-1.0`, `DEC-SIM-HOSTED-ENSEMBLE-PROOF-1.0` (contract live; first hosted 100 finished 91/9 and scores PROVEN in-repo; live badge not yet PROVEN), `DEC-SIM-STALE-RUNNING-RECLAIM-1.0`. Not a phase close |
+| 5 Ensemble / six-move execution | Primary line + ensemble | **Open / current** | Live 1–10, queued 100 / 1,000, cost gates, seeded personality variation, cancel / retry, Netlify worker, NASA dashboard, first-party writing packets, Alternative Futures lane assignment, Hill vote adapter (corpus not yet located), `DEC-SIM-ENSEMBLE-LANE-INTELLIGENCE-1.0`, `DEC-SIM-HOSTED-ENSEMBLE-PROOF-1.0` (hosted 100 `ce565e97-cd3d-48a6-9f53-d19cb6e12fb7` live badge reads PROVEN), `DEC-SIM-STALE-RUNNING-RECLAIM-1.0`. Not a phase close |
 | 6 Correspondence intake | Rich paste-first channels | **Capability started** | `DEC-SIM-CORRESPONDENCE-INTAKE-1.0` + `DEC-SIM-CORRESPONDENCE-THREAD-1.0`: channel paste parse plus latest-vs-earlier thread split. No connectors. No attachment intelligence |
 | 7 Decision dashboard | Operator command surface | **Capability started** | `DEC-SIM-DASHBOARD-INTELLIGENCE-1.0`: six-move sequence, branch explorer, scorecard, hypothesis revision, local save/compare, outcome attach. Not a phase close |
 | 8 Alternative Futures | Branching scenario lanes | **Capability started; not closed** | `DEC-SIM-ALTERNATIVE-FUTURES-1.0` assigns six named futures per run. Robustness is measured across futures. Hill legislative evidence attaches when the vote corpus is found |
 | 9 Memory & evidence | Provenance-backed recall | **Capability started** | `DEC-SIM-CAMPAIGN-PRIORITIES-1.0`, `DEC-SIM-MEDIA-RESEARCH-1.0`, and `DEC-SIM-EVIDENCE-PROVENANCE-1.0` (tagged claims + operator-attached prior letters). Still no evidence graph, stale-evidence decay, paid-archive completeness, or prior-sim retrieval |
 | 10 Outcome learning | Prediction vs reality | **Capability started** | `DEC-SIM-OBSERVED-OUTCOME-1.0` + `DEC-SIM-ENSEMBLE-OUTCOME-PERSIST-1.0`: attach a public reply, compare, store an unapplied proposal on the ensemble aggregate. No prompt rewrite. No `decision_simulation_outcome` write. Remaining: operator-approved personality versioning |
 | 11 Cross-channel command | Same engine, many surfaces | **Not started** | Isolated `dec-sim` product. Must stay separate from Kelly send workflows |
-| 12 Hardening & launch | Production OS | **Partial, pulled forward** | Admin gate, rate limit, cost budget, isolation tests, hosted deploy, `DEC-SIM-WORKER-CONTINUITY-1.0` (closed-tab chain + stale-chunk reclaim), `DEC-SIM-STALE-RUNNING-RECLAIM-1.0` (null-claim RUNNING returns to the queue). Remaining: RBAC, audit, privacy review, injection defenses, runbook, live PROVEN badge |
+| 12 Hardening & launch | Production OS | **Partial, pulled forward** | Admin gate, rate limit, cost budget, isolation tests, hosted deploy, `DEC-SIM-WORKER-CONTINUITY-1.0`, `DEC-SIM-STALE-RUNNING-RECLAIM-1.0`, live PROVEN badge on the hosted 100. Remaining: RBAC, audit, privacy review, injection defenses, runbook |
 
 ## What Phase 5 still owes
 
 Phase 5 is more sophisticated than originally planned. It is not finished until a 1,000-run job is **informative**, not merely 1,000 slightly different linear conversations.
 
-**Named futures are assigned.** `DEC-SIM-ENSEMBLE-LANE-INTELLIGENCE-1.0` now reports within-lane n, modal share, and a typical sample. `DEC-SIM-WORKER-CONTINUITY-1.0` keeps queued jobs moving after the tab closes. `DEC-SIM-HOSTED-ENSEMBLE-PROOF-1.0` scores a job against that bar. `DEC-SIM-STALE-RUNNING-RECLAIM-1.0` returns a stuck RUNNING chunk to the worker. Remaining Phase 5 work is a real hosted job whose live badge reports `PROVEN`. Dashboard intelligence is a Phase 7 capability started (`DEC-SIM-DASHBOARD-INTELLIGENCE-1.0`), not a Phase 5 close.
+**Named futures are assigned.** `DEC-SIM-ENSEMBLE-LANE-INTELLIGENCE-1.0` now reports within-lane n, modal share, and a typical sample. `DEC-SIM-WORKER-CONTINUITY-1.0` keeps queued jobs moving after the tab closes. `DEC-SIM-HOSTED-ENSEMBLE-PROOF-1.0` scores a job against that bar. `DEC-SIM-STALE-RUNNING-RECLAIM-1.0` returns a stuck RUNNING chunk to the worker. The hosted 100 live badge reads PROVEN. Remaining Phase 5 work is a 1,000-run informative job and the Hill vote corpus. Dashboard intelligence is a Phase 7 capability started (`DEC-SIM-DASHBOARD-INTELLIGENCE-1.0`), not a Phase 5 close.
 
 Required futures:
 
@@ -68,7 +68,7 @@ Execute in this order. Do not reorder to chase V2.
 3. **Phase 9 — evidence / memory.** Campaign-site priorities, media research, provenance-tagged claims, and operator-attached prior correspondence are started. Still no clickable graph, stale-evidence decay, or prior-sim retrieval. Missing stays missing.
 4. **Phase 10 — observed-outcome learning.** Capability started (`DEC-SIM-OBSERVED-OUTCOME-1.0` + `DEC-SIM-ENSEMBLE-OUTCOME-PERSIST-1.0`). Compare and ensemble persist are live. Remaining: operator-approved personality versioning. No silent prompt drift.
 5. **Phase 11 — cross-channel command center.** Same engine on email, text, social, press, debate, fundraising, and internal strategy. Simulation never sends.
-6. **Phase 12 — production hardening.** Capability started (`DEC-SIM-WORKER-CONTINUITY-1.0` + `DEC-SIM-HOSTED-ENSEMBLE-PROOF-1.0` + `DEC-SIM-STALE-RUNNING-RECLAIM-1.0`). Remaining: a live PROVEN badge, RBAC, audit log, privacy review, prompt-injection defenses, operator runbook, production readiness review.
+6. **Phase 12 — production hardening.** Capability started (`DEC-SIM-WORKER-CONTINUITY-1.0` + `DEC-SIM-HOSTED-ENSEMBLE-PROOF-1.0` + `DEC-SIM-STALE-RUNNING-RECLAIM-1.0`). Live PROVEN badge is on. Remaining: RBAC, audit log, privacy review, prompt-injection defenses, operator runbook, production readiness review.
 
 Phase 4 remains open for additional researched personalities. Adding a personality is a catalog update, not a V2 digital twin.
 
@@ -308,4 +308,4 @@ V1 reclaims a stuck RUNNING chunk and asks Netlify for a 60s worker window. Comp
 
 ## Next operator click
 
-Phase 5 remains open. Alternative Futures, intake, thread-aware paste, dashboard intelligence, campaign-site priorities, media research, evidence provenance, ensemble-lane intelligence, observed-outcome compare, ensemble outcome persist, worker continuity, hosted-proof scoring, and stale-running reclaim are capabilities, not phase closes. Named next V1 work is a live badge that reads PROVEN. Do not start V2-21+.
+Phase 5 remains open. Alternative Futures, intake, thread-aware paste, dashboard intelligence, campaign-site priorities, media research, evidence provenance, ensemble-lane intelligence, observed-outcome compare, ensemble outcome persist, worker continuity, hosted-proof scoring, and stale-running reclaim are capabilities, not phase closes. The hosted 100 live badge reads PROVEN. Named next V1 work is remaining Phase 6 paste-first intake. Do not start V2-21+.

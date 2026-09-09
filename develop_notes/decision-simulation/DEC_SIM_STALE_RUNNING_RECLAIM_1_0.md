@@ -5,6 +5,6 @@
 
 A queued chunk left `RUNNING` with a null or stale `claimed_at` returns to the worker. Retry also resets those rows. The dashboard can send a stuck chunk back to the queue without SQL.
 
-The first hosted 100 (`ce565e97-cd3d-48a6-9f53-d19cb6e12fb7`) finished 91 / 9 with all six futures and within-lane n of 12. That snapshot is informative. Phase 5 stays open until the live badge reads `PROVEN`.
+The first hosted 100 (`ce565e97-cd3d-48a6-9f53-d19cb6e12fb7`) finished 91 / 9 with all six futures and within-lane n of 12. The live badge reads `PROVEN`. Phase 5 remains open for a 1,000-run informative job.
 
 Not in this slice: a dedicated background worker, function work that outlives the HTTP request, or auto-canary 100s. Filed as **V2-36** / **V2-40** / **V2-37**.

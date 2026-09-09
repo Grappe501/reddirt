@@ -72,5 +72,6 @@ assert(roadmap.includes("DEC-SIM-HOSTED-ENSEMBLE-PROOF-1.0"), "hosted proof slic
 assert(roadmap.includes("DEC-SIM-WORKER-CONTINUITY-1.0") && roadmap.includes("DEC-SIM-OBSERVED-OUTCOME-1.0") && roadmap.includes("DEC-SIM-STALE-RUNNING-RECLAIM-1.0"), "prior capability names stay on the canonical roadmap");
 assert(roadmap.includes("V2-37"), "auto-canary 100-run deploys stay V2");
 assert(/Phase 5 remains open/i.test(roadmap), "the proof contract does not close Phase 5");
+assert(roadmap.includes("live badge reads PROVEN"), "canonical roadmap records the live PROVEN badge");
 
 console.log("OK — hosted ensemble proof gates passed");
