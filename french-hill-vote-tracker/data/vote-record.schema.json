@@ -10,6 +10,7 @@
     "hillVote",
     "partyBreak",
     "trumpBreak",
+    "partisanIntensity",
     "sources"
   ],
   "properties": {
@@ -20,13 +21,34 @@
     "question": { "type": "string" },
     "issueArea": { "type": "string" },
     "hillVote": { "enum": ["Yea", "Nay", "Present", "Not Voting"] },
+
     "republicanYea": { "type": ["integer", "null"] },
     "republicanNay": { "type": ["integer", "null"] },
+    "democraticYea": { "type": ["integer", "null"] },
+    "democraticNay": { "type": ["integer", "null"] },
+    "republicanYeaPercent": { "type": ["number", "null"], "minimum": 0, "maximum": 100 },
+    "republicanNayPercent": { "type": ["number", "null"], "minimum": 0, "maximum": 100 },
+    "democraticYeaPercent": { "type": ["number", "null"], "minimum": 0, "maximum": 100 },
+    "democraticNayPercent": { "type": ["number", "null"], "minimum": 0, "maximum": 100 },
+
     "partyMajorityPosition": { "enum": ["Yea", "Nay", "Split", "Unknown"] },
     "partyBreak": { "type": "boolean" },
+    "gopAlignment": { "type": "boolean" },
+
+    "partisanIntensity": { "enum": ["high", "medium", "low", "unscored"] },
+    "partisanIntensityScore": { "type": ["number", "null"], "minimum": 0, "maximum": 100 },
+    "highlyPartisan": { "type": "boolean" },
+    "partisanRuleVersion": { "type": "string" },
+    "partisanRuleExplanation": { "type": "string" },
+
     "trumpPosition": { "enum": ["Support", "Oppose", "Neutral", "Ambiguous", "No documented position"] },
+    "trumpAlignment": { "type": "boolean" },
     "trumpBreak": { "type": "boolean" },
     "doubleBreak": { "type": "boolean" },
+    "highlyPartisanGopAlignment": { "type": "boolean" },
+    "highlyPartisanTrumpAlignment": { "type": "boolean" },
+    "highlyPartisanDoubleAlignment": { "type": "boolean" },
+
     "trumpEvidenceSummary": { "type": "string" },
     "plainLanguageSummary": { "type": "string" },
     "classificationConfidence": { "enum": ["high", "medium", "low"] },
