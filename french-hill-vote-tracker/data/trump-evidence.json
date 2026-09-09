@@ -8,27 +8,9 @@
     "effectiveDate": "2017-09-06",
     "reviewNotes": "House Clerk Roll Call 480 records Hill voting Nay on the final House vote, which passed 316-90. Contemporaneous Roll Call reporting documented that Trump agreed to and publicly backed the three-month debt-limit and government-funding deal attached to disaster relief.",
     "sources": [
-      {
-        "label": "House Clerk Roll Call 480",
-        "url": "https://clerk.house.gov/Votes/2017480",
-        "sourceType": "house",
-        "primary": true,
-        "publishedDate": "2017-09-08"
-      },
-      {
-        "label": "Roll Call: Trump sides with Democrats on debt and spending deal",
-        "url": "https://rollcall.com/2017/09/06/trump-sides-with-dems-as-debt-spending-deals-struck/",
-        "sourceType": "news",
-        "primary": false,
-        "publishedDate": "2017-09-06"
-      },
-      {
-        "label": "French Hill statement after voting against the package",
-        "url": "https://hill.house.gov/news/documentquery.aspx?DocumentTypeID=27&Month=9&Year=2017",
-        "sourceType": "other",
-        "primary": true,
-        "publishedDate": "2017-09-08"
-      }
+      {"label":"House Clerk Roll Call 480","url":"https://clerk.house.gov/Votes/2017480","sourceType":"house","primary":true,"publishedDate":"2017-09-08"},
+      {"label":"Roll Call: Trump sides with Democrats on debt and spending deal","url":"https://rollcall.com/2017/09/06/trump-sides-with-dems-as-debt-spending-deals-struck/","sourceType":"news","primary":false,"publishedDate":"2017-09-06"},
+      {"label":"French Hill statement after voting against the package","url":"https://hill.house.gov/news/documentquery.aspx?DocumentTypeID=27&Month=9&Year=2017","sourceType":"other","primary":true,"publishedDate":"2017-09-08"}
     ]
   },
   {
@@ -40,27 +22,63 @@
     "effectiveDate": "2017-12-20",
     "reviewNotes": "House Clerk Roll Call 699 records Hill voting Yea. The archived Trump White House issued a same-day statement praising final passage, and Hill later publicly thanked Trump for signing the measure into law.",
     "sources": [
-      {
-        "label": "House Clerk Roll Call 699",
-        "url": "https://clerk.house.gov/Votes/2017699",
-        "sourceType": "house",
-        "primary": true,
-        "publishedDate": "2017-12-20"
-      },
-      {
-        "label": "Trump White House statement on final passage of tax legislation",
-        "url": "https://trumpwhitehouse.archives.gov/briefings-statements/statement-president-donald-j-trump-regarding-final-passage-tax-legislation/",
-        "sourceType": "official-trump",
-        "primary": true,
-        "publishedDate": "2017-12-20"
-      },
-      {
-        "label": "French Hill statement after Trump signed tax reform",
-        "url": "https://hill.house.gov/news/documentsingle.aspx?DocumentID=1520",
-        "sourceType": "other",
-        "primary": true,
-        "publishedDate": "2017-12-22"
-      }
+      {"label":"House Clerk Roll Call 699","url":"https://clerk.house.gov/Votes/2017699","sourceType":"house","primary":true,"publishedDate":"2017-12-20"},
+      {"label":"Trump White House statement on final passage of tax legislation","url":"https://trumpwhitehouse.archives.gov/briefings-statements/statement-president-donald-j-trump-regarding-final-passage-tax-legislation/","sourceType":"official-trump","primary":true,"publishedDate":"2017-12-20"},
+      {"label":"French Hill statement after Trump signed tax reform","url":"https://hill.house.gov/news/documentsingle.aspx?DocumentID=1520","sourceType":"other","primary":true,"publishedDate":"2017-12-22"}
+    ]
+  },
+  {
+    "congress": 115,
+    "rollCall": 448,
+    "position": "Support",
+    "evidenceStatus": "verified",
+    "summary": "President Trump publicly called on Congress to pass the FIRST STEP Act. French Hill voted Yea on the final House action sending the criminal-justice measure to the President, aligned with Trump's documented position.",
+    "effectiveDate": "2018-11-14",
+    "reviewNotes": "House Clerk Roll Call 448 records Hill voting Yea on December 20, 2018. The archived White House had announced Trump's support on November 14 and he signed the bill the next day after House passage.",
+    "sources": [
+      {"label":"House Clerk Roll Call 448","url":"https://clerk.house.gov/Votes/2018448","sourceType":"house","primary":true,"publishedDate":"2018-12-20"},
+      {"label":"Trump White House: President calls on Congress to pass the FIRST STEP Act","url":"https://trumpwhitehouse.archives.gov/briefings-statements/president-donald-j-trump-calls-congress-pass-first-step-act/","sourceType":"official-trump","primary":true,"publishedDate":"2018-11-14"},
+      {"label":"Trump White House: FIRST STEP Act signing remarks","url":"https://trumpwhitehouse.archives.gov/briefings-statements/remarks-president-trump-signing-ceremony-s-756-first-step-act-2018-h-r-6964-juvenile-justice-reform-act-2018/","sourceType":"official-trump","primary":true,"publishedDate":"2018-12-21"}
+    ]
+  },
+  {
+    "congress": 116,
+    "rollCall": 127,
+    "position": "Oppose",
+    "evidenceStatus": "verified",
+    "summary": "President Trump opposed H.J. Res. 46, which sought to terminate his southern-border national emergency, and vetoed it. French Hill voted Nay on the House attempt to override that veto, aligned with Trump's documented position.",
+    "effectiveDate": "2019-03-15",
+    "reviewNotes": "House Clerk Roll Call 127 records Hill voting Nay on the veto-override vote. Trump's March 15 veto message explicitly rejected H.J. Res. 46. Republicans voted 181-14 against overriding the veto while Democrats voted 234-0 in favor, making this a highly partisan Trump/GOP alignment.",
+    "sources": [
+      {"label":"House Clerk Roll Call 127","url":"https://clerk.house.gov/Votes/2019127","sourceType":"house","primary":true,"publishedDate":"2019-03-26"},
+      {"label":"Trump White House veto message for H.J. Res. 46","url":"https://trumpwhitehouse.archives.gov/briefings-statements/veto-message-house-representatives-h-j-res-46/","sourceType":"official-trump","primary":true,"publishedDate":"2019-03-15"}
+    ]
+  },
+  {
+    "congress": 116,
+    "rollCall": 701,
+    "position": "Support",
+    "evidenceStatus": "verified",
+    "summary": "The Trump Administration strongly supported H.R. 5430 implementing the United States-Mexico-Canada Agreement. French Hill voted Yea on House passage, aligned with Trump's documented position.",
+    "effectiveDate": "2019-12-18",
+    "reviewNotes": "House Clerk Roll Call 701 records Hill voting Yea on December 19. The Office of Management and Budget's December 18 Statement of Administration Policy said the Administration strongly supported H.R. 5430 and that the President would sign it.",
+    "sources": [
+      {"label":"House Clerk Roll Call 701","url":"https://clerk.house.gov/Votes/2019701","sourceType":"house","primary":true,"publishedDate":"2019-12-19"},
+      {"label":"Trump Administration Statement of Administration Policy on H.R. 5430","url":"https://trumpwhitehouse.archives.gov/wp-content/uploads/2019/12/sap_hr_5430.pdf","sourceType":"official-trump","primary":true,"publishedDate":"2019-12-18"}
+    ]
+  },
+  {
+    "congress": 116,
+    "rollCall": 155,
+    "position": "Support",
+    "evidenceStatus": "verified",
+    "summary": "President Trump supported the Great American Outdoors Act and had called on Congress to pass legislation addressing the public-lands maintenance backlog. French Hill voted Yea on final House action, aligned with Trump's documented position even though a majority of voting House Republicans voted Nay.",
+    "effectiveDate": "2020-07-22",
+    "reviewNotes": "House Clerk Roll Call 155 records Hill voting Yea. Republicans split 81 Yea to 104 Nay, so Hill broke with the GOP majority while aligning with Trump's position. At the August 4 signing, Trump said he had called on Congress earlier in 2020 to pass the legislation.",
+    "sources": [
+      {"label":"House Clerk Roll Call 155","url":"https://clerk.house.gov/Votes/2020155","sourceType":"house","primary":true,"publishedDate":"2020-07-22"},
+      {"label":"Trump remarks signing the Great American Outdoors Act","url":"https://trumpwhitehouse.archives.gov/briefings-statements/remarks-president-trump-signing-h-r-1957-great-american-outdoors-act/","sourceType":"official-trump","primary":true,"publishedDate":"2020-08-04"},
+      {"label":"Trump White House fact sheet on the Great American Outdoors Act","url":"https://trumpwhitehouse.archives.gov/briefings-statements/president-donald-j-trump-conserving-restoring-majesty-americas-public-lands/","sourceType":"official-trump","primary":true,"publishedDate":"2020-08-04"}
     ]
   },
   {
@@ -72,27 +90,9 @@
     "effectiveDate": "2021-01-06",
     "reviewNotes": "House Clerk Roll Call 10 records Hill voting Nay. Contemporaneous Roll Call reporting documented that Trump had for weeks called on Republicans to object to Electoral College results and, on January 6, continued pressuring Congress not to certify them.",
     "sources": [
-      {
-        "label": "House Clerk Roll Call 10",
-        "url": "https://clerk.house.gov/Votes/202110",
-        "sourceType": "house",
-        "primary": true,
-        "publishedDate": "2021-01-06"
-      },
-      {
-        "label": "Roll Call: Republicans divided over Electoral College objections",
-        "url": "https://rollcall.com/2021/01/06/electoral-college-certification-republicans-trump-pence/",
-        "sourceType": "news",
-        "primary": false,
-        "publishedDate": "2021-01-06"
-      },
-      {
-        "label": "Roll Call: Election vote divides Republicans",
-        "url": "https://rollcall.com/2021/01/07/election-vote-divides-republicans-as-party-wrestles-with-post-trump-identity/",
-        "sourceType": "news",
-        "primary": false,
-        "publishedDate": "2021-01-07"
-      }
+      {"label":"House Clerk Roll Call 10","url":"https://clerk.house.gov/Votes/202110","sourceType":"house","primary":true,"publishedDate":"2021-01-06"},
+      {"label":"Roll Call: Republicans divided over Electoral College objections","url":"https://rollcall.com/2021/01/06/electoral-college-certification-republicans-trump-pence/","sourceType":"news","primary":false,"publishedDate":"2021-01-06"},
+      {"label":"Roll Call: Election vote divides Republicans","url":"https://rollcall.com/2021/01/07/election-vote-divides-republicans-as-party-wrestles-with-post-trump-identity/","sourceType":"news","primary":false,"publishedDate":"2021-01-07"}
     ]
   },
   {
@@ -104,27 +104,9 @@
     "effectiveDate": "2021-01-07",
     "reviewNotes": "House Clerk Roll Call 11 records Hill voting Nay. Contemporaneous reporting documented Trump's continuing effort to have congressional Republicans reject electoral votes and prevent certification of the Biden victory.",
     "sources": [
-      {
-        "label": "House Clerk Roll Call 11",
-        "url": "https://clerk.house.gov/Votes/202111",
-        "sourceType": "house",
-        "primary": true,
-        "publishedDate": "2021-01-07"
-      },
-      {
-        "label": "Roll Call: Republicans divided over Electoral College objections",
-        "url": "https://rollcall.com/2021/01/06/electoral-college-certification-republicans-trump-pence/",
-        "sourceType": "news",
-        "primary": false,
-        "publishedDate": "2021-01-06"
-      },
-      {
-        "label": "Roll Call: Election vote divides Republicans",
-        "url": "https://rollcall.com/2021/01/07/election-vote-divides-republicans-as-party-wrestles-with-post-trump-identity/",
-        "sourceType": "news",
-        "primary": false,
-        "publishedDate": "2021-01-07"
-      }
+      {"label":"House Clerk Roll Call 11","url":"https://clerk.house.gov/Votes/202111","sourceType":"house","primary":true,"publishedDate":"2021-01-07"},
+      {"label":"Roll Call: Republicans divided over Electoral College objections","url":"https://rollcall.com/2021/01/06/electoral-college-certification-republicans-trump-pence/","sourceType":"news","primary":false,"publishedDate":"2021-01-06"},
+      {"label":"Roll Call: Election vote divides Republicans","url":"https://rollcall.com/2021/01/07/election-vote-divides-republicans-as-party-wrestles-with-post-trump-identity/","sourceType":"news","primary":false,"publishedDate":"2021-01-07"}
     ]
   },
   {
@@ -136,27 +118,9 @@
     "effectiveDate": "2021-05-18",
     "reviewNotes": "House Clerk roll call establishes Hill's vote and the party split. Contemporaneous reporting quotes Trump's opposition statement and identifies Hill among the 35 Republicans who voted for the commission.",
     "sources": [
-      {
-        "label": "House Clerk Roll Call 154",
-        "url": "https://clerk.house.gov/Votes/2021154",
-        "sourceType": "house",
-        "primary": true,
-        "publishedDate": "2021-05-19"
-      },
-      {
-        "label": "French Hill statement supporting bipartisan Jan. 6 commission",
-        "url": "https://hill.house.gov/news/documentsingle.aspx?DocumentID=8486",
-        "sourceType": "other",
-        "primary": true,
-        "publishedDate": "2021-05-19"
-      },
-      {
-        "label": "Washington Post: House Republicans and Jan. 6 commission vote",
-        "url": "https://www.washingtonpost.com/politics/2021/05/19/jan-6-commission-vote/",
-        "sourceType": "news",
-        "primary": false,
-        "publishedDate": "2021-05-19"
-      }
+      {"label":"House Clerk Roll Call 154","url":"https://clerk.house.gov/Votes/2021154","sourceType":"house","primary":true,"publishedDate":"2021-05-19"},
+      {"label":"French Hill statement supporting bipartisan Jan. 6 commission","url":"https://hill.house.gov/news/documentsingle.aspx?DocumentID=8486","sourceType":"other","primary":true,"publishedDate":"2021-05-19"},
+      {"label":"Washington Post: House Republicans and Jan. 6 commission vote","url":"https://www.washingtonpost.com/politics/2021/05/19/jan-6-commission-vote/","sourceType":"news","primary":false,"publishedDate":"2021-05-19"}
     ]
   }
 ]
