@@ -72,11 +72,13 @@ All Decision Simulator deterministic gates passed (no OpenAI spend):
 
 `tsc --noEmit` passed from this worktree.
 
-Local unstashed `next build` compiles the full campaign App Router and was still in the compile step after 14+ minutes. That is not the dec-sim Netlify product build. The hosted dec-sim build uses the public-hub stash and `apps`-adjacent site mode (`NEXT_PUBLIC_DECISION_SIM_SITE`).
+Local unstashed `next build` later completed successfully (exit 0) after ~39 minutes. That compile includes the full campaign App Router, not the dec-sim stash. It printed an unrelated `createRequire` warning from `src/lib/calendar-admin/ledger-write.ts`. The hosted product build is the `dec-sim` Netlify stash build.
 
 ## Deployment result
 
-Filled after push to `main` and the `dec-sim` Netlify deploy.
+- `a43d5863` Netlify production deploy failed: GitHub `check` TS2783 duplicate `ok` on the worker route.
+- `e378e762` fix pushed; `dec-sim` production deploy `6aa0e2e3dde0640008fe6862` is **ready**.
+- Live verified 2026-09-09: `/` → 307 `/admin/decision-simulator`; dashboard shows Decision Simulator + “Model the next six moves before you act.”; no `THE PEOPLE RULE` / `Meet Kelly`.
 
 ## Live URL
 
