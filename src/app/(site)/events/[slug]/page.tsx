@@ -95,7 +95,7 @@ function CuratedOrCalendarEventView({ event }: { event: EventItem }) {
       {event.flyerSrc ? (
         <FullBleedSection padY className="!pt-0">
           <ContentContainer>
-            <EventSocialGraphic src={event.flyerSrc} title={event.title} />
+            <EventSocialGraphic src={event.flyerSrc} title={event.title} alt={event.flyerAlt} />
           </ContentContainer>
         </FullBleedSection>
       ) : null}

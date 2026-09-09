@@ -6,6 +6,7 @@ import { formatCountyFirstMeta, publicCountyEyebrow } from "@/lib/events/public-
 import { resolveEventStatus, stripPublicMarkdown } from "@/lib/format/eventDisplay";
 import { EventMarksChips } from "@/components/organizing/EventMarksChips";
 import { EventOpsLetters } from "@/components/organizing/EventOpsLetters";
+import { EventSocialGraphic } from "@/components/organizing/EventSocialGraphic";
 import { eventMarksCta } from "@/lib/events/event-marks";
 import {
   attendanceIsOpenInvite,
@@ -89,6 +90,14 @@ export function EventStopCard({
           {event.title}
         </EventHref>
       </h3>
+      {event.flyerSrc ? (
+        <EventSocialGraphic
+          src={event.flyerSrc}
+          title={event.title}
+          alt={event.flyerAlt}
+          className="mt-3 overflow-hidden rounded-lg border border-kelly-navy/15 bg-white"
+        />
+      ) : null}
       <p className="mt-1 font-body text-sm font-semibold text-kelly-text/75">{formatCountyFirstMeta(event)}</p>
       {event.addressLine ? <p className="mt-1 font-body text-sm text-kelly-text/65">{event.addressLine}</p> : null}
       {event.publicContact ? <p className="mt-1 font-body text-sm text-kelly-text/65">Contact: {event.publicContact}</p> : null}

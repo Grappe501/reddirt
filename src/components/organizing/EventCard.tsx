@@ -5,6 +5,7 @@ import type { EventItem } from "@/content/types";
 import { formatEventWhen } from "@/lib/format/eventDisplay";
 import { EventMarksChips } from "@/components/organizing/EventMarksChips";
 import { EventOpsLetters } from "@/components/organizing/EventOpsLetters";
+import { EventSocialGraphic } from "@/components/organizing/EventSocialGraphic";
 import { eventMarksCta } from "@/lib/events/event-marks";
 import {
   CAUTION_HOLD_COPY,
@@ -109,6 +110,14 @@ export function EventCard({ event, className, highlighted, onActivate, scheduleC
             {event.title}
           </Link>
         </h3>
+        {event.flyerSrc ? (
+          <EventSocialGraphic
+            src={event.flyerSrc}
+            title={event.title}
+            alt={event.flyerAlt}
+            className="mt-3 overflow-hidden rounded-lg border border-kelly-navy/15 bg-white"
+          />
+        ) : null}
         <p className="mt-2 font-body text-sm font-semibold text-kelly-text/70">{when.primary}</p>
         {when.secondary ? (
           <p className="mt-0.5 font-body text-sm text-kelly-text/70">{when.secondary}</p>

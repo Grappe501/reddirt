@@ -2902,11 +2902,18 @@ const movementEventsCore: EventItem[] = [
     timezone: "America/Chicago",
     locationLabel: "Fort Smith Convention Center",
     addressLine: "Fort Smith Convention Center, Fort Smith, AR (street not typed on the week grid — confirm with the host)",
+    flyerSrc: "/media/event-flyers/river-valley-has-a-choice-fort-smith-2026-09-13.jpg",
+    flyerAlt:
+      "The River Valley Has a Choice postcard: Sunday, September 13, 2026, 2:00 to 4:00 p.m. (doors at 1:00 p.m.) at the Fort Smith Convention Center. Paid for by Guzman for Arkansas.",
     summary:
-      "Sunday, September 13, 2026, **2:00–4:00 p.m. Central** at the **Fort Smith Convention Center**: **The River Valley Has a Choice** — confirmed.",
+      "Sunday, September 13, 2026, **2:00–4:00 p.m. Central** (doors at 1:00 p.m.) at the **Fort Smith Convention Center**: **The River Valley Has a Choice** — confirmed.",
     description:
-      "Steve confirmed **Sunday, September 13, 2026**, **2:00–4:00 p.m. Central** at the **Fort Smith Convention Center**: **The River Valley Has a Choice** / Fort Smith candidate program.\n\nThe calendar stacked three overlapping titles for this slot. Treat them as one host-run program. The street number was not on the week-grid title — confirm the hall name with the host before travel.",
-    whatToExpect: ["2:00–4:00 p.m. Central", "Fort Smith Convention Center", "Host-run candidate program — confirmed"],
+      "Steve confirmed **Sunday, September 13, 2026**, **2:00–4:00 p.m. Central** at the **Fort Smith Convention Center**: **The River Valley Has a Choice** / Fort Smith candidate program.\n\nHost postcard: doors open at **1:00 p.m.** The calendar stacked three overlapping titles for this slot. Treat them as one host-run program. The street number was not on the week-grid title — confirm the hall name with the host before travel.",
+    whatToExpect: [
+      "Doors 1:00 p.m. · program 2:00–4:00 p.m. Central",
+      "Fort Smith Convention Center",
+      "Host-run candidate program — confirmed",
+    ],
     whoItsFor: "Fort Smith and River Valley neighbors the hosts welcome.",
     organizerNote:
       "Steve 2026-09-08: River Valley Sep 13 confirmed. Three overlapping titles, one slot. Do not invent 55 S 7th unless the host prints it.",
