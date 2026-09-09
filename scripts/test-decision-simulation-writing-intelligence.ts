@@ -90,9 +90,17 @@ assert(features.sentenceCount >= 2 && hashFingerprint(["a"]) !== hashFingerprint
 
 const jonesReport = readFileSync("develop_notes/decision-simulation/DEC_SIM_CHRIS_JONES_WRITING_INTELLIGENCE_1_0.md", "utf8");
 const hillReport = readFileSync("develop_notes/decision-simulation/DEC_SIM_FRENCH_HILL_WRITING_INTELLIGENCE_1_0.md", "utf8");
-const v2 = readFileSync("develop_notes/decision-simulation/DEC_SIM_V2_DECISION_INTELLIGENCE_OS_MASTER_PLAN.md", "utf8");
+const roadmap = readFileSync("develop_notes/decision-simulation/DEC_SIM_V1_V2_ROADMAP_1_0.md", "utf8");
+const v2Pointer = readFileSync("develop_notes/decision-simulation/DEC_SIM_V2_DECISION_INTELLIGENCE_OS_MASTER_PLAN.md", "utf8");
 assert(/corpus/i.test(jonesReport) && !/Jamie Dimon called the economy resilient\. JPMorgan reported record earnings\. Wall Street is thriving\. Meanwhile/.test(jonesReport), "Jones report exists without bulk reprint");
 assert(hillReport.includes("eNewsletter") && hillReport.includes("OFFICIAL_OFFICE"), "Hill report names official-office voice");
-assert(v2.includes("Personal Voice Engine") && v2.includes("20.") && v2.includes("Do NOT implement all of V2 now"), "V2 master plan is a holding architecture");
+assert(
+  roadmap.includes("Personal Voice Engine") &&
+    roadmap.includes("V2-20") &&
+    roadmap.includes("DEC-SIM-ALTERNATIVE-FUTURES-1.0") &&
+    v2Pointer.includes("Not canonical") &&
+    v2Pointer.includes("Do NOT implement all of V2 now"),
+  "canonical V2 roadmap is the V1/V2 file; the old V2 plan is a pointer",
+);
 
 console.log("OK — writing intelligence gates passed");

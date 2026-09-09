@@ -1,13 +1,16 @@
 # Decision Simulator — V1 / V2 Roadmap 1.0
 
-**Status:** Canonical from 2026-09-09  
+**Status:** Canonical from 2026-09-09. This is the **only** V2 shadow roadmap.  
 **Live product:** https://dec-sim.netlify.app  
 **Parent plan:** `DECISION_SIMULATION_MASTER_BUILD_PLAN_1_0.md`  
+**Next V1 slice:** `DEC-SIM-ALTERNATIVE-FUTURES-1.0`  
 **Doctrine unchanged:** advisory only; no send; no post; evidence separated from inference; generated language labeled generated.
 
 V1 is no longer a theoretical sequence. We are learning from a live product while we finish the dependable operating system.
 
-Capture V2 requirements in this file as they appear. Do not implement V2 surfaces that steal a remaining V1 phase.
+Pulled-forward work is a **capability**, not a phase closure. A later-phase component existing early does not close that phase.
+
+V2 discoveries are appended here only. They do not become implementation unless they directly prevent a V1 architectural dead end.
 
 ## Two products, one spine
 
@@ -27,8 +30,8 @@ We are still in **Phase 5**. Burt pulled forward pieces of Phases 7, 9, and 12 b
 | 1 Architecture / Doctrine | Sequence, no-send, contracts | **Essentially complete** | Doctrine, typed contracts, sequence validator |
 | 2 Persistence | Auditable simulation records | **Largely complete** | Sessions, ensembles, chunks, job state. Branch / outcome / evaluation tables exist ahead of the loops that fill them |
 | 3 OpenAI intelligence | Structured six-move generation | **Functional** | Server-side OpenAI, structured output, retries, token accounting |
-| 4 Actor / personality | Versioned researched models | **Substantially built** | Research models for Jones / Hill, open catalog, custom hypothesis personalities, OBSERVED / INFERRED / HYPOTHESIS tags |
-| 5 Ensemble / six-move execution | Primary line + ensemble | **Current phase** | Live 1–10, queued 100 / 1,000, cost gates, seeded personality variation, cancel / retry, Netlify worker, NASA dashboard |
+| 4 Actor / personality | Versioned researched models | **Substantially built** | Research models for Jones / Hill, open catalog, custom hypothesis personalities, OBSERVED / INFERRED / HYPOTHESIS tags. Writing-intelligence packets are a Phase 5 capability, not a Phase 4 or 9 close |
+| 5 Ensemble / six-move execution | Primary line + ensemble | **Open / current** | Live 1–10, queued 100 / 1,000, cost gates, seeded personality variation, cancel / retry, Netlify worker, NASA dashboard, first-party writing packets. Alternative Futures not built |
 | 6 Correspondence intake | Rich paste-first channels | **Started, thin** | Channel enum and paste box. No connectors, no attachment intelligence |
 | 7 Decision dashboard | Operator command surface | **Preview pulled forward** | Mission-lab UI, depth, cost, progress, aggregate command center. Missing branch explorer, scorecard, compare-openings, outcome capture |
 | 8 Alternative Futures | Branching scenario lanes | **Next V1 intelligence jump** | Representative cards exist as labels. Runs are still mostly linear variations of one path |
@@ -41,19 +44,20 @@ We are still in **Phase 5**. Burt pulled forward pieces of Phases 7, 9, and 12 b
 
 Phase 5 is more sophisticated than originally planned. It is not finished until a 1,000-run job is **informative**, not merely 1,000 slightly different linear conversations.
 
-**Next V1 slice (pulled-forward Phase 8, still charged to Phase 5 close):** Alternative Futures.
+**Next V1 slice:** `DEC-SIM-ALTERNATIVE-FUTURES-1.0` (originally Phase 8; still charged to Phase 5 close).
 
-Required lanes:
+Required futures:
 
 1. Expected / median
 2. Hostile
 3. Opportunity / best-case
-4. Unusual but plausible
-5. Escalation
+4. Escalation
+5. Surprise / unusual-but-plausible
+6. Silence / non-response
 
-Each lane must be a first-class branch type with its own assumptions, confidence, and evidence tags. The command center then reports consensus **and** disagreement across lanes. That is the gate that makes 100 / 1,000 runs worth the spend.
+Each future is a first-class branch type with its own assumptions, confidence, and evidence tags. The product question is **robustness across futures**, not likelihood inside one linear conversation.
 
-Do not start V2 clustering, entropy dashboards, or multi-actor game trees in that slice.
+Do not start V2 clustering, entropy dashboards, voice cloning, or multi-actor game trees in that slice.
 
 ## Remaining V1 spine (after Alternative Futures)
 
@@ -74,7 +78,7 @@ An operator can:
 
 - paste a real opening move
 - select researched Party and Counterparty models
-- run expected / hostile / opportunity / unusual / escalation futures
+- run expected / hostile / opportunity / escalation / surprise / silence futures
 - see why the system prefers one counter
 - attach what actually happened
 - export or rerun without the system sending anything
@@ -82,11 +86,31 @@ An operator can:
 
 Until that is true, we are still in V1.
 
-V2 holding architecture (20 items): `DEC_SIM_V2_DECISION_INTELLIGENCE_OS_MASTER_PLAN.md`.
+## Public-writing intelligence — what is V1 vs banked V2
+
+Jones/Hill first-party ingest is a **Phase 5 capability**. Compact writing packets may strengthen actor simulations now.
+
+Banked for V2, not this next slice:
+
+- voice cloning / “write like Jones or Steve”
+- temporal digital twins
+- similarity scoring as a generator-grade authorship meter
+
+Do not treat the 20/60 document corpus as Phase 9 memory/evidence closed.
+
+## Burt pass report format
+
+Every Burt / Cursor Decision Simulator pass ends with two separate sections:
+
+### V1 advancement
+What moved the dependable OS forward. Phase still open or closed. Named next V1 slice.
+
+### V2 discoveries filed
+New V2 requirements appended below. Not implemented unless they prevent a V1 dead end.
 
 ## V2 shadow roadmap
 
-Design against these requirements. File new V2 ideas under the matching number. Do not build them during a V1 slice unless Steve names an explicit V2 packet.
+This file is the single canonical list. File new ideas under the matching number or add `V2-21+`. Do not open a second roadmap file. `DEC_SIM_V2_DECISION_INTELLIGENCE_OS_MASTER_PLAN.md` is a pointer only.
 
 ### V2-1 Personal Voice Engine
 
@@ -144,6 +168,54 @@ After something is actually sent or said, attach the real response. Compare pred
 
 V1 Phase 10 is the attach-and-compare loop. V2-8 is the calibration machine.
 
+### V2-9 Temporal Personality Drift
+
+Voice, issue, rhetoric, partisanship, and message-priority drift across time windows. V1 already stores four windows. Calibration-grade drift is V2.
+
+### V2-10 Multi-channel Voice Models
+
+Email vs speech vs newsletter vs Substack as separate models.
+
+### V2-11 Narrative / Message Genome
+
+Reusable frames, transitions, and phrases-to-avoid without storing copyrighted passages.
+
+### V2-12 Relationship / Coalition Simulation
+
+Second-order coalition shifts.
+
+### V2-13 Media Reaction Simulation
+
+Headline and screenshot risk as first-class branches.
+
+### V2-14 Issue Battlefield Mapping
+
+Coverage and confidence by issue: writings N, Pattern A 48% on housing, 39% coverage on direct attacks.
+
+### V2-15 Strategic Memory
+
+Prior simulations and observed outcomes as recall. No silent prompt rewrite.
+
+### V2-16 Writing Similarity Scoring
+
+Generator-grade voice / lexical / rhythm / structure / rhetoric / issue / channel scores. V1 has the contract only.
+
+### V2-17 Source Ingestion / RAG
+
+Query by actor, issue, and window against a runtime cache. V1 has ingest + derived JSON.
+
+### V2-18 Decision Recommendation Ranking
+
+Rank openings by robustness across futures, not average charm. Depends on Alternative Futures.
+
+### V2-19 Assumption Sensitivity
+
+Which assumption flips the recommendation.
+
+### V2-20 Surprise / Black-Swan Exploration
+
+Dedicated search for unusual and escalation futures, not leftover ensemble variance. Alternative Futures is the V1 prerequisite.
+
 ## Boundary rules (agents)
 
 1. If a request improves Alternative Futures, intake, dashboard intelligence, evidence, outcome attach, or hardening — it is V1.
@@ -151,8 +223,9 @@ V1 Phase 10 is the attach-and-compare loop. V2-8 is the calibration machine.
 3. Do not import Kelly voter-file, send workflows, or campaign homepage chrome into `dec-sim`.
 4. Do not treat ensemble output as new evidence about a real person.
 5. No unsourced opponent claims. Campaign-arm characterizations are not an actor’s voice.
-6. When Steve or Burt names a new V2 requirement, append it under the matching V2 number or add `V2-9+` here. Do not open a second roadmap file.
+6. When Steve or Burt names a new V2 requirement, append it under the matching V2 number or add `V2-21+` here. Do not open a second roadmap file.
+7. End every pass with **V1 advancement** and **V2 discoveries filed**.
 
 ## Next operator click
 
-Stay on Phase 5. Next named slice: **Alternative Futures**.
+Phase 5 remains open. Next named slice: **`DEC-SIM-ALTERNATIVE-FUTURES-1.0`**.

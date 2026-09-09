@@ -293,10 +293,10 @@ Updated 2026-09-09 from the live `dec-sim` product. Detail: `DEC_SIM_V1_V2_ROADM
 - Phase 2 Database & Schema: **largely complete**
 - Phase 3 OpenAI Intelligence: **functional**
 - Phase 4 Actor Modeling: **substantially built** (research catalog live; not V2 digital twins)
-- Phase 5 Six-Move Engine: **current phase** (queued ensembles live; Alternative Futures still missing)
+- Phase 5 Six-Move Engine: **open / current** (queued ensembles and writing packets are capabilities; Alternative Futures still missing; phase not closed)
 - Phase 6 Correspondence Intake: **started, thin**
-- Phase 7 Decision Dashboard: **preview pulled forward** (NASA lab live; scorecard / compare / outcome capture remain)
-- Phase 8 Alternative Futures: **next V1 intelligence jump**
+- Phase 7 Decision Dashboard: **preview capability pulled forward** (not closed)
+- Phase 8 Alternative Futures: **next V1 slice `DEC-SIM-ALTERNATIVE-FUTURES-1.0`**
 - Phase 9 Memory & Evidence: **scaffold only**
 - Phase 10 Outcome Learning: **not started**
 - Phase 11 Cross-Channel Command Center: **not started**
@@ -306,4 +306,4 @@ V2 (voice engine, digital twins, multi-actor game theory, ensemble decision scie
 
 ## Next Build
 
-Stay on Phase 5. Next named slice is Alternative Futures (expected / hostile / opportunity / unusual / escalation) so 100- and 1,000-run jobs become informative. Then resume the V1 spine: intake, dashboard intelligence, evidence/memory, observed-outcome learning, cross-channel command, production hardening.
+Phase 5 remains open. Next named slice: `DEC-SIM-ALTERNATIVE-FUTURES-1.0` — expected, hostile, opportunity, escalation, surprise, and silence/non-response. Measure robustness across futures, not likelihood inside one linear path. Then resume the V1 spine.

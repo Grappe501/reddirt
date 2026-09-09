@@ -92,4 +92,4 @@ https://dec-sim.netlify.app
 
 ## Next slice recommendation
 
-Alternative Futures remains the next V1 intelligence jump. Formal V1/V2 split: `DEC_SIM_V1_V2_ROADMAP_1_0.md`.
+Next V1 slice: `DEC-SIM-ALTERNATIVE-FUTURES-1.0`. Canonical V1/V2 split: `DEC_SIM_V1_V2_ROADMAP_1_0.md`.
