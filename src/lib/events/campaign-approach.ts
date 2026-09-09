@@ -360,6 +360,12 @@ export const CAMPAIGN_APPROACH_BY_SLUG: Record<string, CampaignApproachDecision>
     reason: "never_confirmed",
     note: "Steve 2026-09-08: take Madison / Newton County Day off the public calendar.",
   },
+  "nlr-veterans-car-show-2026": {
+    approach: "removed",
+    reason: "never_confirmed",
+    note: "Steve 2026-09-08: take the Nov 1 NLR veterans car show off the public calendar.",
+    ledgerIds: ["presence-2026-11-01-central-arkansas-veterans-car-show-and-parade-north-little-rock"],
+  },
   "hob-nob-bentonville-2026": {
     approach: "removed",
     reason: "conflict",
