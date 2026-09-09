@@ -10,6 +10,7 @@
     "test:partisanship": "tsx scripts/test-partisanship.ts",
     "test:house-xml": "tsx scripts/test-house-xml.ts",
     "validate:trump-evidence": "tsx scripts/validate-trump-evidence.ts",
+    "research:trump-legacy": "tsx scripts/import-legacy-trump-score-leads.ts",
     "ingest:house": "tsx scripts/ingest-house-rollcalls.ts",
     "ingest:2015": "tsx scripts/ingest-house-rollcalls.ts 2015",
     "check": "npm run typecheck && npm run test:partisanship && npm run test:house-xml && npm run validate:trump-evidence"
