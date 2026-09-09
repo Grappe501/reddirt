@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "French Hill Vote Record",
+  "type": "object",
+  "required": [
+    "congress",
+    "rollCall",
+    "date",
+    "measure",
+    "hillVote",
+    "partyBreak",
+    "trumpBreak",
+    "sources"
+  ],
+  "properties": {
+    "congress": { "type": "integer" },
+    "rollCall": { "type": "integer" },
+    "date": { "type": "string", "format": "date" },
+    "measure": { "type": "string" },
+    "question": { "type": "string" },
+    "issueArea": { "type": "string" },
+    "hillVote": { "enum": ["Yea", "Nay", "Present", "Not Voting"] },
+    "republicanYea": { "type": ["integer", "null"] },
+    "republicanNay": { "type": ["integer", "null"] },
+    "partyMajorityPosition": { "enum": ["Yea", "Nay", "Split", "Unknown"] },
+    "partyBreak": { "type": "boolean" },
+    "trumpPosition": { "enum": ["Support", "Oppose", "Neutral", "Ambiguous", "No documented position"] },
+    "trumpBreak": { "type": "boolean" },
+    "doubleBreak": { "type": "boolean" },
+    "trumpEvidenceSummary": { "type": "string" },
+    "plainLanguageSummary": { "type": "string" },
+    "classificationConfidence": { "enum": ["high", "medium", "low"] },
+    "notes": { "type": "string" },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["label", "url", "sourceType"],
+        "properties": {
+          "label": { "type": "string" },
+          "url": { "type": "string", "format": "uri" },
+          "sourceType": { "enum": ["house", "congress", "official-trump", "archive", "news", "other"] },
+          "primary": { "type": "boolean" }
+        }
+      }
+    }
+  }
+}
