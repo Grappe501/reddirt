@@ -384,6 +384,7 @@ const CONFIRMED_SLUGS = new Set([
   "le-vs-fire-softball-2026",
   "howard-county-visit-nashville-2026-09-22",
   "hot-springs-chili-cookout-2026",
+  "little-river-charlotte-sep-21-2026",
 ]);
 
 function withSept29Caution(event: EventItem): EventItem {

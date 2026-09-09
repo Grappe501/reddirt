@@ -5320,9 +5320,9 @@ const kellyCampaignStopsSource: KellyCampaignStop[] = [
     counties: ["Little River"],
     status: "scheduled",
     includeOnPublicPage: true,
-    confidence: "likely",
+    confidence: "confirmed",
     notes:
-      "Campaign calendar Mon Sep 21 all-day Little river Charlotte. Charlotte is a host first name — do not invent a last name. Town and street TBA. Day after De Queen 4:00-6:00. /events/little-river-charlotte-sep-21-2026",
+      "Steve 2026-09-08: Little River Sep 21 confirmed. Host first name Charlotte — do not invent a last name or town. 10:00 a.m.-4:00 p.m. /events/little-river-charlotte-sep-21-2026",
     sourceType: "calendar",
   },
   {
