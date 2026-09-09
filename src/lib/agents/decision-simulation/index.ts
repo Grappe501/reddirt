@@ -10,6 +10,21 @@ export * from "./actor-context";
 export * from "./actor-ensemble";
 export * from "./ensemble-orchestrator";
 export * from "./job-state";
+export * from "./queue-config";
+export * from "./cost-estimate";
+export * from "./generic-actor";
+export {
+  jobProgressPercent,
+  planQueuedDecisionSimulationJob,
+  buildInitialJobState,
+  selectRetryableChunks,
+  applyCancelledJob,
+  applyIdempotentChunkCompletion,
+  nextClaimableChunks,
+  mergeFrameCounts,
+  buildDecisionSimulationCommandCenter,
+} from "./job-lifecycle";
+export type { CommandCenterMember } from "./job-lifecycle";
 
 export {
   DECISION_SIMULATION_TABLES,
