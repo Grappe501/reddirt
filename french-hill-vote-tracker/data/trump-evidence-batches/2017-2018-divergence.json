@@ -1,0 +1,51 @@
+[
+  {
+    "congress": 115,
+    "rollCall": 480,
+    "position": "Support",
+    "evidenceStatus": "verified",
+    "summary": "President Trump agreed to and supported the September 2017 package combining Hurricane Harvey disaster relief with a short-term debt-limit increase and government funding extension. French Hill voted Nay on final House concurrence, opposite Trump's documented position and opposite the majority of voting House Republicans.",
+    "effectiveDate": "2017-09-08",
+    "reviewNotes": "House Clerk Roll Call 480 records Hill voting Nay. Republicans split 133 Yea to 90 Nay, while Democrats voted 183 Yea to 0 Nay. Contemporaneous reporting documented Trump's agreement with congressional leaders on the package. This is both a Trump break and a Republican-majority break, although the Republican conference was not highly unified.",
+    "sources": [
+      {
+        "label": "House Clerk Roll Call 480",
+        "url": "https://clerk.house.gov/Votes/2017480",
+        "sourceType": "house",
+        "primary": true,
+        "publishedDate": "2017-09-08"
+      },
+      {
+        "label": "Roll Call: Trump Sides With Dems as Debt, Spending Deals Struck",
+        "url": "https://rollcall.com/2017/09/06/trump-sides-with-dems-as-debt-spending-deals-struck/",
+        "sourceType": "news",
+        "publishedDate": "2017-09-06"
+      }
+    ]
+  },
+  {
+    "congress": 115,
+    "rollCall": 413,
+    "position": "Support",
+    "evidenceStatus": "verified",
+    "summary": "The Trump Administration supported the Russia, Iran, and North Korea sanctions legislation that became H.R. 3364, and President Trump ultimately signed it while criticizing provisions limiting executive flexibility. French Hill voted Yea with the overwhelming House majority.",
+    "effectiveDate": "2017-07-25",
+    "reviewNotes": "House Clerk Roll Call 413 records House passage of H.R. 3364 by 419-3, with Hill voting Yea. Because Trump's signing statement expressed serious constitutional and policy objections while nevertheless signing the legislation, this record should be treated as a documented alignment on enactment but retained with the nuance that the President objected to parts of the measure. It is not a divergence record in the strict binary sense; it is included here because it demonstrates why the tracker must preserve source-level nuance rather than reduce every presidential position to rhetoric alone.",
+    "sources": [
+      {
+        "label": "House Clerk Roll Call 413",
+        "url": "https://clerk.house.gov/Votes/2017413",
+        "sourceType": "house",
+        "primary": true,
+        "publishedDate": "2017-07-25"
+      },
+      {
+        "label": "Trump White House statement on signing H.R. 3364",
+        "url": "https://trumpwhitehouse.archives.gov/briefings-statements/statement-president-donald-j-trump-signing-h-r-3364/",
+        "sourceType": "official-trump",
+        "primary": true,
+        "publishedDate": "2017-08-02"
+      }
+    ]
+  }
+]
