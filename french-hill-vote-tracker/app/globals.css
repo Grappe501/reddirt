@@ -26,5 +26,23 @@ h2 { margin:0; font-size:clamp(1.45rem,3vw,2.5rem); line-height:1.05; letter-spa
 .vote-row p { line-height:1.55; }
 .vote-facts { display:flex; flex-direction:column; align-items:flex-start; gap:7px; font-size:.92rem; }
 .tag { padding:5px 8px; background:#eae7df; font-weight:800; }
+.evidence-link { display:inline-block; margin-top:8px; font-weight:800; }
+.evidence-grid,.split-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; margin:30px 0; }
+.split-grid { grid-template-columns:1fr 1fr; }
+.evidence-card,.split-card { border:1px solid #cfcac0; background:#fff; padding:24px; min-height:150px; display:flex; flex-direction:column; gap:10px; }
+.evidence-card span { font-size:.78rem; font-weight:800; letter-spacing:.1em; text-transform:uppercase; }
+.evidence-card strong { font-size:1.5rem; line-height:1.1; }
+.evidence-card small { font-weight:800; }
+.sources { margin-top:26px; padding:30px; border:1px solid #cfcac0; background:#fff; }
+.source-link { display:block; padding:13px 0; border-top:1px solid #ded9cf; font-weight:800; }
+.source-link:first-of-type { margin-top:18px; }
+.quick-links { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.quick-links a { padding:16px; border:1px solid #cfcac0; background:#f5f4ef; font-weight:800; text-decoration:none; }
+.year-table-wrap { margin-top:28px; }
+.year-table { border:1px solid #cfcac0; background:#fff; overflow-x:auto; }
+.year-row { display:grid; grid-template-columns:1fr repeat(5,minmax(110px,1fr)); min-width:760px; }
+.year-row > * { padding:14px 16px; border-top:1px solid #e4dfd5; }
+.year-head { font-weight:800; background:#eae7df; }
+.year-head > * { border-top:0; }
 .empty-state { padding:36px; border:1px dashed #aaa49a; background:#fff; line-height:1.6; }
-@media (max-width:760px) { main{width:min(100% - 22px,1120px);padding-top:20px}.stats{grid-template-columns:1fr 1fr}.panel,.vote-row{grid-template-columns:1fr;gap:22px;padding:24px}.filters{grid-template-columns:1fr}.stat{min-height:130px}.stat strong{font-size:2.5rem} }
+@media (max-width:760px) { main{width:min(100% - 22px,1120px);padding-top:20px}.stats,.evidence-grid{grid-template-columns:1fr 1fr}.split-grid,.panel,.vote-row{grid-template-columns:1fr;gap:22px;padding:24px}.filters{grid-template-columns:1fr}.stat{min-height:130px}.stat strong{font-size:2.5rem}.quick-links{grid-template-columns:1fr} }
