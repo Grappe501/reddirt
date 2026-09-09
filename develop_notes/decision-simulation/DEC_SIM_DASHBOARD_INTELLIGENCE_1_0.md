@@ -19,11 +19,11 @@ Phase 7 operator surfaces now exist on the NASA lab:
 ## What this is not
 
 - Not a campaign site and not a Kelly send workflow.
-- Not Phase 10 learning. Outcome notes do not update prompts or personalities.
+- Phase 10 compare is a separate capability (`DEC-SIM-OBSERVED-OUTCOME-1.0`). Outcome notes do not update prompts or personalities.
 - Not a clickable evidence graph.
 - Not a ranked compare-lab of three openings (filed as V2-29).
 - Not a claim that scores are real-world probabilities.
 
 ## Next named V1 slice
 
-Phase 10 observed-outcome learning. Provenance and prior-correspondence attach are started (`DEC-SIM-EVIDENCE-PROVENANCE-1.0`). No silent model writeback.
+Phase 12 closed-tab worker continuity. Observed-outcome compare is started (`DEC-SIM-OBSERVED-OUTCOME-1.0`). No silent model writeback.

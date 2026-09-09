@@ -23,6 +23,25 @@ export type ObservedOutcome = {
   closestFuture: string;
   notes: string;
   predictedFrame: string | null;
+  observedFrame?: string | null;
+  comparison?: {
+    version: string;
+    predictedFrame: string | null;
+    observedFrame: string | null;
+    suggestedFuture: string | null;
+    operatorFutureAgreesWithGuess: boolean | null;
+    frameMatch: boolean | null;
+    contentOverlap: number | null;
+    misses: string[];
+    writeback: "FORBIDDEN";
+  };
+  modelChangeProposal?: {
+    status: "PENDING_OPERATOR_APPROVAL";
+    applied: false;
+    writeback: "FORBIDDEN";
+    actorId?: string;
+    summary: string;
+  };
 };
 
 export function upsertScenario(library: SavedScenario[], scenario: SavedScenario): SavedScenario[] {

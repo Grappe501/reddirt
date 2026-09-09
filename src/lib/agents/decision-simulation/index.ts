@@ -44,6 +44,11 @@ export {
   PRIOR_CORRESPONDENCE_LIBRARY_KEY,
 } from "./evidence-provenance";
 export {
+  attachObservedOutcome,
+  compareObservedOutcome,
+  OBSERVED_OUTCOME_VERSION,
+} from "./observed-outcome";
+export {
   buildDashboardScorecard,
   buildDashboardIntelligencePayload,
   recommendOpeningRevision,

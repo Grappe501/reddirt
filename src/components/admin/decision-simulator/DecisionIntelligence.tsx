@@ -16,6 +16,7 @@ import {
   getEvidenceProvenanceSnapshot,
   type PriorCorrespondenceAttachment,
 } from "@/lib/agents/decision-simulation/evidence-provenance";
+import { attachObservedOutcome } from "@/lib/agents/decision-simulation/observed-outcome";
 
 type Props = {
   jobId?: string;
@@ -69,6 +70,7 @@ export function DecisionIntelligence({
   const [compareB, setCompareB] = useState("");
   const [actualResponse, setActualResponse] = useState("");
   const [closestFuture, setClosestFuture] = useState("EXPECTED");
+  const [observedFrame, setObservedFrame] = useState("");
   const [outcomeNotes, setOutcomeNotes] = useState("");
   const [scenarioTitle, setScenarioTitle] = useState("");
 
@@ -140,14 +142,22 @@ export function DecisionIntelligence({
   function saveOutcome() {
     if (!jobId) return;
     persistOutcomes(
-      upsertOutcome(outcomes, {
-        jobId,
-        recordedAt: new Date().toISOString(),
-        actualResponse: actualResponse.trim(),
-        closestFuture,
-        notes: outcomeNotes.trim(),
-        predictedFrame: dashboard?.branches.find((lane) => lane.futureId === closestFuture)?.frame ?? null,
-      }),
+      upsertOutcome(
+        outcomes,
+        attachObservedOutcome({
+          jobId,
+          actualResponse,
+          closestFuture,
+          observedFrame,
+          notes: outcomeNotes,
+          actorId: counterpartyId,
+          branches: (dashboard?.branches ?? []).map((lane) => ({
+            futureId: lane.futureId,
+            frame: lane.frame ?? lane.modalFrame,
+            firstMessage: lane.moves.find((move) => move.moveNumber === 1 && move.side === "COUNTERPARTY")?.message,
+          })),
+        }),
+      ),
     );
   }
 
@@ -155,7 +165,7 @@ export function DecisionIntelligence({
     <div>
       <h2 className="ml-h">05 Dashboard intelligence</h2>
       <p className="ml-copy">
-        Capability started. Advisory only. Recommended language is a HYPOTHESIS draft. Nothing is sent. Outcome notes do not rewrite actor models.
+        Capability started. Advisory only. Recommended language is a HYPOTHESIS draft. Nothing is sent. Observed outcomes compare to a predicted branch. They do not rewrite actor models.
       </p>
 
       {dashboard?.scorecard && (
@@ -308,7 +318,7 @@ export function DecisionIntelligence({
       <div className="ml-sec">
         <h3>L. Actual outcome</h3>
         <p className="ml-copy">
-          Attach what actually happened. This does not update actor models and does not write back into prompts. Phase 10 learning is a later slice.
+          Attach what actually happened. Compare it to the predicted branch. This does not update actor models and does not write back into prompts. Writeback stays forbidden. A model-change proposal is stored as PENDING_OPERATOR_APPROVAL and is not applied.
         </p>
         <label className="ml-label">Observed public response
           <textarea className="ml-area" style={{ minHeight: 90 }} value={actualResponse} onChange={(e) => setActualResponse(e.target.value)} placeholder="Paste the real reply or public statement. No private data." />
@@ -318,12 +328,31 @@ export function DecisionIntelligence({
             {ALTERNATIVE_FUTURES.map((future) => <option key={future.id} value={future.id}>{future.label}</option>)}
           </select>
         </label>
+        <label className="ml-label">Observed frame
+          <input className="ml-input" value={observedFrame} onChange={(e) => setObservedFrame(e.target.value)} placeholder="Process, Attack, Silence…" />
+        </label>
         <label className="ml-label">Notes
           <textarea className="ml-area" style={{ minHeight: 70 }} value={outcomeNotes} onChange={(e) => setOutcomeNotes(e.target.value)} />
         </label>
-        <button type="button" className="ml-ghost" disabled={!jobId} onClick={saveOutcome}>Attach outcome to this job</button>
+        <button type="button" className="ml-ghost" disabled={!jobId || !actualResponse.trim()} onClick={saveOutcome}>Attach outcome to this job</button>
         {outcome && (
-          <p className="ml-copy">Attached {outcome.recordedAt.slice(0, 16)} · closest {futureLabel(outcome.closestFuture)} · actor models unchanged</p>
+          <div>
+            <p className="ml-copy">Attached {outcome.recordedAt.slice(0, 16)} · closest {futureLabel(outcome.closestFuture)} · actor models unchanged</p>
+            {outcome.comparison && (
+              <p className="ml-copy">
+                Frame {outcome.comparison.frameMatch == null ? "not scored" : outcome.comparison.frameMatch ? "match" : "miss"}
+                {outcome.comparison.contentOverlap != null ? ` · lexical overlap ${Math.round(outcome.comparison.contentOverlap * 100)}%` : ""}
+                {outcome.comparison.suggestedFuture ? ` · lexical guess ${futureLabel(outcome.comparison.suggestedFuture)}` : ""}.
+                Writeback {outcome.comparison.writeback}.
+              </p>
+            )}
+            {outcome.comparison?.misses.map((item) => (
+              <p key={item} className="ml-copy">{item}</p>
+            ))}
+            {outcome.modelChangeProposal && (
+              <p className="ml-copy">{outcome.modelChangeProposal.status}: {outcome.modelChangeProposal.summary}</p>
+            )}
+          </div>
         )}
       </div>
     </div>

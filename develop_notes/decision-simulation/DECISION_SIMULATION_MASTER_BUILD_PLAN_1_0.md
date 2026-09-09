@@ -298,7 +298,7 @@ Updated 2026-09-09 from the live `dec-sim` product. Detail: `DEC_SIM_V1_V2_ROADM
 - Phase 7 Decision Dashboard: **capability started** (`DEC-SIM-DASHBOARD-INTELLIGENCE-1.0`); sequence, branches, scorecard, save/compare, outcome attach; not closed
 - Phase 8 Alternative Futures: **capability started inside Phase 5** (`DEC-SIM-ALTERNATIVE-FUTURES-1.0`); not a phase close
 - Phase 9 Memory & Evidence: **capability started** (campaign pages + media + `DEC-SIM-EVIDENCE-PROVENANCE-1.0`); no evidence graph yet
-- Phase 10 Outcome Learning: **not started**
+- Phase 10 Outcome Learning: **capability started** (`DEC-SIM-OBSERVED-OUTCOME-1.0`); compare + unapplied proposal; not closed
 - Phase 11 Cross-Channel Command Center: **not started**
 - Phase 12 Hardening & Launch: **partial, pulled forward**
 
@@ -306,4 +306,4 @@ V2 (voice engine, digital twins, multi-actor game theory, ensemble decision scie
 
 ## Next Build
 
-Phase 5 remains open. Phase 9 provenance (`DEC-SIM-EVIDENCE-PROVENANCE-1.0`) is a capability, not a phase close. Named next V1 work is Phase 10 outcome learning. No mailbox connectors. No silent outcome writeback.
+Phase 5 remains open. Phase 10 observed-outcome compare (`DEC-SIM-OBSERVED-OUTCOME-1.0`) is a capability, not a phase close. Named next V1 work is Phase 12 closed-tab worker continuity. No mailbox connectors. No silent outcome writeback.
