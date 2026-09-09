@@ -44,6 +44,12 @@ const attached = attachPriorCorrespondence({
 assert(attached && attached.provenance === "OPERATOR_ATTACHED" && attached.connectorsEnabled === false, "prior paste is operator-attached");
 assert(Boolean(attached && attached.bodyExcerpt.length <= 280 && attached.bodyExcerpt.includes("rural hospitals")), "prior excerpt stays short");
 assert(!formatPriorCorrespondencePromptBlock([]), "empty attachment list does not invent letters");
+assert(
+  formatPriorCorrespondencePromptBlock([
+    { channel: "EMAIL", bodyExcerpt: "Asked about rural hospitals only.", provenance: "OPERATOR_ATTACHED" },
+  ]).includes("OPERATOR_ATTACHED"),
+  "prompt block accepts opening-input attachments that omit the catalog version field",
+);
 
 const withAttach = getEvidenceProvenanceSnapshot("chris-jones-ar02", attached ? [attached] : []);
 assert(withAttach?.attachedCount === 1 && withAttach.claims.some((item) => item.provenance === "OPERATOR_ATTACHED"), "attached letter becomes a claim");

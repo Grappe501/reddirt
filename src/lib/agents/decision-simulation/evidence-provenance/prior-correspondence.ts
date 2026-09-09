@@ -41,7 +41,14 @@ export function attachPriorCorrespondence(input: {
   };
 }
 
-export function formatPriorCorrespondencePromptBlock(attachments?: PriorCorrespondenceAttachment[]): string {
+export function formatPriorCorrespondencePromptBlock(
+  attachments?: Array<{
+    channel: DecisionSimulationChannel;
+    bodyExcerpt: string;
+    occurredAt?: string;
+    provenance: string;
+  }>,
+): string {
   if (!attachments?.length) return "";
   const rows = attachments.slice(0, 4).map((item) => {
     const when = item.occurredAt ?? "undated";

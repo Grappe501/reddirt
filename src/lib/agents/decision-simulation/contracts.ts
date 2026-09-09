@@ -87,6 +87,7 @@ export interface DecisionSimulationOpeningInput {
   intake?: CorrespondenceIntake;
   priorCorrespondence?: Array<{
     id: string;
+    version?: string;
     channel: DecisionSimulationChannel;
     title: string;
     bodyExcerpt: string;
