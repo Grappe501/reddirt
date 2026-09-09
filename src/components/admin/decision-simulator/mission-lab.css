@@ -233,3 +233,13 @@
 
 .ml-sec { margin-top: 18px; }
 .ml-sec h3 { margin: 0 0 8px; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; font-family: var(--ml-mono); color: var(--ml-dim); }
+
+.ml-meter {
+  display: inline-block;
+  width: 88px;
+  height: 6px;
+  background: #1a2430;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+.ml-meter > i { display: block; height: 100%; background: var(--ml-cyan); }

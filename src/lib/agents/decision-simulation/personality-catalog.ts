@@ -130,7 +130,11 @@ export const chrisJonesPersonality: CatalogPersonality = {
     deescalationTendencies: [
       tendency("Return to shared Arkansas future / no one left behind", 0.6, "MEDIUM", "INFERRED", "Launch quote reported by Talk Business"),
     ],
-    communicationStyle: ["Public-facing preacher-scientist register", "Policy lists on affordability", "Biographical storytelling"],
+    communicationStyle: [
+      "Personal or everyday opening into systems diagnosis",
+      "Engineering/science analogy used as explanation, not ornament",
+      "Moral framing and hopeful close after the diagnosis",
+    ],
     likelyAudiences: ["Central Arkansas working families", "Democratic primary/general coalition", "Education and innovation networks"],
     uncertaintyNotes: [
       "No private strategy documents were used.",
@@ -208,7 +212,11 @@ export const frenchHillPersonality: CatalogPersonality = {
     deescalationTendencies: [
       tendency("Return to district-work and committee process", 0.6, "MEDIUM", "INFERRED"),
     ],
-    communicationStyle: ["Official press-release register", "Committee-chair economic vocabulary", "Oversight awards as narrative device"],
+    communicationStyle: [
+      "Official-office newsletter register beginning Friends",
+      "Statistic or local example before committee/legislative proof",
+      "Constituent-service close; office voice not claimed as personally typed",
+    ],
     likelyAudiences: ["AR-02 Republican base", "Financial-services stakeholders", "Central Arkansas civic/business networks"],
     uncertaintyNotes: [
       "Campaign-arm characterizations of the opponent are excluded from this model.",

@@ -10,6 +10,7 @@ import {
   mergePersonalityCatalog,
   personalityToOpeningActor,
 } from "@/lib/agents/decision-simulation/personality-catalog";
+import { PersonalityIntelligence } from "./PersonalityIntelligence";
 import "./mission-lab.css";
 
 type RunPreset = 1 | 10 | 100 | 1000;
@@ -308,6 +309,7 @@ export function DecisionSimulatorClient() {
             </div>
             <Dossier personality={operator} side="Party" />
             <Dossier personality={counterparty} side="Counterparty" />
+            <PersonalityIntelligence operator={operator} counterparty={counterparty} />
 
             <button type="button" className="ml-ghost" style={{ marginTop: 12 }} onClick={() => setAdding((v) => !v)}>
               {adding ? "Close add personality" : "Add personality"}

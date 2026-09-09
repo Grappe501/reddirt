@@ -2,6 +2,7 @@ import type {
   DecisionSimulationActorModel,
   DecisionSimulationActorVariation,
 } from "./actor-model";
+import { formatWritingIntelligencePromptPacket } from "./writing-intelligence/prompt-packet";
 
 export interface DecisionSimulationActorContext {
   model: DecisionSimulationActorModel;
@@ -36,6 +37,7 @@ export function buildActorContextForPrompt(
 export function buildActorModelPromptContext(context?: DecisionSimulationActorContext): string {
   if (!context) return "ACTOR MODEL: Not supplied.";
   const { model, variation } = context;
+  const writingPacket = formatWritingIntelligencePromptPacket(model.actorId);
 
   return [
     "ACTOR MODEL",
@@ -57,5 +59,8 @@ export function buildActorModelPromptContext(context?: DecisionSimulationActorCo
       ? `ENSEMBLE VARIATION: run=${variation.runOrdinal}; primaryFrame=${variation.selectedPrimaryFrame ?? "none"}; attackLane=${variation.selectedAttackLane ?? "none"}; escalation=${variation.selectedEscalationTendency ?? "none"}; aggressiveness=${variation.aggressiveness}; novelty=${variation.novelty}; confidenceModifier=${variation.modelConfidenceModifier}`
       : "ENSEMBLE VARIATION: Not supplied.",
     "Treat OBSERVED signals as stronger than INFERRED signals, and INFERRED signals as stronger than HYPOTHESIS signals. A hypothesis is not a fact.",
-  ].join("\n");
+    writingPacket,
+  ]
+    .filter(Boolean)
+    .join("\n");
 }

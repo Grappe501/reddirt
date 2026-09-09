@@ -15,6 +15,7 @@ const checks: Array<[string, boolean]> = [
   ["counterparty input exists", client.includes("Counterparty")],
   ["actor model selector exists", client.includes("HYPOTHESIS MODEL") && client.includes("Add personality")],
   ["Jones/Hill research pair is defaultable", client.includes("chris-jones-ar02") && client.includes("french-hill-ar02")],
+  ["personality intelligence panel exists", client.includes("PersonalityIntelligence")],
   ["cost estimate shown before large runs", /estimated workload/i.test(client) && client.includes("Second confirmation")],
   ["queued launch verbs exist", client.includes("Launch 100-Run Ensemble") || client.includes("depth.runVerb")],
   ["live job progress exists", client.includes("Cancel Job") && client.includes("simulations complete")],

@@ -23,6 +23,14 @@ export {
 } from "./personality-catalog";
 export type { CatalogPersonality, PersonalityRole } from "./personality-catalog";
 export {
+  buildActorWritingIntelligence,
+  getWritingIntelligencePair,
+  authorshipRule,
+  customActorHasSources,
+} from "./writing-intelligence/catalog";
+export { buildWritingIntelligencePromptPacket } from "./writing-intelligence/prompt-packet";
+export { scoreVoiceSimilarity } from "./writing-intelligence/similarity";
+export {
   jobProgressPercent,
   planQueuedDecisionSimulationJob,
   buildInitialJobState,
