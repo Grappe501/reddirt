@@ -3,50 +3,28 @@
     "congress": 116,
     "rollCall": 109,
     "position": "Oppose",
+    "preferredVote": "Nay",
     "evidenceStatus": "verified",
     "summary": "The Trump Administration formally opposed H.R. 6800, the HEROES Act, and said the President's advisers would recommend a veto. French Hill voted Nay on final House passage, aligned with the documented Trump position.",
     "effectiveDate": "2020-05-14",
     "reviewNotes": "House Clerk Roll Call 109 records Hill voting Nay on final passage. The May 14, 2020 Statement of Administration Policy explicitly opposed H.R. 6800 and threatened a presidential veto.",
     "sources": [
-      {
-        "label": "House Clerk Roll Call 109",
-        "url": "https://clerk.house.gov/Votes/2020109",
-        "sourceType": "house",
-        "primary": true,
-        "publishedDate": "2020-05-15"
-      },
-      {
-        "label": "Trump White House Statement of Administration Policy on H.R. 6800",
-        "url": "https://trumpwhitehouse.archives.gov/wp-content/uploads/2020/05/SAP_H.R.-6800.pdf",
-        "sourceType": "official-trump",
-        "primary": true,
-        "publishedDate": "2020-05-14"
-      }
+      {"label":"House Clerk Roll Call 109","url":"https://clerk.house.gov/Votes/2020109","sourceType":"house","primary":true,"publishedDate":"2020-05-15"},
+      {"label":"Trump White House Statement of Administration Policy on H.R. 6800","url":"https://trumpwhitehouse.archives.gov/wp-content/uploads/2020/05/SAP_H.R.-6800.pdf","sourceType":"official-trump","primary":true,"publishedDate":"2020-05-14"}
     ]
   },
   {
     "congress": 116,
     "rollCall": 253,
     "position": "Oppose",
+    "preferredVote": "Nay",
     "evidenceStatus": "verified",
     "summary": "President Trump vetoed H.R. 6395, the FY2021 National Defense Authorization Act. French Hill voted Yea to override that veto, opposite Trump's documented position.",
     "effectiveDate": "2020-12-23",
-    "reviewNotes": "House Clerk Roll Call 253 records Hill voting Yea to pass H.R. 6395 over the President's objections. Trump's December 23 veto message explicitly returned the bill without approval.",
+    "reviewNotes": "House Clerk Roll Call 253 records Hill voting Yea to override the President's veto. Trump's December 23 veto message explicitly returned H.R. 6395 without approval, so the President's preferred vote on the override was Nay.",
     "sources": [
-      {
-        "label": "House Clerk Roll Call 253",
-        "url": "https://clerk.house.gov/Votes/2020253",
-        "sourceType": "house",
-        "primary": true,
-        "publishedDate": "2020-12-28"
-      },
-      {
-        "label": "Trump presidential veto message for H.R. 6395",
-        "url": "https://trumpwhitehouse.archives.gov/briefings-statements/presidential-veto-message-house-representatives-h-r-6395/",
-        "sourceType": "official-trump",
-        "primary": true,
-        "publishedDate": "2020-12-23"
-      }
+      {"label":"House Clerk Roll Call 253","url":"https://clerk.house.gov/Votes/2020253","sourceType":"house","primary":true,"publishedDate":"2020-12-28"},
+      {"label":"Trump presidential veto message for H.R. 6395","url":"https://trumpwhitehouse.archives.gov/briefings-statements/presidential-veto-message-house-representatives-h-r-6395/","sourceType":"official-trump","primary":true,"publishedDate":"2020-12-23"}
     ]
   }
 ]
