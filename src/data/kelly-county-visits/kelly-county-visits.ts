@@ -4795,6 +4795,19 @@ const kellyCampaignStopsSource: KellyCampaignStop[] = [
     sourceType: "manual",
   },
   {
+    id: "manual-2026-10-02-blocked",
+    publicTitle: "October 2 — booked",
+    date: "2026-10-02",
+    title: "October 2 blocked",
+    counties: [],
+    status: "private",
+    includeOnPublicPage: true,
+    confidence: "confirmed",
+    notes:
+      "Steve 2026-09-08: block off Oct 2. Private hold. Do not invent a town. /events/october-2-blocked-2026",
+    sourceType: "manual",
+  },
+  {
     id: "manual-2026-10-03-ozark-forward-fundraiser",
     publicTitle: "Ozark Forward fundraiser (hold — if available)",
     date: "2026-10-03",

@@ -523,6 +523,28 @@ export const restoredUpcomingFromSeptCuts: EventItem[] = [
     fieldAttendance: "tentative",
   }),
   campaignStop({
+    slug: "october-2-blocked-2026",
+    title: "October 2 — booked",
+    type: "House Gathering",
+    startsAt: "2026-10-02T08:00:00-05:00",
+    endsAt: "2026-10-02T20:00:00-05:00",
+    timeTbd: true,
+    locationLabel: "Venue TBA",
+    city: "Venue TBA",
+    attendanceType: "PRIVATE",
+    summary:
+      "Friday, October 2, 2026: the campaign is booked — confirmed. This is not an open public event.",
+    description:
+      "Steve blocked **Friday, October 2, 2026**.\n\nThis listing shows the campaign is booked that day. It is **not** an open neighbor event. Town and clock are not posted.",
+    whatToExpect: ["Confirmed Friday, October 2", "Not an open campaign event"],
+    whoItsFor: "This is not an open campaign event.",
+    organizerNote: "Steve 2026-09-08: block off Oct 2. Personal/private hold. Do not invent a town.",
+    audienceTags: ["Hold"],
+    relatedEventSlugs: [],
+    relatedResourceHrefs: [{ label: "Events calendar", href: "/events" }],
+    fieldAttendance: "confirmed",
+  }),
+  campaignStop({
     slug: "weston-colt-birthday-2026-10-24",
     title: "Weston Colt birthday",
     type: "House Gathering",

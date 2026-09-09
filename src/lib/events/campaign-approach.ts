@@ -398,6 +398,7 @@ const CONFIRMED_SLUGS = new Set([
   "howard-county-visit-nashville-2026-09-22",
   "hot-springs-chili-cookout-2026",
   "little-river-charlotte-sep-21-2026",
+  "october-2-blocked-2026",
 ]);
 
 function withSept29Caution(event: EventItem): EventItem {
