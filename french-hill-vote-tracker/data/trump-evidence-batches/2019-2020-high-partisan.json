@@ -1,58 +1,6 @@
 [
-  {
-    "congress": 116,
-    "rollCall": 118,
-    "position": "Oppose",
-    "evidenceStatus": "verified",
-    "summary": "The Trump Administration formally opposed House passage of H.R. 1, the For the People Act of 2019. French Hill voted Nay on final passage, aligned with the Administration's documented position.",
-    "effectiveDate": "2019-03-05",
-    "reviewNotes": "House Clerk Roll Call 118 records Hill voting Nay. The March 5, 2019 Statement of Administration Policy states that the Administration opposes House passage of H.R. 1.",
-    "sources": [
-      {"label":"House Clerk Roll Call 118","url":"https://clerk.house.gov/Votes/2019118","sourceType":"house","primary":true,"publishedDate":"2019-03-08"},
-      {"label":"Trump White House Statement of Administration Policy on H.R. 1","url":"https://trumpwhitehouse.archives.gov/wp-content/uploads/2019/03/saphr1hr_20190305.pdf","sourceType":"official-trump","primary":true,"publishedDate":"2019-03-05"},
-      {"label":"French Hill statement after voting against H.R. 1","url":"https://hill.house.gov/news/documentsingle.aspx?DocumentID=2588","sourceType":"other","primary":true,"publishedDate":"2019-03-08"}
-    ]
-  },
-  {
-    "congress": 116,
-    "rollCall": 695,
-    "position": "Oppose",
-    "evidenceStatus": "verified",
-    "summary": "President Trump opposed the House impeachment effort. French Hill voted Nay on Article I of H. Res. 755, aligned with Trump's documented position.",
-    "effectiveDate": "2019-12-18",
-    "reviewNotes": "House Clerk Roll Call 695 records Hill voting Nay. A same-day White House statement condemned the House impeachment articles and defended the President against them.",
-    "sources": [
-      {"label":"House Clerk Roll Call 695","url":"https://clerk.house.gov/Votes/2019695","sourceType":"house","primary":true,"publishedDate":"2019-12-18"},
-      {"label":"Trump White House statement on House impeachment","url":"https://trumpwhitehouse.archives.gov/briefings-statements/statement-press-secretary-105/","sourceType":"official-trump","primary":true,"publishedDate":"2019-12-18"},
-      {"label":"French Hill page summarizing Arkansas delegation impeachment votes","url":"https://hill.house.gov/news/documentsingle.aspx?DocumentID=6526","sourceType":"other","primary":true,"publishedDate":"2019-12-18"}
-    ]
-  },
-  {
-    "congress": 116,
-    "rollCall": 696,
-    "position": "Oppose",
-    "evidenceStatus": "verified",
-    "summary": "President Trump opposed the House impeachment effort. French Hill voted No on Article II of H. Res. 755, aligned with Trump's documented position.",
-    "effectiveDate": "2019-12-18",
-    "reviewNotes": "House Clerk Roll Call 696 records Hill voting No. A same-day White House statement condemned the impeachment articles and defended the President against them.",
-    "sources": [
-      {"label":"House Clerk Roll Call 696","url":"https://clerk.house.gov/Votes/2019696","sourceType":"house","primary":true,"publishedDate":"2019-12-18"},
-      {"label":"Trump White House statement on House impeachment","url":"https://trumpwhitehouse.archives.gov/briefings-statements/statement-press-secretary-105/","sourceType":"official-trump","primary":true,"publishedDate":"2019-12-18"},
-      {"label":"French Hill page summarizing Arkansas delegation impeachment votes","url":"https://hill.house.gov/news/documentsingle.aspx?DocumentID=6526","sourceType":"other","primary":true,"publishedDate":"2019-12-18"}
-    ]
-  },
-  {
-    "congress": 116,
-    "rollCall": 101,
-    "position": "Oppose",
-    "evidenceStatus": "verified",
-    "summary": "The Trump Administration strongly opposed S.J. Res. 68, the Iran War Powers resolution. French Hill voted No on House passage, aligned with the Administration's documented position.",
-    "effectiveDate": "2020-03-10",
-    "reviewNotes": "House Clerk Roll Call 101 records Hill voting No. The March 10, 2020 Statement of Administration Policy states that the Administration strongly opposes passage of S.J. Res. 68; Trump later vetoed the resolution.",
-    "sources": [
-      {"label":"House Clerk Roll Call 101","url":"https://clerk.house.gov/Votes/2020101","sourceType":"house","primary":true,"publishedDate":"2020-03-11"},
-      {"label":"Trump White House Statement of Administration Policy on S.J. Res. 68","url":"https://trumpwhitehouse.archives.gov/wp-content/uploads/2020/03/SAP_S.J.-RES.-68.pdf","sourceType":"official-trump","primary":true,"publishedDate":"2020-03-10"},
-      {"label":"Trump veto message for S.J. Res. 68","url":"https://trumpwhitehouse.archives.gov/briefings-statements/presidential-veto-message-senate-s-j-res-68/","sourceType":"official-trump","primary":true,"publishedDate":"2020-05-06"}
-    ]
-  }
+  {"congress":116,"rollCall":118,"position":"Oppose","preferredVote":"Nay","evidenceStatus":"verified","summary":"The Trump Administration formally opposed House passage of H.R. 1, the For the People Act of 2019. French Hill voted Nay on final passage, aligned with the Administration's documented position.","effectiveDate":"2019-03-05","reviewNotes":"House Clerk Roll Call 118 records Hill voting Nay. The March 5, 2019 Statement of Administration Policy states that the Administration opposes House passage of H.R. 1.","sources":[{"label":"House Clerk Roll Call 118","url":"https://clerk.house.gov/Votes/2019118","sourceType":"house","primary":true,"publishedDate":"2019-03-08"},{"label":"Trump White House Statement of Administration Policy on H.R. 1","url":"https://trumpwhitehouse.archives.gov/wp-content/uploads/2019/03/saphr1hr_20190305.pdf","sourceType":"official-trump","primary":true,"publishedDate":"2019-03-05"},{"label":"French Hill statement after voting against H.R. 1","url":"https://hill.house.gov/news/documentsingle.aspx?DocumentID=2588","sourceType":"other","primary":true,"publishedDate":"2019-03-08"}]},
+  {"congress":116,"rollCall":695,"position":"Oppose","preferredVote":"Nay","evidenceStatus":"verified","summary":"President Trump opposed the House impeachment effort. French Hill voted Nay on Article I of H. Res. 755, aligned with Trump's documented position.","effectiveDate":"2019-12-18","reviewNotes":"House Clerk Roll Call 695 records Hill voting Nay. A same-day White House statement condemned the House impeachment articles and defended the President against them.","sources":[{"label":"House Clerk Roll Call 695","url":"https://clerk.house.gov/Votes/2019695","sourceType":"house","primary":true,"publishedDate":"2019-12-18"},{"label":"Trump White House statement on House impeachment","url":"https://trumpwhitehouse.archives.gov/briefings-statements/statement-press-secretary-105/","sourceType":"official-trump","primary":true,"publishedDate":"2019-12-18"},{"label":"French Hill page summarizing Arkansas delegation impeachment votes","url":"https://hill.house.gov/news/documentsingle.aspx?DocumentID=6526","sourceType":"other","primary":true,"publishedDate":"2019-12-18"}]},
+  {"congress":116,"rollCall":696,"position":"Oppose","preferredVote":"Nay","evidenceStatus":"verified","summary":"President Trump opposed the House impeachment effort. French Hill voted No on Article II of H. Res. 755, aligned with Trump's documented position.","effectiveDate":"2019-12-18","reviewNotes":"House Clerk Roll Call 696 records Hill voting No. A same-day White House statement condemned the impeachment articles and defended the President against them.","sources":[{"label":"House Clerk Roll Call 696","url":"https://clerk.house.gov/Votes/2019696","sourceType":"house","primary":true,"publishedDate":"2019-12-18"},{"label":"Trump White House statement on House impeachment","url":"https://trumpwhitehouse.archives.gov/briefings-statements/statement-press-secretary-105/","sourceType":"official-trump","primary":true,"publishedDate":"2019-12-18"},{"label":"French Hill page summarizing Arkansas delegation impeachment votes","url":"https://hill.house.gov/news/documentsingle.aspx?DocumentID=6526","sourceType":"other","primary":true,"publishedDate":"2019-12-18"}]},
+  {"congress":116,"rollCall":101,"position":"Oppose","preferredVote":"Nay","evidenceStatus":"verified","summary":"The Trump Administration strongly opposed S.J. Res. 68, the Iran War Powers resolution. French Hill voted No on House passage, aligned with the Administration's documented position.","effectiveDate":"2020-03-10","reviewNotes":"House Clerk Roll Call 101 records Hill voting No. The March 10, 2020 Statement of Administration Policy states that the Administration strongly opposes passage of S.J. Res. 68; Trump later vetoed the resolution.","sources":[{"label":"House Clerk Roll Call 101","url":"https://clerk.house.gov/Votes/2020101","sourceType":"house","primary":true,"publishedDate":"2020-03-11"},{"label":"Trump White House Statement of Administration Policy on S.J. Res. 68","url":"https://trumpwhitehouse.archives.gov/wp-content/uploads/2020/03/SAP_S.J.-RES.-68.pdf","sourceType":"official-trump","primary":true,"publishedDate":"2020-03-10"},{"label":"Trump veto message for S.J. Res. 68","url":"https://trumpwhitehouse.archives.gov/briefings-statements/presidential-veto-message-senate-s-j-res-68/","sourceType":"official-trump","primary":true,"publishedDate":"2020-05-06"}]}
 ]
