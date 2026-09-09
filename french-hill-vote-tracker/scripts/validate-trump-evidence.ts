@@ -24,6 +24,11 @@ for (const record of records) {
     errors++;
   }
 
+  if (record.preferredVote !== undefined && record.preferredVote !== null && !["Yea", "Nay"].includes(record.preferredVote)) {
+    console.error(`Invalid preferredVote in ${key}: ${record.preferredVote}`);
+    errors++;
+  }
+
   if (record.evidenceStatus === "verified") {
     const hasHouse = record.sources.some((source) => source.sourceType === "house");
     const hasPositionEvidence = record.sources.some((source) => ["official-trump", "archive", "news"].includes(source.sourceType));
@@ -33,6 +38,10 @@ for (const record of records) {
     }
     if (!hasPositionEvidence) {
       console.error(`Verified record lacks Trump-position evidence: ${key}`);
+      errors++;
+    }
+    if ((record.position === "Neutral" || record.position === "Ambiguous") && record.preferredVote) {
+      console.error(`Non-directional Trump position must not define preferredVote: ${key}`);
       errors++;
     }
   }
