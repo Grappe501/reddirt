@@ -5,6 +5,9 @@ export * from "./structured-output";
 export * from "./prompt";
 export * from "./openai-runtime";
 export * from "./scale";
+export * from "./actor-model";
+export * from "./actor-context";
+export * from "./actor-ensemble";
 
 export {
   DECISION_SIMULATION_TABLES,
