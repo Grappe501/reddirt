@@ -3,6 +3,7 @@ import type {
   DecisionSimulationOpeningInput,
   DecisionSimulationRun,
 } from "./contracts";
+import type { DecisionSimulationActorContext } from "./actor-context";
 import { buildDecisionSimulationShell, assertDecisionSimulationSequence } from "./sequence";
 import {
   DECISION_SIMULATION_JSON_SCHEMA,
@@ -18,6 +19,10 @@ export interface DecisionSimulationOpenAiUsage {
   inputTokens?: number;
   outputTokens?: number;
   totalTokens?: number;
+}
+
+export interface DecisionSimulationOpenAiOptions {
+  actorContext?: DecisionSimulationActorContext;
 }
 
 export interface DecisionSimulationOpenAiResult {
@@ -47,26 +52,16 @@ interface OpenAiResponseLike {
 }
 
 function resolveModel(): string {
-  return (
-    process.env.DECISION_SIMULATION_OPENAI_MODEL ||
-    process.env.OPENAI_MODEL ||
-    "gpt-4o-mini"
-  );
+  return process.env.DECISION_SIMULATION_OPENAI_MODEL || process.env.OPENAI_MODEL || "gpt-4o-mini";
 }
 
 function extractOutputText(response: OpenAiResponseLike): string {
-  if (typeof response.output_text === "string" && response.output_text.trim()) {
-    return response.output_text;
-  }
-
+  if (typeof response.output_text === "string" && response.output_text.trim()) return response.output_text;
   for (const item of response.output ?? []) {
     for (const content of item.content ?? []) {
-      if (content.type === "output_text" && typeof content.text === "string") {
-        return content.text;
-      }
+      if (content.type === "output_text" && typeof content.text === "string") return content.text;
     }
   }
-
   throw new Error("OpenAI response did not contain output_text.");
 }
 
@@ -74,7 +69,6 @@ function assertAiPayload(payload: DecisionSimulationAiPayload): void {
   if (!Array.isArray(payload.moves) || payload.moves.length !== 6) {
     throw new Error(`Decision simulation expected 6 generated moves; received ${payload.moves?.length ?? 0}.`);
   }
-
   const expected = [
     [1, "COUNTERPARTY", "PREDICTED_RESPONSE"],
     [2, "OPERATOR", "RECOMMENDED_RESPONSE"],
@@ -83,7 +77,6 @@ function assertAiPayload(payload: DecisionSimulationAiPayload): void {
     [5, "COUNTERPARTY", "PREDICTED_RESPONSE"],
     [6, "OPERATOR", "RECOMMENDED_RESPONSE"],
   ] as const;
-
   payload.moves.forEach((move, index) => {
     const [moveNumber, side, kind] = expected[index];
     if (move.moveNumber !== moveNumber || move.side !== side || move.kind !== kind) {
@@ -102,7 +95,6 @@ function mergeAiPayload(
   model: string,
 ): DecisionSimulationRun {
   const run = buildDecisionSimulationShell(input);
-
   for (const aiMove of payload.moves) {
     const move = run.moves[aiMove.moveNumber] as DecisionSimulationMove;
     move.message = aiMove.message;
@@ -114,10 +106,8 @@ function mergeAiPayload(
     move.assumptions = aiMove.assumptions;
     move.confidence = aiMove.confidence;
     move.actor = aiMove.side === "OPERATOR" ? input.operatorActor : input.counterpartyActor;
-    // Evidence is never model-invented. Phase 9 attaches governed evidence refs separately.
     move.evidenceRefs = [];
   }
-
   run.assumptions = payload.assumptions;
   run.evidenceRefs = [];
   run.modelVersion = model;
@@ -127,24 +117,22 @@ function mergeAiPayload(
   return run;
 }
 
-async function callOpenAi(input: DecisionSimulationOpeningInput): Promise<OpenAiResponseLike> {
+async function callOpenAi(
+  input: DecisionSimulationOpeningInput,
+  options?: DecisionSimulationOpenAiOptions,
+): Promise<OpenAiResponseLike> {
   const apiKey = process.env.OPENAI_API_KEY;
-  if (!apiKey) {
-    throw new Error("OPENAI_API_KEY is not configured in the server environment.");
-  }
+  if (!apiKey) throw new Error("OPENAI_API_KEY is not configured in the server environment.");
 
   const model = resolveModel();
   const response = await fetch("https://api.openai.com/v1/responses", {
     method: "POST",
-    headers: {
-      Authorization: `Bearer ${apiKey}`,
-      "Content-Type": "application/json",
-    },
+    headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
     body: JSON.stringify({
       model,
       input: [
         { role: "developer", content: buildDecisionSimulationDeveloperPrompt() },
-        { role: "user", content: buildDecisionSimulationUserPrompt(input) },
+        { role: "user", content: buildDecisionSimulationUserPrompt(input, options?.actorContext) },
       ],
       text: {
         format: {
@@ -166,10 +154,10 @@ async function callOpenAi(input: DecisionSimulationOpeningInput): Promise<OpenAi
 
 export async function runDecisionSimulationOpenAi(
   input: DecisionSimulationOpeningInput,
+  options?: DecisionSimulationOpenAiOptions,
 ): Promise<DecisionSimulationOpenAiResult> {
   if (!input.message.trim()) throw new Error("Decision simulation opening message is required.");
-
-  const response = await callOpenAi(input);
+  const response = await callOpenAi(input, options);
   const raw = extractOutputText(response);
   const payload = JSON.parse(raw) as DecisionSimulationAiPayload;
   assertAiPayload(payload);
