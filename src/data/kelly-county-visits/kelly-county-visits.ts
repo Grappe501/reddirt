@@ -4666,7 +4666,21 @@ const kellyCampaignStopsSource: KellyCampaignStop[] = [
     includeOnPublicPage: true,
     confidence: "confirmed",
     notes:
-      "Steve 2026-09-08: Oct 9 OLLI for Coffee 1:00-3:00 p.m. Fayetteville confirmed. Do not invent a Jimmy's Egg street. Do not publish host phone or email. /events/olli-for-coffee-2026",
+      "Steve 2026-09-08: Oct 9 OLLI for Coffee 1:00-3:00 p.m. Fayetteville confirmed. Same evening fundraiser 5:00-8:00 p.m. Do not invent a Jimmy's Egg street. Do not publish host phone or email. /events/olli-for-coffee-2026",
+    sourceType: "manual",
+  },
+  {
+    id: "manual-2026-10-09-fayetteville-fundraiser",
+    publicTitle: "Fundraiser — Fayetteville",
+    date: "2026-10-09",
+    title: "Fayetteville fundraiser",
+    city: "Fayetteville",
+    counties: ["Washington"],
+    status: "scheduled",
+    includeOnPublicPage: true,
+    confidence: "confirmed",
+    notes:
+      "Steve 2026-09-08: schedule fundraiser Oct 9 Fayetteville 5:00-8:00 p.m. Venue TBA. After OLLI 1:00-3:00. /events/fayetteville-fundraiser-2026-10-09",
     sourceType: "manual",
   },
   {

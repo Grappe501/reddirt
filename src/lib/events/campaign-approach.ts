@@ -419,6 +419,7 @@ const CONFIRMED_SLUGS = new Set([
   "october-2-blocked-2026",
   "baxter-farm-bureau-oct-6-2026",
   "olli-for-coffee-2026",
+  "fayetteville-fundraiser-2026-10-09",
 ]);
 
 function withSept29Caution(event: EventItem): EventItem {

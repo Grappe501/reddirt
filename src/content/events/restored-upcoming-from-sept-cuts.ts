@@ -545,6 +545,35 @@ export const restoredUpcomingFromSeptCuts: EventItem[] = [
     fieldAttendance: "confirmed",
   }),
   campaignStop({
+    slug: "fayetteville-fundraiser-2026-10-09",
+    title: "Fundraiser — Fayetteville",
+    type: "House Gathering",
+    countySlug: "washington-county",
+    startsAt: "2026-10-09T17:00:00-05:00",
+    endsAt: "2026-10-09T20:00:00-05:00",
+    locationLabel: "Fayetteville (venue TBA)",
+    city: "Fayetteville",
+    addressLine: "Fayetteville, AR (street TBA)",
+    attendanceType: "INVITATION",
+    summary:
+      "Friday, October 9, 2026, **5:00–8:00 p.m. Central** in Fayetteville: campaign **fundraiser** hold — confirmed. Venue TBA.",
+    description:
+      "Steve scheduled a **fundraiser** hold for Friday, **October 9, 2026**, **5:00–8:00 p.m. Central** in **Fayetteville**.\n\nStreet and host room are still TBA.\n\nThe same afternoon is **OLLI for Coffee** at Jimmy’s Egg, **1:00–3:00 p.m.**",
+    whatToExpect: ["Confirmed Friday, October 9", "5:00–8:00 p.m. Central", "Venue TBA"],
+    whoItsFor: "Invited guests. This is not a walk-in public event.",
+    organizerNote:
+      "Steve 2026-09-08: schedule fundraiser Oct 9 Fayetteville 5:00-8:00 p.m. Hold the slot. Do not invent a street.",
+    audienceTags: ["Fayetteville", "Washington County", "Fundraiser"],
+    mapCoordinates: { lat: 36.0617, lng: -94.1608 },
+    mapPinQuality: "region",
+    relatedEventSlugs: ["olli-for-coffee-2026"],
+    relatedResourceHrefs: [
+      { label: "OLLI for Coffee — same afternoon", href: "/events/olli-for-coffee-2026" },
+      { label: "Events calendar", href: "/events" },
+    ],
+    fieldAttendance: "confirmed",
+  }),
+  campaignStop({
     slug: "weston-colt-birthday-2026-10-24",
     title: "Weston Colt birthday",
     type: "House Gathering",
