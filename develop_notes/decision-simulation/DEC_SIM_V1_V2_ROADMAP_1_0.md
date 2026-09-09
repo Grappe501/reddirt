@@ -3,7 +3,7 @@
 **Status:** Canonical from 2026-09-09. This is the **only** V2 shadow roadmap.  
 **Live product:** https://dec-sim.netlify.app  
 **Parent plan:** `DECISION_SIMULATION_MASTER_BUILD_PLAN_1_0.md`  
-**Next V1 slice:** Phase 10 observed-outcome learning. Phase 9 provenance and prior-correspondence attach are started capabilities, not a phase close.  
+**Next V1 slice:** Phase 10 observed-outcome learning. Phase 5 ensemble-lane intelligence is a started capability, not a phase close.  
 **Doctrine unchanged:** advisory only; no send; no post; evidence separated from inference; generated language labeled generated.
 
 V1 is no longer a theoretical sequence. We are learning from a live product while we finish the dependable operating system.
@@ -31,7 +31,7 @@ We are still in **Phase 5**. Burt pulled forward pieces of Phases 7, 9, and 12 b
 | 2 Persistence | Auditable simulation records | **Largely complete** | Sessions, ensembles, chunks, job state. Branch / outcome / evaluation tables exist ahead of the loops that fill them |
 | 3 OpenAI intelligence | Structured six-move generation | **Functional** | Server-side OpenAI, structured output, retries, token accounting |
 | 4 Actor / personality | Versioned researched models | **Substantially built** | Research models for Jones / Hill, open catalog, custom hypothesis personalities, OBSERVED / INFERRED / HYPOTHESIS tags. Writing-intelligence packets are a Phase 5 capability, not a Phase 4 or 9 close |
-| 5 Ensemble / six-move execution | Primary line + ensemble | **Open / current** | Live 1–10, queued 100 / 1,000, cost gates, seeded personality variation, cancel / retry, Netlify worker, NASA dashboard, first-party writing packets, Alternative Futures lane assignment, Hill vote adapter (corpus not yet located) |
+| 5 Ensemble / six-move execution | Primary line + ensemble | **Open / current** | Live 1–10, queued 100 / 1,000, cost gates, seeded personality variation, cancel / retry, Netlify worker, NASA dashboard, first-party writing packets, Alternative Futures lane assignment, Hill vote adapter (corpus not yet located), `DEC-SIM-ENSEMBLE-LANE-INTELLIGENCE-1.0` (within-lane n, modal share, typical sample). Not a phase close |
 | 6 Correspondence intake | Rich paste-first channels | **Capability started** | `DEC-SIM-CORRESPONDENCE-INTAKE-1.0`: channel-specific paste parse (email headers, debate question, memo Re, speech venue). No connectors. No attachment intelligence |
 | 7 Decision dashboard | Operator command surface | **Capability started** | `DEC-SIM-DASHBOARD-INTELLIGENCE-1.0`: six-move sequence, branch explorer, scorecard, hypothesis revision, local save/compare, outcome attach. Not a phase close |
 | 8 Alternative Futures | Branching scenario lanes | **Capability started; not closed** | `DEC-SIM-ALTERNATIVE-FUTURES-1.0` assigns six named futures per run. Robustness is measured across futures. Hill legislative evidence attaches when the vote corpus is found |
@@ -44,7 +44,7 @@ We are still in **Phase 5**. Burt pulled forward pieces of Phases 7, 9, and 12 b
 
 Phase 5 is more sophisticated than originally planned. It is not finished until a 1,000-run job is **informative**, not merely 1,000 slightly different linear conversations.
 
-**Named futures are assigned.** Remaining Phase 5 work is making 100/1,000-run jobs informative. Dashboard intelligence is a Phase 7 capability started (`DEC-SIM-DASHBOARD-INTELLIGENCE-1.0`), not a Phase 5 close.
+**Named futures are assigned.** `DEC-SIM-ENSEMBLE-LANE-INTELLIGENCE-1.0` now reports within-lane n, modal share, and a typical sample. Remaining Phase 5 work is proving a hosted 100/1,000-run job is informative in production, plus closed-tab worker continuity (Phase 12). Dashboard intelligence is a Phase 7 capability started (`DEC-SIM-DASHBOARD-INTELLIGENCE-1.0`), not a Phase 5 close.
 
 Required futures:
 
@@ -268,6 +268,10 @@ Lexis/Nexis, Democrat-Gazette full text, and television/radio transcripts are th
 
 V1 tags each claim and lets an operator attach a prior letter. Automatic recency decay, retrieval of earlier simulation jobs as evidence, and a clickable graph remain V2. Do not implement a memory crawler here.
 
+### V2-34 Full-tree clustering and entropy
+
+V1 reports first-response modal share inside each named future. Clustering full six-move transcripts, entropy dashboards, minority-scenario maps, and “what assumption flips the tree” remain V2-4 / V2-34. Do not implement clustering here.
+
 ## Boundary rules (agents)
 
 1. If a request improves Alternative Futures, intake, dashboard intelligence, evidence, outcome attach, or hardening — it is V1.
@@ -280,4 +284,4 @@ V1 tags each claim and lets an operator attach a prior letter. Automatic recency
 
 ## Next operator click
 
-Phase 5 remains open. Alternative Futures, intake, dashboard intelligence, campaign-site priorities, media research, and evidence provenance are capabilities, not phase closes. Named next V1 work is Phase 10 outcome learning. Do not start V2-21+.
+Phase 5 remains open. Alternative Futures, intake, dashboard intelligence, campaign-site priorities, media research, evidence provenance, and ensemble-lane intelligence are capabilities, not phase closes. Named next V1 work is Phase 10 outcome learning. Do not start V2-21+.

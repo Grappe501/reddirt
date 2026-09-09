@@ -207,7 +207,11 @@ export function DecisionIntelligence({
                 onClick={() => setBranchId(future.id)}
               >
                 <b>{future.label}</b>
-                <small>{lane?.frame ?? "No run yet"}</small>
+                <small>
+                  {lane?.runCount
+                    ? `${lane.modalFrame ?? lane.frame ?? "Unspecified"} · n=${lane.runCount}`
+                    : "No run yet"}
+                </small>
               </button>
             );
           })}
@@ -219,8 +223,16 @@ export function DecisionIntelligence({
               {selectedFuture.assumptions.map((item) => <li key={item}>{item}</li>)}
             </ul>
             <p>{selectedFuture.operatorNote}</p>
-            {selectedBranch?.moves.length ? (
-              <p>Run #{selectedBranch.ordinal} · first response {selectedBranch.frame ?? "Unspecified"}</p>
+            {selectedBranch?.runCount ? (
+              <p>
+                Lane n={selectedBranch.runCount}
+                {selectedBranch.modalShare != null ? ` · modal ${Math.round(selectedBranch.modalShare * 100)}% ${selectedBranch.modalFrame ?? ""}` : ""}.
+                {selectedBranch.moves.length
+                  ? selectedBranch.representativeIsModal
+                    ? ` Run #${selectedBranch.ordinal} is typical of this lane.`
+                    : ` Run #${selectedBranch.ordinal} is a within-lane outlier; modal is ${selectedBranch.modalFrame ?? "unspecified"}.`
+                  : " Sequence text was not retained for the modal sample."}
+              </p>
             ) : (
               <p>This future has no completed run in the current job.</p>
             )}

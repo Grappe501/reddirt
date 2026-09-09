@@ -109,6 +109,7 @@ const payload = buildDashboardIntelligencePayload({
   hostileFrame: "ATTACK",
 });
 assert(payload.branches.length === 6, "branch explorer has all six named futures");
+assert(payload.branches.find((lane) => lane.futureId === "EXPECTED")?.runCount === 1, "present futures report lane n");
 assert(payload.branches.find((lane) => lane.futureId === "SILENCE")?.moves.length === 0, "missing futures stay empty instead of invented");
 assert(payload.revision.sourceState === "HYPOTHESIS", "payload revision is not a send instruction");
 
@@ -143,6 +144,7 @@ assert(!JSON.stringify(outcomes).includes("actorModel"), "outcome attach does no
 const ui = readFileSync("src/components/admin/decision-simulator/DecisionSimulatorClient.tsx", "utf8");
 const intel = readFileSync("src/components/admin/decision-simulator/DecisionIntelligence.tsx", "utf8");
 assert(intel.includes("Six-move sequence") && intel.includes("Branch explorer"), "dashboard renders sequence and branches");
+assert(intel.includes("typical of this lane"), "branch explorer names a typical sample");
 assert(intel.includes("Apply draft to opening") && intel.includes("Attach outcome"), "save/rerun and outcome capture are operator actions");
 assert(intel.includes("does not update actor models"), "outcome capture forbids silent model writeback");
 assert(!/mailto:|twitter\.com\/intent|send this/i.test(intel), "dashboard intelligence has no send/post action");

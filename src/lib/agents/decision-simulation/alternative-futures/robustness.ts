@@ -22,13 +22,26 @@ export function scoreRobustnessAcrossFutures(members: RobustnessMember[]): Robus
       const frame = member.frame || "Unspecified";
       frames.set(frame, (frames.get(frame) ?? 0) + 1);
     }
-    const modal = [...frames.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))[0];
+    const ranked = [...frames.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
+    const modal = ranked[0];
+    const modalFrame = modal?.[0] ?? null;
+    const modalCount = modal?.[1] ?? 0;
+    const modalShare = subset.length ? modalCount / subset.length : null;
+    const typical = subset.find((member) => (member.frame || "Unspecified") === modalFrame) ?? subset[0];
     return {
       futureId,
       label: ALTERNATIVE_FUTURES.find((item) => item.id === futureId)?.label ?? futureId,
       runCount: subset.length,
-      modalFrame: modal?.[0] ?? null,
-      representativeOrdinal: subset[0]?.ordinal ?? null,
+      modalFrame,
+      modalShare,
+      withinLaneAgreement: modalShare,
+      frames: ranked.slice(0, 3).map(([frame, count]) => ({
+        frame,
+        count,
+        share: subset.length ? count / subset.length : 0,
+      })),
+      representativeOrdinal: typical?.ordinal ?? null,
+      representativeIsModal: Boolean(typical && modalFrame && (typical.frame || "Unspecified") === modalFrame),
       legislativeNotes: [],
     };
   });
@@ -59,6 +72,7 @@ export function scoreRobustnessAcrossFutures(members: RobustnessMember[]): Robus
     uncertainty: [
       "One-run jobs can only cover EXPECTED.",
       "Six or more runs are required before every named future has at least one sample.",
+      "A 6-run job has n=1 per lane. 100/1,000 jobs measure within-lane stability of the first response.",
       "Vote history can change plausibility notes; it does not determine the branch.",
     ],
   };

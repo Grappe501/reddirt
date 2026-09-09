@@ -74,7 +74,14 @@ type JobView = {
       robustnessScore: number | null;
       crossFutureFrameAgreement: number | null;
       methodology: string;
-      lanes: Array<{ futureId: string; label: string; runCount: number; modalFrame: string | null }>;
+      lanes: Array<{
+        futureId: string;
+        label: string;
+        runCount: number;
+        modalFrame: string | null;
+        modalShare?: number | null;
+        representativeIsModal?: boolean;
+      }>;
     };
     representative: {
       expected: Member | null;
@@ -601,6 +608,17 @@ export function DecisionSimulatorClient() {
                     </div>
                   )}
                   <p className="ml-copy">{command.robustness?.methodology}</p>
+                  {command.robustness?.lanes.some((lane) => lane.runCount > 0) && (
+                    <ul className="ml-sources">
+                      {command.robustness.lanes.filter((lane) => lane.runCount > 0).map((lane) => (
+                        <li key={lane.futureId}>
+                          {lane.label}: n={lane.runCount}
+                          {lane.modalShare != null ? ` · modal ${Math.round(lane.modalShare * 100)}% ${lane.modalFrame ?? ""}` : ""}
+                          {lane.representativeIsModal === false ? " · displayed sample is atypical" : ""}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                   <div className="ml-stats">
                     <Rep title="Expected / median" member={command.representative.expected} />
                     <Rep title="Hostile" member={command.representative.hostileOutlier} />

@@ -225,8 +225,14 @@ export function buildDecisionSimulationCommandCenter(
     ...member,
     futureId: member.futureId ?? assignAlternativeFuture(member.ordinal).futureId,
   }));
-  const pickFuture = (futureId: AlternativeFutureId) =>
-    withFuture.find((member) => !member.error && member.futureId === futureId) ?? null;
+  const robustness = scoreRobustnessAcrossFutures(withFuture);
+  const pickFuture = (futureId: AlternativeFutureId) => {
+    const ordinal = robustness.lanes.find((lane) => lane.futureId === futureId)?.representativeOrdinal;
+    if (ordinal != null) {
+      return withFuture.find((member) => !member.error && member.ordinal === ordinal) ?? null;
+    }
+    return withFuture.find((member) => !member.error && member.futureId === futureId) ?? null;
+  };
   const representative = {
     expected: pickFuture("EXPECTED"),
     highConfidence: byConfidence[byConfidence.length - 1] ?? null,
@@ -236,7 +242,6 @@ export function buildDecisionSimulationCommandCenter(
     unusual: pickFuture("SURPRISE"),
     silence: pickFuture("SILENCE"),
   };
-  const robustness = scoreRobustnessAcrossFutures(withFuture);
 
   return {
     simulations: requested,
@@ -254,6 +259,7 @@ export function buildDecisionSimulationCommandCenter(
       "Estimates are advisory and approximate.",
       "Actor variation is seeded; it is not a researched psychological profile unless a saved actor model is attached.",
       "Robustness is measured across named futures, not as likelihood inside one linear conversation.",
+      "A 6-run job has n=1 per lane. 100/1,000 jobs measure within-lane stability of the first response.",
       "Thin ensembles under-represent rare but material futures.",
     ],
   };

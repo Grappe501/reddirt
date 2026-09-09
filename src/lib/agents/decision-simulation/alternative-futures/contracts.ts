@@ -81,12 +81,22 @@ export type AlternativeFutureAssignment = {
   definition: AlternativeFutureDefinition;
 };
 
+export type FutureLaneFrameShare = {
+  frame: string;
+  count: number;
+  share: number;
+};
+
 export type FutureLaneSummary = {
   futureId: AlternativeFutureId;
   label: string;
   runCount: number;
   modalFrame: string | null;
+  modalShare: number | null;
+  withinLaneAgreement: number | null;
+  frames: FutureLaneFrameShare[];
   representativeOrdinal: number | null;
+  representativeIsModal: boolean;
   legislativeNotes: string[];
 };
 
