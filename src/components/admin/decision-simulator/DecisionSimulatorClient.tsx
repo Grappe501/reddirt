@@ -53,12 +53,23 @@ type JobView = {
     outlierRate: number | null;
     frameDistribution: Array<{ frame: string; count: number; share?: number }>;
     moveConsensus: Array<{ moveNumber: number; topPredicted: string[]; topCounters: string[] }>;
+    robustness?: {
+      futuresWithRuns: number;
+      requiredFutures: number;
+      coverage: number;
+      robustnessScore: number | null;
+      crossFutureFrameAgreement: number | null;
+      methodology: string;
+      lanes: Array<{ futureId: string; label: string; runCount: number; modalFrame: string | null }>;
+    };
     representative: {
       expected: Member | null;
       highConfidence: Member | null;
       hostileOutlier: Member | null;
       opportunity: Member | null;
+      escalation?: Member | null;
       unusual: Member | null;
+      silence?: Member | null;
     };
     uncertainty: string[];
   } | null;
@@ -85,7 +96,7 @@ const CHANNELS = ["EMAIL","SOCIAL","SMS","PRESS_STATEMENT","PUBLIC_STATEMENT","F
 const CUSTOM_KEY = "dec-sim-custom-personalities-v1";
 const DEPTH_META: Record<RunPreset, { title: string; hint: string }> = {
   1: { title: "Quick look", hint: "Immediate" },
-  10: { title: "Scenario set", hint: "Immediate" },
+  10: { title: "Six futures", hint: "Immediate" },
   100: { title: "Ensemble", hint: "Queued analysis" },
   1000: { title: "Deep ensemble", hint: "Deep ensemble" },
 };
@@ -279,6 +290,10 @@ export function DecisionSimulatorClient() {
         <p className="ml-copy" style={{ marginTop: 0, fontFamily: "var(--ml-mono)", fontSize: 11 }}>
           SYS {now} · catalog {BUILT_IN_PERSONALITIES.length}+{custom.length} · learning = operator-attached observations only
         </p>
+        <p className="ml-copy">
+          Alternative Futures rotate by run: expected, hostile, opportunity, escalation, surprise, silence/non-response.
+          The product question is robustness across those futures, not likelihood inside one conversation. Vote history, when loaded, is evidence for Hill plausibility only.
+        </p>
 
         <div className="ml-grid">
           <section className="ml-panel">
@@ -417,13 +432,22 @@ export function DecisionSimulatorClient() {
                   ))}
                 </div>
                 <div className="ml-sec">
-                  <h3>C. Representative futures</h3>
+                  <h3>C. Alternative futures</h3>
+                  {command.robustness && (
+                    <div className="ml-stats">
+                      <div className="ml-stat"><b>{command.robustness.futuresWithRuns}/{command.robustness.requiredFutures}</b><span>Futures with runs</span></div>
+                      <div className="ml-stat"><b>{pct(command.robustness.coverage)}</b><span>Future coverage</span></div>
+                      <div className="ml-stat"><b>{pct(command.robustness.robustnessScore)}</b><span>Cross-future frame stability</span></div>
+                    </div>
+                  )}
+                  <p className="ml-copy">{command.robustness?.methodology}</p>
                   <div className="ml-stats">
                     <Rep title="Expected / median" member={command.representative.expected} />
-                    <Rep title="High-confidence" member={command.representative.highConfidence} />
-                    <Rep title="Hostile / outlier" member={command.representative.hostileOutlier} />
-                    <Rep title="Opportunity path" member={command.representative.opportunity} />
-                    <Rep title="Unusual but plausible" member={command.representative.unusual} />
+                    <Rep title="Hostile" member={command.representative.hostileOutlier} />
+                    <Rep title="Opportunity" member={command.representative.opportunity} />
+                    <Rep title="Escalation" member={command.representative.escalation ?? null} />
+                    <Rep title="Surprise" member={command.representative.unusual} />
+                    <Rep title="Silence / non-response" member={command.representative.silence ?? null} />
                   </div>
                 </div>
                 <div className="ml-sec">

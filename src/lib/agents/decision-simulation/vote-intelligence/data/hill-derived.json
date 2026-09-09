@@ -1,0 +1,33 @@
+{
+  "actorId": "french-hill-ar02",
+  "version": "hill-vote-evidence-bridge-1.0",
+  "generatedAt": "2026-09-09",
+  "sourceCorpus": null,
+  "sourcePath": null,
+  "provenanceQuality": "MISSING",
+  "voteCount": 0,
+  "dateRange": { "start": null, "end": null },
+  "congresses": [],
+  "coverageEstimate": "0 — source directory not located",
+  "searchedNames": [
+    "french-hil-vote-tracker",
+    "french-hill-vote-tracker",
+    "hill-vote-tracker",
+    "hill-vote",
+    "vote-tracker"
+  ],
+  "partyAlignment": { "numerator": 0, "denominator": 0, "rate": null },
+  "partyDefection": { "numerator": 0, "denominator": 0, "rate": null },
+  "documentedAdminAlignment": { "numerator": 0, "denominator": 0, "rate": null },
+  "documentedAdminDefection": { "numerator": 0, "denominator": 0, "rate": null },
+  "bipartisanRate": { "numerator": 0, "denominator": 0, "rate": null },
+  "highlyPartisanRate": { "numerator": 0, "denominator": 0, "rate": null },
+  "topIssues": [],
+  "recentOutliers": [],
+  "sampleVoteRefs": [],
+  "uncertainty": [
+    "Vote-tracker directory was not found in the local RedDirt checkout, worktrees, or GitHub index.",
+    "No roll-call metrics are claimed.",
+    "Do not invent Hill votes to fill this gap."
+  ]
+}

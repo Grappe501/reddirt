@@ -8,4 +8,4 @@ The single V2 shadow roadmap is:
 
 That file holds Personal Voice Engine through item 20, plus any later `V2-21+` filings.
 
-Do NOT implement all of V2 now. Next V1 slice remains `DEC-SIM-ALTERNATIVE-FUTURES-1.0`.
+Do NOT implement all of V2 now. Alternative Futures is a Phase 5 capability in progress, not a V2 implementation.

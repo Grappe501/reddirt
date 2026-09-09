@@ -293,10 +293,10 @@ Updated 2026-09-09 from the live `dec-sim` product. Detail: `DEC_SIM_V1_V2_ROADM
 - Phase 2 Database & Schema: **largely complete**
 - Phase 3 OpenAI Intelligence: **functional**
 - Phase 4 Actor Modeling: **substantially built** (research catalog live; not V2 digital twins)
-- Phase 5 Six-Move Engine: **open / current** (queued ensembles and writing packets are capabilities; Alternative Futures still missing; phase not closed)
+- Phase 5 Six-Move Engine: **open / current** (queued ensembles, writing packets, Alternative Futures lanes, and Hill vote adapter are capabilities; phase not closed)
 - Phase 6 Correspondence Intake: **started, thin**
 - Phase 7 Decision Dashboard: **preview capability pulled forward** (not closed)
-- Phase 8 Alternative Futures: **next V1 slice `DEC-SIM-ALTERNATIVE-FUTURES-1.0`**
+- Phase 8 Alternative Futures: **capability started inside Phase 5** (`DEC-SIM-ALTERNATIVE-FUTURES-1.0`); not a phase close
 - Phase 9 Memory & Evidence: **scaffold only**
 - Phase 10 Outcome Learning: **not started**
 - Phase 11 Cross-Channel Command Center: **not started**
@@ -306,4 +306,4 @@ V2 (voice engine, digital twins, multi-actor game theory, ensemble decision scie
 
 ## Next Build
 
-Phase 5 remains open. Next named slice: `DEC-SIM-ALTERNATIVE-FUTURES-1.0` — expected, hostile, opportunity, escalation, surprise, and silence/non-response. Measure robustness across futures, not likelihood inside one linear path. Then resume the V1 spine.
+Phase 5 remains open. Alternative Futures lanes and a Hill vote-evidence adapter are live capabilities. They do not close Phase 5 or Phase 8. Next work stays on making 100/1,000-run jobs informative across the six futures once a real Hill vote corpus is attached. Then resume the V1 spine.

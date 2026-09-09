@@ -31,10 +31,10 @@ We are still in **Phase 5**. Burt pulled forward pieces of Phases 7, 9, and 12 b
 | 2 Persistence | Auditable simulation records | **Largely complete** | Sessions, ensembles, chunks, job state. Branch / outcome / evaluation tables exist ahead of the loops that fill them |
 | 3 OpenAI intelligence | Structured six-move generation | **Functional** | Server-side OpenAI, structured output, retries, token accounting |
 | 4 Actor / personality | Versioned researched models | **Substantially built** | Research models for Jones / Hill, open catalog, custom hypothesis personalities, OBSERVED / INFERRED / HYPOTHESIS tags. Writing-intelligence packets are a Phase 5 capability, not a Phase 4 or 9 close |
-| 5 Ensemble / six-move execution | Primary line + ensemble | **Open / current** | Live 1–10, queued 100 / 1,000, cost gates, seeded personality variation, cancel / retry, Netlify worker, NASA dashboard, first-party writing packets. Alternative Futures not built |
+| 5 Ensemble / six-move execution | Primary line + ensemble | **Open / current** | Live 1–10, queued 100 / 1,000, cost gates, seeded personality variation, cancel / retry, Netlify worker, NASA dashboard, first-party writing packets, Alternative Futures lane assignment, Hill vote adapter (corpus not yet located) |
 | 6 Correspondence intake | Rich paste-first channels | **Started, thin** | Channel enum and paste box. No connectors, no attachment intelligence |
 | 7 Decision dashboard | Operator command surface | **Preview pulled forward** | Mission-lab UI, depth, cost, progress, aggregate command center. Missing branch explorer, scorecard, compare-openings, outcome capture |
-| 8 Alternative Futures | Branching scenario lanes | **Next V1 intelligence jump** | Representative cards exist as labels. Runs are still mostly linear variations of one path |
+| 8 Alternative Futures | Branching scenario lanes | **Capability started; not closed** | Six named futures are assigned per run. Robustness is measured across futures. Hill legislative evidence attaches when the vote corpus is found |
 | 9 Memory & evidence | Provenance-backed recall | **Scaffold only** | Source links on researched personalities. No evidence graph, no stale-evidence decay, no prior-sim retrieval |
 | 10 Outcome learning | Prediction vs reality | **Not started** | Custom notes can be attached locally. No observed-outcome writeback |
 | 11 Cross-channel command | Same engine, many surfaces | **Not started** | Isolated `dec-sim` product. Must stay separate from Kelly send workflows |
@@ -216,6 +216,34 @@ Which assumption flips the recommendation.
 
 Dedicated search for unusual and escalation futures, not leftover ensemble variance. Alternative Futures is the V1 prerequisite.
 
+### V2-21 Voting-pattern embeddings
+
+Vector embeddings over roll-call sequences. Not required for V1 Alternative Futures.
+
+### V2-22 Issue-specific behavioral twins
+
+Separate Hill twins per issue family. V1 keeps one compact legislative packet.
+
+### V2-23 Legislative anomaly detection
+
+Automatic rare-vote / coalition-break alerts. V1 outlier views are explicit filtered lists with roll-call ids.
+
+### V2-24 Coalition network modeling
+
+Who votes with Hill, against him, and when. Filed only.
+
+### V2-25 Historical counterfactual voting
+
+“If this bill were recast, how would the loaded record shift?” Not V1.
+
+### V2-26 Predictive legislative behavior
+
+Forecasting future floor votes. Forbidden as a V1 claim. Vote history remains non-deterministic evidence.
+
+### V2-27 Clickable evidence graph
+
+ACTOR → VOTE → BILL → ISSUE → PARTY/ADMIN POSITION → STATEMENT → NEWSLETTER → SIMULATION → OUTCOME. V1 only prepares typed edges. Do not implement the graph UI now.
+
 ## Boundary rules (agents)
 
 1. If a request improves Alternative Futures, intake, dashboard intelligence, evidence, outcome attach, or hardening — it is V1.
@@ -228,4 +256,4 @@ Dedicated search for unusual and escalation futures, not leftover ensemble varia
 
 ## Next operator click
 
-Phase 5 remains open. Next named slice: **`DEC-SIM-ALTERNATIVE-FUTURES-1.0`**.
+Phase 5 remains open. Alternative Futures is a **capability in progress**, not a phase close. Hill vote-evidence is a supporting adapter. Do not start V2-21+.

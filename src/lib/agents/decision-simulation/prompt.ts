@@ -45,6 +45,6 @@ export function buildDecisionSimulationUserPrompt(
     "",
     buildActorModelPromptContext(actorContext),
     "",
-    "Produce the expected six-ply path. Prefer realistic strategic behavior over dramatic behavior. Where context is thin, lower confidence and state the assumption instead of inventing facts.",
+    "Produce the six-ply path for the assigned Alternative Future lane when one is supplied. Measure robustness across futures, not likelihood inside one linear conversation. Prefer realistic strategic behavior over dramatic behavior. Where context is thin, lower confidence and state the assumption instead of inventing facts.",
   ].join("\n");
 }

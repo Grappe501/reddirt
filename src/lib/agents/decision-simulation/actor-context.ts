@@ -2,11 +2,17 @@ import type {
   DecisionSimulationActorModel,
   DecisionSimulationActorVariation,
 } from "./actor-model";
+import type { AlternativeFutureAssignment } from "./alternative-futures/contracts";
+import { formatAlternativeFuturePrompt } from "./alternative-futures/prompt";
+import { legislativePlausibilityNotes } from "./alternative-futures/legislative-plausibility";
+import { formatLegislativePromptPacket } from "./vote-intelligence/prompt-packet";
 import { formatWritingIntelligencePromptPacket } from "./writing-intelligence/prompt-packet";
 
 export interface DecisionSimulationActorContext {
   model: DecisionSimulationActorModel;
   variation?: DecisionSimulationActorVariation;
+  future?: AlternativeFutureAssignment;
+  openingMessage?: string;
 }
 
 function compact(items: string[]): string {
@@ -30,14 +36,20 @@ function tendencies(items: Array<{ label: string; probabilityWeight: number; con
 export function buildActorContextForPrompt(
   model: DecisionSimulationActorModel,
   variation?: DecisionSimulationActorVariation,
+  extras?: { future?: AlternativeFutureAssignment; openingMessage?: string },
 ): string {
-  return buildActorModelPromptContext({ model, variation });
+  return buildActorModelPromptContext({ model, variation, ...extras });
 }
 
 export function buildActorModelPromptContext(context?: DecisionSimulationActorContext): string {
   if (!context) return "ACTOR MODEL: Not supplied.";
-  const { model, variation } = context;
+  const { model, variation, future, openingMessage } = context;
   const writingPacket = formatWritingIntelligencePromptPacket(model.actorId);
+  const legislativePacket = formatLegislativePromptPacket(model.actorId);
+  const futurePacket = future ? formatAlternativeFuturePrompt(future) : "";
+  const plausibility = future
+    ? legislativePlausibilityNotes(model.actorId, openingMessage ?? "", future.futureId).join(" ")
+    : "";
 
   return [
     "ACTOR MODEL",
@@ -60,6 +72,9 @@ export function buildActorModelPromptContext(context?: DecisionSimulationActorCo
       : "ENSEMBLE VARIATION: Not supplied.",
     "Treat OBSERVED signals as stronger than INFERRED signals, and INFERRED signals as stronger than HYPOTHESIS signals. A hypothesis is not a fact.",
     writingPacket,
+    legislativePacket,
+    futurePacket,
+    plausibility,
   ]
     .filter(Boolean)
     .join("\n");

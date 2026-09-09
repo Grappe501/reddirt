@@ -2,6 +2,8 @@ import type { DecisionSimulationOpeningInput } from "./contracts";
 import type { DecisionSimulationActorModel } from "./actor-model";
 import { buildActorVariation } from "./actor-model";
 import { buildActorContextForPrompt } from "./actor-context";
+import { assignAlternativeFuture } from "./alternative-futures/assign";
+import type { AlternativeFutureId } from "./alternative-futures/contracts";
 import { runDecisionSimulationOpenAi, type DecisionSimulationOpenAiResult } from "./openai-runtime";
 import {
   planDecisionSimulationEnsemble,
@@ -12,6 +14,7 @@ import {
 export interface DecisionSimulationEnsembleMemberResult {
   ordinal: number;
   seed: number;
+  futureId: AlternativeFutureId;
   actorVariation: ReturnType<typeof buildActorVariation>;
   result?: DecisionSimulationOpenAiResult;
   error?: string;
@@ -110,18 +113,23 @@ export async function runDecisionSimulationEnsemble(
 
   const tasks = Array.from({ length: plan.requestedRuns }, (_, index) => async (): Promise<DecisionSimulationEnsembleMemberResult> => {
     const ordinal = index + 1;
+    const future = assignAlternativeFuture(ordinal);
     const actorVariation = buildActorVariation(input.actorModel, ordinal, input.ensembleSeed);
-    const context = buildActorContextForPrompt(input.actorModel, actorVariation);
+    const context = buildActorContextForPrompt(input.actorModel, actorVariation, {
+      future,
+      openingMessage: input.openingInput.message,
+    });
     try {
       const result = await runDecisionSimulationOpenAi({
         ...input.openingInput,
         context: [input.openingInput.context, context].filter(Boolean).join("\n\n"),
       });
-      return { ordinal, seed: actorVariation.seed, actorVariation, result };
+      return { ordinal, seed: actorVariation.seed, futureId: future.futureId, actorVariation, result };
     } catch (error) {
       return {
         ordinal,
         seed: actorVariation.seed,
+        futureId: future.futureId,
         actorVariation,
         error: error instanceof Error ? error.message : String(error),
       };

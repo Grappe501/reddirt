@@ -1,3 +1,6 @@
+import { assignAlternativeFuture } from "./alternative-futures/assign";
+import type { AlternativeFutureId } from "./alternative-futures/contracts";
+import { scoreRobustnessAcrossFutures } from "./alternative-futures/robustness";
 import { buildDecisionSimulationDistributedChunks } from "./ensemble-orchestrator";
 import {
   checkpointDecisionSimulationChunk,
@@ -143,6 +146,7 @@ export function mergeFrameCounts(
 
 export type CommandCenterMember = {
   ordinal: number;
+  futureId?: AlternativeFutureId;
   frame?: string;
   final?: string;
   confidence?: number | null;
@@ -216,14 +220,22 @@ export function buildDecisionSimulationCommandCenter(
   }
 
   const byConfidence = [...completed].sort((a, b) => (a.confidence ?? 0) - (b.confidence ?? 0));
-  const uncommon = completed.find((member) => member.frame && member.frame !== topFrame?.frame);
+  const withFuture = members.map((member) => ({
+    ...member,
+    futureId: member.futureId ?? assignAlternativeFuture(member.ordinal).futureId,
+  }));
+  const pickFuture = (futureId: AlternativeFutureId) =>
+    withFuture.find((member) => !member.error && member.futureId === futureId) ?? null;
   const representative = {
-    expected: byConfidence[Math.floor((byConfidence.length - 1) / 2)] ?? null,
+    expected: pickFuture("EXPECTED"),
     highConfidence: byConfidence[byConfidence.length - 1] ?? null,
-    hostileOutlier: uncommon ?? null,
-    opportunity: completed.find((member) => /opportun/i.test(member.executiveSummary ?? "")) ?? byConfidence[byConfidence.length - 1] ?? null,
-    unusual: uncommon ?? byConfidence[0] ?? null,
+    hostileOutlier: pickFuture("HOSTILE"),
+    opportunity: pickFuture("OPPORTUNITY"),
+    escalation: pickFuture("ESCALATION"),
+    unusual: pickFuture("SURPRISE"),
+    silence: pickFuture("SILENCE"),
   };
+  const robustness = scoreRobustnessAcrossFutures(withFuture);
 
   return {
     simulations: requested,
@@ -233,12 +245,14 @@ export function buildDecisionSimulationCommandCenter(
     strongestRecommendedShare: topFinal?.share ?? null,
     modelConfidence: meanConfidence,
     outlierRate,
+    robustness,
     frameDistribution: frameRows,
     moveConsensus,
     representative,
     uncertainty: [
       "Estimates are advisory and approximate.",
       "Actor variation is seeded; it is not a researched psychological profile unless a saved actor model is attached.",
+      "Robustness is measured across named futures, not as likelihood inside one linear conversation.",
       "Thin ensembles under-represent rare but material futures.",
     ],
   };

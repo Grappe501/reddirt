@@ -30,6 +30,9 @@ export {
 } from "./writing-intelligence/catalog";
 export { buildWritingIntelligencePromptPacket } from "./writing-intelligence/prompt-packet";
 export { scoreVoiceSimilarity } from "./writing-intelligence/similarity";
+export { assignAlternativeFuture } from "./alternative-futures/assign";
+export { ALTERNATIVE_FUTURES } from "./alternative-futures/contracts";
+export { scoreRobustnessAcrossFutures } from "./alternative-futures/robustness";
 export {
   jobProgressPercent,
   planQueuedDecisionSimulationJob,

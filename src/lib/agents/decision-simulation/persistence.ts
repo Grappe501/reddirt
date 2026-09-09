@@ -40,6 +40,10 @@ export type DecisionSimulationBranchType =
   | "EXPECTED"
   | "HOSTILE"
   | "BEST_CASE"
+  | "OPPORTUNITY"
+  | "ESCALATION"
+  | "SURPRISE"
+  | "SILENCE"
   | "ALTERNATIVE";
 
 export type DecisionSimulationThreatLevel = "LOW" | "MEDIUM" | "HIGH" | "CRITICAL";

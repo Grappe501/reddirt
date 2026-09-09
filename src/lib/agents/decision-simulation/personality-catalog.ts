@@ -94,6 +94,7 @@ export const chrisJonesPersonality: CatalogPersonality = {
   learningNote:
     "Update this model only when an operator attaches an observed outcome from a real public exchange. Do not treat ensemble output as new evidence about Jones.",
   model: {
+    actorId: "chris-jones-ar02",
     actorName: "Dr. Chris Jones",
     version: "jones-ar02-research-1.0",
     effectiveAt: `${TODAY}T00:00:00.000Z`,
@@ -176,6 +177,7 @@ export const frenchHillPersonality: CatalogPersonality = {
   learningNote:
     "Do not ingest opposition talking points as Hill's voice. Attach only his own public statements or roll-call-grounded observations.",
   model: {
+    actorId: "french-hill-ar02",
     actorName: "Rep. French Hill",
     version: "hill-ar02-research-1.0",
     effectiveAt: `${TODAY}T00:00:00.000Z`,

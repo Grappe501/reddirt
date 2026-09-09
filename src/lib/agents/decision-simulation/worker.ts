@@ -1,6 +1,7 @@
 import { randomUUID } from "node:crypto";
 import { buildActorVariation } from "./actor-model";
 import { buildActorContextForPrompt } from "./actor-context";
+import { assignAlternativeFuture } from "./alternative-futures/assign";
 import { runDecisionSimulationOpenAi } from "./openai-runtime";
 import { buildGenericActorModel } from "./generic-actor";
 import {
@@ -85,7 +86,11 @@ export async function processDecisionSimulationJobChunk(jobId: string) {
       break;
     }
     const variation = buildActorVariation(actorModel, ordinal, seed);
-    const context = buildActorContextForPrompt(actorModel, variation);
+    const future = assignAlternativeFuture(ordinal);
+    const context = buildActorContextForPrompt(actorModel, variation, {
+      future,
+      openingMessage: openingInput.message,
+    });
     try {
       const result = await runDecisionSimulationOpenAi({
         ...openingInput,
@@ -101,6 +106,7 @@ export async function processDecisionSimulationJobChunk(jobId: string) {
       members.push({
         ordinal,
         seed: variation.seed,
+        futureId: future.futureId,
         frame,
         final,
         confidence: result.run.moves[1]?.confidence?.estimatedProbability ?? null,
@@ -115,7 +121,7 @@ export async function processDecisionSimulationJobChunk(jobId: string) {
     } catch (error) {
       failedRuns += 1;
       lastError = error instanceof Error ? error.message : "Simulation failed";
-      members.push({ ordinal, seed: variation.seed, error: lastError });
+      members.push({ ordinal, seed: variation.seed, futureId: future.futureId, error: lastError });
     }
   }
 
