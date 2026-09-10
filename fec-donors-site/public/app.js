@@ -202,7 +202,7 @@ function render(data, netWorth) {
       lede.textContent =
         tab.source === "arkansas-ethics"
           ? "Every 2026 contribution on the official Arkansas ethics download for these statewide candidates, including small gifts and unnamed lines. Statewide candidates file here, not with the FEC. Street addresses are omitted. Historical state years are not in this pull."
-          : "Itemized individual receipts from OpenFEC for the 2026 cycle only (January 2025–present). Jones, Shoffner, Russell, Ryerse, and Green use a $3,000 threshold. French Hill is a separate tab at $2,000. Historical giving is in its own column and is not mixed into the 2026 totals. Memo duplicates are removed.";
+          : "Itemized individual receipts from OpenFEC for the 2026 cycle only (January 2025–present). Every federal tab uses a $500 threshold. Historical giving is in its own column and is not mixed into the 2026 totals. Memo duplicates are removed.";
     }
     const scoped = tab.donors
       .filter((donor) => !view.slug || donor.candidateSlugs.includes(view.slug))

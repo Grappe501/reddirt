@@ -32,7 +32,7 @@ export const FEC_DONOR_TABS: FecDonorTab[] = [
   {
     id: "jones-shoffner",
     label: "Jones & Shoffner",
-    minAmount: 3000,
+    minAmount: 500,
     candidates: [
       {
         slug: "chris-jones",
@@ -57,7 +57,7 @@ export const FEC_DONOR_TABS: FecDonorTab[] = [
   {
     id: "russell-ryerse-green",
     label: "Russell, Ryerse & Green",
-    minAmount: 3000,
+    minAmount: 500,
     candidates: [
       {
         slug: "james-russell",
@@ -91,7 +91,7 @@ export const FEC_DONOR_TABS: FecDonorTab[] = [
   {
     id: "french-hill",
     label: "French Hill",
-    minAmount: 2000,
+    minAmount: 500,
     candidates: [
       {
         slug: "french-hill",
