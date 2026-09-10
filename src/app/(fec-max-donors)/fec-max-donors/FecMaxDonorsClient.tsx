@@ -2,8 +2,44 @@
 
 import { useMemo, useState } from "react";
 
-import type { FecDonorTabId, FecDonorTabView, MaxDonor } from "@/lib/fec/arkansas-2026-max-donors";
+import type { FecDonorTabView, MaxDonor } from "@/lib/fec/arkansas-2026-max-donors";
 import { NET_WORTH_REPORT } from "@/lib/fec/net-worth-track";
+
+type DonorView = {
+  id: string;
+  label: string;
+  minAmount: number;
+  tab: FecDonorTabView;
+  slug: string | null;
+};
+
+function buildDonorViews(tabs: FecDonorTabView[]): DonorView[] {
+  const views: DonorView[] = [];
+  for (const tab of tabs) {
+    if (tab.id === "jones-shoffner") {
+      for (const candidate of tab.candidates) {
+        views.push({ id: candidate.slug, label: candidate.label, minAmount: tab.minAmount, tab, slug: candidate.slug });
+      }
+    }
+    views.push({ id: tab.id, label: tab.label, minAmount: tab.minAmount, tab, slug: null });
+  }
+  return views;
+}
+
+function scopeDonor(donor: MaxDonor, slug: string | null): MaxDonor {
+  if (!slug) return donor;
+  const gifts = donor.gifts.filter((gift) => gift.candidateSlug === slug);
+  const historicalGifts = donor.historicalGifts.filter((gift) => gift.candidateSlug === slug);
+  return {
+    ...donor,
+    gifts,
+    historicalGifts,
+    giftCount: gifts.length,
+    total: gifts.reduce((sum, gift) => sum + gift.amount, 0),
+    historicalTotal: historicalGifts.reduce((sum, gift) => sum + gift.amount, 0),
+    candidateSlugs: [slug],
+  };
+}
 
 function money(value: number): string {
   return value.toLocaleString("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 });
@@ -424,10 +460,18 @@ function NetWorthPanel() {
 }
 
 export function FecMaxDonorsClient({ tabs }: { tabs: FecDonorTabView[] }) {
+  const views = useMemo(() => buildDonorViews(tabs), [tabs]);
   const [section, setSection] = useState<"donors" | "net-worth">("donors");
-  const [tabId, setTabId] = useState<FecDonorTabId>(tabs[0]?.id ?? "jones-shoffner");
-  const tab = tabs.find((item) => item.id === tabId) ?? tabs[0];
-  if (!tab) return null;
+  const [viewId, setViewId] = useState(views[0]?.id ?? "chris-jones");
+  const view = views.find((item) => item.id === viewId) ?? views[0];
+  if (!view) return null;
+  const tab = view.tab;
+  const scopedDonors = tab.report.donors
+    .filter((donor) => !view.slug || donor.candidateSlugs.includes(view.slug))
+    .map((donor) => scopeDonor(donor, view.slug));
+  const scopedTab: FecDonorTabView = view.slug
+    ? { ...tab, candidates: tab.candidates.filter((candidate) => candidate.slug === view.slug) }
+    : tab;
 
   return (
     <div>
@@ -455,13 +499,13 @@ export function FecMaxDonorsClient({ tabs }: { tabs: FecDonorTabView[] }) {
       {section === "donors" ? (
         <>
       <div className="flex flex-wrap gap-2 border-b border-kelly-text/10 pb-3">
-        {tabs.map((item) => (
+        {views.map((item) => (
           <button
             key={item.id}
             type="button"
-            onClick={() => setTabId(item.id)}
+            onClick={() => setViewId(item.id)}
             className={`rounded-t-lg px-4 py-2 text-sm font-semibold ${
-              item.id === tab.id
+              item.id === view.id
                 ? "bg-kelly-navy text-white"
                 : "border border-kelly-text/15 bg-white text-kelly-text/80 hover:border-kelly-navy/30"
             }`}
@@ -475,7 +519,7 @@ export function FecMaxDonorsClient({ tabs }: { tabs: FecDonorTabView[] }) {
       </div>
 
       <ul className="mt-5 flex flex-wrap gap-3 text-sm">
-        {tab.candidates.map((candidate) => (
+        {scopedTab.candidates.map((candidate) => (
           <li key={candidate.candidateId}>
             <a
               href={candidate.fecUrl}
@@ -495,13 +539,22 @@ export function FecMaxDonorsClient({ tabs }: { tabs: FecDonorTabView[] }) {
         </p>
       ) : (
         <>
-          <TabStats tab={tab} />
+          <TabStats
+            tab={{
+              ...scopedTab,
+              report: {
+                ...tab.report,
+                donors: scopedDonors,
+                giftCount: scopedDonors.reduce((sum, donor) => sum + donor.giftCount, 0),
+              },
+            }}
+          />
           <div className="mt-6">
             <DonorTable
-              key={tab.id}
-              tab={tab}
-              donors={tab.report.donors}
-              csvName={`fec-donors-${tab.id}-2026.csv`}
+              key={view.id}
+              tab={scopedTab}
+              donors={scopedDonors}
+              csvName={`fec-donors-${view.id}-2026.csv`}
             />
           </div>
         </>

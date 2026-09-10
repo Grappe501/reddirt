@@ -119,11 +119,52 @@ function renderNetWorth(report, personId) {
   `;
 }
 
+function scopeDonor(donor, slug) {
+  if (!slug) return donor;
+  const gifts = donor.gifts.filter((gift) => gift.candidateSlug === slug);
+  const historicalGifts = (donor.historicalGifts ?? []).filter((gift) => gift.candidateSlug === slug);
+  return {
+    ...donor,
+    gifts,
+    historicalGifts,
+    giftCount: gifts.length,
+    total: gifts.reduce((sum, gift) => sum + gift.amount, 0),
+    historicalTotal: historicalGifts.reduce((sum, gift) => sum + gift.amount, 0),
+    candidateSlugs: [slug],
+  };
+}
+
+function donorViews(data) {
+  const views = [];
+  for (const tab of data.tabs) {
+    if (tab.id === "jones-shoffner") {
+      for (const candidate of tab.candidates) {
+        views.push({
+          id: candidate.slug,
+          label: candidate.label,
+          minAmount: tab.minAmount,
+          tab,
+          slug: candidate.slug,
+        });
+      }
+    }
+    views.push({
+      id: tab.id,
+      label: tab.label,
+      minAmount: tab.minAmount,
+      tab,
+      slug: null,
+    });
+  }
+  return views;
+}
+
 function render(data, netWorth) {
   const root = document.getElementById("app");
   let section = location.hash === "#net-worth" ? "net-worth" : "donors";
   let personId = netWorth.people[0]?.id;
-  let tabId = data.tabs[0]?.id;
+  const views = donorViews(data);
+  let viewId = views[0]?.id;
   let filter = "all";
   let query = "";
   let openKey = "";
@@ -159,8 +200,12 @@ function render(data, netWorth) {
       lede.textContent =
         "Itemized individual receipts from OpenFEC for the 2026 cycle only (January 2025–present). Jones, Shoffner, Russell, Ryerse, and Green use a $3,000 threshold. French Hill is a separate tab at $2,000. Historical giving is in its own column and is not mixed into the 2026 totals. Memo duplicates are removed.";
     }
-    const tab = data.tabs.find((item) => item.id === tabId) || data.tabs[0];
-    const visible = tab.donors.filter((donor) => {
+    const view = views.find((item) => item.id === viewId) || views[0];
+    const tab = view.tab;
+    const scoped = tab.donors
+      .filter((donor) => !view.slug || donor.candidateSlugs.includes(view.slug))
+      .map((donor) => scopeDonor(donor, view.slug));
+    const visible = scoped.filter((donor) => {
       if (filter === "multi" && donor.candidateSlugs.length < 2) return false;
       if (filter !== "all" && filter !== "multi" && !donor.candidateSlugs.includes(filter)) return false;
       if (!query.trim()) return true;
@@ -169,6 +214,7 @@ function render(data, netWorth) {
         .toLowerCase()
         .includes(query.trim().toLowerCase());
     });
+    const listCandidates = view.slug ? tab.candidates.filter((item) => item.slug === view.slug) : tab.candidates;
 
     root.innerHTML = `
       <div class="section-tabs chips">
@@ -176,33 +222,37 @@ function render(data, netWorth) {
         <button type="button" data-section="net-worth">Net worth</button>
       </div>
       <div class="tabs">
-        ${data.tabs
+        ${views
           .map(
             (item) =>
-              `<button type="button" data-tab="${item.id}" class="${item.id === tab.id ? "active" : ""}">${item.label} ${money(item.minAmount)}+</button>`,
+              `<button type="button" data-view="${item.id}" class="${item.id === view.id ? "active" : ""}">${item.label} ${money(item.minAmount)}+</button>`,
           )
           .join("")}
       </div>
       <ul class="links">
-        ${tab.candidates
+        ${listCandidates
           .map((candidate) => `<li><a href="${candidate.fecUrl}" target="_blank" rel="noreferrer">${candidate.label} · ${candidate.office}</a></li>`)
           .join("")}
       </ul>
       <dl class="stats">
-        <div class="stat"><dt>Donors</dt><dd>${tab.donors.length}</dd></div>
-        ${tab.candidates
-          .map(
-            (candidate) =>
-              `<div class="stat"><dt>${candidate.label}</dt><dd>${tab.donors.filter((donor) => donor.candidateSlugs.includes(candidate.slug)).length}</dd></div>`,
-          )
-          .join("")}
+        <div class="stat"><dt>Donors</dt><dd>${scoped.length}</dd></div>
         ${
-          tab.candidates.length > 1
+          view.slug
+            ? `<div class="stat"><dt>2026 cycle</dt><dd>${money(scoped.reduce((sum, donor) => sum + donor.total, 0))}</dd></div>`
+            : tab.candidates
+                .map(
+                  (candidate) =>
+                    `<div class="stat"><dt>${candidate.label}</dt><dd>${tab.donors.filter((donor) => donor.candidateSlugs.includes(candidate.slug)).length}</dd></div>`,
+                )
+                .join("")
+        }
+        ${
+          !view.slug && tab.candidates.length > 1
             ? `<div class="stat"><dt>Gave to more than one</dt><dd>${tab.donors.filter((donor) => donor.candidateSlugs.length > 1).length}</dd></div>`
             : ""
         }
       </dl>
-      <p class="note">${tab.giftCount} countable 2026-cycle gifts · refreshed ${new Date(data.generatedAt).toLocaleString()}</p>
+      <p class="note">${view.slug ? `${visible.length} ${view.label} donors` : `${tab.giftCount} countable 2026-cycle gifts`} · refreshed ${new Date(data.generatedAt).toLocaleString()}</p>
       <div class="toolbar">
         <div class="search">
           <label for="q">Search the list</label>
@@ -211,7 +261,7 @@ function render(data, netWorth) {
         <button type="button" id="csv">Download CSV</button>
       </div>
       ${
-        tab.candidates.length > 1
+        !view.slug && tab.candidates.length > 1
           ? `<div class="chips">
               <button type="button" data-filter="all" class="${filter === "all" ? "active" : ""}">All donors</button>
               ${tab.candidates
@@ -273,9 +323,9 @@ function render(data, netWorth) {
         paint();
       });
     });
-    root.querySelectorAll("[data-tab]").forEach((button) => {
+    root.querySelectorAll("[data-view]").forEach((button) => {
       button.addEventListener("click", () => {
-        tabId = button.getAttribute("data-tab");
+        viewId = button.getAttribute("data-view");
         filter = "all";
         query = "";
         openKey = "";
@@ -303,7 +353,7 @@ function render(data, netWorth) {
       if (event.key === "Enter") paint();
     });
     input?.addEventListener("search", () => paint());
-    root.querySelector("#csv")?.addEventListener("click", () => downloadCsv(visible, `fec-donors-${tab.id}-2026.csv`));
+    root.querySelector("#csv")?.addEventListener("click", () => downloadCsv(visible, `fec-donors-${view.id}-2026.csv`));
   };
 
   paint();
