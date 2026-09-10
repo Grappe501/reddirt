@@ -217,6 +217,10 @@ function aggregateDonors(gifts: MaxDonorGift[], keys: string[]): MaxDonor[] {
   gifts.forEach((gift, index) => {
     const key = keys[index] ?? `${gift.name}|${gift.state}|${index}`;
     const existing = byKey.get(key);
+    const giftIdentity = [gift.candidateSlug, gift.date, gift.amount, gift.election, gift.cycle].join("|");
+    if (existing?.gifts.some((item) => [item.candidateSlug, item.date, item.amount, item.election, item.cycle].join("|") === giftIdentity)) {
+      return;
+    }
     if (!existing) {
       byKey.set(key, {
         key,
@@ -278,13 +282,19 @@ export async function loadDonorReport(
 
     const rowSets = await Promise.all(
       candidates.map(async (candidate) => {
-        const [currentRows, ...historicalSets] = await Promise.all([
-          fetchIndividualReceiptsOverThreshold(apiKey, candidate.committeeId, minAmount, [FEC_CYCLE]),
-          ...FEC_HISTORICAL_CYCLES.map((period) =>
-            fetchIndividualReceiptsOverThreshold(apiKey, candidate.committeeId, minAmount, [period]),
-          ),
-        ]);
-        return { candidate, currentRows, historicalRows: historicalSets.flat() };
+        const currentRows = await fetchIndividualReceiptsOverThreshold(
+          apiKey,
+          candidate.committeeId,
+          minAmount,
+          [FEC_CYCLE],
+        );
+        const historicalRows: OpenFecScheduleA[] = [];
+        for (const period of FEC_HISTORICAL_CYCLES) {
+          historicalRows.push(
+            ...(await fetchIndividualReceiptsOverThreshold(apiKey, candidate.committeeId, minAmount, [period])),
+          );
+        }
+        return { candidate, currentRows, historicalRows };
       }),
     );
 

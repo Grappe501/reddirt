@@ -3,11 +3,18 @@ const CYCLE = 2026;
 const HISTORICAL_CYCLES = [2024, 2022, 2020, 2018, 2016, 2014];
 const CYCLE_START = "2025-01-01";
 
+type OpenFecLastIndexes = {
+  last_index?: string;
+  last_contribution_receipt_amount?: string;
+  last_contribution_receipt_date?: string;
+};
+
 type OpenFecPagination = {
   count: number;
   page: number;
   pages: number;
   per_page: number;
+  last_indexes?: OpenFecLastIndexes | null;
 };
 
 type OpenFecList<T> = {
@@ -63,9 +70,9 @@ function titleCaseName(value: string): string {
 async function fetchScheduleAPage(
   apiKey: string,
   committeeId: string,
-  page: number,
   minAmount: number,
   periods: number[],
+  lastIndexes?: OpenFecLastIndexes | null,
 ): Promise<OpenFecList<OpenFecScheduleA>> {
   const params = new URLSearchParams({
     api_key: apiKey,
@@ -73,23 +80,33 @@ async function fetchScheduleAPage(
     min_amount: String(minAmount),
     is_individual: "true",
     per_page: "100",
-    page: String(page),
     sort: "-contribution_receipt_amount",
   });
   for (const period of periods) {
     params.append("two_year_transaction_period", String(period));
   }
-
-  const response = await fetch(`${OPENFEC_BASE}/schedules/schedule_a/?${params.toString()}`, {
-    cache: "no-store",
-    headers: { Accept: "application/json" },
-  });
-
-  if (!response.ok) {
-    throw new Error(`OpenFEC returned ${response.status} for committee ${committeeId}`);
+  if (lastIndexes?.last_index) params.set("last_index", lastIndexes.last_index);
+  if (lastIndexes?.last_contribution_receipt_amount) {
+    params.set("last_contribution_receipt_amount", lastIndexes.last_contribution_receipt_amount);
+  }
+  if (lastIndexes?.last_contribution_receipt_date) {
+    params.set("last_contribution_receipt_date", lastIndexes.last_contribution_receipt_date);
   }
 
-  return (await response.json()) as OpenFecList<OpenFecScheduleA>;
+  let lastError: Error | null = null;
+  for (let attempt = 0; attempt < 5; attempt += 1) {
+    const response = await fetch(`${OPENFEC_BASE}/schedules/schedule_a/?${params.toString()}`, {
+      cache: "no-store",
+      headers: { Accept: "application/json" },
+    });
+    if (response.ok) {
+      return (await response.json()) as OpenFecList<OpenFecScheduleA>;
+    }
+    lastError = new Error(`OpenFEC returned ${response.status} for committee ${committeeId}`);
+    if (response.status !== 429 && response.status < 500) break;
+    await new Promise((resolve) => setTimeout(resolve, 1200 * (attempt + 1)));
+  }
+  throw lastError ?? new Error(`OpenFEC request failed for committee ${committeeId}`);
 }
 
 export async function fetchIndividualReceiptsOverThreshold(
@@ -98,13 +115,27 @@ export async function fetchIndividualReceiptsOverThreshold(
   minAmount: number,
   periods: number[] = [CYCLE],
 ): Promise<OpenFecScheduleA[]> {
-  const first = await fetchScheduleAPage(apiKey, committeeId, 1, minAmount, periods);
-  const pages = Math.max(1, first.pagination?.pages ?? 1);
-  const rows = [...(first.results ?? [])];
+  const seen = new Set<string>();
+  const rows: OpenFecScheduleA[] = [];
+  let lastIndexes: OpenFecLastIndexes | null = null;
 
-  for (let page = 2; page <= pages; page += 1) {
-    const next = await fetchScheduleAPage(apiKey, committeeId, page, minAmount, periods);
-    rows.push(...(next.results ?? []));
+  for (let page = 0; page < 50; page += 1) {
+    const batch = await fetchScheduleAPage(apiKey, committeeId, minAmount, periods, lastIndexes);
+    const results = batch.results ?? [];
+    if (results.length === 0) break;
+
+    let added = 0;
+    for (const row of results) {
+      const id = row.transaction_id || `${row.contributor_name}|${row.contribution_receipt_date}|${row.contribution_receipt_amount}|${rows.length}`;
+      if (seen.has(id)) continue;
+      seen.add(id);
+      rows.push(row);
+      added += 1;
+    }
+
+    const next = batch.pagination?.last_indexes ?? null;
+    if (added === 0 || results.length < 100 || !next?.last_index) break;
+    lastIndexes = next;
   }
 
   return rows;

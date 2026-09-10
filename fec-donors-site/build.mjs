@@ -154,7 +154,11 @@ function isCurrentCycleDate(date) {
   return date >= CYCLE_START;
 }
 
-async function fetchPage(apiKey, committeeId, page, minAmount, period) {
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+async function fetchPage(apiKey, committeeId, minAmount, period, lastIndexes) {
   const params = new URLSearchParams({
     api_key: apiKey,
     committee_id: committeeId,
@@ -162,22 +166,61 @@ async function fetchPage(apiKey, committeeId, page, minAmount, period) {
     min_amount: String(minAmount),
     is_individual: "true",
     per_page: "100",
-    page: String(page),
     sort: "-contribution_receipt_amount",
   });
-  const response = await fetch(`${OPENFEC_BASE}/schedules/schedule_a/?${params}`);
-  if (!response.ok) throw new Error(`OpenFEC ${response.status} for ${committeeId} cycle ${period}`);
-  return response.json();
+  if (lastIndexes?.last_index) params.set("last_index", lastIndexes.last_index);
+  if (lastIndexes?.last_contribution_receipt_amount) {
+    params.set("last_contribution_receipt_amount", lastIndexes.last_contribution_receipt_amount);
+  }
+  if (lastIndexes?.last_contribution_receipt_date) {
+    params.set("last_contribution_receipt_date", lastIndexes.last_contribution_receipt_date);
+  }
+
+  let lastError = null;
+  for (let attempt = 0; attempt < 6; attempt += 1) {
+    try {
+      const response = await fetch(`${OPENFEC_BASE}/schedules/schedule_a/?${params}`);
+      if (response.ok) return response.json();
+      lastError = new Error(`OpenFEC ${response.status} for ${committeeId} cycle ${period}`);
+      if (response.status !== 429 && response.status < 500) break;
+    } catch (error) {
+      lastError = error instanceof Error ? error : new Error("OpenFEC network error");
+    }
+    await sleep(1500 * (attempt + 1));
+  }
+  throw lastError;
+}
+
+function giftKey(gift) {
+  return [gift.candidateSlug, gift.date, gift.amount, gift.election, gift.cycle].join("|");
 }
 
 async function fetchCommittee(apiKey, committeeId, minAmount, period) {
-  const first = await fetchPage(apiKey, committeeId, 1, minAmount, period);
-  const pages = Math.max(1, first.pagination?.pages ?? 1);
-  const rows = [...(first.results ?? [])];
-  for (let page = 2; page <= pages; page += 1) {
-    const next = await fetchPage(apiKey, committeeId, page, minAmount, period);
-    rows.push(...(next.results ?? []));
+  const seen = new Set();
+  const rows = [];
+  let lastIndexes = null;
+
+  for (let page = 0; page < 50; page += 1) {
+    const batch = await fetchPage(apiKey, committeeId, minAmount, period, lastIndexes);
+    const results = batch.results ?? [];
+    if (results.length === 0) break;
+
+    let added = 0;
+    for (const row of results) {
+      const id =
+        row.transaction_id ||
+        `${row.contributor_name}|${row.contribution_receipt_date}|${row.contribution_receipt_amount}|${rows.length}`;
+      if (seen.has(id)) continue;
+      seen.add(id);
+      rows.push(row);
+      added += 1;
+    }
+
+    const next = batch.pagination?.last_indexes ?? null;
+    if (added === 0 || results.length < 100 || !next?.last_index) break;
+    lastIndexes = next;
   }
+
   return rows;
 }
 
@@ -204,6 +247,8 @@ function aggregate(gifts, keys) {
   gifts.forEach((gift, index) => {
     const key = keys[index] ?? `${gift.name}|${index}`;
     const existing = byKey.get(key);
+    const seenGift = existing?.gifts.some((item) => giftKey(item) === giftKey(gift));
+    if (existing && seenGift) return;
     if (!existing) {
       byKey.set(key, {
         key,
@@ -240,12 +285,11 @@ async function buildTab(apiKey, tab) {
   const historicalByKey = new Map();
 
   for (const candidate of tab.candidates) {
-    const [currentRows, ...historicalSets] = await Promise.all([
-      fetchCommittee(apiKey, candidate.committeeId, tab.minAmount, CYCLE),
-      ...HISTORICAL_CYCLES.map((period) =>
-        fetchCommittee(apiKey, candidate.committeeId, tab.minAmount, period),
-      ),
-    ]);
+    const currentRows = await fetchCommittee(apiKey, candidate.committeeId, tab.minAmount, CYCLE);
+    const historicalSets = [];
+    for (const period of HISTORICAL_CYCLES) {
+      historicalSets.push(await fetchCommittee(apiKey, candidate.committeeId, tab.minAmount, period));
+    }
 
     for (const row of historicalSets.flat()) {
       if (!isCountable(row, tab.minAmount)) continue;
