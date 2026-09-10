@@ -1,0 +1,274 @@
+{
+  "disclaimer": "Congress does not publish an exact net worth. Filings use asset and liability ranges. OpenSecrets, Quiver, Reuters, and Congress Stock Tracker use different methods, so they are not one continuous series. Gaps mean no published estimate was recovered, not that a filing was skipped.",
+  "people": [
+    {
+      "id": "french-hill",
+      "name": "French Hill",
+      "office": "U.S. House AR-02",
+      "inOfficeSince": "January 3, 2015",
+      "beforeNote": "Candidate disclosure in 2013, then founder/CEO of Delta Trust until Simmons bought the company in August 2014.",
+      "links": [
+        { "label": "House disclosure search", "href": "https://disclosures-clerk.house.gov/" },
+        { "label": "Hill House disclosure page", "href": "https://hill.house.gov/biography/financial-disclosures.htm" },
+        { "label": "FEC candidate page", "href": "https://www.fec.gov/data/candidate/H4AR02141/" }
+      ],
+      "highlights": [
+        { "label": "Before office (2013 filing)", "value": "$802K midpoint" },
+        { "label": "First year in office (2015)", "value": "$6.94M midpoint" },
+        { "label": "2023 disclosure range", "value": "$10.3M – $25.7M" },
+        { "label": "Quiver, Aug 15, 2026", "value": "$19.3M" }
+      ],
+      "preOffice": [
+        {
+          "year": "2013",
+          "item": "Candidate financial disclosure, filed Dec. 19, 2013",
+          "detail": "Assets $703K–$1.9M. Liabilities $295K–$750K. Published midpoint estimate $802K. The same tracker also lists a separate -$188K 2013 parse; the $802K figure is the one that matches the asset and liability ranges on that page.",
+          "source": "Congress Stock Tracker parse of the 2013 House candidate filing",
+          "href": "https://www.congressstock.com/politicians/james-french-hill/net-worth"
+        },
+        {
+          "year": "2013",
+          "item": "Published Delta Trust ownership",
+          "detail": "Arkansas Business listed Hill at 2.78% of Delta Trust & Banking Corp. in its 2013 shareholder table. That is an ownership stake, not a net-worth number.",
+          "source": "Arkansas Business, Price Stalls Deal on Ownership Change at Delta Trust",
+          "href": "https://www.arkansasbusiness.com/article/price-stalls-delta-trust-stock-talk/"
+        },
+        {
+          "year": "2014",
+          "item": "Simmons buys Delta Trust",
+          "detail": "Simmons First National Corp. completed a roughly $66 million acquisition of Delta Trust on Aug. 31, 2014, before Hill took office.",
+          "source": "Simmons / SEC announcement and Talk Business & Politics",
+          "href": "https://www.sec.gov/Archives/edgar/data/90498/000117184314001395/exh_991.htm"
+        },
+        {
+          "year": "2014",
+          "item": "Named cash from the merger S-4",
+          "detail": "The Simmons S-4 lists $1,519,325 to cash out Hill options and warrants and $422,325 for his supplemental retirement plan. A $987,500 severance amount was due only if he left Simmons within two years after closing.",
+          "source": "Simmons First Form S-4, July 23, 2014",
+          "href": "https://www.sec.gov/Archives/edgar/data/90498/000117184314003390/fs4_072314.htm"
+        }
+      ],
+      "rows": [
+        {
+          "year": "2013",
+          "period": "Before office",
+          "estimate": "$802K midpoint",
+          "range": "Assets $703K–$1.9M; debts $295K–$750K",
+          "source": "Congress Stock Tracker, 2013 candidate filing",
+          "href": "https://www.congressstock.com/politicians/james-french-hill/net-worth",
+          "midpoint": 802000,
+          "series": "other"
+        },
+        {
+          "year": "2014",
+          "period": "Before office",
+          "estimate": "Sale proceeds, not a net-worth print",
+          "range": "$66M company sale; $1.94M named cash to Hill in the S-4",
+          "source": "SEC S-4 and Simmons close",
+          "href": "https://www.sec.gov/Archives/edgar/data/90498/000117184314003390/fs4_072314.htm",
+          "midpoint": null,
+          "series": "other"
+        },
+        {
+          "year": "2015",
+          "period": "In office",
+          "estimate": "$6.94M midpoint",
+          "range": "$3.25M – $10.63M",
+          "source": "OpenSecrets, House rank 93",
+          "href": "https://www.opensecrets.org/personal-finances/top-net-worth?year=2015",
+          "midpoint": 6938526,
+          "series": "opensecrets"
+        },
+        {
+          "year": "2016",
+          "period": "In office",
+          "estimate": "Not recovered",
+          "range": "—",
+          "source": "OpenSecrets table exists; Hill row not confirmed here",
+          "href": "https://www.opensecrets.org/personal-finances/top-net-worth?year=2016",
+          "midpoint": null,
+          "series": "opensecrets"
+        },
+        {
+          "year": "2017",
+          "period": "In office",
+          "estimate": "$7.28M midpoint",
+          "range": "$3.43M – $11.13M",
+          "source": "OpenSecrets, House rank 91",
+          "href": "https://www.opensecrets.org/personal-finances/top-net-worth?year=2017",
+          "midpoint": 7282035,
+          "series": "opensecrets"
+        },
+        {
+          "year": "2018",
+          "period": "In office",
+          "estimate": "$7.04M midpoint",
+          "range": "$3.22M – $10.85M",
+          "source": "OpenSecrets, House rank 76",
+          "href": "https://www.opensecrets.org/personal-finances/top-net-worth?year=2018",
+          "midpoint": 7035033,
+          "series": "opensecrets"
+        },
+        {
+          "year": "2019–2022",
+          "period": "In office",
+          "estimate": "No published yearly estimate found",
+          "range": "—",
+          "source": "OpenSecrets comparable series ends after 2018. Annual House filings exist.",
+          "href": "https://disclosures-clerk.house.gov/",
+          "midpoint": null,
+          "series": "gap"
+        },
+        {
+          "year": "2023",
+          "period": "In office",
+          "estimate": "Range only",
+          "range": "$10.3M – $25.7M",
+          "source": "Reuters Heirs of Power, via Wikipedia",
+          "href": "https://www.reuters.com/investigates/special-report/usa-slavery-families/",
+          "midpoint": null,
+          "series": "other"
+        },
+        {
+          "year": "2025",
+          "period": "In office",
+          "estimate": "$18.5M to $19.4M live prints",
+          "range": "Apr $18.5M · May $19.4M · Oct $19.3M",
+          "source": "Quiver Quantitative snapshots",
+          "href": "https://www.quiverquant.com/news/Representative+J.+French+Hill+has+filed+a+new+financial+disclosure+-+here%E2%80%99s+what+we+see",
+          "midpoint": 18900000,
+          "series": "quiver"
+        },
+        {
+          "year": "2026",
+          "period": "In office",
+          "estimate": "$19.3M on Aug 15",
+          "range": "Apr $20.8M · Jun $21.4M · Aug $19.3M",
+          "source": "Quiver Quantitative, after the Aug 13, 2026 annual filing",
+          "href": "https://www.quiverquant.com/news/Representative+J.+French+Hill+has+filed+a+new+financial+disclosure+-+here%E2%80%99s+what+we+see",
+          "midpoint": 19300000,
+          "series": "quiver"
+        }
+      ]
+    },
+    {
+      "id": "tom-cotton",
+      "name": "Tom Cotton",
+      "office": "U.S. Senate (House AR-04, 2013–2015)",
+      "inOfficeSince": "January 3, 2013 (House); January 3, 2015 (Senate)",
+      "beforeNote": "2012 House candidate filing is the pre-office baseline. OpenSecrets used that first-elected year in its Personal Gain Index.",
+      "links": [
+        { "label": "Senate eFD search", "href": "https://efdsearch.senate.gov/" },
+        { "label": "OpenSecrets 2018 finances", "href": "https://www.opensecrets.org/personal-finances/net-worth?cid=N00033363&year=2018" },
+        { "label": "FEC candidate page", "href": "https://www.fec.gov/data/candidate/S4AR00103/" }
+      ],
+      "highlights": [
+        { "label": "Before office (2012)", "value": "–$5,846 midpoint" },
+        { "label": "First House year (2013)", "value": "$690K midpoint" },
+        { "label": "OpenSecrets 2018", "value": "$498K midpoint" },
+        { "label": "Quiver, Feb 1, 2026", "value": "$676K" }
+      ],
+      "preOffice": [
+        {
+          "year": "2012",
+          "item": "House candidate / first-elected baseline",
+          "detail": "Ballotpedia’s Personal Gain Index, using OpenSecrets, lists Cotton’s 2012 starting net worth as –$5,846. LegiStorm records an election-candidate disclosure filed May 31, 2012.",
+          "source": "Ballotpedia Personal Gain Index · OpenSecrets",
+          "href": "https://ballotpedia.org/Changes_in_Net_Worth_of_U.S._Senators_and_Representatives_(Personal_Gain_Index)"
+        }
+      ],
+      "rows": [
+        {
+          "year": "2012",
+          "period": "Before office",
+          "estimate": "–$5,846 midpoint",
+          "range": "—",
+          "source": "OpenSecrets via Ballotpedia Personal Gain Index",
+          "href": "https://ballotpedia.org/Changes_in_Net_Worth_of_U.S._Senators_and_Representatives_(Personal_Gain_Index)",
+          "midpoint": -5846,
+          "series": "opensecrets"
+        },
+        {
+          "year": "2013",
+          "period": "In office (House)",
+          "estimate": "$690K midpoint",
+          "range": "Assets $430K–$950K; no listed liabilities",
+          "source": "Congress Stock Tracker, 2013 annual filing (June 13, 2013)",
+          "href": "https://www.congressstock.com/politicians/tom-cotton/net-worth",
+          "midpoint": 690000,
+          "series": "other"
+        },
+        {
+          "year": "2014–2015",
+          "period": "In office",
+          "estimate": "No published yearly estimate recovered here",
+          "range": "—",
+          "source": "Annual House/Senate filings exist (LegiStorm index)",
+          "href": "https://www.legistorm.com/memberdisclosure/2883/Sen_Tom_Cotton.html",
+          "midpoint": null,
+          "series": "gap"
+        },
+        {
+          "year": "2016",
+          "period": "In office (Senate)",
+          "estimate": "$461K midpoint",
+          "range": "$168,027 – $753,000",
+          "source": "OpenSecrets, Senate rank 84",
+          "href": "https://www.opensecrets.org/personal-finances/top-net-worth?display=S&year=2016",
+          "midpoint": 460513,
+          "series": "opensecrets"
+        },
+        {
+          "year": "2017",
+          "period": "In office (Senate)",
+          "estimate": "$394K midpoint",
+          "range": "$160,019 – $628,000",
+          "source": "OpenSecrets, Senate rank 70",
+          "href": "https://www.opensecrets.org/personal-finances/top-net-worth?display=S&year=2017",
+          "midpoint": 394009,
+          "series": "opensecrets"
+        },
+        {
+          "year": "2018",
+          "period": "In office (Senate)",
+          "estimate": "$498K midpoint",
+          "range": "$229,017 – $767,000",
+          "source": "OpenSecrets, Senate rank 67",
+          "href": "https://www.opensecrets.org/personal-finances/top-net-worth?display=S&year=2018",
+          "midpoint": 498008,
+          "series": "opensecrets"
+        },
+        {
+          "year": "2019–2023",
+          "period": "In office",
+          "estimate": "No published yearly estimate found",
+          "range": "—",
+          "source": "OpenSecrets comparable series ends after 2018. Senate annual filings exist.",
+          "href": "https://efdsearch.senate.gov/",
+          "midpoint": null,
+          "series": "gap"
+        },
+        {
+          "year": "2024–2025",
+          "period": "In office",
+          "estimate": "$200K – $1M",
+          "range": "$200K – $1M",
+          "source": "SenatorDB, from recent Senate disclosures / Quiver",
+          "href": "https://senatordb.com/senator/tom-cotton",
+          "midpoint": null,
+          "series": "other"
+        },
+        {
+          "year": "2026",
+          "period": "In office",
+          "estimate": "$676K on Feb 1",
+          "range": "—",
+          "source": "Quiver Quantitative live estimate",
+          "href": "https://www.quiverquant.com/news/Fundraising+Update%3A+Senator+Tom+Cotton+just+disclosed+%2450+of+new+fundraising",
+          "midpoint": 676200,
+          "series": "quiver"
+        }
+      ]
+    }
+  ]
+}

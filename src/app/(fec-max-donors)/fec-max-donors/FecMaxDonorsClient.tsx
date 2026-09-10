@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 
 import type { FecDonorTabId, FecDonorTabView, MaxDonor } from "@/lib/fec/arkansas-2026-max-donors";
+import { NET_WORTH_REPORT } from "@/lib/fec/net-worth-track";
 
 function money(value: number): string {
   return value.toLocaleString("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 });
@@ -299,13 +300,160 @@ function TabStats({ tab }: { tab: FecDonorTabView }) {
   );
 }
 
+function compactMoney(value: number): string {
+  const abs = Math.abs(value);
+  const sign = value < 0 ? "–" : "";
+  if (abs >= 1_000_000) return `${sign}$${(abs / 1_000_000).toFixed(2)}M`;
+  if (abs >= 1_000) return `${sign}$${Math.round(abs / 1_000)}K`;
+  return `${sign}$${Math.round(abs)}`;
+}
+
+function NetWorthPanel() {
+  const [personId, setPersonId] = useState(NET_WORTH_REPORT.people[0]?.id ?? "french-hill");
+  const person = NET_WORTH_REPORT.people.find((item) => item.id === personId) ?? NET_WORTH_REPORT.people[0];
+  if (!person) return null;
+  const comparable = person.rows.filter((row) => row.series === "opensecrets" && row.midpoint != null);
+  const max = Math.max(...comparable.map((row) => Math.abs(row.midpoint ?? 0)), 1);
+
+  return (
+    <div>
+      <div className="flex flex-wrap gap-2 border-b border-kelly-text/10 pb-3">
+        {NET_WORTH_REPORT.people.map((item) => (
+          <button
+            key={item.id}
+            type="button"
+            onClick={() => setPersonId(item.id)}
+            className={`rounded-t-lg px-4 py-2 text-sm font-semibold ${
+              item.id === person.id
+                ? "bg-kelly-navy text-white"
+                : "border border-kelly-text/15 bg-white text-kelly-text/80 hover:border-kelly-navy/30"
+            }`}
+          >
+            {item.name}
+          </button>
+        ))}
+      </div>
+      <p className="mt-5 text-sm text-kelly-text/70">
+        {person.office} · in office since {person.inOfficeSince}. {person.beforeNote}
+      </p>
+      <ul className="mt-3 flex flex-wrap gap-3 text-sm">
+        {person.links.map((link) => (
+          <li key={link.href}>
+            <a href={link.href} target="_blank" rel="noreferrer" className="font-semibold text-kelly-navy underline underline-offset-2">
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+      <dl className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
+        {person.highlights.map((item) => (
+          <div key={item.label} className="rounded-xl border border-kelly-text/10 bg-white px-4 py-3">
+            <dt className="text-xs uppercase tracking-wide text-kelly-text/50">{item.label}</dt>
+            <dd className="mt-1 text-lg font-bold text-kelly-navy">{item.value}</dd>
+          </div>
+        ))}
+      </dl>
+      <p className="mt-3 text-xs text-kelly-text/55">{NET_WORTH_REPORT.disclaimer}</p>
+      <h2 className="mt-8 text-xs font-semibold uppercase tracking-[0.14em] text-kelly-text/50">Before taking office</h2>
+      <div className="mt-3 space-y-3">
+        {person.preOffice.map((item) => (
+          <article key={`${item.year}-${item.item}`} className="rounded-xl border border-kelly-text/10 bg-white px-4 py-3">
+            <h3 className="text-sm font-semibold text-kelly-navy">
+              {item.year} · {item.item}
+            </h3>
+            <p className="mt-1 text-sm text-kelly-text/70">
+              {item.detail}{" "}
+              <a href={item.href} target="_blank" rel="noreferrer" className="underline underline-offset-2">
+                {item.source}
+              </a>
+            </p>
+          </article>
+        ))}
+      </div>
+      {comparable.length > 0 ? (
+        <div className="mt-8">
+          <h2 className="text-xs font-semibold uppercase tracking-[0.14em] text-kelly-text/50">
+            OpenSecrets midpoints only
+          </h2>
+          <div className="mt-3 space-y-2">
+            {comparable.map((row) => {
+              const width = Math.max(4, Math.round((Math.abs(row.midpoint ?? 0) / max) * 100));
+              return (
+                <div key={row.year} className="grid grid-cols-[70px_1fr_90px] items-center gap-3 text-xs text-kelly-text/60">
+                  <span>{row.year}</span>
+                  <div className="h-2.5 overflow-hidden rounded-full bg-[#e6dfd2]">
+                    <div className="h-full bg-kelly-navy" style={{ width: `${width}%` }} />
+                  </div>
+                  <span className="text-right tabular-nums">{compactMoney(row.midpoint ?? 0)}</span>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      ) : null}
+      <div className="mt-6 overflow-hidden rounded-xl border border-kelly-text/10 bg-white">
+        <table className="w-full min-w-[880px] border-collapse text-left text-sm">
+          <thead className="bg-kelly-navy text-white">
+            <tr>
+              <th className="px-3 py-2.5 font-semibold">Year</th>
+              <th className="px-3 py-2.5 font-semibold">Period</th>
+              <th className="px-3 py-2.5 font-semibold">Estimate</th>
+              <th className="px-3 py-2.5 font-semibold">Range</th>
+              <th className="px-3 py-2.5 font-semibold">Source</th>
+            </tr>
+          </thead>
+          <tbody>
+            {person.rows.map((row) => (
+              <tr key={`${row.year}-${row.estimate}`} className="border-t border-kelly-text/10 align-top">
+                <td className="px-3 py-2.5">{row.year}</td>
+                <td className="px-3 py-2.5 text-kelly-text/80">{row.period}</td>
+                <td className="px-3 py-2.5 font-semibold">{row.estimate}</td>
+                <td className="px-3 py-2.5 text-kelly-text/80">{row.range}</td>
+                <td className="px-3 py-2.5">
+                  <a href={row.href} target="_blank" rel="noreferrer" className="text-kelly-navy underline underline-offset-2">
+                    {row.source}
+                  </a>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+}
+
 export function FecMaxDonorsClient({ tabs }: { tabs: FecDonorTabView[] }) {
+  const [section, setSection] = useState<"donors" | "net-worth">("donors");
   const [tabId, setTabId] = useState<FecDonorTabId>(tabs[0]?.id ?? "jones-shoffner");
   const tab = tabs.find((item) => item.id === tabId) ?? tabs[0];
   if (!tab) return null;
 
   return (
     <div>
+      <div className="mb-4 flex flex-wrap gap-2">
+        <button
+          type="button"
+          onClick={() => setSection("donors")}
+          className={`rounded-full px-4 py-2 text-sm font-semibold ${
+            section === "donors" ? "bg-kelly-navy text-white" : "border border-kelly-text/15 bg-white text-kelly-text/80"
+          }`}
+        >
+          Donors
+        </button>
+        <button
+          type="button"
+          onClick={() => setSection("net-worth")}
+          className={`rounded-full px-4 py-2 text-sm font-semibold ${
+            section === "net-worth" ? "bg-kelly-navy text-white" : "border border-kelly-text/15 bg-white text-kelly-text/80"
+          }`}
+        >
+          Net worth
+        </button>
+      </div>
+      {section === "net-worth" ? <NetWorthPanel /> : null}
+      {section === "donors" ? (
+        <>
       <div className="flex flex-wrap gap-2 border-b border-kelly-text/10 pb-3">
         {tabs.map((item) => (
           <button
@@ -358,6 +506,8 @@ export function FecMaxDonorsClient({ tabs }: { tabs: FecDonorTabView[] }) {
           </div>
         </>
       )}
+        </>
+      ) : null}
     </div>
   );
 }

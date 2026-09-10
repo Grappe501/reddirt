@@ -17,11 +17,10 @@ export default async function FecMaxDonorsPage() {
         Federal donor lists
       </h1>
       <p className="mt-3 max-w-3xl text-sm leading-relaxed text-kelly-text/75">
-        Live OpenFEC itemized individual receipts for the 2026 cycle only (January 2025–present).
-        Jones, Shoffner, Russell, Ryerse, and Green use a $3,000 threshold. French Hill is a separate
-        tab at $2,000. Historical giving is shown in its own column and is not mixed into the 2026
-        totals. ActBlue and joint-fundraising memo duplicates are removed. This is public FEC data,
-        not a Kelly campaign page.
+        Donor tabs use live OpenFEC itemized receipts for the 2026 cycle only. The Net worth tab
+        tracks French Hill and Tom Cotton from published disclosures, including pre-office filings.
+        Those figures are ranges and estimates, not official exact net worth. This is public FEC
+        and House/Senate disclosure data, not a Kelly campaign page.
       </p>
       <div className="mt-8">
         <FecMaxDonorsClient tabs={tabs} />

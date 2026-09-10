@@ -35,14 +35,130 @@ function downloadCsv(donors, filename) {
   URL.revokeObjectURL(url);
 }
 
-function render(data) {
+function compactMoney(value) {
+  if (value == null) return "—";
+  const abs = Math.abs(value);
+  const sign = value < 0 ? "–" : "";
+  if (abs >= 1000000) return `${sign}$${(abs / 1000000).toFixed(2)}M`;
+  if (abs >= 1000) return `${sign}$${Math.round(abs / 1000)}K`;
+  return `${sign}$${Math.round(abs)}`;
+}
+
+function renderNetWorth(report, personId) {
+  const person = report.people.find((item) => item.id === personId) || report.people[0];
+  const comparable = person.rows.filter((row) => row.series === "opensecrets" && row.midpoint != null);
+  const max = Math.max(...comparable.map((row) => Math.abs(row.midpoint)), 1);
+  const lede = document.getElementById("lede");
+  if (lede) {
+    lede.textContent =
+      "House and Senate filings use ranges, not one number. Before-office rows are candidate disclosures and, for Hill, the 2014 Delta Trust sale. OpenSecrets, Quiver, and Reuters are different methods and should not be read as one line.";
+  }
+
+  return `
+    <div class="tabs">
+      ${report.people
+        .map(
+          (item) =>
+            `<button type="button" data-person="${item.id}" class="${item.id === person.id ? "active" : ""}">${item.name}</button>`,
+        )
+        .join("")}
+    </div>
+    <p class="note">${person.office} · in office since ${person.inOfficeSince}. ${person.beforeNote}</p>
+    <ul class="links">
+      ${person.links.map((link) => `<li><a href="${link.href}" target="_blank" rel="noreferrer">${link.label}</a></li>`).join("")}
+    </ul>
+    <dl class="stats">
+      ${person.highlights.map((item) => `<div class="stat"><dt>${item.label}</dt><dd>${item.value}</dd></div>`).join("")}
+    </dl>
+    <p class="note">${report.disclaimer}</p>
+    <h2 class="kicker" style="margin-top:28px">Before taking office</h2>
+    <div class="pre-list">
+      ${person.preOffice
+        .map(
+          (item) => `<article class="pre-card">
+            <h3>${item.year} · ${item.item}</h3>
+            <p>${item.detail} <a href="${item.href}" target="_blank" rel="noreferrer">${item.source}</a></p>
+          </article>`,
+        )
+        .join("")}
+    </div>
+    ${
+      comparable.length
+        ? `<h2 class="kicker" style="margin-top:28px">OpenSecrets midpoints only</h2>
+           <div class="bars">
+             ${comparable
+               .map((row) => {
+                 const width = Math.max(4, Math.round((Math.abs(row.midpoint) / max) * 100));
+                 return `<div class="bar-row"><span class="bar-label">${row.year}</span><div class="bar-track"><div class="bar-fill" style="width:${width}%"></div></div><span class="bar-value">${compactMoney(row.midpoint)}</span></div>`;
+               })
+               .join("")}
+           </div>
+           <p class="note">Same OpenSecrets method only. Later Quiver prints are not on this bar.</p>`
+        : ""
+    }
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Year</th><th>Period</th><th>Estimate</th><th>Range</th><th>Source</th></tr>
+        </thead>
+        <tbody>
+          ${person.rows
+            .map(
+              (row) => `<tr>
+                <td>${row.year}</td>
+                <td>${row.period}</td>
+                <td>${row.estimate}</td>
+                <td>${row.range}</td>
+                <td><a href="${row.href}" target="_blank" rel="noreferrer">${row.source}</a></td>
+              </tr>`,
+            )
+            .join("")}
+        </tbody>
+      </table>
+    </div>
+  `;
+}
+
+function render(data, netWorth) {
   const root = document.getElementById("app");
+  let section = location.hash === "#net-worth" ? "net-worth" : "donors";
+  let personId = netWorth.people[0]?.id;
   let tabId = data.tabs[0]?.id;
   let filter = "all";
   let query = "";
   let openKey = "";
 
   const paint = () => {
+    if (section === "net-worth") {
+      location.hash = "net-worth";
+      root.innerHTML = `
+        <div class="section-tabs chips">
+          <button type="button" data-section="donors">Donors</button>
+          <button type="button" data-section="net-worth" class="active">Net worth</button>
+        </div>
+        ${renderNetWorth(netWorth, personId)}
+      `;
+      root.querySelectorAll("[data-section]").forEach((button) => {
+        button.addEventListener("click", () => {
+          section = button.getAttribute("data-section");
+          paint();
+        });
+      });
+      root.querySelectorAll("[data-person]").forEach((button) => {
+        button.addEventListener("click", () => {
+          personId = button.getAttribute("data-person");
+          paint();
+        });
+      });
+      return;
+    }
+
+    location.hash = "donors";
+    const lede = document.getElementById("lede");
+    if (lede) {
+      lede.textContent =
+        "Itemized individual receipts from OpenFEC for the 2026 cycle only (January 2025–present). Jones, Shoffner, Russell, Ryerse, and Green use a $3,000 threshold. French Hill is a separate tab at $2,000. Historical giving is in its own column and is not mixed into the 2026 totals. Memo duplicates are removed.";
+    }
     const tab = data.tabs.find((item) => item.id === tabId) || data.tabs[0];
     const visible = tab.donors.filter((donor) => {
       if (filter === "multi" && donor.candidateSlugs.length < 2) return false;
@@ -55,6 +171,10 @@ function render(data) {
     });
 
     root.innerHTML = `
+      <div class="section-tabs chips">
+        <button type="button" data-section="donors" class="active">Donors</button>
+        <button type="button" data-section="net-worth">Net worth</button>
+      </div>
       <div class="tabs">
         ${data.tabs
           .map(
@@ -142,6 +262,12 @@ function render(data) {
       </div>
     `;
 
+    root.querySelectorAll("[data-section]").forEach((button) => {
+      button.addEventListener("click", () => {
+        section = button.getAttribute("data-section");
+        paint();
+      });
+    });
     root.querySelectorAll("[data-tab]").forEach((button) => {
       button.addEventListener("click", () => {
         tabId = button.getAttribute("data-tab");
@@ -178,12 +304,17 @@ function render(data) {
   paint();
 }
 
-fetch("./data.json")
-  .then((response) => {
+Promise.all([
+  fetch("./data.json").then((response) => {
     if (!response.ok) throw new Error("Donor data is not ready yet.");
     return response.json();
-  })
-  .then(render)
+  }),
+  fetch("./net-worth.json").then((response) => {
+    if (!response.ok) throw new Error("Net-worth data is not ready yet.");
+    return response.json();
+  }),
+])
+  .then(([data, netWorth]) => render(data, netWorth))
   .catch((error) => {
     document.getElementById("app").textContent = error.message;
   });

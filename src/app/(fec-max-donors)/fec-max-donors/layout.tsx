@@ -6,7 +6,7 @@ export const runtime = "nodejs";
 
 export const metadata: Metadata = {
   title: {
-    absolute: "FEC donor lists · Arkansas 2026",
+    absolute: "FEC donor and net-worth lists · Arkansas 2026",
   },
   robots: { index: false, follow: false },
 };
