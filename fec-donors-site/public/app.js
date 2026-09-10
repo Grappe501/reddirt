@@ -196,6 +196,11 @@ function render(data, netWorth) {
               `<div class="stat"><dt>${candidate.label}</dt><dd>${tab.donors.filter((donor) => donor.candidateSlugs.includes(candidate.slug)).length}</dd></div>`,
           )
           .join("")}
+        ${
+          tab.candidates.length > 1
+            ? `<div class="stat"><dt>Gave to more than one</dt><dd>${tab.donors.filter((donor) => donor.candidateSlugs.length > 1).length}</dd></div>`
+            : ""
+        }
       </dl>
       <p class="note">${tab.giftCount} countable 2026-cycle gifts · refreshed ${new Date(data.generatedAt).toLocaleString()}</p>
       <div class="toolbar">

@@ -119,11 +119,27 @@ function zip5(value) {
   return (value ?? "").replace(/\D/g, "").slice(0, 5);
 }
 
+function normalizeToken(value) {
+  return (value ?? "").toLowerCase().replace(/[^a-z0-9]/g, "");
+}
+
 function donorKey(row) {
-  const last = (row.contributor_last_name ?? "").trim().toLowerCase();
-  const first = (row.contributor_first_name ?? "").trim().toLowerCase();
-  const name = (row.contributor_name ?? `${last}|${first}`).trim().toLowerCase();
-  return [name, (row.contributor_state ?? "").trim().toLowerCase(), zip5(row.contributor_zip)].join("|");
+  let last = normalizeToken(row.contributor_last_name);
+  let first = normalizeToken((row.contributor_first_name ?? "").split(/\s+/)[0]);
+  const raw = (row.contributor_name ?? "").trim();
+  if ((!last || !first) && raw) {
+    if (raw.includes(",")) {
+      const [family, rest] = raw.split(",");
+      last = last || normalizeToken(family);
+      first = first || normalizeToken((rest ?? "").trim().split(/\s+/)[0]);
+    } else {
+      const parts = raw.split(/\s+/).filter(Boolean);
+      first = first || normalizeToken(parts[0]);
+      last = last || normalizeToken(parts[parts.length - 1]);
+    }
+  }
+  const identity = last && first ? `${last}|${first}` : raw.toLowerCase();
+  return [identity, (row.contributor_state ?? "").trim().toLowerCase(), zip5(row.contributor_zip)].join("|");
 }
 
 function isCountable(row, minAmount) {
@@ -234,7 +250,7 @@ async function buildTab(apiKey, tab) {
     for (const row of historicalSets.flat()) {
       if (!isCountable(row, tab.minAmount)) continue;
       if (isCurrentCycleDate(row.contribution_receipt_date)) continue;
-      const key = `${candidate.slug}|${donorKey(row)}`;
+      const key = donorKey(row);
       const list = historicalByKey.get(key) ?? [];
       list.push(toGift(row, candidate, "historical"));
       historicalByKey.set(key, list);
@@ -244,7 +260,7 @@ async function buildTab(apiKey, tab) {
       if (!isCountable(row, tab.minAmount)) continue;
       if (!isCurrentCycleDate(row.contribution_receipt_date)) continue;
       gifts.push(toGift(row, candidate, "current"));
-      keys.push(`${candidate.slug}|${donorKey(row)}`);
+      keys.push(donorKey(row));
     }
   }
 
