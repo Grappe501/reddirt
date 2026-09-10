@@ -1,5 +1,7 @@
 const OPENFEC_BASE = "https://api.open.fec.gov/v1";
 const CYCLE = 2026;
+const HISTORICAL_CYCLES = [2024, 2022, 2020, 2018, 2016, 2014];
+const CYCLE_START = "2025-01-01";
 
 type OpenFecPagination = {
   count: number;
@@ -63,17 +65,20 @@ async function fetchScheduleAPage(
   committeeId: string,
   page: number,
   minAmount: number,
+  periods: number[],
 ): Promise<OpenFecList<OpenFecScheduleA>> {
   const params = new URLSearchParams({
     api_key: apiKey,
     committee_id: committeeId,
-    two_year_transaction_period: String(CYCLE),
     min_amount: String(minAmount),
     is_individual: "true",
     per_page: "100",
     page: String(page),
     sort: "-contribution_receipt_amount",
   });
+  for (const period of periods) {
+    params.append("two_year_transaction_period", String(period));
+  }
 
   const response = await fetch(`${OPENFEC_BASE}/schedules/schedule_a/?${params.toString()}`, {
     cache: "no-store",
@@ -91,17 +96,23 @@ export async function fetchIndividualReceiptsOverThreshold(
   apiKey: string,
   committeeId: string,
   minAmount: number,
+  periods: number[] = [CYCLE],
 ): Promise<OpenFecScheduleA[]> {
-  const first = await fetchScheduleAPage(apiKey, committeeId, 1, minAmount);
+  const first = await fetchScheduleAPage(apiKey, committeeId, 1, minAmount, periods);
   const pages = Math.max(1, first.pagination?.pages ?? 1);
   const rows = [...(first.results ?? [])];
 
   for (let page = 2; page <= pages; page += 1) {
-    const next = await fetchScheduleAPage(apiKey, committeeId, page, minAmount);
+    const next = await fetchScheduleAPage(apiKey, committeeId, page, minAmount, periods);
     rows.push(...(next.results ?? []));
   }
 
   return rows;
+}
+
+export function isCurrentCycleDate(date: string | null | undefined): boolean {
+  if (!date) return true;
+  return date >= CYCLE_START;
 }
 
 export function isCountableIndividualGift(row: OpenFecScheduleA, minAmount: number): boolean {
@@ -117,3 +128,4 @@ export function donorDisplayName(row: OpenFecScheduleA): string {
 }
 
 export const FEC_CYCLE = CYCLE;
+export const FEC_HISTORICAL_CYCLES = HISTORICAL_CYCLES;

@@ -172,7 +172,7 @@ table,
 
 table {
   width: 100%;
-  min-width: 760px;
+  min-width: 880px;
   border-collapse: collapse;
   font-size: 14px;
 }
@@ -188,6 +188,21 @@ td {
   padding: 10px 12px;
   border-top: 1px solid var(--line);
   vertical-align: top;
+}
+
+td.num,
+th.num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.gift-head {
+  margin: 10px 0 4px;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 700;
 }
 
 td.name button {

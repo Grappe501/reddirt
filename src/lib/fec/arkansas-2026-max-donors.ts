@@ -1,9 +1,11 @@
 import {
   FEC_CYCLE,
+  FEC_HISTORICAL_CYCLES,
   donorDisplayName,
   fetchIndividualReceiptsOverThreshold,
   getOpenFecApiKey,
   isCountableIndividualGift,
+  isCurrentCycleDate,
   type OpenFecScheduleA,
 } from "./openfec-client";
 
@@ -120,6 +122,7 @@ export type MaxDonorGift = {
   date: string;
   election: string;
   filingUrl: string;
+  cycle: "current" | "historical";
 };
 
 export type MaxDonor = {
@@ -130,10 +133,12 @@ export type MaxDonor = {
   employer: string;
   occupation: string;
   total: number;
+  historicalTotal: number;
   giftCount: number;
   candidateSlugs: string[];
   lastDate: string;
   gifts: MaxDonorGift[];
+  historicalGifts: MaxDonorGift[];
 };
 
 export type MaxDonorReport = {
@@ -167,7 +172,11 @@ function donorKey(row: OpenFecScheduleA): string {
   return [name, (row.contributor_state ?? "").trim().toLowerCase(), zip5(row.contributor_zip)].join("|");
 }
 
-function toGift(row: OpenFecScheduleA, candidate: FecCandidate): MaxDonorGift {
+function toGift(
+  row: OpenFecScheduleA,
+  candidate: FecCandidate,
+  cycle: "current" | "historical",
+): MaxDonorGift {
   return {
     candidateSlug: candidate.slug,
     candidateLabel: candidate.label,
@@ -182,6 +191,7 @@ function toGift(row: OpenFecScheduleA, candidate: FecCandidate): MaxDonorGift {
     date: row.contribution_receipt_date ?? "",
     election: row.fec_election_type_desc || row.election_type || "",
     filingUrl: row.pdf_url ?? "",
+    cycle,
   };
 }
 
@@ -200,10 +210,12 @@ function aggregateDonors(gifts: MaxDonorGift[], keys: string[]): MaxDonor[] {
         employer: gift.employer,
         occupation: gift.occupation,
         total: gift.amount,
+        historicalTotal: 0,
         giftCount: 1,
         candidateSlugs: [gift.candidateSlug],
         lastDate: gift.date,
         gifts: [gift],
+        historicalGifts: [],
       });
       return;
     }
@@ -249,21 +261,49 @@ export async function loadDonorReport(
     const keys: string[] = [];
 
     const rowSets = await Promise.all(
-      candidates.map((candidate) =>
-        fetchIndividualReceiptsOverThreshold(apiKey, candidate.committeeId, minAmount).then((rows) => ({
-          candidate,
-          rows,
-        })),
-      ),
+      candidates.map(async (candidate) => {
+        const [currentRows, ...historicalSets] = await Promise.all([
+          fetchIndividualReceiptsOverThreshold(apiKey, candidate.committeeId, minAmount, [FEC_CYCLE]),
+          ...FEC_HISTORICAL_CYCLES.map((period) =>
+            fetchIndividualReceiptsOverThreshold(apiKey, candidate.committeeId, minAmount, [period]),
+          ),
+        ]);
+        return { candidate, currentRows, historicalRows: historicalSets.flat() };
+      }),
     );
 
-    for (const { candidate, rows } of rowSets) {
-      for (const row of rows) {
+    const historicalByKey = new Map<string, MaxDonorGift[]>();
+    for (const { candidate, historicalRows } of rowSets) {
+      for (const row of historicalRows) {
         if (!isCountableIndividualGift(row, minAmount)) continue;
-        gifts.push(toGift(row, candidate));
+        if (isCurrentCycleDate(row.contribution_receipt_date)) continue;
+        const gift = toGift(row, candidate, "historical");
+        const key = `${candidate.slug}|${donorKey(row)}`;
+        const list = historicalByKey.get(key) ?? [];
+        list.push(gift);
+        historicalByKey.set(key, list);
+      }
+    }
+
+    for (const { candidate, currentRows } of rowSets) {
+      for (const row of currentRows) {
+        if (!isCountableIndividualGift(row, minAmount)) continue;
+        if (!isCurrentCycleDate(row.contribution_receipt_date)) continue;
+        gifts.push(toGift(row, candidate, "current"));
         keys.push(`${candidate.slug}|${donorKey(row)}`);
       }
     }
+
+    const donors = aggregateDonors(gifts, keys).map((donor) => {
+      const historicalGifts = [...(historicalByKey.get(donor.key) ?? [])].sort(
+        (a, b) => (b.date || "").localeCompare(a.date || "") || b.amount - a.amount,
+      );
+      return {
+        ...donor,
+        historicalGifts,
+        historicalTotal: historicalGifts.reduce((sum, gift) => sum + gift.amount, 0),
+      };
+    });
 
     return {
       cycle: FEC_CYCLE,
@@ -272,7 +312,7 @@ export async function loadDonorReport(
       missingKey: false,
       error: null,
       giftCount: gifts.length,
-      donors: aggregateDonors(gifts, keys),
+      donors,
     };
   } catch (error) {
     return emptyReport(minAmount, error instanceof Error ? error.message : "OpenFEC request failed.", false);

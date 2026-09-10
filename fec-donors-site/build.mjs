@@ -4,6 +4,8 @@ import { fileURLToPath } from "node:url";
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url));
 const CYCLE = 2026;
+const HISTORICAL_CYCLES = [2024, 2022, 2020, 2018, 2016, 2014];
+const CYCLE_START = "2025-01-01";
 const OPENFEC_BASE = "https://api.open.fec.gov/v1";
 
 const TABS = [
@@ -131,11 +133,16 @@ function isCountable(row, minAmount) {
   return Number(row.contribution_receipt_amount ?? 0) >= minAmount;
 }
 
-async function fetchPage(apiKey, committeeId, page, minAmount) {
+function isCurrentCycleDate(date) {
+  if (!date) return true;
+  return date >= CYCLE_START;
+}
+
+async function fetchPage(apiKey, committeeId, page, minAmount, period) {
   const params = new URLSearchParams({
     api_key: apiKey,
     committee_id: committeeId,
-    two_year_transaction_period: String(CYCLE),
+    two_year_transaction_period: String(period),
     min_amount: String(minAmount),
     is_individual: "true",
     per_page: "100",
@@ -143,19 +150,37 @@ async function fetchPage(apiKey, committeeId, page, minAmount) {
     sort: "-contribution_receipt_amount",
   });
   const response = await fetch(`${OPENFEC_BASE}/schedules/schedule_a/?${params}`);
-  if (!response.ok) throw new Error(`OpenFEC ${response.status} for ${committeeId}`);
+  if (!response.ok) throw new Error(`OpenFEC ${response.status} for ${committeeId} cycle ${period}`);
   return response.json();
 }
 
-async function fetchCommittee(apiKey, committeeId, minAmount) {
-  const first = await fetchPage(apiKey, committeeId, 1, minAmount);
+async function fetchCommittee(apiKey, committeeId, minAmount, period) {
+  const first = await fetchPage(apiKey, committeeId, 1, minAmount, period);
   const pages = Math.max(1, first.pagination?.pages ?? 1);
   const rows = [...(first.results ?? [])];
   for (let page = 2; page <= pages; page += 1) {
-    const next = await fetchPage(apiKey, committeeId, page, minAmount);
+    const next = await fetchPage(apiKey, committeeId, page, minAmount, period);
     rows.push(...(next.results ?? []));
   }
   return rows;
+}
+
+function toGift(row, candidate, cycle) {
+  return {
+    candidateSlug: candidate.slug,
+    candidateLabel: candidate.label,
+    candidateOffice: candidate.office,
+    name: donorName(row),
+    city: clean(row.contributor_city),
+    state: clean(row.contributor_state).toUpperCase(),
+    employer: clean(row.contributor_employer),
+    occupation: clean(row.contributor_occupation),
+    amount: Number(row.contribution_receipt_amount ?? 0),
+    date: row.contribution_receipt_date ?? "",
+    election: row.fec_election_type_desc || row.election_type || "",
+    filingUrl: row.pdf_url ?? "",
+    cycle,
+  };
 }
 
 function aggregate(gifts, keys) {
@@ -172,10 +197,12 @@ function aggregate(gifts, keys) {
         employer: gift.employer,
         occupation: gift.occupation,
         total: gift.amount,
+        historicalTotal: 0,
         giftCount: 1,
         candidateSlugs: [gift.candidateSlug],
         lastDate: gift.date,
         gifts: [gift],
+        historicalGifts: [],
       });
       return;
     }
@@ -194,34 +221,51 @@ function aggregate(gifts, keys) {
 async function buildTab(apiKey, tab) {
   const gifts = [];
   const keys = [];
+  const historicalByKey = new Map();
+
   for (const candidate of tab.candidates) {
-    const rows = await fetchCommittee(apiKey, candidate.committeeId, tab.minAmount);
-    for (const row of rows) {
+    const [currentRows, ...historicalSets] = await Promise.all([
+      fetchCommittee(apiKey, candidate.committeeId, tab.minAmount, CYCLE),
+      ...HISTORICAL_CYCLES.map((period) =>
+        fetchCommittee(apiKey, candidate.committeeId, tab.minAmount, period),
+      ),
+    ]);
+
+    for (const row of historicalSets.flat()) {
       if (!isCountable(row, tab.minAmount)) continue;
-      gifts.push({
-        candidateSlug: candidate.slug,
-        candidateLabel: candidate.label,
-        candidateOffice: candidate.office,
-        name: donorName(row),
-        city: clean(row.contributor_city),
-        state: clean(row.contributor_state).toUpperCase(),
-        employer: clean(row.contributor_employer),
-        occupation: clean(row.contributor_occupation),
-        amount: Number(row.contribution_receipt_amount ?? 0),
-        date: row.contribution_receipt_date ?? "",
-        election: row.fec_election_type_desc || row.election_type || "",
-        filingUrl: row.pdf_url ?? "",
-      });
+      if (isCurrentCycleDate(row.contribution_receipt_date)) continue;
+      const key = `${candidate.slug}|${donorKey(row)}`;
+      const list = historicalByKey.get(key) ?? [];
+      list.push(toGift(row, candidate, "historical"));
+      historicalByKey.set(key, list);
+    }
+
+    for (const row of currentRows) {
+      if (!isCountable(row, tab.minAmount)) continue;
+      if (!isCurrentCycleDate(row.contribution_receipt_date)) continue;
+      gifts.push(toGift(row, candidate, "current"));
       keys.push(`${candidate.slug}|${donorKey(row)}`);
     }
   }
+
+  const donors = aggregate(gifts, keys).map((donor) => {
+    const historicalGifts = [...(historicalByKey.get(donor.key) ?? [])].sort(
+      (a, b) => (b.date || "").localeCompare(a.date || "") || b.amount - a.amount,
+    );
+    return {
+      ...donor,
+      historicalGifts,
+      historicalTotal: historicalGifts.reduce((sum, gift) => sum + gift.amount, 0),
+    };
+  });
+
   return {
     id: tab.id,
     label: tab.label,
     minAmount: tab.minAmount,
     candidates: tab.candidates,
     giftCount: gifts.length,
-    donors: aggregate(gifts, keys),
+    donors,
   };
 }
 

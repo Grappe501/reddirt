@@ -8,7 +8,7 @@ const csvEscape = (value) => {
 
 function downloadCsv(donors, filename) {
   const lines = [
-    ["Name", "City", "State", "Employer", "Occupation", "Total", "Gifts", "Candidates", "Last date"].join(","),
+    ["Name", "City", "State", "Employer", "Occupation", "2026 cycle", "Historical", "Gifts", "Candidates", "Last date"].join(","),
     ...donors.map((donor) =>
       [
         donor.name,
@@ -17,6 +17,7 @@ function downloadCsv(donors, filename) {
         donor.employer,
         donor.occupation,
         donor.total,
+        donor.historicalTotal ?? 0,
         donor.giftCount,
         [...new Set(donor.gifts.map((gift) => gift.candidateLabel))].join(" + "),
         donor.lastDate,
@@ -76,7 +77,7 @@ function render(data) {
           )
           .join("")}
       </dl>
-      <p class="note">${tab.giftCount} countable gifts · refreshed ${new Date(data.generatedAt).toLocaleString()}</p>
+      <p class="note">${tab.giftCount} countable 2026-cycle gifts · refreshed ${new Date(data.generatedAt).toLocaleString()}</p>
       <div class="toolbar">
         <div class="search">
           <label for="q">Search the list</label>
@@ -101,23 +102,25 @@ function render(data) {
       <div class="table-wrap">
         <table>
           <thead>
-            <tr><th>Donor</th><th>City</th><th>Employer</th><th>Candidate</th><th>Total</th></tr>
+            <tr><th>Donor</th><th>City</th><th>Employer</th><th>Candidate</th><th class="num">2026 cycle</th><th class="num">Historical</th></tr>
           </thead>
           <tbody>
             ${
               visible.length === 0
-                ? `<tr><td class="empty" colspan="5">No donors at this threshold in the current FEC filings.</td></tr>`
+                ? `<tr><td class="empty" colspan="6">No donors at this threshold in the current FEC filings.</td></tr>`
                 : visible
                     .map((donor) => {
                       const candidates = [...new Set(donor.gifts.map((gift) => gift.candidateLabel))].join(" + ");
+                      const giftLine = (gift) =>
+                        `<li class="gift">${gift.date || "undated"} · ${money(gift.amount)} · ${gift.election || "election n/a"} · ${gift.candidateLabel}${gift.filingUrl ? ` · <a href="${gift.filingUrl}" target="_blank" rel="noreferrer">FEC image</a>` : ""}</li>`;
+                      const historicalGifts = donor.historicalGifts ?? [];
                       const gifts =
                         openKey === donor.key
-                          ? `<ul>${donor.gifts
-                              .map(
-                                (gift) =>
-                                  `<li class="gift">${gift.date || "undated"} · ${money(gift.amount)} · ${gift.election || "election n/a"} · ${gift.candidateLabel}${gift.filingUrl ? ` · <a href="${gift.filingUrl}" target="_blank" rel="noreferrer">FEC image</a>` : ""}</li>`,
-                              )
-                              .join("")}</ul>`
+                          ? `<p class="gift-head">2026 cycle</p><ul>${donor.gifts.map(giftLine).join("")}</ul>${
+                              historicalGifts.length
+                                ? `<p class="gift-head">Earlier cycles</p><ul>${historicalGifts.map(giftLine).join("")}</ul>`
+                                : ""
+                            }`
                           : "";
                       return `<tr>
                         <td class="name">
@@ -128,7 +131,8 @@ function render(data) {
                         <td>${[donor.city, donor.state].filter(Boolean).join(", ")}</td>
                         <td>${donor.employer || "—"}</td>
                         <td>${candidates}</td>
-                        <td>${money(donor.total)}</td>
+                        <td class="num">${money(donor.total)}</td>
+                        <td class="num">${donor.historicalTotal > 0 ? money(donor.historicalTotal) : "—"}</td>
                       </tr>`;
                     })
                     .join("")

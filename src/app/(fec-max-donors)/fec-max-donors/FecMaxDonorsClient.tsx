@@ -21,7 +21,8 @@ function downloadCsv(donors: MaxDonor[], filename: string) {
     "State",
     "Employer",
     "Occupation",
-    "Total",
+    "2026 cycle",
+    "Historical",
     "Gifts",
     "Candidates",
     "Last date",
@@ -36,6 +37,7 @@ function downloadCsv(donors: MaxDonor[], filename: string) {
         csvEscape(donor.employer),
         csvEscape(donor.occupation),
         csvEscape(donor.total),
+        csvEscape(donor.historicalTotal),
         csvEscape(donor.giftCount),
         csvEscape(donor.gifts.map((gift) => gift.candidateLabel).filter((v, i, a) => a.indexOf(v) === i).join(" + ")),
         csvEscape(donor.lastDate),
@@ -147,20 +149,21 @@ function DonorTable({
       )}
 
       <div className="overflow-hidden rounded-xl border border-kelly-text/10 bg-white">
-        <table className="w-full min-w-[760px] border-collapse text-left text-sm">
+        <table className="w-full min-w-[880px] border-collapse text-left text-sm">
           <thead className="bg-kelly-navy text-white">
             <tr>
               <th className="px-3 py-2.5 font-semibold">Donor</th>
               <th className="px-3 py-2.5 font-semibold">City</th>
               <th className="px-3 py-2.5 font-semibold">Employer</th>
               <th className="px-3 py-2.5 font-semibold">Candidate</th>
-              <th className="px-3 py-2.5 text-right font-semibold">Total</th>
+              <th className="px-3 py-2.5 text-right font-semibold">2026 cycle</th>
+              <th className="px-3 py-2.5 text-right font-semibold">Historical</th>
             </tr>
           </thead>
           <tbody>
             {visible.length === 0 ? (
               <tr>
-                <td colSpan={5} className="px-3 py-8 text-center text-kelly-text/60">
+                <td colSpan={6} className="px-3 py-8 text-center text-kelly-text/60">
                   No donors at this threshold in the current FEC filings.
                 </td>
               </tr>
@@ -185,28 +188,60 @@ function DonorTable({
                         <p className="text-xs text-kelly-text/55">{donor.occupation}</p>
                       ) : null}
                       {open ? (
-                        <ul className="mt-2 space-y-1 text-xs text-kelly-text/70">
-                          {donor.gifts.map((gift, index) => (
-                            <li key={`${gift.date}-${gift.amount}-${index}`}>
-                              {gift.date || "undated"} · {money(gift.amount)} · {gift.election || "election n/a"} ·{" "}
-                              {gift.candidateLabel}
-                              {gift.filingUrl ? (
-                                <>
-                                  {" "}
-                                  ·{" "}
-                                  <a
-                                    href={gift.filingUrl}
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    className="underline underline-offset-2"
-                                  >
-                                    FEC image
-                                  </a>
-                                </>
-                              ) : null}
-                            </li>
-                          ))}
-                        </ul>
+                        <div className="mt-2 space-y-2 text-xs text-kelly-text/70">
+                          <p className="font-semibold uppercase tracking-wide text-kelly-text/50">2026 cycle</p>
+                          <ul className="space-y-1">
+                            {donor.gifts.map((gift, index) => (
+                              <li key={`${gift.date}-${gift.amount}-${index}`}>
+                                {gift.date || "undated"} · {money(gift.amount)} · {gift.election || "election n/a"} ·{" "}
+                                {gift.candidateLabel}
+                                {gift.filingUrl ? (
+                                  <>
+                                    {" "}
+                                    ·{" "}
+                                    <a
+                                      href={gift.filingUrl}
+                                      target="_blank"
+                                      rel="noreferrer"
+                                      className="underline underline-offset-2"
+                                    >
+                                      FEC image
+                                    </a>
+                                  </>
+                                ) : null}
+                              </li>
+                            ))}
+                          </ul>
+                          {donor.historicalGifts.length > 0 ? (
+                            <>
+                              <p className="font-semibold uppercase tracking-wide text-kelly-text/50">
+                                Earlier cycles
+                              </p>
+                              <ul className="space-y-1">
+                                {donor.historicalGifts.map((gift, index) => (
+                                  <li key={`hist-${gift.date}-${gift.amount}-${index}`}>
+                                    {gift.date || "undated"} · {money(gift.amount)} · {gift.election || "election n/a"}{" "}
+                                    · {gift.candidateLabel}
+                                    {gift.filingUrl ? (
+                                      <>
+                                        {" "}
+                                        ·{" "}
+                                        <a
+                                          href={gift.filingUrl}
+                                          target="_blank"
+                                          rel="noreferrer"
+                                          className="underline underline-offset-2"
+                                        >
+                                          FEC image
+                                        </a>
+                                      </>
+                                    ) : null}
+                                  </li>
+                                ))}
+                              </ul>
+                            </>
+                          ) : null}
+                        </div>
                       ) : null}
                     </td>
                     <td className="px-3 py-2.5 text-kelly-text/80">
@@ -215,6 +250,9 @@ function DonorTable({
                     <td className="px-3 py-2.5 text-kelly-text/80">{donor.employer || "—"}</td>
                     <td className="px-3 py-2.5 text-kelly-text/80">{candidates}</td>
                     <td className="px-3 py-2.5 text-right font-semibold tabular-nums">{money(donor.total)}</td>
+                    <td className="px-3 py-2.5 text-right tabular-nums text-kelly-text/80">
+                      {donor.historicalTotal > 0 ? money(donor.historicalTotal) : "—"}
+                    </td>
                   </tr>
                 );
               })
@@ -253,9 +291,9 @@ function TabStats({ tab }: { tab: FecDonorTabView }) {
         ) : null}
       </dl>
       <p className="mt-3 text-xs text-kelly-text/50">
-        {report.giftCount} countable gifts of {money(tab.minAmount)} or more ·{" "}
-        {money(report.donors.reduce((sum, donor) => sum + donor.total, 0))} combined · refreshed{" "}
-        {new Date(report.generatedAt).toLocaleString()}
+        {report.giftCount} countable 2026-cycle gifts of {money(tab.minAmount)} or more ·{" "}
+        {money(report.donors.reduce((sum, donor) => sum + donor.total, 0))} combined this cycle ·
+        refreshed {new Date(report.generatedAt).toLocaleString()}
       </p>
     </>
   );
