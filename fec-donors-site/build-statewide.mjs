@@ -6,7 +6,7 @@ import { fileURLToPath } from "node:url";
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url));
 const CSV_PATH = process.env.AR_ETHICS_CSV || "H:/SOSWebsite/.local/temp/ar-ethics-csv/TCON_2026.csv";
-const MIN_AMOUNT = 1000;
+const MIN_AMOUNT = 0;
 const ETHICS_CANDIDATE_URL = "https://ethics-disclosures.sos.arkansas.gov/public/cf/publiccandidate";
 
 const TABS = [
@@ -148,7 +148,6 @@ async function readRows(filePath) {
     const amount = parseAmount(cols[12]);
     if (amount < MIN_AMOUNT) continue;
     const sourceName = (cols[6] || "").trim();
-    if (!sourceName) continue;
     const transactionId = (cols[14] || "").trim();
     const dedupe = transactionId || `${cols[0]}|${sourceName}|${cols[11]}|${amount}`;
     if (seen.has(dedupe)) continue;
@@ -194,7 +193,10 @@ function aggregateTab(tab, rows) {
       cycle: "current",
       transactionId: row.transactionId,
     };
-    const key = [row.identity.key, row.state.toLowerCase(), row.zip].join("|");
+    const key =
+      row.identity.key === "unnamed"
+        ? ["unnamed", row.candidate.slug, row.state.toLowerCase(), row.zip, normalizeToken(row.employer)].join("|")
+        : [row.identity.key, row.state.toLowerCase(), row.zip].join("|");
     const existing = byKey.get(key);
     if (existing?.gifts.some((item) => giftKey(item) === giftKey(gift))) continue;
     giftCount += 1;

@@ -201,7 +201,7 @@ function render(data, netWorth) {
     if (lede) {
       lede.textContent =
         tab.source === "arkansas-ethics"
-          ? "Named $1,000+ gifts from the official Arkansas ethics 2026 contribution download. Statewide candidates file here, not with the FEC. Street addresses are omitted. Historical state years are not in this first pull."
+          ? "Every 2026 contribution on the official Arkansas ethics download for these statewide candidates, including small gifts and unnamed lines. Statewide candidates file here, not with the FEC. Street addresses are omitted. Historical state years are not in this pull."
           : "Itemized individual receipts from OpenFEC for the 2026 cycle only (January 2025–present). Jones, Shoffner, Russell, Ryerse, and Green use a $3,000 threshold. French Hill is a separate tab at $2,000. Historical giving is in its own column and is not mixed into the 2026 totals. Memo duplicates are removed.";
     }
     const scoped = tab.donors
@@ -227,7 +227,7 @@ function render(data, netWorth) {
         ${views
           .map(
             (item) =>
-              `<button type="button" data-view="${item.id}" class="${item.id === view.id ? "active" : ""}">${item.label} ${money(item.minAmount)}+</button>`,
+              `<button type="button" data-view="${item.id}" class="${item.id === view.id ? "active" : ""}">${item.label}${item.minAmount > 0 ? ` ${money(item.minAmount)}+` : ""}</button>`,
           )
           .join("")}
       </div>
