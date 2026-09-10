@@ -137,7 +137,7 @@ function scopeDonor(donor, slug) {
 function donorViews(data) {
   const views = [];
   for (const tab of data.tabs) {
-    if (tab.id === "jones-shoffner") {
+    if (tab.id === "jones-shoffner" || tab.source === "arkansas-ethics") {
       for (const candidate of tab.candidates) {
         views.push({
           id: candidate.slug,
@@ -195,13 +195,15 @@ function render(data, netWorth) {
     }
 
     location.hash = "donors";
+    const view = views.find((item) => item.id === viewId) || views[0];
+    const tab = view.tab;
     const lede = document.getElementById("lede");
     if (lede) {
       lede.textContent =
-        "Itemized individual receipts from OpenFEC for the 2026 cycle only (January 2025–present). Jones, Shoffner, Russell, Ryerse, and Green use a $3,000 threshold. French Hill is a separate tab at $2,000. Historical giving is in its own column and is not mixed into the 2026 totals. Memo duplicates are removed.";
+        tab.source === "arkansas-ethics"
+          ? "Named $1,000+ gifts from the official Arkansas ethics 2026 contribution download. Statewide candidates file here, not with the FEC. Street addresses are omitted. Historical state years are not in this first pull."
+          : "Itemized individual receipts from OpenFEC for the 2026 cycle only (January 2025–present). Jones, Shoffner, Russell, Ryerse, and Green use a $3,000 threshold. French Hill is a separate tab at $2,000. Historical giving is in its own column and is not mixed into the 2026 totals. Memo duplicates are removed.";
     }
-    const view = views.find((item) => item.id === viewId) || views[0];
-    const tab = view.tab;
     const scoped = tab.donors
       .filter((donor) => !view.slug || donor.candidateSlugs.includes(view.slug))
       .map((donor) => scopeDonor(donor, view.slug));
@@ -282,12 +284,12 @@ function render(data, netWorth) {
           <tbody>
             ${
               visible.length === 0
-                ? `<tr><td class="empty" colspan="6">No donors at this threshold in the current FEC filings.</td></tr>`
+                ? `<tr><td class="empty" colspan="6">No donors at this threshold in the current filings.</td></tr>`
                 : visible
                     .map((donor) => {
                       const candidates = [...new Set(donor.gifts.map((gift) => gift.candidateLabel))].join(" + ");
                       const giftLine = (gift) =>
-                        `<li class="gift">${gift.date || "undated"} · ${money(gift.amount)} · ${gift.election || "election n/a"} · ${gift.candidateLabel}${gift.filingUrl ? ` · <a href="${gift.filingUrl}" target="_blank" rel="noreferrer">FEC image</a>` : ""}</li>`;
+                        `<li class="gift">${gift.date || "undated"} · ${money(gift.amount)} · ${gift.election || "election n/a"} · ${gift.candidateLabel}${gift.filingUrl ? ` · <a href="${gift.filingUrl}" target="_blank" rel="noreferrer">${tab.source === "arkansas-ethics" ? "Ethics search" : "FEC image"}</a>` : ""}</li>`;
                       const historicalGifts = donor.historicalGifts ?? [];
                       const gifts =
                         openKey === donor.key
@@ -353,7 +355,9 @@ function render(data, netWorth) {
       if (event.key === "Enter") paint();
     });
     input?.addEventListener("search", () => paint());
-    root.querySelector("#csv")?.addEventListener("click", () => downloadCsv(visible, `fec-donors-${view.id}-2026.csv`));
+    root.querySelector("#csv")?.addEventListener("click", () =>
+      downloadCsv(visible, `${tab.source === "arkansas-ethics" ? "ar-ethics" : "fec"}-donors-${view.id}-2026.csv`),
+    );
   };
 
   paint();
@@ -364,12 +368,16 @@ Promise.all([
     if (!response.ok) throw new Error("Donor data is not ready yet.");
     return response.json();
   }),
+  fetch("./statewide.json").then((response) => (response.ok ? response.json() : { tabs: [] })),
   fetch("./net-worth.json").then((response) => {
     if (!response.ok) throw new Error("Net-worth data is not ready yet.");
     return response.json();
   }),
 ])
-  .then(([data, netWorth]) => render(data, netWorth))
+  .then(([data, statewide, netWorth]) => {
+    data.tabs = [...(data.tabs || []), ...(statewide.tabs || [])];
+    render(data, netWorth);
+  })
   .catch((error) => {
     document.getElementById("app").textContent = error.message;
   });

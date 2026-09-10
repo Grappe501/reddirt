@@ -178,6 +178,7 @@ public/media/campaign-photos/Website pics and speeches/**
 
 # Generated OpenFEC snapshot for the standalone donor site
 fec-donors-site/public/data.json
+fec-donors-site/public/statewide.json
 
 tmp-supabase-introspection.schema.prisma
 supabase-introspection.prisma
