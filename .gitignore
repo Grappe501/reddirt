@@ -176,6 +176,9 @@ public/media/campaign-photos/Website pics and speeches/**
 *.mp3
 !public/**/*.mp3
 
+# Generated OpenFEC snapshot for the standalone donor site
+fec-donors-site/public/data.json
+
 tmp-supabase-introspection.schema.prisma
 supabase-introspection.prisma
 supabase-introspection.stderr.txt
