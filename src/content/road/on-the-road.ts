@@ -88,7 +88,7 @@ export const onTheRoadProofCopy = {
 
   stories: {
     title: "Snapshots from the trail",
-    introWhenPlaceholder: "Until more posts are synced here, a few verified moments anchor the story.",
+    intro: "Verified moments from the campaign trail — through August.",
     placeholders: [
       {
         id: "first-stop",
@@ -97,10 +97,10 @@ export const onTheRoadProofCopy = {
           "From the night she filed, Kelly went to Faulkner County Democrats — the first time she introduced herself publicly as a candidate for Secretary of State. Thank you to Teresa Huff for that first platform.",
       },
       {
-        id: "february-mileage",
-        title: "Miles on the road",
+        id: "through-august",
+        title: "Through August",
         body:
-          "Through August the campaign has logged 23,419 miles, 245 engagements, and visits in 58 of Arkansas’s 75 counties.",
+          "The campaign has logged 23,419 miles, 245 engagements, and visits in 58 of Arkansas’s 75 counties.",
       },
       {
         id: "faith-rooms",

@@ -168,9 +168,11 @@ export function OnTheRoadProofSections({
           {c.stories.title}
         </h2>
         <p className="mx-auto mt-3 max-w-2xl text-center font-body text-sm leading-relaxed text-kelly-slate md:text-base">
+          {c.stories.intro}
           {showLiveStories ? (
             <>
-              Longer entries and the full grid live below—open{" "}
+              {" "}
+              Longer entries live below in{" "}
               <a
                 href="#notebook"
                 className="font-semibold text-kelly-blue underline-offset-2 hover:underline focus-visible:rounded-sm focus-visible:outline focus-visible:ring-2 focus-visible:ring-kelly-gold/50"
@@ -179,7 +181,7 @@ export function OnTheRoadProofSections({
               </a>
               {hasFieldSocial ? (
                 <>
-                  {" or "}
+                  {" and "}
                   <a
                     href="#field"
                     className="font-semibold text-kelly-blue underline-offset-2 hover:underline focus-visible:rounded-sm focus-visible:outline focus-visible:ring-2 focus-visible:ring-kelly-gold/50"
@@ -190,23 +192,19 @@ export function OnTheRoadProofSections({
               ) : null}
               .
             </>
-          ) : (
-            c.stories.introWhenPlaceholder
-          )}
+          ) : null}
         </p>
-        {showLiveStories ? null : (
         <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {c.stories.placeholders.map((card) => (
-                <article
-                  key={card.id}
-                  className="flex h-full flex-col rounded-card border border-kelly-ink/12 bg-white/95 p-5 shadow-sm md:p-6"
-                >
-                  <h3 className="font-heading text-base font-bold text-kelly-ink md:text-lg">{card.title}</h3>
-                  <p className="mt-3 flex-1 font-body text-sm leading-relaxed text-kelly-slate md:text-[0.9375rem]">{card.body}</p>
-                </article>
-              ))}
+            <article
+              key={card.id}
+              className="flex h-full flex-col rounded-card border border-kelly-ink/12 bg-white/95 p-5 shadow-sm md:p-6"
+            >
+              <h3 className="font-heading text-base font-bold text-kelly-ink md:text-lg">{card.title}</h3>
+              <p className="mt-3 flex-1 font-body text-sm leading-relaxed text-kelly-slate md:text-[0.9375rem]">{card.body}</p>
+            </article>
+          ))}
         </div>
-        )}
       </section>
 
       <div className="mx-auto mt-16 max-w-3xl border-t border-kelly-ink/10 pt-14 text-center md:mt-20 md:pt-16">
