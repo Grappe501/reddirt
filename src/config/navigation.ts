@@ -21,8 +21,8 @@ export type NavGroup = {
   items: NavItem[];
 };
 
-/** Volunteer form tagged for tabling / representing at third-party local events. */
-export const representLocalEventVolunteerHref = "/get-involved?lane=event_representation#volunteer";
+/** Public Event Help board — Mobilize shifts listed by location. */
+export const representLocalEventVolunteerHref = "/get-involved/event-help";
 
 /** Volunteer signup with “leadership / captain” interest pre-checked (client-side default only; same `/api/forms` payload shape). */
 export const getInvolvedVolunteerCaptainHref = "/get-involved?leadership=1#volunteer";

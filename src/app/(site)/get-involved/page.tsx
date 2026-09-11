@@ -20,6 +20,7 @@ export const metadata: Metadata = {
 const sectionLinks: { label: string; href: string }[] = [
   { label: "Power of 5", href: "#bring-5" },
   { label: "Volunteer", href: "#volunteer" },
+  { label: "Event help", href: "/get-involved/event-help" },
   { label: "Host Kelly", href: "#invite-kelly" },
   { label: "Stay connected", href: "#join" },
   { label: "Start a Local Team", href: "#local-team" },
@@ -38,7 +39,7 @@ const volunteerLanes: {
     title: "Event help",
     blurb: "Table, greet, pass out accurate info, or be a steady face at something already on the calendar.",
     nextLabel: "Help at events",
-    nextHref: "#represent-event",
+    nextHref: "/get-involved/event-help",
   },
   {
     id: "calls-texts",

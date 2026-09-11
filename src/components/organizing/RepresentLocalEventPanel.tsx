@@ -49,7 +49,7 @@ export function RepresentLocalEventPanel({ id, className }: Props) {
       </ul>
       <div className="mt-6 flex flex-wrap gap-3">
         <Button href={representLocalEventVolunteerHref} variant="primary">
-          Volunteer to represent locally
+          Pick an event shift
         </Button>
         <Button href="/events" variant="outline">
           Events hub
