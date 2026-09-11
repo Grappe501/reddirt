@@ -1,0 +1,1454 @@
+{
+  "generatedAt": "2026-09-11T19:02:22.633Z",
+  "albums": [
+    {
+      "countySlug": "baxter-county",
+      "countyDisplayName": "Baxter County",
+      "shortName": "Baxter",
+      "photos": [
+        {
+          "id": "drop-baxter-county-1000018409",
+          "src": "/media/county-library/baxter-county/1000018409.jpg",
+          "filename": "1000018409.JPG",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-baxter-county-img-5921",
+          "src": "/media/county-library/baxter-county/img-5921.jpg",
+          "filename": "IMG_5921.jpeg",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-baxter-county-img-5922",
+          "src": "/media/county-library/baxter-county/img-5922.jpg",
+          "filename": "IMG_5922.jpeg",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-baxter-county-img-5923",
+          "src": "/media/county-library/baxter-county/img-5923.jpg",
+          "filename": "IMG_5923.jpeg",
+          "width": 1600,
+          "height": 1200
+        },
+        {
+          "id": "drop-baxter-county-img-5926",
+          "src": "/media/county-library/baxter-county/img-5926.jpg",
+          "filename": "IMG_5926.jpeg",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-baxter-county-img-5927",
+          "src": "/media/county-library/baxter-county/img-5927.jpg",
+          "filename": "IMG_5927.jpeg",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-baxter-county-img-5928",
+          "src": "/media/county-library/baxter-county/img-5928.jpg",
+          "filename": "IMG_5928.jpeg",
+          "width": 1600,
+          "height": 1200
+        },
+        {
+          "id": "drop-baxter-county-img-5929",
+          "src": "/media/county-library/baxter-county/img-5929.jpg",
+          "filename": "IMG_5929.jpeg",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-baxter-county-img-5930",
+          "src": "/media/county-library/baxter-county/img-5930.jpg",
+          "filename": "IMG_5930.jpeg",
+          "width": 1200,
+          "height": 1600
+        }
+      ]
+    },
+    {
+      "countySlug": "carroll-county",
+      "countyDisplayName": "Carroll County",
+      "shortName": "Carroll",
+      "photos": [
+        {
+          "id": "drop-carroll-county-img-4925",
+          "src": "/media/county-library/carroll-county/img-4925.jpg",
+          "filename": "IMG_4925.jpeg",
+          "width": 1600,
+          "height": 1200
+        },
+        {
+          "id": "drop-carroll-county-img-4929",
+          "src": "/media/county-library/carroll-county/img-4929.jpg",
+          "filename": "IMG_4929.jpeg",
+          "width": 1600,
+          "height": 1200
+        },
+        {
+          "id": "drop-carroll-county-img-4931",
+          "src": "/media/county-library/carroll-county/img-4931.jpg",
+          "filename": "IMG_4931.jpeg",
+          "width": 1600,
+          "height": 1200
+        },
+        {
+          "id": "drop-carroll-county-img-4937",
+          "src": "/media/county-library/carroll-county/img-4937.jpg",
+          "filename": "IMG_4937.jpeg",
+          "width": 1600,
+          "height": 1200
+        },
+        {
+          "id": "drop-carroll-county-img-4938",
+          "src": "/media/county-library/carroll-county/img-4938.jpg",
+          "filename": "IMG_4938.jpeg",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-carroll-county-img-4939",
+          "src": "/media/county-library/carroll-county/img-4939.jpg",
+          "filename": "IMG_4939.jpeg",
+          "width": 1600,
+          "height": 1200
+        },
+        {
+          "id": "drop-carroll-county-img-4940",
+          "src": "/media/county-library/carroll-county/img-4940.jpg",
+          "filename": "IMG_4940.jpeg",
+          "width": 1600,
+          "height": 1200
+        }
+      ]
+    },
+    {
+      "countySlug": "craighead-county",
+      "countyDisplayName": "Craighead County",
+      "shortName": "Craighead",
+      "photos": [
+        {
+          "id": "drop-craighead-county-1000018639",
+          "src": "/media/county-library/craighead-county/1000018639.jpg",
+          "filename": "1000018639.JPG",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-craighead-county-1000018640",
+          "src": "/media/county-library/craighead-county/1000018640.jpg",
+          "filename": "1000018640.JPG",
+          "width": 1600,
+          "height": 1200
+        },
+        {
+          "id": "drop-craighead-county-1000018641",
+          "src": "/media/county-library/craighead-county/1000018641.jpg",
+          "filename": "1000018641.jpeg",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-craighead-county-1000018642",
+          "src": "/media/county-library/craighead-county/1000018642.jpg",
+          "filename": "1000018642.JPG",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-craighead-county-1000018646",
+          "src": "/media/county-library/craighead-county/1000018646.jpg",
+          "filename": "1000018646.JPG",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-craighead-county-1000018648",
+          "src": "/media/county-library/craighead-county/1000018648.jpg",
+          "filename": "1000018648.JPG",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-craighead-county-1000018649",
+          "src": "/media/county-library/craighead-county/1000018649.jpg",
+          "filename": "1000018649.JPG",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-craighead-county-1000018651",
+          "src": "/media/county-library/craighead-county/1000018651.jpg",
+          "filename": "1000018651.jpeg",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-craighead-county-1000018652",
+          "src": "/media/county-library/craighead-county/1000018652.jpg",
+          "filename": "1000018652.jpeg",
+          "width": 1600,
+          "height": 1200
+        }
+      ]
+    },
+    {
+      "countySlug": "desha-county",
+      "countyDisplayName": "Desha County",
+      "shortName": "Desha",
+      "photos": [
+        {
+          "id": "drop-desha-county-1000018518",
+          "src": "/media/county-library/desha-county/1000018518.jpg",
+          "filename": "1000018518.jpeg",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-desha-county-1000018520",
+          "src": "/media/county-library/desha-county/1000018520.jpg",
+          "filename": "1000018520.JPG",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-desha-county-1000018521",
+          "src": "/media/county-library/desha-county/1000018521.jpg",
+          "filename": "1000018521.JPG",
+          "width": 1600,
+          "height": 1200
+        },
+        {
+          "id": "drop-desha-county-1000018523",
+          "src": "/media/county-library/desha-county/1000018523.jpg",
+          "filename": "1000018523.JPG",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-desha-county-1000018526",
+          "src": "/media/county-library/desha-county/1000018526.jpg",
+          "filename": "1000018526.JPG",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-desha-county-1000018527",
+          "src": "/media/county-library/desha-county/1000018527.jpg",
+          "filename": "1000018527.jpeg",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-desha-county-1000018528",
+          "src": "/media/county-library/desha-county/1000018528.jpg",
+          "filename": "1000018528.JPG",
+          "width": 1600,
+          "height": 1200
+        },
+        {
+          "id": "drop-desha-county-1000018529",
+          "src": "/media/county-library/desha-county/1000018529.jpg",
+          "filename": "1000018529.jpeg",
+          "width": 1600,
+          "height": 1200
+        },
+        {
+          "id": "drop-desha-county-1000018530",
+          "src": "/media/county-library/desha-county/1000018530.jpg",
+          "filename": "1000018530.jpeg",
+          "width": 1600,
+          "height": 1200
+        },
+        {
+          "id": "drop-desha-county-1000018531",
+          "src": "/media/county-library/desha-county/1000018531.jpg",
+          "filename": "1000018531.jpeg",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-desha-county-1000018532",
+          "src": "/media/county-library/desha-county/1000018532.jpg",
+          "filename": "1000018532.jpeg",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-desha-county-1000018533",
+          "src": "/media/county-library/desha-county/1000018533.jpg",
+          "filename": "1000018533.jpeg",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-desha-county-1000018534",
+          "src": "/media/county-library/desha-county/1000018534.jpg",
+          "filename": "1000018534.jpeg",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-desha-county-1000018536",
+          "src": "/media/county-library/desha-county/1000018536.jpg",
+          "filename": "1000018536.jpeg",
+          "width": 1600,
+          "height": 1200
+        },
+        {
+          "id": "drop-desha-county-1000018542",
+          "src": "/media/county-library/desha-county/1000018542.jpg",
+          "filename": "1000018542.jpeg",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-desha-county-1000018543",
+          "src": "/media/county-library/desha-county/1000018543.jpg",
+          "filename": "1000018543.JPG",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-desha-county-1000018544",
+          "src": "/media/county-library/desha-county/1000018544.jpg",
+          "filename": "1000018544.jpeg",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-desha-county-img-6136",
+          "src": "/media/county-library/desha-county/img-6136.jpg",
+          "filename": "IMG_6136.jpeg",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-desha-county-img-6139",
+          "src": "/media/county-library/desha-county/img-6139.jpg",
+          "filename": "IMG_6139.jpeg",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-desha-county-img-6142",
+          "src": "/media/county-library/desha-county/img-6142.jpg",
+          "filename": "IMG_6142.jpeg",
+          "width": 1600,
+          "height": 1200
+        },
+        {
+          "id": "drop-desha-county-img-6143",
+          "src": "/media/county-library/desha-county/img-6143.jpg",
+          "filename": "IMG_6143.jpeg",
+          "width": 1200,
+          "height": 1600
+        }
+      ]
+    },
+    {
+      "countySlug": "faulkner-county",
+      "countyDisplayName": "Faulkner County",
+      "shortName": "Faulkner",
+      "photos": [
+        {
+          "id": "drop-faulkner-county-1000018571",
+          "src": "/media/county-library/faulkner-county/1000018571.jpg",
+          "filename": "1000018571.JPG",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-faulkner-county-1000018575",
+          "src": "/media/county-library/faulkner-county/1000018575.jpg",
+          "filename": "1000018575.JPG",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-faulkner-county-1000018577",
+          "src": "/media/county-library/faulkner-county/1000018577.jpg",
+          "filename": "1000018577.JPG",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-faulkner-county-1000018578",
+          "src": "/media/county-library/faulkner-county/1000018578.jpg",
+          "filename": "1000018578.JPG",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-faulkner-county-1000018580",
+          "src": "/media/county-library/faulkner-county/1000018580.jpg",
+          "filename": "1000018580.JPG",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-faulkner-county-1000018581",
+          "src": "/media/county-library/faulkner-county/1000018581.jpg",
+          "filename": "1000018581.JPG",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-faulkner-county-1000018587",
+          "src": "/media/county-library/faulkner-county/1000018587.jpg",
+          "filename": "1000018587.JPG",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-faulkner-county-img-5473",
+          "src": "/media/county-library/faulkner-county/img-5473.jpg",
+          "filename": "IMG_5473.jpeg",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-faulkner-county-img-5474",
+          "src": "/media/county-library/faulkner-county/img-5474.jpg",
+          "filename": "IMG_5474.jpeg",
+          "width": 1600,
+          "height": 1200
+        },
+        {
+          "id": "drop-faulkner-county-img-5479",
+          "src": "/media/county-library/faulkner-county/img-5479.jpg",
+          "filename": "IMG_5479.jpeg",
+          "width": 1600,
+          "height": 1200
+        },
+        {
+          "id": "drop-faulkner-county-img-5480",
+          "src": "/media/county-library/faulkner-county/img-5480.jpg",
+          "filename": "IMG_5480.jpeg",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-faulkner-county-img-6180",
+          "src": "/media/county-library/faulkner-county/img-6180.jpg",
+          "filename": "IMG_6180.jpeg",
+          "width": 1600,
+          "height": 1200
+        },
+        {
+          "id": "drop-faulkner-county-img-6184",
+          "src": "/media/county-library/faulkner-county/img-6184.jpg",
+          "filename": "IMG_6184.jpeg",
+          "width": 1600,
+          "height": 1200
+        },
+        {
+          "id": "drop-faulkner-county-img-6186",
+          "src": "/media/county-library/faulkner-county/img-6186.jpg",
+          "filename": "IMG_6186.jpeg",
+          "width": 1600,
+          "height": 1200
+        }
+      ]
+    },
+    {
+      "countySlug": "garland-county",
+      "countyDisplayName": "Garland County",
+      "shortName": "Garland",
+      "photos": [
+        {
+          "id": "drop-garland-county-1000017985",
+          "src": "/media/county-library/garland-county/1000017985.jpg",
+          "filename": "1000017985.jpeg",
+          "width": 1600,
+          "height": 1200
+        },
+        {
+          "id": "drop-garland-county-1000017988",
+          "src": "/media/county-library/garland-county/1000017988.jpg",
+          "filename": "1000017988.jpeg",
+          "width": 1600,
+          "height": 1200
+        },
+        {
+          "id": "drop-garland-county-1000017996",
+          "src": "/media/county-library/garland-county/1000017996.jpg",
+          "filename": "1000017996.jpeg",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-garland-county-1000017999",
+          "src": "/media/county-library/garland-county/1000017999.jpg",
+          "filename": "1000017999.jpeg",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-garland-county-1000018002",
+          "src": "/media/county-library/garland-county/1000018002.jpg",
+          "filename": "1000018002.jpeg",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-garland-county-1000018004",
+          "src": "/media/county-library/garland-county/1000018004.jpg",
+          "filename": "1000018004.jpeg",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-garland-county-img-4965",
+          "src": "/media/county-library/garland-county/img-4965.jpg",
+          "filename": "IMG_4965.jpeg",
+          "width": 1600,
+          "height": 1200
+        }
+      ]
+    },
+    {
+      "countySlug": "hempstead-county",
+      "countyDisplayName": "Hempstead County",
+      "shortName": "Hempstead",
+      "photos": [
+        {
+          "id": "drop-hempstead-county-1000005241",
+          "src": "/media/county-library/hempstead-county/1000005241.jpg",
+          "filename": "1000005241.JPG",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-hempstead-county-1000018303",
+          "src": "/media/county-library/hempstead-county/1000018303.jpg",
+          "filename": "1000018303.JPG",
+          "width": 1600,
+          "height": 1200
+        },
+        {
+          "id": "drop-hempstead-county-img-4499",
+          "src": "/media/county-library/hempstead-county/img-4499.jpg",
+          "filename": "IMG_4499.jpeg",
+          "width": 1600,
+          "height": 1200
+        },
+        {
+          "id": "drop-hempstead-county-img-4516",
+          "src": "/media/county-library/hempstead-county/img-4516.jpg",
+          "filename": "IMG_4516.JPEG",
+          "width": 1169,
+          "height": 772
+        },
+        {
+          "id": "drop-hempstead-county-img-4517",
+          "src": "/media/county-library/hempstead-county/img-4517.jpg",
+          "filename": "IMG_4517.JPEG",
+          "width": 1169,
+          "height": 788
+        },
+        {
+          "id": "drop-hempstead-county-img-5624",
+          "src": "/media/county-library/hempstead-county/img-5624.jpg",
+          "filename": "IMG_5624.jpeg",
+          "width": 1600,
+          "height": 1200
+        },
+        {
+          "id": "drop-hempstead-county-img-5629",
+          "src": "/media/county-library/hempstead-county/img-5629.jpg",
+          "filename": "IMG_5629.jpeg",
+          "width": 1600,
+          "height": 1200
+        },
+        {
+          "id": "drop-hempstead-county-img-5638",
+          "src": "/media/county-library/hempstead-county/img-5638.jpg",
+          "filename": "IMG_5638.jpeg",
+          "width": 1600,
+          "height": 1200
+        },
+        {
+          "id": "drop-hempstead-county-img-5642",
+          "src": "/media/county-library/hempstead-county/img-5642.jpg",
+          "filename": "IMG_5642.jpeg",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-hempstead-county-img-5647",
+          "src": "/media/county-library/hempstead-county/img-5647.jpg",
+          "filename": "IMG_5647.jpeg",
+          "width": 1200,
+          "height": 1600
+        }
+      ]
+    },
+    {
+      "countySlug": "howard-county",
+      "countyDisplayName": "Howard County",
+      "shortName": "Howard",
+      "photos": [
+        {
+          "id": "drop-howard-county-img-4310",
+          "src": "/media/county-library/howard-county/img-4310.jpg",
+          "filename": "IMG_4310.jpeg",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-howard-county-img-4316",
+          "src": "/media/county-library/howard-county/img-4316.jpg",
+          "filename": "IMG_4316.jpeg",
+          "width": 1600,
+          "height": 1200
+        },
+        {
+          "id": "drop-howard-county-img-4322",
+          "src": "/media/county-library/howard-county/img-4322.jpg",
+          "filename": "IMG_4322.jpeg",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-howard-county-img-4338",
+          "src": "/media/county-library/howard-county/img-4338.jpg",
+          "filename": "IMG_4338.jpeg",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-howard-county-img-5367",
+          "src": "/media/county-library/howard-county/img-5367.jpg",
+          "filename": "IMG_5367.jpeg",
+          "width": 1600,
+          "height": 1200
+        },
+        {
+          "id": "drop-howard-county-img-5369-1",
+          "src": "/media/county-library/howard-county/img-5369-1.jpg",
+          "filename": "IMG_5369 (1).jpeg",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-howard-county-img-5369",
+          "src": "/media/county-library/howard-county/img-5369.jpg",
+          "filename": "IMG_5369.jpeg",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-howard-county-img-5372",
+          "src": "/media/county-library/howard-county/img-5372.jpg",
+          "filename": "IMG_5372.jpeg",
+          "width": 1600,
+          "height": 1200
+        },
+        {
+          "id": "drop-howard-county-img-5379",
+          "src": "/media/county-library/howard-county/img-5379.jpg",
+          "filename": "IMG_5379.jpeg",
+          "width": 1600,
+          "height": 1200
+        },
+        {
+          "id": "drop-howard-county-img-5383",
+          "src": "/media/county-library/howard-county/img-5383.jpg",
+          "filename": "IMG_5383.jpeg",
+          "width": 1600,
+          "height": 1200
+        }
+      ]
+    },
+    {
+      "countySlug": "independence-county",
+      "countyDisplayName": "Independence County",
+      "shortName": "Independence",
+      "photos": [
+        {
+          "id": "drop-independence-county-img-4979",
+          "src": "/media/county-library/independence-county/img-4979.jpg",
+          "filename": "IMG_4979.jpeg",
+          "width": 1600,
+          "height": 1200
+        },
+        {
+          "id": "drop-independence-county-img-4981",
+          "src": "/media/county-library/independence-county/img-4981.jpg",
+          "filename": "IMG_4981.jpeg",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-independence-county-img-4982",
+          "src": "/media/county-library/independence-county/img-4982.jpg",
+          "filename": "IMG_4982.jpeg",
+          "width": 1600,
+          "height": 1200
+        },
+        {
+          "id": "drop-independence-county-img-4985",
+          "src": "/media/county-library/independence-county/img-4985.jpg",
+          "filename": "IMG_4985.jpeg",
+          "width": 1200,
+          "height": 1600
+        }
+      ]
+    },
+    {
+      "countySlug": "izard-county",
+      "countyDisplayName": "Izard County",
+      "shortName": "Izard",
+      "photos": [
+        {
+          "id": "drop-izard-county-img-4100",
+          "src": "/media/county-library/izard-county/img-4100.jpg",
+          "filename": "IMG_4100.jpeg",
+          "width": 1600,
+          "height": 1200
+        },
+        {
+          "id": "drop-izard-county-img-5914",
+          "src": "/media/county-library/izard-county/img-5914.jpg",
+          "filename": "IMG_5914.jpeg",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-izard-county-img-5915",
+          "src": "/media/county-library/izard-county/img-5915.jpg",
+          "filename": "IMG_5915.jpeg",
+          "width": 1600,
+          "height": 1200
+        },
+        {
+          "id": "drop-izard-county-img-5916",
+          "src": "/media/county-library/izard-county/img-5916.jpg",
+          "filename": "IMG_5916.jpeg",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-izard-county-img-5917",
+          "src": "/media/county-library/izard-county/img-5917.jpg",
+          "filename": "IMG_5917.jpeg",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-izard-county-img-5918",
+          "src": "/media/county-library/izard-county/img-5918.jpg",
+          "filename": "IMG_5918.jpeg",
+          "width": 1468,
+          "height": 1600
+        }
+      ]
+    },
+    {
+      "countySlug": "johnson-county",
+      "countyDisplayName": "Johnson County",
+      "shortName": "Johnson",
+      "photos": [
+        {
+          "id": "drop-johnson-county-1000011500",
+          "src": "/media/county-library/johnson-county/1000011500.jpg",
+          "filename": "1000011500.JPG",
+          "width": 1600,
+          "height": 739
+        },
+        {
+          "id": "drop-johnson-county-1000011507",
+          "src": "/media/county-library/johnson-county/1000011507.jpg",
+          "filename": "1000011507.JPG",
+          "width": 1600,
+          "height": 901
+        },
+        {
+          "id": "drop-johnson-county-1000011508",
+          "src": "/media/county-library/johnson-county/1000011508.jpg",
+          "filename": "1000011508.JPG",
+          "width": 1600,
+          "height": 901
+        },
+        {
+          "id": "drop-johnson-county-1000017890",
+          "src": "/media/county-library/johnson-county/1000017890.jpg",
+          "filename": "1000017890.JPG",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-johnson-county-1000017895",
+          "src": "/media/county-library/johnson-county/1000017895.jpg",
+          "filename": "1000017895.JPG",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-johnson-county-1000017917",
+          "src": "/media/county-library/johnson-county/1000017917.jpg",
+          "filename": "1000017917.JPG",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-johnson-county-1000017918",
+          "src": "/media/county-library/johnson-county/1000017918.jpg",
+          "filename": "1000017918.JPG",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-johnson-county-1000017940",
+          "src": "/media/county-library/johnson-county/1000017940.jpg",
+          "filename": "1000017940.JPG",
+          "width": 1600,
+          "height": 1200
+        },
+        {
+          "id": "drop-johnson-county-1000017951",
+          "src": "/media/county-library/johnson-county/1000017951.jpg",
+          "filename": "1000017951.JPG",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-johnson-county-img-4775",
+          "src": "/media/county-library/johnson-county/img-4775.jpg",
+          "filename": "IMG_4775.jpeg",
+          "width": 1600,
+          "height": 1200
+        },
+        {
+          "id": "drop-johnson-county-img-4781",
+          "src": "/media/county-library/johnson-county/img-4781.jpg",
+          "filename": "IMG_4781.jpeg",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-johnson-county-img-4785",
+          "src": "/media/county-library/johnson-county/img-4785.jpg",
+          "filename": "IMG_4785.jpeg",
+          "width": 1200,
+          "height": 1600
+        }
+      ]
+    },
+    {
+      "countySlug": "lonoke-county",
+      "countyDisplayName": "Lonoke County",
+      "shortName": "Lonoke",
+      "photos": [
+        {
+          "id": "drop-lonoke-county-img-4889",
+          "src": "/media/county-library/lonoke-county/img-4889.jpg",
+          "filename": "IMG_4889.jpeg",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-lonoke-county-img-4890",
+          "src": "/media/county-library/lonoke-county/img-4890.jpg",
+          "filename": "IMG_4890.jpeg",
+          "width": 1600,
+          "height": 1200
+        },
+        {
+          "id": "drop-lonoke-county-img-4891",
+          "src": "/media/county-library/lonoke-county/img-4891.jpg",
+          "filename": "IMG_4891.jpeg",
+          "width": 1600,
+          "height": 1200
+        },
+        {
+          "id": "drop-lonoke-county-img-4892",
+          "src": "/media/county-library/lonoke-county/img-4892.jpg",
+          "filename": "IMG_4892.jpg",
+          "width": 1290,
+          "height": 1191
+        },
+        {
+          "id": "drop-lonoke-county-img-4893",
+          "src": "/media/county-library/lonoke-county/img-4893.jpg",
+          "filename": "IMG_4893.jpg",
+          "width": 1116,
+          "height": 1586
+        }
+      ]
+    },
+    {
+      "countySlug": "mississippi-county",
+      "countyDisplayName": "Mississippi County",
+      "shortName": "Mississippi",
+      "photos": [
+        {
+          "id": "drop-mississippi-county-1000018118",
+          "src": "/media/county-library/mississippi-county/1000018118.jpg",
+          "filename": "1000018118.JPG",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-mississippi-county-3487643458146780964",
+          "src": "/media/county-library/mississippi-county/3487643458146780964.jpg",
+          "filename": "3487643458146780964.JPG",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-mississippi-county-img-5138",
+          "src": "/media/county-library/mississippi-county/img-5138.jpg",
+          "filename": "IMG_5138.jpeg",
+          "width": 1600,
+          "height": 1200
+        },
+        {
+          "id": "drop-mississippi-county-img-5169",
+          "src": "/media/county-library/mississippi-county/img-5169.jpg",
+          "filename": "IMG_5169.JPG",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-mississippi-county-img-5170",
+          "src": "/media/county-library/mississippi-county/img-5170.jpg",
+          "filename": "IMG_5170.JPG",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-mississippi-county-img-5171",
+          "src": "/media/county-library/mississippi-county/img-5171.jpg",
+          "filename": "IMG_5171.JPG",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-mississippi-county-img-5172",
+          "src": "/media/county-library/mississippi-county/img-5172.jpg",
+          "filename": "IMG_5172.JPG",
+          "width": 1600,
+          "height": 1200
+        },
+        {
+          "id": "drop-mississippi-county-img-5173",
+          "src": "/media/county-library/mississippi-county/img-5173.jpg",
+          "filename": "IMG_5173.JPG",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-mississippi-county-img-5174",
+          "src": "/media/county-library/mississippi-county/img-5174.jpg",
+          "filename": "IMG_5174.JPG",
+          "width": 1200,
+          "height": 1600
+        }
+      ]
+    },
+    {
+      "countySlug": "pike-county",
+      "countyDisplayName": "Pike County",
+      "shortName": "Pike",
+      "photos": [
+        {
+          "id": "drop-pike-county-img-4356",
+          "src": "/media/county-library/pike-county/img-4356.jpg",
+          "filename": "IMG_4356.jpeg",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-pike-county-img-4360",
+          "src": "/media/county-library/pike-county/img-4360.jpg",
+          "filename": "IMG_4360.jpeg",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-pike-county-img-5384",
+          "src": "/media/county-library/pike-county/img-5384.jpg",
+          "filename": "IMG_5384.jpeg",
+          "width": 1600,
+          "height": 1200
+        },
+        {
+          "id": "drop-pike-county-img-5388",
+          "src": "/media/county-library/pike-county/img-5388.jpg",
+          "filename": "IMG_5388.jpeg",
+          "width": 1600,
+          "height": 1200
+        },
+        {
+          "id": "drop-pike-county-img-5397",
+          "src": "/media/county-library/pike-county/img-5397.jpg",
+          "filename": "IMG_5397.jpeg",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-pike-county-img-5403",
+          "src": "/media/county-library/pike-county/img-5403.jpg",
+          "filename": "IMG_5403.jpeg",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-pike-county-img-5410",
+          "src": "/media/county-library/pike-county/img-5410.jpg",
+          "filename": "IMG_5410.jpeg",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-pike-county-img-5418",
+          "src": "/media/county-library/pike-county/img-5418.jpg",
+          "filename": "IMG_5418.jpeg",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-pike-county-img-5419",
+          "src": "/media/county-library/pike-county/img-5419.jpg",
+          "filename": "IMG_5419.jpeg",
+          "width": 1600,
+          "height": 1200
+        }
+      ]
+    },
+    {
+      "countySlug": "pope-county",
+      "countyDisplayName": "Pope County",
+      "shortName": "Pope",
+      "photos": [
+        {
+          "id": "drop-pope-county-img-5554",
+          "src": "/media/county-library/pope-county/img-5554.jpg",
+          "filename": "IMG_5554.jpeg",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-pope-county-img-5555",
+          "src": "/media/county-library/pope-county/img-5555.jpg",
+          "filename": "IMG_5555.jpeg",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-pope-county-img-5560",
+          "src": "/media/county-library/pope-county/img-5560.jpg",
+          "filename": "IMG_5560.jpeg",
+          "width": 1600,
+          "height": 1200
+        },
+        {
+          "id": "drop-pope-county-img-5561",
+          "src": "/media/county-library/pope-county/img-5561.jpg",
+          "filename": "IMG_5561.jpeg",
+          "width": 1600,
+          "height": 1200
+        },
+        {
+          "id": "drop-pope-county-img-5564",
+          "src": "/media/county-library/pope-county/img-5564.jpg",
+          "filename": "IMG_5564.jpeg",
+          "width": 1600,
+          "height": 1200
+        },
+        {
+          "id": "drop-pope-county-img-5567",
+          "src": "/media/county-library/pope-county/img-5567.jpg",
+          "filename": "IMG_5567.jpeg",
+          "width": 1600,
+          "height": 1200
+        }
+      ]
+    },
+    {
+      "countySlug": "randolph-county",
+      "countyDisplayName": "Randolph County",
+      "shortName": "Randolph",
+      "photos": [
+        {
+          "id": "drop-randolph-county-1000018396",
+          "src": "/media/county-library/randolph-county/1000018396.jpg",
+          "filename": "1000018396.JPG",
+          "width": 1600,
+          "height": 1200
+        },
+        {
+          "id": "drop-randolph-county-1000018397",
+          "src": "/media/county-library/randolph-county/1000018397.jpg",
+          "filename": "1000018397.jpeg",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-randolph-county-1000048286",
+          "src": "/media/county-library/randolph-county/1000048286.jpg",
+          "filename": "1000048286.JPG",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-randolph-county-7917952428101001794",
+          "src": "/media/county-library/randolph-county/7917952428101001794.jpg",
+          "filename": "7917952428101001794.JPG",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-randolph-county-img-5892",
+          "src": "/media/county-library/randolph-county/img-5892.jpg",
+          "filename": "IMG_5892.jpeg",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-randolph-county-img-5895",
+          "src": "/media/county-library/randolph-county/img-5895.jpg",
+          "filename": "IMG_5895.jpeg",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-randolph-county-img-5896",
+          "src": "/media/county-library/randolph-county/img-5896.jpg",
+          "filename": "IMG_5896.jpeg",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-randolph-county-img-5898",
+          "src": "/media/county-library/randolph-county/img-5898.jpg",
+          "filename": "IMG_5898.jpeg",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-randolph-county-img-5899",
+          "src": "/media/county-library/randolph-county/img-5899.jpg",
+          "filename": "IMG_5899.jpeg",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-randolph-county-img-5900",
+          "src": "/media/county-library/randolph-county/img-5900.jpg",
+          "filename": "IMG_5900.jpeg",
+          "width": 1600,
+          "height": 1200
+        },
+        {
+          "id": "drop-randolph-county-img-5901",
+          "src": "/media/county-library/randolph-county/img-5901.jpg",
+          "filename": "IMG_5901.jpeg",
+          "width": 1600,
+          "height": 1200
+        }
+      ]
+    },
+    {
+      "countySlug": "saline-county",
+      "countyDisplayName": "Saline County",
+      "shortName": "Saline",
+      "photos": [
+        {
+          "id": "drop-saline-county-1000018419",
+          "src": "/media/county-library/saline-county/1000018419.jpg",
+          "filename": "1000018419.JPG",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-saline-county-1000018422",
+          "src": "/media/county-library/saline-county/1000018422.jpg",
+          "filename": "1000018422.JPG",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-saline-county-1000018423",
+          "src": "/media/county-library/saline-county/1000018423.jpg",
+          "filename": "1000018423.JPG",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-saline-county-1000018424",
+          "src": "/media/county-library/saline-county/1000018424.jpg",
+          "filename": "1000018424.JPG",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-saline-county-img-5945",
+          "src": "/media/county-library/saline-county/img-5945.jpg",
+          "filename": "IMG_5945.jpeg",
+          "width": 1600,
+          "height": 1200
+        },
+        {
+          "id": "drop-saline-county-img-5946",
+          "src": "/media/county-library/saline-county/img-5946.jpg",
+          "filename": "IMG_5946.jpeg",
+          "width": 1600,
+          "height": 1200
+        }
+      ]
+    },
+    {
+      "countySlug": "sharp-county",
+      "countyDisplayName": "Sharp County",
+      "shortName": "Sharp",
+      "photos": [
+        {
+          "id": "drop-sharp-county-img-5905",
+          "src": "/media/county-library/sharp-county/img-5905.jpg",
+          "filename": "IMG_5905.jpeg",
+          "width": 1600,
+          "height": 1200
+        },
+        {
+          "id": "drop-sharp-county-img-5906",
+          "src": "/media/county-library/sharp-county/img-5906.jpg",
+          "filename": "IMG_5906.jpeg",
+          "width": 1600,
+          "height": 1200
+        },
+        {
+          "id": "drop-sharp-county-img-5908",
+          "src": "/media/county-library/sharp-county/img-5908.jpg",
+          "filename": "IMG_5908.jpeg",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-sharp-county-img-5909",
+          "src": "/media/county-library/sharp-county/img-5909.jpg",
+          "filename": "IMG_5909.jpeg",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-sharp-county-img-5911",
+          "src": "/media/county-library/sharp-county/img-5911.jpg",
+          "filename": "IMG_5911.jpeg",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-sharp-county-img-5912",
+          "src": "/media/county-library/sharp-county/img-5912.jpg",
+          "filename": "IMG_5912.jpeg",
+          "width": 1200,
+          "height": 1600
+        }
+      ]
+    },
+    {
+      "countySlug": "van-buren-county",
+      "countyDisplayName": "Van Buren County",
+      "shortName": "Van Buren",
+      "photos": [
+        {
+          "id": "drop-van-buren-county-img-2585",
+          "src": "/media/county-library/van-buren-county/img-2585.jpg",
+          "filename": "IMG_2585.jpeg",
+          "width": 1600,
+          "height": 1200
+        },
+        {
+          "id": "drop-van-buren-county-img-5447",
+          "src": "/media/county-library/van-buren-county/img-5447.jpg",
+          "filename": "IMG_5447.jpeg",
+          "width": 1600,
+          "height": 1200
+        },
+        {
+          "id": "drop-van-buren-county-img-5448",
+          "src": "/media/county-library/van-buren-county/img-5448.jpg",
+          "filename": "IMG_5448.jpeg",
+          "width": 1600,
+          "height": 1200
+        },
+        {
+          "id": "drop-van-buren-county-img-5449",
+          "src": "/media/county-library/van-buren-county/img-5449.jpg",
+          "filename": "IMG_5449.jpeg",
+          "width": 1600,
+          "height": 1200
+        },
+        {
+          "id": "drop-van-buren-county-img-5455",
+          "src": "/media/county-library/van-buren-county/img-5455.jpg",
+          "filename": "IMG_5455.jpeg",
+          "width": 1600,
+          "height": 1200
+        },
+        {
+          "id": "drop-van-buren-county-img-5458",
+          "src": "/media/county-library/van-buren-county/img-5458.jpg",
+          "filename": "IMG_5458.jpeg",
+          "width": 1600,
+          "height": 1200
+        },
+        {
+          "id": "drop-van-buren-county-img-5460",
+          "src": "/media/county-library/van-buren-county/img-5460.jpg",
+          "filename": "IMG_5460.jpeg",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-van-buren-county-img-5461",
+          "src": "/media/county-library/van-buren-county/img-5461.jpg",
+          "filename": "IMG_5461.jpeg",
+          "width": 1600,
+          "height": 1200
+        },
+        {
+          "id": "drop-van-buren-county-img-5467",
+          "src": "/media/county-library/van-buren-county/img-5467.jpg",
+          "filename": "IMG_5467.jpeg",
+          "width": 1600,
+          "height": 1200
+        }
+      ]
+    },
+    {
+      "countySlug": "washington-county",
+      "countyDisplayName": "Washington County",
+      "shortName": "Washington",
+      "photos": [
+        {
+          "id": "drop-washington-county-1000018431",
+          "src": "/media/county-library/washington-county/1000018431.jpg",
+          "filename": "1000018431.jpeg",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-washington-county-1000018435",
+          "src": "/media/county-library/washington-county/1000018435.jpg",
+          "filename": "1000018435.JPG",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-washington-county-1000018436",
+          "src": "/media/county-library/washington-county/1000018436.jpg",
+          "filename": "1000018436.JPG",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-washington-county-1000018438",
+          "src": "/media/county-library/washington-county/1000018438.jpg",
+          "filename": "1000018438.JPG",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-washington-county-1000018440",
+          "src": "/media/county-library/washington-county/1000018440.jpg",
+          "filename": "1000018440.JPG",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-washington-county-1000018441",
+          "src": "/media/county-library/washington-county/1000018441.jpg",
+          "filename": "1000018441.JPG",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-washington-county-1000018448",
+          "src": "/media/county-library/washington-county/1000018448.jpg",
+          "filename": "1000018448.JPG",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-washington-county-20260817-182536",
+          "src": "/media/county-library/washington-county/20260817-182536.jpg",
+          "filename": "20260817_182536.JPG",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-washington-county-img-6046",
+          "src": "/media/county-library/washington-county/img-6046.jpg",
+          "filename": "IMG_6046.jpeg",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-washington-county-img-6048",
+          "src": "/media/county-library/washington-county/img-6048.jpg",
+          "filename": "IMG_6048.jpeg",
+          "width": 1600,
+          "height": 1200
+        },
+        {
+          "id": "drop-washington-county-img-6064",
+          "src": "/media/county-library/washington-county/img-6064.jpg",
+          "filename": "IMG_6064.jpeg",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-washington-county-img-6071",
+          "src": "/media/county-library/washington-county/img-6071.jpg",
+          "filename": "IMG_6071.jpeg",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-washington-county-img-6077",
+          "src": "/media/county-library/washington-county/img-6077.jpg",
+          "filename": "IMG_6077.jpeg",
+          "width": 1200,
+          "height": 1600
+        }
+      ]
+    },
+    {
+      "countySlug": "white-county",
+      "countyDisplayName": "White County",
+      "shortName": "White",
+      "photos": [
+        {
+          "id": "drop-white-county-img-6158",
+          "src": "/media/county-library/white-county/img-6158.jpg",
+          "filename": "IMG_6158.jpeg",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-white-county-img-7527",
+          "src": "/media/county-library/white-county/img-7527.jpg",
+          "filename": "IMG_7527.jpeg",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "id": "drop-white-county-img-7528",
+          "src": "/media/county-library/white-county/img-7528.jpg",
+          "filename": "IMG_7528.jpeg",
+          "width": 1200,
+          "height": 1600
+        }
+      ]
+    }
+  ]
+}

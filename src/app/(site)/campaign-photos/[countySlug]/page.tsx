@@ -46,7 +46,7 @@ export default async function CountyCampaignPhotosPage({ params }: Props) {
       <PageHero
         eyebrow="County album"
         title={album.countyDisplayName}
-        subtitle={`${album.photoCount} trail stills · ${album.eventCount} ${album.eventCount === 1 ? "stop" : "stops"} — real rooms, real neighbors.`}
+        subtitle={`${album.photoCount} trail stills in ${album.shortName} County — real rooms, real neighbors.`}
       >
         <Button href="/campaign-photos" variant="outline">
           All county albums

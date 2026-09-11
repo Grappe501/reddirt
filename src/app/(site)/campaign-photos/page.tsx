@@ -8,19 +8,23 @@ import { Button } from "@/components/ui/Button";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { homepagePhotoObjectPositionClass } from "@/content/media/homepage-campaign-photo-display";
 import { listCountyAlbumsLive } from "@/lib/campaign-media/county-albums-live";
+import { ARKANSAS_COUNTY_REGISTRY } from "@/lib/county/arkansas-county-registry";
 import { pageMeta } from "@/lib/seo/metadata";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = pageMeta({
   title: "Campaign Photos — County Albums",
   description:
-    "County-by-county campaign trail albums for Kelly Grappe — confirmed places only, grouped by stop.",
+    "Browse Kelly Grappe campaign photos by Arkansas county. Albums grow as trail stills are added.",
   path: "/campaign-photos",
   imageSrc: "/media/placeholders/texture-porch-glow.svg",
 });
 
 export default async function CampaignPhotosPage() {
   const albums = listCountyAlbumsLive();
+  const bySlug = new Map(albums.map((a) => [a.countySlug, a]));
+  const withPhotos = ARKANSAS_COUNTY_REGISTRY.filter((c) => bySlug.has(c.slug));
+  const waiting = ARKANSAS_COUNTY_REGISTRY.filter((c) => !bySlug.has(c.slug));
 
   return (
     <>
@@ -29,7 +33,7 @@ export default async function CampaignPhotosPage() {
         layout="bleed"
         eyebrow="Campaign photos"
         title="County albums"
-        subtitle="Open a county. Step through the stops. Every still is confirmed geography — not a dump of every file."
+        subtitle="Every Arkansas county has a place here. Open a county that has photos — more albums land as we add them from the trail."
       >
         <Button href="/about/journey" variant="primary">
           Kelly Across Arkansas
@@ -41,20 +45,19 @@ export default async function CampaignPhotosPage() {
 
       <FullBleedSection padY className="bg-gradient-to-b from-white via-kelly-fog/50 to-kelly-wash/30">
         <ContentContainer>
-          {albums.length === 0 ? (
-            <p className="mx-auto max-w-xl text-center font-body text-kelly-slate">
-              County albums appear here as confirmed trail photos are published.
-            </p>
-          ) : (
-            <>
-              <p className="mx-auto mb-10 max-w-2xl text-center font-body text-sm text-kelly-slate md:text-base">
-                {albums.length} {albums.length === 1 ? "county" : "counties"} with trail evidence · click any cover to
-                walk the stops inside.
-              </p>
-              <ul className="grid list-none gap-8 sm:grid-cols-2 lg:grid-cols-3">
-                {albums.map((album, i) => (
-                  <li key={album.countySlug}>
-                    <ScrollReveal delay={i * 40} yOffset={8}>
+          <p className="mx-auto mb-10 max-w-2xl text-center font-body text-sm text-kelly-slate md:text-base">
+            {withPhotos.length} {withPhotos.length === 1 ? "county" : "counties"} with photos so far · {waiting.length}{" "}
+            waiting on the next drop.
+          </p>
+
+          {withPhotos.length > 0 ? (
+            <ul className="grid list-none gap-8 sm:grid-cols-2 lg:grid-cols-3">
+              {withPhotos.map((county, i) => {
+                const album = bySlug.get(county.slug);
+                if (!album) return null;
+                return (
+                  <li key={county.slug}>
+                    <ScrollReveal delay={Math.min(i * 30, 240)} yOffset={8}>
                       <Link
                         href={`/campaign-photos/${album.countySlug}`}
                         className="group block overflow-hidden rounded-lg border border-kelly-ink/10 bg-white shadow-sm transition hover:border-kelly-navy/30 hover:shadow-md focus-visible:outline focus-visible:ring-2 focus-visible:ring-kelly-gold/50"
@@ -77,18 +80,49 @@ export default async function CampaignPhotosPage() {
                               {album.shortName}
                             </p>
                             <p className="mt-1 font-body text-sm text-white/85">
-                              {album.photoCount} {album.photoCount === 1 ? "photo" : "photos"} · {album.eventCount}{" "}
-                              {album.eventCount === 1 ? "stop" : "stops"}
+                              {album.photoCount} {album.photoCount === 1 ? "photo" : "photos"}
                             </p>
                           </div>
                         </div>
                       </Link>
                     </ScrollReveal>
                   </li>
-                ))}
-              </ul>
-            </>
-          )}
+                );
+              })}
+            </ul>
+          ) : null}
+
+          <h2 className="mt-16 font-heading text-xl font-bold text-kelly-ink md:text-2xl">All 75 counties</h2>
+          <p className="mt-2 max-w-2xl font-body text-sm text-kelly-slate">
+            Empty cards are reserved. They fill when that county folder is added.
+          </p>
+          <ul className="mt-8 grid list-none grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+            {ARKANSAS_COUNTY_REGISTRY.map((county) => {
+              const album = bySlug.get(county.slug);
+              const short = county.displayName.replace(/\s+County$/i, "");
+              if (album) {
+                return (
+                  <li key={county.slug}>
+                    <Link
+                      href={`/campaign-photos/${album.countySlug}`}
+                      className="block rounded-md border border-kelly-navy/20 bg-white px-3 py-2 font-body text-sm font-semibold text-kelly-navy hover:border-kelly-navy/40 focus-visible:outline focus-visible:ring-2 focus-visible:ring-kelly-gold/50"
+                    >
+                      {short}
+                      <span className="ml-1 font-normal text-kelly-slate">({album.photoCount})</span>
+                    </Link>
+                  </li>
+                );
+              }
+              return (
+                <li
+                  key={county.slug}
+                  className="rounded-md border border-dashed border-kelly-ink/15 bg-kelly-fog/40 px-3 py-2 font-body text-sm text-kelly-slate/80"
+                >
+                  {short}
+                </li>
+              );
+            })}
+          </ul>
         </ContentContainer>
       </FullBleedSection>
     </>

@@ -17,19 +17,24 @@ import {
   listCountyAlbumSlugs,
   type CountyAlbum,
 } from "@/lib/campaign-media/county-albums";
+import { listCountyDropPhotosAsRecords } from "@/lib/campaign-media/county-drop-albums";
 import { listCampaignPhotosLive } from "@/lib/campaign-media/list-campaign-photos-live";
 import type { CampaignPhotoRecord } from "@/content/media/campaign-photo-types";
 
+function liveAlbumPhotos(): CampaignPhotoRecord[] {
+  return [...listCampaignPhotosLive(), ...listCountyDropPhotosAsRecords()];
+}
+
 export function listCountyAlbumsLive(): CountyAlbum[] {
-  return buildCountyAlbums(listCampaignPhotosLive());
+  return buildCountyAlbums(liveAlbumPhotos());
 }
 
 export function getCountyAlbumBySlugLive(countySlug: string): CountyAlbum | null {
-  return getCountyAlbumBySlug(countySlug, listCampaignPhotosLive());
+  return getCountyAlbumBySlug(countySlug, liveAlbumPhotos());
 }
 
 export function listCountyAlbumSlugsLive(): string[] {
-  return listCountyAlbumSlugs(listCampaignPhotosLive());
+  return listCountyAlbumSlugs(liveAlbumPhotos());
 }
 
 export function photoPublicSurfacesPreview(photo: CampaignPhotoRecord): string[] {

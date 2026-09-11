@@ -132,6 +132,11 @@ data/compliance/bank/**/*.csv
 reports/compliance/filing-readiness-report.md
 reports/compliance/**/*
 !reports/compliance/.gitkeep
+# County drop originals stay on H: — ingest writes web JPEGs to public/media/county-library
+campaign-media/**
+!campaign-media/README.md
+!campaign-media/uploads/
+!campaign-media/uploads/.gitkeep
 # Folder-ingest: keep uploads/ in repo but not dropped files
 campaign-media/uploads/*
 !campaign-media/uploads/.gitkeep
