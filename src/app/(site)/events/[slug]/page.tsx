@@ -24,6 +24,7 @@ import { EventShareActions } from "@/components/organizing/EventShareActions";
 import { resolvePublicEventItemBySlug } from "@/lib/events/resolve-public-event-item";
 import { isPublicCalendarEvent } from "@/lib/events/campaign-approach";
 import { siteConfig } from "@/config/site";
+import { getJoinCampaignHref } from "@/config/external-campaign";
 import { eventMarksCta } from "@/lib/events/event-marks";
 import {
   CAUTION_HOLD_COPY,

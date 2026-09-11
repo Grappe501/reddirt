@@ -113,8 +113,8 @@ export function SiteHeader() {
         >
           <span
             className={cn(
-              "relative shrink-0 overflow-hidden rounded-full border border-kelly-gold/25 bg-kelly-blue/40 shadow-[0_0_0_1px_rgba(201,162,39,0.12)_inset] transition-[width,height] duration-300 ease-out",
-              compactHeader ? "h-9 w-9 sm:h-10 sm:w-10" : "h-10 w-10 sm:h-11 sm:w-11",
+              "relative shrink-0 overflow-hidden rounded-full transition-[width,height] duration-300 ease-out",
+              compactHeader ? "h-10 w-10 sm:h-11 sm:w-11" : "h-11 w-11 sm:h-12 sm:w-12",
             )}
           >
             <HeaderRoundLogo

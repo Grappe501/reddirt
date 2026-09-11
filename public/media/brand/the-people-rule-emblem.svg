@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="The People Rule">
+  <circle cx="64" cy="64" r="63.5" fill="#000066"/>
+  <circle cx="64" cy="64" r="61.2" fill="none" stroke="#ca913d" stroke-width="2.4"/>
+  <circle cx="64" cy="64" r="55.4" fill="none" stroke="#ca913d" stroke-width="0.95"/>
+  <circle cx="28.5" cy="46.2" r="0.85" fill="#ca913d"/>
+  <circle cx="99.5" cy="46.2" r="0.85" fill="#ca913d"/>
+  <text x="64" y="50" text-anchor="middle" fill="#ca913d" font-family="Georgia, 'Times New Roman', serif" font-size="13.25" font-weight="700" letter-spacing="3.6">THE</text>
+  <line x1="30" y1="56.2" x2="98" y2="56.2" stroke="#ca913d" stroke-width="0.85"/>
+  <text x="64" y="75.2" text-anchor="middle" fill="#ca913d" font-family="Georgia, 'Times New Roman', serif" font-size="16.4" font-weight="700" letter-spacing="0.4">PEOPLE</text>
+  <line x1="30" y1="82" x2="98" y2="82" stroke="#ca913d" stroke-width="0.85"/>
+  <text x="64" y="100" text-anchor="middle" fill="#ca913d" font-family="Georgia, 'Times New Roman', serif" font-size="13.25" font-weight="700" letter-spacing="2.7">RULE</text>
+</svg>
