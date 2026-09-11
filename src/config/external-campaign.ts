@@ -12,8 +12,11 @@ export function getLegacyPublicSiteUrl(): string {
   return process.env.NEXT_PUBLIC_LEGACY_SITE_URL?.trim().replace(/\/$/, "") || LEGACY_SITE;
 }
 
-/** On-site “stay connected” form (`JoinMovementForm` on get-involved). */
+/** Electd stay-connected embed on get-involved. */
 export const STAY_CONNECTED_HREF = "/get-involved#join" as const;
+
+/** Electd start-a-local-team embed. */
+export const START_LOCAL_TEAM_HREF = "/start-a-local-team#start-team-form" as const;
 
 /** On-site volunteer intake (`VolunteerForm` on get-involved) — public marketing canon. */
 export const VOLUNTEER_SIGNUP_HREF = "/get-involved#volunteer" as const;

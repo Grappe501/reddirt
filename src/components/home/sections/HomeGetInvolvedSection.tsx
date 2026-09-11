@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { GET_INVOLVED_SECTION } from "@/content/home/homepagePremium";
-import { getCampaignBlogUrl, getJoinCampaignHref } from "@/config/external-campaign";
+import { getCampaignBlogUrl, getVolunteerSignupHref, START_LOCAL_TEAM_HREF } from "@/config/external-campaign";
 import { siteConfig } from "@/config/site";
 import { FadeInWhenVisible } from "@/components/home/FadeInWhenVisible";
 import { isExternalHref } from "@/lib/href";
@@ -11,13 +11,13 @@ const ACTIONS = [
   {
     title: "Volunteer",
     body: "Sign up on this site—tell us how you’d like to help locally or online.",
-    href: getJoinCampaignHref(),
+    href: getVolunteerSignupHref(),
     cta: "Open volunteer form",
   },
   {
     title: "Become an Organizer",
     body: "Lead in your county or community—with training and a team that shares the load.",
-    href: "/start-a-local-team",
+    href: START_LOCAL_TEAM_HREF,
     cta: "Start locally",
   },
   {

@@ -58,7 +58,7 @@ export default function LocalOrganizingPage() {
         title="Local organizing hub"
         subtitle="This campaign wins when neighbors can find each other—start where you are, with what you have, and we’ll help you grow without the usual political theater."
       >
-        <Button href="/start-a-local-team" variant="primary">
+        <Button href="/start-a-local-team#start-team-form" variant="primary">
           Start where you live
         </Button>
         <Button href="/events" variant="outline">
@@ -130,7 +130,7 @@ export default function LocalOrganizingPage() {
             <PathwayCard
               title="Start a local team"
               description="Step up as a host-organizer. We’ll help you plan a dignified kickoff that fits your town."
-              href="/start-a-local-team"
+              href="/start-a-local-team#start-team-form"
               ctaLabel="Begin the form"
             />
             <PathwayCard
@@ -232,7 +232,7 @@ export default function LocalOrganizingPage() {
         description="If you’re willing to listen more than you talk—for a season—we already count you as part of this."
         variant="ink-band"
       >
-        <Button href="/start-a-local-team" variant="primary" className="bg-kelly-page text-kelly-text hover:bg-kelly-page/90">
+        <Button href="/start-a-local-team#start-team-form" variant="primary" className="bg-kelly-page text-kelly-text hover:bg-kelly-page/90">
           Start a local team
         </Button>
         <Button href="/events" variant="outline" className="border-kelly-page/40 text-kelly-page hover:bg-kelly-page/10">

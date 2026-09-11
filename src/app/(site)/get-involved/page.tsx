@@ -5,8 +5,8 @@ import { SectionHeading } from "@/components/blocks/SectionHeading";
 import { FullBleedSection } from "@/components/layout/FullBleedSection";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { Button } from "@/components/ui/Button";
-import { JoinMovementForm } from "@/components/forms/JoinMovementForm";
-import { ElectdVolunteerForm } from "@/components/forms/ElectdVolunteerForm";
+import { ElectdStayConnectedForm, ElectdVolunteerForm } from "@/components/forms/ElectdLeadForm";
+import { START_LOCAL_TEAM_HREF } from "@/config/external-campaign";
 import { EditorialCampaignPhoto, EditorialPhotoPair } from "@/components/about/EditorialCampaignPhoto";
 import { trailPhotosForSlot } from "@/content/media/campaign-trail-assignments";
 import { RepresentLocalEventPanel } from "@/components/organizing/RepresentLocalEventPanel";
@@ -330,7 +330,7 @@ export default async function GetInvolvedPage() {
               say so.
             </p>
             <div className="mt-8 max-w-3xl">
-              <JoinMovementForm />
+              <ElectdStayConnectedForm />
             </div>
           </div>
 
@@ -406,7 +406,7 @@ export default async function GetInvolvedPage() {
             subtitle="Rhythm where you live—neighbors and a calendar you can keep."
           />
           <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
-            <Button href="/start-a-local-team" variant="primary" className="min-h-[48px]">
+            <Button href={START_LOCAL_TEAM_HREF} variant="primary" className="min-h-[48px]">
               Start a local team
             </Button>
             <Button href="/county-briefings" variant="outline" className="min-h-[48px]">

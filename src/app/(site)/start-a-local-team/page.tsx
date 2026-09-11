@@ -5,7 +5,7 @@ import { SectionHeading } from "@/components/blocks/SectionHeading";
 import { FullBleedSection } from "@/components/layout/FullBleedSection";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { Button } from "@/components/ui/Button";
-import { LocalTeamForm } from "@/components/forms/LocalTeamForm";
+import { ElectdLocalTeamForm } from "@/components/forms/ElectdLeadForm";
 import { FAQAccordion } from "@/components/organizing/FAQAccordion";
 import { representLocalEventVolunteerHref } from "@/config/navigation";
 
@@ -150,15 +150,8 @@ export default async function StartALocalTeamPage() {
             title="Start a local team"
             subtitle="Tell us your county and who is in your first circle—we will follow up with something proportionate."
           />
-          <div className="mt-8 max-w-3xl rounded-card border border-dashed border-kelly-navy/25 bg-kelly-page px-6 py-8 md:px-8">
-            <p className="font-body text-base font-medium text-kelly-text/90">Form coming soon.</p>
-            <p className="mt-3 font-body text-sm text-kelly-text/60">A streamlined signup is on the way.</p>
-            <p className="mt-5 font-body text-sm text-kelly-text/75">
-              Until the new intake ships, the form below still reaches our organizer queue.
-            </p>
-          </div>
-          <div className="mt-10 max-w-3xl">
-            <LocalTeamForm id="start-local-team-form" />
+          <div className="mt-8 max-w-3xl">
+            <ElectdLocalTeamForm />
           </div>
           <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <Button href={representLocalEventVolunteerHref} variant="outline" className="min-h-[48px]">

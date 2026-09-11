@@ -57,13 +57,13 @@ export const pathwayCards = [
   {
     title: "Stay connected",
     description: "Updates and honest context about the office—without noise or shame.",
-    href: "/get-involved",
+    href: "/get-involved#join",
     ctaLabel: "Stay connected",
   },
   {
     title: "Help locally",
     description: "Host, knock doors, or support neighbors stepping up in your county.",
-    href: "/start-a-local-team",
+    href: "/start-a-local-team#start-team-form",
     ctaLabel: "Start a local team",
   },
   {
