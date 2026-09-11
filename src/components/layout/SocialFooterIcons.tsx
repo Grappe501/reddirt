@@ -1,5 +1,5 @@
 import type { PublicSocialId } from "@/config/social";
-import { getPublicSocialLinks } from "@/config/social";
+import { DEFAULT_SOCIAL_TIKTOK_HANDLE, getPublicSocialLinks } from "@/config/social";
 import { cn } from "@/lib/utils";
 
 const iconClass = "h-5 w-5 shrink-0";
@@ -75,7 +75,7 @@ export function SocialFooterIcons({
               href={item.href}
               target={isMailto ? undefined : "_blank"}
               rel={isMailto ? undefined : "noopener noreferrer"}
-              aria-label={item.label}
+              aria-label={item.id === "tiktok" ? `TikTok @${DEFAULT_SOCIAL_TIKTOK_HANDLE}` : item.label}
               className={cn(
                 "flex h-11 w-11 items-center justify-center rounded-full border transition sm:h-12 sm:w-12",
                 "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-kelly-gold",

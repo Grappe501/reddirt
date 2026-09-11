@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { SocialGlyph } from "@/components/layout/SocialFooterIcons";
 import type { PublicSocialId, PublicSocialLink } from "@/config/social";
-import { getPublicSocialLinks } from "@/config/social";
+import { DEFAULT_SOCIAL_TIKTOK_HANDLE, getPublicSocialLinks } from "@/config/social";
 import { cn } from "@/lib/utils";
 
 const PITCH: Partial<Record<PublicSocialId, string>> = {
@@ -76,6 +76,9 @@ export function FromTheRoadSocialHub() {
                 </span>
                 <div className="min-w-0 flex-1">
                   <p className="font-heading text-lg font-bold text-kelly-ink">{item.label}</p>
+                  {item.id === "tiktok" ? (
+                    <p className="mt-0.5 font-body text-sm font-semibold text-kelly-navy">@{DEFAULT_SOCIAL_TIKTOK_HANDLE}</p>
+                  ) : null}
                   {PITCH[item.id] ? (
                     <p className="mt-1.5 font-body text-sm leading-relaxed text-kelly-slate/90">{PITCH[item.id]}</p>
                   ) : null}

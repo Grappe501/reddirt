@@ -24,6 +24,19 @@ function envUrl(key: string, fallback: string): string {
 export const DEFAULT_SOCIAL_FACEBOOK_URL = "https://www.facebook.com/Kelly-Grappe-SOS";
 export const DEFAULT_SOCIAL_INSTAGRAM_URL = "https://www.instagram.com/KellyGrappeSOS/";
 export const DEFAULT_SOCIAL_YOUTUBE_URL = "https://www.youtube.com/@KellyGrappe";
+export const DEFAULT_SOCIAL_TIKTOK_HANDLE = "kellygrappeforarsos";
+export const DEFAULT_SOCIAL_TIKTOK_URL = `https://www.tiktok.com/@${DEFAULT_SOCIAL_TIKTOK_HANDLE}`;
+const RETIRED_SOCIAL_TIKTOK_URLS = new Set([
+  "https://www.tiktok.com/@kellygrappesos",
+]);
+
+function tiktokUrl(): string {
+  const raw = process.env.NEXT_PUBLIC_SOCIAL_TIKTOK_URL?.trim();
+  if (!raw) return DEFAULT_SOCIAL_TIKTOK_URL;
+  const normalized = raw.replace(/\/$/, "").toLowerCase();
+  if (RETIRED_SOCIAL_TIKTOK_URLS.has(normalized)) return DEFAULT_SOCIAL_TIKTOK_URL;
+  return raw;
+}
 
 /**
  * Public footer / “find us” links. Override any URL with NEXT_PUBLIC_SOCIAL_* in `.env`.
@@ -59,7 +72,7 @@ export function getPublicSocialLinks(): PublicSocialLink[] {
     {
       id: "tiktok",
       label: "TikTok",
-      href: envUrl("NEXT_PUBLIC_SOCIAL_TIKTOK_URL", "https://www.tiktok.com/@kellygrappesos"),
+      href: tiktokUrl(),
     },
     {
       id: "email",
