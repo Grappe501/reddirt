@@ -48,7 +48,7 @@ export default async function PressCoveragePage() {
         */}
         <div className="mx-auto max-w-3xl text-center">
           <p className="font-body text-sm text-kelly-slate/85">
-            Monitoring runs on a weekly cadence. For questions about a listing, contact the campaign press team.
+            For questions about a listing, contact the campaign press team.
           </p>
           {listUnavailableMessage ? (
             <p className="mx-auto mt-6 max-w-2xl rounded-xl border border-amber-300/80 bg-amber-50 px-4 py-3 text-left font-body text-sm leading-relaxed text-amber-950/90">

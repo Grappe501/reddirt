@@ -25,24 +25,25 @@ export function RepresentLocalEventPanel({ id, className }: Props) {
         Represent the campaign where you are
       </h3>
       <p className="mt-3 max-w-3xl font-body text-sm leading-relaxed text-kelly-text/80 md:text-base">
-        Volunteers often ask for something concrete. If there is a fair, festival, party meeting, or civic gathering
-        in your town, we want to know—and we want you if you can show up with integrity, handouts, and a listening
-        posture. Tell us your county, what is on the calendar, and how you can help.
+        If there is a fair, festival, party meeting, or civic gathering in your town, you can help table, greet, or
+        hand out information. We will get you materials and a clear job for the day.
       </p>
       <ul className="mt-4 list-disc space-y-1.5 pl-5 font-body text-sm text-kelly-text/75 md:text-base">
-        <li>We route you to approved messaging and tabling basics—no improvisation required on rules or ballot talk.</li>
         <li>
-          Not your thing? You can still{" "}
+          Prefer to host at home?{" "}
           <Link className="font-semibold text-kelly-navy underline" href="/host-a-gathering">
-            host a gathering
+            Host a gathering
           </Link>
-          ,{" "}
+          .
+        </li>
+        <li>
+          Know a stop we should attend?{" "}
           <Link className="font-semibold text-kelly-navy underline" href="/events#suggest">
-            suggest a public event
+            Suggest an event
           </Link>
-          , or browse{" "}
+          {" "}or browse{" "}
           <Link className="font-semibold text-kelly-navy underline" href="/events">
-            what is scheduled
+            the calendar
           </Link>
           .
         </li>
@@ -52,7 +53,7 @@ export function RepresentLocalEventPanel({ id, className }: Props) {
           Pick an event shift
         </Button>
         <Button href="/events" variant="outline">
-          Events hub
+          Events
         </Button>
         <Button href="/events#suggest" variant="outline">
           Suggest an event

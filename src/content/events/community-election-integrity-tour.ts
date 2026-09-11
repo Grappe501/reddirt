@@ -138,9 +138,9 @@ export const communityElectionIntegrityTourContent = {
 
   counties: {
     eyebrow: "Election Integrity Tour · Tracker",
-    title: "Build the 26-stop tour",
+    title: "Tour counties",
     intro:
-      "A tracker for tour counties and confirmed stops. Dates and venues appear here as they are set.",
+      "Counties and dates for the statewide tour. Stops appear here as they are set.",
     mapCaption: "Map coming soon — counties will light up as tour builds.",
     pointTeam: {
       heading: "County point teams",

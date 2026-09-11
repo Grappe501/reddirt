@@ -208,7 +208,7 @@ export default function LocalOrganizingPage() {
             id="toolkit-preview-heading"
             eyebrow="Toolkit"
             title="Starter resources you can use this week"
-            subtitle="Guides stay plainspoken on purpose—built for copy-paste agendas, not abstract theory."
+            subtitle="Simple guides you can use this week."
           />
           <ResourceGrid items={toolkitPreview} className="mt-12" />
           <div className="mt-10 flex flex-wrap gap-4">

@@ -355,7 +355,7 @@ export default async function ListeningSessionsPage() {
                 <Link href="/events" className="font-semibold text-kelly-navy underline-offset-2 hover:underline">
                   Events
                 </Link>{" "}
-                <span className="text-kelly-text/70">— approved public events as staff publish them.</span>
+                <span className="text-kelly-text/70">— upcoming and recent campaign stops.</span>
               </li>
               <li>
                 <Link href="/from-the-road" className="font-semibold text-kelly-navy underline-offset-2 hover:underline">

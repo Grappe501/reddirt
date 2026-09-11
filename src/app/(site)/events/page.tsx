@@ -86,7 +86,7 @@ export default async function EventsPage({
             How to get Kelly here
           </h2>
           <p className="mt-2 max-w-2xl font-body text-kelly-text/75">
-            If your town is not on the list yet, open the next date — nothing is public until it is verified.
+            If your town is not on the list yet, invite Kelly or share a local gathering.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
             <Button href="/events/request" variant="primary">
@@ -108,15 +108,14 @@ export default async function EventsPage({
             Suggest a fair, festival, or public event
           </h2>
           <p className="mt-2 max-w-2xl font-body text-sm text-kelly-text/75">
-            Know a neighborhood gathering that should be on the map? Send it in—the campaign reviews it before it appears
-            here and on the trail.
+            Know a neighborhood gathering that should be on the map? Send it in.
           </p>
           {suggestOk === "suggest" ? (
             <p
               className="mt-3 rounded-md border border-kelly-success/30 bg-kelly-success/10 px-3 py-2 font-body text-sm text-kelly-text"
               role="status"
             >
-              Thanks — we received your suggestion. The team will review it before anything goes live.
+              Thanks — we received your suggestion and will be in touch.
             </p>
           ) : null}
           {counties.length === 0 ? (

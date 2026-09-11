@@ -430,11 +430,11 @@ export const trustFunnelHomeCopy = {
   listening: {
     title: "Listening across Arkansas",
     intro:
-      "This campaign grows through real conversations—in county rooms, community gatherings, and faith spaces. Field updates appear on From the Road and the events calendar when verified.",
+      "This campaign grows through real conversations—in county rooms, community gatherings, and faith spaces. Follow along on From the Road and the events calendar.",
     bullets: [
       "Invite Kelly to your county, club, church, chamber, fair, or community gathering.",
-      "Share local event opportunities—we review every request before anything is public.",
-      "Volunteer, host, or stay connected without joining a formal team unless you want to.",
+      "Share a local event you think Kelly should attend.",
+      "Volunteer, host, or stay connected.",
     ] as const,
     primaryCta: "Invite Kelly",
     primaryHref: "/events/request",
@@ -447,7 +447,7 @@ export const trustFunnelHomeCopy = {
     intro:
       "Invite Kelly to your county. Share local events. Help us find fairs, festivals, civic clubs, churches, chambers, and community gatherings.",
     body:
-      "Every request goes through staff review—nothing is confirmed from a form alone. Mixed political rooms are welcome when the conversation stays civil.",
+      "Invite Kelly to your county. Mixed political rooms are welcome when the conversation stays civil. Our team will follow up.",
     cta: "Start an invite",
     ctaHref: "/events/request",
     secondaryCta: "Schedule request form",
@@ -456,7 +456,7 @@ export const trustFunnelHomeCopy = {
 
   roles: {
     title: "Get Involved",
-    intro: "Real actions only—start where you are. None of this requires joining a formal team unless you want to.",
+    intro: "Start where you are. You do not have to join a formal team.",
     cards: {
       vote: {
         title: "Vote / Register",
@@ -495,12 +495,12 @@ export const trustFunnelHomeCopy = {
     kicker: "Events",
     title: "Upcoming Events",
     introWithFeed:
-      "Published campaign events only—verified before they appear here. For the full calendar, open Events.",
+      "Upcoming campaign events. See the full calendar for every stop.",
     introPlaceholder:
-      "No published events are listed right now. Invite Kelly or share a local gathering—we review every request before anything goes public.",
+      "No upcoming events are listed right now. Invite Kelly or share a local gathering.",
     placeholderNoteTitle: "Events",
     placeholderNoteBody:
-      "Upcoming events appear here only when published and verified. No invented stops or crowd claims.",
+      "Upcoming events appear here as they are added to the calendar.",
     followCta: "Events calendar",
     followHref: "/events",
     placeholderSecondaryCta: "Invite Kelly",

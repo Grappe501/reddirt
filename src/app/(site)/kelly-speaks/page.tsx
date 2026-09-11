@@ -30,7 +30,7 @@ export default async function KellySpeaksIndexPage() {
         layout="bleed"
         eyebrow="Kelly Speaks"
         title="Campaign videos"
-        subtitle="Hear Kelly directly—featured messages, trail stories, and short moments, organized by purpose. Click to play; embeds use privacy-enhanced YouTube."
+        subtitle="Hear Kelly directly—featured messages, trail stories, and short moments. Click to play."
       >
         <Button href="/kelly-speaks/search" variant="outlineOnDark">
           Search transcripts
@@ -42,8 +42,7 @@ export default async function KellySpeaksIndexPage() {
 
       <ContentContainer className="pt-10 md:pt-14">
         <p className="mx-auto max-w-3xl text-center font-body text-sm text-kelly-muted">
-          Public inventory: {inventory.longForm} long-form · {inventory.shorts} Shorts · {inventory.publishedTotal}{" "}
-          published
+          {inventory.publishedTotal} videos — {inventory.longForm} longer pieces and {inventory.shorts} short moments.
         </p>
 
         <div className="mx-auto mt-10 max-w-5xl space-y-16">

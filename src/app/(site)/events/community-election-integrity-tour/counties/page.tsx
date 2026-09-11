@@ -27,11 +27,14 @@ export default function IntegrityTourCountiesPage() {
         TODO: Arkansas map SVG + accessible status colors (requested / pending / scheduled / completed / point team formed).
       */}
       <div className="space-y-12 font-body text-kelly-text/88">
-        <p className="text-sm font-medium text-kelly-text/75">
-          Public listings appear when a host, venue, and date are confirmed.
-        </p>
-
-        <IntegrityTourStopTable rows={INTEGRITY_TOUR_PLACEHOLDER_ROWS} />
+        {INTEGRITY_TOUR_PLACEHOLDER_ROWS.some((row) => row.county !== "—") ? (
+          <IntegrityTourStopTable rows={INTEGRITY_TOUR_PLACEHOLDER_ROWS.filter((row) => row.county !== "—")} />
+        ) : (
+          <p className="rounded-card border border-kelly-text/12 bg-white/90 p-6 text-sm leading-relaxed text-kelly-slate">
+            Tour stops will be listed here as hosts, venues, and dates are set. Invite a stop in your county if you
+            would like to host.
+          </p>
+        )}
 
         <div
           className="rounded-card border-2 border-dashed border-kelly-text/20 bg-gradient-to-br from-kelly-fog/80 via-white to-kelly-wash/60 p-8 text-center md:p-10"

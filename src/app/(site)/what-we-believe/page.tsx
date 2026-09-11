@@ -144,7 +144,7 @@ export default async function WhatWeBelievePage() {
             align="left"
             eyebrow="Next"
             title="Values become real when you plug in"
-            subtitle="Pick a lane. Change lanes later. If you want honest civic dialogue in your county, start here."
+            subtitle="If you want honest civic dialogue in your county, start here."
             className="max-w-2xl"
           />
           <div className="mt-10 flex flex-wrap gap-4">

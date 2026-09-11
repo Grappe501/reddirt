@@ -16,7 +16,7 @@ const listCopy = arkansasPresenceCopy.countiesPage;
 export const metadata: Metadata = pageMeta({
   title: "Arkansas counties — visit status",
   description:
-    "Search all 75 Arkansas counties: verified visits from published campaign events and upcoming public stop counts.",
+    "Search all 75 Arkansas counties for visits and upcoming stops.",
   path: "/arkansas/counties",
   imageSrc: "/media/placeholders/hero-arkansas-warm.svg",
 });
@@ -39,7 +39,7 @@ export default async function ArkansasCountiesPage() {
         <ContentContainer wide className="max-w-4xl">
           <ArkansasCountySearchList counties={presence.counties} />
           <p className="mt-10 font-body text-sm text-kelly-muted">
-            County detail pages are omitted until visit data quality supports them.{" "}
+            Looking for a stop in your county?{" "}
             <Link href="/schedule" className="font-semibold text-kelly-navy underline-offset-2 hover:underline">
               Request an event
             </Link>{" "}

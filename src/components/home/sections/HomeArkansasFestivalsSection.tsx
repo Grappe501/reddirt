@@ -37,13 +37,12 @@ export function HomeArkansasFestivalsSection({ festivals, coveragePayload }: Pro
           Fairs & festivals (Arkansas feed)
         </h2>
         <p className="mx-auto mt-3 max-w-2xl text-center font-body text-sm text-kelly-text/75 md:text-base">
-          Sourced from trusted public feeds and staff review—not the same as published campaign stops. Use the calendar
-          notes below to line up travel with volunteer coverage.
+          Community fairs and festivals around Arkansas. Campaign stops are listed on the events calendar.
         </p>
 
         {festivals.length === 0 ? (
           <p className="mx-auto mt-8 max-w-xl rounded-lg border border-dashed border-kelly-text/25 bg-white/70 p-5 text-center font-body text-sm text-kelly-text/70" role="status">
-            No approved community events on the public feed yet. Suggest a fair or festival through the{" "}
+            No community events listed yet. Suggest a fair or festival through the{" "}
             <Link href="/events#suggest" className="font-semibold text-kelly-navy underline">
               events form
             </Link>

@@ -34,7 +34,7 @@ export default async function StoriesPage() {
       <PageHero
         eyebrow="Voices"
         title="Stories"
-        subtitle="Kelly’s Substack posts when the feed is connected. Neighbor stories appear here when they’re ready to share—no invented testimonials."
+        subtitle="Kelly’s writing and neighbor stories from across Arkansas."
       />
 
       {!PUBLIC_ILLUSTRATIVE_STORIES_ENABLED ? (
@@ -42,8 +42,7 @@ export default async function StoriesPage() {
           <ContentContainer className="max-w-3xl">
             <ContentPendingBadge variant="source" />
             <p className="mt-3 font-body text-sm text-kelly-muted">
-              Illustrative story archive is hidden until sources are verified. Use the form below to submit a real story for
-              review.
+              Want to share a story from your community? Use the form below.
             </p>
           </ContentContainer>
         </FullBleedSection>
@@ -68,7 +67,7 @@ export default async function StoriesPage() {
             id="share-heading"
             eyebrow="Share"
             title="Add your story to the record"
-            subtitle="Plain language, no jargon. We follow up before anything is shared publicly—and we never treat your life like a campaign prop."
+            subtitle="Write in your own words. We will reach out before anything is shared."
           />
           <div className="mt-10 max-w-3xl">
             <StorySubmissionForm />

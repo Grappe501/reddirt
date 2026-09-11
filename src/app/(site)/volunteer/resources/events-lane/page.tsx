@@ -6,7 +6,6 @@ import { PageHero } from "@/components/blocks/PageHero";
 import { Button } from "@/components/ui/Button";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { FullBleedSection } from "@/components/layout/FullBleedSection";
-import { VOS_CAMPAIGN_INTENT } from "@/lib/campaign-ops/events-workflow-intents";
 import { VOLUNTEER_RESOURCES } from "@/lib/volunteer-resources";
 
 export const metadata: Metadata = {
@@ -18,25 +17,11 @@ export const metadata: Metadata = {
 function IntentCallout() {
   return (
     <div className="rounded-2xl border border-kelly-navy/20 bg-kelly-navy/[0.04] p-5">
-      <h3 className="font-heading text-base font-bold text-kelly-navy">Automation intents (Action Queue)</h3>
+      <h3 className="font-heading text-base font-bold text-kelly-navy">What this lane covers</h3>
       <p className="mt-2 font-body text-sm text-kelly-text/85">
-        When staff create events in Admin, set <span className="font-mono text-xs">CampaignEvent.campaignIntent</span> so
-        specialized tasks spawn (in addition to generic appearance prep for applicable types):
+        House parties, county fundraisers, weekend visits, and faith-community gatherings — plus the follow-up that
+        keeps hosts from starting from scratch each time.
       </p>
-      <ul className="mt-3 list-disc space-y-1 pl-5 font-mono text-xs text-kelly-deep">
-        <li>
-          <code>{VOS_CAMPAIGN_INTENT.houseParty}</code> — MEETING (house party path)
-        </li>
-        <li>
-          <code>{VOS_CAMPAIGN_INTENT.countyFundraiser}</code> — FUNDRAISER (county objective)
-        </li>
-        <li>
-          <code>{VOS_CAMPAIGN_INTENT.weekendImmersion}</code> — TRAINING (weekend grid convention)
-        </li>
-        <li>
-          <code>{VOS_CAMPAIGN_INTENT.faithCommunityVisit}</code> — MEETING (faith visit protocol)
-        </li>
-      </ul>
     </div>
   );
 }

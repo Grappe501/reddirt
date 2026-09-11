@@ -10,7 +10,7 @@ import { brandMediaFromLegacySite } from "@/config/brand-media";
 export const metadata: Metadata = pageMeta({
   title: "Campaign updates",
   description:
-    "Where to find official Kelly Grappe campaign updates, trail notes, press coverage, and events — without filler cards.",
+    "Official Kelly Grappe campaign updates, trail notes, press coverage, and events.",
   path: "/updates",
   imageSrc: brandMediaFromLegacySite.statewideBanner,
 });
@@ -18,31 +18,31 @@ export const metadata: Metadata = pageMeta({
 const channels = [
   {
     title: "From the Road",
-    body: "Campaign-authored trail notes and field posts when verified and published.",
+    body: "Trail notes and field posts from the campaign.",
     href: "/from-the-road",
     label: "Read trail updates",
-    kind: "Campaign-authored",
+    kind: "From the campaign",
   },
   {
     title: "Press coverage",
-    body: "External press and coverage collected for the public site — clearly separate from campaign-authored posts.",
+    body: "News and interviews from Arkansas outlets, separate from our own posts.",
     href: "/press-coverage",
     label: "View press coverage",
     kind: "External press",
   },
   {
     title: "Events",
-    body: "Published campaign events only — verified before they appear on the calendar.",
+    body: "Upcoming and recent campaign events.",
     href: "/events",
     label: "Events calendar",
     kind: "Event listings",
   },
   {
     title: "Kelly’s Substack",
-    body: "Longer written updates from the campaign when published on Substack.",
+    body: "Longer written updates from the campaign on Substack.",
     href: "https://kellygrappesos.substack.com",
     label: "Read the Campaign Update",
-    kind: "Campaign-authored",
+    kind: "From the campaign",
     external: true,
   },
 ] as const;
@@ -53,7 +53,7 @@ export default function CampaignUpdatesPage() {
       <PageHero
         eyebrow="News · Official"
         title="Campaign Updates"
-        subtitle="A durable map to real updates. We would rather show one substantial channel than invent filler cards."
+        subtitle="Trail notes, press coverage, and events — all in one place."
       >
         <Button href="/from-the-road" variant="primary">
           From the Road
@@ -66,9 +66,7 @@ export default function CampaignUpdatesPage() {
       <FullBleedSection padY>
         <ContentContainer>
           <p className="mx-auto max-w-3xl font-body text-base leading-relaxed text-kelly-slate">
-            This page does not fabricate announcements. Use the channels below for campaign-authored updates, external
-            press, and event listings. When a single featured campaign update is curated for this surface, it will appear
-            here with title, date, summary, and next action.
+            Start with any channel below — our own trail notes, news coverage, or the events calendar.
           </p>
           <ul className="mx-auto mt-10 grid max-w-4xl list-none gap-5 md:grid-cols-2">
             {channels.map((channel) => (

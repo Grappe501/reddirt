@@ -21,7 +21,7 @@
 export const onTheRoadPageMeta = {
   title: "On the Road Across Arkansas",
   description:
-    "Kelly Grappe’s campaign trail: showing up across Arkansas—in counties, communities, and faith spaces—with verified milestones and ways to follow along.",
+    "Kelly Grappe’s campaign trail: showing up across Arkansas—in counties, communities, and faith spaces.",
 } as const;
 
 /** Shared Layer 3 band for Office full-picture pages (Elections primary; optional elsewhere). */

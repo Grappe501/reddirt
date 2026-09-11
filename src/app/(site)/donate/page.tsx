@@ -78,7 +78,7 @@ export default async function DonatePage() {
             align="left"
             eyebrow="How"
             title="Funds support"
-            subtitle="Big picture—line items change with the calendar; we are not posting dollar figures we have not verified."
+            subtitle="Travel, materials, and the everyday costs of showing up in 75 counties."
           />
           <ul className="mt-8 list-disc space-y-2 pl-5 font-body text-base leading-relaxed text-kelly-text/85">
             {howFunds.map((item) => (
@@ -86,7 +86,7 @@ export default async function DonatePage() {
             ))}
           </ul>
           <p className="mt-6 font-body text-sm text-kelly-text/65">
-            For itemized or treasurer reporting, contact the committee—this page stays general on purpose.
+            For treasurer questions, contact the committee.
           </p>
         </ContentContainer>
       </FullBleedSection>

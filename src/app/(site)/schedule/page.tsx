@@ -9,7 +9,7 @@ import { ScheduleCampaignEventForm } from "@/components/forms/ScheduleCampaignEv
 export const metadata: Metadata = {
   title: "Invite Kelly · Share an event",
   description:
-    "Invite Kelly to your county or share a local fair, festival, civic club, church, chamber, or community gathering. Staff review every request—nothing is confirmed from this form alone.",
+    "Invite Kelly to your county or share a local fair, festival, civic club, church, chamber, or community gathering.",
 };
 
 export default async function ScheduleCampaignEventPage() {
@@ -18,9 +18,9 @@ export default async function ScheduleCampaignEventPage() {
       <MediaPageHero
         slotKey="schedule.hero"
         layout="split"
-        eyebrow="Schedule / invite"
+        eyebrow="Invite Kelly"
         title="Invite Kelly · Share local events"
-        subtitle="Help us find fairs, festivals, civic clubs, churches, chambers, and community gatherings. Tell us what you are hoping to host or convene—we route every request through staff review. Tentative only; never a public confirmation of Kelly’s private calendar."
+        subtitle="Share a fair, festival, civic club, church, chamber, or community gathering. Our team will follow up."
       >
         <Button href="#schedule-form" variant="primary">
           Share an opportunity

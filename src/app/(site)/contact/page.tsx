@@ -53,7 +53,7 @@ export default async function ContactPage() {
             <a className="font-semibold text-kelly-navy underline" href="/get-involved">
               Get Involved
             </a>
-            . Event invitations go through staff review before anything is confirmed.
+            . We will follow up on invitations.
           </p>
         </ContentContainer>
       </FullBleedSection>

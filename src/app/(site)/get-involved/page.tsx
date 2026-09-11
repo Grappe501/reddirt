@@ -44,7 +44,7 @@ const volunteerLanes: {
   {
     id: "calls-texts",
     title: "Calls / texts",
-    blurb: "Reach neighbors with approved scripts and simple follow-up—voice or thumbs, your pick.",
+    blurb: "Reach neighbors by phone or text, with a simple script and follow-up.",
     nextLabel: "Open guides",
     nextHref: "/resources/phone-banking",
   },
@@ -80,7 +80,7 @@ const volunteerLanes: {
     id: "data-logistics",
     title: "Data / logistics",
     blurb: "Lists, rides, supplies, light scheduling—the backstage work that keeps teams from wobbling.",
-    nextLabel: "Note it on the form",
+    nextLabel: "Volunteer signup",
     nextHref: "#volunteer",
   },
 ];
@@ -95,9 +95,9 @@ export default async function GetInvolvedPage() {
       <MediaPageHero
         slotKey="get-involved.hero"
         layout="split"
-        eyebrow="Participation ladder"
+        eyebrow="Get involved"
         title="Get Involved"
-        subtitle="Stay connected. Volunteer. Activate your Power of 5. Host Kelly. Donate when you are ready."
+        subtitle="Stay connected. Volunteer. Invite five friends. Host Kelly. Donate when you are ready."
       >
         <Button href="/get-involved/bring-5" variant="primary">
           Activate Your Power of 5 →
@@ -113,7 +113,7 @@ export default async function GetInvolvedPage() {
       <FullBleedSection variant="subtle" className="!py-8" aria-labelledby="participation-ladder-heading">
         <ContentContainer className="max-w-3xl">
           <h2 id="participation-ladder-heading" className="font-heading text-xl font-bold text-kelly-ink">
-            One ladder — pick your step
+            How to start
           </h2>
           <ol className="mt-4 list-decimal space-y-3 pl-5 font-body text-sm leading-relaxed text-kelly-slate">
             <li>
@@ -121,7 +121,7 @@ export default async function GetInvolvedPage() {
               <a href="#join" className="font-semibold text-kelly-blue underline-offset-2 hover:underline">
                 updates and a hello
               </a>
-              . Not a shift assignment.
+              . Just updates—no commitment required.
             </li>
             <li>
               <strong className="text-kelly-navy">Volunteer</strong> —{" "}
@@ -152,13 +152,6 @@ export default async function GetInvolvedPage() {
               . Never required to participate.
             </li>
           </ol>
-          <p className="mt-4 font-body text-xs text-kelly-muted">
-            Field Team onboarding for captains lives at{" "}
-            <Link href="/volunteer" className="font-semibold text-kelly-navy underline">
-              /volunteer
-            </Link>
-            — only if you want that track.
-          </p>
         </ContentContainer>
       </FullBleedSection>
 
@@ -169,20 +162,12 @@ export default async function GetInvolvedPage() {
           </h2>
           <ul className="mt-4 space-y-3 font-body text-sm leading-relaxed text-kelly-slate">
             <li>
-              <strong className="text-kelly-navy">Stay connected</strong> ({` `}
-              <a href="#join" className="font-semibold text-kelly-blue underline-offset-2 hover:underline">
-                #join
-              </a>
-              ) — campaign updates and ways to help. This is a mailing-list style connection, not an automatic volunteer
-              shift assignment.
+              <strong className="text-kelly-navy">Stay connected</strong> — campaign updates and ways to help. No
+              commitment required.
             </li>
             <li>
-              <strong className="text-kelly-navy">Volunteer</strong> ({` `}
-              <a href="#volunteer" className="font-semibold text-kelly-blue underline-offset-2 hover:underline">
-                #volunteer
-              </a>
-              ) — tell us how you can help (events, calls, doors, hosting, logistics, and more). Remote help is welcome.
-              Staff review submissions.
+              <strong className="text-kelly-navy">Volunteer</strong> — tell us how you can help (events, calls, doors,
+              hosting, logistics, and more). Remote help is welcome.
             </li>
             <li>
               <strong className="text-kelly-navy">After you submit</strong> — our team will follow up. You should see a
@@ -224,7 +209,7 @@ export default async function GetInvolvedPage() {
             On this page
           </h2>
           <p className="mt-2 max-w-2xl font-body text-sm text-kelly-text/75">
-            No essay questions—just choose what sounds like you. You can switch lanes anytime.
+            Choose what sounds like you. You can always do more later.
           </p>
           <ul className="mt-6 flex flex-wrap gap-3">
             {sectionLinks.map((s) => (
@@ -258,9 +243,9 @@ export default async function GetInvolvedPage() {
         <ContentContainer>
           <SectionHeading
             id="volunteer-ways-heading"
-            eyebrow="Pick a lane"
+            eyebrow="Ways to help"
             title="Ways to volunteer"
-            subtitle="Eight common doors in—each one is real work, none of them require a political résumé."
+            subtitle="A few common starting points. None of them require a political résumé."
           />
           <ul className="mt-10 grid list-none gap-4 p-0 sm:grid-cols-2">
             {volunteerLanes.map((lane) => (
@@ -289,7 +274,7 @@ export default async function GetInvolvedPage() {
         <ContentContainer className="max-w-3xl">
           <SectionHeading
             id="not-sure-heading"
-            eyebrow="All good"
+            eyebrow="Any starting point works"
             title="Not sure where you fit?"
             subtitle="Tell us what you enjoy."
           />
@@ -298,8 +283,8 @@ export default async function GetInvolvedPage() {
               Start with Stay connected, or raise your hand on the volunteer form below.
             </p>
             <p className="mt-3 font-body text-sm leading-relaxed text-kelly-text/75">
-              Tell us what you like doing, your county, and roughly how much time you have—we will match you without a
-              quiz.
+              Tell us what you like doing, your county, and roughly how much time you have. We will help you find a
+              fit.
             </p>
             <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <Button href="#join" variant="outline" className="min-h-[48px]">
@@ -319,7 +304,7 @@ export default async function GetInvolvedPage() {
             id="volunteer-heading"
             eyebrow="Sign up"
             title="Raise your hand"
-            subtitle="Use whichever box fits—Stay connected for a quick hello, events for a clear field shift, or the volunteer form for skills and availability."
+            subtitle="Stay connected for updates, pick an event if you want a specific day, or tell us how you can help."
           />
           <div id="join" className="mt-10 scroll-mt-24">
             <h3 className="font-heading text-base font-bold text-kelly-text md:text-lg">Stay connected</h3>
@@ -343,7 +328,7 @@ export default async function GetInvolvedPage() {
           <div id="volunteer" className="mt-14 scroll-mt-24">
             <h3 className="font-heading text-base font-bold text-kelly-text md:text-lg">Join our campaign</h3>
             <p className="mt-2 max-w-3xl font-body text-sm leading-relaxed text-kelly-text/75">
-              Check what fits—even one line helps. Tips:{" "}
+              Tell us what you can do. A few ideas:{" "}
               <Link className="font-semibold text-kelly-navy underline" href="/resources/postcard-outreach">
                 postcards
               </Link>
@@ -370,7 +355,7 @@ export default async function GetInvolvedPage() {
             id="bring-5-heading"
             eyebrow="Power of 5"
             title="Your power is closer than you think"
-            subtitle="Start with five people. This is the campaign’s independent Power of 5 organizing approach — people are more likely to participate when someone they know invites them in."
+            subtitle="Start with five people you already know. A personal invite from you goes further than any flyer."
           />
           <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
             <Button href="/get-involved/bring-5" variant="primary" className="min-h-[48px]">
@@ -414,7 +399,7 @@ export default async function GetInvolvedPage() {
             id="invite-kelly-heading"
             eyebrow="Your table"
             title="Invite Kelly"
-            subtitle="Coffee, backyard, barn, or county room—we align before anything is public."
+            subtitle="Coffee, backyard, barn, or county room. We will work out the details with you first."
           />
           <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
             <Button href="/events/request" variant="primary" className="min-h-[48px]">

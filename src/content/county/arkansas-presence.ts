@@ -5,37 +5,37 @@ export const arkansasPresenceCopy = {
     eyebrow: "Across Arkansas",
     title: "County presence",
     subtitle:
-      "Is Kelly showing up around Arkansas? This page shows verified visits and published upcoming stops—nothing invented, no internal campaign intelligence.",
+      "Counties Kelly has visited and stops already on the public calendar.",
   },
   whereBeen: {
     title: "Where we've been",
     lead:
-      "A county appears here only after a published public campaign event has occurred there. No guesswork, no internal travel logs.",
+      "Counties where Kelly has already made a public campaign stop.",
     empty:
-      "No verified county visits are published yet. When approved public events conclude, they will appear here automatically.",
+      "County visits will appear here as they are added to the calendar.",
   },
   whereGoing: {
     title: "Where we're going",
-    lead: "Upcoming stops from the public campaign calendar—published and approved only.",
+    lead: "Upcoming stops from the campaign calendar.",
     empty: "No upcoming public events are listed right now. Check the campaign calendar or invite Kelly to your community.",
     calendarHref: "/events",
   },
   invite: {
     title: "Bring Kelly to your community",
-    lead: "Every county matters. Invite Kelly or share a local gathering—staff review every request.",
+    lead: "Every county matters. Invite Kelly or share a local gathering.",
     inviteHref: "/events/request",
     scheduleHref: "/schedule",
   },
   mapLegend: {
-    verified: "Verified visit (published event)",
-    notYet: "No verified visit published yet",
+    verified: "Visited",
+    notYet: "Not yet on the calendar",
   },
   countiesPage: {
     title: "All 75 counties",
-    subtitle: "Search the list. Verified visits and upcoming event counts come from published calendar data only.",
+    subtitle: "Search the list for visits and upcoming events.",
     searchPlaceholder: "Search counties…",
     colCounty: "County",
-    colVisited: "Verified visit",
+    colVisited: "Visited",
     colUpcoming: "Upcoming events",
   },
 } as const;

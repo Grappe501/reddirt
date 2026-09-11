@@ -106,7 +106,7 @@ export default async function StartALocalTeamPage() {
             align="left"
             eyebrow="What"
             title="What your team does"
-            subtitle="Pick a lane to start—you can stack more as you find your feet."
+            subtitle="Start with one thing. You can add more as you go."
           />
           <ul className="mt-8 list-disc space-y-2 pl-5 font-body text-base leading-relaxed text-kelly-text/85">
             <li>Identify supporters</li>
@@ -169,9 +169,9 @@ export default async function StartALocalTeamPage() {
           <SectionHeading
             id="crosslinks-heading"
             align="left"
-            eyebrow="Plug in"
-            title="Field plan links"
-            subtitle="Local teams connect to fairs, tour stops, and relational invites."
+            eyebrow="Next"
+            title="Related pages"
+            subtitle="Fairs, tour stops, and ways to invite neighbors."
           />
           <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-3">
             {crossLinks.map((c) => (

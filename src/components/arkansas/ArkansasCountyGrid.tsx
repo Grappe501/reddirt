@@ -22,7 +22,7 @@ export function ArkansasCountyGrid({ counties, visitedCount, totalCounties }: Pr
           <p className="mt-2 max-w-2xl font-body text-base leading-relaxed text-kelly-text/80">{copy.whereBeen.lead}</p>
         </div>
         <p className="font-body text-sm font-semibold text-kelly-navy">
-          {visitedCount} of {totalCounties} counties with verified visits
+          {visitedCount} of {totalCounties} counties visited
         </p>
       </div>
 

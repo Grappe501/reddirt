@@ -27,7 +27,7 @@ export const getInvolvedPathways: GetInvolvedPathwayDefinition[] = [
     whyItMatters:
       "Elections are won in overlapping circles of trust. Power of 5 gives volunteers a shared language so follow-up doesn’t fall through the cracks.",
     timeRequired: "About 15–25 minutes for the guided flow; optional deeper previews afterward.",
-    primaryAction: { label: "Open Power of 5 onboarding", href: powerOf5OnboardingHref },
+    primaryAction: { label: "Start Power of 5", href: powerOf5OnboardingHref },
     secondaryAction: { label: "How we organize statewide", href: "/organizing-intelligence" },
   },
   {
@@ -45,18 +45,18 @@ export const getInvolvedPathways: GetInvolvedPathwayDefinition[] = [
     id: "captain",
     title: "Become a city or precinct captain",
     whatYouDo:
-      "Raise your hand for leadership training—hosting, captaining, or mentoring others. This link scrolls to the volunteer form and shows a captain-pathway banner; confirm the leadership checkbox and add turf or experience in the skills box.",
+      "Raise your hand to host, lead a precinct, or mentor other volunteers.",
     whyItMatters:
       "Captains stabilize geography: they pair new volunteers with real tasks and keep relational work from collapsing when one person gets busy.",
     timeRequired: "15–20 minutes for the form; training cadence is coordinated after intake (not on this page).",
-    primaryAction: { label: "Open volunteer signup (leadership tagged)", href: getInvolvedVolunteerCaptainHref },
+    primaryAction: { label: "Volunteer for leadership", href: getInvolvedVolunteerCaptainHref },
     secondaryAction: { label: "Start a local team", href: "/start-a-local-team" },
   },
   {
     id: "conversations-stories",
     title: "Help with stories & voices",
     whatYouDo:
-      "Use the public message hub for weekly lines and share packets, and optionally submit a story for staff review before anything goes public.",
+      "Share weekly messages and, if you like, send in a story from your community.",
     whyItMatters:
       "Neighbors believe people they know. Consistent, accurate language plus real stories beats scatter-shot posts and rumor.",
     timeRequired: "A few minutes to skim the hub; 20–40 minutes if you write a thoughtful story draft.",
@@ -93,7 +93,7 @@ export const getInvolvedPathways: GetInvolvedPathwayDefinition[] = [
     whyItMatters:
       "Ballot access and turnout are complementary: one protects the public’s leverage; the other ensures voters get over the finish line.",
     timeRequired: "GOTV windows are seasonal and shift-based; petition education can start with a short volunteer signup.",
-    primaryAction: { label: "Volunteer for field shifts", href: "/get-involved#volunteer" },
+    primaryAction: { label: "Volunteer", href: "/get-involved#volunteer" },
     secondaryAction: { label: "How a measure reaches the ballot", href: "/direct-democracy/ballot-initiative-process" },
   },
 ];

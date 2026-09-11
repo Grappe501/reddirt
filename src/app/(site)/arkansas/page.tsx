@@ -18,7 +18,7 @@ const copy = arkansasPresenceCopy;
 export const metadata: Metadata = pageMeta({
   title: "County presence across Arkansas",
   description:
-    "Verified county visits and published upcoming stops—evidence that the campaign is showing up across Arkansas. No internal metrics. Invite Kelly to your community.",
+    "County visits and upcoming stops — Kelly showing up across Arkansas. Invite Kelly to your community.",
   path: "/arkansas",
   imageSrc: "/media/placeholders/hero-arkansas-warm.svg",
 });

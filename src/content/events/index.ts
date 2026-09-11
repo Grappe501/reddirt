@@ -448,11 +448,11 @@ const movementEventsCore: EventItem[] = [
     endsAt: "2026-06-05T18:00:00",
     timezone: "America/Chicago",
     locationLabel: "State convention — venue & host city TBA (confirm with EHC / county council)",
-    addressLine: "Arkansas (exact site from official program when published)",
+    addressLine: "Arkansas — venue from the official Extension Homemakers program",
     summary:
       "The annual **Arkansas Extension Homemakers** (EH) state gathering—workshops, business sessions, and fellowship for club members from across counties. Calendar hold: **Wednesday–Friday**, multi-day, **daily** schedule.",
     description:
-      "This lists a public calendar item **“Ext homemakers club convention”** (June 3–5, 2026) with Kelly Grappe as organizer. The **Arkansas Extension Homemakers** network works through local clubs (including activities like the Petit Jean EH club’s public events). **Start/end times** on the public site are a **placeholder window**—real session blocks follow the official program. **Not** a campaign event unless the host lists the campaign; listed so neighbors can plan travel. **Note:** you may have other local commitments the same week (e.g. community conversations)—check the map.",
+      "The **Arkansas Extension Homemakers** state gathering (June 3–5, 2026) — workshops, business sessions, and fellowship for club members from across counties. Session times follow the official program. This is a host event, not a campaign rally.",
     whatToExpect: [
       "Multi-day, daytime-heavy programming typical of state home-extension assemblies",
       "Opportunities to connect with county and state volunteer leaders in community programs",
@@ -1158,11 +1158,11 @@ const movementEventsCore: EventItem[] = [
     endsAt: "2026-10-22T21:00:00",
     timezone: "America/Chicago",
     locationLabel: "Berryville — Annual Chamber Awards Banquet (venue TBA)",
-    addressLine: "Berryville, AR 72616 (time and room from the Greater Berryville Area Chamber when published)",
+    addressLine: "Berryville, AR 72616 — time and room from the Greater Berryville Area Chamber",
     summary:
       "Thursday, October 22, 2026: the Greater Berryville Area Chamber’s annual awards banquet — an evening recognizing people, businesses, and organizations in the community. Time, place, and tickets TBA.",
     description:
-      "Chamber save-the-date and email: **Annual Chamber Awards Banquet**, October 22. The flyer: “Join us for an evening of celebration as we highlight our incredible community.” The Chamber email adds that they will recognize people, businesses, and organizations that help make the community work.\n\n**Time and location are not published yet.** The public page uses a typical evening window (6:00–9:00 p.m. Central) so the day appears on the calendar — update when Jean Reed or the Chamber posts the program. This is a Chamber banquet, not a campaign fundraiser. Expect tickets or member pricing once registration opens.\n\nSame Chamber as Meet the Candidates: Reloaded on October 1.",
+      "The Greater Berryville Area Chamber’s **Annual Chamber Awards Banquet** on October 22. The Chamber describes it as an evening of celebration highlighting people, businesses, and organizations that help make the community work.\n\nTime and location will come from the Chamber. This is a Chamber banquet, not a campaign fundraiser. Tickets or member pricing may apply once registration opens.\n\nSame Chamber as Meet the Candidates: Reloaded on October 1.",
     whatToExpect: [
       "Evening celebration — exact start time TBA",
       "Awards and recognition for local people and businesses",
@@ -1364,9 +1364,9 @@ const movementEventsCore: EventItem[] = [
     locationLabel: "Eddie Mae Herron Center & Museum — Pocahontas",
     addressLine: "1708 Archer Street, Pocahontas, AR 72455",
     summary:
-      "Tuesday, September 29, 2026: the Eddie Mae Herron Center’s **candidate speaking and pie auction** in Pocahontas. The Center moved the date because of a conflict. Start time is not posted yet — confirm with the Center before travel.",
+      "Tuesday, September 29, 2026: the Eddie Mae Herron Center’s **candidate speaking and pie auction** in Pocahontas. Confirm the start time with the Center before you go.",
     description:
-      "The Eddie Mae Herron Center posted that, **because of a date conflict**, its **candidate speaking and pie auction** will be **September 29, 2026**, in Pocahontas.\n\nThis is a **Center-hosted** community fundraiser and candidate hour — not a campaign rally. The Center (1708 Archer Street) is the restored 1919 St. Mary’s AME / Pocahontas Colored School, now a museum and gathering place for African American history in Randolph County.\n\n**Start time is not on the public post.** This page uses a 2:00–5:00 p.m. Central placeholder so the day appears on the calendar. Update when the Center publishes a program.\n\nAn Evening with ACASA is the same date in Little Rock (5:30–7:30 p.m.). Those are different events; travel between Pocahontas and Little Rock the same evening is a long drive.",
+      "The Eddie Mae Herron Center’s **candidate speaking and pie auction** is **September 29, 2026**, in Pocahontas.\n\nThis is a **Center-hosted** community fundraiser and candidate hour — not a campaign rally. The Center (1708 Archer Street) is the restored 1919 St. Mary’s AME / Pocahontas Colored School, now a museum and gathering place for African American history in Randolph County.\n\nConfirm the program time with the Center.",
     whatToExpect: [
       "Candidate speaking and a pie auction — follow the Center’s program",
       "Time TBA until the Center posts a schedule",
@@ -2036,11 +2036,11 @@ const movementEventsCore: EventItem[] = [
     timezone: "America/Chicago",
     locationLabel: "KLEK 102.5 FM studio — Jonesboro (or Zoom)",
     addressLine:
-      "1411 Franklin Street, Jonesboro, AR 72401 — or Zoom. Book a Political Candidate Interview slot; time on this page is a placeholder until tidycal is confirmed.",
+      "1411 Franklin Street, Jonesboro, AR 72401 — or Zoom. Book a Political Candidate Interview slot with the station.",
     summary:
       "KLEK-LP 102.5 FM (the Voice of the Arkansas Minority Advocacy Council) invited Kelly for a candidate interview ahead of the November 2026 general election. Broadcast in Jonesboro and streamed on the station’s Facebook page. **Book a slot** — in studio or Zoom.",
     description:
-      "Invitation from **LaGanzie Kale**, general manager of **KLEK-LP 102.5 FM**, Jonesboro. The station offers political candidate interviews so listeners can hear why someone is running and what they would do in office.\n\n**Book through the station:** [klekfm.biz](http://klekfm.biz) or [tidycal.com/klekfm/political](https://tidycal.com/klekfm/political) → **Political Candidate Interview**. Appear **in person** at **1411 Franklin Street** or **via Zoom**. If no listed time works, the station can **pre-record**.\n\nThis listing is attached to the next Jonesboro campaign stop (Rally for Hallie, September 19) so the interview is on the same trip. The 10:00 a.m. window here is only a placeholder until a tidycal time is locked. Interviews air on 102.5 FM and on the KLEK Facebook page.\n\nThis is a **station-hosted** interview, not a campaign rally.",
+      "Invitation from **LaGanzie Kale**, general manager of **KLEK-LP 102.5 FM**, Jonesboro. The station offers political candidate interviews so listeners can hear why someone is running and what they would do in office.\n\n**Book through the station:** [klekfm.biz](http://klekfm.biz) or [tidycal.com/klekfm/political](https://tidycal.com/klekfm/political) → **Political Candidate Interview**. Appear **in person** at **1411 Franklin Street** or **via Zoom**. If no listed time works, the station can **pre-record**.\n\nInterviews air on 102.5 FM and on the KLEK Facebook page. This is a **station-hosted** interview, not a campaign rally.",
     whatToExpect: [
       "Self-book a Political Candidate Interview slot (or ask to pre-record)",
       "In-studio at 1411 Franklin Street or Zoom",
@@ -2076,9 +2076,9 @@ const movementEventsCore: EventItem[] = [
     locationLabel: "Rison in the Fall — Rison (street TBA)",
     addressLine: "Rison, AR (downtown street and stage not in the host note — confirm with organizers before travel)",
     summary:
-      "Monday, October 12, 2026, in Rison: **Rison in the Fall** — an all-day community event with vendors during the day and a concert in the evening. Hours and street TBA. Host-run — not a campaign rally.",
+      "Monday, October 12, 2026, in Rison: **Rison in the Fall** — an all-day community event with vendors during the day and a concert in the evening. Hours and street TBA.",
     description:
-      "Jametta Harper (Jam Harp) wrote that **October 12** is **Rison in the Fall**: an **all-day** event with **vendors during the day** and a **concert in the evening**.\n\nThe note does not give a start time, end time, or street. This page uses a 10:00 a.m.–9:00 p.m. Central window so the day appears on the calendar — update when the host publishes hours and a downtown location.\n\nThis is a **community festival**, not a Grappe-hosted event. Kelly is not confirmed for a booth or stage time.\n\nThe same Monday already has **Women in Democracy** (held as Jonesboro until confirmed), a **Razorback Touchdown Club** calendar hold (city not on the invite), and a **Saline County GOTV push** in Benton. Rison to Jonesboro that evening is a long drive; Rison to Benton is shorter if both stay booked.\n\nCleveland County Democrats also host a **meet and greet** in Rison on September 12.",
+      "**Rison in the Fall** is an **all-day** community festival on **October 12** — vendors during the day and a concert in the evening.\n\nHours and the downtown location come from the host. This is a **community festival**, not a Grappe-hosted event.\n\nCleveland County Democrats also host a **meet and greet** in Rison on September 12.",
     whatToExpect: [
       "All-day festival — vendors by day, concert in the evening",
       "Clock and street TBA; 10:00 a.m.–9:00 p.m. here is only a calendar pin",
@@ -2117,12 +2117,12 @@ const movementEventsCore: EventItem[] = [
     locationLabel: "Jonesboro — Women in Democracy (venue TBA)",
     addressLine: "Jonesboro, AR (venue TBA)",
     summary:
-      "Monday, October 12, 2026: Kelly’s note says **Women in Democracy**, sent on the same thread as the Jonesboro Hallie rally. Venue and time are not confirmed. Evening window is a placeholder.",
+      "Monday, October 12, 2026: **Women in Democracy** in Jonesboro. Venue and time TBA.",
     description:
-      "This listing holds **October 12** in **Jonesboro** for **Women in Democracy**. Host, room, and time are still TBA.\n\nThe same Monday also has a **Razorback Touchdown Club** calendar hold, a **Saline County GOTV push** in Benton, and **Rison in the Fall**. Those are different events — Jonesboro to Rison that evening is a long drive.",
+      "**Women in Democracy** is listed for **October 12** in **Jonesboro**. Host, room, and time are still coming from the organizers.",
     whatToExpect: [
       "Date from Kelly’s note: October 12, 2026",
-      "Time and venue TBA — 5:00–7:00 p.m. is only a calendar placeholder",
+      "Time and venue TBA",
       "Confirm whether the gathering is Jonesboro-only or a statewide Women in Democracy program",
     ],
     whoItsFor:
@@ -2159,9 +2159,9 @@ const movementEventsCore: EventItem[] = [
     locationLabel: "Razorback Touchdown Club — city and room TBA",
     addressLine: "Arkansas (city TBA)",
     summary:
-      "Monday, October 12, 2026: calendar hold for the **Razorback Touchdown Club**. Time, city, and room are not on the invite. Noon on this page is a placeholder.",
+      "Monday, October 12, 2026: **Razorback Touchdown Club**. Time, city, and room TBA.",
     description:
-      "**Razorback Touchdown Club** is on **Monday, October 12, 2026**. City, building, and start time are still TBA.\n\nThis is a **club-hosted** gathering, not a campaign rally. Wait for the chapter to publish a location before treating it as a walk-in event.\n\nThe same Monday already has **Women in Democracy** in Jonesboro, a **Saline County GOTV push** in Benton, and **Rison in the Fall**. Those are different events.",
+      "**Razorback Touchdown Club** is on **Monday, October 12, 2026**. City, building, and start time are still coming from the host chapter.\n\nThis is a **club-hosted** gathering, not a campaign rally.",
     whatToExpect: [
       "Date from the calendar invite: Monday, October 12, 2026",
       "Time and place TBA — 12:00–1:00 p.m. is only a calendar pin",
@@ -2310,15 +2310,14 @@ const movementEventsCore: EventItem[] = [
     timezone: "America/Chicago",
     locationLabel: "Ozark Forward fundraiser — venue TBA (Mountain Home area hold)",
     addressLine:
-      "Time and room not set. Ozark Forward asked for a fundraiser on October 3 if Kelly is available. Placeholder evening window after the 2:00–5:00 p.m. Back Forty conversation in Mountain Home.",
+      "Time and room TBA. Ozark Forward is planning a fundraiser on October 3.",
     summary:
-      "Saturday, October 3, 2026: **Ozark Forward** wants a fundraiser **if Kelly is available**. Time and venue are not set. This is a hold, not a locked RSVP.",
+      "Saturday, October 3, 2026: **Ozark Forward** fundraiser. Time and venue TBA.",
     description:
-      "Ozark Forward (north-central Arkansas coalition) asked for a **fundraiser on October 3** if the campaign can do it.\n\nKelly already has a reserved **People Over Politics** conversation that day at **The Back Forty in Mountain Home, 2:00–5:00 p.m.** A fundraiser the same Saturday is possible **before 2:00 or after 5:00** if she stays in the Twin Lakes area — or this hold comes off if the host cannot work around that window.\n\nThe public calendar also lists a Van Buren County Moonshine and Music Festival that Saturday (different county) and **Fun on 31** yard sales from Romance to Lonoke.\n\n**Do not treat the 5:00–7:00 p.m. window as a published start time.** It is only so the hold appears on the calendar. Update when Ozark Forward sets a room, ticket, and clock. This is a host fundraiser, not a walk-in campaign rally until they publish details.",
+      "Ozark Forward is planning a **fundraiser on October 3**. Time, room, and tickets will come from the host.\n\nThis is a host fundraiser, not a campaign rally. Confirm details with Ozark Forward before you go.",
     whatToExpect: [
-      "Date hold only — time and venue TBA",
-      "Evening placeholder after the 2:00–5:00 p.m. Back Forty conversation",
-      "Confirm with Ozark Forward before sharing as a ticketed public event",
+      "Time and venue TBA",
+      "Confirm with Ozark Forward before treating this as a ticketed public event",
     ],
     whoItsFor:
       "Ozark Forward partners and invited guests once the host publishes a program. Not a confirmed public ticket yet.",
@@ -2481,11 +2480,10 @@ const movementEventsCore: EventItem[] = [
     summary:
       "Thursday, October 15, 2026, **10:00 a.m. Central**: live **Arkansas TV** debate for Arkansas Secretary of State. Watch on Arkansas TV / arkansastv.gov. Kelly’s campaign confirmed this slot.",
     description:
-      "Arkansas TV (LaShuan Vaughn, public affairs producer) scheduled a week of debates **October 12–16**. The Secretary of State debate is **Thursday, October 15, 10:00 a.m.** live. Kelly confirmed the campaign is good for that time.\n\nThe clock is the **live broadcast start**. Candidates or a campaign representative arrive **at least two hours early** (8:00 a.m.) for walk-through, coin toss or number draw, and makeup. That call time is for the campaign, not the public.\n\nStudios are at **350 South Donaghey Avenue, Conway**. This is a **televised debate**, not a campaign rally and not a walk-in studio event. Watch on Arkansas TV. End time is not on the invite — this page uses an 11:00 a.m. placeholder until the station publishes a runtime.\n\nArkansas TV also aired the June Arkansas Press Association Secretary of State debate; this October date is a separate live studio debate.\n\nThe same Thursday evening: Rogers Lowell / Bentonville Chamber **Hob Nob** at NWACC (**5:00–7:00 p.m.**) and a Sharp County **candidate forum in Hardy**. Those are different events. A morning Conway taping can pair with Bentonville by 5:00 if the debate stays at 10:00 a.m. and she leaves soon after — or with an evening Hardy forum. She cannot do both evenings. Confirm runtime before promising either.",
+      "Arkansas TV scheduled a week of debates **October 12–16**. The Secretary of State debate is **Thursday, October 15, 10:00 a.m.** live. Watch on Arkansas TV.\n\nStudios are at **350 South Donaghey Avenue, Conway**. This is a **televised debate**, not a campaign rally and not a walk-in studio event.\n\nArkansas TV also aired the June Arkansas Press Association Secretary of State debate; this October date is a separate live studio debate."
     whatToExpect: [
       "Live broadcast starts 10:00 a.m. Central Thursday, October 15",
       "Watch on Arkansas TV — not a public studio door event",
-      "Campaign call time is 8:00 a.m. for walk-through and makeup",
     ],
     whoItsFor:
       "Anyone who wants to watch the Secretary of State candidates on Arkansas TV. Studio access is for participants and station staff.",

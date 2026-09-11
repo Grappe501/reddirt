@@ -22,7 +22,7 @@ export const acrossArkansasJourneyCopy = {
     "Photos from stops across Arkansas — listening, visiting, speaking, and engaging with neighbors.",
   invite: {
     title: "Invite Kelly",
-    body: "Invite Kelly to your county, club, church, chamber, fair, or community gathering. Every request goes through staff review before anything is confirmed.",
+    body: "Invite Kelly to your county, club, church, chamber, fair, or community gathering. Our team will follow up.",
     primary: { href: "/events/request", label: "Invite Kelly" },
     secondary: { href: "/events", label: "Events calendar" },
   },

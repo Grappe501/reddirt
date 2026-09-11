@@ -39,7 +39,7 @@ export default function PrivacyAndTrustPage() {
       <PageHero
         eyebrow="Organizing · trust"
         title="How we protect people"
-        subtitle="Plain-language expectations for Power of 5, public dashboards, and campaign tools. This page explains our organizing approach—not a substitute for counsel-reviewed legal policies."
+        subtitle="How we handle Power of 5, public dashboards, and campaign tools — what is public, and what stays private."
       />
       <FullBleedSection padY>
         <ContentContainer className="max-w-2xl space-y-10 font-body text-base leading-relaxed text-kelly-text/85">
