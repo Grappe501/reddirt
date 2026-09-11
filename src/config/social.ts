@@ -23,6 +23,7 @@ function envUrl(key: string, fallback: string): string {
 /** Public page handles (override with NEXT_PUBLIC_SOCIAL_* in deploy). */
 export const DEFAULT_SOCIAL_FACEBOOK_URL = "https://www.facebook.com/Kelly-Grappe-SOS";
 export const DEFAULT_SOCIAL_INSTAGRAM_URL = "https://www.instagram.com/KellyGrappeSOS/";
+export const DEFAULT_SOCIAL_YOUTUBE_URL = "https://www.youtube.com/@KellyGrappe";
 
 /**
  * Public footer / “find us” links. Override any URL with NEXT_PUBLIC_SOCIAL_* in `.env`.
@@ -48,7 +49,7 @@ export function getPublicSocialLinks(): PublicSocialLink[] {
     {
       id: "youtube",
       label: "YouTube",
-      href: envUrl("NEXT_PUBLIC_SOCIAL_YOUTUBE_URL", "https://www.youtube.com/@kellygrappesos"),
+      href: envUrl("NEXT_PUBLIC_SOCIAL_YOUTUBE_URL", DEFAULT_SOCIAL_YOUTUBE_URL),
     },
     {
       id: "substack",
