@@ -6,12 +6,13 @@ import { EventHelpShiftBoard } from "@/components/organizing/EventHelpShiftBoard
 import { Button } from "@/components/ui/Button";
 import { pageMeta } from "@/lib/seo/metadata";
 import { loadPublicMobilizeBoard } from "@/lib/integrations/mobilize";
+import { mobilizeFeedUrl } from "@/config/mobilize";
 
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = pageMeta({
   title: "Event help",
-  description: "Pick a campaign stop and sign up for a volunteer shift. Listed by location, with a direct Mobilize signup.",
+  description: "Pick a campaign stop by city and date, then sign up on Mobilize for that shift.",
   path: "/get-involved/event-help",
 });
 
@@ -23,8 +24,11 @@ export default async function EventHelpPage() {
       <PageHero
         eyebrow="Volunteer"
         title="Help at an event"
-        subtitle="Choose a stop near you. Each card opens the Mobilize signup for that shift."
+        subtitle="See the city and the date first. Tap a card to sign up on Mobilize for that shift."
       >
+        <Button href={board.feedUrl || mobilizeFeedUrl()} variant="primary">
+          Open Mobilize
+        </Button>
         <Button href="/get-involved#volunteer" variant="outline">
           General volunteer form
         </Button>

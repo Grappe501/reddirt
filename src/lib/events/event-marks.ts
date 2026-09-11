@@ -70,9 +70,10 @@ export function publicEventMarkChips(event: EventItem): EventMarkChip[] {
 export function eventMarksCta(event: EventItem): { href: string; label: string } | null {
   const status = event.marks?.mobilize;
   if (status === "live") {
+    const volunteers = event.marks?.volunteers;
     return {
       href: resolveMobilizeHref(event) ?? eventCardActionHref(event),
-      label: "RSVP on Mobilize",
+      label: volunteers === "shifts_open" || volunteers === "needed" ? "Help at this stop" : "RSVP on Mobilize",
     };
   }
   if (status === "needed") {
