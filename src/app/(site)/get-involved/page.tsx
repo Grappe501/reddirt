@@ -312,6 +312,10 @@ export default async function GetInvolvedPage() {
               Name, best way to reach you, and a sentence about what sounds fun. If you are hosting or inviting us local,
               say so.
             </p>
+            <p className="mt-3 max-w-3xl font-body text-sm leading-relaxed text-kelly-text/75">
+              If someone sent you here for help, voter registration, a one-on-one, or anything else you need the campaign
+              to contact you about — put that under <strong className="text-kelly-navy">Anything we should know</strong>.
+            </p>
             <div className="mt-8 max-w-3xl">
               <ElectdStayConnectedForm />
             </div>
