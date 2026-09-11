@@ -102,7 +102,7 @@ export function OnTheRoadProofSections({
         <p className="mx-auto mt-3 max-w-2xl text-center font-body text-sm leading-relaxed text-kelly-slate md:text-base">
           {c.metrics.intro}
         </p>
-        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mx-auto mt-8 grid max-w-md gap-4">
           {c.metrics.items.map((m) => (
             <ProofMetricCard key={m.label} label={m.label} value={m.value} note={m.note} />
           ))}

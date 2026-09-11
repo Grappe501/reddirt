@@ -28,7 +28,7 @@ export const onTheRoadPageMeta = {
 export const OFFICE_LAYER_THREE_CAMPAIGN_TRAIL_PROOF = {
   title: "The Work Behind the Campaign",
   body:
-    "This campaign is not being built from a conference room. Kelly is working the trail — county meetings, community rooms, faith spaces, civic gatherings, and small conversations where people ask real questions. In February alone, the campaign logged 3,200+ miles and 27 engagements, and that pace has continued month after month.",
+    "This campaign is not being built from a conference room. Kelly is working the trail — county meetings, community rooms, faith spaces, civic gatherings, and small conversations where people ask real questions. Through August the campaign has logged 23,419 miles on Arkansas roads.",
   ctaLabel: "See Kelly on the road",
   ctaHref: "/from-the-road",
 } as const;
@@ -47,13 +47,11 @@ export const onTheRoadProofCopy = {
   },
 
   metrics: {
-    title: "What the road looked like (verified)",
+    title: "Miles on the road (through August)",
     intro:
-      "These numbers come from the campaign’s own February log — not estimates for other months, and not a substitute for every county yet visited.",
+      "One campaign total, compiled from travel logs and mileage records through August.",
     items: [
-      { label: "Miles (February)", value: "3,200+", note: "Campaign log — February" },
-      { label: "Engagements (February)", value: "27", note: "Campaign log — February" },
-      { label: "Pace since then", value: "Month after month", note: "Similar energy has continued — see field posts and calendar below." },
+      { label: "Total miles", value: "23,419", note: "Through August" },
     ] as const,
     /**
      * County/city totals stay off the public page until Steve marks rows Confirmed in
@@ -99,9 +97,9 @@ export const onTheRoadProofCopy = {
       },
       {
         id: "february-mileage",
-        title: "February on the road",
+        title: "Miles on the road",
         body:
-          "In February the campaign logged more than 3,200 miles and 27 engagements — work the team has worked to keep up month after month.",
+          "Through August the campaign has logged 23,419 miles — showing up in counties, community rooms, and faith spaces across Arkansas.",
       },
       {
         id: "faith-rooms",
