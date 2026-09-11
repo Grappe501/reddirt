@@ -16,16 +16,85 @@ export const PUBLIC_SCHEDULE_EVENT_TYPES = [
 
 export const PUBLIC_SCHEDULE_EVENT_TYPE_LABELS: Record<(typeof PUBLIC_SCHEDULE_EVENT_TYPES)[number], string> = {
   county_party_meeting: "County party meeting",
-  house_party: "House party",
+  house_party: "House party / living room",
   civic_club: "Civic club",
   school_campus: "School / campus event",
   fair_festival: "Fair / festival",
   fundraiser: "Fundraiser",
   listening_session: "Listening session",
-  church_community: "Church / community event",
-  press_media: "Press / media",
+  church_community: "Church / community gathering",
+  press_media: "Press / interview",
   volunteer_event: "Volunteer event",
-  other: "Other",
+  other: "Something else",
+};
+
+export const INVITE_KELLY_ROLES = [
+  "remarks",
+  "qa_listen",
+  "table_greet",
+  "meet_greet",
+  "media",
+  "not_sure",
+] as const;
+
+export const INVITE_KELLY_ROLE_LABELS: Record<(typeof INVITE_KELLY_ROLES)[number], string> = {
+  remarks: "Short remarks",
+  qa_listen: "Q&A / listening",
+  table_greet: "Table, greet, or walk the room",
+  meet_greet: "Meet and greet",
+  media: "Interview or media",
+  not_sure: "Not sure yet — help us decide",
+};
+
+export const INVITE_KELLY_AUDIENCE_BANDS = [
+  "under_15",
+  "15_40",
+  "40_100",
+  "100_250",
+  "250_plus",
+  "not_sure",
+] as const;
+
+export const INVITE_KELLY_AUDIENCE_LABELS: Record<(typeof INVITE_KELLY_AUDIENCE_BANDS)[number], string> = {
+  under_15: "Under 15 people",
+  "15_40": "About 15–40",
+  "40_100": "About 40–100",
+  "100_250": "About 100–250",
+  "250_plus": "More than 250",
+  not_sure: "Not sure yet",
+};
+
+export const INVITE_KELLY_AUDIENCE_TO_SIZE: Record<(typeof INVITE_KELLY_AUDIENCE_BANDS)[number], number | null> = {
+  under_15: 10,
+  "15_40": 25,
+  "40_100": 70,
+  "100_250": 150,
+  "250_plus": 300,
+  not_sure: null,
+};
+
+export const INVITE_KELLY_TIME_WINDOWS = [
+  "morning",
+  "midday",
+  "afternoon",
+  "evening",
+  "flexible",
+] as const;
+
+export const INVITE_KELLY_TIME_LABELS: Record<(typeof INVITE_KELLY_TIME_WINDOWS)[number], string> = {
+  morning: "Morning (around 9 a.m.)",
+  midday: "Midday (around noon)",
+  afternoon: "Afternoon (around 3 p.m.)",
+  evening: "Evening (around 6 p.m.)",
+  flexible: "Flexible — any time that day",
+};
+
+export const INVITE_KELLY_TIME_TO_START: Record<(typeof INVITE_KELLY_TIME_WINDOWS)[number], string | null> = {
+  morning: "09:00",
+  midday: "12:00",
+  afternoon: "15:00",
+  evening: "18:00",
+  flexible: null,
 };
 
 export const scheduleCampaignEventBodySchema = z
@@ -35,8 +104,16 @@ export const scheduleCampaignEventBodySchema = z
     organization: z.string().max(200).optional().nullable(),
     email: z.string().email().max(320),
     phone: z.string().min(7).max(40),
-    eventTitle: z.string().min(2).max(200),
+    eventTitle: z
+      .string()
+      .max(200)
+      .optional()
+      .nullable()
+      .transform((v) => (v?.trim() ? v.trim() : "")),
     eventType: z.enum(PUBLIC_SCHEDULE_EVENT_TYPES),
+    kellyRole: z.enum(INVITE_KELLY_ROLES).default("not_sure"),
+    audienceBand: z.enum(INVITE_KELLY_AUDIENCE_BANDS).optional().nullable(),
+    timeWindow: z.enum(INVITE_KELLY_TIME_WINDOWS).optional().nullable(),
     county: z.string().min(1).max(100),
     city: z.string().max(120).optional().nullable(),
     address: z.string().max(500).optional().nullable(),
@@ -88,9 +165,28 @@ export function normalizeScheduleCampaignEventBody(body: ScheduleCampaignEventBo
         .map((s) => s.trim())
         .filter((s) => /^\d{4}-\d{2}-\d{2}$/.test(s))
     : [];
-  const merged = [...base, ...extra].slice(0, 12);
+  const merged = [...new Set([...base, ...extra])].slice(0, 12);
+  const audienceFromBand =
+    body.audienceBand && body.audienceSize == null
+      ? INVITE_KELLY_AUDIENCE_TO_SIZE[body.audienceBand]
+      : body.audienceSize;
+  const startFromWindow =
+    body.timeWindow && !body.preferredStartTime
+      ? INVITE_KELLY_TIME_TO_START[body.timeWindow]
+      : body.preferredStartTime;
+  const title =
+    body.eventTitle?.trim() ||
+    `${PUBLIC_SCHEDULE_EVENT_TYPE_LABELS[body.eventType]} — ${body.county}`;
+  const speakingRequested =
+    body.kellyRole === "remarks" || body.kellyRole === "qa_listen" || body.kellyRole === "meet_greet"
+      ? true
+      : body.speakingRequested;
   return {
     ...body,
+    eventTitle: title,
+    audienceSize: audienceFromBand ?? null,
+    preferredStartTime: startFromWindow ?? null,
+    speakingRequested,
     alternateDates: merged.length ? merged : null,
     alternateDatesText: null,
   };
@@ -98,7 +194,7 @@ export function normalizeScheduleCampaignEventBody(body: ScheduleCampaignEventBo
 
 export function toPersistedPublicScheduleBody(body: ScheduleCampaignEventBody) {
   const n = normalizeScheduleCampaignEventBody(body);
-  const { alternateDatesText: _t, website: _w, ...rest } = n;
+  const { alternateDatesText: _t, website: _w, timeWindow: _tw, audienceBand: _ab, ...rest } = n;
   return rest;
 }
 
@@ -122,6 +218,7 @@ export function bodyToPublicSchedulingRequest(body: ScheduleCampaignEventBody) {
     speakingRequested: body.speakingRequested,
     pressInvited: body.pressInvited,
     localHostAvailable: body.localHostAvailable,
+    kellyRole: body.kellyRole,
     notes: body.notes ?? undefined,
   };
 }

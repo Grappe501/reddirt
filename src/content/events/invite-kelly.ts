@@ -73,7 +73,7 @@ export const inviteKellyContent = {
     ] as const,
     nextCta: {
       label: "See how it works & what you can host",
-      href: "/events/request/how-it-works",
+      href: "/events/request#invite-form",
     },
   },
 
@@ -109,7 +109,7 @@ export const inviteKellyContent = {
     ] as const,
     nextCta: {
       label: "Start a request",
-      href: "/events/request/how-it-works#start-request",
+      href: "/events/request#invite-form",
     },
   },
 

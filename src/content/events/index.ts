@@ -2480,7 +2480,7 @@ const movementEventsCore: EventItem[] = [
     summary:
       "Thursday, October 15, 2026, **10:00 a.m. Central**: live **Arkansas TV** debate for Arkansas Secretary of State. Watch on Arkansas TV / arkansastv.gov. Kelly’s campaign confirmed this slot.",
     description:
-      "Arkansas TV scheduled a week of debates **October 12–16**. The Secretary of State debate is **Thursday, October 15, 10:00 a.m.** live. Watch on Arkansas TV.\n\nStudios are at **350 South Donaghey Avenue, Conway**. This is a **televised debate**, not a campaign rally and not a walk-in studio event.\n\nArkansas TV also aired the June Arkansas Press Association Secretary of State debate; this October date is a separate live studio debate."
+      "Arkansas TV scheduled a week of debates **October 12–16**. The Secretary of State debate is **Thursday, October 15, 10:00 a.m.** live. Watch on Arkansas TV.\n\nStudios are at **350 South Donaghey Avenue, Conway**. This is a **televised debate**, not a campaign rally and not a walk-in studio event.\n\nArkansas TV also aired the June Arkansas Press Association Secretary of State debate; this October date is a separate live studio debate.",
     whatToExpect: [
       "Live broadcast starts 10:00 a.m. Central Thursday, October 15",
       "Watch on Arkansas TV — not a public studio door event",

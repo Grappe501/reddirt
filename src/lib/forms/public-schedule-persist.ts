@@ -116,6 +116,7 @@ export async function persistPublicScheduleToDatabase(input: {
     `Flexibility: ${body.flexibility}`,
     `Visibility: ${body.eventVisibility}`,
     `Press invited: ${body.pressInvited ? "yes" : "no"}`,
+    body.kellyRole ? `Kelly’s role: ${body.kellyRole}` : "",
     `Press release interest: ${body.pressReleaseInterest}`,
     body.eventPurpose ? `Purpose: ${body.eventPurpose}` : "",
   ].filter(Boolean);
@@ -140,6 +141,7 @@ export async function persistPublicScheduleToDatabase(input: {
     localIssueAngle: body.localIssueAngle ? sanitizePlainText(body.localIssueAngle, 2000) : null,
     speakingRequested: body.speakingRequested,
     localHostAvailable: body.localHostAvailable,
+    kellyRole: body.kellyRole ?? null,
     notes: body.notes ? sanitizePlainText(body.notes, 8000) : null,
     organization: body.organization ? sanitizePlainText(body.organization, 200) : null,
     routeImpactMilesEstimate: routeImpactMilesEstimate,

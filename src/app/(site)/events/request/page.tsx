@@ -1,46 +1,61 @@
 import type { Metadata } from "next";
-import { EventPathwayPage } from "@/components/events/EventPathwayPage";
-import { inviteKellyContent } from "@/content/events/invite-kelly";
+import { MediaPageHero } from "@/components/blocks/MediaPageHero";
+import { FullBleedSection } from "@/components/layout/FullBleedSection";
+import { ContentContainer } from "@/components/layout/ContentContainer";
+import { Button } from "@/components/ui/Button";
+import { InviteKellyRequestForm } from "@/components/forms/InviteKellyRequestForm";
+import { EventsSubpageFooter } from "@/components/events/EventsSubpageFooter";
 import { pageMeta } from "@/lib/seo/metadata";
 import { brandMediaFromLegacySite } from "@/config/brand-media";
 
-const { meta, layerOne: L1 } = inviteKellyContent;
-
 export const metadata: Metadata = pageMeta({
-  title: meta.layerOne.title,
-  description: meta.layerOne.description,
-  path: meta.layerOne.path,
+  title: "Invite Kelly",
+  description:
+    "Invite Kelly Grappe to your county — house party, civic club, fair, church, or community gathering. Share dates that work and we will follow up.",
+  path: "/events/request",
   imageSrc: brandMediaFromLegacySite.statewideBanner,
 });
 
-export default function InviteKellyLayerOnePage() {
+export default function InviteKellyPage() {
   return (
-    <EventPathwayPage
-      layer={1}
-      eyebrow={L1.eyebrow}
-      title={L1.title}
-      subtitle={L1.subtitle}
-      nextStep={L1.nextCta}
-    >
-      <div className="space-y-10 font-body text-kelly-text/88">
-        {L1.leadParagraphs.map((p) => (
-          <p key={p.slice(0, 48)} className="text-base leading-relaxed md:text-[1.05rem]">
-            {p}
+    <>
+      <MediaPageHero
+        slotKey="events.request.hero"
+        layout="split"
+        eyebrow="Invite Kelly"
+        title="Invite Kelly"
+        subtitle="Tell us what you want to host, a few dates that could work, and what Kelly should do. We will check the calendar and follow up."
+      >
+        <Button href="#invite-form" variant="primary">
+          Start the form
+        </Button>
+        <Button href="/events" variant="outlineOnDark">
+          See the calendar
+        </Button>
+      </MediaPageHero>
+
+      <FullBleedSection padY>
+        <ContentContainer className="max-w-3xl">
+          <p className="font-body text-base leading-relaxed text-kelly-slate">
+            This is the page to send anyone who wants Kelly at a gathering. More date options help us find a fit.
+            Sending the form is an invitation — not a confirmation.
           </p>
-        ))}
-        {L1.sections.map((section, si) => (
-          <section key={section.heading} aria-labelledby={`invite-l1-section-${si}`}>
-            <h2 id={`invite-l1-section-${si}`} className="font-heading text-xl font-bold text-kelly-ink md:text-2xl">
-              {section.heading}
-            </h2>
-            <ul className="mt-4 list-inside list-disc space-y-2 text-base leading-relaxed md:text-[1.02rem]">
-              {section.bullets.map((b) => (
-                <li key={b}>{b}</li>
-              ))}
-            </ul>
-          </section>
-        ))}
-      </div>
-    </EventPathwayPage>
+        </ContentContainer>
+      </FullBleedSection>
+
+      <FullBleedSection variant="subtle" padY aria-labelledby="invite-form-heading">
+        <ContentContainer className="max-w-3xl">
+          <h2 id="invite-form-heading" className="font-heading text-2xl font-bold text-kelly-ink md:text-3xl">
+            Invitation form
+          </h2>
+          <p className="mt-2 font-body text-sm text-kelly-text/70">About five minutes. Dropdowns first, details if you have them.</p>
+          <div className="mt-8 rounded-card border border-kelly-ink/10 bg-white p-6 shadow-sm md:p-8">
+            <InviteKellyRequestForm id="invite-form" />
+          </div>
+        </ContentContainer>
+      </FullBleedSection>
+
+      <EventsSubpageFooter />
+    </>
   );
 }

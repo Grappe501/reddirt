@@ -31,6 +31,7 @@ export type PublicSchedulingRequest = {
   speakingRequested?: boolean;
   pressInvited?: boolean;
   localHostAvailable?: boolean;
+  kellyRole?: string;
   notes?: string;
 };
 
@@ -192,7 +193,7 @@ export function buildDeterministicPublicSchedulingResult(args: {
     return {
       intakeStatus: "needs_more_information",
       publicMessage:
-        "Thanks for reaching out. A few details are still missing so staff can review your request fairly — please fill in the highlighted fields.",
+        "Thanks for reaching out. A few details are still missing — please fill in the highlighted fields so we can follow up.",
       missingFields: missing,
       suggestedWindows: pickSuggestedWindows(windows, 3, request.preferredDate),
       privateStaffFlags: staff,
@@ -211,7 +212,7 @@ export function buildDeterministicPublicSchedulingResult(args: {
 
   let intakeStatus: PublicSchedulingAssistantResult["intakeStatus"] = "ready_to_submit";
   let publicMessage =
-    "We received the details you shared. Nothing is confirmed yet — staff will review and follow up by email.";
+    "We received the details you shared. Nothing is confirmed yet — we will follow up by email.";
   const suggested = pickSuggestedWindows(windows, 3, request.preferredDate);
 
   if (request.preferredDate) {
@@ -221,7 +222,7 @@ export function buildDeterministicPublicSchedulingResult(args: {
       if (hit?.status === "blocked") {
         intakeStatus = "suggest_alternative_times";
         publicMessage =
-          "That date may be difficult given what we can share publicly about the schedule load. Here are a few windows that tend to work better — you can pick one or leave flexibility for staff.";
+          "That date may be tight on the calendar. Here are a few windows that tend to work better — you can pick one, or we will look for another fit.";
         staff.push({
           flag: "possible_conflict",
           note: "Preferred day shows heavy public-density scheduling; verify internally (no titles exposed publicly).",
@@ -229,7 +230,7 @@ export function buildDeterministicPublicSchedulingResult(args: {
       } else if (hit?.status === "soft_conflict") {
         intakeStatus = "suggest_alternative_times";
         publicMessage =
-          "That timing might be tight. If you can shift slightly, these alternative windows are easier fits — staff will still review everything.";
+          "That timing might be tight. If you can shift slightly, these alternative windows are easier fits.";
         staff.push({ flag: "possible_conflict", note: "Soft conflict on sanitized public calendar density." });
       }
     }
@@ -238,7 +239,7 @@ export function buildDeterministicPublicSchedulingResult(args: {
   if (request.flexibility === "exact_date_only" && intakeStatus === "suggest_alternative_times") {
     intakeStatus = "staff_review_required";
     publicMessage =
-      "You asked for a specific date only. We will route this to staff review rather than suggesting shifts you did not invite.";
+      "You asked for a specific date only. We will review that date and follow up.";
   }
 
   return {

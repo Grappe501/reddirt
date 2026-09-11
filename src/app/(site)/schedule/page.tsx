@@ -4,7 +4,7 @@ import { MediaPageHero } from "@/components/blocks/MediaPageHero";
 import { FullBleedSection } from "@/components/layout/FullBleedSection";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { Button } from "@/components/ui/Button";
-import { ScheduleCampaignEventForm } from "@/components/forms/ScheduleCampaignEventForm";
+import { InviteKellyRequestForm } from "@/components/forms/InviteKellyRequestForm";
 
 export const metadata: Metadata = {
   title: "Invite Kelly · Share an event",
@@ -55,7 +55,7 @@ export default async function ScheduleCampaignEventPage() {
           <h2 id="schedule-form-heading" className="sr-only">
             Public scheduling request form
           </h2>
-          <ScheduleCampaignEventForm id="schedule-form" />
+          <InviteKellyRequestForm id="schedule-form" />
         </ContentContainer>
       </FullBleedSection>
     </>

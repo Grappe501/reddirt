@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { EventPathwayPage } from "@/components/events/EventPathwayPage";
-import { Button } from "@/components/ui/Button";
+import { InviteKellyRequestForm } from "@/components/forms/InviteKellyRequestForm";
 import { inviteKellyContent } from "@/content/events/invite-kelly";
 import { pageMeta } from "@/lib/seo/metadata";
 import { brandMediaFromLegacySite } from "@/config/brand-media";
-import { getContactMailto } from "@/config/external-campaign";
 
 const { meta, layerTwo: L2, layerThree: L3 } = inviteKellyContent;
 
@@ -18,8 +17,6 @@ export const metadata: Metadata = pageMeta({
 });
 
 export default function InviteKellyHowItWorksPage() {
-  const mailto = getContactMailto();
-
   return (
     <EventPathwayPage layer={2} eyebrow={L2.eyebrow} title={L2.title} subtitle={L2.subtitle}>
       <div className="space-y-10 font-body text-kelly-text/88">
@@ -61,31 +58,11 @@ export default function InviteKellyHowItWorksPage() {
           <p className="mt-8 text-base leading-relaxed text-kelly-text/90 md:text-[1.05rem]">{L3.closing}</p>
         </section>
 
-        <div
-          id="start-request"
-          className="rounded-card border border-dashed border-kelly-text/25 bg-gradient-to-br from-kelly-wash/70 to-white px-6 py-8 text-center shadow-sm md:px-10 md:py-10"
-        >
-          <p className="font-heading text-lg font-bold text-kelly-ink md:text-xl">{L3.formPlaceholderTitle}</p>
-          <p className="mx-auto mt-4 max-w-lg text-sm leading-relaxed text-kelly-slate md:text-base">{L3.formPlaceholderBody}</p>
-          <div className="mt-8 flex flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap sm:justify-center">
-            <Button href="/schedule" variant="primary" className="min-h-[52px] w-full min-w-[14rem] sm:w-auto">
-              {L3.primaryCtaLabel}
-            </Button>
-            <Button href={mailto} variant="outline" className="min-h-[52px] w-full min-w-[14rem] sm:w-auto">
-              Email the campaign
-            </Button>
-          </div>
-          <div className="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center sm:gap-4">
-            {L3.secondaryLinks.map((l) => (
-              <Button
-                key={l.href}
-                href={l.href}
-                variant="outline"
-                className="min-h-[48px] w-full min-w-[12rem] sm:w-auto"
-              >
-                {l.label}
-              </Button>
-            ))}
+        <div id="start-request" className="scroll-mt-24 border-t border-kelly-text/10 pt-10">
+          <h2 className="font-heading text-2xl font-bold text-kelly-ink md:text-3xl">Start a request</h2>
+          <p className="mt-2 font-body text-sm text-kelly-text/70">Same form we send to anyone inviting Kelly.</p>
+          <div className="mt-8 rounded-card border border-kelly-ink/10 bg-white p-6 shadow-sm md:p-8">
+            <InviteKellyRequestForm />
           </div>
         </div>
 

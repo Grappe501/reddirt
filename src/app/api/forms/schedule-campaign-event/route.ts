@@ -9,6 +9,7 @@ import {
   runPublicSchedulingAssistant,
   stripPrivateStaffFlagsForPublicResponse,
 } from "@/lib/kelly-agent/public-scheduling-agent";
+import { sendInviteKellySchedulerNotification } from "@/lib/campaign-ops/ops-notifications";
 import { clientIp, rateLimit } from "@/lib/rate-limit";
 
 export const dynamic = "force-dynamic";
@@ -63,6 +64,35 @@ export async function POST(req: Request) {
   }
 
   const publicAssistant = stripPrivateStaffFlagsForPublicResponse(assistant);
+
+  await sendInviteKellySchedulerNotification({
+    requesterName: clean.requesterName,
+    email: clean.email,
+    phone: clean.phone,
+    organization: clean.organization,
+    eventTitle: clean.eventTitle,
+    eventType: clean.eventType,
+    kellyRole: clean.kellyRole,
+    county: clean.county,
+    city: clean.city,
+    address: clean.address,
+    preferredDate: clean.preferredDate,
+    alternateDates: clean.alternateDates,
+    flexibility: clean.flexibility,
+    audienceSize: clean.audienceSize,
+    eventPurpose: clean.eventPurpose,
+    eventVisibility: clean.eventVisibility,
+    notes: clean.notes,
+    intakeStatus: assistant.intakeStatus,
+    publicMessage: assistant.publicMessage,
+    recommendedTitle: assistant.recommendedTentativeEvent.title,
+    recommendedStartAt: assistant.recommendedTentativeEvent.startAt,
+    recommendedEndAt: assistant.recommendedTentativeEvent.endAt,
+    suggestedWindows: assistant.suggestedWindows,
+    staffFlags: assistant.privateStaffFlags,
+    workflowIntakeId: persist.mode === "database" ? persist.result.workflowIntakeId : null,
+    submissionId: persist.mode === "database" ? persist.result.submissionId : persist.stagedId,
+  });
 
   if (persist.mode === "database") {
     return NextResponse.json({
