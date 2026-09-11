@@ -87,8 +87,8 @@
   /**
    * Fixed public site header height; JS may set `--site-header-h` on `html`.
    */
-  --site-header-h: 6.5rem;
-  --site-header-shim: max(6.5rem, var(--site-header-h));
+  --site-header-h: 4.75rem;
+  --site-header-shim: max(4.75rem, var(--site-header-h));
 
   color-scheme: light;
 }
@@ -145,10 +145,10 @@ html.dark {
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1280px) {
   :root {
-    --site-header-h: 7rem;
-    --site-header-shim: max(7rem, var(--site-header-h));
+    --site-header-h: 5.5rem;
+    --site-header-shim: max(5.5rem, var(--site-header-h));
   }
 }
 

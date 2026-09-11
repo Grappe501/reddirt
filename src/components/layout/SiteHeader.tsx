@@ -102,14 +102,14 @@ export function SiteHeader() {
       <div className="relative z-10 border-b border-kelly-gold/20">
         <div
           className={cn(
-            "mx-auto flex w-full max-w-[100vw] items-center gap-3 px-[var(--gutter-x)] transition-[padding] duration-300 ease-out xl:gap-4",
+            "mx-auto flex w-full max-w-[100vw] flex-nowrap items-center gap-3 px-[var(--gutter-x)] transition-[padding] duration-300 ease-out xl:gap-4",
             compactHeader ? "py-2 sm:py-2.5 xl:py-3" : "py-3 sm:py-3.5 xl:py-3.5",
           )}
         >
         <Link
           href="/"
           aria-label={`${siteConfig.name} — home`}
-          className="group relative z-20 flex min-w-0 max-w-[11.5rem] shrink-0 items-center gap-2.5 sm:max-w-[14rem] sm:gap-3 xl:max-w-[15.5rem] 2xl:max-w-[17rem] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-kelly-gold/50 focus-visible:ring-offset-2 focus-visible:ring-offset-kelly-navy"
+          className="group relative z-20 flex min-w-0 max-w-[calc(100%-7.5rem)] shrink items-center gap-2 sm:max-w-[14rem] sm:shrink-0 sm:gap-3 xl:max-w-[15.5rem] 2xl:max-w-[17rem] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-kelly-gold/50 focus-visible:ring-offset-2 focus-visible:ring-offset-kelly-navy"
         >
           <span
             className={cn(
@@ -126,7 +126,7 @@ export function SiteHeader() {
             <span className="truncate font-heading text-sm font-bold tracking-tight transition group-hover:text-kelly-gold sm:text-[0.95rem] xl:text-base">
               {siteConfig.shortName}
             </span>
-            <span className="mt-0.5 truncate font-body text-[9px] font-medium uppercase tracking-[0.12em] text-white/90 sm:text-[10px]">
+            <span className="mt-0.5 hidden truncate font-body text-[9px] font-medium uppercase tracking-[0.12em] text-white/90 min-[400px]:block sm:text-[10px]">
               for Arkansas Secretary of State
             </span>
             <span className="mt-0.5 hidden truncate font-body text-[9px] font-semibold uppercase tracking-[0.16em] text-kelly-gold/90 2xl:block">
@@ -149,7 +149,7 @@ export function SiteHeader() {
           <Button
             type="button"
             variant="ghostOnDark"
-            className="shrink-0 px-2 py-2 text-xs font-semibold tracking-wide 2xl:px-3"
+            className="hidden shrink-0 px-2 py-2 text-xs font-semibold tracking-wide 2xl:inline-flex 2xl:px-3"
             onClick={() => setSearchOpen(true)}
           >
             Search
@@ -158,7 +158,7 @@ export function SiteHeader() {
             href="/events"
             variant="outlineOnDark"
             title="Events"
-            className="hidden min-h-[44px] min-w-0 flex-shrink-0 border border-white/45 bg-transparent px-2.5 py-2 text-xs font-semibold uppercase tracking-wide text-white/95 transition hover:border-white/70 hover:bg-white/10 xl:inline-flex 2xl:min-h-[48px] 2xl:px-3.5 2xl:text-sm"
+            className="hidden min-h-[44px] min-w-0 flex-shrink-0 border border-white/45 bg-transparent px-2.5 py-2 text-xs font-semibold uppercase tracking-wide text-white/95 transition hover:border-white/70 hover:bg-white/10 2xl:inline-flex 2xl:min-h-[48px] 2xl:px-3.5 2xl:text-sm"
             aria-label="Events — Kelly on the trail"
           >
             Events
@@ -167,11 +167,10 @@ export function SiteHeader() {
             href={voterRegistrationHref}
             variant="outlineOnDark"
             title="Vote / Register"
-            className="hidden min-h-[44px] min-w-0 flex-shrink-0 border border-white/45 bg-transparent px-2.5 py-2 text-xs font-semibold uppercase tracking-wide text-white/95 transition hover:border-white/70 hover:bg-white/10 xl:inline-flex 2xl:min-h-[48px] 2xl:px-3.5 2xl:text-sm"
+            className="hidden min-h-[44px] min-w-0 flex-shrink-0 border border-white/45 bg-transparent px-2.5 py-2 text-xs font-semibold uppercase tracking-wide text-white/95 transition hover:border-white/70 hover:bg-white/10 2xl:inline-flex 2xl:min-h-[48px] 2xl:px-3.5 2xl:text-sm"
             aria-label="Vote / Register — voter registration center"
           >
-            <span className="2xl:hidden">Vote</span>
-            <span className="hidden 2xl:inline">Vote / Register</span>
+            Vote / Register
           </Button>
           <Button
             href={volunteerHref}
@@ -193,39 +192,11 @@ export function SiteHeader() {
           </Button>
         </nav>
 
-        <div className="ml-auto flex max-w-[min(100%,18rem)] flex-shrink-0 flex-wrap items-center justify-end gap-1.5 sm:max-w-none sm:gap-2 text-kelly-fog xl:hidden">
-          <Button
-            href="/events"
-            variant="outlineOnDark"
-            title="Events"
-            className="order-first min-h-[48px] border border-white/45 bg-transparent px-2.5 py-2 text-[10px] font-semibold uppercase tracking-wide text-white sm:px-3 sm:text-xs"
-            aria-label="Events — Kelly on the trail"
-          >
-            Events
-          </Button>
-          <Button
-            href={voterRegistrationHref}
-            variant="outlineOnDark"
-            title="Vote / Register"
-            className="min-h-[48px] border border-white/45 bg-transparent px-2.5 py-2 text-[10px] font-semibold uppercase tracking-wide text-white sm:px-3 sm:text-xs"
-            aria-label="Vote / Register — voter registration center"
-          >
-            Vote
-          </Button>
-          <Button
-            href={volunteerHref}
-            target={volunteerExternal ? "_blank" : undefined}
-            rel={volunteerExternal ? "noopener noreferrer" : undefined}
-            variant="outlineOnDark"
-            className="min-h-[48px] border-2 border-white/50 bg-white/10 px-2.5 py-2 text-[10px] font-bold uppercase tracking-wide text-white sm:px-3.5 sm:text-xs"
-            aria-label="Volunteer — sign up"
-          >
-            Volunteer
-          </Button>
+        <div className="ml-auto flex shrink-0 flex-nowrap items-center justify-end gap-2 text-kelly-fog xl:hidden">
           <Button
             href={siteConfig.donateHref}
             variant="primary"
-            className="min-h-[48px] px-2.5 py-2 text-[10px] font-extrabold uppercase tracking-wide sm:px-3.5 sm:text-xs"
+            className="min-h-11 px-3 py-2 text-xs font-extrabold uppercase tracking-wide sm:min-h-12 sm:px-3.5"
             aria-label="Donate"
           >
             Donate
@@ -233,20 +204,33 @@ export function SiteHeader() {
           <Button
             type="button"
             variant="outlineOnDark"
-            className="min-h-[48px] px-2.5 py-2 text-[10px] sm:px-3 sm:text-xs"
-            onClick={() => setSearchOpen(true)}
-          >
-            Search
-          </Button>
-          <Button
-            type="button"
-            variant="outlineOnDark"
-            className="min-h-[48px] px-2.5 py-2 text-[10px] sm:px-3 sm:text-xs"
+            className="inline-flex h-11 w-11 min-h-11 shrink-0 items-center justify-center px-0 py-0 sm:h-12 sm:w-12 sm:min-h-12"
             aria-expanded={open}
             aria-controls={panelId}
+            aria-label={open ? "Close menu" : "Open menu"}
             onClick={() => setOpen((v) => !v)}
           >
-            Menu
+            {open ? (
+              <svg viewBox="0 0 24 24" className="h-5 w-5" aria-hidden>
+                <path
+                  d="M6 6l12 12M18 6L6 18"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                />
+              </svg>
+            ) : (
+              <svg viewBox="0 0 24 24" className="h-5 w-5" aria-hidden>
+                <path
+                  d="M4 7h16M4 12h16M4 17h16"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                />
+              </svg>
+            )}
           </Button>
         </div>
         </div>
@@ -273,7 +257,7 @@ export function SiteHeader() {
         onClick={(e) => e.stopPropagation()}
         role="presentation"
       >
-        <div className="flex h-full flex-col px-[var(--gutter-x)] py-6">
+        <div className="flex h-full flex-col px-[var(--gutter-x)] pb-6 pt-[max(1.25rem,env(safe-area-inset-top))]">
           <div className="flex items-center justify-between border-b border-kelly-gold/20 pb-4">
             <span className="font-heading text-lg font-bold text-white">Menu</span>
             <Button type="button" variant="ghostOnDark" onClick={() => setOpen(false)}>
@@ -281,13 +265,20 @@ export function SiteHeader() {
             </Button>
           </div>
           <nav className="mt-4 flex flex-1 flex-col gap-6 overflow-y-auto pb-6" aria-label="Mobile primary">
-            <div>
+            <div className="space-y-2">
               <Link
                 href={voterRegistrationHref}
                 className="block min-h-[48px] rounded-btn bg-kelly-gold px-3 py-3 text-center font-body text-base font-bold text-kelly-navy shadow-md transition hover:bg-kelly-gold-soft focus-visible:outline focus-visible:ring-2 focus-visible:ring-kelly-gold/70"
                 onClick={() => setOpen(false)}
               >
                 Vote / Register
+              </Link>
+              <Link
+                href="/events"
+                className="block min-h-[48px] rounded-btn border border-white/40 px-3 py-3 text-center font-body text-base font-semibold text-white hover:bg-white/10 focus-visible:outline focus-visible:ring-2 focus-visible:ring-kelly-gold/45"
+                onClick={() => setOpen(false)}
+              >
+                Events
               </Link>
             </div>
 
