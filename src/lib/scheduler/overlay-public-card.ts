@@ -14,10 +14,10 @@ export function overlayPublishedCalendarEvent(base: EventItem, pub: PublicCampai
   const marks = cardToEventMarks(card);
   const next: EventItem = {
     ...base,
-    title: pub.title || base.title,
-    startsAt: pub.startAt.toISOString(),
-    endsAt: pub.endAt.toISOString(),
-    timezone: pub.timezone || base.timezone,
+    title: base.title || pub.title,
+    startsAt: base.startsAt,
+    endsAt: base.endsAt ?? pub.endAt.toISOString(),
+    timezone: base.timezone || pub.timezone,
     locationLabel: isThinPlace(pub.locationName) ? base.locationLabel : pub.locationName!.trim(),
     city: isThinPlace(pub.city) ? base.city : pub.city!.trim(),
     addressLine: isThinPlace(pub.address) ? base.addressLine : pub.address!.trim(),

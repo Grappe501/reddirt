@@ -906,29 +906,31 @@ const movementEventsCore: EventItem[] = [
     region: "Southwest Arkansas",
     countySlug: "cleveland-county",
     status: "upcoming",
-    startsAt: "2026-09-12T12:00:00",
-    endsAt: "2026-09-12T14:00:00",
+    startsAt: "2026-09-12T14:00:00-05:00",
+    endsAt: "2026-09-12T16:00:00-05:00",
     timezone: "America/Chicago",
-    locationLabel: "Cleveland County Democrats — meet and greet (Rison; venue TBA)",
+    locationLabel: "Rison — Cleveland County",
     addressLine: "Rison, AR (street not in the host note — confirm with Cleveland County Democrats before travel)",
+    city: "Rison",
     summary:
-      "Saturday, September 12, 2026, **12:00 p.m. Central** in Rison: Cleveland County Democrats **meet and greet** — confirmed. Kelly arrives for the end of this hour after the start of Stuttgart. Host-run — not a campaign rally. Street TBA.",
+      "Saturday, September 12, 2026, **2:00–4:00 p.m. Central** in **Rison**: Cleveland County Democrats **meet and greet** — confirmed. Kelly comes from Stuttgart (11:00 a.m.–noon) and is here for this window. Host-run — not a campaign rally. Street TBA.",
     description:
-      "Cleveland County Democrats look forward to seeing the campaign on **Saturday, September 12** at **12:00 noon** for a **meet and greet**.\n\n**Kelly will be at the beginning of the Stuttgart hour, then drive to Rison for the end of this meet and greet.**\n\nBuilding and street are still TBA. This listing places the gathering in **Rison**, the Cleveland County seat — confirm the room with the county party before treating it as a walk-in.\n\nThis is a **county Democratic Party** meet and greet, not a Grappe-hosted event.\n\nThe same host also flagged **Rison in the Fall** on October 12.",
+      "Cleveland County Democrats look forward to seeing the campaign on **Saturday, September 12**, **2:00–4:00 p.m. Central**, for a **meet and greet** in **Rison**.\n\n**Kelly is in Stuttgart 11:00 a.m. to noon, then drives to Rison for this 2:00–4:00 p.m. window.**\n\nBuilding and street are still TBA. This listing places the gathering in **Rison**, the Cleveland County seat — confirm the room with the county party before treating it as a walk-in.\n\nThis is a **county Democratic Party** meet and greet, not a Grappe-hosted event.\n\nThe same host also flagged **Rison in the Fall** on October 12.",
     whatToExpect: [
-      "12:00 p.m. Central start — Kelly arrives for the end after Stuttgart",
+      "2:00–4:00 p.m. Central in Rison",
+      "Kelly arrives after Stuttgart (she leaves Stuttgart by noon)",
       "County party meet and greet; follow the host for speaking order",
       "Street and building TBA",
     ],
     whoItsFor:
       "Cleveland County neighbors and anyone the county party welcomes. Confirm the address with the hosts before travel.",
     organizerNote:
-      "Steve 2026-09-08: confirmed. Kelly at beginning of Stuttgart, then end of Cleveland. Jam Harp email 2026-08-06. Bio + photo for Cleveland County Herald ASAP — operator task; do not publish campaign email. Venue not given.",
+      "Steve 2026-09-11: confirmed 2:00-4:00 p.m. in Rison (not noon). Kelly leaves Stuttgart by noon for this window. Jam Harp email 2026-08-06. Bio + photo for Cleveland County Herald ASAP — operator task; do not publish campaign email. Venue not given.",
     rsvpHref: undefined,
     audienceTags: ["Rison", "Cleveland County", "Democratic Party", "Southwest Arkansas"],
     relatedEventSlugs: ["stuttgart-sep-12-2026", "rison-in-the-fall-2026"],
     relatedResourceHrefs: [
-      { label: "Stuttgart — Saturday midday (start)", href: "/events/stuttgart-sep-12-2026" },
+      { label: "Stuttgart — 11:00 a.m. to noon", href: "/events/stuttgart-sep-12-2026" },
       { label: "Rison in the Fall — October 12", href: "/events/rison-in-the-fall-2026" },
       { label: "Get involved", href: "/get-involved" },
     ],
@@ -951,7 +953,7 @@ const movementEventsCore: EventItem[] = [
     summary:
       "Sunday, September 13, 2026, **7:00 a.m. Central** at the **Anstaff Soccer Complex**: Kelly will be at the **31st Annual Arkansas Hot Air Balloon State Championship**. Festival weekend is September 11–13. Admission to the grounds is free.",
     description:
-      "The **31st Annual Arkansas Hot Air Balloon State Championship** runs **September 11–13, 2026**, at the **Anstaff Soccer Complex**, **202 Old Stonewall Road**, Harrison.\n\n**Kelly will be on the grounds Sunday morning, September 13, at 7:00 a.m. Central.** The campaign overnight is in Harrison Saturday night so she can be there for the Sunday morning flight window.\n\nThis is a **community festival**, not a Grappe-hosted rally. Hosts list balloon competitions, evening balloon glows, weather-permitting tethered rides, live music, food and retail vendors, and a kids’ zone. Confirm the daily clock and weather holds with the Harrison Convention & Visitors Bureau or the Arkansas Hot Air Balloon Festival Facebook page.\n\nSaturday midday the public calendar also has the Cleveland County Democrats meet and greet in Rison — Harrison to Rison that noon is a long drive. Kelly’s public stop here is **Sunday morning**.",
+      "The **31st Annual Arkansas Hot Air Balloon State Championship** runs **September 11–13, 2026**, at the **Anstaff Soccer Complex**, **202 Old Stonewall Road**, Harrison.\n\n**Kelly will be on the grounds Sunday morning, September 13, at 7:00 a.m. Central.** The campaign overnight is in Harrison Saturday night so she can be there for the Sunday morning flight window.\n\nThis is a **community festival**, not a Grappe-hosted rally. Hosts list balloon competitions, evening balloon glows, weather-permitting tethered rides, live music, food and retail vendors, and a kids’ zone. Confirm the daily clock and weather holds with the Harrison Convention & Visitors Bureau or the Arkansas Hot Air Balloon Festival Facebook page.\n\nSaturday afternoon the public calendar also has the Cleveland County Democrats meet and greet in Rison (2:00–4:00 p.m.) — Harrison to Rison that afternoon is a long drive. Kelly’s public stop here is **Sunday morning**.",
     whatToExpect: [
       "Kelly on the grounds Sunday, September 13, 7:00 a.m. Central",
       "Festival weekend September 11–13 at Anstaff Soccer Complex",
@@ -2832,28 +2834,30 @@ const movementEventsCore: EventItem[] = [
   },
   {
     slug: "stuttgart-sep-12-2026",
-    title: "Stuttgart — Saturday midday",
+    title: "Stuttgart",
     type: "Community Conversation",
     region: "Southeast Arkansas",
     countySlug: "arkansas-county",
     status: "upcoming",
-    startsAt: "2026-09-12T11:00:00",
-    endsAt: "2026-09-12T13:00:00",
+    startsAt: "2026-09-12T11:00:00-05:00",
+    endsAt: "2026-09-12T12:00:00-05:00",
     timezone: "America/Chicago",
-    locationLabel: "Stuttgart (venue TBA)",
+    locationLabel: "Stuttgart — Arkansas County",
     addressLine: "Stuttgart, AR (building not on the calendar block)",
+    city: "Stuttgart",
     summary:
-      "Saturday, September 12, 2026, **11:00 a.m.–1:00 p.m. Central** in Stuttgart — confirmed. Kelly will be at the beginning of this hour, then drive to the Cleveland County meet and greet in Rison. Venue TBA.",
+      "Saturday, September 12, 2026, **11:00 a.m.–noon Central** in **Stuttgart** — confirmed. The gathering runs until 1:00 p.m.; Kelly leaves by noon for Rison. Venue TBA.",
     description:
-      "**Saturday, September 12, 2026**, **11:00 a.m.–1:00 p.m. Central** in **Stuttgart**.\n\n**Kelly will be at the beginning of this hour, then drive to Rison for the end of the Cleveland County Democrats meet and greet.**\n\nVenue and building are still TBA. This is not the October 17 Stuttgart hour — that is a separate calendar row.",
+      "**Saturday, September 12, 2026**, **11:00 a.m. to noon Central** in **Stuttgart**.\n\nThe event itself goes until **1:00 p.m.** Kelly must leave by **noon** to reach the Cleveland County Democrats meet and greet in **Rison (2:00–4:00 p.m.)**.\n\nVenue and building are still TBA. This is not the October 17 Stuttgart hour — that is a separate calendar row.",
     whatToExpect: [
-      "11:00 a.m.–1:00 p.m. Central — Kelly at the beginning",
-      "Then drive to Cleveland County / Rison for the end of that meet and greet",
+      "Kelly is in Stuttgart 11:00 a.m. to noon Central",
+      "The event continues until 1:00 p.m.; she leaves by noon for Rison",
+      "Then Cleveland County meet and greet in Rison, 2:00–4:00 p.m.",
       "Venue TBA",
     ],
     whoItsFor: "Arkansas County neighbors once a room and host are posted.",
     organizerNote:
-      "Steve 2026-09-08: confirmed. Beginning of Stuttgart, then end of Cleveland. Distinct from stuttgart-oct-17-2026.",
+      "Steve 2026-09-11: Kelly window 11:00 a.m.-noon. Event runs to 1:00 p.m. She must leave by noon for Rison 2:00-4:00. Distinct from stuttgart-oct-17-2026.",
     relatedEventSlugs: ["cleveland-county-meet-and-greet-2026", "stuttgart-oct-17-2026"],
     relatedResourceHrefs: [
       { label: "Cleveland County meet and greet — same day", href: "/events/cleveland-county-meet-and-greet-2026" },
@@ -2878,7 +2882,7 @@ const movementEventsCore: EventItem[] = [
     summary:
       "Saturday, September 12, 2026, **4:00–7:00 p.m. Central** at the **Conway County Fair** in Morrilton, on the way to Harrison. Caution — we need more information before this is a locked stop.",
     description:
-      "The **Conway County Fair** in Morrilton runs **Saturday, September 12 through Monday, September 14**.\n\n**Kelly’s public window is Saturday, 4:00–7:00 p.m. Central**, on the way to Harrison for the Sunday morning balloon festival. This is a **county fair** stop, not a Grappe-hosted rally. Gate and host table are TBA.\n\n**Caution.** We still need to reach Conway County volunteers to lock a meetup. Do not treat the Saturday window as a walk-in until that is confirmed.\n\nThe same Saturday the public calendar has confirmed Stuttgart (beginning of that hour) and Cleveland County in Rison (end of the meet and greet). Harrison’s public stop is **Sunday morning**.",
+      "The **Conway County Fair** in Morrilton runs **Saturday, September 12 through Monday, September 14**.\n\n**Kelly’s public window is Saturday, 4:00–7:00 p.m. Central**, on the way to Harrison for the Sunday morning balloon festival. This is a **county fair** stop, not a Grappe-hosted rally. Gate and host table are TBA.\n\n**Caution.** We still need to reach Conway County volunteers to lock a meetup. Do not treat the Saturday window as a walk-in until that is confirmed.\n\nThe same Saturday the public calendar has confirmed Stuttgart (11:00 a.m. to noon) and Cleveland County in Rison (2:00–4:00 p.m.). Harrison’s public stop is **Sunday morning**.",
     whatToExpect: [
       "Kelly window Saturday, September 12, 4:00–7:00 p.m. Central — on the way to Harrison",
       "Fair also runs through Monday, September 14",
@@ -3229,7 +3233,7 @@ const movementEventsCore: EventItem[] = [
     summary:
       "Saturday, October 17, 2026, **10:30 a.m.–2:00 p.m. Central** in Stuttgart. Venue TBA. Same day: UAPB Homecoming 8:00 a.m., Flat Rock fish fry 5:30 p.m., Rocky Comfort in Foreman.",
     description:
-      "The campaign calendar lists **Stuttgart** on Saturday, **October 17**, **10:30 a.m.–2:00 p.m.** (two overlapping blocks). No building was on the block.\n\nThis is a different hour from the **September 12** Stuttgart 11:00–1:00 hold.\n\nThe same Saturday morning is **UAPB Homecoming** in Pine Bluff (8:00–10:00 a.m.). Evening is a **Flat Rock Hwy 359 fire department fish fry** at 5:30 p.m. All day is **Rocky Comfort Pecan Festival** in Foreman.",
+      "The campaign calendar lists **Stuttgart** on Saturday, **October 17**, **10:30 a.m.–2:00 p.m.** (two overlapping blocks). No building was on the block.\n\nThis is a different hour from the **September 12** Stuttgart 11:00 a.m.–noon window.\n\nThe same Saturday morning is **UAPB Homecoming** in Pine Bluff (8:00–10:00 a.m.). Evening is a **Flat Rock Hwy 359 fire department fish fry** at 5:30 p.m. All day is **Rocky Comfort Pecan Festival** in Foreman.",
     whatToExpect: ["10:30 a.m.–2:00 p.m. Central", "Venue TBA"],
     whoItsFor: "Arkansas County neighbors once a room is posted.",
     organizerNote:

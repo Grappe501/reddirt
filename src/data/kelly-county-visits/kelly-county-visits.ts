@@ -3697,7 +3697,7 @@ const kellyCampaignStopsSource: KellyCampaignStop[] = [
     includeOnPublicPage: true,
     confidence: "confirmed",
     notes:
-      "Steve 2026-09-08: confirmed. Kelly at beginning of Stuttgart, then end of this Rison meet and greet. Jam Harp email 2026-08-06. Sat Sep 12 12:00 p.m. Venue/street not in the note — city is Rison. Host asked for bio + photo for Cleveland County Herald — operator follow-up, do not publish a campaign email. /events/cleveland-county-meet-and-greet-2026",
+      "Steve 2026-09-11: confirmed 2:00-4:00 p.m. in Rison (not noon). Kelly leaves Stuttgart by noon for this window. Jam Harp email 2026-08-06. Venue/street not in the note — city is Rison. Host asked for bio + photo for Cleveland County Herald — operator follow-up, do not publish a campaign email. /events/cleveland-county-meet-and-greet-2026",
     sourceType: "calendar",
   },
 
@@ -5030,16 +5030,16 @@ const kellyCampaignStopsSource: KellyCampaignStop[] = [
   },
   {
     id: "manual-2026-09-12-stuttgart",
-    publicTitle: "Stuttgart — 11:00 a.m. to 1:00 p.m.",
+    publicTitle: "Stuttgart — 11:00 a.m. to noon",
     date: "2026-09-12",
-    title: "Stuttgart 11am-1",
+    title: "Stuttgart 11am-noon",
     city: "Stuttgart",
     counties: ["Arkansas"],
     status: "scheduled",
     includeOnPublicPage: true,
     confidence: "confirmed",
     notes:
-      "Steve 2026-09-08: confirmed. Kelly at the beginning of Stuttgart 11:00 a.m.-1:00 p.m., then drive to the end of Cleveland County / Rison. Venue not on the block. /events/stuttgart-sep-12-2026",
+      "Steve 2026-09-11: Kelly window 11:00 a.m.-noon. Event runs to 1:00 p.m.; she must leave by noon for Rison 2:00-4:00. Venue not on the block. /events/stuttgart-sep-12-2026",
     sourceType: "calendar",
   },
   {
