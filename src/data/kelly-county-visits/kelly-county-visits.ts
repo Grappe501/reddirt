@@ -5011,12 +5011,12 @@ const kellyCampaignStopsSource: KellyCampaignStop[] = [
     confidence: "confirmed",
     city: "Lewisville",
     notes:
-      "Steve 2026-09-11: Lafayette County / Lewisville. Host Ethan Dunbar. Evening softball first pitch, then karaoke with first responders. /events/lafayette-county-sep-2026",
+      "Steve 2026-09-11 city timeline: Lewisville Fireman’s Festival Fri 5:30-10:00 p.m. Kelly first pitch 7:00 FF v LE softball at LCHS. Karaoke 8:45 after 8:30 trophy downtown. Sat is city day two — Kelly in Stuttgart then Rison. Host Ethan Dunbar. /events/lafayette-county-sep-2026",
     sourceType: "calendar",
   },
   {
     id: "manual-2026-09-11-le-vs-fire-softball",
-    publicTitle: "Fire vs. police softball — first pitch",
+    publicTitle: "Lewisville Fireman’s Festival",
     date: "2026-09-11",
     title: "7pm law enforcement vs fire softball",
     city: "Lewisville",
@@ -5025,7 +5025,7 @@ const kellyCampaignStopsSource: KellyCampaignStop[] = [
     includeOnPublicPage: true,
     confidence: "confirmed",
     notes:
-      "Steve 2026-09-11: Lafayette County / Lewisville. Host Ethan Dunbar. Kelly throws out the first pitch. Karaoke with first responders follows the game. /events/le-vs-fire-softball-2026",
+      "Steve 2026-09-11 city Fireman’s Festival timeline. Fri 5:30-10:00 p.m. Lewisville. Feed the Community 5:30 City Park; H/R Derby 6:00 LCHS; FF v LE softball 7:00 LCHS (Kelly first pitch); trophy 8:30 downtown; karaoke 8:45-9:45; Mo Betta Band 8:45-10:00. Vendor setup 3:00 p.m. Sat 7:00 a.m.-8:00 p.m. city only. Host Ethan Dunbar. /events/le-vs-fire-softball-2026",
     sourceType: "calendar",
   },
   {

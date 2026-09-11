@@ -443,8 +443,8 @@ export function campaignApproachForSlug(slug: string): CampaignApproachDecision 
 
 const DATE_LOCKS: Record<string, { startsAt: string; endsAt: string }> = {
   "le-vs-fire-softball-2026": {
-    startsAt: "2026-09-11T19:00:00-05:00",
-    endsAt: "2026-09-11T20:00:00-05:00",
+    startsAt: "2026-09-11T17:30:00-05:00",
+    endsAt: "2026-09-11T22:00:00-05:00",
   },
   "grassroots-guitar-strings-2026": {
     startsAt: "2026-09-17T18:30:00-05:00",
