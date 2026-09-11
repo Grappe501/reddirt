@@ -901,31 +901,34 @@ const movementEventsCore: EventItem[] = [
   },
   {
     slug: "cleveland-county-meet-and-greet-2026",
-    title: "Cleveland County Democrats — meet and greet (Rison)",
+    title: "Meet the Candidates — Cleveland County Democrats",
     type: "Community Conversation",
     region: "Southwest Arkansas",
     countySlug: "cleveland-county",
     status: "upcoming",
-    startsAt: "2026-09-12T14:00:00-05:00",
-    endsAt: "2026-09-12T16:00:00-05:00",
+    startsAt: "2026-09-12T12:00:00-05:00",
+    endsAt: "2026-09-12T14:00:00-05:00",
     timezone: "America/Chicago",
-    locationLabel: "Rison — Cleveland County",
-    addressLine: "Rison, AR (street not in the host note — confirm with Cleveland County Democrats before travel)",
+    locationLabel: "Hall-Morgan Veterans Building — Rison",
+    addressLine: "404 Sycamore St., Rison, AR 71665",
     city: "Rison",
+    flyerSrc: "/media/event-flyers/cleveland-county-meet-candidates-rison-2026-09-12.jpg",
+    flyerAlt:
+      "Your Voice Your Vote flyer: Democratic Party of Cleveland County hosts Meet the Candidates on Saturday, September 12, 2026, 12:00 to 2:00 p.m. at the Hall-Morgan Veterans Building, 404 Sycamore St., Rison. Q&A with light lunch. Mayor Tomeka Butler, James Russell, and Kelly Grappe.",
     summary:
-      "Saturday, September 12, 2026, **2:00–4:00 p.m. Central** in **Rison**: Cleveland County Democrats **meet and greet** — confirmed. Kelly comes from Stuttgart (11:00 a.m.–noon) and is here for this window. Host-run — not a campaign rally. Street TBA.",
+      "Saturday, September 12, 2026, **noon–2:00 p.m. Central** at the **Hall-Morgan Veterans Building**, **404 Sycamore St.**, **Rison**. Cleveland County Democrats host Meet the Candidates — Q&A, refreshments, and a light lunch. Kelly comes from Stuttgart after 11:00 a.m.–noon.",
     description:
-      "Cleveland County Democrats look forward to seeing the campaign on **Saturday, September 12**, **2:00–4:00 p.m. Central**, for a **meet and greet** in **Rison**.\n\n**Kelly is in Stuttgart 11:00 a.m. to noon, then drives to Rison for this 2:00–4:00 p.m. window.**\n\nBuilding and street are still TBA. This listing places the gathering in **Rison**, the Cleveland County seat — confirm the room with the county party before treating it as a walk-in.\n\nThis is a **county Democratic Party** meet and greet, not a Grappe-hosted event.\n\nThe same host also flagged **Rison in the Fall** on October 12.",
+      "**Saturday, September 12, 2026**, **noon to 2:00 p.m. Central** at the **Hall-Morgan Veterans Building**, **404 Sycamore St., Rison, AR 71665**.\n\nThe **Democratic Party of Cleveland County** is hosting **Meet the Candidates** — Q&A, refreshments, and a light lunch. The host flyer names **Mayor Tomeka Butler** (State Senate District 1), **James Russell** (U.S. House, Arkansas 4th District), and **Kelly Grappe** (Secretary of State).\n\n**Kelly is in Stuttgart 11:00 a.m. to noon, then drives to Rison for this noon–2:00 p.m. window.**\n\nThis is a **county Democratic Party** meet and greet, not a Grappe-hosted event.\n\nThe same host also flagged **Rison in the Fall** on October 12.",
     whatToExpect: [
-      "2:00–4:00 p.m. Central in Rison",
+      "Noon–2:00 p.m. Central at the Hall-Morgan Veterans Building",
+      "404 Sycamore St., Rison",
+      "Q&A, refreshments, and a light lunch",
       "Kelly arrives after Stuttgart (she leaves Stuttgart by noon)",
-      "County party meet and greet; follow the host for speaking order",
-      "Street and building TBA",
     ],
     whoItsFor:
-      "Cleveland County neighbors and anyone the county party welcomes. Confirm the address with the hosts before travel.",
+      "Cleveland County neighbors and anyone the county party welcomes.",
     organizerNote:
-      "Steve 2026-09-11: confirmed 2:00-4:00 p.m. in Rison (not noon). Kelly leaves Stuttgart by noon for this window. Jam Harp email 2026-08-06. Bio + photo for Cleveland County Herald ASAP — operator task; do not publish campaign email. Venue not given.",
+      "Steve 2026-09-11 flyer + Cleveland County Herald: Hall-Morgan Veterans Building, 404 Sycamore St., Rison. Host window noon-2:00 p.m. (supersedes earlier 2:00-4:00 verbal). Kelly leaves Stuttgart by noon. Do not publish opponent names from the Herald write-up. Jam Harp / Herald bio follow-up stays operator-only.",
     rsvpHref: undefined,
     audienceTags: ["Rison", "Cleveland County", "Democratic Party", "Southwest Arkansas"],
     relatedEventSlugs: ["stuttgart-sep-12-2026", "rison-in-the-fall-2026"],
@@ -953,7 +956,7 @@ const movementEventsCore: EventItem[] = [
     summary:
       "Sunday, September 13, 2026, **7:00 a.m. Central** at the **Anstaff Soccer Complex**: Kelly will be at the **31st Annual Arkansas Hot Air Balloon State Championship**. Festival weekend is September 11–13. Admission to the grounds is free.",
     description:
-      "The **31st Annual Arkansas Hot Air Balloon State Championship** runs **September 11–13, 2026**, at the **Anstaff Soccer Complex**, **202 Old Stonewall Road**, Harrison.\n\n**Kelly will be on the grounds Sunday morning, September 13, at 7:00 a.m. Central.** The campaign overnight is in Harrison Saturday night so she can be there for the Sunday morning flight window.\n\nThis is a **community festival**, not a Grappe-hosted rally. Hosts list balloon competitions, evening balloon glows, weather-permitting tethered rides, live music, food and retail vendors, and a kids’ zone. Confirm the daily clock and weather holds with the Harrison Convention & Visitors Bureau or the Arkansas Hot Air Balloon Festival Facebook page.\n\nSaturday afternoon the public calendar also has the Cleveland County Democrats meet and greet in Rison (2:00–4:00 p.m.) — Harrison to Rison that afternoon is a long drive. Kelly’s public stop here is **Sunday morning**.",
+      "The **31st Annual Arkansas Hot Air Balloon State Championship** runs **September 11–13, 2026**, at the **Anstaff Soccer Complex**, **202 Old Stonewall Road**, Harrison.\n\n**Kelly will be on the grounds Sunday morning, September 13, at 7:00 a.m. Central.** The campaign overnight is in Harrison Saturday night so she can be there for the Sunday morning flight window.\n\nThis is a **community festival**, not a Grappe-hosted rally. Hosts list balloon competitions, evening balloon glows, weather-permitting tethered rides, live music, food and retail vendors, and a kids’ zone. Confirm the daily clock and weather holds with the Harrison Convention & Visitors Bureau or the Arkansas Hot Air Balloon Festival Facebook page.\n\nSaturday the public calendar also has the Cleveland County Democrats Meet the Candidates in Rison (noon–2:00 p.m.) — Harrison to Rison that day is a long drive. Kelly’s public stop here is **Sunday morning**.",
     whatToExpect: [
       "Kelly on the grounds Sunday, September 13, 7:00 a.m. Central",
       "Festival weekend September 11–13 at Anstaff Soccer Complex",
@@ -2851,7 +2854,7 @@ const movementEventsCore: EventItem[] = [
     summary:
       "Saturday, September 12, 2026, **11:00 a.m. Central** at **the Harr House**, **3749 Harr Drive**, **Stuttgart** — coffee, muffins, and conversation. Kelly is there **11:00 a.m. to noon**, then leaves for Rison.",
     description:
-      "**Saturday, September 12, 2026**, **11:00 a.m. Central** at **the Harr House**, **3749 Harr Drive, Stuttgart, AR**.\n\n**Coffee & Muffins at the Harr House** is a host-run morning of coffee, muffins, and conversation with candidates. The flyer names **Quendy Gibbins Medlin**, Independent candidate for Arkansas State Representative District 60, and **Kelly Grappe**, Democratic candidate for Arkansas Secretary of State. Everyone is welcome.\n\n**Kelly’s public window is 11:00 a.m. to noon.** She leaves by noon for the Cleveland County Democrats meet and greet in **Rison (2:00–4:00 p.m.)**.\n\nThis is not the October 17 Stuttgart hour — that is a separate calendar row.",
+      "**Saturday, September 12, 2026**, **11:00 a.m. Central** at **the Harr House**, **3749 Harr Drive, Stuttgart, AR**.\n\n**Coffee & Muffins at the Harr House** is a host-run morning of coffee, muffins, and conversation with candidates. The flyer names **Quendy Gibbins Medlin**, Independent candidate for Arkansas State Representative District 60, and **Kelly Grappe**, Democratic candidate for Arkansas Secretary of State. Everyone is welcome.\n\n**Kelly’s public window is 11:00 a.m. to noon.** She leaves by noon for the Cleveland County Democrats Meet the Candidates in **Rison (noon–2:00 p.m.)**.\n\nThis is not the October 17 Stuttgart hour — that is a separate calendar row.",
     whatToExpect: [
       "11:00 a.m. Central at the Harr House, 3749 Harr Drive, Stuttgart",
       "Coffee, muffins, and conversation — everyone is welcome",
@@ -2860,7 +2863,7 @@ const movementEventsCore: EventItem[] = [
     ],
     whoItsFor: "Arkansas County neighbors and anyone the hosts welcome. Everyone is welcome.",
     organizerNote:
-      "Steve 2026-09-11 flyer: Coffee & Muffins at the Harr House, 3749 Harr Drive, Stuttgart. Kelly 11:00 a.m.-noon then Rison 2:00-4:00. Host flyer names Quendy Gibbins Medlin (Independent, HD 60). Distinct from stuttgart-oct-17-2026.",
+      "Steve 2026-09-11 flyer: Coffee & Muffins at the Harr House, 3749 Harr Drive, Stuttgart. Kelly 11:00 a.m.-noon then Rison noon-2:00 at Hall-Morgan Veterans Building. Host flyer names Quendy Gibbins Medlin (Independent, HD 60). Distinct from stuttgart-oct-17-2026.",
     relatedEventSlugs: ["cleveland-county-meet-and-greet-2026", "stuttgart-oct-17-2026"],
     relatedResourceHrefs: [
       { label: "Cleveland County meet and greet — same day", href: "/events/cleveland-county-meet-and-greet-2026" },
@@ -2885,7 +2888,7 @@ const movementEventsCore: EventItem[] = [
     summary:
       "Saturday, September 12, 2026, **4:00–7:00 p.m. Central** at the **Conway County Fair** in Morrilton, on the way to Harrison. Caution — we need more information before this is a locked stop.",
     description:
-      "The **Conway County Fair** in Morrilton runs **Saturday, September 12 through Monday, September 14**.\n\n**Kelly’s public window is Saturday, 4:00–7:00 p.m. Central**, on the way to Harrison for the Sunday morning balloon festival. This is a **county fair** stop, not a Grappe-hosted rally. Gate and host table are TBA.\n\n**Caution.** We still need to reach Conway County volunteers to lock a meetup. Do not treat the Saturday window as a walk-in until that is confirmed.\n\nThe same Saturday the public calendar has confirmed Stuttgart (11:00 a.m. to noon) and Cleveland County in Rison (2:00–4:00 p.m.). Harrison’s public stop is **Sunday morning**.",
+      "The **Conway County Fair** in Morrilton runs **Saturday, September 12 through Monday, September 14**.\n\n**Kelly’s public window is Saturday, 4:00–7:00 p.m. Central**, on the way to Harrison for the Sunday morning balloon festival. This is a **county fair** stop, not a Grappe-hosted rally. Gate and host table are TBA.\n\n**Caution.** We still need to reach Conway County volunteers to lock a meetup. Do not treat the Saturday window as a walk-in until that is confirmed.\n\nThe same Saturday the public calendar has confirmed Stuttgart (11:00 a.m. to noon) and Cleveland County in Rison (noon–2:00 p.m.). Harrison’s public stop is **Sunday morning**.",
     whatToExpect: [
       "Kelly window Saturday, September 12, 4:00–7:00 p.m. Central — on the way to Harrison",
       "Fair also runs through Monday, September 14",
@@ -3356,24 +3359,32 @@ const movementEventsCore: EventItem[] = [
   },
   {
     slug: "dequeen-sep-20-2026",
-    title: "De Queen — 4:00 to 6:00 p.m.",
+    title: "Meet & Greet Kelly Grappe — De Queen",
     type: "Community Conversation",
     region: "Southwest Arkansas",
     countySlug: "sevier-county",
     status: "upcoming",
-    startsAt: "2026-09-20T16:00:00",
-    endsAt: "2026-09-20T18:00:00",
+    startsAt: "2026-09-20T16:00:00-05:00",
+    endsAt: "2026-09-20T18:00:00-05:00",
     timezone: "America/Chicago",
-    locationLabel: "De Queen (venue TBA)",
-    addressLine: "De Queen, AR (building not on the calendar block)",
+    locationLabel: "Downtown Pavilion — De Queen",
+    addressLine: "124 W. DeQueen Avenue, De Queen, AR 71832",
+    city: "De Queen",
+    flyerSrc: "/media/event-flyers/dequeen-meet-greet-2026-09-20.jpg",
+    flyerAlt:
+      "Meet & Greet Kelly Grappe for Secretary of State flyer: Sunday, September 20, 2026, 4:00 to 6:00 p.m. at the City of De Queen Downtown Pavilion, 124 W. DeQueen Avenue. Paid for by the Committee to Elect Kelly Grappe.",
     summary:
-      "Sunday, September 20, 2026, **4:00–6:00 p.m. Central** in De Queen — confirmed. Venue TBA. Same day: Clark County Multi-Church Tour, then travel to Becky's in Texarkana at 5:00 p.m.",
+      "Sunday, September 20, 2026, **4:00–6:00 p.m. Central** at the **Downtown Pavilion**, **124 W. DeQueen Avenue**, **De Queen**. Friends and supporters invite neighbors to meet Kelly.",
     description:
-      "**Sunday, September 20, 2026**, **4:00–6:00 p.m.** in **De Queen**.\n\nNo building was on the block. The same Sunday is the **Clark County Multi-Church Tour** (Gurdon / Arkadelphia) and **travel to Becky's in Texarkana at 5:00 p.m.** — all three confirmed.",
-    whatToExpect: ["4:00–6:00 p.m. Central — confirmed", "Venue TBA"],
-    whoItsFor: "Sevier County neighbors once a room is posted.",
+      "**Sunday, September 20, 2026**, **4:00–6:00 p.m. Central** at the **City of De Queen Downtown Pavilion**, **124 W. DeQueen Avenue, De Queen, AR 71832**.\n\nFriends and supporters invite you to a **Meet & Greet** with Kelly Grappe for Secretary of State.\n\nThe same Sunday is the **Clark County Multi-Church Tour** (Gurdon / Arkadelphia) and **travel to Becky's in Texarkana at 5:00 p.m.**",
+    whatToExpect: [
+      "4:00–6:00 p.m. Central at the Downtown Pavilion",
+      "124 W. DeQueen Avenue, De Queen",
+      "Meet & greet — friends and supporters invite you",
+    ],
+    whoItsFor: "Sevier County neighbors and anyone the hosts welcome.",
     organizerNote:
-      "Steve 2026-09-08: De Queen Sep 20 confirmed with Multi-Church Tour and Becky's Texarkana the same day.",
+      "Steve 2026-09-11 flyer: Downtown Pavilion, 124 W. DeQueen Avenue. Same day Multi-Church Tour and Becky's Texarkana 5:00 p.m.",
     relatedEventSlugs: ["arkadelphia-sep-20-2026", "little-river-charlotte-sep-21-2026", "beckys-texarkana-2026-09-20"],
     relatedResourceHrefs: [{ label: "Get involved", href: "/get-involved" }],
     mapCoordinates: { lat: 34.0379, lng: -94.3413 },

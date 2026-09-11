@@ -3688,7 +3688,7 @@ const kellyCampaignStopsSource: KellyCampaignStop[] = [
   },
   {
     id: "presence-2026-09-12-cleveland-county-forum-jametta-harper",
-    publicTitle: "Cleveland County Democrats — meet and greet",
+    publicTitle: "Meet the Candidates — Cleveland County Democrats",
     date: "2026-09-12",
     title: "Cleveland county forum - Jametta Harper",
     city: "Rison",
@@ -3697,7 +3697,7 @@ const kellyCampaignStopsSource: KellyCampaignStop[] = [
     includeOnPublicPage: true,
     confidence: "confirmed",
     notes:
-      "Steve 2026-09-11: confirmed 2:00-4:00 p.m. in Rison (not noon). Kelly leaves Stuttgart by noon for this window. Jam Harp email 2026-08-06. Venue/street not in the note — city is Rison. Host asked for bio + photo for Cleveland County Herald — operator follow-up, do not publish a campaign email. /events/cleveland-county-meet-and-greet-2026",
+      "Steve 2026-09-11 flyer + Herald: Hall-Morgan Veterans Building, 404 Sycamore St., Rison. Noon-2:00 p.m. (supersedes earlier 2:00-4:00 verbal). Kelly leaves Stuttgart by noon. /events/cleveland-county-meet-and-greet-2026",
     sourceType: "calendar",
   },
 
@@ -5039,7 +5039,7 @@ const kellyCampaignStopsSource: KellyCampaignStop[] = [
     includeOnPublicPage: true,
     confidence: "confirmed",
     notes:
-      "Steve 2026-09-11 flyer: Harr House, 3749 Harr Drive, Stuttgart. 11:00 a.m. Kelly leaves by noon for Rison 2:00-4:00. Host flyer names Quendy Gibbins Medlin (Independent, HD 60). /events/stuttgart-sep-12-2026",
+      "Steve 2026-09-11 flyer: Harr House, 3749 Harr Drive, Stuttgart. 11:00 a.m. Kelly leaves by noon for Rison noon-2:00 at Hall-Morgan Veterans Building. Host flyer names Quendy Gibbins Medlin (Independent, HD 60). /events/stuttgart-sep-12-2026",
     sourceType: "calendar",
   },
   {
@@ -5315,7 +5315,7 @@ const kellyCampaignStopsSource: KellyCampaignStop[] = [
   },
   {
     id: "manual-2026-09-20-dequeen",
-    publicTitle: "De Queen — 4:00 to 6:00 p.m.",
+    publicTitle: "Meet & Greet Kelly Grappe — De Queen",
     date: "2026-09-20",
     title: "Dequeen 4pm-6",
     city: "De Queen",
@@ -5324,7 +5324,7 @@ const kellyCampaignStopsSource: KellyCampaignStop[] = [
     includeOnPublicPage: true,
     confidence: "confirmed",
     notes:
-      "Steve 2026-09-08: De Queen Sep 20 confirmed with Multi-Church Tour and Becky's Texarkana. Venue TBA. /events/dequeen-sep-20-2026",
+      "Steve 2026-09-11 flyer: Downtown Pavilion, 124 W. DeQueen Avenue, De Queen. 4:00-6:00 p.m. Same day Multi-Church Tour and Becky's Texarkana 5:00 p.m. /events/dequeen-sep-20-2026",
     sourceType: "calendar",
   },
   {
