@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { CampaignJourneyMap } from "@/components/organizing/events-map/CampaignJourneyMap";
+import type { CountyMapFeature } from "@/components/organizing/events-map/county-map-types";
 import { onTheRoadProofCopy } from "@/content/road/on-the-road";
 import type { RoadPostCard } from "@/lib/content/content-hub-queries";
 import type { PublicCampaignEvent } from "@/lib/calendar/public-event-types";
@@ -7,38 +9,13 @@ import { cn } from "@/lib/utils";
 type OnTheRoadProofSectionsProps = {
   previewPosts: RoadPostCard[];
   upcomingEvents: PublicCampaignEvent[];
+  mapFeatures?: CountyMapFeature[];
   trailPhotosAvailable?: boolean;
   /** Whether Facebook/Instagram field grid exists below (for story-band cross-links). */
   hasFieldSocial?: boolean;
   /** When MediaPageHero already renders eyebrow/title/subtitle, keep body copy only. */
   omitHeroHeader?: boolean;
 };
-
-function ArkansasTrailMapPlaceholder() {
-  const { map } = onTheRoadProofCopy;
-  return (
-    <div
-      className="rounded-card border-2 border-dashed border-kelly-ink/20 bg-gradient-to-br from-kelly-fog/80 via-white to-kelly-wash/60 p-6 md:p-10"
-      role="img"
-      aria-label={map.placeholderAriaLabel}
-    >
-      <div className="mx-auto max-w-md text-center">
-        <svg className="mx-auto h-32 w-full max-w-[14rem] text-kelly-navy/25 motion-reduce:transition-none" viewBox="0 0 120 140" aria-hidden="true">
-          <rect x="8" y="12" width="104" height="116" rx="12" fill="currentColor" opacity="0.35" />
-          <path
-            d="M24 38h72M24 58h56M24 78h64M24 98h48"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            opacity="0.5"
-          />
-        </svg>
-        <p className="mt-4 font-heading text-sm font-bold text-kelly-ink md:text-base">{map.title}</p>
-        <p className="mt-2 font-body text-xs leading-relaxed text-kelly-slate md:text-sm">{map.placeholderCaption}</p>
-      </div>
-    </div>
-  );
-}
 
 function ProofMetricCard({
   label,
@@ -68,6 +45,7 @@ function ProofMetricCard({
 export function OnTheRoadProofSections({
   previewPosts,
   upcomingEvents,
+  mapFeatures = [],
   trailPhotosAvailable = false,
   hasFieldSocial = false,
   omitHeroHeader = false,
@@ -130,12 +108,24 @@ export function OnTheRoadProofSections({
         ))}
       </section>
 
-      <section className="mt-16 scroll-mt-24 md:mt-20" aria-labelledby="on-road-map-heading">
-        <h2 id="on-road-map-heading" className="sr-only">
-          {c.map.title}
-        </h2>
-        <ArkansasTrailMapPlaceholder />
-      </section>
+      {mapFeatures.length > 0 ? (
+        <section id="counties-map" className="mt-16 scroll-mt-24 md:mt-20" aria-labelledby="on-road-map-heading">
+          <h2 id="on-road-map-heading" className="text-center font-heading text-xl font-bold text-kelly-ink md:text-2xl">
+            {c.map.title}
+          </h2>
+          <p className="mx-auto mt-3 max-w-2xl text-center font-body text-sm leading-relaxed text-kelly-slate md:text-base">
+            {c.map.intro}
+          </p>
+          <div className="mx-auto mt-8 max-w-4xl">
+            <CampaignJourneyMap features={mapFeatures} />
+          </div>
+          <p className="mt-6 text-center">
+            <Link href={c.map.moreHref} className="font-semibold text-kelly-blue underline-offset-2 hover:underline">
+              {c.map.moreLabel}
+            </Link>
+          </p>
+        </section>
+      ) : null}
 
       {upcomingEvents.length > 0 ? (
         <section className="mt-14 scroll-mt-24 md:mt-16" aria-labelledby="on-road-events-heading">

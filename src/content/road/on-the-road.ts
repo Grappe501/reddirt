@@ -79,12 +79,11 @@ export const onTheRoadProofCopy = {
   },
 
   map: {
-    title: "Trail map (coming with verified stops)",
-    /** Accessible description for placeholder graphic — no markers until data is approved. */
-    placeholderAriaLabel:
-      "Placeholder for an Arkansas trail map. Verified county and city stops will be plotted here after approval. There are no map markers yet.",
-    placeholderCaption:
-      "TODO: Connect verified stops and county data — no fabricated pins.",
+    title: "Counties on the trail",
+    intro:
+      "Filled from the campaign county ledger — completed public visits and published stops only.",
+    moreHref: "/arkansas-visits",
+    moreLabel: "Full county calendar →",
   },
 
   stories: {

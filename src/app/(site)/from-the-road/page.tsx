@@ -19,7 +19,11 @@ import {
   type RoadPostCard,
   type RoadSocialCardVM,
 } from "@/lib/content/content-hub-queries";
-import { listUpcomingPublicCampaignEventsForHomepage } from "@/lib/calendar/public-events";
+import { events } from "@/content/events";
+import { listUpcomingPublicCampaignEventsForHomepage, queryPublicCampaignEvents } from "@/lib/calendar/public-events";
+import { mergeMovementAndCalendarEvents } from "@/lib/events/calendar-to-movement-event";
+import { buildEventsMapModel } from "@/lib/events/events-map-model";
+import { loadCountyVisitLedger } from "@/lib/events/load-county-visit-ledger";
 import { pageMeta } from "@/lib/seo/metadata";
 import { brandMediaFromLegacySite } from "@/config/brand-media";
 import { TrailPhotosShowcase } from "@/components/campaign-trail/TrailPhotosShowcase";
@@ -34,14 +38,21 @@ export const metadata: Metadata = pageMeta({
   imageSrc: brandMediaFromLegacySite.statewideBanner,
 });
 
+/** Visit paint and upcoming stops must not freeze at last `next build`. */
+export const dynamic = "force-dynamic";
+
 export default async function FromTheRoadPage() {
   const embedsConfig = getFromTheRoadEmbedsConfig();
-  const [posts, social, youtube, upcomingEvents] = await Promise.all([
+  const [posts, social, youtube, upcomingEvents, calendarRows] = await Promise.all([
     listFromTheRoadPosts(48),
     listFromTheRoadSocialItems(32),
     listFromTheRoadYoutubeMoments(8),
     listUpcomingPublicCampaignEventsForHomepage(4),
+    queryPublicCampaignEvents({ range: "all_upcoming" }, { take: 200 }),
   ]);
+  const mergedEvents = mergeMovementAndCalendarEvents(events, calendarRows);
+  const ledger = await loadCountyVisitLedger(mergedEvents);
+  const { features: mapFeatures } = buildEventsMapModel(ledger, mergedEvents);
   const trailGallery = trailPhotosForSlot("fromTheRoad", { fromTheRoadMax: 96 });
   const hasEmbeds = fromTheRoadHasLiveEmbeds(embedsConfig);
   const hasFieldSocial = social.length > 0;
@@ -65,6 +76,7 @@ export default async function FromTheRoadPage() {
         <OnTheRoadProofSections
           previewPosts={posts}
           upcomingEvents={upcomingEvents}
+          mapFeatures={mapFeatures}
           trailPhotosAvailable={hasTrailPhotos}
           hasFieldSocial={hasFieldSocial}
           omitHeroHeader
@@ -179,6 +191,9 @@ export default async function FromTheRoadPage() {
         <nav aria-label="Page sections" className="mt-12 border-t border-kelly-ink/8 pt-8 font-body text-sm text-kelly-slate/90">
           <p className="mb-3 font-semibold text-kelly-ink">On this page</p>
           <ul className="flex flex-wrap gap-x-3 gap-y-2">
+            <li>
+              <a className="text-kelly-blue underline-offset-2 hover:underline focus-visible:rounded-sm focus-visible:outline focus-visible:ring-2 focus-visible:ring-kelly-gold/50" href="#counties-map">Counties</a>
+            </li>
             <li>
               <a className="text-kelly-blue underline-offset-2 hover:underline focus-visible:rounded-sm focus-visible:outline focus-visible:ring-2 focus-visible:ring-kelly-gold/50" href="#channels">All channels</a>
             </li>
