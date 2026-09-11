@@ -109,7 +109,7 @@ export function SiteHeader() {
         <Link
           href="/"
           aria-label={`${siteConfig.name} — home`}
-          className="group relative z-20 flex min-w-0 max-w-[calc(100%-7.5rem)] shrink items-center gap-2 sm:max-w-[14rem] sm:shrink-0 sm:gap-3 xl:max-w-[15.5rem] 2xl:max-w-[17rem] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-kelly-gold/50 focus-visible:ring-offset-2 focus-visible:ring-offset-kelly-navy"
+          className="group relative z-20 flex min-w-0 max-w-[calc(100%-13.5rem)] shrink items-center gap-2 sm:max-w-[14rem] sm:shrink-0 sm:gap-3 xl:max-w-[15.5rem] 2xl:max-w-[17rem] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-kelly-gold/50 focus-visible:ring-offset-2 focus-visible:ring-offset-kelly-navy"
         >
           <span
             className={cn(
@@ -155,15 +155,6 @@ export function SiteHeader() {
             Search
           </Button>
           <Button
-            href="/events"
-            variant="outlineOnDark"
-            title="Events"
-            className="hidden min-h-[44px] min-w-0 flex-shrink-0 border border-white/45 bg-transparent px-2.5 py-2 text-xs font-semibold uppercase tracking-wide text-white/95 transition hover:border-white/70 hover:bg-white/10 2xl:inline-flex 2xl:min-h-[48px] 2xl:px-3.5 2xl:text-sm"
-            aria-label="Events — Kelly on the trail"
-          >
-            Events
-          </Button>
-          <Button
             href={voterRegistrationHref}
             variant="outlineOnDark"
             title="Vote / Register"
@@ -183,6 +174,15 @@ export function SiteHeader() {
             Volunteer
           </Button>
           <Button
+            href="/events"
+            variant="outlineOnDark"
+            title="Events"
+            className="hidden min-h-[44px] min-w-0 flex-shrink-0 border-2 border-white/55 bg-white/10 px-2.5 py-2 text-xs font-bold uppercase tracking-wide text-white shadow-sm transition hover:border-white/75 hover:bg-white/16 xl:inline-flex 2xl:min-h-[48px] 2xl:px-3.5 2xl:text-sm"
+            aria-label="Events — where Kelly will be next"
+          >
+            Events
+          </Button>
+          <Button
             href={siteConfig.donateHref}
             variant="primary"
             className="hidden min-h-[44px] min-w-0 flex-shrink-0 px-3 py-2 text-xs font-extrabold uppercase tracking-wide xl:inline-flex 2xl:min-h-[48px] 2xl:px-4 2xl:text-sm"
@@ -193,6 +193,14 @@ export function SiteHeader() {
         </nav>
 
         <div className="ml-auto flex shrink-0 flex-nowrap items-center justify-end gap-2 text-kelly-fog xl:hidden">
+          <Button
+            href="/events"
+            variant="outlineOnDark"
+            className="min-h-11 px-3 py-2 text-xs font-bold uppercase tracking-wide sm:min-h-12 sm:px-3.5"
+            aria-label="Events"
+          >
+            Events
+          </Button>
           <Button
             href={siteConfig.donateHref}
             variant="primary"
@@ -273,13 +281,6 @@ export function SiteHeader() {
               >
                 Vote / Register
               </Link>
-              <Link
-                href="/events"
-                className="block min-h-[48px] rounded-btn border border-white/40 px-3 py-3 text-center font-body text-base font-semibold text-white hover:bg-white/10 focus-visible:outline focus-visible:ring-2 focus-visible:ring-kelly-gold/45"
-                onClick={() => setOpen(false)}
-              >
-                Events
-              </Link>
             </div>
 
             {navGroupsForMobileDrawer().map((group) => (
@@ -319,6 +320,13 @@ export function SiteHeader() {
                 onClick={() => setOpen(false)}
               >
                 Volunteer
+              </Link>
+              <Link
+                href="/events"
+                className="block min-h-[48px] rounded-btn border-2 border-white/50 bg-white/10 px-3 py-3 text-center font-body text-base font-bold text-white focus-visible:outline focus-visible:ring-2 focus-visible:ring-kelly-gold/45"
+                onClick={() => setOpen(false)}
+              >
+                Events
               </Link>
               <Link
                 href={siteConfig.donateHref}
