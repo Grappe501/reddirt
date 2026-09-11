@@ -10,7 +10,6 @@ import { START_LOCAL_TEAM_HREF } from "@/config/external-campaign";
 import { EditorialCampaignPhoto, EditorialPhotoPair } from "@/components/about/EditorialCampaignPhoto";
 import { trailPhotosForSlot } from "@/content/media/campaign-trail-assignments";
 import { RepresentLocalEventPanel } from "@/components/organizing/RepresentLocalEventPanel";
-import { representLocalEventVolunteerHref } from "@/config/navigation";
 
 export const metadata: Metadata = {
   title: "Get Involved",
@@ -338,12 +337,6 @@ export default async function GetInvolvedPage() {
               Tabling, greeting, or showing up—we will get you materials and a clear job for the day.
             </p>
             <RepresentLocalEventPanel className="mt-8 max-w-3xl" />
-            <p className="mt-6 max-w-3xl font-body text-sm text-kelly-text/70">
-              <Link className="font-semibold text-kelly-navy underline" href={representLocalEventVolunteerHref}>
-                Open signup with event lane tagged
-              </Link>{" "}
-              or use the form below.
-            </p>
           </div>
 
           <div id="volunteer" className="mt-14 scroll-mt-24">
