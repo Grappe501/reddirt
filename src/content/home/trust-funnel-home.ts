@@ -254,9 +254,9 @@ export const trustFunnelHomeCopy = {
     title: "Kelly Across Arkansas",
     /** Target: 35–75 words — method, not romance */
     intro:
-      "Kelly travels to confirmed stops, listens, asks questions, and learns what is working and what is not. Photography and video here are evidence of that method—not claims of coverage everywhere.",
+      "Kelly travels across Arkansas to listen, ask questions, and learn what is working and what is not. Photos and video from those visits are here.",
     /** Quiet presence line — only named places with confirmed geography on this band */
-    presenceLabel: "Confirmed communities in this band",
+    presenceLabel: "Communities on this visit",
     videoIntroduction:
       "A trail story from Hot Springs Village: neighbors gathering, conversations starting, and the work of showing up.",
     cta: "See Kelly Across Arkansas",
@@ -273,9 +273,9 @@ export const trustFunnelHomeCopy = {
     eyebrow: "Trust",
     title: "Endorsements",
     intro:
-      "Only formal, campaign-confirmed endorsements appear here. Categories show coalition breadth—not a ranking of names.",
+      "Support from Arkansans and organizations standing with this campaign.",
     emptyState:
-      "This space stays empty on purpose until organizations and community leaders formally announce support—with the organization name and source on record.",
+      "Endorsements will appear here as they are announced.",
     viewAll: "View All Endorsements",
   },
 
@@ -283,9 +283,9 @@ export const trustFunnelHomeCopy = {
     eyebrow: "Updates",
     title: "Campaign news & updates",
     intro:
-      "What the campaign has actually released: announcements, trail notes, and published events—not a filler feed.",
+      "Announcements, trail notes, and upcoming events from the campaign.",
     emptyState:
-      "No public updates are queued right now. Follow From the Road and the events calendar as verified posts and stops are published.",
+      "Follow From the Road and the events calendar for the latest.",
     fromTheRoadCta: "From the Road",
     eventsCta: "Events calendar",
   },

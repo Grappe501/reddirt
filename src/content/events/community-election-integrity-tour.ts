@@ -51,7 +51,7 @@ export const communityElectionIntegrityTourContent = {
     counties: {
       title: "Tour counties tracker",
       description:
-        "26-stop allocation grid — counties and dates appear only after verification and approval for public listing.",
+        "A 26-stop statewide tour — counties and dates appear here as stops are confirmed.",
       path: "/events/community-election-integrity-tour/counties",
     },
   },
@@ -72,7 +72,7 @@ export const communityElectionIntegrityTourContent = {
     how: {
       heading: "How",
       bullets: [
-        "26 planned stops (capacity — not a route list until venues are verified)",
+        "Up to 26 stops statewide as hosts and venues are confirmed",
         "Local hosts who know the room",
         "Q&A format — good-faith questions welcome",
         "Plain-language explainers",
@@ -80,7 +80,7 @@ export const communityElectionIntegrityTourContent = {
         "Build local point teams for ongoing, factual follow-up",
       ] as const,
       closing:
-        "What you see on this site is planning and principles. Counties and dates are added only after the campaign verifies details — nothing here is a public announcement until it is listed on the calendar.",
+        "Counties and dates are added here as stops are confirmed and listed on the campaign calendar.",
     },
     what: {
       heading: "What each stop should do",
@@ -140,7 +140,7 @@ export const communityElectionIntegrityTourContent = {
     eyebrow: "Election Integrity Tour · Tracker",
     title: "Build the 26-stop tour",
     intro:
-      "Tracker for tour counties and confirmed stops. Rows stay empty or in Research until a real host, venue, and schedule are verified. Nothing here is an official event listing until it appears on the public campaign calendar.",
+      "A tracker for tour counties and confirmed stops. Dates and venues appear here as they are set.",
     mapCaption: "Map coming soon — counties will light up as tour builds.",
     pointTeam: {
       heading: "County point teams",

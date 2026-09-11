@@ -8,13 +8,13 @@ export const acrossArkansasJourneyCopy = {
     eyebrow: "Kelly Across Arkansas",
     title: "Kelly Across Arkansas",
     subtitle:
-      "Evidence that Kelly is meeting Arkansas where Arkansas lives—listening, learning, visiting, speaking, and engaging. Not an empty county grid.",
+      "Kelly is meeting Arkansas where Arkansas lives—listening, learning, visiting, speaking, and engaging.",
   },
   /** Evidence verbs — Journey narrative spine (photos/video carry the proof) */
   evidenceVerbs: ["Listened", "Learned", "Visited", "Spoke", "Engaged"] as const,
   /** Target: 75–130 words */
   intro:
-    "Kelly shows up at confirmed stops to listen and learn what is working and what is not—then visits, speaks, and engages so the office stays grounded in real communities. Featured video and curated stills show that method. We do not invent county coverage to fill a map. Invite Kelly through the campaign; confirmed events appear when they are ready. For qualifications and governing commitments, use Meet Kelly and Priorities.",
+    "Kelly shows up to listen and learn what is working and what is not—then visits, speaks, and engages so the office stays grounded in real communities. Featured video and photos from the trail are here. Invite Kelly through the campaign. For qualifications and governing commitments, see Meet Kelly and Priorities.",
   videoIntroduction:
     "A trail story from Hot Springs Village: neighbors gathering, conversations starting, and the work of showing up.",
   photographyHeading: "Trail evidence",

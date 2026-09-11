@@ -49,7 +49,7 @@ export const onTheRoadProofCopy = {
   metrics: {
     title: "What the road looks like (through August)",
     intro:
-      "Campaign totals through August — miles from travel logs and reimbursements, engagements from the field count, counties from the public visit ledger.",
+      "Campaign totals through August — miles from travel logs, engagements from the field, and counties visited.",
     items: [
       { label: "Miles", value: "23,419", note: "Through August" },
       { label: "Engagements", value: "245", note: "Through August" },
@@ -81,7 +81,7 @@ export const onTheRoadProofCopy = {
   map: {
     title: "Counties on the trail",
     intro:
-      "Filled from the campaign county ledger — completed public visits and published stops only.",
+      "Counties Kelly has visited and stops already on the public calendar.",
     moreHref: "/arkansas-visits",
     moreLabel: "Full county calendar →",
   },

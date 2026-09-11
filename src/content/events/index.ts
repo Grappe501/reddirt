@@ -679,7 +679,7 @@ const movementEventsCore: EventItem[] = [
     summary:
       "Tuesday, September 15, 2026, **12:00–7:00 p.m. Central** at Dreami Tea: **Count Me In / ¡Me Apunto!** — confirmed. Campaign table **3:00–7:00 p.m.**",
     description:
-      "Steve confirmed **Tuesday, September 15, 2026** at **Count Me In / ¡Me Apunto!** — a voter registration and fund drive the flyer marks as **National Voter Registration Day**. **12:00–7:00 p.m.** at **Dreami Tea**, **109 E. Parkway Drive**, Russellville, with Pope County Democrats.\n\nThe **Kelly Grappe for Secretary of State** campaign table is **3:00–7:00 p.m.** This is a **host-run** shop event, not a campaign rally. Bring ID rules from the county clerk / Arkansas Secretary of State if you are helping people register.\n\n**Boba for a Cause:** 25% of profit on three special drinks is split between the Democratic Party of Pope County and the Dreami Tea Scholarship — Septima Clark, John Lewis, and Dolores Huerta drinks on the flyer.",
+      "**Tuesday, September 15, 2026** at **Count Me In / ¡Me Apunto!** — a voter registration and fund drive the flyer marks as **National Voter Registration Day**. **12:00–7:00 p.m.** at **Dreami Tea**, **109 E. Parkway Drive**, Russellville, with Pope County Democrats.\n\nThe **Kelly Grappe for Secretary of State** campaign table is **3:00–7:00 p.m.** This is a **host-run** shop event, not a campaign rally. Bring ID rules from the county clerk / Arkansas Secretary of State if you are helping people register.\n\n**Boba for a Cause:** 25% of profit on three special drinks is split between the Democratic Party of Pope County and the Dreami Tea Scholarship — Septima Clark, John Lewis, and Dolores Huerta drinks on the flyer.",
     whatToExpect: [
       "12:00–7:00 p.m. at Dreami Tea; campaign table 3:00–7:00 p.m.",
       "Voter registration help — follow official Arkansas forms and ID rules",
@@ -752,7 +752,7 @@ const movementEventsCore: EventItem[] = [
     summary:
       "Monday, September 14, 2026, **6:00–7:30 p.m. Central** at **1151 Markham** in Conway: **Faulkner County Democratic Party Headquarters** grand opening — confirmed. Chamber ribbon cutting at **6:00 p.m.** Candidates speak. Host-run — not a campaign rally.",
     description:
-      "Steve confirmed **Monday, September 14, 2026** at the **Faulkner County Democratic Party Headquarters** grand opening, **1151 Markham**, Conway, **6:00–7:30 p.m.** Chamber of Commerce **ribbon cutting at 6:00 p.m.** Big tent, grand-opening cake, hot dogs, chips, drinks, music. **Candidates will speak.**\n\nThis is a **county Democratic Party** opening, not a Grappe-hosted event.\n\nHeadquarters **volunteer hours** start **Tuesday, September 15**: **11:00 a.m.–1:00 p.m.** and **4:00–6:00 p.m.**, Tuesday–Friday (hours may expand later). Two people on site. Sign up: [signup.com/go/aGxsPGf](https://signup.com/go/aGxsPGf). That is a staffing shift, not a Kelly appearance.",
+      "**Monday, September 14, 2026** at the **Faulkner County Democratic Party Headquarters** grand opening, **1151 Markham**, Conway, **6:00–7:30 p.m.** Chamber of Commerce **ribbon cutting at 6:00 p.m.** Big tent, grand-opening cake, hot dogs, chips, drinks, music. **Candidates will speak.**\n\nThis is a **county Democratic Party** opening, not a Grappe-hosted event.\n\nHeadquarters **volunteer hours** start **Tuesday, September 15**: **11:00 a.m.–1:00 p.m.** and **4:00–6:00 p.m.**, Tuesday–Friday (hours may expand later). Two people on site. Sign up: [signup.com/go/aGxsPGf](https://signup.com/go/aGxsPGf). That is a staffing shift, not a Kelly appearance.",
     whatToExpect: [
       "6:00–7:30 p.m. Central; Chamber ribbon cutting at 6:00",
       "Tent, cake, hot dogs, chips, drinks, music; candidates speak",
@@ -914,7 +914,7 @@ const movementEventsCore: EventItem[] = [
     summary:
       "Saturday, September 12, 2026, **12:00 p.m. Central** in Rison: Cleveland County Democrats **meet and greet** — confirmed. Kelly arrives for the end of this hour after the start of Stuttgart. Host-run — not a campaign rally. Street TBA.",
     description:
-      "Jametta Harper (Jam Harp) wrote that Cleveland County Democrats look forward to seeing the campaign on **Saturday, September 12** at **12:00 noon** for a **meet and greet**. Steve confirmed this stop on **September 8**.\n\n**Kelly will be at the beginning of the Stuttgart hour, then drive to Rison for the end of this meet and greet.**\n\nThe host note does not name a building or street. This page places the gathering in **Rison**, the Cleveland County seat — confirm the room with the county party before treating it as a walk-in.\n\nThis is a **county Democratic Party** meet and greet, not a Grappe-hosted event. The host also asked for a **bio and photo** for the *Cleveland County Herald*; that is a campaign follow-up, not something neighbors need in order to attend.\n\nThe same host also flagged **Rison in the Fall** on October 12.",
+      "Cleveland County Democrats look forward to seeing the campaign on **Saturday, September 12** at **12:00 noon** for a **meet and greet**.\n\n**Kelly will be at the beginning of the Stuttgart hour, then drive to Rison for the end of this meet and greet.**\n\nBuilding and street are still TBA. This listing places the gathering in **Rison**, the Cleveland County seat — confirm the room with the county party before treating it as a walk-in.\n\nThis is a **county Democratic Party** meet and greet, not a Grappe-hosted event.\n\nThe same host also flagged **Rison in the Fall** on October 12.",
     whatToExpect: [
       "12:00 p.m. Central start — Kelly arrives for the end after Stuttgart",
       "County party meet and greet; follow the host for speaking order",
@@ -1656,11 +1656,11 @@ const movementEventsCore: EventItem[] = [
     endsAt: "2026-09-16T13:00:00",
     timezone: "America/Chicago",
     locationLabel: "Rogers — Roundabout Crew (spot TBA)",
-    addressLine: "Rogers, AR (which roundabout and clock are not in the text — do not invent a corner)",
+    addressLine: "Rogers, AR (spot and time TBA)",
     summary:
       "Wednesday, September 16, 2026: the **Roundabout Crew** in Rogers asked if Kelly can come stand with them. Time and exact corner are not set. This is a date ask, not a locked stop.",
     description:
-      "A Benton County organizer texted Kelly: the **Roundabout Crew in Rogers** is glad she would come stand in solidarity, and asked whether she is available on **September 16**.\n\nThis page holds the date in **Rogers / Benton County** only. There is no time, no named roundabout, and no street on the message. Noon on the calendar is a placeholder.\n\nThis is a **local visibility** stand with the crew, not a campaign rally and not a walk-in ticketed event. Do not advertise a Kelly appearance until she confirms and the crew names a corner and hour.\n\nThe campaign calendar already has a **Hot Springs Village candidate forum** the same Wednesday. Rogers and Hot Springs Village are different ends of the state.",
+      "The **Roundabout Crew in Rogers** asked whether Kelly can come stand with them on **September 16**.\n\nThis listing holds the date in **Rogers / Benton County**. Time and exact location are still TBA.\n\nThis is a **local visibility** stand with the crew, not a campaign rally. Wait for a confirmed corner and hour before treating it as a public appearance.\n\nThe campaign calendar already has a **Hot Springs Village candidate forum** the same Wednesday. Rogers and Hot Springs Village are different ends of the state.",
     whatToExpect: [
       "Date ask only — September 16, 2026",
       "Time and roundabout TBA",
@@ -1692,12 +1692,11 @@ const movementEventsCore: EventItem[] = [
     endsAt: "2026-09-16T16:00:00",
     timezone: "America/Chicago",
     locationLabel: "Hot Springs Village — POA candidate forum (room TBA)",
-    addressLine:
-      "Hot Springs Village, AR. Building was not in the Democratic Club cover note — do not invent a POA hall.",
+    addressLine: "Hot Springs Village, AR (room TBA)",
     summary:
       "Wednesday, September 16, 2026, **2:00–4:00 p.m. Central**: Hot Springs Village **Property Owners Association** candidate forum — confirmed. Room TBA. Host-run — not a campaign rally.",
     description:
-      "Steve confirmed **Wednesday, September 16, 2026**, **2:00–4:00 p.m. Central** at the Hot Springs Village **Property Owners Association** candidate forum.\n\nDeb Bryan, president of the **Democratic Club of Hot Springs Village**, forwarded the POA invitation. The cover note did not include a building — confirm the hall with the POA or the Democratic Club. Do not invent a POA hall.\n\nThis is a **POA forum**, not a Grappe-hosted event.",
+      "**Wednesday, September 16, 2026**, **2:00–4:00 p.m. Central**: Hot Springs Village **Property Owners Association** candidate forum.\n\nThe **Democratic Club of Hot Springs Village** forwarded the POA invitation. The room is still TBA — confirm the hall with the POA or the Democratic Club.\n\nThis is a **POA forum**, not a Grappe-hosted event.",
     whatToExpect: [
       "2:00–4:00 p.m. Central — confirmed",
       "Room TBA — confirm the hall with the POA",
@@ -1733,7 +1732,7 @@ const movementEventsCore: EventItem[] = [
     summary:
       "Saturday, September 26, 2026, **morning** in the Marche community (Maumelle / North Little Rock area): **Marche Day** — confirmed. Then travel to the Greene County / Paragould forum that afternoon.",
     description:
-      "Steve confirmed **Saturday, September 26, 2026** at **Marche Day** in the morning, then the **Greene County candidate forum** in Paragould that afternoon.\n\nThe host flyer lists **7520 Marche Lateral Road**, North Little Rock (72118). This is a **community festival**, not a Grappe-hosted event. Vendor booths are **$60** on the flyer: [marcheday.org](https://www.marcheday.org).\n\nThis page uses **9:00 a.m.–12:00 p.m. Central** for the Marche morning window.",
+      "**Saturday, September 26, 2026** at **Marche Day** in the morning, then the **Greene County candidate forum** in Paragould that afternoon.\n\nThe host flyer lists **7520 Marche Lateral Road**, North Little Rock (72118). This is a **community festival**, not a Grappe-hosted event. Vendor booths are **$60** on the flyer: [marcheday.org](https://www.marcheday.org).\n\nThe Marche morning window is **9:00 a.m.–12:00 p.m. Central**.",
     whatToExpect: [
       "Morning in Marche — 9:00 a.m.–12:00 p.m. Central",
       "Afternoon travel to the Greene County / Paragould forum",
@@ -2004,7 +2003,7 @@ const movementEventsCore: EventItem[] = [
     summary:
       "Saturday, September 19, 2026, **5:00–7:00 p.m. Central** at the Hot Spring County 4-H Center: county party **community cookout** — confirmed. Free admission; $5 suggested per plate. Host-run — not a campaign rally.",
     description:
-      "Steve confirmed **Saturday, September 19, 2026**, **5:00–7:00 p.m.** at the **Hot Spring County 4-H Center**, **1407 US-270**, Malvern.\n\nThe party invites friends and family for food and connection. They will hear from local county and city candidates, with guest appearances from statewide races. **Free admission.** A suggested **$5 per plate** helps the county party.\n\nThis is a **county Democratic Party** cookout, not a Grappe-hosted event.\n\nThe same Saturday is **Beatles on the Ridge** in Walnut Ridge — also confirmed.",
+      "**Saturday, September 19, 2026**, **5:00–7:00 p.m.** at the **Hot Spring County 4-H Center**, **1407 US-270**, Malvern.\n\nThe party invites friends and family for food and connection. They will hear from local county and city candidates, with guest appearances from statewide races. **Free admission.** A suggested **$5 per plate** helps the county party.\n\nThis is a **county Democratic Party** cookout, not a Grappe-hosted event.\n\nThe same Saturday is **Beatles on the Ridge** in Walnut Ridge.",
     whatToExpect: [
       "5:00–7:00 p.m. Central at the 4-H Center",
       "Food, county and city candidates, expected statewide guests",
@@ -2116,11 +2115,11 @@ const movementEventsCore: EventItem[] = [
     endsAt: "2026-10-12T19:00:00",
     timezone: "America/Chicago",
     locationLabel: "Jonesboro — Women in Democracy (venue TBA)",
-    addressLine: "Jonesboro, AR (host and street address not on Kelly’s note — confirm before publishing a walk-in invite)",
+    addressLine: "Jonesboro, AR (venue TBA)",
     summary:
       "Monday, October 12, 2026: Kelly’s note says **Women in Democracy**, sent on the same thread as the Jonesboro Hallie rally. Venue and time are not confirmed. Evening window is a placeholder.",
     description:
-      "On August 26, 2026, Kelly emailed a Jonesboro thread: first **Rally for Hallie / 9/19**, then **October 12 women in democracy**. This page holds the October date in **Jonesboro** until the host, room, and time are confirmed.\n\nDo not invent a League, church, or campus sponsor. Update this listing when the organizer publishes a program.\n\nThe same Monday also has a **Razorback Touchdown Club** calendar hold (city not on the invite), a **Saline County GOTV push** in Benton, and **Rison in the Fall**. Those are different events — Jonesboro to Rison that evening is a long drive.",
+      "This listing holds **October 12** in **Jonesboro** for **Women in Democracy**. Host, room, and time are still TBA.\n\nThe same Monday also has a **Razorback Touchdown Club** calendar hold, a **Saline County GOTV push** in Benton, and **Rison in the Fall**. Those are different events — Jonesboro to Rison that evening is a long drive.",
     whatToExpect: [
       "Date from Kelly’s note: October 12, 2026",
       "Time and venue TBA — 5:00–7:00 p.m. is only a calendar placeholder",
@@ -2158,11 +2157,11 @@ const movementEventsCore: EventItem[] = [
     endsAt: "2026-10-12T13:00:00",
     timezone: "America/Chicago",
     locationLabel: "Razorback Touchdown Club — city and room TBA",
-    addressLine: "Arkansas (invite has a date only — do not assume Fayetteville or another chapter)",
+    addressLine: "Arkansas (city TBA)",
     summary:
       "Monday, October 12, 2026: calendar hold for the **Razorback Touchdown Club**. Time, city, and room are not on the invite. Noon on this page is a placeholder.",
     description:
-      "A campaign calendar item titled **Razorback Touchdown Club** is on **Monday, October 12, 2026**. Kelly is listed as the calendar organizer. The invite does **not** give a city, building, or start time.\n\nThis is a **club-hosted** gathering, not a campaign rally. Do not treat it as a walk-in public event until the chapter publishes a location. Touchdown Club chapters meet in more than one Arkansas city — this page will not guess Fayetteville or anywhere else.\n\nThe same Monday already has **Women in Democracy** (held as Jonesboro until confirmed), a **Saline County GOTV push** in Benton, and **Rison in the Fall**. Those are different events.",
+      "**Razorback Touchdown Club** is on **Monday, October 12, 2026**. City, building, and start time are still TBA.\n\nThis is a **club-hosted** gathering, not a campaign rally. Wait for the chapter to publish a location before treating it as a walk-in event.\n\nThe same Monday already has **Women in Democracy** in Jonesboro, a **Saline County GOTV push** in Benton, and **Rison in the Fall**. Those are different events.",
     whatToExpect: [
       "Date from the calendar invite: Monday, October 12, 2026",
       "Time and place TBA — 12:00–1:00 p.m. is only a calendar pin",
@@ -2567,7 +2566,7 @@ const movementEventsCore: EventItem[] = [
     summary:
       "Thursday, October 15, 2026, **evening** in Hardy: Sharp County **candidate forum**. Date is locked. Time and location coming from the hosts. Host-run — not a campaign rally.",
     description:
-      "Sharp County organizers announced the **candidate forum** after three candidates confirmed: **Thursday, October 15**, in the **evening**. They will send the **time and location** soon. Mark the date; do not invent a room.\n\nA later note places the forum in **Hardy** and says they are inviting neighbors from surrounding communities. They want as much notice as possible if the lineup has to change.\n\nThis page uses a 6:00–8:00 p.m. Central window so the night appears on the calendar — update when the hosts publish a clock and street. This is a **host-run forum**, not a Grappe-hosted event. Three candidates are confirmed for the program; Kelly is not named as one of them.\n\nThe same Thursday morning, Kelly is confirmed for the **Arkansas TV Secretary of State debate** in **Conway at 10:00 a.m.** (arrive 8:00 a.m.). The Hardy hosts had heard that television tapings are often a morning in Little Rock. This taping is in Conway. Conway to Hardy after a morning studio is a long drive, not a same-hour overlap, if the debate stays at 10:00 a.m. and the forum stays evening.\n\nThe same **5:00–7:00 p.m.** window is Rogers Lowell / Bentonville Chamber **Hob Nob** at NWACC in Bentonville. Bentonville and Hardy are opposite corners of the north — she cannot do both.\n\nConfirm the station runtime and the Hardy clock before promising either evening. Sharp County Democrats also open a headquarters in Highland on September 11.",
+      "Sharp County organizers announced a **candidate forum** on **Thursday, October 15**, in the **evening**. They will send the **time and location** soon.\n\nA later note places the forum in **Hardy** and says they are inviting neighbors from surrounding communities.\n\nThis listing uses a 6:00–8:00 p.m. Central window until the hosts publish a clock and street. This is a **host-run forum**, not a Grappe-hosted event. Three candidates are confirmed for the program; Kelly is not named as one of them.\n\nThe same Thursday morning, Kelly is confirmed for the **Arkansas TV Secretary of State debate** in **Conway at 10:00 a.m.** Conway to Hardy after a morning studio is a long drive.\n\nThe same **5:00–7:00 p.m.** window is Rogers Lowell / Bentonville Chamber **Hob Nob** at NWACC in Bentonville. Bentonville and Hardy are opposite corners of the north — she cannot do both.\n\nSharp County Democrats also open a headquarters in Highland on September 11.",
     whatToExpect: [
       "Date locked: Thursday, October 15, evening — clock and street TBA (6:00–8:00 p.m. here is a calendar pin)",
       "Three candidates confirmed for the program; hosts will publish time and location",
@@ -2645,7 +2644,7 @@ const movementEventsCore: EventItem[] = [
     summary:
       "Saturday, October 24, 2026, in Mountain View: **Bean Fest and Championship Outhouse Races**. Participant check-in **11:00 a.m.**, rules **noon**, parade **1:00 p.m.**, first heat **1:15 p.m.** Host-run festival — not a campaign rally. Kelly’s attendance is not locked.",
     description:
-      "Jan Misenheimer wrote the **Outhouse Race** schedule for **Saturday, October 24** in **Mountain View** (Stone County):\n\n**11:00 a.m.** participant check-in · **12:00 p.m.** rules meeting · **1:00 p.m.** parade of outhouses · **1:15 p.m.** first heat · then a champion race after qualifying heats.\n\nThe host expects a large crowd. This is a **community festival**, not a Grappe-hosted event. The campaign’s festival research already lists **Bean Fest and Championship Outhouse Races** as **October 23–24**; this page follows Jan’s Saturday race clock. Do not invent a square or stage address until organizers publish one.\n\nSteve Grappe is trying to fit Mountain View that Saturday unless a candidate debate lands on the same window. Attendance is **tentative**.\n\nOzark Forward is planning a **bake sale** the same Saturday to support Kelly and Terri. Location is not in the note.\n\nSunday, October 25 is a Madison and Newton immersion at Ponca Color Fest — a different event, a drive from Mountain View.",
+      "Jan Misenheimer wrote the **Outhouse Race** schedule for **Saturday, October 24** in **Mountain View** (Stone County):\n\n**11:00 a.m.** participant check-in · **12:00 p.m.** rules meeting · **1:00 p.m.** parade of outhouses · **1:15 p.m.** first heat · then a champion race after qualifying heats.\n\nThe host expects a large crowd. This is a **community festival**, not a Grappe-hosted event. The festival is **October 23–24**; this listing follows the Saturday race clock. Downtown street is still TBA.\n\nAttendance is **tentative**.\n\nOzark Forward is planning a **bake sale** the same Saturday to support Kelly and Terri. Location is still TBA.\n\nSunday, October 25 is a Madison and Newton immersion at Ponca Color Fest — a different event, a drive from Mountain View.",
     whatToExpect: [
       "11:00 a.m. check-in; noon rules; 1:00 p.m. parade; 1:15 p.m. first heat",
       "Champion race after qualifying heats — end time not posted (4:00 p.m. here is a calendar pin)",
@@ -2702,11 +2701,11 @@ const movementEventsCore: EventItem[] = [
     endsAt: "2026-09-01T19:00:00",
     timezone: "America/Chicago",
     locationLabel: "Campaign headquarters opening cocktails (city TBA)",
-    addressLine: "Title on the calendar is HDQT opening cocktails — do not invent Pope vs Faulkner HQ.",
+    addressLine: "City TBA",
     summary:
-      "Tuesday, September 1, 2026, **5:00–7:00 p.m. Central**: headquarters opening cocktails on Steve’s calendar. City not on the block.",
+      "Tuesday, September 1, 2026, **5:00–7:00 p.m. Central**: headquarters opening cocktails. City TBA.",
     description:
-      "Steve’s Google Calendar placed **5 PM–7 PM HDQT opening Cocktails** on Tuesday, **September 1** (the grid block sat at 7:00 p.m.). No city or street was on the title.\n\nFaulkner County Democrats’ public HQ opening is already on the calendar for **Monday, September 14** in Conway. This September 1 hour may be a different headquarters. Confirm before treating either as the same event.",
+      "**Headquarters opening cocktails** on Tuesday, **September 1**, **5:00–7:00 p.m. Central**. City and street are still TBA.\n\nFaulkner County Democrats’ public HQ opening is already on the calendar for **Monday, September 14** in Conway. Confirm before treating these as the same event.",
     whatToExpect: ["5:00–7:00 p.m. Central per the title", "City and building still TBA"],
     whoItsFor: "Invited guests. Confirm the building before travel.",
     organizerNote:
@@ -2780,11 +2779,11 @@ const movementEventsCore: EventItem[] = [
     endsAt: "2026-09-11T17:00:00",
     timezone: "America/Chicago",
     locationLabel: "Lafayette County (city TBA)",
-    addressLine: "Lafayette County, AR (town not named — do not invent Lewisville or Stamps)",
+    addressLine: "Lafayette County, AR (town TBA)",
     summary:
       "Friday, September 11, 2026: **Lafayette County** — confirmed. Town and street TBA.",
     description:
-      "Steve confirmed **Friday, September 11, 2026** in **Lafayette County**.\n\nThis is a county day, not a named forum. Town and street are still TBA — do not invent Lewisville or Stamps until a host names a stop.\n\nSaturday, September 12 is **Stuttgart** at the start of that hour, then **Cleveland County in Rison** for the end of the meet and greet — not a second Lafayette day.",
+      "**Friday, September 11, 2026** in **Lafayette County**.\n\nThis is a county day, not a named forum. Town and street are still TBA.\n\nSaturday, September 12 is **Stuttgart** at the start of that hour, then **Cleveland County in Rison** for the end of the meet and greet — not a second Lafayette day.",
     whatToExpect: ["Confirmed Friday, September 11", "Town and hours TBA"],
     whoItsFor: "Lafayette County neighbors once a town is posted.",
     organizerNote:
@@ -2808,7 +2807,7 @@ const movementEventsCore: EventItem[] = [
     summary:
       "Friday, September 11, 2026, **7:00–8:00 p.m. Central**: **law enforcement vs. fire softball** — confirmed. City and field TBA.",
     description:
-      "Steve confirmed **Friday, September 11, 2026**, **7:00–8:00 p.m. Central** for **law enforcement vs. fire softball**.\n\nCity and field are still TBA — do not invent a park.",
+      "**Friday, September 11, 2026**, **7:00–8:00 p.m. Central**: **law enforcement vs. fire softball**.\n\nCity and field are still TBA.",
     whatToExpect: ["7:00–8:00 p.m. Central — confirmed", "City and field TBA"],
     whoItsFor: "Neighbors the hosts welcome once a field is named.",
     organizerNote: "Steve 2026-09-08: Sep 11 law enforcement vs fire softball confirmed. City/field TBA.",
@@ -2832,7 +2831,7 @@ const movementEventsCore: EventItem[] = [
     summary:
       "Saturday, September 12, 2026, **11:00 a.m.–1:00 p.m. Central** in Stuttgart — confirmed. Kelly will be at the beginning of this hour, then drive to the Cleveland County meet and greet in Rison. Venue TBA.",
     description:
-      "Steve confirmed **Saturday, September 12, 2026**, **11:00 a.m.–1:00 p.m. Central** in **Stuttgart**.\n\n**Kelly will be at the beginning of this hour, then drive to Rison for the end of the Cleveland County Democrats meet and greet.**\n\nVenue and building are still TBA. This is not the October 17 Stuttgart hour — that is a separate calendar row.",
+      "**Saturday, September 12, 2026**, **11:00 a.m.–1:00 p.m. Central** in **Stuttgart**.\n\n**Kelly will be at the beginning of this hour, then drive to Rison for the end of the Cleveland County Democrats meet and greet.**\n\nVenue and building are still TBA. This is not the October 17 Stuttgart hour — that is a separate calendar row.",
     whatToExpect: [
       "11:00 a.m.–1:00 p.m. Central — Kelly at the beginning",
       "Then drive to Cleveland County / Rison for the end of that meet and greet",
@@ -2908,7 +2907,7 @@ const movementEventsCore: EventItem[] = [
     summary:
       "Sunday, September 13, 2026, **2:00–4:00 p.m. Central** (doors at 1:00 p.m.) at the **Fort Smith Convention Center**: **The River Valley Has a Choice** — confirmed.",
     description:
-      "Steve confirmed **Sunday, September 13, 2026**, **2:00–4:00 p.m. Central** at the **Fort Smith Convention Center**: **The River Valley Has a Choice** / Fort Smith candidate program.\n\nHost postcard: doors open at **1:00 p.m.** The calendar stacked three overlapping titles for this slot. Treat them as one host-run program. The street number was not on the week-grid title — confirm the hall name with the host before travel.",
+      "**Sunday, September 13, 2026**, **2:00–4:00 p.m. Central** at the **Fort Smith Convention Center**: **The River Valley Has a Choice** / Fort Smith candidate program.\n\nHost postcard: doors open at **1:00 p.m.** Confirm the hall name with the host before travel.",
     whatToExpect: [
       "Doors 1:00 p.m. · program 2:00–4:00 p.m. Central",
       "Fort Smith Convention Center",
@@ -2934,11 +2933,11 @@ const movementEventsCore: EventItem[] = [
     endsAt: "2026-09-18T21:00:00",
     timezone: "America/Chicago",
     locationLabel: "ICLR (building TBA)",
-    addressLine: "Little Rock, AR. Calendar title: 730 Muslim ICLR — street not on the block.",
+    addressLine: "Little Rock, AR (street TBA)",
     summary:
       "Friday, September 18, 2026, **7:30 p.m. Central**: **ICLR** (Muslim community) — confirmed. Building TBA.",
     description:
-      "Steve confirmed **Friday, September 18, 2026** for **ICLR** (Islamic Center of Little Rock). The calendar listed **730 Muslim ICLR**. This page uses **7:30 p.m.** as the public pin. Street is still TBA — do not invent a building.\n\nThis is a **host-run** community hour, not a Grappe rally. Grassroots & Guitar Strings is Thursday, September 17 — not the same night.",
+      "**Friday, September 18, 2026**, **7:30 p.m. Central**: **ICLR** (Islamic Center of Little Rock). Street is still TBA.\n\nThis is a **host-run** community hour, not a Grappe rally. Grassroots & Guitar Strings is Thursday, September 17 — not the same night.",
     whatToExpect: ["7:30 p.m. Central — confirmed", "Building not on the calendar block"],
     whoItsFor: "Invited guests of the host community.",
     organizerNote:
@@ -3006,7 +3005,7 @@ const movementEventsCore: EventItem[] = [
     summary:
       "Saturday, September 19, 2026, **morning** in Walnut Ridge: **Beatles on the Ridge** — confirmed. Same evening is the Hot Spring County cookout in Malvern.",
     description:
-      "Steve confirmed **Saturday, September 19, 2026** at **Beatles on the Ridge** in Walnut Ridge in the **morning**, then the **Hot Spring County cookout** in Malvern that **evening**.\n\nThis is a **community festival**, not a Grappe-hosted event. Street is still TBA. This page uses **9:00 a.m.–12:00 p.m. Central** for the Walnut Ridge window.",
+      "**Saturday, September 19, 2026** at **Beatles on the Ridge** in Walnut Ridge in the **morning**, then the **Hot Spring County cookout** in Malvern that **evening**.\n\nThis is a **community festival**, not a Grappe-hosted event. Street is still TBA. This page uses **9:00 a.m.–12:00 p.m. Central** for the Walnut Ridge window.",
     whatToExpect: ["Morning in Walnut Ridge — 9:00 a.m.–12:00 p.m. Central", "Evening cookout in Malvern"],
     whoItsFor: "Lawrence County neighbors and festival guests.",
     organizerNote:
@@ -3129,11 +3128,11 @@ const movementEventsCore: EventItem[] = [
     endsAt: "2026-09-27T18:00:00-05:00",
     timezone: "America/Chicago",
     locationLabel: "LPGA Northwest Arkansas (course TBA)",
-    addressLine: "Northwest Arkansas (often Rogers — do not invent a club from the title alone)",
+    addressLine: "Northwest Arkansas (course TBA)",
     summary:
       "Sunday, September 27, 2026, **9:00 a.m.–6:00 p.m. Central**: **LPGA Northwest Arkansas** — confirmed. Course TBA.",
     description:
-      "Sunday, **September 27, 2026**, **9:00 a.m.–6:00 p.m. Central**: **LPGA Northwest Arkansas**.\n\nThis is a **confirmed** hold. Course is still TBA — do not invent a club.",
+      "Sunday, **September 27, 2026**, **9:00 a.m.–6:00 p.m. Central**: **LPGA Northwest Arkansas**.\n\nCourse is still TBA.",
     whatToExpect: ["9:00 a.m.–6:00 p.m. Central", "Course TBA"],
     whoItsFor: "Neighbors and volunteers once a course is named.",
     organizerNote: "Steve 2026-09-08: LPGA Northwest Arkansas Sep 27 9:00 a.m.-6:00 p.m. Course TBA.",
@@ -3160,7 +3159,7 @@ const movementEventsCore: EventItem[] = [
     summary:
       "Monday, September 28, 2026, **5:00–7:00 p.m. Central**: **Drew County Democrats meeting** — confirmed. Town TBA. Host first name on the calendar: Peggy.",
     description:
-      "Steve confirmed **Monday, September 28, 2026** for the **Drew County Democrats meeting**. Peggy is the host first name on the calendar — do not invent a last name.\n\nTown and building are still TBA. This page uses **5:00–7:00 p.m. Central** so the evening appears.",
+      "**Monday, September 28, 2026**, **5:00–7:00 p.m. Central**: **Drew County Democrats meeting**. Host: Peggy.\n\nTown and building are still TBA.",
     whatToExpect: ["5:00–7:00 p.m. Central — confirmed", "Town TBA"],
     whoItsFor: "Drew County Democrats and neighbors the hosts welcome.",
     organizerNote:
@@ -3272,7 +3271,7 @@ const movementEventsCore: EventItem[] = [
     summary:
       "Tuesday, September 15, 2026, **8:30–10:00 a.m. Central** in Little Rock: **Garden Party** at Dunbar Gardens. Same afternoon is Dreami Tea in Russellville.",
     description:
-      "The campaign calendar listed **Garden Party LR Dunbar Gardens** on Tuesday, **September 15**, **8:30–10:00 a.m.**\n\nThis is a **host-run** morning, not a Grappe rally. Do not invent a street.\n\nThe same day the public calendar already has **Count Me In / ¡Me Apunto!** at Dreami Tea in Russellville (12:00–7:00 p.m., campaign table 3:00–7:00). Little Rock morning to Russellville afternoon is a doable drive.",
+      "**Garden Party** at **Dunbar Gardens** in Little Rock on Tuesday, **September 15**, **8:30–10:00 a.m.** Street is still TBA.\n\nThis is a **host-run** morning, not a Grappe rally.\n\nThe same day the public calendar already has **Count Me In / ¡Me Apunto!** at Dreami Tea in Russellville (12:00–7:00 p.m., campaign table 3:00–7:00).",
     whatToExpect: ["8:30–10:00 a.m. Central", "Street TBA"],
     whoItsFor: "Neighbors the Dunbar Gardens hosts welcome.",
     organizerNote:
@@ -3323,7 +3322,7 @@ const movementEventsCore: EventItem[] = [
     summary:
       "Friday, September 18, 2026, **1:00–2:30 p.m. Central**: Baxter County Fair hold. Same evening is ICLR.",
     description:
-      "The campaign calendar listed **Baxter fair** on Friday, **September 18**, **1:00–2:30 p.m.** City is inferred as **Mountain Home**. Do not invent a fairgrounds gate.\n\nThis is a **county fair**, not a Grappe-hosted event.\n\n**Grassroots & Guitar Strings** is Thursday, September 17 — not this Friday. The same Friday evening has **ICLR** at 7:30.",
+      "**Baxter County Fair** on Friday, **September 18**, **1:00–2:30 p.m.** in **Mountain Home**. Fairgrounds gate is still TBA.\n\nThis is a **county fair**, not a Grappe-hosted event.\n\n**Grassroots & Guitar Strings** is Thursday, September 17 — not this Friday. The same Friday evening has **ICLR** at 7:30.",
     whatToExpect: ["1:00–2:30 p.m. Central", "Fairgrounds TBA"],
     whoItsFor: "Baxter County neighbors at the fair.",
     organizerNote:
@@ -3349,7 +3348,7 @@ const movementEventsCore: EventItem[] = [
     summary:
       "Sunday, September 20, 2026, **4:00–6:00 p.m. Central** in De Queen — confirmed. Venue TBA. Same day: Clark County Multi-Church Tour, then travel to Becky's in Texarkana at 5:00 p.m.",
     description:
-      "Steve confirmed **Sunday, September 20, 2026**, **4:00–6:00 p.m.** in **De Queen**.\n\nNo building was on the block. The same Sunday is the **Clark County Multi-Church Tour** (Gurdon / Arkadelphia) and **travel to Becky's in Texarkana at 5:00 p.m.** — all three confirmed.",
+      "**Sunday, September 20, 2026**, **4:00–6:00 p.m.** in **De Queen**.\n\nNo building was on the block. The same Sunday is the **Clark County Multi-Church Tour** (Gurdon / Arkadelphia) and **travel to Becky's in Texarkana at 5:00 p.m.** — all three confirmed.",
     whatToExpect: ["4:00–6:00 p.m. Central — confirmed", "Venue TBA"],
     whoItsFor: "Sevier County neighbors once a room is posted.",
     organizerNote:
@@ -3376,7 +3375,7 @@ const movementEventsCore: EventItem[] = [
     summary:
       "Monday, September 21, 2026, **10:00 a.m.–4:00 p.m. Central**: **Little River County** visit with host **Charlotte** — confirmed. Town TBA.",
     description:
-      "Steve confirmed **Monday, September 21, 2026** in **Little River County** with host **Charlotte**.\n\nTown and street are still TBA. Charlotte is a **host first name** — last name is not posted.\n\nThe public window is **10:00 a.m.–4:00 p.m. Central**. The day before is **De Queen 4:00–6:00 p.m.**",
+      "**Monday, September 21, 2026** in **Little River County** with host **Charlotte**.\n\nTown and street are still TBA. The public window is **10:00 a.m.–4:00 p.m. Central**. The day before is **De Queen 4:00–6:00 p.m.**",
     whatToExpect: ["Confirmed Monday, September 21", "10:00 a.m.–4:00 p.m. Central", "Town TBA"],
     whoItsFor: "Little River County neighbors. Town posts when the host shares it.",
     organizerNote:
@@ -3483,7 +3482,7 @@ const movementEventsCore: EventItem[] = [
     summary:
       "Tuesday, October 6, 2026, **6:00–7:00 p.m. Central**: Baxter County Farm Bureau **annual convention** — confirmed. Building TBA.",
     description:
-      "Steve confirmed **Tuesday, October 6, 2026**, **6:00–7:00 p.m. Central** for the Baxter County Farm Bureau **annual convention** in **Mountain Home**.\n\nBuilding is still TBA.\n\nThe same afternoon is the **People Over Politics / VFW candidate forum** at 2:00 p.m. in Mountain Home.",
+      "**Tuesday, October 6, 2026**, **6:00–7:00 p.m. Central** for the Baxter County Farm Bureau **annual convention** in **Mountain Home**.\n\nBuilding is still TBA.\n\nThe same afternoon is the **People Over Politics / VFW candidate forum** at 2:00 p.m. in Mountain Home.",
     whatToExpect: ["Confirmed Tuesday, October 6", "6:00–7:00 p.m. Central", "Building TBA"],
     whoItsFor: "Farm Bureau members and neighbors the hosts welcome.",
     organizerNote:
@@ -3562,7 +3561,7 @@ const movementEventsCore: EventItem[] = [
     summary:
       "Sunday, October 11, 2026, **5:30 p.m. Central** at **626 Malvern Avenue** in Hot Springs: **Speakeasy** — confirmed.",
     description:
-      "Steve confirmed **Sunday, October 11, 2026**, **5:30 p.m. Central** at **626 Malvern Avenue**, Hot Springs. This is a **Speakeasy** event.\n\nEnd time is TBA.\n\nThis listing replaces the earlier chili-cookout hold for the same Sunday.",
+      "**Sunday, October 11, 2026**, **5:30 p.m. Central** at **626 Malvern Avenue**, Hot Springs. This is a **Speakeasy** event.\n\nEnd time is TBA.",
     whatToExpect: ["Confirmed Sunday, October 11", "5:30 p.m. Central", "626 Malvern Avenue, Hot Springs"],
     whoItsFor: "Garland County neighbors and invited Speakeasy guests.",
     organizerNote:
@@ -3690,7 +3689,7 @@ const movementEventsCore: EventItem[] = [
     summary:
       "Saturday, October 17, 2026, **5:30–7:00 p.m. Central**: **Flat Rock Hwy 359 fire department** (red #5) fish fry. County TBA.",
     description:
-      "The campaign calendar listed **Flat rock hwy 359 fire dept red #5 fish fries** on Saturday, **October 17**, **5:30–7:00 p.m.**\n\nDo not invent a county. Confirm the station before travel.\n\nThe same Saturday already has UAPB Homecoming, Stuttgart, and Rocky Comfort.",
+      "**Flat Rock Hwy 359 fire department** (red #5) fish fry on Saturday, **October 17**, **5:30–7:00 p.m.** County is still TBA. Confirm the station before travel.\n\nThe same Saturday already has UAPB Homecoming, Stuttgart, and Rocky Comfort.",
     whatToExpect: ["5:30–7:00 p.m. Central", "County TBA"],
     whoItsFor: "Neighbors the fire department welcomes.",
     organizerNote: "Campaign calendar audit 2026-09-02. Empty counties until a county is named.",
@@ -3738,7 +3737,7 @@ const movementEventsCore: EventItem[] = [
     summary:
       "Travel Thursday night, October 22. Friday, October 23, 2026: **Lake Chicot Fall Fest** in **Lake Village** — confirmed. Return Saturday morning, October 24. Grounds TBA.",
     description:
-      "The campaign travels to **Lake Village** on **Thursday night, October 22**, and returns **Saturday morning, October 24**.\n\nFriday, **October 23, 2026**: **Lake Chicot Fall Fest** in **Lake Village**. Confirmed.\n\nFestival grounds are still TBA. Do not invent a gate.\n\nThis is the Chicot County stop. It is not a four-day Desha and Lincoln hold.",
+      "The campaign travels to **Lake Village** on **Thursday night, October 22**, and returns **Saturday morning, October 24**.\n\nFriday, **October 23, 2026**: **Lake Chicot Fall Fest** in **Lake Village**. Festival grounds are still TBA.\n\nThis is the Chicot County stop.",
     whatToExpect: [
       "Travel Thursday night, October 22",
       "Friday in Lake Village — Lake Chicot Fall Fest",

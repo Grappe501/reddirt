@@ -8,14 +8,15 @@ import { Button } from "@/components/ui/Button";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { homepagePhotoObjectPositionClass } from "@/content/media/homepage-campaign-photo-display";
 import { listCountyAlbumsLive } from "@/lib/campaign-media/county-albums-live";
+import { countyAlbumsIndexJsonLd, publicPhotoAlt, publicPhotoTitle } from "@/lib/campaign-media/photo-public-seo";
 import { ARKANSAS_COUNTY_REGISTRY } from "@/lib/county/arkansas-county-registry";
 import { pageMeta } from "@/lib/seo/metadata";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = pageMeta({
-  title: "Campaign Photos — County Albums",
+  title: "Campaign Photos by Arkansas County",
   description:
-    "Browse Kelly Grappe campaign photos by Arkansas county. Albums grow as trail stills are added.",
+    "County-by-county campaign photos of Kelly Grappe, candidate for Arkansas Secretary of State. Browse trail photos from all 75 Arkansas counties.",
   path: "/campaign-photos",
   imageSrc: "/media/placeholders/texture-porch-glow.svg",
 });
@@ -28,6 +29,10 @@ export default async function CampaignPhotosPage() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(countyAlbumsIndexJsonLd(albums)) }}
+      />
       <MediaPageHero
         slotKey="campaign-photos.intro"
         layout="bleed"
@@ -47,7 +52,7 @@ export default async function CampaignPhotosPage() {
         <ContentContainer>
           <p className="mx-auto mb-10 max-w-2xl text-center font-body text-sm text-kelly-slate md:text-base">
             {withPhotos.length} {withPhotos.length === 1 ? "county" : "counties"} with photos so far · {waiting.length}{" "}
-            waiting on the next drop.
+            more to come.
           </p>
 
           {withPhotos.length > 0 ? (
@@ -65,7 +70,8 @@ export default async function CampaignPhotosPage() {
                         <div className="relative aspect-[5/4] overflow-hidden bg-kelly-fog">
                           <Image
                             src={album.cover.src}
-                            alt={album.cover.accessibility.altText}
+                            alt={publicPhotoAlt(album.cover)}
+                            title={publicPhotoTitle(album.cover)}
                             width={album.cover.basic.width ?? 960}
                             height={album.cover.basic.height ?? 768}
                             className={cn(
@@ -74,15 +80,14 @@ export default async function CampaignPhotosPage() {
                             )}
                             sizes="(max-width: 640px) 100vw, 33vw"
                           />
-                          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-kelly-ink/70 via-kelly-ink/10 to-transparent" />
-                          <div className="absolute bottom-0 left-0 right-0 p-4 text-white md:p-5">
-                            <p className="font-heading text-xl font-bold tracking-tight md:text-2xl">
-                              {album.shortName}
-                            </p>
-                            <p className="mt-1 font-body text-sm text-white/85">
-                              {album.photoCount} {album.photoCount === 1 ? "photo" : "photos"}
-                            </p>
-                          </div>
+                        </div>
+                        <div className="border-t border-kelly-ink/10 bg-white px-4 py-3 md:px-5 md:py-4">
+                          <p className="font-heading text-xl font-bold tracking-tight text-kelly-ink md:text-2xl">
+                            {album.shortName}
+                          </p>
+                          <p className="mt-1 font-body text-sm text-kelly-slate">
+                            {album.photoCount} {album.photoCount === 1 ? "photo" : "photos"}
+                          </p>
                         </div>
                       </Link>
                     </ScrollReveal>
@@ -94,7 +99,7 @@ export default async function CampaignPhotosPage() {
 
           <h2 className="mt-16 font-heading text-xl font-bold text-kelly-ink md:text-2xl">All 75 counties</h2>
           <p className="mt-2 max-w-2xl font-body text-sm text-kelly-slate">
-            Empty cards are reserved. They fill when that county folder is added.
+            Counties without photos yet will appear here as albums are added from the trail.
           </p>
           <ul className="mt-8 grid list-none grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
             {ARKANSAS_COUNTY_REGISTRY.map((county) => {

@@ -181,21 +181,19 @@ export default async function GetInvolvedPage() {
               <a href="#volunteer" className="font-semibold text-kelly-blue underline-offset-2 hover:underline">
                 #volunteer
               </a>
-              ) — tell us how you can help (events, calls, doors, hosting, logistics, and more). Remote help is welcome
-              when the lane fits. Staff review submissions; nothing auto-publishes you into outreach lists beyond what
-              you choose here.
+              ) — tell us how you can help (events, calls, doors, hosting, logistics, and more). Remote help is welcome.
+              Staff review submissions.
             </li>
             <li>
-              <strong className="text-kelly-navy">After you submit</strong> — your form creates a campaign intake record
-              for follow-up. You should see a clear success message on this page. We do not invent automatic text/email
-              blasts from this pass.
+              <strong className="text-kelly-navy">After you submit</strong> — our team will follow up. You should see a
+              confirmation on this page.
             </li>
             <li>
               <strong className="text-kelly-navy">Privacy</strong> — see how we handle information in our{" "}
               <Link href="/privacy" className="font-semibold text-kelly-blue underline-offset-2 hover:underline">
                 Privacy
               </Link>{" "}
-              policy. Do not mix volunteer consent with unrelated story or donation consent on the same checkbox.
+              policy.
             </li>
           </ul>
         </ContentContainer>
