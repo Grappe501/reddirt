@@ -6,12 +6,11 @@ import { FullBleedSection } from "@/components/layout/FullBleedSection";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { Button } from "@/components/ui/Button";
 import { JoinMovementForm } from "@/components/forms/JoinMovementForm";
-import { VolunteerForm } from "@/components/forms/VolunteerForm";
+import { ElectdVolunteerForm } from "@/components/forms/ElectdVolunteerForm";
 import { EditorialCampaignPhoto, EditorialPhotoPair } from "@/components/about/EditorialCampaignPhoto";
 import { trailPhotosForSlot } from "@/content/media/campaign-trail-assignments";
 import { RepresentLocalEventPanel } from "@/components/organizing/RepresentLocalEventPanel";
 import { representLocalEventVolunteerHref } from "@/config/navigation";
-import { isValidResourceVolunteerSlug } from "@/content/resources/toolkit";
 
 export const metadata: Metadata = {
   title: "Get Involved",
@@ -86,33 +85,7 @@ const volunteerLanes: {
   },
 ];
 
-function pickLane(sp: Record<string, string | string[] | undefined>): string | undefined {
-  const v = sp.lane;
-  if (typeof v === "string") return v;
-  if (Array.isArray(v)) return v[0];
-  return undefined;
-}
-
-function pickResource(sp: Record<string, string | string[] | undefined>): string | undefined {
-  const v = sp.resource;
-  if (typeof v === "string") return v;
-  if (Array.isArray(v)) return v[0];
-  return undefined;
-}
-
-export default async function GetInvolvedPage({
-  searchParams,
-}: {
-  searchParams?: Promise<Record<string, string | string[] | undefined>>;
-}) {
-  const sp = (await searchParams) ?? {};
-  const laneParam = pickLane(sp);
-  const resourceParam = pickResource(sp);
-  const volunteerPrefillResource =
-    resourceParam && isValidResourceVolunteerSlug(resourceParam) ? resourceParam : undefined;
-  const volunteerPrefillLane =
-    laneParam === "event_representation" ? ("event_representation" as const) : undefined;
-
+export default async function GetInvolvedPage() {
   const pair = trailPhotosForSlot("getInvolved");
   const left = pair[0];
   const right = pair[1];
@@ -376,7 +349,7 @@ export default async function GetInvolvedPage({
           </div>
 
           <div id="volunteer" className="mt-14 scroll-mt-24">
-            <h3 className="font-heading text-base font-bold text-kelly-text md:text-lg">Volunteer signup</h3>
+            <h3 className="font-heading text-base font-bold text-kelly-text md:text-lg">Join our campaign</h3>
             <p className="mt-2 max-w-3xl font-body text-sm leading-relaxed text-kelly-text/75">
               Check what fits—even one line helps. Tips:{" "}
               <Link className="font-semibold text-kelly-navy underline" href="/resources/postcard-outreach">
@@ -393,7 +366,7 @@ export default async function GetInvolvedPage({
               .
             </p>
             <div className="mt-8 max-w-3xl">
-              <VolunteerForm prefillLane={volunteerPrefillLane} prefillResource={volunteerPrefillResource} />
+              <ElectdVolunteerForm />
             </div>
           </div>
         </ContentContainer>

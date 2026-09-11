@@ -9,14 +9,11 @@ import { SectionHeading } from "@/components/blocks/SectionHeading";
 import { FullBleedSection } from "@/components/layout/FullBleedSection";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { Button } from "@/components/ui/Button";
-import { resolveRoleQueryFromOnboardingLane, VOLUNTEER_ROLE_QUERY } from "@/lib/campaign-links";
-import type { VolunteerInput } from "@/lib/forms/schemas";
+import { VOLUNTEER_ROLE_QUERY } from "@/lib/campaign-links";
 import { OnboardingChecklist } from "@/components/volunteer/OnboardingChecklist";
 import { RoleCard } from "@/components/volunteer/RoleCard";
 import { TeamBuilderSection } from "@/components/volunteer/TeamBuilderSection";
-import { VolunteerSignupCta } from "@/components/volunteer/VolunteerSignupCta";
-import { VolunteerForm } from "@/components/forms/VolunteerForm";
-import { isNativeVolunteerFormEnabled } from "@/config/volunteer-signup";
+import { ElectdVolunteerForm } from "@/components/forms/ElectdVolunteerForm";
 import { DISCORD_VOLUNTEER_BLURB } from "@/lib/volunteer-ops/discord-volunteer-copy";
 
 type Lane = "events" | "social" | "relational" | "unsure" | null;
@@ -28,13 +25,6 @@ function laneFromSignupRoleParam(role: string | null | undefined): Lane {
   if (role === VOLUNTEER_ROLE_QUERY.powerOf5) return "relational";
   if (role === VOLUNTEER_ROLE_QUERY.notSure) return "unsure";
   return null;
-}
-
-function preferredRoleForLane(lane: Lane): VolunteerInput["preferredRole"] | null {
-  if (!lane || lane === "unsure") return "not_sure";
-  if (lane === "events") return "events";
-  if (lane === "social") return "social_media";
-  return "power_of_five";
 }
 
 const LANE_MESSAGES: Record<Exclude<Lane, null>, string> = {
@@ -52,7 +42,6 @@ export function VolunteerOnboardingPage({
   /** `?role=` from `/volunteer` when using native signup deep links */
   initialSignupRole?: string | null;
 }) {
-  const nativeVolunteerForm = isNativeVolunteerFormEnabled();
   const searchParams = useSearchParams();
   const [lane, setLane] = useState<Lane>(() => laneFromSignupRoleParam(initialSignupRole ?? undefined));
 
@@ -236,25 +225,13 @@ export function VolunteerOnboardingPage({
             id="signup-heading"
             align="left"
             eyebrow="Section 7"
-            title="Ready to join?"
+            title="Join our campaign"
             subtitle="Complete the volunteer signup form and someone from the campaign will be able to connect you to the right local team."
           />
           <div className="mt-8 flex flex-col items-start gap-4">
-            {nativeVolunteerForm ? (
-              <>
-                <VolunteerForm presetPreferredRole={preferredRoleForLane(lane)} />
-                <div className="flex flex-wrap items-center gap-2 font-body text-xs text-kelly-text/60">
-                  <span>Prefer the legacy Squarespace form?</span>
-                  <VolunteerSignupCta
-                    variant="outline"
-                    forceExternal
-                    roleQuery={resolveRoleQueryFromOnboardingLane(lane)}
-                  />
-                </div>
-              </>
-            ) : (
-              <VolunteerSignupCta roleQuery={resolveRoleQueryFromOnboardingLane(lane)} />
-            )}
+            <div className="w-full">
+              <ElectdVolunteerForm />
+            </div>
             <p className="font-body text-sm text-kelly-text/70">
               After you sign up, use the{" "}
               <Link href="/volunteer/resources" className="font-semibold text-kelly-navy underline hover:text-kelly-blue">

@@ -1,5 +1,3 @@
-import { isNativeVolunteerFormEnabled } from "@/config/volunteer-signup";
-
 /**
  * Centralized external URLs for the volunteer platform and cross-links to the **live** campaign site
  * (www.kellygrappe.com) until the RedDirt app replaces it at relaunch.
@@ -100,8 +98,7 @@ function appendVolunteerRoleQuery(base: string, role?: VolunteerSignupRoleQuery 
  * `https://example.com/path?role=events#volunteer`
  */
 export function buildVolunteerSignupUrl(role?: VolunteerSignupRoleQuery | null): string {
-  const base = isNativeVolunteerFormEnabled() ? "/volunteer#signup" : VOLUNTEER_SIGNUP_URL;
-  return appendVolunteerRoleQuery(base, role);
+  return appendVolunteerRoleQuery("/get-involved#volunteer", role);
 }
 
 /** Always targets the legacy external volunteer URL — used when native signup is on but a fallback link is needed. */
