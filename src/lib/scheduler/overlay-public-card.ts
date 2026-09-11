@@ -2,6 +2,12 @@ import type { EventItem } from "@/content/types";
 import type { PublicCampaignEvent } from "@/lib/calendar/public-event-types";
 import { cardFromRow, cardToEventMarks, cardToFieldAttendance } from "@/lib/scheduler/public-card-fields";
 
+function isThinPlace(value?: string | null): boolean {
+  const t = value?.trim() ?? "";
+  if (!t) return true;
+  return /\b(tba|tbd|unknown|city tba|venue tba|location tba)\b/i.test(t);
+}
+
 export function overlayPublishedCalendarEvent(base: EventItem, pub: PublicCampaignEvent): EventItem {
   const card = cardFromRow(pub);
   const attendance = cardToFieldAttendance(card);
@@ -12,9 +18,9 @@ export function overlayPublishedCalendarEvent(base: EventItem, pub: PublicCampai
     startsAt: pub.startAt.toISOString(),
     endsAt: pub.endAt.toISOString(),
     timezone: pub.timezone || base.timezone,
-    locationLabel: pub.locationName?.trim() || base.locationLabel,
-    city: pub.city?.trim() || base.city,
-    addressLine: pub.address?.trim() || base.addressLine,
+    locationLabel: isThinPlace(pub.locationName) ? base.locationLabel : pub.locationName!.trim(),
+    city: isThinPlace(pub.city) ? base.city : pub.city!.trim(),
+    addressLine: isThinPlace(pub.address) ? base.addressLine : pub.address!.trim(),
     countySlug: pub.county?.slug || base.countySlug,
     summary: pub.publicSummary?.trim() || base.summary,
     description: pub.publicSummary?.trim() || base.description,

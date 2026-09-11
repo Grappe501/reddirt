@@ -5009,21 +5009,23 @@ const kellyCampaignStopsSource: KellyCampaignStop[] = [
     status: "scheduled",
     includeOnPublicPage: true,
     confidence: "confirmed",
+    city: "Lewisville",
     notes:
-      "Steve 2026-09-08: Sep 11 Lafayette confirmed. Friday only — Saturday Lafayette hold dropped (Sat is Stuttgart start then Cleveland end). City/street TBA. /events/lafayette-county-sep-2026",
+      "Steve 2026-09-11: Lafayette County / Lewisville. Host Ethan Dunbar. Evening softball first pitch, then karaoke with first responders. /events/lafayette-county-sep-2026",
     sourceType: "calendar",
   },
   {
     id: "manual-2026-09-11-le-vs-fire-softball",
-    publicTitle: "Law enforcement vs. fire softball",
+    publicTitle: "Fire vs. police softball — first pitch",
     date: "2026-09-11",
     title: "7pm law enforcement vs fire softball",
-    counties: [],
+    city: "Lewisville",
+    counties: ["Lafayette"],
     status: "scheduled",
     includeOnPublicPage: true,
     confidence: "confirmed",
     notes:
-      "Steve 2026-09-08: Sep 11 law enforcement vs fire softball confirmed. City/field TBA. /events/le-vs-fire-softball-2026",
+      "Steve 2026-09-11: Lafayette County / Lewisville. Host Ethan Dunbar. Kelly throws out the first pitch. Karaoke with first responders follows the game. /events/le-vs-fire-softball-2026",
     sourceType: "calendar",
   },
   {

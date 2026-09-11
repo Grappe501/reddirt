@@ -2,14 +2,18 @@
 
 import Link from "next/link";
 import type { EventItem } from "@/content/types";
-import { formatCountyFirstMeta, publicCountyEyebrow } from "@/lib/events/public-event-county";
-import { resolveEventStatus, stripPublicMarkdown } from "@/lib/format/eventDisplay";
+import {
+  formatEventDateHeadline,
+  formatEventTimeHeadline,
+  publicCountyEyebrow,
+  publicEventCityLine,
+} from "@/lib/events/public-event-county";
+import { stripPublicMarkdown } from "@/lib/format/eventDisplay";
 import { EventMarksChips } from "@/components/organizing/EventMarksChips";
 import { EventOpsLetters } from "@/components/organizing/EventOpsLetters";
 import { EventSocialGraphic } from "@/components/organizing/EventSocialGraphic";
 import { eventMarksCta } from "@/lib/events/event-marks";
 import {
-  attendanceIsOpenInvite,
   eventBoardChromeClass,
   eventCardActionHref,
   eventCardCtaLabel,
@@ -51,12 +55,10 @@ export function EventStopCard({
   event: EventItem;
   scheduleConflict?: boolean;
 }) {
-  const status = resolveEventStatus(event);
   const titleHref = eventCardTitleHref(event);
   const marksCta = eventMarksCta(event);
   const actionHref = marksCta?.href ?? eventCardActionHref(event);
   const ctaLabel = marksCta?.label ?? eventCardCtaLabel(event);
-  const open = attendanceIsOpenInvite(event.attendanceType);
   const summary = stripPublicMarkdown(event.summary).split(/(?<=\.)\s/)[0] ?? stripPublicMarkdown(event.summary);
   const tentative = event.fieldAttendance === "tentative";
   const kellyNotAttending = isKellyNotAttending(event);
@@ -82,7 +84,14 @@ export function EventStopCard({
       ) : event.fieldAttendance === "confirmed" ? (
         <p className="mt-1 font-body text-[11px] font-bold uppercase tracking-wider text-kelly-navy">Confirmed</p>
       ) : null}
-      <h3 className="mt-2 font-heading text-xl font-bold text-kelly-text">
+      <p className="mt-3 font-heading text-2xl font-bold leading-tight tracking-tight text-kelly-ink md:text-3xl">
+        {publicEventCityLine(event)}
+      </p>
+      <p className="mt-2 font-heading text-xl font-bold leading-snug text-kelly-navy md:text-2xl">
+        {formatEventDateHeadline(event)}
+      </p>
+      <p className="mt-1 font-heading text-lg font-semibold text-kelly-text">{formatEventTimeHeadline(event)}</p>
+      <h3 className="mt-4 font-heading text-lg font-bold text-kelly-text md:text-xl">
         <EventHref
           href={titleHref}
           className="hover:text-kelly-navy focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-kelly-navy/40"
@@ -98,9 +107,7 @@ export function EventStopCard({
           className="mt-3 overflow-hidden rounded-lg border border-kelly-navy/15 bg-white"
         />
       ) : null}
-      <p className="mt-1 font-body text-sm font-semibold text-kelly-text/75">{formatCountyFirstMeta(event)}</p>
-      {event.addressLine ? <p className="mt-1 font-body text-sm text-kelly-text/65">{event.addressLine}</p> : null}
-      {event.publicContact ? <p className="mt-1 font-body text-sm text-kelly-text/65">Contact: {event.publicContact}</p> : null}
+      {event.publicContact ? <p className="mt-2 font-body text-sm font-semibold text-kelly-text/80">{event.publicContact}</p> : null}
       <EventMarksChips event={event} className="mt-3" />
       <p className="mt-3 font-body text-sm leading-relaxed text-kelly-text/75">{summary}</p>
       {kellyNotAttending ? (
@@ -109,8 +116,6 @@ export function EventStopCard({
         <p className="mt-3 font-body text-sm text-yellow-950">{SCHEDULE_CONFLICT_COPY}</p>
       ) : caution ? (
         <p className="mt-3 font-body text-sm text-kelly-text/70">{CAUTION_HOLD_COPY}</p>
-      ) : !open && status === "upcoming" && !event.statewideVirtual ? (
-        <p className="mt-3 font-body text-sm text-kelly-text/70">Kelly will be in {event.city?.trim() || event.locationLabel}.</p>
       ) : null}
       <EventHref href={actionHref} className="mt-4 inline-flex font-body text-sm font-semibold text-kelly-navy">
         {ctaLabel} →

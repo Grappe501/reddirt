@@ -33,6 +33,32 @@ export function publicEventCityLine(event: EventItem): string {
   return event.locationLabel.replace(/,\s*AR\b.*$/i, "").trim();
 }
 
+export function formatEventDateHeadline(event: EventItem): string {
+  const start = parseEventInstant(event.startsAt, event.timezone);
+  return new Intl.DateTimeFormat("en-US", {
+    weekday: "long",
+    month: "long",
+    day: "numeric",
+    timeZone: event.timezone,
+  }).format(start);
+}
+
+export function formatEventTimeHeadline(event: EventItem): string {
+  if (event.opsFlags?.timeTbd) return "Time TBA";
+  const start = parseEventInstant(event.startsAt, event.timezone);
+  const timeFmt = new Intl.DateTimeFormat("en-US", {
+    hour: "numeric",
+    minute: "2-digit",
+    timeZone: event.timezone,
+  });
+  if (!event.endsAt) return timeFmt.format(start);
+  const end = parseEventInstant(event.endsAt, event.timezone);
+  const startDay = new Intl.DateTimeFormat("en-CA", { timeZone: event.timezone }).format(start);
+  const endDay = new Intl.DateTimeFormat("en-CA", { timeZone: event.timezone }).format(end);
+  if (startDay === endDay) return `${timeFmt.format(start)}–${timeFmt.format(end)}`;
+  return timeFmt.format(start);
+}
+
 /** County-first meta: `Paragould · September 26 · 2:00 PM` */
 export function formatCountyFirstMeta(event: EventItem): string {
   const city = publicEventCityLine(event);
