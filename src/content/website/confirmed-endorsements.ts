@@ -34,8 +34,7 @@ export const CONFIRMED_ENDORSEMENTS: readonly ConfirmedEndorsement[] = [
     description: "Represents workers from affiliated labor organizations across Arkansas.",
     relatedPhotoId: "afl-cio-pre-event-networking-20260629",
     relatedPhotoNote:
-      "Photograph from before Kelly addressed an Arkansas AFL-CIO gathering. Meeting attendance and the formal endorsement are separate moments.",
-    sourceNote: "Campaign-confirmed endorsement for Arkansas Secretary of State.",
+      "Kelly speaking with attendees before addressing an Arkansas AFL-CIO gathering.",
     homepage: true,
   },
   {
@@ -44,7 +43,6 @@ export const CONFIRMED_ENDORSEMENTS: readonly ConfirmedEndorsement[] = [
     name: "Arkansas Education Association",
     status: "Endorsed",
     description: "Represents educators across Arkansas.",
-    sourceNote: "Campaign-confirmed endorsement for Arkansas Secretary of State.",
     homepage: true,
   },
   {
@@ -53,7 +51,6 @@ export const CONFIRMED_ENDORSEMENTS: readonly ConfirmedEndorsement[] = [
     name: "Josh Irby",
     status: "Endorsed",
     description: "Arkansas State Senate candidate offering community leadership support for this race.",
-    sourceNote: "Campaign-confirmed individual endorsement.",
     homepage: true,
   },
   {
@@ -62,7 +59,6 @@ export const CONFIRMED_ENDORSEMENTS: readonly ConfirmedEndorsement[] = [
     name: "Progressive Arkansas Women PAC",
     status: "Endorsed",
     description: "Supports progressive women candidates for state and local office in Arkansas.",
-    sourceNote: "Campaign-confirmed endorsement for Arkansas Secretary of State.",
     homepage: true,
   },
 ] as const;
