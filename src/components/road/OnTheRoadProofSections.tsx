@@ -211,22 +211,16 @@ export function OnTheRoadProofSections({
         <p className="font-body text-[11px] font-bold uppercase tracking-[0.22em] text-kelly-gold">{c.hubHandoff.eyebrow}</p>
         <h2 className="mt-3 font-heading text-xl font-bold text-kelly-ink md:text-2xl">{c.hubHandoff.title}</h2>
         <p className="mt-4 font-body text-base leading-relaxed text-kelly-slate md:text-lg">{c.hubHandoff.body}</p>
-        <p className="mt-6 font-body text-sm text-kelly-slate">
-          <a href="#channels" className="rounded-sm font-semibold text-kelly-blue underline-offset-2 hover:underline focus-visible:outline focus-visible:ring-2 focus-visible:ring-kelly-gold/50">
-            Jump to all channels
-          </a>
-          {trailPhotosAvailable ? (
-            <>
-              {" · "}
-              <a
-                href="#trail-photos"
-                className="rounded-sm font-semibold text-kelly-blue underline-offset-2 hover:underline focus-visible:outline focus-visible:ring-2 focus-visible:ring-kelly-gold/50"
-              >
-                Trail photos
-              </a>
-            </>
-          ) : null}
-        </p>
+        {trailPhotosAvailable ? (
+          <p className="mt-6 font-body text-sm text-kelly-slate">
+            <a
+              href="#trail-photos"
+              className="rounded-sm font-semibold text-kelly-blue underline-offset-2 hover:underline focus-visible:outline focus-visible:ring-2 focus-visible:ring-kelly-gold/50"
+            >
+              Trail photos
+            </a>
+          </p>
+        ) : null}
       </div>
     </>
   );
