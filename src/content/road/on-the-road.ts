@@ -28,7 +28,7 @@ export const onTheRoadPageMeta = {
 export const OFFICE_LAYER_THREE_CAMPAIGN_TRAIL_PROOF = {
   title: "The Work Behind the Campaign",
   body:
-    "This campaign is not being built from a conference room. Kelly is working the trail — county meetings, community rooms, faith spaces, civic gatherings, and small conversations where people ask real questions. Through August the campaign has logged 23,419 miles on Arkansas roads.",
+    "This campaign is not being built from a conference room. Kelly is working the trail — county meetings, community rooms, faith spaces, civic gatherings, and small conversations where people ask real questions. Through August the campaign has logged 23,419 miles, 245 engagements, and visits in 58 counties.",
   ctaLabel: "See Kelly on the road",
   ctaHref: "/from-the-road",
 } as const;
@@ -47,11 +47,13 @@ export const onTheRoadProofCopy = {
   },
 
   metrics: {
-    title: "Miles on the road (through August)",
+    title: "What the road looks like (through August)",
     intro:
-      "One campaign total, compiled from travel logs and mileage records through August.",
+      "Campaign totals through August — miles from travel logs and reimbursements, engagements from the field count, counties from the public visit ledger.",
     items: [
-      { label: "Total miles", value: "23,419", note: "Through August" },
+      { label: "Miles", value: "23,419", note: "Through August" },
+      { label: "Engagements", value: "245", note: "Through August" },
+      { label: "Counties", value: "58", note: "Visited through August" },
     ] as const,
     /**
      * County/city totals stay off the public page until Steve marks rows Confirmed in
@@ -99,7 +101,7 @@ export const onTheRoadProofCopy = {
         id: "february-mileage",
         title: "Miles on the road",
         body:
-          "Through August the campaign has logged 23,419 miles — showing up in counties, community rooms, and faith spaces across Arkansas.",
+          "Through August the campaign has logged 23,419 miles, 245 engagements, and visits in 58 of Arkansas’s 75 counties.",
       },
       {
         id: "faith-rooms",
