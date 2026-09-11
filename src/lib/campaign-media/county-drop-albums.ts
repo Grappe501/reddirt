@@ -61,8 +61,9 @@ export function listCountyDropPhotosAsRecords(): CampaignPhotoRecord[] {
           approvedForPublic: true,
         },
         accessibility: {
-          altText: `Campaign photo from ${album.countyDisplayName}`,
-          caption: `From the trail in ${album.shortName} County.`,
+          altText: `Kelly Grappe, candidate for Arkansas Secretary of State, campaigning in ${album.countyDisplayName}, Arkansas`,
+          caption: `Kelly Grappe campaigning in ${album.shortName} County, Arkansas, on the trail for Secretary of State.`,
+          seoDescription: `Kelly Grappe for Arkansas Secretary of State — campaign photo from ${album.countyDisplayName}.`,
         },
         createdAt: now,
         updatedAt: now,
