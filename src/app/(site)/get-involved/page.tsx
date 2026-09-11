@@ -329,7 +329,7 @@ export default async function GetInvolvedPage() {
             <RepresentLocalEventPanel className="mt-8 max-w-3xl" />
           </div>
 
-          <div id="volunteer" className="mt-14 scroll-mt-24">
+          <div id="volunteer" className="mt-14 scroll-mt-[calc(var(--site-header-h,6rem)+1rem)]">
             <h3 className="font-heading text-base font-bold text-kelly-text md:text-lg">Join our campaign</h3>
             <p className="mt-2 max-w-3xl font-body text-sm leading-relaxed text-kelly-text/75">
               Tell us what you can do. A few ideas:{" "}
@@ -346,7 +346,7 @@ export default async function GetInvolvedPage() {
               </Link>
               .
             </p>
-            <div className="mt-8 max-w-3xl">
+            <div id="volunteer-form" className="mt-8 max-w-3xl scroll-mt-[calc(var(--site-header-h,6rem)+1rem)]">
               <ElectdVolunteerForm />
             </div>
           </div>

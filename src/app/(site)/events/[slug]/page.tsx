@@ -17,7 +17,6 @@ import { getRegionBySlug } from "@/content/local/regions";
 import { skipPublicStaticGenerationForNetlifyLaunch } from "@/lib/intelligence/intelligenceLaunchMode";
 import { resolvePublicEventPageBySlug } from "@/lib/calendar/public-events";
 import { publicCampaignEventToEventItem } from "@/lib/events/calendar-to-movement-event";
-import { getJoinCampaignHref } from "@/config/external-campaign";
 import { isPrismaDatabaseUnavailable, logPrismaDatabaseUnavailable } from "@/lib/prisma-connectivity";
 import { pageMeta } from "@/lib/seo/metadata";
 import { EventSocialGraphic } from "@/components/organizing/EventSocialGraphic";
@@ -71,10 +70,9 @@ function CuratedOrCalendarEventView({ event }: { event: EventItem }) {
   const conflictSlugs = publicEventConflictSlugs(curatedEvents);
   const scheduleConflict = conflictSlugs.has(event.slug);
 
-  const rsvpHref =
-    event.rsvpHref ??
-    `/get-involved?intent=rsvp&event=${encodeURIComponent(event.slug)}`;
-  const coverHref = `/get-involved?intent=cover&event=${encodeURIComponent(event.slug)}`;
+  const volunteerFormHref = "/get-involved#volunteer-form";
+  const rsvpHref = event.rsvpHref ?? volunteerFormHref;
+  const coverHref = volunteerFormHref;
   const marksCta = eventMarksCta(event);
   const primaryHref = kellyNotAttending ? coverHref : marksCta?.href ?? (caution ? "/events" : rsvpHref);
   const primaryLabel = kellyNotAttending
