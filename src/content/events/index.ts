@@ -2834,7 +2834,7 @@ const movementEventsCore: EventItem[] = [
   },
   {
     slug: "stuttgart-sep-12-2026",
-    title: "Stuttgart",
+    title: "Coffee & Muffins at the Harr House",
     type: "Community Conversation",
     region: "Southeast Arkansas",
     countySlug: "arkansas-county",
@@ -2842,22 +2842,25 @@ const movementEventsCore: EventItem[] = [
     startsAt: "2026-09-12T11:00:00-05:00",
     endsAt: "2026-09-12T12:00:00-05:00",
     timezone: "America/Chicago",
-    locationLabel: "Stuttgart — Arkansas County",
-    addressLine: "Stuttgart, AR (building not on the calendar block)",
+    locationLabel: "The Harr House — Stuttgart",
+    addressLine: "3749 Harr Drive, Stuttgart, AR 72160",
     city: "Stuttgart",
+    flyerSrc: "/media/event-flyers/coffee-muffins-harr-house-stuttgart-2026-09-12.jpg",
+    flyerAlt:
+      "Coffee & Muffins at the Harr House flyer: Saturday, September 12, 11:00 a.m. at 3749 Harr Drive, Stuttgart. Join Quendy Gibbins Medlin and Kelly Grappe for coffee, muffins, and conversation. Everyone is welcome.",
     summary:
-      "Saturday, September 12, 2026, **11:00 a.m.–noon Central** in **Stuttgart** — confirmed. The gathering runs until 1:00 p.m.; Kelly leaves by noon for Rison. Venue TBA.",
+      "Saturday, September 12, 2026, **11:00 a.m. Central** at **the Harr House**, **3749 Harr Drive**, **Stuttgart** — coffee, muffins, and conversation. Kelly is there **11:00 a.m. to noon**, then leaves for Rison.",
     description:
-      "**Saturday, September 12, 2026**, **11:00 a.m. to noon Central** in **Stuttgart**.\n\nThe event itself goes until **1:00 p.m.** Kelly must leave by **noon** to reach the Cleveland County Democrats meet and greet in **Rison (2:00–4:00 p.m.)**.\n\nVenue and building are still TBA. This is not the October 17 Stuttgart hour — that is a separate calendar row.",
+      "**Saturday, September 12, 2026**, **11:00 a.m. Central** at **the Harr House**, **3749 Harr Drive, Stuttgart, AR**.\n\n**Coffee & Muffins at the Harr House** is a host-run morning of coffee, muffins, and conversation with candidates. The flyer names **Quendy Gibbins Medlin**, Independent candidate for Arkansas State Representative District 60, and **Kelly Grappe**, Democratic candidate for Arkansas Secretary of State. Everyone is welcome.\n\n**Kelly’s public window is 11:00 a.m. to noon.** She leaves by noon for the Cleveland County Democrats meet and greet in **Rison (2:00–4:00 p.m.)**.\n\nThis is not the October 17 Stuttgart hour — that is a separate calendar row.",
     whatToExpect: [
-      "Kelly is in Stuttgart 11:00 a.m. to noon Central",
-      "The event continues until 1:00 p.m.; she leaves by noon for Rison",
-      "Then Cleveland County meet and greet in Rison, 2:00–4:00 p.m.",
-      "Venue TBA",
+      "11:00 a.m. Central at the Harr House, 3749 Harr Drive, Stuttgart",
+      "Coffee, muffins, and conversation — everyone is welcome",
+      "With Quendy Gibbins Medlin (Independent, State Representative District 60) and Kelly Grappe",
+      "Kelly is there 11:00 a.m. to noon, then drives to Rison",
     ],
-    whoItsFor: "Arkansas County neighbors once a room and host are posted.",
+    whoItsFor: "Arkansas County neighbors and anyone the hosts welcome. Everyone is welcome.",
     organizerNote:
-      "Steve 2026-09-11: Kelly window 11:00 a.m.-noon. Event runs to 1:00 p.m. She must leave by noon for Rison 2:00-4:00. Distinct from stuttgart-oct-17-2026.",
+      "Steve 2026-09-11 flyer: Coffee & Muffins at the Harr House, 3749 Harr Drive, Stuttgart. Kelly 11:00 a.m.-noon then Rison 2:00-4:00. Host flyer names Quendy Gibbins Medlin (Independent, HD 60). Distinct from stuttgart-oct-17-2026.",
     relatedEventSlugs: ["cleveland-county-meet-and-greet-2026", "stuttgart-oct-17-2026"],
     relatedResourceHrefs: [
       { label: "Cleveland County meet and greet — same day", href: "/events/cleveland-county-meet-and-greet-2026" },

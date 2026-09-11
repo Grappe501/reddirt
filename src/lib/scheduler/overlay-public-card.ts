@@ -5,7 +5,7 @@ import { cardFromRow, cardToEventMarks, cardToFieldAttendance } from "@/lib/sche
 function isThinPlace(value?: string | null): boolean {
   const t = value?.trim() ?? "";
   if (!t) return true;
-  return /\b(tba|tbd|unknown|city tba|venue tba|location tba)\b/i.test(t);
+  return /\b(tba|tbd|unknown|city tba|venue tba|location tba|building not|street not|not on the calendar)\b/i.test(t);
 }
 
 export function overlayPublishedCalendarEvent(base: EventItem, pub: PublicCampaignEvent): EventItem {
@@ -22,11 +22,11 @@ export function overlayPublishedCalendarEvent(base: EventItem, pub: PublicCampai
     city: isThinPlace(pub.city) ? base.city : pub.city!.trim(),
     addressLine: isThinPlace(pub.address) ? base.addressLine : pub.address!.trim(),
     countySlug: pub.county?.slug || base.countySlug,
-    summary: pub.publicSummary?.trim() || base.summary,
-    description: pub.publicSummary?.trim() || base.description,
+    summary: base.summary || pub.publicSummary?.trim(),
+    description: base.description || pub.publicSummary?.trim(),
     fieldAttendance: attendance ?? base.fieldAttendance,
     publicContact: pub.publicContact?.trim() || base.publicContact,
-    flyerSrc: pub.publicSocialGraphicUrl?.trim() || base.flyerSrc,
+    flyerSrc: base.flyerSrc || pub.publicSocialGraphicUrl?.trim(),
     primaryHref: card.mobilizeHref || card.volunteerHref || base.primaryHref,
     eventSource: "calendar",
     opsFlags: {

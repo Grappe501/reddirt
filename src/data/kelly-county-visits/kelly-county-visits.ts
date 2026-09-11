@@ -5030,16 +5030,16 @@ const kellyCampaignStopsSource: KellyCampaignStop[] = [
   },
   {
     id: "manual-2026-09-12-stuttgart",
-    publicTitle: "Stuttgart — 11:00 a.m. to noon",
+    publicTitle: "Coffee & Muffins at the Harr House — Stuttgart",
     date: "2026-09-12",
-    title: "Stuttgart 11am-noon",
+    title: "Coffee & Muffins at the Harr House",
     city: "Stuttgart",
     counties: ["Arkansas"],
     status: "scheduled",
     includeOnPublicPage: true,
     confidence: "confirmed",
     notes:
-      "Steve 2026-09-11: Kelly window 11:00 a.m.-noon. Event runs to 1:00 p.m.; she must leave by noon for Rison 2:00-4:00. Venue not on the block. /events/stuttgart-sep-12-2026",
+      "Steve 2026-09-11 flyer: Harr House, 3749 Harr Drive, Stuttgart. 11:00 a.m. Kelly leaves by noon for Rison 2:00-4:00. Host flyer names Quendy Gibbins Medlin (Independent, HD 60). /events/stuttgart-sep-12-2026",
     sourceType: "calendar",
   },
   {
