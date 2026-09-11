@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { trustFunnelHomeCopy } from "@/content/home/trust-funnel-home";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
+import { TrustFunnelMidpageVideoSection } from "@/components/home/trust-funnel/TrustFunnelMidpageVideoSection";
 import { trustFunnelCardMutedClass } from "@/components/home/trust-funnel/trustFunnelChrome";
 import { cn } from "@/lib/utils";
 
@@ -93,6 +94,8 @@ export function TrustFunnelApprovedBody() {
           </ul>
         </ContentContainer>
       </section>
+
+      <TrustFunnelMidpageVideoSection />
 
       <section
         id="arkansas-runs-arkansas-elections"
