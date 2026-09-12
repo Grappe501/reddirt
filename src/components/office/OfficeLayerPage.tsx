@@ -21,16 +21,18 @@ function officeHeroSlotKey(slug: OfficeAreaSlug): PublicMediaSlotKey {
   if (slug === "elections") return "office.elections.hero";
   if (slug === "business") return "office.business.hero";
   if (slug === "notaries") return "office.notaries.hero";
+  if (slug === "records") return "office.records.hero";
   return "office.hero";
 }
 
 function officeHeroPinned(slug: OfficeAreaSlug): boolean {
-  return slug === "elections" || slug === "business" || slug === "notaries";
+  return slug === "elections" || slug === "business" || slug === "notaries" || slug === "records";
 }
 
 function officeFooterStill(slug: OfficeAreaSlug): MediaRef | null {
   if (slug === "business") return media.officeBusinessFooterStill;
   if (slug === "notaries") return media.officeNotariesFooterStill;
+  if (slug === "records") return media.officeRecordsFooterStill;
   return null;
 }
 

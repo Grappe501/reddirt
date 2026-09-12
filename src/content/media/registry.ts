@@ -245,6 +245,22 @@ export const media = {
     height: 1024,
     objectPosition: "50% 28%",
   },
+  /** File-backed civic still — /office/records hero. */
+  officeRecordsHero: {
+    src: "/media/campaign-photos/historic-site-voter-conversation-20260627.png",
+    alt: "Kelly Grappe talks with a community member at a historic-site gathering.",
+    width: 1024,
+    height: 768,
+    objectPosition: "50% 38%",
+  },
+  /** File-backed listening still — sits above the footer on /office/records. */
+  officeRecordsFooterStill: {
+    src: "/media/campaign-photos/hall-apron-listening-20260429.png",
+    alt: "Kelly Grappe listens to a community member during an indoor hall gathering.",
+    width: 768,
+    height: 1024,
+    objectPosition: "50% 22%",
+  },
   explainerSteps: {
     src: "/media/placeholders/explainer-steps.svg",
     alt: "Numbered path through soft shapes, teaching visual",
