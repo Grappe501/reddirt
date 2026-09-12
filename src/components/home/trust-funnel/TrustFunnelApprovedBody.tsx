@@ -4,15 +4,29 @@ import { trustFunnelHomeCopy } from "@/content/home/trust-funnel-home";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { TrustFunnelMidpageVideoSection } from "@/components/home/trust-funnel/TrustFunnelMidpageVideoSection";
 import { trustFunnelCardMutedClass } from "@/components/home/trust-funnel/trustFunnelChrome";
+import { PublicMediaSlotFrame } from "@/components/media/PublicMediaSlotFrame";
 import { cn } from "@/lib/utils";
 
 const copy = trustFunnelHomeCopy.approvedHome;
+
+function HomePlanMediaBridge() {
+  return (
+    <figure className="relative isolate m-0 h-[min(46vw,22rem)] w-full overflow-hidden border-y border-kelly-ink/8 bg-kelly-wash/30 sm:h-[min(34vw,24rem)]">
+      <PublicMediaSlotFrame
+        slotKey="home.plan.bridge"
+        className="absolute inset-0 h-full w-full"
+        sizes="100vw"
+        warmOverlay
+      />
+    </figure>
+  );
+}
 
 /**
  * Approved homepage substance (Kelly Grappe Website Master Direction).
  * Photography, cards, and spacing stay in the existing trust-funnel chrome.
  */
-export function TrustFunnelApprovedBody() {
+export async function TrustFunnelApprovedBody() {
   return (
     <>
       <section
@@ -58,6 +72,8 @@ export function TrustFunnelApprovedBody() {
           </ScrollReveal>
         </ContentContainer>
       </section>
+
+      <HomePlanMediaBridge />
 
       <section
         id="my-plan"

@@ -93,6 +93,14 @@ export const media = {
     width: 1200,
     height: 700,
   },
+  /** File-backed campaign still — community conversation. Fills the homepage band before My Plan. */
+  homePlanBridge: {
+    src: "/media/campaign-photos/community-center-voter-circle-20260713.png",
+    alt: "Kelly Grappe talks with community members in a bright indoor lobby during a campaign gathering.",
+    width: 1024,
+    height: 768,
+    objectPosition: "50% 38%",
+  },
   /** File-backed campaign still — Johnson County Peach Festival. Fills `/priorities` split hero. */
   prioritiesHero: {
     src: "/media/campaign-photos/johnson-county-peach-festival-parade-20260718.png",
