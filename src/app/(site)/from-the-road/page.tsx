@@ -27,7 +27,7 @@ import { loadCountyVisitLedger } from "@/lib/events/load-county-visit-ledger";
 import { pageMeta } from "@/lib/seo/metadata";
 import { brandMediaFromLegacySite } from "@/config/brand-media";
 import { TrailPhotosShowcase } from "@/components/campaign-trail/TrailPhotosShowcase";
-import { trailPhotosForSlot } from "@/content/media/campaign-trail-assignments";
+import { buildFromTheRoadTrailGallery } from "@/lib/campaign-media/from-the-road-trail-gallery";
 import { onTheRoadPageMeta, onTheRoadProofCopy } from "@/content/road/on-the-road";
 import { cn } from "@/lib/utils";
 
@@ -53,7 +53,7 @@ export default async function FromTheRoadPage() {
   const mergedEvents = mergeMovementAndCalendarEvents(events, calendarRows);
   const ledger = await loadCountyVisitLedger(mergedEvents);
   const { features: mapFeatures } = buildEventsMapModel(ledger, mergedEvents);
-  const trailGallery = trailPhotosForSlot("fromTheRoad", { fromTheRoadMax: 96 });
+  const trailGallery = buildFromTheRoadTrailGallery();
   const hasEmbeds = fromTheRoadHasLiveEmbeds(embedsConfig);
   const hasFieldSocial = social.length > 0;
   const hasNotebook = posts.length > 0;
