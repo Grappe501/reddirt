@@ -1,7 +1,9 @@
+import Image from "next/image";
 import { MediaPageHero } from "@/components/blocks/MediaPageHero";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { FullBleedSection } from "@/components/layout/FullBleedSection";
 import { Button } from "@/components/ui/Button";
+import { media } from "@/content/media/registry";
 import {
   OFFICE_AREA_SLUGS,
   type OfficeAreaConfig,
@@ -77,6 +79,19 @@ function LayerSections({
           aria-labelledby={section.heading ? `office-section-${sectionKeyPrefix}-${i}` : undefined}
         >
           <ContentContainer className="max-w-3xl">
+            {section.heading === "Where county officials remain in charge" ? (
+              <figure className="mb-10 overflow-hidden rounded-card border border-kelly-ink/10 bg-white shadow-sm">
+                <Image
+                  src={media.officeCountyOfficialsStill.src}
+                  alt={media.officeCountyOfficialsStill.alt}
+                  width={media.officeCountyOfficialsStill.width}
+                  height={media.officeCountyOfficialsStill.height}
+                  className="h-auto w-full object-cover"
+                  style={{ objectPosition: media.officeCountyOfficialsStill.objectPosition }}
+                  sizes="(max-width: 768px) 100vw, 48rem"
+                />
+              </figure>
+            ) : null}
             {section.heading ? (
               <h2
                 id={`office-section-${sectionKeyPrefix}-${i}`}
@@ -137,8 +152,9 @@ export async function OfficeLayerPage({ area, layer }: OfficeLayerPageProps) {
         </FullBleedSection>
 
         <MediaPageHero
-          slotKey="office.hero"
+          slotKey={area.slug === "elections" ? "office.elections.hero" : "office.hero"}
           layout="split"
+          preferStaticFallback={area.slug === "elections"}
           eyebrow={layer1Copy.eyebrow}
           title={layer1Copy.title}
           subtitle={layer1Copy.intro}
@@ -177,8 +193,9 @@ export async function OfficeLayerPage({ area, layer }: OfficeLayerPageProps) {
       </FullBleedSection>
 
       <MediaPageHero
-        slotKey="office.hero"
+        slotKey={area.slug === "elections" ? "office.elections.hero" : "office.hero"}
         layout="split"
+        preferStaticFallback={area.slug === "elections"}
         eyebrow={layer2Copy.eyebrow}
         title={layer2Copy.title}
         subtitle={layer2Copy.intro}

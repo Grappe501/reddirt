@@ -62,6 +62,7 @@ export const PUBLIC_MEDIA_INNER_SLOTS = [
   "endorsements.hero",
   "understand.hero",
   "office.hero",
+  "office.elections.hero",
   "dd.hero",
   "dd.ballot.hero",
   "road.hero",
@@ -317,6 +318,7 @@ const INNER_SLOTS: Record<(typeof PUBLIC_MEDIA_INNER_SLOTS)[number], PublicMedia
   ),
   "understand.hero": imageHero("understand", "understand.hero", "Office explained", "understandHero"),
   "office.hero": imageHero("office", "office.hero", "Office work forthcoming", "splitDemocracy"),
+  "office.elections.hero": imageHero("office", "office.elections.hero", "Elections trail still", "officeElectionsHero"),
   "dd.hero": imageHero("direct-democracy", "dd.hero", "Direct democracy forthcoming", "splitDemocracy"),
   "dd.ballot.hero": imageHero(
     "direct-democracy",

@@ -197,6 +197,22 @@ export const media = {
     height: 1024,
     objectPosition: "50% 22%",
   },
+  /** File-backed elections still — /office/elections hero. */
+  officeElectionsHero: {
+    src: "/media/campaign-photos/i-voted-supporter-photo-20260303.png",
+    alt: "Kelly Grappe smiles beside a supporter, wearing an I Voted sticker on her blazer at an indoor event.",
+    width: 768,
+    height: 1024,
+    objectPosition: "50% 22%",
+  },
+  /** File-backed local still — Elections “Where county officials remain in charge”. */
+  officeCountyOfficialsStill: {
+    src: "/media/campaign-photos/mena-polk-meet-greet-20260411.png",
+    alt: "Kelly Grappe talks with neighbors at a park meet-and-greet table in Mena, Arkansas.",
+    width: 1536,
+    height: 2048,
+    objectPosition: "50% 28%",
+  },
   explainerSteps: {
     src: "/media/placeholders/explainer-steps.svg",
     alt: "Numbered path through soft shapes, teaching visual",
