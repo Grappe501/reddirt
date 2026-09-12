@@ -10,8 +10,6 @@ import { CTASection } from "@/components/blocks/CTASection";
 import { Button } from "@/components/ui/Button";
 import { siteConfig } from "@/config/site";
 import { getPageBlockPayload, type HeroBlockPayload } from "@/lib/content/page-blocks";
-import { CirculatingInitiativesSection } from "@/components/direct-democracy/CirculatingInitiativesSection";
-
 export const metadata: Metadata = {
   title: "Ballot access & initiatives",
   description:
@@ -121,8 +119,6 @@ export default async function DirectDemocracyPage() {
           <ProcessSteps className="mt-12" steps={[...pipelineSteps]} id="initiative-pipeline" />
         </ContentContainer>
       </FullBleedSection>
-
-      <CirculatingInitiativesSection />
 
       <FullBleedSection variant="elevated" aria-labelledby="priority-heading">
         <ContentContainer>
