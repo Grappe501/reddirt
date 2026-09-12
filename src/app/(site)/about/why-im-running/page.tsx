@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { MediaPageHero } from "@/components/blocks/MediaPageHero";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { FullBleedSection } from "@/components/layout/FullBleedSection";
 import { Button } from "@/components/ui/Button";
 import { MeetKellySubnav } from "@/components/about/MeetKellySubnav";
 import { whyKellyPageCopy } from "@/content/about/why-kelly-page";
+import { media } from "@/content/media/registry";
 import { pageMeta } from "@/lib/seo/metadata";
 
 export const dynamic = "force-dynamic";
@@ -54,6 +56,19 @@ export default async function WhyImRunningPage() {
           aria-labelledby={`why-running-${index}`}
         >
           <ContentContainer className="max-w-3xl">
+            {section.title === "Why Secretary of State" ? (
+              <figure className="mb-10 overflow-hidden rounded-card border border-kelly-ink/10 bg-white shadow-sm">
+                <Image
+                  src={media.whySosStill.src}
+                  alt={media.whySosStill.alt}
+                  width={media.whySosStill.width}
+                  height={media.whySosStill.height}
+                  className="h-auto w-full object-cover"
+                  style={{ objectPosition: media.whySosStill.objectPosition }}
+                  sizes="(max-width: 768px) 100vw, 48rem"
+                />
+              </figure>
+            ) : null}
             <h2 id={`why-running-${index}`} className="font-heading text-2xl font-bold text-kelly-navy md:text-3xl">
               {section.title}
             </h2>

@@ -93,6 +93,14 @@ export const media = {
     width: 1200,
     height: 700,
   },
+  /** File-backed speaking still — Why I’m Running “Why Secretary of State”. */
+  whySosStill: {
+    src: "/media/campaign-photos/stone-hall-remarks-campaign-sign-20260326.png",
+    alt: "Kelly Grappe speaks indoors in a red-orange blazer beside her People Over Politics Secretary of State campaign sign.",
+    width: 768,
+    height: 1024,
+    objectPosition: "50% 28%",
+  },
   /** File-backed professional still — Experience page “Why this maps to the office”. */
   experienceRelevanceStill: {
     src: "/media/campaign-photos/afl-cio-pre-event-networking-20260629.png",
