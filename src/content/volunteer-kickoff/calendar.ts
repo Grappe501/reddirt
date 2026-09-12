@@ -16,7 +16,7 @@ export type KickoffEvent = {
 /**
  * Featured Campaign GOTV Kickoff — public details still being finalized.
  * Confirmed for presentation: date, artist, attendance goal, Sherwood framing.
- * Venue / time / ticket links: fill in when Steve provides the next packet.
+ * Public night: Woody's Sherwood Forest, BBQ 5:30-6:30, concert 7:00.
  */
 export const GRASSROOTS_GUITAR_STRINGS = {
   id: "grassroots-guitar-strings",
@@ -31,7 +31,7 @@ export const GRASSROOTS_GUITAR_STRINGS = {
   volunteerNeed:
     "Event planning team · tickets & hosts · hospitality · outreach · day-of crew",
   detail:
-    "Central Arkansas GOTV kickoff with live music. We have about a month to build a planning team and fill 500 seats. Venue, run-of-show, and ticket details will be published as they lock.",
+    "Woody's Sherwood Forest. VIP BBQ 5:30-6:30 p.m., David Adam Byrnes at 7:00. Tickets on GoodChange (concert from $25). Event site: grassrootsguitarstrings.netlify.app.",
   coChairs: ["John Duke", "Jay Powell"] as const,
   joinHrefTeam: "grassroots_guitar_strings",
 } as const;

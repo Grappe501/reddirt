@@ -17,6 +17,7 @@ import {
   eventBoardChromeClass,
   eventCardActionHref,
   eventCardCtaLabel,
+  eventCardRelatedLinks,
   eventCardTitleHref,
   isCautionHold,
   isKellyNotAttending,
@@ -59,6 +60,7 @@ export function EventStopCard({
   const marksCta = eventMarksCta(event);
   const actionHref = marksCta?.href ?? eventCardActionHref(event);
   const ctaLabel = marksCta?.label ?? eventCardCtaLabel(event);
+  const extraLinks = eventCardRelatedLinks(event, actionHref);
   const summary = stripPublicMarkdown(event.summary);
   const tentative = event.fieldAttendance === "tentative";
   const kellyNotAttending = isKellyNotAttending(event);
@@ -120,9 +122,20 @@ export function EventStopCard({
       ) : caution ? (
         <p className="mt-3 font-body text-sm text-kelly-text/70">{CAUTION_HOLD_COPY}</p>
       ) : null}
-      <EventHref href={actionHref} className="mt-4 inline-flex font-body text-sm font-semibold text-kelly-navy">
-        {ctaLabel} →
-      </EventHref>
+      <div className="mt-4 flex flex-col gap-2">
+        <EventHref href={actionHref} className="inline-flex font-body text-sm font-semibold text-kelly-navy">
+          {ctaLabel} →
+        </EventHref>
+        {extraLinks.map((link) => (
+          <EventHref
+            key={`${link.label}-${link.href}`}
+            href={link.href}
+            className="inline-flex font-body text-sm font-semibold text-kelly-navy/85"
+          >
+            {link.label} →
+          </EventHref>
+        ))}
+      </div>
     </article>
   );
 }

@@ -66,8 +66,11 @@ export function publicEventMarkChips(event: EventItem): EventMarkChip[] {
   return chips;
 }
 
-/** Mobilize-aware card CTA. Null means keep the existing details button. */
+/** Explicit ticket/watch CTAs beat the Mobilize default on the card and event page. */
 export function eventMarksCta(event: EventItem): { href: string; label: string } | null {
+  if (event.primaryHref && event.primaryCtaLabel) {
+    return { href: event.primaryHref, label: event.primaryCtaLabel };
+  }
   const status = event.marks?.mobilize;
   if (status === "live") {
     const volunteers = event.marks?.volunteers;

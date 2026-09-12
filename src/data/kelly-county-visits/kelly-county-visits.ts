@@ -5081,7 +5081,7 @@ const kellyCampaignStopsSource: KellyCampaignStop[] = [
     includeOnPublicPage: true,
     confidence: "confirmed",
     notes:
-      "Steve 2026-09-07: Thursday Sep 17 6:30 p.m. Woody's Sherwood Forest. Earlier calendar hold said Fri Sep 18 — that date is wrong. /events/grassroots-guitar-strings-2026",
+      "Steve 2026-09-12: Thursday Sep 17 Woody's Sherwood Forest. BBQ 5:30-6:30, concert 7:00. Public card: GoodChange grass-ax tickets + grassrootsguitarstrings.netlify.app. Earlier calendar hold said Fri Sep 18 — that date is wrong. /events/grassroots-guitar-strings-2026",
     sourceType: "calendar",
   },
   {

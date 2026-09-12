@@ -152,6 +152,17 @@ export function eventBoardChromeClass(
   return "border border-kelly-text/10 bg-[var(--color-surface-elevated)]";
 }
 
+/** Extra card links after the primary CTA — skip the action already shown. */
+export function eventCardRelatedLinks(
+  event: { relatedResourceHrefs?: Array<{ label: string; href: string }> },
+  actionHref: string,
+  limit = 2,
+): Array<{ label: string; href: string }> {
+  return (event.relatedResourceHrefs ?? [])
+    .filter((r) => r.href && r.href !== actionHref)
+    .slice(0, limit);
+}
+
 export function eventCardCtaLabel(event: {
   primaryCtaLabel?: string;
   statewideVirtual?: boolean;

@@ -12,6 +12,7 @@ import {
   eventBoardChromeClass,
   eventCardActionHref,
   eventCardCtaLabel,
+  eventCardRelatedLinks,
   isCautionHold,
   isKellyNotAttending,
   kellyNotAttendingCopy,
@@ -42,6 +43,7 @@ export function EventCard({ event, className, highlighted, onActivate, scheduleC
   const marksCta = eventMarksCta(event);
   const actionHref = marksCta?.href ?? eventCardActionHref(event);
   const ctaLabel = marksCta?.label ?? eventCardCtaLabel(event);
+  const extraLinks = eventCardRelatedLinks(event, actionHref);
   const tba = locationIsTba(event);
   const kellyNotAttending = isKellyNotAttending(event);
   const caution = isCautionHold(event);
@@ -146,15 +148,29 @@ export function EventCard({ event, className, highlighted, onActivate, scheduleC
         ) : null}
         {caution && !scheduleConflict ? <p className="mt-3 font-body text-sm text-kelly-text/70">{CAUTION_HOLD_COPY}</p> : null}
       </div>
-      <Link
-        href={actionHref}
-        className="mt-6 inline-flex items-center gap-2 font-body text-sm font-semibold text-kelly-navy"
-        target={isExternalHref(actionHref) ? "_blank" : undefined}
-        rel={isExternalHref(actionHref) ? "noopener noreferrer" : undefined}
-      >
-        {ctaLabel}
-        <span aria-hidden>→</span>
-      </Link>
+      <div className="mt-6 flex flex-col gap-2">
+        <Link
+          href={actionHref}
+          className="inline-flex items-center gap-2 font-body text-sm font-semibold text-kelly-navy"
+          target={isExternalHref(actionHref) ? "_blank" : undefined}
+          rel={isExternalHref(actionHref) ? "noopener noreferrer" : undefined}
+        >
+          {ctaLabel}
+          <span aria-hidden>→</span>
+        </Link>
+        {extraLinks.map((link) => (
+          <Link
+            key={`${link.label}-${link.href}`}
+            href={link.href}
+            className="inline-flex items-center gap-2 font-body text-sm font-semibold text-kelly-navy/85"
+            target={isExternalHref(link.href) ? "_blank" : undefined}
+            rel={isExternalHref(link.href) ? "noopener noreferrer" : undefined}
+          >
+            {link.label}
+            <span aria-hidden>→</span>
+          </Link>
+        ))}
+      </div>
     </article>
   );
 }

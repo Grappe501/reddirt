@@ -81,6 +81,9 @@ function CuratedOrCalendarEventView({ event }: { event: EventItem }) {
   const primaryLabel = kellyNotAttending
     ? "Volunteer to cover this stop"
     : marksCta?.label ?? (caution ? "Need more information" : event.primaryCtaLabel ?? "RSVP or raise your hand");
+  const websiteLink = event.relatedResourceHrefs.find(
+    (r) => r.href !== primaryHref && /^https?:\/\//i.test(r.href),
+  );
 
   return (
     <>
@@ -88,6 +91,11 @@ function CuratedOrCalendarEventView({ event }: { event: EventItem }) {
         <Button href={primaryHref} variant="primary">
           {primaryLabel}
         </Button>
+        {websiteLink ? (
+          <Button href={websiteLink.href} variant="outline">
+            {websiteLink.label}
+          </Button>
+        ) : null}
         <Button href="/events" variant="outline">
           All events
         </Button>
@@ -194,6 +202,11 @@ function CuratedOrCalendarEventView({ event }: { event: EventItem }) {
               >
                 {primaryLabel}
               </Button>
+              {websiteLink ? (
+                <Button href={websiteLink.href} variant="outline" className="w-full justify-center">
+                  {websiteLink.label}
+                </Button>
+              ) : null}
               <div>
                 <p className="mb-2 font-body text-xs font-bold uppercase tracking-wider text-kelly-navy">Share</p>
                 <EventShareActions
