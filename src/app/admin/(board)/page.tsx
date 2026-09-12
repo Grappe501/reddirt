@@ -31,6 +31,11 @@ const cards = [
     title: "Evidence Workbench (local)",
     body: "Confirm calendar presence, photo geography, and speech counties on localhost — saves JSON on H: without Netlify.",
   },
+  {
+    href: "/admin/site-analytics",
+    title: "Visitor analytics",
+    body: "Public-page hits, session paths, referrers, and an OpenAI brief on what to promote. Admin browsing is excluded.",
+  },
   { href: "/admin/homepage", title: "Homepage", body: "Hero, sections, quotes, featured rails." },
   { href: "/admin/pages", title: "Page copy", body: "Hero text for belief, movement, and pillar pages." },
   { href: "/admin/blog", title: "Blog / Substack", body: "Sync RSS, feature posts, teasers, placement." },
@@ -94,6 +99,16 @@ export default function AdminDashboardPage() {
             Open Compliance
           </Link>{" "}
           — import fundraising and bank files, reconcile deposits, and prepare filing-ready compliance records.
+        </div>
+        <div className="rounded-lg border border-kelly-navy/20 bg-kelly-navy/[0.06] px-4 py-3 font-body text-sm text-kelly-text/85">
+          <strong>Visitor analytics:</strong>{" "}
+          <Link
+            className="font-semibold text-kelly-slate underline underline-offset-2 hover:text-kelly-navy"
+            href="/admin/site-analytics"
+          >
+            Open visitor dashboard
+          </Link>{" "}
+          — page hits, visitor paths, top pages, and OpenAI advice from this workbench key.
         </div>
         <div className="rounded-lg border border-kelly-navy/20 bg-kelly-navy/[0.06] px-4 py-3 font-body text-sm text-kelly-text/85">
           <strong>Kelly Calendar Command Center:</strong>{" "}

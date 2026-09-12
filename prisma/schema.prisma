@@ -1342,6 +1342,9 @@ model AnalyticsEvent {
   sessionId String?
   createdAt DateTime @default(now())
 
+  @@index([name, createdAt])
+  @@index([path, createdAt])
+  @@index([sessionId, createdAt])
   @@schema("public")
 }
 

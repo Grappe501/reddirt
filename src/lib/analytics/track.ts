@@ -39,10 +39,43 @@ export async function trackEvent(
   }
 }
 
+function publicReferrer(): string | undefined {
+  if (typeof document === "undefined") return undefined;
+  const raw = document.referrer?.trim();
+  if (!raw) return undefined;
+  try {
+    const u = new URL(raw);
+    if (u.origin === window.location.origin) return undefined;
+    return `${u.hostname}${u.pathname}`.slice(0, 200);
+  } catch {
+    return undefined;
+  }
+}
+
+function campaignParams(): Record<string, string> {
+  if (typeof window === "undefined") return {};
+  const q = new URLSearchParams(window.location.search);
+  const out: Record<string, string> = {};
+  for (const key of ["utm_source", "utm_medium", "utm_campaign"]) {
+    const v = q.get(key)?.trim();
+    if (v && v.length <= 80) out[key] = v;
+  }
+  return out;
+}
+
 export function usePageView(pathname: string | null) {
   useEffect(() => {
     if (!pathname) return;
-    void trackEvent("page_view", { pathname }, pathname);
+    if (pathname.startsWith("/admin") || pathname.startsWith("/api")) return;
+    void trackEvent(
+      "page_view",
+      {
+        pathname,
+        referrer: publicReferrer(),
+        ...campaignParams(),
+      },
+      pathname,
+    );
   }, [pathname]);
 }
 

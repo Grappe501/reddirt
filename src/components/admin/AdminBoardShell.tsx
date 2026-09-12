@@ -34,6 +34,7 @@ const siteLinks: { href: string; label: string }[] = [
   { href: "/admin/counties", label: "Counties" },
   { href: "/admin/county-intelligence", label: "County intel" },
   { href: "/admin/settings", label: "Settings" },
+  { href: "/admin/site-analytics", label: "Visitor analytics" },
 ];
 
 const legacyOpsLinks: { href: string; label: string }[] = [

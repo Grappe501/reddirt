@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
+import { sanitizeAnalyticsPath, sanitizeAnalyticsPayload } from "@/lib/analytics/sanitize-payload";
 import { prisma } from "@/lib/db";
 import { clientIp, rateLimit } from "@/lib/rate-limit";
 
@@ -36,12 +37,9 @@ export async function POST(req: Request) {
     await prisma.analyticsEvent.create({
       data: {
         name: body.name,
-        path: body.path,
+        path: sanitizeAnalyticsPath(body.path),
         sessionId: body.sessionId,
-        payload: {
-          ...(body.payload ?? {}),
-          ip,
-        } as object,
+        payload: sanitizeAnalyticsPayload(body.payload),
       },
     });
   } catch (e) {
