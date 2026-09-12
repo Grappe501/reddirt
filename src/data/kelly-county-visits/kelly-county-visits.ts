@@ -5006,7 +5006,7 @@ const kellyCampaignStopsSource: KellyCampaignStop[] = [
     date: "2026-09-11",
     title: "Lafayette county",
     counties: ["Lafayette"],
-    status: "scheduled",
+    status: "completed",
     includeOnPublicPage: true,
     confidence: "confirmed",
     city: "Lewisville",
@@ -5021,7 +5021,7 @@ const kellyCampaignStopsSource: KellyCampaignStop[] = [
     title: "7pm law enforcement vs fire softball",
     city: "Lewisville",
     counties: ["Lafayette"],
-    status: "scheduled",
+    status: "completed",
     includeOnPublicPage: true,
     confidence: "confirmed",
     notes:
