@@ -3199,7 +3199,7 @@ export const CAMPAIGN_PHOTO_REGISTRY: CampaignPhotoRecord[] = [
       altText:
         "Kelly Grappe speaks with seniors seated around a breakfast table in an Elks Lodge hall.",
       caption:
-        "Kelly Grappe visits with seniors over breakfast in an Elks Lodge hall.",
+        "Kelly Grappe visits seniors over breakfast in Northwest Arkansas.",
       extendedDescription:
         "Standing at a round breakfast table with blue campaign cards and juice glasses, Kelly Grappe — in a black jacket with gold braid trim and a blue campaign button — leans in to speak with seated seniors. An Our Absent Brothers memorial plaque with an elk emblem and a Conference Room door mark the lodge setting.",
       seoDescription:
