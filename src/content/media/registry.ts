@@ -93,13 +93,13 @@ export const media = {
     width: 1200,
     height: 700,
   },
-  /** File-backed campaign still — War Memorial Stadium / Pulaski. Fills `/priorities` split hero. */
+  /** File-backed campaign still — Johnson County Peach Festival. Fills `/priorities` split hero. */
   prioritiesHero: {
-    src: "/media/campaign-photos/war-memorial-stadium-concourse-20260320.png",
-    alt: "Kelly Grappe speaks on the War Memorial Stadium concourse overlooking a crowded field celebration in Little Rock.",
+    src: "/media/campaign-photos/johnson-county-peach-festival-parade-20260718.png",
+    alt: "Kelly Grappe waves to parade spectators while walking the Johnson County Peach Festival route in Clarksville.",
     width: 768,
     height: 1024,
-    objectPosition: "50% 28%",
+    objectPosition: "50% 22%",
   },
   /** File-backed campaign still — AFL-CIO pre-event networking. Fills `/endorsements` split hero. */
   endorsementsHero: {
