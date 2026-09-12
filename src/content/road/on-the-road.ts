@@ -24,11 +24,40 @@ export const onTheRoadPageMeta = {
     "Kelly Grappe’s campaign trail: showing up across Arkansas—in counties, communities, and faith spaces.",
 } as const;
 
+/**
+ * Field totals on From the Road and office trail proof.
+ * When you change miles, engagements, or counties, set asOfYmd to the Chicago day you updated.
+ */
+export const ON_THE_ROAD_FIELD_TOTALS = {
+  asOfYmd: "2026-09-12",
+  miles: "23,419",
+  engagements: "245",
+  countiesVisited: 59,
+} as const;
+
+export function formatOnTheRoadAsOf(ymd: string = ON_THE_ROAD_FIELD_TOTALS.asOfYmd): string {
+  const [y, m, d] = ymd.split("-").map(Number);
+  return new Intl.DateTimeFormat("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+    timeZone: "America/Chicago",
+  }).format(new Date(Date.UTC(y, m - 1, d, 12)));
+}
+
+export function onTheRoadThroughLabel(ymd: string = ON_THE_ROAD_FIELD_TOTALS.asOfYmd): string {
+  return `Through ${formatOnTheRoadAsOf(ymd)}`;
+}
+
+const asOf = formatOnTheRoadAsOf();
+const through = onTheRoadThroughLabel();
+const { miles, engagements, countiesVisited } = ON_THE_ROAD_FIELD_TOTALS;
+
 /** Shared Layer 3 band for Office full-picture pages (Elections primary; optional elsewhere). */
 export const OFFICE_LAYER_THREE_CAMPAIGN_TRAIL_PROOF = {
   title: "The Work Behind the Campaign",
   body:
-    "This campaign is not being built from a conference room. Kelly is working the trail — county meetings, community rooms, faith spaces, civic gatherings, and small conversations where people ask real questions. Through August the campaign has logged 23,419 miles, 245 engagements, and visits in 58 counties.",
+    `This campaign is not being built from a conference room. Kelly is working the trail — county meetings, community rooms, faith spaces, civic gatherings, and small conversations where people ask real questions. ${through}, the campaign has logged ${miles} miles, ${engagements} engagements, and visits in ${countiesVisited} counties.`,
   ctaLabel: "See Kelly on the road",
   ctaHref: "/from-the-road",
 } as const;
@@ -47,13 +76,13 @@ export const onTheRoadProofCopy = {
   },
 
   metrics: {
-    title: "What the road looks like (through August)",
+    title: `What the road looks like (${through})`,
     intro:
-      "Campaign totals through August — miles from travel logs, engagements from the field, and counties visited.",
+      `Campaign totals through ${asOf} — miles from travel logs, engagements from the field, and counties visited. Last updated ${asOf}.`,
     items: [
-      { label: "Miles", value: "23,419", note: "Through August" },
-      { label: "Engagements", value: "245", note: "Through August" },
-      { label: "Counties", value: "58", note: "Visited through August" },
+      { label: "Miles", value: miles, note: through },
+      { label: "Engagements", value: engagements, note: through },
+      { label: "Counties", value: String(countiesVisited), note: `Visited through ${asOf}` },
     ] as const,
     /**
      * County/city totals stay off the public page until Steve marks rows Confirmed in
@@ -88,7 +117,7 @@ export const onTheRoadProofCopy = {
 
   stories: {
     title: "Snapshots from the trail",
-    intro: "Verified moments from the campaign trail — through August.",
+    intro: `Verified moments from the campaign trail — through ${asOf}.`,
     placeholders: [
       {
         id: "first-stop",
@@ -97,10 +126,10 @@ export const onTheRoadProofCopy = {
           "From the night she filed, Kelly went to Faulkner County Democrats — the first time she introduced herself publicly as a candidate for Secretary of State. Thank you to Teresa Huff for that first platform.",
       },
       {
-        id: "through-august",
-        title: "Through August",
+        id: "field-totals",
+        title: through,
         body:
-          "The campaign has logged 23,419 miles, 245 engagements, and visits in 58 of Arkansas’s 75 counties.",
+          `The campaign has logged ${miles} miles, ${engagements} engagements, and visits in ${countiesVisited} of Arkansas’s 75 counties.`,
       },
       {
         id: "faith-rooms",
