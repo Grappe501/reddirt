@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-12T06:30:32.657Z",
+  "generatedAt": "2026-09-12T06:47:11.196Z",
   "albums": [
     {
       "countySlug": "baxter-county",
@@ -2788,6 +2788,55 @@
       ]
     },
     {
+      "countySlug": "searcy-county",
+      "countyDisplayName": "Searcy County",
+      "shortName": "Searcy",
+      "photos": [
+        {
+          "id": "drop-searcy-county-1000017498",
+          "src": "/media/county-library/searcy-county/1000017498.jpg",
+          "filename": "1000017498.jpeg",
+          "width": 1600,
+          "height": 1200
+        },
+        {
+          "id": "drop-searcy-county-1000017501",
+          "src": "/media/county-library/searcy-county/1000017501.jpg",
+          "filename": "1000017501.JPG",
+          "width": 1600,
+          "height": 1200
+        },
+        {
+          "id": "drop-searcy-county-1000017502",
+          "src": "/media/county-library/searcy-county/1000017502.jpg",
+          "filename": "1000017502.jpeg",
+          "width": 1600,
+          "height": 1200
+        },
+        {
+          "id": "drop-searcy-county-1000017503",
+          "src": "/media/county-library/searcy-county/1000017503.jpg",
+          "filename": "1000017503.JPG",
+          "width": 1600,
+          "height": 1200
+        },
+        {
+          "id": "drop-searcy-county-1000017504",
+          "src": "/media/county-library/searcy-county/1000017504.jpg",
+          "filename": "1000017504.jpeg",
+          "width": 1600,
+          "height": 1200
+        },
+        {
+          "id": "drop-searcy-county-img-3705",
+          "src": "/media/county-library/searcy-county/img-3705.jpg",
+          "filename": "IMG_3705.HEIC",
+          "width": 1200,
+          "height": 1600
+        }
+      ]
+    },
+    {
       "countySlug": "sharp-county",
       "countyDisplayName": "Sharp County",
       "shortName": "Sharp",
@@ -3009,6 +3058,20 @@
       "countyDisplayName": "White County",
       "shortName": "White",
       "photos": [
+        {
+          "id": "drop-white-county-img-3981",
+          "src": "/media/county-library/white-county/img-3981.jpg",
+          "filename": "IMG_3981.HEIC",
+          "width": 1600,
+          "height": 1200
+        },
+        {
+          "id": "drop-white-county-img-3985",
+          "src": "/media/county-library/white-county/img-3985.jpg",
+          "filename": "IMG_3985.HEIC",
+          "width": 1200,
+          "height": 1599
+        },
         {
           "id": "drop-white-county-img-6158",
           "src": "/media/county-library/white-county/img-6158.jpg",
