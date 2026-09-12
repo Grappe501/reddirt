@@ -261,6 +261,22 @@ export const media = {
     height: 1024,
     objectPosition: "50% 22%",
   },
+  /** File-backed Capitol still — /office/capitol hero. */
+  officeCapitolHero: {
+    src: "/media/campaign-trail/012-img-7953.jpg",
+    alt: "Kelly Grappe smiles in front of the Arkansas State Capitol dome.",
+    width: 940,
+    height: 940,
+    objectPosition: "50% 28%",
+  },
+  /** File-backed Capitol grounds still — sits above the footer on /office/capitol. */
+  officeCapitolFooterStill: {
+    src: "/media/campaign-trail/013-img-7954.jpg",
+    alt: "Neighbors and a petition table on the Arkansas State Capitol grounds, with the Capitol dome behind them.",
+    width: 2048,
+    height: 1536,
+    objectPosition: "50% 35%",
+  },
   explainerSteps: {
     src: "/media/placeholders/explainer-steps.svg",
     alt: "Numbered path through soft shapes, teaching visual",
