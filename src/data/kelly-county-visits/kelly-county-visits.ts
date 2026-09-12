@@ -4874,7 +4874,7 @@ const kellyCampaignStopsSource: KellyCampaignStop[] = [
     includeOnPublicPage: true,
     confidence: "confirmed",
     notes:
-      "Official LWV Washington County invite (Michelle Wolchok): Thu Oct 8 5:30-7:30 p.m., Walker Community Room, Fayetteville Public Library. ~60 min on stage; amendments briefing before/after. Participation agreement pending. Do not publish president cell. /events/lwv-fayetteville-library-oct-8-2026 Same afternoon: AME Little Rock 1:00-3:30. Same evening: Cross County Farm Bureau Meet the Candidates Wynne 6:45 p.m. — cannot do both.",
+      "Official LWV Washington County invite (Michelle Wolchok): Thu Oct 8 5:30-7:30 p.m., Walker Community Room, Fayetteville Public Library. ~60 min on stage; amendments briefing before/after. Participation agreement pending. Do not publish president cell. Public library listing faylib.org/event/17157312 still shows SOS on Tue Oct 6; livestream youtube.com/@FayettevillePublicLibrary/streams; desk 479-856-7000; ADA 479-856-7250. /events/lwv-fayetteville-library-oct-8-2026 Same afternoon: AME Little Rock 1:00-3:30. Same evening: Cross County Farm Bureau Meet the Candidates Wynne 6:45 p.m. — cannot do both.",
     sourceType: "manual",
   },
   {
