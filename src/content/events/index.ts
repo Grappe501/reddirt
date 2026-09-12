@@ -2479,29 +2479,37 @@ const movementEventsCore: EventItem[] = [
     startsAt: "2026-10-15T10:00:00",
     endsAt: "2026-10-15T11:00:00",
     timezone: "America/Chicago",
-    locationLabel: "Arkansas TV studios — Conway (live broadcast)",
-    addressLine:
-      "350 South Donaghey Avenue, Conway, AR 72034. Live start 10:00 a.m. This is a television debate, not a walk-in studio audience.",
+    city: "Conway",
+    locationLabel: "Arkansas TV studios — Conway",
+    addressLine: "350 South Donaghey Avenue, Conway, AR 72034",
+    publicContact: "Watch live at arkansastv.gov/live · Arkansas TV (800) 662-2386",
     summary:
-      "Thursday, October 15, 2026, **10:00 a.m. Central**: live **Arkansas TV** debate for Arkansas Secretary of State. Watch on Arkansas TV / arkansastv.gov. Kelly’s campaign confirmed this slot.",
+      "Live Arkansas TV debate for Secretary of State. Thursday, October 15, 2026, 10:00 a.m. Central. Kelly is confirmed. Watch from home at arkansastv.gov/live — this is a televised studio debate, not a walk-in audience. Schedule and reminders: arkansastv.gov/schedule. Station: 350 South Donaghey Avenue, Conway · (800) 662-2386.",
     description:
-      "Arkansas TV scheduled a week of debates **October 12–16**. The Secretary of State debate is **Thursday, October 15, 10:00 a.m.** live. Watch on Arkansas TV.\n\nStudios are at **350 South Donaghey Avenue, Conway**. This is a **televised debate**, not a campaign rally and not a walk-in studio event.\n\nArkansas TV also aired the June Arkansas Press Association Secretary of State debate; this October date is a separate live studio debate.",
+      "Arkansas TV is hosting a live Secretary of State debate on Thursday, October 15, 2026, at 10:00 a.m. Central. Kelly’s campaign confirmed this slot with the station.\n\nWatch: arkansastv.gov/live. Set a reminder on arkansastv.gov/schedule. The station’s published address is 350 S. Donaghey, Conway, AR 72034. Public phone on the station site: (800) 662-2386.\n\nThis is a televised debate, not a campaign rally and not a walk-in studio event. Studio access is for participants and station staff.\n\nArkansas TV listed a debate week October 12–16. This Thursday morning slot is the Secretary of State debate. It is a separate live studio date from the June Arkansas Press Association debate that Arkansas TV later aired.\n\nThe same Thursday evening the public calendar also lists Hob Nob in Bentonville (5:00–7:00 p.m.) and a Hardy candidate forum. Those are different stops — not part of this broadcast.",
     whatToExpect: [
-      "Live broadcast starts 10:00 a.m. Central Thursday, October 15",
-      "Watch on Arkansas TV — not a public studio door event",
+      "Live 10:00 a.m. Central Thursday, October 15 — Kelly confirmed",
+      "Watch at arkansastv.gov/live; program reminders at arkansastv.gov/schedule",
+      "Arkansas TV studios, 350 South Donaghey Avenue, Conway — not a public studio door event",
+      "Station public line (800) 662-2386",
     ],
     whoItsFor:
-      "Anyone who wants to watch the Secretary of State candidates on Arkansas TV. Studio access is for participants and station staff.",
+      "Anyone who wants to watch the Secretary of State debate on Arkansas TV. Neighbors should watch from home or cable — studio access is for participants and station staff.",
     organizerNote:
-      "LaShuan Vaughn, Public Affairs Producer, Arkansas TV. Kelly confirmed 2026-08-25. Do not publish campaign email or producer email on the public card. Station: arkansastv.gov. Office 501-682-4178. Candidate arrive-by-8am is internal. Same evening: hob-nob-bentonville-2026 5:00-7:00 and hardy-candidate-forum-2026 — cannot do both. This taping is Conway 10:00 a.m.",
-    rsvpHref: "https://www.arkansastv.gov/",
-    audienceTags: ["Conway", "Faulkner County", "Debate", "Arkansas TV", "Central Arkansas"],
+      "LaShuan Vaughn, Public Affairs Producer, Arkansas TV. Kelly confirmed 2026-08-25. Do not publish campaign email or producer email. Public station facts from arkansastv.gov footer: 350 S. Donaghey, Conway, AR 72034; (800) 662-2386; live arkansastv.gov/live; schedule arkansastv.gov/schedule. Candidate arrive-by-8am walk-through/makeup is internal only. Same evening: hob-nob-bentonville-2026 5:00-7:00 and hardy-candidate-forum-2026 — cannot do both. This taping is Conway 10:00 a.m.",
+    rsvpHref: "https://www.arkansastv.gov/live",
+    primaryHref: "https://www.arkansastv.gov/live",
+    primaryCtaLabel: "Watch live",
+    audienceTags: ["Conway", "Faulkner County", "Debate", "Arkansas TV", "Central Arkansas", "Watch at home"],
+    marks: { kellyRole: "speaking" },
     relatedEventSlugs: [
       "lwv-fayetteville-library-oct-8-2026",
       "hob-nob-bentonville-2026",
       "hardy-candidate-forum-2026",
     ],
     relatedResourceHrefs: [
+      { label: "Watch live — Arkansas TV", href: "https://www.arkansastv.gov/live" },
+      { label: "Arkansas TV schedule / reminders", href: "https://www.arkansastv.gov/schedule" },
       { label: "Arkansas TV", href: "https://www.arkansastv.gov/" },
       { label: "League SOS forum — October 8", href: "/events/lwv-fayetteville-library-oct-8-2026" },
       { label: "Hob Nob — Bentonville, same evening", href: "/events/hob-nob-bentonville-2026" },

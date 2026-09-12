@@ -59,7 +59,7 @@ export function EventStopCard({
   const marksCta = eventMarksCta(event);
   const actionHref = marksCta?.href ?? eventCardActionHref(event);
   const ctaLabel = marksCta?.label ?? eventCardCtaLabel(event);
-  const summary = stripPublicMarkdown(event.summary).split(/(?<=\.)\s/)[0] ?? stripPublicMarkdown(event.summary);
+  const summary = stripPublicMarkdown(event.summary);
   const tentative = event.fieldAttendance === "tentative";
   const kellyNotAttending = isKellyNotAttending(event);
   const caution = isCautionHold(event);
@@ -106,6 +106,9 @@ export function EventStopCard({
           alt={event.flyerAlt}
           className="mt-3 overflow-hidden rounded-lg border border-kelly-navy/15 bg-white"
         />
+      ) : null}
+      {event.addressLine ? (
+        <p className="mt-2 font-body text-sm leading-snug text-kelly-text/75">{event.addressLine}</p>
       ) : null}
       {event.publicContact ? <p className="mt-2 font-body text-sm font-semibold text-kelly-text/80">{event.publicContact}</p> : null}
       <EventMarksChips event={event} className="mt-3" />

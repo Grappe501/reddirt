@@ -75,10 +75,12 @@ function CuratedOrCalendarEventView({ event }: { event: EventItem }) {
   const rsvpHref = event.rsvpHref ?? volunteerFormHref;
   const coverHref = volunteerFormHref;
   const marksCta = eventMarksCta(event);
-  const primaryHref = kellyNotAttending ? coverHref : marksCta?.href ?? (caution ? "/events" : rsvpHref);
+  const primaryHref = kellyNotAttending
+    ? coverHref
+    : marksCta?.href ?? (caution ? "/events" : event.primaryHref ?? rsvpHref);
   const primaryLabel = kellyNotAttending
     ? "Volunteer to cover this stop"
-    : marksCta?.label ?? (caution ? "Need more information" : "RSVP or raise your hand");
+    : marksCta?.label ?? (caution ? "Need more information" : event.primaryCtaLabel ?? "RSVP or raise your hand");
 
   return (
     <>

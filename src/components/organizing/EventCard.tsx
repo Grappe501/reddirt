@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import type { EventItem } from "@/content/types";
-import { formatEventWhen } from "@/lib/format/eventDisplay";
+import { formatEventWhen, stripPublicMarkdown } from "@/lib/format/eventDisplay";
 import { EventMarksChips } from "@/components/organizing/EventMarksChips";
 import { EventOpsLetters } from "@/components/organizing/EventOpsLetters";
 import { EventSocialGraphic } from "@/components/organizing/EventSocialGraphic";
@@ -10,6 +10,8 @@ import { eventMarksCta } from "@/lib/events/event-marks";
 import {
   CAUTION_HOLD_COPY,
   eventBoardChromeClass,
+  eventCardActionHref,
+  eventCardCtaLabel,
   isCautionHold,
   isKellyNotAttending,
   kellyNotAttendingCopy,
@@ -38,8 +40,8 @@ export function EventCard({ event, className, highlighted, onActivate, scheduleC
   const when = formatEventWhen(event);
   const detailHref = event.detailHref ?? `/events/${event.slug}`;
   const marksCta = eventMarksCta(event);
-  const actionHref = marksCta?.href ?? detailHref;
-  const ctaLabel = marksCta?.label ?? "View details";
+  const actionHref = marksCta?.href ?? eventCardActionHref(event);
+  const ctaLabel = marksCta?.label ?? eventCardCtaLabel(event);
   const tba = locationIsTba(event);
   const kellyNotAttending = isKellyNotAttending(event);
   const caution = isCautionHold(event);
@@ -101,6 +103,11 @@ export function EventCard({ event, className, highlighted, onActivate, scheduleC
               Tentative
             </span>
           ) : null}
+          {event.fieldAttendance === "confirmed" && !scheduleConflict && !kellyNotAttending && !tentative ? (
+            <span className="rounded-full border-2 border-kelly-navy/40 bg-kelly-navy/10 px-2.5 py-0.5 font-body text-[11px] font-bold uppercase tracking-wider text-kelly-navy">
+              Confirmed
+            </span>
+          ) : null}
         </div>
         <h3 className="mt-4 font-heading text-xl font-bold text-kelly-text lg:text-2xl">
           <Link
@@ -123,8 +130,14 @@ export function EventCard({ event, className, highlighted, onActivate, scheduleC
           <p className="mt-0.5 font-body text-sm text-kelly-text/70">{when.secondary}</p>
         ) : null}
         <p className="mt-1 font-body text-sm text-kelly-text/60">{event.locationLabel}</p>
+        {event.addressLine ? (
+          <p className="mt-1 font-body text-sm text-kelly-text/65">{event.addressLine}</p>
+        ) : null}
+        {event.publicContact ? (
+          <p className="mt-1 font-body text-sm font-semibold text-kelly-text/75">{event.publicContact}</p>
+        ) : null}
         <EventMarksChips event={event} className="mt-3" />
-        <p className="mt-4 font-body text-base leading-relaxed text-kelly-text/75">{event.summary}</p>
+        <p className="mt-4 font-body text-base leading-relaxed text-kelly-text/75">{stripPublicMarkdown(event.summary)}</p>
         {kellyNotAttending ? (
           <p className="mt-3 font-body text-sm text-kelly-text/70">{kellyNotAttendingCopy(event)}</p>
         ) : null}
