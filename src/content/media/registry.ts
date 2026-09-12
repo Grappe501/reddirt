@@ -181,6 +181,22 @@ export const media = {
     height: 768,
     objectPosition: "50% 42%",
   },
+  /** File-backed professional still — Understand page hero. */
+  understandHero: {
+    src: "/media/campaign-photos/auditorium-credential-conversation-20260611.png",
+    alt: "Kelly Grappe talks with a credentialed attendee on an auditorium floor beside theater seating.",
+    width: 1024,
+    height: 768,
+    objectPosition: "50% 40%",
+  },
+  /** File-backed listening still — Understand “Two levels” heading. */
+  understandTwoLevelsStill: {
+    src: "/media/campaign-photos/democrats-meeting-listening-20260612.png",
+    alt: "Kelly Grappe listens to a community member during an indoor civic meeting.",
+    width: 768,
+    height: 1024,
+    objectPosition: "50% 22%",
+  },
   explainerSteps: {
     src: "/media/placeholders/explainer-steps.svg",
     alt: "Numbered path through soft shapes, teaching visual",

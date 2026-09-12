@@ -1,4 +1,6 @@
+import Image from "next/image";
 import { OFFICE_LAYER_EYEBROWS } from "@/content/office/office-layer-labels";
+import { media } from "@/content/media/registry";
 
 const levels = [
   {
@@ -19,6 +21,17 @@ export function OfficeThreeLevelExplainer() {
   return (
     <section aria-labelledby="office-two-levels" className="scroll-mt-24">
       <div className="mx-auto max-w-3xl text-center">
+        <figure className="mb-10 overflow-hidden rounded-card border border-kelly-ink/10 bg-white text-left shadow-sm">
+          <Image
+            src={media.understandTwoLevelsStill.src}
+            alt={media.understandTwoLevelsStill.alt}
+            width={media.understandTwoLevelsStill.width}
+            height={media.understandTwoLevelsStill.height}
+            className="h-auto w-full object-cover"
+            style={{ objectPosition: media.understandTwoLevelsStill.objectPosition }}
+            sizes="(max-width: 768px) 100vw, 48rem"
+          />
+        </figure>
         <p className="font-body text-xs font-semibold uppercase tracking-[0.18em] text-kelly-gold">How to read this section</p>
         <h2 id="office-two-levels" className="mt-3 font-heading text-2xl font-bold text-kelly-navy md:text-3xl">
           Two levels: competence before persuasion

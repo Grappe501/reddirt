@@ -315,7 +315,7 @@ const INNER_SLOTS: Record<(typeof PUBLIC_MEDIA_INNER_SLOTS)[number], PublicMedia
     "Confirmed endorsements publish here",
     "endorsementsHero",
   ),
-  "understand.hero": imageHero("understand", "understand.hero", "Office explained", "splitDemocracy"),
+  "understand.hero": imageHero("understand", "understand.hero", "Office explained", "understandHero"),
   "office.hero": imageHero("office", "office.hero", "Office work forthcoming", "splitDemocracy"),
   "dd.hero": imageHero("direct-democracy", "dd.hero", "Direct democracy forthcoming", "splitDemocracy"),
   "dd.ballot.hero": imageHero(

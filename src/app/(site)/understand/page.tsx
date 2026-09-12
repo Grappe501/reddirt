@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { PageHero } from "@/components/blocks/PageHero";
+import { MediaPageHero } from "@/components/blocks/MediaPageHero";
 import { Button } from "@/components/ui/Button";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { FullBleedSection } from "@/components/layout/FullBleedSection";
@@ -21,14 +21,21 @@ const c = officeExplainerCopy;
 export default function UnderstandTheOfficePage() {
   return (
     <>
-      <PageHero tone="plan" eyebrow={c.hero.eyebrow} title={c.hero.title} subtitle={c.hero.subtitle}>
+      <MediaPageHero
+        slotKey="understand.hero"
+        layout="split"
+        preferStaticFallback
+        eyebrow={c.hero.eyebrow}
+        title={c.hero.title}
+        subtitle={c.hero.subtitle}
+      >
         <Button href="/priorities" variant="primary">
           See My Plan
         </Button>
         <Button href="/about" variant="outlineOnDark">
           Meet Kelly
         </Button>
-      </PageHero>
+      </MediaPageHero>
 
       <FullBleedSection padY>
         <ContentContainer>
