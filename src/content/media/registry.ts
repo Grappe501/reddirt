@@ -213,6 +213,22 @@ export const media = {
     height: 2048,
     objectPosition: "50% 28%",
   },
+  /** File-backed commerce still — /office/business hero. */
+  officeBusinessHero: {
+    src: "/media/campaign-photos/cadence-bank-outdoor-conversation-20260502.png",
+    alt: "Kelly Grappe talks with a community member outdoors near a Cadence Bank building.",
+    width: 768,
+    height: 1024,
+    objectPosition: "50% 28%",
+  },
+  /** File-backed small-business still — sits above the footer on /office/business. */
+  officeBusinessFooterStill: {
+    src: "/media/campaign-photos/good-things-grow-hall-conversation-20260613.png",
+    alt: "Kelly Grappe talks with seated community members at a Good Things Grow hall meal.",
+    width: 768,
+    height: 1024,
+    objectPosition: "50% 22%",
+  },
   explainerSteps: {
     src: "/media/placeholders/explainer-steps.svg",
     alt: "Numbered path through soft shapes, teaching visual",

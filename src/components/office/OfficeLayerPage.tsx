@@ -12,9 +12,20 @@ import {
 } from "@/content/office/office-three-layer";
 import type { OfficeAreaSlug } from "@/content/office/office-types";
 import { OFFICE_LAYER_CTA } from "@/content/office/office-layer-labels";
+import type { PublicMediaSlotKey } from "@/lib/public-media/slot-registry";
 import { OfficeBreadcrumbs } from "./OfficeBreadcrumbs";
 import { OfficeLayerCta } from "./OfficeLayerCta";
 import { OfficeLayerTrailProof } from "./OfficeLayerTrailProof";
+
+function officeHeroSlotKey(slug: OfficeAreaSlug): PublicMediaSlotKey {
+  if (slug === "elections") return "office.elections.hero";
+  if (slug === "business") return "office.business.hero";
+  return "office.hero";
+}
+
+function officeHeroPinned(slug: OfficeAreaSlug): boolean {
+  return slug === "elections" || slug === "business";
+}
 
 type OfficeLayerPageProps = {
   area: OfficeAreaConfig;
@@ -152,9 +163,9 @@ export async function OfficeLayerPage({ area, layer }: OfficeLayerPageProps) {
         </FullBleedSection>
 
         <MediaPageHero
-          slotKey={area.slug === "elections" ? "office.elections.hero" : "office.hero"}
+          slotKey={officeHeroSlotKey(area.slug)}
           layout="split"
-          preferStaticFallback={area.slug === "elections"}
+          preferStaticFallback={officeHeroPinned(area.slug)}
           eyebrow={layer1Copy.eyebrow}
           title={layer1Copy.title}
           subtitle={layer1Copy.intro}
@@ -177,6 +188,18 @@ export async function OfficeLayerPage({ area, layer }: OfficeLayerPageProps) {
             </div>
           </ContentContainer>
         </FullBleedSection>
+        {area.slug === "business" ? (
+          <figure className="relative isolate m-0 h-[min(46vw,22rem)] w-full overflow-hidden bg-kelly-wash/30 sm:h-[min(34vw,24rem)]">
+            <Image
+              src={media.officeBusinessFooterStill.src}
+              alt={media.officeBusinessFooterStill.alt}
+              fill
+              className="object-cover"
+              style={{ objectPosition: media.officeBusinessFooterStill.objectPosition }}
+              sizes="100vw"
+            />
+          </figure>
+        ) : null}
       </>
     );
   }
@@ -193,9 +216,9 @@ export async function OfficeLayerPage({ area, layer }: OfficeLayerPageProps) {
       </FullBleedSection>
 
       <MediaPageHero
-        slotKey={area.slug === "elections" ? "office.elections.hero" : "office.hero"}
+        slotKey={officeHeroSlotKey(area.slug)}
         layout="split"
-        preferStaticFallback={area.slug === "elections"}
+        preferStaticFallback={officeHeroPinned(area.slug)}
         eyebrow={layer2Copy.eyebrow}
         title={layer2Copy.title}
         subtitle={layer2Copy.intro}
