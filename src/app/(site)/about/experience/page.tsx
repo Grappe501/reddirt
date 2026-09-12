@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { MediaPageHero } from "@/components/blocks/MediaPageHero";
 import { FullBleedSection } from "@/components/layout/FullBleedSection";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { Button } from "@/components/ui/Button";
 import { MeetKellySubnav } from "@/components/about/MeetKellySubnav";
 import { professionalExperienceCopy } from "@/content/about/professional-experience";
+import { media } from "@/content/media/registry";
 import { pageMeta } from "@/lib/seo/metadata";
 
 export const dynamic = "force-dynamic";
@@ -61,6 +63,17 @@ export default function ProfessionalExperiencePage() {
 
       <FullBleedSection variant="subtle" padY>
         <ContentContainer className="max-w-3xl">
+          <figure className="mb-10 overflow-hidden rounded-card border border-kelly-ink/10 bg-white shadow-sm">
+            <Image
+              src={media.experienceRelevanceStill.src}
+              alt={media.experienceRelevanceStill.alt}
+              width={media.experienceRelevanceStill.width}
+              height={media.experienceRelevanceStill.height}
+              className="h-auto w-full object-cover"
+              style={{ objectPosition: media.experienceRelevanceStill.objectPosition }}
+              sizes="(max-width: 768px) 100vw, 48rem"
+            />
+          </figure>
           <h2 className="font-heading text-2xl font-bold text-kelly-ink">{c.relevance.title}</h2>
           {c.relevance.paragraphs.map((p) => (
             <p key={p.slice(0, 40)} className="mt-4 font-body text-base leading-relaxed text-kelly-slate">
