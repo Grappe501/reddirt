@@ -82,6 +82,7 @@ export default async function AboutCommunityPage() {
         <Image
           src={media.communityFooterStill.src}
           alt={media.communityFooterStill.alt}
+          title={media.communityFooterStill.seoTitle}
           fill
           className="object-cover"
           style={{ objectPosition: media.communityFooterStill.objectPosition }}

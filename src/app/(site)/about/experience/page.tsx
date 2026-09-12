@@ -67,6 +67,7 @@ export default function ProfessionalExperiencePage() {
             <Image
               src={media.experienceRelevanceStill.src}
               alt={media.experienceRelevanceStill.alt}
+              title={media.experienceRelevanceStill.seoTitle}
               width={media.experienceRelevanceStill.width}
               height={media.experienceRelevanceStill.height}
               className="h-auto w-full object-cover"

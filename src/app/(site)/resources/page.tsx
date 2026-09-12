@@ -49,7 +49,7 @@ export default async function ResourcesPage() {
         <ContentContainer wide>
           <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-14">
             <div className="relative min-h-[260px] overflow-hidden rounded-card border border-kelly-text/10 shadow-[var(--shadow-soft)] lg:min-h-[320px]">
-              <ContentImage media={media.explainerSteps} warmOverlay className="absolute inset-0 min-h-full" />
+              <ContentImage media={media.resourcesHero} warmOverlay className="absolute inset-0 min-h-full" />
             </div>
             <div>
               <SectionHeading

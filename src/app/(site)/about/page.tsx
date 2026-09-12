@@ -126,6 +126,7 @@ export default async function AboutPage() {
             <Image
               src={media.aboutFamilyStill.src}
               alt={media.aboutFamilyStill.alt}
+              title={media.aboutFamilyStill.seoTitle}
               width={media.aboutFamilyStill.width}
               height={media.aboutFamilyStill.height}
               className="h-auto w-full object-cover"
@@ -149,6 +150,7 @@ export default async function AboutPage() {
             <Image
               src={media.aboutRuralStill.src}
               alt={media.aboutRuralStill.alt}
+              title={media.aboutRuralStill.seoTitle}
               width={media.aboutRuralStill.width}
               height={media.aboutRuralStill.height}
               className="h-auto w-full object-cover"

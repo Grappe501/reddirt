@@ -4,7 +4,9 @@ import { FullBleedSection } from "@/components/layout/FullBleedSection";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { PublicMediaSlotFrame } from "@/components/media/PublicMediaSlotFrame";
 import { EditableCopy } from "@/components/site-edit/EditableCopy";
-import type { PublicMediaSlotKey } from "@/lib/public-media/slot-registry";
+import { media } from "@/content/media/registry";
+import { imageObjectJsonLd } from "@/lib/seo/image-object-jsonld";
+import { getPublicMediaSlotDefinition, type PublicMediaSlotKey } from "@/lib/public-media/slot-registry";
 import { resolveSiteCopy } from "@/lib/site-edit/copy-overrides";
 import { isSiteEditMode } from "@/lib/site-edit/edit-mode";
 import { cn } from "@/lib/utils";
@@ -74,9 +76,18 @@ export async function MediaPageHero({
     typeof subtitle === "string"
       ? resolveEditableString(editing, `${slotKey}.subtitle`, subtitle, "p", true)
       : subtitle;
+  const slotStill = media[getPublicMediaSlotDefinition(slotKey)!.staticFallbackMediaKey];
+  const jsonLd = (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(imageObjectJsonLd(slotStill)) }}
+    />
+  );
 
   if (layout === "bleed") {
     return (
+      <>
+      {jsonLd}
       <FullBleedSection variant="plain" padY={false} className={cn("relative isolate overflow-hidden text-kelly-inverse", className)}>
         <div className="absolute inset-0 -z-10">
           <PublicMediaSlotFrame
@@ -98,10 +109,13 @@ export async function MediaPageHero({
           </HeroBlock>
         </ContentContainer>
       </FullBleedSection>
+      </>
     );
   }
 
   return (
+    <>
+    {jsonLd}
     <FullBleedSection variant="plain" padY={false} className={cn("border-b border-kelly-ink/10", className)}>
       <div className="grid lg:grid-cols-2 lg:min-h-[22rem]">
         <div className="relative min-h-[16rem] overflow-hidden lg:min-h-full">
@@ -125,5 +139,6 @@ export async function MediaPageHero({
         </div>
       </div>
     </FullBleedSection>
+    </>
   );
 }

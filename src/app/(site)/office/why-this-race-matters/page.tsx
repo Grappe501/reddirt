@@ -80,6 +80,7 @@ export default async function WhyThisRaceMattersPage() {
         <Image
           src={media.officeWhyFooterStill.src}
           alt={media.officeWhyFooterStill.alt}
+          title={media.officeWhyFooterStill.seoTitle}
           fill
           className="object-cover"
           style={{ objectPosition: media.officeWhyFooterStill.objectPosition }}

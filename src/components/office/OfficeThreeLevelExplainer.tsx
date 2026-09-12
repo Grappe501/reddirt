@@ -25,6 +25,7 @@ export function OfficeThreeLevelExplainer() {
           <Image
             src={media.understandTwoLevelsStill.src}
             alt={media.understandTwoLevelsStill.alt}
+            title={media.understandTwoLevelsStill.seoTitle}
             width={media.understandTwoLevelsStill.width}
             height={media.understandTwoLevelsStill.height}
             className="h-auto w-full object-cover"

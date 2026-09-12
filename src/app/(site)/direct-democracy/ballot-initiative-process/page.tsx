@@ -24,6 +24,7 @@ function SectionStill({ still }: { still: MediaRef }) {
       <Image
         src={still.src}
         alt={still.alt}
+        title={still.seoTitle}
         width={still.width}
         height={still.height}
         className="h-auto w-full object-cover"
@@ -177,6 +178,7 @@ export default function BallotInitiativeProcessPage() {
         <Image
           src={media.ddBallotWhyRaceStill.src}
           alt={media.ddBallotWhyRaceStill.alt}
+          title={media.ddBallotWhyRaceStill.seoTitle}
           fill
           className="object-cover"
           style={{ objectPosition: media.ddBallotWhyRaceStill.objectPosition }}

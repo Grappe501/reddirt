@@ -62,7 +62,7 @@ export default async function WhatWeBelievePage() {
         visualSide="left"
         visual={
           <div className="relative min-h-[340px] overflow-hidden rounded-card border border-kelly-text/10 shadow-[var(--shadow-card)] lg:min-h-[400px]">
-            <ContentImage media={media.arkansasPorch} warmOverlay className="absolute inset-0 min-h-full" />
+            <ContentImage media={media.whatWeBelieveStill} warmOverlay className="absolute inset-0 min-h-full" />
             <div className="relative z-[1] flex h-full min-h-[340px] flex-col justify-end bg-gradient-to-t from-kelly-text/80 to-transparent p-8 text-kelly-page lg:min-h-[400px]">
               <p className="font-heading text-2xl font-bold leading-snug">
                 Belief without practice is advertising. Practice without belief burns people out.

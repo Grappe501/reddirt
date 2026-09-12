@@ -137,6 +137,7 @@ export async function PublicMediaSlotFrame({
         <Image
           src={resolved.sourceUrl}
           alt={resolved.alt}
+          title={resolved.alt}
           width={resolved.width}
           height={resolved.height}
           className={cn("h-full w-full object-cover", mediaClassName)}

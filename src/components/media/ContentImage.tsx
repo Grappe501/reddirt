@@ -1,7 +1,8 @@
 import type { ReactNode } from "react";
 import Image from "next/image";
+import { attachKellySeo, type MediaRef } from "@/content/media/media-ref";
+import { imageObjectJsonLd } from "@/lib/seo/image-object-jsonld";
 import { cn } from "@/lib/utils";
-import type { MediaRef } from "@/content/media/registry";
 
 type ContentImageProps = {
   media: MediaRef;
@@ -25,19 +26,21 @@ export function ContentImage({
   /** Optional CSS object-position from public media resolver focal points. */
   objectPosition,
 }: ContentImageProps) {
-  const isSvg = m.src.endsWith(".svg");
+  const still = attachKellySeo(m);
+  const isSvg = still.src.endsWith(".svg");
   const imgClass = cn("h-full w-full object-cover", mediaClassName);
-  const cropPosition = objectPosition ?? m.objectPosition;
+  const cropPosition = objectPosition ?? still.objectPosition;
   const style = cropPosition ? { objectPosition: cropPosition } : undefined;
 
   const inner = isSvg ? (
     // SVG placeholders in /public — next/image SVG optimization not enabled; explicit dimensions prevent CLS.
     // eslint-disable-next-line @next/next/no-img-element
     <img
-      src={m.src}
-      alt={m.alt}
-      width={m.width}
-      height={m.height}
+      src={still.src}
+      alt={still.alt}
+      title={still.seoTitle}
+      width={still.width}
+      height={still.height}
       className={imgClass}
       style={style}
       loading={priority ? "eager" : "lazy"}
@@ -46,10 +49,11 @@ export function ContentImage({
     />
   ) : (
     <Image
-      src={m.src}
-      alt={m.alt}
-      width={m.width}
-      height={m.height}
+      src={still.src}
+      alt={still.alt}
+      title={still.seoTitle}
+      width={still.width}
+      height={still.height}
       className={imgClass}
       style={style}
       sizes={sizes}
@@ -61,15 +65,32 @@ export function ContentImage({
     <span className={cn("relative block h-full w-full overflow-hidden", className)}>{child}</span>
   );
 
-  if (!warmOverlay) return wrap(inner);
+  const jsonLd = !isSvg ? (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(imageObjectJsonLd(still)) }}
+    />
+  ) : null;
+
+  if (!warmOverlay) {
+    return (
+      <>
+        {jsonLd}
+        {wrap(inner)}
+      </>
+    );
+  }
 
   return (
-    <span className={cn("relative block h-full w-full overflow-hidden", className)}>
-      {inner}
-      <span
-        className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-kelly-navy/[0.12] via-transparent to-kelly-success/[0.08] mix-blend-multiply"
-        aria-hidden
-      />
-    </span>
+    <>
+      {jsonLd}
+      <span className={cn("relative block h-full w-full overflow-hidden", className)}>
+        {inner}
+        <span
+          className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-kelly-navy/[0.12] via-transparent to-kelly-success/[0.08] mix-blend-multiply"
+          aria-hidden
+        />
+      </span>
+    </>
   );
 }

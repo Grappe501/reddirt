@@ -21,7 +21,7 @@ export const metadata: Metadata = pageMeta({
   description:
     "Kelly Grappe’s plan for Arkansas Secretary of State: restore trust in elections, protect the people’s constitutional voice, support all 75 counties, and make government work better for people.",
   path: "/priorities",
-  imageSrc: "/media/placeholders/texture-porch-glow.svg",
+  imageSrc: media.prioritiesHero.src,
 });
 
 const c = prioritiesLaunchCopy;
@@ -78,6 +78,7 @@ export default async function PrioritiesPage() {
                 <Image
                   src={still.src}
                   alt={still.alt}
+                  title={still.seoTitle}
                   width={still.width}
                   height={still.height}
                   className="h-auto w-full object-cover"

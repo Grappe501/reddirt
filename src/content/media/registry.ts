@@ -3,23 +3,23 @@
  */
 
 import { brandMediaFromLegacySite } from "@/config/brand-media";
+import { attachKellySeo, type MediaRef } from "@/content/media/media-ref";
+import { uniquePageStills } from "@/content/media/unique-page-stills";
 
-export type MediaRef = {
-  src: string;
-  alt: string;
-  width: number;
-  height: number;
-  /** CSS object-position when the still is cropped to fill a slot (portraits in landscape panes). */
-  objectPosition?: string;
-};
+export type { MediaRef } from "@/content/media/media-ref";
 
-export const media = {
+const mediaBase = {
   /** Legacy-site statewide still — swap for self-hosted hero loop when ready */
   heroHome: {
     src: brandMediaFromLegacySite.statewideBanner,
-    alt: brandMediaFromLegacySite.statewideBannerAlt,
+    alt: "Kelly Grappe, candidate for Arkansas Secretary of State, on the campaign trail across Arkansas.",
     width: 2000,
     height: 1125,
+    seoTitle: "Kelly Grappe for Arkansas Secretary of State — statewide campaign photo",
+    seoDescription:
+      "Kelly Grappe, candidate for Arkansas Secretary of State, on the campaign trail. People Over Politics. The People Rule.",
+    caption: "Kelly Grappe for Arkansas Secretary of State — campaign photo from the trail.",
+    credit: "Kelly Grappe for Secretary of State. All rights reserved.",
   },
   splitDemocracy: {
     src: "/media/placeholders/split-ballot-warm.svg",
@@ -35,9 +35,14 @@ export const media = {
   },
   arkansasPorch: {
     src: brandMediaFromLegacySite.kellyPortrait,
-    alt: brandMediaFromLegacySite.kellyPortraitAlt,
+    alt: "Kelly Grappe, candidate for Arkansas Secretary of State — campaign portrait.",
     width: 2000,
     height: 1125,
+    seoTitle: "Kelly Grappe for Arkansas Secretary of State — campaign portrait",
+    seoDescription:
+      "Kelly Grappe, candidate for Arkansas Secretary of State. People Over Politics. The People Rule.",
+    caption: "Kelly Grappe for Arkansas Secretary of State.",
+    credit: "Kelly Grappe for Secretary of State. All rights reserved.",
   },
   storyWarehouse: {
     src: "/media/placeholders/story-shift-floor.svg",
@@ -332,5 +337,11 @@ export const media = {
     objectPosition: "50% 28%",
   },
 } as const satisfies Record<string, MediaRef>;
+
+const merged = { ...mediaBase, ...uniquePageStills } as const satisfies Record<string, MediaRef>;
+
+export const media = Object.fromEntries(
+  Object.entries(merged).map(([key, value]) => [key, attachKellySeo(value)]),
+) as { [K in keyof typeof merged]: MediaRef };
 
 export type MediaKey = keyof typeof media;

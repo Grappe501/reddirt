@@ -122,7 +122,7 @@ const pieces: EditorialPiece[] = [
     category: "Organizing",
     featured: false,
     publishedAt: "2026-03-16",
-    image: media.arkansasPorch,
+    image: media.editorialLocalPower,
     tags: ["organizing", "local power", "listening", "community"],
     relatedSlugs: ["rebuilding-trust-small-things", "why-people-stopped-showing-up"],
     sections: [

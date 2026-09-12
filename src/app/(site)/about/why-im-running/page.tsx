@@ -61,6 +61,7 @@ export default async function WhyImRunningPage() {
                 <Image
                   src={media.whySosStill.src}
                   alt={media.whySosStill.alt}
+                  title={media.whySosStill.seoTitle}
                   width={media.whySosStill.width}
                   height={media.whySosStill.height}
                   className="h-auto w-full object-cover"

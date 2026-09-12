@@ -112,6 +112,7 @@ function LayerSections({
                 <Image
                   src={media.officeCountyOfficialsStill.src}
                   alt={media.officeCountyOfficialsStill.alt}
+                  title={media.officeCountyOfficialsStill.seoTitle}
                   width={media.officeCountyOfficialsStill.width}
                   height={media.officeCountyOfficialsStill.height}
                   className="h-auto w-full object-cover"
@@ -211,6 +212,7 @@ export async function OfficeLayerPage({ area, layer }: OfficeLayerPageProps) {
             <Image
               src={footerStill.src}
               alt={footerStill.alt}
+              title={footerStill.seoTitle}
               fill
               className="object-cover"
               style={{ objectPosition: footerStill.objectPosition }}
