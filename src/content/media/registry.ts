@@ -93,6 +93,14 @@ export const media = {
     width: 1200,
     height: 700,
   },
+  /** File-backed farm still — Meet Kelly family section (Rose Bud / animals at home). */
+  aboutFamilyStill: {
+    src: "/media/campaign-trail/016-img-7957.jpg",
+    alt: "Kelly Grappe sits at home holding two young goats.",
+    width: 1600,
+    height: 1600,
+    objectPosition: "50% 28%",
+  },
   /** File-backed campaign still — community conversation. Fills the homepage band before My Plan. */
   homePlanBridge: {
     src: "/media/campaign-photos/community-center-voter-circle-20260713.png",

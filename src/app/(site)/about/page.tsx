@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/Button";
 import { MeetKellySubnav } from "@/components/about/MeetKellySubnav";
 import { MeetKellyTrustIndicators } from "@/components/about/MeetKellyTrustIndicators";
 import { aboutLaunchCopy } from "@/content/about/about-launch";
+import { media } from "@/content/media/registry";
 import {
   getHomepageMeetKellyPhoto,
   homepagePhotoCountyHref,
@@ -121,6 +122,17 @@ export default async function AboutPage() {
 
       <FullBleedSection variant="subtle" padY>
         <ContentContainer className="max-w-3xl">
+          <figure className="mb-10 overflow-hidden rounded-card border border-kelly-ink/10 bg-white shadow-sm">
+            <Image
+              src={media.aboutFamilyStill.src}
+              alt={media.aboutFamilyStill.alt}
+              width={media.aboutFamilyStill.width}
+              height={media.aboutFamilyStill.height}
+              className="h-auto w-full object-cover"
+              style={{ objectPosition: media.aboutFamilyStill.objectPosition }}
+              sizes="(max-width: 768px) 100vw, 48rem"
+            />
+          </figure>
           <ProseBlock title={c.family.title} paragraphs={c.family.paragraphs} />
         </ContentContainer>
       </FullBleedSection>
