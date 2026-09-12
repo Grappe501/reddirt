@@ -21,7 +21,44 @@ function envUrl(key: string, fallback: string): string {
 }
 
 /** Public page handles (override with NEXT_PUBLIC_SOCIAL_* in deploy). */
-export const DEFAULT_SOCIAL_FACEBOOK_URL = "https://www.facebook.com/Kelly-Grappe-SOS";
+export const DEFAULT_SOCIAL_FACEBOOK_PAGE_ID = "61582696603861";
+export const DEFAULT_SOCIAL_FACEBOOK_URL = `https://www.facebook.com/${DEFAULT_SOCIAL_FACEBOOK_PAGE_ID}`;
+const RETIRED_SOCIAL_FACEBOOK_URLS = new Set([
+  "https://www.facebook.com/Kelly-Grappe-SOS",
+  "https://www.facebook.com/kelly-grappe-sos",
+]);
+
+export function facebookUrl(): string {
+  const raw = process.env.NEXT_PUBLIC_SOCIAL_FACEBOOK_URL?.trim();
+  if (!raw) return DEFAULT_SOCIAL_FACEBOOK_URL;
+  const normalized = raw.replace(/\/$/, "");
+  if (RETIRED_SOCIAL_FACEBOOK_URLS.has(normalized)) return DEFAULT_SOCIAL_FACEBOOK_URL;
+  return raw;
+}
+
+export function fromTheRoadFacebookUrl(): string {
+  const raw = process.env.NEXT_PUBLIC_FTR_FACEBOOK_PAGE_URL?.trim();
+  if (raw) {
+    const normalized = raw.replace(/\/$/, "");
+    if (!RETIRED_SOCIAL_FACEBOOK_URLS.has(normalized)) return raw;
+  }
+  return facebookUrl();
+}
+
+/** Page Plugin href — numeric New Pages IDs work more reliably than vanity slugs. */
+export function facebookPagePluginHref(pageUrl: string): string {
+  try {
+    const u = new URL(pageUrl);
+    const queryId = u.searchParams.get("id");
+    if (queryId && /^\d{10,}$/.test(queryId)) return `https://www.facebook.com/${queryId}`;
+    const pathId = u.pathname.match(/^\/(\d{10,})\/?$/);
+    if (pathId) return `https://www.facebook.com/${pathId[1]}`;
+    return pageUrl.replace(/\/$/, "");
+  } catch {
+    return pageUrl;
+  }
+}
+
 export const DEFAULT_SOCIAL_INSTAGRAM_URL = "https://www.instagram.com/KellyGrappeSOS/";
 export const DEFAULT_SOCIAL_YOUTUBE_URL = "https://www.youtube.com/@KellyGrappe";
 export const DEFAULT_SOCIAL_TIKTOK_HANDLE = "kellygrappeforarsos";
@@ -47,7 +84,7 @@ export function getPublicSocialLinks(): PublicSocialLink[] {
     {
       id: "facebook",
       label: "Facebook",
-      href: envUrl("NEXT_PUBLIC_SOCIAL_FACEBOOK_URL", DEFAULT_SOCIAL_FACEBOOK_URL),
+      href: facebookUrl(),
     },
     {
       id: "instagram",
