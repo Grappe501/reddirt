@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
-import { PageHero } from "@/components/blocks/PageHero";
+import Image from "next/image";
+import { MediaPageHero } from "@/components/blocks/MediaPageHero";
 import { SectionHeading } from "@/components/blocks/SectionHeading";
 import { ProcessSteps } from "@/components/blocks/ProcessSteps";
 import { FullBleedSection } from "@/components/layout/FullBleedSection";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { Button } from "@/components/ui/Button";
 import { ballotInitiativeProcessCopy as c } from "@/content/direct-democracy/ballot-initiative-process";
+import { media, type MediaRef } from "@/content/media/registry";
 import { pageMeta } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = pageMeta({
@@ -13,12 +15,36 @@ export const metadata: Metadata = pageMeta({
   description:
     "How the Attorney General’s title desk and the Secretary of State’s signature review decide whether Arkansans get to vote on citizen measures—process, last-decade examples, and why this office matters.",
   path: "/direct-democracy/ballot-initiative-process",
+  imageSrc: media.ddBallotHero.src,
 });
+
+function SectionStill({ still }: { still: MediaRef }) {
+  return (
+    <figure className="mb-10 overflow-hidden rounded-card border border-kelly-ink/10 bg-white shadow-sm">
+      <Image
+        src={still.src}
+        alt={still.alt}
+        width={still.width}
+        height={still.height}
+        className="h-auto w-full object-cover"
+        style={{ objectPosition: still.objectPosition }}
+        sizes="(max-width: 768px) 100vw, 48rem"
+      />
+    </figure>
+  );
+}
 
 export default function BallotInitiativeProcessPage() {
   return (
     <>
-      <PageHero eyebrow={c.hero.eyebrow} title={c.hero.title} subtitle={c.hero.subtitle}>
+      <MediaPageHero
+        slotKey="dd.ballot.hero"
+        layout="split"
+        preferStaticFallback
+        eyebrow={c.hero.eyebrow}
+        title={c.hero.title}
+        subtitle={c.hero.subtitle}
+      >
         <Button
           href="https://arkansasag.gov/resources/ballot-initiative-information/"
           variant="primary"
@@ -26,10 +52,10 @@ export default function BallotInitiativeProcessPage() {
         >
           AG: ballot initiative information
         </Button>
-        <Button href="https://www.sos.arkansas.gov/" variant="outline">
+        <Button href="https://www.sos.arkansas.gov/" variant="outlineOnDark">
           Secretary of State
         </Button>
-      </PageHero>
+      </MediaPageHero>
 
       <FullBleedSection padY variant="subtle" aria-labelledby="process-overview">
         <ContentContainer>
@@ -71,6 +97,9 @@ export default function BallotInitiativeProcessPage() {
 
       <FullBleedSection padY aria-labelledby="official-steps">
         <ContentContainer wide>
+          <div className="mx-auto max-w-3xl">
+            <SectionStill still={media.ddBallotTitleReviewStill} />
+          </div>
           <SectionHeading
             id="official-steps"
             eyebrow="Sequence"
@@ -105,6 +134,9 @@ export default function BallotInitiativeProcessPage() {
 
       <FullBleedSection padY aria-labelledby="signature-desk">
         <ContentContainer>
+          <div className="max-w-3xl">
+            <SectionStill still={media.ddBallotPetitionsStill} />
+          </div>
           <SectionHeading
             id="signature-desk"
             align="left"
@@ -140,6 +172,17 @@ export default function BallotInitiativeProcessPage() {
           </div>
         </ContentContainer>
       </FullBleedSection>
+
+      <figure className="relative isolate m-0 h-[min(46vw,22rem)] w-full overflow-hidden bg-kelly-wash/30 sm:h-[min(34vw,24rem)]">
+        <Image
+          src={media.ddBallotWhyRaceStill.src}
+          alt={media.ddBallotWhyRaceStill.alt}
+          fill
+          className="object-cover"
+          style={{ objectPosition: media.ddBallotWhyRaceStill.objectPosition }}
+          sizes="100vw"
+        />
+      </figure>
 
       <FullBleedSection padY className="bg-kelly-navy text-kelly-page" aria-labelledby="why-sos">
         <ContentContainer>

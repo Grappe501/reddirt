@@ -333,8 +333,8 @@ const INNER_SLOTS: Record<(typeof PUBLIC_MEDIA_INNER_SLOTS)[number], PublicMedia
   "dd.ballot.hero": imageHero(
     "direct-democracy",
     "dd.ballot.hero",
-    "Ballot process — photo forthcoming",
-    "explainerSteps",
+    "Ballot process trail still",
+    "ddBallotHero",
   ),
   "road.hero": imageHero("from-the-road", "road.hero", "From the Road", "heroHome"),
   "press.hero": imageHero("press-coverage", "press.hero", "Press coverage forthcoming", "editorialDefault"),

@@ -299,6 +299,38 @@ export const media = {
     width: 1200,
     height: 720,
   },
+  /** File-backed still — /direct-democracy/ballot-initiative-process hero. */
+  ddBallotHero: {
+    src: "/media/campaign-photos/regnat-populus-tent-conversation-20260501.png",
+    alt: "Kelly Grappe in a Regnat Populus shirt talks with a festival-goer under a tent.",
+    width: 1024,
+    height: 768,
+    objectPosition: "50% 32%",
+  },
+  /** File-backed still — above “From title review to the statewide ballot.” */
+  ddBallotTitleReviewStill: {
+    src: "/media/campaign-photos/gallery-table-voter-conversation-20260526.png",
+    alt: "Kelly Grappe explains a point to community members seated at a gallery table.",
+    width: 1024,
+    height: 768,
+    objectPosition: "50% 28%",
+  },
+  /** File-backed still — above “How petitions have been thrown out on technicalities.” */
+  ddBallotPetitionsStill: {
+    src: "/media/campaign-photos/community-hall-handshake-fans-20260606.png",
+    alt: "Kelly Grappe shakes hands with a community member beside a hall table of campaign materials.",
+    width: 768,
+    height: 1024,
+    objectPosition: "50% 38%",
+  },
+  /** File-backed still — sits immediately above the Why this race band. */
+  ddBallotWhyRaceStill: {
+    src: "/media/campaign-photos/street-corner-voter-conversation-20260516.png",
+    alt: "Kelly Grappe talks with neighbors on a downtown street while wearing a Vote campaign shirt.",
+    width: 768,
+    height: 1024,
+    objectPosition: "50% 28%",
+  },
 } as const satisfies Record<string, MediaRef>;
 
 export type MediaKey = keyof typeof media;
