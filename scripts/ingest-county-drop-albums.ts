@@ -4,7 +4,7 @@
  *
  * Folder name is the county. Do not invent cities or event titles from filenames.
  */
-import { existsSync, mkdirSync, readdirSync, statSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, readdirSync, statSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import sharp from "sharp";
 import {
@@ -36,6 +36,14 @@ function walkImages(dir: string, acc: string[] = []): string[] {
   return acc;
 }
 
+function dropImageSeo(countyDisplayName: string) {
+  return {
+    description: `Kelly Grappe, candidate for Arkansas Secretary of State, campaigning in ${countyDisplayName}, Arkansas`,
+    copyright: "Kelly Grappe for Secretary of State. All rights reserved.",
+    artist: "Kelly Grappe campaign",
+  };
+}
+
 function safeStem(filename: string): string {
   const base = filename.replace(/\.[^.]+$/, "");
   return (
@@ -54,12 +62,36 @@ async function main() {
   const folders = existsSync(DROP_ROOT)
     ? readdirSync(DROP_ROOT).filter((name) => statSync(path.join(DROP_ROOT, name)).isDirectory())
     : [];
+  const folderSet = new Set(folders.map((name) => name.toLowerCase()));
+  const onlyFolders = process.argv
+    .slice(2)
+    .filter((arg) => !arg.startsWith("-") && folderSet.has(arg.toLowerCase()));
+  const selected = onlyFolders.length
+    ? folders.filter((name) => onlyFolders.some((wanted) => wanted.toLowerCase() === name.toLowerCase()))
+    : folders;
+
+  if (onlyFolders.length) {
+    console.log("only_folders", onlyFolders.join(", "));
+    const missing = process.argv
+      .slice(2)
+      .filter((arg) => !arg.startsWith("-") && !folderSet.has(arg.toLowerCase()) && !arg.includes("ingest-county-drop"));
+    for (const name of missing) console.log("skip_missing_folder", name);
+  } else {
+    console.log("all_folders", folders.length);
+  }
+
+  const indexAbs = path.join(ROOT, COUNTY_DROP_INDEX_REL);
+  const existingAlbums: CountyDropAlbumJson[] =
+    onlyFolders.length && existsSync(indexAbs)
+      ? ((JSON.parse(readFileSync(indexAbs, "utf8")) as CountyDropIndexJson).albums ?? [])
+      : [];
 
   const albums: CountyDropAlbumJson[] = [];
+  const processedSlugs = new Set<string>();
   let wrote = 0;
   let skippedUnknown = 0;
 
-  for (const folder of folders) {
+  for (const folder of selected) {
     const county = resolveCountyFromDropFolderName(folder);
     if (!county) {
       if (folder.toLowerCase() !== "uploads") {
@@ -85,12 +117,22 @@ async function main() {
       used.add(destName);
       const destAbs = path.join(destDir, destName);
       try {
-        const pipeline = sharp(abs).rotate().resize({
-          width: MAX_EDGE,
-          height: MAX_EDGE,
-          fit: "inside",
-          withoutEnlargement: true,
-        });
+        const seo = dropImageSeo(county.displayName);
+        const pipeline = sharp(abs)
+          .rotate()
+          .resize({
+            width: MAX_EDGE,
+            height: MAX_EDGE,
+            fit: "inside",
+            withoutEnlargement: true,
+          })
+          .withExifMerge({
+            IFD0: {
+              ImageDescription: seo.description,
+              Copyright: seo.copyright,
+              Artist: seo.artist,
+            },
+          });
         const out = await pipeline.jpeg({ quality: 78, mozjpeg: true }).toBuffer();
         writeFileSync(destAbs, out);
         const meta = await sharp(out).metadata();
@@ -109,6 +151,7 @@ async function main() {
 
     if (photos.length === 0) continue;
     photos.sort((a, b) => a.filename.localeCompare(b.filename));
+    processedSlugs.add(county.slug);
     albums.push({
       countySlug: county.slug,
       countyDisplayName: county.displayName,
@@ -116,6 +159,12 @@ async function main() {
       photos,
     });
     console.log("album", county.slug, photos.length);
+  }
+
+  if (onlyFolders.length) {
+    for (const album of existingAlbums) {
+      if (!processedSlugs.has(album.countySlug)) albums.push(album);
+    }
   }
 
   albums.sort((a, b) => a.shortName.localeCompare(b.shortName));
