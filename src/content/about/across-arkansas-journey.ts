@@ -31,7 +31,7 @@ export const acrossArkansasJourneyCopy = {
     body: "Verified field posts and published events appear as the campaign releases them. New confirmations make this page stronger—without rewriting the campaign.",
     ctas: [
       { href: "/from-the-road", label: "From the Road" },
-      { href: "/campaign-photos", label: "View Campaign Photos" },
+      { href: "/campaign-photos", label: "View MORE campaign photos" },
       { href: "/about", label: "Read About Kelly’s Experience" },
     ],
   },

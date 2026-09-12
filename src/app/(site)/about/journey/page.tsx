@@ -120,6 +120,20 @@ export default async function AboutJourneyPage() {
 
       <FullBleedSection padY>
         <ContentContainer className="max-w-3xl text-center">
+          <h2 className="font-heading text-2xl font-bold text-kelly-ink">{c.closing.title}</h2>
+          <p className="mt-4 font-body text-kelly-slate">{c.closing.body}</p>
+          <div className="mt-8 flex flex-wrap justify-center gap-3">
+            {c.closing.ctas.map((cta) => (
+              <Button key={cta.href} href={cta.href} variant="outline">
+                {cta.label}
+              </Button>
+            ))}
+          </div>
+        </ContentContainer>
+      </FullBleedSection>
+
+      <FullBleedSection variant="subtle" padY>
+        <ContentContainer className="max-w-3xl text-center">
           <h2 className="font-heading text-2xl font-bold text-kelly-ink md:text-3xl">{c.invite.title}</h2>
           <p className="mt-4 font-body text-lg text-kelly-slate">{c.invite.body}</p>
           <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
@@ -129,20 +143,6 @@ export default async function AboutJourneyPage() {
             <Button href={c.invite.secondary.href} variant="outline">
               {c.invite.secondary.label}
             </Button>
-          </div>
-        </ContentContainer>
-      </FullBleedSection>
-
-      <FullBleedSection variant="subtle" padY>
-        <ContentContainer className="max-w-3xl text-center">
-          <h2 className="font-heading text-2xl font-bold text-kelly-ink">{c.closing.title}</h2>
-          <p className="mt-4 font-body text-kelly-slate">{c.closing.body}</p>
-          <div className="mt-8 flex flex-wrap justify-center gap-3">
-            {c.closing.ctas.map((cta) => (
-              <Button key={cta.href} href={cta.href} variant="outline">
-                {cta.label}
-              </Button>
-            ))}
           </div>
         </ContentContainer>
       </FullBleedSection>
