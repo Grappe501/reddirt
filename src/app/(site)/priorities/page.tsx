@@ -1,11 +1,20 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { MediaPageHero } from "@/components/blocks/MediaPageHero";
 import { FullBleedSection } from "@/components/layout/FullBleedSection";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { Button } from "@/components/ui/Button";
+import { media, type MediaRef } from "@/content/media/registry";
 import { prioritiesLaunchCopy } from "@/content/website/priorities-launch";
 import { pageMeta } from "@/lib/seo/metadata";
+
+function stillForPriority(number: number): MediaRef | null {
+  if (number === 2) return media.priorityPeoplesVoiceStill;
+  if (number === 4) return media.priorityTransparencyStill;
+  if (number === 6) return media.priorityEngagementStill;
+  return null;
+}
 
 export const metadata: Metadata = pageMeta({
   title: "My Plan",
@@ -59,9 +68,24 @@ export default async function PrioritiesPage() {
         </ContentContainer>
       </FullBleedSection>
 
-      {c.pillars.map((pillar, index) => (
+      {c.pillars.map((pillar, index) => {
+        const still = stillForPriority(pillar.number);
+        return (
         <FullBleedSection key={pillar.id} id={pillar.id} variant={index % 2 === 0 ? "default" : "subtle"} padY>
           <ContentContainer className="max-w-3xl">
+            {still ? (
+              <figure className="mb-10 overflow-hidden rounded-card border border-kelly-ink/10 bg-white shadow-sm">
+                <Image
+                  src={still.src}
+                  alt={still.alt}
+                  width={still.width}
+                  height={still.height}
+                  className="h-auto w-full object-cover"
+                  style={{ objectPosition: still.objectPosition }}
+                  sizes="(max-width: 768px) 100vw, 48rem"
+                />
+              </figure>
+            ) : null}
             <p className="font-body text-xs font-bold uppercase tracking-[0.18em] text-kelly-gold">
               Priority {pillar.number}
             </p>
@@ -100,7 +124,8 @@ export default async function PrioritiesPage() {
             ) : null}
           </ContentContainer>
         </FullBleedSection>
-      ))}
+        );
+      })}
 
       <FullBleedSection variant="primary-band" padY>
         <ContentContainer className="max-w-3xl text-center text-white">

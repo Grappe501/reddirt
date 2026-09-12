@@ -157,6 +157,30 @@ export const media = {
     height: 768,
     objectPosition: "50% 40%",
   },
+  /** File-backed petition still — My Plan Priority 2. */
+  priorityPeoplesVoiceStill: {
+    src: "/media/campaign-photos/outdoor-petition-table-crowd-20260606.png",
+    alt: "Kelly Grappe talks with community members around an outdoor petition table.",
+    width: 768,
+    height: 1024,
+    objectPosition: "50% 28%",
+  },
+  /** File-backed conversation still — My Plan Priority 4. */
+  priorityTransparencyStill: {
+    src: "/media/campaign-photos/gallery-voter-conversation-20260627.png",
+    alt: "Kelly Grappe talks with a community member in a bright indoor gallery space.",
+    width: 768,
+    height: 1024,
+    objectPosition: "50% 22%",
+  },
+  /** File-backed civic gathering still — My Plan Priority 6. */
+  priorityEngagementStill: {
+    src: "/media/campaign-photos/community-meeting-group-portrait-20260716.png",
+    alt: "Kelly Grappe stands with community members for a group photo after a local meeting.",
+    width: 1024,
+    height: 768,
+    objectPosition: "50% 42%",
+  },
   explainerSteps: {
     src: "/media/placeholders/explainer-steps.svg",
     alt: "Numbered path through soft shapes, teaching visual",
