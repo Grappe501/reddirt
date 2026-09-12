@@ -23,6 +23,8 @@ export type PublicMediaSlotFrameProps = {
   warmOverlay?: boolean;
   /** Force labeled empty frame even when static fallback is a real photo. */
   preferLabeledEmpty?: boolean;
+  /** Ignore owned-media placement and use the slot’s file-backed still. */
+  preferStaticFallback?: boolean;
   /** Optional pre-resolved presentation (avoids double DB hit when parent already resolved). */
   presentation?: PublicMediaPresentation;
 };
@@ -70,11 +72,28 @@ export async function PublicMediaSlotFrame({
   sizes,
   warmOverlay,
   preferLabeledEmpty = false,
+  preferStaticFallback = false,
   presentation,
 }: PublicMediaSlotFrameProps) {
   const editing = await isSiteEditMode();
-  const resolved = presentation ?? (await resolvePublicMediaSlot(slotKey));
   const def = getPublicMediaSlotDefinition(slotKey)!;
+  if (preferStaticFallback) {
+    const pinned = media[def.staticFallbackMediaKey];
+    return withEditChrome(
+      editing,
+      slotKey,
+      <ContentImage
+        media={pinned}
+        className={className}
+        mediaClassName={mediaClassName}
+        priority={priority}
+        sizes={sizes}
+        warmOverlay={warmOverlay}
+        objectPosition={"objectPosition" in pinned ? pinned.objectPosition : undefined}
+      />,
+    );
+  }
+  const resolved = presentation ?? (await resolvePublicMediaSlot(slotKey));
   const showEmpty =
     preferLabeledEmpty ||
     resolved.provenance === "fallback-placeholder" ||

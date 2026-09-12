@@ -23,6 +23,7 @@ export default async function PrioritiesPage() {
       <MediaPageHero
         slotKey="priorities.hero"
         layout="split"
+        preferStaticFallback
         eyebrow={c.hero.eyebrow}
         title={c.hero.title}
         subtitle={c.hero.subtitle}

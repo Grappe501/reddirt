@@ -20,6 +20,8 @@ type MediaPageHeroProps = {
   layout?: "split" | "bleed";
   /** Prefer labeled empty when no owned placement (default false — show honest static stills). */
   preferLabeledEmpty?: boolean;
+  /** Pin the file-backed still; ignore an owned-media placement on this slot. */
+  preferStaticFallback?: boolean;
 };
 
 function resolveEditableString(
@@ -57,6 +59,7 @@ export async function MediaPageHero({
   className,
   layout = "split",
   preferLabeledEmpty = false,
+  preferStaticFallback = false,
 }: MediaPageHeroProps) {
   const editing = await isSiteEditMode();
   const eyebrowNode =
@@ -79,6 +82,7 @@ export async function MediaPageHero({
           <PublicMediaSlotFrame
             slotKey={slotKey}
             preferLabeledEmpty={preferLabeledEmpty}
+            preferStaticFallback={preferStaticFallback}
             priority
             className="h-full min-h-[22rem] w-full sm:min-h-[26rem]"
             sizes="100vw"
@@ -104,6 +108,7 @@ export async function MediaPageHero({
           <PublicMediaSlotFrame
             slotKey={slotKey}
             preferLabeledEmpty={preferLabeledEmpty}
+            preferStaticFallback={preferStaticFallback}
             priority
             className="absolute inset-0 h-full w-full"
             sizes="(max-width: 1024px) 100vw, 50vw"
