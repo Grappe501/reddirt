@@ -3,7 +3,7 @@ import { MediaPageHero } from "@/components/blocks/MediaPageHero";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { FullBleedSection } from "@/components/layout/FullBleedSection";
 import { Button } from "@/components/ui/Button";
-import { media } from "@/content/media/registry";
+import { media, type MediaRef } from "@/content/media/registry";
 import {
   OFFICE_AREA_SLUGS,
   type OfficeAreaConfig,
@@ -20,11 +20,18 @@ import { OfficeLayerTrailProof } from "./OfficeLayerTrailProof";
 function officeHeroSlotKey(slug: OfficeAreaSlug): PublicMediaSlotKey {
   if (slug === "elections") return "office.elections.hero";
   if (slug === "business") return "office.business.hero";
+  if (slug === "notaries") return "office.notaries.hero";
   return "office.hero";
 }
 
 function officeHeroPinned(slug: OfficeAreaSlug): boolean {
-  return slug === "elections" || slug === "business";
+  return slug === "elections" || slug === "business" || slug === "notaries";
+}
+
+function officeFooterStill(slug: OfficeAreaSlug): MediaRef | null {
+  if (slug === "business") return media.officeBusinessFooterStill;
+  if (slug === "notaries") return media.officeNotariesFooterStill;
+  return null;
 }
 
 type OfficeLayerPageProps = {
@@ -154,6 +161,7 @@ export async function OfficeLayerPage({ area, layer }: OfficeLayerPageProps) {
   const layer1Path = officeLayerPath(area.slug, 1);
 
   if (layer === 1) {
+    const footerStill = officeFooterStill(area.slug);
     return (
       <>
         <FullBleedSection variant="subtle" padY={false} className="border-b border-kelly-text/10">
@@ -188,14 +196,14 @@ export async function OfficeLayerPage({ area, layer }: OfficeLayerPageProps) {
             </div>
           </ContentContainer>
         </FullBleedSection>
-        {area.slug === "business" ? (
+        {footerStill ? (
           <figure className="relative isolate m-0 h-[min(46vw,22rem)] w-full overflow-hidden bg-kelly-wash/30 sm:h-[min(34vw,24rem)]">
             <Image
-              src={media.officeBusinessFooterStill.src}
-              alt={media.officeBusinessFooterStill.alt}
+              src={footerStill.src}
+              alt={footerStill.alt}
               fill
               className="object-cover"
-              style={{ objectPosition: media.officeBusinessFooterStill.objectPosition }}
+              style={{ objectPosition: footerStill.objectPosition }}
               sizes="100vw"
             />
           </figure>

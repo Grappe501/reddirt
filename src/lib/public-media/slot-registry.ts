@@ -64,6 +64,7 @@ export const PUBLIC_MEDIA_INNER_SLOTS = [
   "office.hero",
   "office.elections.hero",
   "office.business.hero",
+  "office.notaries.hero",
   "dd.hero",
   "dd.ballot.hero",
   "road.hero",
@@ -321,6 +322,7 @@ const INNER_SLOTS: Record<(typeof PUBLIC_MEDIA_INNER_SLOTS)[number], PublicMedia
   "office.hero": imageHero("office", "office.hero", "Office work forthcoming", "splitDemocracy"),
   "office.elections.hero": imageHero("office", "office.elections.hero", "Elections trail still", "officeElectionsHero"),
   "office.business.hero": imageHero("office", "office.business.hero", "Business trail still", "officeBusinessHero"),
+  "office.notaries.hero": imageHero("office", "office.notaries.hero", "Notaries trail still", "officeNotariesHero"),
   "dd.hero": imageHero("direct-democracy", "dd.hero", "Direct democracy forthcoming", "splitDemocracy"),
   "dd.ballot.hero": imageHero(
     "direct-democracy",

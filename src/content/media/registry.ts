@@ -229,6 +229,22 @@ export const media = {
     height: 1024,
     objectPosition: "50% 22%",
   },
+  /** File-backed conversation still — /office/notaries hero. */
+  officeNotariesHero: {
+    src: "/media/campaign-photos/brewery-meet-greet-conversation-20260426.png",
+    alt: "Kelly Grappe talks with community members at a brewery meet-and-greet.",
+    width: 1024,
+    height: 768,
+    objectPosition: "50% 32%",
+  },
+  /** File-backed civic still — sits above the footer on /office/notaries. */
+  officeNotariesFooterStill: {
+    src: "/media/campaign-photos/elks-lodge-breakfast-table-20260228.png",
+    alt: "Kelly Grappe visits with seniors over breakfast in Northwest Arkansas.",
+    width: 768,
+    height: 1024,
+    objectPosition: "50% 28%",
+  },
   explainerSteps: {
     src: "/media/placeholders/explainer-steps.svg",
     alt: "Numbered path through soft shapes, teaching visual",
