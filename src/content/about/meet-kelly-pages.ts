@@ -46,14 +46,6 @@ export const meetKellyCommunityCopy = {
   },
   sections: [
     {
-      title: "Stand Up Arkansas",
-      body:
-        "Nonprofit civic organization focused on voter education and community engagement—recruiting, training, and activating leaders across the state.",
-      href: "https://www.standuparkansas.com/",
-      hrefLabel: "standuparkansas.com",
-      status: "VERIFIED" as const,
-    },
-    {
       title: "Ballot petitions & LEARNS",
       body:
         "After the LEARNS Act, Kelly and neighbors organized referendum and initiative support—including a temporary Sherwood office for petition packets and notaries. Timeline and scope need campaign verification. Democracy starts local; citizen-led work stays volunteer-centered.",

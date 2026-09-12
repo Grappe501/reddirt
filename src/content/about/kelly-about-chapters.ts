@@ -5,7 +5,6 @@ export type KellyAboutSlug =
   | "story"
   | "business"
   | "forevermost"
-  | "stand-up-arkansas"
   | "initiatives-petitions"
   | "why-secretary-of-state"
   | "your-part";
@@ -52,16 +51,6 @@ export const KELLY_ABOUT_CHAPTERS: readonly KellyAboutChapter[] = [
       "Forevermost Farms, hard seasons, and the small-business learning curve—integrity when costs shift and the work still has to be done.",
     description:
       "Forevermost Farms, Rose Bud, and how farming and a small market shaped Kelly Grappe’s understanding of pressure and public trust.",
-  },
-  {
-    slug: "stand-up-arkansas",
-    navLabel: "Stand Up Arkansas",
-    eyebrow: "Civic muscle",
-    title: "Teaching power back to the people",
-    summary:
-      "Stand Up Arkansas: recruiting, training, and activating leaders—civics as skill-building, not performance.",
-    description:
-      "Stand Up Arkansas and how civic education and grassroots leadership connect to a fair, usable Secretary of State’s office.",
   },
   {
     slug: "initiatives-petitions",

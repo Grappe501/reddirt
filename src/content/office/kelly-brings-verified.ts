@@ -26,7 +26,7 @@ export const kellyBringsSmallBusinessSection: OfficeSectionBlock = {
 export const kellyBringsCivicSection: OfficeSectionBlock = {
   heading: "Civic leadership",
   paragraphs: [
-    "Kelly helps lead Stand Up Arkansas, a nonprofit focused on voter education and community engagement—recruiting, training, and activating leaders across the state.",
+    "Kelly has spent years on voter education and community engagement—recruiting, training, and activating civic leaders across the state.",
     "Grassroots organizing reinforced a simple lesson: when process is intelligible, people show up and follow through.",
   ],
 };

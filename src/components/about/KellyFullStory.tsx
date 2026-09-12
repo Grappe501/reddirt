@@ -15,7 +15,6 @@ import { showPublicBiographyManuscript } from "@/config/public-biography-depth";
 const H_STORY = "/about/story";
 const H_BUSINESS = "/about/business";
 const H_FARM = "/about/forevermost";
-const H_STAND = "/about/stand-up-arkansas";
 const H_INIT = "/about/initiatives-petitions";
 const H_SOS = "/about/why-secretary-of-state";
 const H_ASK = "/about/your-part";
@@ -26,7 +25,6 @@ const h2 = "font-heading text-2xl font-bold text-kelly-text md:text-3xl";
 const lead = "font-body text-lg leading-relaxed text-kelly-text/88";
 const body = "font-body text-base leading-relaxed text-kelly-text/82";
 const callout = "font-body text-sm text-kelly-text/75";
-const calloutGreen = "font-body text-sm text-kelly-text/80";
 
 /** Standard youtube.com embed (matches YouTube’s share dialog; more reliable for some clients than youtube-nocookie). */
 function youtubeEmbedSrc(videoId: string): string {
@@ -168,63 +166,6 @@ const sections: { id: string; moreHref: string; eyebrow: string; title: string; 
     ),
   },
   {
-    id: "standup",
-    moreHref: H_STAND,
-    eyebrow: "Civic muscle",
-    title: "Stand Up Arkansas — teaching power back to the people",
-    children: (
-      <div className="space-y-5">
-        <p className={lead}>
-          Democracy is not a spectator sport, and it is not only what happens in Washington.{" "}
-          <a
-            href="https://www.standuparkansas.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={linkOut}
-          >
-            Stand Up Arkansas
-          </a>{" "}
-          is a civics-oriented nonprofit Kelly helps lead: a <strong>grassroots hub</strong> for community
-          conversations, <strong>leadership development</strong>, and tools that help ordinary Arkansans feel{" "}
-          <strong>competent and equipped</strong> in their own public life—from precinct organization to school boards,{" "}
-          <strong>ballot initiatives and referenda</strong>, to supporting leaders who align with their values.
-        </p>
-        <p className={body}>
-          The through-line is <strong>recruit, train, activate</strong>: find people who care, build real skills, then put
-          them to work in roles that match their gifts. The values on the page are the ones you want in someone who
-          would hold a constitutional office: <strong>inclusivity, empowerment, integrity, collaboration, continuous
-          learning</strong>, and a stubborn commitment to <strong>democratic principles</strong>—so that the
-          electorate is <strong>informed and heard</strong>, not managed from above.
-        </p>
-        <p className={body}>
-          That work is a preview of how Kelly thinks about the Secretary of State’s office: not as a prize for
-          insiders, but as <strong>infrastructure the public can understand and use</strong>—with clarity, patience, and
-          respect for every county’s clerks, voters, and business filers.
-        </p>
-        <p className={cn("rounded-xl border border-kelly-success/25 bg-kelly-success/[0.06] p-4", calloutGreen)}>
-          <span className="font-bold text-kelly-text">Explore the org: </span>
-          <a
-            href="https://www.standuparkansas.com/civic-education-hub"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={linkOut}
-          >
-            Civic education hub
-          </a>{" "}
-          ·{" "}
-          <a href="https://www.standuparkansas.com/about-us" target="_blank" rel="noopener noreferrer" className={linkOut}>
-            About Us
-          </a>{" "}
-          ·{" "}
-          <a href="https://www.standuparkansas.com" target="_blank" rel="noopener noreferrer" className={linkOut}>
-            standuparkansas.com
-          </a>{" "}
-          <ReadMoreLink href={H_STAND} />
-        </p>
-      </div>
-    ),
-  },
-  {
     id: "initiatives-petitions",
     moreHref: H_INIT,
     eyebrow: "After LEARNS, 2023",
@@ -333,7 +274,7 @@ const sections: { id: string; moreHref: string; eyebrow: string; title: string; 
         </p>
         <ol className="list-decimal space-y-3 pl-5 font-body text-base leading-relaxed text-kelly-text/85">
           <li>
-            <strong>Know the story</strong>—her business and farm experience, Stand Up, ballot and initiative work, the
+            <strong>Know the story</strong>—her business and farm experience, ballot and initiative work, the
             office—enough to
             explain it in one minute to a neighbor who does not follow politics.
           </li>
@@ -363,7 +304,7 @@ const sections: { id: string; moreHref: string; eyebrow: string; title: string; 
 ];
 
 export type KellyFullStoryProps = {
-  /** Two breakouts: after “The story we share” and after Stand Up (farm stills stay in the Forevermost block). */
+  /** Two breakouts: after “The story we share” and after Forevermost (farm stills stay in the Forevermost block). */
   trailPeoplePhotos?: CampaignTrailPhoto[];
   /**
    * Forevermost / Heifer USA YouTube (above the “The land & the work” heading). From
@@ -454,8 +395,8 @@ export function KellyFullStory({
             <EditorialCampaignPhoto variant="breakout" photo={afterStoryPhoto} kicker="With Arkansans" />
           ) : null}
 
-          {s.id === "standup" && afterStandupPhoto ? (
-            <EditorialCampaignPhoto variant="breakout" photo={afterStandupPhoto} kicker="Civic Arkansas" />
+          {s.id === "forevermost" && afterStandupPhoto ? (
+            <EditorialCampaignPhoto variant="breakout" photo={afterStandupPhoto} kicker="With Arkansans" />
           ) : null}
         </Fragment>
       ))}
