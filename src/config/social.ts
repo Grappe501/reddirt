@@ -20,37 +20,74 @@ function envUrl(key: string, fallback: string): string {
   return v || fallback;
 }
 
-/** Public page handles (override with NEXT_PUBLIC_SOCIAL_* in deploy). */
+/**
+ * Public Kelly Grappe SOS Facebook page.
+ * Share link is the click-through Steve uses; numeric ID is what Facebook’s Page Plugin embeds.
+ */
 export const DEFAULT_SOCIAL_FACEBOOK_PAGE_ID = "61582696603861";
-export const DEFAULT_SOCIAL_FACEBOOK_URL = `https://www.facebook.com/${DEFAULT_SOCIAL_FACEBOOK_PAGE_ID}`;
+export const DEFAULT_SOCIAL_FACEBOOK_SHARE_URL = "https://www.facebook.com/share/1Nor8fqtmT/";
+export const DEFAULT_SOCIAL_FACEBOOK_URL = DEFAULT_SOCIAL_FACEBOOK_SHARE_URL;
 const RETIRED_SOCIAL_FACEBOOK_URLS = new Set([
   "https://www.facebook.com/Kelly-Grappe-SOS",
   "https://www.facebook.com/kelly-grappe-sos",
 ]);
 
-export function facebookUrl(): string {
-  const raw = process.env.NEXT_PUBLIC_SOCIAL_FACEBOOK_URL?.trim();
+function stripFacebookTracking(raw: string): string {
+  try {
+    const u = new URL(raw);
+    u.searchParams.delete("mibextid");
+    u.hash = "";
+    return u.toString();
+  } catch {
+    return raw;
+  }
+}
+
+/** True when the URL is this campaign page (share shortlink, people path, or numeric id). */
+export function isKellyFacebookPageUrl(raw: string): boolean {
+  try {
+    const u = new URL(raw);
+    if (u.hostname.replace(/^www\./, "") !== "facebook.com") return false;
+    if (/^\/share\/1Nor8fqtmT\/?$/i.test(u.pathname)) return true;
+    if (u.searchParams.get("id") === DEFAULT_SOCIAL_FACEBOOK_PAGE_ID) return true;
+    if (u.pathname === `/${DEFAULT_SOCIAL_FACEBOOK_PAGE_ID}` || u.pathname === `/${DEFAULT_SOCIAL_FACEBOOK_PAGE_ID}/`) {
+      return true;
+    }
+    return /^\/people\/Kelly-Grappe-SOS\/61582696603861\/?$/i.test(u.pathname);
+  } catch {
+    return false;
+  }
+}
+
+function resolvePublicFacebookUrl(raw: string | undefined): string {
   if (!raw) return DEFAULT_SOCIAL_FACEBOOK_URL;
-  const normalized = raw.replace(/\/$/, "");
-  if (RETIRED_SOCIAL_FACEBOOK_URLS.has(normalized)) return DEFAULT_SOCIAL_FACEBOOK_URL;
+  const cleaned = stripFacebookTracking(raw).replace(/\/$/, "");
+  if (RETIRED_SOCIAL_FACEBOOK_URLS.has(cleaned)) return DEFAULT_SOCIAL_FACEBOOK_URL;
+  if (isKellyFacebookPageUrl(raw) || isKellyFacebookPageUrl(cleaned)) return DEFAULT_SOCIAL_FACEBOOK_URL;
   return raw;
+}
+
+export function facebookUrl(): string {
+  return resolvePublicFacebookUrl(process.env.NEXT_PUBLIC_SOCIAL_FACEBOOK_URL?.trim());
 }
 
 export function fromTheRoadFacebookUrl(): string {
   const raw = process.env.NEXT_PUBLIC_FTR_FACEBOOK_PAGE_URL?.trim();
-  if (raw) {
-    const normalized = raw.replace(/\/$/, "");
-    if (!RETIRED_SOCIAL_FACEBOOK_URLS.has(normalized)) return raw;
-  }
-  return facebookUrl();
+  if (!raw) return facebookUrl();
+  return resolvePublicFacebookUrl(raw);
 }
 
-/** Page Plugin href — numeric New Pages IDs work more reliably than vanity slugs. */
+/** Page Plugin href — numeric New Pages IDs work; share shortlinks do not embed. */
 export function facebookPagePluginHref(pageUrl: string): string {
+  if (isKellyFacebookPageUrl(pageUrl) || pageUrl.includes("1Nor8fqtmT")) {
+    return `https://www.facebook.com/${DEFAULT_SOCIAL_FACEBOOK_PAGE_ID}`;
+  }
   try {
     const u = new URL(pageUrl);
     const queryId = u.searchParams.get("id");
     if (queryId && /^\d{10,}$/.test(queryId)) return `https://www.facebook.com/${queryId}`;
+    const peopleId = u.pathname.match(/^\/people\/[^/]+\/(\d{10,})\/?$/i);
+    if (peopleId) return `https://www.facebook.com/${peopleId[1]}`;
     const pathId = u.pathname.match(/^\/(\d{10,})\/?$/);
     if (pathId) return `https://www.facebook.com/${pathId[1]}`;
     return pageUrl.replace(/\/$/, "");
