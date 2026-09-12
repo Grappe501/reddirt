@@ -1,80 +1,23 @@
 "use client";
 
-import { useMemo } from "react";
 import type { FromTheRoadEmbedsConfig } from "@/config/from-the-road-embeds";
-import { facebookPagePluginHref } from "@/config/social";
-
-const FB_W = 500;
-const FB_H = 720;
 
 type Props = {
   config: FromTheRoadEmbedsConfig;
 };
 
 /**
- * In-page “windows” for people who are not on Facebook/TikTok: scrollable iframes (official embeds only).
+ * Official TikTok / YouTube / Instagram windows.
+ * Facebook’s Page Plugin timeline is not used here — it hangs in many browsers.
  */
 export function FromTheRoadLiveEmbeds({ config }: Props) {
-  const fbSrc = useMemo(() => {
-    if (!config.facebookPageUrl) return null;
-    const p = new URL("https://www.facebook.com/plugins/page.php");
-    p.searchParams.set("href", facebookPagePluginHref(config.facebookPageUrl));
-    p.searchParams.set("tabs", "timeline");
-    p.searchParams.set("width", String(FB_W));
-    p.searchParams.set("height", String(FB_H));
-    p.searchParams.set("small_header", "false");
-    p.searchParams.set("adapt_container_width", "true");
-    p.searchParams.set("hide_cover", "false");
-    p.searchParams.set("show_facepile", "true");
-    return p.toString();
-  }, [config.facebookPageUrl]);
-
-  if (
-    !config.facebookPageUrl &&
-    config.tiktokVideoIds.length === 0 &&
-    !config.youtubePlaylistId &&
-    config.instagramEmbedShortcodes.length === 0
-  ) {
+  if (config.tiktokVideoIds.length === 0 && !config.youtubePlaylistId && config.instagramEmbedShortcodes.length === 0) {
     return null;
   }
 
   return (
     <div className="mt-2 space-y-10">
       <div className="grid gap-10 lg:grid-cols-2">
-        {fbSrc ? (
-          <div className="flex min-h-0 flex-col">
-            <div className="mb-2 flex flex-wrap items-baseline justify-between gap-2">
-              <p className="font-body text-[11px] font-bold uppercase tracking-[0.2em] text-kelly-slate/60">
-                Facebook — Kelly Grappe for SOS
-              </p>
-              <a
-                href={config.facebookPageUrl ?? undefined}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-body text-xs font-semibold text-kelly-blue underline-offset-2 hover:underline"
-              >
-                Open the page ↗
-              </a>
-            </div>
-            <div
-              className="relative w-full max-h-[min(80vh,820px)] overflow-auto rounded-card border border-kelly-ink/12 bg-kelly-fog/40 shadow-inner shadow-kelly-ink/5"
-              role="region"
-              aria-label="Kelly Grappe for SOS Facebook page"
-            >
-              <iframe
-                title="Kelly Grappe for SOS on Facebook"
-                src={fbSrc}
-                width={FB_W}
-                height={FB_H}
-                className="w-full min-w-0 bg-white"
-                style={{ minHeight: FB_H }}
-                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share; fullscreen"
-                loading="lazy"
-                referrerPolicy="strict-origin-when-cross-origin"
-              />
-            </div>
-          </div>
-        ) : null}
         {config.tiktokVideoIds.length > 0 ? (
           <div className="flex min-h-0 flex-col">
             <div className="mb-2 font-body text-[11px] font-bold uppercase tracking-[0.2em] text-kelly-slate/60">

@@ -1,4 +1,11 @@
-import { ContentPlatform, InboundReviewStatus, InboundSourceType, PlatformConnectionStatus, Prisma } from "@prisma/client";
+import {
+  ContentPlatform,
+  InboundReviewStatus,
+  InboundSourceType,
+  MediaKind,
+  PlatformConnectionStatus,
+  Prisma,
+} from "@prisma/client";
 import { prisma } from "@/lib/db";
 import { touchPlatformConnection } from "@/lib/orchestrator/upsert-inbound-from-synced-post";
 import { createFacebookClient } from "./client";
@@ -10,6 +17,7 @@ export type FacebookSyncResult =
 
 /**
  * Ingest recent Page posts into `InboundContentItem`. Requires FACEBOOK_PAGE_ID + token env.
+ * New Page posts are already public on Facebook, so they land as REVIEWED for the native wall.
  * Comment ingestion and webhooks are future work.
  */
 export async function syncFacebookPageFeed(): Promise<FacebookSyncResult> {
@@ -34,6 +42,27 @@ export async function syncFacebookPageFeed(): Promise<FacebookSyncResult> {
     for (const edge of feed.data ?? []) {
       const n = normalizePageFeedEdge(edge);
       if (!n) continue;
+      let mediaAssetId: string | undefined;
+      if (n.pictureUrl) {
+        const existingMedia = await prisma.mediaAsset.findFirst({
+          where: { originPlatform: ContentPlatform.FACEBOOK, originExternalId: n.externalId },
+        });
+        const media = existingMedia
+          ? await prisma.mediaAsset.update({
+              where: { id: existingMedia.id },
+              data: { url: n.pictureUrl, alt: n.message?.slice(0, 160) ?? "Facebook post" },
+            })
+          : await prisma.mediaAsset.create({
+              data: {
+                url: n.pictureUrl,
+                kind: MediaKind.IMAGE,
+                originPlatform: ContentPlatform.FACEBOOK,
+                originExternalId: n.externalId,
+                alt: n.message?.slice(0, 160) ?? "Facebook post",
+              },
+            });
+        mediaAssetId = media.id;
+      }
       await prisma.inboundContentItem.upsert({
         where: {
           sourcePlatform_externalId: {
@@ -50,9 +79,10 @@ export async function syncFacebookPageFeed(): Promise<FacebookSyncResult> {
           body: n.message,
           canonicalUrl: n.permalinkUrl,
           publishedAt: n.createdTime,
+          mediaAssetId,
           rawPayload: n.raw as Prisma.InputJsonValue,
           syncTimestamp: new Date(),
-          reviewStatus: InboundReviewStatus.PENDING,
+          reviewStatus: InboundReviewStatus.REVIEWED,
         },
         update: {
           title: n.message?.slice(0, 200) ?? undefined,
@@ -60,6 +90,7 @@ export async function syncFacebookPageFeed(): Promise<FacebookSyncResult> {
           body: n.message,
           canonicalUrl: n.permalinkUrl,
           publishedAt: n.createdTime,
+          ...(mediaAssetId ? { mediaAssetId } : {}),
           rawPayload: n.raw as Prisma.InputJsonValue,
           syncTimestamp: new Date(),
         },

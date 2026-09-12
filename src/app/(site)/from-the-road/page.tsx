@@ -5,6 +5,7 @@ import { MediaPageHero } from "@/components/blocks/MediaPageHero";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { ContentHubActionBand } from "@/components/content/ContentHubActionBand";
 import { ContentLocality } from "@/components/content/ContentLocality";
+import { FromTheRoadFacebookWall } from "@/components/from-the-road/FromTheRoadFacebookWall";
 import { FromTheRoadLiveEmbeds } from "@/components/from-the-road/FromTheRoadLiveEmbeds";
 import { FromTheRoadSocialHub } from "@/components/from-the-road/FromTheRoadSocialHub";
 import { LazyYouTubeEmbed } from "@/components/media/LazyYouTubeEmbed";
@@ -55,7 +56,9 @@ export default async function FromTheRoadPage() {
   const { features: mapFeatures } = buildEventsMapModel(ledger, mergedEvents);
   const trailGallery = buildFromTheRoadTrailGallery();
   const hasEmbeds = fromTheRoadHasLiveEmbeds(embedsConfig);
-  const hasFieldSocial = social.length > 0;
+  const facebookPosts = social.filter((item) => item.platform === ContentPlatform.FACEBOOK);
+  const fieldSocial = social.filter((item) => item.platform !== ContentPlatform.FACEBOOK);
+  const hasFieldSocial = fieldSocial.length > 0;
   const hasNotebook = posts.length > 0;
   const hasYoutube = youtube.length > 0;
   const hasTrailPhotos = trailGallery.length > 0;
@@ -84,6 +87,10 @@ export default async function FromTheRoadPage() {
 
         <div className="mt-10 md:mt-14" aria-hidden />
 
+        <FromTheRoadFacebookWall posts={facebookPosts} />
+
+        <div className="mt-10 md:mt-14" aria-hidden />
+
         <FromTheRoadSocialHub />
 
         {hasTrailPhotos ? (
@@ -103,11 +110,11 @@ export default async function FromTheRoadPage() {
           <section id="live-embeds" className="scroll-mt-24 border-t border-kelly-ink/8 pt-16 md:pt-20" aria-label="Live embeds">
             <h2 className="font-heading text-2xl font-bold text-kelly-ink md:text-3xl">Live from our channels</h2>
             <p className="mt-3 max-w-3xl font-body text-base leading-relaxed text-kelly-slate md:text-lg">
-              Official embeds load here when available—Facebook, TikTok, YouTube, and Instagram highlights in one place.
+              Official TikTok, YouTube, and Instagram windows load here when those highlights are set. Facebook lives in the wall above.
             </p>
             <FromTheRoadLiveEmbeds config={embedsConfig} />
             <p className="mt-6 max-w-3xl font-body text-xs leading-relaxed text-kelly-slate/55">
-              If a widget is blank, third-party cookies or strict privacy modes can block Facebook, Instagram, or TikTok.
+              If a widget is blank, third-party cookies or strict privacy modes can block Instagram or TikTok.
               The channel buttons above always open the native site.
             </p>
           </section>
@@ -117,12 +124,12 @@ export default async function FromTheRoadPage() {
 
         {hasFieldSocial ? (
           <section id="field" className="scroll-mt-24 border-t border-kelly-ink/8 pt-16 md:pt-20" aria-label="Field posts">
-            <h2 className="font-heading text-2xl font-bold text-kelly-ink md:text-3xl">In the field (Facebook &amp; Instagram)</h2>
+            <h2 className="font-heading text-2xl font-bold text-kelly-ink md:text-3xl">In the field (Instagram)</h2>
             <p className="mt-3 max-w-3xl font-body text-base leading-relaxed text-kelly-slate md:text-lg">
-              Short updates from the trail on Facebook and Instagram. Open a post for the full thread and comments.
+              Short updates from the trail on Instagram. Facebook posts sit in the wall above. Open a post for the full thread and comments.
             </p>
             <div className="mt-10 grid gap-10 md:grid-cols-2 lg:grid-cols-3">
-              {social.map((s) => (
+              {fieldSocial.map((s) => (
                 <SocialFieldCard key={s.id} item={s} />
               ))}
             </div>
@@ -144,7 +151,7 @@ export default async function FromTheRoadPage() {
           </section>
         ) : null}
 
-        {!hasNotebook && !hasFieldSocial && !hasYoutube && !hasEmbeds ? (
+        {!hasNotebook && !hasFieldSocial && !hasYoutube && !hasEmbeds && facebookPosts.length === 0 ? (
           <p className="mx-auto mt-16 max-w-lg text-center font-body text-kelly-slate/75">
             Trail writing and updates will appear here as they&apos;re published. Check back soon.
           </p>
@@ -193,6 +200,9 @@ export default async function FromTheRoadPage() {
           <ul className="flex flex-wrap gap-x-3 gap-y-2">
             <li>
               <a className="text-kelly-blue underline-offset-2 hover:underline focus-visible:rounded-sm focus-visible:outline focus-visible:ring-2 focus-visible:ring-kelly-gold/50" href="#counties-map">Counties</a>
+            </li>
+            <li>
+              <a className="text-kelly-blue underline-offset-2 hover:underline focus-visible:rounded-sm focus-visible:outline focus-visible:ring-2 focus-visible:ring-kelly-gold/50" href="#facebook-wall">Facebook</a>
             </li>
             <li>
               <a className="text-kelly-blue underline-offset-2 hover:underline focus-visible:rounded-sm focus-visible:outline focus-visible:ring-2 focus-visible:ring-kelly-gold/50" href="#channels">All channels</a>

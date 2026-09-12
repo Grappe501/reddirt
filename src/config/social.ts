@@ -77,6 +77,11 @@ export function fromTheRoadFacebookUrl(): string {
   return resolvePublicFacebookUrl(raw);
 }
 
+/** Human-openable New Page profile (share shortlinks and the Page Plugin often fail). */
+export function facebookPageProfileUrl(): string {
+  return `https://www.facebook.com/people/Kelly-Grappe-SOS/${DEFAULT_SOCIAL_FACEBOOK_PAGE_ID}/`;
+}
+
 /** Page Plugin href — numeric New Pages IDs work; share shortlinks do not embed. */
 export function facebookPagePluginHref(pageUrl: string): string {
   if (isKellyFacebookPageUrl(pageUrl) || pageUrl.includes("1Nor8fqtmT")) {

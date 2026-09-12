@@ -21,7 +21,9 @@ export function createFacebookClient(config: FacebookPageConfig): FacebookClient
       if (!token) {
         throw new Error("Facebook Page access token not configured (env FACEBOOK_PAGE_ACCESS_TOKEN or custom key).");
       }
-      const url = `${GRAPH}/${encodeURIComponent(config.pageId)}/feed?fields=id,message,created_time,permalink_url&limit=${limit}&access_token=${encodeURIComponent(token)}`;
+      const fields =
+        "id,message,created_time,permalink_url,full_picture,attachments{media_type,media,url,subattachments}";
+      const url = `${GRAPH}/${encodeURIComponent(config.pageId)}/feed?fields=${encodeURIComponent(fields)}&limit=${limit}&access_token=${encodeURIComponent(token)}`;
       const res = await fetch(url, { next: { revalidate: 0 } });
       if (!res.ok) {
         const text = await res.text();

@@ -40,10 +40,5 @@ export function getFromTheRoadEmbedsConfig(): FromTheRoadEmbedsConfig {
 }
 
 export function fromTheRoadHasLiveEmbeds(c: FromTheRoadEmbedsConfig): boolean {
-  return (
-    Boolean(c.facebookPageUrl) ||
-    c.tiktokVideoIds.length > 0 ||
-    Boolean(c.youtubePlaylistId) ||
-    c.instagramEmbedShortcodes.length > 0
-  );
+  return c.tiktokVideoIds.length > 0 || Boolean(c.youtubePlaylistId) || c.instagramEmbedShortcodes.length > 0;
 }

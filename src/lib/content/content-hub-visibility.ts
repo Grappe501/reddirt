@@ -51,7 +51,9 @@ import { ContentHubKind, ContentPlatform, InboundReviewStatus, Prisma } from "@p
  * - `siteHidden === false`
  * - `reviewStatus` ∈ { `REVIEWED`, `FEATURED` } (same review bar as public YouTube)
  *
- * Ingested via admin platform sync; posts stay `PENDING` until an editor approves in Admin → Inbox.
+ * Facebook Page feed posts are already public on Facebook; sync marks new rows `REVIEWED` so the
+ * native `/from-the-road` Facebook wall can show them. Instagram still stays `PENDING` until Inbox review.
+ * Hide a Facebook item with `siteHidden` or `SUPPRESSED` — do not invent a second public feed.
  *
  * ---
  */

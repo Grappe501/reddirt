@@ -46,8 +46,8 @@ export function FromTheRoadSocialHub() {
           Every feed, one place
         </h2>
         <p className="mt-4 font-body text-base leading-relaxed text-kelly-slate md:text-lg">
-          Same official destinations as the site footer—one tap to the channel you use, no hunting for handles. Live
-          previews sit just below when embeds are enabled in deployment settings.
+          Same official destinations as the site footer—one tap to the channel you use, no hunting for handles. The
+          Facebook wall above is the campaign’s readable copy of the public Page.
         </p>
       </div>
 
@@ -99,8 +99,8 @@ export function FromTheRoadSocialHub() {
             {email.label} the campaign
           </a>
           {" · "}
-          <Link href="#live-embeds" className="font-semibold text-kelly-blue underline-offset-2 hover:underline">
-            Scroll live windows
+          <Link href="#facebook-wall" className="font-semibold text-kelly-blue underline-offset-2 hover:underline">
+            Back to Facebook
           </Link>
         </p>
       ) : null}

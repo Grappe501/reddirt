@@ -14,6 +14,7 @@ export type NormalizedPagePost = {
   sourceType: "POST" | "COMMENT" | "VIDEO" | "OTHER";
   message: string | null;
   permalinkUrl: string | null;
+  pictureUrl: string | null;
   createdTime: Date | null;
   raw: Record<string, unknown>;
 };
