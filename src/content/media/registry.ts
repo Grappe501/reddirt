@@ -277,6 +277,22 @@ export const media = {
     height: 1536,
     objectPosition: "50% 35%",
   },
+  /** File-backed handshake still — /office/why-this-race-matters hero. */
+  officeWhyHero: {
+    src: "/media/campaign-trail/009-img-7948.jpg",
+    alt: "Kelly Grappe greets an Arkansas neighbor with a handshake at a county event.",
+    width: 1536,
+    height: 2048,
+    objectPosition: "50% 22%",
+  },
+  /** File-backed conversation still — sits above the footer on Why this race matters. */
+  officeWhyFooterStill: {
+    src: "/media/campaign-photos/meet-greet-conversation-matt-20260712.png",
+    alt: "Kelly Grappe talks with a community member at an indoor meet-and-greet.",
+    width: 1024,
+    height: 768,
+    objectPosition: "50% 32%",
+  },
   explainerSteps: {
     src: "/media/placeholders/explainer-steps.svg",
     alt: "Numbered path through soft shapes, teaching visual",

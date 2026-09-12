@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { MediaPageHero } from "@/components/blocks/MediaPageHero";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { FullBleedSection } from "@/components/layout/FullBleedSection";
 import { Button } from "@/components/ui/Button";
+import { media } from "@/content/media/registry";
 import { OFFICE_AREA_SLUGS, officeUnderstandTeasers } from "@/content/office/office-three-layer";
 import { pageMeta } from "@/lib/seo/metadata";
 
@@ -18,8 +20,9 @@ export default async function WhyThisRaceMattersPage() {
   return (
     <>
       <MediaPageHero
-        slotKey="office.hero"
+        slotKey="office.why.hero"
         layout="split"
+        preferStaticFallback
         eyebrow="The Office"
         title="Why this race matters"
         subtitle="This job isn’t abstract—it runs systems families and employers rely on. Here’s the high-level case, with room to go deeper on each part of the office when you’re ready."
@@ -72,6 +75,17 @@ export default async function WhyThisRaceMattersPage() {
           </ul>
         </ContentContainer>
       </FullBleedSection>
+
+      <figure className="relative isolate m-0 h-[min(46vw,22rem)] w-full overflow-hidden bg-kelly-wash/30 sm:h-[min(34vw,24rem)]">
+        <Image
+          src={media.officeWhyFooterStill.src}
+          alt={media.officeWhyFooterStill.alt}
+          fill
+          className="object-cover"
+          style={{ objectPosition: media.officeWhyFooterStill.objectPosition }}
+          sizes="100vw"
+        />
+      </figure>
     </>
   );
 }
