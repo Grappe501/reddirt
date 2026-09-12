@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { MediaPageHero } from "@/components/blocks/MediaPageHero";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { FullBleedSection } from "@/components/layout/FullBleedSection";
@@ -8,6 +9,7 @@ import { ContentPendingBadge } from "@/components/content/ContentPendingBadge";
 import { MeetKellyDirectDemocracyCallout } from "@/components/about/MeetKellyDirectDemocracyCallout";
 import { directDemocracyHubHref } from "@/config/direct-democracy-links";
 import { meetKellyCommunityCopy } from "@/content/about/meet-kelly-pages";
+import { media } from "@/content/media/registry";
 import { pageMeta } from "@/lib/seo/metadata";
 
 export const dynamic = "force-dynamic";
@@ -75,6 +77,17 @@ export default async function AboutCommunityPage() {
           </div>
         </ContentContainer>
       </FullBleedSection>
+
+      <figure className="relative isolate m-0 h-[min(46vw,22rem)] w-full overflow-hidden bg-kelly-wash/30 sm:h-[min(34vw,24rem)]">
+        <Image
+          src={media.communityFooterStill.src}
+          alt={media.communityFooterStill.alt}
+          fill
+          className="object-cover"
+          style={{ objectPosition: media.communityFooterStill.objectPosition }}
+          sizes="100vw"
+        />
+      </figure>
     </>
   );
 }

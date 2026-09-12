@@ -93,6 +93,14 @@ export const media = {
     width: 1200,
     height: 700,
   },
+  /** File-backed community still — sits above the footer on /about/community. */
+  communityFooterStill: {
+    src: "/media/campaign-photos/cafeteria-voter-conversation-20260617.png",
+    alt: "Kelly Grappe talks with community members in a cafeteria line during a local gathering.",
+    width: 1024,
+    height: 768,
+    objectPosition: "50% 40%",
+  },
   /** File-backed speaking still — Why I’m Running “Why Secretary of State”. */
   whySosStill: {
     src: "/media/campaign-photos/stone-hall-remarks-campaign-sign-20260326.png",
