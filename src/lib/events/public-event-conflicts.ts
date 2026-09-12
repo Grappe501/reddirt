@@ -32,7 +32,6 @@ const PLANNED_TRAVEL_DAYS: readonly ReadonlySet<string>[] = [
     "dequeen-sep-20-2026",
     "beckys-texarkana-2026-09-20",
   ]),
-  new Set(["marche-day-2026", "greene-county-candidate-forum-2026-09-26"]),
   new Set([
     "hot-springs-chili-cookout-2026",
     "ayc-karaoke-hot-springs-2026-10-11",

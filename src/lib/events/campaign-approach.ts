@@ -432,6 +432,11 @@ export const CAMPAIGN_APPROACH_BY_SLUG: Record<string, CampaignApproachDecision>
     note: "Redundant county-day card. Removes the September 11 conflict.",
     ledgerIds: ["manual-2026-09-11-lafayette-county"],
   },
+  "greene-county-candidate-forum-2026-09-26": {
+    approach: "removed",
+    note: "Steve 2026-09-12: host canceled the Paragould candidate forum.",
+    ledgerIds: ["presence-2026-09-26-paragould-candidate-forum-2pm-til-5"],
+  },
 };
 
 /** Empty — Steve 2026-09-08 took the September 29 four-way off except leftover cards he did not name. */
@@ -485,7 +490,6 @@ const CONFIRMED_SLUGS = new Set([
   "dequeen-sep-20-2026",
   "beckys-texarkana-2026-09-20",
   "marche-day-2026",
-  "greene-county-candidate-forum-2026-09-26",
   "lpga-northwest-arkansas-2026",
   "drew-county-dems-sep-28-2026",
   "le-vs-fire-softball-2026",

@@ -1735,20 +1735,19 @@ const movementEventsCore: EventItem[] = [
     locationLabel: "Marche Day — 7520 Marche Lateral Road",
     addressLine: "7520 Marche Lateral Road, North Little Rock, AR 72118",
     summary:
-      "Saturday, September 26, 2026, **morning** in the Marche community (Maumelle / North Little Rock area): **Marche Day** — confirmed. Then travel to the Greene County / Paragould forum that afternoon.",
+      "Saturday, September 26, 2026, **morning** in the Marche community (Maumelle / North Little Rock area): **Marche Day** — confirmed.",
     description:
-      "**Saturday, September 26, 2026** at **Marche Day** in the morning, then the **Greene County candidate forum** in Paragould that afternoon.\n\nThe host flyer lists **7520 Marche Lateral Road**, North Little Rock (72118). This is a **community festival**, not a Grappe-hosted event. Vendor booths are **$60** on the flyer: [marcheday.org](https://www.marcheday.org).\n\nThe Marche morning window is **9:00 a.m.–12:00 p.m. Central**.",
+      "**Saturday, September 26, 2026** at **Marche Day** in the morning.\n\nThe host flyer lists **7520 Marche Lateral Road**, North Little Rock (72118). This is a **community festival**, not a Grappe-hosted event. Vendor booths are **$60** on the flyer: [marcheday.org](https://www.marcheday.org).\n\nThe Marche morning window is **9:00 a.m.–12:00 p.m. Central**.",
     whatToExpect: [
       "Morning in Marche — 9:00 a.m.–12:00 p.m. Central",
-      "Afternoon travel to the Greene County / Paragould forum",
     ],
     whoItsFor:
       "Marche, Maumelle, and North Little Rock neighbors, vendors, and candidates who apply with the committee. Confirm a booth before treating this as a reserved campaign table.",
     organizerNote:
-      "Steve 2026-09-08: Marche Day morning, then Greene County / Paragould afternoon. Host email marchecommittee@yahoo.com is on the public flyer.",
+      "Steve 2026-09-08: Marche Day morning. Host email marchecommittee@yahoo.com is on the public flyer. Paragould afternoon forum canceled by host 2026-09-12.",
     rsvpHref: "https://www.marcheday.org",
     audienceTags: ["Marche", "Maumelle", "North Little Rock", "Pulaski County", "Festival", "Central Arkansas"],
-    relatedEventSlugs: ["greene-county-candidate-forum-2026-09-26"],
+    relatedEventSlugs: [],
     relatedResourceHrefs: [
       { label: "Marche Day", href: "https://www.marcheday.org" },
       { label: "Marche Day on Facebook", href: "https://www.facebook.com/profile.php?id=100093339085082" },
@@ -3169,13 +3168,13 @@ const movementEventsCore: EventItem[] = [
     locationLabel: "Owl Fest — McGehee",
     addressLine: "McGehee, AR (street not on the calendar block)",
     summary:
-      "Saturday, September 26, 2026, all day in McGehee: **Owl Fest**. Calendar spelling was McGhee. Same day: Paragould forum and Marche Day.",
+      "Saturday, September 26, 2026, all day in McGehee: **Owl Fest**. Calendar spelling was McGhee. Same day: Marche Day.",
     description:
-      "Steve’s Google Calendar listed **Owlfest McGhee all day** on Saturday, **September 26**. The city is **McGehee** in Desha County.\n\nThis is a **community festival**, not a Grappe-hosted event. Clock and street were not on the block. This page uses 9:00 a.m.–5:00 p.m.\n\nThe same Saturday already has the **Paragould candidate forum** 2:00–5:00 p.m. and **Marche Day** in North Little Rock 9:00 a.m.–7:00 p.m.",
+      "Steve’s Google Calendar listed **Owlfest McGhee all day** on Saturday, **September 26**. The city is **McGehee** in Desha County.\n\nThis is a **community festival**, not a Grappe-hosted event. Clock and street were not on the block. This page uses 9:00 a.m.–5:00 p.m.\n\nThe same Saturday also has **Marche Day** in North Little Rock 9:00 a.m.–12:00 p.m.",
     whatToExpect: ["All-day festival hold", "Street TBA"],
     whoItsFor: "Desha County neighbors and festival guests.",
     organizerNote:
-      "Google Calendar audit 2026-09-02. Same day: paragould forum; marche-day-2026.",
+      "Google Calendar audit 2026-09-02. Same day: marche-day-2026. Paragould forum canceled by host 2026-09-12.",
     relatedEventSlugs: ["marche-day-2026"],
     relatedResourceHrefs: [{ label: "Marche Day — same day", href: "/events/marche-day-2026" }, { label: "Get involved", href: "/get-involved" }],
     mapCoordinates: { lat: 33.6282, lng: -91.3946 },

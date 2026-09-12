@@ -3953,11 +3953,11 @@ const kellyCampaignStopsSource: KellyCampaignStop[] = [
     date: "2026-09-26",
     title: "Paragould candidate forum 2pm til 5",
     counties: ["Greene"],
-    status: "scheduled",
-    includeOnPublicPage: true,
+    status: "canceled",
+    includeOnPublicPage: false,
     confidence: "confirmed",
     notes:
-      "Promoted to public calendar 2026-09-02 from campaign schedule. Same day: Marche Day 9:00 a.m.-7:00 p.m. North Little Rock / Marche — long drive from Paragould.",
+      "Steve 2026-09-12: host canceled. Was a public Saturday afternoon forum in Paragould. Same day remains Marche Day morning.",
     sourceType: "calendar",
   },
   {
@@ -3971,7 +3971,7 @@ const kellyCampaignStopsSource: KellyCampaignStop[] = [
     includeOnPublicPage: true,
     confidence: "confirmed",
     notes:
-      "Steve 2026-09-08: Marche Day morning, then Greene County / Paragould afternoon. 7520 Marche Lateral Rd. /events/marche-day-2026",
+      "Steve 2026-09-08: Marche Day morning. 7520 Marche Lateral Rd. /events/marche-day-2026. Paragould afternoon forum canceled by host 2026-09-12.",
     sourceType: "manual",
   },
 
@@ -5174,7 +5174,7 @@ const kellyCampaignStopsSource: KellyCampaignStop[] = [
     includeOnPublicPage: true,
     confidence: "likely",
     notes:
-      "Steve Google Calendar Sat Sep 26 all-day. Calendar spelling McGhee; city is McGehee. Same day: Paragould forum 2-5; Marche Day NLR. /events/owlfest-mcgehee-2026",
+      "Steve Google Calendar Sat Sep 26 all-day. Calendar spelling McGhee; city is McGehee. Same day: Marche Day NLR. Paragould forum canceled by host 2026-09-12. /events/owlfest-mcgehee-2026",
     sourceType: "calendar",
   },
   {

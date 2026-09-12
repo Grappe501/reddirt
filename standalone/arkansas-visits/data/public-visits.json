@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-12T13:50:30.288Z",
+  "generatedAt": "2026-09-12T14:40:48.606Z",
   "siteUrl": "https://kgrappe.netlify.app",
   "summary": {
     "visitedCounties": 59,
@@ -8,8 +8,8 @@
     "completedLedgerCount": 218,
     "completedUnpostedCount": 27,
     "completedStopCount": 245,
-    "scheduledStopCount": 50,
-    "totalPublicStopCount": 295,
+    "scheduledStopCount": 49,
+    "totalPublicStopCount": 294,
     "needsReviewCount": 5,
     "buckets": {
       "visited": [
@@ -103,7 +103,6 @@
       "Faulkner",
       "Garland",
       "Grant",
-      "Greene",
       "Hot Spring",
       "Howard",
       "Jefferson",
@@ -2850,17 +2849,6 @@
       "city": "North Little Rock",
       "counties": [
         "Pulaski"
-      ],
-      "status": "scheduled"
-    },
-    {
-      "id": "presence-2026-09-26-paragould-candidate-forum-2pm-til-5",
-      "date": "2026-09-26",
-      "endDate": null,
-      "title": "Paragould candidate forum",
-      "city": "Paragould",
-      "counties": [
-        "Greene"
       ],
       "status": "scheduled"
     },

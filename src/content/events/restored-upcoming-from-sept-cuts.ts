@@ -306,11 +306,11 @@ export const restoredUpcomingFromSeptCuts: EventItem[] = [
     endsAt: "2026-09-26T16:00:00-05:00",
     locationLabel: "Paragould",
     city: "Paragould",
-    summary: "Saturday afternoon candidate forum in Paragould — confirmed. Morning is Marche Day.",
+    summary: "Host canceled this Paragould candidate forum.",
     audienceTags: ["Paragould", "Greene County", "Candidate Forum"],
     mapCoordinates: { lat: 36.0584, lng: -90.4973 },
     relatedEventSlugs: ["marche-day-2026"],
-    fieldAttendance: "confirmed",
+    fieldAttendance: "unscheduled",
   }),
   campaignStop({
     slug: "harrison-balloon-fest-2026-09-28",
