@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { SocialGlyph } from "@/components/layout/SocialFooterIcons";
 import type { PublicSocialId, PublicSocialLink } from "@/config/social";
-import { DEFAULT_SOCIAL_TIKTOK_HANDLE, getPublicSocialLinks } from "@/config/social";
+import { DEFAULT_SOCIAL_BLUESKY_HANDLE, DEFAULT_SOCIAL_TIKTOK_HANDLE, getPublicSocialLinks } from "@/config/social";
 import { cn } from "@/lib/utils";
 
 const PITCH: Partial<Record<PublicSocialId, string>> = {
@@ -11,6 +11,7 @@ const PITCH: Partial<Record<PublicSocialId, string>> = {
   youtube: "Speeches, interviews, and longer-form video.",
   substack: "Essays and the notebook—read without an algorithm.",
   tiktok: "Short clips that meet people where they scroll.",
+  bluesky: "Short posts and conversation on Bluesky.",
 };
 
 const ACCENT: Partial<Record<PublicSocialId, string>> = {
@@ -20,6 +21,7 @@ const ACCENT: Partial<Record<PublicSocialId, string>> = {
   youtube: "from-kelly-navy/12 via-white to-kelly-ink/8",
   substack: "from-kelly-copper/15 via-white to-kelly-gold/10",
   tiktok: "from-kelly-navy/12 via-white to-kelly-blue/8",
+  bluesky: "from-kelly-blue/12 via-white to-kelly-navy/8",
 };
 
 function hubLinks(links: PublicSocialLink[]): PublicSocialLink[] {
@@ -78,6 +80,9 @@ export function FromTheRoadSocialHub() {
                   <p className="font-heading text-lg font-bold text-kelly-ink">{item.label}</p>
                   {item.id === "tiktok" ? (
                     <p className="mt-0.5 font-body text-sm font-semibold text-kelly-navy">@{DEFAULT_SOCIAL_TIKTOK_HANDLE}</p>
+                  ) : null}
+                  {item.id === "bluesky" ? (
+                    <p className="mt-0.5 font-body text-sm font-semibold text-kelly-navy">@{DEFAULT_SOCIAL_BLUESKY_HANDLE}</p>
                   ) : null}
                   {PITCH[item.id] ? (
                     <p className="mt-1.5 font-body text-sm leading-relaxed text-kelly-slate/90">{PITCH[item.id]}</p>

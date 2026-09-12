@@ -1,5 +1,5 @@
 import type { PublicSocialId } from "@/config/social";
-import { DEFAULT_SOCIAL_TIKTOK_HANDLE, getPublicSocialLinks } from "@/config/social";
+import { DEFAULT_SOCIAL_BLUESKY_HANDLE, DEFAULT_SOCIAL_TIKTOK_HANDLE, getPublicSocialLinks } from "@/config/social";
 import { cn } from "@/lib/utils";
 
 const iconClass = "h-5 w-5 shrink-0";
@@ -43,6 +43,12 @@ export function SocialGlyph({ id }: { id: PublicSocialId }) {
           <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64v-3.5a6.67 6.67 0 00-1-.05A6.33 6.33 0 004 18.66a6.34 6.34 0 1010.86-4.43V7.1a8.16 8.16 0 004.77 1.55V5.42a4.85 4.85 0 01-1-.08z" />
         </svg>
       );
+    case "bluesky":
+      return (
+        <svg className={iconClass} viewBox="0 0 568 501" fill="currentColor" aria-hidden>
+          <path d="M123.121 33.664C188.241 82.553 258.281 181.68 284 234.873c25.719-53.192 95.759-152.32 160.879-201.21C491.981-1.823 568-28.906 568 107.934c0 27.327-15.72 229.682-24.926 262.584-33.909 121.184-157.496 135.637-267.682 94.561 192.181 32.72 241.036-42.238 259.574-96.24-54.337 40.156-185.305 38.671-258.966-11.297-73.66 49.968-204.629 51.453-258.966 11.297 18.538 54.002 67.393 128.96 259.574 96.24-110.186 41.076-233.773 26.623-267.682-94.561C15.72 337.616 0 135.261 0 107.934 0-28.906 76.019-1.823 123.121 33.664Z" />
+        </svg>
+      );
     case "email":
       return (
         <svg className={iconClass} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
@@ -75,7 +81,13 @@ export function SocialFooterIcons({
               href={item.href}
               target={isMailto ? undefined : "_blank"}
               rel={isMailto ? undefined : "noopener noreferrer"}
-              aria-label={item.id === "tiktok" ? `TikTok @${DEFAULT_SOCIAL_TIKTOK_HANDLE}` : item.label}
+              aria-label={
+                item.id === "tiktok"
+                  ? `TikTok @${DEFAULT_SOCIAL_TIKTOK_HANDLE}`
+                  : item.id === "bluesky"
+                    ? `Bluesky @${DEFAULT_SOCIAL_BLUESKY_HANDLE}`
+                    : item.label
+              }
               className={cn(
                 "flex h-11 w-11 items-center justify-center rounded-full border transition sm:h-12 sm:w-12",
                 "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-kelly-gold",

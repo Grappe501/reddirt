@@ -7,6 +7,7 @@ export type PublicSocialId =
   | "youtube"
   | "substack"
   | "tiktok"
+  | "bluesky"
   | "email";
 
 export type PublicSocialLink = {
@@ -105,6 +106,8 @@ export const DEFAULT_SOCIAL_INSTAGRAM_URL = "https://www.instagram.com/KellyGrap
 export const DEFAULT_SOCIAL_YOUTUBE_URL = "https://www.youtube.com/@KellyGrappe";
 export const DEFAULT_SOCIAL_TIKTOK_HANDLE = "kellygrappeforarsos";
 export const DEFAULT_SOCIAL_TIKTOK_URL = `https://www.tiktok.com/@${DEFAULT_SOCIAL_TIKTOK_HANDLE}`;
+export const DEFAULT_SOCIAL_BLUESKY_HANDLE = "kellygrappe.bsky.social";
+export const DEFAULT_SOCIAL_BLUESKY_URL = `https://bsky.app/profile/${DEFAULT_SOCIAL_BLUESKY_HANDLE}`;
 const RETIRED_SOCIAL_TIKTOK_URLS = new Set([
   "https://www.tiktok.com/@kellygrappesos",
 ]);
@@ -152,6 +155,11 @@ export function getPublicSocialLinks(): PublicSocialLink[] {
       id: "tiktok",
       label: "TikTok",
       href: tiktokUrl(),
+    },
+    {
+      id: "bluesky",
+      label: "Bluesky",
+      href: envUrl("NEXT_PUBLIC_SOCIAL_BLUESKY_URL", DEFAULT_SOCIAL_BLUESKY_URL),
     },
     {
       id: "email",
