@@ -93,6 +93,14 @@ export const media = {
     width: 1200,
     height: 700,
   },
+  /** File-backed rural trail still — Meet Kelly “Rural Arkansas matters”. */
+  aboutRuralStill: {
+    src: "/media/campaign-photos/cave-city-watermelon-festival-parade-20260725.png",
+    alt: "Kelly Grappe waves from a parade trailer on Main Street at the Cave City Watermelon Festival in Sharp County.",
+    width: 768,
+    height: 1024,
+    objectPosition: "50% 22%",
+  },
   /** File-backed farm still — Meet Kelly family section (Rose Bud / animals at home). */
   aboutFamilyStill: {
     src: "/media/campaign-trail/016-img-7957.jpg",

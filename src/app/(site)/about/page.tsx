@@ -145,6 +145,17 @@ export default async function AboutPage() {
 
       <FullBleedSection variant="subtle" padY>
         <ContentContainer className="max-w-3xl">
+          <figure className="mb-10 overflow-hidden rounded-card border border-kelly-ink/10 bg-white shadow-sm">
+            <Image
+              src={media.aboutRuralStill.src}
+              alt={media.aboutRuralStill.alt}
+              width={media.aboutRuralStill.width}
+              height={media.aboutRuralStill.height}
+              className="h-auto w-full object-cover"
+              style={{ objectPosition: media.aboutRuralStill.objectPosition }}
+              sizes="(max-width: 768px) 100vw, 48rem"
+            />
+          </figure>
           <ProseBlock title={c.rural.title} paragraphs={c.rural.paragraphs} />
         </ContentContainer>
       </FullBleedSection>
