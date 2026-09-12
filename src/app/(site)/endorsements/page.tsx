@@ -25,6 +25,7 @@ export default async function EndorsementsPage() {
       <MediaPageHero
         slotKey="endorsements.hero"
         layout="split"
+        preferStaticFallback
         eyebrow="Trust"
         title="Endorsements"
         subtitle="Support from Arkansans and organizations standing with this campaign."

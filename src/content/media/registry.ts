@@ -149,13 +149,13 @@ export const media = {
     height: 1024,
     objectPosition: "50% 22%",
   },
-  /** File-backed campaign still — AFL-CIO pre-event networking. Fills `/endorsements` split hero. */
+  /** File-backed formal still — `/endorsements` split hero (not the AFL-CIO card below). */
   endorsementsHero: {
-    src: "/media/campaign-photos/afl-cio-pre-event-networking-20260629.png",
-    alt: "Kelly Grappe talks with attendees before addressing an Arkansas AFL-CIO gathering, standing in conversation inside the event venue.",
-    width: 1536,
-    height: 2048,
-    objectPosition: "50% 22%",
+    src: "/media/campaign-photos/formal-group-red-curtain-20260611.png",
+    alt: "Kelly Grappe stands with civic and community leaders for a formal group photo in front of red stage curtains.",
+    width: 1024,
+    height: 768,
+    objectPosition: "50% 40%",
   },
   explainerSteps: {
     src: "/media/placeholders/explainer-steps.svg",
