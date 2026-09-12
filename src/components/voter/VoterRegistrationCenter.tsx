@@ -1,4 +1,4 @@
-import { PageHero } from "@/components/blocks/PageHero";
+import { MediaPageHero } from "@/components/blocks/MediaPageHero";
 import { SectionHeading } from "@/components/blocks/SectionHeading";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { FullBleedSection } from "@/components/layout/FullBleedSection";
@@ -9,6 +9,12 @@ import {
 } from "@/lib/county/official-links";
 import { EditorialCampaignPhoto } from "@/components/about/EditorialCampaignPhoto";
 import type { CampaignTrailPhoto } from "@/content/media/campaign-trail-photos";
+import {
+  formatElectionDateLong,
+  NEIGHBOR_ELECTION_DATES_2026,
+  SOS_2026_ELECTION_CALENDAR_HREF,
+  SOS_VOTER_REGISTRATION_INFO_HREF,
+} from "@/lib/campaign-dates";
 import { cn } from "@/lib/utils";
 
 const card =
@@ -24,8 +30,9 @@ export async function VoterRegistrationCenter({ trailPhoto = null }: Props) {
 
   return (
     <>
-      <PageHero
-        tone="plan"
+      <MediaPageHero
+        slotKey="voter-reg.hero"
+        layout="split"
         eyebrow="Voter access"
         title="Voter registration center"
         subtitle="Official confirmation stays with the state. We help neighbors find the path—and a real person when paper help is needed."
@@ -34,8 +41,11 @@ export async function VoterRegistrationCenter({ trailPhoto = null }: Props) {
           <Button href={officialUrl} variant="primary" className="w-full min-[400px]:w-auto">
             Open VoterView (new tab)
           </Button>
+          <Button href="#election-dates" variant="outlineOnDark" className="w-full min-[400px]:w-auto">
+            2026 election dates
+          </Button>
         </div>
-      </PageHero>
+      </MediaPageHero>
 
       {trailPhoto ? (
         <FullBleedSection variant="subtle" className="!pt-0" aria-label="Campaign trail photography">
@@ -49,6 +59,51 @@ export async function VoterRegistrationCenter({ trailPhoto = null }: Props) {
           </ContentContainer>
         </FullBleedSection>
       ) : null}
+
+      <FullBleedSection padY id="election-dates" className="border-b border-kelly-text/10 bg-kelly-page" aria-labelledby="election-dates-title">
+        <ContentContainer>
+          <SectionHeading
+            id="election-dates-title"
+            align="left"
+            eyebrow="2026 general election"
+            title="Dates you need to know"
+            subtitle="These are the neighbor-facing dates from the Arkansas Secretary of State 2026 election calendar. County clerks set early-voting sites and can confirm that your paper application arrived."
+          />
+          <ol className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2">
+            {NEIGHBOR_ELECTION_DATES_2026.map((item) => (
+              <li key={`${item.ymd}-${item.title}`} className={cn(card, "bg-white")}>
+                <p className="font-body text-[11px] font-bold uppercase tracking-wider text-kelly-navy">
+                  {formatElectionDateLong(item.ymd)}
+                </p>
+                <h3 className="mt-2 font-heading text-lg font-bold text-kelly-text">{item.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-kelly-text/75">{item.detail}</p>
+              </li>
+            ))}
+          </ol>
+          <p className="mt-6 max-w-3xl text-sm leading-relaxed text-kelly-text/70">
+            Arkansas does not register voters online. If you are close to October 5, take a paper application to your
+            county clerk. Official calendar and registration rules:{" "}
+            <a
+              href={SOS_2026_ELECTION_CALENDAR_HREF}
+              className="font-semibold text-kelly-navy underline-offset-2 hover:underline"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              2026 election calendar (PDF)
+            </a>
+            {" · "}
+            <a
+              href={SOS_VOTER_REGISTRATION_INFO_HREF}
+              className="font-semibold text-kelly-navy underline-offset-2 hover:underline"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Secretary of State voter registration
+            </a>
+            .
+          </p>
+        </ContentContainer>
+      </FullBleedSection>
 
       <FullBleedSection padY className="border-b border-kelly-text/10 bg-kelly-page" aria-labelledby="paper-title">
         <ContentContainer>
@@ -77,7 +132,7 @@ export async function VoterRegistrationCenter({ trailPhoto = null }: Props) {
             <div className={cn(card, "bg-white")}>
               <h3 className="font-heading text-base font-bold text-kelly-text">Key dates</h3>
               <p className="mt-2 text-sm leading-relaxed text-kelly-text/75">
-                Registration deadlines, early voting windows, election day hours, and filing calendars should be easy to find in one place.
+                The 2026 dates are on this page now — registration October 5, early voting October 19 through November 2, Election Day November 3. A Secretary of State office should keep that calendar this clear every cycle.
               </p>
             </div>
             <div className={cn(card, "bg-kelly-page")}>
