@@ -25,7 +25,6 @@ export default async function CampaignPhotosPage() {
   const albums = listCountyAlbumsLive();
   const bySlug = new Map(albums.map((a) => [a.countySlug, a]));
   const withPhotos = ARKANSAS_COUNTY_REGISTRY.filter((c) => bySlug.has(c.slug));
-  const waiting = ARKANSAS_COUNTY_REGISTRY.filter((c) => !bySlug.has(c.slug));
 
   return (
     <>
@@ -50,11 +49,6 @@ export default async function CampaignPhotosPage() {
 
       <FullBleedSection padY className="bg-gradient-to-b from-white via-kelly-fog/50 to-kelly-wash/30">
         <ContentContainer>
-          <p className="mx-auto mb-10 max-w-2xl text-center font-body text-sm text-kelly-slate md:text-base">
-            {withPhotos.length} {withPhotos.length === 1 ? "county" : "counties"} with photos so far · {waiting.length}{" "}
-            more to come.
-          </p>
-
           {withPhotos.length > 0 ? (
             <ul className="grid list-none gap-8 sm:grid-cols-2 lg:grid-cols-3">
               {withPhotos.map((county, i) => {
