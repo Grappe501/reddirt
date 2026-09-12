@@ -31,7 +31,7 @@ export const onTheRoadPageMeta = {
 export const ON_THE_ROAD_FIELD_TOTALS = {
   asOfYmd: "2026-09-12",
   miles: "23,419",
-  engagements: "245",
+  engagements: "247",
   countiesVisited: 59,
 } as const;
 

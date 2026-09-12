@@ -7,7 +7,7 @@ import type { KellyCampaignStop } from "./types";
  * Pass 2 will merge the full Google Calendar inventory into this same array.
  *
  * Seeded ledger plus Sept 2, 2026 attendance pass.
- * Field completed total is 240 (dated public rows plus unposted same-day stops — see field-totals.ts).
+ * Field completed total is 247 (dated public rows plus unposted same-day stops — see field-totals.ts).
  * Window: 2025-11-01 → 2026-11-03. Reference "today" for status split: 2026-09-02.
  */
 const kellyCampaignStopsSource: KellyCampaignStop[] = [
@@ -3679,7 +3679,7 @@ const kellyCampaignStopsSource: KellyCampaignStop[] = [
     publicTitle: "Conway County Fair — Morrilton",
     city: "Morrilton",
     counties: ["Conway"],
-    status: "scheduled",
+    status: "completed",
     includeOnPublicPage: false,
     confidence: "likely",
     notes:
@@ -3693,11 +3693,11 @@ const kellyCampaignStopsSource: KellyCampaignStop[] = [
     title: "Cleveland county forum - Jametta Harper",
     city: "Rison",
     counties: ["Cleveland"],
-    status: "scheduled",
+    status: "completed",
     includeOnPublicPage: true,
     confidence: "confirmed",
     notes:
-      "Steve 2026-09-11 flyer + Herald: Hall-Morgan Veterans Building, 404 Sycamore St., Rison. Noon-2:00 p.m. (supersedes earlier 2:00-4:00 verbal). Kelly leaves Stuttgart by noon. /events/cleveland-county-meet-and-greet-2026",
+      "Steve 2026-09-12: completed. Hall-Morgan Veterans Building, 404 Sycamore St., Rison. Noon-2:00 p.m. (supersedes earlier 2:00-4:00 verbal). Kelly left Stuttgart by noon. /events/cleveland-county-meet-and-greet-2026",
     sourceType: "calendar",
   },
 
@@ -5035,11 +5035,11 @@ const kellyCampaignStopsSource: KellyCampaignStop[] = [
     title: "Coffee & Muffins at the Harr House",
     city: "Stuttgart",
     counties: ["Arkansas"],
-    status: "scheduled",
+    status: "completed",
     includeOnPublicPage: true,
     confidence: "confirmed",
     notes:
-      "Steve 2026-09-11 flyer: Harr House, 3749 Harr Drive, Stuttgart. 11:00 a.m. Kelly leaves by noon for Rison noon-2:00 at Hall-Morgan Veterans Building. Host flyer names Quendy Gibbins Medlin (Independent, HD 60). /events/stuttgart-sep-12-2026",
+      "Steve 2026-09-12: completed. Harr House, 3749 Harr Drive, Stuttgart. 11:00 a.m. then Rison noon-2:00 at Hall-Morgan Veterans Building. Host flyer names Quendy Gibbins Medlin (Independent, HD 60). /events/stuttgart-sep-12-2026",
     sourceType: "calendar",
   },
   {

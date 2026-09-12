@@ -4,7 +4,7 @@
  */
 import { getVisitSummary } from "@/data/kelly-county-visits";
 
-const MILESTONE_AS_OF_YMD = "2026-09-11";
+const MILESTONE_AS_OF_YMD = "2026-09-12";
 
 export function getCampaignStopMilestone() {
   const summary = getVisitSummary();

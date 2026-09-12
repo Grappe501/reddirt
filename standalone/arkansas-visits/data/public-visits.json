@@ -1,14 +1,14 @@
 {
-  "generatedAt": "2026-09-12T14:40:48.606Z",
+  "generatedAt": "2026-09-12T14:49:21.814Z",
   "siteUrl": "https://kgrappe.netlify.app",
   "summary": {
     "visitedCounties": 59,
     "totalCounties": 75,
     "percentVisited": 78.7,
-    "completedLedgerCount": 218,
+    "completedLedgerCount": 220,
     "completedUnpostedCount": 27,
-    "completedStopCount": 245,
-    "scheduledStopCount": 49,
+    "completedStopCount": 247,
+    "scheduledStopCount": 47,
     "totalPublicStopCount": 294,
     "needsReviewCount": 5,
     "buckets": {
@@ -95,10 +95,8 @@
       ]
     },
     "returningCounties": [
-      "Arkansas",
       "Baxter",
       "Benton",
-      "Cleveland",
       "Drew",
       "Faulkner",
       "Garland",
@@ -196,6 +194,28 @@
     "Yell"
   ],
   "completed": [
+    {
+      "id": "presence-2026-09-12-cleveland-county-forum-jametta-harper",
+      "date": "2026-09-12",
+      "endDate": null,
+      "title": "Meet the Candidates — Cleveland County Democrats",
+      "city": "Rison",
+      "counties": [
+        "Cleveland"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "manual-2026-09-12-stuttgart",
+      "date": "2026-09-12",
+      "endDate": null,
+      "title": "Coffee & Muffins at the Harr House — Stuttgart",
+      "city": "Stuttgart",
+      "counties": [
+        "Arkansas"
+      ],
+      "status": "completed"
+    },
     {
       "id": "manual-2026-09-11-le-vs-fire-softball",
       "date": "2026-09-11",
@@ -2651,28 +2671,6 @@
       "city": "Clarksville",
       "counties": [
         "Johnson"
-      ],
-      "status": "scheduled"
-    },
-    {
-      "id": "presence-2026-09-12-cleveland-county-forum-jametta-harper",
-      "date": "2026-09-12",
-      "endDate": null,
-      "title": "Meet the Candidates — Cleveland County Democrats",
-      "city": "Rison",
-      "counties": [
-        "Cleveland"
-      ],
-      "status": "scheduled"
-    },
-    {
-      "id": "manual-2026-09-12-stuttgart",
-      "date": "2026-09-12",
-      "endDate": null,
-      "title": "Coffee & Muffins at the Harr House — Stuttgart",
-      "city": "Stuttgart",
-      "counties": [
-        "Arkansas"
       ],
       "status": "scheduled"
     },
