@@ -111,10 +111,10 @@ export const media = {
   },
   /** File-backed professional still — Experience page “Why this maps to the office”. */
   experienceRelevanceStill: {
-    src: "/media/campaign-photos/afl-cio-pre-event-networking-20260629.png",
-    alt: "Kelly Grappe talks with attendees before an Arkansas AFL-CIO gathering, standing in conversation inside the event venue.",
-    width: 1536,
-    height: 2048,
+    src: "/media/campaign-photos/stage-event-power-up-conversation-20260518.png",
+    alt: "Kelly Grappe in a white blazer listens to a community member near a stage at an indoor event.",
+    width: 768,
+    height: 1024,
     objectPosition: "50% 22%",
   },
   /** File-backed rural trail still — Meet Kelly “Rural Arkansas matters”. */
