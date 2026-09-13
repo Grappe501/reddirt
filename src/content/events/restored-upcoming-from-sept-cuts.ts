@@ -26,7 +26,7 @@ type StopDraft = {
   relatedResourceHrefs?: Array<{ label: string; href: string }>;
   primaryHref?: string;
   primaryCtaLabel?: string;
-  fieldAttendance?: "confirmed" | "tentative";
+  fieldAttendance?: EventItem["fieldAttendance"];
   whoItsFor?: string;
   organizerNote?: string;
   attendanceType?: EventItem["attendanceType"];
