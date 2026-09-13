@@ -106,18 +106,41 @@ const ARKANSAS_CITIES: GeoCity[] = [
   { name: "Siloam Springs", lat: 36.1881, lon: -94.5405, aliases: ["siloam springs"] },
 ];
 
+const LANDMARKS = [
+  "Fayetteville",
+  "Fort Smith",
+  "Little Rock",
+  "Jonesboro",
+  "Texarkana",
+  "West Memphis",
+  "Hot Springs",
+  "Conway",
+];
+
+/** Clockwise from the northwest corner. Long north edge, bootheel notch, Mississippi east, 33rd parallel south. */
 const OUTLINE: Array<[number, number]> = [
   [36.5, -94.62],
-  [36.5, -91.64],
-  [36.3, -90.37],
-  [36.0, -89.73],
-  [35.0, -90.2],
-  [34.0, -90.9],
-  [33.02, -91.16],
+  [36.5, -93.5],
+  [36.5, -92.4],
+  [36.5, -91.3],
+  [36.5, -90.17],
+  [36.25, -90.17],
+  [36.0, -90.17],
+  [36.0, -89.74],
+  [35.57, -89.91],
+  [35.15, -90.18],
+  [34.65, -90.54],
+  [34.2, -90.9],
+  [33.72, -91.11],
+  [33.02, -91.17],
+  [33.02, -92.2],
+  [33.02, -93.15],
   [33.02, -94.04],
-  [33.62, -94.18],
-  [35.0, -94.48],
-  [36.0, -94.62],
+  [33.45, -94.38],
+  [34.2, -94.45],
+  [35.0, -94.45],
+  [35.39, -94.48],
+  [35.95, -94.55],
 ];
 
 const INTENT_ORDER: FlightIntent[] = ["captured", "joining", "giving", "local", "reading", "flyby"];
@@ -281,6 +304,13 @@ export function buildFlightTheater(
     if (!geo || cityHits.has(geo.name)) continue;
     const point = projectArkansas(geo.lat, geo.lon);
     cityHits.set(geo.name, { name: geo.name, x: point.x, y: point.y, hits: 1 });
+  }
+  for (const name of LANDMARKS) {
+    if (cityHits.has(name)) continue;
+    const geo = ARKANSAS_CITIES.find((city) => city.name === name);
+    if (!geo) continue;
+    const point = projectArkansas(geo.lat, geo.lon);
+    cityHits.set(name, { name, x: point.x, y: point.y, hits: 0 });
   }
 
   const intentCounts = new Map<FlightIntent, number>();

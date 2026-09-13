@@ -25,6 +25,7 @@ import {
   captureScore,
   classifyIntent,
   matchArkansasCity,
+  projectArkansas,
 } from "../src/lib/analytics/site-traffic-theater";
 
 const t0 = new Date("2026-09-12T12:00:00.000Z");
@@ -288,6 +289,14 @@ assert.ok(theater.bodies.some((body) => body.intent === "captured" && body.captu
 assert.ok(theater.bodies.some((body) => (body.city ?? "").includes("Little Rock")));
 assert.ok(theater.cities.some((city) => city.name === "Little Rock"));
 assert.ok(theater.outline.startsWith("M "));
+assert.ok((theater.outline.match(/ L /g) ?? []).length >= 16);
+assert.ok(theater.cities.some((city) => city.name === "Fayetteville"));
+assert.ok(theater.cities.some((city) => city.name === "Texarkana"));
+const northWest = projectArkansas(36.5, -94.62);
+const bootheel = projectArkansas(36.5, -90.17);
+const southEast = projectArkansas(33.02, -91.17);
+assert.ok(bootheel.x - northWest.x > 400);
+assert.ok(southEast.y - northWest.y > 350);
 assert.ok(theater.readiness.some((row) => row.id === "capture" && row.go));
 assert.ok(theater.director.some((line) => line.code === "CAPTURE"));
 assert.doesNotMatch(JSON.stringify(theater.director), /visitor-a|staff|search-c|203\.0\.113/);

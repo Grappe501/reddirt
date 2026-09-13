@@ -239,16 +239,39 @@ export function SiteAnalyticsFlightDeck({
             {DUST.map((dot, index) => (
               <circle key={index} cx={dot.x} cy={dot.y} r={dot.r} fill="#d7e3ff" opacity={dot.o} />
             ))}
-            <path d={theater.outline} fill="rgba(80,120,210,0.07)" stroke="rgba(202,145,61,0.55)" strokeWidth="1.6" />
+            <path d={theater.outline} fill="rgba(80,120,210,0.09)" stroke="rgba(202,145,61,0.75)" strokeWidth="2.2" />
+            <text
+              x={theater.hq.x}
+              y={theater.hq.y + 92}
+              fill="rgba(202,145,61,0.35)"
+              fontSize="22"
+              fontFamily="Georgia, serif"
+              textAnchor="middle"
+              letterSpacing="6"
+            >
+              ARKANSAS
+            </text>
             <circle cx={theater.hq.x} cy={theater.hq.y} r="26" fill="none" stroke="rgba(202,145,61,0.2)" />
             <circle cx={theater.hq.x} cy={theater.hq.y} r="7" fill="#ca913d" className="origin-center animate-[fd-glow_2.8s_ease-in-out_infinite]" />
             <text x={theater.hq.x + 12} y={theater.hq.y - 8} fill="#ca913d" fontSize="11" fontFamily="Georgia, serif">
-              HQ
+              Little Rock
             </text>
-            {theater.cities.map((city) => (
+            {theater.cities.filter((city) => city.name !== "Little Rock").map((city) => (
               <g key={city.name}>
-                <circle cx={city.x} cy={city.y} r={5 + Math.min(10, city.hits)} fill="rgba(125,211,252,0.12)" stroke="rgba(125,211,252,0.45)" />
-                <text x={city.x + 10} y={city.y + 4} fill="#8ecae6" fontSize="10" fontFamily="ui-sans-serif, system-ui">
+                <circle
+                  cx={city.x}
+                  cy={city.y}
+                  r={city.hits > 0 ? 5 + Math.min(10, city.hits) : 2.5}
+                  fill={city.hits > 0 ? "rgba(125,211,252,0.16)" : "rgba(125,211,252,0.06)"}
+                  stroke="rgba(125,211,252,0.45)"
+                />
+                <text
+                  x={city.x + 10}
+                  y={city.y + 4}
+                  fill={city.hits > 0 ? "#8ecae6" : "rgba(142,202,230,0.55)"}
+                  fontSize="10"
+                  fontFamily="ui-sans-serif, system-ui"
+                >
                   {city.name}
                 </text>
               </g>
