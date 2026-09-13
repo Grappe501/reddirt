@@ -1,7 +1,9 @@
+import { CHANNEL_LABELS, classifyTrafficSource, type TrafficChannelId } from "@/lib/analytics/traffic-source";
 import {
   CONTENT_SECTION_LABELS,
   classifyContentSection,
   countySlugFromPath,
+  isCampaignAnalyticsPath,
   type DeviceClass,
 } from "@/lib/analytics/visitor-signals";
 
@@ -32,6 +34,58 @@ export type SessionPathRow = {
   steps: string[];
   hitAt: string;
   minutes: number;
+};
+
+export type ChannelRow = {
+  id: TrafficChannelId;
+  label: string;
+  sessions: number;
+  visitors: number;
+  pageViews: number;
+  bounceSessions: number;
+  bounceRate: number | null;
+  engagedSessions: number;
+  formCompletes: number;
+};
+
+export type TransitionRow = {
+  from: string;
+  to: string;
+  hits: number;
+};
+
+export type VisitorJourney = {
+  label: string;
+  startedAt: string;
+  endedAt: string;
+  minutes: number;
+  source: TrafficChannelId;
+  sourceLabel: string;
+  referrer: string | null;
+  campaign: string | null;
+  landing: string;
+  exit: string;
+  steps: string[];
+  pageViews: number;
+  device: string;
+  bounced: boolean;
+  engaged: boolean;
+  formStarted: boolean;
+  formCompleted: boolean;
+  ctaClicked: boolean;
+  returning: boolean;
+};
+
+export type SeoDesk = {
+  sessions: number;
+  share: number | null;
+  bounceRate: number | null;
+  engageRate: number | null;
+  engines: CountRow[];
+  landings: PageHitRow[];
+  nextPages: TransitionRow[];
+  exits: PageHitRow[];
+  reads: string[];
 };
 
 export type TrendDayRow = {
@@ -88,6 +142,14 @@ export type SiteTrafficSnapshot = {
   weekdays: CountRow[];
   funnel: FunnelRow[];
   paths: SessionPathRow[];
+  channels: ChannelRow[];
+  transitions: TransitionRow[];
+  landingNext: TransitionRow[];
+  journeys: VisitorJourney[];
+  journeyLimit: number;
+  journeysTruncated: boolean;
+  seo: SeoDesk;
+  analysis: string[];
   prior: PriorWindowDelta | null;
   truncated: boolean;
 };
@@ -111,10 +173,15 @@ function asRecord(payload: unknown): Record<string, unknown> {
 }
 
 export function publicAnalyticsPath(path: string | null | undefined): string | null {
-  const p = path?.trim() || "";
-  if (!p.startsWith("/")) return null;
-  if (p.startsWith("/admin") || p.startsWith("/api")) return null;
-  return p.split("?")[0]?.slice(0, 180) || null;
+  const p = path?.trim().split("?")[0]?.slice(0, 180) || "";
+  if (!isCampaignAnalyticsPath(p)) return null;
+  return p;
+}
+
+export function visitorLogLimit(days: TrafficWindowDays): number {
+  if (days === 1) return 500;
+  if (days === 7) return 80;
+  return 40;
 }
 
 function eventPath(row: TrafficEventRow): string | null {
@@ -191,13 +258,33 @@ type Visit = {
   last: Date;
   device: DeviceClass;
   engaged: boolean;
+  referrer: string | null;
+  utmSource: string;
+  utmMedium: string;
+  utmCampaign: string;
+  utmContent: string;
+  formStarted: boolean;
+  formCompleted: boolean;
+  ctaClicked: boolean;
 };
 
-function sessionize(pageViews: Array<{ visitorId: string; path: string; at: Date; device: DeviceClass }>): Visit[] {
-  const byVisitor = new Map<string, Array<{ path: string; at: Date; device: DeviceClass }>>();
+type PageHit = {
+  visitorId: string;
+  path: string;
+  at: Date;
+  device: DeviceClass;
+  referrer: string;
+  utmSource: string;
+  utmMedium: string;
+  utmCampaign: string;
+  utmContent: string;
+};
+
+function sessionize(pageViews: PageHit[]): Visit[] {
+  const byVisitor = new Map<string, PageHit[]>();
   for (const row of pageViews) {
     const list = byVisitor.get(row.visitorId) ?? [];
-    list.push({ path: row.path, at: row.at, device: row.device });
+    list.push(row);
     byVisitor.set(row.visitorId, list);
   }
 
@@ -214,6 +301,14 @@ function sessionize(pageViews: Array<{ visitorId: string; path: string; at: Date
           last: hit.at,
           device: hit.device,
           engaged: false,
+          referrer: hit.referrer || null,
+          utmSource: hit.utmSource,
+          utmMedium: hit.utmMedium,
+          utmCampaign: hit.utmCampaign,
+          utmContent: hit.utmContent,
+          formStarted: false,
+          formCompleted: false,
+          ctaClicked: false,
         };
         visits.push(current);
         continue;
@@ -224,6 +319,188 @@ function sessionize(pageViews: Array<{ visitorId: string; path: string; at: Date
     }
   }
   return visits;
+}
+
+function emptySeoDesk(): SeoDesk {
+  return {
+    sessions: 0,
+    share: null,
+    bounceRate: null,
+    engageRate: null,
+    engines: [],
+    landings: [],
+    nextPages: [],
+    exits: [],
+    reads: ["No search-referred visits in this window yet. Google still sends google.com as the referrer — the search words themselves are not available."],
+  };
+}
+
+function emptyChannels(): ChannelRow[] {
+  return (Object.keys(CHANNEL_LABELS) as TrafficChannelId[]).map((id) => ({
+    id,
+    label: CHANNEL_LABELS[id],
+    sessions: 0,
+    visitors: 0,
+    pageViews: 0,
+    bounceSessions: 0,
+    bounceRate: null,
+    engagedSessions: 0,
+    formCompletes: 0,
+  }));
+}
+
+function campaignTag(visit: Visit): string | null {
+  const parts = [visit.utmSource, visit.utmMedium, visit.utmCampaign, visit.utmContent].filter(Boolean);
+  return parts.length ? parts.join(" / ") : null;
+}
+
+function buildSeoDesk(visits: Visit[], sessions: number): SeoDesk {
+  const organic = visits.filter((v) => classifyTrafficSource({
+    referrer: v.referrer,
+    utmSource: v.utmSource,
+    utmMedium: v.utmMedium,
+    utmCampaign: v.utmCampaign,
+  }).channel === "search");
+  if (!organic.length) return emptySeoDesk();
+
+  const engines = new Map<string, number>();
+  const landings = new Map<string, { hits: number; sessions: Set<string> }>();
+  const exits = new Map<string, { hits: number; sessions: Set<string> }>();
+  const nextPages: TransitionRow[] = [];
+  const nextMap = new Map<string, number>();
+  let bounce = 0;
+  let engaged = 0;
+
+  for (const visit of organic) {
+    const source = classifyTrafficSource({
+      referrer: visit.referrer,
+      utmSource: visit.utmSource,
+      utmMedium: visit.utmMedium,
+      utmCampaign: visit.utmCampaign,
+    });
+    increment(engines, source.engine ?? "Search");
+    const landing = visit.steps[0] ?? "";
+    if (landing) {
+      const row = landings.get(landing) ?? { hits: 0, sessions: new Set<string>() };
+      row.hits += 1;
+      row.sessions.add(visit.visitorId);
+      landings.set(landing, row);
+    }
+    const exit = visit.steps[visit.steps.length - 1] ?? "";
+    if (exit) {
+      const row = exits.get(exit) ?? { hits: 0, sessions: new Set<string>() };
+      row.hits += 1;
+      row.sessions.add(visit.visitorId);
+      exits.set(exit, row);
+    }
+    if (visit.steps.length >= 2 && landing) {
+      const key = `${landing}→${visit.steps[1]}`;
+      increment(nextMap, key);
+    }
+    if (visit.steps.length === 1) bounce += 1;
+    if (visit.engaged) engaged += 1;
+  }
+
+  for (const [key, hits] of nextMap) {
+    const [from, to] = key.split("→");
+    if (from && to) nextPages.push({ from, to, hits });
+  }
+  nextPages.sort((a, b) => b.hits - a.hits);
+
+  const bounceRate = organic.length ? bounce / organic.length : null;
+  const engageRate = organic.length ? engaged / organic.length : null;
+  const topLanding = [...landings.entries()].sort((a, b) => b[1].hits - a[1].hits)[0];
+  const reads: string[] = [];
+  reads.push(
+    `${organic.length} session${organic.length === 1 ? "" : "s"} arrived from search (${sessions ? Math.round((organic.length / sessions) * 100) : 0}% of visits).`,
+  );
+  if (bounceRate != null) {
+    reads.push(
+      bounceRate >= 0.7
+        ? `${Math.round(bounceRate * 100)}% of search visits left after one page — the landing page is not holding SEO traffic.`
+        : `${Math.round((1 - bounceRate) * 100)}% of search visits opened a second page.`,
+    );
+  }
+  if (topLanding) {
+    reads.push(`Top SEO landing: ${topLanding[0]} (${topLanding[1].hits} search session${topLanding[1].hits === 1 ? "" : "s"}).`);
+  }
+  if (nextPages[0]) {
+    reads.push(`Most common next click from search: ${nextPages[0].from} → ${nextPages[0].to}.`);
+  } else {
+    reads.push("Search visitors are not moving to a second campaign page in this window.");
+  }
+
+  const toPageRows = (map: Map<string, { hits: number; sessions: Set<string> }>, limit: number): PageHitRow[] =>
+    [...map.entries()]
+      .map(([path, v]) => ({ path, hits: v.hits, sessions: v.sessions.size }))
+      .sort((a, b) => b.hits - a.hits)
+      .slice(0, limit);
+
+  return {
+    sessions: organic.length,
+    share: sessions ? organic.length / sessions : null,
+    bounceRate,
+    engageRate,
+    engines: rankedCountRows(engines, 8),
+    landings: toPageRows(landings, 12),
+    nextPages: nextPages.slice(0, 12),
+    exits: toPageRows(exits, 8),
+    reads: reads.slice(0, 6),
+  };
+}
+
+function buildAnalysis(input: {
+  sessions: number;
+  visitors: number;
+  bounceRate: number | null;
+  channels: ChannelRow[];
+  seo: SeoDesk;
+  transitions: TransitionRow[];
+  journeys: VisitorJourney[];
+}): string[] {
+  const lines: string[] = [];
+  if (!input.sessions) {
+    return ["No public campaign visits in this window yet. Share a live page and the desk will start reading journeys."];
+  }
+
+  const lead = [...input.channels].sort((a, b) => b.sessions - a.sessions)[0];
+  if (lead && lead.sessions > 0) {
+    lines.push(
+      `${lead.label} is the main door (${lead.sessions} of ${input.sessions} sessions). ${
+        lead.bounceRate != null && lead.bounceRate >= 0.65
+          ? "Those visitors are mostly bouncing."
+          : "That source is holding some people past the first page."
+      }`,
+    );
+  }
+
+  const search = input.channels.find((row) => row.id === "search");
+  if (!search || search.sessions === 0) {
+    lines.push("SEO is not sending measurable referred visits yet — or Google is not passing a referrer on these hits. Direct traffic can hide some search.");
+  } else {
+    lines.push(input.seo.reads[0] ?? `${search.sessions} search sessions landed.`);
+    if (input.seo.reads[1]) lines.push(input.seo.reads[1]);
+  }
+
+  if (input.transitions[0]) {
+    lines.push(`The strongest on-site move is ${input.transitions[0].from} → ${input.transitions[0].to} (${input.transitions[0].hits} times).`);
+  } else {
+    lines.push("Almost no one is clicking through to a second page. The first page they see is the whole visit.");
+  }
+
+  const converted = input.journeys.filter((row) => row.formCompleted).length;
+  if (converted) {
+    lines.push(`${converted} visit${converted === 1 ? "" : "s"} finished a form. Follow the path those people used and put that next step on the leaky landings.`);
+  } else if (input.journeys.some((row) => row.formStarted)) {
+    lines.push("People started a form and did not finish. The leak is on the form, not the homepage.");
+  }
+
+  const returning = input.journeys.filter((row) => row.returning).length;
+  if (returning) {
+    lines.push(`${returning} visit${returning === 1 ? "" : "s"} came from someone who already showed up in this window.`);
+  }
+
+  return lines.slice(0, 7);
 }
 
 export function emptySiteTrafficSnapshot(days: TrafficWindowDays): SiteTrafficSnapshot {
@@ -262,6 +539,14 @@ export function emptySiteTrafficSnapshot(days: TrafficWindowDays): SiteTrafficSn
       { label: "Finished a form", count: 0 },
     ],
     paths: [],
+    channels: emptyChannels(),
+    transitions: [],
+    landingNext: [],
+    journeys: [],
+    journeyLimit: visitorLogLimit(days),
+    journeysTruncated: false,
+    seo: emptySeoDesk(),
+    analysis: ["No public campaign visits in this window yet. Share a live page and the desk will start reading journeys."],
     prior: null,
     truncated: false,
   };
@@ -290,7 +575,12 @@ export function aggregateSiteTraffic(
   const engageVisitors = new Set<string>();
   const formStartVisitors = new Set<string>();
   const formCompleteVisitors = new Set<string>();
-  const pageViewRows: Array<{ visitorId: string; path: string; at: Date; device: DeviceClass }> = [];
+  const pageViewRows: PageHit[] = [];
+  const sideEvents: Array<{
+    visitorId: string;
+    at: Date;
+    name: string;
+  }> = [];
   let pageViews = 0;
   let formStartCount = 0;
   let formCompleteCount = 0;
@@ -304,31 +594,45 @@ export function aggregateSiteTraffic(
 
     if (name === "engage") {
       engageVisitors.add(sid);
+      sideEvents.push({ visitorId: sid, at: row.createdAt, name });
       continue;
     }
     if (name === "form_start") {
       formStartCount += 1;
       formStartVisitors.add(sid);
       increment(formStarts, String(payload.formType ?? "form").slice(0, 80));
+      sideEvents.push({ visitorId: sid, at: row.createdAt, name });
       continue;
     }
     if (name === "form_complete") {
       formCompleteCount += 1;
       formCompleteVisitors.add(sid);
       increment(formCompletes, String(payload.formType ?? "form").slice(0, 80));
+      sideEvents.push({ visitorId: sid, at: row.createdAt, name });
       continue;
     }
     if (name === "cta_click") {
       ctaCount += 1;
       const label = String(payload.label ?? payload.href ?? "button").trim().slice(0, 80) || "button";
       increment(ctaHits, label);
+      sideEvents.push({ visitorId: sid, at: row.createdAt, name });
       continue;
     }
     if (name !== "page_view") continue;
     if (!path) continue;
 
     pageViews += 1;
-    pageViewRows.push({ visitorId: sid, path, at: row.createdAt, device: deviceFromPayload(payload) });
+    pageViewRows.push({
+      visitorId: sid,
+      path,
+      at: row.createdAt,
+      device: deviceFromPayload(payload),
+      referrer: String(payload.referrer ?? "").trim().slice(0, 200),
+      utmSource: String(payload.utm_source ?? "").trim(),
+      utmMedium: String(payload.utm_medium ?? "").trim(),
+      utmCampaign: String(payload.utm_campaign ?? "").trim(),
+      utmContent: String(payload.utm_content ?? "").trim(),
+    });
 
     const page = pageHits.get(path) ?? { hits: 0, sessions: new Set<string>() };
     page.hits += 1;
@@ -363,9 +667,26 @@ export function aggregateSiteTraffic(
   }
 
   const visits = sessionize(pageViewRows);
+  for (const event of sideEvents) {
+    const match = [...visits]
+      .reverse()
+      .find(
+        (visit) =>
+          visit.visitorId === event.visitorId &&
+          event.at.getTime() >= visit.first.getTime() - 5_000 &&
+          event.at.getTime() <= visit.last.getTime() + VISIT_GAP_MS,
+      );
+    if (!match) continue;
+    if (event.name === "form_start") match.formStarted = true;
+    if (event.name === "form_complete") match.formCompleted = true;
+    if (event.name === "cta_click") match.ctaClicked = true;
+    if (event.name === "engage") match.engaged = true;
+  }
+  const visitorVisitCount = new Map<string, number>();
+  for (const visit of visits) increment(visitorVisitCount, visit.visitorId);
   for (const visit of visits) {
     const minutes = Math.max(0, (visit.last.getTime() - visit.first.getTime()) / 60000);
-    visit.engaged = engageVisitors.has(visit.visitorId) || visit.steps.length >= 2 || minutes >= 0.25;
+    visit.engaged = visit.engaged || engageVisitors.has(visit.visitorId) || visit.steps.length >= 2 || minutes >= 0.25;
     increment(deviceHits, visit.device === "unknown" ? "Unknown device" : visit.device);
     const landing = landingHits.get(visit.steps[0] ?? "") ?? { hits: 0, sessions: new Set<string>() };
     if (visit.steps[0]) {
@@ -404,6 +725,108 @@ export function aggregateSiteTraffic(
       .slice(0, limit);
 
   const formTypes = new Set([...formStarts.keys(), ...formCompletes.keys()]);
+
+  const channelStats = new Map<
+    TrafficChannelId,
+    { visitors: Set<string>; pageViews: number; bounce: number; engaged: number; forms: number; sessions: number }
+  >();
+  for (const id of Object.keys(CHANNEL_LABELS) as TrafficChannelId[]) {
+    channelStats.set(id, { visitors: new Set(), pageViews: 0, bounce: 0, engaged: 0, forms: 0, sessions: 0 });
+  }
+  const transitionHits = new Map<string, number>();
+  const landingNextHits = new Map<string, number>();
+  for (const visit of visits) {
+    const source = classifyTrafficSource({
+      referrer: visit.referrer,
+      utmSource: visit.utmSource,
+      utmMedium: visit.utmMedium,
+      utmCampaign: visit.utmCampaign,
+    });
+    const bucket = channelStats.get(source.channel);
+    if (bucket) {
+      bucket.sessions += 1;
+      bucket.visitors.add(visit.visitorId);
+      bucket.pageViews += visit.steps.length;
+      if (visit.steps.length === 1) bucket.bounce += 1;
+      if (visit.engaged) bucket.engaged += 1;
+      if (visit.formCompleted) bucket.forms += 1;
+    }
+    for (let i = 0; i < visit.steps.length - 1; i += 1) {
+      increment(transitionHits, `${visit.steps[i]}→${visit.steps[i + 1]}`);
+    }
+    if (visit.steps.length >= 2) increment(landingNextHits, `${visit.steps[0]}→${visit.steps[1]}`);
+  }
+  const channels: ChannelRow[] = (Object.keys(CHANNEL_LABELS) as TrafficChannelId[])
+    .map((id) => {
+      const row = channelStats.get(id)!;
+      return {
+        id,
+        label: CHANNEL_LABELS[id],
+        sessions: row.sessions,
+        visitors: row.visitors.size,
+        pageViews: row.pageViews,
+        bounceSessions: row.bounce,
+        bounceRate: row.sessions ? row.bounce / row.sessions : null,
+        engagedSessions: row.engaged,
+        formCompletes: row.forms,
+      };
+    })
+    .sort((a, b) => b.sessions - a.sessions);
+  const toTransitions = (map: Map<string, number>, limit: number): TransitionRow[] =>
+    [...map.entries()]
+      .map(([key, hits]) => {
+        const [from, to] = key.split("→");
+        return { from: from ?? "", to: to ?? "", hits };
+      })
+      .filter((row) => row.from && row.to)
+      .sort((a, b) => b.hits - a.hits)
+      .slice(0, limit);
+
+  const journeyCap = visitorLogLimit(days);
+  const journeys: VisitorJourney[] = [...visits]
+    .sort((a, b) => b.first.getTime() - a.first.getTime())
+    .slice(0, journeyCap)
+    .map((visit, index) => {
+      const source = classifyTrafficSource({
+        referrer: visit.referrer,
+        utmSource: visit.utmSource,
+        utmMedium: visit.utmMedium,
+        utmCampaign: visit.utmCampaign,
+      });
+      return {
+        label: `Visit ${index + 1}`,
+        startedAt: visit.first.toISOString(),
+        endedAt: visit.last.toISOString(),
+        minutes: Math.max(0, (visit.last.getTime() - visit.first.getTime()) / 60000),
+        source: source.channel,
+        sourceLabel: source.label,
+        referrer: visit.referrer,
+        campaign: campaignTag(visit),
+        landing: visit.steps[0] ?? "/",
+        exit: visit.steps[visit.steps.length - 1] ?? "/",
+        steps: visit.steps.slice(0, 24),
+        pageViews: visit.steps.length,
+        device: visit.device === "unknown" ? "Unknown" : visit.device,
+        bounced: visit.steps.length === 1,
+        engaged: visit.engaged,
+        formStarted: visit.formStarted,
+        formCompleted: visit.formCompleted,
+        ctaClicked: visit.ctaClicked,
+        returning: (visitorVisitCount.get(visit.visitorId) ?? 1) > 1,
+      };
+    });
+  const seo = buildSeoDesk(visits, sessions);
+  const transitions = toTransitions(transitionHits, 20);
+  const landingNext = toTransitions(landingNextHits, 16);
+  const analysis = buildAnalysis({
+    sessions,
+    visitors,
+    bounceRate: sessions ? singlePageSessions / sessions : null,
+    channels,
+    seo,
+    transitions,
+    journeys,
+  });
 
   const snapshot: SiteTrafficSnapshot = {
     days,
@@ -455,12 +878,20 @@ export function aggregateSiteTraffic(
     paths: visits
       .filter((v) => v.steps.length >= 2)
       .sort((a, b) => b.last.getTime() - a.last.getTime())
-      .slice(0, 20)
+      .slice(0, days === 1 ? 80 : 20)
       .map((v) => ({
-        steps: v.steps.slice(0, 8),
+        steps: v.steps.slice(0, 24),
         hitAt: v.last.toISOString(),
         minutes: Math.max(0, (v.last.getTime() - v.first.getTime()) / 60000),
       })),
+    channels,
+    transitions,
+    landingNext,
+    journeys,
+    journeyLimit: journeyCap,
+    journeysTruncated: visits.length > journeyCap,
+    seo,
+    analysis,
     prior: null,
     truncated: Boolean(options?.truncated),
   };
@@ -503,7 +934,30 @@ export function trafficBriefInput(snapshot: SiteTrafficSnapshot): string {
       campaigns: snapshot.campaigns.slice(0, 8),
       forms: snapshot.forms,
       daily: snapshot.daysSeries,
-      recentPaths: snapshot.paths.slice(0, 12).map((p) => p.steps.join(" → ")),
+      channels: snapshot.channels.filter((row) => row.sessions > 0).map((row) => ({
+        label: row.label,
+        sessions: row.sessions,
+        bounceRate: row.bounceRate == null ? null : Number((row.bounceRate * 100).toFixed(1)),
+        formCompletes: row.formCompletes,
+      })),
+      seo: {
+        sessions: snapshot.seo.sessions,
+        share: snapshot.seo.share == null ? null : Number((snapshot.seo.share * 100).toFixed(1)),
+        bounceRate: snapshot.seo.bounceRate == null ? null : Number((snapshot.seo.bounceRate * 100).toFixed(1)),
+        engines: snapshot.seo.engines,
+        landings: snapshot.seo.landings.slice(0, 8),
+        nextPages: snapshot.seo.nextPages.slice(0, 8).map((row) => `${row.from} → ${row.to} (${row.hits})`),
+        reads: snapshot.seo.reads,
+      },
+      analysis: snapshot.analysis,
+      topMoves: snapshot.transitions.slice(0, 10).map((row) => `${row.from} → ${row.to} (${row.hits})`),
+      recentJourneys: snapshot.journeys.slice(0, 12).map((row) => ({
+        source: row.sourceLabel,
+        landing: row.landing,
+        path: row.steps.join(" → "),
+        bounced: row.bounced,
+        formCompleted: row.formCompleted,
+      })),
     },
     null,
     2,

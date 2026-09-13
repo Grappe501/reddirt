@@ -22,6 +22,8 @@ export type SiteTrafficIntelligence = {
   countyNames: string[];
   leaks: TrafficLeak[];
   risingHalf: boolean | null;
+  seoShare: number | null;
+  leadChannel: string | null;
 };
 
 function hourLabel(hour: number): string {
@@ -44,6 +46,8 @@ export function buildSiteTrafficIntelligence(snapshot: SiteTrafficSnapshot): Sit
       countyNames: [],
       leaks: [],
       risingHalf: null,
+      seoShare: null,
+      leadChannel: null,
     };
   }
 
@@ -114,6 +118,15 @@ export function buildSiteTrafficIntelligence(snapshot: SiteTrafficSnapshot): Sit
   if (peak.hits > 0) {
     reasons.push(`Busiest hour is ${hourLabel(peak.hour)} Arkansas time.`);
   }
+  const leadChannel = snapshot.channels.find((row) => row.sessions > 0)?.label ?? null;
+  if (leadChannel) {
+    reasons.push(`Main arrival channel: ${leadChannel}.`);
+  }
+  if (snapshot.seo.sessions > 0) {
+    reasons.push(`${snapshot.seo.sessions} search session${snapshot.seo.sessions === 1 ? "" : "s"} — ${snapshot.seo.reads[1] ?? snapshot.seo.reads[0]}`);
+  } else {
+    reasons.push("No search-referred visits in this window.");
+  }
 
   const mood: TrafficMood =
     healthScore >= 72 && bounce < 0.55 ? "strong" : bounce >= 0.7 && snapshot.sessions >= 8 ? "leaking" : "steady";
@@ -121,7 +134,7 @@ export function buildSiteTrafficIntelligence(snapshot: SiteTrafficSnapshot): Sit
   return {
     healthScore,
     mood,
-    reasons: reasons.slice(0, 5),
+    reasons: reasons.slice(0, 7),
     trendPct,
     formConversionRate: snapshot.sessions ? formRate : null,
     ctaRate: snapshot.sessions ? ctaRate : null,
@@ -131,6 +144,8 @@ export function buildSiteTrafficIntelligence(snapshot: SiteTrafficSnapshot): Sit
     countyNames,
     leaks,
     risingHalf,
+    seoShare: snapshot.seo.share,
+    leadChannel,
   };
 }
 
@@ -171,6 +186,11 @@ export function trafficIntelligenceBriefInput(snapshot: SiteTrafficSnapshot, int
       hours: snapshot.hours.filter((row) => row.hits > 0),
       weekdays: snapshot.weekdays.filter((row) => row.hits > 0),
       recentPaths: snapshot.paths.slice(0, 12).map((p) => p.steps.join(" → ")),
+      analysis: snapshot.analysis,
+      seo: snapshot.seo.reads,
+      channels: snapshot.channels.filter((row) => row.sessions > 0).map((row) => row.label),
+      topMoves: snapshot.transitions.slice(0, 8).map((row) => `${row.from} → ${row.to}`),
+      journeys: snapshot.journeys.slice(0, 10).map((row) => `${row.sourceLabel}: ${row.steps.join(" → ")}`),
     },
     null,
     2,

@@ -5,10 +5,12 @@ import {
   trafficIntelligenceBriefInput,
 } from "../src/lib/analytics/site-traffic-intelligence";
 import { sanitizeAnalyticsPath, sanitizeAnalyticsPayload } from "../src/lib/analytics/sanitize-payload";
+import { classifyTrafficSource } from "../src/lib/analytics/traffic-source";
 import {
   classifyContentSection,
   classifyDeviceFromUserAgent,
   countySlugFromPath,
+  isCampaignAnalyticsPath,
   isPublicConversionHref,
 } from "../src/lib/analytics/visitor-signals";
 
@@ -48,10 +50,24 @@ const snapshot = aggregateSiteTraffic(
     },
     {
       name: "page_view",
+      path: "/fec-max-donors",
+      sessionId: "research",
+      createdAt: t2,
+      payload: { pathname: "/fec-max-donors", referrer: "google.com/" },
+    },
+    {
+      name: "page_view",
       path: "/events",
       sessionId: "visitor-b",
       createdAt: t2,
       payload: { pathname: "/events", ip: "203.0.113.10" },
+    },
+    {
+      name: "page_view",
+      path: "/about",
+      sessionId: "search-c",
+      createdAt: t2,
+      payload: { pathname: "/about", referrer: "www.google.com/", device: "desktop" },
     },
     {
       name: "page_view",
@@ -92,10 +108,10 @@ const snapshot = aggregateSiteTraffic(
   7,
 );
 
-assert.equal(snapshot.pageViews, 4);
-assert.equal(snapshot.visitors, 2);
-assert.equal(snapshot.sessions, 3);
-assert.equal(snapshot.singlePageSessions, 2);
+assert.equal(snapshot.pageViews, 5);
+assert.equal(snapshot.visitors, 3);
+assert.equal(snapshot.sessions, 4);
+assert.equal(snapshot.singlePageSessions, 3);
 assert.equal(snapshot.formStarts, 1);
 assert.equal(snapshot.formCompletes, 1);
 assert.equal(snapshot.ctaClicks, 1);
@@ -108,11 +124,24 @@ assert.ok(snapshot.sections.some((row) => row.label === "From the Road"));
 assert.ok(snapshot.devices.some((row) => row.label === "phone"));
 assert.deepEqual(snapshot.paths[0]?.steps, ["/", "/from-the-road"]);
 assert.equal(snapshot.funnel[3]?.count, 1);
+assert.ok(!snapshot.pages.some((p) => p.path.startsWith("/fec-max-donors")));
+assert.equal(snapshot.seo.sessions, 1);
+assert.equal(snapshot.seo.landings[0]?.path, "/about");
+assert.ok(snapshot.channels.some((row) => row.id === "search" && row.sessions === 1));
+assert.ok(snapshot.channels.some((row) => row.id === "social" && row.sessions === 1));
+assert.ok(snapshot.journeys.length >= 4);
+assert.ok(snapshot.analysis.length >= 2);
+assert.ok(snapshot.transitions.some((row) => row.from === "/" && row.to === "/from-the-road"));
+assert.equal(classifyTrafficSource({ referrer: "www.google.com/" }).channel, "search");
+assert.equal(isCampaignAnalyticsPath("/fec-max-donors"), false);
+assert.equal(isCampaignAnalyticsPath("/from-the-road"), true);
 
 const brief = trafficBriefInput(snapshot);
 assert.doesNotMatch(brief, /203\.0\.113/);
 assert.doesNotMatch(brief, /visitor-a/);
 assert.doesNotMatch(brief, /staff/);
+assert.doesNotMatch(brief, /search-c/);
+assert.doesNotMatch(brief, /research/);
 
 assert.equal(sanitizeAnalyticsPath("/events?utm_source=x"), "/events");
 assert.equal(sanitizeAnalyticsPath("https://evil.example/"), undefined);

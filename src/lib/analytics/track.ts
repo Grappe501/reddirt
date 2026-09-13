@@ -1,7 +1,12 @@
 "use client";
 
 import { useEffect } from "react";
-import { classifyViewport, isPublicConversionHref, sanitizeLocale } from "@/lib/analytics/visitor-signals";
+import {
+  classifyViewport,
+  isCampaignAnalyticsPath,
+  isPublicConversionHref,
+  sanitizeLocale,
+} from "@/lib/analytics/visitor-signals";
 
 function visitorId(): string {
   if (typeof window === "undefined") return "";
@@ -77,7 +82,7 @@ function campaignParams(): Record<string, string> {
 export function usePageView(pathname: string | null) {
   useEffect(() => {
     if (!pathname) return;
-    if (pathname.startsWith("/admin") || pathname.startsWith("/api")) return;
+    if (!isCampaignAnalyticsPath(pathname)) return;
     void trackEvent(
       "page_view",
       {
@@ -114,7 +119,7 @@ export function usePublicCtaCapture() {
       const href = link.getAttribute("href") ?? "";
       if (!isPublicConversionHref(href)) return;
       const path = window.location.pathname;
-      if (path.startsWith("/admin") || path.startsWith("/api")) return;
+      if (!isCampaignAnalyticsPath(path)) return;
       const label = (link.textContent ?? "").replace(/\s+/g, " ").trim().slice(0, 80) || href;
       void trackEvent("cta_click", { label, href: href.slice(0, 200), ...clientSignals() }, path);
     };

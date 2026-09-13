@@ -195,8 +195,10 @@ export async function analyzeSiteTraffic(
             "You write the operator command brief for the first-party visitor desk. " +
             "Use only the aggregate counts and machine reads provided. Never invent traffic numbers, counties, events, or endorsements. " +
             "Never ask for names, emails, or IP addresses. Do not mention opponents unless a provided path already does. " +
+            "Analyze SEO and journeys, not just totals: say which channel is the door, whether search traffic holds or bounces, and the next page people actually open. " +
             "Be concrete: name real paths from the data, say what to share tonight, and write copy only for pages that already have hits. " +
             "If a number is missing, say the desk does not have it yet. " +
+            "Use the analysis, SEO reads, channels, and journeys. Do not invent search queries. " +
             "Return JSON only with keys: headline, situation, mood (strong|steady|leaking|quiet), wins[], " +
             "leaks[{page, problem, fix}], audienceReads[], sharePlan[], copyLines[], tonightMoves[], watchNext[].",
         },

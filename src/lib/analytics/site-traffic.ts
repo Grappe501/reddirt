@@ -8,16 +8,20 @@ import {
 
 export type {
   CampaignRow,
+  ChannelRow,
   CountRow,
   FunnelRow,
   HourRow,
   PageHitRow,
   PriorWindowDelta,
   ReferrerRow,
+  SeoDesk,
   SessionPathRow,
   SiteTrafficSnapshot,
   TrafficWindowDays,
+  TransitionRow,
   TrendDayRow,
+  VisitorJourney,
 } from "@/lib/analytics/site-traffic-aggregate";
 export { pctChange, trafficBriefInput } from "@/lib/analytics/site-traffic-aggregate";
 
@@ -25,10 +29,10 @@ const TRACKED_NAMES = ["page_view", "cta_click", "form_start", "form_complete", 
 const MAX_EVENTS = 12000;
 
 export function parseTrafficWindowDays(raw: string | undefined): TrafficWindowDays {
-  if (raw === "1") return 1;
+  if (raw === "7") return 7;
   if (raw === "30") return 30;
   if (raw === "90") return 90;
-  return 7;
+  return 1;
 }
 
 export async function loadSiteTrafficSnapshot(days: TrafficWindowDays = 7): Promise<SiteTrafficSnapshot> {

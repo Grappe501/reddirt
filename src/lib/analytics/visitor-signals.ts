@@ -54,6 +54,14 @@ export function sanitizeLocale(raw: string | null | undefined): string | undefin
   return text.slice(0, 8);
 }
 
+/** Research / staff tools hosted on the same app — do not mix into campaign visitor totals. */
+export function isCampaignAnalyticsPath(path: string): boolean {
+  if (!path.startsWith("/")) return false;
+  if (path.startsWith("/admin") || path.startsWith("/api")) return false;
+  if (path.startsWith("/fec-max-donors") || path.startsWith("/fec-donors")) return false;
+  return true;
+}
+
 export function classifyContentSection(path: string): ContentSectionId {
   if (path === "/") return "home";
   if (path === "/from-the-road" || path.startsWith("/from-the-road/")) return "from_the_road";

@@ -1,6 +1,9 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { SiteAnalyticsCommandBoard } from "@/components/admin/SiteAnalyticsCommandBoard";
+import { SiteAnalyticsJourneyDesk } from "@/components/admin/SiteAnalyticsJourneyDesk";
+import { SiteAnalyticsSeoDesk } from "@/components/admin/SiteAnalyticsSeoDesk";
+import { SiteAnalyticsVisitorLog } from "@/components/admin/SiteAnalyticsVisitorLog";
 import { pctChange, type SiteTrafficSnapshot, type TrafficWindowDays } from "@/lib/analytics/site-traffic-aggregate";
 import type { SiteTrafficIntelligence } from "@/lib/analytics/site-traffic-intelligence";
 import { getRegistryCountyBySlug } from "@/lib/county/arkansas-county-registry";
@@ -124,8 +127,8 @@ export function SiteAnalyticsWorkbench({
         </p>
         <h1 className="mt-2 font-heading text-3xl font-bold text-kelly-ink">Visitor analytics</h1>
         <p className="mt-3 max-w-3xl font-body text-sm leading-relaxed text-kelly-slate">
-          First-party log from kellygrappe.com. Admin browsing is excluded. We count pages, visits, devices, and forms — not
-          names, emails, or IP addresses.
+          First-party log from the kellygrappe.com campaign site. Admin and FEC research pages are excluded. We count
+          journeys — source, landing, every page, exit — not names, emails, or IP addresses.
         </p>
         <p className="mt-2 font-body text-xs text-kelly-muted">
           A session is a visit that goes quiet for 30 minutes. Times are Arkansas time. Comparison is the same number of days
@@ -151,6 +154,15 @@ export function SiteAnalyticsWorkbench({
       </header>
 
       <SiteAnalyticsCommandBoard days={days} openaiReady={openaiReady} intel={intel} />
+
+      <section className="rounded-card border border-kelly-navy/15 bg-kelly-fog/40 p-6">
+        <h2 className="font-heading text-xl font-bold text-kelly-ink">What this window means</h2>
+        <ul className="mt-3 space-y-2 font-body text-sm leading-relaxed text-kelly-ink">
+          {snapshot.analysis.map((row) => (
+            <li key={row}>{row}</li>
+          ))}
+        </ul>
+      </section>
 
       <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         <Kpi
@@ -195,6 +207,19 @@ export function SiteAnalyticsWorkbench({
           }
         />
       </section>
+
+      <SiteAnalyticsSeoDesk seo={snapshot.seo} sessions={snapshot.sessions} />
+      <SiteAnalyticsJourneyDesk
+        channels={snapshot.channels}
+        transitions={snapshot.transitions}
+        landingNext={snapshot.landingNext}
+      />
+      <SiteAnalyticsVisitorLog
+        days={days}
+        journeys={snapshot.journeys}
+        truncated={snapshot.journeysTruncated}
+        limit={snapshot.journeyLimit}
+      />
 
       <section className="grid gap-4 lg:grid-cols-3">
         <Card title="Machine reads">
@@ -342,7 +367,7 @@ export function SiteAnalyticsWorkbench({
         <Card title="Devices">
           <BarList rows={snapshot.devices} empty="Device class starts on the next live page view." />
         </Card>
-        <Card title="How people arrived">
+        <Card title="Raw referrer hosts">
           <BarList
             rows={snapshot.referrers.map((row) => ({ label: row.referrer, hits: row.hits }))}
             empty="No off-site referrers yet. Direct visits and in-site clicks do not show here."
@@ -427,8 +452,10 @@ export function SiteAnalyticsWorkbench({
         )}
       </Card>
 
-      <Card title="Visitor paths">
-        <p className="mt-2 font-body text-sm text-kelly-slate">Recent sessions that opened more than one public page.</p>
+      <Card title="Multi-page paths (compressed)">
+        <p className="mt-2 font-body text-sm text-kelly-slate">
+          Same journeys as the visitor log, limited to people who opened more than one page.
+        </p>
         {snapshot.paths.length === 0 ? (
           <p className="mt-3 font-body text-sm text-kelly-slate">No multi-page paths in this window yet.</p>
         ) : (
