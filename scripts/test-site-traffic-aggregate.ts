@@ -1,5 +1,9 @@
 import assert from "node:assert/strict";
 import { aggregateSiteTraffic, trafficBriefInput } from "../src/lib/analytics/site-traffic-aggregate";
+import {
+  buildSiteTrafficIntelligence,
+  trafficIntelligenceBriefInput,
+} from "../src/lib/analytics/site-traffic-intelligence";
 import { sanitizeAnalyticsPath, sanitizeAnalyticsPayload } from "../src/lib/analytics/sanitize-payload";
 import {
   classifyContentSection,
@@ -137,5 +141,29 @@ assert.equal(classifyContentSection("/from-the-road"), "from_the_road");
 assert.equal(countySlugFromPath("/counties/pulaski-county"), "pulaski-county");
 assert.equal(isPublicConversionHref("/donate"), true);
 assert.equal(isPublicConversionHref("/about"), false);
+
+const intel = buildSiteTrafficIntelligence(snapshot);
+assert.ok(intel.healthScore > 0);
+assert.notEqual(intel.mood, "quiet");
+assert.ok(intel.countyNames.includes("Pulaski County"));
+assert.ok(intel.formConversionRate != null && intel.formConversionRate > 0);
+assert.ok(intel.leaks.every((row) => row.page.startsWith("/")));
+const intelBrief = trafficIntelligenceBriefInput(snapshot, intel);
+assert.doesNotMatch(intelBrief, /203\.0\.113/);
+assert.doesNotMatch(intelBrief, /visitor-a/);
+assert.match(intelBrief, /Pulaski County/);
+
+const quiet = buildSiteTrafficIntelligence({
+  ...snapshot,
+  pageViews: 0,
+  visitors: 0,
+  sessions: 0,
+  pages: [],
+  landingPages: [],
+  exitPages: [],
+  daysSeries: snapshot.daysSeries.map((row) => ({ ...row, pageViews: 0, sessions: 0, visitors: 0 })),
+});
+assert.equal(quiet.mood, "quiet");
+assert.equal(quiet.healthScore, 0);
 
 console.log("test-site-traffic-aggregate ok");

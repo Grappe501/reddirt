@@ -1,7 +1,8 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
-import { SiteAnalyticsAiPanel } from "@/components/admin/SiteAnalyticsAiPanel";
+import { SiteAnalyticsCommandBoard } from "@/components/admin/SiteAnalyticsCommandBoard";
 import { pctChange, type SiteTrafficSnapshot, type TrafficWindowDays } from "@/lib/analytics/site-traffic-aggregate";
+import type { SiteTrafficIntelligence } from "@/lib/analytics/site-traffic-intelligence";
 import { getRegistryCountyBySlug } from "@/lib/county/arkansas-county-registry";
 
 const WINDOWS: Array<{ days: TrafficWindowDays; label: string }> = [
@@ -102,9 +103,11 @@ function Card({ title, children }: { title: string; children: ReactNode }) {
 
 export function SiteAnalyticsWorkbench({
   snapshot,
+  intel,
   openaiReady,
 }: {
   snapshot: SiteTrafficSnapshot;
+  intel: SiteTrafficIntelligence;
   openaiReady: boolean;
 }) {
   const days = snapshot.days;
@@ -146,6 +149,8 @@ export function SiteAnalyticsWorkbench({
           ))}
         </nav>
       </header>
+
+      <SiteAnalyticsCommandBoard days={days} openaiReady={openaiReady} intel={intel} />
 
       <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         <Kpi
@@ -189,6 +194,39 @@ export function SiteAnalyticsWorkbench({
               : `${formatNumber(snapshot.ctaClicks)} key button clicks`
           }
         />
+      </section>
+
+      <section className="grid gap-4 lg:grid-cols-3">
+        <Card title="Machine reads">
+          <ul className="mt-3 space-y-2 font-body text-sm leading-relaxed text-kelly-ink">
+            {intel.reasons.map((row) => (
+              <li key={row}>{row}</li>
+            ))}
+          </ul>
+        </Card>
+        <Card title="Leaking pages">
+          {intel.leaks.length === 0 ? (
+            <p className="mt-3 font-body text-sm text-kelly-slate">Not enough exits to flag a leak yet.</p>
+          ) : (
+            <ul className="mt-3 space-y-2 font-body text-sm text-kelly-ink">
+              {intel.leaks.map((row) => (
+                <li key={row.page}>
+                  <Link href={row.page} target="_blank" rel="noreferrer" className="font-semibold text-kelly-navy hover:underline">
+                    {row.page}
+                  </Link>
+                  <span className="text-kelly-slate"> — {row.note}</span>
+                </li>
+              ))}
+            </ul>
+          )}
+        </Card>
+        <Card title="Arkansas coverage">
+          <p className="mt-3 font-heading text-3xl font-bold text-kelly-ink">{intel.countyCoverage} / 75</p>
+          <p className="mt-1 font-body text-sm text-kelly-slate">County pages with at least one public hit.</p>
+          {intel.countyNames.length ? (
+            <p className="mt-3 font-body text-sm text-kelly-ink">{intel.countyNames.join(" · ")}</p>
+          ) : null}
+        </Card>
       </section>
 
       <Card title="Daily attention">
@@ -355,8 +393,6 @@ export function SiteAnalyticsWorkbench({
           ) : null}
         </Card>
       </div>
-
-      <SiteAnalyticsAiPanel days={days} openaiReady={openaiReady} />
 
       <Card title="Pages with the most attention">
         {snapshot.pages.length === 0 ? (
