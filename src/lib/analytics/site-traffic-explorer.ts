@@ -13,6 +13,7 @@ export type VisitorEvent = {
 
 export type VisitorProfile = {
   label: string;
+  seed: number;
   firstAt: string;
   lastAt: string;
   sessions: number;
@@ -99,6 +100,15 @@ function increment(map: Map<string, number>, key: string): void {
   map.set(key, (map.get(key) ?? 0) + 1);
 }
 
+export function visitorSeed(key: string): number {
+  let hash = 2166136261;
+  for (let i = 0; i < key.length; i += 1) {
+    hash ^= key.charCodeAt(i);
+    hash = Math.imul(hash, 16777619);
+  }
+  return hash >>> 0;
+}
+
 export function buildVisitorProfiles(
   visits: ExplorerVisit[],
   events: ExplorerEvent[],
@@ -136,6 +146,7 @@ export function buildVisitorProfiles(
     }
     profiles.push({
       label: "",
+      seed: visitorSeed(key),
       firstAt: list[0]!.first.toISOString(),
       lastAt: list[list.length - 1]!.last.toISOString(),
       sessions: list.length,

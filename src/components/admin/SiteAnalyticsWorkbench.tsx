@@ -129,16 +129,15 @@ export function SiteAnalyticsWorkbench({
 
   return (
     <div className="mx-auto max-w-6xl space-y-8">
-      <header>
+      <header id="instruments">
         <p className="font-body text-[11px] font-bold uppercase tracking-[0.22em] text-kelly-gold">
-          Operator desk · not public
+          Instrument bay · same data, slower glass
         </p>
-        <h1 className="mt-2 font-heading text-3xl font-bold text-kelly-ink">Visitor analytics</h1>
+        <h2 className="mt-2 font-heading text-3xl font-bold text-kelly-ink">People, journeys, SEO, war room</h2>
         <p className="mt-3 max-w-3xl font-body text-sm leading-relaxed text-kelly-slate">
-          First-party explorer from kellygrappe.com — Mixpanel-grade journeys, not a page-view counter. Admin and FEC
-          research pages are excluded. Each visitor gets a card: source, timezone, every page, time on page, scroll,
-          outbound clicks, city, and whether they came back. A name is stamped only after they finish a public form —
-          click through to their intake. Emails stay on that intake card. IPs are never stored.
+          The flight deck above is the live sky. This bay is the Mixpanel-grade explorer: every visitor card, source
+          quality, SEO doors, funnels, and written lenses. Admin and FEC research pages stay out. A name is stamped
+          only after a public form finish — click through to intake. Emails stay on that card. IPs are never stored.
         </p>
         <p className="mt-2 font-body text-xs text-kelly-muted">
           Live feed is on while this tab is visible — numbers and visitor cards move as neighbors show up. A session is a

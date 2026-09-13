@@ -16,6 +16,12 @@ import {
   isCampaignAnalyticsPath,
   isPublicConversionHref,
 } from "../src/lib/analytics/visitor-signals";
+import {
+  buildFlightTheater,
+  captureScore,
+  classifyIntent,
+  matchArkansasCity,
+} from "../src/lib/analytics/site-traffic-theater";
 
 const t0 = new Date("2026-09-12T12:00:00.000Z");
 const t1 = new Date("2026-09-12T12:01:00.000Z");
@@ -170,6 +176,7 @@ assert.ok(snapshot.people.some((row) => row.timezones.includes("America/Chicago"
 assert.ok(snapshot.people.some((row) => row.maxScroll === 75));
 assert.ok(snapshot.people.some((row) => row.outbounds >= 1));
 assert.ok(snapshot.people.every((row) => row.label.startsWith("Visitor ")));
+assert.ok(snapshot.people.every((row) => Number.isInteger(row.seed) && row.seed > 0));
 assert.ok(snapshot.acquisition.some((row) => row.source === "Social" && row.sessions >= 1));
 assert.equal(snapshot.dropFunnel.length, 4);
 assert.ok(snapshot.journeys.some((row) => row.timedSteps.length >= 2 && row.timedSteps[0]?.path === "/"));
@@ -270,5 +277,20 @@ const quiet = buildSiteTrafficIntelligence({
 });
 assert.equal(quiet.mood, "quiet");
 assert.equal(quiet.healthScore, 0);
+
+const theater = buildFlightTheater(snapshot, intel, tLater.getTime() + 60_000);
+assert.ok(theater.bodies.length >= 3);
+assert.ok(theater.bodies.some((body) => body.intent === "captured" && body.capture === 100));
+assert.ok(theater.bodies.some((body) => (body.city ?? "").includes("Little Rock")));
+assert.ok(theater.cities.some((city) => city.name === "Little Rock"));
+assert.ok(theater.outline.startsWith("M "));
+assert.ok(theater.readiness.some((row) => row.id === "capture" && row.go));
+assert.ok(theater.director.some((line) => line.code === "CAPTURE"));
+assert.doesNotMatch(JSON.stringify(theater.director), /visitor-a|staff|search-c|203\.0\.113/);
+assert.doesNotMatch(JSON.stringify(theater.bodies.map((body) => body.id)), /visitor-a/);
+assert.equal(matchArkansasCity("Little Rock, AR")?.name, "Little Rock");
+assert.equal(matchArkansasCity("Fayetteville")?.name, "Fayetteville");
+assert.equal(classifyIntent(snapshot.people.find((row) => row.converted)!), "captured");
+assert.ok(captureScore(snapshot.people.find((row) => !row.converted)!) < 100);
 
 console.log("test-site-traffic-aggregate ok");

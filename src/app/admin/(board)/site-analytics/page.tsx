@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import { SiteAnalyticsLiveDesk } from "@/components/admin/SiteAnalyticsLiveDesk";
 import { loadSiteTrafficSnapshot, parseTrafficWindowDays } from "@/lib/analytics/site-traffic";
 import { buildSiteTrafficIntelligence } from "@/lib/analytics/site-traffic-intelligence";
-import { describeOpenAIKeySource, getOpenAIKeySource, isOpenAIConfigured } from "@/lib/openai/client";
+import { isOpenAIConfigured } from "@/lib/openai/client";
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 26;
 
 export const metadata: Metadata = {
-  title: "Visitor analytics",
+  title: "Flight deck",
   robots: { index: false, follow: false },
 };
 
@@ -24,17 +24,12 @@ export default async function SiteAnalyticsPage({
   const openaiReady = isOpenAIConfigured();
 
   return (
-    <div>
-      <p className="mb-4 font-body text-xs text-kelly-muted">
-        OpenAI: {openaiReady ? `ready (${describeOpenAIKeySource(getOpenAIKeySource())})` : "not configured"}
-      </p>
-      <SiteAnalyticsLiveDesk
-        snapshot={loaded.snapshot}
-        intel={intel}
-        openaiReady={openaiReady}
-        readError={loaded.readError}
-        newestEventAt={loaded.newestEventAt}
-      />
-    </div>
+    <SiteAnalyticsLiveDesk
+      snapshot={loaded.snapshot}
+      intel={intel}
+      openaiReady={openaiReady}
+      readError={loaded.readError}
+      newestEventAt={loaded.newestEventAt}
+    />
   );
 }

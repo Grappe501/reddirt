@@ -2,20 +2,12 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { refreshSiteTrafficDeskAction } from "@/app/admin/site-analytics-actions";
+import { SiteAnalyticsFlightDeck } from "@/components/admin/SiteAnalyticsFlightDeck";
 import { SiteAnalyticsWorkbench } from "@/components/admin/SiteAnalyticsWorkbench";
 import type { SiteTrafficSnapshot, TrafficWindowDays } from "@/lib/analytics/site-traffic-aggregate";
 import type { SiteTrafficIntelligence } from "@/lib/analytics/site-traffic-intelligence";
 
 const POLL_MS = 10_000;
-
-function formatClock(iso: string): string {
-  return new Date(iso).toLocaleTimeString("en-US", {
-    timeZone: "America/Chicago",
-    hour: "numeric",
-    minute: "2-digit",
-    second: "2-digit",
-  });
-}
 
 export function SiteAnalyticsLiveDesk({
   snapshot,
@@ -92,48 +84,32 @@ export function SiteAnalyticsLiveDesk({
   const arrivedSinceOpen = Math.max(0, live.snapshot.pageViews - openedViews.current);
 
   return (
-    <div>
-      <div className="sticky top-0 z-30 mb-4 rounded-card border border-kelly-navy/20 bg-white/95 px-4 py-3 shadow-sm backdrop-blur">
-        <div className="flex flex-wrap items-center justify-between gap-3">
-          <p className="font-body text-sm text-kelly-ink">
-            <span
-              className={
-                paused
-                  ? "mr-2 inline-block rounded-full bg-kelly-fog px-2 py-0.5 text-[11px] font-bold uppercase tracking-wider text-kelly-slate"
-                  : "mr-2 inline-block rounded-full bg-emerald-700 px-2 py-0.5 text-[11px] font-bold uppercase tracking-wider text-white"
-              }
-            >
-              {paused ? "Paused" : polling ? "Refreshing" : "Live"}
-            </span>
-            Leave this tab open. It pulls new public hits every 10 seconds. Converts and city spikes also email
-            the ops inbox when this tab is closed.
-            <span className="text-kelly-slate">
-              {" "}
-              · {formatClock(live.fetchedAt)} CT
-              {live.snapshot.realtime.active15
-                ? ` · ${live.snapshot.realtime.active15} active in the last 15 min`
-                : ""}
-              {arrivedSinceOpen ? ` · +${arrivedSinceOpen} views since you opened` : ""}
-              {justArrived ? ` · +${justArrived} just now` : ""}
-            </span>
-          </p>
-          <button
-            type="button"
-            onClick={() => setPaused((value) => !value)}
-            className="rounded-full border border-kelly-navy/20 px-3 py-1 font-body text-xs font-semibold text-kelly-navy hover:bg-kelly-fog"
-          >
-            {paused ? "Resume live" : "Pause"}
-          </button>
-        </div>
-        {tickError ? <p className="mt-2 font-body text-xs text-amber-800">{tickError}</p> : null}
-      </div>
-      <SiteAnalyticsWorkbench
+    <div className="-mx-4 sm:-mx-6 lg:-mx-8">
+      <SiteAnalyticsFlightDeck
         snapshot={live.snapshot}
         intel={live.intel}
+        paused={paused}
+        polling={polling}
+        fetchedAt={live.fetchedAt}
+        arrivedSinceOpen={arrivedSinceOpen}
+        justArrived={justArrived}
+        onTogglePause={() => setPaused((value) => !value)}
         openaiReady={openaiReady}
         readError={live.readError}
         newestEventAt={live.newestEventAt}
       />
+      {tickError ? (
+        <p className="bg-[#040712] px-6 pb-3 font-body text-xs text-amber-200">{tickError}</p>
+      ) : null}
+      <div className="bg-kelly-fog px-4 py-8 sm:px-6 lg:px-8">
+        <SiteAnalyticsWorkbench
+          snapshot={live.snapshot}
+          intel={live.intel}
+          openaiReady={openaiReady}
+          readError={live.readError}
+          newestEventAt={live.newestEventAt}
+        />
+      </div>
     </div>
   );
 }
