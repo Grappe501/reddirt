@@ -68,7 +68,7 @@ const LAUNCH_BOARD_KEEP = new Set(["intelligence"]);
  * Public-hub Netlify whitelist — kgrappe ships the voter site, not the full campaign OS.
  * election-plan / intelligence / volunteer boards stay in repo and local; they blow the 250 MB cap.
  */
-const KELLY_OPS_NETLIFY_BOARD_KEEP = new Set([]);
+const KELLY_OPS_NETLIFY_BOARD_KEEP = new Set(["site-analytics"]);
 const LAUNCH_API_ADMIN_KEEP = new Set(["intelligence"]);
 /** Public hub Lambda — site + volunteer-kickoff CTAs. Ops portals are local / satellite. */
 const LAUNCH_APP_TOP_KEEP = new Set([

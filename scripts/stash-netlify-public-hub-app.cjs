@@ -23,6 +23,9 @@ const APP_STASH_DIRS = [
   "src/app/admin/(board)",
 ];
 
+/** Keep these (board) routes in the public-hub Lambda — visitor desk is live on kgrappe-live. */
+const APP_STASH_KEEP_PREFIXES = ["src/app/admin/(board)/site-analytics"];
+
 const API_KEEP = new Set(["forms"]);
 
 /** App Router files that create routes / pages. Everything else stays for typecheck. */
@@ -56,6 +59,9 @@ function stashRouteFilesUnder(cwd, rel) {
       }
       if (!ent.isFile() || !isRouteFileName(ent.name)) continue;
       const relFile = path.relative(cwd, abs).split(path.sep).join("/");
+      if (APP_STASH_KEEP_PREFIXES.some((prefix) => relFile === prefix || relFile.startsWith(`${prefix}/`))) {
+        continue;
+      }
       const dest = path.join(cwd, STASH_ROOT, relFile);
       fs.mkdirSync(path.dirname(dest), { recursive: true });
       fs.renameSync(abs, dest);
@@ -105,6 +111,7 @@ if (require.main === module) {
 module.exports = {
   stashPublicHubAppDirs,
   APP_STASH_DIRS,
+  APP_STASH_KEEP_PREFIXES,
   API_KEEP,
   STASH_ROOT,
   isRouteFileName,
