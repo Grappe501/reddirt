@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import { SiteAnalyticsCommandBoard } from "@/components/admin/SiteAnalyticsCommandBoard";
 import { SiteAnalyticsDataRoom } from "@/components/admin/SiteAnalyticsDataRoom";
+import { SiteAnalyticsExplorer } from "@/components/admin/SiteAnalyticsExplorer";
 import { SiteAnalyticsFilterLab } from "@/components/admin/SiteAnalyticsFilterLab";
 import { SiteAnalyticsJourneyDesk } from "@/components/admin/SiteAnalyticsJourneyDesk";
 import { SiteAnalyticsSeoDesk } from "@/components/admin/SiteAnalyticsSeoDesk";
@@ -134,8 +135,9 @@ export function SiteAnalyticsWorkbench({
         </p>
         <h1 className="mt-2 font-heading text-3xl font-bold text-kelly-ink">Visitor analytics</h1>
         <p className="mt-3 max-w-3xl font-body text-sm leading-relaxed text-kelly-slate">
-          First-party log from the kellygrappe.com campaign site. Admin and FEC research pages are excluded. We count
-          journeys — source, landing, every page, exit — not names, emails, or IP addresses.
+          First-party explorer from kellygrappe.com — Mixpanel-grade journeys, not a page-view counter. Admin and FEC
+          research pages are excluded. Each anonymous visitor gets a card: source, timezone, every page, time on page,
+          scroll, outbound clicks, and whether they came back. We do not store names, emails, or IPs.
         </p>
         <p className="mt-2 font-body text-xs text-kelly-muted">
           A session is a visit that goes quiet for 30 minutes. Times are Arkansas time. Comparison is the same number of days
@@ -183,6 +185,7 @@ export function SiteAnalyticsWorkbench({
         pulse={snapshot.pulse}
         medianMinutes={snapshot.medianSessionMinutes}
       />
+      <SiteAnalyticsExplorer snapshot={snapshot} />
       <SiteAnalyticsFilterLab journeys={snapshot.journeys} />
 
       <section className="rounded-card border border-kelly-navy/15 bg-kelly-fog/40 p-6">

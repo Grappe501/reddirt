@@ -54,6 +54,20 @@ export function sanitizeLocale(raw: string | null | undefined): string | undefin
   return text.slice(0, 8);
 }
 
+export function sanitizeTimezone(raw: string | null | undefined): string | undefined {
+  const text = (raw ?? "").trim();
+  if (text === "UTC" || text === "GMT") return text;
+  if (!/^[A-Za-z]+(?:[_-][A-Za-z]+)*(?:\/[A-Za-z0-9_+-]+)+$/.test(text)) return undefined;
+  return text.slice(0, 64);
+}
+
+export function sanitizeReferrerHost(raw: string | null | undefined): string | undefined {
+  const text = (raw ?? "").trim().toLowerCase().replace(/^www\./, "");
+  if (!text || /^\d{1,3}(\.\d{1,3}){3}$/.test(text)) return undefined;
+  if (!/^[a-z0-9][a-z0-9.-]{0,80}\.[a-z]{2,24}$/.test(text)) return undefined;
+  return text.slice(0, 80);
+}
+
 /** Research / staff tools hosted on the same app — do not mix into campaign visitor totals. */
 export function isCampaignAnalyticsPath(path: string): boolean {
   if (!path.startsWith("/")) return false;

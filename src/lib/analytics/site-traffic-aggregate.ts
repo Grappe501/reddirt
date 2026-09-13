@@ -13,6 +13,23 @@ import {
   type PathCluster,
   type TrafficPulse,
 } from "@/lib/analytics/site-traffic-depth";
+import {
+  buildAcquisition,
+  buildDropFunnel,
+  buildRealtime,
+  buildRetention,
+  buildVisitorProfiles,
+  emptyAcquisition,
+  emptyRealtime,
+  emptyRetention,
+  type AcquisitionRow,
+  type ExplorerEvent,
+  type ExplorerVisit,
+  type FunnelStep,
+  type RealtimeReport,
+  type RetentionReport,
+  type VisitorProfile,
+} from "@/lib/analytics/site-traffic-explorer";
 import { CHANNEL_LABELS, classifyTrafficSource, type TrafficChannelId } from "@/lib/analytics/traffic-source";
 import {
   CONTENT_SECTION_LABELS,
@@ -81,6 +98,7 @@ export type VisitorJourney = {
   landing: string;
   exit: string;
   steps: string[];
+  timedSteps: Array<{ path: string; at: string; seconds: number }>;
   pageViews: number;
   device: string;
   bounced: boolean;
@@ -219,6 +237,11 @@ export type SiteTrafficSnapshot = {
   pulse: TrafficPulse;
   hypotheses: Hypothesis[];
   medianSessionMinutes: number;
+  people: VisitorProfile[];
+  acquisition: AcquisitionRow[];
+  retention: RetentionReport;
+  realtime: RealtimeReport;
+  dropFunnel: FunnelStep[];
   prior: PriorWindowDelta | null;
   truncated: boolean;
 };
@@ -323,6 +346,7 @@ function fillDays(days: TrafficWindowDays, hits: Map<string, { pageViews: number
 type Visit = {
   visitorId: string;
   steps: string[];
+  stepAts: Date[];
   first: Date;
   last: Date;
   device: DeviceClass;
@@ -332,6 +356,8 @@ type Visit = {
   utmMedium: string;
   utmCampaign: string;
   utmContent: string;
+  timezone: string;
+  locale: string;
   formStarted: boolean;
   formCompleted: boolean;
   ctaClicked: boolean;
@@ -347,6 +373,8 @@ type PageHit = {
   utmMedium: string;
   utmCampaign: string;
   utmContent: string;
+  timezone: string;
+  locale: string;
 };
 
 function sessionize(pageViews: PageHit[]): Visit[] {
@@ -366,6 +394,7 @@ function sessionize(pageViews: PageHit[]): Visit[] {
         current = {
           visitorId: sid,
           steps: [hit.path],
+          stepAts: [hit.at],
           first: hit.at,
           last: hit.at,
           device: hit.device,
@@ -375,6 +404,8 @@ function sessionize(pageViews: PageHit[]): Visit[] {
           utmMedium: hit.utmMedium,
           utmCampaign: hit.utmCampaign,
           utmContent: hit.utmContent,
+          timezone: hit.timezone,
+          locale: hit.locale,
           formStarted: false,
           formCompleted: false,
           ctaClicked: false,
@@ -382,9 +413,14 @@ function sessionize(pageViews: PageHit[]): Visit[] {
         visits.push(current);
         continue;
       }
-      if (current.steps[current.steps.length - 1] !== hit.path) current.steps.push(hit.path);
+      if (current.steps[current.steps.length - 1] !== hit.path) {
+        current.steps.push(hit.path);
+        current.stepAts.push(hit.at);
+      }
       current.last = hit.at;
       if (current.device === "unknown") current.device = hit.device;
+      if (!current.timezone && hit.timezone) current.timezone = hit.timezone;
+      if (!current.locale && hit.locale) current.locale = hit.locale;
     }
   }
   return visits;
@@ -421,6 +457,55 @@ function emptyChannels(): ChannelRow[] {
 function campaignTag(visit: Visit): string | null {
   const parts = [visit.utmSource, visit.utmMedium, visit.utmCampaign, visit.utmContent].filter(Boolean);
   return parts.length ? parts.join(" / ") : null;
+}
+
+function timedStepsFromVisit(visit: Visit): Array<{ path: string; at: string; seconds: number }> {
+  return visit.steps.map((path, index) => {
+    const at = visit.stepAts[index] ?? visit.first;
+    const next = visit.stepAts[index + 1] ?? visit.last;
+    return {
+      path,
+      at: at.toISOString(),
+      seconds: Math.max(0, (next.getTime() - at.getTime()) / 1000),
+    };
+  });
+}
+
+function toExplorerVisit(visit: Visit): ExplorerVisit {
+  const source = classifyTrafficSource({
+    referrer: visit.referrer,
+    utmSource: visit.utmSource,
+    utmMedium: visit.utmMedium,
+    utmCampaign: visit.utmCampaign,
+  });
+  return {
+    visitorKey: visit.visitorId,
+    first: visit.first,
+    last: visit.last,
+    steps: visit.steps,
+    sourceLabel: source.label,
+    medium: visit.utmMedium || source.channel,
+    campaign: visit.utmCampaign,
+    device: visit.device === "unknown" ? "Unknown" : visit.device,
+    timezone: visit.timezone,
+    locale: visit.locale,
+    formStarted: visit.formStarted,
+    formCompleted: visit.formCompleted,
+    engaged: visit.engaged,
+  };
+}
+
+function explorerDetail(name: string, payload: Record<string, unknown>, scroll?: number): string {
+  if (name === "cta_click") return String(payload.label ?? payload.href ?? "").trim().slice(0, 80);
+  if (name === "form_start" || name === "form_complete") return String(payload.formType ?? "form").trim().slice(0, 80);
+  if (name === "outbound") return String(payload.host ?? payload.href ?? "").trim().slice(0, 80);
+  if (name === "scroll_depth") return scroll != null ? `${scroll}%` : "";
+  if (name === "page_timing") {
+    const seconds = String(payload.seconds ?? "").trim();
+    return seconds ? `${seconds}s on page` : "";
+  }
+  if (name === "page_view") return String(payload.referrer ?? payload.timezone ?? "").trim().slice(0, 80);
+  return "";
 }
 
 function buildSeoDesk(visits: Visit[], sessions: number): SeoDesk {
@@ -651,6 +736,11 @@ export function emptySiteTrafficSnapshot(days: TrafficWindowDays): SiteTrafficSn
       clusters: [],
     }),
     medianSessionMinutes: 0,
+    people: [],
+    acquisition: emptyAcquisition(),
+    retention: emptyRetention(),
+    realtime: emptyRealtime(),
+    dropFunnel: [],
     prior: null,
     truncated: false,
   };
@@ -685,6 +775,7 @@ export function aggregateSiteTraffic(
     at: Date;
     name: string;
   }> = [];
+  const explorerEvents: ExplorerEvent[] = [];
   let pageViews = 0;
   let formStartCount = 0;
   let formCompleteCount = 0;
@@ -695,6 +786,18 @@ export function aggregateSiteTraffic(
     const path = eventPath(row);
     const sid = visitorId(row);
     const name = eventName(row);
+    const scrollRaw = String(payload.scroll ?? "").trim();
+    const scroll = scrollRaw === "25" || scrollRaw === "50" || scrollRaw === "75" || scrollRaw === "100" ? Number(scrollRaw) : undefined;
+    if (path) {
+      explorerEvents.push({
+        visitorKey: sid,
+        at: row.createdAt,
+        name,
+        path,
+        detail: explorerDetail(name, payload, scroll),
+        scroll,
+      });
+    }
 
     if (name === "engage") {
       engageVisitors.add(sid);
@@ -722,6 +825,7 @@ export function aggregateSiteTraffic(
       sideEvents.push({ visitorId: sid, at: row.createdAt, name });
       continue;
     }
+    if (name === "scroll_depth" || name === "outbound" || name === "page_timing") continue;
     if (name !== "page_view") continue;
     if (!path) continue;
 
@@ -736,6 +840,8 @@ export function aggregateSiteTraffic(
       utmMedium: String(payload.utm_medium ?? "").trim(),
       utmCampaign: String(payload.utm_campaign ?? "").trim(),
       utmContent: String(payload.utm_content ?? "").trim(),
+      timezone: String(payload.timezone ?? "").trim().slice(0, 64),
+      locale: String(payload.locale ?? "").trim().slice(0, 8),
     });
 
     const page = pageHits.get(path) ?? { hits: 0, sessions: new Set<string>() };
@@ -909,6 +1015,7 @@ export function aggregateSiteTraffic(
         landing: visit.steps[0] ?? "/",
         exit: visit.steps[visit.steps.length - 1] ?? "/",
         steps: visit.steps.slice(0, 24),
+        timedSteps: timedStepsFromVisit(visit).slice(0, 24),
         pageViews: visit.steps.length,
         device: visit.device === "unknown" ? "Unknown" : visit.device,
         bounced: visit.steps.length === 1,
@@ -1057,6 +1164,13 @@ export function aggregateSiteTraffic(
   const medianSessionMinutes = durations.length
     ? durations[Math.floor((durations.length - 1) / 2)] ?? 0
     : 0;
+  const explorerVisits = visits.map(toExplorerVisit);
+  const priorVisitorKeys = new Set<string>();
+  for (const row of options?.priorRows ?? []) {
+    if (eventName(row) !== "page_view") continue;
+    if (!eventPath(row)) continue;
+    priorVisitorKeys.add(visitorId(row));
+  }
   const seo = buildSeoDesk(visits, sessions);
   const transitions = toTransitions(transitionHits, 20);
   const landingNext = toTransitions(landingNextHits, 16);
@@ -1169,6 +1283,20 @@ export function aggregateSiteTraffic(
       clusters: pathClusters,
     }),
     medianSessionMinutes,
+    people: buildVisitorProfiles(explorerVisits, explorerEvents, journeyCap),
+    acquisition: buildAcquisition(explorerVisits),
+    retention: buildRetention(
+      new Set(visits.map((visit) => visit.visitorId)),
+      priorVisitorKeys,
+      visitorVisitCount,
+    ),
+    realtime: buildRealtime(explorerVisits),
+    dropFunnel: buildDropFunnel([
+      { label: "Sessions", count: sessions },
+      { label: "Engaged (15s or second page)", count: engagedSessions },
+      { label: "Started a form", count: formStartVisitors.size },
+      { label: "Finished a form", count: formCompleteVisitors.size },
+    ]),
     prior: null,
     truncated: Boolean(options?.truncated),
   };
@@ -1257,6 +1385,30 @@ export function trafficBriefInput(snapshot: SiteTrafficSnapshot): string {
       hypotheses: snapshot.hypotheses,
       deviceSource: snapshot.deviceSource.slice(0, 8),
       medianSessionMinutes: Number(snapshot.medianSessionMinutes.toFixed(2)),
+      realtime: {
+        active5: snapshot.realtime.active5,
+        active15: snapshot.realtime.active15,
+        active30: snapshot.realtime.active30,
+      },
+      retention: snapshot.retention,
+      acquisition: snapshot.acquisition.slice(0, 8).map((row) => ({
+        source: row.source,
+        medium: row.medium,
+        campaign: row.campaign,
+        sessions: row.sessions,
+        bounceRate: row.bounceRate == null ? null : Number((row.bounceRate * 100).toFixed(1)),
+        conversions: row.conversions,
+      })),
+      people: snapshot.people.slice(0, 12).map((row) => ({
+        label: row.label,
+        sessions: row.sessions,
+        pages: row.pageViews,
+        sources: row.sources,
+        timezones: row.timezones,
+        converted: row.converted,
+        tours: row.tours.slice(0, 3),
+      })),
+      dropFunnel: snapshot.dropFunnel,
     },
     null,
     2,

@@ -39,7 +39,23 @@ const snapshot = aggregateSiteTraffic(
         utm_source: "facebook",
         utm_campaign: "trail",
         device: "phone",
+        timezone: "America/Chicago",
+        locale: "en-US",
       },
+    },
+    {
+      name: "scroll_depth",
+      path: "/",
+      sessionId: "visitor-a",
+      createdAt: t1,
+      payload: { pathname: "/", scroll: "75" },
+    },
+    {
+      name: "outbound",
+      path: "/",
+      sessionId: "visitor-a",
+      createdAt: t1,
+      payload: { host: "actblue.com", href: "https://actblue.com/x" },
     },
     {
       name: "page_view",
@@ -139,6 +155,16 @@ assert.ok(snapshot.newVisitors >= 1);
 assert.ok(snapshot.hypotheses.length >= 1);
 assert.ok(snapshot.landingGrades.some((row) => row.path === "/"));
 assert.ok(snapshot.pathClusters.some((row) => row.pattern.includes("/from-the-road")));
+assert.ok(snapshot.people.length >= 3);
+assert.ok(snapshot.people.some((row) => row.converted));
+assert.ok(snapshot.people.some((row) => row.timezones.includes("America/Chicago")));
+assert.ok(snapshot.people.some((row) => row.maxScroll === 75));
+assert.ok(snapshot.people.some((row) => row.outbounds >= 1));
+assert.ok(snapshot.people.every((row) => row.label.startsWith("Visitor ")));
+assert.ok(snapshot.acquisition.some((row) => row.source === "Social" && row.sessions >= 1));
+assert.equal(snapshot.dropFunnel.length, 4);
+assert.ok(snapshot.journeys.some((row) => row.timedSteps.length >= 2 && row.timedSteps[0]?.path === "/"));
+assert.ok(snapshot.retention.frequency.some((row) => row.visitors > 0));
 assert.equal(classifyTrafficSource({ referrer: "www.google.com/" }).channel, "search");
 assert.equal(isCampaignAnalyticsPath("/fec-max-donors"), false);
 assert.equal(isCampaignAnalyticsPath("/from-the-road"), true);
@@ -149,6 +175,7 @@ assert.doesNotMatch(brief, /visitor-a/);
 assert.doesNotMatch(brief, /staff/);
 assert.doesNotMatch(brief, /search-c/);
 assert.doesNotMatch(brief, /research/);
+assert.match(brief, /Visitor 1/);
 
 assert.equal(sanitizeAnalyticsPath("/events?utm_source=x"), "/events");
 assert.equal(sanitizeAnalyticsPath("https://evil.example/"), undefined);
@@ -161,6 +188,10 @@ const cleaned = sanitizeAnalyticsPayload({
   device: "phone",
   locale: "en-US",
   utm_content: "header",
+  timezone: "America/Chicago",
+  scroll: 75,
+  host: "actblue.com",
+  seconds: 42,
 });
 assert.deepEqual(cleaned, {
   pathname: "/donate",
@@ -168,8 +199,14 @@ assert.deepEqual(cleaned, {
   device: "phone",
   locale: "en-US",
   utm_content: "header",
+  timezone: "America/Chicago",
+  scroll: "75",
+  host: "actblue.com",
+  seconds: "42",
 });
 assert.equal("ip" in cleaned, false);
+assert.equal(sanitizeAnalyticsPayload({ host: "203.0.113.10" }).host, undefined);
+assert.equal(sanitizeAnalyticsPayload({ timezone: "not a zone" }).timezone, undefined);
 
 assert.equal(classifyDeviceFromUserAgent("Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X)"), "phone");
 assert.equal(classifyDeviceFromUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120"), "desktop");

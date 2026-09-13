@@ -131,14 +131,17 @@ export function SiteAnalyticsVisitorLog({
                     </p>
                     <p className="mt-3 font-semibold">Every page in this visit</p>
                     <ol className="mt-1 list-decimal space-y-1 pl-5">
-                      {row.steps.map((step, index) => (
-                        <li key={`${key}-${index}-${step}`}>
-                          {index === 0 ? "Landed on " : index === row.steps.length - 1 ? "Left from " : "Then "}
-                          <a href={step} target="_blank" rel="noreferrer" className="font-semibold text-kelly-navy hover:underline">
-                            {step}
-                          </a>
-                        </li>
-                      ))}
+                      {(row.timedSteps.length ? row.timedSteps : row.steps.map((path) => ({ path, at: row.startedAt, seconds: 0 }))).map(
+                        (step, index) => (
+                          <li key={`${key}-${index}-${step.path}`}>
+                            {index === 0 ? "Landed on " : index === row.steps.length - 1 ? "Left from " : "Then "}
+                            <a href={step.path} target="_blank" rel="noreferrer" className="font-semibold text-kelly-navy hover:underline">
+                              {step.path}
+                            </a>
+                            {step.seconds >= 5 ? ` · ${step.seconds < 60 ? `${Math.round(step.seconds)}s` : formatMinutes(step.seconds / 60)}` : ""}
+                          </li>
+                        ),
+                      )}
                     </ol>
                   </div>
                 ) : null}

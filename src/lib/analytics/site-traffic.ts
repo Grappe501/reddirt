@@ -30,7 +30,16 @@ export type {
 } from "@/lib/analytics/site-traffic-aggregate";
 export { pctChange, trafficBriefInput } from "@/lib/analytics/site-traffic-aggregate";
 
-const TRACKED_NAMES = ["page_view", "cta_click", "form_start", "form_complete", "engage"] as const;
+const TRACKED_NAMES = [
+  "page_view",
+  "cta_click",
+  "form_start",
+  "form_complete",
+  "engage",
+  "scroll_depth",
+  "outbound",
+  "page_timing",
+] as const;
 const MAX_EVENTS = 12000;
 
 export function parseTrafficWindowDays(raw: string | undefined): TrafficWindowDays {

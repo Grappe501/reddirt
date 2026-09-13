@@ -13,6 +13,11 @@ const ALLOWED_KEYS = new Set([
   "device",
   "viewport",
   "locale",
+  "timezone",
+  "returning",
+  "scroll",
+  "seconds",
+  "host",
 ]);
 
 const BLOCKED_KEY = /ip|email|phone|token|secret|password|authorization|cookie|ssn/i;
@@ -29,8 +34,12 @@ export function sanitizeAnalyticsPayload(raw: Record<string, unknown> | undefine
   const out: Record<string, string> = {};
   for (const [key, value] of Object.entries(raw)) {
     if (!ALLOWED_KEYS.has(key) || BLOCKED_KEY.test(key)) continue;
-    if (typeof value !== "string") continue;
-    const text = value.trim().slice(0, 200);
+    const text =
+      typeof value === "number" && Number.isFinite(value)
+        ? String(Math.round(value))
+        : typeof value === "string"
+          ? value.trim().slice(0, 200)
+          : "";
     if (!text) continue;
     if (key === "pathname") {
       const path = sanitizeAnalyticsPath(text);
@@ -45,6 +54,31 @@ export function sanitizeAnalyticsPayload(raw: Record<string, unknown> | undefine
     }
     if (key === "locale") {
       if (/^[a-z]{2}(?:-[A-Za-z]{2})?$/.test(text)) out.locale = text.slice(0, 8);
+      continue;
+    }
+    if (key === "timezone") {
+      if (text === "UTC" || text === "GMT" || /^[A-Za-z]+(?:[_-][A-Za-z]+)*(?:\/[A-Za-z0-9_+-]+)+$/.test(text)) {
+        out.timezone = text.slice(0, 64);
+      }
+      continue;
+    }
+    if (key === "returning") {
+      if (text === "0" || text === "1") out.returning = text;
+      continue;
+    }
+    if (key === "scroll") {
+      if (text === "25" || text === "50" || text === "75" || text === "100") out.scroll = text;
+      continue;
+    }
+    if (key === "seconds") {
+      const n = Number(text);
+      if (Number.isInteger(n) && n >= 0 && n <= 86400) out.seconds = String(n);
+      continue;
+    }
+    if (key === "host") {
+      const host = text.toLowerCase().replace(/^www\./, "");
+      if (/^\d{1,3}(\.\d{1,3}){3}$/.test(host)) continue;
+      if (/^[a-z0-9][a-z0-9.-]{0,80}\.[a-z]{2,24}$/.test(host)) out.host = host.slice(0, 80);
       continue;
     }
     out[key] = text;
