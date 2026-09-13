@@ -24,6 +24,8 @@ export type VisitorProfile = {
   locales: string[];
   converted: boolean;
   neighborName: string | null;
+  intakeHref: string | null;
+  cities: string[];
   formStarted: boolean;
   engaged: boolean;
   maxScroll: number | null;
@@ -56,7 +58,7 @@ export type RealtimeReport = {
   active5: number;
   active15: number;
   active30: number;
-  recent: Array<{ at: string; path: string; source: string }>;
+  recent: Array<{ at: string; path: string; source: string; city: string | null }>;
 };
 
 export type FunnelStep = {
@@ -80,6 +82,8 @@ export type ExplorerVisit = {
   formCompleted: boolean;
   engaged: boolean;
   neighborName: string | null;
+  city: string | null;
+  intakeHref: string | null;
 };
 
 export type ExplorerEvent = {
@@ -143,6 +147,8 @@ export function buildVisitorProfiles(
       locales,
       converted: list.some((visit) => visit.formCompleted),
       neighborName: list.find((visit) => visit.neighborName)?.neighborName ?? null,
+      intakeHref: list.find((visit) => visit.intakeHref)?.intakeHref ?? null,
+      cities: [...new Set(list.map((visit) => visit.city).filter((row): row is string => Boolean(row)))],
       formStarted: list.some((visit) => visit.formStarted),
       engaged: list.some((visit) => visit.engaged),
       maxScroll,
@@ -238,6 +244,7 @@ export function buildRealtime(visits: ExplorerVisit[], now = Date.now()): Realti
       at: visit.last.toISOString(),
       path: visit.steps[visit.steps.length - 1] ?? visit.steps[0] ?? "/",
       source: visit.sourceLabel,
+      city: visit.city,
     }));
   return {
     active5: active(5 * 60 * 1000),

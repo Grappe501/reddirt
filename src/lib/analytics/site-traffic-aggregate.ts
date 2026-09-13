@@ -13,6 +13,7 @@ import {
   type PathCluster,
   type TrafficPulse,
 } from "@/lib/analytics/site-traffic-depth";
+import { formatCityRegion } from "@/lib/analytics/site-traffic-geo";
 import {
   buildAcquisition,
   buildDropFunnel,
@@ -30,6 +31,7 @@ import {
   type RetentionReport,
   type VisitorProfile,
 } from "@/lib/analytics/site-traffic-explorer";
+import { intakeHrefFor, type NeighborJoin } from "@/lib/analytics/site-traffic-neighbors";
 import { CHANNEL_LABELS, classifyTrafficSource, type TrafficChannelId } from "@/lib/analytics/traffic-source";
 import {
   CONTENT_SECTION_LABELS,
@@ -108,6 +110,8 @@ export type VisitorJourney = {
   ctaClicked: boolean;
   returning: boolean;
   neighborName: string | null;
+  city: string | null;
+  intakeHref: string | null;
 };
 
 export type SeoDesk = {
@@ -243,6 +247,7 @@ export type SiteTrafficSnapshot = {
   retention: RetentionReport;
   realtime: RealtimeReport;
   dropFunnel: FunnelStep[];
+  cities: CountRow[];
   prior: PriorWindowDelta | null;
   truncated: boolean;
 };
@@ -363,6 +368,8 @@ type Visit = {
   formCompleted: boolean;
   ctaClicked: boolean;
   neighborName: string | null;
+  city: string | null;
+  intakeId: string | null;
 };
 
 type PageHit = {
@@ -377,6 +384,7 @@ type PageHit = {
   utmContent: string;
   timezone: string;
   locale: string;
+  city: string;
 };
 
 function sessionize(pageViews: PageHit[]): Visit[] {
@@ -412,6 +420,8 @@ function sessionize(pageViews: PageHit[]): Visit[] {
           formCompleted: false,
           ctaClicked: false,
           neighborName: null,
+          city: hit.city || null,
+          intakeId: null,
         };
         visits.push(current);
         continue;
@@ -424,6 +434,7 @@ function sessionize(pageViews: PageHit[]): Visit[] {
       if (current.device === "unknown") current.device = hit.device;
       if (!current.timezone && hit.timezone) current.timezone = hit.timezone;
       if (!current.locale && hit.locale) current.locale = hit.locale;
+      if (!current.city && hit.city) current.city = hit.city;
     }
   }
   return visits;
@@ -496,6 +507,8 @@ function toExplorerVisit(visit: Visit): ExplorerVisit {
     formCompleted: visit.formCompleted,
     engaged: visit.engaged,
     neighborName: visit.neighborName,
+    city: visit.city,
+    intakeHref: intakeHrefFor(visit.intakeId),
   };
 }
 
@@ -744,6 +757,7 @@ export function emptySiteTrafficSnapshot(days: TrafficWindowDays): SiteTrafficSn
     acquisition: emptyAcquisition(),
     retention: emptyRetention(),
     realtime: emptyRealtime(),
+    cities: [],
     dropFunnel: [],
     prior: null,
     truncated: false,
@@ -756,7 +770,7 @@ export function aggregateSiteTraffic(
   options?: {
     priorRows?: TrafficEventRow[];
     truncated?: boolean;
-    neighborBySubmissionId?: Record<string, string>;
+    neighborBySubmissionId?: Record<string, NeighborJoin>;
   },
 ): SiteTrafficSnapshot {
   const pageHits = new Map<string, { hits: number; sessions: Set<string> }>();
@@ -784,7 +798,9 @@ export function aggregateSiteTraffic(
     name: string;
     submissionId?: string;
   }> = [];
-  const neighborByVisitor = new Map<string, string>();
+  const neighborByVisitor = new Map<string, NeighborJoin>();
+  const cityByVisitor = new Map<string, string>();
+  const cityHits = new Map<string, number>();
   const explorerEvents: ExplorerEvent[] = [];
   let pageViews = 0;
   let formStartCount = 0;
@@ -796,6 +812,8 @@ export function aggregateSiteTraffic(
     const path = eventPath(row);
     const sid = visitorId(row);
     const name = eventName(row);
+    const place = formatCityRegion(String(payload.city ?? ""), String(payload.region ?? ""));
+    if (place) cityByVisitor.set(sid, place);
     const scrollRaw = String(payload.scroll ?? "").trim();
     const scroll = scrollRaw === "25" || scrollRaw === "50" || scrollRaw === "75" || scrollRaw === "100" ? Number(scrollRaw) : undefined;
     if (path) {
@@ -826,8 +844,8 @@ export function aggregateSiteTraffic(
       formCompleteVisitors.add(sid);
       increment(formCompletes, String(payload.formType ?? "form").slice(0, 80));
       const submissionId = String(payload.submissionId ?? "").trim();
-      const neighborName = submissionId ? options?.neighborBySubmissionId?.[submissionId] : undefined;
-      if (neighborName) neighborByVisitor.set(sid, neighborName);
+      const join = submissionId ? options?.neighborBySubmissionId?.[submissionId] : undefined;
+      if (join) neighborByVisitor.set(sid, join);
       sideEvents.push({ visitorId: sid, at: row.createdAt, name, submissionId: submissionId || undefined });
       continue;
     }
@@ -855,6 +873,7 @@ export function aggregateSiteTraffic(
       utmContent: String(payload.utm_content ?? "").trim(),
       timezone: String(payload.timezone ?? "").trim().slice(0, 64),
       locale: String(payload.locale ?? "").trim().slice(0, 8),
+      city: formatCityRegion(String(payload.city ?? ""), String(payload.region ?? "")) ?? "",
     });
 
     const page = pageHits.get(path) ?? { hits: 0, sessions: new Set<string>() };
@@ -904,16 +923,20 @@ export function aggregateSiteTraffic(
     if (event.name === "form_complete") {
       match.formCompleted = true;
       if (event.submissionId) {
-        const named = options?.neighborBySubmissionId?.[event.submissionId];
-        if (named) match.neighborName = named;
+        const join = options?.neighborBySubmissionId?.[event.submissionId];
+        if (join?.name) match.neighborName = join.name;
+        if (join?.intakeId) match.intakeId = join.intakeId;
       }
     }
     if (event.name === "cta_click") match.ctaClicked = true;
     if (event.name === "engage") match.engaged = true;
   }
   for (const visit of visits) {
-    const named = neighborByVisitor.get(visit.visitorId);
-    if (named) visit.neighborName = named;
+    const join = neighborByVisitor.get(visit.visitorId);
+    if (join?.name) visit.neighborName = join.name;
+    if (join?.intakeId) visit.intakeId = join.intakeId;
+    if (!visit.city) visit.city = cityByVisitor.get(visit.visitorId) ?? null;
+    if (visit.city) increment(cityHits, visit.city);
   }
   const visitorVisitCount = new Map<string, number>();
   for (const visit of visits) increment(visitorVisitCount, visit.visitorId);
@@ -1048,6 +1071,8 @@ export function aggregateSiteTraffic(
         ctaClicked: visit.ctaClicked,
         returning: (visitorVisitCount.get(visit.visitorId) ?? 1) > 1,
         neighborName: visit.neighborName,
+        city: visit.city,
+        intakeHref: intakeHrefFor(visit.intakeId),
       };
     });
   const pageIntelMap = new Map<
@@ -1321,6 +1346,7 @@ export function aggregateSiteTraffic(
       { label: "Started a form", count: formStartVisitors.size },
       { label: "Finished a form", count: formCompleteVisitors.size },
     ]),
+    cities: rankedCountRows(cityHits, 12),
     prior: null,
     truncated: Boolean(options?.truncated),
   };
@@ -1433,6 +1459,7 @@ export function trafficBriefInput(snapshot: SiteTrafficSnapshot): string {
         tours: row.tours.slice(0, 3),
       })),
       dropFunnel: snapshot.dropFunnel,
+      cities: snapshot.cities.slice(0, 8),
     },
     null,
     2,

@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import type { SiteTrafficSnapshot } from "@/lib/analytics/site-traffic-aggregate";
 
@@ -100,6 +101,7 @@ function LivePane({ snapshot }: { snapshot: SiteTrafficSnapshot }) {
             <li key={`${row.at}-${row.path}`} className="flex flex-wrap justify-between gap-2 border-b border-kelly-ink/5 py-2">
               <span className="font-semibold text-kelly-navy">{row.path}</span>
               <span className="text-kelly-slate">
+                {row.city ? `${row.city} · ` : ""}
                 {row.source} · {formatWhen(row.at)}
               </span>
             </li>
@@ -137,6 +139,7 @@ function PeoplePane({
               <span className="font-body text-sm text-kelly-ink">
                 <span className="font-semibold text-kelly-navy">{row.neighborName ?? row.label}</span>
                 {row.neighborName ? <span className="text-kelly-slate"> · {row.label}</span> : null}
+                {row.intakeHref ? <span className="text-kelly-navy"> · intake ready</span> : null}
                 <span className="text-kelly-slate">
                   {" "}
                   · {row.sessions} session{row.sessions === 1 ? "" : "s"} · {row.uniquePages} unique pages
@@ -144,7 +147,8 @@ function PeoplePane({
                 {row.converted ? <span className="text-kelly-navy"> · form finished</span> : null}
               </span>
               <span className="font-body text-sm text-kelly-slate">
-                {row.sources.join(" · ") || "Direct / unknown"}
+                {row.cities[0] ?? row.sources.join(" · ") || "Direct / unknown"}
+                {row.cities[0] && row.sources[0] ? ` · ${row.sources[0]}` : ""}
                 {row.timezones[0] ? ` · ${row.timezones[0]}` : ""}
                 {row.maxScroll != null ? ` · scrolled ${row.maxScroll}%` : ""}
               </span>
@@ -156,11 +160,20 @@ function PeoplePane({
                   {formatMinutes(row.totalMinutes)} on site
                 </p>
                 <p className="mt-1">
+                  <span className="font-semibold">City:</span> {row.cities.join(" · ") || "unknown until the next live hit"}
+                  {" · "}
                   <span className="font-semibold">Device / language:</span> {row.devices.join(", ") || "Unknown"}
                   {row.locales.length ? ` · ${row.locales.join(", ")}` : ""}
                   {row.formStarted && !row.converted ? " · started a form" : ""}
                   {row.outbounds ? ` · ${row.outbounds} outbound click${row.outbounds === 1 ? "" : "s"}` : ""}
                 </p>
+                {row.intakeHref ? (
+                  <p className="mt-2">
+                    <Link href={row.intakeHref} className="font-semibold text-kelly-navy hover:underline">
+                      Open their intake
+                    </Link>
+                  </p>
+                ) : null}
                 <p className="mt-3 font-semibold">Tours</p>
                 <ul className="mt-1 list-disc space-y-1 pl-5">
                   {row.tours.map((tour) => (

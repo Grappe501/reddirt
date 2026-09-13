@@ -137,8 +137,8 @@ export function SiteAnalyticsWorkbench({
         <p className="mt-3 max-w-3xl font-body text-sm leading-relaxed text-kelly-slate">
           First-party explorer from kellygrappe.com — Mixpanel-grade journeys, not a page-view counter. Admin and FEC
           research pages are excluded. Each visitor gets a card: source, timezone, every page, time on page, scroll,
-          outbound clicks, and whether they came back. A name is stamped only after they finish a public form. Emails
-          and IPs stay off this desk.
+          outbound clicks, city, and whether they came back. A name is stamped only after they finish a public form —
+          click through to their intake. Emails stay on that intake card. IPs are never stored.
         </p>
         <p className="mt-2 font-body text-xs text-kelly-muted">
           Live feed is on while this tab is visible — numbers and visitor cards move as neighbors show up. A session is a
@@ -418,7 +418,10 @@ export function SiteAnalyticsWorkbench({
         </Card>
       </div>
 
-      <div className="grid gap-6 lg:grid-cols-3">
+      <div className="grid gap-6 lg:grid-cols-2">
+        <Card title="Cities">
+          <BarList rows={snapshot.cities} empty="City lands on the next live public hit. We store the city, never the IP." />
+        </Card>
         <Card title="Devices">
           <BarList rows={snapshot.devices} empty="Device class starts on the next live page view." />
         </Card>

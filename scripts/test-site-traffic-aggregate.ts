@@ -6,6 +6,7 @@ import {
 } from "../src/lib/analytics/site-traffic-intelligence";
 import { sanitizeAnalyticsPath, sanitizeAnalyticsPayload } from "../src/lib/analytics/sanitize-payload";
 import { sanitizeNeighborDisplayName } from "../src/lib/analytics/visitor-signals";
+import { cityFromRequestHeaders, formatCityRegion, isPublicIp } from "../src/lib/analytics/site-traffic-geo";
 import { classifyTrafficSource } from "../src/lib/analytics/traffic-source";
 import {
   classifyContentSection,
@@ -42,6 +43,8 @@ const snapshot = aggregateSiteTraffic(
         device: "phone",
         timezone: "America/Chicago",
         locale: "en-US",
+        city: "Little Rock",
+        region: "AR",
       },
     },
     {
@@ -123,7 +126,7 @@ const snapshot = aggregateSiteTraffic(
     },
   ],
   7,
-  { neighborBySubmissionId: { sub_test_pat1: "Pat Neighbor" } },
+  { neighborBySubmissionId: { sub_test_pat1: { name: "Pat Neighbor", intakeId: "intake_test_aa" } } },
 );
 
 assert.equal(snapshot.pageViews, 5);
@@ -158,8 +161,10 @@ assert.ok(snapshot.hypotheses.length >= 1);
 assert.ok(snapshot.landingGrades.some((row) => row.path === "/"));
 assert.ok(snapshot.pathClusters.some((row) => row.pattern.includes("/from-the-road")));
 assert.ok(snapshot.people.length >= 3);
-assert.ok(snapshot.people.some((row) => row.converted && row.neighborName === "Pat Neighbor"));
-assert.ok(snapshot.journeys.some((row) => row.neighborName === "Pat Neighbor" && row.formCompleted));
+assert.ok(snapshot.people.some((row) => row.converted && row.neighborName === "Pat Neighbor" && row.intakeHref === "/admin/site-analytics/intake/intake_test_aa"));
+assert.ok(snapshot.journeys.some((row) => row.neighborName === "Pat Neighbor" && row.formCompleted && row.intakeHref?.includes("intake_test_aa")));
+assert.ok(snapshot.people.some((row) => row.cities.includes("Little Rock, AR")));
+assert.ok(snapshot.cities.some((row) => row.label === "Little Rock, AR"));
 assert.ok(snapshot.people.some((row) => row.timezones.includes("America/Chicago")));
 assert.ok(snapshot.people.some((row) => row.maxScroll === 75));
 assert.ok(snapshot.people.some((row) => row.outbounds >= 1));
@@ -180,6 +185,7 @@ assert.doesNotMatch(brief, /search-c/);
 assert.doesNotMatch(brief, /research/);
 assert.match(brief, /Visitor 1/);
 assert.doesNotMatch(brief, /Pat Neighbor/);
+assert.doesNotMatch(brief, /intake_test_aa/);
 
 assert.equal(sanitizeAnalyticsPath("/events?utm_source=x"), "/events");
 assert.equal(sanitizeAnalyticsPath("https://evil.example/"), undefined);
@@ -215,6 +221,17 @@ assert.equal(sanitizeAnalyticsPayload({ submissionId: "sub_test_pat1" }).submiss
 assert.equal(sanitizeAnalyticsPayload({ submissionId: "not an id" }).submissionId, undefined);
 assert.equal(sanitizeNeighborDisplayName("Pat Neighbor"), "Pat Neighbor");
 assert.equal(sanitizeNeighborDisplayName("neighbor@example.com"), null);
+assert.equal(formatCityRegion("Little Rock", "AR"), "Little Rock, AR");
+assert.equal(isPublicIp("10.0.0.1"), false);
+assert.equal(isPublicIp("203.0.113.10"), true);
+assert.equal(
+  cityFromRequestHeaders(
+    new Headers({ "x-nf-geo": JSON.stringify({ city: "Fayetteville", subdivision: { code: "AR" } }) }),
+  )?.city,
+  "Fayetteville",
+);
+assert.equal(sanitizeAnalyticsPayload({ city: "203.0.113.10" }).city, undefined);
+assert.equal(sanitizeAnalyticsPayload({ city: "Fort Smith", region: "AR" }).city, "Fort Smith");
 
 assert.equal(classifyDeviceFromUserAgent("Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X)"), "phone");
 assert.equal(classifyDeviceFromUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120"), "desktop");
@@ -231,6 +248,7 @@ assert.ok(intel.formConversionRate != null && intel.formConversionRate > 0);
 assert.ok(intel.leaks.every((row) => row.page.startsWith("/")));
 const intelBrief = trafficIntelligenceBriefInput(snapshot, intel);
 assert.doesNotMatch(intelBrief, /Pat Neighbor/);
+assert.doesNotMatch(intelBrief, /intake_test_aa/);
 assert.doesNotMatch(intelBrief, /203\.0\.113/);
 assert.doesNotMatch(intelBrief, /visitor-a/);
 assert.match(intelBrief, /Pulaski County/);

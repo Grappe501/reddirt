@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useMemo, useState } from "react";
 import type { TrafficChannelId } from "@/lib/analytics/traffic-source";
 import type { TrafficWindowDays, VisitorJourney } from "@/lib/analytics/site-traffic-aggregate";
@@ -105,6 +106,7 @@ export function SiteAnalyticsVisitorLog({
                   <span className="font-body text-sm text-kelly-ink">
                     <span className="font-semibold text-kelly-navy">{formatWhen(row.startedAt)}</span>
                     {row.neighborName ? <span className="font-semibold text-kelly-navy"> · {row.neighborName}</span> : null}
+                    {row.city ? <span className="text-kelly-slate"> · {row.city}</span> : null}
                     <span className="text-kelly-slate"> · {row.sourceLabel}</span>
                     {row.returning ? <span className="text-kelly-slate"> · came back</span> : null}
                   </span>
@@ -124,7 +126,15 @@ export function SiteAnalyticsVisitorLog({
                     <p>
                       <span className="font-semibold">Came from:</span> {row.referrer ?? "direct / no referrer"}
                       {row.campaign ? ` · ${row.campaign}` : ""}
+                      {row.city ? ` · ${row.city}` : ""}
                     </p>
+                    {row.intakeHref ? (
+                      <p className="mt-1">
+                        <Link href={row.intakeHref} className="font-semibold text-kelly-navy hover:underline">
+                          Open {row.neighborName ?? "their"} intake
+                        </Link>
+                      </p>
+                    ) : null}
                     <p className="mt-1">
                       <span className="font-semibold">Device:</span> {row.device}
                       {row.ctaClicked ? " · clicked a key button" : ""}

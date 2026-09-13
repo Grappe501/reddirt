@@ -19,6 +19,8 @@ const ALLOWED_KEYS = new Set([
   "seconds",
   "host",
   "submissionId",
+  "city",
+  "region",
 ]);
 
 const BLOCKED_KEY = /^(ip|ip_address|email|e-?mail|phone|token|secret|password|authorization|cookie|ssn)$/i;
@@ -84,6 +86,15 @@ export function sanitizeAnalyticsPayload(raw: Record<string, unknown> | undefine
     }
     if (key === "submissionId") {
       if (/^[a-zA-Z0-9_-]{8,64}$/.test(text)) out.submissionId = text.slice(0, 64);
+      continue;
+    }
+    if (key === "city") {
+      if (/^[\p{L}][\p{L}\s.'’/-]{0,39}$/u.test(text) && !/@/.test(text)) out.city = text.slice(0, 40);
+      continue;
+    }
+    if (key === "region") {
+      if (/^[A-Za-z]{2}$/.test(text)) out.region = text.toUpperCase();
+      else if (/^[\p{L}][\p{L}\s.'’/-]{0,39}$/u.test(text)) out.region = text.slice(0, 40);
       continue;
     }
     out[key] = text;

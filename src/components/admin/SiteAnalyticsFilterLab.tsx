@@ -95,6 +95,7 @@ export function SiteAnalyticsFilterLab({ journeys }: { journeys: VisitorJourney[
             <li key={`${row.startedAt}-${row.landing}`} className="text-kelly-navy">
               <span className="font-semibold">{row.neighborName ?? row.sourceLabel}</span>
               <span className="text-kelly-slate">
+                {row.city ? ` · ${row.city}` : ""}
                 {row.neighborName ? ` · ${row.sourceLabel}` : ""} · {row.steps.join(" → ")}
               </span>
             </li>

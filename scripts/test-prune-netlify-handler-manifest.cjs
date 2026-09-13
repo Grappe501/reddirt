@@ -87,6 +87,9 @@ fs.writeFileSync(path.join(board, "page.tsx"), "export default function Page() {
 fs.writeFileSync(path.join(board, "approval-email-actions.ts"), "export async function loadApprovalPackageBundleAction() {}\n");
 fs.writeFileSync(path.join(visitorDesk, "page.tsx"), "export default function Page() { return null; }\n");
 fs.writeFileSync(path.join(visitorDesk, "layout.tsx"), "export default function Layout({ children }) { return children; }\n");
+const intakePage = path.join(visitorDesk, "intake", "[id]");
+fs.mkdirSync(intakePage, { recursive: true });
+fs.writeFileSync(path.join(intakePage, "page.tsx"), "export default function Page() { return null; }\n");
 const stashed = stashPublicHubAppDirs(stashTmp);
 assert.ok(stashed >= 1);
 assert.ok(!fs.existsSync(path.join(board, "page.tsx")), "route page must be stashed");
@@ -97,5 +100,6 @@ assert.ok(
 assert.ok(fs.existsSync(path.join(stashTmp, STASH_ROOT, "src/app/admin/(board)/campaign-events/page.tsx")));
 assert.ok(fs.existsSync(path.join(visitorDesk, "page.tsx")), "visitor desk page must stay on the public hub");
 assert.ok(fs.existsSync(path.join(visitorDesk, "layout.tsx")), "visitor desk layout must stay on the public hub");
+assert.ok(fs.existsSync(path.join(intakePage, "page.tsx")), "intake card under the visitor desk must stay on the public hub");
 fs.rmSync(stashTmp, { recursive: true, force: true });
 console.log("ok prune-netlify-handler-manifest");

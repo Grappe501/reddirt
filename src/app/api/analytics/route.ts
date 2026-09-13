@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
+import { resolveVisitorPlace } from "@/lib/analytics/site-traffic-geo";
 import { sanitizeAnalyticsPath, sanitizeAnalyticsPayload } from "@/lib/analytics/sanitize-payload";
 import { classifyDeviceFromUserAgent } from "@/lib/analytics/visitor-signals";
 import { prisma } from "@/lib/db";
@@ -38,6 +39,11 @@ export async function POST(req: Request) {
   if (!payload.device) {
     const device = classifyDeviceFromUserAgent(req.headers.get("user-agent"));
     if (device !== "unknown") payload.device = device;
+  }
+  if (!payload.city) {
+    const place = await resolveVisitorPlace(req, ip);
+    if (place?.city) payload.city = place.city;
+    if (place?.region) payload.region = place.region;
   }
   try {
     await prisma.analyticsEvent.create({
