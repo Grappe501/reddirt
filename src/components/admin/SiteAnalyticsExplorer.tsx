@@ -147,7 +147,7 @@ function PeoplePane({
                 {row.converted ? <span className="text-kelly-navy"> · form finished</span> : null}
               </span>
               <span className="font-body text-sm text-kelly-slate">
-                {row.cities[0] ?? row.sources.join(" · ") || "Direct / unknown"}
+                {row.cities[0] ?? (row.sources.join(" · ") || "Direct / unknown")}
                 {row.cities[0] && row.sources[0] ? ` · ${row.sources[0]}` : ""}
                 {row.timezones[0] ? ` · ${row.timezones[0]}` : ""}
                 {row.maxScroll != null ? ` · scrolled ${row.maxScroll}%` : ""}
