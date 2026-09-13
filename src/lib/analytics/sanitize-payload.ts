@@ -4,10 +4,15 @@ const ALLOWED_KEYS = new Set([
   "utm_source",
   "utm_medium",
   "utm_campaign",
+  "utm_content",
+  "utm_term",
   "label",
   "href",
   "formType",
   "pathway",
+  "device",
+  "viewport",
+  "locale",
 ]);
 
 const BLOCKED_KEY = /ip|email|phone|token|secret|password|authorization|cookie|ssn/i;
@@ -30,6 +35,16 @@ export function sanitizeAnalyticsPayload(raw: Record<string, unknown> | undefine
     if (key === "pathname") {
       const path = sanitizeAnalyticsPath(text);
       if (path) out.pathname = path;
+      continue;
+    }
+    if (key === "device" || key === "viewport") {
+      if (text === "phone" || text === "tablet" || text === "desktop" || text === "unknown") {
+        out[key] = text;
+      }
+      continue;
+    }
+    if (key === "locale") {
+      if (/^[a-z]{2}(?:-[A-Za-z]{2})?$/.test(text)) out.locale = text.slice(0, 8);
       continue;
     }
     out[key] = text;

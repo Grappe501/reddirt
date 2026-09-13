@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { sanitizeAnalyticsPath, sanitizeAnalyticsPayload } from "@/lib/analytics/sanitize-payload";
+import { classifyDeviceFromUserAgent } from "@/lib/analytics/visitor-signals";
 import { prisma } from "@/lib/db";
 import { clientIp, rateLimit } from "@/lib/rate-limit";
 
@@ -33,13 +34,18 @@ export async function POST(req: Request) {
   }
 
   const body = parsed.data;
+  const payload = sanitizeAnalyticsPayload(body.payload);
+  if (!payload.device) {
+    const device = classifyDeviceFromUserAgent(req.headers.get("user-agent"));
+    if (device !== "unknown") payload.device = device;
+  }
   try {
     await prisma.analyticsEvent.create({
       data: {
         name: body.name,
         path: sanitizeAnalyticsPath(body.path),
         sessionId: body.sessionId,
-        payload: sanitizeAnalyticsPayload(body.payload),
+        payload,
       },
     });
   } catch (e) {

@@ -38,7 +38,9 @@ export async function analyzeSiteTraffic(snapshot: SiteTrafficSnapshot): Promise
           content:
             "You are a campaign website analyst for Kelly Grappe, candidate for Arkansas Secretary of State. " +
             "Use only the aggregate counts provided. Do not invent traffic numbers, counties, or endorsements. " +
-            "Do not ask for personal data. Write short, practical advice to help more Arkansans find and stay on the public site. " +
+            "Do not ask for personal data. Compare the prior window when those numbers exist. " +
+            "Call out bounce, landing pages, county pages, forms, and devices when the counts support it. " +
+            "Write short, practical advice to help more Arkansans find and stay on the public site. " +
             "Return JSON only: {\"summary\": string, \"moves\": string[]} with 3 to 6 moves.",
         },
         {

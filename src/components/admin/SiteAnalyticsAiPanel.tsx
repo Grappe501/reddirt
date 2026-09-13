@@ -5,7 +5,7 @@ import { analyzeSiteTrafficAction, type SiteAnalyticsActionState } from "@/app/a
 
 const initial: SiteAnalyticsActionState = {};
 
-export function SiteAnalyticsAiPanel({ days, openaiReady }: { days: 7 | 30; openaiReady: boolean }) {
+export function SiteAnalyticsAiPanel({ days, openaiReady }: { days: 1 | 7 | 30 | 90; openaiReady: boolean }) {
   const [state, action, pending] = useActionState(analyzeSiteTrafficAction, initial);
 
   return (

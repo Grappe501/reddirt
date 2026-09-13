@@ -34,7 +34,7 @@ const cards = [
   {
     href: "/admin/site-analytics",
     title: "Visitor analytics",
-    body: "Public-page hits, session paths, referrers, and an OpenAI brief on what to promote. Admin browsing is excluded.",
+    body: "World-class first-party visitor desk: trends, bounce, devices, county pages, forms, and an OpenAI brief. Admin browsing is excluded.",
   },
   { href: "/admin/homepage", title: "Homepage", body: "Hero, sections, quotes, featured rails." },
   { href: "/admin/pages", title: "Page copy", body: "Hero text for belief, movement, and pillar pages." },
@@ -108,7 +108,7 @@ export default function AdminDashboardPage() {
           >
             Open visitor dashboard
           </Link>{" "}
-          — page hits, visitor paths, top pages, and OpenAI advice from this workbench key.
+          — trends, bounce, devices, county pages, forms, visitor paths, and OpenAI advice from this workbench key.
         </div>
         <div className="rounded-lg border border-kelly-navy/20 bg-kelly-navy/[0.06] px-4 py-3 font-body text-sm text-kelly-text/85">
           <strong>Kelly Calendar Command Center:</strong>{" "}

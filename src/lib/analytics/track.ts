@@ -1,8 +1,9 @@
 "use client";
 
 import { useEffect } from "react";
+import { classifyViewport, isPublicConversionHref, sanitizeLocale } from "@/lib/analytics/visitor-signals";
 
-function sessionId(): string {
+function visitorId(): string {
   if (typeof window === "undefined") return "";
   const key = "reddirt_sid";
   try {
@@ -13,9 +14,19 @@ function sessionId(): string {
     }
     return id;
   } catch {
-    // Safari private / ITP can throw on localStorage. Do not blank the page.
     return `ephemeral-${Date.now()}`;
   }
+}
+
+function clientSignals(): Record<string, string> {
+  if (typeof window === "undefined") return {};
+  const locale = sanitizeLocale(window.navigator.language);
+  const viewport = classifyViewport(window.innerWidth);
+  return {
+    device: viewport,
+    viewport,
+    ...(locale ? { locale } : {}),
+  };
 }
 
 export async function trackEvent(
@@ -30,7 +41,7 @@ export async function trackEvent(
       body: JSON.stringify({
         name,
         path: path ?? (typeof window !== "undefined" ? window.location.pathname : undefined),
-        sessionId: sessionId(),
+        sessionId: visitorId(),
         payload,
       }),
     });
@@ -56,7 +67,7 @@ function campaignParams(): Record<string, string> {
   if (typeof window === "undefined") return {};
   const q = new URLSearchParams(window.location.search);
   const out: Record<string, string> = {};
-  for (const key of ["utm_source", "utm_medium", "utm_campaign"]) {
+  for (const key of ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"]) {
     const v = q.get(key)?.trim();
     if (v && v.length <= 80) out[key] = v;
   }
@@ -73,27 +84,60 @@ export function usePageView(pathname: string | null) {
         pathname,
         referrer: publicReferrer(),
         ...campaignParams(),
+        ...clientSignals(),
       },
       pathname,
     );
+
+    const engagedKey = `reddirt_engage:${pathname}`;
+    if (sessionStorage.getItem(engagedKey) === "1") return undefined;
+    const timer = window.setTimeout(() => {
+      if (document.visibilityState !== "visible") return;
+      try {
+        sessionStorage.setItem(engagedKey, "1");
+      } catch {
+        /* private mode */
+      }
+      void trackEvent("engage", { pathname, ...clientSignals() }, pathname);
+    }, 15_000);
+    return () => window.clearTimeout(timer);
   }, [pathname]);
 }
 
+export function usePublicCtaCapture() {
+  useEffect(() => {
+    const onClick = (event: MouseEvent) => {
+      const target = event.target;
+      if (!(target instanceof Element)) return;
+      const link = target.closest("a[href]");
+      if (!(link instanceof HTMLAnchorElement)) return;
+      const href = link.getAttribute("href") ?? "";
+      if (!isPublicConversionHref(href)) return;
+      const path = window.location.pathname;
+      if (path.startsWith("/admin") || path.startsWith("/api")) return;
+      const label = (link.textContent ?? "").replace(/\s+/g, " ").trim().slice(0, 80) || href;
+      void trackEvent("cta_click", { label, href: href.slice(0, 200), ...clientSignals() }, path);
+    };
+    document.addEventListener("click", onClick);
+    return () => document.removeEventListener("click", onClick);
+  }, []);
+}
+
 export function trackCtaClick(label: string, href?: string) {
-  void trackEvent("cta_click", { label, href });
+  void trackEvent("cta_click", { label, href, ...clientSignals() });
 }
 
 export function trackFormStart(formType: string) {
-  void trackEvent("form_start", { formType });
+  void trackEvent("form_start", { formType, ...clientSignals() });
 }
 
 export function trackFormComplete(formType: string, submissionId?: string) {
-  void trackEvent("form_complete", { formType, submissionId });
+  void trackEvent("form_complete", { formType, submissionId, ...clientSignals() });
 }
 
 export function trackPathwaySelect(pathway: string) {
   if (typeof window !== "undefined") {
     window.localStorage.setItem("reddirt_pathway", pathway);
   }
-  void trackEvent("pathway_select", { pathway });
+  void trackEvent("pathway_select", { pathway, ...clientSignals() });
 }

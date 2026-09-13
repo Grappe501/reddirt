@@ -8,27 +8,48 @@ import {
 
 export type {
   CampaignRow,
+  CountRow,
+  FunnelRow,
+  HourRow,
   PageHitRow,
+  PriorWindowDelta,
   ReferrerRow,
   SessionPathRow,
   SiteTrafficSnapshot,
   TrafficWindowDays,
+  TrendDayRow,
 } from "@/lib/analytics/site-traffic-aggregate";
-export { trafficBriefInput } from "@/lib/analytics/site-traffic-aggregate";
+export { pctChange, trafficBriefInput } from "@/lib/analytics/site-traffic-aggregate";
+
+const TRACKED_NAMES = ["page_view", "cta_click", "form_start", "form_complete", "engage"] as const;
+const MAX_EVENTS = 12000;
+
+export function parseTrafficWindowDays(raw: string | undefined): TrafficWindowDays {
+  if (raw === "1") return 1;
+  if (raw === "30") return 30;
+  if (raw === "90") return 90;
+  return 7;
+}
 
 export async function loadSiteTrafficSnapshot(days: TrafficWindowDays = 7): Promise<SiteTrafficSnapshot> {
   try {
-    const since = new Date(Date.now() - days * 24 * 60 * 60 * 1000);
+    const since = new Date(Date.now() - days * 2 * 24 * 60 * 60 * 1000);
+    const cutoff = new Date(Date.now() - days * 24 * 60 * 60 * 1000);
     const rows = await prisma.analyticsEvent.findMany({
       where: {
-        name: "page_view",
+        name: { in: [...TRACKED_NAMES] },
         createdAt: { gte: since },
       },
-      select: { path: true, sessionId: true, createdAt: true, payload: true },
+      select: { name: true, path: true, sessionId: true, createdAt: true, payload: true },
       orderBy: { createdAt: "asc" },
-      take: 8000,
+      take: MAX_EVENTS,
     });
-    return aggregateSiteTraffic(rows, days);
+    const current = rows.filter((row) => row.createdAt >= cutoff);
+    const prior = rows.filter((row) => row.createdAt < cutoff);
+    return aggregateSiteTraffic(current, days, {
+      priorRows: prior,
+      truncated: rows.length >= MAX_EVENTS,
+    });
   } catch {
     return emptySiteTrafficSnapshot(days);
   }
