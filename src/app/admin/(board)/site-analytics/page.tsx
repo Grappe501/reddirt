@@ -19,8 +19,8 @@ export default async function SiteAnalyticsPage({
 }) {
   const sp = await searchParams;
   const days = parseTrafficWindowDays(sp.days);
-  const snapshot = await loadSiteTrafficSnapshot(days);
-  const intel = buildSiteTrafficIntelligence(snapshot);
+  const loaded = await loadSiteTrafficSnapshot(days);
+  const intel = buildSiteTrafficIntelligence(loaded.snapshot);
   const openaiReady = isOpenAIConfigured();
 
   return (
@@ -28,7 +28,13 @@ export default async function SiteAnalyticsPage({
       <p className="mb-4 font-body text-xs text-kelly-muted">
         OpenAI: {openaiReady ? `ready (${describeOpenAIKeySource(getOpenAIKeySource())})` : "not configured"}
       </p>
-      <SiteAnalyticsWorkbench snapshot={snapshot} intel={intel} openaiReady={openaiReady} />
+      <SiteAnalyticsWorkbench
+        snapshot={loaded.snapshot}
+        intel={intel}
+        openaiReady={openaiReady}
+        readError={loaded.readError}
+        newestEventAt={loaded.newestEventAt}
+      />
     </div>
   );
 }

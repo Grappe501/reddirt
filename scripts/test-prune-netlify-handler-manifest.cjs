@@ -73,6 +73,7 @@ assert.ok(APP_STASH_DIRS.includes("src/app/election-plan"));
 assert.ok(APP_STASH_DIRS.includes("src/app/admin/(board)"));
 assert.ok(APP_STASH_KEEP_PREFIXES.includes("src/app/admin/(board)/site-analytics"));
 assert.ok(API_KEEP.has("forms"));
+assert.ok(API_KEEP.has("analytics"));
 assert.ok(isRouteFileName("page.tsx"));
 assert.ok(isRouteFileName("route.ts"));
 assert.ok(!isRouteFileName("approval-email-actions.ts"));

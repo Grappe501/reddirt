@@ -26,7 +26,7 @@ const APP_STASH_DIRS = [
 /** Keep these (board) routes in the public-hub Lambda — visitor desk is live on kgrappe-live. */
 const APP_STASH_KEEP_PREFIXES = ["src/app/admin/(board)/site-analytics"];
 
-const API_KEEP = new Set(["forms"]);
+const API_KEEP = new Set(["forms", "analytics"]);
 
 /** App Router files that create routes / pages. Everything else stays for typecheck. */
 const ROUTE_FILE_RE =

@@ -20,8 +20,8 @@ export async function analyzeSiteTrafficAction(
   await requireAdminAction();
   const days = parseTrafficWindowDays(String(formData.get("days") ?? "7"));
   const refresh = formData.get("refresh") === "1";
-  const snapshot = await loadSiteTrafficSnapshot(days);
-  const brief = await analyzeSiteTraffic(snapshot, { refresh });
+  const loaded = await loadSiteTrafficSnapshot(days);
+  const brief = await analyzeSiteTraffic(loaded.snapshot, { refresh });
   if (!brief.ok) return { error: brief.error };
   return {
     summary: brief.summary,

@@ -50,6 +50,7 @@ export async function POST(req: Request) {
     });
   } catch (e) {
     console.error(e);
+    return NextResponse.json({ ok: false }, { status: 503 });
   }
 
   return NextResponse.json({ ok: true }, { status: 200 });

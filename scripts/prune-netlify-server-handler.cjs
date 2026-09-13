@@ -76,7 +76,7 @@ const LAUNCH_APP_TOP_KEEP = new Set([
   "(site)",
   "(volunteer-kickoff)",
 ]);
-const LAUNCH_API_TOP_KEEP = new Set(["admin", "forms"]);
+const LAUNCH_API_TOP_KEEP = new Set(["admin", "forms", "analytics"]);
 
 /** Standalone copy lands the whole repo in the handler — keep only these top-level names. */
 const LAUNCH_HANDLER_ROOT_KEEP = new Set([

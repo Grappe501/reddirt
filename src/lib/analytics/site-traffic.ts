@@ -35,26 +35,47 @@ export function parseTrafficWindowDays(raw: string | undefined): TrafficWindowDa
   return 1;
 }
 
-export async function loadSiteTrafficSnapshot(days: TrafficWindowDays = 7): Promise<SiteTrafficSnapshot> {
+export type SiteTrafficLoad = {
+  snapshot: SiteTrafficSnapshot;
+  readError: string | null;
+  newestEventAt: string | null;
+};
+
+export async function loadSiteTrafficSnapshot(days: TrafficWindowDays = 7): Promise<SiteTrafficLoad> {
   try {
     const since = new Date(Date.now() - days * 2 * 24 * 60 * 60 * 1000);
     const cutoff = new Date(Date.now() - days * 24 * 60 * 60 * 1000);
-    const rows = await prisma.analyticsEvent.findMany({
-      where: {
-        name: { in: [...TRACKED_NAMES] },
-        createdAt: { gte: since },
-      },
-      select: { name: true, path: true, sessionId: true, createdAt: true, payload: true },
-      orderBy: { createdAt: "asc" },
-      take: MAX_EVENTS,
-    });
+    const [rows, newest] = await Promise.all([
+      prisma.analyticsEvent.findMany({
+        where: {
+          name: { in: [...TRACKED_NAMES] },
+          createdAt: { gte: since },
+        },
+        select: { name: true, path: true, sessionId: true, createdAt: true, payload: true },
+        orderBy: { createdAt: "asc" },
+        take: MAX_EVENTS,
+      }),
+      prisma.analyticsEvent.findFirst({
+        where: { name: { in: [...TRACKED_NAMES] } },
+        orderBy: { createdAt: "desc" },
+        select: { createdAt: true },
+      }),
+    ]);
     const current = rows.filter((row) => row.createdAt >= cutoff);
     const prior = rows.filter((row) => row.createdAt < cutoff);
-    return aggregateSiteTraffic(current, days, {
-      priorRows: prior,
-      truncated: rows.length >= MAX_EVENTS,
-    });
+    return {
+      snapshot: aggregateSiteTraffic(current, days, {
+        priorRows: prior,
+        truncated: rows.length >= MAX_EVENTS,
+      }),
+      readError: null,
+      newestEventAt: newest?.createdAt.toISOString() ?? null,
+    };
   } catch {
-    return emptySiteTrafficSnapshot(days);
+    return {
+      snapshot: emptySiteTrafficSnapshot(days),
+      readError: "The visitor desk could not read AnalyticsEvent from this site's database.",
+      newestEventAt: null,
+    };
   }
 }

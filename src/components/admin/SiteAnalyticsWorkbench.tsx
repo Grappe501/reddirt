@@ -108,10 +108,14 @@ export function SiteAnalyticsWorkbench({
   snapshot,
   intel,
   openaiReady,
+  readError,
+  newestEventAt,
 }: {
   snapshot: SiteTrafficSnapshot;
   intel: SiteTrafficIntelligence;
   openaiReady: boolean;
+  readError?: string | null;
+  newestEventAt?: string | null;
 }) {
   const days = snapshot.days;
   const prior = snapshot.prior;
@@ -134,6 +138,18 @@ export function SiteAnalyticsWorkbench({
           A session is a visit that goes quiet for 30 minutes. Times are Arkansas time. Comparison is the same number of days
           right before this window.
         </p>
+        {readError ? (
+          <p className="mt-3 rounded-lg border border-red-200 bg-red-50 px-4 py-3 font-body text-sm text-red-900">
+            {readError} Empty counts here do not mean the public site was quiet.
+          </p>
+        ) : null}
+        {!readError && snapshot.pageViews === 0 ? (
+          <p className="mt-3 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 font-body text-sm text-amber-950">
+            {newestEventAt
+              ? `This database has hits, but none in this window. Newest stored public hit: ${formatWhen(newestEventAt)} Arkansas time.`
+              : "This database has no stored public page views. The live site was not recording visits to /api/analytics — that recorder is being restored on Netlify. Hours already spent on the site were not saved."}
+          </p>
+        ) : null}
         {snapshot.truncated ? (
           <p className="mt-2 font-body text-xs text-amber-800">
             This window hit the 12,000-event cap. The newest rows are still here; older ones in the comparison window may be
