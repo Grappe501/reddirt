@@ -38,7 +38,9 @@ function formatPct(n: number | null): string {
 
 export function SiteAnalyticsExplorer({ snapshot }: { snapshot: SiteTrafficSnapshot }) {
   const [tab, setTab] = useState<TabId>(snapshot.realtime.active30 > 0 ? "live" : "people");
-  const [open, setOpen] = useState<string | null>(snapshot.people[0]?.label ?? null);
+  const [open, setOpen] = useState<string | null>(
+    snapshot.people[0] ? `${snapshot.people[0].label}-${snapshot.people[0].firstAt}` : null,
+  );
 
   return (
     <section className="rounded-card border border-kelly-navy/20 bg-white p-6 shadow-sm">
@@ -118,26 +120,28 @@ function PeoplePane({
   setOpen: (value: string | null) => void;
 }) {
   if (snapshot.people.length === 0) {
-    return <p className="mt-4 font-body text-sm text-kelly-slate">No anonymous visitor cards in this window yet.</p>;
+    return <p className="mt-4 font-body text-sm text-kelly-slate">No visitor cards in this window yet.</p>;
   }
   return (
     <ol className="mt-4 divide-y divide-kelly-ink/8">
       {snapshot.people.map((row) => {
-        const expanded = open === row.label;
+        const key = `${row.label}-${row.firstAt}`;
+        const expanded = open === key;
         return (
-          <li key={row.label}>
+          <li key={key}>
             <button
               type="button"
-              onClick={() => setOpen(expanded ? null : row.label)}
+              onClick={() => setOpen(expanded ? null : key)}
               className="flex w-full flex-col gap-1 py-3 text-left sm:flex-row sm:items-baseline sm:justify-between"
             >
               <span className="font-body text-sm text-kelly-ink">
-                <span className="font-semibold text-kelly-navy">{row.label}</span>
+                <span className="font-semibold text-kelly-navy">{row.neighborName ?? row.label}</span>
+                {row.neighborName ? <span className="text-kelly-slate"> · {row.label}</span> : null}
                 <span className="text-kelly-slate">
                   {" "}
                   · {row.sessions} session{row.sessions === 1 ? "" : "s"} · {row.uniquePages} unique pages
                 </span>
-                {row.converted ? <span className="text-kelly-navy"> · converted</span> : null}
+                {row.converted ? <span className="text-kelly-navy"> · form finished</span> : null}
               </span>
               <span className="font-body text-sm text-kelly-slate">
                 {row.sources.join(" · ") || "Direct / unknown"}

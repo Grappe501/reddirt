@@ -60,7 +60,7 @@ export function SiteAnalyticsVisitorLog({
       </h2>
       <p className="mt-2 max-w-3xl font-body text-sm text-kelly-slate">
         Each row is one visit (quiet for 30 minutes starts a new visit). Open a row to see every public page they
-        opened, in order. No names, emails, or IPs.
+        opened, in order. A name appears only after that neighbor finishes a public form. No emails or IPs.
       </p>
       {days !== 1 ? (
         <p className="mt-2 font-body text-sm text-kelly-navy">
@@ -104,6 +104,7 @@ export function SiteAnalyticsVisitorLog({
                 >
                   <span className="font-body text-sm text-kelly-ink">
                     <span className="font-semibold text-kelly-navy">{formatWhen(row.startedAt)}</span>
+                    {row.neighborName ? <span className="font-semibold text-kelly-navy"> · {row.neighborName}</span> : null}
                     <span className="text-kelly-slate"> · {row.sourceLabel}</span>
                     {row.returning ? <span className="text-kelly-slate"> · came back</span> : null}
                   </span>

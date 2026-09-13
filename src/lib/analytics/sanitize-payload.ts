@@ -18,9 +18,10 @@ const ALLOWED_KEYS = new Set([
   "scroll",
   "seconds",
   "host",
+  "submissionId",
 ]);
 
-const BLOCKED_KEY = /ip|email|phone|token|secret|password|authorization|cookie|ssn/i;
+const BLOCKED_KEY = /^(ip|ip_address|email|e-?mail|phone|token|secret|password|authorization|cookie|ssn)$/i;
 
 export function sanitizeAnalyticsPath(path?: string): string | undefined {
   if (!path) return undefined;
@@ -79,6 +80,10 @@ export function sanitizeAnalyticsPayload(raw: Record<string, unknown> | undefine
       const host = text.toLowerCase().replace(/^www\./, "");
       if (/^\d{1,3}(\.\d{1,3}){3}$/.test(host)) continue;
       if (/^[a-z0-9][a-z0-9.-]{0,80}\.[a-z]{2,24}$/.test(host)) out.host = host.slice(0, 80);
+      continue;
+    }
+    if (key === "submissionId") {
+      if (/^[a-zA-Z0-9_-]{8,64}$/.test(text)) out.submissionId = text.slice(0, 64);
       continue;
     }
     out[key] = text;

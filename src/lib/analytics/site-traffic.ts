@@ -5,6 +5,7 @@ import {
   type SiteTrafficSnapshot,
   type TrafficWindowDays,
 } from "@/lib/analytics/site-traffic-aggregate";
+import { collectSubmissionIds, loadNeighborNamesBySubmissionId } from "@/lib/analytics/site-traffic-neighbors";
 
 export type {
   CampaignRow,
@@ -77,10 +78,12 @@ export async function loadSiteTrafficSnapshot(days: TrafficWindowDays = 7): Prom
     ]);
     const current = rows.filter((row) => row.createdAt >= cutoff);
     const prior = rows.filter((row) => row.createdAt < cutoff);
+    const neighborBySubmissionId = await loadNeighborNamesBySubmissionId(collectSubmissionIds(current));
     return {
       snapshot: aggregateSiteTraffic(current, days, {
         priorRows: prior,
         truncated: rows.length >= MAX_EVENTS,
+        neighborBySubmissionId,
       }),
       readError: null,
       newestEventAt: newest?.createdAt.toISOString() ?? null,

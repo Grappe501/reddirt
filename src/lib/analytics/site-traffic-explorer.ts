@@ -23,6 +23,7 @@ export type VisitorProfile = {
   timezones: string[];
   locales: string[];
   converted: boolean;
+  neighborName: string | null;
   formStarted: boolean;
   engaged: boolean;
   maxScroll: number | null;
@@ -78,6 +79,7 @@ export type ExplorerVisit = {
   formStarted: boolean;
   formCompleted: boolean;
   engaged: boolean;
+  neighborName: string | null;
 };
 
 export type ExplorerEvent = {
@@ -140,6 +142,7 @@ export function buildVisitorProfiles(
       timezones,
       locales,
       converted: list.some((visit) => visit.formCompleted),
+      neighborName: list.find((visit) => visit.neighborName)?.neighborName ?? null,
       formStarted: list.some((visit) => visit.formStarted),
       engaged: list.some((visit) => visit.engaged),
       maxScroll,

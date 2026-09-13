@@ -142,7 +142,7 @@ export function KickoffSignupForm({
           sourceCampaign: "volunteer-kickoff",
         }),
       });
-      const json = (await res.json()) as { ok?: boolean; error?: string };
+      const json = (await res.json()) as { ok?: boolean; error?: string; submissionId?: string };
       if (!res.ok || !json.ok) {
         setServerError(
           json.error === "rate_limited"
@@ -152,7 +152,7 @@ export function KickoffSignupForm({
         setSubmitting(false);
         return;
       }
-      trackFormComplete("volunteer_kickoff");
+      trackFormComplete("volunteer_kickoff", json.submissionId);
       const q = new URLSearchParams({
         pathway,
         county: values.county,

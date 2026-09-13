@@ -107,6 +107,7 @@ export type VisitorJourney = {
   formCompleted: boolean;
   ctaClicked: boolean;
   returning: boolean;
+  neighborName: string | null;
 };
 
 export type SeoDesk = {
@@ -361,6 +362,7 @@ type Visit = {
   formStarted: boolean;
   formCompleted: boolean;
   ctaClicked: boolean;
+  neighborName: string | null;
 };
 
 type PageHit = {
@@ -409,6 +411,7 @@ function sessionize(pageViews: PageHit[]): Visit[] {
           formStarted: false,
           formCompleted: false,
           ctaClicked: false,
+          neighborName: null,
         };
         visits.push(current);
         continue;
@@ -492,6 +495,7 @@ function toExplorerVisit(visit: Visit): ExplorerVisit {
     formStarted: visit.formStarted,
     formCompleted: visit.formCompleted,
     engaged: visit.engaged,
+    neighborName: visit.neighborName,
   };
 }
 
@@ -749,7 +753,11 @@ export function emptySiteTrafficSnapshot(days: TrafficWindowDays): SiteTrafficSn
 export function aggregateSiteTraffic(
   rows: TrafficEventRow[],
   days: TrafficWindowDays,
-  options?: { priorRows?: TrafficEventRow[]; truncated?: boolean },
+  options?: {
+    priorRows?: TrafficEventRow[];
+    truncated?: boolean;
+    neighborBySubmissionId?: Record<string, string>;
+  },
 ): SiteTrafficSnapshot {
   const pageHits = new Map<string, { hits: number; sessions: Set<string> }>();
   const landingHits = new Map<string, { hits: number; sessions: Set<string> }>();
@@ -774,7 +782,9 @@ export function aggregateSiteTraffic(
     visitorId: string;
     at: Date;
     name: string;
+    submissionId?: string;
   }> = [];
+  const neighborByVisitor = new Map<string, string>();
   const explorerEvents: ExplorerEvent[] = [];
   let pageViews = 0;
   let formStartCount = 0;
@@ -815,7 +825,10 @@ export function aggregateSiteTraffic(
       formCompleteCount += 1;
       formCompleteVisitors.add(sid);
       increment(formCompletes, String(payload.formType ?? "form").slice(0, 80));
-      sideEvents.push({ visitorId: sid, at: row.createdAt, name });
+      const submissionId = String(payload.submissionId ?? "").trim();
+      const neighborName = submissionId ? options?.neighborBySubmissionId?.[submissionId] : undefined;
+      if (neighborName) neighborByVisitor.set(sid, neighborName);
+      sideEvents.push({ visitorId: sid, at: row.createdAt, name, submissionId: submissionId || undefined });
       continue;
     }
     if (name === "cta_click") {
@@ -888,9 +901,19 @@ export function aggregateSiteTraffic(
       );
     if (!match) continue;
     if (event.name === "form_start") match.formStarted = true;
-    if (event.name === "form_complete") match.formCompleted = true;
+    if (event.name === "form_complete") {
+      match.formCompleted = true;
+      if (event.submissionId) {
+        const named = options?.neighborBySubmissionId?.[event.submissionId];
+        if (named) match.neighborName = named;
+      }
+    }
     if (event.name === "cta_click") match.ctaClicked = true;
     if (event.name === "engage") match.engaged = true;
+  }
+  for (const visit of visits) {
+    const named = neighborByVisitor.get(visit.visitorId);
+    if (named) visit.neighborName = named;
   }
   const visitorVisitCount = new Map<string, number>();
   for (const visit of visits) increment(visitorVisitCount, visit.visitorId);
@@ -1024,6 +1047,7 @@ export function aggregateSiteTraffic(
         formCompleted: visit.formCompleted,
         ctaClicked: visit.ctaClicked,
         returning: (visitorVisitCount.get(visit.visitorId) ?? 1) > 1,
+        neighborName: visit.neighborName,
       };
     });
   const pageIntelMap = new Map<

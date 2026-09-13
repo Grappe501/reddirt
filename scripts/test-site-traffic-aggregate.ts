@@ -5,6 +5,7 @@ import {
   trafficIntelligenceBriefInput,
 } from "../src/lib/analytics/site-traffic-intelligence";
 import { sanitizeAnalyticsPath, sanitizeAnalyticsPayload } from "../src/lib/analytics/sanitize-payload";
+import { sanitizeNeighborDisplayName } from "../src/lib/analytics/visitor-signals";
 import { classifyTrafficSource } from "../src/lib/analytics/traffic-source";
 import {
   classifyContentSection,
@@ -104,7 +105,7 @@ const snapshot = aggregateSiteTraffic(
       path: "/get-involved",
       sessionId: "visitor-b",
       createdAt: t2,
-      payload: { formType: "volunteer" },
+      payload: { formType: "volunteer", submissionId: "sub_test_pat1" },
     },
     {
       name: "cta_click",
@@ -122,6 +123,7 @@ const snapshot = aggregateSiteTraffic(
     },
   ],
   7,
+  { neighborBySubmissionId: { sub_test_pat1: "Pat Neighbor" } },
 );
 
 assert.equal(snapshot.pageViews, 5);
@@ -156,7 +158,8 @@ assert.ok(snapshot.hypotheses.length >= 1);
 assert.ok(snapshot.landingGrades.some((row) => row.path === "/"));
 assert.ok(snapshot.pathClusters.some((row) => row.pattern.includes("/from-the-road")));
 assert.ok(snapshot.people.length >= 3);
-assert.ok(snapshot.people.some((row) => row.converted));
+assert.ok(snapshot.people.some((row) => row.converted && row.neighborName === "Pat Neighbor"));
+assert.ok(snapshot.journeys.some((row) => row.neighborName === "Pat Neighbor" && row.formCompleted));
 assert.ok(snapshot.people.some((row) => row.timezones.includes("America/Chicago")));
 assert.ok(snapshot.people.some((row) => row.maxScroll === 75));
 assert.ok(snapshot.people.some((row) => row.outbounds >= 1));
@@ -176,6 +179,7 @@ assert.doesNotMatch(brief, /staff/);
 assert.doesNotMatch(brief, /search-c/);
 assert.doesNotMatch(brief, /research/);
 assert.match(brief, /Visitor 1/);
+assert.doesNotMatch(brief, /Pat Neighbor/);
 
 assert.equal(sanitizeAnalyticsPath("/events?utm_source=x"), "/events");
 assert.equal(sanitizeAnalyticsPath("https://evil.example/"), undefined);
@@ -207,6 +211,10 @@ assert.deepEqual(cleaned, {
 assert.equal("ip" in cleaned, false);
 assert.equal(sanitizeAnalyticsPayload({ host: "203.0.113.10" }).host, undefined);
 assert.equal(sanitizeAnalyticsPayload({ timezone: "not a zone" }).timezone, undefined);
+assert.equal(sanitizeAnalyticsPayload({ submissionId: "sub_test_pat1" }).submissionId, "sub_test_pat1");
+assert.equal(sanitizeAnalyticsPayload({ submissionId: "not an id" }).submissionId, undefined);
+assert.equal(sanitizeNeighborDisplayName("Pat Neighbor"), "Pat Neighbor");
+assert.equal(sanitizeNeighborDisplayName("neighbor@example.com"), null);
 
 assert.equal(classifyDeviceFromUserAgent("Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X)"), "phone");
 assert.equal(classifyDeviceFromUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120"), "desktop");
@@ -222,6 +230,7 @@ assert.ok(intel.countyNames.includes("Pulaski County"));
 assert.ok(intel.formConversionRate != null && intel.formConversionRate > 0);
 assert.ok(intel.leaks.every((row) => row.page.startsWith("/")));
 const intelBrief = trafficIntelligenceBriefInput(snapshot, intel);
+assert.doesNotMatch(intelBrief, /Pat Neighbor/);
 assert.doesNotMatch(intelBrief, /203\.0\.113/);
 assert.doesNotMatch(intelBrief, /visitor-a/);
 assert.match(intelBrief, /Pulaski County/);

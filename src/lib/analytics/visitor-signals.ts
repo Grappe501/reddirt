@@ -61,6 +61,15 @@ export function sanitizeTimezone(raw: string | null | undefined): string | undef
   return text.slice(0, 64);
 }
 
+export function sanitizeNeighborDisplayName(raw: string | null | undefined): string | null {
+  const text = (raw ?? "").trim().replace(/\s+/g, " ");
+  if (!text) return null;
+  const clipped = text.slice(0, 80);
+  if (/@/.test(clipped) || /\d{6,}/.test(clipped)) return null;
+  if (!/^[\p{L}][\p{L}\s.'’-]*$/u.test(clipped)) return null;
+  return clipped;
+}
+
 export function sanitizeReferrerHost(raw: string | null | undefined): string | undefined {
   const text = (raw ?? "").trim().toLowerCase().replace(/^www\./, "");
   if (!text || /^\d{1,3}(\.\d{1,3}){3}$/.test(text)) return undefined;

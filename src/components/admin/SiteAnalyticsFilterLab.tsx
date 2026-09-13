@@ -93,8 +93,10 @@ export function SiteAnalyticsFilterLab({ journeys }: { journeys: VisitorJourney[
         <ol className="mt-4 space-y-2 font-body text-sm">
           {rows.slice(0, 8).map((row) => (
             <li key={`${row.startedAt}-${row.landing}`} className="text-kelly-navy">
-              <span className="font-semibold">{row.sourceLabel}</span>
-              <span className="text-kelly-slate"> · {row.steps.join(" → ")}</span>
+              <span className="font-semibold">{row.neighborName ?? row.sourceLabel}</span>
+              <span className="text-kelly-slate">
+                {row.neighborName ? ` · ${row.sourceLabel}` : ""} · {row.steps.join(" → ")}
+              </span>
             </li>
           ))}
         </ol>
