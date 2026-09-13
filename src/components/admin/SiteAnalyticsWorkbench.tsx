@@ -140,8 +140,8 @@ export function SiteAnalyticsWorkbench({
           scroll, outbound clicks, and whether they came back. We do not store names, emails, or IPs.
         </p>
         <p className="mt-2 font-body text-xs text-kelly-muted">
-          A session is a visit that goes quiet for 30 minutes. Times are Arkansas time. Comparison is the same number of days
-          right before this window.
+          Live feed is on while this tab is visible — numbers and visitor cards move as neighbors show up. A session is a
+          visit that goes quiet for 30 minutes. Times are Arkansas time.
         </p>
         {readError ? (
           <p className="mt-3 rounded-lg border border-red-200 bg-red-50 px-4 py-3 font-body text-sm text-red-900">

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { SiteAnalyticsWorkbench } from "@/components/admin/SiteAnalyticsWorkbench";
+import { SiteAnalyticsLiveDesk } from "@/components/admin/SiteAnalyticsLiveDesk";
 import { loadSiteTrafficSnapshot, parseTrafficWindowDays } from "@/lib/analytics/site-traffic";
 import { buildSiteTrafficIntelligence } from "@/lib/analytics/site-traffic-intelligence";
 import { describeOpenAIKeySource, getOpenAIKeySource, isOpenAIConfigured } from "@/lib/openai/client";
@@ -28,7 +28,7 @@ export default async function SiteAnalyticsPage({
       <p className="mb-4 font-body text-xs text-kelly-muted">
         OpenAI: {openaiReady ? `ready (${describeOpenAIKeySource(getOpenAIKeySource())})` : "not configured"}
       </p>
-      <SiteAnalyticsWorkbench
+      <SiteAnalyticsLiveDesk
         snapshot={loaded.snapshot}
         intel={intel}
         openaiReady={openaiReady}

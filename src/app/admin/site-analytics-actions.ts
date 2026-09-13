@@ -3,6 +3,8 @@
 import { requireAdminAction } from "@/app/admin/owned-media-auth";
 import { analyzeSiteTraffic, type SiteTrafficCommandBrief } from "@/lib/analytics/site-traffic-ai";
 import { loadSiteTrafficSnapshot, parseTrafficWindowDays } from "@/lib/analytics/site-traffic";
+import { buildSiteTrafficIntelligence, type SiteTrafficIntelligence } from "@/lib/analytics/site-traffic-intelligence";
+import type { SiteTrafficSnapshot, TrafficWindowDays } from "@/lib/analytics/site-traffic-aggregate";
 
 export type SiteAnalyticsActionState = {
   summary?: string;
@@ -13,6 +15,26 @@ export type SiteAnalyticsActionState = {
   mode?: string;
   error?: string;
 };
+
+export type SiteTrafficDeskPayload = {
+  snapshot: SiteTrafficSnapshot;
+  intel: SiteTrafficIntelligence;
+  readError: string | null;
+  newestEventAt: string | null;
+  fetchedAt: string;
+};
+
+export async function refreshSiteTrafficDeskAction(days: TrafficWindowDays): Promise<SiteTrafficDeskPayload> {
+  await requireAdminAction();
+  const loaded = await loadSiteTrafficSnapshot(days);
+  return {
+    snapshot: loaded.snapshot,
+    intel: buildSiteTrafficIntelligence(loaded.snapshot),
+    readError: loaded.readError,
+    newestEventAt: loaded.newestEventAt,
+    fetchedAt: new Date().toISOString(),
+  };
+}
 
 export async function analyzeSiteTrafficAction(
   _prev: SiteAnalyticsActionState,

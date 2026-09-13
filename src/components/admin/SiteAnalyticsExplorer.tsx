@@ -89,8 +89,8 @@ function LivePane({ snapshot }: { snapshot: SiteTrafficSnapshot }) {
       </div>
       {live.recent.length === 0 ? (
         <p className="mt-4 font-body text-sm text-kelly-slate">
-          Nobody is mid-visit right now. Open a public page on the live site and this row should move within a minute
-          after Netlify is recording.
+          Nobody is mid-visit right now. Leave this tab open — a public page view should land here within about 10
+          seconds of the recorder writing it.
         </p>
       ) : (
         <ol className="mt-4 space-y-2 font-body text-sm">
