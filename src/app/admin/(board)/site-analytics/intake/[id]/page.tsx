@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { SiteAnalyticsIntakeActions } from "@/components/admin/SiteAnalyticsIntakeActions";
 import { sanitizeNeighborDisplayName } from "@/lib/analytics/visitor-signals";
 import { prisma } from "@/lib/db";
 
@@ -16,10 +17,13 @@ function metaText(meta: Record<string, unknown>, key: string): string | null {
 
 export default async function SiteAnalyticsIntakePage({
   params,
+  searchParams,
 }: {
   params: Promise<{ id: string }>;
+  searchParams: Promise<{ notice?: string }>;
 }) {
   const { id } = await params;
+  const notice = (await searchParams).notice;
   if (!/^[a-zA-Z0-9_-]{8,64}$/.test(id)) notFound();
 
   const intake = await prisma.workflowIntake.findUnique({
@@ -39,6 +43,11 @@ export default async function SiteAnalyticsIntakePage({
           createdAt: true,
           user: { select: { name: true, email: true, phone: true } },
         },
+      },
+      actions: {
+        orderBy: { createdAt: "desc" },
+        take: 8,
+        select: { id: true, kind: true, summary: true, createdAt: true, toStatus: true },
       },
     },
   });
@@ -89,6 +98,35 @@ export default async function SiteAnalyticsIntakePage({
           <Item label="Email" value={email} />
           <Item label="Phone" value={phone} />
         </dl>
+      </section>
+
+      <SiteAnalyticsIntakeActions intakeId={intake.id} notice={notice} />
+
+      <section className="rounded-card border border-kelly-ink/10 bg-white p-6 shadow-sm">
+        <h2 className="font-heading text-xl font-bold text-kelly-ink">What you already did</h2>
+        {intake.actions.length === 0 ? (
+          <p className="mt-3 font-body text-sm text-kelly-slate">No notes or status moves yet.</p>
+        ) : (
+          <ol className="mt-3 space-y-2 font-body text-sm">
+            {intake.actions.map((row) => (
+              <li key={row.id} className="border-b border-kelly-ink/5 py-2">
+                <span className="text-kelly-slate">
+                  {row.createdAt.toLocaleString("en-US", {
+                    timeZone: "America/Chicago",
+                    month: "short",
+                    day: "numeric",
+                    hour: "numeric",
+                    minute: "2-digit",
+                  })}
+                </span>
+                {" · "}
+                <span className="font-semibold text-kelly-navy">{row.kind.replaceAll("_", " ")}</span>
+                {row.toStatus ? ` → ${row.toStatus.replaceAll("_", " ")}` : ""}
+                {row.summary ? <p className="mt-1 text-kelly-ink">{row.summary}</p> : null}
+              </li>
+            ))}
+          </ol>
+        )}
       </section>
     </div>
   );

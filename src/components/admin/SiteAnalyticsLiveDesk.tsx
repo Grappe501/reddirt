@@ -105,7 +105,8 @@ export function SiteAnalyticsLiveDesk({
             >
               {paused ? "Paused" : polling ? "Refreshing" : "Live"}
             </span>
-            Leave this tab open. It pulls new public hits every 10 seconds.
+            Leave this tab open. It pulls new public hits every 10 seconds. Converts and city spikes also email
+            the ops inbox when this tab is closed.
             <span className="text-kelly-slate">
               {" "}
               · {formatClock(live.fetchedAt)} CT

@@ -6,6 +6,7 @@ import {
 } from "../src/lib/analytics/site-traffic-intelligence";
 import { sanitizeAnalyticsPath, sanitizeAnalyticsPayload } from "../src/lib/analytics/sanitize-payload";
 import { sanitizeNeighborDisplayName } from "../src/lib/analytics/visitor-signals";
+import { sanitizeIntakeNote, shouldSendCitySpike } from "../src/lib/analytics/site-traffic-alert-rules";
 import { cityFromRequestHeaders, formatCityRegion, isPublicIp } from "../src/lib/analytics/site-traffic-geo";
 import { classifyTrafficSource } from "../src/lib/analytics/traffic-source";
 import {
@@ -232,6 +233,10 @@ assert.equal(
 );
 assert.equal(sanitizeAnalyticsPayload({ city: "203.0.113.10" }).city, undefined);
 assert.equal(sanitizeAnalyticsPayload({ city: "Fort Smith", region: "AR" }).city, "Fort Smith");
+assert.equal(shouldSendCitySpike({ hits: 4, lastSentAt: null, now: 1000 }), false);
+assert.equal(shouldSendCitySpike({ hits: 5, lastSentAt: null, now: 1000 }), true);
+assert.equal(shouldSendCitySpike({ hits: 8, lastSentAt: 500, now: 1000, cooldownMs: 2000 }), false);
+assert.equal(sanitizeIntakeNote("  Called them.  "), "Called them.");
 
 assert.equal(classifyDeviceFromUserAgent("Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X)"), "phone");
 assert.equal(classifyDeviceFromUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120"), "desktop");

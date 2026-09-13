@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
+import { maybeSendVisitorDeskCitySpikeAlert } from "@/lib/analytics/site-traffic-alerts";
 import { resolveVisitorPlace } from "@/lib/analytics/site-traffic-geo";
 import { sanitizeAnalyticsPath, sanitizeAnalyticsPayload } from "@/lib/analytics/sanitize-payload";
 import { classifyDeviceFromUserAgent } from "@/lib/analytics/visitor-signals";
@@ -54,6 +55,9 @@ export async function POST(req: Request) {
         payload,
       },
     });
+    if (body.name === "page_view" && payload.city) {
+      void maybeSendVisitorDeskCitySpikeAlert(payload.city, payload.region).catch(() => undefined);
+    }
   } catch (e) {
     console.error(e);
     return NextResponse.json({ ok: false }, { status: 503 });

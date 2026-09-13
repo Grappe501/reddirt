@@ -6,12 +6,23 @@ import { isOpenAIConfigured } from "@/lib/openai/client";
 import { isDatabaseConfigured } from "@/lib/env";
 import { provisionVolunteerOpsSoloTeam } from "@/lib/volunteer-ops/provision-solo-team";
 import { ASK_KELLY_CATEGORY_LABELS } from "@/content/ask-kelly-beta-public-copy";
+import { sendVisitorDeskConvertAlert } from "@/lib/analytics/site-traffic-alerts";
 import { sendVolunteerSignupOpsNotification } from "@/lib/campaign-ops/ops-notifications";
 import { applyPublicFormConsent } from "@/lib/forms/public-form-consent";
 import { recordPublicFormWorkflowAction } from "@/lib/forms/public-form-audit";
 import { normalizeVolunteerInterests } from "@/lib/forms/volunteer-interest-taxonomy";
 import type { AskKellyBetaFeedbackInput, FormSubmissionInput, VolunteerInput } from "./schemas";
 import { TALENT_FOUNDRY_SOURCE } from "./schemas";
+
+function notifyVisitorDesk(input: {
+  name: string;
+  formType: string;
+  intakeId: string;
+  city?: string | null;
+  county?: string | null;
+}): void {
+  void sendVisitorDeskConvertAlert(input).catch((err) => console.error("[handlers] visitor desk alert failed", err));
+}
 
 function buildSummary(data: FormSubmissionInput): string {
   switch (data.formType) {
@@ -364,6 +375,11 @@ async function persistAskKellyBeta(data: AskKellyBetaFeedbackInput): Promise<Per
     select: { id: true },
   });
 
+  notifyVisitorDesk({
+    name: sanitizePlainText(data.name, 120),
+    formType: data.formType,
+    intakeId: intake.id,
+  });
   return { submissionId: sub.id, userId: user.id, workflowIntakeId: intake.id, volunteerTeamSlug: null };
 }
 
@@ -420,6 +436,12 @@ export async function persistFormSubmission(data: FormSubmissionInput): Promise<
       },
     });
     const intake = await createWorkflowIntakeForSubmission({ submissionId: sub.id, data, classification });
+    notifyVisitorDesk({
+      name: sanitizePlainText(data.name, 120),
+      formType: data.formType,
+      intakeId: intake.id,
+      county: "county" in data ? data.county : null,
+    });
     return { submissionId: sub.id, userId: user.id, workflowIntakeId: intake.id, volunteerTeamSlug: null };
   }
 
@@ -757,6 +779,13 @@ export async function persistFormSubmission(data: FormSubmissionInput): Promise<
     }).catch((err) => console.error("[handlers] volunteer ops notification failed", err));
   }
 
+  notifyVisitorDesk({
+    name: displayName,
+    formType: data.formType,
+    intakeId: intake.id,
+    city: "city" in data && typeof data.city === "string" ? data.city : null,
+    county: "county" in data && typeof data.county === "string" ? data.county : null,
+  });
   return { submissionId: sub.id, userId: user.id, workflowIntakeId: intake.id, volunteerTeamSlug: volunteerTeamSlugOut ?? null };
 }
 
