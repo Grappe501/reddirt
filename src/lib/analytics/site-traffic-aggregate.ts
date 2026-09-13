@@ -88,6 +88,44 @@ export type SeoDesk = {
   reads: string[];
 };
 
+export type PageIntelRow = {
+  path: string;
+  hits: number;
+  visitors: number;
+  landings: number;
+  exits: number;
+  bounceLandings: number;
+  landingBounceRate: number | null;
+  next: string | null;
+  nextHits: number;
+  topSource: string | null;
+};
+
+export type SourceLandingRow = {
+  source: string;
+  landing: string;
+  sessions: number;
+  bounced: number;
+  bounceRate: number | null;
+};
+
+export type DepthRow = {
+  label: string;
+  sessions: number;
+};
+
+export type UtmRow = {
+  source: string;
+  medium: string;
+  campaign: string;
+  hits: number;
+};
+
+export type ConversionPathRow = {
+  steps: string[];
+  count: number;
+};
+
 export type TrendDayRow = {
   date: string;
   pageViews: number;
@@ -150,6 +188,15 @@ export type SiteTrafficSnapshot = {
   journeysTruncated: boolean;
   seo: SeoDesk;
   analysis: string[];
+  pageIntel: PageIntelRow[];
+  sourceLandings: SourceLandingRow[];
+  depth: DepthRow[];
+  utmRows: UtmRow[];
+  conversionPaths: ConversionPathRow[];
+  newVisitors: number;
+  returningVisitors: number;
+  returningSessions: number;
+  deepSessions: number;
   prior: PriorWindowDelta | null;
   truncated: boolean;
 };
@@ -547,6 +594,20 @@ export function emptySiteTrafficSnapshot(days: TrafficWindowDays): SiteTrafficSn
     journeysTruncated: false,
     seo: emptySeoDesk(),
     analysis: ["No public campaign visits in this window yet. Share a live page and the desk will start reading journeys."],
+    pageIntel: [],
+    sourceLandings: [],
+    depth: [
+      { label: "1 page", sessions: 0 },
+      { label: "2 pages", sessions: 0 },
+      { label: "3 pages", sessions: 0 },
+      { label: "4+ pages", sessions: 0 },
+    ],
+    utmRows: [],
+    conversionPaths: [],
+    newVisitors: 0,
+    returningVisitors: 0,
+    returningSessions: 0,
+    deepSessions: 0,
     prior: null,
     truncated: false,
   };
@@ -815,6 +876,115 @@ export function aggregateSiteTraffic(
         returning: (visitorVisitCount.get(visit.visitorId) ?? 1) > 1,
       };
     });
+  const pageIntelMap = new Map<
+    string,
+    {
+      hits: number;
+      visitors: Set<string>;
+      landings: number;
+      exits: number;
+      bounceLandings: number;
+      next: Map<string, number>;
+      sources: Map<string, number>;
+    }
+  >();
+  const sourceLandingMap = new Map<string, { sessions: number; bounced: number }>();
+  const conversionPathMap = new Map<string, number>();
+  const utmMap = new Map<string, number>();
+  let depth1 = 0;
+  let depth2 = 0;
+  let depth3 = 0;
+  let depth4 = 0;
+  for (const visit of visits) {
+    const source = classifyTrafficSource({
+      referrer: visit.referrer,
+      utmSource: visit.utmSource,
+      utmMedium: visit.utmMedium,
+      utmCampaign: visit.utmCampaign,
+    });
+    if (visit.steps.length === 1) depth1 += 1;
+    else if (visit.steps.length === 2) depth2 += 1;
+    else if (visit.steps.length === 3) depth3 += 1;
+    else depth4 += 1;
+    const landKey = `${source.label}||${visit.steps[0] ?? "/"}`;
+    const landRow = sourceLandingMap.get(landKey) ?? { sessions: 0, bounced: 0 };
+    landRow.sessions += 1;
+    if (visit.steps.length === 1) landRow.bounced += 1;
+    sourceLandingMap.set(landKey, landRow);
+    if (visit.utmSource || visit.utmMedium || visit.utmCampaign) {
+      increment(utmMap, `${visit.utmSource || "—"}|${visit.utmMedium || "—"}|${visit.utmCampaign || "—"}`);
+    }
+    if (visit.formCompleted) increment(conversionPathMap, visit.steps.slice(0, 8).join(" → ") || "/");
+    for (const [index, path] of visit.steps.entries()) {
+      const row = pageIntelMap.get(path) ?? {
+        hits: 0,
+        visitors: new Set<string>(),
+        landings: 0,
+        exits: 0,
+        bounceLandings: 0,
+        next: new Map<string, number>(),
+        sources: new Map<string, number>(),
+      };
+      row.hits += 1;
+      row.visitors.add(visit.visitorId);
+      if (index === 0) {
+        row.landings += 1;
+        increment(row.sources, source.label);
+        if (visit.steps.length === 1) row.bounceLandings += 1;
+      }
+      if (index === visit.steps.length - 1) row.exits += 1;
+      const nextPath = visit.steps[index + 1];
+      if (nextPath) increment(row.next, nextPath);
+      pageIntelMap.set(path, row);
+    }
+  }
+  const pageIntel: PageIntelRow[] = [...pageIntelMap.entries()]
+    .map(([path, row]) => {
+      const next = [...row.next.entries()].sort((a, b) => b[1] - a[1])[0];
+      const topSource = [...row.sources.entries()].sort((a, b) => b[1] - a[1])[0];
+      return {
+        path,
+        hits: row.hits,
+        visitors: row.visitors.size,
+        landings: row.landings,
+        exits: row.exits,
+        bounceLandings: row.bounceLandings,
+        landingBounceRate: row.landings ? row.bounceLandings / row.landings : null,
+        next: next?.[0] ?? null,
+        nextHits: next?.[1] ?? 0,
+        topSource: topSource?.[0] ?? null,
+      };
+    })
+    .sort((a, b) => b.hits - a.hits)
+    .slice(0, 40);
+  const sourceLandings: SourceLandingRow[] = [...sourceLandingMap.entries()]
+    .map(([key, row]) => {
+      const [source, landing] = key.split("||");
+      return {
+        source: source ?? "Direct / unknown",
+        landing: landing ?? "/",
+        sessions: row.sessions,
+        bounced: row.bounced,
+        bounceRate: row.sessions ? row.bounced / row.sessions : null,
+      };
+    })
+    .sort((a, b) => b.sessions - a.sessions)
+    .slice(0, 24);
+  const conversionPaths: ConversionPathRow[] = [...conversionPathMap.entries()]
+    .map(([steps, count]) => ({ steps: steps.split(" → "), count }))
+    .sort((a, b) => b.count - a.count)
+    .slice(0, 12);
+  const utmRows: UtmRow[] = [...utmMap.entries()]
+    .map(([key, hits]) => {
+      const [source, medium, campaign] = key.split("|");
+      return { source: source ?? "—", medium: medium ?? "—", campaign: campaign ?? "—", hits };
+    })
+    .sort((a, b) => b.hits - a.hits)
+    .slice(0, 16);
+  const returningVisitorIds = [...visitorVisitCount.entries()].filter(([, count]) => count > 1).map(([id]) => id);
+  const newVisitors = Math.max(0, visitors - returningVisitorIds.length);
+  const returningSessions = visits.filter((visit) => (visitorVisitCount.get(visit.visitorId) ?? 1) > 1).length;
+  const deepSessions = depth4;
   const seo = buildSeoDesk(visits, sessions);
   const transitions = toTransitions(transitionHits, 20);
   const landingNext = toTransitions(landingNextHits, 16);
@@ -892,6 +1062,20 @@ export function aggregateSiteTraffic(
     journeysTruncated: visits.length > journeyCap,
     seo,
     analysis,
+    pageIntel,
+    sourceLandings,
+    depth: [
+      { label: "1 page", sessions: depth1 },
+      { label: "2 pages", sessions: depth2 },
+      { label: "3 pages", sessions: depth3 },
+      { label: "4+ pages", sessions: depth4 },
+    ],
+    utmRows,
+    conversionPaths,
+    newVisitors,
+    returningVisitors: returningVisitorIds.length,
+    returningSessions,
+    deepSessions,
     prior: null,
     truncated: Boolean(options?.truncated),
   };
@@ -958,6 +1142,22 @@ export function trafficBriefInput(snapshot: SiteTrafficSnapshot): string {
         bounced: row.bounced,
         formCompleted: row.formCompleted,
       })),
+      pageIntel: snapshot.pageIntel.slice(0, 16).map((row) => ({
+        path: row.path,
+        hits: row.hits,
+        landings: row.landings,
+        exits: row.exits,
+        landingBounceRate: row.landingBounceRate == null ? null : Number((row.landingBounceRate * 100).toFixed(1)),
+        next: row.next,
+        topSource: row.topSource,
+      })),
+      sourceLandings: snapshot.sourceLandings.slice(0, 12),
+      depth: snapshot.depth,
+      utmRows: snapshot.utmRows.slice(0, 10),
+      conversionPaths: snapshot.conversionPaths.slice(0, 8).map((row) => ({ path: row.steps.join(" → "), count: row.count })),
+      newVisitors: snapshot.newVisitors,
+      returningVisitors: snapshot.returningVisitors,
+      deepSessions: snapshot.deepSessions,
     },
     null,
     2,

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { SiteAnalyticsCommandBoard } from "@/components/admin/SiteAnalyticsCommandBoard";
+import { SiteAnalyticsDataRoom } from "@/components/admin/SiteAnalyticsDataRoom";
 import { SiteAnalyticsJourneyDesk } from "@/components/admin/SiteAnalyticsJourneyDesk";
 import { SiteAnalyticsSeoDesk } from "@/components/admin/SiteAnalyticsSeoDesk";
 import { SiteAnalyticsVisitorLog } from "@/components/admin/SiteAnalyticsVisitorLog";
@@ -222,6 +223,26 @@ export function SiteAnalyticsWorkbench({
               : `${formatNumber(snapshot.ctaClicks)} key button clicks`
           }
         />
+        <Kpi
+          label="New visitors"
+          value={formatNumber(snapshot.newVisitors)}
+          hint={`${formatNumber(snapshot.returningVisitors)} came back in this window`}
+        />
+        <Kpi
+          label="Deep visits"
+          value={formatNumber(snapshot.deepSessions)}
+          hint="Four or more public pages in one visit"
+        />
+        <Kpi
+          label="Search share"
+          value={snapshot.seo.share == null ? "—" : `${Math.round(snapshot.seo.share * 100)}%`}
+          hint={`${formatNumber(snapshot.seo.sessions)} search sessions`}
+        />
+        <Kpi
+          label="Returning sessions"
+          value={formatNumber(snapshot.returningSessions)}
+          hint="Same browser came back after 30 quiet minutes"
+        />
       </section>
 
       <SiteAnalyticsSeoDesk seo={snapshot.seo} sessions={snapshot.sessions} />
@@ -236,6 +257,7 @@ export function SiteAnalyticsWorkbench({
         truncated={snapshot.journeysTruncated}
         limit={snapshot.journeyLimit}
       />
+      <SiteAnalyticsDataRoom snapshot={snapshot} />
 
       <section className="grid gap-4 lg:grid-cols-3">
         <Card title="Machine reads">

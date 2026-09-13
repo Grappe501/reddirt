@@ -9,18 +9,23 @@ import {
 export type {
   CampaignRow,
   ChannelRow,
+  ConversionPathRow,
   CountRow,
+  DepthRow,
   FunnelRow,
   HourRow,
   PageHitRow,
+  PageIntelRow,
   PriorWindowDelta,
   ReferrerRow,
   SeoDesk,
   SessionPathRow,
   SiteTrafficSnapshot,
+  SourceLandingRow,
   TrafficWindowDays,
   TransitionRow,
   TrendDayRow,
+  UtmRow,
   VisitorJourney,
 } from "@/lib/analytics/site-traffic-aggregate";
 export { pctChange, trafficBriefInput } from "@/lib/analytics/site-traffic-aggregate";

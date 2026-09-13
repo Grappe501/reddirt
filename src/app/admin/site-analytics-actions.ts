@@ -10,6 +10,7 @@ export type SiteAnalyticsActionState = {
   command?: SiteTrafficCommandBrief;
   cached?: boolean;
   generatedAt?: string;
+  mode?: string;
   error?: string;
 };
 
@@ -21,7 +22,10 @@ export async function analyzeSiteTrafficAction(
   const days = parseTrafficWindowDays(String(formData.get("days") ?? "7"));
   const refresh = formData.get("refresh") === "1";
   const loaded = await loadSiteTrafficSnapshot(days);
-  const brief = await analyzeSiteTraffic(loaded.snapshot, { refresh });
+  const brief = await analyzeSiteTraffic(loaded.snapshot, {
+    refresh,
+    mode: String(formData.get("mode") ?? "command"),
+  });
   if (!brief.ok) return { error: brief.error };
   return {
     summary: brief.summary,
@@ -29,5 +33,6 @@ export async function analyzeSiteTrafficAction(
     command: brief.command,
     cached: brief.cached,
     generatedAt: brief.generatedAt,
+    mode: brief.mode,
   };
 }
