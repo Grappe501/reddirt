@@ -1466,7 +1466,4 @@ export function trafficBriefInput(snapshot: SiteTrafficSnapshot): string {
   );
 }
 
-export function pctChange(current: number, prior: number): number | null {
-  if (prior <= 0) return current > 0 ? 100 : null;
-  return ((current - prior) / prior) * 100;
-}
+export { pctChange } from "@/lib/analytics/site-traffic-math";

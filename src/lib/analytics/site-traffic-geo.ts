@@ -1,5 +1,3 @@
-import { createHash } from "node:crypto";
-
 export type VisitorPlace = {
   city: string;
   region: string;
@@ -60,6 +58,15 @@ export async function resolveVisitorPlace(req: Request, ip: string): Promise<Vis
   return lookupPlace(ip);
 }
 
+function cacheKey(ip: string): string {
+  let hash = 2166136261;
+  for (let i = 0; i < ip.length; i += 1) {
+    hash ^= ip.charCodeAt(i);
+    hash = Math.imul(hash, 16777619);
+  }
+  return (hash >>> 0).toString(16);
+}
+
 function decodeMaybe(raw: string | null | undefined): string {
   const text = (raw ?? "").trim();
   if (!text) return "";
@@ -90,7 +97,7 @@ function parseNetlifyGeo(raw: string | null): VisitorPlace | null {
 }
 
 async function lookupPlace(ip: string): Promise<VisitorPlace | null> {
-  const key = createHash("sha256").update(ip).digest("hex").slice(0, 24);
+  const key = cacheKey(ip);
   const now = Date.now();
   const hit = lookupCache.get(key);
   if (hit && hit.exp > now) return hit.place;

@@ -1,4 +1,5 @@
-import { pctChange, type SiteTrafficSnapshot } from "@/lib/analytics/site-traffic-aggregate";
+import type { SiteTrafficSnapshot } from "@/lib/analytics/site-traffic-aggregate";
+import { pctChange } from "@/lib/analytics/site-traffic-math";
 import { ARKANSAS_COUNTY_REGISTRY, getRegistryCountyBySlug } from "@/lib/county/arkansas-county-registry";
 
 export type TrafficMood = "strong" | "steady" | "leaking" | "quiet";

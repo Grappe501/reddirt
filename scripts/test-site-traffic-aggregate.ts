@@ -1,4 +1,7 @@
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
 import { aggregateSiteTraffic, trafficBriefInput } from "../src/lib/analytics/site-traffic-aggregate";
 import {
   buildSiteTrafficIntelligence,
@@ -8,6 +11,7 @@ import { sanitizeAnalyticsPath, sanitizeAnalyticsPayload } from "../src/lib/anal
 import { sanitizeNeighborDisplayName } from "../src/lib/analytics/visitor-signals";
 import { sanitizeIntakeNote, shouldSendCitySpike } from "../src/lib/analytics/site-traffic-alert-rules";
 import { cityFromRequestHeaders, formatCityRegion, isPublicIp } from "../src/lib/analytics/site-traffic-geo";
+import { pctChange } from "../src/lib/analytics/site-traffic-math";
 import { classifyTrafficSource } from "../src/lib/analytics/traffic-source";
 import {
   classifyContentSection,
@@ -292,5 +296,12 @@ assert.equal(matchArkansasCity("Little Rock, AR")?.name, "Little Rock");
 assert.equal(matchArkansasCity("Fayetteville")?.name, "Fayetteville");
 assert.equal(classifyIntent(snapshot.people.find((row) => row.converted)!), "captured");
 assert.ok(captureScore(snapshot.people.find((row) => !row.converted)!) < 100);
+assert.equal(pctChange(20, 10), 100);
+assert.equal(pctChange(10, 0), 100);
+assert.equal(pctChange(0, 0), null);
+assert.doesNotMatch(
+  readFileSync(join(dirname(fileURLToPath(import.meta.url)), "../src/lib/analytics/site-traffic-geo.ts"), "utf8"),
+  /node:crypto/,
+);
 
 console.log("test-site-traffic-aggregate ok");

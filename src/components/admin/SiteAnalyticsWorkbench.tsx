@@ -8,7 +8,8 @@ import { SiteAnalyticsJourneyDesk } from "@/components/admin/SiteAnalyticsJourne
 import { SiteAnalyticsSeoDesk } from "@/components/admin/SiteAnalyticsSeoDesk";
 import { SiteAnalyticsVisitorLog } from "@/components/admin/SiteAnalyticsVisitorLog";
 import { SiteAnalyticsWarRoom } from "@/components/admin/SiteAnalyticsWarRoom";
-import { pctChange, type SiteTrafficSnapshot, type TrafficWindowDays } from "@/lib/analytics/site-traffic-aggregate";
+import type { SiteTrafficSnapshot, TrafficWindowDays } from "@/lib/analytics/site-traffic-aggregate";
+import { pctChange } from "@/lib/analytics/site-traffic-math";
 import type { SiteTrafficIntelligence } from "@/lib/analytics/site-traffic-intelligence";
 import { getRegistryCountyBySlug } from "@/lib/county/arkansas-county-registry";
 
