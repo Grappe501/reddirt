@@ -219,6 +219,16 @@ function modePayload(snapshot: SiteTrafficSnapshot, intel: SiteTrafficIntelligen
       shareHints: snapshot.analysis,
     }, null, 2);
   }
+  if (mode === "hypotheses") {
+    return JSON.stringify({
+      lens: mode,
+      hypotheses: snapshot.hypotheses,
+      landingGrades: snapshot.landingGrades,
+      pathClusters: snapshot.pathClusters,
+      pulse: snapshot.pulse,
+      analysis: snapshot.analysis,
+    }, null, 2);
+  }
   if (mode === "visitors") {
     return JSON.stringify({
       lens: mode,

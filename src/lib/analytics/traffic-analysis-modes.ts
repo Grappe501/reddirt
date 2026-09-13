@@ -5,6 +5,7 @@ export const TRAFFIC_ANALYSIS_MODE_IDS = [
   "conversion",
   "publish",
   "visitors",
+  "hypotheses",
 ] as const;
 
 export type TrafficAnalysisMode = (typeof TRAFFIC_ANALYSIS_MODE_IDS)[number];
@@ -50,6 +51,12 @@ export const TRAFFIC_ANALYSIS_MODES: Array<{
     title: "Visitor-by-visitor",
     blurb: "Read the visit log like an analyst, especially the last 24 hours.",
     focus: "Read the provided journeys one by one. Cluster similar visits. Call out deep visits, bounces, returning people, and odd paths. Never invent a person or a name.",
+  },
+  {
+    id: "hypotheses",
+    title: "Challenge the machine",
+    blurb: "Argue with the computed claims. Keep, kill, or sharpen each one.",
+    focus: "The payload includes computed hypotheses. Accept, reject, or sharpen each claim using only the counts. Do not invent a new fact to save a weak claim.",
   },
 ];
 

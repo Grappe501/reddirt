@@ -136,6 +136,9 @@ assert.ok(snapshot.pageIntel.some((row) => row.path === "/" && row.landings >= 1
 assert.ok(snapshot.depth.some((row) => row.label === "2 pages" && row.sessions >= 1));
 assert.ok(snapshot.sourceLandings.some((row) => row.landing === "/"));
 assert.ok(snapshot.newVisitors >= 1);
+assert.ok(snapshot.hypotheses.length >= 1);
+assert.ok(snapshot.landingGrades.some((row) => row.path === "/"));
+assert.ok(snapshot.pathClusters.some((row) => row.pattern.includes("/from-the-road")));
 assert.equal(classifyTrafficSource({ referrer: "www.google.com/" }).channel, "search");
 assert.equal(isCampaignAnalyticsPath("/fec-max-donors"), false);
 assert.equal(isCampaignAnalyticsPath("/from-the-road"), true);

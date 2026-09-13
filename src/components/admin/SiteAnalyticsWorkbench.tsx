@@ -2,9 +2,11 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import { SiteAnalyticsCommandBoard } from "@/components/admin/SiteAnalyticsCommandBoard";
 import { SiteAnalyticsDataRoom } from "@/components/admin/SiteAnalyticsDataRoom";
+import { SiteAnalyticsFilterLab } from "@/components/admin/SiteAnalyticsFilterLab";
 import { SiteAnalyticsJourneyDesk } from "@/components/admin/SiteAnalyticsJourneyDesk";
 import { SiteAnalyticsSeoDesk } from "@/components/admin/SiteAnalyticsSeoDesk";
 import { SiteAnalyticsVisitorLog } from "@/components/admin/SiteAnalyticsVisitorLog";
+import { SiteAnalyticsWarRoom } from "@/components/admin/SiteAnalyticsWarRoom";
 import { pctChange, type SiteTrafficSnapshot, type TrafficWindowDays } from "@/lib/analytics/site-traffic-aggregate";
 import type { SiteTrafficIntelligence } from "@/lib/analytics/site-traffic-intelligence";
 import { getRegistryCountyBySlug } from "@/lib/county/arkansas-county-registry";
@@ -171,6 +173,17 @@ export function SiteAnalyticsWorkbench({
       </header>
 
       <SiteAnalyticsCommandBoard days={days} openaiReady={openaiReady} intel={intel} />
+
+      <SiteAnalyticsWarRoom
+        hypotheses={snapshot.hypotheses}
+        grades={snapshot.landingGrades}
+        clusters={snapshot.pathClusters}
+        heat={snapshot.heat}
+        deviceSource={snapshot.deviceSource}
+        pulse={snapshot.pulse}
+        medianMinutes={snapshot.medianSessionMinutes}
+      />
+      <SiteAnalyticsFilterLab journeys={snapshot.journeys} />
 
       <section className="rounded-card border border-kelly-navy/15 bg-kelly-fog/40 p-6">
         <h2 className="font-heading text-xl font-bold text-kelly-ink">What this window means</h2>

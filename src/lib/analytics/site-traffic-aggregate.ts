@@ -1,3 +1,18 @@
+import {
+  buildDeviceSource,
+  buildHeatCells,
+  buildHypotheses,
+  buildLandingGrades,
+  buildPathClusters,
+  buildPulse,
+  emptyPulse,
+  type DeviceSourceRow,
+  type HeatCell,
+  type Hypothesis,
+  type LandingGrade,
+  type PathCluster,
+  type TrafficPulse,
+} from "@/lib/analytics/site-traffic-depth";
 import { CHANNEL_LABELS, classifyTrafficSource, type TrafficChannelId } from "@/lib/analytics/traffic-source";
 import {
   CONTENT_SECTION_LABELS,
@@ -197,6 +212,13 @@ export type SiteTrafficSnapshot = {
   returningVisitors: number;
   returningSessions: number;
   deepSessions: number;
+  landingGrades: LandingGrade[];
+  pathClusters: PathCluster[];
+  heat: HeatCell[];
+  deviceSource: DeviceSourceRow[];
+  pulse: TrafficPulse;
+  hypotheses: Hypothesis[];
+  medianSessionMinutes: number;
   prior: PriorWindowDelta | null;
   truncated: boolean;
 };
@@ -608,6 +630,27 @@ export function emptySiteTrafficSnapshot(days: TrafficWindowDays): SiteTrafficSn
     returningVisitors: 0,
     returningSessions: 0,
     deepSessions: 0,
+    landingGrades: [],
+    pathClusters: [],
+    heat: [],
+    deviceSource: [],
+    pulse: emptyPulse(),
+    hypotheses: buildHypotheses({
+      sessions: 0,
+      bounceRate: null,
+      seoBounce: null,
+      seoSessions: 0,
+      formStarts: 0,
+      formCompletes: 0,
+      deepSessions: 0,
+      topLanding: null,
+      topExit: null,
+      leadChannel: null,
+      pulse: emptyPulse(),
+      grades: [],
+      clusters: [],
+    }),
+    medianSessionMinutes: 0,
     prior: null,
     truncated: false,
   };
@@ -985,6 +1028,35 @@ export function aggregateSiteTraffic(
   const newVisitors = Math.max(0, visitors - returningVisitorIds.length);
   const returningSessions = visits.filter((visit) => (visitorVisitCount.get(visit.visitorId) ?? 1) > 1).length;
   const deepSessions = depth4;
+  const depthVisits = visits.map((visit) => {
+    const source = classifyTrafficSource({
+      referrer: visit.referrer,
+      utmSource: visit.utmSource,
+      utmMedium: visit.utmMedium,
+      utmCampaign: visit.utmCampaign,
+    });
+    return {
+      first: visit.first,
+      last: visit.last,
+      steps: visit.steps,
+      source: source.channel,
+      sourceLabel: source.label,
+      device: visit.device === "unknown" ? "Unknown" : visit.device,
+      formCompleted: visit.formCompleted,
+      engaged: visit.engaged,
+    };
+  });
+  const landingGrades = buildLandingGrades(depthVisits);
+  const pathClusters = buildPathClusters(depthVisits);
+  const heat = buildHeatCells(depthVisits);
+  const deviceSource = buildDeviceSource(depthVisits);
+  const pulse = buildPulse(depthVisits);
+  const durations = visits
+    .map((visit) => Math.max(0, (visit.last.getTime() - visit.first.getTime()) / 60000))
+    .sort((a, b) => a - b);
+  const medianSessionMinutes = durations.length
+    ? durations[Math.floor((durations.length - 1) / 2)] ?? 0
+    : 0;
   const seo = buildSeoDesk(visits, sessions);
   const transitions = toTransitions(transitionHits, 20);
   const landingNext = toTransitions(landingNextHits, 16);
@@ -1076,6 +1148,27 @@ export function aggregateSiteTraffic(
     returningVisitors: returningVisitorIds.length,
     returningSessions,
     deepSessions,
+    landingGrades,
+    pathClusters,
+    heat,
+    deviceSource,
+    pulse,
+    hypotheses: buildHypotheses({
+      sessions,
+      bounceRate: sessions ? singlePageSessions / sessions : null,
+      seoBounce: seo.bounceRate,
+      seoSessions: seo.sessions,
+      formStarts: formStartCount,
+      formCompletes: formCompleteCount,
+      deepSessions,
+      topLanding: landingHits.size ? [...landingHits.entries()].sort((a, b) => b[1].hits - a[1].hits)[0]?.[0] ?? null : null,
+      topExit: exitHits.size ? [...exitHits.entries()].sort((a, b) => b[1].hits - a[1].hits)[0]?.[0] ?? null : null,
+      leadChannel: channels.find((row) => row.sessions > 0)?.label ?? null,
+      pulse,
+      grades: landingGrades,
+      clusters: pathClusters,
+    }),
+    medianSessionMinutes,
     prior: null,
     truncated: Boolean(options?.truncated),
   };
@@ -1158,6 +1251,12 @@ export function trafficBriefInput(snapshot: SiteTrafficSnapshot): string {
       newVisitors: snapshot.newVisitors,
       returningVisitors: snapshot.returningVisitors,
       deepSessions: snapshot.deepSessions,
+      pulse: snapshot.pulse,
+      landingGrades: snapshot.landingGrades.slice(0, 8),
+      pathClusters: snapshot.pathClusters.slice(0, 8),
+      hypotheses: snapshot.hypotheses,
+      deviceSource: snapshot.deviceSource.slice(0, 8),
+      medianSessionMinutes: Number(snapshot.medianSessionMinutes.toFixed(2)),
     },
     null,
     2,
