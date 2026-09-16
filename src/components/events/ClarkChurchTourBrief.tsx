@@ -1,3 +1,4 @@
+import Link from "next/link";
 import {
   CLARK_CHURCH_TOUR_STEPS,
   CLARK_CHURCH_TOUR_STOPS,
@@ -83,9 +84,9 @@ export function ClarkChurchTourBrief() {
         </ol>
         <p className="mt-4 rounded-lg border-2 border-yellow-400 bg-yellow-50/70 px-4 py-3 font-body text-sm font-semibold text-yellow-950">
           Hard leave: 1:30 p.m. from Arkadelphia. Next public stop is{" "}
-          <a className="underline underline-offset-2" href="/events/dequeen-sep-20-2026">
+          <Link className="underline underline-offset-2" href="/events/dequeen-sep-20-2026">
             De Queen, 4:00–6:00 p.m.
-          </a>
+          </Link>
           , Downtown Pavilion, 124 W. DeQueen Avenue.
         </p>
       </section>
