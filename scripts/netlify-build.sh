@@ -339,6 +339,23 @@ else
   npm run election-plan:build
 fi
 
+# Prisma's default pool is ~num_cpus*2+1 per worker. Two Netlify contexts
+# (production + deploy-preview) prerendering event pages will blow a
+# Supabase session pool of 15 (EMAXCONNSESSION) unless we cap this process.
+cap_prisma_connection_limit() {
+  local url="$1"
+  local limit="$2"
+  case "$url" in
+    *connection_limit=*) printf '%s' "$url" ;;
+    *\?*) printf '%s' "${url}&connection_limit=${limit}" ;;
+    *) printf '%s' "${url}?connection_limit=${limit}" ;;
+  esac
+}
+
+echo ">>> cap Prisma connection_limit=1 for next build (avoid EMAXCONNSESSION)"
+DATABASE_URL="$(cap_prisma_connection_limit "$DATABASE_URL" 1)"
+export DATABASE_URL
+
 echo ">>> next build (NODE_ENV=production; npx next build — no H: npm-cache wrapper on CI)"
 export NODE_ENV=production
 export NODE_OPTIONS="${NODE_OPTIONS:---max-old-space-size=6144}"

@@ -1,6 +1,18 @@
+/** True when Supabase session pooler refused another client (pool_size often 15). */
+export function isPrismaPoolExhausted(err: unknown): boolean {
+  if (!err || typeof err !== "object") return false;
+  const rec = err as { code?: string; message?: string };
+  const msg = typeof rec.message === "string" ? rec.message : "";
+  return (
+    rec.code === "P2037" ||
+    /EMAXCONNSESSION|max clients reached|too many clients|remaining connection slots/i.test(msg)
+  );
+}
+
 /** True when Prisma failed to connect (dev DB down, wrong DATABASE_URL, etc.). */
 export function isPrismaDatabaseUnavailable(err: unknown): boolean {
   if (!err || typeof err !== "object") return false;
+  if (isPrismaPoolExhausted(err)) return true;
   const rec = err as { name?: string; code?: string; message?: string };
   if (rec.name === "PrismaClientInitializationError") return true;
   if (rec.code === "P1001" || rec.code === "P1000") return true;
