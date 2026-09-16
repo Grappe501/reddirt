@@ -3878,7 +3878,7 @@ const kellyCampaignStopsSource: KellyCampaignStop[] = [
     includeOnPublicPage: true,
     confidence: "confirmed",
     notes:
-      "Steve 2026-09-08: Hot Spring cookout Sep 19 confirmed. Sat 5:00-7:00 p.m. 4-H Center, 1407 US-270, Malvern. Do not publish Taylor cell. /events/hot-spring-county-cookout-2026 Same day: Beatles on the Ridge confirmed.",
+      "Steve 2026-09-08: Hot Spring cookout Sep 19 confirmed. Sat 5:00-7:00 p.m. 4-H Center, 1407 US-270, Malvern. Do not publish Taylor cell. /events/hot-spring-county-cookout-2026 Steve 2026-09-16: Beatles on the Ridge is off the public calendar.",
     sourceType: "calendar",
   },
   {
@@ -5091,11 +5091,11 @@ const kellyCampaignStopsSource: KellyCampaignStop[] = [
     title: "Beatles on the Ridge, Walnut Ridge",
     city: "Walnut Ridge",
     counties: ["Lawrence"],
-    status: "scheduled",
-    includeOnPublicPage: true,
+    status: "private",
+    includeOnPublicPage: false,
     confidence: "confirmed",
     notes:
-      "Steve 2026-09-08: Beatles on the Ridge Sep 19 confirmed. Clock/street TBA. Same evening: Hot Spring cookout Malvern confirmed. /events/beatles-on-the-ridge-2026",
+      "Steve 2026-09-16: take off the public calendar. Earlier note (2026-09-08) had Beatles on the Ridge Sep 19 confirmed. /events/beatles-on-the-ridge-2026",
     sourceType: "calendar",
   },
   {

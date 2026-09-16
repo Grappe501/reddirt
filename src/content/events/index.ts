@@ -2007,7 +2007,7 @@ const movementEventsCore: EventItem[] = [
     summary:
       "Saturday, September 19, 2026, **5:00–7:00 p.m. Central** at the Hot Spring County 4-H Center: county party **community cookout** — confirmed. Free admission; $5 suggested per plate. Host-run — not a campaign rally.",
     description:
-      "**Saturday, September 19, 2026**, **5:00–7:00 p.m.** at the **Hot Spring County 4-H Center**, **1407 US-270**, Malvern.\n\nThe party invites friends and family for food and connection. They will hear from local county and city candidates, with guest appearances from statewide races. **Free admission.** A suggested **$5 per plate** helps the county party.\n\nThis is a **county Democratic Party** cookout, not a Grappe-hosted event.\n\nThe same Saturday is **Beatles on the Ridge** in Walnut Ridge.",
+      "**Saturday, September 19, 2026**, **5:00–7:00 p.m.** at the **Hot Spring County 4-H Center**, **1407 US-270**, Malvern.\n\nThe party invites friends and family for food and connection. They will hear from local county and city candidates, with guest appearances from statewide races. **Free admission.** A suggested **$5 per plate** helps the county party.\n\nThis is a **county Democratic Party** cookout, not a Grappe-hosted event.",
     whatToExpect: [
       "5:00–7:00 p.m. Central at the 4-H Center",
       "Food, county and city candidates, expected statewide guests",
@@ -2016,12 +2016,11 @@ const movementEventsCore: EventItem[] = [
     whoItsFor:
       "Hot Spring County neighbors and anyone the party welcomes to the cookout. Confirm with the hosts if you need accessibility or to-go plates.",
     organizerNote:
-      "Steve 2026-09-08: Hot Spring cookout Sep 19 confirmed. Do not publish Taylor’s personal cell. Same day: beatles-on-the-ridge-2026 confirmed.",
+      "Steve 2026-09-08: Hot Spring cookout Sep 19 confirmed. Do not publish Taylor’s personal cell. Steve 2026-09-16: Beatles on the Ridge is off the public calendar.",
     rsvpHref: undefined,
     audienceTags: ["Malvern", "Hot Spring County", "Democratic Party", "Cookout", "Southwest Arkansas"],
-    relatedEventSlugs: ["beatles-on-the-ridge-2026"],
+    relatedEventSlugs: [],
     relatedResourceHrefs: [
-      { label: "Beatles on the Ridge — same day", href: "/events/beatles-on-the-ridge-2026" },
       { label: "Get involved", href: "/get-involved" },
     ],
     mapCoordinates: { lat: 34.3623, lng: -92.8127 },

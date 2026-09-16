@@ -437,6 +437,12 @@ export const CAMPAIGN_APPROACH_BY_SLUG: Record<string, CampaignApproachDecision>
     note: "Steve 2026-09-12: host canceled the Paragould candidate forum.",
     ledgerIds: ["presence-2026-09-26-paragould-candidate-forum-2pm-til-5"],
   },
+  "beatles-on-the-ridge-2026": {
+    approach: "removed",
+    reason: "did_not_attend",
+    note: "Steve 2026-09-16: take Beatles on the Ridge / Walnut Ridge off the public calendar.",
+    ledgerIds: ["manual-2026-09-19-beatles-on-the-ridge"],
+  },
 };
 
 /** Empty — Steve 2026-09-08 took the September 29 four-way off except leftover cards he did not name. */
@@ -454,10 +460,6 @@ const DATE_LOCKS: Record<string, { startsAt: string; endsAt: string }> = {
   "grassroots-guitar-strings-2026": {
     startsAt: "2026-09-17T17:30:00-05:00",
     endsAt: "2026-09-17T21:30:00-05:00",
-  },
-  "beatles-on-the-ridge-2026": {
-    startsAt: "2026-09-19T09:00:00-05:00",
-    endsAt: "2026-09-19T12:00:00-05:00",
   },
   "hot-spring-county-cookout-2026": {
     startsAt: "2026-09-19T17:00:00-05:00",
@@ -484,7 +486,6 @@ const CONFIRMED_SLUGS = new Set([
   "hsv-candidate-forum-2026",
   "grassroots-guitar-strings-2026",
   "iclr-sep-18-2026",
-  "beatles-on-the-ridge-2026",
   "hot-spring-county-cookout-2026",
   "clark-county-multi-church-tour-2026-09-20",
   "dequeen-sep-20-2026",
