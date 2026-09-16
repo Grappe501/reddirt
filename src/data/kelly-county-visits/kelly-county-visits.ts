@@ -5241,7 +5241,7 @@ const kellyCampaignStopsSource: KellyCampaignStop[] = [
     includeOnPublicPage: true,
     confidence: "confirmed",
     notes:
-      "Steve 2026-09-08: block Oct 16-18 AYC youth retreat weekend in Little Rock. Venue TBA. /events/ayc-youth-retreat-little-rock-2026-10-16",
+      "Steve 2026-09-08: block Oct 16-18 AYC youth retreat weekend in Little Rock. Venue TBA. Steve 2026-09-16: HarvestFest tabling Sat Oct 17; also Pride and UAPB Homecoming. /events/ayc-youth-retreat-little-rock-2026-10-16",
     sourceType: "manual",
   },
   {
@@ -5485,9 +5485,9 @@ const kellyCampaignStopsSource: KellyCampaignStop[] = [
     counties: ["Jefferson"],
     status: "scheduled",
     includeOnPublicPage: true,
-    confidence: "likely",
+    confidence: "confirmed",
     notes:
-      "Campaign calendar Sat Oct 17 8:00-10:00 a.m. Grounds not on the block. Same morning Stuttgart 10:30-2:00; evening Flat Rock fish fry 5:30; all-day Rocky Comfort Foreman. /events/uapb-homecoming-2026",
+      "Steve 2026-09-16: we will participate. Campaign calendar Sat Oct 17 8:00-10:00 a.m. Grounds not on the block — do not invent. Same day: AYC Little Rock weekend, HarvestFest tabling, Central Arkansas Pride. /events/uapb-homecoming-2026",
     sourceType: "calendar",
   },
   {
@@ -5541,6 +5541,34 @@ const kellyCampaignStopsSource: KellyCampaignStop[] = [
     confidence: "confirmed",
     notes:
       "Steve 2026-09-08: October 19 early voting begins. Statewide civic date, not a venue. Replaces the Oct 20 Little Rock launch card. /events/early-voting-begins-2026-10-19",
+    sourceType: "manual",
+  },
+  {
+    id: "manual-2026-10-17-hillcrest-harvestfest",
+    publicTitle: "Hillcrest HarvestFest — tabling",
+    date: "2026-10-17",
+    title: "Hillcrest HarvestFest tabling",
+    city: "Little Rock",
+    counties: ["Pulaski"],
+    status: "scheduled",
+    includeOnPublicPage: true,
+    confidence: "confirmed",
+    notes:
+      "Steve 2026-09-16: add HarvestFest and tabling to the AYC Little Rock weekend. Host Sat Oct 17 11 a.m.-7 p.m. Kavanaugh Blvd. Do not publish a HarvestFest phone. /events/hillcrest-harvestfest-2026",
+    sourceType: "manual",
+  },
+  {
+    id: "manual-2026-10-17-central-arkansas-pridefest",
+    publicTitle: "Central Arkansas Pride — PRIDEFest and Parade",
+    date: "2026-10-17",
+    title: "LR Pride",
+    city: "Little Rock",
+    counties: ["Pulaski"],
+    status: "scheduled",
+    includeOnPublicPage: true,
+    confidence: "confirmed",
+    notes:
+      "Steve 2026-09-16: we will participate in the LR Pride event. Host Central Arkansas Pride Sat Oct 17 11 a.m.-6 p.m. 1110 W Capitol Ave. /events/central-arkansas-pridefest-2026",
     sourceType: "manual",
   },
 

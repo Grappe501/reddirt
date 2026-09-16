@@ -39,6 +39,12 @@ const PLANNED_TRAVEL_DAYS: readonly ReadonlySet<string>[] = [
   ]),
   new Set(["people-over-politics-vfw-mountain-home-2026", "baxter-farm-bureau-oct-6-2026"]),
   new Set(["olli-for-coffee-2026", "fayetteville-fundraiser-2026-10-09"]),
+  new Set([
+    "ayc-youth-retreat-little-rock-2026-10-16",
+    "hillcrest-harvestfest-2026",
+    "central-arkansas-pridefest-2026",
+    "uapb-homecoming-2026",
+  ]),
 ];
 
 function isPlannedTravelDay(dayEvents: EventItem[]): boolean {

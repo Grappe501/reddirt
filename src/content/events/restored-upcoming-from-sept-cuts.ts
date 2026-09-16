@@ -416,22 +416,27 @@ export const restoredUpcomingFromSeptCuts: EventItem[] = [
     city: "Little Rock",
     addressLine: "Little Rock, AR (venue TBA)",
     summary:
-      "Friday, October 16 through Sunday, October 18, 2026: **Arkansas Youth Coalition** youth retreat weekend in Little Rock — confirmed. Venue TBA.",
+      "Friday, October 16 through Sunday, October 18, 2026: **Arkansas Youth Coalition** youth retreat weekend in Little Rock — confirmed. Saturday also includes Hillcrest HarvestFest (tabling), Central Arkansas Pride, and UAPB Homecoming in Pine Bluff.",
     description:
-      "The campaign is in **Little Rock** Friday, **October 16** through Sunday, **October 18, 2026** for the **Arkansas Youth Coalition** youth retreat weekend.\n\nBuilding and daily clock are still TBA. This is the public hold for that weekend.",
+      "The campaign is in **Little Rock** Friday, **October 16** through Sunday, **October 18, 2026** for the **Arkansas Youth Coalition** youth retreat weekend.\n\nBuilding and daily clock for the retreat are still TBA.\n\nThe same Saturday, **October 17**, the campaign tables at **Hillcrest HarvestFest**, participates in **Central Arkansas Pride**, and participates in **UAPB Homecoming** in Pine Bluff.",
     whatToExpect: [
-      "Friday through Sunday in Little Rock",
-      "AYC youth retreat — follow the coalition for the room and daily clock",
+      "Friday through Sunday in Little Rock for the AYC retreat",
+      "Saturday: HarvestFest tabling, Pride, and UAPB Homecoming",
     ],
-    whoItsFor: "AYC participants and invited campaign guests. Confirm the venue with the hosts before travel.",
+    whoItsFor: "AYC participants, volunteers who can table, and invited campaign guests. Confirm the retreat venue with the hosts before travel.",
     organizerNote:
-      "Steve 2026-09-08: block Oct 16-18 AYC youth retreat weekend in Little Rock. Venue TBA.",
+      "Steve 2026-09-08: block Oct 16-18 AYC youth retreat weekend in Little Rock. Venue TBA. Steve 2026-09-16: add HarvestFest tabling; also participate in LR Pride and UAPB Homecoming.",
     audienceTags: ["Little Rock", "Pulaski County", "Youth", "College", "AYC"],
     mapCoordinates: { lat: 34.7465, lng: -92.2896 },
     mapPinQuality: "region",
     primaryHref: "/get-involved#volunteer",
     primaryCtaLabel: "Volunteer / Get involved",
-    relatedEventSlugs: ["ayc-karaoke-hot-springs-2026-10-11"],
+    relatedEventSlugs: [
+      "ayc-karaoke-hot-springs-2026-10-11",
+      "hillcrest-harvestfest-2026",
+      "central-arkansas-pridefest-2026",
+      "uapb-homecoming-2026",
+    ],
     relatedResourceHrefs: [
       { label: "Volunteer", href: "/get-involved#volunteer" },
       { label: "Events calendar", href: "/events" },

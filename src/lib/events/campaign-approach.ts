@@ -396,12 +396,6 @@ export const CAMPAIGN_APPROACH_BY_SLUG: Record<string, CampaignApproachDecision>
     note: "Steve 2026-09-08: Oct 16-18 is AYC youth retreat weekend in Little Rock.",
     ledgerIds: ["manual-2026-10-17-flat-rock-fish-fry"],
   },
-  "uapb-homecoming-2026": {
-    approach: "removed",
-    reason: "conflict",
-    note: "Steve 2026-09-08: Oct 16-18 is AYC youth retreat weekend in Little Rock.",
-    ledgerIds: ["manual-2026-10-17-uapb-homecoming"],
-  },
   "logan-scott-immersion-2026-10-18": {
     approach: "removed",
     reason: "conflict",
@@ -477,6 +471,14 @@ const DATE_LOCKS: Record<string, { startsAt: string; endsAt: string }> = {
     startsAt: "2026-09-27T09:00:00-05:00",
     endsAt: "2026-09-27T18:00:00-05:00",
   },
+  "hillcrest-harvestfest-2026": {
+    startsAt: "2026-10-17T11:00:00-05:00",
+    endsAt: "2026-10-17T19:00:00-05:00",
+  },
+  "central-arkansas-pridefest-2026": {
+    startsAt: "2026-10-17T11:00:00-05:00",
+    endsAt: "2026-10-17T18:00:00-05:00",
+  },
 };
 
 /** Steve 2026-09-08: these public stops are locked confirmed. */
@@ -504,6 +506,10 @@ const CONFIRMED_SLUGS = new Set([
   "fayetteville-fundraiser-2026-10-09",
   "early-voting-begins-2026-10-19",
   "lake-chicot-fall-fest-2026",
+  "ayc-youth-retreat-little-rock-2026-10-16",
+  "hillcrest-harvestfest-2026",
+  "central-arkansas-pridefest-2026",
+  "uapb-homecoming-2026",
 ]);
 
 function withSept29Caution(event: EventItem): EventItem {

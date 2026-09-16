@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-16T17:59:26.898Z",
+  "generatedAt": "2026-09-16T18:19:18.476Z",
   "siteUrl": "https://kgrappe.netlify.app",
   "summary": {
     "visitedCounties": 59,
@@ -8,8 +8,8 @@
     "completedLedgerCount": 220,
     "completedUnpostedCount": 27,
     "completedStopCount": 247,
-    "scheduledStopCount": 46,
-    "totalPublicStopCount": 293,
+    "scheduledStopCount": 49,
+    "totalPublicStopCount": 296,
     "needsReviewCount": 5,
     "buckets": {
       "visited": [
@@ -3085,6 +3085,39 @@
       "city": "Little Rock",
       "counties": [
         "Pulaski"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "manual-2026-10-17-hillcrest-harvestfest",
+      "date": "2026-10-17",
+      "endDate": null,
+      "title": "Hillcrest HarvestFest — tabling",
+      "city": "Little Rock",
+      "counties": [
+        "Pulaski"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "manual-2026-10-17-central-arkansas-pridefest",
+      "date": "2026-10-17",
+      "endDate": null,
+      "title": "Central Arkansas Pride — PRIDEFest and Parade",
+      "city": "Little Rock",
+      "counties": [
+        "Pulaski"
+      ],
+      "status": "scheduled"
+    },
+    {
+      "id": "manual-2026-10-17-uapb-homecoming",
+      "date": "2026-10-17",
+      "endDate": null,
+      "title": "UAPB Homecoming",
+      "city": "Pine Bluff",
+      "counties": [
+        "Jefferson"
       ],
       "status": "scheduled"
     },
