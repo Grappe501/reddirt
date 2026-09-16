@@ -20,16 +20,9 @@ async function gate(): Promise<{ ok: true } | { ok: false; message: string }> {
 }
 
 export async function enableSiteEditModeAction(): Promise<{ ok: boolean; message: string }> {
-  const g = await gate();
-  if (!g.ok) return g;
   const jar = await cookies();
-  jar.set(SITE_EDIT_COOKIE, "1", {
-    httpOnly: true,
-    sameSite: "lax",
-    path: "/",
-    maxAge: 60 * 60 * 12,
-  });
-  return { ok: true, message: "Site edit mode on — browse the public site to edit copy and media." };
+  jar.set(SITE_EDIT_COOKIE, "", { httpOnly: true, sameSite: "lax", path: "/", maxAge: 0 });
+  return { ok: false, message: "Public site edit mode is turned off." };
 }
 
 export async function disableSiteEditModeAction(): Promise<{ ok: boolean; message: string }> {

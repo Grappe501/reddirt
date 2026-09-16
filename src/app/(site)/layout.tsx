@@ -3,17 +3,12 @@ import { AskKellyLayout } from "@/components/campaign-guide/AskKellyLayout";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { PublicLayoutMain } from "@/components/layout/PublicLayoutMain";
-import { SiteEditChrome } from "@/components/site-edit/SiteEditChrome";
-import { canUseSiteEditMode, isSiteEditMode } from "@/lib/site-edit/edit-mode";
-
 /**
  * Public marketing site — header, footer. Isolated from `/admin` so campaign manager
  * pages are not wrapped in sticky public nav (which broke layout, clicks, and type rhythm).
- * Edit mode: visit /edit (admin) for basic copy + media slot changes.
+ * Inline public edit mode is disabled. Copy changes go through /admin after login.
  */
 export default async function SiteLayout({ children }: { children: ReactNode }) {
-  const [editing, canEdit] = await Promise.all([isSiteEditMode(), canUseSiteEditMode()]);
-
   return (
     <>
       <a
@@ -22,7 +17,6 @@ export default async function SiteLayout({ children }: { children: ReactNode }) 
       >
         Skip to main content
       </a>
-      <SiteEditChrome active={editing} canEdit={canEdit} />
       <SiteHeader />
       {/**
        * In-flow height reserved for the fixed header. A fixed flex child does not consume track
