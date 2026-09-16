@@ -1,11 +1,15 @@
 import { CampaignJourneyMap } from "@/components/organizing/events-map/CampaignJourneyMap";
 import type { CountyMapFeature } from "@/components/organizing/events-map/county-map-types";
+import { EventsCalendarViews } from "@/components/organizing/EventsCalendarViews";
 import { formatCampaignStopAsOfDate, getCampaignStopMilestone } from "@/content/events/campaign-stop-milestone";
+import type { EventsMonthPin } from "@/lib/events/events-month-pins";
 
 export function EventsProofSection({
   features,
+  monthPins,
 }: {
   features: CountyMapFeature[];
+  monthPins: EventsMonthPin[];
 }) {
   const milestone = getCampaignStopMilestone();
   const asOfDate = formatCampaignStopAsOfDate();
@@ -45,6 +49,8 @@ export function EventsProofSection({
           <p className="mt-3 font-body text-sm text-kelly-text/70">Through Election Day.</p>
         </div>
       </div>
+
+      <EventsCalendarViews pins={monthPins} />
     </section>
   );
 }

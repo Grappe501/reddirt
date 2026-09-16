@@ -11,7 +11,10 @@ import { queryPublicCampaignEvents } from "@/lib/calendar/public-events";
 import { mergeMovementAndCalendarEvents } from "@/lib/events/calendar-to-movement-event";
 import { loadCountyVisitLedger } from "@/lib/events/load-county-visit-ledger";
 import { buildEventsMapModel } from "@/lib/events/events-map-model";
+import { eventsToMonthPins } from "@/lib/events/events-month-pins";
 import { safePublishedCountyOptions } from "@/lib/county/safe-published-county-options";
+import { PUBLIC_CALENDAR_DEFAULT_TZ } from "@/lib/calendar/public-event-types";
+import { ymdInTimeZone } from "@/lib/calendar/public-event-format";
 
 import { pageMeta } from "@/lib/seo/metadata";
 import { brandMediaFromLegacySite } from "@/config/brand-media";
@@ -42,13 +45,23 @@ export default async function EventsPage({
 }) {
   const sp = (await searchParams) ?? {};
   const suggestOk = pickParam(sp, "ok");
-  const [counties, calendarRows] = await Promise.all([
+  const todayYmd = ymdInTimeZone(new Date(), PUBLIC_CALENDAR_DEFAULT_TZ);
+  const [year, month] = todayYmd.split("-").map(Number);
+  const [counties, upcomingRows, monthRows] = await Promise.all([
     safePublishedCountyOptions(),
-    queryPublicCampaignEvents({ range: "all_upcoming" }, { take: 200 }),
+    queryPublicCampaignEvents({ range: "all_upcoming" }, { take: 400 }),
+    queryPublicCampaignEvents({ monthYear: { year, month } }, { take: 200 }),
   ]);
+  const seen = new Set<string>();
+  const calendarRows = [...upcomingRows, ...monthRows].filter((row) => {
+    if (seen.has(row.slug)) return false;
+    seen.add(row.slug);
+    return true;
+  });
   const mergedEvents = mergeMovementAndCalendarEvents(events, calendarRows);
   const ledger = await loadCountyVisitLedger(mergedEvents);
   const { features } = buildEventsMapModel(ledger, mergedEvents);
+  const monthPins = eventsToMonthPins(mergedEvents);
 
   return (
     <>
@@ -69,7 +82,7 @@ export default async function EventsPage({
 
       <FullBleedSection padY aria-labelledby="events-proof-heading">
         <ContentContainer>
-          <EventsProofSection features={features} />
+          <EventsProofSection features={features} monthPins={monthPins} />
         </ContentContainer>
       </FullBleedSection>
 
