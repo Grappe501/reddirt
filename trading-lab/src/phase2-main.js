@@ -2,7 +2,7 @@ import './styles.css';
 import './phase2.css';
 import { SYMBOLS } from './data/historical.js';
 import { createReplayStore, snapshot, advance, reset } from './replay.js';
-import { createLiveMarketStore, liveBars, livePrice, refreshLiveMarket, seedLiveHistory } from './live-market.js';
+import { checkLiveHealth, createLiveMarketStore, liveBars, livePrice, refreshLiveMarket, seedLiveHistory } from './live-market.js';
 
 const STARTING_CASH = 500;
 const DEFAULTS = { commissionPerOrder: 0, secFeePerMillionOnSales: 20.6, tafPerShareOnSales: 0.000195, spreadBps: 4, slippageBps: 2 };
@@ -10,7 +10,7 @@ const replay = createReplayStore();
 const live = createLiveMarketStore(SYMBOLS);
 const state = { cash: STARTING_CASH, position: null, realized: 0, fees: 0, trades: [], selected: 'NVDA', mode: 'REPLAY', costs: { ...DEFAULTS } };
 const app = document.querySelector('#app');
-let message = 'Phase 2 ready. Replay works immediately; LIVE uses Alpaca when Netlify market-data credentials are configured.';
+let message = 'Phase 2B ready. Replay works immediately; LIVE uses the server-side market-data adapter when Netlify credentials are configured.';
 let liveTimer = null;
 
 const money = (value) => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(Number(value || 0));
@@ -74,7 +74,7 @@ function trade(side) {
     state.cash -= total;
     state.position = { symbol, shares, entry: fillPrice, entryCosts: costs.total, mode: state.mode };
     state.fees += costs.total;
-    addTrade('BUY', symbol, shares, fillPrice, costs, `${state.mode} simulated entry. The order never leaves the browser.`);
+    addTrade('BUY', symbol, shares, fillPrice, costs, `${state.mode} simulated entry. No broker-order API is called.`);
     return setMessage(`Simulated BUY: ${shares} ${symbol} at ${money(fillPrice)}. Entry costs: ${money(costs.total)}.`);
   }
   if (!state.position) return setMessage('No open simulated position to sell.');
@@ -122,16 +122,28 @@ function liveStatusText() {
   return 'NOT CONNECTED';
 }
 
+function healthText() {
+  if (live.configured === false) return 'NOT CONFIGURED';
+  if (live.providerReachable === true) return 'PROVIDER OK';
+  if (live.providerReachable === false) return 'PROVIDER ERROR';
+  return 'NOT TESTED';
+}
+
 async function connectLive() {
   stopLiveTimer();
   state.mode = 'LIVE';
+  live.status = 'loading';
   render();
-  await seedLiveHistory(live, state.selected);
   try {
+    await checkLiveHealth(live, true);
+    await seedLiveHistory(live, state.selected);
     await refreshLiveMarket(live);
     message = `Live market data connected through ${live.provider.toUpperCase()} ${live.feed.toUpperCase()}. Trades remain fictional.`;
     startLiveTimer();
-  } catch (error) { message = error.message; }
+  } catch (error) {
+    live.status = 'error';
+    message = error.message;
+  }
   render();
 }
 
@@ -155,7 +167,7 @@ async function selectSymbol(symbol) {
 function switchToReplay() {
   stopLiveTimer();
   state.mode = 'REPLAY';
-  message = 'Historical replay mode active. Dataset remains deterministic synthetic data in Phase 2.';
+  message = 'Historical replay mode active. Dataset remains deterministic synthetic data in Phase 2B.';
   render();
 }
 
@@ -167,19 +179,31 @@ function render() {
   const bar = currentBar(state.selected);
   const quote = live.market[state.selected] || {};
   const modeLabel = state.mode === 'LIVE' ? liveStatusText() : `REPLAY ${currentBar(state.selected)?.time || '--'}`;
-  app.innerHTML = `<main class="shell"><header class="topbar"><div><div class="eyebrow">REDDIRT / TRADING LAB</div><h1>Paper Trading Control Room</h1><p>Phase 2 · live-data adapter + historical replay · $500 fictional account</p></div><div class="status ${state.mode === 'LIVE' && live.status === 'error' ? 'error' : ''}"><span></span>${modeLabel}</div></header>
-  <section class="mode-switch" aria-label="Market mode"><button data-mode="REPLAY" class="${state.mode === 'REPLAY' ? 'active' : ''}">Historical Replay</button><button data-mode="LIVE" class="${state.mode === 'LIVE' ? 'active' : ''}">Live Market</button><div class="safety-copy">All BUY/SELL actions remain simulated. No broker-order endpoint exists in Phase 2.</div></section>
+  app.innerHTML = `<main class="shell"><header class="topbar"><div><div class="eyebrow">REDDIRT / TRADING LAB</div><h1>Paper Trading Control Room</h1><p>Phase 2B · validated live-data adapter + historical replay · $500 fictional account</p></div><div class="status ${state.mode === 'LIVE' && live.status === 'error' ? 'error' : ''}"><span></span>${modeLabel}</div></header>
+  <section class="mode-switch" aria-label="Market mode"><button data-mode="REPLAY" class="${state.mode === 'REPLAY' ? 'active' : ''}">Historical Replay</button><button data-mode="LIVE" class="${state.mode === 'LIVE' ? 'active' : ''}">Live Market</button><div class="safety-copy">All BUY/SELL actions remain simulated. No broker-order endpoint exists in Phase 2B.</div></section>
   <section class="grid metrics"><article><span>Equity</span><strong>${money(equity())}</strong><em class="${accountReturn >= 0 ? 'up' : 'down'}">${pct(accountReturn)}</em></article><article><span>Cash</span><strong>${money(state.cash)}</strong><em>fictional capital</em></article><article><span>Open P/L</span><strong>${money(openPnl)}</strong><em>${state.position ? `${state.position.shares} ${state.position.symbol}` : 'flat'}</em></article><article><span>Total costs</span><strong>${money(state.fees)}</strong><em>modeled execution</em></article></section>
-  <section class="workspace"><div class="panel market"><div class="panel-head"><h2>${state.mode === 'LIVE' ? 'Live Market' : 'Historical Replay'}</h2><span>${state.selected}</span></div><div class="symbols">${SYMBOLS.map((symbol) => `<button class="symbol ${symbol === state.selected ? 'active' : ''}" data-symbol="${symbol}"><b>${symbol}</b><strong>${money(price(symbol))}</strong><small>${state.mode === 'LIVE' ? shortTime(live.market[symbol]?.quoteTime || live.fetchedAt) : currentBar(symbol)?.time || '--'}</small></button>`).join('')}</div><div class="chart-wrap">${chart(state.selected)}</div><div class="quote-row"><span>Price <b>${selectedPrice ? money(selectedPrice) : '--'}</b></span><span>Bid <b>${state.mode === 'LIVE' && quote.bid ? money(quote.bid) : '--'}</b></span><span>Ask <b>${state.mode === 'LIVE' && quote.ask ? money(quote.ask) : '--'}</b></span><span>Volume <b>${(bar?.volume || 0).toLocaleString()}</b></span></div>${state.mode === 'REPLAY' ? `<div class="replay-controls"><button data-replay="BACK">◀ Step</button><button data-replay="PLAY">${replay.playing ? 'Pause' : 'Play'}</button><button data-replay="NEXT">Step ▶</button><button data-replay="RESET">Reset</button></div>` : `<div class="live-controls"><button data-live="REFRESH">Refresh now</button><span>Auto-refresh: 5 sec · ${live.fetchedAt ? `last ${shortTime(live.fetchedAt)}` : 'not connected'}</span></div>`}</div>
+  <section class="workspace"><div class="panel market"><div class="panel-head"><h2>${state.mode === 'LIVE' ? 'Live Market' : 'Historical Replay'}</h2><span>${state.selected}</span></div><div class="symbols">${SYMBOLS.map((symbol) => `<button class="symbol ${symbol === state.selected ? 'active' : ''}" data-symbol="${symbol}"><b>${symbol}</b><strong>${money(price(symbol))}</strong><small>${state.mode === 'LIVE' ? shortTime(live.market[symbol]?.quoteTime || live.fetchedAt) : currentBar(symbol)?.time || '--'}</small></button>`).join('')}</div><div class="chart-wrap">${chart(state.selected)}</div><div class="quote-row"><span>Price <b>${selectedPrice ? money(selectedPrice) : '--'}</b></span><span>Bid <b>${state.mode === 'LIVE' && quote.bid ? money(quote.bid) : '--'}</b></span><span>Ask <b>${state.mode === 'LIVE' && quote.ask ? money(quote.ask) : '--'}</b></span><span>Volume <b>${(bar?.volume || 0).toLocaleString()}</b></span></div>${state.mode === 'REPLAY' ? `<div class="replay-controls"><button data-replay="BACK">◀ Step</button><button data-replay="PLAY">${replay.playing ? 'Pause' : 'Play'}</button><button data-replay="NEXT">Step ▶</button><button data-replay="RESET">Reset</button></div>` : `<div class="live-controls"><button data-live="REFRESH">Refresh now</button><button data-live="HEALTH">Test provider</button><span>Auto-refresh: 5 sec · ${live.fetchedAt ? `last ${shortTime(live.fetchedAt)}` : 'not connected'}</span></div>`}</div>
   <aside class="panel decision"><div class="panel-head"><h2>Agent Decision</h2><span>WHY</span></div><div class="decision-action ${decision.action.toLowerCase()}">${decision.action}</div><div class="confidence">Rule confidence <strong>${decision.confidence}%</strong></div><ul>${decision.reasons.map((reason) => `<li>${reason}</li>`).join('')}</ul><div class="invalidation"><b>Invalidation</b><p>${decision.invalidation}</p></div><div class="actions"><button class="primary" data-action="BUY">Simulate BUY</button><button data-action="SELL">Simulate SELL</button><button class="pause" data-action="RESET">Reset $500 Account</button></div></aside></section>
   <section class="workspace lower"><div class="panel costs"><div class="panel-head"><h2>Execution Cost Model</h2><span>EDITABLE</span></div><p class="muted">Results include spread, slippage, commission assumptions, Section 31 pass-through modeling and FINRA TAF modeling.</p><div class="cost-grid">${costInput('commissionPerOrder','Commission / order',state.costs.commissionPerOrder,0.01)}${costInput('secFeePerMillionOnSales','Section 31 / $1M sales',state.costs.secFeePerMillionOnSales,0.01)}${costInput('tafPerShareOnSales','TAF / share sold',state.costs.tafPerShareOnSales,0.000001)}${costInput('spreadBps','Spread assumption (bps)',state.costs.spreadBps,0.1)}${costInput('slippageBps','Slippage assumption (bps)',state.costs.slippageBps,0.1)}</div></div><div class="panel journal"><div class="panel-head"><h2>Trade Journal</h2><span>${state.trades.length} EVENTS</span></div>${state.trades.length ? state.trades.slice(0,10).map((item) => `<div class="trade"><div><b>${item.side} ${item.symbol}</b><small>${item.time} · ${item.shares} shares @ ${money(item.price)} · ${item.mode}</small></div><strong>${money(item.costs)} costs</strong><p>${item.why}</p></div>`).join('') : '<div class="empty">No trades yet. Observe the market, inspect WHY, then make a fictional trade.</div>'}</div></section>
-  <section class="panel provider-panel"><div class="panel-head"><h2>Phase 2 Data Adapter</h2><span>${liveStatusText()}</span></div><div class="provider-grid"><div><b>Provider</b><strong>${live.provider.toUpperCase()}</strong><small>credentials stay in Netlify environment variables</small></div><div><b>Feed</b><strong>${live.feed.toUpperCase()}</strong><small>IEX default; SIP requires provider entitlement</small></div><div><b>Transport</b><strong>SERVER-SIDE REST</strong><small>browser polls the Netlify function every 5 seconds</small></div><div><b>Broker orders</b><strong>DISABLED</strong><small>Phase 2 exposes market data only</small></div></div>${live.error ? `<div class="provider-error">${live.error}</div>` : ''}</section>
-  <footer><b>Education simulator:</b> live prices can be real when configured, but every trade and account balance shown here is fictional. Phase 2 has no endpoint capable of placing a real order.</footer><div class="toast" aria-live="polite">${message}</div></main>`;
+  <section class="panel provider-panel"><div class="panel-head"><h2>Phase 2B Data Adapter</h2><span>${healthText()}</span></div><div class="provider-grid"><div><b>Provider</b><strong>${live.provider.toUpperCase()}</strong><small>credentials remain server-side</small></div><div><b>Feed</b><strong>${live.feed.toUpperCase()}</strong><small>IEX default; SIP requires entitlement</small></div><div><b>Transport</b><strong>NETLIFY FUNCTION</strong><small>browser never receives API secrets</small></div><div><b>Broker orders</b><strong>DISABLED</strong><small>market data only</small></div><div><b>Health</b><strong>${healthText()}</strong><small>explicit upstream probe</small></div><div><b>Latency</b><strong>${Number.isFinite(live.latencyMs) ? `${live.latencyMs} ms` : '--'}</strong><small>latest provider request</small></div><div><b>Last good data</b><strong>${live.lastSuccessAt ? shortTime(live.lastSuccessAt) : '--'}</strong><small>successful snapshot</small></div><div><b>Failures</b><strong>${live.failureCount}</strong><small>consecutive snapshot failures</small></div></div>${live.error ? `<div class="provider-error">${live.error}</div>` : ''}</section>
+  <footer><b>Education simulator:</b> live prices can be real when configured, but every trade and account balance shown here is fictional. Phase 2B has no endpoint capable of placing a real order.</footer><div class="toast" aria-live="polite">${message}</div></main>`;
 
   app.querySelectorAll('[data-symbol]').forEach((button) => button.addEventListener('click', () => selectSymbol(button.dataset.symbol)));
   app.querySelectorAll('[data-action]').forEach((button) => button.addEventListener('click', () => button.dataset.action === 'RESET' ? resetAccount() : trade(button.dataset.action)));
   app.querySelectorAll('[data-mode]').forEach((button) => button.addEventListener('click', () => button.dataset.mode === 'LIVE' ? connectLive() : switchToReplay()));
-  app.querySelectorAll('[data-live]').forEach((button) => button.addEventListener('click', async () => { button.disabled = true; try { await refreshLiveMarket(live); message = 'Live market snapshot refreshed.'; } catch (error) { message = error.message; } render(); }));
+  app.querySelectorAll('[data-live]').forEach((button) => button.addEventListener('click', async () => {
+    button.disabled = true;
+    try {
+      if (button.dataset.live === 'HEALTH') {
+        await checkLiveHealth(live, true);
+        message = `Provider health check passed in ${Number.isFinite(live.latencyMs) ? `${live.latencyMs} ms` : 'an unknown time'}.`;
+      } else {
+        await refreshLiveMarket(live);
+        message = 'Live market snapshot refreshed.';
+      }
+    } catch (error) { message = error.message; }
+    render();
+  }));
   app.querySelectorAll('[data-replay]').forEach((button) => button.addEventListener('click', () => { const action = button.dataset.replay; if (action === 'PLAY') replay.playing = !replay.playing; else if (action === 'RESET') reset(replay); else if (action === 'NEXT') advance(replay); else if (action === 'BACK') replay.cursor = Math.max(0, replay.cursor - 1); render(); }));
   app.querySelectorAll('input[data-cost]').forEach((input) => input.addEventListener('change', () => { const key = input.dataset.cost; const value = Number(input.value); state.costs[key] = Number.isFinite(value) && value >= 0 ? value : DEFAULTS[key]; render(); }));
 }
