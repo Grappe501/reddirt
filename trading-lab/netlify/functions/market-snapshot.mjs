@@ -1,66 +1,37 @@
-const ALLOWED_SYMBOLS = new Set(['SPY', 'QQQ', 'NVDA', 'AAPL']);
-const ALLOWED_FEEDS = new Set(['iex', 'sip', 'delayed_sip']);
-
-function response(statusCode, body) {
-  return {
-    statusCode,
-    headers: {
-      'content-type': 'application/json; charset=utf-8',
-      'cache-control': 'no-store',
-    },
-    body: JSON.stringify(body),
-  };
-}
-
-function cleanSymbols(raw) {
-  const requested = String(raw || 'SPY,QQQ,NVDA,AAPL')
-    .split(',')
-    .map((value) => value.trim().toUpperCase())
-    .filter(Boolean);
-  return [...new Set(requested.filter((symbol) => ALLOWED_SYMBOLS.has(symbol)))].slice(0, 8);
-}
-
-async function alpaca(path, key, secret) {
-  const result = await fetch(`https://data.alpaca.markets${path}`, {
-    headers: {
-      'APCA-API-KEY-ID': key,
-      'APCA-API-SECRET-KEY': secret,
-      accept: 'application/json',
-    },
-  });
-
-  if (!result.ok) {
-    const text = await result.text();
-    throw new Error(`Alpaca ${result.status}: ${text.slice(0, 240)}`);
-  }
-
-  return result.json();
-}
+import {
+  ALLOWED_LIVE_FEEDS,
+  alpacaRequest,
+  cleanFeed,
+  cleanSymbols,
+  jsonResponse,
+  normalizeBar,
+  providerConfig,
+  publicProviderError,
+} from './provider.mjs';
 
 export async function handler(event) {
-  const key = process.env.ALPACA_KEY_ID;
-  const secret = process.env.ALPACA_SECRET_KEY;
-
-  if (!key || !secret) {
-    return response(503, {
+  const config = providerConfig();
+  if (!config.configured) {
+    return jsonResponse(503, {
       ok: false,
       configured: false,
-      provider: 'alpaca',
-      message: 'Live market data is not configured. Add ALPACA_KEY_ID and ALPACA_SECRET_KEY in Netlify.',
+      provider: config.provider,
+      feed: config.feed,
+      message: 'Live market data is not configured. Add the Alpaca market-data credentials in Netlify.',
     });
   }
 
   const symbols = cleanSymbols(event.queryStringParameters?.symbols);
-  if (!symbols.length) return response(400, { ok: false, message: 'No supported symbols requested.' });
+  if (!symbols.length) return jsonResponse(400, { ok: false, message: 'No supported symbols requested.' });
 
-  const requestedFeed = String(event.queryStringParameters?.feed || process.env.ALPACA_DATA_FEED || 'iex').toLowerCase();
-  const feed = ALLOWED_FEEDS.has(requestedFeed) ? requestedFeed : 'iex';
+  const feed = cleanFeed(event.queryStringParameters?.feed || config.feed, ALLOWED_LIVE_FEEDS);
   const symbolList = encodeURIComponent(symbols.join(','));
+  const startedAt = Date.now();
 
   try {
     const [quotesResult, barsResult] = await Promise.all([
-      alpaca(`/v2/stocks/quotes/latest?symbols=${symbolList}&feed=${feed}`, key, secret),
-      alpaca(`/v2/stocks/bars/latest?symbols=${symbolList}&feed=${feed}`, key, secret),
+      alpacaRequest(`/v2/stocks/quotes/latest?symbols=${symbolList}&feed=${feed}`, config),
+      alpacaRequest(`/v2/stocks/bars/latest?symbols=${symbolList}&feed=${feed}`, config),
     ]);
 
     const quotes = quotesResult.quotes || {};
@@ -80,35 +51,29 @@ export async function handler(event) {
         ask,
         midpoint,
         quoteTime: quote?.t || null,
-        bar: bar
-          ? {
-              time: bar.t,
-              open: Number(bar.o || 0),
-              high: Number(bar.h || 0),
-              low: Number(bar.l || 0),
-              close: Number(bar.c || 0),
-              volume: Number(bar.v || 0),
-            }
-          : null,
+        bar: normalizeBar(bar),
       };
     }
 
-    return response(200, {
+    return jsonResponse(200, {
       ok: true,
       configured: true,
-      provider: 'alpaca',
+      provider: config.provider,
       feed,
       fetchedAt: new Date().toISOString(),
+      latencyMs: Date.now() - startedAt,
       symbols,
       market,
     });
   } catch (error) {
-    return response(502, {
+    const safe = publicProviderError(error);
+    console.error('market-snapshot provider error', { provider: config.provider, feed, upstreamStatus: safe.upstreamStatus || null });
+    return jsonResponse(502, {
       ok: false,
       configured: true,
-      provider: 'alpaca',
+      provider: config.provider,
       feed,
-      message: error instanceof Error ? error.message : 'Market-data request failed.',
+      ...safe,
     });
   }
 }
