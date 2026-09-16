@@ -5,8 +5,12 @@ export function createLiveMarketStore(symbols) {
     provider: 'alpaca',
     feed: 'iex',
     configured: null,
+    providerReachable: null,
     error: null,
     fetchedAt: null,
+    latencyMs: null,
+    lastSuccessAt: null,
+    failureCount: 0,
     market: {},
     series: Object.fromEntries(symbols.map((symbol) => [symbol, []])),
   };
@@ -24,20 +28,41 @@ function mergeBar(series, bar) {
 async function getJson(url) {
   const response = await fetch(url, { headers: { accept: 'application/json' } });
   const body = await response.json().catch(() => ({}));
-  if (!response.ok) throw Object.assign(new Error(body.message || `Request failed: ${response.status}`), { body });
+  if (!response.ok) throw Object.assign(new Error(body.message || `Request failed: ${response.status}`), { body, status: response.status });
   return body;
+}
+
+function applyMeta(store, body = {}) {
+  store.configured = body.configured ?? store.configured;
+  store.provider = body.provider || store.provider;
+  store.feed = body.feed || store.feed;
+  if (Number.isFinite(body.latencyMs)) store.latencyMs = body.latencyMs;
+}
+
+export async function checkLiveHealth(store, probe = true) {
+  try {
+    const body = await getJson(`/.netlify/functions/market-health?probe=${probe ? '1' : '0'}`);
+    applyMeta(store, body);
+    store.providerReachable = body.providerReachable ?? store.providerReachable;
+    store.error = null;
+    return body;
+  } catch (error) {
+    const body = error.body || {};
+    applyMeta(store, body);
+    store.providerReachable = body.providerReachable ?? false;
+    store.error = error.message;
+    throw error;
+  }
 }
 
 export async function seedLiveHistory(store, symbol) {
   try {
     const body = await getJson(`/.netlify/functions/market-history?symbol=${encodeURIComponent(symbol)}&feed=${encodeURIComponent(store.feed)}&limit=80`);
-    store.configured = body.configured ?? true;
-    store.provider = body.provider || store.provider;
-    store.feed = body.feed || store.feed;
+    applyMeta(store, body);
     store.series[symbol] = Array.isArray(body.bars) ? body.bars : [];
     return store.series[symbol];
   } catch (error) {
-    store.configured = error.body?.configured ?? store.configured;
+    applyMeta(store, error.body || {});
     store.error = error.message;
     return store.series[symbol] || [];
   }
@@ -51,10 +76,11 @@ export async function refreshLiveMarket(store) {
   try {
     const body = await getJson(`/.netlify/functions/market-snapshot?${params}`);
     store.status = 'live';
-    store.configured = body.configured ?? true;
-    store.provider = body.provider || store.provider;
-    store.feed = body.feed || store.feed;
+    applyMeta(store, body);
+    store.providerReachable = true;
     store.fetchedAt = body.fetchedAt || new Date().toISOString();
+    store.lastSuccessAt = store.fetchedAt;
+    store.failureCount = 0;
     store.market = body.market || {};
 
     for (const symbol of store.symbols) {
@@ -65,7 +91,9 @@ export async function refreshLiveMarket(store) {
     return body;
   } catch (error) {
     store.status = 'error';
-    store.configured = error.body?.configured ?? store.configured;
+    applyMeta(store, error.body || {});
+    store.providerReachable = error.body?.providerReachable ?? false;
+    store.failureCount += 1;
     store.error = error.message;
     throw error;
   }
