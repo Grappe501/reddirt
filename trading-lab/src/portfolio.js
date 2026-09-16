@@ -36,10 +36,11 @@ export function recordDecision(portfolio, decision) {
   portfolio.decisions = portfolio.decisions.slice(0, 500);
 }
 
-export function buyPortfolio({ portfolio, symbol, price, costs, time, reason, stopPrice = null, targetPrice = null, maxCapitalFraction = 1 }) {
+export function buyPortfolio({ portfolio, symbol, price, costs, time, reason, stopPrice = null, targetPrice = null, maxCapitalFraction = 1, fractional = true }) {
   if (portfolio.position || !(price > 0)) return { ok: false, reason: 'Position already open or price unavailable.' };
   const capital = portfolio.cash * Math.min(1, Math.max(0, maxCapitalFraction));
-  let shares = Math.floor(capital / price);
+  const precision = fractional ? 1000 : 1;
+  let shares = Math.floor((capital / price) * precision) / precision;
   while (shares > 0) {
     const friction = costs('BUY', price, shares);
     const total = shares * price + friction.total;
@@ -50,7 +51,7 @@ export function buyPortfolio({ portfolio, symbol, price, costs, time, reason, st
       portfolio.trades.unshift({ side: 'BUY', symbol, shares, price, costs: friction.total, time, reason, net: null });
       return { ok: true, shares, costs: friction, total };
     }
-    shares -= 1;
+    shares = Math.round((shares - 1 / precision) * precision) / precision;
   }
   return { ok: false, reason: 'Not enough fictional cash after modeled costs.' };
 }
