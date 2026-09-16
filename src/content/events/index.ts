@@ -3436,7 +3436,12 @@ const movementEventsCore: EventItem[] = [
     whoItsFor: "Sevier County neighbors and anyone the hosts welcome.",
     organizerNote:
       "Steve 2026-09-11 flyer: Downtown Pavilion, 124 W. DeQueen Avenue. Same day Multi-Church Tour and Becky's Texarkana 5:00 p.m.",
-    relatedEventSlugs: ["arkadelphia-sep-20-2026", "little-river-charlotte-sep-21-2026", "beckys-texarkana-2026-09-20"],
+    relatedEventSlugs: [
+      "clark-county-multi-church-tour-2026-09-20",
+      "arkadelphia-sep-20-2026",
+      "little-river-charlotte-sep-21-2026",
+      "beckys-texarkana-2026-09-20",
+    ],
     relatedResourceHrefs: [{ label: "Get involved", href: "/get-involved" }],
     mapCoordinates: { lat: 34.0379, lng: -94.3413 },
     mapPinQuality: "region",

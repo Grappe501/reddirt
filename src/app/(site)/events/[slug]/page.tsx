@@ -34,6 +34,7 @@ import {
   kellyNotAttendingCopy,
   SCHEDULE_CONFLICT_COPY,
 } from "@/lib/events/public-event-kind";
+import { ClarkChurchTourBrief } from "@/components/events/ClarkChurchTourBrief";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -144,6 +145,8 @@ function CuratedOrCalendarEventView({ event }: { event: EventItem }) {
                   </p>
                 </>
               ) : null}
+
+              {event.slug === "clark-county-multi-church-tour-2026-09-20" ? <ClarkChurchTourBrief /> : null}
 
               <SectionHeading
                 className="mt-14"
