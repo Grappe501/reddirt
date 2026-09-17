@@ -101,10 +101,19 @@ async function exists(db, sql, id) {
   return Boolean(result.rows[0]?.present);
 }
 
+async function runStage(stage, work) {
+  try {
+    return await work();
+  } catch (error) {
+    error.failedStage = stage;
+    throw error;
+  }
+}
+
 export async function runProductionWriteProof(db) {
-  await writeMemoryBatch(db, memoryBatch());
-  await persistLearningCycle(db, learningCycle());
-  await persistCalibration(db, calibrationCycle());
+  await runStage('market-memory', () => writeMemoryBatch(db, memoryBatch()));
+  await runStage('learning', () => persistLearningCycle(db, learningCycle()));
+  await runStage('calibration', () => persistCalibration(db, calibrationCycle()));
 
   const marketMemoryWriteVisible = await exists(
     db,

@@ -45,6 +45,7 @@ export async function handleRequest(event) {
       marketMemoryWriteVisible: false,
       learningCyclePersisted: false,
       calibrationCyclePersisted: false,
+      failedStage: error?.failedStage || null,
       ...classified,
       message: 'Production write proof failed.',
       checkedAt: new Date().toISOString()
