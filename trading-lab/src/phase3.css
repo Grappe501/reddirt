@@ -26,6 +26,9 @@
 .compare-head h3 { margin: 3px 0 0; }
 .compare-head > strong { font-size: 1.55rem; }
 
+.panel-head { gap: 10px; flex-wrap: wrap; }
+.panel-head .symbol-download { margin-left: auto; }
+
 .compare-stats {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
