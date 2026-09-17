@@ -1,4 +1,5 @@
-import { getDatabase } from '@netlify/database';
+import { getTradingLabDatabase } from '../lib/database.mjs';
+import { asNetlifyFunction } from '../lib/netlify-function.mjs';
 const json=(statusCode,body)=>({statusCode,headers:{'content-type':'application/json; charset=utf-8','cache-control':'no-store'},body:JSON.stringify(body)});
 const num=(v,fallback=0)=>Number.isFinite(Number(v))?Number(v):fallback;
 
@@ -16,4 +17,5 @@ export async function findAnalogues(db,{symbol,score,momentum5,momentum20,relati
  return rows;
 }
 
-export async function handler(event){if(event.httpMethod&&event.httpMethod!=='GET')return json(405,{ok:false,message:'GET required.'});const q=event.queryStringParameters||{};if(!q.symbol)return json(400,{ok:false,message:'symbol required.'});try{const db=getDatabase(),matches=await findAnalogues(db,{symbol:String(q.symbol).toUpperCase(),score:q.score,momentum5:q.momentum5,momentum20:q.momentum20,relativeStrength:q.relativeStrength,realizedVolatility:q.realizedVolatility,limit:q.limit});return json(200,{ok:true,target:'netlify-database',ordersEnabled:false,symbol:String(q.symbol).toUpperCase(),matches,checkedAt:new Date().toISOString()})}catch(error){console.error('Analogue query failed:',error?.message||error);return json(500,{ok:false,ordersEnabled:false,message:'Historical analogue query failed.'})}}
+export async function handleRequest(event){if(event.httpMethod&&event.httpMethod!=='GET')return json(405,{ok:false,message:'GET required.'});const q=event.queryStringParameters||{};if(!q.symbol)return json(400,{ok:false,message:'symbol required.'});try{const db=getTradingLabDatabase(),matches=await findAnalogues(db,{symbol:String(q.symbol).toUpperCase(),score:q.score,momentum5:q.momentum5,momentum20:q.momentum20,relativeStrength:q.relativeStrength,realizedVolatility:q.realizedVolatility,limit:q.limit});return json(200,{ok:true,target:'netlify-database',ordersEnabled:false,symbol:String(q.symbol).toUpperCase(),matches,checkedAt:new Date().toISOString()})}catch(error){console.error('Analogue query failed:',error?.message||error);return json(500,{ok:false,ordersEnabled:false,message:'Historical analogue query failed.'})}}
+export default asNetlifyFunction(handleRequest);

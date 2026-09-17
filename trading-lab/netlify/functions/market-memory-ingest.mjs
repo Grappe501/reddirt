@@ -1,4 +1,5 @@
-import { getDatabase } from '@netlify/database';
+import { getTradingLabDatabase } from '../lib/database.mjs';
+import { asNetlifyFunction } from '../lib/netlify-function.mjs';
 
 const json = (statusCode, body) => ({ statusCode, headers: { 'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-store' }, body: JSON.stringify(body) });
 const COLLECTIONS = ['observations', 'regimes', 'decisions', 'trades', 'experimentRuns', 'sourceHealth'];
@@ -54,14 +55,14 @@ async function writeBatch(db, collections) {
   } finally { client.release(); }
 }
 
-export async function handler(event) {
+export async function handleRequest(event) {
   if (event.httpMethod !== 'POST') return json(405, { ok: false, message: 'POST required.' });
   let payload;
   try { payload = JSON.parse(event.body || '{}'); } catch { return json(400, { ok: false, message: 'Invalid JSON.' }); }
   const validation = validateMemoryBatch(payload);
   if (!validation.ok) return json(400, { ok: false, ...validation });
   try {
-    const db = getDatabase();
+    const db = getTradingLabDatabase();
     const acceptedRows = await writeBatch(db, payload.collections);
     return json(200, { ok: true, configured: true, target: 'netlify-database', branchAware: true, ordersEnabled: false, acceptedRows });
   } catch (error) {
@@ -69,3 +70,5 @@ export async function handler(event) {
     return json(500, { ok: false, configured: true, target: 'netlify-database', ordersEnabled: false, acceptedRows: 0, message: 'Market Memory database write failed.' });
   }
 }
+
+export default asNetlifyFunction(handleRequest);

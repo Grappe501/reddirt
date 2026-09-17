@@ -8,7 +8,7 @@ The Trading Lab must not read `DATABASE_URL`, `DIRECT_URL`, `TRADING_LAB_DATABAS
 
 ## Runtime boundary
 
-Durable functions obtain a connection only with `getDatabase()` from `@netlify/database`. Schema changes live only under `netlify/database/migrations/`. Production deploys use the Netlify Database production branch; deploy previews use their isolated database branches according to Netlify Database behavior.
+Durable functions obtain a connection only through `netlify/lib/database.mjs`, which calls `getDatabase()` from `@netlify/database`. They deploy as modern Netlify Functions (`export default`) so the platform can inject the automatic branch-aware binding. If that automatic lookup misses in a compatibility runtime, the adapter may use the platform-injected `NETLIFY_DB_URL` only. It never reads `DATABASE_URL`, `DIRECT_URL`, or `TRADING_LAB_DATABASE_URL`. Schema changes live only under `netlify/database/migrations/`. Production deploys use the Netlify Database production branch; deploy previews use their isolated database branches according to Netlify Database behavior.
 
 The market-data adapter remains separate. Alpaca credentials are data-provider credentials, not database credentials.
 
@@ -36,7 +36,7 @@ The canonical migrations are:
 
 ## Enforcement
 
-`test/database-boundary.test.mjs` fails CI if durable functions stop importing `@netlify/database`, fail to use `getDatabase()`, or if Trading Lab Functions introduce known manual/Supabase database connection patterns.
+`test/database-boundary.test.mjs` and `test/database-runtime-binding.test.mjs` fail CI if durable functions stop using the shared adapter, export a Lambda-compat `handler`, or introduce known manual/Supabase database connection patterns.
 
 ## Production proof still required
 

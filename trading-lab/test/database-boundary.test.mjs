@@ -14,6 +14,7 @@ const durableFunctions = [
   'learning-cycle.mjs',
   'learning-history.mjs',
   'calibration-cycle.mjs',
+  'production-db-proof.mjs',
 ];
 
 const forbidden = [
@@ -23,11 +24,14 @@ const forbidden = [
   /createClient\s*\(/,
 ];
 
-test('all durable Trading Lab functions use Netlify Database', async () => {
+test('all durable Trading Lab functions use the shared Netlify Database adapter', async () => {
   for (const name of durableFunctions) {
     const source = await readFile(join(functionsDir, name), 'utf8');
-    assert.match(source, /from ['"]@netlify\/database['"]/, `${name} must import @netlify/database`);
-    assert.match(source, /getDatabase\s*\(/, `${name} must obtain its database through getDatabase()`);
+    assert.match(source, /from ['"]\.\.\/lib\/database\.mjs['"]/, `${name} must import the shared database adapter`);
+    assert.match(source, /getTradingLabDatabase\s*\(/, `${name} must obtain its database through getTradingLabDatabase()`);
+    assert.doesNotMatch(source, /from ['"]@netlify\/database['"]/, `${name} must not call @netlify/database directly`);
+    assert.doesNotMatch(source, /export async function handler\b/, `${name} must not export a Lambda-compat handler`);
+    assert.match(source, /export default asNetlifyFunction\(handleRequest\)/, `${name} must deploy as a modern Netlify Function`);
   }
 });
 
@@ -42,5 +46,5 @@ test('Trading Lab functions never fall back to campaign/Supabase connection stri
 test('environment template documents connectionless Netlify Database boundary', async () => {
   const source = await readFile(join(root, '.env.example'), 'utf8');
   assert.match(source, /@netlify\/database/);
-  assert.doesNotMatch(source, /^\s*(?:DATABASE_URL|DIRECT_URL|TRADING_LAB_DATABASE_URL)\s*=/m);
+  assert.doesNotMatch(source, /^\s*(?:DATABASE_URL|DIRECT_URL|TRADING_LAB_DATABASE_URL|NETLIFY_DB_URL)\s*=/m);
 });

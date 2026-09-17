@@ -1,4 +1,5 @@
-import { getDatabase } from '@netlify/database';
+import { getTradingLabDatabase } from '../lib/database.mjs';
+import { asNetlifyFunction } from '../lib/netlify-function.mjs';
 
 const json = (statusCode, body) => ({ statusCode, headers: { 'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-store' }, body: JSON.stringify(body) });
 
@@ -18,10 +19,10 @@ export async function readMemoryStatus(db) {
   return rows[0];
 }
 
-export async function handler(event) {
+export async function handleRequest(event) {
   if (event.httpMethod && event.httpMethod !== 'GET') return json(405, { ok: false, message: 'GET required.' });
   try {
-    const db = getDatabase();
+    const db = getTradingLabDatabase();
     const counts = await readMemoryStatus(db);
     return json(200, { ok: true, target: 'netlify-database', branchAware: true, ordersEnabled: false, counts, checkedAt: new Date().toISOString() });
   } catch (error) {
@@ -29,3 +30,5 @@ export async function handler(event) {
     return json(500, { ok: false, target: 'netlify-database', ordersEnabled: false, message: 'Market Memory database read failed.' });
   }
 }
+
+export default asNetlifyFunction(handleRequest);
