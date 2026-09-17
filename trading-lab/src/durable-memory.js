@@ -1,3 +1,5 @@
+import { normalizeProviderTime } from './data/historical.js';
+
 const COLLECTIONS = ['observations', 'regimes', 'decisions', 'trades', 'experimentRuns', 'sourceHealth'];
 const SYNC_KEY = 'reddirt:trading-lab:durable-sync:v1';
 
@@ -35,7 +37,10 @@ export function buildDurableBatch(memory, syncState, maxPerCollection = 250) {
   for (const name of COLLECTIONS) {
     const rows = Array.isArray(memory?.[name]) ? memory[name] : [];
     const seen = syncState.acknowledged[name] || new Set();
-    collections[name] = rows.filter((row, index) => !seen.has(row.id || `${name}:${index}`)).slice(-maxPerCollection);
+    collections[name] = rows.filter((row, index) => !seen.has(row.id || `${name}:${index}`)).slice(-maxPerCollection).map((row) => {
+      if (!row?.providerTime) return row;
+      return { ...row, providerTime: normalizeProviderTime(row.providerTime) || row.providerTime };
+    });
   }
   return { schema: 'reddirt-trading-lab-market-memory-v1', generatedAt: new Date().toISOString(), collections };
 }

@@ -29,7 +29,7 @@ function bars(s){return state.mode==='LIVE'?liveBars(live,s):snapshot(replay,s)}
 function bar(s){return bars(s).at(-1)||null}
 function price(s){return state.mode==='LIVE'?livePrice(live,s):replay.series[s]?.[replay.cursor]?.close||0}
 function quote(s){return state.mode==='LIVE'?live.market[s]||null:null}
-function providerTime(s){return state.mode==='LIVE'?(live.market[s]?.quoteTime||live.market[s]?.bar?.time||live.fetchedAt||null):(bar(s)?.time||null)}
+function providerTime(s){return state.mode==='LIVE'?(live.market[s]?.quoteTime||live.market[s]?.bar?.time||live.fetchedAt||null):(bar(s)?.providerTime||bar(s)?.time||null)}
 function eventTime(s){return shortTime(providerTime(s))}
 function evaluationKey(s){return `${state.mode}:${s}:${providerTime(s)||replay.cursor}`}
 function feeFor(side,p,q){const n=p*q,spread=n*state.costs.spreadBps/10000,slippage=n*state.costs.slippageBps/10000,commission=state.costs.commissionPerOrder,sec=side==='SELL'?n*state.costs.secFeePerMillionOnSales/1e6:0,taf=side==='SELL'?Math.min(q*state.costs.tafPerShareOnSales,9.79):0;return{spread,slippage,commission,sec,taf,total:spread+slippage+commission+sec+taf}}

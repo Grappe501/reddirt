@@ -1,3 +1,5 @@
+import { normalizeProviderTime } from './data/historical.js';
+
 const VERSION = 1;
 const DEFAULT_KEY = 'reddirt:trading-lab:market-memory:v1';
 
@@ -43,15 +45,16 @@ function cap(list, max) {
 }
 
 export function recordObservation(memory, observation) {
-  if (!observation?.symbol || !observation?.providerTime) return false;
-  const id = `${observation.mode || 'UNKNOWN'}:${observation.symbol}:${observation.providerTime}`;
+  const providerTime = normalizeProviderTime(observation?.providerTime);
+  if (!observation?.symbol || !providerTime) return false;
+  const id = `${observation.mode || 'UNKNOWN'}:${observation.symbol}:${providerTime}`;
   if (memory.observations.some((item) => item.id === id)) return false;
   memory.observations.push({
     id,
     ingestedAt: observation.ingestedAt || new Date().toISOString(),
     mode: observation.mode || 'UNKNOWN',
     symbol: observation.symbol,
-    providerTime: observation.providerTime,
+    providerTime,
     price: finite(observation.price),
     bid: finite(observation.bid),
     ask: finite(observation.ask),

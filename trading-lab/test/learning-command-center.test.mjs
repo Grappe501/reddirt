@@ -4,3 +4,15 @@ test('market memory converts into learning observations',()=>{const rows=observa
 test('closing a simulation runs learning and persists it',async()=>{let sent=null;const fetchImpl=async(url,options)=>{sent=JSON.parse(options.body);return{ok:true,status:200,json:async()=>({ok:true})}};const r=await closeSimulationLearning({memory:{observations:obs},costs:{spreadBps:4,slippageBps:2},simulationId:'closure-1',fetchImpl});assert.equal(r.persisted,true);assert.equal(sent.id,'closure-1');assert.equal(sent.ethics.noLiveOrders,true);assert.equal(r.summary.candidates,3)});
 test('persistence failure keeps completed local learning result',async()=>{const fetchImpl=async()=>({ok:false,status:500,json:async()=>({message:'db unavailable'})});const r=await closeSimulationLearning({memory:{observations:obs},costs:{},simulationId:'closure-2',fetchImpl});assert.equal(r.persisted,false);assert.equal(r.cycle.id,'closure-2');assert.match(r.error,/db unavailable/)});
 test('history reader and command center expose cumulative learning',async()=>{const h=await fetchLearningHistory(async()=>({ok:true,status:200,json:async()=>({ok:true,strategies:[{strategy_id:'a'}],lessons:[]})}));assert.equal(h.strategies.length,1);const html=learningCommandCenter({history:{strategies:[],lessons:[]}});assert.match(html,/Learning Command Center/);assert.match(html,/No automatic live-money promotion/)});
+test('clock-time replay observations still close into a learning cycle',async()=>{
+  const clock=Array.from({length:8},(_,i)=>({id:`c${i}`,symbol:'SPY',providerTime:`09:${String(30+i).padStart(2,'0')}`,price:100+i,score:70,regime:'TREND',features:{close:100+i}}));
+  const rows=observationsForLearning({observations:clock});
+  assert.ok(Number.isFinite(Date.parse(rows[0].providerTime)));
+  assert.ok(Date.parse(rows[0].providerTime)<Date.parse(rows[1].providerTime));
+  let sent=null;
+  const r=await closeSimulationLearning({memory:{observations:clock},costs:{spreadBps:4,slippageBps:2},simulationId:'closure-clock',fetchImpl:async(_,options)=>{sent=JSON.parse(options.body);return{ok:true,status:200,json:async()=>({ok:true})}}});
+  assert.equal(r.persisted,true);
+  assert.equal(sent.id,'closure-clock');
+  assert.equal(sent.ethics.noLiveOrders,true);
+  assert.equal(sent.observationCount,8);
+});

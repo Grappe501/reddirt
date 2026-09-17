@@ -3,13 +3,15 @@ import assert from 'node:assert/strict';
 
 import { cleanFeed, cleanSymbols, providerConfig } from '../netlify/functions/provider.mjs';
 import { handler as healthHandler } from '../netlify/functions/market-health.mjs';
-import { makeSyntheticSeries } from '../src/data/historical.js';
+import { makeSyntheticSeries, normalizeProviderTime, providerTimeMs } from '../src/data/historical.js';
 
 test('synthetic replay models a 390-minute regular session', () => {
   const bars = makeSyntheticSeries('SPY');
   assert.equal(bars.length, 390);
   assert.equal(bars[0].time, '09:30');
   assert.equal(bars.at(-1).time, '15:59');
+  assert.equal(bars[0].providerTime, normalizeProviderTime('09:30'));
+  assert.ok(providerTimeMs(bars[0].providerTime) < providerTimeMs(bars[1].providerTime));
 });
 
 test('market symbol allowlist removes unsupported and duplicate symbols', () => {

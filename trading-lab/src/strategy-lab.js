@@ -1,3 +1,5 @@
+import { providerTimeMs } from './data/historical.js';
+
 const clamp=(v,min,max)=>Math.max(min,Math.min(max,v));
 
 export const STRATEGIES=[
@@ -12,7 +14,7 @@ export function evaluateStrategy(strategy,signal,positionOpen=false){if(!signal?
 
 export function summarizeClosedTrades(trades=[]){const closed=trades.filter(t=>Number.isFinite(t.pnl));const wins=closed.filter(t=>t.pnl>0);const grossWin=wins.reduce((a,t)=>a+t.pnl,0),grossLoss=Math.abs(closed.filter(t=>t.pnl<0).reduce((a,t)=>a+t.pnl,0));return{trades:closed.length,winRate:closed.length?wins.length/closed.length:0,net:closed.reduce((a,t)=>a+t.pnl,0),expectancy:closed.length?closed.reduce((a,t)=>a+t.pnl,0)/closed.length:0,profitFactor:grossLoss?grossWin/grossLoss:grossWin?Infinity:0}}
 
-export function splitWalkForward(rows=[],trainPct=.7){const ordered=[...rows].sort((a,b)=>new Date(a.providerTime)-new Date(b.providerTime));const cut=clamp(Math.floor(ordered.length*trainPct),1,Math.max(1,ordered.length-1));return{train:ordered.slice(0,cut),test:ordered.slice(cut),cutIndex:cut}}
+export function splitWalkForward(rows=[],trainPct=.7){const ordered=[...rows].sort((a,b)=>providerTimeMs(a.providerTime)-providerTimeMs(b.providerTime));const cut=clamp(Math.floor(ordered.length*trainPct),1,Math.max(1,ordered.length-1));return{train:ordered.slice(0,cut),test:ordered.slice(cut),cutIndex:cut}}
 
 export function nearestHistoricalStates(current,history=[],limit=5){if(!current?.features)return[];const keys=['momentum5','momentum20','relativeStrength','realizedVolatility','spreadBps'];const scored=history.filter(x=>x?.features&&x.providerTime!==current.providerTime).map(row=>{let sum=0,n=0;for(const k of keys){const a=Number(current.features[k]),b=Number(row.features[k]);if(Number.isFinite(a)&&Number.isFinite(b)){const scale=k==='spreadBps'?10:.01;sum+=Math.abs(a-b)/scale;n++}}if(Number.isFinite(current.score)&&Number.isFinite(row.score)){sum+=Math.abs(current.score-row.score)/20;n++}return{...row,distance:n?sum/n:Infinity}}).filter(x=>Number.isFinite(x.distance)).sort((a,b)=>a.distance-b.distance).slice(0,limit);return scored}
 

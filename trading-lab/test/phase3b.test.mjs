@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createMarketMemory, recordObservation, computeBreadth, classifyRegime, memorySummary } from '../src/market-memory.js';
+import { normalizeProviderTime } from '../src/data/historical.js';
 
 test('market memory deduplicates observations and preserves dual timestamps', () => {
   const memory = createMarketMemory({ maxObservations: 10 });
@@ -37,4 +38,6 @@ test('summary reports accumulated institutional memory', () => {
   recordObservation(memory, { mode: 'REPLAY', symbol: 'QQQ', providerTime: '09:30', price: 200 });
   assert.deepEqual(memorySummary(memory).symbols, 2);
   assert.equal(memorySummary(memory).observations, 2);
+  assert.equal(memory.observations[0].providerTime, normalizeProviderTime('09:30'));
+  assert.ok(Number.isFinite(Date.parse(memory.observations[0].providerTime)));
 });

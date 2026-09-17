@@ -1,4 +1,21 @@
 export const SYMBOLS = ['SPY', 'QQQ', 'NVDA', 'AAPL'];
+export const REPLAY_SESSION_DATE = '2024-01-16';
+
+export function normalizeProviderTime(value, sessionDate = REPLAY_SESSION_DATE) {
+  if (value == null || value === '') return null;
+  const text = String(value).trim();
+  if (/^\d{1,2}:\d{2}$/.test(text)) {
+    const [hour, minute] = text.split(':');
+    return `${sessionDate}T${String(hour).padStart(2, '0')}:${minute}:00.000Z`;
+  }
+  return text;
+}
+
+export function providerTimeMs(value) {
+  const normalized = normalizeProviderTime(value);
+  const ms = Date.parse(normalized || '');
+  return Number.isFinite(ms) ? ms : Number.NaN;
+}
 
 // Deterministic synthetic one-minute candles used to exercise the replay engine
 // without representing the values as historical exchange data.
@@ -19,6 +36,6 @@ export function makeSyntheticSeries(symbol, bars = 390) {
     const minute = sessionMinute % 60;
     const time = `${String(hour).padStart(2, '0')}:${String(minute).padStart(2, '0')}`;
     price = close;
-    return { index: i, time, open, high, low, close, volume };
+    return { index: i, time, providerTime: normalizeProviderTime(time), open, high, low, close, volume };
   });
 }
