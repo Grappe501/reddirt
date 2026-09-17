@@ -1,0 +1,7 @@
+import test from'node:test';import assert from'node:assert/strict';import{confidenceBucket,calibrationReport,brierScore,ablationReport,calibrationCycle}from'../src/calibration-lab.js';
+const rows=Array.from({length:100},(_,i)=>({score:50+(i%5)*10,regime:i<50?'TREND':'RANGE',features:{momentum5:i/1000,momentum20:i/800,relativeStrength:i/2000,relativeVolume:1+i/200,realizedVolatility:.01+i/10000,spreadBps:2+(i%3)},outcomes:{'15m':{returnPct:i%4===0?-.004:.006}}}));
+test('confidence scores are bucketed deterministically',()=>{assert.equal(confidenceBucket(76),70);assert.equal(confidenceBucket(100),90)});
+test('calibration report compares score buckets with observed outcomes',()=>{const r=calibrationReport(rows);assert.ok(r.length>=4);assert.ok(r.every(x=>x.observedPositiveRate>=0&&x.observedPositiveRate<=1))});
+test('brier score measures probability calibration',()=>{const b=brierScore(rows);assert.ok(b>=0&&b<=1)});
+test('feature ablation ranks measured feature relationships',()=>{const a=ablationReport(rows);assert.equal(a.length,6);assert.ok(a.every(x=>x.samples===100))});
+test('calibration cycle retains regime evidence and safety boundary',()=>{const c=calibrationCycle({labeled:rows,simulationId:'cal-test'});assert.equal(c.id,'cal-test');assert.equal(c.samples,100);assert.ok(c.regimes.TREND);assert.equal(c.safety.noLiveOrders,true);assert.equal(c.safety.descriptiveResearchOnly,true)});
