@@ -13,7 +13,7 @@ test('synthetic replay models a 390-minute regular session', () => {
 });
 
 test('market symbol allowlist removes unsupported and duplicate symbols', () => {
-  assert.deepEqual(cleanSymbols('spy,QQQ,spy,TSLA,NVDA'), ['SPY', 'QQQ', 'NVDA']);
+  assert.deepEqual(cleanSymbols('spy,QQQ,spy,TSLA,NVDA,FAKE'), ['SPY', 'QQQ', 'TSLA', 'NVDA']);
 });
 
 test('invalid feed falls back to IEX', () => {
