@@ -9,6 +9,7 @@ export async function handler(event) {
     provider: config.provider,
     feed: config.feed,
     configured: config.configured,
+    envPresent: config.envPresent,
     ordersEnabled: false,
     checkedAt: new Date().toISOString(),
   };

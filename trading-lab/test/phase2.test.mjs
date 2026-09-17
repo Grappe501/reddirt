@@ -27,6 +27,15 @@ test('provider config never needs to expose secrets to describe readiness', () =
   assert.equal(config.configured, true);
   assert.equal(config.provider, 'alpaca');
   assert.equal(config.feed, 'iex');
+  assert.equal(config.envPresent.ALPACA_KEY_ID, true);
+  assert.equal(config.envPresent.ALPACA_SECRET_KEY, true);
+});
+
+test('provider config accepts Alpaca dashboard name aliases', () => {
+  const config = providerConfig({ ALPACA_API_KEY: 'key', ALPACA_API_SECRET_KEY: 'secret' });
+  assert.equal(config.configured, true);
+  assert.equal(config.envPresent.ALPACA_KEY_ID, true);
+  assert.equal(config.envPresent.ALPACA_SECRET_KEY, true);
 });
 
 test('health endpoint fails safely when credentials are missing', async () => {
@@ -40,6 +49,8 @@ test('health endpoint fails safely when credentials are missing', async () => {
     const body = JSON.parse(response.body);
     assert.equal(response.statusCode, 503);
     assert.equal(body.configured, false);
+    assert.equal(body.envPresent.ALPACA_KEY_ID, false);
+    assert.equal(body.envPresent.ALPACA_SECRET_KEY, false);
     assert.equal(body.ordersEnabled, false);
     assert.equal('key' in body, false);
     assert.equal('secret' in body, false);

@@ -22,8 +22,8 @@ export function jsonResponse(statusCode, body) {
 }
 
 export function providerConfig(env = process.env) {
-  const key = env.ALPACA_KEY_ID || '';
-  const secret = env.ALPACA_SECRET_KEY || '';
+  const key = env.ALPACA_KEY_ID || env.ALPACA_API_KEY || '';
+  const secret = env.ALPACA_SECRET_KEY || env.ALPACA_API_SECRET_KEY || env.ALPACA_API_SECRET || '';
   const requestedFeed = String(env.ALPACA_DATA_FEED || 'iex').toLowerCase();
   return {
     provider: PROVIDER,
@@ -31,6 +31,10 @@ export function providerConfig(env = process.env) {
     key,
     secret,
     feed: ALLOWED_LIVE_FEEDS.has(requestedFeed) ? requestedFeed : 'iex',
+    envPresent: {
+      ALPACA_KEY_ID: Boolean(env.ALPACA_KEY_ID || env.ALPACA_API_KEY),
+      ALPACA_SECRET_KEY: Boolean(env.ALPACA_SECRET_KEY || env.ALPACA_API_SECRET_KEY || env.ALPACA_API_SECRET),
+    },
   };
 }
 
