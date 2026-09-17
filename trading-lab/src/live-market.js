@@ -68,6 +68,18 @@ export async function seedLiveHistory(store, symbol) {
   }
 }
 
+export async function seedLiveHistoryBatched(store, symbols = store.symbols, { batchSize = 4, pauseMs = 175 } = {}) {
+  const unique = [...new Set(symbols)].filter((symbol) => store.symbols.includes(symbol));
+  const results = {};
+  for (let index = 0; index < unique.length; index += batchSize) {
+    const batch = unique.slice(index, index + batchSize);
+    const seeded = await Promise.all(batch.map(async (symbol) => [symbol, await seedLiveHistory(store, symbol)]));
+    for (const [symbol, bars] of seeded) results[symbol] = bars;
+    if (index + batchSize < unique.length && pauseMs > 0) await new Promise((resolve) => setTimeout(resolve, pauseMs));
+  }
+  return results;
+}
+
 export async function refreshLiveMarket(store) {
   store.status = 'loading';
   store.error = null;
