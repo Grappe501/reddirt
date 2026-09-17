@@ -50,21 +50,31 @@ Initial live-data plumbing.
 
 ### Phase 3A — PARALLEL DECISION LAB — COMPLETE
 
-Phase 3A introduces the experimental framework for human-vs-autopilot comparison.
-
 - Two independent fictional **$500** portfolios
-- **Human / gated** track: BUY / SELL / WAIT recommendation with evidence, counter-evidence and invalidation
-- **Shadow autopilot** track: scans the full watchlist and executes automatically only in its own fictional account
-- Same market observations and same cost assumptions for both tracks
-- Fractional-share support in the fictional simulator for fair comparison across high-price ETFs/stocks
-- Market feature engine: VWAP, moving averages, relative volume, ATR, realized volatility, momentum, relative strength and quoted spread
-- Evidence score with explicit entry/exit thresholds
-- Autopilot stop and target handling
+- Human/gated BUY / SELL / WAIT recommendation with evidence, counter-evidence and invalidation
+- Shadow autopilot scans the watchlist and executes only in its fictional account
+- Same observations and execution-cost assumptions for both tracks
+- Fractional-share support
+- VWAP, moving averages, relative volume, ATR, realized volatility, momentum, relative strength and quoted spread
+- Evidence score, stop and target handling
 - Separate trade and decision journals
-- A/B metrics: equity, return, realized P/L, costs, closed trades and win rate
-- Phase 3 unit tests and production build pass GitHub CI
+- A/B metrics for equity, return, realized P/L, costs, closed trades and win rate
 
-The current autopilot is a deterministic quantitative core. A future AI synthesis layer will add richer context, explanations and critique without bypassing the risk/execution engine.
+### Phase 3B — MARKET MEMORY + BREADTH — ACTIVE
+
+The first Phase 3B foundation is now committed.
+
+- Vendor-neutral market-memory contract in `src/market-memory.js`
+- Provider/exchange timestamp plus ingestion timestamp on observations
+- Deduplication and bounded persistence contract
+- Decision, fictional trade, experiment-run, source-health and regime collections
+- Canonical 25-symbol breadth universe spanning indexes, sector ETFs and liquid large caps
+- Breadth calculations: above VWAP, above SMA20, positive momentum, advance/decline, average evidence score, leaders and laggards
+- Deterministic initial regime labels for later validation
+- Automated Phase 3B tests
+- Architecture/runbook in `docs/PHASE_3B_MARKET_MEMORY.md`
+
+The browser persistence adapter is intentionally interim. The next Phase 3B slice wires observations into the active Phase 3 UI, expands provider seeding safely, adds the Market Memory dashboard, then introduces a durable database/worker adapter after the runtime/database target is explicitly selected.
 
 Detailed market-data and analytics roadmap: `docs/MARKET_ANALYTICS.md`.
 
@@ -84,15 +94,7 @@ Do **not** commit real credentials to GitHub and do not place them in `netlify.t
 
 ## Execution-cost model
 
-The simulator separates:
-
-1. commission
-2. spread cost
-3. slippage
-4. Section 31 pass-through modeling on covered sales
-5. FINRA Trading Activity Fee modeling on covered equity sales
-
-These remain modeled inputs because an actual broker can apply its own commission, routing, pass-through and execution economics.
+The simulator separates commission, spread cost, slippage, Section 31 pass-through modeling on covered sales and FINRA Trading Activity Fee modeling on covered equity sales. These remain modeled inputs because an actual broker can apply its own commission, routing, pass-through and execution economics.
 
 ## Netlify
 
@@ -124,7 +126,7 @@ Priority order:
 - **Phase 2A — Real-time market-data adapter** — COMPLETE
 - **Phase 2B — Integration, health and deployment validation** — CODE COMPLETE; LIVE CREDENTIAL/NETLIFY VALIDATION PENDING
 - **Phase 3A — Parallel human-gated vs shadow-autopilot quant core** — COMPLETE
-- **Phase 3B — Persistent analytics / feature store + expanded market breadth** — NEXT
+- **Phase 3B — Persistent analytics / feature store + expanded market breadth** — ACTIVE; MEMORY/BREADTH FOUNDATION BUILT
 - **Phase 3C — Strategy library and walk-forward experiment runner** — PLANNED
 - **Phase 4 — AI analyst and explanation engine** — WHY, evidence, counter-evidence, invalidation and post-trade critique
 - **Phase 5 — Paper execution adapter** — paper-broker orders only, hard separation from live-money credentials
