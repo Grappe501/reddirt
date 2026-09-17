@@ -1,5 +1,11 @@
 export const PROVIDER = 'alpaca';
-export const ALLOWED_SYMBOLS = new Set(['SPY', 'QQQ', 'NVDA', 'AAPL']);
+export const CORE_SYMBOLS = ['SPY', 'QQQ', 'NVDA', 'AAPL'];
+export const BREADTH_SYMBOLS = [
+  'SPY', 'QQQ', 'IWM', 'DIA',
+  'XLK', 'XLF', 'XLE', 'XLV', 'XLI', 'XLY', 'XLP', 'XLU', 'XLB', 'XLRE', 'XLC',
+  'NVDA', 'AAPL', 'MSFT', 'AMZN', 'META', 'GOOGL', 'TSLA', 'AMD', 'AVGO', 'JPM',
+];
+export const ALLOWED_SYMBOLS = new Set(BREADTH_SYMBOLS);
 export const ALLOWED_LIVE_FEEDS = new Set(['iex', 'sip', 'delayed_sip']);
 export const ALLOWED_HISTORY_FEEDS = new Set(['iex', 'sip']);
 
@@ -28,8 +34,8 @@ export function providerConfig(env = process.env) {
   };
 }
 
-export function cleanSymbols(raw, limit = 8) {
-  const requested = String(raw || 'SPY,QQQ,NVDA,AAPL')
+export function cleanSymbols(raw, limit = BREADTH_SYMBOLS.length) {
+  const requested = String(raw || CORE_SYMBOLS.join(','))
     .split(',')
     .map((value) => value.trim().toUpperCase())
     .filter(Boolean);
