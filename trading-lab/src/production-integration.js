@@ -3,11 +3,33 @@ import { labelForwardOutcomes } from './outcome-lab.js';
 import { calibrationCycle } from './calibration-lab.js';
 
 export function createProductionLearningController({memory,costs,fetchImpl=globalThis.fetch,onChange=()=>{}}){
- const state={latest:null,history:null,calibration:null,busy:false,lastError:null};
+ const state={latest:null,history:null,calibration:null,busy:false,lastError:null,learningPersisted:false,calibrationPersisted:false,lastLearningPersistenceError:null,lastCalibrationPersistenceError:null,lastClosedObservationKey:null};
  const notify=()=>onChange(state);
+ const observations=()=> (memory?.observations||[]).filter(r=>Number(r.price)>0&&r.providerTime);
+ const observationKey=rows=>rows.length?`${rows.length}:${rows[rows.length-1].symbol||''}:${rows[rows.length-1].providerTime}`:null;
  async function refresh(){state.history=await fetchLearningHistory(fetchImpl);if(state.history?.error)state.lastError=state.history.error;notify();return state.history}
  async function persistCalibration(cycle){const r=await fetchImpl('/.netlify/functions/calibration-cycle',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(cycle)});const b=await r.json().catch(()=>({}));if(!r.ok||!b.ok)throw new Error(b.message||`Calibration persistence failed: ${r.status}`);return b}
- async function close(reason='MANUAL'){if(state.busy)return state;state.busy=true;state.lastError=null;notify();try{const id=`${reason.toLowerCase()}-${Date.now()}`;state.latest=await closeSimulationLearning({memory,costs,simulationId:id,fetchImpl});const observations=(memory?.observations||[]).filter(r=>Number(r.price)>0&&r.providerTime);const labeled=labelForwardOutcomes(observations);state.calibration=calibrationCycle({labeled,simulationId:`cal-${id}`});try{await persistCalibration(state.calibration)}catch(e){state.lastError=e.message}await refresh()}catch(e){state.lastError=e.message}finally{state.busy=false;notify()}return state}
+ async function close(reason='MANUAL'){
+  if(state.busy)return state;
+  const rows=observations(),key=observationKey(rows);
+  if(!key){state.lastError='No market observations are available to learn from.';notify();return state}
+  if(key===state.lastClosedObservationKey){state.lastError='This observation set was already closed. Add new market evidence before learning again.';notify();return state}
+  state.busy=true;state.lastError=null;state.learningPersisted=false;state.calibrationPersisted=false;state.lastLearningPersistenceError=null;state.lastCalibrationPersistenceError=null;notify();
+  try{
+   const id=`${reason.toLowerCase()}-${Date.now()}`;
+   state.latest=await closeSimulationLearning({memory,costs,simulationId:id,fetchImpl});
+   state.learningPersisted=Boolean(state.latest?.persisted);
+   state.lastLearningPersistenceError=state.latest?.error||null;
+   if(!state.learningPersisted)state.lastError=state.lastLearningPersistenceError||'Learning cycle was not persisted.';
+   const labeled=labelForwardOutcomes(rows);
+   state.calibration=calibrationCycle({labeled,simulationId:`cal-${id}`});
+   try{await persistCalibration(state.calibration);state.calibrationPersisted=true}catch(e){state.lastCalibrationPersistenceError=e.message;state.lastError=e.message}
+   if(state.learningPersisted&&state.calibrationPersisted)state.lastClosedObservationKey=key;
+   await refresh();
+  }catch(e){state.lastError=e.message}
+  finally{state.busy=false;notify()}
+  return state
+ }
  return{state,refresh,close,html:()=>learningCommandCenter({latest:state.latest,history:state.history})};
 }
 
