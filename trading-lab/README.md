@@ -7,78 +7,54 @@ The core rule is simple: market data may be real, but the account remains fictio
 ## Current status
 
 ### Phase 0 — COMPLETE
-
-Offline simulator and accounting foundation.
-
-- Fictional starting account: **$500**
-- No broker credentials or real orders
-- Editable execution-cost model
-- Trade journal with a reason for every simulated order
+Offline simulator and accounting foundation with fictional accounts, editable execution costs and trade journals.
 
 ### Phase 1 — COMPLETE
-
-Historical replay kernel.
-
-- Deterministic synthetic OHLCV dataset
-- 390 true one-minute replay bars from 09:30 through 15:59
-- Replay clock with play, pause, step and reset
-- SPY, QQQ, NVDA and AAPL
-- Dataset is explicitly labeled synthetic
+Historical replay kernel with deterministic one-minute replay data for SPY, QQQ, NVDA and AAPL.
 
 ### Phase 2A — COMPLETE
-
-Initial live-data plumbing.
-
-- Alpaca market-data adapter behind Netlify Functions
-- Latest bid/ask quotes and minute bars
-- Recent 1-minute history
-- Live/replay switch
-- Five-second polling
-- No broker-order endpoint
+Alpaca market-data adapter behind Netlify Functions, live quotes/bars/history and live/replay switching.
 
 ### Phase 2B — CODE COMPLETE / LIVE DEPLOYMENT VALIDATION PENDING
-
-- Shared server-side provider module
-- Netlify-only market-data credentials
-- Credential-safe health/probe endpoint
-- Provider latency/reachability diagnostics
-- Sanitized upstream errors
-- Seven-day historical seed lookback
-- Symbol/feed allowlists
-- Automated Node tests and GitHub Actions CI
-- Netlify runs `npm run check` before publishing
+Credential-safe health diagnostics, provider allowlists, tests and Netlify/GitHub validation rails.
 
 ### Phase 3A — PARALLEL DECISION LAB — COMPLETE
+Independent human/gated and shadow-autopilot fictional portfolios using the same observations and execution-cost assumptions.
 
-- Two independent fictional **$500** portfolios
-- Human/gated BUY / SELL / WAIT recommendation with evidence, counter-evidence and invalidation
-- Shadow autopilot scans the watchlist and executes only in its fictional account
-- Same observations and execution-cost assumptions for both tracks
-- Fractional-share support
-- VWAP, moving averages, relative volume, ATR, realized volatility, momentum, relative strength and quoted spread
-- Evidence score, stop and target handling
-- Separate trade and decision journals
-- A/B metrics for equity, return, realized P/L, costs, closed trades and win rate
+### Phase 3B — MARKET MEMORY + BREADTH — CODE COMPLETE / PRODUCTION PROOF PENDING
 
-### Phase 3B — MARKET MEMORY + BREADTH — ACTIVE
-
-The first Phase 3B foundation is now committed.
-
-- Vendor-neutral market-memory contract in `src/market-memory.js`
-- Provider/exchange timestamp plus ingestion timestamp on observations
-- Deduplication and bounded persistence contract
+- Durable browser Market Memory plus Netlify Database persistence
+- Provider/exchange and ingestion timestamps
+- Automatic browser-to-database synchronization and database readback
 - Decision, fictional trade, experiment-run, source-health and regime collections
-- Canonical 25-symbol breadth universe spanning indexes, sector ETFs and liquid large caps
-- Breadth calculations: above VWAP, above SMA20, positive momentum, advance/decline, average evidence score, leaders and laggards
-- Deterministic initial regime labels for later validation
-- Automated Phase 3B tests
-- Architecture/runbook in `docs/PHASE_3B_MARKET_MEMORY.md`
+- 25-symbol live breadth universe spanning indexes, sectors and liquid large caps
+- Above-VWAP/SMA20 participation, momentum participation, advance/decline, evidence score, leaders and laggards
+- Deterministic regime labels
+- Database telemetry in the dashboard
+- No broker-order endpoint
 
-The browser persistence adapter is intentionally interim. The next Phase 3B slice wires observations into the active Phase 3 UI, expands provider seeding safely, adds the Market Memory dashboard, then introduces a durable database/worker adapter after the runtime/database target is explicitly selected.
+Architecture: `docs/PHASE_3B_MARKET_MEMORY.md`.
+
+### Phase 3C — STRATEGY LIBRARY + WALK-FORWARD EXPERIMENT LAB — ACTIVE
+
+The first Phase 3C slice is built:
+
+- Deterministic strategy registry: Evidence Trend, Momentum Confirmed and VWAP Participation
+- Shared strategy evaluation contract
+- Chronological train/test walk-forward split primitive
+- Closed-trade expectancy/profit-factor summary primitive
+- Historical-state similarity engine for asking “when did the market look like this before?”
+- Netlify Database analogue query endpoint
+- Automated Phase 3C tests
+- Explicit rule that analogue similarity is evidence, not a prediction
+
+Next Phase 3C work labels observations with leakage-safe forward returns, builds cost-aware backtests, rolling walk-forward windows, regime-stratified results and a full Strategy Lab dashboard.
+
+Architecture: `docs/PHASE_3C_STRATEGY_LAB.md`.
 
 Detailed market-data and analytics roadmap: `docs/MARKET_ANALYTICS.md`.
 
-## Phase 2B market-data configuration
+## Market-data configuration
 
 Required Netlify runtime environment variables:
 
@@ -88,13 +64,7 @@ ALPACA_SECRET_KEY=<market-data secret>
 ALPACA_DATA_FEED=iex
 ```
 
-`ALPACA_DATA_FEED` is optional and defaults to `iex`.
-
-Do **not** commit real credentials to GitHub and do not place them in `netlify.toml`.
-
-## Execution-cost model
-
-The simulator separates commission, spread cost, slippage, Section 31 pass-through modeling on covered sales and FINRA Trading Activity Fee modeling on covered equity sales. These remain modeled inputs because an actual broker can apply its own commission, routing, pass-through and execution economics.
+`ALPACA_DATA_FEED` is optional and defaults to `iex`. Do not commit real credentials.
 
 ## Netlify
 
@@ -107,9 +77,11 @@ Functions directory: netlify/functions
 Node: 22
 ```
 
+Trading Lab uses Netlify Database for its isolated durable research store. It does not fall back to the RedDirt campaign database.
+
 ## Market analytics principle
 
-More data is not automatically an edge. Each new feature/data source must show incremental value through historical replay, walk-forward testing, cost-aware simulation and shadow-live testing. Features that do not improve out-of-sample expectancy, drawdown or timing are removed.
+More data is not automatically an edge. Each new feature/data source must show incremental value through historical replay, chronological walk-forward testing, cost-aware simulation and shadow-live testing. Features that do not improve out-of-sample expectancy, drawdown or timing should be rejected rather than accumulated.
 
 Priority order:
 
@@ -124,10 +96,10 @@ Priority order:
 - **Phase 0 — Offline simulator and accounting** — COMPLETE
 - **Phase 1 — Historical replay kernel** — COMPLETE
 - **Phase 2A — Real-time market-data adapter** — COMPLETE
-- **Phase 2B — Integration, health and deployment validation** — CODE COMPLETE; LIVE CREDENTIAL/NETLIFY VALIDATION PENDING
+- **Phase 2B — Integration, health and deployment validation** — CODE COMPLETE; LIVE VALIDATION PENDING
 - **Phase 3A — Parallel human-gated vs shadow-autopilot quant core** — COMPLETE
-- **Phase 3B — Persistent analytics / feature store + expanded market breadth** — ACTIVE; MEMORY/BREADTH FOUNDATION BUILT
-- **Phase 3C — Strategy library and walk-forward experiment runner** — PLANNED
+- **Phase 3B — Persistent analytics / feature store + expanded market breadth** — CODE COMPLETE; PRODUCTION DB PROOF PENDING
+- **Phase 3C — Strategy library and walk-forward experiment runner** — ACTIVE
 - **Phase 4 — AI analyst and explanation engine** — WHY, evidence, counter-evidence, invalidation and post-trade critique
 - **Phase 5 — Paper execution adapter** — paper-broker orders only, hard separation from live-money credentials
 - **Phase 6 — CME/futures market context** — ES, NQ and selected futures context
@@ -136,4 +108,4 @@ Priority order:
 
 ## Always-on architecture
 
-The current browser/replay autopilot evaluates while the application is running. True 24/7 shadow monitoring requires a long-running market-ingestion/decision worker and persistent feature store. Netlify remains the dashboard and control plane; it should not be treated as the permanent high-frequency WebSocket collector.
+The browser/replay autopilot evaluates while the application is running. True continuous shadow monitoring ultimately requires a long-running market-ingestion/decision worker. Netlify remains the dashboard, database and control plane; it should not be treated as the permanent high-frequency WebSocket collector.
