@@ -1,11 +1,12 @@
+import { getDatabase } from '@netlify/database';
+
 const json = (statusCode, body) => ({ statusCode, headers: { 'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-store' }, body: JSON.stringify(body) });
 const COLLECTIONS = ['observations', 'regimes', 'decisions', 'trades', 'experimentRuns', 'sourceHealth'];
+const asJson = (value) => JSON.stringify(value ?? {});
+const now = () => new Date().toISOString();
 
-export function durableMemoryConfig(env = process.env) {
-  return {
-    configured: Boolean(env.TRADING_LAB_DATABASE_URL),
-    target: env.TRADING_LAB_DATABASE_URL ? 'dedicated-postgres' : 'unconfigured',
-  };
+export function durableMemoryConfig() {
+  return { configured: true, target: 'netlify-database', branchAware: true };
 }
 
 export function validateMemoryBatch(payload) {
@@ -22,29 +23,49 @@ export function validateMemoryBatch(payload) {
   return { ok: true, count };
 }
 
+async function writeBatch(db, collections) {
+  let acceptedRows = 0;
+  const client = await db.pool.connect();
+  try {
+    await client.query('BEGIN');
+    for (const r of collections.experimentRuns || []) {
+      await client.query(`insert into trading_lab.experiment_runs (id,started_at,ended_at,mode,strategy_version,universe_version,cost_model,metadata) values ($1,$2,$3,$4,$5,$6,$7::jsonb,$8::jsonb) on conflict (id) do update set ended_at=excluded.ended_at, strategy_version=excluded.strategy_version, universe_version=excluded.universe_version, cost_model=excluded.cost_model, metadata=excluded.metadata`, [r.id, r.startedAt || r.started_at || now(), r.endedAt || r.ended_at || null, r.mode || 'UNKNOWN', r.strategyVersion || r.strategy_version || null, r.universeVersion || r.universe_version || null, asJson(r.costModel || r.cost_model), asJson(r.metadata)]); acceptedRows++;
+    }
+    for (const r of collections.observations || []) {
+      await client.query(`insert into trading_lab.market_observations (id,experiment_run_id,mode,symbol,provider_time,ingested_at,price,bid,ask,volume,evidence_score,action,regime,features) values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14::jsonb) on conflict (id) do nothing`, [r.id, r.experimentRunId || null, r.mode || 'UNKNOWN', r.symbol, r.providerTime, r.ingestedAt || now(), r.price ?? null, r.bid ?? null, r.ask ?? null, r.volume ?? null, r.score ?? r.evidenceScore ?? null, r.action ?? null, r.regime ?? null, asJson(r.features)]); acceptedRows++;
+    }
+    for (const r of collections.regimes || []) {
+      await client.query(`insert into trading_lab.market_regimes (experiment_run_id,provider_time,ingested_at,regime,breadth) values ($1,$2,$3,$4,$5::jsonb)`, [r.experimentRunId || null, r.providerTime, r.ingestedAt || now(), r.regime, asJson(r.breadth)]); acceptedRows++;
+    }
+    for (const r of collections.decisions || []) {
+      await client.query(`insert into trading_lab.decision_events (id,experiment_run_id,actor,symbol,provider_time,ingested_at,action,score,confidence,executed,evidence) values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11::jsonb) on conflict (id) do nothing`, [r.id, r.experimentRunId || null, r.actor, r.symbol, r.providerTime || null, r.ingestedAt || now(), r.action, r.score ?? null, r.confidence ?? null, r.executed ?? null, asJson({ reasons:r.reasons || [], counterEvidence:r.counterEvidence || [] })]); acceptedRows++;
+    }
+    for (const r of collections.trades || []) {
+      await client.query(`insert into trading_lab.paper_trades (id,experiment_run_id,actor,side,symbol,provider_time,ingested_at,price,shares,costs,metadata) values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10::jsonb,$11::jsonb) on conflict (id) do nothing`, [r.id, r.experimentRunId || null, r.actor, r.side, r.symbol, r.providerTime || null, r.ingestedAt || now(), r.price ?? null, r.shares ?? null, asJson(r.costs), asJson(r.metadata)]); acceptedRows++;
+    }
+    for (const r of collections.sourceHealth || []) {
+      await client.query(`insert into trading_lab.data_source_health (ingested_at,provider,feed,mode,ok,latency_ms,detail) values ($1,$2,$3,$4,$5,$6,$7::jsonb)`, [r.ingestedAt || now(), r.provider || null, r.feed || null, r.mode || null, r.ok ?? null, r.latencyMs ?? null, asJson(r.detail || { error:r.error || null })]); acceptedRows++;
+    }
+    await client.query('COMMIT');
+    return acceptedRows;
+  } catch (error) {
+    await client.query('ROLLBACK');
+    throw error;
+  } finally { client.release(); }
+}
+
 export async function handler(event) {
   if (event.httpMethod !== 'POST') return json(405, { ok: false, message: 'POST required.' });
   let payload;
   try { payload = JSON.parse(event.body || '{}'); } catch { return json(400, { ok: false, message: 'Invalid JSON.' }); }
   const validation = validateMemoryBatch(payload);
   if (!validation.ok) return json(400, { ok: false, ...validation });
-  const config = durableMemoryConfig();
-  if (!config.configured) {
-    return json(503, {
-      ok: false,
-      configured: false,
-      ordersEnabled: false,
-      message: 'Durable Market Memory is prepared but not connected. Set a dedicated TRADING_LAB_DATABASE_URL only after the database target is approved and provisioned.',
-    });
+  try {
+    const db = getDatabase();
+    const acceptedRows = await writeBatch(db, payload.collections);
+    return json(200, { ok: true, configured: true, target: 'netlify-database', branchAware: true, ordersEnabled: false, acceptedRows });
+  } catch (error) {
+    console.error('Market Memory Netlify Database ingest failed:', error?.message || error);
+    return json(500, { ok: false, configured: true, target: 'netlify-database', ordersEnabled: false, acceptedRows: 0, message: 'Market Memory database write failed.' });
   }
-
-  // Hard gate: schema and endpoint are intentionally prepared before a database driver is installed.
-  // A later infrastructure slice will add the dedicated Postgres adapter after target selection.
-  return json(501, {
-    ok: false,
-    configured: true,
-    ordersEnabled: false,
-    acceptedRows: 0,
-    message: 'Dedicated database target is configured, but the Postgres writer adapter has not been enabled yet.',
-  });
 }
