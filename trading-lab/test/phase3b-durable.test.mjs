@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createDurableSyncState, buildDurableBatch, acknowledgeDurableBatch } from '../src/durable-memory.js';
-import { durableMemoryConfig, validateMemoryBatch, handler } from '../netlify/functions/market-memory-ingest.mjs';
+import { durableMemoryConfig, validateMemoryBatch } from '../netlify/functions/market-memory-ingest.mjs';
 
 test('durable batch mirrors normalized browser collections', () => {
   const state = createDurableSyncState();
@@ -20,21 +20,16 @@ test('durable ingest validates schema and bounded collections', () => {
   assert.equal(validateMemoryBatch({ schema: 'wrong', collections: {} }).ok, false);
 });
 
-test('durable database is isolated behind its own environment variable', () => {
-  assert.equal(durableMemoryConfig({ DATABASE_URL: 'campaign-db' }).configured, false);
-  assert.equal(durableMemoryConfig({ TRADING_LAB_DATABASE_URL: 'dedicated-db' }).configured, true);
+test('durable memory targets branch-aware Netlify Database without manual connection strings', () => {
+  const config = durableMemoryConfig();
+  assert.equal(config.configured, true);
+  assert.equal(config.target, 'netlify-database');
+  assert.equal(config.branchAware, true);
 });
 
-test('ingest endpoint fails closed before dedicated database is configured', async () => {
-  const prior = process.env.TRADING_LAB_DATABASE_URL;
-  delete process.env.TRADING_LAB_DATABASE_URL;
-  try {
-    const response = await handler({ httpMethod: 'POST', body: JSON.stringify({ schema: 'reddirt-trading-lab-market-memory-v1', collections: { observations: [], regimes: [], decisions: [], trades: [], experimentRuns: [], sourceHealth: [] } }) });
-    const body = JSON.parse(response.body);
-    assert.equal(response.statusCode, 503);
-    assert.equal(body.configured, false);
-    assert.equal(body.ordersEnabled, false);
-  } finally {
-    if (prior === undefined) delete process.env.TRADING_LAB_DATABASE_URL; else process.env.TRADING_LAB_DATABASE_URL = prior;
-  }
+test('durable ingest keeps batch limits fail-closed', () => {
+  const observations = Array.from({ length: 251 }, (_, i) => ({ id: `o${i}` }));
+  const result = validateMemoryBatch({ schema: 'reddirt-trading-lab-market-memory-v1', collections: { observations, regimes: [], decisions: [], trades: [], experimentRuns: [], sourceHealth: [] } });
+  assert.equal(result.ok, false);
+  assert.match(result.message, /250-row/);
 });
