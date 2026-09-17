@@ -30,6 +30,7 @@ export function sessionProofs({
   databaseSynced = false,
   checkProof = null,
   methodologyHtml = '',
+  liveShadow = null,
 } = {}) {
   const proofs = { ...base };
   if (databaseSynced) {
@@ -62,6 +63,13 @@ export function sessionProofs({
   if (checkProof?.ok && checkProof.accessibility === true) {
     proofs.accessibility = true;
     proofs.accessibilityDetail = 'Automated accessibility smoke passed against shipped markup.';
+  }
+  if (liveShadow?.ok && liveShadow.ordersEnabled !== true) {
+    proofs.liveShadow = true;
+    proofs.liveShadowDetail = liveShadow.detail || `Live shadow recorded ${liveShadow.observationCount} LIVE observations. Fictional trading only.`;
+  } else if (proofs.liveShadow !== true) {
+    proofs.liveShadow = false;
+    proofs.liveShadowDetail = liveShadow?.detail || proofs.liveShadowDetail || 'Requires a completed live-data shadow session.';
   }
   return proofs;
 }
