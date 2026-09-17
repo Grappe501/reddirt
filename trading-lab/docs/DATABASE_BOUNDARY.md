@@ -28,15 +28,15 @@ All durable tables live under the `trading_lab` PostgreSQL schema. No campaign, 
 The canonical migrations are:
 
 1. `001_market-memory`
-2. `002-learning-ledger`
-3. `003-strategy-lineage`
-4. `004-calibration`
+2. `002_learning-ledger`
+3. `003_strategy-lineage`
+4. `004_calibration`
 
 `db/market-memory-schema.sql` is retained only as an early architecture/reference artifact. It is not a production migration source and must not be manually applied to another RedDirt database.
 
 ## Enforcement
 
-`test/database-boundary.test.mjs` and `test/database-runtime-binding.test.mjs` fail CI if durable functions stop using the shared adapter, export a Lambda-compat `handler`, or introduce known manual/Supabase database connection patterns.
+`test/database-boundary.test.mjs` and `test/database-runtime-binding.test.mjs` fail CI if durable functions stop using the shared adapter, export a Lambda-compat `handler`, introduce known manual/Supabase database connection patterns, or if later migrations stop using the official `number_slug` Netlify Database name.
 
 ## Production proof still required
 

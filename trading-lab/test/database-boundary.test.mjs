@@ -48,3 +48,34 @@ test('environment template documents connectionless Netlify Database boundary', 
   assert.match(source, /@netlify\/database/);
   assert.doesNotMatch(source, /^\s*(?:DATABASE_URL|DIRECT_URL|TRADING_LAB_DATABASE_URL|NETLIFY_DB_URL)\s*=/m);
 });
+
+test('Netlify Database migrations use the official number_slug names', async () => {
+  const migrationsDir = join(root, 'netlify', 'database', 'migrations');
+  const names = (await readdir(migrationsDir, { withFileTypes: true }))
+    .filter((entry) => entry.isDirectory())
+    .map((entry) => entry.name)
+    .sort();
+  assert.deepEqual(names, [
+    '001_market-memory',
+    '002_learning-ledger',
+    '003_strategy-lineage',
+    '004_calibration',
+  ]);
+  for (const name of names) {
+    assert.match(name, /^\d+_[a-z0-9_-]+$/, `${name} is not a valid Netlify Database migration name`);
+    await readFile(join(migrationsDir, name, 'migration.sql'), 'utf8');
+  }
+});
+
+test('required production tables are declared in Netlify migrations', async () => {
+  const { REQUIRED_TABLES } = await import('../netlify/functions/production-db-proof.mjs');
+  const migrationsDir = join(root, 'netlify', 'database', 'migrations');
+  const names = (await readdir(migrationsDir)).filter((name) => !name.startsWith('.'));
+  let sql = '';
+  for (const name of names) {
+    sql += await readFile(join(migrationsDir, name, 'migration.sql'), 'utf8');
+  }
+  for (const table of REQUIRED_TABLES) {
+    assert.match(sql, new RegExp(`trading_lab\\.${table}\\b`), `${table} must be created by a Netlify Database migration`);
+  }
+});
