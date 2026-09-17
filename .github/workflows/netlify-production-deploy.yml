@@ -1,6 +1,6 @@
-# Production deploy gate — mirrors Netlify build (Prisma migrate + next build).
-# Netlify's GitHub integration also builds on push to main; this workflow validates
-# the same path in CI before/alongside the Netlify webhook.
+# Production deploy gate — mirrors the RedDirt Netlify build (Prisma migrate + next build).
+# Standalone Trading Lab changes are validated/deployed through their own scoped workflow/site.
+# Netlify's GitHub integration also builds RedDirt on applicable pushes to main.
 #
 # Optional: set NETLIFY_BUILD_HOOK in repo secrets to POST a build after CI passes.
 
@@ -9,6 +9,9 @@ name: Netlify production deploy gate
 on:
   push:
     branches: [main]
+    paths-ignore:
+      - 'trading-lab/**'
+      - '.github/workflows/trading-lab-ci.yml'
   workflow_dispatch:
 
 permissions:
