@@ -14,7 +14,9 @@ const durableFunctions = [
   'learning-cycle.mjs',
   'learning-history.mjs',
   'calibration-cycle.mjs',
+  'calibration-history.mjs',
   'production-db-proof.mjs',
+  'production-write-proof.mjs',
 ];
 
 const forbidden = [

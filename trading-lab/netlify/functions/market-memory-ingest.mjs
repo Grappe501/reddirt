@@ -24,7 +24,7 @@ export function validateMemoryBatch(payload) {
   return { ok: true, count };
 }
 
-async function writeBatch(db, collections) {
+export async function writeMemoryBatch(db, collections) {
   let acceptedRows = 0;
   const client = await db.pool.connect();
   try {
@@ -63,7 +63,7 @@ export async function handleRequest(event) {
   if (!validation.ok) return json(400, { ok: false, ...validation });
   try {
     const db = getTradingLabDatabase();
-    const acceptedRows = await writeBatch(db, payload.collections);
+    const acceptedRows = await writeMemoryBatch(db, payload.collections);
     return json(200, { ok: true, configured: true, target: 'netlify-database', branchAware: true, ordersEnabled: false, acceptedRows });
   } catch (error) {
     console.error('Market Memory Netlify Database ingest failed:', error?.message || error);

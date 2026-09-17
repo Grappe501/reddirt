@@ -46,7 +46,9 @@ Architecture convergence is not production proof. The database release gate rema
 2. `market-memory-status` reads the `trading_lab` schema;
 3. a bounded Market Memory write succeeds and is visible on readback;
 4. a learning cycle persists and appears in `learning-history`;
-5. a calibration cycle persists and is independently read back;
+5. a calibration cycle persists and is independently read back through `calibration-history`;
 6. no real-money order capability is introduced.
+
+`POST /.netlify/functions/production-write-proof` is the idempotent production evidence for items 3-5. It writes only stable synthetic educational rows and never enables orders.
 
 This distinction is intentional: **configured, tested, deployed, and proven are separate states.**

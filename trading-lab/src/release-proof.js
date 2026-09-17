@@ -25,6 +25,7 @@ export async function collectProductionProof({ fetchImpl = globalThis.fetch } = 
   const startedAt = now();
   const database = await readJson(fetchImpl, '/.netlify/functions/market-memory-status');
   const history = await readJson(fetchImpl, '/.netlify/functions/learning-history');
+  const calibrationHistory = await readJson(fetchImpl, '/.netlify/functions/calibration-history');
 
   return {
     version: PROOF_VERSION,
@@ -39,8 +40,10 @@ export async function collectProductionProof({ fetchImpl = globalThis.fetch } = 
       learningDetail: history.ok
         ? 'Durable learning history responded successfully.'
         : `Learning history proof failed (${history.status || 'network'}).`,
-      calibration: false,
-      calibrationDetail: 'Requires a completed persisted calibration cycle.',
+      calibration: calibrationHistory.ok,
+      calibrationDetail: calibrationHistory.ok
+        ? 'Durable calibration history responded successfully.'
+        : `Calibration history proof failed (${calibrationHistory.status || 'network'}).`,
       validation: true,
       validationDetail: 'Bounded research validator is wired to learning and calibration writes.',
       tests: false,
@@ -57,6 +60,7 @@ export async function collectProductionProof({ fetchImpl = globalThis.fetch } = 
     evidence: {
       database: { status: database.status, ok: database.ok },
       learningHistory: { status: history.status, ok: history.ok },
+      calibrationHistory: { status: calibrationHistory.status, ok: calibrationHistory.ok },
     },
   };
 }
