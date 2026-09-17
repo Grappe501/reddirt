@@ -1,12 +1,19 @@
 # Quality gate — lint, typecheck, production build (with Postgres for Prisma SSG)
 # Does not deploy or touch production. RedDirt repo root must contain package-lock.json.
+# Standalone Trading Lab changes are validated by trading-lab-ci.yml instead of rebuilding RedDirt.
 
 name: Quality gate (npm run check)
 
 on:
   push:
     branches: [main, master, feature/kelly-schedule-settlement-dashboard]
+    paths-ignore:
+      - 'trading-lab/**'
+      - '.github/workflows/trading-lab-ci.yml'
   pull_request:
+    paths-ignore:
+      - 'trading-lab/**'
+      - '.github/workflows/trading-lab-ci.yml'
   workflow_dispatch:
 
 permissions:
