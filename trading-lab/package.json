@@ -7,7 +7,7 @@
     "dev": "vite",
     "test": "node --test",
     "build": "vite build",
-    "check": "npm run test && npm run build",
+    "check": "npm run test && npm run build && node scripts/write-check-proof.mjs",
     "preview": "vite preview"
   },
   "dependencies": {
