@@ -55,6 +55,14 @@ export function sessionProofs({
     proofs.disclosures = true;
     proofs.disclosuresDetail = 'Simulation methodology and no-live-money disclosure is visible.';
   }
+  if (checkProof?.ok && checkProof.mobile === true) {
+    proofs.mobile = true;
+    proofs.mobileDetail = 'Automated mobile layout smoke passed against shipped CSS and markup.';
+  }
+  if (checkProof?.ok && checkProof.accessibility === true) {
+    proofs.accessibility = true;
+    proofs.accessibilityDetail = 'Automated accessibility smoke passed against shipped markup.';
+  }
   return proofs;
 }
 

@@ -3,12 +3,13 @@ import{methodologyPanel,disclosuresVisible}from'../src/methodology.js';
 import{checkProofPayload}from'../scripts/write-check-proof.mjs';
 test('production proof uses real readback endpoints and does not invent untested gates',async()=>{const fetchImpl=async url=>({ok:true,status:200,json:async()=>url.includes('market-memory-status')?{ok:true,counts:{observations:3}}:url.includes('check-proof')?{ok:false}: {ok:true,strategies:[],cycles:[]}});const p=await collectProductionProof({fetchImpl});assert.equal(p.proofs.database,true);assert.equal(p.proofs.learning,true);assert.equal(p.proofs.calibration,true);assert.equal(p.proofs.disclosures,true);assert.equal(p.proofs.tests,false);assert.equal(p.proofs.mobile,false);assert.equal(p.proofs.liveShadow,false)});
 test('session proofs count visible methodology and verified check evidence',()=>{
-  const p=sessionProofs({base:{validation:true},learningPersisted:true,calibrationPersisted:true,checkProof:checkProofPayload(),methodologyHtml:methodologyPanel()});
+  const p=sessionProofs({base:{validation:true},learningPersisted:true,calibrationPersisted:true,checkProof:checkProofPayload({ok:true,mobile:{ok:true},accessibility:{ok:true}}),methodologyHtml:methodologyPanel()});
   assert.equal(p.tests,true);
   assert.equal(p.disclosures,true);
   assert.equal(p.learning,true);
   assert.equal(p.calibration,true);
-  assert.equal(p.mobile,undefined);
+  assert.equal(p.mobile,true);
+  assert.equal(p.accessibility,true);
   assert.ok(disclosuresVisible(methodologyPanel()));
 });
 test('check proof cannot pass if it claims live orders are enabled',()=>{
