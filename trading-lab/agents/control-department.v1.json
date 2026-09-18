@@ -1,0 +1,25 @@
+{
+  "version": "1.0.0",
+  "phase": "V2.5-08",
+  "department": "control",
+  "agents": [
+    "data-quality",
+    "overfitting",
+    "cost",
+    "risk"
+  ],
+  "authority": {
+    "mayBlockResearchAdvancement": true,
+    "mayExecuteTrade": false,
+    "mayDeleteEvidence": false,
+    "overrideRequiresFutureExplicitPolicy": true
+  },
+  "rules": [
+    "Data quality blocks stale, critically missing or conflicting evidence.",
+    "Overfitting blocks obvious leakage, insufficient samples, parameter instability and uncontrolled multiple testing.",
+    "Cost blocks when explicit estimated costs equal or exceed supplied gross edge.",
+    "Risk blocks explicit limit breaches.",
+    "A block is a research gate, not a prediction that the security will decline.",
+    "All block reasons remain auditable."
+  ]
+}
