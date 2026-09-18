@@ -1,0 +1,47 @@
+[
+  {
+    "id":"uko-vwap","slug":"vwap","canonicalTerm":"VWAP","aliases":["Volume-Weighted Average Price"],"objectType":"indicator","domainTags":["technical-analysis","market-microstructure"],"version":"1.0","status":"draft",
+    "glance":{"definition":"Volume-Weighted Average Price is the average traded price over a period, weighted by trading volume."},
+    "explain":{"plainEnglish":"VWAP gives more influence to prices where more shares traded, so it describes the session's volume-weighted average transaction level.","whyItMatters":"Traders use VWAP as a benchmark for execution and as context for where current price sits relative to heavily traded prices."},
+    "relationships":{"prerequisites":["uko-volume"],"relatedConcepts":["uko-volume","uko-typical-price"],"contrastsWith":["uko-simple-moving-average"],"usedByStrategies":[],"appearsInMetrics":[],"relevantAssetClasses":["stocks","etfs"],"relevantIndustries":[]},
+    "interactive":{"exercises":[],"simulatorScenarios":[],"quizItems":[]},
+    "evidence":{"sources":[],"factualClaims":[],"sourceState":"unsourced"},
+    "presentation":{"searchKeywords":["vwap","volume weighted average price"],"locale":"en-US"}
+  },
+  {
+    "id":"uko-pe-ratio","slug":"pe-ratio","canonicalTerm":"P/E Ratio","aliases":["Price-to-Earnings Ratio","PE Ratio"],"objectType":"metric","domainTags":["fundamental-analysis","valuation"],"version":"1.0","status":"draft",
+    "glance":{"definition":"The price-to-earnings ratio compares a company's share price with earnings per share."},
+    "explain":{"plainEnglish":"P/E expresses how much the market price represents for each unit of reported earnings per share.","whyItMatters":"It is one valuation lens, but comparisons depend on growth, accounting, industry, time period and whether earnings are positive and representative."},
+    "relationships":{"prerequisites":["uko-eps"],"relatedConcepts":["uko-eps","uko-earnings-yield"],"contrastsWith":[],"usedByStrategies":[],"appearsInMetrics":[],"relevantAssetClasses":["stocks"],"relevantIndustries":[]},
+    "interactive":{"exercises":[],"simulatorScenarios":[],"quizItems":[]},
+    "evidence":{"sources":[],"factualClaims":[],"sourceState":"unsourced"},
+    "presentation":{"searchKeywords":["p/e","pe","price earnings","valuation"],"locale":"en-US"}
+  },
+  {
+    "id":"uko-atr","slug":"average-true-range","canonicalTerm":"Average True Range","aliases":["ATR"],"objectType":"indicator","domainTags":["technical-analysis","volatility"],"version":"1.0","status":"draft",
+    "glance":{"definition":"Average True Range is a price-range-based measure of recent market volatility."},
+    "explain":{"plainEnglish":"ATR summarizes how widely an instrument has been moving, including gaps captured by true range.","whyItMatters":"It can help put price movement, stops and position sizing into volatility context; it does not by itself predict direction."},
+    "relationships":{"prerequisites":["uko-true-range"],"relatedConcepts":["uko-volatility"],"contrastsWith":[],"usedByStrategies":[],"appearsInMetrics":[],"relevantAssetClasses":["stocks","etfs","futures"],"relevantIndustries":[]},
+    "interactive":{"exercises":[],"simulatorScenarios":[],"quizItems":[]},
+    "evidence":{"sources":[],"factualClaims":[],"sourceState":"unsourced"},
+    "presentation":{"searchKeywords":["atr","average true range","volatility"],"locale":"en-US"}
+  },
+  {
+    "id":"uko-short-selling","slug":"short-selling","canonicalTerm":"Short Selling","aliases":["Shorting","Sell Short"],"objectType":"market_structure","domainTags":["trading","market-structure","risk"],"version":"1.0","status":"draft",
+    "glance":{"definition":"Short selling is selling borrowed securities with an obligation to return equivalent securities later."},
+    "explain":{"plainEnglish":"A short seller generally benefits if the security can later be repurchased for less, and loses if repurchase costs more, before fees and other costs.","whyItMatters":"Short positions have mechanics and risks that differ from long ownership, including borrowing constraints, fees and potentially very large losses as price rises."},
+    "relationships":{"prerequisites":[],"relatedConcepts":["uko-borrow-fee","uko-short-squeeze"],"contrastsWith":["uko-long-position"],"usedByStrategies":[],"appearsInMetrics":[],"relevantAssetClasses":["stocks","etfs"],"relevantIndustries":[]},
+    "interactive":{"exercises":[],"simulatorScenarios":[],"quizItems":[]},
+    "evidence":{"sources":[],"factualClaims":[],"sourceState":"unsourced"},
+    "presentation":{"searchKeywords":["short","short selling","shorting"],"locale":"en-US"}
+  },
+  {
+    "id":"uko-sharpe-ratio","slug":"sharpe-ratio","canonicalTerm":"Sharpe Ratio","aliases":["Sharpe Measure"],"objectType":"metric","domainTags":["portfolio-analysis","risk-adjusted-return"],"version":"1.0","status":"draft",
+    "glance":{"definition":"The Sharpe ratio relates excess return to the variability of returns over the measured period."},
+    "explain":{"plainEnglish":"It asks how much average return above a chosen reference rate was observed relative to return volatility.","whyItMatters":"It provides one way to compare risk-adjusted historical performance, but depends on the period, frequency, reference rate and return distribution and is not a guarantee of future performance."},
+    "relationships":{"prerequisites":["uko-return","uko-standard-deviation"],"relatedConcepts":["uko-volatility","uko-sortino-ratio"],"contrastsWith":[],"usedByStrategies":[],"appearsInMetrics":[],"relevantAssetClasses":["stocks","etfs","portfolios"],"relevantIndustries":[]},
+    "interactive":{"exercises":[],"simulatorScenarios":[],"quizItems":[]},
+    "evidence":{"sources":[],"factualClaims":[],"sourceState":"unsourced"},
+    "presentation":{"searchKeywords":["sharpe","sharpe ratio","risk adjusted return"],"locale":"en-US"}
+  }
+]
