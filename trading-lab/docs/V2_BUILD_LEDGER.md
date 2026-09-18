@@ -10,8 +10,8 @@ Total macro phases: 20
 | V2-03 | Universal Explain UI | COMPLETE | 100% |
 | V2-04 | Financial Knowledge Graph | COMPLETE | 100% |
 | V2-05 | Beginner-to-PhD Content Engine | COMPLETE | 100% |
-| V2-06 | Interactive Learning Lab | NEXT | 0% |
-| V2-07 | Security Master | QUEUED | 0% |
+| V2-06 | Interactive Learning Lab | COMPLETE | 100% |
+| V2-07 | Security Master | NEXT | 0% |
 | V2-08 | Universal Symbol Intelligence Pages | QUEUED | 0% |
 | V2-09 | Fundamentals + Filing Intelligence | QUEUED | 0% |
 | V2-10 | Premium Intelligence Engine | DESIGNED / QUEUED | 15% |
@@ -63,3 +63,12 @@ Live market runtime; breadth universe; Market Memory and durable persistence; hi
 - Research structures explicitly include assumptions/limitations/questions/debates where applicable.
 - Draft/source state remains visible; content is not falsely represented as academically reviewed.
 - Next target: V2-06 Interactive Learning Lab.
+
+## V2-06 closeout evidence
+
+- Interactive exercise bank added for all five proving Knowledge Objects.
+- Deterministic calculation and scenario evaluators implemented.
+- TRY IT tab now renders and evaluates exercises inside Universal Explain UI.
+- Exercises include learning objective, difficulty, explanation and optional simulator context.
+- First education substrate block V2-02 through V2-06 is complete.
+- Next target: V2-07 Security Master.
