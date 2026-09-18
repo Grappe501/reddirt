@@ -1,0 +1,10 @@
+{
+"$schema":"https://json-schema.org/draft/2020-12/schema","$id":"wealth-builder://schemas/trader-observation-v1.json","title":"Trader Observation v1","type":"object",
+"required":["observationId","tradeId","observedAt","facts","context","provenance"],
+"properties":{
+"observationId":{"type":"string"},"tradeId":{"type":"string"},"observedAt":{"type":"string"},
+"facts":{"type":"object","properties":{"signalAt":{"type":["string","null"]},"entryAt":{"type":["string","null"]},"exitAt":{"type":["string","null"]},"plannedEntry":{"type":["number","null"]},"actualEntry":{"type":["number","null"]},"plannedStop":{"type":["number","null"]},"actualExit":{"type":["number","null"]},"quantity":{"type":["number","null"]},"pnl":{"type":["number","null"]},"mfe":{"type":["number","null"]},"mae":{"type":["number","null"]},"planAdherence":{"type":["boolean","null"]}}},
+"context":{"type":"object","properties":{"symbol":{"type":"string"},"setupId":{"type":["string","null"]},"regime":{"type":["string","null"]},"relativeVolume":{"type":["number","null"]},"premiumAtEntry":{"type":["number","null"]},"side":{"enum":["LONG","SHORT","UNKNOWN"]}}},
+"provenance":{"type":"object","required":["source"],"properties":{"source":{"enum":["simulator","journal","import","derived"]},"sourceId":{"type":["string","null"]}}},
+"notes":{"type":"array","items":{"type":"string"}}
+}}
