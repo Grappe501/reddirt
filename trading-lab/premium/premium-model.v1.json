@@ -1,0 +1,11 @@
+{
+"version":"1.0","scoreRange":[0,100],"neutralScore":50,
+"components":[
+{"id":"technical","label":"Technical","weight":0.16},{"id":"participation","label":"Volume / Participation","weight":0.10},{"id":"relativeStrength","label":"Relative Strength","weight":0.10},{"id":"regime","label":"Breadth / Regime","weight":0.10},{"id":"historicalEvidence","label":"Historical Evidence","weight":0.12},{"id":"strategyConsensus","label":"Strategy Consensus","weight":0.10},{"id":"walkForward","label":"Walk-Forward Evidence","weight":0.12},{"id":"calibration","label":"Calibration Adjustment","weight":0.08},{"id":"eventEvidence","label":"Event / News","weight":0.04},{"id":"patternEvidence","label":"Pattern Signal","weight":0.08}
+],
+"penalties":[{"id":"costLiquidity","label":"Cost / Liquidity","maxPoints":12},{"id":"risk","label":"Risk","maxPoints":15},{"id":"dataQuality","label":"Data Quality","maxPoints":25}],
+"directionThresholds":{"buy":60,"sell":40},
+"convictionBands":[{"minDistance":0,"label":"LOW"},{"minDistance":8,"label":"MODERATE"},{"minDistance":16,"label":"HIGH"},{"minDistance":28,"label":"EXTREME"}],
+"evidenceBands":[{"min":0,"label":"WEAK"},{"min":0.5,"label":"FAIR"},{"min":0.75,"label":"STRONG"}],
+"rules":{"rawScoreIsProbability":false,"minimumEvidenceCoverage":0.5,"staleEvidenceMustDegrade":true,"automaticRealMoneyExecution":false}
+}
