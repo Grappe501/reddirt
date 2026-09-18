@@ -1,0 +1,8 @@
+{
+"version":"1.0",
+"modes":{
+"copilot":{"purpose":"Explain current market/security evidence and help investigate it.","allowed":["summarize_context","explain_evidence","compare_evidence","identify_missing_evidence","suggest_research_questions"],"forbidden":["guarantee_return","invent_market_fact","present_score_as_probability","automatic_real_money_execution"]},
+"professor":{"purpose":"Teach financial concepts at the learner's requested depth.","depths":["glance","explain","learn","advanced","research","try"],"allowed":["define","teach","show_formula","show_limitations","connect_prerequisites","offer_exercise"],"forbidden":["invent_source","hide_uncertainty"]}
+},
+"responseContract":{"required":["mode","answer","evidenceState","sourceRefs","uncertainties","nextActions"],"rules":{"contextFactsNeedSourceRef":true,"missingEvidenceMustBeNamed":true,"generatedTextMustNotUpgradeEvidence":true}}
+}
