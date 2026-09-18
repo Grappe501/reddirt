@@ -1,0 +1,93 @@
+{
+  "version": "1.0.0",
+  "phase": "V3-02",
+  "purpose": "Normalize real-source evidence into point-in-time provenance records before agents consume it.",
+  "sourceClasses": [
+    {
+      "id": "market",
+      "adapter": "market-data",
+      "required": [
+        "provider",
+        "sourceId",
+        "retrievedAt",
+        "asOf",
+        "payload"
+      ],
+      "freshnessSeconds": 120
+    },
+    {
+      "id": "filing",
+      "adapter": "sec-filing",
+      "required": [
+        "provider",
+        "sourceId",
+        "retrievedAt",
+        "publishedAt",
+        "asOf",
+        "payload"
+      ],
+      "freshnessSeconds": 2592000
+    },
+    {
+      "id": "company",
+      "adapter": "company-fundamentals",
+      "required": [
+        "provider",
+        "sourceId",
+        "retrievedAt",
+        "asOf",
+        "payload"
+      ],
+      "freshnessSeconds": 86400
+    },
+    {
+      "id": "earnings",
+      "adapter": "earnings",
+      "required": [
+        "provider",
+        "sourceId",
+        "retrievedAt",
+        "publishedAt",
+        "asOf",
+        "payload"
+      ],
+      "freshnessSeconds": 86400
+    },
+    {
+      "id": "macro",
+      "adapter": "macro",
+      "required": [
+        "provider",
+        "sourceId",
+        "retrievedAt",
+        "publishedAt",
+        "asOf",
+        "payload"
+      ],
+      "freshnessSeconds": 604800
+    },
+    {
+      "id": "event",
+      "adapter": "event",
+      "required": [
+        "provider",
+        "sourceId",
+        "retrievedAt",
+        "publishedAt",
+        "asOf",
+        "payload"
+      ],
+      "freshnessSeconds": 86400
+    }
+  ],
+  "rules": [
+    "Raw provider payloads are normalized before agent consumption.",
+    "Provider and source identity are mandatory.",
+    "Retrieval and point-in-time timestamps are mandatory.",
+    "Freshness is computed, never invented.",
+    "Missing point-in-time availability becomes UNAVAILABLE.",
+    "Adapters do not express investment direction.",
+    "Source failures degrade evidence instead of fabricating replacements.",
+    "Real-money execution is outside this layer."
+  ]
+}
