@@ -1,0 +1,5 @@
+import {evaluateAlert,buildSkillProfile,learningNudges,personalizeOpportunities,skillTree} from '../src/alerts-personalization-skill-tree.js';
+const a=evaluateAlert({id:'a',enabled:true,type:'premium_change',delta:8,why:'Premium moved materially.'},{symbol:'AAA',previous:55,current:65,asOf:'2026-01-01'});if(!a||!a.disclaimer.includes('not a trade recommendation'))throw new Error('alert');
+const p=buildSkillProfile([{skillId:'risk.stop',type:'lesson'},{skillId:'risk.stop',type:'exercise',correct:true},{skillId:'risk.stop',type:'exercise',correct:true},{skillId:'risk.stop',type:'exercise',correct:true},{skillId:'risk.stop',type:'simulation'},{skillId:'risk.stop',type:'simulation'}]);if(p[0].state!=='demonstrated')throw new Error('skill');
+if(!learningNudges({skillProfile:[],encounteredKnowledgeIds:['uko-atr'],knowledgeToSkill:{'uko-atr':'risk.volatility'}}).length)throw new Error('nudge');
+const o=personalizeOpportunities([{setupId:'x'},{setupId:'y'}],{observedSetupIds:['y']});if(o[0].setupId!=='y')throw new Error('personalize');if(skillTree().length<6)throw new Error('tree');console.log('alerts-personalization-skill-tree contract: PASS');
