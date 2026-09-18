@@ -1,0 +1,15 @@
+{
+  "version": "1.0.0",
+  "phase": "V2.5-15",
+  "system": "historical-multi-agent-replay",
+  "rules": [
+    "Replay has an immutable decision cutoff timestamp.",
+    "Evidence with as-of or publication time after cutoff is rejected.",
+    "Outcome windows begin after the decision cutoff.",
+    "The same packet, desk, committee and Chief Strategy contracts are used in replay.",
+    "Replay results are labeled historical and cannot masquerade as live evidence.",
+    "Agent Alpha receives only resolved post-cutoff outcomes.",
+    "Missing publication timestamps are excluded when point-in-time validity cannot be proven.",
+    "No replay component can execute a trade."
+  ]
+}
