@@ -1,0 +1,29 @@
+{
+  "version": "1.0.0",
+  "slice": "V4-04",
+  "name": "Evidence-Based Placement Engine",
+  "principles": [
+    "ALL_AGENTS_EQUAL",
+    "ROLES_ARE_FUNCTIONS_NOT_RANKS",
+    "PLACEMENT_FOLLOWS_EVIDENCE",
+    "KNOWLEDGE_FOLLOWS_AGENT",
+    "TEAM_OPTIMIZES_WHOLE"
+  ],
+  "rules": {
+    "existingAgentsFirst": true,
+    "evidenceRequired": true,
+    "candidateOrEstablishedStrengthRequired": true,
+    "noRank": true,
+    "noPromotionDemotion": true,
+    "noAutomaticReassignment": true,
+    "operatorReviewRequired": true,
+    "noAutomaticReproduction": true,
+    "paperOnly": true
+  },
+  "decisions": [
+    "RETAIN_ASSIGNMENT",
+    "CONSIDER_REASSIGNMENT",
+    "CONSIDER_SPECIALIZATION",
+    "NO_SUPPORTED_PLACEMENT"
+  ]
+}
