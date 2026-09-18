@@ -1,0 +1,28 @@
+{
+  "version": "2.0.0",
+  "phase": "V3-07",
+  "name": "Agent Alpha 2",
+  "metrics": [
+    "coverage",
+    "directional_accuracy",
+    "abstention_quality",
+    "false_positive_rate",
+    "incremental_information",
+    "cost_adjusted_contribution",
+    "regime_stability"
+  ],
+  "promotion": {
+    "minimumResolved": 30,
+    "minimumForwardResolved": 10,
+    "minimumRegimes": 2
+  },
+  "rules": [
+    "Performance is descriptive historical/forward evidence, not future probability.",
+    "Forward evidence is tracked separately from replay evidence.",
+    "No agent self-promotes.",
+    "Low-sample agents remain LOW_SAMPLE.",
+    "Ablation compares with-agent and without-agent baselines.",
+    "Regime results remain separate before aggregate summaries.",
+    "Authority changes require operator governance."
+  ]
+}
