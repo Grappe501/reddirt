@@ -1,0 +1,12 @@
+{
+"$schema":"https://json-schema.org/draft/2020-12/schema","$id":"wealth-builder://schemas/fundamental-fact-v1.json","title":"Wealth Builder Fundamental Fact v1","type":"object",
+"required":["factId","securityId","concept","statementType","period","value","unit","provenance","status"],
+"properties":{
+"factId":{"type":"string"},"securityId":{"type":"string"},"concept":{"type":"string"},"knowledgeObjectId":{"type":["string","null"]},
+"statementType":{"enum":["income_statement","balance_sheet","cash_flow","per_share","ratio","valuation","operating_metric","other"]},
+"period":{"type":"object","required":["periodType","endDate"],"properties":{"periodType":{"enum":["instant","quarter","annual","ttm","ytd","other"]},"startDate":{"type":["string","null"]},"endDate":{"type":"string"},"fiscalYear":{"type":["integer","null"]},"fiscalQuarter":{"type":["integer","null"]}}},
+"value":{"type":["number","null"]},"unit":{"type":"string"},"scale":{"type":"number","default":1},
+"provenance":{"type":"object","required":["sourceType","sourceId","retrievedAt"],"properties":{"sourceType":{"enum":["sec_filing","issuer_report","market_data","derived","other"]},"sourceId":{"type":"string"},"filingAccession":{"type":["string","null"]},"formType":{"type":["string","null"]},"sourceUrl":{"type":["string","null"]},"retrievedAt":{"type":"string"},"asFiledConcept":{"type":["string","null"]}}},
+"derivation":{"type":["object","null"],"properties":{"formula":{"type":"string"},"inputFactIds":{"type":"array","items":{"type":"string"}},"methodVersion":{"type":"string"}}},
+"status":{"enum":["reported","derived","restated","superseded","unknown"]},"restatesFactId":{"type":["string","null"]},"notes":{"type":"array","items":{"type":"string"}}
+}}
