@@ -1,0 +1,7 @@
+{
+"version":"1.0","warRooms":{
+"morning":{"question":"What is the environment before the session?","panels":["market_state","overnight_context","catalysts","opportunities","watchlist","risk_posture","professor"]},
+"live":{"question":"What is changing now?","panels":["market_state","opportunities","premium_velocity","watchlist","positions","risk","alerts","copilot"]},
+"closing":{"question":"What happened, what did I do, and what did we learn?","panels":["session_summary","journal","digital_twin","shadow_trader","strategy_evidence","lessons","professor"]}
+},"rules":{"timestampEverySnapshot":true,"showSourceState":true,"staleDegrades":true,"noGuaranteedReturns":true,"noAutomaticRealMoneyExecution":true,"opportunityIsInvestigationPriority":true,"premiumIsNotProbability":true}
+}
