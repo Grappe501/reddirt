@@ -12,8 +12,8 @@ Total macro phases: 20
 | V2-05 | Beginner-to-PhD Content Engine | COMPLETE | 100% |
 | V2-06 | Interactive Learning Lab | COMPLETE | 100% |
 | V2-07 | Security Master | COMPLETE | 100% |
-| V2-08 | Universal Symbol Intelligence Pages | NEXT | 0% |
-| V2-09 | Fundamentals + Filing Intelligence | QUEUED | 0% |
+| V2-08 | Universal Symbol Intelligence Pages | COMPLETE | 100% |
+| V2-09 | Fundamentals + Filing Intelligence | NEXT | 0% |
 | V2-10 | Premium Intelligence Engine | DESIGNED / QUEUED | 15% |
 | V2-11 | Market Brain + Opportunity Engine | QUEUED | 0% |
 | V2-12 | AI Trading Copilot / Professor | QUEUED | 0% |
@@ -82,3 +82,13 @@ Live market runtime; breadth universe; Market Memory and durable persistence; hi
 - Trading Lab symbol cards now resolve Security Master identity where available.
 - Seed metadata remains explicitly draft/unsourced pending authoritative verification.
 - Next target: V2-08 Universal Symbol Intelligence Pages.
+
+## V2-08 closeout evidence
+
+- Universal 15-chapter Symbol Intelligence page contract added.
+- One renderer now serves any Security Master record rather than hardcoded company pages.
+- Trading Lab renders the selected symbol through the intelligence shell.
+- Responsive chapter navigation and explicit provenance/trust state added.
+- Missing fundamentals are UNKNOWN/UNAVAILABLE, never coerced to zero.
+- Fundamental/filing-dependent chapters remain gated pending V2-09.
+- Next target: V2-09 Fundamentals + Filing Intelligence.
