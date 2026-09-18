@@ -1,0 +1,466 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "agent-research-packet.v1.schema.json",
+  "title": "Wealth Builder Agent Research Packet v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "packetId",
+    "agent",
+    "scope",
+    "timing",
+    "evidenceState",
+    "inputs",
+    "observations",
+    "calculations",
+    "supportingEvidence",
+    "contradictingEvidence",
+    "missingEvidence",
+    "uncertainty",
+    "methodology",
+    "sources",
+    "versions",
+    "decision",
+    "invalidationConditions",
+    "downstreamPacketRefs"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "packetId": {
+      "type": "string",
+      "minLength": 8
+    },
+    "agent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "version",
+        "mandate"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "mandate": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "symbols"
+      ],
+      "properties": {
+        "kind": {
+          "enum": [
+            "SECURITY",
+            "UNIVERSE",
+            "PORTFOLIO",
+            "MARKET",
+            "MACRO",
+            "RESEARCH"
+          ]
+        },
+        "symbols": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "universeId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "timing": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "invokedAt",
+        "dataAsOf"
+      ],
+      "properties": {
+        "invokedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "dataAsOf": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "completedAt": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        }
+      }
+    },
+    "evidenceState": {
+      "enum": [
+        "AVAILABLE",
+        "PARTIAL",
+        "STALE",
+        "UNAVAILABLE",
+        "NO_OP"
+      ]
+    },
+    "inputs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/evidenceRef"
+      }
+    },
+    "observations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/claim"
+      }
+    },
+    "calculations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "method",
+          "value"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "method": {
+            "type": "string"
+          },
+          "value": {},
+          "units": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "parameters": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    "hypothesis": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "required": [
+        "statement",
+        "falsifiable"
+      ],
+      "properties": {
+        "statement": {
+          "type": "string"
+        },
+        "falsifiable": {
+          "type": "boolean"
+        },
+        "test": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "supportingEvidence": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/evidenceRef"
+      }
+    },
+    "contradictingEvidence": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/evidenceRef"
+      }
+    },
+    "missingEvidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "uncertainty": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "level",
+        "reasons"
+      ],
+      "properties": {
+        "level": {
+          "enum": [
+            "LOW",
+            "MEDIUM",
+            "HIGH",
+            "UNKNOWN"
+          ]
+        },
+        "reasons": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "sampleSize": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        }
+      }
+    },
+    "methodology": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "confidenceKind",
+        "description"
+      ],
+      "properties": {
+        "confidenceKind": {
+          "enum": [
+            "NONE",
+            "EVIDENCE_SCORE",
+            "CALIBRATED_PROBABILITY",
+            "STATISTICAL_INTERVAL"
+          ]
+        },
+        "value": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "description": {
+          "type": "string"
+        },
+        "calibrationRef": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/sourceRef"
+      }
+    },
+    "versions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "code",
+        "config"
+      ],
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "config": {
+          "type": "string"
+        },
+        "model": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "dataContract": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "decision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "class",
+        "summary"
+      ],
+      "properties": {
+        "class": {
+          "enum": [
+            "FAVORABLE",
+            "UNFAVORABLE",
+            "NEUTRAL",
+            "WATCH",
+            "AVOID",
+            "NO_OP",
+            "UNAVAILABLE"
+          ]
+        },
+        "summary": {
+          "type": "string"
+        },
+        "direction": {
+          "enum": [
+            "BULLISH",
+            "BEARISH",
+            "NEUTRAL",
+            "NONE"
+          ]
+        }
+      }
+    },
+    "invalidationConditions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "downstreamPacketRefs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    }
+  },
+  "$defs": {
+    "evidenceRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "refId",
+        "kind"
+      ],
+      "properties": {
+        "refId": {
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "SOURCE",
+            "OBSERVATION",
+            "CALCULATION",
+            "PACKET",
+            "HYPOTHESIS",
+            "OUTCOME"
+          ]
+        },
+        "note": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "claim": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "claimId",
+        "statement",
+        "status"
+      ],
+      "properties": {
+        "claimId": {
+          "type": "string"
+        },
+        "statement": {
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "OBSERVED",
+            "DERIVED",
+            "INTERPRETATION"
+          ]
+        },
+        "evidenceRefs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "sourceRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sourceId",
+        "sourceType",
+        "retrievedAt",
+        "asOf",
+        "provenance"
+      ],
+      "properties": {
+        "sourceId": {
+          "type": "string"
+        },
+        "sourceType": {
+          "type": "string"
+        },
+        "retrievedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "asOf": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "provenance": {
+          "type": "string"
+        },
+        "uri": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "freshness": {
+          "enum": [
+            "CURRENT",
+            "AGING",
+            "STALE",
+            "UNKNOWN"
+          ]
+        }
+      }
+    }
+  }
+}
