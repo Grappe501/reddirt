@@ -1,0 +1,30 @@
+{
+  "version": "1.0.0",
+  "slice": "V4-08",
+  "name": "Apprenticeship + Knowledge Transfer",
+  "principles": [
+    "ALL_AGENTS_EQUAL",
+    "KNOWLEDGE_FOLLOWS_AGENT",
+    "PROCESS_NOT_CONCLUSION",
+    "EVIDENCE_REQUIRED",
+    "NO_AUTHORITY_INHERITANCE"
+  ],
+  "methods": [
+    "PROCESS_SHADOW",
+    "ERROR_REPLAY",
+    "PAIRED_EVIDENCE_REVIEW",
+    "HYPOTHESIS_COMPARISON",
+    "INDEPENDENT_REPRODUCTION"
+  ],
+  "rules": {
+    "mentorIsFunctionNotRank": true,
+    "apprenticeIsFunctionNotRank": true,
+    "sourceEvidencePreserved": true,
+    "independentReproductionRequired": true,
+    "conclusionCopyingForbidden": true,
+    "noAutomaticRoleChange": true,
+    "noAutomaticAuthority": true,
+    "operatorReviewRequired": true,
+    "paperOnly": true
+  }
+}
