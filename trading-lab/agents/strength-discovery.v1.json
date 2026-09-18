@@ -1,0 +1,36 @@
+{
+  "version": "1.0.0",
+  "slice": "V4-03",
+  "name": "Strength Discovery Engine",
+  "dimensions": [
+    "directional_accuracy",
+    "abstention_quality",
+    "false_positive_avoidance",
+    "incremental_information",
+    "cost_adjusted_contribution",
+    "regime_stability",
+    "contradiction_detection",
+    "data_quality",
+    "speed",
+    "information_uniqueness"
+  ],
+  "contexts": [
+    "horizon",
+    "regime",
+    "security_type",
+    "volatility_band",
+    "event_type",
+    "direction"
+  ],
+  "rules": {
+    "evidenceBased": true,
+    "minObservationsForCandidateStrength": 10,
+    "minObservationsForEstablishedStrength": 30,
+    "noUniversalScore": true,
+    "noRank": true,
+    "noAutomaticRoleChange": true,
+    "noAutomaticReproduction": true,
+    "uncertaintyRequired": true,
+    "paperOnly": true
+  }
+}
