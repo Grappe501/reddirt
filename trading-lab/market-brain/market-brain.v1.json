@@ -1,0 +1,14 @@
+{
+"version":"1.0",
+"regimeInputs":["breadth","trend","volatility","dispersion","liquidity","correlation"],
+"opportunitySignals":[
+{"id":"premium-rise","label":"Premium acceleration","weight":0.24},
+{"id":"relative-strength","label":"Relative strength","weight":0.18},
+{"id":"volume-expansion","label":"Volume expansion","weight":0.16},
+{"id":"trend-alignment","label":"Trend alignment","weight":0.14},
+{"id":"regime-fit","label":"Regime fit","weight":0.14},
+{"id":"historical-support","label":"Historical support","weight":0.14}
+],
+"minimumCoverage":0.5,"minimumOpportunityScore":55,
+"rules":{"rankingIsInvestigationPriority":true,"rankingIsTradeRecommendation":false,"staleMarketStateMustDegrade":true}
+}
