@@ -1,0 +1,30 @@
+{
+  "version": "1.0.0",
+  "slice": "V4-07",
+  "name": "Trainer Evaluation + Role Transition",
+  "principles": [
+    "TRAINER_IS_FUNCTION_NOT_RANK",
+    "NO_ROLE_IS_PERMANENT",
+    "KNOWLEDGE_FOLLOWS_AGENT",
+    "PLACEMENT_FOLLOWS_EVIDENCE",
+    "ALL_AGENTS_EQUAL"
+  ],
+  "rules": {
+    "trainingOutcomesRequired": true,
+    "minExperimentsForCandidate": 10,
+    "noRank": true,
+    "noAuthorityInheritance": true,
+    "noAutomaticTransition": true,
+    "operatorReviewRequired": true,
+    "trainingKnowledgeRetained": true,
+    "returnToSpecialistAllowed": true,
+    "reassignmentEvidenceRequired": true,
+    "paperOnly": true
+  },
+  "outcomes": [
+    "CONTINUE_TRAINER_FUNCTION",
+    "CONSIDER_SPECIALIST_RETURN",
+    "CONSIDER_OTHER_FUNCTION",
+    "INSUFFICIENT_EVIDENCE"
+  ]
+}
