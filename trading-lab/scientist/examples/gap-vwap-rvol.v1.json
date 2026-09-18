@@ -1,0 +1,7 @@
+{
+"hypothesisId":"hyp-gap-vwap-rvol-01","statement":"Stocks that gap up at least 3%, remain above VWAP and have relative volume above 2 may show positive first-hour continuation.","nullHypothesis":"After costs and held-out validation, this condition has no persistent positive continuation edge.","universe":{"assetClass":"equity","liquidityFloor":"configured_by_researcher"},
+"entryRules":[{"feature":"gapPct","operator":">=","value":3,"knownAt":"bar_open"},{"feature":"priceVsVwap","operator":">","value":0,"knownAt":"bar_close"},{"feature":"relativeVolume","operator":">","value":2,"knownAt":"bar_close"}],
+"exitRules":[{"type":"time","horizon":"first_hour"}],"outcome":{"metric":"forwardReturn","horizon":"60m","benchmark":null},
+"costModel":{"commission":0,"slippage":0.0005,"borrow":0},"validationPlan":{"train":{"method":"chronological"},"test":{"method":"chronological_holdout"},"walkForward":true,"regimeSlices":["supportive","mixed","defensive"],"parameterSensitivity":true,"multipleTestingControl":"report_search_count_and_holdout_results"},
+"status":"formalized","createdFrom":"user_belief"
+}
