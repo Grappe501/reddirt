@@ -1,0 +1,27 @@
+{
+  "version": "1.0.0",
+  "phase": "V3-03",
+  "name": "Full Research Run Engine",
+  "stages": [
+    "source",
+    "truth",
+    "quant",
+    "opportunity",
+    "adversarial",
+    "control",
+    "desks",
+    "committee",
+    "chief",
+    "persist"
+  ],
+  "invariants": [
+    "frozen snapshot required",
+    "normalized source evidence precedes agent research",
+    "stale or unavailable source evidence cannot deep-escalate",
+    "control block stops desks committee and chief",
+    "dissent remains preserved",
+    "Chief Strategy is synthesis-only",
+    "research bundle is paper-only",
+    "persistence happens only after a coherent research bundle exists"
+  ]
+}
