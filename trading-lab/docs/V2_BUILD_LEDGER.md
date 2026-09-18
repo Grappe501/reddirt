@@ -13,8 +13,8 @@ Total macro phases: 20
 | V2-06 | Interactive Learning Lab | COMPLETE | 100% |
 | V2-07 | Security Master | COMPLETE | 100% |
 | V2-08 | Universal Symbol Intelligence Pages | COMPLETE | 100% |
-| V2-09 | Fundamentals + Filing Intelligence | NEXT | 0% |
-| V2-10 | Premium Intelligence Engine | DESIGNED / QUEUED | 15% |
+| V2-09 | Fundamentals + Filing Intelligence | COMPLETE | 100% |
+| V2-10 | Premium Intelligence Engine | NEXT / DESIGNED | 15% |
 | V2-11 | Market Brain + Opportunity Engine | QUEUED | 0% |
 | V2-12 | AI Trading Copilot / Professor | QUEUED | 0% |
 | V2-13 | Trading Scientist / Strategy Laboratory | QUEUED | 0% |
@@ -92,3 +92,13 @@ Live market runtime; breadth universe; Market Memory and durable persistence; hi
 - Missing fundamentals are UNKNOWN/UNAVAILABLE, never coerced to zero.
 - Fundamental/filing-dependent chapters remain gated pending V2-09.
 - Next target: V2-09 Fundamentals + Filing Intelligence.
+
+## V2-09 closeout evidence
+
+- Fundamental Fact and Filing Record schemas added.
+- Fiscal period, units/scales, reported/derived/restated/superseded states and provenance are explicit.
+- Derived metrics retain formula, input fact IDs and method version.
+- Missing values remain null; zero denominators produce unavailable ratios rather than false values.
+- Contract test and package validation command added.
+- No unsourced current company financial data was invented during the architecture pass.
+- Next target: V2-10 Premium Intelligence Engine.
