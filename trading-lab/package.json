@@ -10,7 +10,8 @@
     "check": "npm run test && npm run build && node scripts/write-check-proof.mjs",
     "preview": "vite preview",
     "test:v2:fundamentals": "node tests/fundamentals-intelligence.test.mjs",
-    "test:v2:premium": "node tests/premium-intelligence.test.mjs"
+    "test:v2:premium": "node tests/premium-intelligence.test.mjs",
+    "test:v2:market-brain": "node tests/market-brain.test.mjs"
   },
   "dependencies": {
     "@netlify/database": "2.0.1"
