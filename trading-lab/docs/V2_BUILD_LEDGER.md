@@ -24,7 +24,7 @@ Total macro phases: 20
 | V2-17 | Morning / Live / Closing War Rooms | COMPLETE | 100% |
 | V2-18 | Alerts + Personalization + Skill Tree | QUEUED | 0% |
 | V2-19 | Professional / Classroom / Competition | QUEUED | 0% |
-| V2-20 | Hostile Audit + Production Release | QUEUED | 0% |
+| V2-20 | Hostile Audit + Production Release | NEXT | 0% |
 
 ## V1 capabilities explicitly treated as foundation, not V2 backlog
 
@@ -201,3 +201,15 @@ Live market runtime; breadth universe; Market Memory and durable persistence; hi
 - Just-in-time learning nudges connect encountered concepts to incomplete skills.
 - Contract test and package validation command added.
 - Next target: V2-19 Professional / Classroom / Competition Layer.
+
+## V2-19 closeout evidence
+
+- Individual, classroom, competition and professional experience modes defined over one shared intelligence stack.
+- Professional mode retains Universal Explain and Knowledge Engine on demand.
+- Classroom instructor dashboard contract added with authorization/privacy boundary.
+- Competition defaults preserve the original $1,000 / 42-day educational simulation concept.
+- P/L-only and transparent balanced scoring modes implemented.
+- Balanced scoring includes return, drawdown, risk-adjusted performance, rule adherence, research quality and learning.
+- Simulation-score disclaimer and no-real-money boundary preserved.
+- Contract test and package validation command added.
+- Next target: V2-20 Hostile Audit + Production Release.
