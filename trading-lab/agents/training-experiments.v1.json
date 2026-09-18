@@ -1,0 +1,38 @@
+{
+  "version": "1.0.0",
+  "slice": "V4-06",
+  "name": "Trainer Role + Training Experiment Engine",
+  "principles": [
+    "TRAINER_IS_FUNCTION_NOT_RANK",
+    "ALL_AGENTS_EQUAL",
+    "TRAINING_MUST_BE_MEASURED",
+    "KNOWLEDGE_FOLLOWS_AGENT"
+  ],
+  "methods": [
+    "APPRENTICESHIP",
+    "ERROR_REPLAY",
+    "ADVERSARIAL_PAIRED_LEARNING",
+    "SHARED_EVIDENCE_REVIEW",
+    "PROCESS_DECOMPOSITION"
+  ],
+  "metrics": [
+    "quality",
+    "false_positive_rate",
+    "abstention_quality",
+    "evidence_integrity",
+    "cost",
+    "duplicate_calls",
+    "latency"
+  ],
+  "rules": {
+    "baselineRequired": true,
+    "comparisonRequired": true,
+    "evidenceRequired": true,
+    "noAuthorityGain": true,
+    "noPermanentTrainerRole": true,
+    "noAutomaticRoleChange": true,
+    "noAutomaticReproduction": true,
+    "operatorReviewRequired": true,
+    "paperOnly": true
+  }
+}
