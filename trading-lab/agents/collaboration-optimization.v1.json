@@ -1,0 +1,35 @@
+{
+  "version": "1.0.0",
+  "slice": "V4-09",
+  "name": "Collaboration Optimization Engine",
+  "principles": [
+    "TEAM_OPTIMIZES_WHOLE",
+    "ALL_AGENTS_EQUAL",
+    "UNIQUE_INFORMATION_HAS_VALUE",
+    "DISSENT_MUST_BE_PRESERVED",
+    "EFFICIENCY_NEVER_OVERRIDES_TRUTH"
+  ],
+  "metrics": [
+    "joint_quality",
+    "incremental_information",
+    "duplicate_information",
+    "contradiction_value",
+    "cost",
+    "latency"
+  ],
+  "rules": {
+    "minimumObservations": 10,
+    "noAgentRanking": true,
+    "noDissentSuppression": true,
+    "noAutomaticRemoval": true,
+    "noAutomaticRoutingChange": true,
+    "operatorReviewRequired": true,
+    "paperOnly": true
+  },
+  "outcomes": [
+    "COMPLEMENTARY_PAIR",
+    "DUPLICATION_REVIEW",
+    "VALUABLE_DISSENT",
+    "LOW_SAMPLE"
+  ]
+}
