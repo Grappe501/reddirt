@@ -14,8 +14,8 @@ Total macro phases: 20
 | V2-07 | Security Master | COMPLETE | 100% |
 | V2-08 | Universal Symbol Intelligence Pages | COMPLETE | 100% |
 | V2-09 | Fundamentals + Filing Intelligence | COMPLETE | 100% |
-| V2-10 | Premium Intelligence Engine | NEXT / DESIGNED | 15% |
-| V2-11 | Market Brain + Opportunity Engine | QUEUED | 0% |
+| V2-10 | Premium Intelligence Engine | COMPLETE | 100% |
+| V2-11 | Market Brain + Opportunity Engine | NEXT | 0% |
 | V2-12 | AI Trading Copilot / Professor | QUEUED | 0% |
 | V2-13 | Trading Scientist / Strategy Laboratory | QUEUED | 0% |
 | V2-14 | Personal Trading Digital Twin | QUEUED | 0% |
@@ -102,3 +102,14 @@ Live market runtime; breadth universe; Market Memory and durable persistence; hi
 - Contract test and package validation command added.
 - No unsourced current company financial data was invented during the architecture pass.
 - Next target: V2-10 Premium Intelligence Engine.
+
+## V2-10 closeout evidence
+
+- Versioned Premium Intelligence scoring model implemented.
+- Ten evidence components plus cost/liquidity, risk and data-quality penalties are decomposed explicitly.
+- Evidence coverage and stale-data gates can force UNAVAILABLE rather than manufacture confidence.
+- Direction, conviction, evidence quality, Premium velocity and explanation contracts added.
+- Score is explicitly prohibited from being represented as probability of profit.
+- Contract test and package validation command added.
+- No automatic real-money execution path added.
+- Next target: V2-11 Market Brain + Opportunity Engine.
