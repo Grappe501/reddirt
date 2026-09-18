@@ -1,0 +1,21 @@
+{
+  "version": "1.0.0",
+  "phase": "V3-06",
+  "name": "Forward Shadow Laboratory",
+  "purpose": "Freeze research before outcomes, resolve only after the horizon, and create auditable forward evidence.",
+  "states": [
+    "OPEN",
+    "FROZEN",
+    "RESOLVED",
+    "VOID"
+  ],
+  "rules": [
+    "Research is deep-copied and cryptographically hashed at capture.",
+    "Resolution verifies frozen research has not changed.",
+    "Outcome time must be after capture and requested horizon.",
+    "Stale or unavailable evidence produces VOID, not a prediction.",
+    "Resolved records remain paper/research evidence only.",
+    "Forward results do not automatically grant agent authority.",
+    "No real-money execution."
+  ]
+}
