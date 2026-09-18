@@ -1,0 +1,29 @@
+{
+  "version": "1.0.0",
+  "slice": "V4-05",
+  "name": "Repurpose-Before-Reproduce Gate",
+  "principles": [
+    "REPURPOSE_BEFORE_REPRODUCE",
+    "ALL_AGENTS_EQUAL",
+    "KNOWLEDGE_FOLLOWS_AGENT",
+    "PLACEMENT_FOLLOWS_EVIDENCE"
+  ],
+  "rules": {
+    "searchExistingFirst": true,
+    "transferableStrengthEvidenceRequired": true,
+    "retrainingPreferred": true,
+    "reproductionLastResort": true,
+    "reproductionNeverAutomatic": true,
+    "operatorApprovalRequired": true,
+    "constitutionImmutable": true,
+    "activeAgentCapRequiredForFutureEvolution": true,
+    "costBudgetRequiredForFutureEvolution": true,
+    "paperOnly": true
+  },
+  "decisions": [
+    "REPURPOSE_EXISTING",
+    "RETRAIN_EXISTING",
+    "CAPABILITY_GAP_UNRESOLVED",
+    "EVOLUTION_TRIAL_ELIGIBLE_FOR_REVIEW"
+  ]
+}
