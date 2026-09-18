@@ -1,0 +1,25 @@
+{
+  "version": "1.0.0",
+  "phase": "V2.5-13",
+  "system": "agent-alpha",
+  "purpose": "Measure agent information contribution and calibration without converting historical performance into authority.",
+  "dimensions": [
+    "coverage",
+    "directional_accuracy",
+    "abstention_quality",
+    "false_positive_rate",
+    "incremental_information",
+    "cost_adjusted_contribution",
+    "regime_stability"
+  ],
+  "rules": [
+    "Scores require resolved outcomes.",
+    "No score is probability of future profit.",
+    "Agents are evaluated by regime and horizon where available.",
+    "Correct abstention is creditable behavior.",
+    "False positives and harmful incremental contribution remain visible.",
+    "Raw return alone cannot define agent quality.",
+    "Calibration records are append-only observations; they do not rewrite prior packets.",
+    "Agent Alpha cannot execute trades or override controls."
+  ]
+}
