@@ -10,6 +10,8 @@ on:
       - 'trading-lab/**'
       - '.github/workflows/trading-lab-ci.yml'
 
+  workflow_dispatch:
+
 jobs:
   check:
     runs-on: ubuntu-latest
