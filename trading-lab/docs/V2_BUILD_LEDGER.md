@@ -190,3 +190,14 @@ Live market runtime; breadth universe; Market Memory and durable persistence; hi
 - War Room brief preserves Premium/opportunity/execution guardrails.
 - Contract test and package validation command added.
 - Next target: V2-18 Alerts, Personalization + Skill Tree.
+
+## V2-18 closeout evidence
+
+- In-app alert contracts implemented for price, Premium change, opportunity, risk, learning and degraded-data conditions.
+- Alerts explain why surfaced and remain condition notifications, not trade recommendations.
+- Observed-history personalization implemented with visible reason and no psychological inference.
+- Six-domain skill tree and four competency states implemented.
+- Deterministic exercise/simulation evidence can advance competency to demonstrated.
+- Just-in-time learning nudges connect encountered concepts to incomplete skills.
+- Contract test and package validation command added.
+- Next target: V2-19 Professional / Classroom / Competition Layer.
