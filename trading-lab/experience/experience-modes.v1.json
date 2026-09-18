@@ -1,0 +1,16 @@
+{
+"version":"1.0",
+"modes":{
+"individual":{"educationDepth":"adaptive","leaderboard":false,"teacherControls":false},
+"classroom":{"educationDepth":"adaptive","leaderboard":true,"teacherControls":true},
+"competition":{"educationDepth":"available","leaderboard":true,"teacherControls":true},
+"professional":{"educationDepth":"on_demand","leaderboard":false,"teacherControls":false}
+},
+"competitionDefaults":{"startingCapital":1000,"durationDays":42,"allowShort":false,"allowMargin":false,"commissionModel":"configured","scoringMode":"balanced"},
+"scoringModes":{
+"pnl":{"return":1},
+"balanced":{"return":0.4,"drawdown":0.2,"riskAdjusted":0.15,"ruleAdherence":0.1,"researchQuality":0.1,"learning":0.05}
+},
+"roles":["participant","instructor","competition_admin","observer"],
+"rules":{"sameRulesWithinCompetition":true,"scoreComponentsVisible":true,"noRealMoneyExecution":true,"educationalSimulation":true}
+}
