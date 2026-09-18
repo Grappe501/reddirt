@@ -16,7 +16,7 @@ Total macro phases: 20
 | V2-09 | Fundamentals + Filing Intelligence | COMPLETE | 100% |
 | V2-10 | Premium Intelligence Engine | COMPLETE | 100% |
 | V2-11 | Market Brain + Opportunity Engine | COMPLETE | 100% |
-| V2-12 | AI Trading Copilot / Professor | NEXT | 0% |
+| V2-12 | AI Trading Copilot / Professor | COMPLETE | 100% |
 | V2-13 | Trading Scientist / Strategy Laboratory | QUEUED | 0% |
 | V2-14 | Personal Trading Digital Twin | QUEUED | 0% |
 | V2-15 | Institutional Risk Command Center | QUEUED | 0% |
@@ -123,3 +123,16 @@ Live market runtime; breadth universe; Market Memory and durable persistence; hi
 - Ranking contract explicitly states investigation priority, not trade recommendation.
 - Contract test and package validation command added.
 - Next target: V2-12 AI Trading Copilot / Professor.
+
+## V2-12 closeout evidence
+
+- Separate Copilot and Professor orchestration contracts implemented over shared evidence architecture.
+- Copilot context accepts security, Premium, Market Brain, Market Memory, strategy, fundamentals and screen state.
+- Professor context accepts Knowledge Graph, learning depth, exercises and contextual value.
+- Response envelope requires evidence state, source references, uncertainties and next actions.
+- Missing evidence is surfaced rather than hidden.
+- Guarantee/risk-free and unsupported Premium-as-probability language guardrails added.
+- Prompt packets enforce supplied-evidence-only current factual claims and citation integrity.
+- Contract test and package validation command added.
+- No autonomous real-money execution path added.
+- Next target: V2-13 Trading Scientist / Strategy Laboratory.
