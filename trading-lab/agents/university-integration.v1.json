@@ -1,0 +1,34 @@
+{
+  "version": "1.0.0",
+  "phase": "V3-11",
+  "name": "Wealth Builder University Integration",
+  "depths": [
+    "GLANCE",
+    "EXPLAIN",
+    "LEARN",
+    "ADVANCED",
+    "RESEARCH",
+    "TRY"
+  ],
+  "principle": "Nothing requires prior financial knowledge; nothing prevents an expert from drilling to mathematics, evidence, data and methodology.",
+  "concepts": [
+    "alpha",
+    "baseline",
+    "regime",
+    "drawdown",
+    "confidence_interval",
+    "point_in_time_evidence",
+    "ablation",
+    "transaction_cost",
+    "forward_shadow",
+    "evidence_score"
+  ],
+  "rules": [
+    "Every advanced research concept has a plain-language entry point.",
+    "Education links back to the live research context.",
+    "Research depth exposes methodology and limitations.",
+    "TRY produces paper experiments only.",
+    "Evidence score is never taught as probability of profit.",
+    "No lesson grants trading authority."
+  ]
+}
