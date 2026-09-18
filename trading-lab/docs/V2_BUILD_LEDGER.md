@@ -21,7 +21,7 @@ Total macro phases: 20
 | V2-14 | Personal Trading Digital Twin | COMPLETE | 100% |
 | V2-15 | Institutional Risk Command Center | COMPLETE | 100% |
 | V2-16 | Automatic Journal + Shadow Trader | COMPLETE | 100% |
-| V2-17 | Morning / Live / Closing War Rooms | NEXT | 0% |
+| V2-17 | Morning / Live / Closing War Rooms | COMPLETE | 100% |
 | V2-18 | Alerts + Personalization + Skill Tree | QUEUED | 0% |
 | V2-19 | Professional / Classroom / Competition | QUEUED | 0% |
 | V2-20 | Hostile Audit + Production Release | QUEUED | 0% |
@@ -179,3 +179,14 @@ Live market runtime; breadth universe; Market Memory and durable persistence; hi
 - Modeled alternative outcome is explicitly not framed as what the trader should have done.
 - Contract test and package validation command added.
 - Next target: V2-17 Morning / Live / Closing War Rooms.
+
+## V2-17 closeout evidence
+
+- Versioned Morning, Live and Closing War Room orchestration contract added.
+- Morning assembles market state, overnight context, catalysts, opportunities, watchlist, risk posture and Professor.
+- Live assembles Market Brain, opportunities, Premium velocity, watchlist, positions, risk, alerts and Copilot.
+- Closing assembles session summary, Journal, Digital Twin, Shadow Trader, strategy evidence, lessons and Professor.
+- Panel-level source state and room health/degraded-state logic implemented.
+- War Room brief preserves Premium/opportunity/execution guardrails.
+- Contract test and package validation command added.
+- Next target: V2-18 Alerts, Personalization + Skill Tree.
