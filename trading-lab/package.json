@@ -19,7 +19,9 @@
     "test:v2:journal": "node tests/automatic-journal-shadow-trader.test.mjs",
     "test:v2:warrooms": "node tests/trading-war-rooms.test.mjs",
     "test:v2:personalization": "node tests/alerts-personalization-skill-tree.test.mjs",
-    "test:v2:experience": "node tests/professional-classroom-competition.test.mjs"
+    "test:v2:experience": "node tests/professional-classroom-competition.test.mjs",
+    "test:v2": "npm run test:v2:fundamentals && npm run test:v2:premium && npm run test:v2:market-brain && npm run test:v2:ai && npm run test:v2:scientist && npm run test:v2:twin && npm run test:v2:risk && npm run test:v2:journal && npm run test:v2:warrooms && npm run test:v2:personalization && npm run test:v2:experience",
+    "audit:v2": "npm run test:v2 && npm run test && npm run build"
   },
   "dependencies": {
     "@netlify/database": "2.0.1"
