@@ -1,0 +1,7 @@
+import {validateAgentResearchPacket,packetSummary} from '../src/agent-research-packet.js';
+const p={schemaVersion:'1.0.0',packetId:'pkt-test-001',agent:{id:'statistics',version:'1',mandate:'test anomalies'},scope:{kind:'SECURITY',symbols:['TEST']},timing:{invokedAt:'2026-01-01T00:00:00Z',dataAsOf:'2026-01-01T00:00:00Z'},evidenceState:'AVAILABLE',inputs:[],observations:[],calculations:[],hypothesis:null,supportingEvidence:[],contradictingEvidence:[],missingEvidence:[],uncertainty:{level:'LOW',reasons:[],sampleSize:100},methodology:{confidenceKind:'EVIDENCE_SCORE',value:70,description:'evidence score',calibrationRef:null},sources:[],versions:{code:'x',config:'x',model:null,dataContract:null},decision:{class:'WATCH',summary:'research state only',direction:'NEUTRAL'},invalidationConditions:[],downstreamPacketRefs:[]};
+if(!validateAgentResearchPacket(p).ok)throw new Error('valid packet rejected');
+const q=structuredClone(p);q.methodology={confidenceKind:'CALIBRATED_PROBABILITY',value:.7,description:'bad',calibrationRef:null};if(validateAgentResearchPacket(q).ok)throw new Error('unsupported probability accepted');
+const stale=structuredClone(p);stale.evidenceState='STALE';if(validateAgentResearchPacket(stale).ok)throw new Error('stale packet without reason accepted');
+const s=packetSummary(p);if(s.agentId!=='statistics'||s.confidenceKind!=='EVIDENCE_SCORE')throw new Error('summary mismatch');
+console.log('V2.5 Agent Research Packet contract: PASS');
