@@ -1,0 +1,10 @@
+{
+"version":"1.0",
+"alertTypes":["price_condition","premium_change","opportunity_surfaced","risk_breach","learning_opportunity","data_degraded"],
+"delivery":["in_app"],
+"personalizationRules":{"observedEvidenceOnly":true,"noPsychologicalInference":true,"userCanDisable":true,"explainWhySurfaced":true},
+"skillDomains":[
+{"id":"markets","label":"Markets"},{"id":"technical-analysis","label":"Technical Analysis"},{"id":"fundamentals","label":"Fundamentals & Accounting"},{"id":"risk","label":"Risk Management"},{"id":"strategy-science","label":"Strategy Science"},{"id":"quant","label":"Quantitative Finance"}],
+"competencyStates":["not_started","introduced","practicing","demonstrated"],
+"rules":{"alertsAreNotRecommendations":true,"premiumIsNotProbability":true,"staleDataCanTriggerDegradedAlert":true,"noAutomaticRealMoneyExecution":true}
+}
