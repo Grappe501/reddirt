@@ -26,4 +26,4 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Test and build
-        run: npm run check
+        run: npm run audit:v2
