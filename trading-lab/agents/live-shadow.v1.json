@@ -1,0 +1,22 @@
+{
+  "version": "1.0.0",
+  "phase": "V2.5-16",
+  "system": "live-shadow-organization",
+  "purpose": "Capture forward, timestamped multi-agent research decisions before outcomes are known.",
+  "states": [
+    "OPEN",
+    "FROZEN",
+    "RESOLVED",
+    "VOID"
+  ],
+  "rules": [
+    "Shadow observations are paper/research only.",
+    "A shadow record is frozen before its outcome window begins.",
+    "Frozen research payload hashes must match at resolution.",
+    "Outcome resolution cannot mutate the original research snapshot.",
+    "Records with stale/unavailable critical evidence are VOID or explicitly degraded.",
+    "Forward evidence is separated from historical replay evidence.",
+    "Resolved shadow observations may feed Agent Alpha.",
+    "No component has real-money execution authority."
+  ]
+}
