@@ -1,0 +1,6 @@
+import test from "node:test";import assert from "node:assert/strict";import {discoverStrengths,transferableStrengths} from "../src/strength-discovery.js";
+const obs=(n,dimension,value,context={regime:"volatile",direction:"negative"})=>Array.from({length:n},(_,i)=>({dimension,value,evidenceRef:"e:"+i,context}));
+test("V4-03 discovers contextual strengths without ranking agents",()=>{const p=discoverStrengths({agentId:"a1",observations:obs(30,"contradiction_detection",.91)});assert.equal(p.strengths[0].status,"ESTABLISHED");assert.equal(p.strengths[0].context.regime,"volatile");assert.equal(p.rank,null);assert.equal(p.automaticRoleChange,false);});
+test("V4-03 refuses tiny samples as established strengths",()=>{const p=discoverStrengths({agentId:"a2",observations:obs(9,"directional_accuracy",1)});assert.equal(p.strengths[0].status,"LOW_SAMPLE");assert.equal(transferableStrengths(p).length,0);});
+test("V4-03 preserves evidence and blocks automatic reproduction",()=>{const p=discoverStrengths({agentId:"a3",observations:obs(12,"information_uniqueness",.8)});assert.equal(p.strengths[0].evidenceRefs.length,12);assert.equal(p.automaticReproduction,false);assert.equal(p.paperOnly,true);});
+console.log("V4-03 Strength Discovery Engine: PASS");
