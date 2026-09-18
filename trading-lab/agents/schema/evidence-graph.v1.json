@@ -1,0 +1,38 @@
+{
+  "version": "1.0.0",
+  "phase": "V2.5-03",
+  "nodeTypes": [
+    "SOURCE",
+    "OBSERVATION",
+    "CALCULATION",
+    "AGENT_PACKET",
+    "HYPOTHESIS",
+    "CHALLENGE",
+    "DESK_VIEW",
+    "COMMITTEE_SYNTHESIS",
+    "SIMULATED_DECISION",
+    "OUTCOME",
+    "CALIBRATION"
+  ],
+  "edgeTypes": [
+    "SUPPORTS",
+    "CONTRADICTS",
+    "DERIVED_FROM",
+    "PRODUCED_BY",
+    "CHALLENGES",
+    "SYNTHESIZES",
+    "INFORMED",
+    "RESULTED_IN",
+    "CALIBRATES",
+    "SUPERSEDES"
+  ],
+  "rules": {
+    "immutableNodeIds": true,
+    "provenanceRequiredForSource": true,
+    "noOrphanSynthesis": true,
+    "preserveContradictionEdges": true,
+    "decisionMustTraceToPacket": true,
+    "outcomeMustTraceToDecision": true,
+    "calibrationMustTraceToOutcome": true
+  }
+}
