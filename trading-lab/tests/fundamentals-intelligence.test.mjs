@@ -1,0 +1,11 @@
+import { deriveRatio,effectiveValue,reconcileFacts } from '../src/fundamentals-intelligence.js';
+const base={securityId:'sec-test',period:{periodType:'annual',startDate:'2025-01-01',endDate:'2025-12-31',fiscalYear:2025,fiscalQuarter:null},unit:'USD',scale:1,provenance:{sourceType:'sec_filing',sourceId:'test',retrievedAt:'2026-01-01T00:00:00Z'},status:'reported',restatesFactId:null,notes:[]};
+const revenue={...base,factId:'revenue',concept:'Revenue',statementType:'income_statement',value:100};
+const gross={...base,factId:'gross',concept:'GrossProfit',statementType:'income_statement',value:40};
+if(effectiveValue({...revenue,scale:1000})!==100000)throw new Error('scale failed');
+const margin=deriveRatio({factId:'gm',securityId:'sec-test',concept:'GrossMargin',numerator:gross,denominator:revenue,period:base.period,formula:'Gross Profit / Revenue'});
+if(margin.value!==0.4||margin.derivation.inputFactIds.length!==2)throw new Error('derivation failed');
+const zero=deriveRatio({factId:'z',securityId:'sec-test',concept:'Ratio',numerator:gross,denominator:{...revenue,value:0},period:base.period,formula:'a/b'});
+if(zero.value!==null)throw new Error('zero denominator must be unavailable');
+if(reconcileFacts([revenue,{...revenue,provenance:{...revenue.provenance,retrievedAt:'2026-02-01T00:00:00Z'}}])[0].length!==2)throw new Error('reconciliation failed');
+console.log('fundamentals-intelligence contract: PASS');
