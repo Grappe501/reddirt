@@ -1,0 +1,98 @@
+{
+  "version": "1.0.0",
+  "phase": "V2.5-09",
+  "desks": [
+    {
+      "id": "momentum",
+      "name": "Momentum Desk",
+      "requiredSignals": [
+        "momentum",
+        "volume",
+        "relative-strength",
+        "regime"
+      ],
+      "horizon": "short_to_medium"
+    },
+    {
+      "id": "value-fundamental",
+      "name": "Value/Fundamental Desk",
+      "requiredSignals": [
+        "financial-statement",
+        "capital-structure",
+        "industry"
+      ],
+      "horizon": "medium_to_long"
+    },
+    {
+      "id": "mean-reversion",
+      "name": "Mean-Reversion Desk",
+      "requiredSignals": [
+        "mean-reversion",
+        "volatility",
+        "liquidity"
+      ],
+      "horizon": "short"
+    },
+    {
+      "id": "event-driven",
+      "name": "Event-Driven Desk",
+      "requiredSignals": [
+        "event",
+        "earnings",
+        "liquidity"
+      ],
+      "horizon": "event_window"
+    },
+    {
+      "id": "statistical-research",
+      "name": "Statistical Research Desk",
+      "requiredSignals": [
+        "statistics",
+        "historical-analogue",
+        "backtest-auditor"
+      ],
+      "horizon": "model_defined"
+    },
+    {
+      "id": "swing",
+      "name": "Swing Trading Desk",
+      "requiredSignals": [
+        "momentum",
+        "volume",
+        "volatility",
+        "risk"
+      ],
+      "horizon": "days_to_weeks"
+    },
+    {
+      "id": "intraday",
+      "name": "Intraday Desk",
+      "requiredSignals": [
+        "market-data",
+        "volume",
+        "liquidity",
+        "intraday-opportunity-hunter"
+      ],
+      "horizon": "intraday"
+    },
+    {
+      "id": "long-term-compounder",
+      "name": "Long-Term Compounder Desk",
+      "requiredSignals": [
+        "financial-statement",
+        "earnings",
+        "capital-structure",
+        "industry"
+      ],
+      "horizon": "long"
+    }
+  ],
+  "rules": [
+    "Desks consume shared evidence independently.",
+    "Desk disagreement is preserved.",
+    "Control blocks cannot be silently overridden.",
+    "Missing required evidence degrades a desk rather than inviting invention.",
+    "Desk scores are evidence scores, not probabilities of profit.",
+    "Desks cannot execute real-money trades."
+  ]
+}
