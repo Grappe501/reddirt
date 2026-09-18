@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "wealth-builder://schemas/universal-knowledge-object-v1.json",
+  "title": "Wealth Builder Universal Knowledge Object v1",
+  "type": "object",
+  "required": ["id","slug","canonicalTerm","aliases","objectType","domainTags","version","status","glance","explain","relationships","interactive","evidence","presentation"],
+  "properties": {
+    "id":{"type":"string","minLength":3},
+    "slug":{"type":"string","pattern":"^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+    "canonicalTerm":{"type":"string","minLength":1},
+    "aliases":{"type":"array","items":{"type":"string"},"uniqueItems":true},
+    "objectType":{"enum":["term","metric","indicator","formula","accounting_item","market_structure","strategy","risk","order_type","asset_class","company_concept","industry_concept","regulatory_concept","other"]},
+    "domainTags":{"type":"array","items":{"type":"string"},"uniqueItems":true},
+    "version":{"type":"string","pattern":"^\\d+\\.\\d+(?:\\.\\d+)?$"},
+    "status":{"enum":["draft","reviewed","published","deprecated"]},
+    "supersedesId":{"type":["string","null"]},
+    "glance":{"type":"object","required":["definition"],"properties":{"definition":{"type":"string","minLength":1},"expansion":{"type":"string"}},"additionalProperties":false},
+    "explain":{"type":"object","required":["plainEnglish","whyItMatters"],"properties":{"plainEnglish":{"type":"string","minLength":1},"whyItMatters":{"type":"string","minLength":1},"analogy":{"type":"string"},"basicExample":{"type":"string"}},"additionalProperties":false},
+    "learn":{"type":"object","properties":{"lesson":{"type":"string"},"visualSpec":{"type":"string"},"workedExamples":{"type":"array","items":{"type":"object"}},"commonMisconceptions":{"type":"array","items":{"type":"string"}},"tradingApplications":{"type":"array","items":{"type":"string"}},"investorApplications":{"type":"array","items":{"type":"string"}},"warnings":{"type":"array","items":{"type":"string"}}}},
+    "advanced":{"type":"object","properties":{"definition":{"type":"string"},"formula":{"type":"string"},"variables":{"type":"array","items":{"type":"object","required":["symbol","meaning"],"properties":{"symbol":{"type":"string"},"meaning":{"type":"string"},"unit":{"type":"string"}}}},"methodology":{"type":"string"},"assumptions":{"type":"array","items":{"type":"string"}},"edgeCases":{"type":"array","items":{"type":"string"}},"alternatives":{"type":"array","items":{"type":"string"}},"limitations":{"type":"array","items":{"type":"string"}}}},
+    "research":{"type":"object","properties":{"treatment":{"type":"string"},"empiricalQuestions":{"type":"array","items":{"type":"string"}},"methodologicalDebates":{"type":"array","items":{"type":"string"}},"furtherReading":{"type":"array","items":{"type":"string"}}}},
+    "relationships":{"type":"object","required":["prerequisites","relatedConcepts","contrastsWith","usedByStrategies","appearsInMetrics","relevantAssetClasses","relevantIndustries"],"properties":{"prerequisites":{"type":"array","items":{"type":"string"}},"relatedConcepts":{"type":"array","items":{"type":"string"}},"contrastsWith":{"type":"array","items":{"type":"string"}},"usedByStrategies":{"type":"array","items":{"type":"string"}},"appearsInMetrics":{"type":"array","items":{"type":"string"}},"relevantAssetClasses":{"type":"array","items":{"type":"string"}},"relevantIndustries":{"type":"array","items":{"type":"string"}}}},
+    "interactive":{"type":"object","required":["exercises","simulatorScenarios","quizItems"],"properties":{"exercises":{"type":"array","items":{"$ref":"#/$defs/exercise"}},"simulatorScenarios":{"type":"array","items":{"type":"object"}},"quizItems":{"type":"array","items":{"type":"object"}}}},
+    "evidence":{"type":"object","required":["sources","factualClaims","sourceState"],"properties":{"sources":{"type":"array","items":{"$ref":"#/$defs/source"}},"factualClaims":{"type":"array","items":{"$ref":"#/$defs/claim"}},"sourceState":{"enum":["sourced","partially_sourced","unsourced"]},"evidenceNotes":{"type":"string"},"generatedContentDisclosure":{"type":"string"},"lastSourceReviewAt":{"type":"string"}}},
+    "presentation":{"type":"object","required":["searchKeywords","locale"],"properties":{"readingTimeMinutesByDepth":{"type":"object"},"difficultyByDepth":{"type":"object"},"searchKeywords":{"type":"array","items":{"type":"string"}},"preferredDisplayTerm":{"type":"string"},"accessibilityNotes":{"type":"string"},"locale":{"type":"string"}}}
+  },
+  "$defs":{
+    "source":{"type":"object","required":["sourceId","title","sourceType","locator","authorityTier"],"properties":{"sourceId":{"type":"string"},"title":{"type":"string"},"publisherAuthor":{"type":"string"},"sourceType":{"type":"string"},"publicationDate":{"type":"string"},"locator":{"type":"string"},"accessedAt":{"type":"string"},"authorityTier":{"enum":["primary","authoritative_secondary","secondary","educational","other"]},"notes":{"type":"string"}}},
+    "claim":{"type":"object","required":["claimId","summary","sourceIds","claimType","confidence","reviewState"],"properties":{"claimId":{"type":"string"},"summary":{"type":"string"},"sourceIds":{"type":"array","items":{"type":"string"}},"claimType":{"enum":["definition","historical","empirical","accounting","regulatory","market_data","methodology","other"]},"confidence":{"enum":["high","moderate","low","unknown"]},"reviewState":{"enum":["unreviewed","reviewed","disputed"]}}},
+    "exercise":{"type":"object","required":["exerciseId","type","prompt","learningObjective","difficulty","explanation","relatedConceptIds"],"properties":{"exerciseId":{"type":"string"},"type":{"enum":["multiple_choice","calculation","chart_reading","scenario","simulator","reflection"]},"prompt":{"type":"string"},"learningObjective":{"type":"string"},"difficulty":{"enum":["beginner","intermediate","advanced","research"]},"expectedAnswer":{"type":["string","number","object","array","null"]},"explanation":{"type":"string"},"relatedConceptIds":{"type":"array","items":{"type":"string"}},"simulatorConfig":{"type":"object"}}}
+  }
+}
