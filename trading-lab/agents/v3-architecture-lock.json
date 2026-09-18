@@ -1,0 +1,30 @@
+{
+  "version": "3.0.0",
+  "status": "LOCKED_FOR_HANDOFF",
+  "hostileAudit": {
+    "runId": 35404136167,
+    "commit": "51f6c365f1db6515f001cb68e29be2a72169b71d",
+    "conclusion": "success"
+  },
+  "paperOnly": true,
+  "mayExecuteTrade": false,
+  "v3Slices": 14,
+  "v4": {
+    "name": "Adaptive Equal-Agent Organization",
+    "slices": 17,
+    "invariants": [
+      "agent_equality",
+      "roles_are_functions_not_ranks",
+      "knowledge_follows_agent",
+      "placement_follows_evidence",
+      "repurpose_before_reproduce",
+      "reversible_roles",
+      "trainer_equality",
+      "diagnose_before_dormancy",
+      "team_optimization",
+      "human_benefit_and_integrity_first",
+      "constitutional_invariants_human_governed",
+      "no_execution_authority_creep"
+    ]
+  }
+}
