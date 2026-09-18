@@ -46,9 +46,9 @@ export function buyPortfolio({ portfolio, symbol, price, costs, time, reason, st
     const total = shares * price + friction.total;
     if (total <= portfolio.cash) {
       portfolio.cash -= total;
-      portfolio.position = { symbol, shares, entry: price, entryCosts: friction.total, stopPrice, targetPrice, openedAt: time };
+      portfolio.position = { symbol, shares, entry: price, entryCosts: friction.total, stopPrice, targetPrice, openedAt: time, entryReason: reason };
       portfolio.fees += friction.total;
-      portfolio.trades.unshift({ side: 'BUY', symbol, shares, price, costs: friction.total, time, reason, net: null });
+      portfolio.trades.unshift({ tradeId: `trade:${symbol}:${time}:BUY`, side: 'BUY', symbol, shares, price, costs: friction.total, time, reason, net: null });
       return { ok: true, shares, costs: friction, total };
     }
     shares = Math.round((shares - 1 / precision) * precision) / precision;
@@ -66,7 +66,7 @@ export function sellPortfolio({ portfolio, symbol, price, costs, time, reason })
   portfolio.cash += proceeds - friction.total;
   portfolio.realized += net;
   portfolio.fees += friction.total;
-  portfolio.trades.unshift({ side: 'SELL', symbol, shares: pos.shares, price, costs: friction.total, time, reason, net });
+  portfolio.trades.unshift({ tradeId: `trade:${symbol}:${time}:SELL`, side: 'SELL', symbol, shares: pos.shares, price, entryPrice: pos.entry, entryCosts: pos.entryCosts, entryAt: pos.openedAt, entryReason: pos.entryReason ?? null, priceAtExit: price, costs: friction.total, time, reason, net });
   portfolio.position = null;
   return { ok: true, shares: pos.shares, costs: friction, gross, net };
 }
