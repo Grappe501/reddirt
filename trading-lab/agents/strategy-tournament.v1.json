@@ -1,0 +1,24 @@
+{
+  "version": "1.0.0",
+  "phase": "V3-08",
+  "name": "Strategy Tournament",
+  "purpose": "Compare research configurations under identical frozen evidence, horizons, costs and baselines without declaring automatic winners.",
+  "requirements": [
+    "shared experiment id",
+    "same frozen snapshot",
+    "same outcome horizon",
+    "same cost model",
+    "same baseline",
+    "minimum sample labeling",
+    "regime-separated summaries",
+    "no automatic promotion",
+    "paper-only"
+  ],
+  "comparisonMetrics": [
+    "net_excess_vs_baseline",
+    "hit_rate",
+    "drawdown_proxy",
+    "cost_drag",
+    "coverage"
+  ]
+}
