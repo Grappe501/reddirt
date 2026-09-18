@@ -1,0 +1,52 @@
+{
+  "version":"1.0",
+  "nodeTypes":["knowledge","domain","learning_path"],
+  "edgeTypes":["prerequisite_of","related_to","contrasts_with","component_of","measured_by","applied_in"],
+  "domains":[
+    {"id":"domain-market-mechanics","label":"Market Mechanics"},
+    {"id":"domain-technical","label":"Technical Analysis"},
+    {"id":"domain-fundamentals","label":"Fundamental Analysis"},
+    {"id":"domain-risk","label":"Risk and Portfolio Analysis"}
+  ],
+  "nodes":[
+    {"id":"uko-volume","label":"Volume","type":"knowledge","status":"stub","domain":"domain-market-mechanics"},
+    {"id":"uko-typical-price","label":"Typical Price","type":"knowledge","status":"stub","domain":"domain-technical"},
+    {"id":"uko-vwap","label":"VWAP","type":"knowledge","status":"authored","domain":"domain-technical"},
+    {"id":"uko-eps","label":"Earnings Per Share","type":"knowledge","status":"stub","domain":"domain-fundamentals"},
+    {"id":"uko-pe-ratio","label":"P/E Ratio","type":"knowledge","status":"authored","domain":"domain-fundamentals"},
+    {"id":"uko-earnings-yield","label":"Earnings Yield","type":"knowledge","status":"stub","domain":"domain-fundamentals"},
+    {"id":"uko-true-range","label":"True Range","type":"knowledge","status":"stub","domain":"domain-technical"},
+    {"id":"uko-atr","label":"Average True Range","type":"knowledge","status":"authored","domain":"domain-technical"},
+    {"id":"uko-volatility","label":"Volatility","type":"knowledge","status":"stub","domain":"domain-risk"},
+    {"id":"uko-long-position","label":"Long Position","type":"knowledge","status":"stub","domain":"domain-market-mechanics"},
+    {"id":"uko-short-selling","label":"Short Selling","type":"knowledge","status":"authored","domain":"domain-market-mechanics"},
+    {"id":"uko-short-squeeze","label":"Short Squeeze","type":"knowledge","status":"stub","domain":"domain-market-mechanics"},
+    {"id":"uko-borrow-fee","label":"Borrow Fee","type":"knowledge","status":"stub","domain":"domain-market-mechanics"},
+    {"id":"uko-return","label":"Return","type":"knowledge","status":"stub","domain":"domain-risk"},
+    {"id":"uko-standard-deviation","label":"Standard Deviation","type":"knowledge","status":"stub","domain":"domain-risk"},
+    {"id":"uko-sharpe-ratio","label":"Sharpe Ratio","type":"knowledge","status":"authored","domain":"domain-risk"},
+    {"id":"uko-sortino-ratio","label":"Sortino Ratio","type":"knowledge","status":"stub","domain":"domain-risk"}
+  ],
+  "edges":[
+    {"from":"uko-volume","to":"uko-vwap","type":"prerequisite_of"},
+    {"from":"uko-typical-price","to":"uko-vwap","type":"prerequisite_of"},
+    {"from":"uko-eps","to":"uko-pe-ratio","type":"prerequisite_of"},
+    {"from":"uko-pe-ratio","to":"uko-earnings-yield","type":"related_to"},
+    {"from":"uko-true-range","to":"uko-atr","type":"prerequisite_of"},
+    {"from":"uko-atr","to":"uko-volatility","type":"related_to"},
+    {"from":"uko-long-position","to":"uko-short-selling","type":"contrasts_with"},
+    {"from":"uko-short-selling","to":"uko-short-squeeze","type":"related_to"},
+    {"from":"uko-borrow-fee","to":"uko-short-selling","type":"related_to"},
+    {"from":"uko-return","to":"uko-sharpe-ratio","type":"prerequisite_of"},
+    {"from":"uko-standard-deviation","to":"uko-sharpe-ratio","type":"prerequisite_of"},
+    {"from":"uko-volatility","to":"uko-sharpe-ratio","type":"related_to"},
+    {"from":"uko-sharpe-ratio","to":"uko-sortino-ratio","type":"related_to"}
+  ],
+  "learningPaths":[
+    {"id":"path-vwap","label":"Understand VWAP","target":"uko-vwap","sequence":["uko-volume","uko-typical-price","uko-vwap"]},
+    {"id":"path-valuation-pe","label":"Understand P/E","target":"uko-pe-ratio","sequence":["uko-eps","uko-pe-ratio","uko-earnings-yield"]},
+    {"id":"path-atr","label":"Understand ATR","target":"uko-atr","sequence":["uko-true-range","uko-atr","uko-volatility"]},
+    {"id":"path-short-selling","label":"Understand Short Selling","target":"uko-short-selling","sequence":["uko-long-position","uko-short-selling","uko-borrow-fee","uko-short-squeeze"]},
+    {"id":"path-sharpe","label":"Understand Sharpe Ratio","target":"uko-sharpe-ratio","sequence":["uko-return","uko-standard-deviation","uko-volatility","uko-sharpe-ratio","uko-sortino-ratio"]}
+  ]
+}
