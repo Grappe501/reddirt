@@ -1,0 +1,25 @@
+{
+  "version": "1.0.0",
+  "phase": "V2.5-07",
+  "department": "adversarial",
+  "agents": [
+    "bull",
+    "bear",
+    "red-team"
+  ],
+  "protocol": {
+    "independentCaseConstruction": true,
+    "sameEvidenceUniverse": true,
+    "dissentMustSurvive": true,
+    "redTeamPurpose": "falsification",
+    "tradeExecution": false
+  },
+  "rules": [
+    "Bull constructs the strongest evidence-supported bullish case.",
+    "Bear constructs the strongest evidence-supported bearish case.",
+    "Red Team attacks assumptions, provenance, causal stories and thesis falsifiability.",
+    "Mandated Bull/Bear direction is not confidence or probability.",
+    "Contradicting evidence cannot be discarded by downstream synthesis.",
+    "Missing thesis or upstream evidence degrades the panel instead of inviting invention."
+  ]
+}
