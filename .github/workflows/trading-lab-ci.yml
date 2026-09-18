@@ -1,7 +1,8 @@
-name: Trading Lab CI
+name: Trading Lab V2 Hostile Audit
 
 on:
   push:
+    branches: [main]
     paths:
       - 'trading-lab/**'
       - '.github/workflows/trading-lab-ci.yml'
@@ -9,23 +10,44 @@ on:
     paths:
       - 'trading-lab/**'
       - '.github/workflows/trading-lab-ci.yml'
-
   workflow_dispatch:
 
+permissions:
+  contents: read
+
+concurrency:
+  group: trading-lab-v2-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  check:
+  hostile-audit:
+    name: npm ci + audit:v2
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     defaults:
       run:
         working-directory: trading-lab
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
       - name: Use Node 22
         uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: Install dependencies
+          cache: npm
+          cache-dependency-path: trading-lab/package-lock.json
+      - name: Environment proof
+        run: |
+          node --version
+          npm --version
+          test -f package-lock.json
+          test -f package.json
+      - name: Clean install
         run: npm ci
-      - name: Test and build
+      - name: V2 hostile audit
         run: npm run audit:v2
+      - name: Build artifact proof
+        run: |
+          test -d dist
+          test -f dist/index.html
+          echo "Trading Lab V2 hostile audit and Vite build completed successfully."
