@@ -1,0 +1,12 @@
+{
+"$schema":"https://json-schema.org/draft/2020-12/schema","$id":"wealth-builder://schemas/security-master-v1.json","title":"Wealth Builder Security Master v1","type":"object",
+"required":["securityId","symbol","displayName","assetClass","listing","issuer","classification","identifiers","provenance","status"],
+"properties":{
+"securityId":{"type":"string"},"symbol":{"type":"string"},"displayName":{"type":"string"},"assetClass":{"enum":["equity","etf","fund","future","option","forex","crypto","index","other"]},
+"listing":{"type":"object","required":["exchangeCode","currency","country"],"properties":{"exchangeCode":{"type":"string"},"exchangeName":{"type":"string"},"currency":{"type":"string"},"country":{"type":"string"},"primary":{"type":"boolean"}}},
+"issuer":{"type":"object","required":["name"],"properties":{"issuerId":{"type":"string"},"name":{"type":"string"},"legalName":{"type":"string"},"description":{"type":"string"},"headquarters":{"type":"string"},"website":{"type":"string"}}},
+"classification":{"type":"object","properties":{"sector":{"type":"string"},"industry":{"type":"string"},"subIndustry":{"type":"string"},"tags":{"type":"array","items":{"type":"string"}}}},
+"identifiers":{"type":"object","properties":{"cik":{"type":"string"},"isin":{"type":"string"},"cusip":{"type":"string"},"figi":{"type":"string"},"providerSymbols":{"type":"object"}}},
+"provenance":{"type":"object","required":["sourceState","sources"],"properties":{"sourceState":{"enum":["sourced","partially_sourced","unsourced"]},"sources":{"type":"array","items":{"type":"object"}},"lastVerifiedAt":{"type":["string","null"]}}},
+"status":{"enum":["draft","verified","deprecated"]},"aliases":{"type":"array","items":{"type":"string"}},"educationConceptIds":{"type":"array","items":{"type":"string"}},"metadata":{"type":"object"}
+}}
