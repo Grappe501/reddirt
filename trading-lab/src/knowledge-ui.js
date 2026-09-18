@@ -1,7 +1,11 @@
 import knowledgeObjects from '../knowledge/seeds/core-concepts.v1.json' with { type: 'json' };
+import depthExtensions from '../knowledge/seeds/core-concepts-depths.v1.json' with { type: 'json' };
+import { renderDepthModel } from './knowledge-depth-engine.js';
 import { graphContext } from './knowledge-graph.js';
 
-const objects = new Map(knowledgeObjects.map(item => [item.id, item]));
+const extensions=new Map(depthExtensions.map(item=>[item.id,item]));
+const merged=knowledgeObjects.map(item=>({...item,...(extensions.get(item.id)||{})}));
+const objects = new Map(merged.map(item => [item.id, item]));
 const esc = value => String(value ?? '').replace(/[&<>'"]/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[ch]));
 
 export function getKnowledgeObject(id) { return objects.get(id) || null; }
@@ -13,12 +17,11 @@ export function knowledgeTrigger(id, label) {
 }
 
 function content(k, depth) {
-  if(depth==='glance') return '<p>'+esc(k.glance.definition)+'</p>';
-  if(depth==='explain') return '<p>'+esc(k.explain.plainEnglish)+'</p><h4>Why it matters</h4><p>'+esc(k.explain.whyItMatters)+'</p>';
-  if(depth==='learn') return '<p>'+esc(k.learn?.lesson || 'This practical lesson is being developed.')+'</p>';
-  if(depth==='advanced') return '<p>'+esc(k.advanced?.definition || k.advanced?.methodology || 'Advanced treatment is being developed.')+'</p>';
-  if(depth==='research') return '<p>'+esc(k.research?.treatment || 'Research-level treatment and source review are being developed.')+'</p>';
-  return '<p>Interactive exercises will connect this concept directly to the simulator.</p>';
+  if(depth==='try') return '<p>Interactive exercises will connect this concept directly to the simulator in V2-06.</p>';
+  const model=renderDepthModel(k,depth);
+  const notice=model.fallback?'<div class="knowledge-fallback">Requested depth is not authored yet. Showing the deepest available treatment.</div>':'';
+  const sections=model.sections.map(s=>'<section><h4>'+esc(s.title)+'</h4>'+(s.body?'<p class="'+(s.kind==='formula'?'knowledge-formula':'')+'">'+esc(s.body)+'</p>':'')+(s.items?.length?'<ul>'+s.items.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul>':'')+'</section>').join('');
+  return notice+sections;
 }
 
 function graphMarkup(k){const g=graphContext(k.id);if(!g)return '';const pre=g.prerequisites.length?'<div class="knowledge-graph-block"><h4>Understand first</h4><div class="knowledge-chips">'+g.prerequisites.map(n=>'<span>'+esc(n.label)+(n.status==='stub'?' · coming soon':'')+'</span>').join('')+'</div></div>':'';const path=g.path?'<div class="knowledge-graph-block"><h4>Learning path</h4><ol>'+g.path.nodes.map(n=>'<li>'+esc(n.label)+(n.status==='stub'?' <small>coming soon</small>':'')+'</li>').join('')+'</ol></div>':'';return pre+path;}
