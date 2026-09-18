@@ -1,0 +1,21 @@
+{
+"version":"1.0",
+"chapters":[
+{"id":"company","label":"Company","question":"What is this security and the organization behind it?"},
+{"id":"products","label":"Products","question":"What does the business sell or provide?"},
+{"id":"industry","label":"Industry","question":"Where does it compete?"},
+{"id":"financial-statements","label":"Financial Statements","question":"What do the reported accounts say?"},
+{"id":"revenue","label":"Revenue","question":"Where does money come from?"},
+{"id":"profitability","label":"Profitability","question":"How much economic/accounting profit is reported?"},
+{"id":"valuation","label":"Valuation","question":"How is market price related to financial measures?"},
+{"id":"growth","label":"Growth","question":"How have key business measures changed?"},
+{"id":"capital","label":"Capital","question":"How is the business financed and capital allocated?"},
+{"id":"ownership","label":"Ownership","question":"Who owns or controls reported interests?"},
+{"id":"filings","label":"SEC / Regulatory Filings","question":"What has the issuer formally disclosed?"},
+{"id":"earnings","label":"Earnings","question":"What has been reported around periodic results?"},
+{"id":"technical-market","label":"Technical Market","question":"What is price, volume and market behavior showing?"},
+{"id":"risk","label":"Risk","question":"What can go wrong and what exposures matter?"},
+{"id":"research-lab","label":"Research Lab","question":"What hypotheses can we test in the simulator?"}
+],
+"rules":{"unknownState":"UNKNOWN_NOT_ZERO","provenanceRequired":true,"liveContextSeparate":true,"educationEmbedded":true}
+}
