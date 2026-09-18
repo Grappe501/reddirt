@@ -11,8 +11,8 @@ Total macro phases: 20
 | V2-04 | Financial Knowledge Graph | COMPLETE | 100% |
 | V2-05 | Beginner-to-PhD Content Engine | COMPLETE | 100% |
 | V2-06 | Interactive Learning Lab | COMPLETE | 100% |
-| V2-07 | Security Master | NEXT | 0% |
-| V2-08 | Universal Symbol Intelligence Pages | QUEUED | 0% |
+| V2-07 | Security Master | COMPLETE | 100% |
+| V2-08 | Universal Symbol Intelligence Pages | NEXT | 0% |
 | V2-09 | Fundamentals + Filing Intelligence | QUEUED | 0% |
 | V2-10 | Premium Intelligence Engine | DESIGNED / QUEUED | 15% |
 | V2-11 | Market Brain + Opportunity Engine | QUEUED | 0% |
@@ -72,3 +72,13 @@ Live market runtime; breadth universe; Market Memory and durable persistence; hi
 - Exercises include learning objective, difficulty, explanation and optional simulator context.
 - First education substrate block V2-02 through V2-06 is complete.
 - Next target: V2-07 Security Master.
+
+## V2-07 closeout evidence
+
+- Versioned Security Master schema added.
+- Stable security/listing/issuer/provenance separation established.
+- Seed proves three equities and two ETFs: NVDA, AAPL, MSFT, SPY, QQQ.
+- Security resolver and hover-card data contract implemented.
+- Trading Lab symbol cards now resolve Security Master identity where available.
+- Seed metadata remains explicitly draft/unsourced pending authoritative verification.
+- Next target: V2-08 Universal Symbol Intelligence Pages.
