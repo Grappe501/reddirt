@@ -1,0 +1,24 @@
+{
+  "version": "1.0.0",
+  "phase": "V3-09",
+  "name": "Research Cost Intelligence",
+  "costKinds": [
+    "deterministic_compute",
+    "market_data",
+    "external_data",
+    "ai_input_tokens",
+    "ai_output_tokens",
+    "storage",
+    "other"
+  ],
+  "units": "USD",
+  "rules": [
+    "Every cost line requires provider/component identity.",
+    "Token usage is measured, not guessed, when provider metadata exists.",
+    "Estimated costs are explicitly labeled ESTIMATED.",
+    "Actual provider costs are explicitly labeled ACTUAL.",
+    "Research value and research cost remain separate measures.",
+    "Cost efficiency never becomes automatic strategy authority.",
+    "No real-money execution."
+  ]
+}
