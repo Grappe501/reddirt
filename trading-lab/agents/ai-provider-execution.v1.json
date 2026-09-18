@@ -1,0 +1,26 @@
+{
+  "version": "1.0.0",
+  "phase": "V3-10",
+  "name": "AI Provider Execution Layer",
+  "purpose": "Permit bounded AI interpretation only over supplied evidence while preserving provenance, structured output, token/cost metadata and paper-only authority.",
+  "allowedRoles": [
+    "interpretation",
+    "hypothesis",
+    "explanation",
+    "adversarial_review",
+    "synthesis"
+  ],
+  "requirements": [
+    "provider injected at runtime",
+    "model identity recorded",
+    "evidence references supplied",
+    "structured JSON output",
+    "token budget",
+    "timeout/retry budget",
+    "usage metadata captured when available",
+    "degrade on provider failure",
+    "no invented source ids",
+    "no calibrated probability without calibration ref",
+    "no trade execution"
+  ]
+}
