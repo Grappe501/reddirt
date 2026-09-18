@@ -1,0 +1,39 @@
+{
+  "version": "1.0.0",
+  "phase": "V2.5-10",
+  "directors": [
+    {
+      "id": "research-director",
+      "domain": "research",
+      "mission": "Assess evidence sufficiency, provenance, freshness and missing research without replacing source packets."
+    },
+    {
+      "id": "quant-director",
+      "domain": "quant",
+      "mission": "Summarize reproducible quantitative evidence, sample limitations and model disagreement."
+    },
+    {
+      "id": "opportunity-director",
+      "domain": "opportunity",
+      "mission": "Compare hunter escalations and desk views while preserving mandate differences."
+    },
+    {
+      "id": "risk-director",
+      "domain": "risk",
+      "mission": "Consolidate control gates, costs, exposure and explicit risk constraints."
+    },
+    {
+      "id": "learning-director",
+      "domain": "learning",
+      "mission": "Summarize prior outcomes, calibration evidence and regime-specific lessons without rewriting history."
+    }
+  ],
+  "rules": [
+    "Directors summarize; they do not mutate underlying packets.",
+    "Every director output retains input references.",
+    "Dissent and blocking controls remain visible.",
+    "No director output is a probability of profit unless backed by an explicit calibration reference.",
+    "Directors cannot execute trades.",
+    "Missing domain evidence produces DEGRADED rather than invented conclusions."
+  ]
+}
