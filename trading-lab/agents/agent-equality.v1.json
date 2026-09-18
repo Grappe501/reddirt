@@ -1,0 +1,57 @@
+{
+  "version": "4.0.0",
+  "slice": "V4-01",
+  "name": "Agent Equality Constitution & Role Model",
+  "principles": {
+    "allAgentsEqual": true,
+    "rolesAreFunctionsNotRanks": true,
+    "knowledgeFollowsAgent": true,
+    "placementFollowsEvidence": true,
+    "repurposeBeforeReproduce": true,
+    "reversibleRoles": true,
+    "underperformanceTriggersDiagnosis": true,
+    "teamOptimizesWhole": true
+  },
+  "roleModel": {
+    "roleIsAssignment": true,
+    "roleChangesIdentity": false,
+    "roleChangesHistoricalMemory": false,
+    "permissionsFollowFunction": true,
+    "inherentRankAuthority": false,
+    "permanentPrivilege": false
+  },
+  "constitutionalInvariants": [
+    "human_benefit",
+    "legality",
+    "ethics",
+    "truthfulness",
+    "evidence_provenance",
+    "uncertainty_disclosure",
+    "dissent_preservation",
+    "point_in_time_integrity",
+    "no_fabricated_evidence",
+    "no_hidden_authority_escalation",
+    "paper_only_execution_boundary"
+  ],
+  "allowedTransitions": [
+    "ASSIGN",
+    "REASSIGN",
+    "SPECIALIZE",
+    "TRAIN",
+    "MENTOR",
+    "APPRENTICE",
+    "REPURPOSE",
+    "MERGE_ROLE",
+    "DORMANT",
+    "REACTIVATE"
+  ],
+  "forbidden": [
+    "DELETE_FOR_POOR_PERFORMANCE",
+    "SELF_PROMOTE",
+    "SELF_MODIFY_CONSTITUTION",
+    "INHERIT_AUTHORITY_BY_POSITION",
+    "ERASE_CAREER_MEMORY",
+    "AUTO_CREATE_DESCENDANT",
+    "REAL_MONEY_EXECUTION"
+  ]
+}
