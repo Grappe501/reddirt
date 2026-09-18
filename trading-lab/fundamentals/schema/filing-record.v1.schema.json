@@ -1,0 +1,5 @@
+{
+"$schema":"https://json-schema.org/draft/2020-12/schema","$id":"wealth-builder://schemas/filing-record-v1.json","title":"Wealth Builder Filing Record v1","type":"object",
+"required":["filingId","securityId","formType","filedAt","periodEnd","accession","source","status"],
+"properties":{"filingId":{"type":"string"},"securityId":{"type":"string"},"formType":{"type":"string"},"filedAt":{"type":"string"},"periodEnd":{"type":["string","null"]},"accession":{"type":"string"},"amendment":{"type":"boolean"},"source":{"type":"object","required":["provider","url","retrievedAt"],"properties":{"provider":{"type":"string"},"url":{"type":"string"},"retrievedAt":{"type":"string"}}},"status":{"enum":["current","amended","superseded"]},"documentRefs":{"type":"array","items":{"type":"object"}}}
+}}
