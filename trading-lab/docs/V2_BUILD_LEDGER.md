@@ -20,8 +20,8 @@ Total macro phases: 20
 | V2-13 | Trading Scientist / Strategy Laboratory | QUEUED | 0% |
 | V2-14 | Personal Trading Digital Twin | COMPLETE | 100% |
 | V2-15 | Institutional Risk Command Center | COMPLETE | 100% |
-| V2-16 | Automatic Journal + Shadow Trader | NEXT | 0% |
-| V2-17 | Morning / Live / Closing War Rooms | QUEUED | 0% |
+| V2-16 | Automatic Journal + Shadow Trader | COMPLETE | 100% |
+| V2-17 | Morning / Live / Closing War Rooms | NEXT | 0% |
 | V2-18 | Alerts + Personalization + Skill Tree | QUEUED | 0% |
 | V2-19 | Professional / Classroom / Competition | QUEUED | 0% |
 | V2-20 | Hostile Audit + Production Release | QUEUED | 0% |
@@ -168,3 +168,14 @@ Live market runtime; breadth universe; Market Memory and durable persistence; hi
 - Deterministic market/sector stress scenarios implemented and explicitly labeled non-forecast.
 - Contract test and package validation command added.
 - Next target: V2-16 Automatic Journal + Shadow Trader.
+
+## V2-16 closeout evidence
+
+- Versioned automatic trade-journal record implemented.
+- Journal links execution to strategy, Premium, Market Brain, Risk and setup evidence snapshots.
+- Realized simulated P/L calculation retains fees and optional MFE/MAE.
+- Shadow Trader requires predeclared counterfactual rules and blocks hindsight-declared alternatives.
+- Fixed-stop, fixed-target and time-exit counterfactual foundations implemented.
+- Modeled alternative outcome is explicitly not framed as what the trader should have done.
+- Contract test and package validation command added.
+- Next target: V2-17 Morning / Live / Closing War Rooms.
