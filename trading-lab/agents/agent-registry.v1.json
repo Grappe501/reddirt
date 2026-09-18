@@ -1,0 +1,981 @@
+{
+  "version": "1.0.0",
+  "phase": "V2.5-01",
+  "status": "canonical",
+  "doctrine": {
+    "monolithicPicker": false,
+    "realMoneyExecution": false,
+    "preserveDissent": true,
+    "scoreIsProbability": false,
+    "structuredOutputRequired": true
+  },
+  "outputContract": "agent-research-packet.v1",
+  "agents": [
+    {
+      "ordinal": 1,
+      "id": "market-data",
+      "name": "Market Data Agent",
+      "layer": "data_truth",
+      "implementation": "deterministic",
+      "mandate": "price volume spread VWAP ATR liquidity and timestamps",
+      "permissions": {
+        "mayRecommendResearchState": true,
+        "mayExecuteTrade": false,
+        "mayHideDissent": false,
+        "mayInventEvidence": false
+      },
+      "requiredStates": [
+        "AVAILABLE",
+        "PARTIAL",
+        "STALE",
+        "UNAVAILABLE",
+        "NO_OP"
+      ]
+    },
+    {
+      "ordinal": 2,
+      "id": "historical-market",
+      "name": "Historical Market Agent",
+      "layer": "data_truth",
+      "implementation": "deterministic",
+      "mandate": "adjusted historical price volume and corporate-action series",
+      "permissions": {
+        "mayRecommendResearchState": true,
+        "mayExecuteTrade": false,
+        "mayHideDissent": false,
+        "mayInventEvidence": false
+      },
+      "requiredStates": [
+        "AVAILABLE",
+        "PARTIAL",
+        "STALE",
+        "UNAVAILABLE",
+        "NO_OP"
+      ]
+    },
+    {
+      "ordinal": 3,
+      "id": "corporate-historian",
+      "name": "Corporate Historian",
+      "layer": "data_truth",
+      "implementation": "reasoning",
+      "mandate": "documented acquisitions restructurings product changes crises and pivots",
+      "permissions": {
+        "mayRecommendResearchState": true,
+        "mayExecuteTrade": false,
+        "mayHideDissent": false,
+        "mayInventEvidence": false
+      },
+      "requiredStates": [
+        "AVAILABLE",
+        "PARTIAL",
+        "STALE",
+        "UNAVAILABLE",
+        "NO_OP"
+      ]
+    },
+    {
+      "ordinal": 4,
+      "id": "executive-intelligence",
+      "name": "Executive Intelligence Agent",
+      "layer": "data_truth",
+      "implementation": "reasoning",
+      "mandate": "officers directors tenure disclosed history and transactions",
+      "permissions": {
+        "mayRecommendResearchState": true,
+        "mayExecuteTrade": false,
+        "mayHideDissent": false,
+        "mayInventEvidence": false
+      },
+      "requiredStates": [
+        "AVAILABLE",
+        "PARTIAL",
+        "STALE",
+        "UNAVAILABLE",
+        "NO_OP"
+      ]
+    },
+    {
+      "ordinal": 5,
+      "id": "sec-filing",
+      "name": "SEC Filing Agent",
+      "layer": "data_truth",
+      "implementation": "hybrid",
+      "mandate": "filing ingestion extraction provenance and filing chronology",
+      "permissions": {
+        "mayRecommendResearchState": true,
+        "mayExecuteTrade": false,
+        "mayHideDissent": false,
+        "mayInventEvidence": false
+      },
+      "requiredStates": [
+        "AVAILABLE",
+        "PARTIAL",
+        "STALE",
+        "UNAVAILABLE",
+        "NO_OP"
+      ]
+    },
+    {
+      "ordinal": 6,
+      "id": "financial-statement",
+      "name": "Financial Statement Agent",
+      "layer": "data_truth",
+      "implementation": "hybrid",
+      "mandate": "normalize income balance-sheet and cash-flow evidence",
+      "permissions": {
+        "mayRecommendResearchState": true,
+        "mayExecuteTrade": false,
+        "mayHideDissent": false,
+        "mayInventEvidence": false
+      },
+      "requiredStates": [
+        "AVAILABLE",
+        "PARTIAL",
+        "STALE",
+        "UNAVAILABLE",
+        "NO_OP"
+      ]
+    },
+    {
+      "ordinal": 7,
+      "id": "earnings",
+      "name": "Earnings Agent",
+      "layer": "data_truth",
+      "implementation": "hybrid",
+      "mandate": "reported results surprises guidance and earnings chronology",
+      "permissions": {
+        "mayRecommendResearchState": true,
+        "mayExecuteTrade": false,
+        "mayHideDissent": false,
+        "mayInventEvidence": false
+      },
+      "requiredStates": [
+        "AVAILABLE",
+        "PARTIAL",
+        "STALE",
+        "UNAVAILABLE",
+        "NO_OP"
+      ]
+    },
+    {
+      "ordinal": 8,
+      "id": "capital-structure",
+      "name": "Capital Structure Agent",
+      "layer": "data_truth",
+      "implementation": "hybrid",
+      "mandate": "shares dilution debt convertibles buybacks and financing structure",
+      "permissions": {
+        "mayRecommendResearchState": true,
+        "mayExecuteTrade": false,
+        "mayHideDissent": false,
+        "mayInventEvidence": false
+      },
+      "requiredStates": [
+        "AVAILABLE",
+        "PARTIAL",
+        "STALE",
+        "UNAVAILABLE",
+        "NO_OP"
+      ]
+    },
+    {
+      "ordinal": 9,
+      "id": "ownership",
+      "name": "Ownership Agent",
+      "layer": "data_truth",
+      "implementation": "hybrid",
+      "mandate": "reported institutional and insider ownership changes",
+      "permissions": {
+        "mayRecommendResearchState": true,
+        "mayExecuteTrade": false,
+        "mayHideDissent": false,
+        "mayInventEvidence": false
+      },
+      "requiredStates": [
+        "AVAILABLE",
+        "PARTIAL",
+        "STALE",
+        "UNAVAILABLE",
+        "NO_OP"
+      ]
+    },
+    {
+      "ordinal": 10,
+      "id": "industry",
+      "name": "Industry Agent",
+      "layer": "data_truth",
+      "implementation": "reasoning",
+      "mandate": "peer set industry structure and comparative economics",
+      "permissions": {
+        "mayRecommendResearchState": true,
+        "mayExecuteTrade": false,
+        "mayHideDissent": false,
+        "mayInventEvidence": false
+      },
+      "requiredStates": [
+        "AVAILABLE",
+        "PARTIAL",
+        "STALE",
+        "UNAVAILABLE",
+        "NO_OP"
+      ]
+    },
+    {
+      "ordinal": 11,
+      "id": "macro",
+      "name": "Macro Agent",
+      "layer": "data_truth",
+      "implementation": "deterministic",
+      "mandate": "rates inflation labor commodities and relevant macro series",
+      "permissions": {
+        "mayRecommendResearchState": true,
+        "mayExecuteTrade": false,
+        "mayHideDissent": false,
+        "mayInventEvidence": false
+      },
+      "requiredStates": [
+        "AVAILABLE",
+        "PARTIAL",
+        "STALE",
+        "UNAVAILABLE",
+        "NO_OP"
+      ]
+    },
+    {
+      "ordinal": 12,
+      "id": "event",
+      "name": "Event Agent",
+      "layer": "data_truth",
+      "implementation": "hybrid",
+      "mandate": "earnings dividends splits and documented catalysts",
+      "permissions": {
+        "mayRecommendResearchState": true,
+        "mayExecuteTrade": false,
+        "mayHideDissent": false,
+        "mayInventEvidence": false
+      },
+      "requiredStates": [
+        "AVAILABLE",
+        "PARTIAL",
+        "STALE",
+        "UNAVAILABLE",
+        "NO_OP"
+      ]
+    },
+    {
+      "ordinal": 13,
+      "id": "statistics",
+      "name": "Statistics Agent",
+      "layer": "quant",
+      "implementation": "deterministic",
+      "mandate": "distributions z-scores correlations and anomaly measures",
+      "permissions": {
+        "mayRecommendResearchState": true,
+        "mayExecuteTrade": false,
+        "mayHideDissent": false,
+        "mayInventEvidence": false
+      },
+      "requiredStates": [
+        "AVAILABLE",
+        "PARTIAL",
+        "STALE",
+        "UNAVAILABLE",
+        "NO_OP"
+      ]
+    },
+    {
+      "ordinal": 14,
+      "id": "momentum",
+      "name": "Momentum Agent",
+      "layer": "quant",
+      "implementation": "deterministic",
+      "mandate": "multi-horizon momentum measurements",
+      "permissions": {
+        "mayRecommendResearchState": true,
+        "mayExecuteTrade": false,
+        "mayHideDissent": false,
+        "mayInventEvidence": false
+      },
+      "requiredStates": [
+        "AVAILABLE",
+        "PARTIAL",
+        "STALE",
+        "UNAVAILABLE",
+        "NO_OP"
+      ]
+    },
+    {
+      "ordinal": 15,
+      "id": "mean-reversion",
+      "name": "Mean-Reversion Agent",
+      "layer": "quant",
+      "implementation": "deterministic",
+      "mandate": "deviations and historical reversion behavior",
+      "permissions": {
+        "mayRecommendResearchState": true,
+        "mayExecuteTrade": false,
+        "mayHideDissent": false,
+        "mayInventEvidence": false
+      },
+      "requiredStates": [
+        "AVAILABLE",
+        "PARTIAL",
+        "STALE",
+        "UNAVAILABLE",
+        "NO_OP"
+      ]
+    },
+    {
+      "ordinal": 16,
+      "id": "volatility",
+      "name": "Volatility Agent",
+      "layer": "quant",
+      "implementation": "deterministic",
+      "mandate": "realized volatility ATR and volatility regime",
+      "permissions": {
+        "mayRecommendResearchState": true,
+        "mayExecuteTrade": false,
+        "mayHideDissent": false,
+        "mayInventEvidence": false
+      },
+      "requiredStates": [
+        "AVAILABLE",
+        "PARTIAL",
+        "STALE",
+        "UNAVAILABLE",
+        "NO_OP"
+      ]
+    },
+    {
+      "ordinal": 17,
+      "id": "volume",
+      "name": "Volume Agent",
+      "layer": "quant",
+      "implementation": "deterministic",
+      "mandate": "abnormal volume and participation",
+      "permissions": {
+        "mayRecommendResearchState": true,
+        "mayExecuteTrade": false,
+        "mayHideDissent": false,
+        "mayInventEvidence": false
+      },
+      "requiredStates": [
+        "AVAILABLE",
+        "PARTIAL",
+        "STALE",
+        "UNAVAILABLE",
+        "NO_OP"
+      ]
+    },
+    {
+      "ordinal": 18,
+      "id": "liquidity",
+      "name": "Liquidity Agent",
+      "layer": "quant",
+      "implementation": "deterministic",
+      "mandate": "spread slippage and executable-size evidence",
+      "permissions": {
+        "mayRecommendResearchState": true,
+        "mayExecuteTrade": false,
+        "mayHideDissent": false,
+        "mayInventEvidence": false
+      },
+      "requiredStates": [
+        "AVAILABLE",
+        "PARTIAL",
+        "STALE",
+        "UNAVAILABLE",
+        "NO_OP"
+      ]
+    },
+    {
+      "ordinal": 19,
+      "id": "relative-strength",
+      "name": "Relative-Strength Agent",
+      "layer": "quant",
+      "implementation": "deterministic",
+      "mandate": "security versus sector index and peers",
+      "permissions": {
+        "mayRecommendResearchState": true,
+        "mayExecuteTrade": false,
+        "mayHideDissent": false,
+        "mayInventEvidence": false
+      },
+      "requiredStates": [
+        "AVAILABLE",
+        "PARTIAL",
+        "STALE",
+        "UNAVAILABLE",
+        "NO_OP"
+      ]
+    },
+    {
+      "ordinal": 20,
+      "id": "regime",
+      "name": "Regime Agent",
+      "layer": "quant",
+      "implementation": "deterministic",
+      "mandate": "market-state classification",
+      "permissions": {
+        "mayRecommendResearchState": true,
+        "mayExecuteTrade": false,
+        "mayHideDissent": false,
+        "mayInventEvidence": false
+      },
+      "requiredStates": [
+        "AVAILABLE",
+        "PARTIAL",
+        "STALE",
+        "UNAVAILABLE",
+        "NO_OP"
+      ]
+    },
+    {
+      "ordinal": 21,
+      "id": "pattern-research",
+      "name": "Pattern Research Agent",
+      "layer": "quant",
+      "implementation": "deterministic",
+      "mandate": "falsifiable tests of recurring price-volume structures",
+      "permissions": {
+        "mayRecommendResearchState": true,
+        "mayExecuteTrade": false,
+        "mayHideDissent": false,
+        "mayInventEvidence": false
+      },
+      "requiredStates": [
+        "AVAILABLE",
+        "PARTIAL",
+        "STALE",
+        "UNAVAILABLE",
+        "NO_OP"
+      ]
+    },
+    {
+      "ordinal": 22,
+      "id": "correlation",
+      "name": "Correlation Agent",
+      "layer": "quant",
+      "implementation": "deterministic",
+      "mandate": "changing cross-security relationships",
+      "permissions": {
+        "mayRecommendResearchState": true,
+        "mayExecuteTrade": false,
+        "mayHideDissent": false,
+        "mayInventEvidence": false
+      },
+      "requiredStates": [
+        "AVAILABLE",
+        "PARTIAL",
+        "STALE",
+        "UNAVAILABLE",
+        "NO_OP"
+      ]
+    },
+    {
+      "ordinal": 23,
+      "id": "factor",
+      "name": "Factor Agent",
+      "layer": "quant",
+      "implementation": "deterministic",
+      "mandate": "defined factor exposures",
+      "permissions": {
+        "mayRecommendResearchState": true,
+        "mayExecuteTrade": false,
+        "mayHideDissent": false,
+        "mayInventEvidence": false
+      },
+      "requiredStates": [
+        "AVAILABLE",
+        "PARTIAL",
+        "STALE",
+        "UNAVAILABLE",
+        "NO_OP"
+      ]
+    },
+    {
+      "ordinal": 24,
+      "id": "anomaly-hunter",
+      "name": "Anomaly Hunter",
+      "layer": "quant",
+      "implementation": "deterministic",
+      "mandate": "statistically unusual universe conditions",
+      "permissions": {
+        "mayRecommendResearchState": true,
+        "mayExecuteTrade": false,
+        "mayHideDissent": false,
+        "mayInventEvidence": false
+      },
+      "requiredStates": [
+        "AVAILABLE",
+        "PARTIAL",
+        "STALE",
+        "UNAVAILABLE",
+        "NO_OP"
+      ]
+    },
+    {
+      "ordinal": 25,
+      "id": "historical-analogue",
+      "name": "Historical Analogue Agent",
+      "layer": "quant",
+      "implementation": "deterministic",
+      "mandate": "comparable historical states and forward outcomes",
+      "permissions": {
+        "mayRecommendResearchState": true,
+        "mayExecuteTrade": false,
+        "mayHideDissent": false,
+        "mayInventEvidence": false
+      },
+      "requiredStates": [
+        "AVAILABLE",
+        "PARTIAL",
+        "STALE",
+        "UNAVAILABLE",
+        "NO_OP"
+      ]
+    },
+    {
+      "ordinal": 26,
+      "id": "backtest-auditor",
+      "name": "Backtest Auditor",
+      "layer": "quant_control",
+      "implementation": "deterministic",
+      "mandate": "leakage overfitting sample-size and robustness challenges",
+      "permissions": {
+        "mayRecommendResearchState": true,
+        "mayExecuteTrade": false,
+        "mayHideDissent": false,
+        "mayInventEvidence": false
+      },
+      "requiredStates": [
+        "AVAILABLE",
+        "PARTIAL",
+        "STALE",
+        "UNAVAILABLE",
+        "NO_OP"
+      ]
+    },
+    {
+      "ordinal": 27,
+      "id": "lower-price-liquid-mover",
+      "name": "Lower-Price Liquid Mover Hunter",
+      "layer": "opportunity",
+      "implementation": "deterministic",
+      "mandate": "lower-priced liquid securities with evidence of meaningful movement; nominal price alone is never positive evidence",
+      "permissions": {
+        "mayRecommendResearchState": true,
+        "mayExecuteTrade": false,
+        "mayHideDissent": false,
+        "mayInventEvidence": false
+      },
+      "requiredStates": [
+        "AVAILABLE",
+        "PARTIAL",
+        "STALE",
+        "UNAVAILABLE",
+        "NO_OP"
+      ]
+    },
+    {
+      "ordinal": 28,
+      "id": "breakout-hunter",
+      "name": "Breakout Hunter",
+      "layer": "opportunity",
+      "implementation": "deterministic",
+      "mandate": "defined breakout conditions with liquidity and cost gates",
+      "permissions": {
+        "mayRecommendResearchState": true,
+        "mayExecuteTrade": false,
+        "mayHideDissent": false,
+        "mayInventEvidence": false
+      },
+      "requiredStates": [
+        "AVAILABLE",
+        "PARTIAL",
+        "STALE",
+        "UNAVAILABLE",
+        "NO_OP"
+      ]
+    },
+    {
+      "ordinal": 29,
+      "id": "reversal-hunter",
+      "name": "Reversal Hunter",
+      "layer": "opportunity",
+      "implementation": "deterministic",
+      "mandate": "defined reversal conditions and invalidation evidence",
+      "permissions": {
+        "mayRecommendResearchState": true,
+        "mayExecuteTrade": false,
+        "mayHideDissent": false,
+        "mayInventEvidence": false
+      },
+      "requiredStates": [
+        "AVAILABLE",
+        "PARTIAL",
+        "STALE",
+        "UNAVAILABLE",
+        "NO_OP"
+      ]
+    },
+    {
+      "ordinal": 30,
+      "id": "momentum-hunter",
+      "name": "Momentum Hunter",
+      "layer": "opportunity",
+      "implementation": "deterministic",
+      "mandate": "rank momentum opportunities under regime and cost constraints",
+      "permissions": {
+        "mayRecommendResearchState": true,
+        "mayExecuteTrade": false,
+        "mayHideDissent": false,
+        "mayInventEvidence": false
+      },
+      "requiredStates": [
+        "AVAILABLE",
+        "PARTIAL",
+        "STALE",
+        "UNAVAILABLE",
+        "NO_OP"
+      ]
+    },
+    {
+      "ordinal": 31,
+      "id": "oversold-reversion-hunter",
+      "name": "Oversold/Reversion Hunter",
+      "layer": "opportunity",
+      "implementation": "deterministic",
+      "mandate": "reversion candidates with historical evidence",
+      "permissions": {
+        "mayRecommendResearchState": true,
+        "mayExecuteTrade": false,
+        "mayHideDissent": false,
+        "mayInventEvidence": false
+      },
+      "requiredStates": [
+        "AVAILABLE",
+        "PARTIAL",
+        "STALE",
+        "UNAVAILABLE",
+        "NO_OP"
+      ]
+    },
+    {
+      "ordinal": 32,
+      "id": "relative-strength-hunter",
+      "name": "Relative-Strength Hunter",
+      "layer": "opportunity",
+      "implementation": "deterministic",
+      "mandate": "relative-strength candidates versus benchmark and peers",
+      "permissions": {
+        "mayRecommendResearchState": true,
+        "mayExecuteTrade": false,
+        "mayHideDissent": false,
+        "mayInventEvidence": false
+      },
+      "requiredStates": [
+        "AVAILABLE",
+        "PARTIAL",
+        "STALE",
+        "UNAVAILABLE",
+        "NO_OP"
+      ]
+    },
+    {
+      "ordinal": 33,
+      "id": "earnings-setup-hunter",
+      "name": "Earnings Setup Hunter",
+      "layer": "opportunity",
+      "implementation": "hybrid",
+      "mandate": "predefined earnings-related research setups without forecasting certainty",
+      "permissions": {
+        "mayRecommendResearchState": true,
+        "mayExecuteTrade": false,
+        "mayHideDissent": false,
+        "mayInventEvidence": false
+      },
+      "requiredStates": [
+        "AVAILABLE",
+        "PARTIAL",
+        "STALE",
+        "UNAVAILABLE",
+        "NO_OP"
+      ]
+    },
+    {
+      "ordinal": 34,
+      "id": "volume-anomaly-hunter",
+      "name": "Volume-Anomaly Hunter",
+      "layer": "opportunity",
+      "implementation": "deterministic",
+      "mandate": "unusual participation candidates with data-quality gates",
+      "permissions": {
+        "mayRecommendResearchState": true,
+        "mayExecuteTrade": false,
+        "mayHideDissent": false,
+        "mayInventEvidence": false
+      },
+      "requiredStates": [
+        "AVAILABLE",
+        "PARTIAL",
+        "STALE",
+        "UNAVAILABLE",
+        "NO_OP"
+      ]
+    },
+    {
+      "ordinal": 35,
+      "id": "sector-rotation-hunter",
+      "name": "Sector-Rotation Hunter",
+      "layer": "opportunity",
+      "implementation": "deterministic",
+      "mandate": "cross-sector relative movement and regime evidence",
+      "permissions": {
+        "mayRecommendResearchState": true,
+        "mayExecuteTrade": false,
+        "mayHideDissent": false,
+        "mayInventEvidence": false
+      },
+      "requiredStates": [
+        "AVAILABLE",
+        "PARTIAL",
+        "STALE",
+        "UNAVAILABLE",
+        "NO_OP"
+      ]
+    },
+    {
+      "ordinal": 36,
+      "id": "large-cap-quality-hunter",
+      "name": "Large-Cap Quality Hunter",
+      "layer": "opportunity",
+      "implementation": "hybrid",
+      "mandate": "large-cap candidates using explicit quality and market evidence",
+      "permissions": {
+        "mayRecommendResearchState": true,
+        "mayExecuteTrade": false,
+        "mayHideDissent": false,
+        "mayInventEvidence": false
+      },
+      "requiredStates": [
+        "AVAILABLE",
+        "PARTIAL",
+        "STALE",
+        "UNAVAILABLE",
+        "NO_OP"
+      ]
+    },
+    {
+      "ordinal": 37,
+      "id": "etf-opportunity-hunter",
+      "name": "ETF Opportunity Hunter",
+      "layer": "opportunity",
+      "implementation": "deterministic",
+      "mandate": "ETF opportunity states under liquidity regime and cost constraints",
+      "permissions": {
+        "mayRecommendResearchState": true,
+        "mayExecuteTrade": false,
+        "mayHideDissent": false,
+        "mayInventEvidence": false
+      },
+      "requiredStates": [
+        "AVAILABLE",
+        "PARTIAL",
+        "STALE",
+        "UNAVAILABLE",
+        "NO_OP"
+      ]
+    },
+    {
+      "ordinal": 38,
+      "id": "intraday-opportunity-hunter",
+      "name": "Intraday Opportunity Hunter",
+      "layer": "opportunity",
+      "implementation": "deterministic",
+      "mandate": "intraday research candidates from timely market evidence",
+      "permissions": {
+        "mayRecommendResearchState": true,
+        "mayExecuteTrade": false,
+        "mayHideDissent": false,
+        "mayInventEvidence": false
+      },
+      "requiredStates": [
+        "AVAILABLE",
+        "PARTIAL",
+        "STALE",
+        "UNAVAILABLE",
+        "NO_OP"
+      ]
+    },
+    {
+      "ordinal": 39,
+      "id": "bull",
+      "name": "Bull Agent",
+      "layer": "skeptic",
+      "implementation": "reasoning",
+      "mandate": "strongest evidence-supported bullish case",
+      "permissions": {
+        "mayRecommendResearchState": true,
+        "mayExecuteTrade": false,
+        "mayHideDissent": false,
+        "mayInventEvidence": false
+      },
+      "requiredStates": [
+        "AVAILABLE",
+        "PARTIAL",
+        "STALE",
+        "UNAVAILABLE",
+        "NO_OP"
+      ]
+    },
+    {
+      "ordinal": 40,
+      "id": "bear",
+      "name": "Bear Agent",
+      "layer": "skeptic",
+      "implementation": "reasoning",
+      "mandate": "strongest evidence-supported bearish case",
+      "permissions": {
+        "mayRecommendResearchState": true,
+        "mayExecuteTrade": false,
+        "mayHideDissent": false,
+        "mayInventEvidence": false
+      },
+      "requiredStates": [
+        "AVAILABLE",
+        "PARTIAL",
+        "STALE",
+        "UNAVAILABLE",
+        "NO_OP"
+      ]
+    },
+    {
+      "ordinal": 41,
+      "id": "red-team",
+      "name": "Red-Team Agent",
+      "layer": "skeptic",
+      "implementation": "reasoning",
+      "mandate": "attempt to falsify the proposed thesis",
+      "permissions": {
+        "mayRecommendResearchState": true,
+        "mayExecuteTrade": false,
+        "mayHideDissent": false,
+        "mayInventEvidence": false
+      },
+      "requiredStates": [
+        "AVAILABLE",
+        "PARTIAL",
+        "STALE",
+        "UNAVAILABLE",
+        "NO_OP"
+      ]
+    },
+    {
+      "ordinal": 42,
+      "id": "data-quality",
+      "name": "Data-Quality Agent",
+      "layer": "control",
+      "implementation": "deterministic",
+      "mandate": "stale missing conflicting suspect or insufficient evidence",
+      "permissions": {
+        "mayRecommendResearchState": true,
+        "mayExecuteTrade": false,
+        "mayHideDissent": false,
+        "mayInventEvidence": false
+      },
+      "requiredStates": [
+        "AVAILABLE",
+        "PARTIAL",
+        "STALE",
+        "UNAVAILABLE",
+        "NO_OP"
+      ]
+    },
+    {
+      "ordinal": 43,
+      "id": "overfitting",
+      "name": "Overfitting Agent",
+      "layer": "control",
+      "implementation": "deterministic",
+      "mandate": "parameter sensitivity multiple-testing and statistical fragility",
+      "permissions": {
+        "mayRecommendResearchState": true,
+        "mayExecuteTrade": false,
+        "mayHideDissent": false,
+        "mayInventEvidence": false
+      },
+      "requiredStates": [
+        "AVAILABLE",
+        "PARTIAL",
+        "STALE",
+        "UNAVAILABLE",
+        "NO_OP"
+      ]
+    },
+    {
+      "ordinal": 44,
+      "id": "cost",
+      "name": "Cost Agent",
+      "layer": "control",
+      "implementation": "deterministic",
+      "mandate": "spread commissions slippage and market-impact assumptions",
+      "permissions": {
+        "mayRecommendResearchState": true,
+        "mayExecuteTrade": false,
+        "mayHideDissent": false,
+        "mayInventEvidence": false
+      },
+      "requiredStates": [
+        "AVAILABLE",
+        "PARTIAL",
+        "STALE",
+        "UNAVAILABLE",
+        "NO_OP"
+      ]
+    },
+    {
+      "ordinal": 45,
+      "id": "risk",
+      "name": "Risk Agent",
+      "layer": "control",
+      "implementation": "deterministic",
+      "mandate": "downside concentration exposure and defined risk structure",
+      "permissions": {
+        "mayRecommendResearchState": true,
+        "mayExecuteTrade": false,
+        "mayHideDissent": false,
+        "mayInventEvidence": false
+      },
+      "requiredStates": [
+        "AVAILABLE",
+        "PARTIAL",
+        "STALE",
+        "UNAVAILABLE",
+        "NO_OP"
+      ]
+    },
+    {
+      "ordinal": 46,
+      "id": "contrarian",
+      "name": "Contrarian Agent",
+      "layer": "skeptic",
+      "implementation": "hybrid",
+      "mandate": "test whether documented consensus or crowding creates contrary risk",
+      "permissions": {
+        "mayRecommendResearchState": true,
+        "mayExecuteTrade": false,
+        "mayHideDissent": false,
+        "mayInventEvidence": false
+      },
+      "requiredStates": [
+        "AVAILABLE",
+        "PARTIAL",
+        "STALE",
+        "UNAVAILABLE",
+        "NO_OP"
+      ]
+    }
+  ]
+}
