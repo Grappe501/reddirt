@@ -62,6 +62,7 @@ test('Netlify Database migrations use the official number_slug names', async () 
     '002_learning-ledger',
     '003_strategy-lineage',
     '004_calibration',
+    '005_multi-agent-research-store',
   ]);
   for (const name of names) {
     assert.match(name, /^\d+_[a-z0-9_-]+$/, `${name} is not a valid Netlify Database migration name`);
