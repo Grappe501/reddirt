@@ -19,8 +19,8 @@ Total macro phases: 20
 | V2-12 | AI Trading Copilot / Professor | COMPLETE | 100% |
 | V2-13 | Trading Scientist / Strategy Laboratory | QUEUED | 0% |
 | V2-14 | Personal Trading Digital Twin | COMPLETE | 100% |
-| V2-15 | Institutional Risk Command Center | NEXT | 0% |
-| V2-16 | Automatic Journal + Shadow Trader | QUEUED | 0% |
+| V2-15 | Institutional Risk Command Center | COMPLETE | 100% |
+| V2-16 | Automatic Journal + Shadow Trader | NEXT | 0% |
 | V2-17 | Morning / Live / Closing War Rooms | QUEUED | 0% |
 | V2-18 | Alerts + Personalization + Skill Tree | QUEUED | 0% |
 | V2-19 | Professional / Classroom / Competition | QUEUED | 0% |
@@ -157,3 +157,14 @@ Live market runtime; breadth universe; Market Memory and durable persistence; hi
 - Insight language is constrained to observed evidence; psychological/personality/intent inference is prohibited.
 - Contract test and package validation command added.
 - Next target: V2-15 Institutional Risk Command Center.
+
+## V2-15 closeout evidence
+
+- Versioned institutional risk snapshot contract added.
+- Position notional, stop risk, portfolio percentage, beta/ATR exposure and liquidity proxy implemented.
+- Portfolio gross/net exposure and sector concentration implemented.
+- Pre-trade simulated risk gate evaluates position, sector, stop-loss and gross-exposure limits.
+- Stale/partial source state degrades assessment rather than implying precision.
+- Deterministic market/sector stress scenarios implemented and explicitly labeled non-forecast.
+- Contract test and package validation command added.
+- Next target: V2-16 Automatic Journal + Shadow Trader.
