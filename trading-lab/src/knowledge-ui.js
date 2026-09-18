@@ -1,6 +1,7 @@
 import knowledgeObjects from '../knowledge/seeds/core-concepts.v1.json' with { type: 'json' };
 import depthExtensions from '../knowledge/seeds/core-concepts-depths.v1.json' with { type: 'json' };
 import { renderDepthModel } from './knowledge-depth-engine.js';
+import { exercisesForKnowledge, evaluateExercise } from './learning-lab.js';
 import { graphContext } from './knowledge-graph.js';
 
 const extensions=new Map(depthExtensions.map(item=>[item.id,item]));
@@ -16,8 +17,9 @@ export function knowledgeTrigger(id, label) {
   return '<span class="knowledge-wrap"><button type="button" class="knowledge-trigger" data-knowledge="'+esc(id)+'" aria-haspopup="dialog" aria-label="Explain '+esc(k.canonicalTerm)+'">'+esc(label || k.canonicalTerm)+'<span class="knowledge-dot" aria-hidden="true">?</span></button><span class="knowledge-peek" role="tooltip"><b>'+esc(k.canonicalTerm)+'</b><span>'+esc(k.glance.definition)+'</span><small>Click or tap to learn more</small></span></span>';
 }
 
+function exerciseMarkup(k){const xs=exercisesForKnowledge(k.id);if(!xs.length)return '<p>No interactive exercise is authored for this concept yet.</p>';return xs.map(x=>'<article class="knowledge-exercise" data-exercise-card="'+esc(x.exerciseId)+'"><small>'+esc(x.difficulty.toUpperCase())+' · '+esc(x.type)+'</small><h4>Try it</h4><p>'+esc(x.prompt)+'</p>'+(x.choices?'<div class="knowledge-choices">'+x.choices.map((v,i)=>'<button type="button" data-exercise-answer="'+i+'" data-exercise-id="'+esc(x.exerciseId)+'">'+esc(v)+'</button>').join('')+'</div>':'<div class="knowledge-answer"><input inputmode="decimal" aria-label="Your answer" data-exercise-input="'+esc(x.exerciseId)+'"><button type="button" data-exercise-submit="'+esc(x.exerciseId)+'">Check answer</button></div>')+'<div class="knowledge-result" data-exercise-result="'+esc(x.exerciseId)+'" aria-live="polite"></div>'+(x.simulatorConfig?'<div class="knowledge-sim-link">Simulator-linked exercise · '+esc(x.simulatorConfig.mode)+'</div>':'')+'</article>').join('')}
 function content(k, depth) {
-  if(depth==='try') return '<p>Interactive exercises will connect this concept directly to the simulator in V2-06.</p>';
+  if(depth==='try') return exerciseMarkup(k);
   const model=renderDepthModel(k,depth);
   const notice=model.fallback?'<div class="knowledge-fallback">Requested depth is not authored yet. Showing the deepest available treatment.</div>':'';
   const sections=model.sections.map(s=>'<section><h4>'+esc(s.title)+'</h4>'+(s.body?'<p class="'+(s.kind==='formula'?'knowledge-formula':'')+'">'+esc(s.body)+'</p>':'')+(s.items?.length?'<ul>'+s.items.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul>':'')+'</section>').join('');
@@ -38,6 +40,6 @@ export function installKnowledgeUI(root=document) {
   const close=()=>{host.innerHTML='';document.body.classList.remove('knowledge-open');};
   const open=(id,depth='explain')=>{const k=getKnowledgeObject(id);if(!k)return;host.innerHTML=dialog(k,depth);document.body.classList.add('knowledge-open');host.querySelector('.knowledge-close')?.focus();};
   root.querySelectorAll('[data-knowledge]').forEach(el=>el.addEventListener('click',event=>{event.preventDefault();event.stopPropagation();open(el.dataset.knowledge);}));
-  host.onclick=event=>{const depth=event.target.closest('[data-knowledge-depth]');if(depth)return open(depth.dataset.knowledgeId,depth.dataset.knowledgeDepth);if(event.target.closest('[data-knowledge-close]'))close();};
+  host.onclick=event=>{const choice=event.target.closest('[data-exercise-answer]');const submit=event.target.closest('[data-exercise-submit]');if(choice||submit){const id=choice?.dataset.exerciseId||submit.dataset.exerciseSubmit;const answer=choice?choice.dataset.exerciseAnswer:host.querySelector('[data-exercise-input="'+id+'"]')?.value;const result=evaluateExercise(id,answer);const target=host.querySelector('[data-exercise-result="'+id+'"]');if(target&&result.ok)target.innerHTML='<b>'+(result.correct?'Correct.':'Not yet.')+'</b> '+esc(result.explanation);return;}const depth=event.target.closest('[data-knowledge-depth]');if(depth)return open(depth.dataset.knowledgeId,depth.dataset.knowledgeDepth);if(event.target.closest('[data-knowledge-close]'))close();};
   document.onkeydown=event=>{if(event.key==='Escape'&&host.innerHTML)close();};
 }
