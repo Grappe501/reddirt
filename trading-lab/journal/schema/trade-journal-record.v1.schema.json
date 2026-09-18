@@ -1,0 +1,8 @@
+{
+"$schema":"https://json-schema.org/draft/2020-12/schema","$id":"wealth-builder://schemas/trade-journal-record-v1.json","title":"Automatic Trade Journal Record v1","type":"object",
+"required":["journalId","tradeId","symbol","openedAt","closedAt","actual","decisionContext","provenance"],
+"properties":{"journalId":{"type":"string"},"tradeId":{"type":"string"},"symbol":{"type":"string"},"openedAt":{"type":"string"},"closedAt":{"type":"string"},
+"actual":{"type":"object","required":["side","entryPrice","exitPrice","quantity"],"properties":{"side":{"enum":["LONG","SHORT"]},"entryPrice":{"type":"number"},"exitPrice":{"type":"number"},"quantity":{"type":"number"},"fees":{"type":"number"},"pnl":{"type":["number","null"]},"mfe":{"type":["number","null"]},"mae":{"type":["number","null"]}}},
+"decisionContext":{"type":"object","properties":{"strategyVersion":{"type":["string","null"]},"premiumSnapshotId":{"type":["string","null"]},"marketBrainSnapshotId":{"type":["string","null"]},"riskSnapshotId":{"type":["string","null"]},"setupId":{"type":["string","null"]},"thesis":{"type":["string","null"]}}},
+"provenance":{"type":"object","properties":{"source":{"enum":["simulator","import"]},"capturedAt":{"type":"string"}}},
+"notes":{"type":"array","items":{"type":"string"}}}}
