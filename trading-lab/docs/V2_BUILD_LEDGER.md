@@ -9,8 +9,8 @@ Total macro phases: 20
 | V2-02 | Universal Knowledge Object | COMPLETE | 100% |
 | V2-03 | Universal Explain UI | COMPLETE | 100% |
 | V2-04 | Financial Knowledge Graph | COMPLETE | 100% |
-| V2-05 | Beginner-to-PhD Content Engine | NEXT | 0% |
-| V2-06 | Interactive Learning Lab | QUEUED | 0% |
+| V2-05 | Beginner-to-PhD Content Engine | COMPLETE | 100% |
+| V2-06 | Interactive Learning Lab | NEXT | 0% |
 | V2-07 | Security Master | QUEUED | 0% |
 | V2-08 | Universal Symbol Intelligence Pages | QUEUED | 0% |
 | V2-09 | Fundamentals + Filing Intelligence | QUEUED | 0% |
@@ -54,3 +54,12 @@ Live market runtime; breadth universe; Market Memory and durable persistence; hi
 - Explain UI now displays prerequisite concepts and learning sequence for authored concepts.
 - Stub concepts are visibly marked coming soon and cannot masquerade as reviewed content.
 - Next target: V2-05 Beginner-to-PhD Content Engine.
+
+## V2-05 closeout evidence
+
+- Multi-depth content resolver added with honest downward fallback.
+- Five representative concepts now prove Learn, Advanced and Research structures.
+- Explain UI consumes the depth engine rather than hardcoding depth prose.
+- Research structures explicitly include assumptions/limitations/questions/debates where applicable.
+- Draft/source state remains visible; content is not falsely represented as academically reviewed.
+- Next target: V2-06 Interactive Learning Lab.
