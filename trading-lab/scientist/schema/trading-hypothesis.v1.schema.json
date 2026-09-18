@@ -1,0 +1,11 @@
+{
+"$schema":"https://json-schema.org/draft/2020-12/schema","$id":"wealth-builder://schemas/trading-hypothesis-v1.json","title":"Trading Scientist Hypothesis v1","type":"object",
+"required":["hypothesisId","statement","universe","entryRules","exitRules","outcome","costModel","validationPlan","status"],
+"properties":{
+"hypothesisId":{"type":"string"},"statement":{"type":"string"},"nullHypothesis":{"type":"string"},"universe":{"type":"object"},
+"entryRules":{"type":"array","items":{"type":"object","required":["feature","operator","value"],"properties":{"feature":{"type":"string"},"operator":{"enum":[">",">=","<","<=","==","crosses_above","crosses_below"]},"value":{},"knownAt":{"enum":["bar_open","bar_close","next_bar","event_time"]}}}},
+"exitRules":{"type":"array","items":{"type":"object"}},"outcome":{"type":"object","required":["metric","horizon"],"properties":{"metric":{"type":"string"},"horizon":{"type":"string"},"benchmark":{"type":["string","null"]}}},
+"costModel":{"type":"object","required":["commission","slippage","borrow"],"properties":{"commission":{"type":"number"},"slippage":{"type":"number"},"borrow":{"type":"number"}}},
+"validationPlan":{"type":"object","required":["train","test","walkForward","regimeSlices","parameterSensitivity"],"properties":{"train":{"type":"object"},"test":{"type":"object"},"walkForward":{"type":"boolean"},"regimeSlices":{"type":"array","items":{"type":"string"}},"parameterSensitivity":{"type":"boolean"},"multipleTestingControl":{"type":["string","null"]}}},
+"status":{"enum":["draft","formalized","tested","rejected","supported","inconclusive"]},"createdFrom":{"enum":["user_belief","strategy","research_question","system_candidate"]}
+}}
