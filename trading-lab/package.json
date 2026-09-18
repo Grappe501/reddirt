@@ -14,7 +14,8 @@
     "test:v2:market-brain": "node tests/market-brain.test.mjs",
     "test:v2:ai": "node tests/ai-copilot-professor.test.mjs",
     "test:v2:scientist": "node tests/trading-scientist.test.mjs",
-    "test:v2:twin": "node tests/trader-digital-twin.test.mjs"
+    "test:v2:twin": "node tests/trader-digital-twin.test.mjs",
+    "test:v2:risk": "node tests/risk-command-center.test.mjs"
   },
   "dependencies": {
     "@netlify/database": "2.0.1"
