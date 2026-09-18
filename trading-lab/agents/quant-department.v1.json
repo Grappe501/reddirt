@@ -1,0 +1,29 @@
+{
+  "version": "1.0.0",
+  "phase": "V2.5-05",
+  "department": "quant",
+  "agents": [
+    "statistics",
+    "momentum",
+    "mean-reversion",
+    "volatility",
+    "volume",
+    "liquidity",
+    "relative-strength",
+    "regime",
+    "pattern-research",
+    "correlation",
+    "factor",
+    "anomaly-hunter",
+    "historical-analogue",
+    "backtest-auditor"
+  ],
+  "rules": [
+    "Quant calculations are deterministic and reproducible.",
+    "Descriptive metrics are not probabilities or forecasts.",
+    "Quant agents do not execute trades.",
+    "Small samples increase uncertainty rather than confidence.",
+    "Every production quant packet must reference upstream evidence packets.",
+    "Pattern, correlation, factor, analogue and backtest conclusions require dedicated sufficient inputs; absent inputs produce no fabricated metric."
+  ]
+}
