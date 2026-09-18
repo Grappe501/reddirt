@@ -1,0 +1,9 @@
+{
+"$schema":"https://json-schema.org/draft/2020-12/schema","$id":"wealth-builder://schemas/risk-snapshot-v1.json","title":"Institutional Risk Snapshot v1","type":"object",
+"required":["snapshotId","asOf","equity","positions","limits","provenance"],
+"properties":{
+"snapshotId":{"type":"string"},"asOf":{"type":"string"},"equity":{"type":"number"},
+"positions":{"type":"array","items":{"type":"object","required":["symbol","quantity","price","side"],"properties":{"symbol":{"type":"string"},"quantity":{"type":"number"},"price":{"type":"number"},"side":{"enum":["LONG","SHORT"]},"stop":{"type":["number","null"]},"sector":{"type":["string","null"]},"beta":{"type":["number","null"]},"atr":{"type":["number","null"]},"avgDailyDollarVolume":{"type":["number","null"]},"eventRisk":{"type":["string","null"]}}}},
+"limits":{"type":"object","properties":{"maxPositionPct":{"type":"number"},"maxSectorPct":{"type":"number"},"maxStopLossPctEquity":{"type":"number"},"maxGrossExposurePct":{"type":"number"}}},
+"provenance":{"type":"object","properties":{"marketDataAsOf":{"type":["string","null"]},"sourceState":{"enum":["available","partial","stale","unknown"]}}}
+}}
