@@ -1,0 +1,18 @@
+{
+  "version": "1.0.0",
+  "phase": "V3-05",
+  "name": "Historical Replay Laboratory",
+  "purpose": "Run reproducible point-in-time experiments across symbols, regimes and horizons without future-data leakage.",
+  "requirements": [
+    "immutable experiment id",
+    "explicit cutoff per case",
+    "point-in-time evidence proof",
+    "versioned universe",
+    "versioned costs",
+    "versioned code/config",
+    "outcome begins after cutoff",
+    "baseline comparison",
+    "batch summary does not imply future performance",
+    "paper/research only"
+  ]
+}
