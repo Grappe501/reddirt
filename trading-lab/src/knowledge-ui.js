@@ -1,4 +1,5 @@
 import knowledgeObjects from '../knowledge/seeds/core-concepts.v1.json' with { type: 'json' };
+import { graphContext } from './knowledge-graph.js';
 
 const objects = new Map(knowledgeObjects.map(item => [item.id, item]));
 const esc = value => String(value ?? '').replace(/[&<>'"]/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[ch]));
@@ -19,6 +20,8 @@ function content(k, depth) {
   if(depth==='research') return '<p>'+esc(k.research?.treatment || 'Research-level treatment and source review are being developed.')+'</p>';
   return '<p>Interactive exercises will connect this concept directly to the simulator.</p>';
 }
+
+function graphMarkup(k){const g=graphContext(k.id);if(!g)return '';const pre=g.prerequisites.length?'<div class="knowledge-graph-block"><h4>Understand first</h4><div class="knowledge-chips">'+g.prerequisites.map(n=>'<span>'+esc(n.label)+(n.status==='stub'?' · coming soon':'')+'</span>').join('')+'</div></div>':'';const path=g.path?'<div class="knowledge-graph-block"><h4>Learning path</h4><ol>'+g.path.nodes.map(n=>'<li>'+esc(n.label)+(n.status==='stub'?' <small>coming soon</small>':'')+'</li>').join('')+'</ol></div>':'';return pre+path;}
 
 function dialog(k, depth='explain') {
   const tabs=[['glance','Quick'],['explain','Explain'],['learn','Learn'],['advanced','Advanced'],['research','Research'],['try','Try It']];
