@@ -17,7 +17,7 @@ export function evidenceEnvelope(context={}){
 }
 export function responseGuardrail(response={},context={}){
  const env=evidenceEnvelope(context),text=String(response.answer||'');const violations=[];
- if(/\bguarantee(d)?\b|risk[- ]?free/i.test(text))violations.push('GUARANTEE_LANGUAGE');
+ if(/\bguarantee(?:d|s|ing)?\b|risk[- ]?free/i.test(text))violations.push('GUARANTEE_LANGUAGE');
  if(/\b\d+(\.\d+)?% (chance|probability) of (profit|winning|success)/i.test(text)&&context?.premium)violations.push('UNSUPPORTED_PROBABILITY');
  return{ok:violations.length===0,violations,response:{mode:context.mode||response.mode||'copilot',answer:text,evidenceState:env.evidenceState,sourceRefs:response.sourceRefs||env.sourceRefs,uncertainties:[...(response.uncertainties||[]),...env.missingEvidence.map(x=>'Missing evidence: '+x)],nextActions:response.nextActions||[]}};
 }
