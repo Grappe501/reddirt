@@ -1,0 +1,26 @@
+{
+  "version": "1.0.0",
+  "phase": "V2.5-04",
+  "department": "data_truth",
+  "agents": [
+    "market-data",
+    "historical-market",
+    "corporate-historian",
+    "executive-intelligence",
+    "sec-filing",
+    "financial-statement",
+    "earnings",
+    "capital-structure",
+    "ownership",
+    "industry",
+    "macro",
+    "event"
+  ],
+  "rules": [
+    "Source provenance is mandatory for AVAILABLE/PARTIAL factual packets.",
+    "No data/truth agent may express investment direction.",
+    "Missing sources produce UNAVAILABLE rather than invented facts.",
+    "Data/truth packets use confidenceKind NONE; downstream models own calibrated interpretation.",
+    "Each source carries retrieval time, data-as-of time and freshness state."
+  ]
+}
