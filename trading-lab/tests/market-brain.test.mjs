@@ -1,0 +1,6 @@
+import { classifyRegime,opportunityBoard } from '../src/market-brain.js';
+const regime=classifyRegime({breadth:75,trend:70,volatility:55,dispersion:60,liquidity:80,correlation:50});if(regime.label!=='SUPPORTIVE')throw new Error('regime classification');
+const board=opportunityBoard([{symbol:'AAA',premium:{available:true},signals:{'premium-rise':90,'relative-strength':85,'volume-expansion':80,'trend-alignment':75,'regime-fit':80,'historical-support':70}},{symbol:'BBB',premium:{available:true},signals:{'premium-rise':60,'relative-strength':55,'volume-expansion':50,'trend-alignment':50,'regime-fit':55,'historical-support':50}}],{breadth:75,trend:70,volatility:55,dispersion:60,liquidity:80,correlation:50});
+if(board.opportunities[0]?.symbol!=='AAA')throw new Error('opportunity ranking');if(!board.opportunities[0].disclaimer.includes('not a trade recommendation'))throw new Error('guardrail');
+const stale=opportunityBoard([{symbol:'AAA',premium:{available:true},signals:{'premium-rise':90,'relative-strength':90,'volume-expansion':90}}],{breadth:80,trend:80,volatility:80,stale:true});if(stale.opportunities.length)throw new Error('stale market must gate');
+console.log('market-brain contract: PASS');
