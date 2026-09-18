@@ -1,0 +1,27 @@
+{
+  "version": "2.5.0",
+  "status": "LOCKED",
+  "completedPhase": "V2.5-18",
+  "releaseProof": "docs/V2_5_17_RELEASE_PROOF.md",
+  "handoff": "docs/V2_5_ARCHITECTURE_LOCK_AND_V3_HANDOFF.md",
+  "specialistAgents": 46,
+  "strategyDesks": 8,
+  "committeeDirectors": 5,
+  "chiefStrategyAgents": 1,
+  "invariants": [
+    "provenance",
+    "point_in_time_integrity",
+    "forward_shadow_immutability",
+    "dissent_preservation",
+    "control_propagation",
+    "calibration_labeling",
+    "missing_evidence_visibility",
+    "no_low_sample_self_promotion",
+    "compute_governance",
+    "chief_synthesis_only",
+    "paper_only_execution_boundary",
+    "inspectable_education"
+  ],
+  "nextPhase": "V3-01",
+  "nextMission": "Durable Multi-Agent Research Store"
+}
