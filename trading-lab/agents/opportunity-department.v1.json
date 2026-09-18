@@ -1,0 +1,27 @@
+{
+  "version": "1.0.0",
+  "phase": "V2.5-06",
+  "department": "opportunity",
+  "agents": [
+    "lower-price-liquid-mover",
+    "breakout-hunter",
+    "reversal-hunter",
+    "momentum-hunter",
+    "oversold-reversion-hunter",
+    "relative-strength-hunter",
+    "earnings-setup-hunter",
+    "volume-anomaly-hunter",
+    "sector-rotation-hunter",
+    "large-cap-quality-hunter",
+    "etf-opportunity-hunter",
+    "intraday-opportunity-hunter"
+  ],
+  "rules": [
+    "Hunters surface research candidates, not trade instructions.",
+    "Every escalation references upstream evidence packets.",
+    "Nominally low share price is never sufficient evidence.",
+    "Liquidity/cost gates are mandatory where relevant.",
+    "Qualification is a deterministic screen, not probability of profit.",
+    "A qualified candidate advances to adversarial review before strategy synthesis."
+  ]
+}
