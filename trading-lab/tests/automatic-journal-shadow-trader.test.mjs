@@ -1,0 +1,4 @@
+import {buildJournalRecord,shadowTrade,validateCounterfactual} from '../src/automatic-journal-shadow-trader.js';
+const j=buildJournalRecord({trade:{tradeId:'t1',symbol:'AAA',side:'LONG',entryPrice:10,exitPrice:11,quantity:10,fees:1,openedAt:'2026-01-01T10:00:00Z',closedAt:'2026-01-01T10:30:00Z'},context:{setupId:'breakout',strategyVersion:'v1'}});
+if(j.actual.pnl!==9)throw new Error('journal pnl');if(validateCounterfactual({ruleId:'r',type:'fixed_stop',declaredBeforeOutcome:false}).ok)throw new Error('hindsight rule accepted');
+const s=shadowTrade({journal:j,bars:[{time:'2026-01-01T10:05:00Z',open:10.1,high:10.6,low:9.4,close:10}],rule:{ruleId:'r1',type:'fixed_stop',price:9.5,declaredBeforeOutcome:true}});if(s.status!=='MODELED'||s.modeledExit!==9.5||!s.disclaimer.includes('not a claim'))throw new Error('shadow trade');console.log('automatic-journal-shadow-trader contract: PASS');
