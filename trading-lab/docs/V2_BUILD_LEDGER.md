@@ -18,8 +18,8 @@ Total macro phases: 20
 | V2-11 | Market Brain + Opportunity Engine | COMPLETE | 100% |
 | V2-12 | AI Trading Copilot / Professor | COMPLETE | 100% |
 | V2-13 | Trading Scientist / Strategy Laboratory | QUEUED | 0% |
-| V2-14 | Personal Trading Digital Twin | NEXT | 0% |
-| V2-15 | Institutional Risk Command Center | QUEUED | 0% |
+| V2-14 | Personal Trading Digital Twin | COMPLETE | 100% |
+| V2-15 | Institutional Risk Command Center | NEXT | 0% |
 | V2-16 | Automatic Journal + Shadow Trader | QUEUED | 0% |
 | V2-17 | Morning / Live / Closing War Rooms | QUEUED | 0% |
 | V2-18 | Alerts + Personalization + Skill Tree | QUEUED | 0% |
@@ -147,3 +147,13 @@ Live market runtime; breadth universe; Market Memory and durable persistence; hi
 - Proving gap/VWAP/relative-volume belief stored as hypothesis, not claimed edge.
 - Contract test and package validation command added.
 - Next target: V2-14 Personal Trading Digital Twin.
+
+## V2-14 closeout evidence
+
+- Versioned Trader Observation schema added for plan, execution, outcome and context evidence.
+- Digital Twin derives entry delay, holding time, slippage, plan adherence, outcome and setup summaries.
+- Sample-size-aware LOW/MODERATE/HIGH evidence-volume label added.
+- Plan-vs-execution comparison contract implemented.
+- Insight language is constrained to observed evidence; psychological/personality/intent inference is prohibited.
+- Contract test and package validation command added.
+- Next target: V2-15 Institutional Risk Command Center.
