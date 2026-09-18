@@ -15,8 +15,8 @@ Total macro phases: 20
 | V2-08 | Universal Symbol Intelligence Pages | COMPLETE | 100% |
 | V2-09 | Fundamentals + Filing Intelligence | COMPLETE | 100% |
 | V2-10 | Premium Intelligence Engine | COMPLETE | 100% |
-| V2-11 | Market Brain + Opportunity Engine | NEXT | 0% |
-| V2-12 | AI Trading Copilot / Professor | QUEUED | 0% |
+| V2-11 | Market Brain + Opportunity Engine | COMPLETE | 100% |
+| V2-12 | AI Trading Copilot / Professor | NEXT | 0% |
 | V2-13 | Trading Scientist / Strategy Laboratory | QUEUED | 0% |
 | V2-14 | Personal Trading Digital Twin | QUEUED | 0% |
 | V2-15 | Institutional Risk Command Center | QUEUED | 0% |
@@ -113,3 +113,13 @@ Live market runtime; breadth universe; Market Memory and durable persistence; hi
 - Contract test and package validation command added.
 - No automatic real-money execution path added.
 - Next target: V2-11 Market Brain + Opportunity Engine.
+
+## V2-11 closeout evidence
+
+- Market regime classifier added with explicit input coverage and stale-state handling.
+- Opportunity Engine ranks investigation priority using Premium acceleration, relative strength, volume, trend, regime fit and historical support.
+- Every surfaced opportunity retains why-surfaced evidence.
+- Missing/stale evidence gates ranking rather than manufacturing confidence.
+- Ranking contract explicitly states investigation priority, not trade recommendation.
+- Contract test and package validation command added.
+- Next target: V2-12 AI Trading Copilot / Professor.
