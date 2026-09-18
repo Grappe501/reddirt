@@ -35,11 +35,11 @@ function dialog(k, depth='explain') {
 }
 
 export function installKnowledgeUI(root=document) {
-  let host=document.querySelector('#knowledge-layer');
+  let host=document.querySelector('#knowledge-layer'); let previousFocus=null;
   if(!host){host=document.createElement('div');host.id='knowledge-layer';document.body.appendChild(host);}
-  const close=()=>{host.innerHTML='';document.body.classList.remove('knowledge-open');};
-  const open=(id,depth='explain')=>{const k=getKnowledgeObject(id);if(!k)return;host.innerHTML=dialog(k,depth);document.body.classList.add('knowledge-open');host.querySelector('.knowledge-close')?.focus();};
+  const close=()=>{host.innerHTML='';document.body.classList.remove('knowledge-open');previousFocus?.focus?.();previousFocus=null;};
+  const open=(id,depth='explain')=>{const k=getKnowledgeObject(id);if(!k)return;if(!host.innerHTML)previousFocus=document.activeElement;host.innerHTML=dialog(k,depth);document.body.classList.add('knowledge-open');host.querySelector('.knowledge-close')?.focus();};
   root.querySelectorAll('[data-knowledge]').forEach(el=>el.addEventListener('click',event=>{event.preventDefault();event.stopPropagation();open(el.dataset.knowledge);}));
   host.onclick=event=>{const choice=event.target.closest('[data-exercise-answer]');const submit=event.target.closest('[data-exercise-submit]');if(choice||submit){const id=choice?.dataset.exerciseId||submit.dataset.exerciseSubmit;const answer=choice?choice.dataset.exerciseAnswer:host.querySelector('[data-exercise-input="'+id+'"]')?.value;const result=evaluateExercise(id,answer);const target=host.querySelector('[data-exercise-result="'+id+'"]');if(target&&result.ok)target.innerHTML='<b>'+(result.correct?'Correct.':'Not yet.')+'</b> '+esc(result.explanation);return;}const depth=event.target.closest('[data-knowledge-depth]');if(depth)return open(depth.dataset.knowledgeId,depth.dataset.knowledgeDepth);if(event.target.closest('[data-knowledge-close]'))close();};
-  document.onkeydown=event=>{if(event.key==='Escape'&&host.innerHTML)close();};
+  document.onkeydown=event=>{if(event.key==='Escape'&&host.innerHTML){close();return;}if(event.key==='Tab'&&host.innerHTML){const focusable=[...host.querySelectorAll('button:not([disabled]),input:not([disabled]),select:not([disabled]),a[href]')];if(!focusable.length)return;const first=focusable[0],last=focusable[focusable.length-1];if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus();}else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus();}}};
 }
