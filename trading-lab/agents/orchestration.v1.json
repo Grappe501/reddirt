@@ -1,0 +1,34 @@
+{
+  "version": "1.0.0",
+  "phase": "V2.5-14",
+  "system": "multi-agent-orchestrator",
+  "events": [
+    "MARKET_SNAPSHOT",
+    "PRICE_VOLUME_ANOMALY",
+    "EARNINGS_WINDOW",
+    "CORPORATE_EVENT",
+    "RESEARCH_REQUEST",
+    "HISTORICAL_REPLAY",
+    "SHADOW_TICK"
+  ],
+  "stages": [
+    "truth",
+    "quant",
+    "opportunity",
+    "adversarial",
+    "control",
+    "desks",
+    "committee",
+    "chief"
+  ],
+  "rules": [
+    "Truth runs before interpretation.",
+    "Specialists receive frozen evidence snapshot IDs.",
+    "Expensive reasoning agents are escalation-triggered, not always-on.",
+    "Control review occurs before desk advancement.",
+    "Risk blocks propagate through committee and Chief Strategy.",
+    "Compute budgets are explicit and auditable.",
+    "Missing evidence degrades or stops escalation instead of inviting invention.",
+    "No stage may execute a real-money trade."
+  ]
+}
