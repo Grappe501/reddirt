@@ -15,6 +15,7 @@ create table if not exists trading_lab.agent_research_runs (
  config_version text,
  cost_model_version text,
  universe_version text,
+ paper_only boolean not null default true,
  created_at timestamptz not null default now()
 );
 create table if not exists trading_lab.agent_research_packets (
@@ -74,6 +75,16 @@ create table if not exists trading_lab.chief_strategy_views (
  risk_blocked boolean not null default false,
  payload jsonb not null,
  created_at timestamptz not null default now()
+);
+create table if not exists trading_lab.agent_control_decisions (
+ id bigserial primary key,
+ run_id text not null references trading_lab.agent_research_runs(id) on delete cascade,
+ agent_id text not null,
+ blocked boolean not null,
+ reason_codes jsonb not null default '[]'::jsonb,
+ payload jsonb not null,
+ created_at timestamptz not null default now(),
+ unique(run_id,agent_id)
 );
 create table if not exists trading_lab.research_outcomes (
  id text primary key,
