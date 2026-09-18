@@ -1,0 +1,37 @@
+{
+  "version": "1.0.0",
+  "slice": "V4-10",
+  "name": "Agent Economics + Duplication Reduction",
+  "principles": [
+    "QUALITY_PER_DOLLAR",
+    "INSTITUTIONAL_MEMORY_BEFORE_RECOMPUTE",
+    "EFFICIENCY_NEVER_OVERRIDES_TRUTH",
+    "DISSENT_IS_NOT_DUPLICATION"
+  ],
+  "costKinds": [
+    "deterministic_compute",
+    "market_data",
+    "external_data",
+    "ai_input_tokens",
+    "ai_output_tokens",
+    "storage",
+    "other"
+  ],
+  "metrics": [
+    "cost_per_investigation",
+    "research_quality_per_dollar",
+    "duplicate_cost",
+    "avoidable_cost",
+    "memory_reuse_savings"
+  ],
+  "rules": {
+    "costsNonNegative": true,
+    "qualityCannotBeInvented": true,
+    "dissentProtected": true,
+    "noAutomaticAgentRemoval": true,
+    "noAutomaticEvidenceSuppression": true,
+    "noAuthorityFromCheapness": true,
+    "operatorReviewRequired": true,
+    "paperOnly": true
+  }
+}
