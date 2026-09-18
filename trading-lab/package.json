@@ -17,7 +17,8 @@
     "test:v2:twin": "node tests/trader-digital-twin.test.mjs",
     "test:v2:risk": "node tests/risk-command-center.test.mjs",
     "test:v2:journal": "node tests/automatic-journal-shadow-trader.test.mjs",
-    "test:v2:warrooms": "node tests/trading-war-rooms.test.mjs"
+    "test:v2:warrooms": "node tests/trading-war-rooms.test.mjs",
+    "test:v2:personalization": "node tests/alerts-personalization-skill-tree.test.mjs"
   },
   "dependencies": {
     "@netlify/database": "2.0.1"
