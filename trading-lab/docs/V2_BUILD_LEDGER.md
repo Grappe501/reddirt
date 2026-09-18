@@ -7,8 +7,8 @@ Total macro phases: 20
 |---|---|---|---:|
 | V2-01 | Forensic inventory + architecture lock | COMPLETE | 100% |
 | V2-02 | Universal Knowledge Object | COMPLETE | 100% |
-| V2-03 | Universal Explain UI | NEXT | 0% |
-| V2-04 | Financial Knowledge Graph | QUEUED | 0% |
+| V2-03 | Universal Explain UI | COMPLETE | 100% |
+| V2-04 | Financial Knowledge Graph | NEXT | 0% |
 | V2-05 | Beginner-to-PhD Content Engine | QUEUED | 0% |
 | V2-06 | Interactive Learning Lab | QUEUED | 0% |
 | V2-07 | Security Master | QUEUED | 0% |
@@ -38,3 +38,11 @@ Live market runtime; breadth universe; Market Memory and durable persistence; hi
 - Dependency map created.
 - Build ledger created.
 - V2-02 Universal Knowledge Object contract, JSON Schema and five representative seed objects committed.\n- Next target fixed as V2-03 Universal Explain UI.
+
+## V2-03 closeout evidence
+
+- Universal hover/focus/tap knowledge trigger runtime added.
+- Progressive Quick / Explain / Learn / Advanced / Research / Try It drawer added.
+- Mobile, keyboard, Escape close, dialog semantics and source-state display included.
+- VWAP integrated as first live Market + Analytics proving surface.
+- Next target: V2-04 Financial Knowledge Graph.
