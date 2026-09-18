@@ -1,0 +1,20 @@
+{
+  "version": "1.0.0",
+  "phase": "V3-04",
+  "name": "Evidence Graph Explorer",
+  "views": [
+    "conclusion-to-source",
+    "source-to-conclusions",
+    "contradictions",
+    "dissent",
+    "invalidation"
+  ],
+  "rules": [
+    "Explorer is read-only.",
+    "Every displayed relationship must exist in the Evidence Graph.",
+    "Orphan conclusions are flagged, never backfilled.",
+    "Contradictions and dissent remain visible.",
+    "Evidence scores are labeled descriptive, not probability.",
+    "Source provenance and point-in-time timestamps remain visible."
+  ]
+}
