@@ -18,7 +18,7 @@ Total macro phases: 20
 | V2-11 | Market Brain + Opportunity Engine | COMPLETE | 100% |
 | V2-12 | AI Trading Copilot / Professor | COMPLETE | 100% |
 | V2-13 | Trading Scientist / Strategy Laboratory | QUEUED | 0% |
-| V2-14 | Personal Trading Digital Twin | QUEUED | 0% |
+| V2-14 | Personal Trading Digital Twin | NEXT | 0% |
 | V2-15 | Institutional Risk Command Center | QUEUED | 0% |
 | V2-16 | Automatic Journal + Shadow Trader | QUEUED | 0% |
 | V2-17 | Morning / Live / Closing War Rooms | QUEUED | 0% |
@@ -136,3 +136,14 @@ Live market runtime; breadth universe; Market Memory and durable persistence; hi
 - Contract test and package validation command added.
 - No autonomous real-money execution path added.
 - Next target: V2-13 Trading Scientist / Strategy Laboratory.
+
+## V2-13 closeout evidence
+
+- Versioned falsifiable trading-hypothesis schema added.
+- Entry features must declare decision-time availability.
+- Leakage audit blocks next-bar/future information and requires held-out testing.
+- Cost model, walk-forward, regime slices, parameter sensitivity and multiple-testing posture are explicit.
+- Deterministic rule compiler/evaluator hands eligible samples toward existing V1 backtest infrastructure rather than duplicating it.
+- Proving gap/VWAP/relative-volume belief stored as hypothesis, not claimed edge.
+- Contract test and package validation command added.
+- Next target: V2-14 Personal Trading Digital Twin.
