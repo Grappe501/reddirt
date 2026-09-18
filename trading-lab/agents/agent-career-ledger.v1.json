@@ -1,0 +1,34 @@
+{
+  "version": "1.0.0",
+  "slice": "V4-02",
+  "name": "Persistent Agent Career + Knowledge Ledger",
+  "memoryLayers": [
+    "IDENTITY",
+    "ROLE",
+    "INSTITUTIONAL"
+  ],
+  "rules": {
+    "identityPersistsAcrossRoles": true,
+    "historyImmutable": true,
+    "roleMemoryRetained": true,
+    "institutionalKnowledgeReusable": true,
+    "poorPerformanceDoesNotDelete": true,
+    "dormancyPreservesMemory": true,
+    "reactivationRestoresIdentity": true,
+    "paperOnly": true
+  },
+  "eventTypes": [
+    "CREATED",
+    "ASSIGNED",
+    "REASSIGNED",
+    "SPECIALIZED",
+    "TRAINER_ASSIGNED",
+    "MENTOR_ASSIGNED",
+    "APPRENTICE_ASSIGNED",
+    "REPURPOSED",
+    "ROLE_MERGED",
+    "DORMANT",
+    "REACTIVATED",
+    "KNOWLEDGE_CONTRIBUTED"
+  ]
+}
