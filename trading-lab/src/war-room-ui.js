@@ -7,8 +7,8 @@ const panel=(title,value,detail='')=>`<div class="wb-war-card"><span>${esc(title
 const n=(v,f=50)=>Number.isFinite(Number(v))?Math.max(0,Math.min(100,Number(v))):f;
 function intelligence(signal={}){
  const f=signal.features||{},score=n(signal.score);
- const premium=computePremium({components:{technical:score,participation:n((f.relativeVolume||1)*35),relativeStrength:n(50+(f.momentum20||0)*500),regime:score,historicalEvidence:null,strategyConsensus:score,walkForward:null,calibration:null,eventEvidence:null,patternEvidence:n(50+(f.momentum5||0)*500)},penalties:{costLiquidity:n(f.spreadBps,0)/10,risk:0,dataQuality:0},stale:!signal.ready});
- const regime=classifyRegime({breadth:score,trend:n(50+(f.momentum20||0)*500),volatility:n(100-(f.atrPct||0)*500),dispersion:50,liquidity:n(100-(f.spreadBps||0)*2),correlation:50,stale:!signal.ready});
+ const premium=computePremium({components:{technical:score,participation:n((f.relativeVolume||1)*35),relativeStrength:n(50+(f.momentum20||0)*500),regime:score,historicalEvidence:null,strategyConsensus:score,walkForward:null,calibration:null,eventEvidence:null,patternEvidence:n(50+(f.momentum5||0)*500)},penalties:{costLiquidity:Number.isFinite(Number(f.spreadBps))?Math.min(12,Math.max(0,Number(f.spreadBps)/10)):0,risk:0,dataQuality:0},stale:!signal.ready});
+ const regime=classifyRegime({breadth:score,trend:n(50+(f.momentum20||0)*500),volatility:Number.isFinite(Number(f.atrPct))?n(100-Number(f.atrPct)*500):50,dispersion:50,liquidity:Number.isFinite(Number(f.spreadBps))?n(100-Number(f.spreadBps)*2):50,correlation:50,stale:!signal.ready});
  const opportunity=scoreOpportunity({symbol:signal.symbol||null,premium,signals:{'premium-rise':premium.score,'relative-strength':n(50+(f.momentum20||0)*500),'volume-expansion':n((f.relativeVolume||1)*35),'trend-alignment':score,'regime-fit':regime.score,'historical-support':null}},regime);
  return{premium,regime,opportunity,explain:premiumExplanation(premium)};
 }
