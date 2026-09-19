@@ -19,7 +19,13 @@ import {
   listPublicMediaSlotsForPage,
 } from "../src/lib/public-media/slot-registry";
 import { normalizeVolunteerInterests } from "../src/lib/forms/volunteer-interest-taxonomy";
-import { joinMovementSchema, volunteerSchema } from "../src/lib/forms/schemas";
+import {
+  electionAdvisoryConcernSchema,
+  electionAdvisoryParticipateSchema,
+  electionAdvisoryUpdatesSchema,
+  joinMovementSchema,
+  volunteerSchema,
+} from "../src/lib/forms/schemas";
 
 function section(name: string) {
   console.log(`\n== ${name} ==`);
@@ -96,6 +102,42 @@ section("join/volunteer schemas");
     // no phone → SMS consent must be handled downstream as skipped_no_phone
   });
   assert.equal(vol.success, true, vol.success ? "" : JSON.stringify(vol.error.flatten()));
+}
+
+section("election advisory schemas");
+{
+  const concern = electionAdvisoryConcernSchema.safeParse({
+    formType: "election_advisory_concern",
+    name: "Test Neighbor",
+    email: "test.neighbor@example.com",
+    topics: ["paper_ballots"],
+    concern: "How does Arkansas currently handle paper ballot retention in rural counties?",
+    wantResponse: true,
+  });
+  assert.equal(concern.success, true, concern.success ? "" : JSON.stringify(concern.error.flatten()));
+
+  const participate = electionAdvisoryParticipateSchema.safeParse({
+    formType: "election_advisory_participate",
+    name: "Test Neighbor",
+    email: "test.neighbor@example.com",
+    county: "Pulaski",
+    role: "topic_expertise",
+    topics: ["post_election_audits"],
+    arkansasResident: true,
+  });
+  assert.equal(
+    participate.success,
+    true,
+    participate.success ? "" : JSON.stringify(participate.error.flatten()),
+  );
+
+  const updates = electionAdvisoryUpdatesSchema.safeParse({
+    formType: "election_advisory_updates",
+    name: "Test Neighbor",
+    email: "test.neighbor@example.com",
+    consentEmail: true,
+  });
+  assert.equal(updates.success, true, updates.success ? "" : JSON.stringify(updates.error.flatten()));
 }
 
 section("Submission physical map (Phase 1C)");

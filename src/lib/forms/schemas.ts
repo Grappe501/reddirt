@@ -1,4 +1,10 @@
+import {
+  electionAdvisoryRoleValues,
+  electionAdvisoryTopicValues,
+} from "@/content/election-advisory/catalog";
 import { z } from "zod";
+
+export { electionAdvisoryRoleValues, electionAdvisoryTopicValues };
 
 const email = z.string().email("Enter a valid email.");
 const phone = z
@@ -255,6 +261,90 @@ export const volunteerKickoffSchema = z.object({
   ...attributionFields,
 });
 
+export const electionAdvisoryConcernSchema = z.object({
+  formType: z.literal("election_advisory_concern"),
+  name,
+  email,
+  phone: phone,
+  county,
+  zip: optionalZip,
+  topics: z.array(z.enum(electionAdvisoryTopicValues)).min(1, "Choose at least one topic.").max(8),
+  concern: z
+    .string()
+    .min(20, "A little more detail helps the Commission prepare a factual answer.")
+    .max(8000, "Please keep this to the main points for now. You can follow up later."),
+  wantResponse: z.boolean().default(true),
+  arkansasConnection: z
+    .string()
+    .max(200)
+    .optional()
+    .transform((v) => (v?.trim() ? v.trim() : undefined)),
+  website: honeypot,
+  ...attributionFields,
+});
+
+export const electionAdvisoryParticipateShape = z.object({
+  formType: z.literal("election_advisory_participate"),
+  name,
+  email,
+  phone: phone,
+  county: z.string().min(1, "County helps us understand Arkansas geography.").max(80),
+  city: z.string().max(120).optional().transform((v) => (v?.trim() ? v.trim() : undefined)),
+  role: z.enum(electionAdvisoryRoleValues),
+  topics: z.array(z.enum(electionAdvisoryTopicValues)).max(12).default([]),
+  expertise: z
+    .string()
+    .max(4000)
+    .optional()
+    .transform((v) => (v?.trim() ? v.trim() : undefined)),
+  affiliation: z
+    .string()
+    .max(200)
+    .optional()
+    .transform((v) => (v?.trim() ? v.trim() : undefined)),
+  arkansasResident: z
+    .boolean()
+    .refine((v) => v === true, "This commission is for Arkansas people."),
+  holdPublicElectionOffice: z.boolean().default(false),
+  notes: z
+    .string()
+    .max(3000)
+    .optional()
+    .transform((v) => (v?.trim() ? v.trim() : undefined)),
+  website: honeypot,
+  ...attributionFields,
+});
+
+function refineElectionAdvisoryParticipateTopics(
+  role: z.infer<typeof electionAdvisoryParticipateShape>["role"],
+  topics: z.infer<typeof electionAdvisoryParticipateShape>["topics"],
+  ctx: z.RefinementCtx,
+) {
+  if (role === "topic_expertise" && topics.length === 0) {
+    ctx.addIssue({
+      code: z.ZodIssueCode.custom,
+      message: "Pick at least one topic you can help with.",
+      path: ["topics"],
+    });
+  }
+}
+
+export const electionAdvisoryParticipateSchema = electionAdvisoryParticipateShape.superRefine((data, ctx) =>
+  refineElectionAdvisoryParticipateTopics(data.role, data.topics, ctx),
+);
+
+export const electionAdvisoryUpdatesSchema = z.object({
+  formType: z.literal("election_advisory_updates"),
+  name,
+  email,
+  county,
+  website: honeypot,
+  ...attributionFields,
+  consentEmail: z
+    .boolean()
+    .refine((v) => v === true, "Please confirm you want email updates from the Commission."),
+});
+
 export const formSubmissionSchema = z
   .discriminatedUnion("formType", [
     joinMovementSchema,
@@ -265,10 +355,16 @@ export const formSubmissionSchema = z
     hostGatheringShape,
     askKellyBetaFeedbackSchema,
     volunteerKickoffSchema,
+    electionAdvisoryConcernSchema,
+    electionAdvisoryParticipateShape,
+    electionAdvisoryUpdatesSchema,
   ])
   .superRefine((data, ctx) => {
     if (data.formType === "host_gathering") {
       refineHostGatheringOther(data.gatheringType, data.gatheringTypeOther, ctx);
+    }
+    if (data.formType === "election_advisory_participate") {
+      refineElectionAdvisoryParticipateTopics(data.role, data.topics, ctx);
     }
   });
 
@@ -281,6 +377,9 @@ export type StorySubmissionInput = z.infer<typeof storySubmissionSchema>;
 export type HostGatheringInput = z.infer<typeof hostGatheringSchema>;
 export type AskKellyBetaFeedbackInput = z.infer<typeof askKellyBetaFeedbackSchema>;
 export type VolunteerKickoffInput = z.infer<typeof volunteerKickoffSchema>;
+export type ElectionAdvisoryConcernInput = z.infer<typeof electionAdvisoryConcernSchema>;
+export type ElectionAdvisoryParticipateInput = z.infer<typeof electionAdvisoryParticipateSchema>;
+export type ElectionAdvisoryUpdatesInput = z.infer<typeof electionAdvisoryUpdatesSchema>;
 
 const dateYmd = z
   .string()

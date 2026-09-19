@@ -146,6 +146,46 @@ function buildSummary(data: FormSubmissionInput): string {
       ]
         .filter(Boolean)
         .join("\n");
+    case "election_advisory_concern":
+      return [
+        `Name: ${data.name}`,
+        `Email: ${data.email}`,
+        data.phone ? `Phone: ${data.phone}` : "",
+        data.county ? `County: ${data.county}` : "",
+        data.zip ? `ZIP: ${data.zip}` : "",
+        `Topics: ${data.topics.join(", ")}`,
+        `Wants a response: ${data.wantResponse ? "yes" : "no"}`,
+        data.arkansasConnection ? `Arkansas connection: ${data.arkansasConnection}` : "",
+        `Concern:\n${data.concern}`,
+      ]
+        .filter(Boolean)
+        .join("\n");
+    case "election_advisory_participate":
+      return [
+        `Name: ${data.name}`,
+        `Email: ${data.email}`,
+        data.phone ? `Phone: ${data.phone}` : "",
+        `County: ${data.county}`,
+        data.city ? `City: ${data.city}` : "",
+        `Role interest: ${data.role}`,
+        data.topics.length ? `Topics: ${data.topics.join(", ")}` : "",
+        data.expertise ? `Expertise:\n${data.expertise}` : "",
+        data.affiliation ? `Affiliation: ${data.affiliation}` : "",
+        `Arkansas resident / worker: ${data.arkansasResident ? "yes" : "no"}`,
+        `Holds public election office: ${data.holdPublicElectionOffice ? "yes" : "no"}`,
+        data.notes ? `Notes:\n${data.notes}` : "",
+      ]
+        .filter(Boolean)
+        .join("\n");
+    case "election_advisory_updates":
+      return [
+        `Name: ${data.name}`,
+        `Email: ${data.email}`,
+        data.county ? `County: ${data.county}` : "",
+        `Email updates: yes`,
+      ]
+        .filter(Boolean)
+        .join("\n");
     default: {
       const _n: never = data;
       return _n;
@@ -179,6 +219,12 @@ function formTypeLabel(formType: FormSubmissionInput["formType"]): string {
       return "Ask Kelly beta";
     case "volunteer_kickoff":
       return "Volunteer kickoff";
+    case "election_advisory_concern":
+      return "Election Advisory concern";
+    case "election_advisory_participate":
+      return "Election Advisory participation";
+    case "election_advisory_updates":
+      return "Election Advisory updates";
   }
 }
 
@@ -193,6 +239,17 @@ function publicFormIntakeTitle(data: FormSubmissionInput): string {
       (data.pathway === "youth" ? "youth" : data.pathway === "match" ? "match" : data.pathway);
     const countyHint = sanitizePlainText(data.county, 80);
     return `Kickoff ${data.pathway} — ${team} — ${countyHint} County`;
+  }
+  if (data.formType === "election_advisory_concern") {
+    const topic = data.topics[0] ?? "concern";
+    return `AEAC concern — ${sanitizePlainText(topic, 80)}`;
+  }
+  if (data.formType === "election_advisory_participate") {
+    const countyHint = sanitizePlainText(data.county, 80);
+    return `AEAC ${data.role} — ${countyHint} County`;
+  }
+  if (data.formType === "election_advisory_updates") {
+    return "AEAC email updates";
   }
   const label = formTypeLabel(data.formType);
   const countyHint = "county" in data && data.county ? sanitizePlainText(data.county, 80) : null;
@@ -237,7 +294,9 @@ function publicFormIntakeMetadata(
               ...data.roles.map((r) => sanitizePlainText(r, 80)),
               ...(data.primaryTeam ? [sanitizePlainText(data.primaryTeam, 80)] : []),
             ].slice(0, 20)
-          : [],
+          : data.formType === "election_advisory_participate" || data.formType === "election_advisory_concern"
+            ? data.topics.map((topic) => sanitizePlainText(topic, 80)).slice(0, 20)
+            : [],
     sourcePage: "sourcePage" in data && data.sourcePage ? sanitizePlainText(data.sourcePage, 500) : null,
     sourceComponent: "sourceComponent" in data && data.sourceComponent ? sanitizePlainText(data.sourceComponent, 120) : null,
     sourceCampaign: "sourceCampaign" in data && data.sourceCampaign ? sanitizePlainText(data.sourceCampaign, 120) : null,
@@ -304,6 +363,23 @@ function publicFormIntakeMetadata(
       eventId: data.eventId ? sanitizePlainText(data.eventId, 120) : null,
       regions: data.regions.map((r) => sanitizePlainText(r, 40)).slice(0, 8),
       queue: "volunteer_kickoff",
+    };
+  }
+
+  if (
+    data.formType === "election_advisory_concern" ||
+    data.formType === "election_advisory_participate" ||
+    data.formType === "election_advisory_updates"
+  ) {
+    return {
+      ...baseMeta,
+      electionAdvisory: true,
+      queue: "election_advisory",
+      topics: data.formType === "election_advisory_updates" ? [] : data.topics,
+      role: data.formType === "election_advisory_participate" ? data.role : null,
+      wantResponse: data.formType === "election_advisory_concern" ? data.wantResponse : null,
+      holdPublicElectionOffice:
+        data.formType === "election_advisory_participate" ? data.holdPublicElectionOffice : null,
     };
   }
 
@@ -474,6 +550,15 @@ export async function persistFormSubmission(data: FormSubmissionInput): Promise<
         )
       : [];
 
+  const aeacInterestTokens =
+    data.formType === "election_advisory_participate"
+      ? Array.from(new Set(["election_advisory", `aeac_role:${data.role}`, ...data.topics]))
+      : data.formType === "election_advisory_concern"
+        ? Array.from(new Set(["election_advisory_concern", ...data.topics]))
+        : data.formType === "election_advisory_updates"
+          ? ["election_advisory_updates"]
+          : [];
+
   const interests =
     data.formType === "join_movement"
       ? joinInterestTokens
@@ -481,7 +566,7 @@ export async function persistFormSubmission(data: FormSubmissionInput): Promise<
         ? volunteerInterestTokens
         : data.formType === "volunteer_kickoff"
           ? kickoffInterestTokens
-          : [];
+          : aeacInterestTokens;
 
   const displayName =
     data.formType === "volunteer"
@@ -493,7 +578,7 @@ export async function persistFormSubmission(data: FormSubmissionInput): Promise<
     create: {
       email,
       name: displayName,
-      phone: data.phone?.trim() || null,
+      phone: "phone" in data && data.phone ? data.phone.trim() : null,
       zip: "zip" in data && data.zip ? sanitizePlainText(data.zip, 12) : null,
       county:
         "county" in data && data.county
@@ -505,7 +590,7 @@ export async function persistFormSubmission(data: FormSubmissionInput): Promise<
     },
     update: {
       name: displayName,
-      phone: data.phone?.trim() || undefined,
+      phone: "phone" in data && data.phone ? data.phone.trim() : undefined,
       zip: "zip" in data && data.zip ? sanitizePlainText(data.zip, 12) : undefined,
       county:
         "county" in data && data.county
@@ -645,7 +730,13 @@ export async function persistFormSubmission(data: FormSubmissionInput): Promise<
               ? "direct_democracy_commitment"
               : data.formType === "host_gathering"
                 ? "host_gathering"
-                : "contact";
+                : data.formType === "election_advisory_concern"
+                  ? "election_advisory_concern"
+                  : data.formType === "election_advisory_participate"
+                    ? "election_advisory_participate"
+                    : data.formType === "election_advisory_updates"
+                      ? "election_advisory_updates"
+                      : "contact";
 
   const content = sanitizePlainText(summary, 8000);
 
@@ -698,7 +789,23 @@ export async function persistFormSubmission(data: FormSubmissionInput): Promise<
               notes: data.notes ? sanitizePlainText(data.notes, 3000) : null,
               raw: redactPII(summary),
             }
-          : { ...structuredBase, raw: redactPII(summary) };
+          : data.formType === "election_advisory_concern"
+            ? {
+                ...structuredBase,
+                topics: data.topics,
+                wantResponse: data.wantResponse,
+                raw: redactPII(summary),
+              }
+            : data.formType === "election_advisory_participate"
+              ? {
+                  ...structuredBase,
+                  role: data.role,
+                  topics: data.topics,
+                  holdPublicElectionOffice: data.holdPublicElectionOffice,
+                  affiliation: data.affiliation ? sanitizePlainText(data.affiliation, 200) : null,
+                  raw: redactPII(summary),
+                }
+              : { ...structuredBase, raw: redactPII(summary) };
 
   const sub = await prisma.submission.create({
     data: {
@@ -711,13 +818,22 @@ export async function persistFormSubmission(data: FormSubmissionInput): Promise<
 
   const intake = await createWorkflowIntakeForSubmission({ submissionId: sub.id, data, classification });
 
-  if (data.formType === "join_movement" || data.formType === "volunteer" || data.formType === "volunteer_kickoff") {
+  if (
+    data.formType === "join_movement" ||
+    data.formType === "volunteer" ||
+    data.formType === "volunteer_kickoff" ||
+    data.formType === "election_advisory_updates" ||
+    data.formType === "election_advisory_participate" ||
+    data.formType === "election_advisory_concern"
+  ) {
     const interestKeys =
       data.formType === "volunteer"
         ? normalizeVolunteerInterests([...(data.interests ?? []), data.preferredRole]).keys
         : data.formType === "volunteer_kickoff"
           ? kickoffInterestTokens
-          : normalizeVolunteerInterests(data.interests).keys;
+          : data.formType === "join_movement"
+            ? normalizeVolunteerInterests(data.interests).keys
+            : aeacInterestTokens;
 
     let consentSummary = null as Awaited<ReturnType<typeof applyPublicFormConsent>> | null;
     try {
@@ -728,7 +844,7 @@ export async function persistFormSubmission(data: FormSubmissionInput): Promise<
           consentEmail: data.consentEmail,
           consentSms: data.consentSms,
           consentPhone: data.consentPhone,
-          phone: data.phone,
+          phone: "phone" in data ? data.phone : undefined,
           sourcePage: data.sourcePage,
         },
       });

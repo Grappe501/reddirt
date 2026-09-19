@@ -1,0 +1,51 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+
+import { AEAC_BASE, AEAC_PUBLIC_DOMAIN, aeacPrinciples } from "@/content/election-advisory/catalog";
+
+export const metadata: Metadata = {
+  title: "How We Work",
+  description:
+    "Listen first. Follow evidence. Respect Arkansas election structure. Work in public enough to earn trust.",
+};
+
+export default function ElectionAdvisoryHowWeWorkPage() {
+  return (
+    <article>
+      <p className="aeac-kicker">Working rules</p>
+      <h1 className="aeac-display">How We Work</h1>
+      <p className="aeac-lede">
+        The Commission will include people who are passionate about paper ballots and people who are convinced
+        current systems are secure. Open dialogue, focused on Arkansas facts, is how this body intends to make
+        progress.
+      </p>
+
+      <div className="aeac-principles">
+        {aeacPrinciples.map((principle) => (
+          <div key={principle.id} className="aeac-principle">
+            <strong>{principle.title}</strong>
+            <p>{principle.body}</p>
+          </div>
+        ))}
+      </div>
+
+      <section className="aeac-section">
+        <h2>What the public will be able to see</h2>
+        <p className="aeac-prose">
+          Deliberative meetings may be structured to encourage candid discussion. The work itself will be
+          transparent: meeting minutes, findings, supporting information, and recommendations will be published
+          here and at {AEAC_PUBLIC_DOMAIN}.
+        </p>
+      </section>
+
+      <div className="aeac-actions">
+        <Link className="aeac-btn" href={`${AEAC_BASE}/meetings`}>
+          Meeting record
+        </Link>
+        <Link className="aeac-btn aeac-btn-ghost" href={`${AEAC_BASE}/findings`}>
+          Findings library
+        </Link>
+      </div>
+    </article>
+  );
+}
