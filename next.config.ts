@@ -60,6 +60,18 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        source: "/",
+        has: [{ type: "host", value: "arelectionadvisory.org" }],
+        destination: "https://www.arelectionadvisory.org/",
+        permanent: true,
+      },
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "arelectionadvisory.org" }],
+        destination: "https://www.arelectionadvisory.org/:path*",
+        permanent: true,
+      },
+      {
         source: "/the-arkansas-we-know",
         destination: "/",
         permanent: true,
@@ -102,6 +114,10 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/updates",
+        missing: [
+          { type: "host", value: "www.arelectionadvisory.org" },
+          { type: "host", value: "arelectionadvisory.org" },
+        ],
         destination: "/from-the-road",
         permanent: true,
       },
@@ -248,6 +264,43 @@ const nextConfig: NextConfig = {
         permanent: false,
       },
     ];
+  },
+  async rewrites() {
+    const aeacHosts = ["www.arelectionadvisory.org", "arelectionadvisory.org"] as const;
+    const pages = [
+      "charter",
+      "charge",
+      "how-we-work",
+      "participate",
+      "concerns",
+      "updates",
+      "meetings",
+      "findings",
+      "about",
+    ] as const;
+    const beforeFiles = aeacHosts.flatMap((host) => [
+      {
+        source: "/",
+        has: [{ type: "host" as const, value: host }],
+        destination: "/election-advisory",
+      },
+      ...pages.map((page) => ({
+        source: `/${page}`,
+        has: [{ type: "host" as const, value: host }],
+        destination: `/election-advisory/${page}`,
+      })),
+      {
+        source: "/meetings/:slug",
+        has: [{ type: "host" as const, value: host }],
+        destination: "/election-advisory/meetings/:slug",
+      },
+      {
+        source: "/findings/:slug",
+        has: [{ type: "host" as const, value: host }],
+        destination: "/election-advisory/findings/:slug",
+      },
+    ]);
+    return { beforeFiles };
   },
   /**
    * `readFile` under `docs/` and `campaign-system-manual/` is not always discovered by the server

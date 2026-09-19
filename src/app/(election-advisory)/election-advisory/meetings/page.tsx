@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { AEAC_BASE } from "@/content/election-advisory/catalog";
 import { aeacMeetingHref, aeacMeetings, aeacMeetingStatusLabel } from "@/content/election-advisory/meetings";
+import { aeacHref, getAeacBase } from "@/lib/election-advisory/public-origin";
 
 export const metadata: Metadata = {
   title: "Meetings",
   description: "Schedule, notes, and supporting materials for the Arkansas Election Advisory Commission.",
 };
 
-export default function ElectionAdvisoryMeetingsPage() {
+export default async function ElectionAdvisoryMeetingsPage() {
+  const base = await getAeacBase();
   return (
     <article>
       <p className="aeac-kicker">Public record</p>
@@ -29,7 +30,7 @@ export default function ElectionAdvisoryMeetingsPage() {
             </p>
             <p style={{ marginTop: "0.7rem" }}>{meeting.summary}</p>
             <div className="aeac-actions">
-              <Link className="aeac-btn" href={aeacMeetingHref(meeting.slug)}>
+              <Link className="aeac-btn" href={aeacMeetingHref(meeting.slug, base)}>
                 Open meeting page
               </Link>
             </div>
@@ -44,7 +45,7 @@ export default function ElectionAdvisoryMeetingsPage() {
           Nothing is hidden in a private drive once the public record starts.
         </p>
         <div className="aeac-actions">
-          <Link className="aeac-btn aeac-btn-ghost" href={`${AEAC_BASE}/updates`}>
+          <Link className="aeac-btn aeac-btn-ghost" href={aeacHref(base, "updates")}>
             Get meeting notices
           </Link>
         </div>

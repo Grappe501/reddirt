@@ -1,11 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import {
-  AEAC_BASE,
-  aeacChargeItems,
-  aeacChargePhases,
-} from "@/content/election-advisory/catalog";
+import { aeacChargeItems, aeacChargePhases } from "@/content/election-advisory/catalog";
+import { aeacHref, getAeacBase } from "@/lib/election-advisory/public-origin";
 
 export const metadata: Metadata = {
   title: "Our Charge",
@@ -13,7 +10,8 @@ export const metadata: Metadata = {
     "The Arkansas Election Advisory Commission examines election administration from voter registration through final certification.",
 };
 
-export default function ElectionAdvisoryChargePage() {
+export default async function ElectionAdvisoryChargePage() {
+  const base = await getAeacBase();
   return (
     <article>
       <p className="aeac-kicker">From registration to certification</p>
@@ -41,10 +39,10 @@ export default function ElectionAdvisoryChargePage() {
       ))}
 
       <div className="aeac-actions">
-        <Link className="aeac-btn" href={`${AEAC_BASE}/concerns`}>
+        <Link className="aeac-btn" href={aeacHref(base, "concerns")}>
           Send a concern on one of these topics
         </Link>
-        <Link className="aeac-btn aeac-btn-ghost" href={`${AEAC_BASE}/participate`}>
+        <Link className="aeac-btn aeac-btn-ghost" href={aeacHref(base, "participate")}>
           Offer expertise
         </Link>
       </div>

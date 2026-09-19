@@ -3,18 +3,20 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import { AEAC_BASE, aeacNavItems } from "@/content/election-advisory/catalog";
+import type { AeacNavItem } from "@/content/election-advisory/catalog";
+import { normalizeAeacPathname } from "@/lib/election-advisory/public-origin";
 
-export function CommissionNav() {
-  const pathname = usePathname();
+export function CommissionNav({ items }: { items: AeacNavItem[] }) {
+  const pathname = normalizeAeacPathname(usePathname());
 
   return (
     <nav className="aeac-nav" aria-label="Commission">
-      {aeacNavItems.map((item) => {
+      {items.map((item) => {
+        const itemPath = normalizeAeacPathname(item.href);
         const active =
-          item.href === AEAC_BASE
-            ? pathname === AEAC_BASE
-            : pathname === item.href || pathname.startsWith(`${item.href}/`);
+          itemPath === "/"
+            ? pathname === "/"
+            : pathname === itemPath || pathname.startsWith(`${itemPath}/`);
         return (
           <Link key={item.href} href={item.href} data-active={active ? "true" : "false"}>
             {item.label}

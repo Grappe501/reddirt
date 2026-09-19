@@ -1,4 +1,5 @@
 import { AEAC_BASE } from "./catalog";
+import { aeacHref } from "@/lib/election-advisory/public-origin";
 
 export type AeacFindingStatus = "in_progress" | "published";
 
@@ -18,6 +19,6 @@ export function getAeacFinding(slug: string): AeacFinding | undefined {
   return aeacFindings.find((finding) => finding.slug === slug);
 }
 
-export function aeacFindingHref(slug: string): string {
-  return `${AEAC_BASE}/findings/${slug}`;
+export function aeacFindingHref(slug: string, base = AEAC_BASE): string {
+  return aeacHref(base, `findings/${slug}`);
 }

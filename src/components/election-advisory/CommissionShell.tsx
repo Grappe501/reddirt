@@ -2,7 +2,6 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 
 import {
-  AEAC_BASE,
   AEAC_CONTACT_EMAIL,
   AEAC_MOTTO_EN,
   AEAC_MOTTO_LATIN,
@@ -10,21 +9,26 @@ import {
   AEAC_ORGANIZER_NAME,
   AEAC_ORGANIZER_ROLE,
   AEAC_PUBLIC_DOMAIN,
-  aeacNavItems,
+  aeacNavItemsForBase,
 } from "@/content/election-advisory/catalog";
+import { aeacHref, getAeacBase } from "@/lib/election-advisory/public-origin";
 
 import { CommissionNav } from "./CommissionNav";
 
-export function CommissionShell({ children }: { children: ReactNode }) {
+export async function CommissionShell({ children }: { children: ReactNode }) {
+  const base = await getAeacBase();
+  const navItems = aeacNavItemsForBase(base);
+  const homeHref = aeacHref(base);
+
   return (
     <div className="aeac-shell">
       <p className="aeac-banner">A continuing nonpartisan advisory body · Arkansas people · Evidence first</p>
       <header className="aeac-header">
-        <Link href={AEAC_BASE} className="aeac-wordmark">
+        <Link href={homeHref} className="aeac-wordmark">
           <strong>{AEAC_NAME}</strong>
           <small>{AEAC_PUBLIC_DOMAIN}</small>
         </Link>
-        <CommissionNav />
+        <CommissionNav items={navItems} />
       </header>
       <div className="aeac-main">{children}</div>
       <footer className="aeac-footer">
@@ -42,7 +46,7 @@ export function CommissionShell({ children }: { children: ReactNode }) {
           <div>
             <h2>This site</h2>
             <ul>
-              {aeacNavItems.slice(0, 6).map((item) => (
+              {navItems.slice(0, 6).map((item) => (
                 <li key={item.href}>
                   <Link href={item.href}>{item.label}</Link>
                 </li>
@@ -59,9 +63,7 @@ export function CommissionShell({ children }: { children: ReactNode }) {
               <br />
               {AEAC_ORGANIZER_ROLE}
             </p>
-            <p>
-              Future public home: {AEAC_PUBLIC_DOMAIN}
-            </p>
+            <p>{AEAC_PUBLIC_DOMAIN}</p>
           </div>
         </div>
       </footer>

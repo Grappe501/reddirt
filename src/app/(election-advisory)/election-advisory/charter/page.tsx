@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import {
-  AEAC_BASE,
   AEAC_MOTTO_EN,
   AEAC_MOTTO_LATIN,
   AEAC_NAME,
@@ -14,13 +13,15 @@ import {
   aeacMission,
   aeacPrinciples,
 } from "@/content/election-advisory/catalog";
+import { aeacHref, getAeacBase } from "@/lib/election-advisory/public-origin";
 
 export const metadata: Metadata = {
   title: "Founding Charter",
   description: `Founding charter of the ${AEAC_NAME}.`,
 };
 
-export default function ElectionAdvisoryCharterPage() {
+export default async function ElectionAdvisoryCharterPage() {
+  const base = await getAeacBase();
   return (
     <article>
       <p className="aeac-kicker">Founding document</p>
@@ -88,10 +89,10 @@ export default function ElectionAdvisoryCharterPage() {
       </section>
 
       <div className="aeac-actions">
-        <Link className="aeac-btn" href={`${AEAC_BASE}/charge`}>
+        <Link className="aeac-btn" href={aeacHref(base, "charge")}>
           See the charge in full
         </Link>
-        <Link className="aeac-btn aeac-btn-ghost" href={`${AEAC_BASE}/participate`}>
+        <Link className="aeac-btn aeac-btn-ghost" href={aeacHref(base, "participate")}>
           Take part
         </Link>
       </div>

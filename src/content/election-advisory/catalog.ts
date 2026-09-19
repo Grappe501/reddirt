@@ -2,7 +2,7 @@ export const AEAC_BASE = "/election-advisory";
 
 export const AEAC_NAME = "Arkansas Election Advisory Commission";
 export const AEAC_SHORT_NAME = "Election Advisory Commission";
-export const AEAC_PUBLIC_DOMAIN = "arelectionadvisory.org";
+export const AEAC_PUBLIC_DOMAIN = "www.arelectionadvisory.org";
 export const AEAC_MOTTO_LATIN = "Regnat Populus";
 export const AEAC_MOTTO_EN = "The People Rule.";
 
@@ -15,18 +15,27 @@ export type AeacNavItem = {
   label: string;
 };
 
-export const aeacNavItems: AeacNavItem[] = [
-  { href: AEAC_BASE, label: "Home" },
-  { href: `${AEAC_BASE}/charter`, label: "Charter" },
-  { href: `${AEAC_BASE}/charge`, label: "Our Charge" },
-  { href: `${AEAC_BASE}/how-we-work`, label: "How We Work" },
-  { href: `${AEAC_BASE}/meetings`, label: "Meetings" },
-  { href: `${AEAC_BASE}/findings`, label: "Findings" },
-  { href: `${AEAC_BASE}/concerns`, label: "Share a Concern" },
-  { href: `${AEAC_BASE}/participate`, label: "Participate" },
-  { href: `${AEAC_BASE}/updates`, label: "Updates" },
-  { href: `${AEAC_BASE}/about`, label: "About" },
+export const aeacNavPaths: { path: string; label: string }[] = [
+  { path: "", label: "Home" },
+  { path: "charter", label: "Charter" },
+  { path: "charge", label: "Our Charge" },
+  { path: "how-we-work", label: "How We Work" },
+  { path: "meetings", label: "Meetings" },
+  { path: "findings", label: "Findings" },
+  { path: "concerns", label: "Share a Concern" },
+  { path: "participate", label: "Participate" },
+  { path: "updates", label: "Updates" },
+  { path: "about", label: "About" },
 ];
+
+export function aeacNavItemsForBase(base: string): AeacNavItem[] {
+  return aeacNavPaths.map((item) => ({
+    href: item.path ? `${base}/${item.path}` : base || "/",
+    label: item.label,
+  }));
+}
+
+export const aeacNavItems: AeacNavItem[] = aeacNavItemsForBase(AEAC_BASE);
 
 export const aeacDefinition =
   "The Arkansas Election Advisory Commission will be a continuing, nonpartisan advisory body focused on strengthening confidence in Arkansas elections through evidence, transparency, collaboration and continuous improvement.";
@@ -276,25 +285,25 @@ export const aeacPrinciples: AeacPrinciple[] = [
 
 export const aeacHomePaths = [
   {
-    href: `${AEAC_BASE}/concerns`,
+    path: "concerns",
     kicker: "Public questions",
     title: "Share a concern",
     body: "Send a question or concern the Commission should be prepared to answer with facts.",
   },
   {
-    href: `${AEAC_BASE}/participate`,
+    path: "participate",
     kicker: "The who",
     title: "Join the work",
     body: "Raise your hand for a committee seat, a topic you know well, or a particular interest.",
   },
   {
-    href: `${AEAC_BASE}/updates`,
+    path: "updates",
     kicker: "Stay close",
     title: "Get regular updates",
     body: "Sign up for meeting notices, notes, findings, and public communications.",
   },
   {
-    href: `${AEAC_BASE}/meetings`,
+    path: "meetings",
     kicker: "The record",
     title: "Meetings and notes",
     body: "The public schedule, minutes, and supporting materials will live here.",

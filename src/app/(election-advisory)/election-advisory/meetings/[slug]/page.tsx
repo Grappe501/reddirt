@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import { AEAC_BASE } from "@/content/election-advisory/catalog";
 import { aeacMeetings, aeacMeetingStatusLabel, getAeacMeeting } from "@/content/election-advisory/meetings";
+import { aeacHref, getAeacBase } from "@/lib/election-advisory/public-origin";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -22,6 +22,7 @@ export default async function ElectionAdvisoryMeetingPage({ params }: Props) {
   const { slug } = await params;
   const meeting = getAeacMeeting(slug);
   if (!meeting) notFound();
+  const base = await getAeacBase();
 
   return (
     <article>
@@ -55,10 +56,10 @@ export default async function ElectionAdvisoryMeetingPage({ params }: Props) {
         )}
       </section>
       <div className="aeac-actions">
-        <Link className="aeac-btn" href={`${AEAC_BASE}/meetings`}>
+        <Link className="aeac-btn" href={aeacHref(base, "meetings")}>
           All meetings
         </Link>
-        <Link className="aeac-btn aeac-btn-ghost" href={`${AEAC_BASE}/updates`}>
+        <Link className="aeac-btn aeac-btn-ghost" href={aeacHref(base, "updates")}>
           Get notices
         </Link>
       </div>

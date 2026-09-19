@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { AEAC_BASE } from "@/content/election-advisory/catalog";
 import { aeacFindings } from "@/content/election-advisory/findings";
+import { aeacHref, getAeacBase } from "@/lib/election-advisory/public-origin";
 
 export const metadata: Metadata = {
   title: "Findings",
   description: "Public findings and recommendations of the Arkansas Election Advisory Commission.",
 };
 
-export default function ElectionAdvisoryFindingsPage() {
+export default async function ElectionAdvisoryFindingsPage() {
+  const base = await getAeacBase();
   return (
     <article>
       <p className="aeac-kicker">Public library</p>
@@ -40,10 +41,10 @@ export default function ElectionAdvisoryFindingsPage() {
       )}
 
       <div className="aeac-actions">
-        <Link className="aeac-btn" href={`${AEAC_BASE}/concerns`}>
+        <Link className="aeac-btn" href={aeacHref(base, "concerns")}>
           Suggest a question for the record
         </Link>
-        <Link className="aeac-btn aeac-btn-ghost" href={`${AEAC_BASE}/charter`}>
+        <Link className="aeac-btn aeac-btn-ghost" href={aeacHref(base, "charter")}>
           Read the charter
         </Link>
       </div>

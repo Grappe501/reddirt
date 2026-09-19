@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 
 /** Origins allowed to POST public forms cross-origin (kickoff static site → RedDirt API). */
 const DEFAULT_FORM_ORIGINS = [
+  "https://www.arelectionadvisory.org",
+  "https://arelectionadvisory.org",
   "https://kelly-volunteer-kickoff.netlify.app",
   "https://foundry-os.netlify.app",
   "http://localhost:5173",

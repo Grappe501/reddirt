@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import {
-  AEAC_BASE,
   AEAC_MOTTO_EN,
   AEAC_MOTTO_LATIN,
   AEAC_NAME,
@@ -14,13 +13,15 @@ import {
   aeacPrinciples,
 } from "@/content/election-advisory/catalog";
 import { aeacMeetingHref, aeacMeetings, aeacMeetingStatusLabel } from "@/content/election-advisory/meetings";
+import { aeacHref, getAeacBase } from "@/lib/election-advisory/public-origin";
 
 export const metadata: Metadata = {
   title: AEAC_NAME,
   description: aeacDefinition,
 };
 
-export default function ElectionAdvisoryHomePage() {
+export default async function ElectionAdvisoryHomePage() {
+  const base = await getAeacBase();
   const kickoff = aeacMeetings[0];
 
   return (
@@ -31,13 +32,13 @@ export default function ElectionAdvisoryHomePage() {
           <h1 className="aeac-display">{AEAC_NAME}</h1>
           <p className="aeac-lede">{aeacDefinition}</p>
           <div className="aeac-actions">
-            <Link className="aeac-btn" href={`${AEAC_BASE}/charter`}>
+            <Link className="aeac-btn" href={aeacHref(base, "charter")}>
               Read the charter
             </Link>
-            <Link className="aeac-btn aeac-btn-ghost" href={`${AEAC_BASE}/participate`}>
+            <Link className="aeac-btn aeac-btn-ghost" href={aeacHref(base, "participate")}>
               Take part
             </Link>
-            <Link className="aeac-btn aeac-btn-ghost" href={`${AEAC_BASE}/concerns`}>
+            <Link className="aeac-btn aeac-btn-ghost" href={aeacHref(base, "concerns")}>
               Share a concern
             </Link>
           </div>
@@ -75,7 +76,7 @@ export default function ElectionAdvisoryHomePage() {
         </p>
         <div className="aeac-grid" style={{ marginTop: "1.2rem" }}>
           {aeacChargePhases.map((phase) => (
-            <Link key={phase.id} className="aeac-card-link" href={`${AEAC_BASE}/charge#${phase.id}`}>
+            <Link key={phase.id} className="aeac-card-link" href={`${aeacHref(base, "charge")}#${phase.id}`}>
               <p className="aeac-kicker">{phase.id}</p>
               <h3>{phase.label}</h3>
               <p>{phase.summary}</p>
@@ -95,7 +96,7 @@ export default function ElectionAdvisoryHomePage() {
           ))}
         </div>
         <div className="aeac-actions">
-          <Link className="aeac-btn aeac-btn-ghost" href={`${AEAC_BASE}/how-we-work`}>
+          <Link className="aeac-btn aeac-btn-ghost" href={aeacHref(base, "how-we-work")}>
             Full working principles
           </Link>
         </div>
@@ -105,7 +106,7 @@ export default function ElectionAdvisoryHomePage() {
         <h2>Use this site</h2>
         <div className="aeac-grid">
           {aeacHomePaths.map((path) => (
-            <Link key={path.href} className="aeac-card-link" href={path.href}>
+            <Link key={path.path} className="aeac-card-link" href={aeacHref(base, path.path)}>
               <p className="aeac-kicker">{path.kicker}</p>
               <h3>{path.title}</h3>
               <p>{path.body}</p>
@@ -125,10 +126,10 @@ export default function ElectionAdvisoryHomePage() {
             </p>
             <p style={{ marginTop: "0.7rem" }}>{kickoff.summary}</p>
             <div className="aeac-actions">
-              <Link className="aeac-btn" href={aeacMeetingHref(kickoff.slug)}>
+              <Link className="aeac-btn" href={aeacMeetingHref(kickoff.slug, base)}>
                 Meeting page
               </Link>
-              <Link className="aeac-btn aeac-btn-ghost" href={`${AEAC_BASE}/updates`}>
+              <Link className="aeac-btn aeac-btn-ghost" href={aeacHref(base, "updates")}>
                 Get the notice
               </Link>
             </div>

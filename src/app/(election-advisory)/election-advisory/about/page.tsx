@@ -2,20 +2,21 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import {
-  AEAC_BASE,
   AEAC_CONTACT_EMAIL,
   AEAC_NAME,
   AEAC_ORGANIZER_NAME,
   AEAC_ORGANIZER_ROLE,
   AEAC_PUBLIC_DOMAIN,
 } from "@/content/election-advisory/catalog";
+import { aeacHref, getAeacBase } from "@/lib/election-advisory/public-origin";
 
 export const metadata: Metadata = {
   title: "About",
   description: `How the ${AEAC_NAME} is being organized, who it is for, and what it is not.`,
 };
 
-export default function ElectionAdvisoryAboutPage() {
+export default async function ElectionAdvisoryAboutPage() {
+  const base = await getAeacBase();
   return (
     <article>
       <p className="aeac-kicker">Organizing now</p>
@@ -59,17 +60,16 @@ export default function ElectionAdvisoryAboutPage() {
       <section className="aeac-section">
         <h2>This website</h2>
         <p className="aeac-prose">
-          This section is live at KellyGrappe.com{AEAC_BASE} so the charter and intake exist before the press
-          release. The intended public address is {AEAC_PUBLIC_DOMAIN}. It is not linked from the main campaign
-          navigation yet.
+          The public address is {AEAC_PUBLIC_DOMAIN}. The same pages also exist on the campaign site at
+          /election-advisory, unlinked from that navigation.
         </p>
       </section>
 
       <div className="aeac-actions">
-        <Link className="aeac-btn" href={`${AEAC_BASE}/charter`}>
+        <Link className="aeac-btn" href={aeacHref(base, "charter")}>
           Read the charter
         </Link>
-        <Link className="aeac-btn aeac-btn-ghost" href={`${AEAC_BASE}/participate`}>
+        <Link className="aeac-btn aeac-btn-ghost" href={aeacHref(base, "participate")}>
           Ask to take part
         </Link>
       </div>

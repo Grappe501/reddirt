@@ -1,4 +1,5 @@
 import { AEAC_BASE } from "./catalog";
+import { aeacHref } from "@/lib/election-advisory/public-origin";
 
 export type AeacMeetingStatus = "planned" | "scheduled" | "complete";
 
@@ -38,8 +39,8 @@ export function getAeacMeeting(slug: string): AeacMeeting | undefined {
   return aeacMeetings.find((meeting) => meeting.slug === slug);
 }
 
-export function aeacMeetingHref(slug: string): string {
-  return `${AEAC_BASE}/meetings/${slug}`;
+export function aeacMeetingHref(slug: string, base = AEAC_BASE): string {
+  return aeacHref(base, `meetings/${slug}`);
 }
 
 export function aeacMeetingStatusLabel(status: AeacMeetingStatus): string {

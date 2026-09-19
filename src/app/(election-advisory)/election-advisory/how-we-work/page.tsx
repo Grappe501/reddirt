@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { AEAC_BASE, AEAC_PUBLIC_DOMAIN, aeacPrinciples } from "@/content/election-advisory/catalog";
+import { AEAC_PUBLIC_DOMAIN, aeacPrinciples } from "@/content/election-advisory/catalog";
+import { aeacHref, getAeacBase } from "@/lib/election-advisory/public-origin";
 
 export const metadata: Metadata = {
   title: "How We Work",
@@ -9,7 +10,8 @@ export const metadata: Metadata = {
     "Listen first. Follow evidence. Respect Arkansas election structure. Work in public enough to earn trust.",
 };
 
-export default function ElectionAdvisoryHowWeWorkPage() {
+export default async function ElectionAdvisoryHowWeWorkPage() {
+  const base = await getAeacBase();
   return (
     <article>
       <p className="aeac-kicker">Working rules</p>
@@ -39,10 +41,10 @@ export default function ElectionAdvisoryHowWeWorkPage() {
       </section>
 
       <div className="aeac-actions">
-        <Link className="aeac-btn" href={`${AEAC_BASE}/meetings`}>
+        <Link className="aeac-btn" href={aeacHref(base, "meetings")}>
           Meeting record
         </Link>
-        <Link className="aeac-btn aeac-btn-ghost" href={`${AEAC_BASE}/findings`}>
+        <Link className="aeac-btn aeac-btn-ghost" href={aeacHref(base, "findings")}>
           Findings library
         </Link>
       </div>

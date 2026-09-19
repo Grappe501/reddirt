@@ -3,7 +3,8 @@ import { Source_Sans_3, Source_Serif_4 } from "next/font/google";
 import type { ReactNode } from "react";
 
 import { CommissionShell } from "@/components/election-advisory/CommissionShell";
-import { AEAC_NAME, aeacDefinition, AEAC_PUBLIC_DOMAIN } from "@/content/election-advisory/catalog";
+import { AEAC_NAME, AEAC_PUBLIC_DOMAIN, aeacDefinition } from "@/content/election-advisory/catalog";
+import { AEAC_CANONICAL_ORIGIN, getAeacHref, isAeacHost, getRequestHost } from "@/lib/election-advisory/public-origin";
 
 import "./election-advisory.css";
 
@@ -19,21 +20,26 @@ const sans = Source_Sans_3({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  title: {
-    default: AEAC_NAME,
-    template: `%s · ${AEAC_NAME}`,
-  },
-  description: aeacDefinition,
-  robots: { index: true, follow: true },
-  alternates: { canonical: "/election-advisory" },
-  openGraph: {
-    title: AEAC_NAME,
+export async function generateMetadata(): Promise<Metadata> {
+  const host = await getRequestHost();
+  const canonicalPath = await getAeacHref();
+  const canonical = isAeacHost(host) ? `${AEAC_CANONICAL_ORIGIN}${canonicalPath === "/" ? "" : canonicalPath}` : canonicalPath;
+  return {
+    title: {
+      default: AEAC_NAME,
+      template: `%s · ${AEAC_NAME}`,
+    },
     description: aeacDefinition,
-    url: "/election-advisory",
-    siteName: AEAC_PUBLIC_DOMAIN,
-  },
-};
+    robots: { index: true, follow: true },
+    alternates: { canonical },
+    openGraph: {
+      title: AEAC_NAME,
+      description: aeacDefinition,
+      url: canonical,
+      siteName: AEAC_PUBLIC_DOMAIN,
+    },
+  };
+}
 
 export default function ElectionAdvisoryLayout({ children }: { children: ReactNode }) {
   return (
