@@ -1,0 +1,50 @@
+{
+  "version": "1.0.0",
+  "slice": "V5-06",
+  "name": "Cohort Lifecycle Engine",
+  "states": [
+    "FILLING",
+    "FULL",
+    "SCHEDULED",
+    "ACTIVE",
+    "CLOSING",
+    "COMPLETE"
+  ],
+  "transitions": [
+    [
+      "FILLING",
+      "FULL"
+    ],
+    [
+      "FULL",
+      "SCHEDULED"
+    ],
+    [
+      "SCHEDULED",
+      "ACTIVE"
+    ],
+    [
+      "ACTIVE",
+      "CLOSING"
+    ],
+    [
+      "CLOSING",
+      "COMPLETE"
+    ]
+  ],
+  "durationDays": 90,
+  "principles": [
+    "COMMON_START",
+    "IMMUTABLE_RULES_AFTER_SCHEDULE",
+    "NO_PARTIAL_ACTIVE_COHORT",
+    "DETERMINISTIC_LIFECYCLE",
+    "PERMANENT_HISTORICAL_RECORD"
+  ],
+  "rules": {
+    "humanCapacity": 10,
+    "aiContestants": 1,
+    "realMoney": false,
+    "automaticTrading": false,
+    "completeRecordImmutable": true
+  }
+}
