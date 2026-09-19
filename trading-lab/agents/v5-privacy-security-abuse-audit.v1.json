@@ -1,0 +1,34 @@
+{
+  "version": "1.0.0",
+  "slice": "V5-21",
+  "name": "Privacy Security & Abuse Audit",
+  "principles": [
+    "DATA_MINIMIZATION",
+    "LEAST_PRIVILEGE",
+    "SEPARATE_PUBLIC_PRIVATE_DATA",
+    "HUMAN_REVIEW_BEFORE_MATERIAL_SANCTION",
+    "NO_SECRET_LEAKAGE",
+    "NO_PENDING_ORDER_LEAKAGE",
+    "NO_GOVERNMENT_ID_STORAGE",
+    "AUDITABLE_ADMIN_ACTIONS"
+  ],
+  "attackClasses": [
+    "IDENTITY_ENUMERATION",
+    "CROSS_COHORT_ACCESS",
+    "PENDING_ORDER_DISCLOSURE",
+    "AI_SEAL_TAMPERING",
+    "CREDIT_LEDGER_TAMPERING",
+    "INVITATION_ABUSE",
+    "SHARED_DEVICE_FALSE_POSITIVE",
+    "ADMIN_AUTHORITY_BYPASS",
+    "SECRET_EXPOSURE",
+    "PII_OVER_COLLECTION"
+  ],
+  "rules": {
+    "governmentIdStorage": false,
+    "pendingOrderPublic": false,
+    "crossCohortPortfolioAccess": false,
+    "materialSanctionAutomated": false,
+    "realMoney": false
+  }
+}
