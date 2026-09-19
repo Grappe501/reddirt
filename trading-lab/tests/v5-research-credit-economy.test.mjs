@@ -1,0 +1,6 @@
+import test from "node:test";import assert from "node:assert/strict";import {DEFAULT_RESEARCH_CREDIT_COSTS,quoteResearchCredits,spendResearchCredits,creditLedgerEntry} from "../src/v5-research-credit-economy.js";
+test("V5-12 deterministic work is free and deeper research costs more",()=>{assert.equal(DEFAULT_RESEARCH_CREDIT_COSTS.DETERMINISTIC,0);assert.equal(DEFAULT_RESEARCH_CREDIT_COSTS.DEEP_RESEARCH,20);assert.ok(DEFAULT_RESEARCH_CREDIT_COSTS.INVESTMENT_COMMITTEE>DEFAULT_RESEARCH_CREDIT_COSTS.COMPANY_RESEARCH);});
+test("V5-12 quote is visible and has no cash or transferable value",()=>{const q=quoteResearchCredits({researchType:"BULL_BEAR"});assert.deepEqual(q,{researchType:"BULL_BEAR",credits:5,cashValue:false,transferable:false,affectsCompetitionCapital:false});});
+test("V5-12 spending cannot create negative credit balance",()=>{const q=quoteResearchCredits({researchType:"DEEP_RESEARCH"});assert.equal(spendResearchCredits({balance:10,quote:q}).approved,false);assert.equal(spendResearchCredits({balance:25,quote:q}).balance,5);});
+test("V5-12 ledger remains noncash and nontransferable",()=>{const e=creditLedgerEntry({accountId:"u1",type:"GRANT",credits:10,reason:"BETA",at:"t"});assert.equal(e.cashValue,false);assert.equal(e.transferable,false);});
+console.log("V5-12 Research Credit Economy: PASS");
