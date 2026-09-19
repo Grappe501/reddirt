@@ -1,0 +1,32 @@
+{
+  "version": "1.0.0",
+  "slice": "V5-23",
+  "name": "Production Beta Proof",
+  "principles": [
+    "PROVE_BEFORE_LAUNCH",
+    "NO_GREEN_BY_ASSERTION",
+    "CRITICAL_GATES_FAIL_CLOSED",
+    "PRODUCTION_DEPENDENCIES_VISIBLE",
+    "SIMULATION_ONLY"
+  ],
+  "requiredGates": [
+    "FULL_TEST_SUITE",
+    "PRODUCTION_BUILD",
+    "DATABASE_BOUNDARY",
+    "MARKET_DATA_HEALTH",
+    "COHORT_LIFECYCLE",
+    "CANONICAL_EXECUTION",
+    "AI_SEAL",
+    "IDENTITY_INTEGRITY",
+    "PRIVACY_SECURITY",
+    "HOSTILE_AUDIT",
+    "RESEARCH_CREDITS",
+    "INVESTOR_REPORT",
+    "ADMIN_COMMAND_CENTER"
+  ],
+  "rules": {
+    "allRequiredGatesMustPass": true,
+    "missingGateFails": true,
+    "realMoney": false
+  }
+}
