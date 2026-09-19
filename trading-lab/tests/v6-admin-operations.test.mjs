@@ -1,0 +1,7 @@
+import test from "node:test";import assert from "node:assert/strict";import {adminOverview,launchChecklist,authorizeLaunch,reviewIntegrity,adminMarkup} from "../src/v6-admin-operations.js";
+const ready={productionBetaProofReady:true,verifiedHumans:10,integrityClear:true,aiSealed:true,commonMarketStart:"T",rulesPublished:true,scoringFrozen:true,privacySecurityClear:true,hostileAuditClear:true};
+test("V6-14 launch requires all readiness gates",()=>{assert.equal(launchChecklist(ready).ready,true);assert.equal(launchChecklist({...ready,aiSealed:false}).ready,false)});
+test("V6-14 launch cannot happen automatically",()=>{const c=launchChecklist(ready);assert.equal(c.automaticLaunch,false);assert.equal(authorizeLaunch(c).authorized,false);assert.equal(authorizeLaunch(c,{operatorApproved:true}).authorized,true)});
+test("V6-14 integrity signals require human review",()=>{const r=reviewIntegrity({humanId:"h1",signals:["SHARED_NETWORK"]});assert.equal(r.automaticGuilt,false);assert.equal(r.automaticTermination,false);assert.equal(r.requiresHumanReview,true)});
+test("V6-14 marks competition history read only",()=>{const o=adminOverview({});assert.ok(o.readOnlyHistory.includes("FILLS"));assert.ok(o.readOnlyHistory.includes("AI_SEAL"));assert.ok(o.readOnlyHistory.includes("FROZEN_DECISIONS"));assert.match(adminMarkup(o),/Signals trigger review, not guilt/)});
+console.log("V6-14 Admin Operations: PASS");
