@@ -1,0 +1,6 @@
+import test from "node:test";import assert from "node:assert/strict";import {productionBetaProof,assertBetaProofReady,productionBetaRequiredGates} from "../src/v5-production-beta-proof.js";
+const pass=Object.fromEntries(productionBetaRequiredGates.map(id=>[id,{status:"PASS",evidence:"proof:"+id}]));
+test("V5-23 requires every production beta gate and never self-authorizes launch",()=>{const p=productionBetaProof({gates:pass,commitSha:"abc",generatedAt:"t"});assert.equal(p.status,"READY_FOR_FOUNDING_COHORT_REVIEW");assert.equal(p.blocking.length,0);assert.equal(p.launchAuthorized,false);assert.equal(p.realMoney,false);});
+test("V5-23 missing gate fails closed",()=>{const gates={...pass};delete gates.AI_SEAL;const p=productionBetaProof({gates});assert.equal(p.status,"NOT_READY");assert.equal(p.blocking[0].id,"AI_SEAL");assert.equal(p.blocking[0].status,"MISSING");assert.throws(()=>assertBetaProofReady({gates}));});
+test("V5-23 explicit failed gate blocks proof",()=>{const gates={...pass,PRIVACY_SECURITY:{status:"FAIL",evidence:"hostile finding"}};const p=productionBetaProof({gates});assert.equal(p.status,"NOT_READY");assert.ok(p.blocking.some(x=>x.id==="PRIVACY_SECURITY"));});
+console.log("V5-23 Production Beta Proof: PASS");
