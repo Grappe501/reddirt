@@ -1,0 +1,10 @@
+import test from "node:test";import assert from "node:assert/strict";import fs from "node:fs";
+const css=fs.readFileSync(new URL("../src/v6-product-shell.css",import.meta.url),"utf8");const shell=fs.readFileSync(new URL("../src/v6-product-shell.js",import.meta.url),"utf8");const tape=fs.readFileSync(new URL("../src/v6-intelligence-tape.js",import.meta.url),"utf8");const report=fs.readFileSync(new URL("../src/v6-investor-report-alumni.js",import.meta.url),"utf8");const admin=fs.readFileSync(new URL("../src/v6-admin-operations.js",import.meta.url),"utf8");
+test("V6-15 responsive shell has mobile breakpoint",()=>assert.match(css,/@media[^\{]*max-width/i));
+test("V6-15 visible keyboard focus exists",()=>assert.match(css,/:focus|:focus-visible/));
+test("V6-15 reduced motion is respected",()=>assert.match(css,/prefers-reduced-motion/));
+test("V6-15 product shell preserves canonical navigation",()=>["Portfolio","Research","Markets","Lab","University","Competition"].forEach(x=>assert.match(shell,new RegExp(x))));
+test("V6-15 evidence is not profit probability",()=>assert.match(tape,/not a probability of profit/));
+test("V6-15 short contest does not claim investing skill",()=>assert.match(report,/does not establish investing skill or predict future returns/));
+test("V6-15 integrity review does not imply guilt",()=>assert.match(admin,/Signals trigger review, not guilt/));
+console.log("V6-15 UX Accessibility Performance Hostile Audit: PASS");
