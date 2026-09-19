@@ -17,5 +17,7 @@ The canonical V6 shell is the production entry; production data facade degrades 
 7. Common market start resolution, published rules, frozen scoring fingerprint, privacy/security clearance and operator approval.
 8. Ten actual verified founding humans and integrity-clear status. V7-08 ships the operator roster, integrity review, assignment, and 10/10 lock. Fabricated proof identities are rejected and do not close this gate. The gate stays open until ten real humans are assigned.
 
+V7-09 ships the production dress rehearsal, incident rollback, and immutable-history lock. A successful rehearsal proof is not founding-cohort launch and does not close the remaining V7-07 rules/start/privacy gate or the ten-human gate.
+
 ## Honest readiness conclusion
 V6 architecture and product contracts can close only after CI passes the V6-16 harness. A successful harness means the repository is ready for production proof collection; it does **not** mean a live cohort has launched. Founding cohort activation remains a separate operator-controlled event and automatic launch remains prohibited.
