@@ -1,0 +1,6 @@
+import test from "node:test";import assert from "node:assert/strict";import {publicPortfolioView,sanitizeCompetitionOrder} from "../src/v5-open-portfolio-ledger.js";
+const p={cohortId:"C1",ownerId:"h1",ownerDisplayName:"Player 1",ownerType:"HUMAN",cash:90000,positions:{ABC:{quantity:100,costBasis:100}},ledger:[{type:"BUY_FILLED",symbol:"ABC",quantity:100,price:100,filledAt:"t1",cost:1}]};
+test("V5-10 cohort sees holdings cash completed trades and value",()=>{const v=publicPortfolioView({portfolio:p,viewerCohortId:"C1",prices:{ABC:110}});assert.equal(v.portfolioValue,101000);assert.equal(v.completedTrades.length,1);assert.equal(v.positions[0].symbol,"ABC");});
+test("V5-10 blocks cross-cohort portfolio access",()=>{assert.throws(()=>publicPortfolioView({portfolio:p,viewerCohortId:"C2",prices:{ABC:110}}));});
+test("V5-10 pending intent remains private until fill",()=>{const pending=sanitizeCompetitionOrder({orderId:"o1",status:"PENDING",symbol:"SECRET",side:"BUY",quantity:999});assert.deepEqual(pending,{orderId:"o1",status:"PENDING",visibility:"PRIVATE_UNTIL_FILL"});const filled=sanitizeCompetitionOrder({orderId:"o1",status:"FILLED",symbol:"ABC",side:"BUY",quantity:10,fillPrice:100,filledAt:"t"});assert.equal(filled.visibility,"COHORT_VISIBLE");assert.equal(filled.symbol,"ABC");});
+console.log("V5-10 Open Portfolio Ledger: PASS");
