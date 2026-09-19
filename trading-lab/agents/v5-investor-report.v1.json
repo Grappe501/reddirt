@@ -1,0 +1,29 @@
+{
+  "version": "1.0.0",
+  "slice": "V5-18",
+  "name": "90-Day Investor Report",
+  "principles": [
+    "PLAIN_LANGUAGE_FIRST",
+    "MEASURE_PROCESS_NOT_JUST_RANK",
+    "COMPARE_WITH_AI_WITHOUT_SKILL_VERDICT",
+    "SHOW_COSTS_AND_RISK",
+    "PRESERVE_LEARNING_HISTORY",
+    "NO_PERFORMANCE_PROMISES"
+  ],
+  "sections": [
+    "COMPETITION_RESULT",
+    "PORTFOLIO_ANALYTICS",
+    "AI_COMPARISON",
+    "DECISION_PATTERNS",
+    "IMPACTFUL_DECISIONS",
+    "RESEARCH_BEHAVIOR",
+    "LEARNING_PROGRESS",
+    "NEXT_LEARNING_QUESTIONS"
+  ],
+  "rules": {
+    "rankDescriptiveOnly": true,
+    "aiComparisonDescriptiveOnly": true,
+    "pastPerformanceNotFuturePromise": true,
+    "realMoney": false
+  }
+}
