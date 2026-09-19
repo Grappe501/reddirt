@@ -1,0 +1,31 @@
+{
+  "version": "1.0.0",
+  "slice": "V5-09",
+  "name": "Sealed Wealth Builder AI Contestant",
+  "principles": [
+    "CONFIG_FROZEN_AT_COHORT_START",
+    "NO_OUTCOME_AWARE_CHANGES",
+    "SAME_MARKET_AND_EXECUTION_RULES",
+    "AUDITABLE_SEAL",
+    "SIMULATION_ONLY"
+  ],
+  "seal": {
+    "algorithm": "SHA-256",
+    "includes": [
+      "cohortId",
+      "modelVersion",
+      "researchPolicyVersion",
+      "strategyPolicyVersion",
+      "universeVersion",
+      "costModelVersion",
+      "configuration"
+    ],
+    "publicFingerprint": true
+  },
+  "rules": {
+    "oneAIContestantPerCohort": true,
+    "postSealMutationForbidden": true,
+    "humanPerformanceCannotAlterConfig": true,
+    "realMoney": false
+  }
+}
