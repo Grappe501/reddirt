@@ -1,0 +1,7 @@
+import test from "node:test";import assert from "node:assert/strict";import {onboardingState,cohortLobby,assignNextCohort,lobbyMarkup,onboardingMarkup} from "../src/v6-competition-lobby.js";
+test("V6-10 onboarding follows invitation verification sequence",()=>{let s=onboardingState({});assert.equal(s.next,"INVITATION");s=onboardingState({invitationValid:true,emailVerified:true,phoneVerified:true,username:"sam",rulesAccepted:true});assert.equal(s.readyForCohort,true);assert.equal(s.creditCardRequired,false);assert.equal(s.governmentIdRequired,false)});
+test("V6-10 tenth verified human locks cohort",()=>{const r=cohortLobby([{id:"C001",verifiedHumans:10,commonMarketStart:"MONDAY"}])[0];assert.equal(r.locked,true);assert.equal(r.status,"STARTING");assert.equal(r.seatsLeft,0);assert.equal(r.startAt,"MONDAY")});
+test("V6-10 assignment chooses first open cohort",()=>assert.equal(assignNextCohort([{id:"A",verifiedHumans:10},{id:"B",verifiedHumans:8}]),"B"));
+test("V6-10 lobby preserves competition constitution",()=>{const h=lobbyMarkup(cohortLobby([{id:"C001",verifiedHumans:8}]));assert.match(h,/10 humans/);assert.match(h,/sealed Wealth Builder AI/);assert.match(h,/No real money/);assert.match(h,/human must direct/i)});
+test("V6-10 signup copy avoids mandatory government ID",()=>assert.match(onboardingMarkup(onboardingState({})),/Government ID is not required/));
+console.log("V6-10 Competition Lobby + Onboarding: PASS");
