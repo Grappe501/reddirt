@@ -1,0 +1,36 @@
+{
+  "version": "1.0.0",
+  "slice": "V5-11",
+  "name": "Live League Experience",
+  "experience": "10_HUMANS_PLUS_1_SEALED_WB_AI",
+  "principles": [
+    "CALM_FIRST_FRAME",
+    "COMPETITION_TEACHES_BY_DOING",
+    "OPEN_FILLED_PORTFOLIOS",
+    "PENDING_INTENT_PRIVATE",
+    "AI_VISIBLE_AS_CONTESTANT",
+    "DEPTH_ON_DEMAND",
+    "NO_CHART_WALL"
+  ],
+  "firstFrame": [
+    "DAY_AND_PROGRESS",
+    "YOUR_PORTFOLIO",
+    "LEAGUE_POSITION",
+    "WEALTH_BUILDER_AI_POSITION",
+    "ATTENTION_ITEMS"
+  ],
+  "primaryQuestions": [
+    "HOW_AM_I_DOING",
+    "WHERE_DO_I_STAND",
+    "WHAT_CHANGED",
+    "WHAT_NEEDS_ATTENTION",
+    "HOW_DO_I_DIFFER_FROM_AI"
+  ],
+  "rules": {
+    "maxPrimaryCards": 5,
+    "maxDefaultCharts": 1,
+    "pendingOrdersPrivate": true,
+    "realMoney": false,
+    "financialAdvice": false
+  }
+}
