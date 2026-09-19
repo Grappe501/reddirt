@@ -1,0 +1,29 @@
+{
+  "version": "1.0.0",
+  "slice": "V4-12",
+  "name": "Dormancy + Reactivation",
+  "principles": [
+    "NO_AGENT_DELETED_FOR_POOR_PERFORMANCE",
+    "KNOWLEDGE_FOLLOWS_AGENT",
+    "DORMANCY_IS_NOT_FAILURE",
+    "REACTIVATION_USES_SAME_IDENTITY"
+  ],
+  "rules": {
+    "diagnosisRequired": true,
+    "evidenceRequired": true,
+    "identityMemoryPreserved": true,
+    "roleMemoryPreserved": true,
+    "institutionalContributionsPreserved": true,
+    "lineagePreserved": true,
+    "calibrationHistoryPreserved": true,
+    "noAutomaticDeletion": true,
+    "noAutomaticReactivation": true,
+    "operatorReviewRequired": true,
+    "paperOnly": true
+  },
+  "states": [
+    "ACTIVE",
+    "DORMANT",
+    "REACTIVATION_REVIEW"
+  ]
+}
