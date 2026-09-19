@@ -1,0 +1,7 @@
+import test from "node:test";import assert from "node:assert/strict";import {privacySecurityAudit,safeParticipantView,abuseReviewDecision} from "../src/v5-privacy-security-audit.js";
+test("V5-21 blocks critical privacy security boundary violations",()=>{for(const key of ["storesGovernmentId","exposesPendingOrders","crossCohortPortfolioAccess","aiSealMutationAllowed","materialSanctionAutomated","secretInClientPayload"]){const a=privacySecurityAudit({[key]:true});assert.equal(a.status,"BLOCKED",key);}});
+test("V5-21 shared device alone triggers review not guilt",()=>{const a=privacySecurityAudit({sharedDeviceAloneCausesFraudFinding:true});assert.equal(a.status,"REVIEW_REQUIRED");assert.equal(a.findings[0].severity,"HIGH");});
+test("V5-21 participant public view minimizes identity data",()=>{const v=safeParticipantView({username:"player",competitionStatus:"ACTIVE",achievements:["A"],email:"secret@example.test",phone:"555"});assert.deepEqual(Object.keys(v),["username","competitionStatus","achievements"]);});
+test("V5-21 abuse sanctions retain human audit record",()=>{const r=abuseReviewDecision({caseId:"r1",reviewerId:"op",decision:"SUSPEND",reason:"confirmed",at:"t"});assert.equal(r.automated,false);assert.equal(Object.isFrozen(r),true);});
+test("V5-21 clean configuration passes",()=>assert.equal(privacySecurityAudit({}).status,"PASS"));
+console.log("V5-21 Privacy Security & Abuse Audit: PASS");
