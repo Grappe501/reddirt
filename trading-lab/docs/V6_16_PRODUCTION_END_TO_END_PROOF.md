@@ -13,7 +13,7 @@ The canonical V6 shell is the production entry; production data facade degrades 
 3. Live production competition API/functions wired to the V6 persistence contracts; schema/contracts alone are not an operational API.
 4. Authentication/verified-human production binding for invitation, email, phone and one-human-one-active-identity controls.
 5. Safe rendering must be used at every live boundary carrying user/provider/external strings. V7-05 closes V6 markup surfaces through `escapeHtml` and CI payload tests. Deploy the current main build and confirm `GET /.netlify/functions/safe-render-proof` reports `interpolationClosed: true`.
-6. Production AI provider configuration and a real sealed-AI contestant proof for the founding cohort.
+6. Production AI provider configuration and a real sealed-AI contestant proof for the founding cohort. V7-06 freezes the contestant fingerprint through Netlify Database and proves shared human/AI execution. A sealed proof contestant is not a launched founding cohort.
 7. Common market start resolution, published rules, frozen scoring fingerprint, privacy/security clearance and operator approval.
 8. Ten actual verified founding humans and integrity-clear status.
 

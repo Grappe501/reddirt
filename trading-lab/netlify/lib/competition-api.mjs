@@ -1,5 +1,6 @@
 import { applyFill, createCompetitionPortfolio } from '../../src/v5-competition-portfolio.js';
 import { COMPETITION_RULES, fillRecord } from '../../src/v6-competition-persistence.js';
+import { aiSealAllowsFill } from './competition-ai.mjs';
 import { humanBindingAllowsFill } from './competition-identity.mjs';
 
 const SIMULATION_STATUSES = new Set(['PROOF', 'DRAFT']);
@@ -17,6 +18,7 @@ export function publicLobbyRow(row) {
     seatsLeft: 10 - verified,
     locked: verified === 10,
     startsAt: row.starts_at || row.startsAt || null,
+    aiSealed: Boolean(row.ai_sealed ?? row.aiSealed),
     simulationOnly: true,
   };
 }
@@ -72,10 +74,14 @@ export async function readCompetitionLobby(db) {
       c.id,
       c.status,
       c.starts_at,
-      count(m.human_id) filter (where m.verified) ::int as verified_humans
+      count(m.human_id) filter (where m.verified) ::int as verified_humans,
+      exists(
+        select 1 from trading_lab.competition_ai_seals s
+        where s.cohort_id = c.id and s.fingerprint = c.ai_seal_fingerprint
+      ) as ai_sealed
     from trading_lab.competition_cohorts c
     left join trading_lab.competition_members m on m.cohort_id = c.id
-    group by c.id, c.status, c.starts_at
+    group by c.id, c.status, c.starts_at, c.ai_seal_fingerprint
     order by c.created_at desc
   `);
   const cohorts = result.rows.map(publicLobbyRow);
@@ -121,7 +127,7 @@ export async function writeCompetitionFill(db, input = {}) {
   try {
     await client.query('begin');
     const portfolio = await client.query(
-      `select p.*, c.status as cohort_status
+      `select p.*, c.status as cohort_status, c.ai_seal_fingerprint
        from trading_lab.competition_portfolios p
        join trading_lab.competition_cohorts c on c.id = p.cohort_id
        where p.id = $1
@@ -134,20 +140,32 @@ export async function writeCompetitionFill(db, input = {}) {
       throw error;
     }
     if (!SIMULATION_STATUSES.has(row.cohort_status)) {
-      if (row.cohort_status !== 'ACTIVE' || row.owner_type !== 'HUMAN') {
-        throw Object.assign(new Error('Fills are closed on launched or locked founding cohorts until verified-human binding exists.'), { statusCode: 409 });
+      if (row.cohort_status === 'LOCKED') {
+        throw Object.assign(new Error('Fills are closed on locked founding cohorts.'), { statusCode: 409 });
       }
-      const binding = await client.query(
-        `select i.*, exists(
-           select 1 from trading_lab.competition_sessions s
-           where s.identity_id = i.identity_id and s.revoked_at is null
-         ) as session_live
-         from trading_lab.competition_identities i
-         where i.identity_id = $1`,
-        [row.owner_id],
-      );
-      const identity = binding.rows[0];
-      if (!humanBindingAllowsFill(identity, Boolean(identity?.session_live))) {
+      if (row.cohort_status === 'ACTIVE' && row.owner_type === 'HUMAN') {
+        const binding = await client.query(
+          `select i.*, exists(
+             select 1 from trading_lab.competition_sessions s
+             where s.identity_id = i.identity_id and s.revoked_at is null
+           ) as session_live
+           from trading_lab.competition_identities i
+           where i.identity_id = $1`,
+          [row.owner_id],
+        );
+        const identity = binding.rows[0];
+        if (!humanBindingAllowsFill(identity, Boolean(identity?.session_live))) {
+          throw Object.assign(new Error('Fills are closed on launched or locked founding cohorts until verified-human binding exists.'), { statusCode: 409 });
+        }
+      } else if (row.cohort_status === 'ACTIVE' && row.owner_type === 'WEALTH_BUILDER_AI') {
+        const seal = await client.query(
+          'select fingerprint, seal_record, mutation_allowed from trading_lab.competition_ai_seals where cohort_id = $1',
+          [row.cohort_id],
+        );
+        if (!aiSealAllowsFill(seal.rows[0], row.ai_seal_fingerprint) || record.decisionSource !== 'WEALTH_BUILDER_AI') {
+          throw Object.assign(new Error('AI fills are closed until a verified sealed contestant exists.'), { statusCode: 409 });
+        }
+      } else {
         throw Object.assign(new Error('Fills are closed on launched or locked founding cohorts until verified-human binding exists.'), { statusCode: 409 });
       }
     }

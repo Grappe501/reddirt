@@ -31,13 +31,17 @@ function createFakeDb({ status = 'PROOF', cash = 99900, fills = [{
     fills: [...fills],
     audits: [],
     identities: [],
+    seals: [],
   };
 
   const query = async (sql, params = []) => {
     const text = String(sql);
     if (/^begin$/i.test(text.trim()) || /^commit$/i.test(text.trim()) || /^rollback$/i.test(text.trim())) return { rows: [] };
     if (/from trading_lab\.competition_cohorts c/i.test(text)) {
-      return { rows: [{ id: store.cohort.id, status: store.cohort.status, starts_at: null, verified_humans: 0 }] };
+      return { rows: [{ id: store.cohort.id, status: store.cohort.status, starts_at: null, verified_humans: 0, ai_sealed: store.seals.length > 0 }] };
+    }
+    if (/from trading_lab\.competition_ai_seals/i.test(text)) {
+      return { rows: store.seals.filter((row) => !params[0] || row.cohort_id === params[0]) };
     }
     if (/from trading_lab\.competition_identities i/i.test(text)) {
       return { rows: store.identities.filter((row) => row.identity_id === params[0]) };
@@ -92,6 +96,7 @@ function createFakeDb({ status = 'PROOF', cash = 99900, fills = [{
 test('lobby rows never expose human identities', () => {
   const row = publicLobbyRow({ id: 'c1', status: 'PROOF', verified_humans: 1, human_id: 'secret-person' });
   assert.equal(row.verifiedHumans, 1);
+  assert.equal(row.aiSealed, false);
   assert.equal('human_id' in row, false);
   assert.equal(row.simulationOnly, true);
 });
@@ -165,6 +170,26 @@ test('active human portfolios can take simulated fills after verified binding', 
   assert.equal(result.ok, true);
   assert.equal(result.simulationOnly, true);
   assert.equal(db.store.fills.length, 1);
+});
+
+test('active AI portfolios cannot take fills before a valid seal', async () => {
+  const db = createFakeDb({ status: 'ACTIVE', fills: [] });
+  db.store.portfolio.id = 'v7-02-proof-ai-portfolio';
+  db.store.portfolio.owner_id = 'WEALTH_BUILDER_AI';
+  db.store.portfolio.owner_type = 'WEALTH_BUILDER_AI';
+  await assert.rejects(
+    () => writeCompetitionFill(db, {
+      id: 'fill-ai-locked',
+      portfolioId: 'v7-02-proof-ai-portfolio',
+      symbol: 'SPY',
+      side: 'BUY',
+      quantity: 1,
+      canonicalPrice: 100,
+      decisionSource: 'WEALTH_BUILDER_AI',
+      filledAt: '2026-09-19T01:00:00.000Z',
+    }),
+    /sealed contestant/,
+  );
 });
 
 test('active founding cohorts cannot take API fills before human binding', async () => {
