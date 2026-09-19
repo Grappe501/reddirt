@@ -1,0 +1,29 @@
+{
+  "version": "1.0.0",
+  "slice": "V5-13",
+  "name": "Referral Credit Engine",
+  "principles": [
+    "REWARD_VERIFIED_ACTIVE_PARTICIPATION_NOT_SIGNUP",
+    "NO_CASH_REWARD",
+    "NON_TRANSFERABLE_RESEARCH_CREDITS",
+    "NO_COMPETITION_CAPITAL_ADVANTAGE",
+    "VOUCH_GRAPH_REQUIRED",
+    "FRAUD_REVIEW_BEFORE_REWARD"
+  ],
+  "defaultRewardCredits": 10,
+  "eligibility": {
+    "inviteClaimed": true,
+    "inviteeCompetitionVerified": true,
+    "legitimateActivityRequired": true,
+    "minimumTradingDays": 5,
+    "integrityClearRequired": true
+  },
+  "rules": {
+    "rewardOnSignup": false,
+    "cashReward": false,
+    "transferable": false,
+    "affectsCompetitionCapital": false,
+    "duplicateRewardForbidden": true,
+    "revocableOnConfirmedFraud": true
+  }
+}
