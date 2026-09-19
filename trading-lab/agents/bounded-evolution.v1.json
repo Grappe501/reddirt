@@ -1,0 +1,33 @@
+{
+  "version": "1.0.0",
+  "slice": "V4-11",
+  "name": "Bounded Evolution Trials + Generation Ceiling",
+  "principles": [
+    "REPURPOSE_BEFORE_REPRODUCE",
+    "EVOLUTION_IS_EXPERIMENT_NOT_AUTHORITY",
+    "LINEAGE_IS_IMMUTABLE",
+    "HUMAN_REVIEW_REQUIRED"
+  ],
+  "defaults": {
+    "maxGeneration": 5,
+    "maxActiveAgents": 60,
+    "maxNewVariantsPerTrial": 2
+  },
+  "rules": {
+    "gapEvidenceRequired": true,
+    "repurposeGateRequired": true,
+    "costBudgetRequired": true,
+    "generationCeilingRequired": true,
+    "activeAgentCapRequired": true,
+    "noSelfModifiedThresholds": true,
+    "noAutomaticActivation": true,
+    "noAutomaticReproduction": true,
+    "noRealMoneyExecution": true,
+    "operatorApprovalRequired": true,
+    "paperOnly": true
+  },
+  "states": [
+    "REJECTED",
+    "ELIGIBLE_FOR_OPERATOR_REVIEW"
+  ]
+}
