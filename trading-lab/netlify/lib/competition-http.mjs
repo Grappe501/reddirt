@@ -45,6 +45,9 @@ export function rejectForbiddenWrite(value = {}) {
   if (value.launch === true || value.activate === true || value.foundingCohortLaunchAuthorized === true) {
     return 'Founding cohort launch cannot be authorized through this API.';
   }
+  if (value.realCohortActivated === true || value.activateRealCohort === true) {
+    return 'Dress rehearsal cannot activate the real founding cohort.';
+  }
   if (value.governmentIdStored === true || value.storeGovernmentId === true) {
     return 'Government ID storage is forbidden.';
   }

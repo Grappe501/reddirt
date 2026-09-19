@@ -21,6 +21,7 @@ export function publicLobbyRow(row) {
     aiSealed: Boolean(row.ai_sealed ?? row.aiSealed),
     foundingHumans: Math.max(0, Math.min(10, Number(row.founding_humans ?? row.foundingHumans ?? 0))),
     foundingRosterLocked: Boolean(row.founding_roster_locked ?? row.foundingRosterLocked),
+    rehearsalRan: Boolean(row.rehearsal_ran ?? row.rehearsalRan),
     simulationOnly: true,
   };
 }
@@ -79,6 +80,10 @@ export async function readCompetitionLobby(db) {
       count(m.human_id) filter (where m.verified) ::int as verified_humans,
       count(distinct a.identity_id) ::int as founding_humans,
       coalesce(bool_or(r.locked), false) as founding_roster_locked,
+      exists(
+        select 1 from trading_lab.competition_rehearsals rh
+        where rh.cohort_id = c.id
+      ) as rehearsal_ran,
       exists(
         select 1 from trading_lab.competition_ai_seals s
         where s.cohort_id = c.id and s.fingerprint = c.ai_seal_fingerprint

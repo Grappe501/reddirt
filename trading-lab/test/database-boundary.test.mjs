@@ -31,6 +31,10 @@ const durableFunctions = [
   'competition-founding-assign.mjs',
   'competition-founding-review.mjs',
   'competition-founding-proof.mjs',
+  'competition-rehearsal-status.mjs',
+  'competition-rehearsal-run.mjs',
+  'competition-rehearsal-incident.mjs',
+  'competition-rehearsal-proof.mjs',
 ];
 
 const forbidden = [
@@ -83,6 +87,7 @@ test('Netlify Database migrations use the official number_slug names', async () 
     '009_verified-human-binding',
     '010_sealed-ai-contestant',
     '011_founding-human-readiness',
+    '012_founding-cohort-rehearsal',
   ]);
   for (const name of names) {
     assert.match(name, /^\d+_[a-z0-9_-]+$/, `${name} is not a valid Netlify Database migration name`);

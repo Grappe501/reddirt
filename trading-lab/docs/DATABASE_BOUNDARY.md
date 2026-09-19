@@ -38,6 +38,7 @@ The canonical migrations are:
 9. `009_verified-human-binding`
 10. `010_sealed-ai-contestant`
 11. `011_founding-human-readiness`
+12. `012_founding-cohort-rehearsal`
 
 `db/market-memory-schema.sql` is retained only as an early architecture/reference artifact. It is not a production migration source and must not be manually applied to another RedDirt database.
 
@@ -67,5 +68,7 @@ V7-04 verified-human binding: `POST /.netlify/functions/competition-invitation`,
 V7-06 sealed AI contestant: `GET|POST /.netlify/functions/competition-ai-seal` and `POST /.netlify/functions/competition-ai-seal-proof`. The Wealth Builder AI uses the same Alpaca IEX market boundary and canonical V5 execution/accounting path as humans. The seal fingerprint is frozen; mid-cohort mutation is rejected. No API keys or live-money orders are stored or enabled.
 
 V7-08 founding human readiness: `GET /.netlify/functions/competition-founding-readiness`, `POST /.netlify/functions/competition-founding-assign`, `POST /.netlify/functions/competition-founding-review`, and `POST /.netlify/functions/competition-founding-proof`. Operators can review integrity and assign actual verified humans, then lock a 10/10 roster. Fabricated proof identities never count. Roster lock is not founding-cohort launch.
+
+V7-09 founding cohort launch rehearsal: `GET /.netlify/functions/competition-rehearsal-status`, `POST /.netlify/functions/competition-rehearsal-run`, `POST /.netlify/functions/competition-rehearsal-incident`, and `POST /.netlify/functions/competition-rehearsal-proof`. Production infrastructure runs a dress rehearsal, opens an incident, and rolls it back without rewriting fills, frozen decisions, AI seals, rules/scoring fingerprints, or the credit ledger. Rehearsal does not activate the real founding cohort and cannot authorize launch.
 
 This distinction is intentional: **configured, tested, deployed, and proven are separate states.**
