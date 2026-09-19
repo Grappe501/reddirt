@@ -1,0 +1,48 @@
+{
+  "version": "1.0.0",
+  "slice": "V5-02",
+  "name": "Verified Human Identity",
+  "principles": [
+    "ONE_HUMAN_ONE_COMPETITION_IDENTITY",
+    "LOW_FRICTION_FIRST",
+    "PROPORTIONAL_VERIFICATION",
+    "REVIEW_BEFORE_SANCTION",
+    "MINIMIZE_SENSITIVE_DATA"
+  ],
+  "states": [
+    "INVITED",
+    "EMAIL_VERIFIED",
+    "PHONE_VERIFIED",
+    "COMPETITION_VERIFIED",
+    "REVIEW_REQUIRED",
+    "SUSPENDED"
+  ],
+  "signup": {
+    "invitationRequired": true,
+    "emailVerification": true,
+    "phoneVerification": true,
+    "governmentIdRequired": false,
+    "creditCardRequired": false
+  },
+  "identity": {
+    "oneActiveCompetitionIdentity": true,
+    "onePortfolioPerCohort": true,
+    "usernameRequired": true
+  },
+  "riskSignals": [
+    "DUPLICATE_EMAIL",
+    "DUPLICATE_PHONE",
+    "DEVICE_RELATIONSHIP",
+    "NETWORK_RELATIONSHIP",
+    "IMPOSSIBLE_SIMULTANEOUS_SESSION",
+    "REFERRAL_LOOP",
+    "COORDINATED_BEHAVIOR"
+  ],
+  "rules": {
+    "signalsAreEvidenceNotGuilt": true,
+    "automaticPermanentBan": false,
+    "escalatedVerificationAllowed": true,
+    "governmentIdStoredByWealthBuilder": false,
+    "humanReviewForMaterialSanction": true
+  }
+}
