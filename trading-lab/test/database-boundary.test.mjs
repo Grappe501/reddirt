@@ -83,3 +83,18 @@ test('required production tables are declared in Netlify migrations', async () =
     assert.match(sql, new RegExp(`trading_lab\\.${table}\\b`), `${table} must be created by a Netlify Database migration`);
   }
 });
+
+test('migrations do not use unquoted PostgreSQL reserved role keywords', async () => {
+  const migrationsDir = join(root, 'netlify', 'database', 'migrations');
+  const names = (await readdir(migrationsDir, { withFileTypes: true }))
+    .filter((entry) => entry.isDirectory())
+    .map((entry) => entry.name);
+  let sql = '';
+  for (const name of names) {
+    sql += await readFile(join(migrationsDir, name, 'migration.sql'), 'utf8');
+  }
+  const withoutComments = sql.replace(/--[^\n]*/g, '');
+  assert.doesNotMatch(withoutComments, /(?<!")\bcurrent_role\b(?!")/i);
+  assert.doesNotMatch(withoutComments, /(?<!")\bcurrent_user\b(?!")/i);
+  assert.doesNotMatch(withoutComments, /(?<!")\bsession_user\b(?!")/i);
+});
