@@ -5,11 +5,11 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { escapeHtml, safeRenderingProof, V7_SAFE_SURFACES } from '../src/v6-production-proof.js';
 import { dashboardFirstFrame, marketsMarkup, v6ShellMarkup } from '../src/v6-product-shell.js';
-import { lobbyMarkup } from '../src/v6-competition-lobby.js';
+import { lobbyMarkup, onboardingMarkup, onboardingState } from '../src/v6-competition-lobby.js';
 import { researchFloorMarkup, symbolResearchMarkup } from '../src/v6-research-floor.js';
 import { tapeDrawerMarkup } from '../src/v6-intelligence-tape.js';
 import { coachMarkup, universityMarkup } from '../src/v6-university-coach.js';
-import { simulationMarkup } from '../src/v6-portfolio-lab.js';
+import { labFormMarkup, paperDeskMarkup, simulationMarkup } from '../src/v6-portfolio-lab.js';
 import { liveLeagueMarkup, leagueStandings } from '../src/v6-live-league.js';
 import { compareDecisions, freezeDecision, humanAiMarkup } from '../src/v6-human-ai-lab.js';
 import { investorReport, investorReportMarkup } from '../src/v6-investor-report-alumni.js';
@@ -60,7 +60,10 @@ test('V7-05 research, tape, university, and coach escape live strings', () => {
 
 test('V7-05 competition and lab surfaces escape external names and reasons', () => {
   assertEscaped(lobbyMarkup([{ id: XSS, verifiedHumans: 1, status: XSS, startAt: XSS, locked: true, seatsLeft: 9 }]));
+  assertEscaped(onboardingMarkup(onboardingState({}), XSS));
   assertEscaped(simulationMarkup({ ok: false, reason: XSS }));
+  assertEscaped(labFormMarkup({ symbol: XSS, entryPrice: XSS }));
+  assertEscaped(paperDeskMarkup({ equity: 100000, returnPct: 0, positions: [{ symbol: XSS, shares: 1, price: 1 }], fillCount: 1, cash: 100000 }, { symbol: XSS, price: XSS, message: XSS }));
   assertEscaped(simulationMarkup({
     ok: true,
     symbol: XSS,
