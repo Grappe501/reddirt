@@ -1,0 +1,42 @@
+{
+  "version": "1.0.0",
+  "slice": "V5-15",
+  "name": "Research Floor",
+  "principles": [
+    "SHOW_RESEARCH_NOT_AGENT_CLUTTER",
+    "CALM_FIRST_FRAME",
+    "PLAIN_LANGUAGE_FIRST",
+    "DEPTH_ON_DEMAND",
+    "DISSENT_VISIBLE",
+    "EVIDENCE_TRACEABLE",
+    "COST_VISIBLE",
+    "NO_BLACK_BOX_CONCLUSIONS"
+  ],
+  "firstFrame": [
+    "ACTIVE_INVESTIGATIONS",
+    "SOURCES_EXAMINED",
+    "MATERIAL_DISAGREEMENTS",
+    "VIEWS_CHANGED",
+    "RESEARCH_COST"
+  ],
+  "prohibitedDefaults": [
+    "AGENT_GRID",
+    "AGENT_LEADERBOARD",
+    "CHART_WALL",
+    "UNEXPLAINED_SCORE"
+  ],
+  "depthActions": [
+    "EXPLAIN",
+    "VIEW_EVIDENCE",
+    "VIEW_BULL_BEAR",
+    "VIEW_AGENT_DISAGREEMENT",
+    "SIMULATE",
+    "LEARN"
+  ],
+  "rules": {
+    "maxPrimaryCards": 5,
+    "maxDefaultCharts": 1,
+    "evidenceScoreIsProfitProbability": false,
+    "realMoney": false
+  }
+}
