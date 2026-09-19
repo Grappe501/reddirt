@@ -1,5 +1,6 @@
 import { applyFill, createCompetitionPortfolio } from '../../src/v5-competition-portfolio.js';
 import { COMPETITION_RULES, fillRecord } from '../../src/v6-competition-persistence.js';
+import { humanBindingAllowsFill } from './competition-identity.mjs';
 
 const SIMULATION_STATUSES = new Set(['PROOF', 'DRAFT']);
 
@@ -133,7 +134,22 @@ export async function writeCompetitionFill(db, input = {}) {
       throw error;
     }
     if (!SIMULATION_STATUSES.has(row.cohort_status)) {
-      throw Object.assign(new Error('Fills are closed on launched or locked founding cohorts until verified-human binding exists.'), { statusCode: 409 });
+      if (row.cohort_status !== 'ACTIVE' || row.owner_type !== 'HUMAN') {
+        throw Object.assign(new Error('Fills are closed on launched or locked founding cohorts until verified-human binding exists.'), { statusCode: 409 });
+      }
+      const binding = await client.query(
+        `select i.*, exists(
+           select 1 from trading_lab.competition_sessions s
+           where s.identity_id = i.identity_id and s.revoked_at is null
+         ) as session_live
+         from trading_lab.competition_identities i
+         where i.identity_id = $1`,
+        [row.owner_id],
+      );
+      const identity = binding.rows[0];
+      if (!humanBindingAllowsFill(identity, Boolean(identity?.session_live))) {
+        throw Object.assign(new Error('Fills are closed on launched or locked founding cohorts until verified-human binding exists.'), { statusCode: 409 });
+      }
     }
     const existing = await client.query(
       'select id from trading_lab.competition_fills where id = $1',

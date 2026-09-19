@@ -21,6 +21,10 @@ const durableFunctions = [
   'competition-lobby.mjs',
   'competition-portfolio.mjs',
   'competition-fill.mjs',
+  'competition-invitation.mjs',
+  'competition-identity.mjs',
+  'competition-identity-bind.mjs',
+  'competition-identity-proof.mjs',
 ];
 
 const forbidden = [
@@ -70,6 +74,7 @@ test('Netlify Database migrations use the official number_slug names', async () 
     '006_agent-career-ledger',
     '007_competition-persistence',
     '008_competition-audit',
+    '009_verified-human-binding',
   ]);
   for (const name of names) {
     assert.match(name, /^\d+_[a-z0-9_-]+$/, `${name} is not a valid Netlify Database migration name`);

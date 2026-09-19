@@ -1,4 +1,4 @@
-const FORBIDDEN_PUBLIC_KEYS = /connectionstring|password|username|token|secret|database_url|netlify_db_url|^host$/i;
+const FORBIDDEN_PUBLIC_KEYS = /connectionstring|password|username|token|secret|database_url|netlify_db_url|^host$|emailhandle|phonehandle|^email$|^phone$/i;
 
 export function sanitizePublicCompetition(body) {
   const safe = {};
@@ -44,6 +44,12 @@ export function rejectForbiddenWrite(value = {}) {
   }
   if (value.launch === true || value.activate === true || value.foundingCohortLaunchAuthorized === true) {
     return 'Founding cohort launch cannot be authorized through this API.';
+  }
+  if (value.governmentIdStored === true || value.storeGovernmentId === true) {
+    return 'Government ID storage is forbidden.';
+  }
+  if (value.creditCardRequired === true || value.cardRequired === true) {
+    return 'Credit cards are not required and cannot be required through this API.';
   }
   return null;
 }
