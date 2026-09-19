@@ -1,0 +1,33 @@
+{
+  "version": "1.0.0",
+  "slice": "V5-03",
+  "name": "Invitation + Vouch Graph",
+  "principles": [
+    "INVITATION_ONLY_EARLY_BETA",
+    "IMMUTABLE_INVITATION_LINEAGE",
+    "VOUCH_IS_ACCOUNTABILITY_NOT_GUILT",
+    "INVITATIONS_HAVE_NO_CASH_VALUE",
+    "VERIFIED_ACTIVITY_BEFORE_REWARD"
+  ],
+  "defaults": {
+    "foundingInvitations": 2
+  },
+  "states": [
+    "ISSUED",
+    "CLAIMED",
+    "VERIFIED",
+    "ACTIVE",
+    "REVOKED",
+    "EXPIRED"
+  ],
+  "rules": {
+    "invitationRequired": true,
+    "invitationTransferable": false,
+    "invitationSellable": false,
+    "inviterAutomaticallyBannedForInviteeFraud": false,
+    "humanReviewForInviterSanction": true,
+    "rewardOnSignup": false,
+    "rewardRequiresIndependentVerification": true,
+    "rewardRequiresLegitimateActivity": true
+  }
+}
