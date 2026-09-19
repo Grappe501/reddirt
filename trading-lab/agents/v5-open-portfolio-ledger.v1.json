@@ -1,0 +1,33 @@
+{
+  "version": "1.0.0",
+  "slice": "V5-10",
+  "name": "Open Portfolio Ledger",
+  "principles": [
+    "COHORT_TRANSPARENCY",
+    "PENDING_ORDERS_PRIVATE",
+    "COMPLETED_TRADES_VISIBLE",
+    "NO_FRONT_RUNNING",
+    "SAME_VISIBILITY_FOR_HUMAN_AND_AI",
+    "SIMULATION_ONLY"
+  ],
+  "visible": [
+    "ownerDisplayName",
+    "ownerType",
+    "cash",
+    "positions",
+    "completedTrades",
+    "portfolioValue",
+    "performance"
+  ],
+  "privateUntilFill": [
+    "pendingOrders",
+    "orderIntent",
+    "unfilledQuantity"
+  ],
+  "rules": {
+    "cohortMembersOnly": true,
+    "pendingOrdersNeverPublic": true,
+    "filledOrdersBecomeCompletedTrades": true,
+    "realMoney": false
+  }
+}
