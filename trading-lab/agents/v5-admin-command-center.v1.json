@@ -1,0 +1,34 @@
+{
+  "version": "1.0.0",
+  "slice": "V5-20",
+  "name": "Admin Command Center",
+  "principles": [
+    "OPERATOR_CLARITY",
+    "EXCEPTION_FIRST",
+    "HUMAN_REVIEW_FOR_MATERIAL_SANCTIONS",
+    "SEALED_AI_VISIBILITY",
+    "AUDITABLE_ACTIONS",
+    "NO_HIDDEN_AUTOMATION"
+  ],
+  "firstFrame": [
+    "COHORT_HEALTH",
+    "IDENTITY_INTEGRITY_QUEUE",
+    "SEALED_AI_STATUS",
+    "RESEARCH_CREDIT_HEALTH",
+    "SYSTEM_ALERTS"
+  ],
+  "capabilities": [
+    "VIEW_COHORTS",
+    "REVIEW_IDENTITY_INTEGRITY",
+    "VERIFY_AI_SEAL",
+    "VIEW_CREDIT_LEDGER",
+    "VIEW_RESEARCH_HEALTH",
+    "VIEW_AUDIT_LOG"
+  ],
+  "rules": {
+    "maxPrimaryCards": 5,
+    "materialSanctionRequiresHuman": true,
+    "aiConfigMutationForbidden": true,
+    "realMoney": false
+  }
+}
