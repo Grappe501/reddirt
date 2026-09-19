@@ -35,6 +35,7 @@ The canonical migrations are:
 6. `006_agent-career-ledger`
 7. `007_competition-persistence`
 8. `008_competition-audit`
+9. `009_verified-human-binding`
 
 `db/market-memory-schema.sql` is retained only as an early architecture/reference artifact. It is not a production migration source and must not be manually applied to another RedDirt database.
 
@@ -58,5 +59,7 @@ Architecture convergence is not production proof. The database release gate rema
 `POST /.netlify/functions/competition-db-proof` is the V7-02 evidence that migration 007 is applied and cohort, member, portfolio, fill, and credit rows persist through the same Netlify Database adapter. It writes only synthetic proof rows. It is not a founding-cohort launch and never enables orders.
 
 V7-03 production API: `GET /.netlify/functions/competition-lobby`, `GET /.netlify/functions/competition-portfolio`, and `POST /.netlify/functions/competition-fill`. Reads are public and identity-minimized. Writes are simulation-only, audited, and cannot launch a founding cohort or enable live orders.
+
+V7-04 verified-human binding: `POST /.netlify/functions/competition-invitation`, `POST /.netlify/functions/competition-identity-bind`, `GET /.netlify/functions/competition-identity`, and `POST /.netlify/functions/competition-identity-proof`. Invitation, email/phone verification flags, username, rules acceptance, and one-active-identity session state persist through the shared adapter. Raw email, phone, and government ID are not stored. Escalated review stays exceptional. Synthetic proof identities are not founding humans and do not launch a cohort.
 
 This distinction is intentional: **configured, tested, deployed, and proven are separate states.**

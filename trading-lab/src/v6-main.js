@@ -2,7 +2,7 @@ import './v6-product-shell.css';
 import { coachFor, coachMarkup, lessonFor, universityMarkup } from './v6-university-coach.js';
 import { dashboardViewModel } from './v6-dashboard-model.js';
 import { buildTapeItems, tapeLabel } from './v6-intelligence-tape.js';
-import { lobbyMarkup } from './v6-competition-lobby.js';
+import { lobbyMarkup, onboardingMarkup, onboardingState } from './v6-competition-lobby.js';
 import { loadWealthBuilderOverview } from './v6-production-data.js';
 import { dashboardFirstFrame, marketsMarkup, routeFromLocation, v6ShellMarkup } from './v6-product-shell.js';
 import { portfolioMarkup, runScenario, simulationMarkup } from './v6-portfolio-lab.js';
@@ -59,7 +59,15 @@ function content(route, model) {
   }
   if (route === 'competition') {
     const rows = overview?.sources?.competitionLobby?.data?.cohorts;
-    return lobbyMarkup(Array.isArray(rows) && rows.length ? rows : [{ id: 'Founding Cohort 001', verifiedHumans: 0 }]);
+    const identity = overview?.sources?.competitionIdentity?.data?.identity;
+    const onboarding = onboardingState({
+      invitationValid: Boolean(identity?.invitationValid),
+      emailVerified: Boolean(identity?.emailVerified),
+      phoneVerified: Boolean(identity?.phoneVerified),
+      username: identity?.username,
+      rulesAccepted: Boolean(identity?.rulesAccepted),
+    });
+    return onboardingMarkup(onboarding) + lobbyMarkup(Array.isArray(rows) && rows.length ? rows : [{ id: 'Founding Cohort 001', verifiedHumans: 0 }]);
   }
   return dashboardContent(model);
 }

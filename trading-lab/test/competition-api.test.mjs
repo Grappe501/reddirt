@@ -30,6 +30,7 @@ function createFakeDb({ status = 'PROOF', cash = 99900, fills = [{
     },
     fills: [...fills],
     audits: [],
+    identities: [],
   };
 
   const query = async (sql, params = []) => {
@@ -37,6 +38,9 @@ function createFakeDb({ status = 'PROOF', cash = 99900, fills = [{
     if (/^begin$/i.test(text.trim()) || /^commit$/i.test(text.trim()) || /^rollback$/i.test(text.trim())) return { rows: [] };
     if (/from trading_lab\.competition_cohorts c/i.test(text)) {
       return { rows: [{ id: store.cohort.id, status: store.cohort.status, starts_at: null, verified_humans: 0 }] };
+    }
+    if (/from trading_lab\.competition_identities i/i.test(text)) {
+      return { rows: store.identities.filter((row) => row.identity_id === params[0]) };
     }
     if (/from trading_lab\.competition_portfolios p/i.test(text) && /where p\.id/i.test(text)) {
       return params[0] === store.portfolio.id
@@ -133,6 +137,34 @@ test('simulated fill persists, updates cash, and writes an audit row', async () 
   assert.equal(result.cash, 99900);
   assert.equal(db.store.fills.length, 1);
   assert.equal(db.store.audits[0].action, 'FILL_SIMULATED');
+});
+
+test('active human portfolios can take simulated fills after verified binding', async () => {
+  const db = createFakeDb({ status: 'ACTIVE', fills: [] });
+  db.store.identities.push({
+    identity_id: 'v7-02-proof-human',
+    invite_id: 'v7-04-proof-invite',
+    username: 'wb-proof-human',
+    email_verified: true,
+    phone_verified: true,
+    rules_accepted: true,
+    review_required: false,
+    active_competition_identity: true,
+    session_live: true,
+  });
+  const result = await writeCompetitionFill(db, {
+    id: 'fill-bound',
+    portfolioId: 'v7-02-proof-human-portfolio',
+    symbol: 'SPY',
+    side: 'BUY',
+    quantity: 1,
+    canonicalPrice: 100,
+    decisionSource: 'HUMAN',
+    filledAt: '2026-09-19T01:00:00.000Z',
+  });
+  assert.equal(result.ok, true);
+  assert.equal(result.simulationOnly, true);
+  assert.equal(db.store.fills.length, 1);
 });
 
 test('active founding cohorts cannot take API fills before human binding', async () => {
