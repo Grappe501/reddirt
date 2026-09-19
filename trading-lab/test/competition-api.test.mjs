@@ -97,6 +97,7 @@ test('lobby rows never expose human identities', () => {
   const row = publicLobbyRow({ id: 'c1', status: 'PROOF', verified_humans: 1, human_id: 'secret-person' });
   assert.equal(row.verifiedHumans, 1);
   assert.equal(row.aiSealed, false);
+  assert.equal(row.foundingHumans, 0);
   assert.equal('human_id' in row, false);
   assert.equal(row.simulationOnly, true);
 });
