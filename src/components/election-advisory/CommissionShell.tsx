@@ -26,8 +26,11 @@ export async function CommissionShell({ children }: { children: ReactNode }) {
       <p className="aeac-banner">A continuing nonpartisan advisory body · Arkansas people · Evidence first</p>
       <header className="aeac-header">
         <Link href={homeHref} className="aeac-wordmark">
-          <strong>{AEAC_NAME}</strong>
-          <small>{AEAC_PUBLIC_DOMAIN}</small>
+          <img src="/election-advisory/aeac-seal.svg" alt="" width={72} height={72} className="aeac-seal" />
+          <span>
+            <strong>{AEAC_NAME}</strong>
+            <small>{AEAC_PUBLIC_DOMAIN}</small>
+          </span>
         </Link>
         <CommissionNav items={navItems} />
       </header>
@@ -35,6 +38,7 @@ export async function CommissionShell({ children }: { children: ReactNode }) {
       <footer className="aeac-footer">
         <div className="aeac-footer-inner">
           <div>
+            <img src="/election-advisory/aeac-seal.svg" alt="" width={88} height={88} className="aeac-seal-footer" />
             <h2>{AEAC_NAME}</h2>
             <p>
               An independent, nonpartisan advisory effort organized by {AEAC_ORGANIZER_NAME}, {AEAC_ORGANIZER_ROLE}.

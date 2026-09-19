@@ -33,11 +33,16 @@ export async function generateMetadata(): Promise<Metadata> {
     description: aeacDefinition,
     robots: { index: true, follow: true },
     alternates: { canonical },
+    icons: {
+      icon: "/election-advisory/aeac-diamond.svg",
+      apple: "/election-advisory/aeac-seal.svg",
+    },
     openGraph: {
       title: AEAC_NAME,
       description: aeacDefinition,
       url: canonical,
       siteName: AEAC_PUBLIC_DOMAIN,
+      images: [{ url: "/election-advisory/aeac-seal.svg", alt: AEAC_NAME }],
     },
   };
 }

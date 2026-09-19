@@ -30,7 +30,10 @@ export default async function ElectionAdvisoryHomePage() {
       <section className="aeac-hero-panel">
         <div>
           <p className="aeac-kicker">Founding charter · Public working home</p>
-          <h1 className="aeac-display">{AEAC_NAME}</h1>
+          <div className="aeac-hero-brand">
+            <img src="/election-advisory/aeac-seal.svg" alt={AEAC_NAME} width={168} height={168} className="aeac-seal-hero" />
+            <h1 className="aeac-display">{AEAC_NAME}</h1>
+          </div>
           <p className="aeac-lede">{aeacDefinition}</p>
           <div className="aeac-actions">
             <Link className="aeac-btn" href={aeacHref(base, "charter")}>
