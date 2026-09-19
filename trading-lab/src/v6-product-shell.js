@@ -1,4 +1,3 @@
-import './v6-product-shell.css';
 export const V6_ROUTES=Object.freeze([{id:'dashboard',label:'WEALTH BUILDER'},{id:'portfolio',label:'Portfolio'},{id:'research',label:'Research'},{id:'markets',label:'Markets'},{id:'lab',label:'Lab'},{id:'university',label:'University'},{id:'competition',label:'Competition'}]);
 export function routeFromLocation(loc=globalThis.location){const raw=(loc?.hash||'').replace(/^#\/?/,'').split('/')[0];return V6_ROUTES.some(r=>r.id===raw)?raw:'dashboard';}
 export function navigateV6(route,loc=globalThis.location){if(!V6_ROUTES.some(r=>r.id===route))throw new Error('unknown Wealth Builder route');if(loc)loc.hash='#/'+route;return route;}
