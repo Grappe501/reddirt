@@ -1,0 +1,36 @@
+{
+  "version": "1.0.0",
+  "slice": "V5-17",
+  "name": "Human-vs-AI Laboratory",
+  "principles": [
+    "FREEZE_BELIEF_BEFORE_OUTCOME",
+    "COMPARE_REASONING_NOT_JUST_RETURNS",
+    "POINT_IN_TIME_EVIDENCE",
+    "PRESERVE_DISAGREEMENT",
+    "NO_HINDSIGHT_REWRITE",
+    "NO_CAUSAL_CLAIM_FROM_SINGLE_OUTCOME"
+  ],
+  "record": [
+    "actorType",
+    "symbol",
+    "decisionAt",
+    "belief",
+    "action",
+    "evidenceRefs",
+    "uncertainty",
+    "portfolioContext",
+    "sealedAiFingerprint"
+  ],
+  "outcome": [
+    "evaluationAt",
+    "marketOutcome",
+    "portfolioImpact"
+  ],
+  "rules": {
+    "humanAndAiSameSchema": true,
+    "outcomeCannotMutateBelief": true,
+    "evidenceMustPredateDecision": true,
+    "singleObservationNotSkillProof": true,
+    "realMoney": false
+  }
+}
