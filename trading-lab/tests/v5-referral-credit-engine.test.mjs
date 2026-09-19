@@ -1,0 +1,7 @@
+import test from "node:test";import assert from "node:assert/strict";import {referralCreditEligibility,issueReferralCredits,reviewReferralFraud} from "../src/v5-referral-credit-engine.js";
+const invitation={claimedAt:"t"};const invitee={verificationState:"COMPETITION_VERIFIED",integrityState:"CLEAR"};
+test("V5-13 signup alone earns nothing",()=>{const r=referralCreditEligibility({invitation,invitee,activity:{distinctTradingDays:0}});assert.equal(r.eligible,false);});
+test("V5-13 verified legitimate activity earns noncash research credits",()=>{const e=referralCreditEligibility({invitation,invitee,activity:{distinctTradingDays:5}});const g=issueReferralCredits({inviterId:"john",inviteeId:"mary",eligibility:e,at:"t"});assert.equal(g.credits,10);assert.equal(g.cashValue,false);assert.equal(g.transferable,false);assert.equal(g.affectsCompetitionCapital,false);});
+test("V5-13 blocks duplicate referral reward",()=>{assert.equal(referralCreditEligibility({invitation,invitee,activity:{distinctTradingDays:10},priorReward:true}).reason,"ALREADY_REWARDED");});
+test("V5-13 confirmed fraud requires human review before revocation and never auto-bans inviter",()=>{const reward={credits:10};assert.equal(reviewReferralFraud({reward,confirmedFraud:true,humanReviewed:false}).action,"HOLD_FOR_HUMAN_REVIEW");const r=reviewReferralFraud({reward,confirmedFraud:true,humanReviewed:true});assert.equal(r.action,"REVOKE_RESEARCH_CREDITS");assert.equal(r.automaticInviterBan,false);});
+console.log("V5-13 Referral Credit Engine: PASS");
