@@ -1,0 +1,52 @@
+{
+  "version": "1.0.0",
+  "slice": "V4-15",
+  "name": "Adaptive Organization Command Center",
+  "experienceDoctrine": [
+    "CALM_FIRST_FRAME",
+    "DEPTH_ON_DEMAND",
+    "NO_CHART_WALL",
+    "PLAIN_LANGUAGE_FIRST",
+    "EXPERT_DEPTH_PRESERVED",
+    "SHOW_ORGANIZATION_NOT_AGENT_CLUTTER"
+  ],
+  "firstFrame": {
+    "maxPrimaryCards": 5,
+    "maxCharts": 1,
+    "questions": [
+      "WHAT_IS_HAPPENING",
+      "WHAT_NEEDS_ATTENTION",
+      "WHAT_IS_THE_ORGANIZATION_LEARNING",
+      "WHAT_IS_IT_COSTING",
+      "WHERE_CAN_I_GO_DEEPER"
+    ]
+  },
+  "depthModel": [
+    "GLANCE",
+    "EXPLAIN",
+    "LEARN",
+    "ADVANCED",
+    "RESEARCH",
+    "TRY"
+  ],
+  "sections": [
+    "ORGANIZATION_PULSE",
+    "ATTENTION_QUEUE",
+    "LEARNING_NOW",
+    "ECONOMICS",
+    "EXPLORE_ORGANIZATION"
+  ],
+  "rules": {
+    "allAgentsEqual": true,
+    "rolesNotRanks": true,
+    "noAgentLeaderboard": true,
+    "noDefaultAgentGrid": true,
+    "noChartWall": true,
+    "progressiveDisclosureRequired": true,
+    "plainLanguageRequired": true,
+    "expertEvidenceReachable": true,
+    "mobileFirst": true,
+    "accessible": true,
+    "paperOnly": true
+  }
+}
