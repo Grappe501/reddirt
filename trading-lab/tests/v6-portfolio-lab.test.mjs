@@ -1,6 +1,7 @@
-import test from "node:test";import assert from "node:assert/strict";import {portfolioView,portfolioMarkup,runScenario,simulationMarkup} from "../src/v6-portfolio-lab.js";
+import test from "node:test";import assert from "node:assert/strict";import {portfolioView,portfolioMarkup,runScenario,simulationMarkup,labFormMarkup,paperDeskMarkup,paperDeskOrder,paperDeskView,emptyPaperDesk} from "../src/v6-portfolio-lab.js";
 test("V6-07 portfolio uses cash plus positions",()=>{const v=portfolioView({cash:50000,positions:[{shares:10,price:100}],startingCapital:50000});assert.equal(v.equity,51000);assert.equal(v.returnPct,2);assert.match(portfolioMarkup(v),/Simulation only/)});
 test("V6-07 scenario includes friction",()=>{const r=runScenario({symbol:"XYZ",entryPrice:100,shares:10,exitPrices:[110],commission:1,spreadBps:4,slippageBps:2});assert.equal(r.ok,true);assert.ok(r.scenarios[0].net<100);assert.ok(r.scenarios[0].costs>2)});
 test("V6-07 rejects invalid scenarios",()=>assert.equal(runScenario({entryPrice:0,shares:10}).ok,false));
 test("V6-07 is not a forecast",()=>assert.match(simulationMarkup(runScenario({symbol:"XYZ",entryPrice:100,shares:1,exitPrices:[105]})),/not a forecast or promise/));
+test("V6-07 lab and paper desk are interactive and not founding launch",()=>{assert.match(labFormMarkup({symbol:"SPY"}),/data-lab-form/);assert.match(paperDeskMarkup(paperDeskView(emptyPaperDesk())),/not the founding competition/i);const next=paperDeskOrder(emptyPaperDesk(),{side:"BUY",symbol:"SPY",quantity:1,price:100});assert.equal(next.positions.SPY.quantity,1);assert.equal(next.realMoney,false)});
 console.log("V6-07 Portfolio + Simulation Lab: PASS");

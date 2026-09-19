@@ -4,4 +4,5 @@ test("V6-10 tenth verified human locks cohort",()=>{const r=cohortLobby([{id:"C0
 test("V6-10 assignment chooses first open cohort",()=>assert.equal(assignNextCohort([{id:"A",verifiedHumans:10},{id:"B",verifiedHumans:8}]),"B"));
 test("V6-10 lobby preserves competition constitution",()=>{const h=lobbyMarkup(cohortLobby([{id:"C001",verifiedHumans:8}]));assert.match(h,/10 humans/);assert.match(h,/sealed Wealth Builder AI/);assert.match(h,/No real money/);assert.match(h,/human must direct/i)});
 test("V6-10 signup copy avoids mandatory government ID",()=>assert.match(onboardingMarkup(onboardingState({})),/Government ID is not required/));
+test("V6-10 onboarding exposes a live invitation form",()=>{const h=onboardingMarkup(onboardingState({}));assert.match(h,/data-onboarding-form/);assert.match(h,/does not launch/i)});
 console.log("V6-10 Competition Lobby + Onboarding: PASS");
