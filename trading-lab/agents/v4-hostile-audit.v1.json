@@ -1,0 +1,51 @@
+{
+  "version": "1.0.0",
+  "slice": "V4-16",
+  "name": "V4 Hostile Audit",
+  "scope": [
+    "agent equality",
+    "career knowledge continuity",
+    "strength discovery",
+    "evidence placement",
+    "repurpose before reproduce",
+    "training",
+    "trainer evaluation",
+    "apprenticeship",
+    "collaboration",
+    "economics",
+    "bounded evolution",
+    "dormancy/reactivation",
+    "organizational memory",
+    "governance",
+    "command center UX"
+  ],
+  "attackClasses": [
+    "rank leakage",
+    "knowledge loss",
+    "unsupported placement",
+    "premature reproduction",
+    "trainer authority escalation",
+    "conclusion copying",
+    "dissent suppression",
+    "cost-over-truth optimization",
+    "unbounded evolution",
+    "identity replacement",
+    "stale-memory reuse",
+    "governance bypass",
+    "chart-wall regression",
+    "hidden real-money execution"
+  ],
+  "requiredInvariants": [
+    "ALL_AGENTS_EQUAL",
+    "ROLES_NOT_RANKS",
+    "KNOWLEDGE_FOLLOWS_AGENT",
+    "REPURPOSE_BEFORE_REPRODUCE",
+    "NO_ROLE_PERMANENT",
+    "DISSENT_PRESERVED",
+    "OPERATOR_REVIEW",
+    "PAPER_ONLY",
+    "CALM_FIRST_FRAME",
+    "EXPERT_DEPTH_REACHABLE"
+  ],
+  "releaseRule": "ANY_CRITICAL_FAILURE_BLOCKS_V4_RELEASE"
+}
