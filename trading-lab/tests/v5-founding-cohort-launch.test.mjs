@@ -1,0 +1,6 @@
+import test from "node:test";import assert from "node:assert/strict";import {foundingCohortReadiness,lockFoundingCohort,foundingCohortRequiredGates} from "../src/v5-founding-cohort-launch.js";
+const gates=Object.fromEntries(foundingCohortRequiredGates.map(x=>[x,true]));
+test("V5-24 proof-ready cohort still cannot auto-launch",()=>{const r=foundingCohortReadiness({gates,humanCount:10});assert.equal(r.state,"PROOF_READY");assert.equal(r.launchAuthorized,false);assert.equal(r.operatorApprovalRequired,true);});
+test("V5-24 requires exactly ten verified humans and all gates",()=>{assert.equal(foundingCohortReadiness({gates,humanCount:9}).state,"DRAFT");const bad={...gates,AI_CONTESTANT_SEALED:false};assert.equal(foundingCohortReadiness({gates:bad,humanCount:10}).state,"DRAFT");});
+test("V5-24 explicit operator approval permits immutable cohort lock",()=>{const r=foundingCohortReadiness({gates,humanCount:10,operatorApproval:{approved:true,operatorId:"op"}});assert.equal(r.launchAuthorized,true);const l=lockFoundingCohort({readiness:r,cohortId:"FOUNDING-001",startAt:"2026-10-01T13:30:00Z",rulesFingerprint:"rules",aiSealFingerprint:"ai",scoringFingerprint:"score",lockedAt:"t"});assert.equal(l.state,"LOCKED");assert.equal(l.mutable,false);assert.equal(l.realMoney,false);});
+console.log("V5-24 Founding Cohort Launch: PASS");
