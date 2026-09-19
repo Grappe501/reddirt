@@ -1,0 +1,6 @@
+import test from "node:test";import assert from "node:assert/strict";import {leagueStandings,publicCompletedTrades,liveLeagueMarkup} from "../src/v6-live-league.js";
+test("V6-11 ranks humans and sealed AI on same value field",()=>{const l=leagueStandings({currentHumanId:"h1",players:[{id:"h1",name:"Sam",value:102000},{id:"ai",name:"Wealth Builder AI",type:"WEALTH_BUILDER_AI",value:101000},{id:"h2",value:103000}]});assert.equal(l.me.rank,2);assert.equal(l.ai.rank,3);assert.equal(l.deltaVsAi,1000)});
+test("V6-11 day is bounded by season",()=>assert.equal(leagueStandings({day:120,durationDays:90}).day,90));
+test("V6-11 exposes completed trades only",()=>{const row={completedTrades:[{symbol:"XYZ",side:"BUY",quantity:2,price:100,filledAt:"T",pendingOrder:{secret:true}}]};assert.deepEqual(publicCompletedTrades(row),[{symbol:"XYZ",side:"BUY",quantity:2,price:100,filledAt:"T"}])});
+test("V6-11 cockpit labels sealed AI and private pending orders",()=>{const h=liveLeagueMarkup(leagueStandings({currentHumanId:"h",players:[{id:"h",name:"Human",value:100000},{id:"ai",name:"Wealth Builder AI",type:"WEALTH_BUILDER_AI",value:100000}]}));assert.match(h,/SEALED AI/);assert.match(h,/Pending orders remain private until filled/);assert.match(h,/Simulation only/)});
+console.log("V6-11 Live League: PASS");
