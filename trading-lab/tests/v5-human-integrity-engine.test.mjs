@@ -1,0 +1,6 @@
+import test from "node:test";import assert from "node:assert/strict";import {assessHumanIntegrity,recordIntegrityDecision} from "../src/v5-human-integrity-engine.js";
+test("V5-04 clean identity is allowed",()=>{const r=assessHumanIntegrity({identityId:"h1"});assert.equal(r.riskBand,"CLEAR");assert.equal(r.recommendedAction,"ALLOW");});
+test("V5-04 shared device/network alone is observation not guilt",()=>{const r=assessHumanIntegrity({identityId:"h1",signals:["DEVICE_RELATIONSHIP","NETWORK_RELATIONSHIP"]});assert.equal(r.riskBand,"OBSERVE");assert.equal(r.fraudEstablished,false);assert.equal(r.automaticPermanentBan,false);});
+test("V5-04 stronger combined signals require review not automatic punishment",()=>{const r=assessHumanIntegrity({identityId:"h1",signals:["IDENTITY_CONFLICT","REFERRAL_LOOP"]});assert.equal(r.riskBand,"ESCALATED_REVIEW");assert.equal(r.humanReviewRequired,true);assert.equal(r.automaticPermanentBan,false);});
+test("V5-04 material decision creates auditable human record",()=>{const a=assessHumanIntegrity({identityId:"h1",signals:["IDENTITY_CONFLICT"]});const d=recordIntegrityDecision({assessment:a,reviewerId:"op1",decision:"HOLD_COHORT_ENTRY",reason:"manual review",decidedAt:"2026-09-18"});assert.equal(d.audited,true);assert.equal(d.automatic,false);});
+console.log("V5-04 Human Integrity Engine: PASS");
