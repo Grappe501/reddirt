@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { DefinedText } from "@/components/election-advisory/DefinedText";
 import {
   AEAC_MOTTO_EN,
   AEAC_MOTTO_LATIN,
@@ -34,7 +35,9 @@ export default async function ElectionAdvisoryHomePage() {
             <img src="/election-advisory/aeac-seal.svg" alt={AEAC_NAME} width={168} height={168} className="aeac-seal-hero" />
             <h1 className="aeac-display">{AEAC_NAME}</h1>
           </div>
-          <p className="aeac-lede">{aeacDefinition}</p>
+          <p className="aeac-lede">
+            <DefinedText text={aeacDefinition} base={base} />
+          </p>
           <div className="aeac-actions">
             <Link className="aeac-btn" href={aeacHref(base, "charter")}>
               Read the charter
@@ -64,26 +67,34 @@ export default async function ElectionAdvisoryHomePage() {
 
       <section className="aeac-section">
         <h2>Mission</h2>
-        <p className="aeac-prose">{aeacMission}</p>
+        <p className="aeac-prose">
+          <DefinedText text={aeacMission} base={base} />
+        </p>
       </section>
 
       <section className="aeac-section">
         <h2>Our goal</h2>
-        <p className="aeac-prose">{aeacGoal}</p>
+        <p className="aeac-prose">
+          <DefinedText text={aeacGoal} base={base} />
+        </p>
       </section>
 
       <section className="aeac-section">
         <h2>The charge</h2>
         <p className="aeac-prose">
-          The Commission will examine Arkansas election administration from voter registration through final
-          certification.
+          <DefinedText
+            text="The Commission will examine Arkansas election administration from voter registration through final certification."
+            base={base}
+          />
         </p>
         <div className="aeac-grid" style={{ marginTop: "1.2rem" }}>
           {aeacChargePhases.map((phase) => (
             <Link key={phase.id} className="aeac-card-link" href={`${aeacHref(base, "charge")}#${phase.id}`}>
               <p className="aeac-kicker">{phase.id}</p>
               <h3>{phase.label}</h3>
-              <p>{phase.summary}</p>
+              <p>
+                <DefinedText text={phase.summary} base={base} />
+              </p>
             </Link>
           ))}
         </div>
@@ -95,7 +106,9 @@ export default async function ElectionAdvisoryHomePage() {
           {aeacPrinciples.map((principle) => (
             <div key={principle.id} className="aeac-principle">
               <strong>{principle.title}</strong>
-              <p>{principle.body}</p>
+              <p>
+                <DefinedText text={principle.body} base={base} />
+              </p>
             </div>
           ))}
         </div>
@@ -113,7 +126,9 @@ export default async function ElectionAdvisoryHomePage() {
             <Link key={path.path} className="aeac-card-link" href={aeacHref(base, path.path)}>
               <p className="aeac-kicker">{path.kicker}</p>
               <h3>{path.title}</h3>
-              <p>{path.body}</p>
+              <p>
+                <DefinedText text={path.body} base={base} />
+              </p>
             </Link>
           ))}
         </div>
@@ -128,7 +143,9 @@ export default async function ElectionAdvisoryHomePage() {
             <p>
               {kickoff.timingLabel} · {kickoff.locationLabel}
             </p>
-            <p style={{ marginTop: "0.7rem" }}>{kickoff.summary}</p>
+            <p style={{ marginTop: "0.7rem" }}>
+              <DefinedText text={kickoff.summary} base={base} />
+            </p>
             <div className="aeac-actions">
               <Link className="aeac-btn" href={aeacMeetingHref(kickoff.slug, base)}>
                 Meeting page

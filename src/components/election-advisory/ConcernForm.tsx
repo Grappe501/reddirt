@@ -8,6 +8,7 @@ import {
   arkansasCountyNames,
   electionAdvisoryTopicLabels,
   electionAdvisoryTopicValues,
+  type ElectionAdvisoryTopic,
 } from "@/content/election-advisory/catalog";
 import { electionAdvisoryConcernSchema, type ElectionAdvisoryConcernInput } from "@/lib/forms/schemas";
 import { trackFormComplete, trackFormStart } from "@/lib/analytics/track";
@@ -31,14 +32,33 @@ const defaults: ElectionAdvisoryConcernInput = {
   consentEmail: false,
 };
 
-export function ConcernForm() {
+export function ConcernForm({
+  initialTopics = [],
+  initialConcern = "",
+  sourcePage = "/election-advisory/concerns",
+  sourceComponent = "aeac-concern-form",
+  submitLabel = "Submit concern",
+}: {
+  initialTopics?: ElectionAdvisoryTopic[];
+  initialConcern?: string;
+  sourcePage?: string;
+  sourceComponent?: string;
+  submitLabel?: string;
+} = {}) {
   const [serverError, setServerError] = useState<string | null>(null);
   const [showSuccess, setShowSuccess] = useState(false);
   const [started, setStarted] = useState(false);
+  const startingValues: ElectionAdvisoryConcernInput = {
+    ...defaults,
+    topics: initialTopics,
+    concern: initialConcern,
+    sourcePage,
+    sourceComponent,
+  };
 
   const form = useForm<ElectionAdvisoryConcernInput>({
     resolver: zodResolver(electionAdvisoryConcernSchema),
-    defaultValues: defaults,
+    defaultValues: startingValues,
   });
 
   const topics = form.watch("topics") ?? [];
@@ -64,7 +84,7 @@ export function ConcernForm() {
     }
     trackFormComplete("election_advisory_concern", result.submissionId);
     setShowSuccess(true);
-    form.reset(defaults);
+    form.reset(startingValues);
   });
 
   if (showSuccess) {
@@ -156,7 +176,7 @@ export function ConcernForm() {
       </label>
 
       <button type="submit" className="aeac-btn" disabled={form.formState.isSubmitting}>
-        {form.formState.isSubmitting ? "Sending…" : "Submit concern"}
+        {form.formState.isSubmitting ? "Sending…" : submitLabel}
       </button>
 
       <datalist id="aeac-counties">

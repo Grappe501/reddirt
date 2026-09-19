@@ -20,6 +20,8 @@ export const aeacNavPaths: { path: string; label: string }[] = [
   { path: "charter", label: "Charter" },
   { path: "charge", label: "Our Charge" },
   { path: "how-we-work", label: "How We Work" },
+  { path: "library", label: "Library" },
+  { path: "research", label: "Research" },
   { path: "meetings", label: "Meetings" },
   { path: "findings", label: "Findings" },
   { path: "concerns", label: "Share a Concern" },
@@ -307,6 +309,18 @@ export const aeacHomePaths = [
     kicker: "The record",
     title: "Meetings and notes",
     body: "The public schedule, minutes, and supporting materials will live here.",
+  },
+  {
+    path: "library",
+    kicker: "Plain words",
+    title: "Library and deep dives",
+    body: "Hover a hard word for a short meaning. Click it for law, research, and a place to ask for more.",
+  },
+  {
+    path: "research",
+    kicker: "Sources",
+    title: "Research desk",
+    body: "Arkansas law, Census, labor data, civic lookup, and official desks in one place.",
   },
 ];
 

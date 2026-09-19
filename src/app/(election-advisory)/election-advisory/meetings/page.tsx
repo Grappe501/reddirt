@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { DefinedText } from "@/components/election-advisory/DefinedText";
 import { aeacMeetingHref, aeacMeetings, aeacMeetingStatusLabel } from "@/content/election-advisory/meetings";
 import { aeacHref } from "@/lib/election-advisory/public-origin";
 import { getAeacBase } from "@/lib/election-advisory/public-origin-server";
@@ -17,8 +18,10 @@ export default async function ElectionAdvisoryMeetingsPage() {
       <p className="aeac-kicker">Public record</p>
       <h1 className="aeac-display">Meetings, notes, and materials</h1>
       <p className="aeac-lede">
-        The Commission’s work will be transparent. Minutes, findings, supporting information, and recommendations
-        will be posted as they exist. The first meeting is being planned now.
+        <DefinedText
+          text="The Commission’s work will be transparent. Minutes, findings, supporting information, and recommendations will be posted as they exist. The first meeting is being planned now."
+          base={base}
+        />
       </p>
 
       <div className="aeac-section" style={{ display: "grid", gap: "1rem" }}>
@@ -29,7 +32,9 @@ export default async function ElectionAdvisoryMeetingsPage() {
             <p>
               {meeting.timingLabel} · {meeting.locationLabel}
             </p>
-            <p style={{ marginTop: "0.7rem" }}>{meeting.summary}</p>
+            <p style={{ marginTop: "0.7rem" }}>
+              <DefinedText text={meeting.summary} base={base} />
+            </p>
             <div className="aeac-actions">
               <Link className="aeac-btn" href={aeacMeetingHref(meeting.slug, base)}>
                 Open meeting page
@@ -42,8 +47,10 @@ export default async function ElectionAdvisoryMeetingsPage() {
       <section className="aeac-section aeac-empty">
         <h2>After kickoff</h2>
         <p>
-          Each later meeting will have its own page for agenda, notes, attendance summary, and linked findings.
-          Nothing is hidden in a private drive once the public record starts.
+          <DefinedText
+            text="Each later meeting will have its own page for agenda, notes, attendance summary, and linked findings. Nothing is hidden in a private drive once the public record starts."
+            base={base}
+          />
         </p>
         <div className="aeac-actions">
           <Link className="aeac-btn aeac-btn-ghost" href={aeacHref(base, "updates")}>

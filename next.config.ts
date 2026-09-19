@@ -271,6 +271,8 @@ const nextConfig: NextConfig = {
       "charter",
       "charge",
       "how-we-work",
+      "library",
+      "research",
       "participate",
       "concerns",
       "updates",
@@ -298,6 +300,11 @@ const nextConfig: NextConfig = {
         source: "/findings/:slug",
         has: [{ type: "host" as const, value: host }],
         destination: "/election-advisory/findings/:slug",
+      },
+      {
+        source: "/library/:slug",
+        has: [{ type: "host" as const, value: host }],
+        destination: "/election-advisory/library/:slug",
       },
     ]);
     return { beforeFiles };

@@ -51,7 +51,7 @@ export async function CommissionShell({ children }: { children: ReactNode }) {
           <div>
             <h2>This site</h2>
             <ul>
-              {navItems.slice(0, 6).map((item) => (
+              {navItems.slice(0, 8).map((item) => (
                 <li key={item.href}>
                   <Link href={item.href}>{item.label}</Link>
                 </li>

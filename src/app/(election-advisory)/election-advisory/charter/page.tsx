@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { DefinedText } from "@/components/election-advisory/DefinedText";
 import {
   AEAC_MOTTO_EN,
   AEAC_MOTTO_LATIN,
@@ -28,30 +29,40 @@ export default async function ElectionAdvisoryCharterPage() {
       <p className="aeac-kicker">Founding document</p>
       <h1 className="aeac-display">Founding Charter</h1>
       <p className="aeac-lede">
-        This is the public charter. It is the standard the Commission will work from as members are identified
-        and the first meeting is called.
+        <DefinedText
+          text="This is the public charter. It is the standard the Commission will work from as members are identified and the first meeting is called."
+          base={base}
+        />
       </p>
 
       <section className="aeac-section">
         <h2>Definition</h2>
-        <p className="aeac-prose">{aeacDefinition}</p>
+        <p className="aeac-prose">
+          <DefinedText text={aeacDefinition} base={base} />
+        </p>
       </section>
 
       <section className="aeac-section">
         <h2>Mission</h2>
-        <p className="aeac-prose">{aeacMission}</p>
+        <p className="aeac-prose">
+          <DefinedText text={aeacMission} base={base} />
+        </p>
       </section>
 
       <section className="aeac-section">
         <h2>Our Goal</h2>
-        <p className="aeac-prose">{aeacGoal}</p>
+        <p className="aeac-prose">
+          <DefinedText text={aeacGoal} base={base} />
+        </p>
       </section>
 
       <section className="aeac-section">
         <h2>Our Charge</h2>
         <p className="aeac-prose">
-          The Commission will examine Arkansas election administration from voter registration through final
-          certification, including:
+          <DefinedText
+            text="The Commission will examine Arkansas election administration from voter registration through final certification, including:"
+            base={base}
+          />
         </p>
         {aeacChargePhases.map((phase) => (
           <div key={phase.id} className="aeac-section">
@@ -62,7 +73,9 @@ export default async function ElectionAdvisoryCharterPage() {
               {aeacChargeItems
                 .filter((item) => item.phase === phase.id)
                 .map((item) => (
-                  <li key={item.id}>{item.title}</li>
+                  <li key={item.id}>
+                    <DefinedText text={item.title} base={base} />
+                  </li>
                 ))}
             </ul>
           </div>
@@ -75,7 +88,9 @@ export default async function ElectionAdvisoryCharterPage() {
           {aeacPrinciples.map((principle) => (
             <div key={principle.id} className="aeac-principle">
               <strong>{principle.title}</strong>
-              <p>{principle.body}</p>
+              <p>
+                <DefinedText text={principle.body} base={base} />
+              </p>
             </div>
           ))}
         </div>
@@ -83,7 +98,9 @@ export default async function ElectionAdvisoryCharterPage() {
 
       <section className="aeac-section">
         <h2>The Bottom Line</h2>
-        <p className="aeac-prose">{aeacBottomLine}</p>
+        <p className="aeac-prose">
+          <DefinedText text={aeacBottomLine} base={base} />
+        </p>
         <p className="aeac-motto">
           {AEAC_MOTTO_LATIN} — {AEAC_MOTTO_EN}
         </p>

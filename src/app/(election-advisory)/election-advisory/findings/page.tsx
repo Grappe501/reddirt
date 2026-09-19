@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { DefinedText } from "@/components/election-advisory/DefinedText";
 import { aeacFindings } from "@/content/election-advisory/findings";
 import { aeacHref } from "@/lib/election-advisory/public-origin";
 import { getAeacBase } from "@/lib/election-advisory/public-origin-server";
@@ -17,17 +18,20 @@ export default async function ElectionAdvisoryFindingsPage() {
       <p className="aeac-kicker">Public library</p>
       <h1 className="aeac-display">Findings and recommendations</h1>
       <p className="aeac-lede">
-        The Commission will publish what it learns: supporting information, findings, and practical
-        recommendations. Nothing is posted yet because the body has not held its first working meeting.
+        <DefinedText
+          text="The Commission will publish what it learns: supporting information, findings, and practical recommendations. Nothing is posted yet because the body has not held its first working meeting."
+          base={base}
+        />
       </p>
 
       {aeacFindings.length === 0 ? (
         <div className="aeac-empty aeac-section">
           <h2>The shelf is ready</h2>
           <p>
-            When the first finding is ready, it will appear here with the topic it covers, the evidence it used,
-            and a plain-language summary. The point is that the public can see the work, not just hear that work
-            happened.
+            <DefinedText
+              text="When the first finding is ready, it will appear here with the topic it covers, the evidence it used, and a plain-language summary. The point is that the public can see the work, not just hear that work happened."
+              base={base}
+            />
           </p>
         </div>
       ) : (

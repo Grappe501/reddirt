@@ -1,22 +1,26 @@
 import type { Metadata } from "next";
 
+import { DefinedText } from "@/components/election-advisory/DefinedText";
 import { ParticipateForm } from "@/components/election-advisory/ParticipateForm";
 import { AEAC_NAME } from "@/content/election-advisory/catalog";
+import { getAeacBase } from "@/lib/election-advisory/public-origin-server";
 
 export const metadata: Metadata = {
   title: "Participate",
   description: `Ask to join a ${AEAC_NAME} committee or offer expertise on a topic.`,
 };
 
-export default function ElectionAdvisoryParticipatePage() {
+export default async function ElectionAdvisoryParticipatePage() {
+  const base = await getAeacBase();
   return (
     <article>
       <p className="aeac-kicker">Committee and expertise</p>
       <h1 className="aeac-display">Take part</h1>
       <p className="aeac-lede">
-        This will include Arkansas people, experts, and people who are passionate about elections who likely
-        disagree on the “how” and still agree on the mission. Official seats for county and state officers who
-        should not participate before the election are being reserved.
+        <DefinedText
+          text="This will include Arkansas people, experts, and people who are passionate about elections who likely disagree on the “how” and still agree on the mission. Official seats for county and state officers who should not participate before the election are being reserved."
+          base={base}
+        />
       </p>
       <div className="aeac-grid" style={{ margin: "1.6rem 0 2rem" }}>
         <article className="aeac-card">
@@ -29,7 +33,12 @@ export default function ElectionAdvisoryParticipatePage() {
         </article>
         <article className="aeac-card">
           <h3>Facilitation</h3>
-          <p>A third-party, nonpartisan facilitator is being sought for a kickoff that can hold disagreement.</p>
+          <p>
+            <DefinedText
+              text="A third-party, nonpartisan facilitator is being sought for a kickoff that can hold disagreement."
+              base={base}
+            />
+          </p>
         </article>
         <article className="aeac-card">
           <h3>After the election</h3>

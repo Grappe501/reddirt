@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { DefinedText } from "@/components/election-advisory/DefinedText";
 import { aeacMeetings, aeacMeetingStatusLabel, getAeacMeeting } from "@/content/election-advisory/meetings";
 import { aeacHref } from "@/lib/election-advisory/public-origin";
 import { getAeacBase } from "@/lib/election-advisory/public-origin-server";
@@ -30,7 +31,9 @@ export default async function ElectionAdvisoryMeetingPage({ params }: Props) {
       <p className="aeac-kicker">Meeting record</p>
       <h1 className="aeac-display">{meeting.title}</h1>
       <span className="aeac-status">{aeacMeetingStatusLabel(meeting.status)}</span>
-      <p className="aeac-lede">{meeting.summary}</p>
+      <p className="aeac-lede">
+        <DefinedText text={meeting.summary} base={base} />
+      </p>
       <p className="aeac-prose">
         <strong>When:</strong> {meeting.timingLabel}
         <br />
@@ -38,7 +41,9 @@ export default async function ElectionAdvisoryMeetingPage({ params }: Props) {
       </p>
       <section className="aeac-section">
         <h2>Notes</h2>
-        <p className="aeac-prose">{meeting.notes}</p>
+        <p className="aeac-prose">
+          <DefinedText text={meeting.notes} base={base} />
+        </p>
       </section>
       <section className="aeac-section">
         <h2>Documents</h2>

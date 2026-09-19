@@ -452,6 +452,73 @@
   padding: 1.5rem;
 }
 
+.aeac-term-wrap {
+  position: relative;
+  display: inline;
+}
+
+.aeac-term {
+  display: inline;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-bottom: 1px dotted var(--aeac-gold);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: help;
+}
+
+.aeac-term:hover,
+.aeac-term:focus {
+  border-bottom-color: var(--aeac-pine);
+  color: var(--aeac-pine);
+}
+
+.aeac-bubble {
+  position: absolute;
+  left: 0;
+  bottom: calc(100% + 0.45rem);
+  z-index: 40;
+  width: min(22rem, 78vw);
+  padding: 0.75rem 0.85rem;
+  background: var(--aeac-card);
+  border: 1px solid var(--aeac-rule);
+  color: var(--aeac-ink);
+  box-shadow: 0 8px 24px rgba(19, 40, 32, 0.12);
+}
+
+.aeac-bubble strong {
+  display: block;
+  font-family: var(--aeac-serif);
+  font-size: 1rem;
+  margin-bottom: 0.35rem;
+}
+
+.aeac-bubble span {
+  display: block;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: var(--aeac-muted);
+}
+
+.aeac-bubble-link {
+  display: inline-block;
+  margin-top: 0.65rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--aeac-pine);
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.aeac-bubble-link:hover {
+  border-bottom: 1px solid var(--aeac-gold);
+}
+
 @media (max-width: 860px) {
   .aeac-header {
     flex-direction: column;
