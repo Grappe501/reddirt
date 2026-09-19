@@ -1,3 +1,5 @@
+-- Reference only. Netlify Database applies
+-- netlify/database/migrations/007_competition-persistence/migration.sql
 CREATE TABLE IF NOT EXISTS wb_competition_cohorts (id text PRIMARY KEY, status text NOT NULL, rules_fingerprint text NOT NULL, scoring_fingerprint text NOT NULL, ai_seal_fingerprint text NOT NULL, starts_at timestamptz, created_at timestamptz NOT NULL DEFAULT now());
 CREATE TABLE IF NOT EXISTS wb_competition_members (cohort_id text NOT NULL REFERENCES wb_competition_cohorts(id), human_id text NOT NULL, verified boolean NOT NULL DEFAULT false, joined_at timestamptz NOT NULL DEFAULT now(), PRIMARY KEY(cohort_id,human_id));
 CREATE TABLE IF NOT EXISTS wb_competition_portfolios (id text PRIMARY KEY, cohort_id text NOT NULL REFERENCES wb_competition_cohorts(id), owner_id text NOT NULL, owner_type text NOT NULL CHECK(owner_type IN ('HUMAN','WEALTH_BUILDER_AI')), starting_cash numeric NOT NULL DEFAULT 100000, cash numeric NOT NULL DEFAULT 100000, created_at timestamptz NOT NULL DEFAULT now(), UNIQUE(cohort_id,owner_id));

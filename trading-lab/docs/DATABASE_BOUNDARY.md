@@ -31,6 +31,9 @@ The canonical migrations are:
 2. `002_learning-ledger`
 3. `003_strategy-lineage`
 4. `004_calibration`
+5. `005_multi-agent-research-store`
+6. `006_agent-career-ledger`
+7. `007_competition-persistence`
 
 `db/market-memory-schema.sql` is retained only as an early architecture/reference artifact. It is not a production migration source and must not be manually applied to another RedDirt database.
 
@@ -50,5 +53,7 @@ Architecture convergence is not production proof. The database release gate rema
 6. no real-money order capability is introduced.
 
 `POST /.netlify/functions/production-write-proof` is the idempotent production evidence for items 3-5. It writes only stable synthetic educational rows and never enables orders.
+
+`POST /.netlify/functions/competition-db-proof` is the V7-02 evidence that migration 007 is applied and cohort, member, portfolio, fill, and credit rows persist through the same Netlify Database adapter. It writes only synthetic proof rows. It is not a founding-cohort launch and never enables orders.
 
 This distinction is intentional: **configured, tested, deployed, and proven are separate states.**
