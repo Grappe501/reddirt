@@ -1,0 +1,5 @@
+import test from "node:test";import assert from "node:assert/strict";import {dashboardViewModel} from "../src/v6-dashboard-model.js";
+test("V6-04 maps production data into calm dashboard",()=>{const v=dashboardViewModel({sources:{learning:{data:{portfolio:{equity:101250,returnPct:1.25},nextLesson:"Risk basics"}},marketMemory:{data:{observations:42}}},degraded:[]});assert.equal(v.portfolioValue,101250);assert.equal(v.returnPct,1.25);assert.match(v.research[0].title,/42/);assert.equal(v.learning,"Risk basics");assert.equal(v.attention.length,0)});
+test("V6-04 surfaces degradation without invented evidence",()=>{const v=dashboardViewModel({sources:{},degraded:["marketSnapshot"]});assert.match(v.attention[0],/marketSnapshot/);assert.match(v.tape,/will not invent missing evidence/);assert.equal(v.portfolioValue,100000)});
+test("V6-04 preserves sealed AI simulated competition framing",()=>{const v=dashboardViewModel({sources:{},degraded:[]});assert.match(v.competition,/sealed Wealth Builder AI/);assert.match(v.competition,/simulated capital/)});
+console.log("V6-04 Dashboard Wiring: PASS");
