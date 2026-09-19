@@ -1,0 +1,50 @@
+{
+  "version": "1.0.0",
+  "slice": "V5-EFFICIENCY-01",
+  "name": "Research Efficiency & Token Economics Office",
+  "permanentSpecialty": true,
+  "scope": "CROSS_ORGANIZATIONAL",
+  "constitutionalPriority": [
+    "SAFETY_LEGALITY_HUMAN_BENEFIT",
+    "TRUTH_EVIDENCE_INTEGRITY",
+    "RESEARCH_QUALITY",
+    "LEARNING",
+    "EFFICIENCY",
+    "COST"
+  ],
+  "maxims": [
+    "RETRIEVE_BEFORE_RESEARCH",
+    "REUSE_BEFORE_RECOMPUTE",
+    "COMPUTE_BEFORE_INFER",
+    "USE_LEAST_EXPENSIVE_CAPABLE_INTELLIGENCE",
+    "ESCALATE_ONLY_WHEN_EVIDENCE_REQUIRES",
+    "NEVER_TRADE_TRUTH_FOR_TOKEN_SAVINGS"
+  ],
+  "specialists": [
+    "TOKEN_AUDITOR",
+    "MODEL_ROUTER",
+    "DETERMINISTIC_REPLACEMENT",
+    "CONTEXT_COMPRESSION",
+    "MEMORY_REUSE",
+    "DUPLICATE_WORK_DETECTOR",
+    "CACHE_ARCHITECT",
+    "BATCH_LATENCY_ROUTER",
+    "RESEARCH_ECONOMICS_AUDITOR"
+  ],
+  "routingLadder": [
+    "STORED_ANSWER",
+    "DETERMINISTIC_COMPUTE",
+    "LOWEST_COST_VALIDATED_MODEL",
+    "INTERMEDIATE_MODEL",
+    "FRONTIER_REASONING",
+    "MULTI_AGENT_COMMITTEE"
+  ],
+  "rules": {
+    "agentsEliminatedForCost": false,
+    "qualityRegressionPermitted": false,
+    "independentReasoningPreserved": true,
+    "sharedEvidencePreferred": true,
+    "modelRoutingMustBeEvaluationBacked": true,
+    "rollbackFailedEfficiencyExperiment": true
+  }
+}
