@@ -1,0 +1,35 @@
+{
+  "version": "1.0.0",
+  "slice": "V4-14",
+  "name": "Human Benefit + Governance Auditor",
+  "constitutionalOrder": [
+    "SAFETY_LEGALITY_HUMAN_BENEFIT",
+    "TRUTH_EVIDENCE_INTEGRITY",
+    "RESEARCH_QUALITY",
+    "LEARNING",
+    "EFFICIENCY",
+    "COST"
+  ],
+  "protectedInvariants": [
+    "LEGALITY",
+    "HUMAN_BENEFIT",
+    "SAFETY",
+    "TRUTHFULNESS",
+    "PROVENANCE",
+    "UNCERTAINTY",
+    "DISSENT",
+    "POINT_IN_TIME_INTEGRITY",
+    "NO_FABRICATED_EVIDENCE",
+    "NO_HIDDEN_AUTHORITY_ESCALATION",
+    "PAPER_ONLY"
+  ],
+  "rules": {
+    "constitutionalOrderImmutableByAgents": true,
+    "efficiencyCannotOverrideTruth": true,
+    "costCannotOverrideHumanBenefit": true,
+    "governanceFailureBlocksProposal": true,
+    "noAutomaticConstitutionChange": true,
+    "operatorReviewRequired": true,
+    "paperOnly": true
+  }
+}
