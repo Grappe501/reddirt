@@ -1,0 +1,33 @@
+{
+  "version": "1.0.0",
+  "slice": "V5-19",
+  "name": "Alumni & Conversion",
+  "principles": [
+    "DAY_90_IS_A_TRANSITION_NOT_A_RESET",
+    "PRESERVE_USER_HISTORY",
+    "NO_FORCED_PAYMENT",
+    "NO_LOSS_AVERSION_DARK_PATTERNS",
+    "PLAIN_VALUE_EXPLANATION",
+    "CONTINUITY_BEFORE_UPSELL"
+  ],
+  "preserve": [
+    "PORTFOLIO_HISTORY",
+    "RESEARCH_HISTORY",
+    "DECISION_RECORD",
+    "LEARNING_PROGRESS",
+    "ACHIEVEMENTS",
+    "INVESTOR_REPORT",
+    "COHORT_HISTORY"
+  ],
+  "states": [
+    "COMPETITION_ACTIVE",
+    "ALUMNI_FREE",
+    "ALUMNI_PAID"
+  ],
+  "rules": {
+    "creditCardRequiredAtCompetitionEnd": false,
+    "historyDeletedIfFree": false,
+    "competitionCapitalBecomesRealMoney": false,
+    "performanceClaimsForbidden": true
+  }
+}
