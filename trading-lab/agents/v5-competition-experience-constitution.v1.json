@@ -1,0 +1,88 @@
+{
+  "version": "1.0.0",
+  "slice": "V5-01",
+  "name": "Competition + Experience Constitution",
+  "competition": {
+    "format": "10_HUMANS_PLUS_1_SEALED_WB_AI",
+    "startingCapital": 100000,
+    "durationDays": 90,
+    "realMoney": false,
+    "creditCardRequired": false,
+    "outsideAIToolsAllowed": true,
+    "humanDirectedPortfolioRequired": true,
+    "oneHumanOneCompetitionIdentity": true,
+    "cohortRulesImmutableAfterLock": true,
+    "sealedAI": {
+      "sameStartingCapital": true,
+      "sameMarketData": true,
+      "sameFillEngine": true,
+      "sameCosts": true,
+      "sameSecurityUniverse": true,
+      "configurationFrozenAtCohortStart": true,
+      "noOutcomeAwareChanges": true
+    }
+  },
+  "experience": {
+    "doctrine": [
+      "CALM_FIRST_FRAME",
+      "DEPTH_ON_DEMAND",
+      "PLAIN_LANGUAGE_FIRST",
+      "EXPERT_DEPTH_PRESERVED",
+      "EXPERIENCE_EQUALS_EDUCATION"
+    ],
+    "depthModel": [
+      "GLANCE",
+      "EXPLAIN",
+      "LEARN",
+      "ADVANCED",
+      "RESEARCH",
+      "TRY"
+    ],
+    "prohibitedDefaults": [
+      "CHART_WALL",
+      "AGENT_GRID",
+      "UNEXPLAINED_SCORE",
+      "BLACK_BOX_AI_CONCLUSION"
+    ]
+  },
+  "intelligenceTape": {
+    "persistentAuthenticatedFooter": true,
+    "itemTypes": [
+      "MARKET_BENCHMARK",
+      "MARKET_REGIME",
+      "WB_BUY_FOCUS",
+      "WB_SELL_AVOID_FOCUS",
+      "OPPORTUNITY",
+      "RISK_CHANGE",
+      "VIEW_CHANGE",
+      "AGENT_DISAGREEMENT",
+      "RESEARCH_EVENT",
+      "ACTIVE_INVESTIGATION"
+    ],
+    "requirements": [
+      "TIMESTAMP",
+      "FRESHNESS",
+      "EVIDENCE_TRACE",
+      "EXPLANATION_ON_DEMAND"
+    ],
+    "scoreSemantics": "EVIDENCE_SCORE_NOT_PROFIT_PROBABILITY_UNLESS_SEPARATELY_CALIBRATED_AND_PROVEN",
+    "interaction": [
+      "TAPE",
+      "EXPLAIN",
+      "EVIDENCE",
+      "RESEARCH",
+      "SIMULATE"
+    ],
+    "humanDecisionFinal": true
+  },
+  "identity": {
+    "invitationOnlyBeta": true,
+    "governmentIdRequiredAtSignup": false,
+    "verificationEscalationAllowed": true
+  },
+  "researchCredits": {
+    "cashValue": false,
+    "transferable": false,
+    "creditCardRequiredForBeta": false
+  }
+}
