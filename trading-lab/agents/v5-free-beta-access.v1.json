@@ -1,0 +1,44 @@
+{
+  "version": "1.0.0",
+  "slice": "V5-14",
+  "name": "Free Beta Product Access",
+  "durationDays": 90,
+  "creditCardRequired": false,
+  "competitionEntryPrice": 0,
+  "principles": [
+    "LEARN_BY_USING_FULL_SYSTEM",
+    "NO_PAY_TO_WIN",
+    "SHOW_VALUE_THROUGH_USE",
+    "RESEARCH_CREDITS_BOUND_EXPENSIVE_AI",
+    "DETERMINISTIC_EDUCATION_CORE_FREE",
+    "HISTORY_PERSISTS_FOR_CONVERSION"
+  ],
+  "included": [
+    "COMPETITION",
+    "TERMINAL",
+    "PORTFOLIO",
+    "UNIVERSITY",
+    "LAB",
+    "RESEARCH_FLOOR_VISIBILITY",
+    "INTELLIGENCE_TAPE",
+    "DETERMINISTIC_TOOLS",
+    "BASIC_MARKET_DATA",
+    "INVESTOR_HISTORY",
+    "END_OF_COHORT_REPORT"
+  ],
+  "creditMetered": [
+    "BASIC_AI_EXPLANATION",
+    "COMPANY_RESEARCH",
+    "BULL_BEAR",
+    "INVESTMENT_COMMITTEE",
+    "DEEP_RESEARCH"
+  ],
+  "rules": {
+    "noCard": true,
+    "noRealMoney": true,
+    "competitionCapitalIndependentOfCredits": true,
+    "leaderboardIndependentOfSpend": true,
+    "freeCoreNotArtificiallyDegraded": true,
+    "showCreditCostBeforeResearch": true
+  }
+}
