@@ -1,0 +1,30 @@
+{
+  "version": "1.0.0",
+  "slice": "V5-16",
+  "name": "Competition Analytics",
+  "principles": [
+    "MEASURE_PROCESS_NOT_JUST_RETURN",
+    "SAME_METRICS_FOR_HUMAN_AND_AI",
+    "PUBLISHED_FORMULAS",
+    "NO_SINGLE_METRIC_EQUALS_SKILL",
+    "COSTS_INCLUDED",
+    "RISK_VISIBLE",
+    "DESCRIPTIVE_NOT_PREDICTIVE"
+  ],
+  "metrics": [
+    "TOTAL_RETURN",
+    "MAX_DRAWDOWN",
+    "VOLATILITY",
+    "CONCENTRATION",
+    "TRANSACTION_COSTS",
+    "TURNOVER",
+    "DECISION_COUNT",
+    "CASH_EXPOSURE"
+  ],
+  "rules": {
+    "sameMetricsAllContestants": true,
+    "scoreFormulaMustBeFrozenBeforeCohort": true,
+    "returnAloneNotSkillProof": true,
+    "realMoney": false
+  }
+}
