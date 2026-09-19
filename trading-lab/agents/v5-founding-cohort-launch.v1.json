@@ -1,0 +1,51 @@
+{
+  "version": "1.0.0",
+  "slice": "V5-24",
+  "name": "Founding Cohort Launch",
+  "competition": {
+    "humans": 10,
+    "wealthBuilderAi": 1,
+    "startingCapital": 100000,
+    "durationDays": 90,
+    "realMoney": false,
+    "outsideAiAllowed": true,
+    "humanDirectedPortfolio": true
+  },
+  "launchStates": [
+    "DRAFT",
+    "PROOF_READY",
+    "OPERATOR_APPROVED",
+    "LOCKED",
+    "SCHEDULED",
+    "ACTIVE"
+  ],
+  "requiredBeforeOperatorApproval": [
+    "PRODUCTION_BETA_PROOF_READY",
+    "TEN_VERIFIED_HUMANS",
+    "INTEGRITY_CLEAR",
+    "AI_CONTESTANT_SEALED",
+    "COMMON_MARKET_START_RESOLVED",
+    "RULES_PUBLISHED",
+    "SCORING_FROZEN",
+    "PRIVACY_SECURITY_CLEAR",
+    "HOSTILE_AUDIT_CLEAR"
+  ],
+  "operatorChecklist": [
+    "CONFIRM_10_VERIFIED_HUMANS",
+    "CONFIRM_AI_SEAL",
+    "CONFIRM_CANONICAL_MARKET_DATA",
+    "CONFIRM_EXECUTION_PARITY",
+    "CONFIRM_COST_MODEL",
+    "CONFIRM_OPEN_PORTFOLIO_RULES",
+    "CONFIRM_PENDING_ORDERS_PRIVATE",
+    "CONFIRM_SUPPORT_AND_INCIDENT_PATH",
+    "CONFIRM_NO_REAL_MONEY",
+    "AUTHORIZE_FOUNDING_COHORT"
+  ],
+  "rules": {
+    "automaticLaunch": false,
+    "operatorApprovalRequired": true,
+    "postLockRuleMutation": false,
+    "postLockAiMutation": false
+  }
+}
