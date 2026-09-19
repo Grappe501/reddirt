@@ -1,0 +1,6 @@
+import test from "node:test";import assert from "node:assert/strict";import {betaEntitlement,betaFairnessBoundary,betaValueSummary} from "../src/v5-free-beta-access.js";
+test("V5-14 founding beta requires no card and includes core product",()=>{for(const f of ["COMPETITION","TERMINAL","PORTFOLIO","UNIVERSITY","LAB","INTELLIGENCE_TAPE"]){const e=betaEntitlement({feature:f,competitionDay:1});assert.equal(e.access,true);assert.equal(e.cardRequired,false);assert.equal(e.creditMetered,false);}});
+test("V5-14 expensive AI research is credit metered but not cash pay-to-win",()=>{const e=betaEntitlement({feature:"DEEP_RESEARCH",competitionDay:45});assert.equal(e.access,true);assert.equal(e.price,0);assert.equal(e.creditMetered,true);assert.equal(e.cardRequired,false);});
+test("V5-14 credits cannot alter capital or leaderboard",()=>{const f=betaFairnessBoundary({researchCreditsSpent:50});assert.equal(f.startingCapital,100000);assert.equal(f.startingCapitalAffectedByCredits,false);assert.equal(f.leaderboardBonusFromSpend,0);assert.equal(f.paidAmountAccepted,false);});
+test("V5-14 preserves visible accumulated product value",()=>{const s=betaValueSummary({daysActive:30,researchTasks:12,lessonsCompleted:4,simulationsRun:7,creditsUsed:20});assert.match(s.message,/learning history is accumulating/);});
+console.log("V5-14 Free Beta Product Access: PASS");
