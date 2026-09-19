@@ -40,6 +40,9 @@ export const REQUIRED_TABLES = [
   'competition_identities',
   'competition_sessions',
   'competition_ai_seals',
+  'competition_integrity_reviews',
+  'competition_founding_rosters',
+  'competition_founding_assignments',
 ];
 
 const FORBIDDEN_PUBLIC_KEYS = /connectionstring|password|username|user|token|secret|database_url|netlify_db_url|^host$/i;
