@@ -3,7 +3,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { aeacMeetings, aeacMeetingStatusLabel, getAeacMeeting } from "@/content/election-advisory/meetings";
-import { aeacHref, getAeacBase } from "@/lib/election-advisory/public-origin";
+import { aeacHref } from "@/lib/election-advisory/public-origin";
+import { getAeacBase } from "@/lib/election-advisory/public-origin-server";
 
 type Props = { params: Promise<{ slug: string }> };
 

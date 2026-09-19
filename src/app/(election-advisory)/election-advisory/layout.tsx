@@ -4,7 +4,8 @@ import type { ReactNode } from "react";
 
 import { CommissionShell } from "@/components/election-advisory/CommissionShell";
 import { AEAC_NAME, AEAC_PUBLIC_DOMAIN, aeacDefinition } from "@/content/election-advisory/catalog";
-import { AEAC_CANONICAL_ORIGIN, getAeacHref, isAeacHost, getRequestHost } from "@/lib/election-advisory/public-origin";
+import { AEAC_CANONICAL_ORIGIN, isAeacHost } from "@/lib/election-advisory/public-origin";
+import { getAeacHref, getRequestHost } from "@/lib/election-advisory/public-origin-server";
 
 import "./election-advisory.css";
 

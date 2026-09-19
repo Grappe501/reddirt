@@ -1,5 +1,3 @@
-import { headers } from "next/headers";
-
 export const AEAC_CANONICAL_HOST = "www.arelectionadvisory.org";
 export const AEAC_APEX_HOST = "arelectionadvisory.org";
 export const AEAC_CANONICAL_ORIGIN = `https://${AEAC_CANONICAL_HOST}`;
@@ -22,19 +20,6 @@ export function aeacHref(base: string, path = ""): string {
   const suffix = path.replace(/^\//, "");
   if (!suffix) return base || "/";
   return `${base}/${suffix}`;
-}
-
-export async function getRequestHost(): Promise<string> {
-  const headerList = await headers();
-  return normalizeHost(headerList.get("x-forwarded-host") || headerList.get("host"));
-}
-
-export async function getAeacBase(): Promise<string> {
-  return aeacBaseForHost(await getRequestHost());
-}
-
-export async function getAeacHref(path = ""): Promise<string> {
-  return aeacHref(await getAeacBase(), path);
 }
 
 export function normalizeAeacPathname(pathname: string): string {

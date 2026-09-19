@@ -11,7 +11,8 @@ import {
   AEAC_PUBLIC_DOMAIN,
   aeacNavItemsForBase,
 } from "@/content/election-advisory/catalog";
-import { aeacHref, getAeacBase } from "@/lib/election-advisory/public-origin";
+import { aeacHref } from "@/lib/election-advisory/public-origin";
+import { getAeacBase } from "@/lib/election-advisory/public-origin-server";
 
 import { CommissionNav } from "./CommissionNav";
 

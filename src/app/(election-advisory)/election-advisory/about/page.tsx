@@ -8,7 +8,8 @@ import {
   AEAC_ORGANIZER_ROLE,
   AEAC_PUBLIC_DOMAIN,
 } from "@/content/election-advisory/catalog";
-import { aeacHref, getAeacBase } from "@/lib/election-advisory/public-origin";
+import { aeacHref } from "@/lib/election-advisory/public-origin";
+import { getAeacBase } from "@/lib/election-advisory/public-origin-server";
 
 export const metadata: Metadata = {
   title: "About",

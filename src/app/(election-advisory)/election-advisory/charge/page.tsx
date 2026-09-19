@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { aeacChargeItems, aeacChargePhases } from "@/content/election-advisory/catalog";
-import { aeacHref, getAeacBase } from "@/lib/election-advisory/public-origin";
+import { aeacHref } from "@/lib/election-advisory/public-origin";
+import { getAeacBase } from "@/lib/election-advisory/public-origin-server";
 
 export const metadata: Metadata = {
   title: "Our Charge",
