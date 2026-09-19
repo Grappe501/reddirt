@@ -137,6 +137,11 @@ const nextConfig: NextConfig = {
         destination: "/admin/intelligence/kim-hammer/:path*",
         permanent: false,
       },
+      {
+        source: "/admin/workbench/election-advisory",
+        destination: "/admin/site-analytics/election-advisory",
+        permanent: false,
+      },
       /** Canonical hub is `/messages` (Pass 06); alias for bookmarks and external links. */
       {
         source: "/conversations",

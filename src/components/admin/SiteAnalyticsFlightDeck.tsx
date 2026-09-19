@@ -197,6 +197,12 @@ export function SiteAnalyticsFlightDeck({
               {arrivedSinceOpen ? ` · +${arrivedSinceOpen} since open` : ""}
               {justArrived ? ` · +${justArrived} just now` : ""}
             </span>
+            <Link
+              href="/admin/site-analytics/election-advisory"
+              className="rounded-full border border-[#ca913d]/50 px-3 py-1 font-body text-xs font-semibold text-[#ca913d] hover:bg-[#ca913d]/10"
+            >
+              Commission intake
+            </Link>
             <button
               type="button"
               onClick={onTogglePause}
