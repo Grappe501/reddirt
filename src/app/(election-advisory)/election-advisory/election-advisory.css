@@ -428,6 +428,17 @@
   padding: 0;
 }
 
+.aeac-paid-for {
+  width: min(1120px, 100%);
+  margin: 1.35rem auto 0;
+  padding-top: 1rem;
+  border-top: 1px solid var(--aeac-rule);
+  text-align: center;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  color: var(--aeac-muted);
+}
+
 .aeac-motto {
   font-family: var(--aeac-serif);
   font-style: italic;
@@ -542,9 +553,22 @@
 @media print {
   .aeac-banner,
   .aeac-header,
-  .aeac-footer,
+  .aeac-footer-inner,
   .aeac-actions {
     display: none;
+  }
+
+  .aeac-footer {
+    background: white;
+    border-top: 0;
+    padding: 0.75rem 0 0;
+  }
+
+  .aeac-paid-for {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: 0;
+    color: #333;
   }
 
   .aeac-root {

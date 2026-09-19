@@ -11,6 +11,7 @@ import {
   AEAC_PUBLIC_DOMAIN,
   aeacNavItemsForBase,
 } from "@/content/election-advisory/catalog";
+import { CAMPAIGN_POLICY_V1 } from "@/lib/campaign-engine/policy";
 import { aeacHref } from "@/lib/election-advisory/public-origin";
 import { getAeacBase } from "@/lib/election-advisory/public-origin-server";
 
@@ -71,6 +72,7 @@ export async function CommissionShell({ children }: { children: ReactNode }) {
             <p>{AEAC_PUBLIC_DOMAIN}</p>
           </div>
         </div>
+        <p className="aeac-paid-for">{CAMPAIGN_POLICY_V1.disclaimers.pageFooterPaidForLine}</p>
       </footer>
     </div>
   );

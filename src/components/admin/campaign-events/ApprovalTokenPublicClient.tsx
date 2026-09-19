@@ -4,6 +4,7 @@ import { useState, useTransition } from "react";
 import type { ApprovalPackagePayload } from "@/lib/campaign-events/approval-package";
 import type { ApprovalPackageToken } from "@/lib/campaign-events/approval-email/approval-token-store";
 import { applyApprovalTokenDecisionAction } from "@/app/campaign-events/approval/approval-token-actions";
+import { CAMPAIGN_POLICY_V1 } from "@/lib/campaign-engine/policy";
 
 const ACTION_LABELS: Record<string, string> = {
   approve: "Approve event",
@@ -127,7 +128,9 @@ export function ApprovalTokenPublicClient({
         </p>
       )}
 
-      <p className="mt-10 text-center text-[10px] text-kelly-subtle">Paid for by Kelly Grappe for Secretary of State</p>
+      <p className="mt-10 text-center text-[10px] text-kelly-subtle">
+        {CAMPAIGN_POLICY_V1.disclaimers.pageFooterPaidForLine}
+      </p>
     </main>
   );
 }
