@@ -1,0 +1,42 @@
+{
+  "version": "1.0.0",
+  "slice": "V5-04",
+  "name": "Human Integrity Engine",
+  "principles": [
+    "SIGNALS_ARE_EVIDENCE_NOT_GUILT",
+    "PROPORTIONAL_REVIEW",
+    "HUMAN_REVIEW_FOR_MATERIAL_SANCTIONS",
+    "MINIMIZE_SENSITIVE_DATA",
+    "AUDITABLE_DECISIONS"
+  ],
+  "signalClasses": [
+    "IDENTITY_CONFLICT",
+    "DEVICE_RELATIONSHIP",
+    "NETWORK_RELATIONSHIP",
+    "IMPOSSIBLE_SIMULTANEOUS_SESSION",
+    "REFERRAL_LOOP",
+    "COORDINATED_BEHAVIOR",
+    "REPEATED_FRAUDULENT_REFERRALS"
+  ],
+  "riskBands": [
+    "CLEAR",
+    "OBSERVE",
+    "REVIEW",
+    "ESCALATED_REVIEW"
+  ],
+  "actions": [
+    "ALLOW",
+    "OBSERVE",
+    "HOLD_COHORT_ENTRY",
+    "REQUEST_ESCALATED_VERIFICATION",
+    "SUSPEND_PENDING_REVIEW"
+  ],
+  "rules": {
+    "automaticPermanentBan": false,
+    "sharedNetworkAloneCannotEstablishFraud": true,
+    "deviceRelationshipAloneCannotEstablishFraud": true,
+    "materialSanctionRequiresHumanReview": true,
+    "governmentIdStoredByWealthBuilder": false,
+    "decisionAuditRequired": true
+  }
+}
