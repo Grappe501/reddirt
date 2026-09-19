@@ -1,0 +1,42 @@
+{
+  "version": "4.0.0",
+  "status": "LOCKED_PENDING_FINAL_CI",
+  "architecture": "Adaptive Equal-Agent Organization",
+  "completedSlices": [
+    "V4-01",
+    "V4-02",
+    "V4-03",
+    "V4-04",
+    "V4-05",
+    "V4-06",
+    "V4-07",
+    "V4-08",
+    "V4-09",
+    "V4-10",
+    "V4-11",
+    "V4-12",
+    "V4-13",
+    "V4-14",
+    "V4-15",
+    "V4-16",
+    "V4-17"
+  ],
+  "nextVersion": "V5",
+  "nextSlice": "V5-01",
+  "nextSliceName": "Competition + Experience Constitution",
+  "v5NamedComponents": [
+    "Wealth Builder Intelligence Tape"
+  ],
+  "invariants": [
+    "ALL_AGENTS_EQUAL",
+    "ROLES_ARE_FUNCTIONS_NOT_RANKS",
+    "KNOWLEDGE_FOLLOWS_AGENT",
+    "REPURPOSE_BEFORE_REPRODUCE",
+    "DISSENT_PRESERVED",
+    "OPERATOR_REVIEW",
+    "PAPER_ONLY",
+    "CALM_FIRST_FRAME",
+    "DEPTH_ON_DEMAND",
+    "HUMAN_DECIDES"
+  ]
+}
