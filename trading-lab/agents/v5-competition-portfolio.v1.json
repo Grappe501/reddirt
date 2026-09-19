@@ -1,0 +1,32 @@
+{
+  "version": "1.0.0",
+  "slice": "V5-07",
+  "name": "Competition Portfolio Engine",
+  "startingCapital": 100000,
+  "currency": "USD",
+  "owners": [
+    "HUMAN",
+    "WEALTH_BUILDER_AI"
+  ],
+  "principles": [
+    "SAME_STARTING_CAPITAL",
+    "DOUBLE_ENTRY_STYLE_AUDITABILITY",
+    "NO_NEGATIVE_CASH",
+    "NO_REAL_MONEY",
+    "HUMAN_DIRECTED_HUMAN_PORTFOLIOS",
+    "AI_PORTFOLIO_SEPARATELY_ATTRIBUTED"
+  ],
+  "ledgerEvents": [
+    "PORTFOLIO_OPENED",
+    "BUY_FILLED",
+    "SELL_FILLED",
+    "COST_CHARGED"
+  ],
+  "rules": {
+    "realMoney": false,
+    "margin": false,
+    "shorting": false,
+    "onePortfolioPerEntrantPerCohort": true,
+    "startingPositionsEmpty": true
+  }
+}
