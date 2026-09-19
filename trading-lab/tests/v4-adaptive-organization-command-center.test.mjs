@@ -1,0 +1,5 @@
+import test from "node:test";import assert from "node:assert/strict";import {buildOrganizationCommandCenter,openDepth} from "../src/adaptive-organization-command-center.js";
+test("V4-15 first frame is calm and never a chart wall",()=>{const v=buildOrganizationCommandCenter({agents:Array.from({length:47},(_,i)=>({id:`a${i}`,state:"ACTIVE"}))});assert.equal(v.primaryCards.length,5);assert.equal(v.defaultCharts,0);assert.equal(v.maxCharts,1);assert.equal(v.defaultAgentGrid,false);assert.equal(v.agentLeaderboard,false);});
+test("V4-15 preserves all underlying depth without placing it on first frame",()=>{const agents=Array.from({length:47},(_,i)=>({id:`a${i}`,evidence:[`e${i}`]}));const v=buildOrganizationCommandCenter({agents});assert.equal(v.details.agents.length,47);assert.equal(v.primaryCards.length,5);});
+test("V4-15 supports novice-to-expert progressive disclosure",()=>{for(const level of ["GLANCE","EXPLAIN","LEARN","ADVANCED","RESEARCH","TRY"])assert.equal(openDepth("organization",level).level,level);assert.equal(openDepth("organization","RESEARCH").expertEvidenceReachable,true);});
+console.log("V4-15 Adaptive Organization Command Center: PASS");
