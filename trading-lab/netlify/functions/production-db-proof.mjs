@@ -29,7 +29,12 @@ export const REQUIRED_TABLES = [
   'strategy_versions',
   'calibration_cycles',
   'feature_evidence',
-  'calibration_lessons'
+  'calibration_lessons',
+  'competition_cohorts',
+  'competition_members',
+  'competition_portfolios',
+  'competition_fills',
+  'research_credit_ledger',
 ];
 
 const FORBIDDEN_PUBLIC_KEYS = /connectionstring|password|username|user|token|secret|database_url|netlify_db_url|^host$/i;
@@ -67,7 +72,12 @@ export async function readProductionDatabaseProof(db) {
         (select count(*)::int from trading_lab.market_observations) as observations,
         (select count(*)::int from trading_lab.learning_cycles) as learning_cycles,
         (select count(*)::int from trading_lab.calibration_cycles) as calibration_cycles,
-        (select count(*)::int from trading_lab.strategy_versions) as strategy_versions
+        (select count(*)::int from trading_lab.strategy_versions) as strategy_versions,
+        (select count(*)::int from trading_lab.competition_cohorts) as competition_cohorts,
+        (select count(*)::int from trading_lab.competition_members) as competition_members,
+        (select count(*)::int from trading_lab.competition_portfolios) as competition_portfolios,
+        (select count(*)::int from trading_lab.competition_fills) as competition_fills,
+        (select count(*)::int from trading_lab.research_credit_ledger) as research_credits
     `);
     counts = result.rows[0];
   }
