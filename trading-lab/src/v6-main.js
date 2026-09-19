@@ -58,7 +58,8 @@ function content(route, model) {
     }));
   }
   if (route === 'competition') {
-    return lobbyMarkup([{ id: 'Founding Cohort 001', verifiedHumans: 0 }]);
+    const rows = overview?.sources?.competitionLobby?.data?.cohorts;
+    return lobbyMarkup(Array.isArray(rows) && rows.length ? rows : [{ id: 'Founding Cohort 001', verifiedHumans: 0 }]);
   }
   return dashboardContent(model);
 }
