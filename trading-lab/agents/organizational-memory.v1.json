@@ -1,0 +1,32 @@
+{
+  "version": "1.0.0",
+  "slice": "V4-13",
+  "name": "Organizational Learning Memory",
+  "principles": [
+    "PROVEN_KNOWLEDGE_CAN_BECOME_INSTITUTIONAL",
+    "PROVENANCE_NEVER_DISCARDED",
+    "MEMORY_REUSE_REDUCES_DUPLICATION",
+    "CONTRADICTIONS_REMAIN_VISIBLE",
+    "STALE_KNOWLEDGE_MUST_NOT_MASQUERADE_AS_CURRENT"
+  ],
+  "memoryKinds": [
+    "RESEARCH_METHOD",
+    "DATA_QUALITY_PATTERN",
+    "REGIME_OBSERVATION",
+    "FAILURE_MODE",
+    "COST_SAVING",
+    "COLLABORATION_PATTERN",
+    "TRAINING_METHOD"
+  ],
+  "rules": {
+    "evidenceRequired": true,
+    "sourceAgentsPreserved": true,
+    "minimumObservations": 10,
+    "operatorReviewRequiredForPromotion": true,
+    "noAutomaticTruth": true,
+    "noAutomaticAuthority": true,
+    "contradictionsPreserved": true,
+    "stalenessTracked": true,
+    "paperOnly": true
+  }
+}
