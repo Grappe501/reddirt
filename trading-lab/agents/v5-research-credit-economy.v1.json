@@ -1,0 +1,31 @@
+{
+  "version": "1.0.0",
+  "slice": "V5-12",
+  "name": "Research Credit Economy",
+  "principles": [
+    "CREDITS_MEASURE_RESOURCE_INTENSITY",
+    "DETERMINISTIC_TOOLS_FREE_BY_DEFAULT",
+    "NO_CASH_VALUE",
+    "NON_TRANSFERABLE",
+    "NO_PAY_TO_WIN_COMPETITION",
+    "COST_VISIBLE_BEFORE_COMMIT",
+    "RESEARCH_QUALITY_NOT_DEGRADED_TO_SAVE_CREDITS"
+  ],
+  "defaultCosts": {
+    "DETERMINISTIC": 0,
+    "BASIC_AI_EXPLANATION": 1,
+    "COMPANY_RESEARCH": 3,
+    "BULL_BEAR": 5,
+    "INVESTMENT_COMMITTEE": 10,
+    "DEEP_RESEARCH": 20
+  },
+  "rules": {
+    "cashValue": false,
+    "transferable": false,
+    "competitionCapitalAffected": false,
+    "portfolioPerformanceAffected": false,
+    "negativeBalance": false,
+    "showCostBeforeUse": true,
+    "operatorCanVersionSchedule": true
+  }
+}
