@@ -11,6 +11,7 @@
       <stop offset="0" stop-color="#1d3b31"/>
       <stop offset="1" stop-color="#10241c"/>
     </linearGradient>
+    <path id="aeac-arkansas" d="M-84,-70 H24 V-46 H54 V-70 H72 L89,-53 L93,-30 L92,0 L86,28 L74,50 L56,70 H-46 L-69,58 L-82,38 L-86,10 L-87,-20 L-84,-48 Z"/>
   </defs>
 
   <circle cx="256" cy="256" r="250" fill="#f7f2e6"/>
@@ -48,8 +49,10 @@
     <rect x="250" y="332" width="12" height="8" rx="2"/>
   </g>
 
-  <path fill="url(#aeac-gold)" d="M168,148 H344 L352,176 L358,214 L354,262 L344,304 L318,318 H214 L184,304 L172,268 L166,220 L168,176 Z"/>
-  <path fill="#132820" d="M180,160 H332 L338,184 L344,218 L340,258 L332,292 L312,304 H220 L194,292 L184,262 L178,220 L180,184 Z"/>
+  <g transform="translate(256 236)">
+    <use href="#aeac-arkansas" fill="url(#aeac-gold)"/>
+    <use href="#aeac-arkansas" fill="#132820" transform="scale(0.86)"/>
+  </g>
 
   <g fill="url(#aeac-gold)" stroke="url(#aeac-gold)">
     <path d="M256,176 L274,194 H238 Z" fill="none" stroke-width="2.2"/>
