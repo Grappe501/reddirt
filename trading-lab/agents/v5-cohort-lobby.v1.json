@@ -1,0 +1,36 @@
+{
+  "version": "1.0.0",
+  "slice": "V5-05",
+  "name": "Cohort Lobby",
+  "cohortSizeHumans": 10,
+  "aiContestants": 1,
+  "states": [
+    "FILLING",
+    "FULL",
+    "LOCKED",
+    "SCHEDULED",
+    "ACTIVE",
+    "COMPLETE"
+  ],
+  "principles": [
+    "NEXT_VERIFIED_HUMAN_FILLS_NEXT_AVAILABLE_COHORT",
+    "TENTH_HUMAN_COMPLETES_COHORT",
+    "NEW_COHORT_OPENS_IMMEDIATELY",
+    "COMMON_MARKET_START",
+    "NO_PARTIAL_ACTIVE_COHORT"
+  ],
+  "display": {
+    "showSeatsRemaining": true,
+    "showHumanCount": true,
+    "showNextCohort": true,
+    "showAiContestant": true,
+    "calmFirstFrame": true
+  },
+  "rules": {
+    "verifiedIdentityRequired": true,
+    "integrityClearanceRequired": true,
+    "onePortfolioPerHumanPerCohort": true,
+    "automaticTrading": false,
+    "realMoney": false
+  }
+}
