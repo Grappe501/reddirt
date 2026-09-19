@@ -1,0 +1,28 @@
+{
+  "version": "1.0.0",
+  "slice": "V5-08",
+  "name": "Canonical Execution Engine",
+  "principles": [
+    "SAME_EXECUTION_FOR_HUMAN_AND_AI",
+    "POINT_IN_TIME_MARKET_DATA",
+    "AUDITABLE_PRICE_FORMATION",
+    "DETERMINISTIC_COSTS",
+    "NO_LOOKAHEAD",
+    "NO_REAL_MONEY"
+  ],
+  "orderSides": [
+    "BUY",
+    "SELL"
+  ],
+  "orderTypes": [
+    "MARKET"
+  ],
+  "rules": {
+    "marketSessionRequired": true,
+    "futureDataForbidden": true,
+    "ownerSpecificPricingForbidden": true,
+    "realMoney": false,
+    "automaticRealMoneyExecution": false,
+    "fillRecordImmutable": true
+  }
+}
